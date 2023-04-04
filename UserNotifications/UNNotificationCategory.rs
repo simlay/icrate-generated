@@ -7,7 +7,9 @@ use crate::UserNotifications::*;
 
 ns_options!(
     #[underlying(NSUInteger)]
+    #[cfg(not(any(target_os = "tvos")))]
     pub enum UNNotificationCategoryOptions {
+        #[cfg(not(any(target_os = "tvos")))]
         UNNotificationCategoryOptionCustomDismissAction = 1 << 0,
         #[cfg(not(any(target_os = "macos")))]
         UNNotificationCategoryOptionAllowInCarPlay = 1 << 1,
@@ -16,7 +18,7 @@ ns_options!(
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         UNNotificationCategoryOptionHiddenPreviewsShowSubtitle = 1 << 3,
         #[deprecated = "Announcement option is ignored"]
-        #[cfg(not(any(target_os = "macos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         UNNotificationCategoryOptionAllowAnnouncement = 1 << 4,
     }
 );
@@ -26,6 +28,7 @@ extern_static!(UNNotificationCategoryOptionNone: UNNotificationCategoryOptions =
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "UserNotifications_UNNotificationCategory")]
+    #[cfg(not(any(target_os = "tvos")))]
     pub struct UNNotificationCategory;
 
     #[cfg(feature = "UserNotifications_UNNotificationCategory")]

@@ -8,7 +8,6 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSClickGestureRecognizer")]
-    #[cfg(not(any(target_os = "ios")))]
     pub struct NSClickGestureRecognizer;
 
     #[cfg(feature = "AppKit_NSClickGestureRecognizer")]
@@ -27,27 +26,21 @@ unsafe impl NSObjectProtocol for NSClickGestureRecognizer {}
 extern_methods!(
     #[cfg(feature = "AppKit_NSClickGestureRecognizer")]
     unsafe impl NSClickGestureRecognizer {
-        #[cfg(not(any(target_os = "ios")))]
         #[method(buttonMask)]
         pub unsafe fn buttonMask(&self) -> NSUInteger;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setButtonMask:)]
         pub unsafe fn setButtonMask(&self, button_mask: NSUInteger);
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(numberOfClicksRequired)]
         pub unsafe fn numberOfClicksRequired(&self) -> NSInteger;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setNumberOfClicksRequired:)]
         pub unsafe fn setNumberOfClicksRequired(&self, number_of_clicks_required: NSInteger);
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(numberOfTouchesRequired)]
         pub unsafe fn numberOfTouchesRequired(&self) -> NSInteger;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setNumberOfTouchesRequired:)]
         pub unsafe fn setNumberOfTouchesRequired(&self, number_of_touches_required: NSInteger);
     }
@@ -57,7 +50,6 @@ extern_methods!(
     /// Methods declared on superclass `NSGestureRecognizer`
     #[cfg(feature = "AppKit_NSClickGestureRecognizer")]
     unsafe impl NSClickGestureRecognizer {
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithTarget:action:)]
         pub unsafe fn initWithTarget_action(
             this: Option<Allocated<Self>>,

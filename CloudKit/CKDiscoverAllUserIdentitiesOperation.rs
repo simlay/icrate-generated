@@ -8,6 +8,7 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CloudKit_CKDiscoverAllUserIdentitiesOperation")]
+    #[cfg(not(any(target_os = "tvos")))]
     pub struct CKDiscoverAllUserIdentitiesOperation;
 
     #[cfg(feature = "CloudKit_CKDiscoverAllUserIdentitiesOperation")]

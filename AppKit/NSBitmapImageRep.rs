@@ -7,82 +7,51 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSUInteger)]
-    #[cfg(not(any(target_os = "ios")))]
     pub enum NSTIFFCompression {
-        #[cfg(not(any(target_os = "ios")))]
         NSTIFFCompressionNone = 1,
-        #[cfg(not(any(target_os = "ios")))]
         NSTIFFCompressionCCITTFAX3 = 3,
-        #[cfg(not(any(target_os = "ios")))]
         NSTIFFCompressionCCITTFAX4 = 4,
-        #[cfg(not(any(target_os = "ios")))]
         NSTIFFCompressionLZW = 5,
-        #[cfg(not(any(target_os = "ios")))]
         NSTIFFCompressionJPEG = 6,
-        #[cfg(not(any(target_os = "ios")))]
         NSTIFFCompressionNEXT = 32766,
-        #[cfg(not(any(target_os = "ios")))]
         NSTIFFCompressionPackBits = 32773,
-        #[cfg(not(any(target_os = "ios")))]
         NSTIFFCompressionOldJPEG = 32865,
     }
 );
 
 ns_enum!(
     #[underlying(NSUInteger)]
-    #[cfg(not(any(target_os = "ios")))]
     pub enum NSBitmapImageFileType {
-        #[cfg(not(any(target_os = "ios")))]
         NSBitmapImageFileTypeTIFF = 0,
-        #[cfg(not(any(target_os = "ios")))]
         NSBitmapImageFileTypeBMP = 1,
-        #[cfg(not(any(target_os = "ios")))]
         NSBitmapImageFileTypeGIF = 2,
-        #[cfg(not(any(target_os = "ios")))]
         NSBitmapImageFileTypeJPEG = 3,
-        #[cfg(not(any(target_os = "ios")))]
         NSBitmapImageFileTypePNG = 4,
-        #[cfg(not(any(target_os = "ios")))]
         NSBitmapImageFileTypeJPEG2000 = 5,
     }
 );
 
 ns_enum!(
     #[underlying(NSInteger)]
-    #[cfg(not(any(target_os = "ios")))]
     pub enum NSImageRepLoadStatus {
-        #[cfg(not(any(target_os = "ios")))]
         NSImageRepLoadStatusUnknownType = -1,
-        #[cfg(not(any(target_os = "ios")))]
         NSImageRepLoadStatusReadingHeader = -2,
-        #[cfg(not(any(target_os = "ios")))]
         NSImageRepLoadStatusWillNeedAllData = -3,
-        #[cfg(not(any(target_os = "ios")))]
         NSImageRepLoadStatusInvalidData = -4,
-        #[cfg(not(any(target_os = "ios")))]
         NSImageRepLoadStatusUnexpectedEOF = -5,
-        #[cfg(not(any(target_os = "ios")))]
         NSImageRepLoadStatusCompleted = -6,
     }
 );
 
 ns_options!(
     #[underlying(NSUInteger)]
-    #[cfg(not(any(target_os = "ios")))]
     pub enum NSBitmapFormat {
-        #[cfg(not(any(target_os = "ios")))]
         NSBitmapFormatAlphaFirst = 1 << 0,
-        #[cfg(not(any(target_os = "ios")))]
         NSBitmapFormatAlphaNonpremultiplied = 1 << 1,
-        #[cfg(not(any(target_os = "ios")))]
         NSBitmapFormatFloatingPointSamples = 1 << 2,
-        #[cfg(not(any(target_os = "ios")))]
         NSBitmapFormatSixteenBitLittleEndian = 1 << 8,
-        #[cfg(not(any(target_os = "ios")))]
         NSBitmapFormatThirtyTwoBitLittleEndian = 1 << 9,
-        #[cfg(not(any(target_os = "ios")))]
         NSBitmapFormatSixteenBitBigEndian = 1 << 10,
-        #[cfg(not(any(target_os = "ios")))]
         NSBitmapFormatThirtyTwoBitBigEndian = 1 << 11,
     }
 );
@@ -124,7 +93,6 @@ extern_static!(NSImageFallbackBackgroundColor: &'static NSBitmapImageRepProperty
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSBitmapImageRep")]
-    #[cfg(not(any(target_os = "ios")))]
     pub struct NSBitmapImageRep;
 
     #[cfg(feature = "AppKit_NSBitmapImageRep")]
@@ -147,14 +115,12 @@ extern_methods!(
     #[cfg(feature = "AppKit_NSBitmapImageRep")]
     unsafe impl NSBitmapImageRep {
         #[deprecated = "Use -[NSView cacheDisplayInRect:toBitmapImageRep:] to snapshot a view."]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithFocusedViewRect:)]
         pub unsafe fn initWithFocusedViewRect(
             this: Option<Allocated<Self>>,
             rect: NSRect,
         ) -> Option<Id<Self>>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithBitmapDataPlanes:pixelsWide:pixelsHigh:bitsPerSample:samplesPerPixel:hasAlpha:isPlanar:colorSpaceName:bytesPerRow:bitsPerPixel:)]
         pub unsafe fn initWithBitmapDataPlanes_pixelsWide_pixelsHigh_bitsPerSample_samplesPerPixel_hasAlpha_isPlanar_colorSpaceName_bytesPerRow_bitsPerPixel(
             this: Option<Allocated<Self>>,
@@ -170,7 +136,6 @@ extern_methods!(
             p_bits: NSInteger,
         ) -> Option<Id<Self>>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithBitmapDataPlanes:pixelsWide:pixelsHigh:bitsPerSample:samplesPerPixel:hasAlpha:isPlanar:colorSpaceName:bitmapFormat:bytesPerRow:bitsPerPixel:)]
         pub unsafe fn initWithBitmapDataPlanes_pixelsWide_pixelsHigh_bitsPerSample_samplesPerPixel_hasAlpha_isPlanar_colorSpaceName_bitmapFormat_bytesPerRow_bitsPerPixel(
             this: Option<Allocated<Self>>,
@@ -188,60 +153,47 @@ extern_methods!(
         ) -> Option<Id<Self>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSData"))]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other imageRepsWithData:)]
         pub unsafe fn imageRepsWithData(data: &NSData) -> Id<NSArray<NSImageRep>>;
 
         #[cfg(feature = "Foundation_NSData")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other imageRepWithData:)]
         pub unsafe fn imageRepWithData(data: &NSData) -> Option<Id<Self>>;
 
         #[cfg(feature = "Foundation_NSData")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithData:)]
         pub unsafe fn initWithData(
             this: Option<Allocated<Self>>,
             data: &NSData,
         ) -> Option<Id<Self>>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(bitmapData)]
         pub unsafe fn bitmapData(&self) -> *mut c_uchar;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(getBitmapDataPlanes:)]
         pub unsafe fn getBitmapDataPlanes(&self, data: NonNull<*mut c_uchar>);
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(isPlanar)]
         pub unsafe fn isPlanar(&self) -> bool;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(samplesPerPixel)]
         pub unsafe fn samplesPerPixel(&self) -> NSInteger;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(bitsPerPixel)]
         pub unsafe fn bitsPerPixel(&self) -> NSInteger;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(bytesPerRow)]
         pub unsafe fn bytesPerRow(&self) -> NSInteger;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(bytesPerPlane)]
         pub unsafe fn bytesPerPlane(&self) -> NSInteger;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(numberOfPlanes)]
         pub unsafe fn numberOfPlanes(&self) -> NSInteger;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(bitmapFormat)]
         pub unsafe fn bitmapFormat(&self) -> NSBitmapFormat;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(getCompression:factor:)]
         pub unsafe fn getCompression_factor(
             &self,
@@ -249,17 +201,14 @@ extern_methods!(
             factor: *mut c_float,
         );
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setCompression:factor:)]
         pub unsafe fn setCompression_factor(&self, compression: NSTIFFCompression, factor: c_float);
 
         #[cfg(feature = "Foundation_NSData")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other TIFFRepresentation)]
         pub unsafe fn TIFFRepresentation(&self) -> Option<Id<NSData>>;
 
         #[cfg(feature = "Foundation_NSData")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other TIFFRepresentationUsingCompression:factor:)]
         pub unsafe fn TIFFRepresentationUsingCompression_factor(
             &self,
@@ -268,14 +217,12 @@ extern_methods!(
         ) -> Option<Id<NSData>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSData"))]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other TIFFRepresentationOfImageRepsInArray:)]
         pub unsafe fn TIFFRepresentationOfImageRepsInArray(
             array: &NSArray<NSImageRep>,
         ) -> Option<Id<NSData>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSData"))]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other TIFFRepresentationOfImageRepsInArray:usingCompression:factor:)]
         pub unsafe fn TIFFRepresentationOfImageRepsInArray_usingCompression_factor(
             array: &NSArray<NSImageRep>,
@@ -283,7 +230,6 @@ extern_methods!(
             factor: c_float,
         ) -> Option<Id<NSData>>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(getTIFFCompressionTypes:count:)]
         pub unsafe fn getTIFFCompressionTypes_count(
             list: NonNull<*mut NSTIFFCompression>,
@@ -291,18 +237,15 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other localizedNameForTIFFCompressionType:)]
         pub unsafe fn localizedNameForTIFFCompressionType(
             compression: NSTIFFCompression,
         ) -> Option<Id<NSString>>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(canBeCompressedUsing:)]
         pub unsafe fn canBeCompressedUsing(&self, compression: NSTIFFCompression) -> bool;
 
         #[cfg(feature = "AppKit_NSColor")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(colorizeByMappingGray:toColor:blackMapping:whiteMapping:)]
         pub unsafe fn colorizeByMappingGray_toColor_blackMapping_whiteMapping(
             &self,
@@ -312,12 +255,10 @@ extern_methods!(
             light_color: Option<&NSColor>,
         );
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initForIncrementalLoad)]
         pub unsafe fn initForIncrementalLoad(this: Option<Allocated<Self>>) -> Id<Self>;
 
         #[cfg(feature = "Foundation_NSData")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(incrementalLoadFromData:complete:)]
         pub unsafe fn incrementalLoadFromData_complete(
             &self,
@@ -326,30 +267,24 @@ extern_methods!(
         ) -> NSInteger;
 
         #[cfg(feature = "AppKit_NSColor")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setColor:atX:y:)]
         pub unsafe fn setColor_atX_y(&self, color: &NSColor, x: NSInteger, y: NSInteger);
 
         #[cfg(feature = "AppKit_NSColor")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other colorAtX:y:)]
         pub unsafe fn colorAtX_y(&self, x: NSInteger, y: NSInteger) -> Option<Id<NSColor>>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(getPixel:atX:y:)]
         pub unsafe fn getPixel_atX_y(&self, p: NonNull<NSUInteger>, x: NSInteger, y: NSInteger);
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setPixel:atX:y:)]
         pub unsafe fn setPixel_atX_y(&self, p: NonNull<NSUInteger>, x: NSInteger, y: NSInteger);
 
         #[cfg(feature = "AppKit_NSColorSpace")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other colorSpace)]
         pub unsafe fn colorSpace(&self) -> Id<NSColorSpace>;
 
         #[cfg(feature = "AppKit_NSColorSpace")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other bitmapImageRepByConvertingToColorSpace:renderingIntent:)]
         pub unsafe fn bitmapImageRepByConvertingToColorSpace_renderingIntent(
             &self,
@@ -358,7 +293,6 @@ extern_methods!(
         ) -> Option<Id<NSBitmapImageRep>>;
 
         #[cfg(feature = "AppKit_NSColorSpace")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other bitmapImageRepByRetaggingWithColorSpace:)]
         pub unsafe fn bitmapImageRepByRetaggingWithColorSpace(
             &self,
@@ -377,7 +311,6 @@ extern_methods!(
             feature = "Foundation_NSData",
             feature = "Foundation_NSDictionary"
         ))]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other representationOfImageRepsInArray:usingType:properties:)]
         pub unsafe fn representationOfImageRepsInArray_usingType_properties(
             image_reps: &NSArray<NSImageRep>,
@@ -386,7 +319,6 @@ extern_methods!(
         ) -> Option<Id<NSData>>;
 
         #[cfg(all(feature = "Foundation_NSData", feature = "Foundation_NSDictionary"))]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other representationUsingType:properties:)]
         pub unsafe fn representationUsingType_properties(
             &self,
@@ -394,7 +326,6 @@ extern_methods!(
             properties: &NSDictionary<NSBitmapImageRepPropertyKey, Object>,
         ) -> Option<Id<NSData>>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setProperty:withValue:)]
         pub unsafe fn setProperty_withValue(
             &self,
@@ -402,7 +333,6 @@ extern_methods!(
             value: Option<&Object>,
         );
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other valueForProperty:)]
         pub unsafe fn valueForProperty(
             &self,

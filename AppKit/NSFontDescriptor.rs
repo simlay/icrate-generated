@@ -9,51 +9,29 @@ pub type NSFontSymbolicTraits = u32;
 
 ns_options!(
     #[underlying(u32)]
-    #[cfg(not(any(target_os = "ios")))]
     pub enum NSFontDescriptorSymbolicTraits {
-        #[cfg(not(any(target_os = "ios")))]
         NSFontDescriptorTraitItalic = 1 << 0,
-        #[cfg(not(any(target_os = "ios")))]
         NSFontDescriptorTraitBold = 1 << 1,
-        #[cfg(not(any(target_os = "ios")))]
         NSFontDescriptorTraitExpanded = 1 << 5,
-        #[cfg(not(any(target_os = "ios")))]
         NSFontDescriptorTraitCondensed = 1 << 6,
-        #[cfg(not(any(target_os = "ios")))]
         NSFontDescriptorTraitMonoSpace = 1 << 10,
-        #[cfg(not(any(target_os = "ios")))]
         NSFontDescriptorTraitVertical = 1 << 11,
-        #[cfg(not(any(target_os = "ios")))]
         NSFontDescriptorTraitUIOptimized = 1 << 12,
-        #[cfg(not(any(target_os = "ios")))]
         NSFontDescriptorTraitTightLeading = 1 << 15,
-        #[cfg(not(any(target_os = "ios")))]
         NSFontDescriptorTraitLooseLeading = 1 << 16,
-        #[cfg(not(any(target_os = "ios", target_os = "macos")))]
+        #[cfg(not(any(target_os = "macos")))]
         NSFontDescriptorTraitEmphasized = NSFontDescriptorTraitBold,
-        #[cfg(not(any(target_os = "ios")))]
         NSFontDescriptorClassMask = 0xF0000000,
-        #[cfg(not(any(target_os = "ios")))]
         NSFontDescriptorClassUnknown = 0 << 28,
-        #[cfg(not(any(target_os = "ios")))]
         NSFontDescriptorClassOldStyleSerifs = 1 << 28,
-        #[cfg(not(any(target_os = "ios")))]
         NSFontDescriptorClassTransitionalSerifs = 2 << 28,
-        #[cfg(not(any(target_os = "ios")))]
         NSFontDescriptorClassModernSerifs = 3 << 28,
-        #[cfg(not(any(target_os = "ios")))]
         NSFontDescriptorClassClarendonSerifs = 4 << 28,
-        #[cfg(not(any(target_os = "ios")))]
         NSFontDescriptorClassSlabSerifs = 5 << 28,
-        #[cfg(not(any(target_os = "ios")))]
         NSFontDescriptorClassFreeformSerifs = 7 << 28,
-        #[cfg(not(any(target_os = "ios")))]
         NSFontDescriptorClassSansSerif = 8 << 28,
-        #[cfg(not(any(target_os = "ios")))]
         NSFontDescriptorClassOrnamentals = 9 << 28,
-        #[cfg(not(any(target_os = "ios")))]
         NSFontDescriptorClassScripts = 10 << 28,
-        #[cfg(not(any(target_os = "ios")))]
         NSFontDescriptorClassSymbolic = 12 << 28,
     }
 );
@@ -97,7 +75,6 @@ typed_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSFontDescriptor")]
-    #[cfg(not(any(target_os = "ios")))]
     pub struct NSFontDescriptor;
 
     #[cfg(feature = "AppKit_NSFontDescriptor")]
@@ -119,28 +96,22 @@ extern_methods!(
     #[cfg(feature = "AppKit_NSFontDescriptor")]
     unsafe impl NSFontDescriptor {
         #[cfg(feature = "Foundation_NSString")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other postscriptName)]
         pub unsafe fn postscriptName(&self) -> Option<Id<NSString>>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(pointSize)]
         pub unsafe fn pointSize(&self) -> CGFloat;
 
         #[cfg(feature = "Foundation_NSAffineTransform")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other matrix)]
         pub unsafe fn matrix(&self) -> Option<Id<NSAffineTransform>>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(symbolicTraits)]
         pub unsafe fn symbolicTraits(&self) -> NSFontDescriptorSymbolicTraits;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(requiresFontAssetRequest)]
         pub unsafe fn requiresFontAssetRequest(&self) -> bool;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other objectForKey:)]
         pub unsafe fn objectForKey(
             &self,
@@ -148,21 +119,18 @@ extern_methods!(
         ) -> Option<Id<Object>>;
 
         #[cfg(feature = "Foundation_NSDictionary")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other fontAttributes)]
         pub unsafe fn fontAttributes(
             &self,
         ) -> Id<NSDictionary<NSFontDescriptorAttributeName, Object>>;
 
         #[cfg(feature = "Foundation_NSDictionary")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other fontDescriptorWithFontAttributes:)]
         pub unsafe fn fontDescriptorWithFontAttributes(
             attributes: Option<&NSDictionary<NSFontDescriptorAttributeName, Object>>,
         ) -> Id<NSFontDescriptor>;
 
         #[cfg(feature = "Foundation_NSString")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other fontDescriptorWithName:size:)]
         pub unsafe fn fontDescriptorWithName_size(
             font_name: &NSString,
@@ -173,7 +141,6 @@ extern_methods!(
             feature = "Foundation_NSAffineTransform",
             feature = "Foundation_NSString"
         ))]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other fontDescriptorWithName:matrix:)]
         pub unsafe fn fontDescriptorWithName_matrix(
             font_name: &NSString,
@@ -181,7 +148,6 @@ extern_methods!(
         ) -> Id<NSFontDescriptor>;
 
         #[cfg(feature = "Foundation_NSDictionary")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithFontAttributes:)]
         pub unsafe fn initWithFontAttributes(
             this: Option<Allocated<Self>>,
@@ -189,7 +155,6 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSSet"))]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other matchingFontDescriptorsWithMandatoryKeys:)]
         pub unsafe fn matchingFontDescriptorsWithMandatoryKeys(
             &self,
@@ -197,7 +162,6 @@ extern_methods!(
         ) -> Id<NSArray<NSFontDescriptor>>;
 
         #[cfg(feature = "Foundation_NSSet")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other matchingFontDescriptorWithMandatoryKeys:)]
         pub unsafe fn matchingFontDescriptorWithMandatoryKeys(
             &self,
@@ -205,21 +169,18 @@ extern_methods!(
         ) -> Option<Id<NSFontDescriptor>>;
 
         #[cfg(feature = "Foundation_NSDictionary")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other fontDescriptorByAddingAttributes:)]
         pub unsafe fn fontDescriptorByAddingAttributes(
             &self,
             attributes: &NSDictionary<NSFontDescriptorAttributeName, Object>,
         ) -> Id<NSFontDescriptor>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other fontDescriptorWithSymbolicTraits:)]
         pub unsafe fn fontDescriptorWithSymbolicTraits(
             &self,
             symbolic_traits: NSFontDescriptorSymbolicTraits,
         ) -> Id<NSFontDescriptor>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other fontDescriptorWithSize:)]
         pub unsafe fn fontDescriptorWithSize(
             &self,
@@ -227,7 +188,6 @@ extern_methods!(
         ) -> Id<NSFontDescriptor>;
 
         #[cfg(feature = "Foundation_NSAffineTransform")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other fontDescriptorWithMatrix:)]
         pub unsafe fn fontDescriptorWithMatrix(
             &self,
@@ -235,19 +195,16 @@ extern_methods!(
         ) -> Id<NSFontDescriptor>;
 
         #[cfg(feature = "Foundation_NSString")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other fontDescriptorWithFace:)]
         pub unsafe fn fontDescriptorWithFace(&self, new_face: &NSString) -> Id<NSFontDescriptor>;
 
         #[cfg(feature = "Foundation_NSString")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other fontDescriptorWithFamily:)]
         pub unsafe fn fontDescriptorWithFamily(
             &self,
             new_family: &NSString,
         ) -> Id<NSFontDescriptor>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other fontDescriptorWithDesign:)]
         pub unsafe fn fontDescriptorWithDesign(
             &self,
@@ -362,59 +319,37 @@ pub type NSFontFamilyClass = u32;
 
 extern_enum!(
     #[underlying(c_int)]
-    #[cfg(not(any(target_os = "ios")))]
     pub enum __anonymous__ {
-        #[cfg(not(any(target_os = "ios")))]
         NSFontUnknownClass = 0 << 28,
-        #[cfg(not(any(target_os = "ios")))]
         NSFontOldStyleSerifsClass = 1 << 28,
-        #[cfg(not(any(target_os = "ios")))]
         NSFontTransitionalSerifsClass = 2 << 28,
-        #[cfg(not(any(target_os = "ios")))]
         NSFontModernSerifsClass = 3 << 28,
-        #[cfg(not(any(target_os = "ios")))]
         NSFontClarendonSerifsClass = 4 << 28,
-        #[cfg(not(any(target_os = "ios")))]
         NSFontSlabSerifsClass = 5 << 28,
-        #[cfg(not(any(target_os = "ios")))]
         NSFontFreeformSerifsClass = 7 << 28,
-        #[cfg(not(any(target_os = "ios")))]
         NSFontSansSerifClass = 8 << 28,
-        #[cfg(not(any(target_os = "ios")))]
         NSFontOrnamentalsClass = 9 << 28,
-        #[cfg(not(any(target_os = "ios")))]
         NSFontScriptsClass = 10 << 28,
-        #[cfg(not(any(target_os = "ios")))]
         NSFontSymbolicClass = 12 << 28,
     }
 );
 
 extern_enum!(
     #[underlying(c_uint)]
-    #[cfg(not(any(target_os = "ios")))]
     pub enum __anonymous__ {
-        #[cfg(not(any(target_os = "ios")))]
         NSFontFamilyClassMask = 0xF0000000,
     }
 );
 
 extern_enum!(
     #[underlying(c_uint)]
-    #[cfg(not(any(target_os = "ios")))]
     pub enum __anonymous__ {
-        #[cfg(not(any(target_os = "ios")))]
         NSFontItalicTrait = 1 << 0,
-        #[cfg(not(any(target_os = "ios")))]
         NSFontBoldTrait = 1 << 1,
-        #[cfg(not(any(target_os = "ios")))]
         NSFontExpandedTrait = 1 << 5,
-        #[cfg(not(any(target_os = "ios")))]
         NSFontCondensedTrait = 1 << 6,
-        #[cfg(not(any(target_os = "ios")))]
         NSFontMonoSpaceTrait = 1 << 10,
-        #[cfg(not(any(target_os = "ios")))]
         NSFontVerticalTrait = 1 << 11,
-        #[cfg(not(any(target_os = "ios")))]
         NSFontUIOptimizedTrait = 1 << 12,
     }
 );
@@ -426,7 +361,6 @@ extern_methods!(
     #[cfg(feature = "AppKit_NSFontDescriptor")]
     unsafe impl NSFontDescriptor {
         #[cfg(feature = "Foundation_NSDictionary")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other preferredFontDescriptorForTextStyle:options:)]
         pub unsafe fn preferredFontDescriptorForTextStyle_options(
             style: &NSFontTextStyle,

@@ -6,14 +6,12 @@ use crate::CoreData::*;
 use crate::Foundation::*;
 
 extern_protocol!(
-    #[cfg(not(any(target_os = "ios")))]
     pub unsafe trait NSWindowRestoration: NSObjectProtocol {
         #[cfg(all(
             feature = "AppKit_NSWindow",
             feature = "Foundation_NSCoder",
             feature = "Foundation_NSError"
         ))]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(restoreWindowWithIdentifier:state:completionHandler:)]
         unsafe fn restoreWindowWithIdentifier_state_completionHandler(
             identifier: &NSUserInterfaceItemIdentifier,
@@ -43,7 +41,6 @@ extern_methods!(
             feature = "Foundation_NSCoder",
             feature = "Foundation_NSError"
         ))]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(restoreWindowWithIdentifier:state:completionHandler:)]
         pub unsafe fn restoreWindowWithIdentifier_state_completionHandler(
             &self,
@@ -60,27 +57,21 @@ extern_methods!(
     /// NSUserInterfaceRestoration
     #[cfg(feature = "AppKit_NSWindow")]
     unsafe impl NSWindow {
-        #[cfg(not(any(target_os = "ios")))]
         #[method(isRestorable)]
         pub unsafe fn isRestorable(&self) -> bool;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setRestorable:)]
         pub unsafe fn setRestorable(&self, restorable: bool);
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other restorationClass)]
         pub unsafe fn restorationClass(&self) -> Option<Id<TodoClass>>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setRestorationClass:)]
         pub unsafe fn setRestorationClass(&self, restoration_class: Option<&TodoClass>);
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(disableSnapshotRestoration)]
         pub unsafe fn disableSnapshotRestoration(&self);
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(enableSnapshotRestoration)]
         pub unsafe fn enableSnapshotRestoration(&self);
     }
@@ -91,7 +82,6 @@ extern_methods!(
     #[cfg(feature = "AppKit_NSResponder")]
     unsafe impl NSResponder {
         #[cfg(feature = "Foundation_NSCoder")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(encodeRestorableStateWithCoder:)]
         pub unsafe fn encodeRestorableStateWithCoder(&self, coder: &NSCoder);
 
@@ -99,7 +89,6 @@ extern_methods!(
             feature = "Foundation_NSCoder",
             feature = "Foundation_NSOperationQueue"
         ))]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(encodeRestorableStateWithCoder:backgroundQueue:)]
         pub unsafe fn encodeRestorableStateWithCoder_backgroundQueue(
             &self,
@@ -108,21 +97,17 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSCoder")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(restoreStateWithCoder:)]
         pub unsafe fn restoreStateWithCoder(&self, coder: &NSCoder);
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(invalidateRestorableState)]
         pub unsafe fn invalidateRestorableState(&self);
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other restorableStateKeyPaths)]
         pub unsafe fn restorableStateKeyPaths() -> Id<NSArray<NSString>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other allowedClassesForRestorableStateKeyPath:)]
         pub unsafe fn allowedClassesForRestorableStateKeyPath(
             key_path: &NSString,
@@ -134,11 +119,9 @@ extern_methods!(
     /// NSRestorableStateExtension
     #[cfg(feature = "AppKit_NSApplication")]
     unsafe impl NSApplication {
-        #[cfg(not(any(target_os = "ios")))]
         #[method(extendStateRestoration)]
         pub unsafe fn extendStateRestoration(&self);
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(completeStateRestoration)]
         pub unsafe fn completeStateRestoration(&self);
     }
@@ -153,7 +136,6 @@ extern_methods!(
             feature = "Foundation_NSCoder",
             feature = "Foundation_NSError"
         ))]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(restoreDocumentWindowWithIdentifier:state:completionHandler:)]
         pub unsafe fn restoreDocumentWindowWithIdentifier_state_completionHandler(
             &self,
@@ -163,7 +145,6 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSCoder")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(encodeRestorableStateWithCoder:)]
         pub unsafe fn encodeRestorableStateWithCoder(&self, coder: &NSCoder);
 
@@ -171,7 +152,6 @@ extern_methods!(
             feature = "Foundation_NSCoder",
             feature = "Foundation_NSOperationQueue"
         ))]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(encodeRestorableStateWithCoder:backgroundQueue:)]
         pub unsafe fn encodeRestorableStateWithCoder_backgroundQueue(
             &self,
@@ -180,21 +160,17 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSCoder")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(restoreStateWithCoder:)]
         pub unsafe fn restoreStateWithCoder(&self, coder: &NSCoder);
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(invalidateRestorableState)]
         pub unsafe fn invalidateRestorableState(&self);
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other restorableStateKeyPaths)]
         pub unsafe fn restorableStateKeyPaths() -> Id<NSArray<NSString>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other allowedClassesForRestorableStateKeyPath:)]
         pub unsafe fn allowedClassesForRestorableStateKeyPath(
             key_path: &NSString,

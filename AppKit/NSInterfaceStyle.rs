@@ -7,19 +7,14 @@ use crate::Foundation::*;
 
 extern_enum!(
     #[underlying(c_uint)]
-    #[cfg(not(any(target_os = "ios")))]
     pub enum __anonymous__ {
         #[deprecated]
-        #[cfg(not(any(target_os = "ios")))]
         NSNoInterfaceStyle = 0,
         #[deprecated]
-        #[cfg(not(any(target_os = "ios")))]
         NSNextStepInterfaceStyle = 1,
         #[deprecated]
-        #[cfg(not(any(target_os = "ios")))]
         NSWindows95InterfaceStyle = 2,
         #[deprecated]
-        #[cfg(not(any(target_os = "ios")))]
         NSMacintoshInterfaceStyle = 3,
     }
 );
@@ -29,7 +24,6 @@ pub type NSInterfaceStyle = NSUInteger;
 extern_fn!(
     #[cfg(all(feature = "AppKit_NSResponder", feature = "Foundation_NSString"))]
     #[deprecated]
-    #[cfg(not(any(target_os = "ios")))]
     pub unsafe fn NSInterfaceStyleForKey(
         key: Option<&NSString>,
         responder: Option<&NSResponder>,
@@ -41,12 +35,10 @@ extern_methods!(
     #[cfg(feature = "AppKit_NSResponder")]
     unsafe impl NSResponder {
         #[deprecated]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(interfaceStyle)]
         pub unsafe fn interfaceStyle(&self) -> NSInterfaceStyle;
 
         #[deprecated]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setInterfaceStyle:)]
         pub unsafe fn setInterfaceStyle(&self, interface_style: NSInterfaceStyle);
     }

@@ -5,7 +5,6 @@ use crate::ClassKit::*;
 use crate::Foundation::*;
 
 extern_protocol!(
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub unsafe trait CLSContextProvider {
         #[cfg(all(feature = "ClassKit_CLSContext", feature = "Foundation_NSError"))]
         #[method(updateDescendantsOfContext:completion:)]

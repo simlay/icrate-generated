@@ -128,244 +128,454 @@ mod __ASWebAuthenticationSessionWebBrowserSessionHandling;
 mod __ASWebAuthenticationSessionWebBrowserSessionManager;
 
 #[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationController")]
+#[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationController")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAccountAuthenticationModificationController::ASAccountAuthenticationModificationController;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAccountAuthenticationModificationController::ASAccountAuthenticationModificationControllerDelegate;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAccountAuthenticationModificationController::ASAccountAuthenticationModificationControllerPresentationContextProviding;
 #[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationExtensionContext")]
+#[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationExtensionContext")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAccountAuthenticationModificationExtensionContext::ASAccountAuthenticationModificationExtensionContext;
 #[cfg(
     feature = "AuthenticationServices_ASAccountAuthenticationModificationReplacePasswordWithSignInWithAppleRequest"
 )]
+#[cfg(
+    feature = "AuthenticationServices_ASAccountAuthenticationModificationReplacePasswordWithSignInWithAppleRequest"
+)]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAccountAuthenticationModificationReplacePasswordWithSignInWithAppleRequest::ASAccountAuthenticationModificationReplacePasswordWithSignInWithAppleRequest;
 #[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationRequest")]
+#[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationRequest")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAccountAuthenticationModificationRequest::ASAccountAuthenticationModificationRequest;
 #[cfg(
     feature = "AuthenticationServices_ASAccountAuthenticationModificationUpgradePasswordToStrongPasswordRequest"
 )]
+#[cfg(
+    feature = "AuthenticationServices_ASAccountAuthenticationModificationUpgradePasswordToStrongPasswordRequest"
+)]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAccountAuthenticationModificationUpgradePasswordToStrongPasswordRequest::ASAccountAuthenticationModificationUpgradePasswordToStrongPasswordRequest;
+
+pub use self::__ASAuthorization::ASAuthorizationScope;
+
+pub use self::__ASAuthorization::ASAuthorizationScopeFullName;
+
+#[cfg(feature = "AuthenticationServices_ASAuthorization")]
 #[cfg(feature = "AuthenticationServices_ASAuthorization")]
 pub use self::__ASAuthorization::ASAuthorization;
-pub use self::__ASAuthorization::ASAuthorizationScope;
 pub use self::__ASAuthorization::ASAuthorizationScopeEmail;
-pub use self::__ASAuthorization::ASAuthorizationScopeFullName;
-pub use self::__ASAuthorizationAppleIDButton::{
-    ASAuthorizationAppleIDButtonStyle, ASAuthorizationAppleIDButtonStyleBlack,
-    ASAuthorizationAppleIDButtonStyleWhite, ASAuthorizationAppleIDButtonStyleWhiteOutline,
-};
-pub use self::__ASAuthorizationAppleIDButton::{
-    ASAuthorizationAppleIDButtonType, ASAuthorizationAppleIDButtonTypeContinue,
-    ASAuthorizationAppleIDButtonTypeDefault, ASAuthorizationAppleIDButtonTypeSignIn,
-    ASAuthorizationAppleIDButtonTypeSignUp,
-};
+#[cfg(not(any(target_os = "watchos")))]
+pub use self::__ASAuthorizationAppleIDButton::ASAuthorizationAppleIDButtonStyle;
+#[cfg(not(any(target_os = "watchos")))]
+pub use self::__ASAuthorizationAppleIDButton::ASAuthorizationAppleIDButtonStyleBlack;
+#[cfg(not(any(target_os = "watchos")))]
+pub use self::__ASAuthorizationAppleIDButton::ASAuthorizationAppleIDButtonStyleWhite;
+#[cfg(not(any(target_os = "watchos")))]
+pub use self::__ASAuthorizationAppleIDButton::ASAuthorizationAppleIDButtonStyleWhiteOutline;
+#[cfg(not(any(target_os = "watchos")))]
+pub use self::__ASAuthorizationAppleIDButton::ASAuthorizationAppleIDButtonType;
+#[cfg(not(any(target_os = "watchos")))]
+pub use self::__ASAuthorizationAppleIDButton::ASAuthorizationAppleIDButtonTypeContinue;
+#[cfg(not(any(target_os = "watchos")))]
+pub use self::__ASAuthorizationAppleIDButton::ASAuthorizationAppleIDButtonTypeDefault;
+#[cfg(not(any(target_os = "watchos")))]
+pub use self::__ASAuthorizationAppleIDButton::ASAuthorizationAppleIDButtonTypeSignIn;
+#[cfg(not(any(target_os = "watchos")))]
+pub use self::__ASAuthorizationAppleIDButton::ASAuthorizationAppleIDButtonTypeSignUp;
+
+pub use self::__ASAuthorizationAppleIDCredential::ASUserDetectionStatus;
+
+pub use self::__ASAuthorizationAppleIDCredential::ASUserDetectionStatusUnsupported;
+
+pub use self::__ASAuthorizationAppleIDCredential::ASUserDetectionStatusUnknown;
+
+#[cfg(feature = "AuthenticationServices_ASAuthorizationAppleIDCredential")]
 #[cfg(feature = "AuthenticationServices_ASAuthorizationAppleIDCredential")]
 pub use self::__ASAuthorizationAppleIDCredential::ASAuthorizationAppleIDCredential;
-pub use self::__ASAuthorizationAppleIDCredential::{
-    ASUserDetectionStatus, ASUserDetectionStatusLikelyReal, ASUserDetectionStatusUnknown,
-    ASUserDetectionStatusUnsupported,
-};
+pub use self::__ASAuthorizationAppleIDCredential::ASUserDetectionStatusLikelyReal;
+
+pub use self::__ASAuthorizationAppleIDProvider::ASAuthorizationAppleIDProviderCredentialState;
+
+pub use self::__ASAuthorizationAppleIDProvider::ASAuthorizationAppleIDProviderCredentialRevoked;
+
+pub use self::__ASAuthorizationAppleIDProvider::ASAuthorizationAppleIDProviderCredentialAuthorized;
+
+pub use self::__ASAuthorizationAppleIDProvider::ASAuthorizationAppleIDProviderCredentialNotFound;
+
+pub use self::__ASAuthorizationAppleIDProvider::ASAuthorizationAppleIDProviderCredentialTransferred;
+
+#[cfg(feature = "AuthenticationServices_ASAuthorizationAppleIDProvider")]
 #[cfg(feature = "AuthenticationServices_ASAuthorizationAppleIDProvider")]
 pub use self::__ASAuthorizationAppleIDProvider::ASAuthorizationAppleIDProvider;
 pub use self::__ASAuthorizationAppleIDProvider::ASAuthorizationAppleIDProviderCredentialRevokedNotification;
-pub use self::__ASAuthorizationAppleIDProvider::{
-    ASAuthorizationAppleIDProviderCredentialAuthorized,
-    ASAuthorizationAppleIDProviderCredentialNotFound,
-    ASAuthorizationAppleIDProviderCredentialRevoked, ASAuthorizationAppleIDProviderCredentialState,
-    ASAuthorizationAppleIDProviderCredentialTransferred,
-};
+#[cfg(feature = "AuthenticationServices_ASAuthorizationAppleIDRequest")]
 #[cfg(feature = "AuthenticationServices_ASAuthorizationAppleIDRequest")]
 pub use self::__ASAuthorizationAppleIDRequest::ASAuthorizationAppleIDRequest;
+
+#[cfg(feature = "AuthenticationServices_ASAuthorizationController")]
 #[cfg(feature = "AuthenticationServices_ASAuthorizationController")]
 pub use self::__ASAuthorizationController::ASAuthorizationController;
 pub use self::__ASAuthorizationController::ASAuthorizationControllerDelegate;
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__ASAuthorizationController::ASAuthorizationControllerPresentationContextProviding;
-pub use self::__ASAuthorizationController::{
-    ASAuthorizationControllerRequestOptionPreferImmediatelyAvailableCredentials,
-    ASAuthorizationControllerRequestOptions,
-};
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+pub use self::__ASAuthorizationController::ASAuthorizationControllerRequestOptionPreferImmediatelyAvailableCredentials;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+pub use self::__ASAuthorizationController::ASAuthorizationControllerRequestOptions;
+
 pub use self::__ASAuthorizationCredential::ASAuthorizationCredential;
+#[cfg(not(any(target_os = "ios", target_os = "macos", target_os = "watchos")))]
 pub use self::__ASAuthorizationCustomMethod::ASAuthorizationCustomMethod;
+#[cfg(not(any(target_os = "ios", target_os = "macos", target_os = "watchos")))]
 pub use self::__ASAuthorizationCustomMethod::ASAuthorizationCustomMethodOther;
+#[cfg(not(any(target_os = "ios", target_os = "macos", target_os = "watchos")))]
 pub use self::__ASAuthorizationCustomMethod::ASAuthorizationCustomMethodRestorePurchase;
+#[cfg(not(any(target_os = "ios", target_os = "macos", target_os = "watchos")))]
 pub use self::__ASAuthorizationCustomMethod::ASAuthorizationCustomMethodVideoSubscriberAccount;
+
 pub use self::__ASAuthorizationError::ASAuthorizationErrorDomain;
-pub use self::__ASAuthorizationError::{
-    ASAuthorizationError, ASAuthorizationErrorCanceled, ASAuthorizationErrorFailed,
-    ASAuthorizationErrorInvalidResponse, ASAuthorizationErrorNotHandled,
-    ASAuthorizationErrorNotInteractive, ASAuthorizationErrorUnknown,
-};
+
+pub use self::__ASAuthorizationError::ASAuthorizationError;
+
+pub use self::__ASAuthorizationError::ASAuthorizationErrorUnknown;
+
+pub use self::__ASAuthorizationError::ASAuthorizationErrorCanceled;
+
+pub use self::__ASAuthorizationError::ASAuthorizationErrorInvalidResponse;
+
+pub use self::__ASAuthorizationError::ASAuthorizationErrorNotHandled;
+
+pub use self::__ASAuthorizationError::ASAuthorizationErrorFailed;
+
+pub use self::__ASAuthorizationError::ASAuthorizationErrorNotInteractive;
+
 pub use self::__ASAuthorizationOpenIDRequest::ASAuthorizationOpenIDOperation;
+
+pub use self::__ASAuthorizationOpenIDRequest::ASAuthorizationOperationImplicit;
+
+pub use self::__ASAuthorizationOpenIDRequest::ASAuthorizationOperationLogin;
+
+pub use self::__ASAuthorizationOpenIDRequest::ASAuthorizationOperationRefresh;
+
+#[cfg(feature = "AuthenticationServices_ASAuthorizationOpenIDRequest")]
 #[cfg(feature = "AuthenticationServices_ASAuthorizationOpenIDRequest")]
 pub use self::__ASAuthorizationOpenIDRequest::ASAuthorizationOpenIDRequest;
-pub use self::__ASAuthorizationOpenIDRequest::ASAuthorizationOperationImplicit;
-pub use self::__ASAuthorizationOpenIDRequest::ASAuthorizationOperationLogin;
 pub use self::__ASAuthorizationOpenIDRequest::ASAuthorizationOperationLogout;
-pub use self::__ASAuthorizationOpenIDRequest::ASAuthorizationOperationRefresh;
+#[cfg(feature = "AuthenticationServices_ASAuthorizationPasswordProvider")]
 #[cfg(feature = "AuthenticationServices_ASAuthorizationPasswordProvider")]
 pub use self::__ASAuthorizationPasswordProvider::ASAuthorizationPasswordProvider;
 #[cfg(feature = "AuthenticationServices_ASAuthorizationPasswordRequest")]
+#[cfg(feature = "AuthenticationServices_ASAuthorizationPasswordRequest")]
 pub use self::__ASAuthorizationPasswordRequest::ASAuthorizationPasswordRequest;
 #[cfg(feature = "AuthenticationServices_ASAuthorizationPlatformPublicKeyCredentialAssertion")]
+#[cfg(feature = "AuthenticationServices_ASAuthorizationPlatformPublicKeyCredentialAssertion")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationPlatformPublicKeyCredentialAssertion::ASAuthorizationPlatformPublicKeyCredentialAssertion;
 #[cfg(
     feature = "AuthenticationServices_ASAuthorizationPlatformPublicKeyCredentialAssertionRequest"
 )]
+#[cfg(
+    feature = "AuthenticationServices_ASAuthorizationPlatformPublicKeyCredentialAssertionRequest"
+)]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationPlatformPublicKeyCredentialAssertionRequest::ASAuthorizationPlatformPublicKeyCredentialAssertionRequest;
 #[cfg(feature = "AuthenticationServices_ASAuthorizationPlatformPublicKeyCredentialDescriptor")]
+#[cfg(feature = "AuthenticationServices_ASAuthorizationPlatformPublicKeyCredentialDescriptor")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationPlatformPublicKeyCredentialDescriptor::ASAuthorizationPlatformPublicKeyCredentialDescriptor;
 #[cfg(feature = "AuthenticationServices_ASAuthorizationPlatformPublicKeyCredentialProvider")]
+#[cfg(feature = "AuthenticationServices_ASAuthorizationPlatformPublicKeyCredentialProvider")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationPlatformPublicKeyCredentialProvider::ASAuthorizationPlatformPublicKeyCredentialProvider;
 #[cfg(
     feature = "AuthenticationServices_ASAuthorizationPlatformPublicKeyCredentialRegistration"
 )]
+#[cfg(
+    feature = "AuthenticationServices_ASAuthorizationPlatformPublicKeyCredentialRegistration"
+)]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationPlatformPublicKeyCredentialRegistration::ASAuthorizationPlatformPublicKeyCredentialRegistration;
 #[cfg(
     feature = "AuthenticationServices_ASAuthorizationPlatformPublicKeyCredentialRegistrationRequest"
 )]
+#[cfg(
+    feature = "AuthenticationServices_ASAuthorizationPlatformPublicKeyCredentialRegistrationRequest"
+)]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationPlatformPublicKeyCredentialRegistrationRequest::ASAuthorizationPlatformPublicKeyCredentialRegistrationRequest;
+
 pub use self::__ASAuthorizationProvider::ASAuthorizationProvider;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationProviderExtensionAuthorizationRequest::ASAuthorizationProviderAuthorizationOperation;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationProviderExtensionAuthorizationRequest::ASAuthorizationProviderAuthorizationOperationConfigurationRemoved;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationProviderExtensionAuthorizationRequest::ASAuthorizationProviderAuthorizationOperationDirectRequest;
 #[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionAuthorizationRequest")]
+#[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionAuthorizationRequest")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationProviderExtensionAuthorizationRequest::ASAuthorizationProviderExtensionAuthorizationRequest;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationProviderExtensionAuthorizationRequest::ASAuthorizationProviderExtensionAuthorizationRequestHandler;
 #[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionAuthorizationResult")]
+#[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionAuthorizationResult")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationProviderExtensionAuthorizationResult::ASAuthorizationProviderExtensionAuthorizationResult;
 #[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionKerberosMapping")]
+#[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionKerberosMapping")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationProviderExtensionLoginConfiguration::ASAuthorizationProviderExtensionKerberosMapping;
 #[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionLoginConfiguration")]
+#[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionLoginConfiguration")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationProviderExtensionLoginConfiguration::ASAuthorizationProviderExtensionLoginConfiguration;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__ASAuthorizationProviderExtensionLoginManager::ASAuthorizationProviderExtensionKeyType;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__ASAuthorizationProviderExtensionLoginManager::ASAuthorizationProviderExtensionKeyTypeUserDeviceEncryption;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__ASAuthorizationProviderExtensionLoginManager::ASAuthorizationProviderExtensionKeyTypeUserDeviceSigning;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__ASAuthorizationProviderExtensionLoginManager::ASAuthorizationProviderExtensionKeyTypeUserSecureEnclaveKey;
 #[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionLoginManager")]
+#[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionLoginManager")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationProviderExtensionLoginManager::ASAuthorizationProviderExtensionLoginManager;
-pub use self::__ASAuthorizationProviderExtensionLoginManager::{
-    ASAuthorizationProviderExtensionKeyType,
-    ASAuthorizationProviderExtensionKeyTypeUserDeviceEncryption,
-    ASAuthorizationProviderExtensionKeyTypeUserDeviceSigning,
-    ASAuthorizationProviderExtensionKeyTypeUserSecureEnclaveKey,
-};
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__ASAuthorizationProviderExtensionRegistrationHandler::ASAuthorizationProviderExtensionAuthenticationMethod;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__ASAuthorizationProviderExtensionRegistrationHandler::ASAuthorizationProviderExtensionAuthenticationMethodPassword;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__ASAuthorizationProviderExtensionRegistrationHandler::ASAuthorizationProviderExtensionAuthenticationMethodUserSecureEnclaveKey;
+
+pub use self::__ASAuthorizationProviderExtensionRegistrationHandler::ASAuthorizationProviderExtensionRequestOptions;
+
+pub use self::__ASAuthorizationProviderExtensionRegistrationHandler::ASAuthorizationProviderExtensionRequestOptionsNone;
+
+pub use self::__ASAuthorizationProviderExtensionRegistrationHandler::ASAuthorizationProviderExtensionRequestOptionsUserInteractionEnabled;
+
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationProviderExtensionRegistrationHandler::ASAuthorizationProviderExtensionRegistrationHandler;
-pub use self::__ASAuthorizationProviderExtensionRegistrationHandler::{
-    ASAuthorizationProviderExtensionAuthenticationMethod,
-    ASAuthorizationProviderExtensionAuthenticationMethodPassword,
-    ASAuthorizationProviderExtensionAuthenticationMethodUserSecureEnclaveKey,
-};
-pub use self::__ASAuthorizationProviderExtensionRegistrationHandler::{
-    ASAuthorizationProviderExtensionRegistrationResult,
-    ASAuthorizationProviderExtensionRegistrationResultFailed,
-    ASAuthorizationProviderExtensionRegistrationResultFailedNoRetry,
-    ASAuthorizationProviderExtensionRegistrationResultSuccess,
-    ASAuthorizationProviderExtensionRegistrationResultUserInterfaceRequired,
-};
-pub use self::__ASAuthorizationProviderExtensionRegistrationHandler::{
-    ASAuthorizationProviderExtensionRequestOptions,
-    ASAuthorizationProviderExtensionRequestOptionsNone,
-    ASAuthorizationProviderExtensionRequestOptionsRegistrationRepair,
-    ASAuthorizationProviderExtensionRequestOptionsUserInteractionEnabled,
-};
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__ASAuthorizationProviderExtensionRegistrationHandler::ASAuthorizationProviderExtensionRegistrationResult;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__ASAuthorizationProviderExtensionRegistrationHandler::ASAuthorizationProviderExtensionRegistrationResultFailed;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__ASAuthorizationProviderExtensionRegistrationHandler::ASAuthorizationProviderExtensionRegistrationResultFailedNoRetry;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__ASAuthorizationProviderExtensionRegistrationHandler::ASAuthorizationProviderExtensionRegistrationResultSuccess;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__ASAuthorizationProviderExtensionRegistrationHandler::ASAuthorizationProviderExtensionRegistrationResultUserInterfaceRequired;
+pub use self::__ASAuthorizationProviderExtensionRegistrationHandler::ASAuthorizationProviderExtensionRequestOptionsRegistrationRepair;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationPublicKeyCredentialAssertion::ASAuthorizationPublicKeyCredentialAssertion;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationPublicKeyCredentialAssertionRequest::ASAuthorizationPublicKeyCredentialAssertionRequest;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationPublicKeyCredentialConstants::ASAuthorizationPublicKeyCredentialAttestationKind;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationPublicKeyCredentialConstants::ASAuthorizationPublicKeyCredentialAttestationKindDirect;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationPublicKeyCredentialConstants::ASAuthorizationPublicKeyCredentialAttestationKindEnterprise;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationPublicKeyCredentialConstants::ASAuthorizationPublicKeyCredentialAttestationKindIndirect;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationPublicKeyCredentialConstants::ASAuthorizationPublicKeyCredentialAttestationKindNone;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationPublicKeyCredentialConstants::ASAuthorizationPublicKeyCredentialResidentKeyPreference;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationPublicKeyCredentialConstants::ASAuthorizationPublicKeyCredentialResidentKeyPreferenceDiscouraged;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationPublicKeyCredentialConstants::ASAuthorizationPublicKeyCredentialResidentKeyPreferencePreferred;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationPublicKeyCredentialConstants::ASAuthorizationPublicKeyCredentialResidentKeyPreferenceRequired;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationPublicKeyCredentialConstants::ASAuthorizationPublicKeyCredentialUserVerificationPreference;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationPublicKeyCredentialConstants::ASAuthorizationPublicKeyCredentialUserVerificationPreferenceDiscouraged;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationPublicKeyCredentialConstants::ASAuthorizationPublicKeyCredentialUserVerificationPreferencePreferred;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationPublicKeyCredentialConstants::ASAuthorizationPublicKeyCredentialUserVerificationPreferenceRequired;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationPublicKeyCredentialDescriptor::ASAuthorizationPublicKeyCredentialDescriptor;
 #[cfg(feature = "AuthenticationServices_ASAuthorizationPublicKeyCredentialParameters")]
+#[cfg(feature = "AuthenticationServices_ASAuthorizationPublicKeyCredentialParameters")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationPublicKeyCredentialParameters::ASAuthorizationPublicKeyCredentialParameters;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationPublicKeyCredentialRegistration::ASAuthorizationPublicKeyCredentialRegistration;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationPublicKeyCredentialRegistrationRequest::ASAuthorizationPublicKeyCredentialRegistrationRequest;
+#[cfg(feature = "AuthenticationServices_ASAuthorizationRequest")]
 #[cfg(feature = "AuthenticationServices_ASAuthorizationRequest")]
 pub use self::__ASAuthorizationRequest::ASAuthorizationRequest;
 #[cfg(
     feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialAssertion"
 )]
+#[cfg(
+    feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialAssertion"
+)]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationSecurityKeyPublicKeyCredentialAssertion::ASAuthorizationSecurityKeyPublicKeyCredentialAssertion;
 #[cfg(
     feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialAssertionRequest"
 )]
+#[cfg(
+    feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialAssertionRequest"
+)]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationSecurityKeyPublicKeyCredentialAssertionRequest::ASAuthorizationSecurityKeyPublicKeyCredentialAssertionRequest;
 #[cfg(feature = "Foundation_NSArray")]
+#[cfg(feature = "Foundation_NSArray")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor::ASAuthorizationAllSupportedPublicKeyCredentialDescriptorTransports;
 #[cfg(
     feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor"
 )]
+#[cfg(
+    feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor"
+)]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor::ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor::ASAuthorizationSecurityKeyPublicKeyCredentialDescriptorTransport;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor::ASAuthorizationSecurityKeyPublicKeyCredentialDescriptorTransportBluetooth;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor::ASAuthorizationSecurityKeyPublicKeyCredentialDescriptorTransportNFC;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor::ASAuthorizationSecurityKeyPublicKeyCredentialDescriptorTransportUSB;
 #[cfg(
     feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialProvider"
 )]
+#[cfg(
+    feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialProvider"
+)]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationSecurityKeyPublicKeyCredentialProvider::ASAuthorizationSecurityKeyPublicKeyCredentialProvider;
 #[cfg(
     feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialRegistration"
 )]
+#[cfg(
+    feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialRegistration"
+)]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationSecurityKeyPublicKeyCredentialRegistration::ASAuthorizationSecurityKeyPublicKeyCredentialRegistration;
 #[cfg(
     feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialRegistrationRequest"
 )]
+#[cfg(
+    feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialRegistrationRequest"
+)]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationSecurityKeyPublicKeyCredentialRegistrationRequest::ASAuthorizationSecurityKeyPublicKeyCredentialRegistrationRequest;
 #[cfg(feature = "AuthenticationServices_ASAuthorizationSingleSignOnCredential")]
+#[cfg(feature = "AuthenticationServices_ASAuthorizationSingleSignOnCredential")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationSingleSignOnCredential::ASAuthorizationSingleSignOnCredential;
 #[cfg(feature = "AuthenticationServices_ASAuthorizationSingleSignOnProvider")]
+#[cfg(feature = "AuthenticationServices_ASAuthorizationSingleSignOnProvider")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationSingleSignOnProvider::ASAuthorizationSingleSignOnProvider;
 #[cfg(feature = "AuthenticationServices_ASAuthorizationSingleSignOnRequest")]
+#[cfg(feature = "AuthenticationServices_ASAuthorizationSingleSignOnRequest")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASAuthorizationSingleSignOnRequest::ASAuthorizationSingleSignOnRequest;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASCOSEConstants::ASCOSEAlgorithmIdentifier;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASCOSEConstants::ASCOSEAlgorithmIdentifierES256;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASCOSEConstants::ASCOSEEllipticCurveIdentifier;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASCOSEConstants::ASCOSEEllipticCurveIdentifierP256;
 #[cfg(feature = "AuthenticationServices_ASCredentialIdentityStore")]
+#[cfg(feature = "AuthenticationServices_ASCredentialIdentityStore")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASCredentialIdentityStore::ASCredentialIdentityStore;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+pub use self::__ASCredentialIdentityStore::ASCredentialIdentityStoreErrorCode;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+pub use self::__ASCredentialIdentityStore::ASCredentialIdentityStoreErrorCodeInternalError;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+pub use self::__ASCredentialIdentityStore::ASCredentialIdentityStoreErrorCodeStoreBusy;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+pub use self::__ASCredentialIdentityStore::ASCredentialIdentityStoreErrorCodeStoreDisabled;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASCredentialIdentityStore::ASCredentialIdentityStoreErrorDomain;
-pub use self::__ASCredentialIdentityStore::{
-    ASCredentialIdentityStoreErrorCode, ASCredentialIdentityStoreErrorCodeInternalError,
-    ASCredentialIdentityStoreErrorCodeStoreBusy, ASCredentialIdentityStoreErrorCodeStoreDisabled,
-};
 #[cfg(feature = "AuthenticationServices_ASCredentialIdentityStoreState")]
+#[cfg(feature = "AuthenticationServices_ASCredentialIdentityStoreState")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASCredentialIdentityStoreState::ASCredentialIdentityStoreState;
 #[cfg(feature = "AuthenticationServices_ASCredentialProviderExtensionContext")]
+#[cfg(feature = "AuthenticationServices_ASCredentialProviderExtensionContext")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASCredentialProviderExtensionContext::ASCredentialProviderExtensionContext;
 #[cfg(feature = "AuthenticationServices_ASCredentialServiceIdentifier")]
+#[cfg(feature = "AuthenticationServices_ASCredentialServiceIdentifier")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASCredentialServiceIdentifier::ASCredentialServiceIdentifier;
-pub use self::__ASCredentialServiceIdentifier::{
-    ASCredentialServiceIdentifierType, ASCredentialServiceIdentifierTypeDomain,
-    ASCredentialServiceIdentifierTypeURL,
-};
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+pub use self::__ASCredentialServiceIdentifier::ASCredentialServiceIdentifierType;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+pub use self::__ASCredentialServiceIdentifier::ASCredentialServiceIdentifierTypeDomain;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+pub use self::__ASCredentialServiceIdentifier::ASCredentialServiceIdentifierTypeURL;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+pub use self::__ASExtensionErrors::ASExtensionErrorCode;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+pub use self::__ASExtensionErrors::ASExtensionErrorCodeCredentialIdentityNotFound;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+pub use self::__ASExtensionErrors::ASExtensionErrorCodeFailed;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+pub use self::__ASExtensionErrors::ASExtensionErrorCodeUserCanceled;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+pub use self::__ASExtensionErrors::ASExtensionErrorCodeUserInteractionRequired;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASExtensionErrors::ASExtensionErrorDomain;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASExtensionErrors::ASExtensionLocalizedFailureReasonErrorKey;
-pub use self::__ASExtensionErrors::{
-    ASExtensionErrorCode, ASExtensionErrorCodeCredentialIdentityNotFound,
-    ASExtensionErrorCodeFailed, ASExtensionErrorCodeUserCanceled,
-    ASExtensionErrorCodeUserInteractionRequired,
-};
+#[cfg(feature = "AuthenticationServices_ASPasswordCredential")]
 #[cfg(feature = "AuthenticationServices_ASPasswordCredential")]
 pub use self::__ASPasswordCredential::ASPasswordCredential;
 #[cfg(feature = "AuthenticationServices_ASPasswordCredentialIdentity")]
+#[cfg(feature = "AuthenticationServices_ASPasswordCredentialIdentity")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASPasswordCredentialIdentity::ASPasswordCredentialIdentity;
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__ASPublicKeyCredential::ASPublicKeyCredential;
+#[cfg(not(any(target_os = "tvos")))]
+pub use self::__ASWebAuthenticationSession::ASWebAuthenticationSessionErrorCode;
+#[cfg(not(any(target_os = "tvos")))]
+pub use self::__ASWebAuthenticationSession::ASWebAuthenticationSessionErrorCodeCanceledLogin;
+#[cfg(not(any(target_os = "tvos")))]
+pub use self::__ASWebAuthenticationSession::ASWebAuthenticationSessionErrorCodePresentationContextInvalid;
+#[cfg(not(any(target_os = "tvos")))]
+pub use self::__ASWebAuthenticationSession::ASWebAuthenticationSessionErrorCodePresentationContextNotProvided;
+#[cfg(not(any(target_os = "tvos")))]
+pub use self::__ASWebAuthenticationSession::ASWebAuthenticationSessionErrorDomain;
+
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASWebAuthenticationSession::ASWebAuthenticationPresentationContextProviding;
 #[cfg(feature = "AuthenticationServices_ASWebAuthenticationSession")]
+#[cfg(feature = "AuthenticationServices_ASWebAuthenticationSession")]
+#[cfg(not(any(target_os = "tvos")))]
 pub use self::__ASWebAuthenticationSession::ASWebAuthenticationSession;
 pub use self::__ASWebAuthenticationSession::ASWebAuthenticationSessionCompletionHandler;
-pub use self::__ASWebAuthenticationSession::ASWebAuthenticationSessionErrorDomain;
-pub use self::__ASWebAuthenticationSession::{
-    ASWebAuthenticationSessionErrorCode, ASWebAuthenticationSessionErrorCodeCanceledLogin,
-    ASWebAuthenticationSessionErrorCodePresentationContextInvalid,
-    ASWebAuthenticationSessionErrorCodePresentationContextNotProvided,
-};
 #[cfg(feature = "AuthenticationServices_ASWebAuthenticationSessionRequest")]
+#[cfg(feature = "AuthenticationServices_ASWebAuthenticationSessionRequest")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 pub use self::__ASWebAuthenticationSessionRequest::ASWebAuthenticationSessionRequest;
+#[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 pub use self::__ASWebAuthenticationSessionRequest::ASWebAuthenticationSessionRequestDelegate;
+#[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 pub use self::__ASWebAuthenticationSessionWebBrowserSessionHandling::ASWebAuthenticationSessionWebBrowserSessionHandling;
 #[cfg(feature = "AuthenticationServices_ASWebAuthenticationSessionWebBrowserSessionManager")]
+#[cfg(feature = "AuthenticationServices_ASWebAuthenticationSessionWebBrowserSessionManager")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 pub use self::__ASWebAuthenticationSessionWebBrowserSessionManager::ASWebAuthenticationSessionWebBrowserSessionManager;

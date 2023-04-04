@@ -7,7 +7,6 @@ use crate::MetricKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MetricKit_MXMetricManager")]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct MXMetricManager;
 
     #[cfg(feature = "MetricKit_MXMetricManager")]
@@ -31,7 +30,6 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "MetricKit_MXDiagnosticPayload"
         ))]
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other pastDiagnosticPayloads)]
         pub unsafe fn pastDiagnosticPayloads(&self) -> Id<NSArray<MXDiagnosticPayload>>;
 
@@ -53,7 +51,6 @@ extern_methods!(
 );
 
 extern_protocol!(
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub unsafe trait MXMetricManagerSubscriber: NSObjectProtocol {
         #[cfg(all(feature = "Foundation_NSArray", feature = "MetricKit_MXMetricPayload"))]
         #[cfg(not(any(target_os = "macos")))]
@@ -65,7 +62,6 @@ extern_protocol!(
             feature = "Foundation_NSArray",
             feature = "MetricKit_MXDiagnosticPayload"
         ))]
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method(didReceiveDiagnosticPayloads:)]
         unsafe fn didReceiveDiagnosticPayloads(&self, payloads: &NSArray<MXDiagnosticPayload>);

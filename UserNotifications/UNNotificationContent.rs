@@ -48,6 +48,7 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "UserNotifications_UNNotificationAttachment"
         ))]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other attachments)]
         pub unsafe fn attachments(&self) -> Id<NSArray<UNNotificationAttachment>>;
 
@@ -56,35 +57,42 @@ extern_methods!(
         pub unsafe fn badge(&self) -> Option<Id<NSNumber>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other body)]
         pub unsafe fn body(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other categoryIdentifier)]
         pub unsafe fn categoryIdentifier(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
-        #[cfg(not(any(target_os = "macos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         #[method_id(@__retain_semantics Other launchImageName)]
         pub unsafe fn launchImageName(&self) -> Id<NSString>;
 
         #[cfg(feature = "UserNotifications_UNNotificationSound")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other sound)]
         pub unsafe fn sound(&self) -> Option<Id<UNNotificationSound>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other subtitle)]
         pub unsafe fn subtitle(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other threadIdentifier)]
         pub unsafe fn threadIdentifier(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other userInfo)]
         pub unsafe fn userInfo(&self) -> Id<NSDictionary>;
 
@@ -108,6 +116,7 @@ extern_methods!(
         pub unsafe fn relevanceScore(&self) -> c_double;
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other filterCriteria)]
         pub unsafe fn filterCriteria(&self) -> Option<Id<NSString>>;
 
@@ -148,6 +157,7 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "UserNotifications_UNNotificationAttachment"
         ))]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other attachments)]
         pub unsafe fn attachments(&self) -> Id<NSArray<UNNotificationAttachment>>;
 
@@ -155,6 +165,7 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "UserNotifications_UNNotificationAttachment"
         ))]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setAttachments:)]
         pub unsafe fn setAttachments(&self, attachments: &NSArray<UNNotificationAttachment>);
 
@@ -167,68 +178,82 @@ extern_methods!(
         pub unsafe fn setBadge(&self, badge: Option<&NSNumber>);
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other body)]
         pub unsafe fn body(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setBody:)]
         pub unsafe fn setBody(&self, body: &NSString);
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other categoryIdentifier)]
         pub unsafe fn categoryIdentifier(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setCategoryIdentifier:)]
         pub unsafe fn setCategoryIdentifier(&self, category_identifier: &NSString);
 
         #[cfg(feature = "Foundation_NSString")]
-        #[cfg(not(any(target_os = "macos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         #[method_id(@__retain_semantics Other launchImageName)]
         pub unsafe fn launchImageName(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
-        #[cfg(not(any(target_os = "macos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         #[method(setLaunchImageName:)]
         pub unsafe fn setLaunchImageName(&self, launch_image_name: &NSString);
 
         #[cfg(feature = "UserNotifications_UNNotificationSound")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other sound)]
         pub unsafe fn sound(&self) -> Option<Id<UNNotificationSound>>;
 
         #[cfg(feature = "UserNotifications_UNNotificationSound")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setSound:)]
         pub unsafe fn setSound(&self, sound: Option<&UNNotificationSound>);
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other subtitle)]
         pub unsafe fn subtitle(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setSubtitle:)]
         pub unsafe fn setSubtitle(&self, subtitle: &NSString);
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other threadIdentifier)]
         pub unsafe fn threadIdentifier(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setThreadIdentifier:)]
         pub unsafe fn setThreadIdentifier(&self, thread_identifier: &NSString);
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setTitle:)]
         pub unsafe fn setTitle(&self, title: &NSString);
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other userInfo)]
         pub unsafe fn userInfo(&self) -> Id<NSDictionary>;
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setUserInfo:)]
         pub unsafe fn setUserInfo(&self, user_info: &NSDictionary);
 

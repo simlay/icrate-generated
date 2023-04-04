@@ -196,7 +196,7 @@ extern_methods!(
             feature = "Foundation_NSURLSessionStreamTask"
         ))]
         #[deprecated = "Use nw_connection_t in Network framework instead"]
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other streamTaskWithNetService:)]
         pub unsafe fn streamTaskWithNetService(
             &self,

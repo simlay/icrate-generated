@@ -10,17 +10,14 @@ extern_methods!(
     #[cfg(feature = "AppKit_NSDocument")]
     unsafe impl NSDocument {
         #[cfg(feature = "Foundation_NSString")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other lastComponentOfFileName)]
         pub unsafe fn lastComponentOfFileName(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setLastComponentOfFileName:)]
         pub unsafe fn setLastComponentOfFileName(&self, last_component_of_file_name: &NSString);
 
         #[cfg(feature = "Foundation_NSScriptCommand")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other handleSaveScriptCommand:)]
         pub unsafe fn handleSaveScriptCommand(
             &self,
@@ -28,7 +25,6 @@ extern_methods!(
         ) -> Option<Id<Object>>;
 
         #[cfg(feature = "Foundation_NSCloseCommand")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other handleCloseScriptCommand:)]
         pub unsafe fn handleCloseScriptCommand(
             &self,
@@ -36,7 +32,6 @@ extern_methods!(
         ) -> Option<Id<Object>>;
 
         #[cfg(feature = "Foundation_NSScriptCommand")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other handlePrintScriptCommand:)]
         pub unsafe fn handlePrintScriptCommand(
             &self,
@@ -44,7 +39,6 @@ extern_methods!(
         ) -> Option<Id<Object>>;
 
         #[cfg(feature = "Foundation_NSScriptObjectSpecifier")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other objectSpecifier)]
         pub unsafe fn objectSpecifier(&self) -> Id<NSScriptObjectSpecifier>;
     }

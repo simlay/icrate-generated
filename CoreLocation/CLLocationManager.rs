@@ -72,6 +72,7 @@ extern_methods!(
         #[method(locationServicesEnabled)]
         pub unsafe fn locationServicesEnabled_class() -> bool;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(headingAvailable)]
         pub unsafe fn headingAvailable_class() -> bool;
 
@@ -137,9 +138,11 @@ extern_methods!(
         #[method(setPurpose:)]
         pub unsafe fn setPurpose(&self, purpose: Option<&NSString>);
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(activityType)]
         pub unsafe fn activityType(&self) -> CLActivityType;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setActivityType:)]
         pub unsafe fn setActivityType(&self, activity_type: CLActivityType);
 
@@ -166,9 +169,11 @@ extern_methods!(
             pauses_location_updates_automatically: bool,
         );
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(allowsBackgroundLocationUpdates)]
         pub unsafe fn allowsBackgroundLocationUpdates(&self) -> bool;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setAllowsBackgroundLocationUpdates:)]
         pub unsafe fn setAllowsBackgroundLocationUpdates(
             &self,
@@ -195,19 +200,24 @@ extern_methods!(
         #[method(headingAvailable)]
         pub unsafe fn headingAvailable(&self) -> bool;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(headingFilter)]
         pub unsafe fn headingFilter(&self) -> CLLocationDegrees;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setHeadingFilter:)]
         pub unsafe fn setHeadingFilter(&self, heading_filter: CLLocationDegrees);
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(headingOrientation)]
         pub unsafe fn headingOrientation(&self) -> CLDeviceOrientation;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setHeadingOrientation:)]
         pub unsafe fn setHeadingOrientation(&self, heading_orientation: CLDeviceOrientation);
 
         #[cfg(feature = "CoreLocation_CLHeading")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other heading)]
         pub unsafe fn heading(&self) -> Option<Id<CLHeading>>;
 
@@ -237,6 +247,7 @@ extern_methods!(
         #[method(requestWhenInUseAuthorization)]
         pub unsafe fn requestWhenInUseAuthorization(&self);
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(requestAlwaysAuthorization)]
         pub unsafe fn requestAlwaysAuthorization(&self);
 
@@ -255,6 +266,7 @@ extern_methods!(
             purpose_key: &NSString,
         );
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(startUpdatingLocation)]
         pub unsafe fn startUpdatingLocation(&self);
 
@@ -264,13 +276,15 @@ extern_methods!(
         #[method(requestLocation)]
         pub unsafe fn requestLocation(&self);
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(startUpdatingHeading)]
         pub unsafe fn startUpdatingHeading(&self);
 
-        #[cfg(not(any(target_os = "macos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         #[method(stopUpdatingHeading)]
         pub unsafe fn stopUpdatingHeading(&self);
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(dismissHeadingCalibrationDisplay)]
         pub unsafe fn dismissHeadingCalibrationDisplay(&self);
 
@@ -372,7 +386,7 @@ extern_methods!(
             feature = "Foundation_NSError",
             feature = "Foundation_NSString"
         ))]
-        #[cfg(not(any(target_os = "ios", target_os = "macos")))]
+        #[cfg(not(any(target_os = "ios", target_os = "macos", target_os = "tvos")))]
         #[method(requestHistoricalLocationsWithPurposeKey:sampleCount:completionHandler:)]
         pub unsafe fn requestHistoricalLocationsWithPurposeKey_sampleCount_completionHandler(
             &self,

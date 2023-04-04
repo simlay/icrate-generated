@@ -8,7 +8,12 @@ mod __EXAppExtensionBrowserViewController;
 mod __EXHostViewController;
 
 #[cfg(feature = "ExtensionKit_EXAppExtensionBrowserViewController")]
+#[cfg(feature = "ExtensionKit_EXAppExtensionBrowserViewController")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__EXAppExtensionBrowserViewController::EXAppExtensionBrowserViewController;
 #[cfg(feature = "ExtensionKit_EXHostViewController")]
+#[cfg(feature = "ExtensionKit_EXHostViewController")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__EXHostViewController::EXHostViewController;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__EXHostViewController::EXHostViewControllerDelegate;

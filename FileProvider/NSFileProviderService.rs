@@ -7,7 +7,6 @@ use crate::Foundation::*;
 use crate::UniformTypeIdentifiers::*;
 
 extern_protocol!(
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub unsafe trait NSFileProviderServiceSource {
         #[method_id(@__retain_semantics Other serviceName)]
         unsafe fn serviceName(&self) -> Id<NSFileProviderServiceName>;
@@ -21,7 +20,6 @@ extern_protocol!(
             &self,
         ) -> Result<Id<NSXPCListenerEndpoint>, Id<NSError>>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method(isRestricted)]
         unsafe fn isRestricted(&self) -> bool;
@@ -35,7 +33,7 @@ extern_methods!(
     #[cfg(feature = "FileProvider_NSFileProviderExtension")]
     unsafe impl NSFileProviderExtension {
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSError"))]
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics Other supportedServiceSourcesForItemIdentifier:error:_)]
         pub unsafe fn supportedServiceSourcesForItemIdentifier_error(
             &self,

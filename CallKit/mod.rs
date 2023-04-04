@@ -50,103 +50,205 @@ mod __CXStartCallAction;
 mod __CXTransaction;
 
 #[cfg(feature = "CallKit_CXAction")]
+#[cfg(feature = "CallKit_CXAction")]
+#[cfg(not(any(target_os = "macos")))]
 pub use self::__CXAction::CXAction;
 #[cfg(feature = "CallKit_CXAnswerCallAction")]
+#[cfg(feature = "CallKit_CXAnswerCallAction")]
+#[cfg(not(any(target_os = "macos")))]
 pub use self::__CXAnswerCallAction::CXAnswerCallAction;
 #[cfg(feature = "CallKit_CXCall")]
+#[cfg(feature = "CallKit_CXCall")]
+#[cfg(not(any(target_os = "macos")))]
 pub use self::__CXCall::CXCall;
 #[cfg(feature = "CallKit_CXCallAction")]
+#[cfg(feature = "CallKit_CXCallAction")]
+#[cfg(not(any(target_os = "macos")))]
 pub use self::__CXCallAction::CXCallAction;
 #[cfg(feature = "CallKit_CXCallController")]
+#[cfg(feature = "CallKit_CXCallController")]
+#[cfg(not(any(target_os = "macos")))]
 pub use self::__CXCallController::CXCallController;
+
 pub use self::__CXCallDirectory::CXCallDirectoryPhoneNumber;
+
 pub use self::__CXCallDirectory::CXCallDirectoryPhoneNumberMax;
 #[cfg(feature = "CallKit_CXCallDirectoryExtensionContext")]
+#[cfg(feature = "CallKit_CXCallDirectoryExtensionContext")]
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 pub use self::__CXCallDirectoryExtensionContext::CXCallDirectoryExtensionContext;
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 pub use self::__CXCallDirectoryExtensionContext::CXCallDirectoryExtensionContextDelegate;
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+pub use self::__CXCallDirectoryManager::CXCallDirectoryEnabledStatus;
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+pub use self::__CXCallDirectoryManager::CXCallDirectoryEnabledStatusDisabled;
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+pub use self::__CXCallDirectoryManager::CXCallDirectoryEnabledStatusEnabled;
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+pub use self::__CXCallDirectoryManager::CXCallDirectoryEnabledStatusUnknown;
 #[cfg(feature = "CallKit_CXCallDirectoryManager")]
+#[cfg(feature = "CallKit_CXCallDirectoryManager")]
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 pub use self::__CXCallDirectoryManager::CXCallDirectoryManager;
-pub use self::__CXCallDirectoryManager::{
-    CXCallDirectoryEnabledStatus, CXCallDirectoryEnabledStatusDisabled,
-    CXCallDirectoryEnabledStatusEnabled, CXCallDirectoryEnabledStatusUnknown,
-};
 #[cfg(feature = "CallKit_CXCallDirectoryProvider")]
+#[cfg(feature = "CallKit_CXCallDirectoryProvider")]
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 pub use self::__CXCallDirectoryProvider::CXCallDirectoryProvider;
 #[cfg(feature = "CallKit_CXCallObserver")]
+#[cfg(feature = "CallKit_CXCallObserver")]
+#[cfg(not(any(target_os = "macos")))]
 pub use self::__CXCallObserver::CXCallObserver;
+#[cfg(not(any(target_os = "macos")))]
 pub use self::__CXCallObserver::CXCallObserverDelegate;
 #[cfg(feature = "CallKit_CXCallUpdate")]
+#[cfg(feature = "CallKit_CXCallUpdate")]
+#[cfg(not(any(target_os = "macos")))]
 pub use self::__CXCallUpdate::CXCallUpdate;
 #[cfg(feature = "CallKit_CXEndCallAction")]
+#[cfg(feature = "CallKit_CXEndCallAction")]
+#[cfg(not(any(target_os = "macos")))]
 pub use self::__CXEndCallAction::CXEndCallAction;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXError::CXErrorCode;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXError::CXErrorCodeCallDirectoryManagerError;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXError::CXErrorCodeCallDirectoryManagerErrorCurrentlyLoading;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXError::CXErrorCodeCallDirectoryManagerErrorDuplicateEntries;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXError::CXErrorCodeCallDirectoryManagerErrorEntriesOutOfOrder;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXError::CXErrorCodeCallDirectoryManagerErrorExtensionDisabled;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXError::CXErrorCodeCallDirectoryManagerErrorLoadingInterrupted;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXError::CXErrorCodeCallDirectoryManagerErrorMaximumEntriesExceeded;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXError::CXErrorCodeCallDirectoryManagerErrorNoExtensionFound;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXError::CXErrorCodeCallDirectoryManagerErrorUnexpectedIncrementalRemoval;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXError::CXErrorCodeCallDirectoryManagerErrorUnknown;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXError::CXErrorCodeIncomingCallError;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXError::CXErrorCodeIncomingCallErrorCallUUIDAlreadyExists;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXError::CXErrorCodeIncomingCallErrorFilteredByBlockList;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXError::CXErrorCodeIncomingCallErrorFilteredByDoNotDisturb;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXError::CXErrorCodeIncomingCallErrorUnentitled;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXError::CXErrorCodeIncomingCallErrorUnknown;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXError::CXErrorCodeInvalidArgument;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXError::CXErrorCodeMissingVoIPBackgroundMode;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXError::CXErrorCodeNotificationServiceExtensionError;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXError::CXErrorCodeNotificationServiceExtensionErrorInvalidClientProcess;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXError::CXErrorCodeNotificationServiceExtensionErrorMissingNotificationFilteringEntitlement;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXError::CXErrorCodeNotificationServiceExtensionErrorUnknown;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXError::CXErrorCodeRequestTransactionError;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXError::CXErrorCodeRequestTransactionErrorCallUUIDAlreadyExists;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXError::CXErrorCodeRequestTransactionErrorEmptyTransaction;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXError::CXErrorCodeRequestTransactionErrorInvalidAction;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXError::CXErrorCodeRequestTransactionErrorMaximumCallGroupsReached;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXError::CXErrorCodeRequestTransactionErrorUnentitled;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXError::CXErrorCodeRequestTransactionErrorUnknown;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXError::CXErrorCodeRequestTransactionErrorUnknownCallProvider;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXError::CXErrorCodeRequestTransactionErrorUnknownCallUUID;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXError::CXErrorCodeUnentitled;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXError::CXErrorCodeUnknownError;
+#[cfg(not(any(target_os = "macos")))]
 pub use self::__CXError::CXErrorDomain;
+#[cfg(not(any(target_os = "macos")))]
 pub use self::__CXError::CXErrorDomainCallDirectoryManager;
+#[cfg(not(any(target_os = "macos")))]
 pub use self::__CXError::CXErrorDomainIncomingCall;
+#[cfg(not(any(target_os = "macos")))]
 pub use self::__CXError::CXErrorDomainNotificationServiceExtension;
+#[cfg(not(any(target_os = "macos")))]
 pub use self::__CXError::CXErrorDomainRequestTransaction;
-pub use self::__CXError::{
-    CXErrorCode, CXErrorCodeInvalidArgument, CXErrorCodeMissingVoIPBackgroundMode,
-    CXErrorCodeUnentitled, CXErrorCodeUnknownError,
-};
-pub use self::__CXError::{
-    CXErrorCodeCallDirectoryManagerError, CXErrorCodeCallDirectoryManagerErrorCurrentlyLoading,
-    CXErrorCodeCallDirectoryManagerErrorDuplicateEntries,
-    CXErrorCodeCallDirectoryManagerErrorEntriesOutOfOrder,
-    CXErrorCodeCallDirectoryManagerErrorExtensionDisabled,
-    CXErrorCodeCallDirectoryManagerErrorLoadingInterrupted,
-    CXErrorCodeCallDirectoryManagerErrorMaximumEntriesExceeded,
-    CXErrorCodeCallDirectoryManagerErrorNoExtensionFound,
-    CXErrorCodeCallDirectoryManagerErrorUnexpectedIncrementalRemoval,
-    CXErrorCodeCallDirectoryManagerErrorUnknown,
-};
-pub use self::__CXError::{
-    CXErrorCodeIncomingCallError, CXErrorCodeIncomingCallErrorCallUUIDAlreadyExists,
-    CXErrorCodeIncomingCallErrorFilteredByBlockList,
-    CXErrorCodeIncomingCallErrorFilteredByDoNotDisturb, CXErrorCodeIncomingCallErrorUnentitled,
-    CXErrorCodeIncomingCallErrorUnknown,
-};
-pub use self::__CXError::{
-    CXErrorCodeNotificationServiceExtensionError,
-    CXErrorCodeNotificationServiceExtensionErrorInvalidClientProcess,
-    CXErrorCodeNotificationServiceExtensionErrorMissingNotificationFilteringEntitlement,
-    CXErrorCodeNotificationServiceExtensionErrorUnknown,
-};
-pub use self::__CXError::{
-    CXErrorCodeRequestTransactionError, CXErrorCodeRequestTransactionErrorCallUUIDAlreadyExists,
-    CXErrorCodeRequestTransactionErrorEmptyTransaction,
-    CXErrorCodeRequestTransactionErrorInvalidAction,
-    CXErrorCodeRequestTransactionErrorMaximumCallGroupsReached,
-    CXErrorCodeRequestTransactionErrorUnentitled, CXErrorCodeRequestTransactionErrorUnknown,
-    CXErrorCodeRequestTransactionErrorUnknownCallProvider,
-    CXErrorCodeRequestTransactionErrorUnknownCallUUID,
-};
 #[cfg(feature = "CallKit_CXHandle")]
+#[cfg(feature = "CallKit_CXHandle")]
+#[cfg(not(any(target_os = "macos")))]
 pub use self::__CXHandle::CXHandle;
-pub use self::__CXHandle::{
-    CXHandleType, CXHandleTypeEmailAddress, CXHandleTypeGeneric, CXHandleTypePhoneNumber,
-};
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXHandle::CXHandleType;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXHandle::CXHandleTypeEmailAddress;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXHandle::CXHandleTypeGeneric;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXHandle::CXHandleTypePhoneNumber;
 #[cfg(feature = "CallKit_CXPlayDTMFCallAction")]
+#[cfg(feature = "CallKit_CXPlayDTMFCallAction")]
+#[cfg(not(any(target_os = "macos")))]
 pub use self::__CXPlayDTMFCallAction::CXPlayDTMFCallAction;
-pub use self::__CXPlayDTMFCallAction::{
-    CXPlayDTMFCallActionType, CXPlayDTMFCallActionTypeHardPause,
-    CXPlayDTMFCallActionTypeSingleTone, CXPlayDTMFCallActionTypeSoftPause,
-};
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXPlayDTMFCallAction::CXPlayDTMFCallActionType;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXPlayDTMFCallAction::CXPlayDTMFCallActionTypeHardPause;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXPlayDTMFCallAction::CXPlayDTMFCallActionTypeSingleTone;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXPlayDTMFCallAction::CXPlayDTMFCallActionTypeSoftPause;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXProvider::CXCallEndedReason;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXProvider::CXCallEndedReasonAnsweredElsewhere;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXProvider::CXCallEndedReasonDeclinedElsewhere;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXProvider::CXCallEndedReasonFailed;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXProvider::CXCallEndedReasonRemoteEnded;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CXProvider::CXCallEndedReasonUnanswered;
 #[cfg(feature = "CallKit_CXProvider")]
+#[cfg(feature = "CallKit_CXProvider")]
+#[cfg(not(any(target_os = "macos")))]
 pub use self::__CXProvider::CXProvider;
+#[cfg(not(any(target_os = "macos")))]
 pub use self::__CXProvider::CXProviderDelegate;
-pub use self::__CXProvider::{
-    CXCallEndedReason, CXCallEndedReasonAnsweredElsewhere, CXCallEndedReasonDeclinedElsewhere,
-    CXCallEndedReasonFailed, CXCallEndedReasonRemoteEnded, CXCallEndedReasonUnanswered,
-};
+#[cfg(feature = "CallKit_CXProviderConfiguration")]
 #[cfg(feature = "CallKit_CXProviderConfiguration")]
 pub use self::__CXProviderConfiguration::CXProviderConfiguration;
 #[cfg(feature = "CallKit_CXSetGroupCallAction")]
+#[cfg(feature = "CallKit_CXSetGroupCallAction")]
+#[cfg(not(any(target_os = "macos")))]
 pub use self::__CXSetGroupCallAction::CXSetGroupCallAction;
 #[cfg(feature = "CallKit_CXSetHeldCallAction")]
+#[cfg(feature = "CallKit_CXSetHeldCallAction")]
+#[cfg(not(any(target_os = "macos")))]
 pub use self::__CXSetHeldCallAction::CXSetHeldCallAction;
 #[cfg(feature = "CallKit_CXSetMutedCallAction")]
+#[cfg(feature = "CallKit_CXSetMutedCallAction")]
+#[cfg(not(any(target_os = "macos")))]
 pub use self::__CXSetMutedCallAction::CXSetMutedCallAction;
 #[cfg(feature = "CallKit_CXStartCallAction")]
+#[cfg(feature = "CallKit_CXStartCallAction")]
+#[cfg(not(any(target_os = "macos")))]
 pub use self::__CXStartCallAction::CXStartCallAction;
 #[cfg(feature = "CallKit_CXTransaction")]
+#[cfg(feature = "CallKit_CXTransaction")]
+#[cfg(not(any(target_os = "macos")))]
 pub use self::__CXTransaction::CXTransaction;

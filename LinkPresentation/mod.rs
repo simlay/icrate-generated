@@ -14,13 +14,23 @@ mod __LPLinkView;
 mod __LPMetadataProvider;
 
 pub use self::__LPError::LPErrorDomain;
-pub use self::__LPError::{
-    LPErrorCode, LPErrorMetadataFetchCancelled, LPErrorMetadataFetchFailed,
-    LPErrorMetadataFetchTimedOut, LPErrorUnknown,
-};
+
+pub use self::__LPError::LPErrorCode;
+
+pub use self::__LPError::LPErrorUnknown;
+
+pub use self::__LPError::LPErrorMetadataFetchFailed;
+
+pub use self::__LPError::LPErrorMetadataFetchCancelled;
+
+pub use self::__LPError::LPErrorMetadataFetchTimedOut;
+#[cfg(feature = "LinkPresentation_LPLinkMetadata")]
 #[cfg(feature = "LinkPresentation_LPLinkMetadata")]
 pub use self::__LPLinkMetadata::LPLinkMetadata;
 #[cfg(feature = "LinkPresentation_LPLinkView")]
+#[cfg(feature = "LinkPresentation_LPLinkView")]
 pub use self::__LPLinkView::LPLinkView;
 #[cfg(feature = "LinkPresentation_LPMetadataProvider")]
+#[cfg(feature = "LinkPresentation_LPMetadataProvider")]
+#[cfg(not(any(target_os = "tvos")))]
 pub use self::__LPMetadataProvider::LPMetadataProvider;

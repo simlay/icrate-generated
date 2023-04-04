@@ -34,106 +34,222 @@ mod __UNNotificationTrigger;
 mod __UNUserNotificationCenter;
 
 pub use self::__UNError::UNErrorDomain;
-pub use self::__UNError::{
-    UNErrorCode, UNErrorCodeAttachmentCorrupt, UNErrorCodeAttachmentInvalidFileSize,
-    UNErrorCodeAttachmentInvalidURL, UNErrorCodeAttachmentMoveIntoDataStoreFailed,
-    UNErrorCodeAttachmentNotInDataStore, UNErrorCodeAttachmentUnrecognizedType,
-    UNErrorCodeBadgeInputInvalid, UNErrorCodeContentProvidingInvalid,
-    UNErrorCodeContentProvidingObjectNotAllowed, UNErrorCodeNotificationInvalidNoContent,
-    UNErrorCodeNotificationInvalidNoDate, UNErrorCodeNotificationsNotAllowed,
-};
+
+pub use self::__UNError::UNErrorCode;
+
+pub use self::__UNError::UNErrorCodeNotificationsNotAllowed;
+
+pub use self::__UNError::UNErrorCodeAttachmentInvalidURL;
+
+pub use self::__UNError::UNErrorCodeAttachmentUnrecognizedType;
+
+pub use self::__UNError::UNErrorCodeAttachmentInvalidFileSize;
+
+pub use self::__UNError::UNErrorCodeAttachmentNotInDataStore;
+
+pub use self::__UNError::UNErrorCodeAttachmentMoveIntoDataStoreFailed;
+
+pub use self::__UNError::UNErrorCodeAttachmentCorrupt;
+
+pub use self::__UNError::UNErrorCodeNotificationInvalidNoDate;
+
+pub use self::__UNError::UNErrorCodeNotificationInvalidNoContent;
+
+pub use self::__UNError::UNErrorCodeContentProvidingObjectNotAllowed;
+
+pub use self::__UNError::UNErrorCodeContentProvidingInvalid;
+
+pub use self::__UNError::UNErrorCodeBadgeInputInvalid;
+#[cfg(feature = "UserNotifications_UNNotification")]
 #[cfg(feature = "UserNotifications_UNNotification")]
 pub use self::__UNNotification::UNNotification;
 #[cfg(feature = "UserNotifications_UNNotificationAction")]
+#[cfg(feature = "UserNotifications_UNNotificationAction")]
+#[cfg(not(any(target_os = "tvos")))]
 pub use self::__UNNotificationAction::UNNotificationAction;
+#[cfg(not(any(target_os = "tvos")))]
+pub use self::__UNNotificationAction::UNNotificationActionOptionAuthenticationRequired;
+#[cfg(not(any(target_os = "tvos")))]
+pub use self::__UNNotificationAction::UNNotificationActionOptionDestructive;
+#[cfg(not(any(target_os = "tvos")))]
+pub use self::__UNNotificationAction::UNNotificationActionOptionForeground;
+#[cfg(not(any(target_os = "tvos")))]
 pub use self::__UNNotificationAction::UNNotificationActionOptionNone;
+#[cfg(not(any(target_os = "tvos")))]
+pub use self::__UNNotificationAction::UNNotificationActionOptions;
 #[cfg(feature = "UserNotifications_UNTextInputNotificationAction")]
+#[cfg(feature = "UserNotifications_UNTextInputNotificationAction")]
+#[cfg(not(any(target_os = "tvos")))]
 pub use self::__UNNotificationAction::UNTextInputNotificationAction;
-pub use self::__UNNotificationAction::{
-    UNNotificationActionOptionAuthenticationRequired, UNNotificationActionOptionDestructive,
-    UNNotificationActionOptionForeground, UNNotificationActionOptions,
-};
+#[cfg(feature = "UserNotifications_UNNotificationActionIcon")]
 #[cfg(feature = "UserNotifications_UNNotificationActionIcon")]
 pub use self::__UNNotificationActionIcon::UNNotificationActionIcon;
 #[cfg(feature = "UserNotifications_UNNotificationAttachment")]
+#[cfg(feature = "UserNotifications_UNNotificationAttachment")]
+#[cfg(not(any(target_os = "tvos")))]
 pub use self::__UNNotificationAttachment::UNNotificationAttachment;
+#[cfg(not(any(target_os = "tvos")))]
 pub use self::__UNNotificationAttachment::UNNotificationAttachmentOptionsThumbnailClippingRectKey;
+#[cfg(not(any(target_os = "tvos")))]
 pub use self::__UNNotificationAttachment::UNNotificationAttachmentOptionsThumbnailHiddenKey;
+#[cfg(not(any(target_os = "tvos")))]
 pub use self::__UNNotificationAttachment::UNNotificationAttachmentOptionsThumbnailTimeKey;
+#[cfg(not(any(target_os = "tvos")))]
 pub use self::__UNNotificationAttachment::UNNotificationAttachmentOptionsTypeHintKey;
 #[cfg(feature = "UserNotifications_UNNotificationCategory")]
+#[cfg(feature = "UserNotifications_UNNotificationCategory")]
+#[cfg(not(any(target_os = "tvos")))]
 pub use self::__UNNotificationCategory::UNNotificationCategory;
+#[cfg(not(any(target_os = "tvos")))]
+pub use self::__UNNotificationCategory::UNNotificationCategoryOptionAllowAnnouncement;
+#[cfg(not(any(target_os = "tvos")))]
+pub use self::__UNNotificationCategory::UNNotificationCategoryOptionAllowInCarPlay;
+#[cfg(not(any(target_os = "tvos")))]
+pub use self::__UNNotificationCategory::UNNotificationCategoryOptionCustomDismissAction;
+#[cfg(not(any(target_os = "tvos")))]
+pub use self::__UNNotificationCategory::UNNotificationCategoryOptionHiddenPreviewsShowSubtitle;
+#[cfg(not(any(target_os = "tvos")))]
+pub use self::__UNNotificationCategory::UNNotificationCategoryOptionHiddenPreviewsShowTitle;
+#[cfg(not(any(target_os = "tvos")))]
 pub use self::__UNNotificationCategory::UNNotificationCategoryOptionNone;
-pub use self::__UNNotificationCategory::{
-    UNNotificationCategoryOptionAllowAnnouncement, UNNotificationCategoryOptionAllowInCarPlay,
-    UNNotificationCategoryOptionCustomDismissAction,
-    UNNotificationCategoryOptionHiddenPreviewsShowSubtitle,
-    UNNotificationCategoryOptionHiddenPreviewsShowTitle, UNNotificationCategoryOptions,
-};
+#[cfg(not(any(target_os = "tvos")))]
+pub use self::__UNNotificationCategory::UNNotificationCategoryOptions;
+
+pub use self::__UNNotificationContent::UNNotificationContentProviding;
+
+pub use self::__UNNotificationContent::UNNotificationInterruptionLevel;
+
+pub use self::__UNNotificationContent::UNNotificationInterruptionLevelPassive;
+
+pub use self::__UNNotificationContent::UNNotificationInterruptionLevelActive;
+
+pub use self::__UNNotificationContent::UNNotificationInterruptionLevelTimeSensitive;
+
+#[cfg(feature = "UserNotifications_UNMutableNotificationContent")]
 #[cfg(feature = "UserNotifications_UNMutableNotificationContent")]
 pub use self::__UNNotificationContent::UNMutableNotificationContent;
 #[cfg(feature = "UserNotifications_UNNotificationContent")]
+#[cfg(feature = "UserNotifications_UNNotificationContent")]
 pub use self::__UNNotificationContent::UNNotificationContent;
-pub use self::__UNNotificationContent::UNNotificationContentProviding;
-pub use self::__UNNotificationContent::{
-    UNNotificationInterruptionLevel, UNNotificationInterruptionLevelActive,
-    UNNotificationInterruptionLevelCritical, UNNotificationInterruptionLevelPassive,
-    UNNotificationInterruptionLevelTimeSensitive,
-};
+pub use self::__UNNotificationContent::UNNotificationInterruptionLevelCritical;
+#[cfg(feature = "UserNotifications_UNNotificationRequest")]
 #[cfg(feature = "UserNotifications_UNNotificationRequest")]
 pub use self::__UNNotificationRequest::UNNotificationRequest;
+#[cfg(not(any(target_os = "tvos")))]
 pub use self::__UNNotificationResponse::UNNotificationDefaultActionIdentifier;
+#[cfg(not(any(target_os = "tvos")))]
 pub use self::__UNNotificationResponse::UNNotificationDismissActionIdentifier;
 #[cfg(feature = "UserNotifications_UNNotificationResponse")]
+#[cfg(feature = "UserNotifications_UNNotificationResponse")]
+#[cfg(not(any(target_os = "tvos")))]
 pub use self::__UNNotificationResponse::UNNotificationResponse;
 #[cfg(feature = "UserNotifications_UNTextInputNotificationResponse")]
+#[cfg(feature = "UserNotifications_UNTextInputNotificationResponse")]
+#[cfg(not(any(target_os = "tvos")))]
 pub use self::__UNNotificationResponse::UNTextInputNotificationResponse;
 #[cfg(feature = "UserNotifications_UNNotificationServiceExtension")]
+#[cfg(feature = "UserNotifications_UNNotificationServiceExtension")]
+#[cfg(not(any(target_os = "tvos")))]
 pub use self::__UNNotificationServiceExtension::UNNotificationServiceExtension;
+
+pub use self::__UNNotificationSettings::UNAuthorizationStatus;
+
+pub use self::__UNNotificationSettings::UNAuthorizationStatusNotDetermined;
+
+pub use self::__UNNotificationSettings::UNAuthorizationStatusDenied;
+
+pub use self::__UNNotificationSettings::UNAuthorizationStatusAuthorized;
+
+pub use self::__UNNotificationSettings::UNAuthorizationStatusProvisional;
+
+pub use self::__UNNotificationSettings::UNAuthorizationStatusEphemeral;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+pub use self::__UNNotificationSettings::UNShowPreviewsSetting;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+pub use self::__UNNotificationSettings::UNShowPreviewsSettingAlways;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+pub use self::__UNNotificationSettings::UNShowPreviewsSettingNever;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+pub use self::__UNNotificationSettings::UNShowPreviewsSettingWhenAuthenticated;
+
+pub use self::__UNNotificationSettings::UNNotificationSetting;
+
+pub use self::__UNNotificationSettings::UNNotificationSettingNotSupported;
+
+pub use self::__UNNotificationSettings::UNNotificationSettingDisabled;
+
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+pub use self::__UNNotificationSettings::UNAlertStyle;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+pub use self::__UNNotificationSettings::UNAlertStyleAlert;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+pub use self::__UNNotificationSettings::UNAlertStyleBanner;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+pub use self::__UNNotificationSettings::UNAlertStyleNone;
+pub use self::__UNNotificationSettings::UNNotificationSettingEnabled;
+#[cfg(feature = "UserNotifications_UNNotificationSettings")]
 #[cfg(feature = "UserNotifications_UNNotificationSettings")]
 pub use self::__UNNotificationSettings::UNNotificationSettings;
-pub use self::__UNNotificationSettings::{
-    UNAlertStyle, UNAlertStyleAlert, UNAlertStyleBanner, UNAlertStyleNone,
-};
-pub use self::__UNNotificationSettings::{
-    UNAuthorizationStatus, UNAuthorizationStatusAuthorized, UNAuthorizationStatusDenied,
-    UNAuthorizationStatusEphemeral, UNAuthorizationStatusNotDetermined,
-    UNAuthorizationStatusProvisional,
-};
-pub use self::__UNNotificationSettings::{
-    UNNotificationSetting, UNNotificationSettingDisabled, UNNotificationSettingEnabled,
-    UNNotificationSettingNotSupported,
-};
-pub use self::__UNNotificationSettings::{
-    UNShowPreviewsSetting, UNShowPreviewsSettingAlways, UNShowPreviewsSettingNever,
-    UNShowPreviewsSettingWhenAuthenticated,
-};
+
 #[cfg(feature = "UserNotifications_UNNotificationSound")]
+#[cfg(feature = "UserNotifications_UNNotificationSound")]
+#[cfg(not(any(target_os = "tvos")))]
 pub use self::__UNNotificationSound::UNNotificationSound;
 pub use self::__UNNotificationSound::UNNotificationSoundName;
 #[cfg(feature = "UserNotifications_UNCalendarNotificationTrigger")]
+#[cfg(feature = "UserNotifications_UNCalendarNotificationTrigger")]
 pub use self::__UNNotificationTrigger::UNCalendarNotificationTrigger;
 #[cfg(feature = "UserNotifications_UNLocationNotificationTrigger")]
+#[cfg(feature = "UserNotifications_UNLocationNotificationTrigger")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos")))]
 pub use self::__UNNotificationTrigger::UNLocationNotificationTrigger;
+#[cfg(feature = "UserNotifications_UNNotificationTrigger")]
 #[cfg(feature = "UserNotifications_UNNotificationTrigger")]
 pub use self::__UNNotificationTrigger::UNNotificationTrigger;
 #[cfg(feature = "UserNotifications_UNPushNotificationTrigger")]
+#[cfg(feature = "UserNotifications_UNPushNotificationTrigger")]
 pub use self::__UNNotificationTrigger::UNPushNotificationTrigger;
 #[cfg(feature = "UserNotifications_UNTimeIntervalNotificationTrigger")]
+#[cfg(feature = "UserNotifications_UNTimeIntervalNotificationTrigger")]
 pub use self::__UNNotificationTrigger::UNTimeIntervalNotificationTrigger;
+
+pub use self::__UNUserNotificationCenter::UNAuthorizationOptions;
+
+pub use self::__UNUserNotificationCenter::UNAuthorizationOptionBadge;
+
+pub use self::__UNUserNotificationCenter::UNAuthorizationOptionSound;
+
+pub use self::__UNUserNotificationCenter::UNAuthorizationOptionAlert;
+
+pub use self::__UNUserNotificationCenter::UNAuthorizationOptionCarPlay;
+
+pub use self::__UNUserNotificationCenter::UNAuthorizationOptionCriticalAlert;
+
+pub use self::__UNUserNotificationCenter::UNAuthorizationOptionProvidesAppNotificationSettings;
+
+pub use self::__UNUserNotificationCenter::UNAuthorizationOptionProvisional;
+
+pub use self::__UNUserNotificationCenter::UNAuthorizationOptionAnnouncement;
+
+pub use self::__UNUserNotificationCenter::UNAuthorizationOptionTimeSensitive;
+
 pub use self::__UNUserNotificationCenter::UNAuthorizationOptionNone;
-pub use self::__UNUserNotificationCenter::UNNotificationPresentationOptionNone;
+#[cfg(feature = "UserNotifications_UNUserNotificationCenter")]
 #[cfg(feature = "UserNotifications_UNUserNotificationCenter")]
 pub use self::__UNUserNotificationCenter::UNUserNotificationCenter;
+
+pub use self::__UNUserNotificationCenter::UNNotificationPresentationOptions;
+
+pub use self::__UNUserNotificationCenter::UNNotificationPresentationOptionBadge;
+
+pub use self::__UNUserNotificationCenter::UNNotificationPresentationOptionSound;
+
+pub use self::__UNUserNotificationCenter::UNNotificationPresentationOptionAlert;
+
+pub use self::__UNUserNotificationCenter::UNNotificationPresentationOptionList;
+
+pub use self::__UNUserNotificationCenter::UNNotificationPresentationOptionBanner;
+
+pub use self::__UNUserNotificationCenter::UNNotificationPresentationOptionNone;
+
 pub use self::__UNUserNotificationCenter::UNUserNotificationCenterDelegate;
-pub use self::__UNUserNotificationCenter::{
-    UNAuthorizationOptionAlert, UNAuthorizationOptionAnnouncement, UNAuthorizationOptionBadge,
-    UNAuthorizationOptionCarPlay, UNAuthorizationOptionCriticalAlert,
-    UNAuthorizationOptionProvidesAppNotificationSettings, UNAuthorizationOptionProvisional,
-    UNAuthorizationOptionSound, UNAuthorizationOptionTimeSensitive, UNAuthorizationOptions,
-};
-pub use self::__UNUserNotificationCenter::{
-    UNNotificationPresentationOptionAlert, UNNotificationPresentationOptionBadge,
-    UNNotificationPresentationOptionBanner, UNNotificationPresentationOptionList,
-    UNNotificationPresentationOptionSound, UNNotificationPresentationOptions,
-};

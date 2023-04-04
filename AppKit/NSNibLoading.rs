@@ -17,7 +17,6 @@ extern_methods!(
     unsafe impl NSBundle {
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
         #[deprecated]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(loadNibFile:externalNameTable:withZone:)]
         pub unsafe fn loadNibFile_externalNameTable_withZone_class(
             file_name: Option<&NSString>,
@@ -27,7 +26,6 @@ extern_methods!(
 
         #[cfg(feature = "Foundation_NSString")]
         #[deprecated]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(loadNibNamed:owner:)]
         pub unsafe fn loadNibNamed_owner(
             nib_name: Option<&NSString>,
@@ -36,7 +34,6 @@ extern_methods!(
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
         #[deprecated]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(loadNibFile:externalNameTable:withZone:)]
         pub unsafe fn loadNibFile_externalNameTable_withZone(
             &self,

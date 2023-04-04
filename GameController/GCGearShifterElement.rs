@@ -8,7 +8,7 @@ use crate::GameController::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameController_GCGearShifterElement")]
-    #[cfg(not(any(target_os = "ios")))]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     pub struct GCGearShifterElement;
 
     #[cfg(feature = "GameController_GCGearShifterElement")]

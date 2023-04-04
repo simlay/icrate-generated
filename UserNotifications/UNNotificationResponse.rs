@@ -12,6 +12,7 @@ extern_static!(UNNotificationDismissActionIdentifier: &'static NSString);
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "UserNotifications_UNNotificationResponse")]
+    #[cfg(not(any(target_os = "tvos")))]
     pub struct UNNotificationResponse;
 
     #[cfg(feature = "UserNotifications_UNNotificationResponse")]
@@ -48,6 +49,7 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "UserNotifications_UNTextInputNotificationResponse")]
+    #[cfg(not(any(target_os = "tvos")))]
     pub struct UNTextInputNotificationResponse;
 
     #[cfg(feature = "UserNotifications_UNTextInputNotificationResponse")]

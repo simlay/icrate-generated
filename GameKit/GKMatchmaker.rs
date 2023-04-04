@@ -153,7 +153,7 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameKit_GKInvite")]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+    #[cfg(not(any(target_os = "watchos")))]
     pub struct GKInvite;
 
     #[cfg(feature = "GameKit_GKInvite")]
@@ -191,13 +191,13 @@ extern_methods!(
 extern_protocol!(
     pub unsafe trait GKInviteEventListener {
         #[cfg(all(feature = "GameKit_GKInvite", feature = "GameKit_GKPlayer"))]
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(player:didAcceptInvite:)]
         unsafe fn player_didAcceptInvite(&self, player: &GKPlayer, invite: &GKInvite);
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "GameKit_GKPlayer"))]
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(player:didRequestMatchWithRecipients:)]
         unsafe fn player_didRequestMatchWithRecipients(
@@ -227,7 +227,7 @@ extern_protocol!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameKit_GKMatchmaker")]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+    #[cfg(not(any(target_os = "watchos")))]
     pub struct GKMatchmaker;
 
     #[cfg(feature = "GameKit_GKMatchmaker")]

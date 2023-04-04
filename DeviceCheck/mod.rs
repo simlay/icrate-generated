@@ -10,11 +10,22 @@ mod __DCDevice;
 mod __DCError;
 
 #[cfg(feature = "DeviceCheck_DCAppAttestService")]
+#[cfg(feature = "DeviceCheck_DCAppAttestService")]
 pub use self::__DCAppAttestService::DCAppAttestService;
 #[cfg(feature = "DeviceCheck_DCDevice")]
+#[cfg(feature = "DeviceCheck_DCDevice")]
 pub use self::__DCDevice::DCDevice;
+
 pub use self::__DCError::DCErrorDomain;
-pub use self::__DCError::{
-    DCError, DCErrorFeatureUnsupported, DCErrorInvalidInput, DCErrorInvalidKey,
-    DCErrorServerUnavailable, DCErrorUnknownSystemFailure,
-};
+
+pub use self::__DCError::DCError;
+
+pub use self::__DCError::DCErrorUnknownSystemFailure;
+
+pub use self::__DCError::DCErrorFeatureUnsupported;
+
+pub use self::__DCError::DCErrorInvalidInput;
+
+pub use self::__DCError::DCErrorInvalidKey;
+
+pub use self::__DCError::DCErrorServerUnavailable;

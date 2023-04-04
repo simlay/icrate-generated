@@ -8,44 +8,38 @@ use crate::UniformTypeIdentifiers::*;
 
 ns_options!(
     #[underlying(NSUInteger)]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub enum NSFileProviderCreateItemOptions {
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         NSFileProviderCreateItemMayAlreadyExist = 1 << 0,
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         NSFileProviderCreateItemDeletionConflicted = 1 << 1,
     }
 );
 
 ns_options!(
     #[underlying(NSUInteger)]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub enum NSFileProviderDeleteItemOptions {
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         NSFileProviderDeleteItemRecursive = 1 << 0,
     }
 );
 
 ns_options!(
     #[underlying(NSUInteger)]
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+    #[cfg(not(any(target_os = "ios")))]
     pub enum NSFileProviderMaterializationFlags {
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "ios")))]
         NSFileProviderMaterializationFlagsKnownSparseRanges = 1 << 0,
     }
 );
 
 ns_options!(
     #[underlying(NSUInteger)]
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+    #[cfg(not(any(target_os = "ios")))]
     pub enum NSFileProviderFetchContentsOptions {
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "ios")))]
         NSFileProviderFetchContentsOptionsStrictVersioning = 1 << 0,
     }
 );
 
 extern_protocol!(
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub unsafe trait NSFileProviderEnumerating: NSObjectProtocol {
         #[cfg(all(
             feature = "FileProvider_NSFileProviderRequest",
@@ -63,7 +57,6 @@ extern_protocol!(
 );
 
 extern_protocol!(
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub unsafe trait NSFileProviderReplicatedExtension:
         NSFileProviderEnumerating + NSObjectProtocol
     {
@@ -185,7 +178,6 @@ extern_protocol!(
             completion_handler: &Block<(), ()>,
         );
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method(pendingItemsDidChangeWithCompletionHandler:)]
         unsafe fn pendingItemsDidChangeWithCompletionHandler(
@@ -198,7 +190,6 @@ extern_protocol!(
 );
 
 extern_protocol!(
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub unsafe trait NSFileProviderIncrementalContentFetching: NSObjectProtocol {
         #[cfg(all(
             feature = "FileProvider_NSFileProviderItemVersion",
@@ -223,7 +214,6 @@ extern_protocol!(
 );
 
 extern_protocol!(
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub unsafe trait NSFileProviderServicing: NSObjectProtocol {
         #[cfg(all(
             feature = "Foundation_NSArray",
@@ -248,7 +238,6 @@ extern_protocol!(
 );
 
 extern_protocol!(
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub unsafe trait NSFileProviderThumbnailing: NSObjectProtocol {
         #[cfg(all(
             feature = "Foundation_NSArray",
@@ -277,7 +266,6 @@ extern_protocol!(
 );
 
 extern_protocol!(
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub unsafe trait NSFileProviderCustomAction: NSObjectProtocol {
         #[cfg(all(
             feature = "Foundation_NSArray",
@@ -297,7 +285,7 @@ extern_protocol!(
 );
 
 extern_protocol!(
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+    #[cfg(not(any(target_os = "ios")))]
     pub unsafe trait NSFileProviderUserInteractionSuppressing: NSObjectProtocol {
         #[cfg(feature = "Foundation_NSString")]
         #[method(setInteractionSuppressed:forIdentifier:)]
@@ -319,7 +307,6 @@ extern_protocol!(
 );
 
 extern_protocol!(
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub unsafe trait NSFileProviderDomainState: NSObjectProtocol {
         #[cfg(feature = "FileProvider_NSFileProviderDomainVersion")]
         #[method_id(@__retain_semantics Other domainVersion)]
@@ -334,7 +321,7 @@ extern_protocol!(
 );
 
 extern_protocol!(
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+    #[cfg(not(any(target_os = "ios")))]
     pub unsafe trait NSFileProviderPartialContentFetching: NSObjectProtocol {
         #[cfg(all(
             feature = "FileProvider_NSFileProviderItemVersion",

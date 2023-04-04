@@ -71,7 +71,6 @@ extern_methods!(
     /// Methods declared on superclass `NSView`
     #[cfg(feature = "MapKit_MKCompassButton")]
     unsafe impl MKCompassButton {
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithFrame:)]
         pub unsafe fn initWithFrame(this: Option<Allocated<Self>>, frame_rect: NSRect) -> Id<Self>;
     }

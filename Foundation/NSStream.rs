@@ -192,7 +192,7 @@ extern_methods!(
             feature = "Foundation_NSString"
         ))]
         #[deprecated = "Use nw_connection_t in Network framework instead"]
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(getStreamsToHostWithName:port:inputStream:outputStream:)]
         pub unsafe fn getStreamsToHostWithName_port_inputStream_outputStream(
             hostname: &NSString,

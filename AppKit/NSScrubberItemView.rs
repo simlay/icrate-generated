@@ -8,7 +8,6 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSScrubberArrangedView")]
-    #[cfg(not(any(target_os = "ios")))]
     pub struct NSScrubberArrangedView;
 
     #[cfg(feature = "AppKit_NSScrubberArrangedView")]
@@ -45,24 +44,19 @@ unsafe impl NSUserInterfaceItemIdentification for NSScrubberArrangedView {}
 extern_methods!(
     #[cfg(feature = "AppKit_NSScrubberArrangedView")]
     unsafe impl NSScrubberArrangedView {
-        #[cfg(not(any(target_os = "ios")))]
         #[method(isSelected)]
         pub unsafe fn isSelected(&self) -> bool;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setSelected:)]
         pub unsafe fn setSelected(&self, selected: bool);
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(isHighlighted)]
         pub unsafe fn isHighlighted(&self) -> bool;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setHighlighted:)]
         pub unsafe fn setHighlighted(&self, highlighted: bool);
 
         #[cfg(feature = "AppKit_NSScrubberLayoutAttributes")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(applyLayoutAttributes:)]
         pub unsafe fn applyLayoutAttributes(&self, layout_attributes: &NSScrubberLayoutAttributes);
     }
@@ -71,7 +65,6 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSScrubberSelectionView")]
-    #[cfg(not(any(target_os = "ios")))]
     pub struct NSScrubberSelectionView;
 
     #[cfg(feature = "AppKit_NSScrubberSelectionView")]
@@ -113,7 +106,6 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSScrubberItemView")]
-    #[cfg(not(any(target_os = "ios")))]
     pub struct NSScrubberItemView;
 
     #[cfg(feature = "AppKit_NSScrubberItemView")]
@@ -155,7 +147,6 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSScrubberTextItemView")]
-    #[cfg(not(any(target_os = "ios")))]
     pub struct NSScrubberTextItemView;
 
     #[cfg(feature = "AppKit_NSScrubberTextItemView")]
@@ -193,17 +184,14 @@ extern_methods!(
     #[cfg(feature = "AppKit_NSScrubberTextItemView")]
     unsafe impl NSScrubberTextItemView {
         #[cfg(feature = "AppKit_NSTextField")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other textField)]
         pub unsafe fn textField(&self) -> Id<NSTextField>;
 
         #[cfg(feature = "Foundation_NSString")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setTitle:)]
         pub unsafe fn setTitle(&self, title: &NSString);
     }
@@ -212,7 +200,6 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSScrubberImageItemView")]
-    #[cfg(not(any(target_os = "ios")))]
     pub struct NSScrubberImageItemView;
 
     #[cfg(feature = "AppKit_NSScrubberImageItemView")]
@@ -250,25 +237,20 @@ extern_methods!(
     #[cfg(feature = "AppKit_NSScrubberImageItemView")]
     unsafe impl NSScrubberImageItemView {
         #[cfg(feature = "AppKit_NSImageView")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other imageView)]
         pub unsafe fn imageView(&self) -> Id<NSImageView>;
 
         #[cfg(feature = "AppKit_NSImage")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other image)]
         pub unsafe fn image(&self) -> Id<NSImage>;
 
         #[cfg(feature = "AppKit_NSImage")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setImage:)]
         pub unsafe fn setImage(&self, image: &NSImage);
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(imageAlignment)]
         pub unsafe fn imageAlignment(&self) -> NSImageAlignment;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setImageAlignment:)]
         pub unsafe fn setImageAlignment(&self, image_alignment: NSImageAlignment);
     }
@@ -278,7 +260,6 @@ extern_methods!(
     /// Methods declared on superclass `NSView`
     #[cfg(feature = "AppKit_NSScrubberArrangedView")]
     unsafe impl NSScrubberArrangedView {
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithFrame:)]
         pub unsafe fn initWithFrame(this: Option<Allocated<Self>>, frame_rect: NSRect) -> Id<Self>;
     }
@@ -288,7 +269,6 @@ extern_methods!(
     /// Methods declared on superclass `NSView`
     #[cfg(feature = "AppKit_NSScrubberSelectionView")]
     unsafe impl NSScrubberSelectionView {
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithFrame:)]
         pub unsafe fn initWithFrame(this: Option<Allocated<Self>>, frame_rect: NSRect) -> Id<Self>;
     }
@@ -298,7 +278,6 @@ extern_methods!(
     /// Methods declared on superclass `NSView`
     #[cfg(feature = "AppKit_NSScrubberItemView")]
     unsafe impl NSScrubberItemView {
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithFrame:)]
         pub unsafe fn initWithFrame(this: Option<Allocated<Self>>, frame_rect: NSRect) -> Id<Self>;
     }
@@ -308,7 +287,6 @@ extern_methods!(
     /// Methods declared on superclass `NSView`
     #[cfg(feature = "AppKit_NSScrubberTextItemView")]
     unsafe impl NSScrubberTextItemView {
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithFrame:)]
         pub unsafe fn initWithFrame(this: Option<Allocated<Self>>, frame_rect: NSRect) -> Id<Self>;
     }
@@ -318,7 +296,6 @@ extern_methods!(
     /// Methods declared on superclass `NSView`
     #[cfg(feature = "AppKit_NSScrubberImageItemView")]
     unsafe impl NSScrubberImageItemView {
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithFrame:)]
         pub unsafe fn initWithFrame(this: Option<Allocated<Self>>, frame_rect: NSRect) -> Id<Self>;
     }

@@ -58,6 +58,7 @@ extern_methods!(
     unsafe impl CLRegion {
         #[cfg(feature = "Foundation_NSString")]
         #[deprecated = "Please see CLCircularRegion"]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Init initCircularRegionWithCenter:radius:identifier:)]
         pub unsafe fn initCircularRegionWithCenter_radius_identifier(
             this: Option<Allocated<Self>>,
@@ -67,10 +68,12 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[deprecated = "Please see CLCircularRegion"]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(center)]
         pub unsafe fn center(&self) -> CLLocationCoordinate2D;
 
         #[deprecated = "Please see CLCircularRegion"]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(radius)]
         pub unsafe fn radius(&self) -> CLLocationDistance;
 
@@ -91,6 +94,7 @@ extern_methods!(
         pub unsafe fn setNotifyOnExit(&self, notify_on_exit: bool);
 
         #[deprecated = "Please see CLCircularRegion"]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(containsCoordinate:)]
         pub unsafe fn containsCoordinate(&self, coordinate: CLLocationCoordinate2D) -> bool;
     }

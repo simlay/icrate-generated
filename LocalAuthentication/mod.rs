@@ -25,42 +25,87 @@ mod __LARightStore;
 #[path = "LASecret.rs"]
 mod __LASecret;
 
+pub use self::__LAContext::LAPolicy;
+
+pub use self::__LAContext::LAPolicyDeviceOwnerAuthenticationWithBiometrics;
+
+pub use self::__LAContext::LAPolicyDeviceOwnerAuthentication;
+
+pub use self::__LAContext::LAPolicyDeviceOwnerAuthenticationWithWatch;
+
+pub use self::__LAContext::LAPolicyDeviceOwnerAuthenticationWithBiometricsOrWatch;
+
+pub use self::__LAContext::LAPolicyDeviceOwnerAuthenticationWithWristDetection;
+#[cfg(not(any(target_os = "watchos")))]
+pub use self::__LAContext::LATouchIDAuthenticationMaximumAllowableReuseDuration;
+
+pub use self::__LAContext::LAAccessControlOperation;
+
+pub use self::__LAContext::LAAccessControlOperationCreateItem;
+
+pub use self::__LAContext::LAAccessControlOperationUseItem;
+
+pub use self::__LAContext::LAAccessControlOperationCreateKey;
+
+pub use self::__LAContext::LAAccessControlOperationUseKeySign;
+
+pub use self::__LAContext::LAAccessControlOperationUseKeyDecrypt;
+
+pub use self::__LAContext::LAAccessControlOperationUseKeyKeyExchange;
+#[cfg(not(any(target_os = "watchos")))]
+pub use self::__LAContext::LABiometryNone;
+#[cfg(not(any(target_os = "watchos")))]
+pub use self::__LAContext::LABiometryType;
+#[cfg(not(any(target_os = "watchos")))]
+pub use self::__LAContext::LABiometryTypeFaceID;
+#[cfg(not(any(target_os = "watchos")))]
+pub use self::__LAContext::LABiometryTypeNone;
+#[cfg(not(any(target_os = "watchos")))]
+pub use self::__LAContext::LABiometryTypeTouchID;
+#[cfg(feature = "LocalAuthentication_LAContext")]
 #[cfg(feature = "LocalAuthentication_LAContext")]
 pub use self::__LAContext::LAContext;
-pub use self::__LAContext::LATouchIDAuthenticationMaximumAllowableReuseDuration;
-pub use self::__LAContext::{
-    LAAccessControlOperation, LAAccessControlOperationCreateItem,
-    LAAccessControlOperationCreateKey, LAAccessControlOperationUseItem,
-    LAAccessControlOperationUseKeyDecrypt, LAAccessControlOperationUseKeyKeyExchange,
-    LAAccessControlOperationUseKeySign,
-};
-pub use self::__LAContext::{
-    LABiometryNone, LABiometryType, LABiometryTypeFaceID, LABiometryTypeNone, LABiometryTypeTouchID,
-};
-pub use self::__LAContext::{
-    LAPolicy, LAPolicyDeviceOwnerAuthentication, LAPolicyDeviceOwnerAuthenticationWithBiometrics,
-    LAPolicyDeviceOwnerAuthenticationWithBiometricsOrWatch,
-    LAPolicyDeviceOwnerAuthenticationWithWatch,
-    LAPolicyDeviceOwnerAuthenticationWithWristDetection,
-};
+
 pub use self::__LAError::LAErrorDomain;
 #[cfg(feature = "LocalAuthentication_LAPersistedRight")]
+#[cfg(feature = "LocalAuthentication_LAPersistedRight")]
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__LAPersistedRight::LAPersistedRight;
 #[cfg(feature = "LocalAuthentication_LAPrivateKey")]
+#[cfg(feature = "LocalAuthentication_LAPrivateKey")]
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__LAPrivateKey::LAPrivateKey;
 #[cfg(feature = "LocalAuthentication_LAPublicKey")]
+#[cfg(feature = "LocalAuthentication_LAPublicKey")]
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__LAPublicKey::LAPublicKey;
 #[cfg(feature = "LocalAuthentication_LAAuthenticationRequirement")]
+#[cfg(feature = "LocalAuthentication_LAAuthenticationRequirement")]
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__LARequirement::LAAuthenticationRequirement;
 #[cfg(feature = "LocalAuthentication_LABiometryFallbackRequirement")]
+#[cfg(feature = "LocalAuthentication_LABiometryFallbackRequirement")]
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__LARequirement::LABiometryFallbackRequirement;
 #[cfg(feature = "LocalAuthentication_LARight")]
+#[cfg(feature = "LocalAuthentication_LARight")]
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__LARight::LARight;
-pub use self::__LARight::{
-    LARightState, LARightStateAuthorized, LARightStateAuthorizing, LARightStateNotAuthorized,
-    LARightStateUnknown,
-};
+#[cfg(not(any(target_os = "watchos")))]
+pub use self::__LARight::LARightState;
+#[cfg(not(any(target_os = "watchos")))]
+pub use self::__LARight::LARightStateAuthorized;
+#[cfg(not(any(target_os = "watchos")))]
+pub use self::__LARight::LARightStateAuthorizing;
+#[cfg(not(any(target_os = "watchos")))]
+pub use self::__LARight::LARightStateNotAuthorized;
+#[cfg(not(any(target_os = "watchos")))]
+pub use self::__LARight::LARightStateUnknown;
 #[cfg(feature = "LocalAuthentication_LARightStore")]
+#[cfg(feature = "LocalAuthentication_LARightStore")]
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__LARightStore::LARightStore;
 #[cfg(feature = "LocalAuthentication_LASecret")]
+#[cfg(feature = "LocalAuthentication_LASecret")]
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__LASecret::LASecret;

@@ -5,6 +5,6 @@ use crate::Foundation::*;
 use crate::MetricKit::*;
 
 extern_fn!(
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+    #[cfg(not(any(target_os = "macos")))]
     pub unsafe fn _MXSignpostMetricsSnapshot() -> NonNull<c_void>;
 );

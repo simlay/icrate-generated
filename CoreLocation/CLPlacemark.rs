@@ -128,6 +128,7 @@ extern_methods!(
     #[cfg(feature = "CoreLocation_CLPlacemark")]
     unsafe impl CLPlacemark {
         #[cfg(feature = "Contacts_CNPostalAddress")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other postalAddress)]
         pub unsafe fn postalAddress(&self) -> Option<Id<CNPostalAddress>>;
     }

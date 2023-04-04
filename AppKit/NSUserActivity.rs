@@ -6,10 +6,8 @@ use crate::CoreData::*;
 use crate::Foundation::*;
 
 extern_protocol!(
-    #[cfg(not(any(target_os = "ios")))]
     pub unsafe trait NSUserActivityRestoring: NSObjectProtocol {
         #[cfg(feature = "Foundation_NSUserActivity")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(restoreUserActivityState:)]
         unsafe fn restoreUserActivityState(&self, user_activity: &NSUserActivity);
     }
@@ -22,17 +20,14 @@ extern_methods!(
     #[cfg(feature = "AppKit_NSResponder")]
     unsafe impl NSResponder {
         #[cfg(feature = "Foundation_NSUserActivity")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other userActivity)]
         pub unsafe fn userActivity(&self) -> Option<Id<NSUserActivity>>;
 
         #[cfg(feature = "Foundation_NSUserActivity")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setUserActivity:)]
         pub unsafe fn setUserActivity(&self, user_activity: Option<&NSUserActivity>);
 
         #[cfg(feature = "Foundation_NSUserActivity")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(updateUserActivityState:)]
         pub unsafe fn updateUserActivityState(&self, user_activity: &NSUserActivity);
     }
@@ -46,17 +41,14 @@ extern_methods!(
     #[cfg(feature = "AppKit_NSDocument")]
     unsafe impl NSDocument {
         #[cfg(feature = "Foundation_NSUserActivity")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other userActivity)]
         pub unsafe fn userActivity(&self) -> Option<Id<NSUserActivity>>;
 
         #[cfg(feature = "Foundation_NSUserActivity")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setUserActivity:)]
         pub unsafe fn setUserActivity(&self, user_activity: Option<&NSUserActivity>);
 
         #[cfg(feature = "Foundation_NSUserActivity")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(updateUserActivityState:)]
         pub unsafe fn updateUserActivityState(&self, activity: &NSUserActivity);
     }

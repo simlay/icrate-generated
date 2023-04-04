@@ -94,6 +94,7 @@ extern_methods!(
     #[cfg(feature = "CoreLocation_CLGeocoder")]
     unsafe impl CLGeocoder {
         #[cfg(feature = "Contacts_CNPostalAddress")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(geocodePostalAddress:completionHandler:)]
         pub unsafe fn geocodePostalAddress_completionHandler(
             &self,
@@ -102,6 +103,7 @@ extern_methods!(
         );
 
         #[cfg(all(feature = "Contacts_CNPostalAddress", feature = "Foundation_NSLocale"))]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(geocodePostalAddress:preferredLocale:completionHandler:)]
         pub unsafe fn geocodePostalAddress_preferredLocale_completionHandler(
             &self,

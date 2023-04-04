@@ -156,6 +156,7 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSError"
         ))]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(discoverAllIdentitiesWithCompletionHandler:)]
         pub unsafe fn discoverAllIdentitiesWithCompletionHandler(
             &self,

@@ -8,6 +8,7 @@ use crate::UserNotifications::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "UserNotifications_UNNotificationAttachment")]
+    #[cfg(not(any(target_os = "tvos")))]
     pub struct UNNotificationAttachment;
 
     #[cfg(feature = "UserNotifications_UNNotificationAttachment")]

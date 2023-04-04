@@ -20,7 +20,7 @@ typed_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "StoreKit_SKCloudServiceSetupViewController")]
-    #[cfg(not(any(target_os = "macos")))]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
     pub struct SKCloudServiceSetupViewController;
 
     #[cfg(feature = "StoreKit_SKCloudServiceSetupViewController")]
@@ -48,13 +48,13 @@ unsafe impl NSUserInterfaceItemIdentification for SKCloudServiceSetupViewControl
 extern_methods!(
     #[cfg(feature = "StoreKit_SKCloudServiceSetupViewController")]
     unsafe impl SKCloudServiceSetupViewController {
-        #[cfg(not(any(target_os = "macos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(
             &self,
         ) -> Option<Id<ProtocolObject<dyn SKCloudServiceSetupViewControllerDelegate>>>;
 
-        #[cfg(not(any(target_os = "macos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
@@ -62,7 +62,7 @@ extern_methods!(
         );
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSError"))]
-        #[cfg(not(any(target_os = "macos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         #[method(loadWithOptions:completionHandler:)]
         pub unsafe fn loadWithOptions_completionHandler(
             &self,
@@ -75,7 +75,7 @@ extern_methods!(
 extern_protocol!(
     pub unsafe trait SKCloudServiceSetupViewControllerDelegate: NSObjectProtocol {
         #[cfg(feature = "StoreKit_SKCloudServiceSetupViewController")]
-        #[cfg(not(any(target_os = "macos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         #[optional]
         #[method(cloudServiceSetupViewControllerDidDismiss:)]
         unsafe fn cloudServiceSetupViewControllerDidDismiss(
@@ -124,7 +124,6 @@ extern_methods!(
     #[cfg(feature = "StoreKit_SKCloudServiceSetupViewController")]
     unsafe impl SKCloudServiceSetupViewController {
         #[cfg(feature = "Foundation_NSBundle")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithNibName:bundle:)]
         pub unsafe fn initWithNibName_bundle(
             this: Option<Allocated<Self>>,

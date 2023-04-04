@@ -18,7 +18,7 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameKit_GKChallenge")]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+    #[cfg(not(any(target_os = "watchos")))]
     pub struct GKChallenge;
 
     #[cfg(feature = "GameKit_GKChallenge")]
@@ -92,7 +92,7 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameKit_GKScoreChallenge")]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+    #[cfg(not(any(target_os = "watchos")))]
     pub struct GKScoreChallenge;
 
     #[cfg(feature = "GameKit_GKScoreChallenge")]
@@ -123,7 +123,7 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameKit_GKAchievementChallenge")]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+    #[cfg(not(any(target_os = "watchos")))]
     pub struct GKAchievementChallenge;
 
     #[cfg(feature = "GameKit_GKAchievementChallenge")]

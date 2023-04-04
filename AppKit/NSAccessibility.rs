@@ -9,23 +9,18 @@ extern_methods!(
     /// NSWorkspaceAccessibilityDisplay
     #[cfg(feature = "AppKit_NSWorkspace")]
     unsafe impl NSWorkspace {
-        #[cfg(not(any(target_os = "ios")))]
         #[method(accessibilityDisplayShouldIncreaseContrast)]
         pub unsafe fn accessibilityDisplayShouldIncreaseContrast(&self) -> bool;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(accessibilityDisplayShouldDifferentiateWithoutColor)]
         pub unsafe fn accessibilityDisplayShouldDifferentiateWithoutColor(&self) -> bool;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(accessibilityDisplayShouldReduceTransparency)]
         pub unsafe fn accessibilityDisplayShouldReduceTransparency(&self) -> bool;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(accessibilityDisplayShouldReduceMotion)]
         pub unsafe fn accessibilityDisplayShouldReduceMotion(&self) -> bool;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(accessibilityDisplayShouldInvertColors)]
         pub unsafe fn accessibilityDisplayShouldInvertColors(&self) -> bool;
     }
@@ -35,11 +30,9 @@ extern_methods!(
     /// NSWorkspaceAccessibility
     #[cfg(feature = "AppKit_NSWorkspace")]
     unsafe impl NSWorkspace {
-        #[cfg(not(any(target_os = "ios")))]
         #[method(isVoiceOverEnabled)]
         pub unsafe fn isVoiceOverEnabled(&self) -> bool;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(isSwitchControlEnabled)]
         pub unsafe fn isSwitchControlEnabled(&self) -> bool;
     }
@@ -51,24 +44,20 @@ extern_static!(
 
 extern_fn!(
     #[cfg(feature = "AppKit_NSView")]
-    #[cfg(not(any(target_os = "ios")))]
     pub unsafe fn NSAccessibilityFrameInView(parent_view: &NSView, frame: NSRect) -> NSRect;
 );
 
 extern_fn!(
     #[cfg(feature = "AppKit_NSView")]
-    #[cfg(not(any(target_os = "ios")))]
     pub unsafe fn NSAccessibilityPointInView(parent_view: &NSView, point: NSPoint) -> NSPoint;
 );
 
 extern_fn!(
-    #[cfg(not(any(target_os = "ios")))]
     pub unsafe fn NSAccessibilitySetMayContainProtectedContent(flag: Bool) -> Bool;
 );
 
 extern_fn!(
     #[cfg(feature = "Foundation_NSString")]
-    #[cfg(not(any(target_os = "ios")))]
     pub unsafe fn NSAccessibilityRoleDescription(
         role: &NSAccessibilityRole,
         subrole: Option<&NSAccessibilitySubrole>,
@@ -77,13 +66,11 @@ extern_fn!(
 
 extern_fn!(
     #[cfg(feature = "Foundation_NSString")]
-    #[cfg(not(any(target_os = "ios")))]
     pub unsafe fn NSAccessibilityRoleDescriptionForUIElement(element: &Object) -> *mut NSString;
 );
 
 extern_fn!(
     #[cfg(feature = "Foundation_NSString")]
-    #[cfg(not(any(target_os = "ios")))]
     pub unsafe fn NSAccessibilityActionDescription(
         action: &NSAccessibilityActionName,
     ) -> *mut NSString;
@@ -91,7 +78,6 @@ extern_fn!(
 
 extern_fn!(
     #[deprecated = "Exceptions are no longer appropriate for indicating errors in accessibility API. Unexpected values should be handled through appropriate type checking."]
-    #[cfg(not(any(target_os = "ios")))]
     pub unsafe fn NSAccessibilityRaiseBadArgumentException(
         element: Option<&Object>,
         attribute: Option<&NSAccessibilityAttributeName>,
@@ -100,32 +86,27 @@ extern_fn!(
 );
 
 extern_fn!(
-    #[cfg(not(any(target_os = "ios")))]
     pub unsafe fn NSAccessibilityUnignoredAncestor(element: &Object) -> *mut Object;
 );
 
 extern_fn!(
-    #[cfg(not(any(target_os = "ios")))]
     pub unsafe fn NSAccessibilityUnignoredDescendant(element: &Object) -> *mut Object;
 );
 
 extern_fn!(
     #[cfg(feature = "Foundation_NSArray")]
-    #[cfg(not(any(target_os = "ios")))]
     pub unsafe fn NSAccessibilityUnignoredChildren(original_children: &NSArray)
         -> NonNull<NSArray>;
 );
 
 extern_fn!(
     #[cfg(feature = "Foundation_NSArray")]
-    #[cfg(not(any(target_os = "ios")))]
     pub unsafe fn NSAccessibilityUnignoredChildrenForOnlyChild(
         original_child: &Object,
     ) -> NonNull<NSArray>;
 );
 
 extern_fn!(
-    #[cfg(not(any(target_os = "ios")))]
     pub unsafe fn NSAccessibilityPostNotification(
         element: &Object,
         notification: &NSAccessibilityNotificationName,

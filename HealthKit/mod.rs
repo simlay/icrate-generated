@@ -154,826 +154,1791 @@ mod __HKWorkoutRouteQuery;
 mod __HKWorkoutSession;
 
 #[cfg(feature = "HealthKit_HKActivitySummary")]
+#[cfg(feature = "HealthKit_HKActivitySummary")]
 pub use self::__HKActivitySummary::HKActivitySummary;
+
 pub use self::__HKActivitySummary::HKPredicateKeyPathDateComponents;
+#[cfg(feature = "HealthKit_HKActivitySummaryQuery")]
 #[cfg(feature = "HealthKit_HKActivitySummaryQuery")]
 pub use self::__HKActivitySummaryQuery::HKActivitySummaryQuery;
 #[cfg(feature = "HealthKit_HKAnchoredObjectQuery")]
+#[cfg(feature = "HealthKit_HKAnchoredObjectQuery")]
 pub use self::__HKAnchoredObjectQuery::HKAnchoredObjectQuery;
+
+pub use self::__HKAppleWalkingSteadinessClassification::HKAppleWalkingSteadinessClassification;
+
+pub use self::__HKAppleWalkingSteadinessClassification::HKAppleWalkingSteadinessClassificationOK;
+
+pub use self::__HKAppleWalkingSteadinessClassification::HKAppleWalkingSteadinessClassificationLow;
+
+#[cfg(all(feature = "Foundation_NSError", feature = "HealthKit_HKQuantity"))]
 #[cfg(all(feature = "Foundation_NSError", feature = "HealthKit_HKQuantity"))]
 pub use self::__HKAppleWalkingSteadinessClassification::HKAppleWalkingSteadinessClassificationForQuantity;
+pub use self::__HKAppleWalkingSteadinessClassification::HKAppleWalkingSteadinessClassificationVeryLow;
+#[cfg(feature = "HealthKit_HKQuantity")]
 #[cfg(feature = "HealthKit_HKQuantity")]
 pub use self::__HKAppleWalkingSteadinessClassification::HKAppleWalkingSteadinessMaximumQuantityForClassification;
 #[cfg(feature = "HealthKit_HKQuantity")]
+#[cfg(feature = "HealthKit_HKQuantity")]
 pub use self::__HKAppleWalkingSteadinessClassification::HKAppleWalkingSteadinessMinimumQuantityForClassification;
-pub use self::__HKAppleWalkingSteadinessClassification::{
-    HKAppleWalkingSteadinessClassification, HKAppleWalkingSteadinessClassificationLow,
-    HKAppleWalkingSteadinessClassificationOK, HKAppleWalkingSteadinessClassificationVeryLow,
-};
+#[cfg(feature = "HealthKit_HKAttachment")]
 #[cfg(feature = "HealthKit_HKAttachment")]
 pub use self::__HKAttachment::HKAttachment;
 #[cfg(feature = "HealthKit_HKAttachmentStore")]
+#[cfg(feature = "HealthKit_HKAttachmentStore")]
 pub use self::__HKAttachmentStore::HKAttachmentStore;
+#[cfg(feature = "HealthKit_HKAudiogramSample")]
 #[cfg(feature = "HealthKit_HKAudiogramSample")]
 pub use self::__HKAudiogramSample::HKAudiogramSample;
 #[cfg(feature = "HealthKit_HKAudiogramSensitivityPoint")]
+#[cfg(feature = "HealthKit_HKAudiogramSensitivityPoint")]
 pub use self::__HKAudiogramSample::HKAudiogramSensitivityPoint;
 #[cfg(feature = "HealthKit_HKCDADocument")]
+#[cfg(feature = "HealthKit_HKCDADocument")]
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__HKCDADocumentSample::HKCDADocument;
 #[cfg(feature = "HealthKit_HKCDADocumentSample")]
+#[cfg(feature = "HealthKit_HKCDADocumentSample")]
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__HKCDADocumentSample::HKCDADocumentSample;
-pub use self::__HKCDADocumentSample::HKDetailedCDAValidationErrorKey;
-pub use self::__HKCDADocumentSample::HKPredicateKeyPathCDAAuthorName;
-pub use self::__HKCDADocumentSample::HKPredicateKeyPathCDACustodianName;
-pub use self::__HKCDADocumentSample::HKPredicateKeyPathCDAPatientName;
+
 pub use self::__HKCDADocumentSample::HKPredicateKeyPathCDATitle;
+
+pub use self::__HKCDADocumentSample::HKPredicateKeyPathCDAPatientName;
+
+pub use self::__HKCDADocumentSample::HKPredicateKeyPathCDAAuthorName;
+
+pub use self::__HKCDADocumentSample::HKPredicateKeyPathCDACustodianName;
+
+pub use self::__HKCDADocumentSample::HKDetailedCDAValidationErrorKey;
+#[cfg(feature = "HealthKit_HKCategorySample")]
 #[cfg(feature = "HealthKit_HKCategorySample")]
 pub use self::__HKCategorySample::HKCategorySample;
+
 pub use self::__HKCategorySample::HKPredicateKeyPathCategoryValue;
+#[cfg(feature = "HealthKit_HKActivityMoveModeObject")]
 #[cfg(feature = "HealthKit_HKActivityMoveModeObject")]
 pub use self::__HKCharacteristicObjects::HKActivityMoveModeObject;
 #[cfg(feature = "HealthKit_HKBiologicalSexObject")]
+#[cfg(feature = "HealthKit_HKBiologicalSexObject")]
 pub use self::__HKCharacteristicObjects::HKBiologicalSexObject;
+#[cfg(feature = "HealthKit_HKBloodTypeObject")]
 #[cfg(feature = "HealthKit_HKBloodTypeObject")]
 pub use self::__HKCharacteristicObjects::HKBloodTypeObject;
 #[cfg(feature = "HealthKit_HKFitzpatrickSkinTypeObject")]
+#[cfg(feature = "HealthKit_HKFitzpatrickSkinTypeObject")]
 pub use self::__HKCharacteristicObjects::HKFitzpatrickSkinTypeObject;
+#[cfg(feature = "HealthKit_HKWheelchairUseObject")]
 #[cfg(feature = "HealthKit_HKWheelchairUseObject")]
 pub use self::__HKCharacteristicObjects::HKWheelchairUseObject;
 #[cfg(feature = "HealthKit_HKClinicalRecord")]
+#[cfg(feature = "HealthKit_HKClinicalRecord")]
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__HKClinicalRecord::HKClinicalRecord;
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__HKClinicalRecord::HKPredicateKeyPathClinicalRecordFHIRResourceIdentifier;
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__HKClinicalRecord::HKPredicateKeyPathClinicalRecordFHIRResourceType;
+
+pub use self::__HKClinicalType::HKClinicalTypeIdentifier;
+
+pub use self::__HKClinicalType::HKClinicalTypeIdentifierAllergyRecord;
+
+pub use self::__HKClinicalType::HKClinicalTypeIdentifierConditionRecord;
+
+pub use self::__HKClinicalType::HKClinicalTypeIdentifierImmunizationRecord;
+
+pub use self::__HKClinicalType::HKClinicalTypeIdentifierLabResultRecord;
+
+pub use self::__HKClinicalType::HKClinicalTypeIdentifierMedicationRecord;
+
+pub use self::__HKClinicalType::HKClinicalTypeIdentifierProcedureRecord;
+
+pub use self::__HKClinicalType::HKClinicalTypeIdentifierVitalSignRecord;
+
+#[cfg(feature = "HealthKit_HKClinicalType")]
 #[cfg(feature = "HealthKit_HKClinicalType")]
 pub use self::__HKClinicalType::HKClinicalType;
-pub use self::__HKClinicalType::HKClinicalTypeIdentifier;
-pub use self::__HKClinicalType::HKClinicalTypeIdentifierAllergyRecord;
-pub use self::__HKClinicalType::HKClinicalTypeIdentifierConditionRecord;
 pub use self::__HKClinicalType::HKClinicalTypeIdentifierCoverageRecord;
-pub use self::__HKClinicalType::HKClinicalTypeIdentifierImmunizationRecord;
-pub use self::__HKClinicalType::HKClinicalTypeIdentifierLabResultRecord;
-pub use self::__HKClinicalType::HKClinicalTypeIdentifierMedicationRecord;
-pub use self::__HKClinicalType::HKClinicalTypeIdentifierProcedureRecord;
-pub use self::__HKClinicalType::HKClinicalTypeIdentifierVitalSignRecord;
+#[cfg(feature = "HealthKit_HKContactsLensSpecification")]
 #[cfg(feature = "HealthKit_HKContactsLensSpecification")]
 pub use self::__HKContactsLensSpecification::HKContactsLensSpecification;
 #[cfg(feature = "HealthKit_HKContactsPrescription")]
+#[cfg(feature = "HealthKit_HKContactsPrescription")]
 pub use self::__HKContactsPrescription::HKContactsPrescription;
+#[cfg(feature = "HealthKit_HKCorrelation")]
 #[cfg(feature = "HealthKit_HKCorrelation")]
 pub use self::__HKCorrelation::HKCorrelation;
 #[cfg(feature = "HealthKit_HKCorrelationQuery")]
+#[cfg(feature = "HealthKit_HKCorrelationQuery")]
 pub use self::__HKCorrelationQuery::HKCorrelationQuery;
 #[cfg(feature = "HealthKit_HKCumulativeQuantitySample")]
+#[cfg(feature = "HealthKit_HKCumulativeQuantitySample")]
 pub use self::__HKCumulativeQuantitySample::HKCumulativeQuantitySample;
+
 pub use self::__HKCumulativeQuantitySample::HKPredicateKeyPathSum;
 #[cfg(feature = "HealthKit_HKCumulativeQuantitySeriesSample")]
+#[cfg(feature = "HealthKit_HKCumulativeQuantitySeriesSample")]
 pub use self::__HKCumulativeQuantitySeriesSample::HKCumulativeQuantitySeriesSample;
+
+pub use self::__HKDefines::HKErrorDomain;
+
+pub use self::__HKDefines::HKErrorCode;
+
+pub use self::__HKDefines::HKNoError;
+
+pub use self::__HKDefines::HKErrorHealthDataUnavailable;
+
+pub use self::__HKDefines::HKErrorHealthDataRestricted;
+
+pub use self::__HKDefines::HKErrorInvalidArgument;
+
+pub use self::__HKDefines::HKErrorAuthorizationDenied;
+
+pub use self::__HKDefines::HKErrorAuthorizationNotDetermined;
+
+pub use self::__HKDefines::HKErrorDatabaseInaccessible;
+
+pub use self::__HKDefines::HKErrorUserCanceled;
+
+pub use self::__HKDefines::HKErrorAnotherWorkoutSessionStarted;
+
+pub use self::__HKDefines::HKErrorUserExitedWorkoutSession;
+
+pub use self::__HKDefines::HKErrorRequiredAuthorizationDenied;
+
+pub use self::__HKDefines::HKErrorNoData;
+
+pub use self::__HKDefines::HKUpdateFrequency;
+
+pub use self::__HKDefines::HKUpdateFrequencyImmediate;
+
+pub use self::__HKDefines::HKUpdateFrequencyHourly;
+
+pub use self::__HKDefines::HKUpdateFrequencyDaily;
+
+pub use self::__HKDefines::HKUpdateFrequencyWeekly;
+
+pub use self::__HKDefines::HKAuthorizationStatus;
+
+pub use self::__HKDefines::HKAuthorizationStatusNotDetermined;
+
+pub use self::__HKDefines::HKAuthorizationStatusSharingDenied;
+
+pub use self::__HKDefines::HKAuthorizationStatusSharingAuthorized;
+
+pub use self::__HKDefines::HKAuthorizationRequestStatus;
+
+pub use self::__HKDefines::HKAuthorizationRequestStatusUnknown;
+
+pub use self::__HKDefines::HKAuthorizationRequestStatusShouldRequest;
+
+pub use self::__HKDefines::HKAuthorizationRequestStatusUnnecessary;
+
+pub use self::__HKDefines::HKBiologicalSex;
+
+pub use self::__HKDefines::HKBiologicalSexNotSet;
+
+pub use self::__HKDefines::HKBiologicalSexFemale;
+
+pub use self::__HKDefines::HKBiologicalSexMale;
+
+pub use self::__HKDefines::HKBiologicalSexOther;
+
+pub use self::__HKDefines::HKBloodType;
+
+pub use self::__HKDefines::HKBloodTypeNotSet;
+
+pub use self::__HKDefines::HKBloodTypeAPositive;
+
+pub use self::__HKDefines::HKBloodTypeANegative;
+
+pub use self::__HKDefines::HKBloodTypeBPositive;
+
+pub use self::__HKDefines::HKBloodTypeBNegative;
+
+pub use self::__HKDefines::HKBloodTypeABPositive;
+
+pub use self::__HKDefines::HKBloodTypeABNegative;
+
+pub use self::__HKDefines::HKBloodTypeOPositive;
+
+pub use self::__HKDefines::HKBloodTypeONegative;
+
+pub use self::__HKDefines::HKCategoryValueSleepAnalysis;
+
+pub use self::__HKDefines::HKCategoryValueSleepAnalysisInBed;
+
+pub use self::__HKDefines::HKCategoryValueSleepAnalysisAsleepUnspecified;
+
+pub use self::__HKDefines::HKCategoryValueSleepAnalysisAsleep;
+
+pub use self::__HKDefines::HKCategoryValueSleepAnalysisAwake;
+
+pub use self::__HKDefines::HKCategoryValueSleepAnalysisAsleepCore;
+
+pub use self::__HKDefines::HKCategoryValueSleepAnalysisAsleepDeep;
+
+pub use self::__HKDefines::HKCategoryValueSleepAnalysisAsleepREM;
+#[cfg(all(feature = "Foundation_NSNumber", feature = "Foundation_NSSet"))]
 #[cfg(all(feature = "Foundation_NSNumber", feature = "Foundation_NSSet"))]
 pub use self::__HKDefines::HKCategoryValueSleepAnalysisAsleepValues;
-pub use self::__HKDefines::HKErrorDomain;
-pub use self::__HKDefines::{
-    HKActivityMoveMode, HKActivityMoveModeActiveEnergy, HKActivityMoveModeAppleMoveTime,
-};
-pub use self::__HKDefines::{
-    HKAuthorizationRequestStatus, HKAuthorizationRequestStatusShouldRequest,
-    HKAuthorizationRequestStatusUnknown, HKAuthorizationRequestStatusUnnecessary,
-};
-pub use self::__HKDefines::{
-    HKAuthorizationStatus, HKAuthorizationStatusNotDetermined,
-    HKAuthorizationStatusSharingAuthorized, HKAuthorizationStatusSharingDenied,
-};
-pub use self::__HKDefines::{
-    HKBiologicalSex, HKBiologicalSexFemale, HKBiologicalSexMale, HKBiologicalSexNotSet,
-    HKBiologicalSexOther,
-};
-pub use self::__HKDefines::{
-    HKBloodType, HKBloodTypeABNegative, HKBloodTypeABPositive, HKBloodTypeANegative,
-    HKBloodTypeAPositive, HKBloodTypeBNegative, HKBloodTypeBPositive, HKBloodTypeNotSet,
-    HKBloodTypeONegative, HKBloodTypeOPositive,
-};
-pub use self::__HKDefines::{HKCategoryValue, HKCategoryValueNotApplicable};
-pub use self::__HKDefines::{
-    HKCategoryValueAppetiteChanges, HKCategoryValueAppetiteChangesDecreased,
-    HKCategoryValueAppetiteChangesIncreased, HKCategoryValueAppetiteChangesNoChange,
-    HKCategoryValueAppetiteChangesUnspecified,
-};
-pub use self::__HKDefines::{
-    HKCategoryValueAppleStandHour, HKCategoryValueAppleStandHourIdle,
-    HKCategoryValueAppleStandHourStood,
-};
-pub use self::__HKDefines::{
-    HKCategoryValueAppleWalkingSteadinessEvent,
-    HKCategoryValueAppleWalkingSteadinessEventInitialLow,
-    HKCategoryValueAppleWalkingSteadinessEventInitialVeryLow,
-    HKCategoryValueAppleWalkingSteadinessEventRepeatLow,
-    HKCategoryValueAppleWalkingSteadinessEventRepeatVeryLow,
-};
-pub use self::__HKDefines::{
-    HKCategoryValueAudioExposureEvent, HKCategoryValueAudioExposureEventLoudEnvironment,
-};
-pub use self::__HKDefines::{
-    HKCategoryValueCervicalMucusQuality, HKCategoryValueCervicalMucusQualityCreamy,
-    HKCategoryValueCervicalMucusQualityDry, HKCategoryValueCervicalMucusQualityEggWhite,
-    HKCategoryValueCervicalMucusQualitySticky, HKCategoryValueCervicalMucusQualityWatery,
-};
-pub use self::__HKDefines::{
-    HKCategoryValueContraceptive, HKCategoryValueContraceptiveImplant,
-    HKCategoryValueContraceptiveInjection, HKCategoryValueContraceptiveIntrauterineDevice,
-    HKCategoryValueContraceptiveIntravaginalRing, HKCategoryValueContraceptiveOral,
-    HKCategoryValueContraceptivePatch, HKCategoryValueContraceptiveUnspecified,
-};
-pub use self::__HKDefines::{
-    HKCategoryValueEnvironmentalAudioExposureEvent,
-    HKCategoryValueEnvironmentalAudioExposureEventMomentaryLimit,
-};
-pub use self::__HKDefines::{
-    HKCategoryValueHeadphoneAudioExposureEvent,
-    HKCategoryValueHeadphoneAudioExposureEventSevenDayLimit,
-};
-pub use self::__HKDefines::{
-    HKCategoryValueLowCardioFitnessEvent, HKCategoryValueLowCardioFitnessEventLowFitness,
-};
-pub use self::__HKDefines::{
-    HKCategoryValueMenstrualFlow, HKCategoryValueMenstrualFlowHeavy,
-    HKCategoryValueMenstrualFlowLight, HKCategoryValueMenstrualFlowMedium,
-    HKCategoryValueMenstrualFlowNone, HKCategoryValueMenstrualFlowUnspecified,
-};
-pub use self::__HKDefines::{
-    HKCategoryValueOvulationTestResult, HKCategoryValueOvulationTestResultEstrogenSurge,
-    HKCategoryValueOvulationTestResultIndeterminate,
-    HKCategoryValueOvulationTestResultLuteinizingHormoneSurge,
-    HKCategoryValueOvulationTestResultNegative, HKCategoryValueOvulationTestResultPositive,
-};
-pub use self::__HKDefines::{
-    HKCategoryValuePregnancyTestResult, HKCategoryValuePregnancyTestResultIndeterminate,
-    HKCategoryValuePregnancyTestResultNegative, HKCategoryValuePregnancyTestResultPositive,
-};
-pub use self::__HKDefines::{
-    HKCategoryValuePresence, HKCategoryValuePresenceNotPresent, HKCategoryValuePresencePresent,
-};
-pub use self::__HKDefines::{
-    HKCategoryValueProgesteroneTestResult, HKCategoryValueProgesteroneTestResultIndeterminate,
-    HKCategoryValueProgesteroneTestResultNegative, HKCategoryValueProgesteroneTestResultPositive,
-};
-pub use self::__HKDefines::{
-    HKCategoryValueSeverity, HKCategoryValueSeverityMild, HKCategoryValueSeverityModerate,
-    HKCategoryValueSeverityNotPresent, HKCategoryValueSeveritySevere,
-    HKCategoryValueSeverityUnspecified,
-};
-pub use self::__HKDefines::{
-    HKCategoryValueSleepAnalysis, HKCategoryValueSleepAnalysisAsleep,
-    HKCategoryValueSleepAnalysisAsleepCore, HKCategoryValueSleepAnalysisAsleepDeep,
-    HKCategoryValueSleepAnalysisAsleepREM, HKCategoryValueSleepAnalysisAsleepUnspecified,
-    HKCategoryValueSleepAnalysisAwake, HKCategoryValueSleepAnalysisInBed,
-};
-pub use self::__HKDefines::{
-    HKErrorAnotherWorkoutSessionStarted, HKErrorAuthorizationDenied,
-    HKErrorAuthorizationNotDetermined, HKErrorCode, HKErrorDatabaseInaccessible,
-    HKErrorHealthDataRestricted, HKErrorHealthDataUnavailable, HKErrorInvalidArgument,
-    HKErrorNoData, HKErrorRequiredAuthorizationDenied, HKErrorUserCanceled,
-    HKErrorUserExitedWorkoutSession, HKNoError,
-};
-pub use self::__HKDefines::{
-    HKFitzpatrickSkinType, HKFitzpatrickSkinTypeI, HKFitzpatrickSkinTypeII,
-    HKFitzpatrickSkinTypeIII, HKFitzpatrickSkinTypeIV, HKFitzpatrickSkinTypeNotSet,
-    HKFitzpatrickSkinTypeV, HKFitzpatrickSkinTypeVI,
-};
-pub use self::__HKDefines::{
-    HKUpdateFrequency, HKUpdateFrequencyDaily, HKUpdateFrequencyHourly, HKUpdateFrequencyImmediate,
-    HKUpdateFrequencyWeekly,
-};
-pub use self::__HKDefines::{
-    HKWheelchairUse, HKWheelchairUseNo, HKWheelchairUseNotSet, HKWheelchairUseYes,
-};
+
+pub use self::__HKDefines::HKCategoryValueAppleStandHour;
+
+pub use self::__HKDefines::HKCategoryValueAppleStandHourStood;
+
+pub use self::__HKDefines::HKCategoryValueAppleStandHourIdle;
+
+pub use self::__HKDefines::HKFitzpatrickSkinType;
+
+pub use self::__HKDefines::HKFitzpatrickSkinTypeNotSet;
+
+pub use self::__HKDefines::HKFitzpatrickSkinTypeI;
+
+pub use self::__HKDefines::HKFitzpatrickSkinTypeII;
+
+pub use self::__HKDefines::HKFitzpatrickSkinTypeIII;
+
+pub use self::__HKDefines::HKFitzpatrickSkinTypeIV;
+
+pub use self::__HKDefines::HKFitzpatrickSkinTypeV;
+
+pub use self::__HKDefines::HKFitzpatrickSkinTypeVI;
+
+pub use self::__HKDefines::HKWheelchairUse;
+
+pub use self::__HKDefines::HKWheelchairUseNotSet;
+
+pub use self::__HKDefines::HKWheelchairUseNo;
+
+pub use self::__HKDefines::HKWheelchairUseYes;
+
+pub use self::__HKDefines::HKCategoryValueCervicalMucusQuality;
+
+pub use self::__HKDefines::HKCategoryValueCervicalMucusQualityDry;
+
+pub use self::__HKDefines::HKCategoryValueCervicalMucusQualitySticky;
+
+pub use self::__HKDefines::HKCategoryValueCervicalMucusQualityCreamy;
+
+pub use self::__HKDefines::HKCategoryValueCervicalMucusQualityWatery;
+
+pub use self::__HKDefines::HKCategoryValueCervicalMucusQualityEggWhite;
+
+pub use self::__HKDefines::HKCategoryValueOvulationTestResult;
+
+pub use self::__HKDefines::HKCategoryValueOvulationTestResultNegative;
+
+pub use self::__HKDefines::HKCategoryValueOvulationTestResultLuteinizingHormoneSurge;
+
+pub use self::__HKDefines::HKCategoryValueOvulationTestResultPositive;
+
+pub use self::__HKDefines::HKCategoryValueOvulationTestResultIndeterminate;
+
+pub use self::__HKDefines::HKCategoryValueOvulationTestResultEstrogenSurge;
+
+pub use self::__HKDefines::HKCategoryValuePregnancyTestResult;
+
+pub use self::__HKDefines::HKCategoryValuePregnancyTestResultNegative;
+
+pub use self::__HKDefines::HKCategoryValuePregnancyTestResultPositive;
+
+pub use self::__HKDefines::HKCategoryValuePregnancyTestResultIndeterminate;
+
+pub use self::__HKDefines::HKCategoryValueProgesteroneTestResult;
+
+pub use self::__HKDefines::HKCategoryValueProgesteroneTestResultNegative;
+
+pub use self::__HKDefines::HKCategoryValueProgesteroneTestResultPositive;
+
+pub use self::__HKDefines::HKCategoryValueProgesteroneTestResultIndeterminate;
+
+pub use self::__HKDefines::HKCategoryValueMenstrualFlow;
+
+pub use self::__HKDefines::HKCategoryValueMenstrualFlowUnspecified;
+
+pub use self::__HKDefines::HKCategoryValueMenstrualFlowLight;
+
+pub use self::__HKDefines::HKCategoryValueMenstrualFlowMedium;
+
+pub use self::__HKDefines::HKCategoryValueMenstrualFlowHeavy;
+
+pub use self::__HKDefines::HKCategoryValueMenstrualFlowNone;
+
+pub use self::__HKDefines::HKCategoryValue;
+
+pub use self::__HKDefines::HKCategoryValueNotApplicable;
+
+pub use self::__HKDefines::HKCategoryValueAudioExposureEvent;
+
+pub use self::__HKDefines::HKCategoryValueAudioExposureEventLoudEnvironment;
+
+pub use self::__HKDefines::HKCategoryValueEnvironmentalAudioExposureEvent;
+
+pub use self::__HKDefines::HKCategoryValueEnvironmentalAudioExposureEventMomentaryLimit;
+
+pub use self::__HKDefines::HKCategoryValueContraceptive;
+
+pub use self::__HKDefines::HKCategoryValueContraceptiveUnspecified;
+
+pub use self::__HKDefines::HKCategoryValueContraceptiveImplant;
+
+pub use self::__HKDefines::HKCategoryValueContraceptiveInjection;
+
+pub use self::__HKDefines::HKCategoryValueContraceptiveIntrauterineDevice;
+
+pub use self::__HKDefines::HKCategoryValueContraceptiveIntravaginalRing;
+
+pub use self::__HKDefines::HKCategoryValueContraceptiveOral;
+
+pub use self::__HKDefines::HKCategoryValueContraceptivePatch;
+
+pub use self::__HKDefines::HKCategoryValueSeverity;
+
+pub use self::__HKDefines::HKCategoryValueSeverityUnspecified;
+
+pub use self::__HKDefines::HKCategoryValueSeverityNotPresent;
+
+pub use self::__HKDefines::HKCategoryValueSeverityMild;
+
+pub use self::__HKDefines::HKCategoryValueSeverityModerate;
+
+pub use self::__HKDefines::HKCategoryValueSeveritySevere;
+
+pub use self::__HKDefines::HKCategoryValueAppetiteChanges;
+
+pub use self::__HKDefines::HKCategoryValueAppetiteChangesUnspecified;
+
+pub use self::__HKDefines::HKCategoryValueAppetiteChangesNoChange;
+
+pub use self::__HKDefines::HKCategoryValueAppetiteChangesDecreased;
+
+pub use self::__HKDefines::HKCategoryValueAppetiteChangesIncreased;
+
+pub use self::__HKDefines::HKCategoryValuePresence;
+
+pub use self::__HKDefines::HKCategoryValuePresencePresent;
+
+pub use self::__HKDefines::HKCategoryValuePresenceNotPresent;
+
+pub use self::__HKDefines::HKCategoryValueHeadphoneAudioExposureEvent;
+
+pub use self::__HKDefines::HKCategoryValueHeadphoneAudioExposureEventSevenDayLimit;
+
+pub use self::__HKDefines::HKCategoryValueLowCardioFitnessEvent;
+
+pub use self::__HKDefines::HKCategoryValueLowCardioFitnessEventLowFitness;
+
+pub use self::__HKDefines::HKActivityMoveMode;
+
+pub use self::__HKDefines::HKActivityMoveModeActiveEnergy;
+
+pub use self::__HKDefines::HKActivityMoveModeAppleMoveTime;
+
+pub use self::__HKDefines::HKCategoryValueAppleWalkingSteadinessEvent;
+
+pub use self::__HKDefines::HKCategoryValueAppleWalkingSteadinessEventInitialLow;
+
+pub use self::__HKDefines::HKCategoryValueAppleWalkingSteadinessEventInitialVeryLow;
+
+pub use self::__HKDefines::HKCategoryValueAppleWalkingSteadinessEventRepeatLow;
+
+pub use self::__HKDefines::HKCategoryValueAppleWalkingSteadinessEventRepeatVeryLow;
+#[cfg(feature = "HealthKit_HKDeletedObject")]
 #[cfg(feature = "HealthKit_HKDeletedObject")]
 pub use self::__HKDeletedObject::HKDeletedObject;
+
+pub use self::__HKDevice::HKDevicePropertyKeyName;
+
+pub use self::__HKDevice::HKDevicePropertyKeyManufacturer;
+
+pub use self::__HKDevice::HKDevicePropertyKeyModel;
+
+pub use self::__HKDevice::HKDevicePropertyKeyHardwareVersion;
+
+pub use self::__HKDevice::HKDevicePropertyKeyFirmwareVersion;
+
+pub use self::__HKDevice::HKDevicePropertyKeySoftwareVersion;
+
+pub use self::__HKDevice::HKDevicePropertyKeyLocalIdentifier;
+
+#[cfg(feature = "HealthKit_HKDevice")]
 #[cfg(feature = "HealthKit_HKDevice")]
 pub use self::__HKDevice::HKDevice;
-pub use self::__HKDevice::HKDevicePropertyKeyFirmwareVersion;
-pub use self::__HKDevice::HKDevicePropertyKeyHardwareVersion;
-pub use self::__HKDevice::HKDevicePropertyKeyLocalIdentifier;
-pub use self::__HKDevice::HKDevicePropertyKeyManufacturer;
-pub use self::__HKDevice::HKDevicePropertyKeyModel;
-pub use self::__HKDevice::HKDevicePropertyKeyName;
-pub use self::__HKDevice::HKDevicePropertyKeySoftwareVersion;
 pub use self::__HKDevice::HKDevicePropertyKeyUDIDeviceIdentifier;
 #[cfg(feature = "HealthKit_HKDiscreteQuantitySample")]
+#[cfg(feature = "HealthKit_HKDiscreteQuantitySample")]
 pub use self::__HKDiscreteQuantitySample::HKDiscreteQuantitySample;
-pub use self::__HKDiscreteQuantitySample::HKPredicateKeyPathAverage;
-pub use self::__HKDiscreteQuantitySample::HKPredicateKeyPathMax;
+
 pub use self::__HKDiscreteQuantitySample::HKPredicateKeyPathMin;
+
+pub use self::__HKDiscreteQuantitySample::HKPredicateKeyPathAverage;
+
+pub use self::__HKDiscreteQuantitySample::HKPredicateKeyPathMax;
+
 pub use self::__HKDiscreteQuantitySample::HKPredicateKeyPathMostRecent;
-pub use self::__HKDiscreteQuantitySample::HKPredicateKeyPathMostRecentDuration;
-pub use self::__HKDiscreteQuantitySample::HKPredicateKeyPathMostRecentEndDate;
+
 pub use self::__HKDiscreteQuantitySample::HKPredicateKeyPathMostRecentStartDate;
+
+pub use self::__HKDiscreteQuantitySample::HKPredicateKeyPathMostRecentEndDate;
+
+pub use self::__HKDiscreteQuantitySample::HKPredicateKeyPathMostRecentDuration;
+#[cfg(feature = "HealthKit_HKDocumentQuery")]
 #[cfg(feature = "HealthKit_HKDocumentQuery")]
 pub use self::__HKDocumentQuery::HKDocumentQuery;
 #[cfg(feature = "HealthKit_HKDocumentSample")]
+#[cfg(feature = "HealthKit_HKDocumentSample")]
 pub use self::__HKDocumentSample::HKDocumentSample;
+
+pub use self::__HKElectrocardiogram::HKElectrocardiogramLead;
+
+pub use self::__HKElectrocardiogram::HKElectrocardiogramLeadAppleWatchSimilarToLeadI;
+
+pub use self::__HKElectrocardiogram::HKElectrocardiogramClassification;
+
+pub use self::__HKElectrocardiogram::HKElectrocardiogramClassificationNotSet;
+
+pub use self::__HKElectrocardiogram::HKElectrocardiogramClassificationSinusRhythm;
+
+pub use self::__HKElectrocardiogram::HKElectrocardiogramClassificationAtrialFibrillation;
+
+pub use self::__HKElectrocardiogram::HKElectrocardiogramClassificationInconclusiveLowHeartRate;
+
+pub use self::__HKElectrocardiogram::HKElectrocardiogramClassificationInconclusiveHighHeartRate;
+
+pub use self::__HKElectrocardiogram::HKElectrocardiogramClassificationInconclusivePoorReading;
+
+pub use self::__HKElectrocardiogram::HKElectrocardiogramClassificationInconclusiveOther;
+
+pub use self::__HKElectrocardiogram::HKElectrocardiogramClassificationUnrecognized;
+
+pub use self::__HKElectrocardiogram::HKElectrocardiogramSymptomsStatus;
+
+pub use self::__HKElectrocardiogram::HKElectrocardiogramSymptomsStatusNotSet;
+
+pub use self::__HKElectrocardiogram::HKElectrocardiogramSymptomsStatusNone;
+
+#[cfg(feature = "HealthKit_HKElectrocardiogram")]
 #[cfg(feature = "HealthKit_HKElectrocardiogram")]
 pub use self::__HKElectrocardiogram::HKElectrocardiogram;
+pub use self::__HKElectrocardiogram::HKElectrocardiogramSymptomsStatusPresent;
+
 pub use self::__HKElectrocardiogram::HKPredicateKeyPathAverageHeartRate;
+
 pub use self::__HKElectrocardiogram::HKPredicateKeyPathECGClassification;
+
 pub use self::__HKElectrocardiogram::HKPredicateKeyPathECGSymptomsStatus;
-pub use self::__HKElectrocardiogram::{
-    HKElectrocardiogramClassification, HKElectrocardiogramClassificationAtrialFibrillation,
-    HKElectrocardiogramClassificationInconclusiveHighHeartRate,
-    HKElectrocardiogramClassificationInconclusiveLowHeartRate,
-    HKElectrocardiogramClassificationInconclusiveOther,
-    HKElectrocardiogramClassificationInconclusivePoorReading,
-    HKElectrocardiogramClassificationNotSet, HKElectrocardiogramClassificationSinusRhythm,
-    HKElectrocardiogramClassificationUnrecognized,
-};
-pub use self::__HKElectrocardiogram::{
-    HKElectrocardiogramLead, HKElectrocardiogramLeadAppleWatchSimilarToLeadI,
-};
-pub use self::__HKElectrocardiogram::{
-    HKElectrocardiogramSymptomsStatus, HKElectrocardiogramSymptomsStatusNone,
-    HKElectrocardiogramSymptomsStatusNotSet, HKElectrocardiogramSymptomsStatusPresent,
-};
+#[cfg(feature = "HealthKit_HKElectrocardiogramQuery")]
 #[cfg(feature = "HealthKit_HKElectrocardiogramQuery")]
 pub use self::__HKElectrocardiogramQuery::HKElectrocardiogramQuery;
 #[cfg(feature = "HealthKit_HKElectrocardiogramVoltageMeasurement")]
+#[cfg(feature = "HealthKit_HKElectrocardiogramVoltageMeasurement")]
 pub use self::__HKElectrocardiogramQuery::HKElectrocardiogramVoltageMeasurement;
+
 pub use self::__HKFHIRRelease::HKFHIRRelease;
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__HKFHIRRelease::HKFHIRReleaseDSTU2;
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__HKFHIRRelease::HKFHIRReleaseR4;
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__HKFHIRRelease::HKFHIRReleaseUnknown;
 #[cfg(feature = "HealthKit_HKFHIRResource")]
+#[cfg(feature = "HealthKit_HKFHIRResource")]
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__HKFHIRResource::HKFHIRResource;
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__HKFHIRResource::HKFHIRResourceType;
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__HKFHIRResource::HKFHIRResourceTypeAllergyIntolerance;
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__HKFHIRResource::HKFHIRResourceTypeCondition;
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__HKFHIRResource::HKFHIRResourceTypeCoverage;
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__HKFHIRResource::HKFHIRResourceTypeImmunization;
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__HKFHIRResource::HKFHIRResourceTypeMedicationDispense;
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__HKFHIRResource::HKFHIRResourceTypeMedicationOrder;
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__HKFHIRResource::HKFHIRResourceTypeMedicationRequest;
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__HKFHIRResource::HKFHIRResourceTypeMedicationStatement;
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__HKFHIRResource::HKFHIRResourceTypeObservation;
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__HKFHIRResource::HKFHIRResourceTypeProcedure;
 #[cfg(feature = "HealthKit_HKFHIRVersion")]
+#[cfg(feature = "HealthKit_HKFHIRVersion")]
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__HKFHIRVersion::HKFHIRVersion;
+#[cfg(feature = "HealthKit_HKGlassesLensSpecification")]
 #[cfg(feature = "HealthKit_HKGlassesLensSpecification")]
 pub use self::__HKGlassesLensSpecification::HKGlassesLensSpecification;
 #[cfg(feature = "HealthKit_HKGlassesPrescription")]
+#[cfg(feature = "HealthKit_HKGlassesPrescription")]
 pub use self::__HKGlassesPrescription::HKGlassesPrescription;
 #[cfg(feature = "HealthKit_HKHealthStore")]
+#[cfg(feature = "HealthKit_HKHealthStore")]
 pub use self::__HKHealthStore::HKHealthStore;
+
 pub use self::__HKHealthStore::HKUserPreferencesDidChangeNotification;
+#[cfg(feature = "HealthKit_HKHeartbeatSeriesBuilder")]
 #[cfg(feature = "HealthKit_HKHeartbeatSeriesBuilder")]
 pub use self::__HKHeartbeatSeriesBuilder::HKHeartbeatSeriesBuilder;
 #[cfg(feature = "HealthKit_HKHeartbeatSeriesQuery")]
+#[cfg(feature = "HealthKit_HKHeartbeatSeriesQuery")]
 pub use self::__HKHeartbeatSeriesQuery::HKHeartbeatSeriesQuery;
+#[cfg(feature = "HealthKit_HKHeartbeatSeriesSample")]
 #[cfg(feature = "HealthKit_HKHeartbeatSeriesSample")]
 pub use self::__HKHeartbeatSeriesSample::HKHeartbeatSeriesSample;
 #[cfg(feature = "HealthKit_HKLensSpecification")]
+#[cfg(feature = "HealthKit_HKLensSpecification")]
 pub use self::__HKLensSpecification::HKLensSpecification;
 #[cfg(feature = "HealthKit_HKLiveWorkoutBuilder")]
+#[cfg(feature = "HealthKit_HKLiveWorkoutBuilder")]
+#[cfg(not(any(target_os = "ios")))]
 pub use self::__HKLiveWorkoutBuilder::HKLiveWorkoutBuilder;
+#[cfg(not(any(target_os = "ios")))]
 pub use self::__HKLiveWorkoutBuilder::HKLiveWorkoutBuilderDelegate;
 #[cfg(feature = "HealthKit_HKLiveWorkoutDataSource")]
+#[cfg(feature = "HealthKit_HKLiveWorkoutDataSource")]
+#[cfg(not(any(target_os = "ios")))]
 pub use self::__HKLiveWorkoutDataSource::HKLiveWorkoutDataSource;
-pub use self::__HKMetadata::HKMetadataKeyAlgorithmVersion;
-pub use self::__HKMetadata::HKMetadataKeyAlpineSlopeGrade;
-pub use self::__HKMetadata::HKMetadataKeyAppleDeviceCalibrated;
-pub use self::__HKMetadata::HKMetadataKeyAppleECGAlgorithmVersion;
-pub use self::__HKMetadata::HKMetadataKeyAudioExposureDuration;
-pub use self::__HKMetadata::HKMetadataKeyAudioExposureLevel;
-pub use self::__HKMetadata::HKMetadataKeyAverageMETs;
-pub use self::__HKMetadata::HKMetadataKeyAverageSpeed;
-pub use self::__HKMetadata::HKMetadataKeyBarometricPressure;
-pub use self::__HKMetadata::HKMetadataKeyBloodGlucoseMealTime;
-pub use self::__HKMetadata::HKMetadataKeyBodyTemperatureSensorLocation;
-pub use self::__HKMetadata::HKMetadataKeyCoachedWorkout;
-pub use self::__HKMetadata::HKMetadataKeyCrossTrainerDistance;
-pub use self::__HKMetadata::HKMetadataKeyDateOfEarliestDataUsedForEstimate;
-pub use self::__HKMetadata::HKMetadataKeyDeviceManufacturerName;
-pub use self::__HKMetadata::HKMetadataKeyDeviceName;
-pub use self::__HKMetadata::HKMetadataKeyDevicePlacementSide;
+
 pub use self::__HKMetadata::HKMetadataKeyDeviceSerialNumber;
-pub use self::__HKMetadata::HKMetadataKeyDigitalSignature;
-pub use self::__HKMetadata::HKMetadataKeyElevationAscended;
-pub use self::__HKMetadata::HKMetadataKeyElevationDescended;
-pub use self::__HKMetadata::HKMetadataKeyExternalUUID;
-pub use self::__HKMetadata::HKMetadataKeyFitnessMachineDuration;
-pub use self::__HKMetadata::HKMetadataKeyFoodType;
-pub use self::__HKMetadata::HKMetadataKeyGlassesPrescriptionDescription;
-pub use self::__HKMetadata::HKMetadataKeyGroupFitness;
-pub use self::__HKMetadata::HKMetadataKeyHeartRateEventThreshold;
-pub use self::__HKMetadata::HKMetadataKeyHeartRateMotionContext;
-pub use self::__HKMetadata::HKMetadataKeyHeartRateRecoveryActivityDuration;
-pub use self::__HKMetadata::HKMetadataKeyHeartRateRecoveryActivityType;
-pub use self::__HKMetadata::HKMetadataKeyHeartRateRecoveryMaxObservedRecoveryHeartRate;
-pub use self::__HKMetadata::HKMetadataKeyHeartRateRecoveryTestType;
+
+pub use self::__HKMetadata::HKMetadataKeyBodyTemperatureSensorLocation;
+
+pub use self::__HKMetadata::HKBodyTemperatureSensorLocation;
+
+pub use self::__HKMetadata::HKBodyTemperatureSensorLocationOther;
+
+pub use self::__HKMetadata::HKBodyTemperatureSensorLocationArmpit;
+
+pub use self::__HKMetadata::HKBodyTemperatureSensorLocationBody;
+
+pub use self::__HKMetadata::HKBodyTemperatureSensorLocationEar;
+
+pub use self::__HKMetadata::HKBodyTemperatureSensorLocationFinger;
+
+pub use self::__HKMetadata::HKBodyTemperatureSensorLocationGastroIntestinal;
+
+pub use self::__HKMetadata::HKBodyTemperatureSensorLocationMouth;
+
+pub use self::__HKMetadata::HKBodyTemperatureSensorLocationRectum;
+
+pub use self::__HKMetadata::HKBodyTemperatureSensorLocationToe;
+
+pub use self::__HKMetadata::HKBodyTemperatureSensorLocationEarDrum;
+
+pub use self::__HKMetadata::HKBodyTemperatureSensorLocationTemporalArtery;
+
+pub use self::__HKMetadata::HKBodyTemperatureSensorLocationForehead;
+
 pub use self::__HKMetadata::HKMetadataKeyHeartRateSensorLocation;
-pub use self::__HKMetadata::HKMetadataKeyIndoorBikeDistance;
-pub use self::__HKMetadata::HKMetadataKeyIndoorWorkout;
-pub use self::__HKMetadata::HKMetadataKeyInsulinDeliveryReason;
-pub use self::__HKMetadata::HKMetadataKeyLapLength;
-pub use self::__HKMetadata::HKMetadataKeyLowCardioFitnessEventThreshold;
-pub use self::__HKMetadata::HKMetadataKeyMaximumSpeed;
-pub use self::__HKMetadata::HKMetadataKeyMenstrualCycleStart;
-pub use self::__HKMetadata::HKMetadataKeyQuantityClampedToLowerBound;
-pub use self::__HKMetadata::HKMetadataKeyQuantityClampedToUpperBound;
-pub use self::__HKMetadata::HKMetadataKeyReferenceRangeLowerLimit;
-pub use self::__HKMetadata::HKMetadataKeyReferenceRangeUpperLimit;
-pub use self::__HKMetadata::HKMetadataKeySWOLFScore;
-pub use self::__HKMetadata::HKMetadataKeySessionEstimate;
-pub use self::__HKMetadata::HKMetadataKeySexualActivityProtectionUsed;
-pub use self::__HKMetadata::HKMetadataKeySwimmingLocationType;
-pub use self::__HKMetadata::HKMetadataKeySwimmingStrokeStyle;
-pub use self::__HKMetadata::HKMetadataKeySyncIdentifier;
-pub use self::__HKMetadata::HKMetadataKeySyncVersion;
-pub use self::__HKMetadata::HKMetadataKeyTimeZone;
-pub use self::__HKMetadata::HKMetadataKeyUDIDeviceIdentifier;
-pub use self::__HKMetadata::HKMetadataKeyUDIProductionIdentifier;
+
+pub use self::__HKMetadata::HKHeartRateSensorLocation;
+
+pub use self::__HKMetadata::HKHeartRateSensorLocationOther;
+
+pub use self::__HKMetadata::HKHeartRateSensorLocationChest;
+
+pub use self::__HKMetadata::HKHeartRateSensorLocationWrist;
+
+pub use self::__HKMetadata::HKHeartRateSensorLocationFinger;
+
+pub use self::__HKMetadata::HKHeartRateSensorLocationHand;
+
+pub use self::__HKMetadata::HKHeartRateSensorLocationEarLobe;
+
+pub use self::__HKMetadata::HKHeartRateSensorLocationFoot;
+
+pub use self::__HKMetadata::HKMetadataKeyHeartRateMotionContext;
+
+pub use self::__HKMetadata::HKHeartRateMotionContext;
+
+pub use self::__HKMetadata::HKHeartRateMotionContextNotSet;
+
+pub use self::__HKMetadata::HKHeartRateMotionContextSedentary;
+
+pub use self::__HKMetadata::HKHeartRateMotionContextActive;
+
 pub use self::__HKMetadata::HKMetadataKeyUserMotionContext;
-pub use self::__HKMetadata::HKMetadataKeyVO2MaxTestType;
-pub use self::__HKMetadata::HKMetadataKeyVO2MaxValue;
+
+pub use self::__HKMetadata::HKUserMotionContext;
+
+pub use self::__HKMetadata::HKUserMotionContextNotSet;
+
+pub use self::__HKMetadata::HKUserMotionContextStationary;
+
+pub use self::__HKMetadata::HKUserMotionContextActive;
+
+pub use self::__HKMetadata::HKMetadataKeySessionEstimate;
+
+pub use self::__HKMetadata::HKHeartRateRecoveryTestType;
+
+pub use self::__HKMetadata::HKHeartRateRecoveryTestTypeMaxExercise;
+
+pub use self::__HKMetadata::HKHeartRateRecoveryTestTypePredictionSubMaxExercise;
+
+pub use self::__HKMetadata::HKHeartRateRecoveryTestTypePredictionNonExercise;
+
+pub use self::__HKMetadata::HKMetadataKeyHeartRateRecoveryTestType;
+
+pub use self::__HKMetadata::HKMetadataKeyHeartRateRecoveryActivityType;
+
+pub use self::__HKMetadata::HKMetadataKeyHeartRateRecoveryActivityDuration;
+
+pub use self::__HKMetadata::HKMetadataKeyHeartRateRecoveryMaxObservedRecoveryHeartRate;
+
+pub use self::__HKMetadata::HKMetadataKeyFoodType;
+
+pub use self::__HKMetadata::HKMetadataKeyUDIDeviceIdentifier;
+
+pub use self::__HKMetadata::HKMetadataKeyUDIProductionIdentifier;
+
+pub use self::__HKMetadata::HKMetadataKeyDigitalSignature;
+
+pub use self::__HKMetadata::HKMetadataKeyExternalUUID;
+
+pub use self::__HKMetadata::HKMetadataKeySyncIdentifier;
+
+pub use self::__HKMetadata::HKMetadataKeySyncVersion;
+
+pub use self::__HKMetadata::HKMetadataKeyTimeZone;
+
+pub use self::__HKMetadata::HKMetadataKeyDeviceName;
+
+pub use self::__HKMetadata::HKMetadataKeyDeviceManufacturerName;
+
 pub use self::__HKMetadata::HKMetadataKeyWasTakenInLab;
+
+pub use self::__HKMetadata::HKMetadataKeyReferenceRangeLowerLimit;
+
+pub use self::__HKMetadata::HKMetadataKeyReferenceRangeUpperLimit;
+
 pub use self::__HKMetadata::HKMetadataKeyWasUserEntered;
-pub use self::__HKMetadata::HKMetadataKeyWeatherCondition;
-pub use self::__HKMetadata::HKMetadataKeyWeatherHumidity;
-pub use self::__HKMetadata::HKMetadataKeyWeatherTemperature;
+
 pub use self::__HKMetadata::HKMetadataKeyWorkoutBrandName;
-pub use self::__HKMetadata::{
-    HKAppleECGAlgorithmVersion, HKAppleECGAlgorithmVersion1, HKAppleECGAlgorithmVersion2,
-};
-pub use self::__HKMetadata::{
-    HKBloodGlucoseMealTime, HKBloodGlucoseMealTimePostprandial, HKBloodGlucoseMealTimePreprandial,
-};
-pub use self::__HKMetadata::{
-    HKBodyTemperatureSensorLocation, HKBodyTemperatureSensorLocationArmpit,
-    HKBodyTemperatureSensorLocationBody, HKBodyTemperatureSensorLocationEar,
-    HKBodyTemperatureSensorLocationEarDrum, HKBodyTemperatureSensorLocationFinger,
-    HKBodyTemperatureSensorLocationForehead, HKBodyTemperatureSensorLocationGastroIntestinal,
-    HKBodyTemperatureSensorLocationMouth, HKBodyTemperatureSensorLocationOther,
-    HKBodyTemperatureSensorLocationRectum, HKBodyTemperatureSensorLocationTemporalArtery,
-    HKBodyTemperatureSensorLocationToe,
-};
-pub use self::__HKMetadata::{
-    HKDevicePlacementSide, HKDevicePlacementSideCentral, HKDevicePlacementSideLeft,
-    HKDevicePlacementSideRight, HKDevicePlacementSideUnknown,
-};
-pub use self::__HKMetadata::{
-    HKHeartRateMotionContext, HKHeartRateMotionContextActive, HKHeartRateMotionContextNotSet,
-    HKHeartRateMotionContextSedentary,
-};
-pub use self::__HKMetadata::{
-    HKHeartRateRecoveryTestType, HKHeartRateRecoveryTestTypeMaxExercise,
-    HKHeartRateRecoveryTestTypePredictionNonExercise,
-    HKHeartRateRecoveryTestTypePredictionSubMaxExercise,
-};
-pub use self::__HKMetadata::{
-    HKHeartRateSensorLocation, HKHeartRateSensorLocationChest, HKHeartRateSensorLocationEarLobe,
-    HKHeartRateSensorLocationFinger, HKHeartRateSensorLocationFoot, HKHeartRateSensorLocationHand,
-    HKHeartRateSensorLocationOther, HKHeartRateSensorLocationWrist,
-};
-pub use self::__HKMetadata::{
-    HKInsulinDeliveryReason, HKInsulinDeliveryReasonBasal, HKInsulinDeliveryReasonBolus,
-};
-pub use self::__HKMetadata::{
-    HKSwimmingStrokeStyle, HKSwimmingStrokeStyleBackstroke, HKSwimmingStrokeStyleBreaststroke,
-    HKSwimmingStrokeStyleButterfly, HKSwimmingStrokeStyleFreestyle, HKSwimmingStrokeStyleKickboard,
-    HKSwimmingStrokeStyleMixed, HKSwimmingStrokeStyleUnknown,
-};
-pub use self::__HKMetadata::{
-    HKUserMotionContext, HKUserMotionContextActive, HKUserMotionContextNotSet,
-    HKUserMotionContextStationary,
-};
-pub use self::__HKMetadata::{
-    HKVO2MaxTestType, HKVO2MaxTestTypeMaxExercise, HKVO2MaxTestTypePredictionNonExercise,
-    HKVO2MaxTestTypePredictionSubMaxExercise,
-};
-pub use self::__HKMetadata::{
-    HKWeatherCondition, HKWeatherConditionBlustery, HKWeatherConditionClear,
-    HKWeatherConditionCloudy, HKWeatherConditionDrizzle, HKWeatherConditionDust,
-    HKWeatherConditionFair, HKWeatherConditionFoggy, HKWeatherConditionFreezingDrizzle,
-    HKWeatherConditionFreezingRain, HKWeatherConditionHail, HKWeatherConditionHaze,
-    HKWeatherConditionHurricane, HKWeatherConditionMixedRainAndHail,
-    HKWeatherConditionMixedRainAndSleet, HKWeatherConditionMixedRainAndSnow,
-    HKWeatherConditionMixedSnowAndSleet, HKWeatherConditionMostlyCloudy, HKWeatherConditionNone,
-    HKWeatherConditionPartlyCloudy, HKWeatherConditionScatteredShowers, HKWeatherConditionShowers,
-    HKWeatherConditionSleet, HKWeatherConditionSmoky, HKWeatherConditionSnow,
-    HKWeatherConditionThunderstorms, HKWeatherConditionTornado, HKWeatherConditionTropicalStorm,
-    HKWeatherConditionWindy,
-};
-pub use self::__HKMetadata::{
-    HKWorkoutSwimmingLocationType, HKWorkoutSwimmingLocationTypeOpenWater,
-    HKWorkoutSwimmingLocationTypePool, HKWorkoutSwimmingLocationTypeUnknown,
-};
+
+pub use self::__HKMetadata::HKMetadataKeyGroupFitness;
+
+pub use self::__HKMetadata::HKMetadataKeyIndoorWorkout;
+
+pub use self::__HKMetadata::HKMetadataKeyCoachedWorkout;
+
+pub use self::__HKMetadata::HKWeatherCondition;
+
+pub use self::__HKMetadata::HKWeatherConditionNone;
+
+pub use self::__HKMetadata::HKWeatherConditionClear;
+
+pub use self::__HKMetadata::HKWeatherConditionFair;
+
+pub use self::__HKMetadata::HKWeatherConditionPartlyCloudy;
+
+pub use self::__HKMetadata::HKWeatherConditionMostlyCloudy;
+
+pub use self::__HKMetadata::HKWeatherConditionCloudy;
+
+pub use self::__HKMetadata::HKWeatherConditionFoggy;
+
+pub use self::__HKMetadata::HKWeatherConditionHaze;
+
+pub use self::__HKMetadata::HKWeatherConditionWindy;
+
+pub use self::__HKMetadata::HKWeatherConditionBlustery;
+
+pub use self::__HKMetadata::HKWeatherConditionSmoky;
+
+pub use self::__HKMetadata::HKWeatherConditionDust;
+
+pub use self::__HKMetadata::HKWeatherConditionSnow;
+
+pub use self::__HKMetadata::HKWeatherConditionHail;
+
+pub use self::__HKMetadata::HKWeatherConditionSleet;
+
+pub use self::__HKMetadata::HKWeatherConditionFreezingDrizzle;
+
+pub use self::__HKMetadata::HKWeatherConditionFreezingRain;
+
+pub use self::__HKMetadata::HKWeatherConditionMixedRainAndHail;
+
+pub use self::__HKMetadata::HKWeatherConditionMixedRainAndSnow;
+
+pub use self::__HKMetadata::HKWeatherConditionMixedRainAndSleet;
+
+pub use self::__HKMetadata::HKWeatherConditionMixedSnowAndSleet;
+
+pub use self::__HKMetadata::HKWeatherConditionDrizzle;
+
+pub use self::__HKMetadata::HKWeatherConditionScatteredShowers;
+
+pub use self::__HKMetadata::HKWeatherConditionShowers;
+
+pub use self::__HKMetadata::HKWeatherConditionThunderstorms;
+
+pub use self::__HKMetadata::HKWeatherConditionTropicalStorm;
+
+pub use self::__HKMetadata::HKWeatherConditionHurricane;
+
+pub use self::__HKMetadata::HKWeatherConditionTornado;
+
+pub use self::__HKMetadata::HKMetadataKeyWeatherCondition;
+
+pub use self::__HKMetadata::HKMetadataKeyWeatherTemperature;
+
+pub use self::__HKMetadata::HKMetadataKeyWeatherHumidity;
+
+pub use self::__HKMetadata::HKMetadataKeySexualActivityProtectionUsed;
+
+pub use self::__HKMetadata::HKMetadataKeyMenstrualCycleStart;
+
+pub use self::__HKMetadata::HKMetadataKeyLapLength;
+
+pub use self::__HKMetadata::HKWorkoutSwimmingLocationType;
+
+pub use self::__HKMetadata::HKWorkoutSwimmingLocationTypeUnknown;
+
+pub use self::__HKMetadata::HKWorkoutSwimmingLocationTypePool;
+
+pub use self::__HKMetadata::HKWorkoutSwimmingLocationTypeOpenWater;
+
+pub use self::__HKMetadata::HKMetadataKeySwimmingLocationType;
+
+pub use self::__HKMetadata::HKSwimmingStrokeStyle;
+
+pub use self::__HKMetadata::HKSwimmingStrokeStyleUnknown;
+
+pub use self::__HKMetadata::HKSwimmingStrokeStyleMixed;
+
+pub use self::__HKMetadata::HKSwimmingStrokeStyleFreestyle;
+
+pub use self::__HKMetadata::HKSwimmingStrokeStyleBackstroke;
+
+pub use self::__HKMetadata::HKSwimmingStrokeStyleBreaststroke;
+
+pub use self::__HKMetadata::HKSwimmingStrokeStyleButterfly;
+
+pub use self::__HKMetadata::HKSwimmingStrokeStyleKickboard;
+
+pub use self::__HKMetadata::HKMetadataKeySwimmingStrokeStyle;
+
+pub use self::__HKMetadata::HKInsulinDeliveryReason;
+
+pub use self::__HKMetadata::HKInsulinDeliveryReasonBasal;
+
+pub use self::__HKMetadata::HKInsulinDeliveryReasonBolus;
+
+pub use self::__HKMetadata::HKMetadataKeyInsulinDeliveryReason;
+
+pub use self::__HKMetadata::HKBloodGlucoseMealTime;
+
+pub use self::__HKMetadata::HKBloodGlucoseMealTimePreprandial;
+
+pub use self::__HKMetadata::HKBloodGlucoseMealTimePostprandial;
+
+pub use self::__HKMetadata::HKMetadataKeyBloodGlucoseMealTime;
+
+pub use self::__HKMetadata::HKVO2MaxTestType;
+
+pub use self::__HKMetadata::HKVO2MaxTestTypeMaxExercise;
+
+pub use self::__HKMetadata::HKVO2MaxTestTypePredictionSubMaxExercise;
+
+pub use self::__HKMetadata::HKVO2MaxTestTypePredictionNonExercise;
+
+pub use self::__HKMetadata::HKMetadataKeyVO2MaxTestType;
+
+pub use self::__HKMetadata::HKMetadataKeyAverageSpeed;
+
+pub use self::__HKMetadata::HKMetadataKeyMaximumSpeed;
+
+pub use self::__HKMetadata::HKMetadataKeyAlpineSlopeGrade;
+
+pub use self::__HKMetadata::HKMetadataKeyElevationAscended;
+
+pub use self::__HKMetadata::HKMetadataKeyElevationDescended;
+
+pub use self::__HKMetadata::HKMetadataKeyFitnessMachineDuration;
+
+pub use self::__HKMetadata::HKMetadataKeyIndoorBikeDistance;
+
+pub use self::__HKMetadata::HKMetadataKeyCrossTrainerDistance;
+
+pub use self::__HKMetadata::HKMetadataKeyHeartRateEventThreshold;
+
+pub use self::__HKMetadata::HKMetadataKeyAverageMETs;
+
+pub use self::__HKMetadata::HKMetadataKeyAudioExposureLevel;
+
+pub use self::__HKMetadata::HKMetadataKeyAudioExposureDuration;
+
+pub use self::__HKMetadata::HKAppleECGAlgorithmVersion;
+
+pub use self::__HKMetadata::HKAppleECGAlgorithmVersion1;
+
+pub use self::__HKMetadata::HKAppleECGAlgorithmVersion2;
+
+pub use self::__HKMetadata::HKMetadataKeyAppleECGAlgorithmVersion;
+
+pub use self::__HKMetadata::HKDevicePlacementSide;
+
+pub use self::__HKMetadata::HKDevicePlacementSideUnknown;
+
+pub use self::__HKMetadata::HKDevicePlacementSideLeft;
+
+pub use self::__HKMetadata::HKDevicePlacementSideRight;
+
+pub use self::__HKMetadata::HKDevicePlacementSideCentral;
+
+pub use self::__HKMetadata::HKMetadataKeyDevicePlacementSide;
+
+pub use self::__HKMetadata::HKMetadataKeyBarometricPressure;
+
+pub use self::__HKMetadata::HKMetadataKeyAppleDeviceCalibrated;
+
+pub use self::__HKMetadata::HKMetadataKeyVO2MaxValue;
+
+pub use self::__HKMetadata::HKMetadataKeyLowCardioFitnessEventThreshold;
+
+pub use self::__HKMetadata::HKMetadataKeyDateOfEarliestDataUsedForEstimate;
+
+pub use self::__HKMetadata::HKMetadataKeyAlgorithmVersion;
+
+pub use self::__HKMetadata::HKMetadataKeySWOLFScore;
+
+pub use self::__HKMetadata::HKMetadataKeyQuantityClampedToLowerBound;
+
+pub use self::__HKMetadata::HKMetadataKeyQuantityClampedToUpperBound;
+
+pub use self::__HKMetadata::HKMetadataKeyGlassesPrescriptionDescription;
+#[cfg(feature = "HealthKit_HKObject")]
 #[cfg(feature = "HealthKit_HKObject")]
 pub use self::__HKObject::HKObject;
-pub use self::__HKObject::HKPredicateKeyPathCorrelation;
-pub use self::__HKObject::HKPredicateKeyPathDevice;
-pub use self::__HKObject::HKPredicateKeyPathMetadata;
-pub use self::__HKObject::HKPredicateKeyPathSource;
-pub use self::__HKObject::HKPredicateKeyPathSourceRevision;
+
 pub use self::__HKObject::HKPredicateKeyPathUUID;
+
+pub use self::__HKObject::HKPredicateKeyPathSource;
+
+pub use self::__HKObject::HKPredicateKeyPathMetadata;
+
+pub use self::__HKObject::HKPredicateKeyPathCorrelation;
+
 pub use self::__HKObject::HKPredicateKeyPathWorkout;
+
+pub use self::__HKObject::HKPredicateKeyPathDevice;
+
+pub use self::__HKObject::HKPredicateKeyPathSourceRevision;
+#[cfg(feature = "HealthKit_HKActivitySummaryType")]
 #[cfg(feature = "HealthKit_HKActivitySummaryType")]
 pub use self::__HKObjectType::HKActivitySummaryType;
 #[cfg(feature = "HealthKit_HKAudiogramSampleType")]
+#[cfg(feature = "HealthKit_HKAudiogramSampleType")]
 pub use self::__HKObjectType::HKAudiogramSampleType;
+#[cfg(feature = "HealthKit_HKCategoryType")]
 #[cfg(feature = "HealthKit_HKCategoryType")]
 pub use self::__HKObjectType::HKCategoryType;
 #[cfg(feature = "HealthKit_HKCharacteristicType")]
+#[cfg(feature = "HealthKit_HKCharacteristicType")]
 pub use self::__HKObjectType::HKCharacteristicType;
+#[cfg(feature = "HealthKit_HKCorrelationType")]
 #[cfg(feature = "HealthKit_HKCorrelationType")]
 pub use self::__HKObjectType::HKCorrelationType;
 #[cfg(feature = "HealthKit_HKDocumentType")]
+#[cfg(feature = "HealthKit_HKDocumentType")]
 pub use self::__HKObjectType::HKDocumentType;
+#[cfg(feature = "HealthKit_HKElectrocardiogramType")]
 #[cfg(feature = "HealthKit_HKElectrocardiogramType")]
 pub use self::__HKObjectType::HKElectrocardiogramType;
 #[cfg(feature = "HealthKit_HKObjectType")]
+#[cfg(feature = "HealthKit_HKObjectType")]
 pub use self::__HKObjectType::HKObjectType;
+#[cfg(feature = "HealthKit_HKPrescriptionType")]
 #[cfg(feature = "HealthKit_HKPrescriptionType")]
 pub use self::__HKObjectType::HKPrescriptionType;
 #[cfg(feature = "HealthKit_HKQuantityType")]
+#[cfg(feature = "HealthKit_HKQuantityType")]
 pub use self::__HKObjectType::HKQuantityType;
+#[cfg(feature = "HealthKit_HKSampleType")]
 #[cfg(feature = "HealthKit_HKSampleType")]
 pub use self::__HKObjectType::HKSampleType;
 #[cfg(feature = "HealthKit_HKSeriesType")]
+#[cfg(feature = "HealthKit_HKSeriesType")]
 pub use self::__HKObjectType::HKSeriesType;
 #[cfg(feature = "HealthKit_HKWorkoutType")]
+#[cfg(feature = "HealthKit_HKWorkoutType")]
 pub use self::__HKObjectType::HKWorkoutType;
+
+#[cfg(feature = "HealthKit_HKObserverQuery")]
 #[cfg(feature = "HealthKit_HKObserverQuery")]
 pub use self::__HKObserverQuery::HKObserverQuery;
 pub use self::__HKObserverQuery::HKObserverQueryCompletionHandler;
 #[cfg(feature = "HealthKit_HKQuantity")]
+#[cfg(feature = "HealthKit_HKQuantity")]
 pub use self::__HKQuantity::HKQuantity;
-pub use self::__HKQuantityAggregationStyle::{
-    HKQuantityAggregationStyle, HKQuantityAggregationStyleCumulative,
-    HKQuantityAggregationStyleDiscrete, HKQuantityAggregationStyleDiscreteArithmetic,
-    HKQuantityAggregationStyleDiscreteEquivalentContinuousLevel,
-    HKQuantityAggregationStyleDiscreteTemporallyWeighted,
-};
-pub use self::__HKQuantitySample::HKPredicateKeyPathCount;
-pub use self::__HKQuantitySample::HKPredicateKeyPathQuantity;
+
+pub use self::__HKQuantityAggregationStyle::HKQuantityAggregationStyle;
+
+pub use self::__HKQuantityAggregationStyle::HKQuantityAggregationStyleCumulative;
+
+pub use self::__HKQuantityAggregationStyle::HKQuantityAggregationStyleDiscreteArithmetic;
+
+pub use self::__HKQuantityAggregationStyle::HKQuantityAggregationStyleDiscrete;
+
+pub use self::__HKQuantityAggregationStyle::HKQuantityAggregationStyleDiscreteTemporallyWeighted;
+
+pub use self::__HKQuantityAggregationStyle::HKQuantityAggregationStyleDiscreteEquivalentContinuousLevel;
+#[cfg(feature = "HealthKit_HKQuantitySample")]
 #[cfg(feature = "HealthKit_HKQuantitySample")]
 pub use self::__HKQuantitySample::HKQuantitySample;
+
+pub use self::__HKQuantitySample::HKPredicateKeyPathQuantity;
+
+pub use self::__HKQuantitySample::HKPredicateKeyPathCount;
+#[cfg(feature = "HealthKit_HKQuantitySeriesSampleBuilder")]
 #[cfg(feature = "HealthKit_HKQuantitySeriesSampleBuilder")]
 pub use self::__HKQuantitySeriesSampleBuilder::HKQuantitySeriesSampleBuilder;
 #[cfg(feature = "HealthKit_HKQuantitySeriesSampleQuery")]
+#[cfg(feature = "HealthKit_HKQuantitySeriesSampleQuery")]
 pub use self::__HKQuantitySeriesSampleQuery::HKQuantitySeriesSampleQuery;
 #[cfg(feature = "HealthKit_HKQuery")]
+#[cfg(feature = "HealthKit_HKQuery")]
 pub use self::__HKQuery::HKQuery;
-pub use self::__HKQuery::{
-    HKQueryOptionNone, HKQueryOptionStrictEndDate, HKQueryOptionStrictStartDate, HKQueryOptions,
-};
+
+pub use self::__HKQuery::HKQueryOptions;
+
+pub use self::__HKQuery::HKQueryOptionNone;
+
+pub use self::__HKQuery::HKQueryOptionStrictStartDate;
+
+pub use self::__HKQuery::HKQueryOptionStrictEndDate;
+#[cfg(feature = "HealthKit_HKQueryAnchor")]
 #[cfg(feature = "HealthKit_HKQueryAnchor")]
 pub use self::__HKQueryAnchor::HKQueryAnchor;
 #[cfg(feature = "HealthKit_HKQueryDescriptor")]
+#[cfg(feature = "HealthKit_HKQueryDescriptor")]
 pub use self::__HKQueryDescriptor::HKQueryDescriptor;
-pub use self::__HKSample::HKPredicateKeyPathEndDate;
-pub use self::__HKSample::HKPredicateKeyPathStartDate;
+#[cfg(feature = "HealthKit_HKSample")]
 #[cfg(feature = "HealthKit_HKSample")]
 pub use self::__HKSample::HKSample;
-pub use self::__HKSample::HKSampleSortIdentifierEndDate;
+
 pub use self::__HKSample::HKSampleSortIdentifierStartDate;
+
+pub use self::__HKSample::HKSampleSortIdentifierEndDate;
+
+pub use self::__HKSample::HKPredicateKeyPathStartDate;
+
+pub use self::__HKSample::HKPredicateKeyPathEndDate;
+
 pub use self::__HKSampleQuery::HKObjectQueryNoLimit;
+#[cfg(feature = "HealthKit_HKSampleQuery")]
 #[cfg(feature = "HealthKit_HKSampleQuery")]
 pub use self::__HKSampleQuery::HKSampleQuery;
 #[cfg(feature = "HealthKit_HKSeriesBuilder")]
+#[cfg(feature = "HealthKit_HKSeriesBuilder")]
 pub use self::__HKSeriesBuilder::HKSeriesBuilder;
+#[cfg(feature = "HealthKit_HKSeriesSample")]
 #[cfg(feature = "HealthKit_HKSeriesSample")]
 pub use self::__HKSeriesSample::HKSeriesSample;
 #[cfg(feature = "HealthKit_HKSource")]
+#[cfg(feature = "HealthKit_HKSource")]
 pub use self::__HKSource::HKSource;
+#[cfg(feature = "HealthKit_HKSourceQuery")]
 #[cfg(feature = "HealthKit_HKSourceQuery")]
 pub use self::__HKSourceQuery::HKSourceQuery;
 #[cfg(feature = "HealthKit_HKSourceRevision")]
+#[cfg(feature = "HealthKit_HKSourceRevision")]
 pub use self::__HKSourceRevision::HKSourceRevision;
-pub use self::__HKSourceRevision::HKSourceRevisionAnyOperatingSystem;
-pub use self::__HKSourceRevision::HKSourceRevisionAnyProductType;
+
 pub use self::__HKSourceRevision::HKSourceRevisionAnyVersion;
+
+pub use self::__HKSourceRevision::HKSourceRevisionAnyProductType;
+
+pub use self::__HKSourceRevision::HKSourceRevisionAnyOperatingSystem;
+
+pub use self::__HKStatistics::HKStatisticsOptions;
+
+pub use self::__HKStatistics::HKStatisticsOptionNone;
+
+pub use self::__HKStatistics::HKStatisticsOptionSeparateBySource;
+
+pub use self::__HKStatistics::HKStatisticsOptionDiscreteAverage;
+
+pub use self::__HKStatistics::HKStatisticsOptionDiscreteMin;
+
+pub use self::__HKStatistics::HKStatisticsOptionDiscreteMax;
+
+pub use self::__HKStatistics::HKStatisticsOptionCumulativeSum;
+
+pub use self::__HKStatistics::HKStatisticsOptionMostRecent;
+
+pub use self::__HKStatistics::HKStatisticsOptionDiscreteMostRecent;
+
+#[cfg(feature = "HealthKit_HKStatistics")]
 #[cfg(feature = "HealthKit_HKStatistics")]
 pub use self::__HKStatistics::HKStatistics;
-pub use self::__HKStatistics::{
-    HKStatisticsOptionCumulativeSum, HKStatisticsOptionDiscreteAverage,
-    HKStatisticsOptionDiscreteMax, HKStatisticsOptionDiscreteMin,
-    HKStatisticsOptionDiscreteMostRecent, HKStatisticsOptionDuration, HKStatisticsOptionMostRecent,
-    HKStatisticsOptionNone, HKStatisticsOptionSeparateBySource, HKStatisticsOptions,
-};
+pub use self::__HKStatistics::HKStatisticsOptionDuration;
+#[cfg(feature = "HealthKit_HKStatisticsCollection")]
 #[cfg(feature = "HealthKit_HKStatisticsCollection")]
 pub use self::__HKStatisticsCollectionQuery::HKStatisticsCollection;
 #[cfg(feature = "HealthKit_HKStatisticsCollectionQuery")]
+#[cfg(feature = "HealthKit_HKStatisticsCollectionQuery")]
 pub use self::__HKStatisticsCollectionQuery::HKStatisticsCollectionQuery;
 #[cfg(feature = "HealthKit_HKStatisticsQuery")]
+#[cfg(feature = "HealthKit_HKStatisticsQuery")]
 pub use self::__HKStatisticsQuery::HKStatisticsQuery;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifier;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierAbdominalCramps;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierAcne;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierAppetiteChanges;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierAppleStandHour;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierAppleWalkingSteadinessEvent;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierAudioExposureEvent;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierBladderIncontinence;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierBloating;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierBreastPain;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierCervicalMucusQuality;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierChestTightnessOrPain;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierChills;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierConstipation;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierContraceptive;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierCoughing;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierDiarrhea;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierDizziness;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierDrySkin;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierEnvironmentalAudioExposureEvent;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierFainting;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierFatigue;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierFever;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierGeneralizedBodyAche;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierHairLoss;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierHandwashingEvent;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierHeadache;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierHeadphoneAudioExposureEvent;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierHeartburn;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierHighHeartRateEvent;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierHotFlashes;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierInfrequentMenstrualCycles;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierIntermenstrualBleeding;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierIrregularHeartRhythmEvent;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierIrregularMenstrualCycles;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierLactation;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierLossOfSmell;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierLossOfTaste;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierLowCardioFitnessEvent;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierLowHeartRateEvent;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierLowerBackPain;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierMemoryLapse;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierMenstrualFlow;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierMindfulSession;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierMoodChanges;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierNausea;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierNightSweats;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierOvulationTestResult;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierPelvicPain;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierPersistentIntermenstrualBleeding;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierPregnancy;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierPregnancyTestResult;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierProgesteroneTestResult;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierProlongedMenstrualPeriods;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierRapidPoundingOrFlutteringHeartbeat;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierRunnyNose;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierSexualActivity;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierShortnessOfBreath;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierSinusCongestion;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierSkippedHeartbeat;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierSleepAnalysis;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierSleepChanges;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierSoreThroat;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierToothbrushingEvent;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierVaginalDryness;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierVomiting;
-pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierWheezing;
-pub use self::__HKTypeIdentifiers::HKCharacteristicTypeIdentifier;
-pub use self::__HKTypeIdentifiers::HKCharacteristicTypeIdentifierActivityMoveMode;
-pub use self::__HKTypeIdentifiers::HKCharacteristicTypeIdentifierBiologicalSex;
-pub use self::__HKTypeIdentifiers::HKCharacteristicTypeIdentifierBloodType;
-pub use self::__HKTypeIdentifiers::HKCharacteristicTypeIdentifierDateOfBirth;
-pub use self::__HKTypeIdentifiers::HKCharacteristicTypeIdentifierFitzpatrickSkinType;
-pub use self::__HKTypeIdentifiers::HKCharacteristicTypeIdentifierWheelchairUse;
-pub use self::__HKTypeIdentifiers::HKCorrelationTypeIdentifier;
-pub use self::__HKTypeIdentifiers::HKCorrelationTypeIdentifierBloodPressure;
-pub use self::__HKTypeIdentifiers::HKCorrelationTypeIdentifierFood;
-pub use self::__HKTypeIdentifiers::HKDataTypeIdentifierHeartbeatSeries;
-pub use self::__HKTypeIdentifiers::HKDocumentTypeIdentifier;
-pub use self::__HKTypeIdentifiers::HKDocumentTypeIdentifierCDA;
+
 pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifier;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierActiveEnergyBurned;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierAppleExerciseTime;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierAppleMoveTime;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierAppleSleepingWristTemperature;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierAppleStandTime;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierAppleWalkingSteadiness;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierAtrialFibrillationBurden;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierBasalBodyTemperature;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierBasalEnergyBurned;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierBloodAlcoholContent;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierBloodGlucose;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierBloodPressureDiastolic;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierBloodPressureSystolic;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierBodyFatPercentage;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierBodyMass;
+
 pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierBodyMassIndex;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierBodyTemperature;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryBiotin;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryCaffeine;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryCalcium;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryCarbohydrates;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryChloride;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryCholesterol;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryChromium;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryCopper;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryEnergyConsumed;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryFatMonounsaturated;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryFatPolyunsaturated;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryFatSaturated;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryFatTotal;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryFiber;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryFolate;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryIodine;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryIron;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryMagnesium;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryManganese;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryMolybdenum;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryNiacin;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryPantothenicAcid;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryPhosphorus;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryPotassium;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryProtein;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryRiboflavin;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietarySelenium;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietarySodium;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietarySugar;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryThiamin;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryVitaminA;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryVitaminB12;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryVitaminB6;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryVitaminC;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryVitaminD;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryVitaminE;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryVitaminK;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryWater;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryZinc;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDistanceCycling;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDistanceDownhillSnowSports;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDistanceSwimming;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDistanceWalkingRunning;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDistanceWheelchair;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierElectrodermalActivity;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierEnvironmentalAudioExposure;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierFlightsClimbed;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierForcedExpiratoryVolume1;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierForcedVitalCapacity;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierHeadphoneAudioExposure;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierHeartRate;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierHeartRateRecoveryOneMinute;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierHeartRateVariabilitySDNN;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierBodyFatPercentage;
+
 pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierHeight;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierInhalerUsage;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierInsulinDelivery;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierBodyMass;
+
 pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierLeanBodyMass;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierNikeFuel;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierNumberOfAlcoholicBeverages;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierNumberOfTimesFallen;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierOxygenSaturation;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierPeakExpiratoryFlowRate;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierPeripheralPerfusionIndex;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierPushCount;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierRespiratoryRate;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierRestingHeartRate;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierRunningGroundContactTime;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierRunningPower;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierRunningSpeed;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierRunningStrideLength;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierRunningVerticalOscillation;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierSixMinuteWalkTestDistance;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierStairAscentSpeed;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierStairDescentSpeed;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierStepCount;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierSwimmingStrokeCount;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierUVExposure;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierUnderwaterDepth;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierVO2Max;
+
 pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierWaistCircumference;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierWalkingAsymmetryPercentage;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierWalkingDoubleSupportPercentage;
-pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierWalkingHeartRateAverage;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierAppleSleepingWristTemperature;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierStepCount;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDistanceWalkingRunning;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDistanceCycling;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDistanceWheelchair;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierBasalEnergyBurned;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierActiveEnergyBurned;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierFlightsClimbed;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierNikeFuel;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierAppleExerciseTime;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierPushCount;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDistanceSwimming;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierSwimmingStrokeCount;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierVO2Max;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDistanceDownhillSnowSports;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierAppleStandTime;
+
 pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierWalkingSpeed;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierWalkingDoubleSupportPercentage;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierWalkingAsymmetryPercentage;
+
 pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierWalkingStepLength;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierSixMinuteWalkTestDistance;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierStairAscentSpeed;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierStairDescentSpeed;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierAppleMoveTime;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierAppleWalkingSteadiness;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierRunningStrideLength;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierRunningVerticalOscillation;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierRunningGroundContactTime;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierRunningPower;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierRunningSpeed;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierHeartRate;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierBodyTemperature;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierBasalBodyTemperature;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierBloodPressureSystolic;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierBloodPressureDiastolic;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierRespiratoryRate;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierRestingHeartRate;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierWalkingHeartRateAverage;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierHeartRateVariabilitySDNN;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierHeartRateRecoveryOneMinute;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierOxygenSaturation;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierPeripheralPerfusionIndex;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierBloodGlucose;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierNumberOfTimesFallen;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierElectrodermalActivity;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierInhalerUsage;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierInsulinDelivery;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierBloodAlcoholContent;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierForcedVitalCapacity;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierForcedExpiratoryVolume1;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierPeakExpiratoryFlowRate;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierEnvironmentalAudioExposure;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierHeadphoneAudioExposure;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierNumberOfAlcoholicBeverages;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryFatTotal;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryFatPolyunsaturated;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryFatMonounsaturated;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryFatSaturated;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryCholesterol;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietarySodium;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryCarbohydrates;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryFiber;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietarySugar;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryEnergyConsumed;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryProtein;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryVitaminA;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryVitaminB6;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryVitaminB12;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryVitaminC;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryVitaminD;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryVitaminE;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryVitaminK;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryCalcium;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryIron;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryThiamin;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryRiboflavin;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryNiacin;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryFolate;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryBiotin;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryPantothenicAcid;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryPhosphorus;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryIodine;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryMagnesium;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryZinc;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietarySelenium;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryCopper;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryManganese;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryChromium;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryMolybdenum;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryChloride;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryPotassium;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryCaffeine;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierDietaryWater;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierUVExposure;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierAtrialFibrillationBurden;
+
+pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierUnderwaterDepth;
+
 pub use self::__HKTypeIdentifiers::HKQuantityTypeIdentifierWaterTemperature;
-pub use self::__HKTypeIdentifiers::HKVisionPrescriptionTypeIdentifier;
-pub use self::__HKTypeIdentifiers::HKWorkoutRouteTypeIdentifier;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifier;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierSleepAnalysis;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierAppleStandHour;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierCervicalMucusQuality;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierOvulationTestResult;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierPregnancyTestResult;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierProgesteroneTestResult;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierMenstrualFlow;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierIntermenstrualBleeding;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierPersistentIntermenstrualBleeding;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierProlongedMenstrualPeriods;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierIrregularMenstrualCycles;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierInfrequentMenstrualCycles;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierSexualActivity;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierMindfulSession;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierHighHeartRateEvent;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierLowHeartRateEvent;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierIrregularHeartRhythmEvent;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierAudioExposureEvent;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierToothbrushingEvent;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierPregnancy;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierLactation;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierContraceptive;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierEnvironmentalAudioExposureEvent;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierHeadphoneAudioExposureEvent;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierHandwashingEvent;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierLowCardioFitnessEvent;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierAppleWalkingSteadinessEvent;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierAbdominalCramps;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierAcne;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierAppetiteChanges;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierBladderIncontinence;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierBloating;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierBreastPain;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierChestTightnessOrPain;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierChills;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierConstipation;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierCoughing;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierDiarrhea;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierDizziness;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierDrySkin;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierFainting;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierFatigue;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierFever;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierGeneralizedBodyAche;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierHairLoss;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierHeadache;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierHeartburn;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierHotFlashes;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierLossOfSmell;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierLossOfTaste;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierLowerBackPain;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierMemoryLapse;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierMoodChanges;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierNausea;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierNightSweats;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierPelvicPain;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierRapidPoundingOrFlutteringHeartbeat;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierRunnyNose;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierShortnessOfBreath;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierSinusCongestion;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierSkippedHeartbeat;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierSleepChanges;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierSoreThroat;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierVaginalDryness;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierVomiting;
+
+pub use self::__HKTypeIdentifiers::HKCategoryTypeIdentifierWheezing;
+
+pub use self::__HKTypeIdentifiers::HKCharacteristicTypeIdentifier;
+
+pub use self::__HKTypeIdentifiers::HKCharacteristicTypeIdentifierBiologicalSex;
+
+pub use self::__HKTypeIdentifiers::HKCharacteristicTypeIdentifierBloodType;
+
+pub use self::__HKTypeIdentifiers::HKCharacteristicTypeIdentifierDateOfBirth;
+
+pub use self::__HKTypeIdentifiers::HKCharacteristicTypeIdentifierFitzpatrickSkinType;
+
+pub use self::__HKTypeIdentifiers::HKCharacteristicTypeIdentifierWheelchairUse;
+
+pub use self::__HKTypeIdentifiers::HKCharacteristicTypeIdentifierActivityMoveMode;
+
+pub use self::__HKTypeIdentifiers::HKCorrelationTypeIdentifier;
+
+pub use self::__HKTypeIdentifiers::HKCorrelationTypeIdentifierBloodPressure;
+
+pub use self::__HKTypeIdentifiers::HKCorrelationTypeIdentifierFood;
+
+pub use self::__HKTypeIdentifiers::HKDocumentTypeIdentifier;
+
+pub use self::__HKTypeIdentifiers::HKDocumentTypeIdentifierCDA;
+
 pub use self::__HKTypeIdentifiers::HKWorkoutTypeIdentifier;
+
+pub use self::__HKTypeIdentifiers::HKWorkoutRouteTypeIdentifier;
+
+pub use self::__HKTypeIdentifiers::HKDataTypeIdentifierHeartbeatSeries;
+
+pub use self::__HKTypeIdentifiers::HKVisionPrescriptionTypeIdentifier;
+#[cfg(feature = "HealthKit_HKUnit")]
 #[cfg(feature = "HealthKit_HKUnit")]
 pub use self::__HKUnit::HKUnit;
-pub use self::__HKUnit::{
-    HKMetricPrefix, HKMetricPrefixCenti, HKMetricPrefixDeca, HKMetricPrefixDeci,
-    HKMetricPrefixFemto, HKMetricPrefixGiga, HKMetricPrefixHecto, HKMetricPrefixKilo,
-    HKMetricPrefixMega, HKMetricPrefixMicro, HKMetricPrefixMilli, HKMetricPrefixNano,
-    HKMetricPrefixNone, HKMetricPrefixPico, HKMetricPrefixTera,
-};
-#[cfg(feature = "HealthKit_HKVerifiableClinicalRecord")]
-pub use self::__HKVerifiableClinicalRecord::HKVerifiableClinicalRecord;
-pub use self::__HKVerifiableClinicalRecord::HKVerifiableClinicalRecordCredentialType;
-pub use self::__HKVerifiableClinicalRecord::HKVerifiableClinicalRecordCredentialTypeCOVID19;
-pub use self::__HKVerifiableClinicalRecord::HKVerifiableClinicalRecordCredentialTypeImmunization;
-pub use self::__HKVerifiableClinicalRecord::HKVerifiableClinicalRecordCredentialTypeLaboratory;
-pub use self::__HKVerifiableClinicalRecord::HKVerifiableClinicalRecordCredentialTypeRecovery;
+
+pub use self::__HKUnit::HKMetricPrefix;
+
+pub use self::__HKUnit::HKMetricPrefixNone;
+
+pub use self::__HKUnit::HKMetricPrefixFemto;
+
+pub use self::__HKUnit::HKMetricPrefixPico;
+
+pub use self::__HKUnit::HKMetricPrefixNano;
+
+pub use self::__HKUnit::HKMetricPrefixMicro;
+
+pub use self::__HKUnit::HKMetricPrefixMilli;
+
+pub use self::__HKUnit::HKMetricPrefixCenti;
+
+pub use self::__HKUnit::HKMetricPrefixDeci;
+
+pub use self::__HKUnit::HKMetricPrefixDeca;
+
+pub use self::__HKUnit::HKMetricPrefixHecto;
+
+pub use self::__HKUnit::HKMetricPrefixKilo;
+
+pub use self::__HKUnit::HKMetricPrefixMega;
+
+pub use self::__HKUnit::HKMetricPrefixGiga;
+
+pub use self::__HKUnit::HKMetricPrefixTera;
+
 pub use self::__HKVerifiableClinicalRecord::HKVerifiableClinicalRecordSourceType;
-pub use self::__HKVerifiableClinicalRecord::HKVerifiableClinicalRecordSourceTypeEUDigitalCOVIDCertificate;
+
 pub use self::__HKVerifiableClinicalRecord::HKVerifiableClinicalRecordSourceTypeSMARTHealthCard;
+
+pub use self::__HKVerifiableClinicalRecord::HKVerifiableClinicalRecordSourceTypeEUDigitalCOVIDCertificate;
+
+pub use self::__HKVerifiableClinicalRecord::HKVerifiableClinicalRecordCredentialType;
+
+pub use self::__HKVerifiableClinicalRecord::HKVerifiableClinicalRecordCredentialTypeCOVID19;
+
+pub use self::__HKVerifiableClinicalRecord::HKVerifiableClinicalRecordCredentialTypeImmunization;
+
+pub use self::__HKVerifiableClinicalRecord::HKVerifiableClinicalRecordCredentialTypeLaboratory;
+
+#[cfg(feature = "HealthKit_HKVerifiableClinicalRecord")]
+#[cfg(feature = "HealthKit_HKVerifiableClinicalRecord")]
+#[cfg(not(any(target_os = "watchos")))]
+pub use self::__HKVerifiableClinicalRecord::HKVerifiableClinicalRecord;
+pub use self::__HKVerifiableClinicalRecord::HKVerifiableClinicalRecordCredentialTypeRecovery;
 #[cfg(feature = "HealthKit_HKVerifiableClinicalRecordQuery")]
+#[cfg(feature = "HealthKit_HKVerifiableClinicalRecordQuery")]
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__HKVerifiableClinicalRecordQuery::HKVerifiableClinicalRecordQuery;
 #[cfg(feature = "HealthKit_HKVerifiableClinicalRecordSubject")]
+#[cfg(feature = "HealthKit_HKVerifiableClinicalRecordSubject")]
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__HKVerifiableClinicalRecordSubject::HKVerifiableClinicalRecordSubject;
+
+pub use self::__HKVisionPrescription::HKVisionPrescriptionType;
+
+pub use self::__HKVisionPrescription::HKVisionPrescriptionTypeGlasses;
+
+#[cfg(feature = "HealthKit_HKVisionPrescription")]
 #[cfg(feature = "HealthKit_HKVisionPrescription")]
 pub use self::__HKVisionPrescription::HKVisionPrescription;
-pub use self::__HKVisionPrescription::{
-    HKVisionPrescriptionType, HKVisionPrescriptionTypeContacts, HKVisionPrescriptionTypeGlasses,
-};
+pub use self::__HKVisionPrescription::HKVisionPrescriptionTypeContacts;
+
+pub use self::__HKVisionPrism::HKPrismBase;
+
+pub use self::__HKVisionPrism::HKPrismBaseNone;
+
+pub use self::__HKVisionPrism::HKPrismBaseUp;
+
+pub use self::__HKVisionPrism::HKPrismBaseDown;
+
+pub use self::__HKVisionPrism::HKPrismBaseIn;
+
+pub use self::__HKVisionPrism::HKPrismBaseOut;
+
+pub use self::__HKVisionPrism::HKVisionEye;
+
+pub use self::__HKVisionPrism::HKVisionEyeLeft;
+
+pub use self::__HKVisionPrism::HKVisionEyeRight;
+#[cfg(feature = "HealthKit_HKVisionPrism")]
 #[cfg(feature = "HealthKit_HKVisionPrism")]
 pub use self::__HKVisionPrism::HKVisionPrism;
-pub use self::__HKVisionPrism::{
-    HKPrismBase, HKPrismBaseDown, HKPrismBaseIn, HKPrismBaseNone, HKPrismBaseOut, HKPrismBaseUp,
-};
-pub use self::__HKVisionPrism::{HKVisionEye, HKVisionEyeLeft, HKVisionEyeRight};
-pub use self::__HKWorkout::HKPredicateKeyPathWorkoutActivity;
-pub use self::__HKWorkout::HKPredicateKeyPathWorkoutAverageQuantity;
-pub use self::__HKWorkout::HKPredicateKeyPathWorkoutDuration;
-pub use self::__HKWorkout::HKPredicateKeyPathWorkoutMaximumQuantity;
-pub use self::__HKWorkout::HKPredicateKeyPathWorkoutMinimumQuantity;
-pub use self::__HKWorkout::HKPredicateKeyPathWorkoutSumQuantity;
-pub use self::__HKWorkout::HKPredicateKeyPathWorkoutTotalDistance;
-pub use self::__HKWorkout::HKPredicateKeyPathWorkoutTotalEnergyBurned;
-pub use self::__HKWorkout::HKPredicateKeyPathWorkoutTotalFlightsClimbed;
-pub use self::__HKWorkout::HKPredicateKeyPathWorkoutTotalSwimmingStrokeCount;
-pub use self::__HKWorkout::HKPredicateKeyPathWorkoutType;
+
+pub use self::__HKWorkout::HKWorkoutActivityType;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeAmericanFootball;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeArchery;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeAustralianFootball;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeBadminton;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeBaseball;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeBasketball;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeBowling;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeBoxing;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeClimbing;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeCricket;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeCrossTraining;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeCurling;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeCycling;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeDance;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeDanceInspiredTraining;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeElliptical;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeEquestrianSports;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeFencing;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeFishing;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeFunctionalStrengthTraining;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeGolf;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeGymnastics;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeHandball;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeHiking;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeHockey;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeHunting;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeLacrosse;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeMartialArts;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeMindAndBody;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeMixedMetabolicCardioTraining;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypePaddleSports;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypePlay;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypePreparationAndRecovery;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeRacquetball;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeRowing;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeRugby;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeRunning;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeSailing;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeSkatingSports;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeSnowSports;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeSoccer;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeSoftball;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeSquash;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeStairClimbing;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeSurfingSports;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeSwimming;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeTableTennis;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeTennis;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeTrackAndField;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeTraditionalStrengthTraining;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeVolleyball;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeWalking;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeWaterFitness;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeWaterPolo;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeWaterSports;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeWrestling;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeYoga;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeBarre;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeCoreTraining;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeCrossCountrySkiing;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeDownhillSkiing;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeFlexibility;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeHighIntensityIntervalTraining;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeJumpRope;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeKickboxing;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypePilates;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeSnowboarding;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeStairs;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeStepTraining;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeWheelchairWalkPace;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeWheelchairRunPace;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeTaiChi;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeMixedCardio;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeHandCycling;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeDiscSports;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeFitnessGaming;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeCardioDance;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeSocialDance;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypePickleball;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeCooldown;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeSwimBikeRun;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeTransition;
+
+pub use self::__HKWorkout::HKWorkoutActivityTypeOther;
+
+pub use self::__HKWorkout::HKWorkoutEventType;
+
+pub use self::__HKWorkout::HKWorkoutEventTypePause;
+
+pub use self::__HKWorkout::HKWorkoutEventTypeResume;
+
+pub use self::__HKWorkout::HKWorkoutEventTypeLap;
+
+pub use self::__HKWorkout::HKWorkoutEventTypeMarker;
+
+pub use self::__HKWorkout::HKWorkoutEventTypeMotionPaused;
+
+pub use self::__HKWorkout::HKWorkoutEventTypeMotionResumed;
+
+pub use self::__HKWorkout::HKWorkoutEventTypeSegment;
+
+#[cfg(feature = "HealthKit_HKWorkout")]
 #[cfg(feature = "HealthKit_HKWorkout")]
 pub use self::__HKWorkout::HKWorkout;
 #[cfg(feature = "HealthKit_HKWorkoutEvent")]
+#[cfg(feature = "HealthKit_HKWorkoutEvent")]
 pub use self::__HKWorkout::HKWorkoutEvent;
+pub use self::__HKWorkout::HKWorkoutEventTypePauseOrResumeRequest;
+
+pub use self::__HKWorkout::HKPredicateKeyPathWorkoutDuration;
+
+pub use self::__HKWorkout::HKPredicateKeyPathWorkoutTotalDistance;
+
+pub use self::__HKWorkout::HKPredicateKeyPathWorkoutTotalEnergyBurned;
+
+pub use self::__HKWorkout::HKPredicateKeyPathWorkoutType;
+
+pub use self::__HKWorkout::HKPredicateKeyPathWorkoutTotalSwimmingStrokeCount;
+
+pub use self::__HKWorkout::HKPredicateKeyPathWorkoutTotalFlightsClimbed;
+
+pub use self::__HKWorkout::HKPredicateKeyPathWorkoutSumQuantity;
+
+pub use self::__HKWorkout::HKPredicateKeyPathWorkoutMinimumQuantity;
+
+pub use self::__HKWorkout::HKPredicateKeyPathWorkoutMaximumQuantity;
+
+pub use self::__HKWorkout::HKPredicateKeyPathWorkoutAverageQuantity;
+
+pub use self::__HKWorkout::HKPredicateKeyPathWorkoutActivity;
+
 pub use self::__HKWorkout::HKWorkoutSortIdentifierDuration;
+
 pub use self::__HKWorkout::HKWorkoutSortIdentifierTotalDistance;
+
 pub use self::__HKWorkout::HKWorkoutSortIdentifierTotalEnergyBurned;
-pub use self::__HKWorkout::HKWorkoutSortIdentifierTotalFlightsClimbed;
+
 pub use self::__HKWorkout::HKWorkoutSortIdentifierTotalSwimmingStrokeCount;
-pub use self::__HKWorkout::{
-    HKWorkoutActivityType, HKWorkoutActivityTypeAmericanFootball, HKWorkoutActivityTypeArchery,
-    HKWorkoutActivityTypeAustralianFootball, HKWorkoutActivityTypeBadminton,
-    HKWorkoutActivityTypeBarre, HKWorkoutActivityTypeBaseball, HKWorkoutActivityTypeBasketball,
-    HKWorkoutActivityTypeBowling, HKWorkoutActivityTypeBoxing, HKWorkoutActivityTypeCardioDance,
-    HKWorkoutActivityTypeClimbing, HKWorkoutActivityTypeCooldown,
-    HKWorkoutActivityTypeCoreTraining, HKWorkoutActivityTypeCricket,
-    HKWorkoutActivityTypeCrossCountrySkiing, HKWorkoutActivityTypeCrossTraining,
-    HKWorkoutActivityTypeCurling, HKWorkoutActivityTypeCycling, HKWorkoutActivityTypeDance,
-    HKWorkoutActivityTypeDanceInspiredTraining, HKWorkoutActivityTypeDiscSports,
-    HKWorkoutActivityTypeDownhillSkiing, HKWorkoutActivityTypeElliptical,
-    HKWorkoutActivityTypeEquestrianSports, HKWorkoutActivityTypeFencing,
-    HKWorkoutActivityTypeFishing, HKWorkoutActivityTypeFitnessGaming,
-    HKWorkoutActivityTypeFlexibility, HKWorkoutActivityTypeFunctionalStrengthTraining,
-    HKWorkoutActivityTypeGolf, HKWorkoutActivityTypeGymnastics, HKWorkoutActivityTypeHandCycling,
-    HKWorkoutActivityTypeHandball, HKWorkoutActivityTypeHighIntensityIntervalTraining,
-    HKWorkoutActivityTypeHiking, HKWorkoutActivityTypeHockey, HKWorkoutActivityTypeHunting,
-    HKWorkoutActivityTypeJumpRope, HKWorkoutActivityTypeKickboxing, HKWorkoutActivityTypeLacrosse,
-    HKWorkoutActivityTypeMartialArts, HKWorkoutActivityTypeMindAndBody,
-    HKWorkoutActivityTypeMixedCardio, HKWorkoutActivityTypeMixedMetabolicCardioTraining,
-    HKWorkoutActivityTypeOther, HKWorkoutActivityTypePaddleSports, HKWorkoutActivityTypePickleball,
-    HKWorkoutActivityTypePilates, HKWorkoutActivityTypePlay,
-    HKWorkoutActivityTypePreparationAndRecovery, HKWorkoutActivityTypeRacquetball,
-    HKWorkoutActivityTypeRowing, HKWorkoutActivityTypeRugby, HKWorkoutActivityTypeRunning,
-    HKWorkoutActivityTypeSailing, HKWorkoutActivityTypeSkatingSports,
-    HKWorkoutActivityTypeSnowSports, HKWorkoutActivityTypeSnowboarding,
-    HKWorkoutActivityTypeSoccer, HKWorkoutActivityTypeSocialDance, HKWorkoutActivityTypeSoftball,
-    HKWorkoutActivityTypeSquash, HKWorkoutActivityTypeStairClimbing, HKWorkoutActivityTypeStairs,
-    HKWorkoutActivityTypeStepTraining, HKWorkoutActivityTypeSurfingSports,
-    HKWorkoutActivityTypeSwimBikeRun, HKWorkoutActivityTypeSwimming,
-    HKWorkoutActivityTypeTableTennis, HKWorkoutActivityTypeTaiChi, HKWorkoutActivityTypeTennis,
-    HKWorkoutActivityTypeTrackAndField, HKWorkoutActivityTypeTraditionalStrengthTraining,
-    HKWorkoutActivityTypeTransition, HKWorkoutActivityTypeVolleyball, HKWorkoutActivityTypeWalking,
-    HKWorkoutActivityTypeWaterFitness, HKWorkoutActivityTypeWaterPolo,
-    HKWorkoutActivityTypeWaterSports, HKWorkoutActivityTypeWheelchairRunPace,
-    HKWorkoutActivityTypeWheelchairWalkPace, HKWorkoutActivityTypeWrestling,
-    HKWorkoutActivityTypeYoga,
-};
-pub use self::__HKWorkout::{
-    HKWorkoutEventType, HKWorkoutEventTypeLap, HKWorkoutEventTypeMarker,
-    HKWorkoutEventTypeMotionPaused, HKWorkoutEventTypeMotionResumed, HKWorkoutEventTypePause,
-    HKWorkoutEventTypePauseOrResumeRequest, HKWorkoutEventTypeResume, HKWorkoutEventTypeSegment,
-};
-pub use self::__HKWorkoutActivity::HKPredicateKeyPathWorkoutActivityAverageQuantity;
-pub use self::__HKWorkoutActivity::HKPredicateKeyPathWorkoutActivityDuration;
-pub use self::__HKWorkoutActivity::HKPredicateKeyPathWorkoutActivityEndDate;
-pub use self::__HKWorkoutActivity::HKPredicateKeyPathWorkoutActivityMaximumQuantity;
-pub use self::__HKWorkoutActivity::HKPredicateKeyPathWorkoutActivityMinimumQuantity;
-pub use self::__HKWorkoutActivity::HKPredicateKeyPathWorkoutActivityStartDate;
-pub use self::__HKWorkoutActivity::HKPredicateKeyPathWorkoutActivitySumQuantity;
-pub use self::__HKWorkoutActivity::HKPredicateKeyPathWorkoutActivityType;
+
+pub use self::__HKWorkout::HKWorkoutSortIdentifierTotalFlightsClimbed;
+#[cfg(feature = "HealthKit_HKWorkoutActivity")]
 #[cfg(feature = "HealthKit_HKWorkoutActivity")]
 pub use self::__HKWorkoutActivity::HKWorkoutActivity;
+
+pub use self::__HKWorkoutActivity::HKPredicateKeyPathWorkoutActivityType;
+
+pub use self::__HKWorkoutActivity::HKPredicateKeyPathWorkoutActivityDuration;
+
+pub use self::__HKWorkoutActivity::HKPredicateKeyPathWorkoutActivityStartDate;
+
+pub use self::__HKWorkoutActivity::HKPredicateKeyPathWorkoutActivityEndDate;
+
+pub use self::__HKWorkoutActivity::HKPredicateKeyPathWorkoutActivitySumQuantity;
+
+pub use self::__HKWorkoutActivity::HKPredicateKeyPathWorkoutActivityMinimumQuantity;
+
+pub use self::__HKWorkoutActivity::HKPredicateKeyPathWorkoutActivityMaximumQuantity;
+
+pub use self::__HKWorkoutActivity::HKPredicateKeyPathWorkoutActivityAverageQuantity;
+#[cfg(feature = "HealthKit_HKWorkoutBuilder")]
 #[cfg(feature = "HealthKit_HKWorkoutBuilder")]
 pub use self::__HKWorkoutBuilder::HKWorkoutBuilder;
+
+pub use self::__HKWorkoutConfiguration::HKWorkoutSessionLocationType;
+
+pub use self::__HKWorkoutConfiguration::HKWorkoutSessionLocationTypeUnknown;
+
+pub use self::__HKWorkoutConfiguration::HKWorkoutSessionLocationTypeIndoor;
+
+#[cfg(feature = "HealthKit_HKWorkoutConfiguration")]
 #[cfg(feature = "HealthKit_HKWorkoutConfiguration")]
 pub use self::__HKWorkoutConfiguration::HKWorkoutConfiguration;
-pub use self::__HKWorkoutConfiguration::{
-    HKWorkoutSessionLocationType, HKWorkoutSessionLocationTypeIndoor,
-    HKWorkoutSessionLocationTypeOutdoor, HKWorkoutSessionLocationTypeUnknown,
-};
+pub use self::__HKWorkoutConfiguration::HKWorkoutSessionLocationTypeOutdoor;
+#[cfg(feature = "HealthKit_HKWorkoutRoute")]
 #[cfg(feature = "HealthKit_HKWorkoutRoute")]
 pub use self::__HKWorkoutRoute::HKWorkoutRoute;
 #[cfg(feature = "HealthKit_HKWorkoutRouteBuilder")]
+#[cfg(feature = "HealthKit_HKWorkoutRouteBuilder")]
 pub use self::__HKWorkoutRouteBuilder::HKWorkoutRouteBuilder;
+#[cfg(feature = "HealthKit_HKWorkoutRouteQuery")]
 #[cfg(feature = "HealthKit_HKWorkoutRouteQuery")]
 pub use self::__HKWorkoutRouteQuery::HKWorkoutRouteQuery;
 #[cfg(feature = "HealthKit_HKWorkoutSession")]
+#[cfg(feature = "HealthKit_HKWorkoutSession")]
+#[cfg(not(any(target_os = "ios")))]
 pub use self::__HKWorkoutSession::HKWorkoutSession;
+#[cfg(not(any(target_os = "ios")))]
 pub use self::__HKWorkoutSession::HKWorkoutSessionDelegate;
-pub use self::__HKWorkoutSession::{
-    HKWorkoutSessionState, HKWorkoutSessionStateEnded, HKWorkoutSessionStateNotStarted,
-    HKWorkoutSessionStatePaused, HKWorkoutSessionStatePrepared, HKWorkoutSessionStateRunning,
-    HKWorkoutSessionStateStopped,
-};
+#[cfg(not(any(target_os = "ios")))]
+pub use self::__HKWorkoutSession::HKWorkoutSessionState;
+#[cfg(not(any(target_os = "ios")))]
+pub use self::__HKWorkoutSession::HKWorkoutSessionStateEnded;
+#[cfg(not(any(target_os = "ios")))]
+pub use self::__HKWorkoutSession::HKWorkoutSessionStateNotStarted;
+#[cfg(not(any(target_os = "ios")))]
+pub use self::__HKWorkoutSession::HKWorkoutSessionStatePaused;
+#[cfg(not(any(target_os = "ios")))]
+pub use self::__HKWorkoutSession::HKWorkoutSessionStatePrepared;
+#[cfg(not(any(target_os = "ios")))]
+pub use self::__HKWorkoutSession::HKWorkoutSessionStateRunning;
+#[cfg(not(any(target_os = "ios")))]
+pub use self::__HKWorkoutSession::HKWorkoutSessionStateStopped;

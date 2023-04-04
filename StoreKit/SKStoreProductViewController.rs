@@ -8,6 +8,7 @@ use crate::StoreKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "StoreKit_SKStoreProductViewController")]
+    #[cfg(not(any(target_os = "tvos")))]
     pub struct SKStoreProductViewController;
 
     #[cfg(feature = "StoreKit_SKStoreProductViewController")]
@@ -35,11 +36,13 @@ unsafe impl NSUserInterfaceItemIdentification for SKStoreProductViewController {
 extern_methods!(
     #[cfg(feature = "StoreKit_SKStoreProductViewController")]
     unsafe impl SKStoreProductViewController {
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(
             &self,
         ) -> Option<Id<ProtocolObject<dyn SKStoreProductViewControllerDelegate>>>;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
@@ -51,6 +54,7 @@ extern_methods!(
             feature = "Foundation_NSError",
             feature = "Foundation_NSString"
         ))]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(loadProductWithParameters:completionBlock:)]
         pub unsafe fn loadProductWithParameters_completionBlock(
             &self,
@@ -78,6 +82,7 @@ extern_methods!(
 extern_protocol!(
     pub unsafe trait SKStoreProductViewControllerDelegate: NSObjectProtocol {
         #[cfg(feature = "StoreKit_SKStoreProductViewController")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[optional]
         #[method(productViewControllerDidFinish:)]
         unsafe fn productViewControllerDidFinish(
@@ -108,7 +113,6 @@ extern_methods!(
     #[cfg(feature = "StoreKit_SKStoreProductViewController")]
     unsafe impl SKStoreProductViewController {
         #[cfg(feature = "Foundation_NSBundle")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithNibName:bundle:)]
         pub unsafe fn initWithNibName_bundle(
             this: Option<Allocated<Self>>,

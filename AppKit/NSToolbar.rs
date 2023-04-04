@@ -110,12 +110,10 @@ extern_methods!(
         );
 
         #[deprecated = "NSToolbarSizeMode is no longer recommended and will be ignored in the future"]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(sizeMode)]
         pub unsafe fn sizeMode(&self) -> NSToolbarSizeMode;
 
         #[deprecated = "NSToolbarSizeMode is no longer recommended and will be ignored in the future"]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setSizeMode:)]
         pub unsafe fn setSizeMode(&self, size_mode: NSToolbarSizeMode);
 
@@ -171,7 +169,6 @@ extern_methods!(
         pub unsafe fn setAutosavesConfiguration(&self, autosaves_configuration: bool);
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setConfigurationFromDictionary:)]
         pub unsafe fn setConfigurationFromDictionary(
             &self,
@@ -179,19 +176,15 @@ extern_methods!(
         );
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other configurationDictionary)]
         pub unsafe fn configurationDictionary(&self) -> Id<NSDictionary<NSString, Object>>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(validateVisibleItems)]
         pub unsafe fn validateVisibleItems(&self);
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(allowsExtensionItems)]
         pub unsafe fn allowsExtensionItems(&self) -> bool;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setAllowsExtensionItems:)]
         pub unsafe fn setAllowsExtensionItems(&self, allows_extension_items: bool);
     }
@@ -275,13 +268,11 @@ extern_methods!(
     unsafe impl NSToolbar {
         #[cfg(feature = "AppKit_NSView")]
         #[deprecated = "Use NSTitlebarAccessoryViewController with NSWindow instead"]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other fullScreenAccessoryView)]
         pub unsafe fn fullScreenAccessoryView(&self) -> Option<Id<NSView>>;
 
         #[cfg(feature = "AppKit_NSView")]
         #[deprecated = "Use NSTitlebarAccessoryViewController with NSWindow instead"]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setFullScreenAccessoryView:)]
         pub unsafe fn setFullScreenAccessoryView(
             &self,
@@ -289,12 +280,10 @@ extern_methods!(
         );
 
         #[deprecated = "Use NSTitlebarAccessoryViewController and its fullScreenMinHeight property with NSWindow instead."]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(fullScreenAccessoryViewMinHeight)]
         pub unsafe fn fullScreenAccessoryViewMinHeight(&self) -> CGFloat;
 
         #[deprecated = "Use NSTitlebarAccessoryViewController and its fullScreenMinHeight property with NSWindow instead."]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setFullScreenAccessoryViewMinHeight:)]
         pub unsafe fn setFullScreenAccessoryViewMinHeight(
             &self,
@@ -302,12 +291,10 @@ extern_methods!(
         );
 
         #[deprecated = "Use NSTitlebarAccessoryViewController with NSWindow instead. The max height of a titlebar accessory is implied by its view's height."]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(fullScreenAccessoryViewMaxHeight)]
         pub unsafe fn fullScreenAccessoryViewMaxHeight(&self) -> CGFloat;
 
         #[deprecated = "Use NSTitlebarAccessoryViewController with NSWindow instead. The max height of a titlebar accessory is implied by its view's height."]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setFullScreenAccessoryViewMaxHeight:)]
         pub unsafe fn setFullScreenAccessoryViewMaxHeight(
             &self,

@@ -26,7 +26,7 @@ extern_methods!(
         #[method(isHealthDataAvailable)]
         pub unsafe fn isHealthDataAvailable() -> bool;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(supportsHealthRecords)]
         pub unsafe fn supportsHealthRecords(&self) -> bool;
 
@@ -79,7 +79,7 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSError")]
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(handleAuthorizationForExtensionWithCompletion:)]
         pub unsafe fn handleAuthorizationForExtensionWithCompletion(
             &self,
@@ -271,7 +271,7 @@ extern_methods!(
             feature = "Foundation_NSError",
             feature = "HealthKit_HKWorkoutConfiguration"
         ))]
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(startWatchAppWithWorkoutConfiguration:completion:)]
         pub unsafe fn startWatchAppWithWorkoutConfiguration_completion(
             &self,

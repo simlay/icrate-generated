@@ -5,7 +5,7 @@ use crate::AuthenticationServices::*;
 use crate::Foundation::*;
 
 extern_protocol!(
-    #[cfg(not(any(target_os = "ios")))]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     pub unsafe trait ASWebAuthenticationSessionRequestDelegate: NSObjectProtocol {
         #[cfg(all(
             feature = "AuthenticationServices_ASWebAuthenticationSessionRequest",
@@ -38,7 +38,7 @@ extern_protocol!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AuthenticationServices_ASWebAuthenticationSessionRequest")]
-    #[cfg(not(any(target_os = "ios")))]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     pub struct ASWebAuthenticationSessionRequest;
 
     #[cfg(feature = "AuthenticationServices_ASWebAuthenticationSessionRequest")]

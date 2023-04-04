@@ -71,7 +71,6 @@ extern_methods!(
     /// Methods declared on superclass `NSControl`
     #[cfg(feature = "BusinessChat_BCChatButton")]
     unsafe impl BCChatButton {
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithFrame:)]
         pub unsafe fn initWithFrame(this: Option<Allocated<Self>>, frame_rect: NSRect) -> Id<Self>;
     }

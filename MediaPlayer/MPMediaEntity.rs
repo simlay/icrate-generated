@@ -12,7 +12,7 @@ extern_static!(MPMediaEntityPropertyPersistentID: &'static NSString);
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MediaPlayer_MPMediaEntity")]
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     pub struct MPMediaEntity;
 
     #[cfg(feature = "MediaPlayer_MPMediaEntity")]
@@ -46,7 +46,7 @@ extern_methods!(
             block: &Block<(NonNull<NSString>, NonNull<Object>, NonNull<Bool>), ()>,
         );
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other objectForKeyedSubscript:)]
         pub unsafe fn objectForKeyedSubscript(&self, key: &Object) -> Option<Id<Object>>;
 
@@ -54,7 +54,7 @@ extern_methods!(
         #[method_id(@__retain_semantics Other valueForProperty:)]
         pub unsafe fn valueForProperty(&self, property: &NSString) -> Option<Id<Object>>;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(persistentID)]
         pub unsafe fn persistentID(&self) -> MPMediaEntityPersistentID;
     }

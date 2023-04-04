@@ -145,7 +145,7 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "UserNotifications_UNLocationNotificationTrigger")]
-    #[cfg(not(any(target_os = "macos")))]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
     pub struct UNLocationNotificationTrigger;
 
     #[cfg(feature = "UserNotifications_UNLocationNotificationTrigger")]

@@ -31,6 +31,7 @@ ns_enum!(
         #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         SKErrorOverlayTimeout = 17,
         SKErrorIneligibleForOffer = 18,
+        #[cfg(not(any(target_os = "tvos")))]
         SKErrorUnsupportedPlatform = 19,
         #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         SKErrorOverlayPresentedInBackgroundScene = 20,

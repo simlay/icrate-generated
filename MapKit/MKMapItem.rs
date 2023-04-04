@@ -63,11 +63,11 @@ extern_methods!(
         #[method(setTimeZone:)]
         pub unsafe fn setTimeZone(&self, time_zone: Option<&NSTimeZone>);
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other pointOfInterestCategory)]
         pub unsafe fn pointOfInterestCategory(&self) -> Option<Id<MKPointOfInterestCategory>>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(setPointOfInterestCategory:)]
         pub unsafe fn setPointOfInterestCategory(
             &self,
@@ -85,6 +85,7 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(openInMapsWithLaunchOptions:)]
         pub unsafe fn openInMapsWithLaunchOptions(
             &self,
@@ -96,6 +97,7 @@ extern_methods!(
             feature = "Foundation_NSDictionary",
             feature = "Foundation_NSString"
         ))]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(openMapsWithItems:launchOptions:)]
         pub unsafe fn openMapsWithItems_launchOptions(
             map_items: &NSArray<MKMapItem>,

@@ -31,12 +31,7 @@ extern_protocol!(
         );
 
         #[cfg(feature = "AuthenticationServices_ASAuthorizationController")]
-        #[cfg(not(any(
-            target_os = "ios",
-            target_os = "macos",
-            target_os = "tvos",
-            target_os = "watchos"
-        )))]
+        #[cfg(not(any(target_os = "ios", target_os = "macos", target_os = "watchos")))]
         #[optional]
         #[method(authorizationController:didCompleteWithCustomMethod:)]
         unsafe fn authorizationController_didCompleteWithCustomMethod(
@@ -50,7 +45,7 @@ extern_protocol!(
 );
 
 extern_protocol!(
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+    #[cfg(not(any(target_os = "watchos")))]
     pub unsafe trait ASAuthorizationControllerPresentationContextProviding:
         NSObjectProtocol
     {
@@ -109,13 +104,13 @@ extern_methods!(
             delegate: Option<&ProtocolObject<dyn ASAuthorizationControllerDelegate>>,
         );
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other presentationContextProvider)]
         pub unsafe fn presentationContextProvider(
             &self,
         ) -> Option<Id<ProtocolObject<dyn ASAuthorizationControllerPresentationContextProviding>>>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(setPresentationContextProvider:)]
         pub unsafe fn setPresentationContextProvider(
             &self,
@@ -125,23 +120,13 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSArray")]
-        #[cfg(not(any(
-            target_os = "ios",
-            target_os = "macos",
-            target_os = "tvos",
-            target_os = "watchos"
-        )))]
+        #[cfg(not(any(target_os = "ios", target_os = "macos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other customAuthorizationMethods)]
         pub unsafe fn customAuthorizationMethods(&self)
             -> Id<NSArray<ASAuthorizationCustomMethod>>;
 
         #[cfg(feature = "Foundation_NSArray")]
-        #[cfg(not(any(
-            target_os = "ios",
-            target_os = "macos",
-            target_os = "tvos",
-            target_os = "watchos"
-        )))]
+        #[cfg(not(any(target_os = "ios", target_os = "macos", target_os = "watchos")))]
         #[method(setCustomAuthorizationMethods:)]
         pub unsafe fn setCustomAuthorizationMethods(
             &self,

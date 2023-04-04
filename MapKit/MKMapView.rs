@@ -9,13 +9,13 @@ use crate::MapKit::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+    #[cfg(not(any(target_os = "watchos")))]
     pub enum MKUserTrackingMode {
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         MKUserTrackingModeNone = 0,
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         MKUserTrackingModeFollow = 1,
-        #[cfg(not(any(target_os = "macos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         MKUserTrackingModeFollowWithHeading = 2,
     }
 );
@@ -78,12 +78,12 @@ extern_methods!(
         pub unsafe fn setMapType(&self, map_type: MKMapType);
 
         #[cfg(feature = "MapKit_MKMapConfiguration")]
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other preferredConfiguration)]
         pub unsafe fn preferredConfiguration(&self) -> Id<MKMapConfiguration>;
 
         #[cfg(feature = "MapKit_MKMapConfiguration")]
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(setPreferredConfiguration:)]
         pub unsafe fn setPreferredConfiguration(
             &self,
@@ -155,17 +155,17 @@ extern_methods!(
         pub unsafe fn setCamera_animated(&self, camera: &MKMapCamera, animated: bool);
 
         #[cfg(feature = "MapKit_MKMapCameraZoomRange")]
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other cameraZoomRange)]
         pub unsafe fn cameraZoomRange(&self) -> Id<MKMapCameraZoomRange>;
 
         #[cfg(feature = "MapKit_MKMapCameraZoomRange")]
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(setCameraZoomRange:)]
         pub unsafe fn setCameraZoomRange(&self, camera_zoom_range: Option<&MKMapCameraZoomRange>);
 
         #[cfg(feature = "MapKit_MKMapCameraZoomRange")]
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(setCameraZoomRange:animated:)]
         pub unsafe fn setCameraZoomRange_animated(
             &self,
@@ -174,17 +174,17 @@ extern_methods!(
         );
 
         #[cfg(feature = "MapKit_MKMapCameraBoundary")]
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other cameraBoundary)]
         pub unsafe fn cameraBoundary(&self) -> Option<Id<MKMapCameraBoundary>>;
 
         #[cfg(feature = "MapKit_MKMapCameraBoundary")]
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(setCameraBoundary:)]
         pub unsafe fn setCameraBoundary(&self, camera_boundary: Option<&MKMapCameraBoundary>);
 
         #[cfg(feature = "MapKit_MKMapCameraBoundary")]
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(setCameraBoundary:animated:)]
         pub unsafe fn setCameraBoundary_animated(
             &self,
@@ -232,15 +232,19 @@ extern_methods!(
         #[method(setScrollEnabled:)]
         pub unsafe fn setScrollEnabled(&self, scroll_enabled: bool);
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(isRotateEnabled)]
         pub unsafe fn isRotateEnabled(&self) -> bool;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setRotateEnabled:)]
         pub unsafe fn setRotateEnabled(&self, rotate_enabled: bool);
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(isPitchEnabled)]
         pub unsafe fn isPitchEnabled(&self) -> bool;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setPitchEnabled:)]
         pub unsafe fn setPitchEnabled(&self, pitch_enabled: bool);
 
@@ -260,9 +264,11 @@ extern_methods!(
         #[method(setShowsZoomControls:)]
         pub unsafe fn setShowsZoomControls(&self, shows_zoom_controls: bool);
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(showsCompass)]
         pub unsafe fn showsCompass(&self) -> bool;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setShowsCompass:)]
         pub unsafe fn setShowsCompass(&self, shows_compass: bool);
 
@@ -274,13 +280,13 @@ extern_methods!(
 
         #[cfg(feature = "MapKit_MKPointOfInterestFilter")]
         #[deprecated]
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other pointOfInterestFilter)]
         pub unsafe fn pointOfInterestFilter(&self) -> Option<Id<MKPointOfInterestFilter>>;
 
         #[cfg(feature = "MapKit_MKPointOfInterestFilter")]
         #[deprecated]
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(setPointOfInterestFilter:)]
         pub unsafe fn setPointOfInterestFilter(
             &self,
@@ -288,12 +294,12 @@ extern_methods!(
         );
 
         #[deprecated = "Use pointOfInterestFilter"]
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(showsPointsOfInterest)]
         pub unsafe fn showsPointsOfInterest(&self) -> bool;
 
         #[deprecated = "Use pointOfInterestFilter"]
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(setShowsPointsOfInterest:)]
         pub unsafe fn setShowsPointsOfInterest(&self, shows_points_of_interest: bool);
 
@@ -323,15 +329,15 @@ extern_methods!(
         #[method_id(@__retain_semantics Other userLocation)]
         pub unsafe fn userLocation(&self) -> Id<MKUserLocation>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(userTrackingMode)]
         pub unsafe fn userTrackingMode(&self) -> MKUserTrackingMode;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(setUserTrackingMode:)]
         pub unsafe fn setUserTrackingMode(&self, user_tracking_mode: MKUserTrackingMode);
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(setUserTrackingMode:animated:)]
         pub unsafe fn setUserTrackingMode_animated(&self, mode: MKUserTrackingMode, animated: bool);
 
@@ -439,11 +445,11 @@ extern_methods!(
 
 ns_enum!(
     #[underlying(NSInteger)]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+    #[cfg(not(any(target_os = "watchos")))]
     pub enum MKOverlayLevel {
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         MKOverlayLevelAboveRoads = 0,
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         MKOverlayLevelAboveLabels = 1,
     }
 );
@@ -545,7 +551,7 @@ extern_methods!(
 );
 
 extern_protocol!(
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+    #[cfg(not(any(target_os = "watchos")))]
     pub unsafe trait MKMapViewDelegate: NSObjectProtocol {
         #[cfg(feature = "MapKit_MKMapView")]
         #[optional]
@@ -680,6 +686,7 @@ extern_protocol!(
         );
 
         #[cfg(all(feature = "MapKit_MKAnnotationView", feature = "MapKit_MKMapView"))]
+        #[cfg(not(any(target_os = "tvos")))]
         #[optional]
         #[method(mapView:annotationView:didChangeDragState:fromOldState:)]
         unsafe fn mapView_annotationView_didChangeDragState_fromOldState(
@@ -691,7 +698,7 @@ extern_protocol!(
         );
 
         #[cfg(feature = "MapKit_MKMapView")]
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(mapView:didChangeUserTrackingMode:animated:)]
         unsafe fn mapView_didChangeUserTrackingMode_animated(
@@ -728,7 +735,7 @@ extern_protocol!(
             feature = "MapKit_MKClusterAnnotation",
             feature = "MapKit_MKMapView"
         ))]
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method_id(@__retain_semantics Other mapView:clusterAnnotationForMemberAnnotations:)]
         unsafe fn mapView_clusterAnnotationForMemberAnnotations(
@@ -745,7 +752,6 @@ extern_methods!(
     /// Methods declared on superclass `NSView`
     #[cfg(feature = "MapKit_MKMapView")]
     unsafe impl MKMapView {
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithFrame:)]
         pub unsafe fn initWithFrame(this: Option<Allocated<Self>>, frame_rect: NSRect) -> Id<Self>;
     }

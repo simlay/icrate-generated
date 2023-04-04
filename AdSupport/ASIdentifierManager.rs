@@ -32,7 +32,7 @@ extern_methods!(
         #[method(isAdvertisingTrackingEnabled)]
         pub unsafe fn isAdvertisingTrackingEnabled(&self) -> bool;
 
-        #[cfg(not(any(target_os = "ios", target_os = "macos")))]
+        #[cfg(not(any(target_os = "ios", target_os = "macos", target_os = "tvos")))]
         #[method(clearAdvertisingIdentifier)]
         pub unsafe fn clearAdvertisingIdentifier(&self);
     }

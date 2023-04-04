@@ -9,7 +9,6 @@ use crate::OSAKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Automator_AMShellScriptAction")]
-    #[cfg(not(any(target_os = "ios")))]
     pub struct AMShellScriptAction;
 
     #[cfg(feature = "Automator_AMShellScriptAction")]
@@ -31,17 +30,14 @@ unsafe impl NSSecureCoding for AMShellScriptAction {}
 extern_methods!(
     #[cfg(feature = "Automator_AMShellScriptAction")]
     unsafe impl AMShellScriptAction {
-        #[cfg(not(any(target_os = "ios")))]
         #[method(remapLineEndings)]
         pub unsafe fn remapLineEndings(&self) -> bool;
 
         #[cfg(feature = "Foundation_NSString")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other inputFieldSeparator)]
         pub unsafe fn inputFieldSeparator(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other outputFieldSeparator)]
         pub unsafe fn outputFieldSeparator(&self) -> Id<NSString>;
     }
@@ -52,7 +48,6 @@ extern_methods!(
     #[cfg(feature = "Automator_AMShellScriptAction")]
     unsafe impl AMShellScriptAction {
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithDefinition:fromArchive:)]
         pub unsafe fn initWithDefinition_fromArchive(
             this: Option<Allocated<Self>>,
@@ -61,7 +56,6 @@ extern_methods!(
         ) -> Option<Id<Self>>;
 
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSURL"))]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithContentsOfURL:error:_)]
         pub unsafe fn initWithContentsOfURL_error(
             this: Option<Allocated<Self>>,

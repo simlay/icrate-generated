@@ -10,7 +10,7 @@ use crate::MapKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MapKit_MKMapSnapshotOptions")]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+    #[cfg(not(any(target_os = "watchos")))]
     pub struct MKMapSnapshotOptions;
 
     #[cfg(feature = "MapKit_MKMapSnapshotOptions")]
@@ -52,12 +52,12 @@ extern_methods!(
         pub unsafe fn setMapType(&self, map_type: MKMapType);
 
         #[cfg(feature = "MapKit_MKPointOfInterestFilter")]
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other pointOfInterestFilter)]
         pub unsafe fn pointOfInterestFilter(&self) -> Option<Id<MKPointOfInterestFilter>>;
 
         #[cfg(feature = "MapKit_MKPointOfInterestFilter")]
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(setPointOfInterestFilter:)]
         pub unsafe fn setPointOfInterestFilter(
             &self,
@@ -65,12 +65,12 @@ extern_methods!(
         );
 
         #[deprecated = "Use pointOfInterestFilter"]
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(showsPointsOfInterest)]
         pub unsafe fn showsPointsOfInterest(&self) -> bool;
 
         #[deprecated = "Use pointOfInterestFilter"]
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(setShowsPointsOfInterest:)]
         pub unsafe fn setShowsPointsOfInterest(&self, shows_points_of_interest: bool);
 

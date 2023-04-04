@@ -8,7 +8,6 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSFilePromiseProvider")]
-    #[cfg(not(any(target_os = "ios")))]
     pub struct NSFilePromiseProvider;
 
     #[cfg(feature = "AppKit_NSFilePromiseProvider")]
@@ -27,38 +26,31 @@ extern_methods!(
     #[cfg(feature = "AppKit_NSFilePromiseProvider")]
     unsafe impl NSFilePromiseProvider {
         #[cfg(feature = "Foundation_NSString")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other fileType)]
         pub unsafe fn fileType(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setFileType:)]
         pub unsafe fn setFileType(&self, file_type: &NSString);
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(
             &self,
         ) -> Option<Id<ProtocolObject<dyn NSFilePromiseProviderDelegate>>>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
             delegate: Option<&ProtocolObject<dyn NSFilePromiseProviderDelegate>>,
         );
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other userInfo)]
         pub unsafe fn userInfo(&self) -> Option<Id<Object>>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setUserInfo:)]
         pub unsafe fn setUserInfo(&self, user_info: Option<&Object>);
 
         #[cfg(feature = "Foundation_NSString")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithFileType:delegate:)]
         pub unsafe fn initWithFileType_delegate(
             this: Option<Allocated<Self>>,
@@ -66,20 +58,17 @@ extern_methods!(
             delegate: &ProtocolObject<dyn NSFilePromiseProviderDelegate>,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
     }
 );
 
 extern_protocol!(
-    #[cfg(not(any(target_os = "ios")))]
     pub unsafe trait NSFilePromiseProviderDelegate: NSObjectProtocol {
         #[cfg(all(
             feature = "AppKit_NSFilePromiseProvider",
             feature = "Foundation_NSString"
         ))]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other filePromiseProvider:fileNameForType:)]
         unsafe fn filePromiseProvider_fileNameForType(
             &self,
@@ -92,7 +81,6 @@ extern_protocol!(
             feature = "Foundation_NSError",
             feature = "Foundation_NSURL"
         ))]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(filePromiseProvider:writePromiseToURL:completionHandler:)]
         unsafe fn filePromiseProvider_writePromiseToURL_completionHandler(
             &self,
@@ -105,7 +93,6 @@ extern_protocol!(
             feature = "AppKit_NSFilePromiseProvider",
             feature = "Foundation_NSOperationQueue"
         ))]
-        #[cfg(not(any(target_os = "ios")))]
         #[optional]
         #[method_id(@__retain_semantics Other operationQueueForFilePromiseProvider:)]
         unsafe fn operationQueueForFilePromiseProvider(

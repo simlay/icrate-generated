@@ -7,25 +7,15 @@ use crate::Foundation::*;
 
 ns_options!(
     #[underlying(NSUInteger)]
-    #[cfg(not(any(target_os = "ios")))]
     pub enum NSViewControllerTransitionOptions {
-        #[cfg(not(any(target_os = "ios")))]
         NSViewControllerTransitionNone = 0x0,
-        #[cfg(not(any(target_os = "ios")))]
         NSViewControllerTransitionCrossfade = 0x1,
-        #[cfg(not(any(target_os = "ios")))]
         NSViewControllerTransitionSlideUp = 0x10,
-        #[cfg(not(any(target_os = "ios")))]
         NSViewControllerTransitionSlideDown = 0x20,
-        #[cfg(not(any(target_os = "ios")))]
         NSViewControllerTransitionSlideLeft = 0x40,
-        #[cfg(not(any(target_os = "ios")))]
         NSViewControllerTransitionSlideRight = 0x80,
-        #[cfg(not(any(target_os = "ios")))]
         NSViewControllerTransitionSlideForward = 0x140,
-        #[cfg(not(any(target_os = "ios")))]
         NSViewControllerTransitionSlideBackward = 0x180,
-        #[cfg(not(any(target_os = "ios")))]
         NSViewControllerTransitionAllowUserInteraction = 0x1000,
     }
 );
@@ -33,7 +23,6 @@ ns_options!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSViewController")]
-    #[cfg(not(any(target_os = "ios")))]
     pub struct NSViewController;
 
     #[cfg(feature = "AppKit_NSViewController")]
@@ -62,7 +51,6 @@ extern_methods!(
     #[cfg(feature = "AppKit_NSViewController")]
     unsafe impl NSViewController {
         #[cfg(feature = "Foundation_NSBundle")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithNibName:bundle:)]
         pub unsafe fn initWithNibName_bundle(
             this: Option<Allocated<Self>>,
@@ -71,55 +59,44 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "Foundation_NSCoder")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithCoder:)]
         pub unsafe fn initWithCoder(
             this: Option<Allocated<Self>>,
             coder: &NSCoder,
         ) -> Option<Id<Self>>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other nibName)]
         pub unsafe fn nibName(&self) -> Option<Id<NSNibName>>;
 
         #[cfg(feature = "Foundation_NSBundle")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other nibBundle)]
         pub unsafe fn nibBundle(&self) -> Option<Id<NSBundle>>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other representedObject)]
         pub unsafe fn representedObject(&self) -> Option<Id<Object>>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setRepresentedObject:)]
         pub unsafe fn setRepresentedObject(&self, represented_object: Option<&Object>);
 
         #[cfg(feature = "Foundation_NSString")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setTitle:)]
         pub unsafe fn setTitle(&self, title: Option<&NSString>);
 
         #[cfg(feature = "AppKit_NSView")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other view)]
         pub unsafe fn view(&self) -> Id<NSView>;
 
         #[cfg(feature = "AppKit_NSView")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setView:)]
         pub unsafe fn setView(&self, view: &NSView);
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(loadView)]
         pub unsafe fn loadView(&self);
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(commitEditingWithDelegate:didCommitSelector:contextInfo:)]
         pub unsafe fn commitEditingWithDelegate_didCommitSelector_contextInfo(
             &self,
@@ -128,55 +105,42 @@ extern_methods!(
             context_info: *mut c_void,
         );
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(commitEditing)]
         pub unsafe fn commitEditing(&self) -> bool;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(discardEditing)]
         pub unsafe fn discardEditing(&self);
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(viewDidLoad)]
         pub unsafe fn viewDidLoad(&self);
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(isViewLoaded)]
         pub unsafe fn isViewLoaded(&self) -> bool;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(viewWillAppear)]
         pub unsafe fn viewWillAppear(&self);
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(viewDidAppear)]
         pub unsafe fn viewDidAppear(&self);
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(viewWillDisappear)]
         pub unsafe fn viewWillDisappear(&self);
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(viewDidDisappear)]
         pub unsafe fn viewDidDisappear(&self);
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(preferredContentSize)]
         pub unsafe fn preferredContentSize(&self) -> NSSize;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setPreferredContentSize:)]
         pub unsafe fn setPreferredContentSize(&self, preferred_content_size: NSSize);
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(updateViewConstraints)]
         pub unsafe fn updateViewConstraints(&self);
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(viewWillLayout)]
         pub unsafe fn viewWillLayout(&self);
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(viewDidLayout)]
         pub unsafe fn viewDidLayout(&self);
     }
@@ -186,7 +150,6 @@ extern_methods!(
     /// NSViewControllerPresentation
     #[cfg(feature = "AppKit_NSViewController")]
     unsafe impl NSViewController {
-        #[cfg(not(any(target_os = "ios")))]
         #[method(presentViewController:animator:)]
         pub unsafe fn presentViewController_animator(
             &self,
@@ -194,20 +157,16 @@ extern_methods!(
             animator: &ProtocolObject<dyn NSViewControllerPresentationAnimator>,
         );
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(dismissViewController:)]
         pub unsafe fn dismissViewController(&self, view_controller: &NSViewController);
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(dismissController:)]
         pub unsafe fn dismissController(&self, sender: Option<&Object>);
 
         #[cfg(feature = "Foundation_NSArray")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other presentedViewControllers)]
         pub unsafe fn presentedViewControllers(&self) -> Option<Id<NSArray<NSViewController>>>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other presentingViewController)]
         pub unsafe fn presentingViewController(&self) -> Option<Id<NSViewController>>;
     }
@@ -217,16 +176,13 @@ extern_methods!(
     /// NSViewControllerPresentationAndTransitionStyles
     #[cfg(feature = "AppKit_NSViewController")]
     unsafe impl NSViewController {
-        #[cfg(not(any(target_os = "ios")))]
         #[method(presentViewControllerAsSheet:)]
         pub unsafe fn presentViewControllerAsSheet(&self, view_controller: &NSViewController);
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(presentViewControllerAsModalWindow:)]
         pub unsafe fn presentViewControllerAsModalWindow(&self, view_controller: &NSViewController);
 
         #[cfg(feature = "AppKit_NSView")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(presentViewController:asPopoverRelativeToRect:ofView:preferredEdge:behavior:)]
         pub unsafe fn presentViewController_asPopoverRelativeToRect_ofView_preferredEdge_behavior(
             &self,
@@ -237,7 +193,6 @@ extern_methods!(
             behavior: NSPopoverBehavior,
         );
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(transitionFromViewController:toViewController:options:completionHandler:)]
         pub unsafe fn transitionFromViewController_toViewController_options_completionHandler(
             &self,
@@ -253,32 +208,26 @@ extern_methods!(
     /// NSViewControllerContainer
     #[cfg(feature = "AppKit_NSViewController")]
     unsafe impl NSViewController {
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other parentViewController)]
         pub unsafe fn parentViewController(&self) -> Option<Id<NSViewController>>;
 
         #[cfg(feature = "Foundation_NSArray")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other childViewControllers)]
         pub unsafe fn childViewControllers(&self) -> Id<NSArray<NSViewController>>;
 
         #[cfg(feature = "Foundation_NSArray")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setChildViewControllers:)]
         pub unsafe fn setChildViewControllers(
             &self,
             child_view_controllers: &NSArray<NSViewController>,
         );
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(addChildViewController:)]
         pub unsafe fn addChildViewController(&self, child_view_controller: &NSViewController);
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(removeFromParentViewController)]
         pub unsafe fn removeFromParentViewController(&self);
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(insertChildViewController:atIndex:)]
         pub unsafe fn insertChildViewController_atIndex(
             &self,
@@ -286,28 +235,23 @@ extern_methods!(
             index: NSInteger,
         );
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(removeChildViewControllerAtIndex:)]
         pub unsafe fn removeChildViewControllerAtIndex(&self, index: NSInteger);
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(preferredContentSizeDidChangeForViewController:)]
         pub unsafe fn preferredContentSizeDidChangeForViewController(
             &self,
             view_controller: &NSViewController,
         );
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(viewWillTransitionToSize:)]
         pub unsafe fn viewWillTransitionToSize(&self, new_size: NSSize);
     }
 );
 
 extern_protocol!(
-    #[cfg(not(any(target_os = "ios")))]
     pub unsafe trait NSViewControllerPresentationAnimator: NSObjectProtocol {
         #[cfg(feature = "AppKit_NSViewController")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(animatePresentationOfViewController:fromViewController:)]
         unsafe fn animatePresentationOfViewController_fromViewController(
             &self,
@@ -316,7 +260,6 @@ extern_protocol!(
         );
 
         #[cfg(feature = "AppKit_NSViewController")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(animateDismissalOfViewController:fromViewController:)]
         unsafe fn animateDismissalOfViewController_fromViewController(
             &self,
@@ -333,7 +276,6 @@ extern_methods!(
     #[cfg(feature = "AppKit_NSViewController")]
     unsafe impl NSViewController {
         #[cfg(feature = "AppKit_NSStoryboard")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other storyboard)]
         pub unsafe fn storyboard(&self) -> Option<Id<NSStoryboard>>;
     }
@@ -344,33 +286,26 @@ extern_methods!(
     #[cfg(feature = "AppKit_NSViewController")]
     unsafe impl NSViewController {
         #[cfg(feature = "Foundation_NSExtensionContext")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other extensionContext)]
         pub unsafe fn extensionContext(&self) -> Option<Id<NSExtensionContext>>;
 
         #[cfg(feature = "AppKit_NSView")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other sourceItemView)]
         pub unsafe fn sourceItemView(&self) -> Option<Id<NSView>>;
 
         #[cfg(feature = "AppKit_NSView")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setSourceItemView:)]
         pub unsafe fn setSourceItemView(&self, source_item_view: Option<&NSView>);
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(preferredScreenOrigin)]
         pub unsafe fn preferredScreenOrigin(&self) -> NSPoint;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setPreferredScreenOrigin:)]
         pub unsafe fn setPreferredScreenOrigin(&self, preferred_screen_origin: NSPoint);
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(preferredMinimumSize)]
         pub unsafe fn preferredMinimumSize(&self) -> NSSize;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(preferredMaximumSize)]
         pub unsafe fn preferredMaximumSize(&self) -> NSSize;
     }

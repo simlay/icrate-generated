@@ -10,7 +10,7 @@ use crate::MapKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MapKit_MKClusterAnnotation")]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+    #[cfg(not(any(target_os = "watchos")))]
     pub struct MKClusterAnnotation;
 
     #[cfg(feature = "MapKit_MKClusterAnnotation")]

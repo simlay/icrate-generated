@@ -60,14 +60,14 @@ extern_methods!(
         pub unsafe fn unconfiguredAccessories(&self) -> Id<NSSet<EAWiFiUnconfiguredAccessory>>;
 
         #[cfg(feature = "Foundation_NSPredicate")]
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         #[method(startSearchingForUnconfiguredAccessoriesMatchingPredicate:)]
         pub unsafe fn startSearchingForUnconfiguredAccessoriesMatchingPredicate(
             &self,
             predicate: Option<&NSPredicate>,
         );
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         #[method(stopSearchingForUnconfiguredAccessories)]
         pub unsafe fn stopSearchingForUnconfiguredAccessories(&self);
 
@@ -75,7 +75,7 @@ extern_methods!(
             feature = "ExternalAccessory_EAWiFiUnconfiguredAccessory",
             feature = "ExternalAccessory_UIViewController"
         ))]
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         #[method(configureAccessory:withConfigurationUIOnViewController:)]
         pub unsafe fn configureAccessory_withConfigurationUIOnViewController(
             &self,
@@ -88,7 +88,7 @@ extern_methods!(
 extern_protocol!(
     pub unsafe trait EAWiFiUnconfiguredAccessoryBrowserDelegate: NSObjectProtocol {
         #[cfg(feature = "ExternalAccessory_EAWiFiUnconfiguredAccessoryBrowser")]
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         #[method(accessoryBrowser:didUpdateState:)]
         unsafe fn accessoryBrowser_didUpdateState(
             &self,
@@ -101,7 +101,7 @@ extern_protocol!(
             feature = "ExternalAccessory_EAWiFiUnconfiguredAccessoryBrowser",
             feature = "Foundation_NSSet"
         ))]
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         #[method(accessoryBrowser:didFindUnconfiguredAccessories:)]
         unsafe fn accessoryBrowser_didFindUnconfiguredAccessories(
             &self,
@@ -114,7 +114,7 @@ extern_protocol!(
             feature = "ExternalAccessory_EAWiFiUnconfiguredAccessoryBrowser",
             feature = "Foundation_NSSet"
         ))]
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         #[method(accessoryBrowser:didRemoveUnconfiguredAccessories:)]
         unsafe fn accessoryBrowser_didRemoveUnconfiguredAccessories(
             &self,
@@ -126,7 +126,7 @@ extern_protocol!(
             feature = "ExternalAccessory_EAWiFiUnconfiguredAccessory",
             feature = "ExternalAccessory_EAWiFiUnconfiguredAccessoryBrowser"
         ))]
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         #[method(accessoryBrowser:didFinishConfiguringAccessory:withStatus:)]
         unsafe fn accessoryBrowser_didFinishConfiguringAccessory_withStatus(
             &self,

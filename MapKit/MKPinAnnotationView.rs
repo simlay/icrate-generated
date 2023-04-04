@@ -28,7 +28,7 @@ extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MapKit_MKPinAnnotationView")]
     #[deprecated]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+    #[cfg(not(any(target_os = "watchos")))]
     pub struct MKPinAnnotationView;
 
     #[cfg(feature = "MapKit_MKPinAnnotationView")]
@@ -92,10 +92,12 @@ extern_methods!(
         pub unsafe fn setAnimatesDrop(&self, animates_drop: bool);
 
         #[deprecated = "Use pinTintColor instead"]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(pinColor)]
         pub unsafe fn pinColor(&self) -> MKPinAnnotationColor;
 
         #[deprecated = "Use pinTintColor instead"]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setPinColor:)]
         pub unsafe fn setPinColor(&self, pin_color: MKPinAnnotationColor);
     }
@@ -119,7 +121,6 @@ extern_methods!(
     /// Methods declared on superclass `NSView`
     #[cfg(feature = "MapKit_MKPinAnnotationView")]
     unsafe impl MKPinAnnotationView {
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithFrame:)]
         pub unsafe fn initWithFrame(this: Option<Allocated<Self>>, frame_rect: NSRect) -> Id<Self>;
     }

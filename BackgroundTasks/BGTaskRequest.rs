@@ -7,7 +7,6 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "BackgroundTasks_BGTaskRequest")]
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct BGTaskRequest;
 
     #[cfg(feature = "BackgroundTasks_BGTaskRequest")]
@@ -45,7 +44,6 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "BackgroundTasks_BGAppRefreshTaskRequest")]
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct BGAppRefreshTaskRequest;
 
     #[cfg(feature = "BackgroundTasks_BGAppRefreshTaskRequest")]
@@ -73,7 +71,6 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "BackgroundTasks_BGProcessingTaskRequest")]
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct BGProcessingTaskRequest;
 
     #[cfg(feature = "BackgroundTasks_BGProcessingTaskRequest")]

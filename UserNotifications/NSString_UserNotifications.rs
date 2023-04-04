@@ -10,6 +10,7 @@ extern_methods!(
     #[cfg(feature = "Foundation_NSString")]
     unsafe impl NSString {
         #[cfg(feature = "Foundation_NSArray")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other localizedUserNotificationStringForKey:arguments:)]
         pub unsafe fn localizedUserNotificationStringForKey_arguments(
             key: &NSString,

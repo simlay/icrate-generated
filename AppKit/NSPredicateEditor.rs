@@ -8,7 +8,6 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSPredicateEditor")]
-    #[cfg(not(any(target_os = "ios")))]
     pub struct NSPredicateEditor;
 
     #[cfg(feature = "AppKit_NSPredicateEditor")]
@@ -49,7 +48,6 @@ extern_methods!(
             feature = "AppKit_NSPredicateEditorRowTemplate",
             feature = "Foundation_NSArray"
         ))]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other rowTemplates)]
         pub unsafe fn rowTemplates(&self) -> Id<NSArray<NSPredicateEditorRowTemplate>>;
 
@@ -57,7 +55,6 @@ extern_methods!(
             feature = "AppKit_NSPredicateEditorRowTemplate",
             feature = "Foundation_NSArray"
         ))]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setRowTemplates:)]
         pub unsafe fn setRowTemplates(&self, row_templates: &NSArray<NSPredicateEditorRowTemplate>);
     }
@@ -67,7 +64,6 @@ extern_methods!(
     /// Methods declared on superclass `NSControl`
     #[cfg(feature = "AppKit_NSPredicateEditor")]
     unsafe impl NSPredicateEditor {
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithFrame:)]
         pub unsafe fn initWithFrame(this: Option<Allocated<Self>>, frame_rect: NSRect) -> Id<Self>;
     }

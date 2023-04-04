@@ -8,17 +8,17 @@ extern_static!(ILMessageFilterErrorDomain: &'static NSErrorDomain);
 
 ns_error_enum!(
     #[underlying(NSInteger)]
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+    #[cfg(not(any(target_os = "macos")))]
     pub enum ILMessageFilterError {
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos")))]
         ILMessageFilterErrorSystem = 1,
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos")))]
         ILMessageFilterErrorInvalidNetworkURL = 2,
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos")))]
         ILMessageFilterErrorNetworkURLUnauthorized = 3,
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos")))]
         ILMessageFilterErrorNetworkRequestFailed = 4,
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos")))]
         ILMessageFilterErrorRedundantNetworkDeferral = 5,
     }
 );

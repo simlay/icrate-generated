@@ -47,6 +47,7 @@ extern_methods!(
         pub unsafe fn userRecordID(&self) -> Option<Id<CKRecordID>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other contactIdentifiers)]
         pub unsafe fn contactIdentifiers(&self) -> Id<NSArray<NSString>>;
 

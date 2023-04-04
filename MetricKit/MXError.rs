@@ -8,19 +8,19 @@ extern_static!(MXErrorDomain: Option<&'static NSErrorDomain>);
 
 ns_error_enum!(
     #[underlying(NSInteger)]
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+    #[cfg(not(any(target_os = "macos")))]
     pub enum MXErrorCode {
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos")))]
         MXErrorLaunchTaskInvalidID = 0,
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos")))]
         MXErrorLaunchTaskMaxCount = 1,
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos")))]
         MXErrorLaunchTaskPastDeadline = 2,
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos")))]
         MXErrorLaunchTaskDuplicated = 3,
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos")))]
         MXErrorLaunchTaskUnknown = 4,
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos")))]
         MXErrorLaunchTaskInternalFailure = 5,
     }
 );

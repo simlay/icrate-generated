@@ -9,7 +9,7 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "FileProvider_NSFileProviderExtension")]
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+    #[cfg(not(any(target_os = "macos")))]
     pub struct NSFileProviderExtension;
 
     #[cfg(feature = "FileProvider_NSFileProviderExtension")]
@@ -25,7 +25,7 @@ extern_methods!(
     #[cfg(feature = "FileProvider_NSFileProviderExtension")]
     unsafe impl NSFileProviderExtension {
         #[cfg(feature = "Foundation_NSError")]
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics Other itemForIdentifier:error:_)]
         pub unsafe fn itemForIdentifier_error(
             &self,
@@ -82,7 +82,7 @@ extern_methods!(
             feature = "Foundation_NSURL"
         ))]
         #[deprecated = "Use the corresponding method on NSFileProviderManager instead"]
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos")))]
         #[method(writePlaceholderAtURL:withMetadata:error:_)]
         pub unsafe fn writePlaceholderAtURL_withMetadata_error(
             placeholder_url: &NSURL,
@@ -91,19 +91,19 @@ extern_methods!(
 
         #[cfg(feature = "Foundation_NSURL")]
         #[deprecated]
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics Other placeholderURLForURL:)]
         pub unsafe fn placeholderURLForURL(url: &NSURL) -> Id<NSURL>;
 
         #[cfg(feature = "Foundation_NSString")]
         #[deprecated]
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics Other providerIdentifier)]
         pub unsafe fn providerIdentifier(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSURL")]
         #[deprecated]
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics Other documentStorageURL)]
         pub unsafe fn documentStorageURL(&self) -> Id<NSURL>;
     }

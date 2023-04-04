@@ -6,13 +6,10 @@ use crate::CoreData::*;
 use crate::Foundation::*;
 
 extern_protocol!(
-    #[cfg(not(any(target_os = "ios")))]
     pub unsafe trait NSValidatedUserInterfaceItem {
-        #[cfg(not(any(target_os = "ios")))]
         #[method(action)]
         unsafe fn action(&self) -> Option<Sel>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(tag)]
         unsafe fn tag(&self) -> NSInteger;
     }
@@ -21,9 +18,7 @@ extern_protocol!(
 );
 
 extern_protocol!(
-    #[cfg(not(any(target_os = "ios")))]
     pub unsafe trait NSUserInterfaceValidations {
-        #[cfg(not(any(target_os = "ios")))]
         #[method(validateUserInterfaceItem:)]
         unsafe fn validateUserInterfaceItem(
             &self,

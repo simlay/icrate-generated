@@ -7,9 +7,13 @@ use crate::UserNotifications::*;
 
 ns_options!(
     #[underlying(NSUInteger)]
+    #[cfg(not(any(target_os = "tvos")))]
     pub enum UNNotificationActionOptions {
+        #[cfg(not(any(target_os = "tvos")))]
         UNNotificationActionOptionAuthenticationRequired = 1 << 0,
+        #[cfg(not(any(target_os = "tvos")))]
         UNNotificationActionOptionDestructive = 1 << 1,
+        #[cfg(not(any(target_os = "tvos")))]
         UNNotificationActionOptionForeground = 1 << 2,
     }
 );
@@ -19,6 +23,7 @@ extern_static!(UNNotificationActionOptionNone: UNNotificationActionOptions = 0);
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "UserNotifications_UNNotificationAction")]
+    #[cfg(not(any(target_os = "tvos")))]
     pub struct UNNotificationAction;
 
     #[cfg(feature = "UserNotifications_UNNotificationAction")]
@@ -82,6 +87,7 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "UserNotifications_UNTextInputNotificationAction")]
+    #[cfg(not(any(target_os = "tvos")))]
     pub struct UNTextInputNotificationAction;
 
     #[cfg(feature = "UserNotifications_UNTextInputNotificationAction")]

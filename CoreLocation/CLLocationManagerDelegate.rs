@@ -39,6 +39,7 @@ extern_protocol!(
             feature = "CoreLocation_CLHeading",
             feature = "CoreLocation_CLLocationManager"
         ))]
+        #[cfg(not(any(target_os = "tvos")))]
         #[optional]
         #[method(locationManager:didUpdateHeading:)]
         unsafe fn locationManager_didUpdateHeading(
@@ -48,6 +49,7 @@ extern_protocol!(
         );
 
         #[cfg(feature = "CoreLocation_CLLocationManager")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[optional]
         #[method(locationManagerShouldDisplayHeadingCalibration:)]
         unsafe fn locationManagerShouldDisplayHeadingCalibration(

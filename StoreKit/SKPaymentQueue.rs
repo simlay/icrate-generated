@@ -201,7 +201,7 @@ extern_protocol!(
             feature = "StoreKit_SKPaymentQueue",
             feature = "StoreKit_SKProduct"
         ))]
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(paymentQueue:shouldAddStorePayment:forProduct:)]
         unsafe fn paymentQueue_shouldAddStorePayment_forProduct(

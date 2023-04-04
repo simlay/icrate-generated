@@ -70,263 +70,545 @@ mod __MediaPlayerDefines;
 mod __NSUserActivity_MediaPlayerAdditions;
 
 #[cfg(feature = "MediaPlayer_MPContentItem")]
+#[cfg(feature = "MediaPlayer_MPContentItem")]
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__MPContentItem::MPContentItem;
+
 pub use self::__MPError::MPErrorDomain;
-pub use self::__MPError::{
-    MPErrorCancelled, MPErrorCloudServiceCapabilityMissing, MPErrorCode,
-    MPErrorNetworkConnectionFailed, MPErrorNotFound, MPErrorNotSupported, MPErrorPermissionDenied,
-    MPErrorRequestTimedOut, MPErrorUnknown,
-};
+
+pub use self::__MPError::MPErrorCode;
+
+pub use self::__MPError::MPErrorUnknown;
+
+pub use self::__MPError::MPErrorPermissionDenied;
+
+pub use self::__MPError::MPErrorCloudServiceCapabilityMissing;
+
+pub use self::__MPError::MPErrorNetworkConnectionFailed;
+
+pub use self::__MPError::MPErrorNotFound;
+
+pub use self::__MPError::MPErrorNotSupported;
+
+pub use self::__MPError::MPErrorCancelled;
+
+pub use self::__MPError::MPErrorRequestTimedOut;
+
 #[cfg(feature = "MediaPlayer_MPMediaEntity")]
+#[cfg(feature = "MediaPlayer_MPMediaEntity")]
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 pub use self::__MPMediaEntity::MPMediaEntity;
 pub use self::__MPMediaEntity::MPMediaEntityPersistentID;
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__MPMediaEntity::MPMediaEntityPropertyPersistentID;
+
+pub use self::__MPMediaItem::MPMediaType;
+
+pub use self::__MPMediaItem::MPMediaTypeMusic;
+
+pub use self::__MPMediaItem::MPMediaTypePodcast;
+
+pub use self::__MPMediaItem::MPMediaTypeAudioBook;
+
+pub use self::__MPMediaItem::MPMediaTypeAudioITunesU;
+
+pub use self::__MPMediaItem::MPMediaTypeAnyAudio;
+
+pub use self::__MPMediaItem::MPMediaTypeMovie;
+
+pub use self::__MPMediaItem::MPMediaTypeTVShow;
+
+pub use self::__MPMediaItem::MPMediaTypeVideoPodcast;
+
+pub use self::__MPMediaItem::MPMediaTypeMusicVideo;
+
+pub use self::__MPMediaItem::MPMediaTypeVideoITunesU;
+
+pub use self::__MPMediaItem::MPMediaTypeHomeVideo;
+
+pub use self::__MPMediaItem::MPMediaTypeAnyVideo;
+
+pub use self::__MPMediaItem::MPMediaTypeAny;
+
+pub use self::__MPMediaItem::MPMediaItemPropertyPersistentID;
+
+pub use self::__MPMediaItem::MPMediaItemPropertyMediaType;
+
+pub use self::__MPMediaItem::MPMediaItemPropertyTitle;
+
+pub use self::__MPMediaItem::MPMediaItemPropertyAlbumTitle;
+
+pub use self::__MPMediaItem::MPMediaItemPropertyAlbumPersistentID;
+
+pub use self::__MPMediaItem::MPMediaItemPropertyArtist;
+
+pub use self::__MPMediaItem::MPMediaItemPropertyArtistPersistentID;
+
+pub use self::__MPMediaItem::MPMediaItemPropertyAlbumArtist;
+
+pub use self::__MPMediaItem::MPMediaItemPropertyAlbumArtistPersistentID;
+
+pub use self::__MPMediaItem::MPMediaItemPropertyGenre;
+
+pub use self::__MPMediaItem::MPMediaItemPropertyGenrePersistentID;
+
+pub use self::__MPMediaItem::MPMediaItemPropertyComposer;
+
+pub use self::__MPMediaItem::MPMediaItemPropertyComposerPersistentID;
+
+pub use self::__MPMediaItem::MPMediaItemPropertyPlaybackDuration;
+
+pub use self::__MPMediaItem::MPMediaItemPropertyAlbumTrackNumber;
+
+pub use self::__MPMediaItem::MPMediaItemPropertyAlbumTrackCount;
+
+pub use self::__MPMediaItem::MPMediaItemPropertyDiscNumber;
+
+pub use self::__MPMediaItem::MPMediaItemPropertyDiscCount;
+
+pub use self::__MPMediaItem::MPMediaItemPropertyArtwork;
+
+pub use self::__MPMediaItem::MPMediaItemPropertyIsExplicit;
+
+pub use self::__MPMediaItem::MPMediaItemPropertyLyrics;
+
+pub use self::__MPMediaItem::MPMediaItemPropertyIsCompilation;
+
+pub use self::__MPMediaItem::MPMediaItemPropertyReleaseDate;
+
+pub use self::__MPMediaItem::MPMediaItemPropertyBeatsPerMinute;
+
+pub use self::__MPMediaItem::MPMediaItemPropertyComments;
+
+pub use self::__MPMediaItem::MPMediaItemPropertyAssetURL;
+
+pub use self::__MPMediaItem::MPMediaItemPropertyIsCloudItem;
+
+pub use self::__MPMediaItem::MPMediaItemPropertyHasProtectedAsset;
+
+pub use self::__MPMediaItem::MPMediaItemPropertyPodcastTitle;
+
+pub use self::__MPMediaItem::MPMediaItemPropertyPodcastPersistentID;
+
+pub use self::__MPMediaItem::MPMediaItemPropertyPlayCount;
+
+pub use self::__MPMediaItem::MPMediaItemPropertySkipCount;
+
+pub use self::__MPMediaItem::MPMediaItemPropertyRating;
+
+pub use self::__MPMediaItem::MPMediaItemPropertyLastPlayedDate;
+
+pub use self::__MPMediaItem::MPMediaItemPropertyUserGrouping;
+
+pub use self::__MPMediaItem::MPMediaItemPropertyBookmarkTime;
+
+pub use self::__MPMediaItem::MPMediaItemPropertyDateAdded;
+
+pub use self::__MPMediaItem::MPMediaItemPropertyPlaybackStoreID;
+
 #[cfg(feature = "MediaPlayer_MPMediaItem")]
+#[cfg(feature = "MediaPlayer_MPMediaItem")]
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 pub use self::__MPMediaItem::MPMediaItem;
 #[cfg(feature = "MediaPlayer_MPMediaItemArtwork")]
+#[cfg(feature = "MediaPlayer_MPMediaItemArtwork")]
 pub use self::__MPMediaItem::MPMediaItemArtwork;
-pub use self::__MPMediaItem::MPMediaItemPropertyAlbumArtist;
-pub use self::__MPMediaItem::MPMediaItemPropertyAlbumArtistPersistentID;
-pub use self::__MPMediaItem::MPMediaItemPropertyAlbumPersistentID;
-pub use self::__MPMediaItem::MPMediaItemPropertyAlbumTitle;
-pub use self::__MPMediaItem::MPMediaItemPropertyAlbumTrackCount;
-pub use self::__MPMediaItem::MPMediaItemPropertyAlbumTrackNumber;
-pub use self::__MPMediaItem::MPMediaItemPropertyArtist;
-pub use self::__MPMediaItem::MPMediaItemPropertyArtistPersistentID;
-pub use self::__MPMediaItem::MPMediaItemPropertyArtwork;
-pub use self::__MPMediaItem::MPMediaItemPropertyAssetURL;
-pub use self::__MPMediaItem::MPMediaItemPropertyBeatsPerMinute;
-pub use self::__MPMediaItem::MPMediaItemPropertyBookmarkTime;
-pub use self::__MPMediaItem::MPMediaItemPropertyComments;
-pub use self::__MPMediaItem::MPMediaItemPropertyComposer;
-pub use self::__MPMediaItem::MPMediaItemPropertyComposerPersistentID;
-pub use self::__MPMediaItem::MPMediaItemPropertyDateAdded;
-pub use self::__MPMediaItem::MPMediaItemPropertyDiscCount;
-pub use self::__MPMediaItem::MPMediaItemPropertyDiscNumber;
-pub use self::__MPMediaItem::MPMediaItemPropertyGenre;
-pub use self::__MPMediaItem::MPMediaItemPropertyGenrePersistentID;
-pub use self::__MPMediaItem::MPMediaItemPropertyHasProtectedAsset;
-pub use self::__MPMediaItem::MPMediaItemPropertyIsCloudItem;
-pub use self::__MPMediaItem::MPMediaItemPropertyIsCompilation;
-pub use self::__MPMediaItem::MPMediaItemPropertyIsExplicit;
 pub use self::__MPMediaItem::MPMediaItemPropertyIsPreorder;
-pub use self::__MPMediaItem::MPMediaItemPropertyLastPlayedDate;
-pub use self::__MPMediaItem::MPMediaItemPropertyLyrics;
-pub use self::__MPMediaItem::MPMediaItemPropertyMediaType;
-pub use self::__MPMediaItem::MPMediaItemPropertyPersistentID;
-pub use self::__MPMediaItem::MPMediaItemPropertyPlayCount;
-pub use self::__MPMediaItem::MPMediaItemPropertyPlaybackDuration;
-pub use self::__MPMediaItem::MPMediaItemPropertyPlaybackStoreID;
-pub use self::__MPMediaItem::MPMediaItemPropertyPodcastPersistentID;
-pub use self::__MPMediaItem::MPMediaItemPropertyPodcastTitle;
-pub use self::__MPMediaItem::MPMediaItemPropertyRating;
-pub use self::__MPMediaItem::MPMediaItemPropertyReleaseDate;
-pub use self::__MPMediaItem::MPMediaItemPropertySkipCount;
-pub use self::__MPMediaItem::MPMediaItemPropertyTitle;
-pub use self::__MPMediaItem::MPMediaItemPropertyUserGrouping;
-pub use self::__MPMediaItem::{
-    MPMediaType, MPMediaTypeAny, MPMediaTypeAnyAudio, MPMediaTypeAnyVideo, MPMediaTypeAudioBook,
-    MPMediaTypeAudioITunesU, MPMediaTypeHomeVideo, MPMediaTypeMovie, MPMediaTypeMusic,
-    MPMediaTypeMusicVideo, MPMediaTypePodcast, MPMediaTypeTVShow, MPMediaTypeVideoITunesU,
-    MPMediaTypeVideoPodcast,
-};
 #[cfg(feature = "MediaPlayer_MPMediaItemCollection")]
+#[cfg(feature = "MediaPlayer_MPMediaItemCollection")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__MPMediaItemCollection::MPMediaItemCollection;
 #[cfg(feature = "MediaPlayer_MPMediaLibrary")]
+#[cfg(feature = "MediaPlayer_MPMediaLibrary")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__MPMediaLibrary::MPMediaLibrary;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+pub use self::__MPMediaLibrary::MPMediaLibraryAuthorizationStatus;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+pub use self::__MPMediaLibrary::MPMediaLibraryAuthorizationStatusAuthorized;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+pub use self::__MPMediaLibrary::MPMediaLibraryAuthorizationStatusDenied;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+pub use self::__MPMediaLibrary::MPMediaLibraryAuthorizationStatusNotDetermined;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+pub use self::__MPMediaLibrary::MPMediaLibraryAuthorizationStatusRestricted;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__MPMediaLibrary::MPMediaLibraryDidChangeNotification;
-pub use self::__MPMediaLibrary::{
-    MPMediaLibraryAuthorizationStatus, MPMediaLibraryAuthorizationStatusAuthorized,
-    MPMediaLibraryAuthorizationStatusDenied, MPMediaLibraryAuthorizationStatusNotDetermined,
-    MPMediaLibraryAuthorizationStatusRestricted,
-};
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 pub use self::__MPMediaPlayback::MPMediaPlayback;
+
 pub use self::__MPMediaPlayback::MPMediaPlaybackIsPreparedToPlayDidChangeNotification;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+pub use self::__MPMediaPlaylist::MPMediaPlaylistAttribute;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+pub use self::__MPMediaPlaylist::MPMediaPlaylistAttributeGenius;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+pub use self::__MPMediaPlaylist::MPMediaPlaylistAttributeNone;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+pub use self::__MPMediaPlaylist::MPMediaPlaylistAttributeOnTheGo;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+pub use self::__MPMediaPlaylist::MPMediaPlaylistAttributeSmart;
+
+pub use self::__MPMediaPlaylist::MPMediaPlaylistPropertyPersistentID;
+
+pub use self::__MPMediaPlaylist::MPMediaPlaylistPropertyCloudGlobalID;
+
+pub use self::__MPMediaPlaylist::MPMediaPlaylistPropertyName;
+
+pub use self::__MPMediaPlaylist::MPMediaPlaylistPropertyPlaylistAttributes;
+
+pub use self::__MPMediaPlaylist::MPMediaPlaylistPropertySeedItems;
+
+pub use self::__MPMediaPlaylist::MPMediaPlaylistPropertyDescriptionText;
+
 #[cfg(feature = "MediaPlayer_MPMediaPlaylist")]
+#[cfg(feature = "MediaPlayer_MPMediaPlaylist")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__MPMediaPlaylist::MPMediaPlaylist;
 #[cfg(feature = "MediaPlayer_MPMediaPlaylistCreationMetadata")]
+#[cfg(feature = "MediaPlayer_MPMediaPlaylistCreationMetadata")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__MPMediaPlaylist::MPMediaPlaylistCreationMetadata;
 pub use self::__MPMediaPlaylist::MPMediaPlaylistPropertyAuthorDisplayName;
-pub use self::__MPMediaPlaylist::MPMediaPlaylistPropertyCloudGlobalID;
-pub use self::__MPMediaPlaylist::MPMediaPlaylistPropertyDescriptionText;
-pub use self::__MPMediaPlaylist::MPMediaPlaylistPropertyName;
-pub use self::__MPMediaPlaylist::MPMediaPlaylistPropertyPersistentID;
-pub use self::__MPMediaPlaylist::MPMediaPlaylistPropertyPlaylistAttributes;
-pub use self::__MPMediaPlaylist::MPMediaPlaylistPropertySeedItems;
-pub use self::__MPMediaPlaylist::{
-    MPMediaPlaylistAttribute, MPMediaPlaylistAttributeGenius, MPMediaPlaylistAttributeNone,
-    MPMediaPlaylistAttributeOnTheGo, MPMediaPlaylistAttributeSmart,
-};
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+pub use self::__MPMediaQuery::MPMediaGrouping;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+pub use self::__MPMediaQuery::MPMediaGroupingAlbum;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+pub use self::__MPMediaQuery::MPMediaGroupingAlbumArtist;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+pub use self::__MPMediaQuery::MPMediaGroupingArtist;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+pub use self::__MPMediaQuery::MPMediaGroupingComposer;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+pub use self::__MPMediaQuery::MPMediaGroupingGenre;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+pub use self::__MPMediaQuery::MPMediaGroupingPlaylist;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+pub use self::__MPMediaQuery::MPMediaGroupingPodcastTitle;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+pub use self::__MPMediaQuery::MPMediaGroupingTitle;
 #[cfg(feature = "MediaPlayer_MPMediaPredicate")]
+#[cfg(feature = "MediaPlayer_MPMediaPredicate")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__MPMediaQuery::MPMediaPredicate;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+pub use self::__MPMediaQuery::MPMediaPredicateComparison;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+pub use self::__MPMediaQuery::MPMediaPredicateComparisonContains;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+pub use self::__MPMediaQuery::MPMediaPredicateComparisonEqualTo;
 #[cfg(feature = "MediaPlayer_MPMediaPropertyPredicate")]
+#[cfg(feature = "MediaPlayer_MPMediaPropertyPredicate")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__MPMediaQuery::MPMediaPropertyPredicate;
 #[cfg(feature = "MediaPlayer_MPMediaQuery")]
+#[cfg(feature = "MediaPlayer_MPMediaQuery")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__MPMediaQuery::MPMediaQuery;
-pub use self::__MPMediaQuery::{
-    MPMediaGrouping, MPMediaGroupingAlbum, MPMediaGroupingAlbumArtist, MPMediaGroupingArtist,
-    MPMediaGroupingComposer, MPMediaGroupingGenre, MPMediaGroupingPlaylist,
-    MPMediaGroupingPodcastTitle, MPMediaGroupingTitle,
-};
-pub use self::__MPMediaQuery::{
-    MPMediaPredicateComparison, MPMediaPredicateComparisonContains,
-    MPMediaPredicateComparisonEqualTo,
-};
 #[cfg(feature = "MediaPlayer_MPMediaQuerySection")]
+#[cfg(feature = "MediaPlayer_MPMediaQuerySection")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__MPMediaQuerySection::MPMediaQuerySection;
 #[cfg(feature = "MediaPlayer_MPMusicPlayerApplicationController")]
+#[cfg(feature = "MediaPlayer_MPMusicPlayerApplicationController")]
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 pub use self::__MPMusicPlayerApplicationController::MPMusicPlayerApplicationController;
 #[cfg(feature = "MediaPlayer_MPMusicPlayerControllerMutableQueue")]
+#[cfg(feature = "MediaPlayer_MPMusicPlayerControllerMutableQueue")]
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 pub use self::__MPMusicPlayerApplicationController::MPMusicPlayerControllerMutableQueue;
 #[cfg(feature = "MediaPlayer_MPMusicPlayerControllerQueue")]
+#[cfg(feature = "MediaPlayer_MPMusicPlayerControllerQueue")]
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 pub use self::__MPMusicPlayerApplicationController::MPMusicPlayerControllerQueue;
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 pub use self::__MPMusicPlayerApplicationController::MPMusicPlayerControllerQueueDidChangeNotification;
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+pub use self::__MPMusicPlayerController::MPMusicPlaybackState;
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+pub use self::__MPMusicPlayerController::MPMusicPlaybackStateInterrupted;
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+pub use self::__MPMusicPlayerController::MPMusicPlaybackStatePaused;
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+pub use self::__MPMusicPlayerController::MPMusicPlaybackStatePlaying;
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+pub use self::__MPMusicPlayerController::MPMusicPlaybackStateSeekingBackward;
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+pub use self::__MPMusicPlayerController::MPMusicPlaybackStateSeekingForward;
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+pub use self::__MPMusicPlayerController::MPMusicPlaybackStateStopped;
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+pub use self::__MPMusicPlayerController::MPMusicRepeatMode;
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+pub use self::__MPMusicPlayerController::MPMusicRepeatModeAll;
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+pub use self::__MPMusicPlayerController::MPMusicRepeatModeDefault;
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+pub use self::__MPMusicPlayerController::MPMusicRepeatModeNone;
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+pub use self::__MPMusicPlayerController::MPMusicRepeatModeOne;
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+pub use self::__MPMusicPlayerController::MPMusicShuffleMode;
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+pub use self::__MPMusicPlayerController::MPMusicShuffleModeAlbums;
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+pub use self::__MPMusicPlayerController::MPMusicShuffleModeDefault;
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+pub use self::__MPMusicPlayerController::MPMusicShuffleModeOff;
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+pub use self::__MPMusicPlayerController::MPMusicShuffleModeSongs;
+
 #[cfg(feature = "MediaPlayer_MPMusicPlayerController")]
+#[cfg(feature = "MediaPlayer_MPMusicPlayerController")]
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 pub use self::__MPMusicPlayerController::MPMusicPlayerController;
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 pub use self::__MPMusicPlayerController::MPMusicPlayerControllerNowPlayingItemDidChangeNotification;
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 pub use self::__MPMusicPlayerController::MPMusicPlayerControllerPlaybackStateDidChangeNotification;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__MPMusicPlayerController::MPMusicPlayerControllerVolumeDidChangeNotification;
 pub use self::__MPMusicPlayerController::MPSystemMusicPlayerController;
-pub use self::__MPMusicPlayerController::{
-    MPMusicPlaybackState, MPMusicPlaybackStateInterrupted, MPMusicPlaybackStatePaused,
-    MPMusicPlaybackStatePlaying, MPMusicPlaybackStateSeekingBackward,
-    MPMusicPlaybackStateSeekingForward, MPMusicPlaybackStateStopped,
-};
-pub use self::__MPMusicPlayerController::{
-    MPMusicRepeatMode, MPMusicRepeatModeAll, MPMusicRepeatModeDefault, MPMusicRepeatModeNone,
-    MPMusicRepeatModeOne,
-};
-pub use self::__MPMusicPlayerController::{
-    MPMusicShuffleMode, MPMusicShuffleModeAlbums, MPMusicShuffleModeDefault, MPMusicShuffleModeOff,
-    MPMusicShuffleModeSongs,
-};
 #[cfg(feature = "MediaPlayer_MPMusicPlayerMediaItemQueueDescriptor")]
+#[cfg(feature = "MediaPlayer_MPMusicPlayerMediaItemQueueDescriptor")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__MPMusicPlayerQueueDescriptor::MPMusicPlayerMediaItemQueueDescriptor;
 #[cfg(feature = "MediaPlayer_MPMusicPlayerPlayParameters")]
+#[cfg(feature = "MediaPlayer_MPMusicPlayerPlayParameters")]
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 pub use self::__MPMusicPlayerQueueDescriptor::MPMusicPlayerPlayParameters;
 #[cfg(feature = "MediaPlayer_MPMusicPlayerPlayParametersQueueDescriptor")]
+#[cfg(feature = "MediaPlayer_MPMusicPlayerPlayParametersQueueDescriptor")]
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 pub use self::__MPMusicPlayerQueueDescriptor::MPMusicPlayerPlayParametersQueueDescriptor;
 #[cfg(feature = "MediaPlayer_MPMusicPlayerQueueDescriptor")]
+#[cfg(feature = "MediaPlayer_MPMusicPlayerQueueDescriptor")]
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 pub use self::__MPMusicPlayerQueueDescriptor::MPMusicPlayerQueueDescriptor;
 #[cfg(feature = "MediaPlayer_MPMusicPlayerStoreQueueDescriptor")]
+#[cfg(feature = "MediaPlayer_MPMusicPlayerStoreQueueDescriptor")]
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 pub use self::__MPMusicPlayerQueueDescriptor::MPMusicPlayerStoreQueueDescriptor;
+
+pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoMediaType;
+
+pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoMediaTypeNone;
+
+pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoMediaTypeAudio;
+
+pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoMediaTypeVideo;
+
+pub use self::__MPNowPlayingInfoCenter::MPNowPlayingPlaybackState;
+
+pub use self::__MPNowPlayingInfoCenter::MPNowPlayingPlaybackStateUnknown;
+
+pub use self::__MPNowPlayingInfoCenter::MPNowPlayingPlaybackStatePlaying;
+
+pub use self::__MPNowPlayingInfoCenter::MPNowPlayingPlaybackStatePaused;
+
+pub use self::__MPNowPlayingInfoCenter::MPNowPlayingPlaybackStateStopped;
+
+#[cfg(feature = "MediaPlayer_MPNowPlayingInfoCenter")]
 #[cfg(feature = "MediaPlayer_MPNowPlayingInfoCenter")]
 pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoCenter;
-pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoCollectionIdentifier;
-pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoPropertyAdTimeRanges;
-pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoPropertyAssetURL;
-pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoPropertyAvailableLanguageOptions;
-pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoPropertyChapterCount;
-pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoPropertyChapterNumber;
-pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoPropertyCreditsStartTime;
-pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoPropertyCurrentLanguageOptions;
-pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoPropertyCurrentPlaybackDate;
-pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoPropertyDefaultPlaybackRate;
+pub use self::__MPNowPlayingInfoCenter::MPNowPlayingPlaybackStateInterrupted;
+
 pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoPropertyElapsedPlaybackTime;
-pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoPropertyExternalContentIdentifier;
-pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoPropertyExternalUserProfileIdentifier;
-pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoPropertyIsLiveStream;
-pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoPropertyMediaType;
-pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoPropertyPlaybackProgress;
-pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoPropertyPlaybackQueueCount;
-pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoPropertyPlaybackQueueIndex;
+
 pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoPropertyPlaybackRate;
+
+pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoPropertyDefaultPlaybackRate;
+
+pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoPropertyPlaybackQueueIndex;
+
+pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoPropertyPlaybackQueueCount;
+
+pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoPropertyChapterNumber;
+
+pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoPropertyChapterCount;
+
+pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoPropertyIsLiveStream;
+
+pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoPropertyAvailableLanguageOptions;
+
+pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoPropertyCurrentLanguageOptions;
+
+pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoCollectionIdentifier;
+
+pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoPropertyExternalContentIdentifier;
+
+pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoPropertyExternalUserProfileIdentifier;
+
 pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoPropertyServiceIdentifier;
-pub use self::__MPNowPlayingInfoCenter::{
-    MPNowPlayingInfoMediaType, MPNowPlayingInfoMediaTypeAudio, MPNowPlayingInfoMediaTypeNone,
-    MPNowPlayingInfoMediaTypeVideo,
-};
-pub use self::__MPNowPlayingInfoCenter::{
-    MPNowPlayingPlaybackState, MPNowPlayingPlaybackStateInterrupted,
-    MPNowPlayingPlaybackStatePaused, MPNowPlayingPlaybackStatePlaying,
-    MPNowPlayingPlaybackStateStopped, MPNowPlayingPlaybackStateUnknown,
-};
-pub use self::__MPNowPlayingInfoLanguageOption::MPLanguageOptionCharacteristicContainsOnlyForcedSubtitles;
-pub use self::__MPNowPlayingInfoLanguageOption::MPLanguageOptionCharacteristicDescribesMusicAndSound;
-pub use self::__MPNowPlayingInfoLanguageOption::MPLanguageOptionCharacteristicDescribesVideo;
-pub use self::__MPNowPlayingInfoLanguageOption::MPLanguageOptionCharacteristicDubbedTranslation;
-pub use self::__MPNowPlayingInfoLanguageOption::MPLanguageOptionCharacteristicEasyToRead;
-pub use self::__MPNowPlayingInfoLanguageOption::MPLanguageOptionCharacteristicIsAuxiliaryContent;
+
+pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoPropertyPlaybackProgress;
+
+pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoPropertyMediaType;
+
+pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoPropertyAssetURL;
+
+pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoPropertyCurrentPlaybackDate;
+
+pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoPropertyAdTimeRanges;
+
+pub use self::__MPNowPlayingInfoCenter::MPNowPlayingInfoPropertyCreditsStartTime;
+
 pub use self::__MPNowPlayingInfoLanguageOption::MPLanguageOptionCharacteristicIsMainProgramContent;
-pub use self::__MPNowPlayingInfoLanguageOption::MPLanguageOptionCharacteristicLanguageTranslation;
+
+pub use self::__MPNowPlayingInfoLanguageOption::MPLanguageOptionCharacteristicIsAuxiliaryContent;
+
+pub use self::__MPNowPlayingInfoLanguageOption::MPLanguageOptionCharacteristicContainsOnlyForcedSubtitles;
+
 pub use self::__MPNowPlayingInfoLanguageOption::MPLanguageOptionCharacteristicTranscribesSpokenDialog;
+
+pub use self::__MPNowPlayingInfoLanguageOption::MPLanguageOptionCharacteristicDescribesMusicAndSound;
+
+pub use self::__MPNowPlayingInfoLanguageOption::MPLanguageOptionCharacteristicEasyToRead;
+
+pub use self::__MPNowPlayingInfoLanguageOption::MPLanguageOptionCharacteristicDescribesVideo;
+
+pub use self::__MPNowPlayingInfoLanguageOption::MPLanguageOptionCharacteristicLanguageTranslation;
+
+pub use self::__MPNowPlayingInfoLanguageOption::MPLanguageOptionCharacteristicDubbedTranslation;
+
 pub use self::__MPNowPlayingInfoLanguageOption::MPLanguageOptionCharacteristicVoiceOverTranslation;
+
+pub use self::__MPNowPlayingInfoLanguageOption::MPNowPlayingInfoLanguageOptionType;
+
+pub use self::__MPNowPlayingInfoLanguageOption::MPNowPlayingInfoLanguageOptionTypeAudible;
+
+#[cfg(feature = "MediaPlayer_MPNowPlayingInfoLanguageOption")]
 #[cfg(feature = "MediaPlayer_MPNowPlayingInfoLanguageOption")]
 pub use self::__MPNowPlayingInfoLanguageOption::MPNowPlayingInfoLanguageOption;
 #[cfg(feature = "MediaPlayer_MPNowPlayingInfoLanguageOptionGroup")]
+#[cfg(feature = "MediaPlayer_MPNowPlayingInfoLanguageOptionGroup")]
 pub use self::__MPNowPlayingInfoLanguageOption::MPNowPlayingInfoLanguageOptionGroup;
-pub use self::__MPNowPlayingInfoLanguageOption::{
-    MPNowPlayingInfoLanguageOptionType, MPNowPlayingInfoLanguageOptionTypeAudible,
-    MPNowPlayingInfoLanguageOptionTypeLegible,
-};
+pub use self::__MPNowPlayingInfoLanguageOption::MPNowPlayingInfoLanguageOptionTypeLegible;
 #[cfg(feature = "MediaPlayer_MPAdTimeRange")]
+#[cfg(feature = "MediaPlayer_MPAdTimeRange")]
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 pub use self::__MPNowPlayingSession::MPAdTimeRange;
 #[cfg(feature = "MediaPlayer_MPNowPlayingSession")]
+#[cfg(feature = "MediaPlayer_MPNowPlayingSession")]
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 pub use self::__MPNowPlayingSession::MPNowPlayingSession;
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 pub use self::__MPNowPlayingSession::MPNowPlayingSessionDelegate;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__MPPlayableContentDataSource::MPPlayableContentDataSource;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__MPPlayableContentDelegate::MPPlayableContentDelegate;
 #[cfg(feature = "MediaPlayer_MPPlayableContentManager")]
+#[cfg(feature = "MediaPlayer_MPPlayableContentManager")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__MPPlayableContentManager::MPPlayableContentManager;
 #[cfg(feature = "MediaPlayer_MPPlayableContentManagerContext")]
+#[cfg(feature = "MediaPlayer_MPPlayableContentManagerContext")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__MPPlayableContentManagerContext::MPPlayableContentManagerContext;
+
+pub use self::__MPRemoteCommand::MPRemoteCommandHandlerStatus;
+
+pub use self::__MPRemoteCommand::MPRemoteCommandHandlerStatusSuccess;
+
+pub use self::__MPRemoteCommand::MPRemoteCommandHandlerStatusNoSuchContent;
+
+pub use self::__MPRemoteCommand::MPRemoteCommandHandlerStatusNoActionableNowPlayingItem;
+
+pub use self::__MPRemoteCommand::MPRemoteCommandHandlerStatusDeviceNotFound;
+
+#[cfg(feature = "MediaPlayer_MPChangePlaybackPositionCommand")]
 #[cfg(feature = "MediaPlayer_MPChangePlaybackPositionCommand")]
 pub use self::__MPRemoteCommand::MPChangePlaybackPositionCommand;
 #[cfg(feature = "MediaPlayer_MPChangePlaybackRateCommand")]
+#[cfg(feature = "MediaPlayer_MPChangePlaybackRateCommand")]
 pub use self::__MPRemoteCommand::MPChangePlaybackRateCommand;
+#[cfg(feature = "MediaPlayer_MPChangeRepeatModeCommand")]
 #[cfg(feature = "MediaPlayer_MPChangeRepeatModeCommand")]
 pub use self::__MPRemoteCommand::MPChangeRepeatModeCommand;
 #[cfg(feature = "MediaPlayer_MPChangeShuffleModeCommand")]
+#[cfg(feature = "MediaPlayer_MPChangeShuffleModeCommand")]
 pub use self::__MPRemoteCommand::MPChangeShuffleModeCommand;
+#[cfg(feature = "MediaPlayer_MPFeedbackCommand")]
 #[cfg(feature = "MediaPlayer_MPFeedbackCommand")]
 pub use self::__MPRemoteCommand::MPFeedbackCommand;
 #[cfg(feature = "MediaPlayer_MPRatingCommand")]
+#[cfg(feature = "MediaPlayer_MPRatingCommand")]
 pub use self::__MPRemoteCommand::MPRatingCommand;
 #[cfg(feature = "MediaPlayer_MPRemoteCommand")]
+#[cfg(feature = "MediaPlayer_MPRemoteCommand")]
 pub use self::__MPRemoteCommand::MPRemoteCommand;
+pub use self::__MPRemoteCommand::MPRemoteCommandHandlerStatusCommandFailed;
+#[cfg(feature = "MediaPlayer_MPSkipIntervalCommand")]
 #[cfg(feature = "MediaPlayer_MPSkipIntervalCommand")]
 pub use self::__MPRemoteCommand::MPSkipIntervalCommand;
-pub use self::__MPRemoteCommand::{
-    MPRemoteCommandHandlerStatus, MPRemoteCommandHandlerStatusCommandFailed,
-    MPRemoteCommandHandlerStatusDeviceNotFound,
-    MPRemoteCommandHandlerStatusNoActionableNowPlayingItem,
-    MPRemoteCommandHandlerStatusNoSuchContent, MPRemoteCommandHandlerStatusSuccess,
-};
+#[cfg(feature = "MediaPlayer_MPRemoteCommandCenter")]
 #[cfg(feature = "MediaPlayer_MPRemoteCommandCenter")]
 pub use self::__MPRemoteCommandCenter::MPRemoteCommandCenter;
+#[cfg(feature = "MediaPlayer_MPRemoteCommandEvent")]
+#[cfg(feature = "MediaPlayer_MPRemoteCommandEvent")]
+pub use self::__MPRemoteCommandEvent::MPRemoteCommandEvent;
+#[cfg(feature = "MediaPlayer_MPSkipIntervalCommandEvent")]
+#[cfg(feature = "MediaPlayer_MPSkipIntervalCommandEvent")]
+pub use self::__MPRemoteCommandEvent::MPSkipIntervalCommandEvent;
+
+pub use self::__MPRemoteCommandEvent::MPSeekCommandEventType;
+
+pub use self::__MPRemoteCommandEvent::MPSeekCommandEventTypeBeginSeeking;
+
+#[cfg(feature = "MediaPlayer_MPChangeLanguageOptionCommandEvent")]
 #[cfg(feature = "MediaPlayer_MPChangeLanguageOptionCommandEvent")]
 pub use self::__MPRemoteCommandEvent::MPChangeLanguageOptionCommandEvent;
 #[cfg(feature = "MediaPlayer_MPChangePlaybackPositionCommandEvent")]
+#[cfg(feature = "MediaPlayer_MPChangePlaybackPositionCommandEvent")]
 pub use self::__MPRemoteCommandEvent::MPChangePlaybackPositionCommandEvent;
+#[cfg(feature = "MediaPlayer_MPChangePlaybackRateCommandEvent")]
 #[cfg(feature = "MediaPlayer_MPChangePlaybackRateCommandEvent")]
 pub use self::__MPRemoteCommandEvent::MPChangePlaybackRateCommandEvent;
 #[cfg(feature = "MediaPlayer_MPChangeRepeatModeCommandEvent")]
+#[cfg(feature = "MediaPlayer_MPChangeRepeatModeCommandEvent")]
 pub use self::__MPRemoteCommandEvent::MPChangeRepeatModeCommandEvent;
+#[cfg(feature = "MediaPlayer_MPChangeShuffleModeCommandEvent")]
 #[cfg(feature = "MediaPlayer_MPChangeShuffleModeCommandEvent")]
 pub use self::__MPRemoteCommandEvent::MPChangeShuffleModeCommandEvent;
 #[cfg(feature = "MediaPlayer_MPFeedbackCommandEvent")]
+#[cfg(feature = "MediaPlayer_MPFeedbackCommandEvent")]
 pub use self::__MPRemoteCommandEvent::MPFeedbackCommandEvent;
 #[cfg(feature = "MediaPlayer_MPRatingCommandEvent")]
+#[cfg(feature = "MediaPlayer_MPRatingCommandEvent")]
 pub use self::__MPRemoteCommandEvent::MPRatingCommandEvent;
-#[cfg(feature = "MediaPlayer_MPRemoteCommandEvent")]
-pub use self::__MPRemoteCommandEvent::MPRemoteCommandEvent;
+#[cfg(feature = "MediaPlayer_MPSeekCommandEvent")]
 #[cfg(feature = "MediaPlayer_MPSeekCommandEvent")]
 pub use self::__MPRemoteCommandEvent::MPSeekCommandEvent;
-#[cfg(feature = "MediaPlayer_MPSkipIntervalCommandEvent")]
-pub use self::__MPRemoteCommandEvent::MPSkipIntervalCommandEvent;
-pub use self::__MPRemoteCommandEvent::{
-    MPSeekCommandEventType, MPSeekCommandEventTypeBeginSeeking, MPSeekCommandEventTypeEndSeeking,
-};
-pub use self::__MPRemoteControlTypes::{
-    MPChangeLanguageOptionSetting, MPChangeLanguageOptionSettingNone,
-    MPChangeLanguageOptionSettingNowPlayingItemOnly, MPChangeLanguageOptionSettingPermanent,
-};
-pub use self::__MPRemoteControlTypes::{
-    MPRepeatType, MPRepeatTypeAll, MPRepeatTypeOff, MPRepeatTypeOne,
-};
-pub use self::__MPRemoteControlTypes::{
-    MPShuffleType, MPShuffleTypeCollections, MPShuffleTypeItems, MPShuffleTypeOff,
-};
+pub use self::__MPRemoteCommandEvent::MPSeekCommandEventTypeEndSeeking;
+
+pub use self::__MPRemoteControlTypes::MPShuffleType;
+
+pub use self::__MPRemoteControlTypes::MPShuffleTypeOff;
+
+pub use self::__MPRemoteControlTypes::MPShuffleTypeItems;
+
+pub use self::__MPRemoteControlTypes::MPShuffleTypeCollections;
+
+pub use self::__MPRemoteControlTypes::MPRepeatType;
+
+pub use self::__MPRemoteControlTypes::MPRepeatTypeOff;
+
+pub use self::__MPRemoteControlTypes::MPRepeatTypeOne;
+
+pub use self::__MPRemoteControlTypes::MPRepeatTypeAll;
+
+pub use self::__MPRemoteControlTypes::MPChangeLanguageOptionSetting;
+
+pub use self::__MPRemoteControlTypes::MPChangeLanguageOptionSettingNone;
+
+pub use self::__MPRemoteControlTypes::MPChangeLanguageOptionSettingNowPlayingItemOnly;
+
+pub use self::__MPRemoteControlTypes::MPChangeLanguageOptionSettingPermanent;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__MPVolumeSettings::MPVolumeSettingsAlertHide;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__MPVolumeSettings::MPVolumeSettingsAlertIsVisible;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__MPVolumeSettings::MPVolumeSettingsAlertShow;

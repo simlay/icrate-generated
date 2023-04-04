@@ -268,26 +268,32 @@ extern_methods!(
     #[cfg(feature = "CloudKit_CKNotificationInfo")]
     unsafe impl CKNotificationInfo {
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other alertBody)]
         pub unsafe fn alertBody(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setAlertBody:)]
         pub unsafe fn setAlertBody(&self, alert_body: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other alertLocalizationKey)]
         pub unsafe fn alertLocalizationKey(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setAlertLocalizationKey:)]
         pub unsafe fn setAlertLocalizationKey(&self, alert_localization_key: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSArray")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other alertLocalizationArgs)]
         pub unsafe fn alertLocalizationArgs(&self) -> Option<Id<NSArray<CKRecordFieldKey>>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setAlertLocalizationArgs:)]
         pub unsafe fn setAlertLocalizationArgs(
             &self,
@@ -295,26 +301,32 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setTitle:)]
         pub unsafe fn setTitle(&self, title: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other titleLocalizationKey)]
         pub unsafe fn titleLocalizationKey(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setTitleLocalizationKey:)]
         pub unsafe fn setTitleLocalizationKey(&self, title_localization_key: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSArray")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other titleLocalizationArgs)]
         pub unsafe fn titleLocalizationArgs(&self) -> Option<Id<NSArray<CKRecordFieldKey>>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setTitleLocalizationArgs:)]
         pub unsafe fn setTitleLocalizationArgs(
             &self,
@@ -322,18 +334,22 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other subtitle)]
         pub unsafe fn subtitle(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setSubtitle:)]
         pub unsafe fn setSubtitle(&self, subtitle: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other subtitleLocalizationKey)]
         pub unsafe fn subtitleLocalizationKey(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setSubtitleLocalizationKey:)]
         pub unsafe fn setSubtitleLocalizationKey(
             &self,
@@ -341,10 +357,12 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSArray")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other subtitleLocalizationArgs)]
         pub unsafe fn subtitleLocalizationArgs(&self) -> Option<Id<NSArray<CKRecordFieldKey>>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setSubtitleLocalizationArgs:)]
         pub unsafe fn setSubtitleLocalizationArgs(
             &self,
@@ -352,10 +370,12 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other alertActionLocalizationKey)]
         pub unsafe fn alertActionLocalizationKey(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setAlertActionLocalizationKey:)]
         pub unsafe fn setAlertActionLocalizationKey(
             &self,
@@ -363,18 +383,22 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other alertLaunchImage)]
         pub unsafe fn alertLaunchImage(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setAlertLaunchImage:)]
         pub unsafe fn setAlertLaunchImage(&self, alert_launch_image: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other soundName)]
         pub unsafe fn soundName(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setSoundName:)]
         pub unsafe fn setSoundName(&self, sound_name: Option<&NSString>);
 
@@ -405,10 +429,12 @@ extern_methods!(
         pub unsafe fn setShouldSendMutableContent(&self, should_send_mutable_content: bool);
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other category)]
         pub unsafe fn category(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setCategory:)]
         pub unsafe fn setCategory(&self, category: Option<&NSString>);
 

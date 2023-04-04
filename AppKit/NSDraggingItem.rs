@@ -16,7 +16,6 @@ extern_static!(NSDraggingImageComponentLabelKey: &'static NSDraggingImageCompone
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSDraggingImageComponent")]
-    #[cfg(not(any(target_os = "ios")))]
     pub struct NSDraggingImageComponent;
 
     #[cfg(feature = "AppKit_NSDraggingImageComponent")]
@@ -31,44 +30,35 @@ unsafe impl NSObjectProtocol for NSDraggingImageComponent {}
 extern_methods!(
     #[cfg(feature = "AppKit_NSDraggingImageComponent")]
     unsafe impl NSDraggingImageComponent {
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other draggingImageComponentWithKey:)]
         pub unsafe fn draggingImageComponentWithKey(
             key: &NSDraggingImageComponentKey,
         ) -> Id<NSDraggingImageComponent>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithKey:)]
         pub unsafe fn initWithKey(
             this: Option<Allocated<Self>>,
             key: &NSDraggingImageComponentKey,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other key)]
         pub unsafe fn key(&self) -> Id<NSDraggingImageComponentKey>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setKey:)]
         pub unsafe fn setKey(&self, key: &NSDraggingImageComponentKey);
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other contents)]
         pub unsafe fn contents(&self) -> Option<Id<Object>>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setContents:)]
         pub unsafe fn setContents(&self, contents: Option<&Object>);
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(frame)]
         pub unsafe fn frame(&self) -> NSRect;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setFrame:)]
         pub unsafe fn setFrame(&self, frame: NSRect);
     }
@@ -77,7 +67,6 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSDraggingItem")]
-    #[cfg(not(any(target_os = "ios")))]
     pub struct NSDraggingItem;
 
     #[cfg(feature = "AppKit_NSDraggingItem")]
@@ -92,26 +81,21 @@ unsafe impl NSObjectProtocol for NSDraggingItem {}
 extern_methods!(
     #[cfg(feature = "AppKit_NSDraggingItem")]
     unsafe impl NSDraggingItem {
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithPasteboardWriter:)]
         pub unsafe fn initWithPasteboardWriter(
             this: Option<Allocated<Self>>,
             pasteboard_writer: &ProtocolObject<dyn NSPasteboardWriting>,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other item)]
         pub unsafe fn item(&self) -> Id<Object>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(draggingFrame)]
         pub unsafe fn draggingFrame(&self) -> NSRect;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setDraggingFrame:)]
         pub unsafe fn setDraggingFrame(&self, dragging_frame: NSRect);
 
@@ -119,7 +103,6 @@ extern_methods!(
             feature = "AppKit_NSDraggingImageComponent",
             feature = "Foundation_NSArray"
         ))]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(imageComponentsProvider)]
         pub unsafe fn imageComponentsProvider(
             &self,
@@ -129,7 +112,6 @@ extern_methods!(
             feature = "AppKit_NSDraggingImageComponent",
             feature = "Foundation_NSArray"
         ))]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setImageComponentsProvider:)]
         pub unsafe fn setImageComponentsProvider(
             &self,
@@ -138,7 +120,6 @@ extern_methods!(
             >,
         );
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setDraggingFrame:contents:)]
         pub unsafe fn setDraggingFrame_contents(&self, frame: NSRect, contents: Option<&Object>);
 
@@ -146,7 +127,6 @@ extern_methods!(
             feature = "AppKit_NSDraggingImageComponent",
             feature = "Foundation_NSArray"
         ))]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other imageComponents)]
         pub unsafe fn imageComponents(&self) -> Option<Id<NSArray<NSDraggingImageComponent>>>;
     }

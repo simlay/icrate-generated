@@ -52,39 +52,39 @@ ns_enum!(
     #[underlying(NSUInteger)]
     #[deprecated = "Use MTLGPUFamily instead"]
     pub enum MTLFeatureSet {
-        #[cfg(not(any(target_os = "macos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         MTLFeatureSet_iOS_GPUFamily1_v1 = 0,
-        #[cfg(not(any(target_os = "macos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         MTLFeatureSet_iOS_GPUFamily2_v1 = 1,
-        #[cfg(not(any(target_os = "macos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         MTLFeatureSet_iOS_GPUFamily1_v2 = 2,
-        #[cfg(not(any(target_os = "macos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         MTLFeatureSet_iOS_GPUFamily2_v2 = 3,
-        #[cfg(not(any(target_os = "macos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         MTLFeatureSet_iOS_GPUFamily3_v1 = 4,
-        #[cfg(not(any(target_os = "macos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         MTLFeatureSet_iOS_GPUFamily1_v3 = 5,
-        #[cfg(not(any(target_os = "macos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         MTLFeatureSet_iOS_GPUFamily2_v3 = 6,
-        #[cfg(not(any(target_os = "macos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         MTLFeatureSet_iOS_GPUFamily3_v2 = 7,
-        #[cfg(not(any(target_os = "macos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         MTLFeatureSet_iOS_GPUFamily1_v4 = 8,
-        #[cfg(not(any(target_os = "macos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         MTLFeatureSet_iOS_GPUFamily2_v4 = 9,
-        #[cfg(not(any(target_os = "macos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         MTLFeatureSet_iOS_GPUFamily3_v3 = 10,
-        #[cfg(not(any(target_os = "macos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         MTLFeatureSet_iOS_GPUFamily4_v1 = 11,
-        #[cfg(not(any(target_os = "macos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         MTLFeatureSet_iOS_GPUFamily1_v5 = 12,
-        #[cfg(not(any(target_os = "macos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         MTLFeatureSet_iOS_GPUFamily2_v5 = 13,
-        #[cfg(not(any(target_os = "macos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         MTLFeatureSet_iOS_GPUFamily3_v4 = 14,
-        #[cfg(not(any(target_os = "macos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         MTLFeatureSet_iOS_GPUFamily4_v2 = 15,
-        #[cfg(not(any(target_os = "macos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         MTLFeatureSet_iOS_GPUFamily5_v1 = 16,
         #[cfg(not(any(target_os = "ios")))]
         MTLFeatureSet_macOS_GPUFamily1_v1 = 10000,
@@ -403,6 +403,7 @@ extern_protocol!(
         fn supportsPullModelInterpolation(&self) -> bool;
 
         #[deprecated]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(areBarycentricCoordsSupported)]
         unsafe fn areBarycentricCoordsSupported(&self) -> bool;
 

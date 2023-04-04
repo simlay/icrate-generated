@@ -12,6 +12,7 @@ typed_extensible_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "UserNotifications_UNNotificationSound")]
+    #[cfg(not(any(target_os = "tvos")))]
     pub struct UNNotificationSound;
 
     #[cfg(feature = "UserNotifications_UNNotificationSound")]
@@ -39,9 +40,11 @@ extern_methods!(
         #[method_id(@__retain_semantics Other defaultRingtoneSound)]
         pub unsafe fn defaultRingtoneSound() -> Id<UNNotificationSound>;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other defaultCriticalSound)]
         pub unsafe fn defaultCriticalSound() -> Id<UNNotificationSound>;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other defaultCriticalSoundWithAudioVolume:)]
         pub unsafe fn defaultCriticalSoundWithAudioVolume(volume: c_float) -> Id<Self>;
 

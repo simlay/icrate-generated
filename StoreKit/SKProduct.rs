@@ -81,7 +81,7 @@ extern_methods!(
         pub unsafe fn isDownloadable(&self) -> bool;
 
         #[deprecated]
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "ios", target_os = "watchos")))]
         #[method(downloadable)]
         pub unsafe fn downloadable(&self) -> bool;
 

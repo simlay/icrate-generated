@@ -16,7 +16,7 @@ ns_options!(
         UNAuthorizationOptionProvidesAppNotificationSettings = 1 << 5,
         UNAuthorizationOptionProvisional = 1 << 6,
         #[deprecated = "Announcement authorization is always included"]
-        #[cfg(not(any(target_os = "macos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         UNAuthorizationOptionAnnouncement = 1 << 7,
         #[deprecated = "Use time-sensitive entitlement"]
         UNAuthorizationOptionTimeSensitive = 1 << 8,
@@ -74,6 +74,7 @@ extern_methods!(
             feature = "Foundation_NSSet",
             feature = "UserNotifications_UNNotificationCategory"
         ))]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setNotificationCategories:)]
         pub unsafe fn setNotificationCategories(&self, categories: &NSSet<UNNotificationCategory>);
 
@@ -81,6 +82,7 @@ extern_methods!(
             feature = "Foundation_NSSet",
             feature = "UserNotifications_UNNotificationCategory"
         ))]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(getNotificationCategoriesWithCompletionHandler:)]
         pub unsafe fn getNotificationCategoriesWithCompletionHandler(
             &self,
@@ -129,6 +131,7 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "UserNotifications_UNNotification"
         ))]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(getDeliveredNotificationsWithCompletionHandler:)]
         pub unsafe fn getDeliveredNotificationsWithCompletionHandler(
             &self,
@@ -136,17 +139,19 @@ extern_methods!(
         );
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(removeDeliveredNotificationsWithIdentifiers:)]
         pub unsafe fn removeDeliveredNotificationsWithIdentifiers(
             &self,
             identifiers: &NSArray<NSString>,
         );
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(removeAllDeliveredNotifications)]
         pub unsafe fn removeAllDeliveredNotifications(&self);
 
         #[cfg(feature = "Foundation_NSError")]
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(setBadgeCount:withCompletionHandler:)]
         pub unsafe fn setBadgeCount_withCompletionHandler(
             &self,
@@ -189,6 +194,7 @@ extern_protocol!(
             feature = "UserNotifications_UNNotificationResponse",
             feature = "UserNotifications_UNUserNotificationCenter"
         ))]
+        #[cfg(not(any(target_os = "tvos")))]
         #[optional]
         #[method(userNotificationCenter:didReceiveNotificationResponse:withCompletionHandler:)]
         unsafe fn userNotificationCenter_didReceiveNotificationResponse_withCompletionHandler(

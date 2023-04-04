@@ -7,17 +7,13 @@ use crate::Foundation::*;
 
 ns_options!(
     #[underlying(NSUInteger)]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub enum NSTextContentManagerEnumerationOptions {
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         NSTextContentManagerEnumerationOptionsNone = 0,
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         NSTextContentManagerEnumerationOptionsReverse = 1 << 0,
     }
 );
 
 extern_protocol!(
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub unsafe trait NSTextElementProvider: NSObjectProtocol {
         #[cfg(feature = "AppKit_NSTextRange")]
         #[method_id(@__retain_semantics Other documentRange)]
@@ -83,7 +79,6 @@ extern_protocol!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSTextContentManager")]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct NSTextContentManager;
 
     #[cfg(feature = "AppKit_NSTextContentManager")]
@@ -204,7 +199,6 @@ extern_methods!(
 );
 
 extern_protocol!(
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub unsafe trait NSTextContentManagerDelegate: NSObjectProtocol {
         #[cfg(all(
             feature = "AppKit_NSTextContentManager",
@@ -236,7 +230,6 @@ extern_protocol!(
 );
 
 extern_protocol!(
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub unsafe trait NSTextContentStorageDelegate: NSTextContentManagerDelegate {
         #[cfg(all(
             feature = "AppKit_NSTextContentStorage",
@@ -257,7 +250,6 @@ extern_protocol!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSTextContentStorage")]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct NSTextContentStorage;
 
     #[cfg(feature = "AppKit_NSTextContentStorage")]

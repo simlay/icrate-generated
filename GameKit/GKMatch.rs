@@ -25,7 +25,7 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameKit_GKMatch")]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+    #[cfg(not(any(target_os = "watchos")))]
     pub struct GKMatch;
 
     #[cfg(feature = "GameKit_GKMatch")]
@@ -99,7 +99,7 @@ extern_methods!(
 );
 
 extern_protocol!(
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+    #[cfg(not(any(target_os = "watchos")))]
     pub unsafe trait GKMatchDelegate: NSObjectProtocol {
         #[cfg(all(
             feature = "Foundation_NSData",

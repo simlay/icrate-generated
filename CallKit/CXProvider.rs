@@ -222,7 +222,7 @@ extern_methods!(
         );
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSError"))]
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(reportNewIncomingVoIPPushPayload:completion:)]
         pub unsafe fn reportNewIncomingVoIPPushPayload_completion(
             dictionary_payload: &NSDictionary,

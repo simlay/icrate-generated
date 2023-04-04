@@ -50,13 +50,13 @@ extern_static!(MKAnnotationViewZPriorityMin: MKAnnotationViewZPriority = 0);
 
 ns_enum!(
     #[underlying(NSInteger)]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+    #[cfg(not(any(target_os = "watchos")))]
     pub enum MKAnnotationViewCollisionMode {
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         MKAnnotationViewCollisionModeRectangle = 0,
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         MKAnnotationViewCollisionModeCircle = 1,
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         MKAnnotationViewCollisionModeNone = 2,
     }
 );
@@ -221,18 +221,23 @@ extern_methods!(
             detail_callout_accessory_view: Option<&NSView>,
         );
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(isDraggable)]
         pub unsafe fn isDraggable(&self) -> bool;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setDraggable:)]
         pub unsafe fn setDraggable(&self, draggable: bool);
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(dragState)]
         pub unsafe fn dragState(&self) -> MKAnnotationViewDragState;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setDragState:)]
         pub unsafe fn setDragState(&self, drag_state: MKAnnotationViewDragState);
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setDragState:animated:)]
         pub unsafe fn setDragState_animated(
             &self,
@@ -257,19 +262,19 @@ extern_methods!(
         #[method(setDisplayPriority:)]
         pub unsafe fn setDisplayPriority(&self, display_priority: MKFeatureDisplayPriority);
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(zPriority)]
         pub unsafe fn zPriority(&self) -> MKAnnotationViewZPriority;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(setZPriority:)]
         pub unsafe fn setZPriority(&self, z_priority: MKAnnotationViewZPriority);
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(selectedZPriority)]
         pub unsafe fn selectedZPriority(&self) -> MKAnnotationViewZPriority;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(setSelectedZPriority:)]
         pub unsafe fn setSelectedZPriority(&self, selected_z_priority: MKAnnotationViewZPriority);
 
@@ -285,7 +290,6 @@ extern_methods!(
     /// Methods declared on superclass `NSView`
     #[cfg(feature = "MapKit_MKAnnotationView")]
     unsafe impl MKAnnotationView {
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithFrame:)]
         pub unsafe fn initWithFrame(this: Option<Allocated<Self>>, frame_rect: NSRect) -> Id<Self>;
     }

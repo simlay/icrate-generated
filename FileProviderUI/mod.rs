@@ -9,12 +9,18 @@ mod __FPUIActionExtensionViewController;
 #[path = "FPUIBase.rs"]
 mod __FPUIBase;
 
+pub use self::__FPUIActionExtensionContext::FPUIErrorDomain;
+
+pub use self::__FPUIActionExtensionContext::FPUIActionIdentifier;
+
+pub use self::__FPUIActionExtensionContext::FPUIExtensionErrorCode;
+
+pub use self::__FPUIActionExtensionContext::FPUIExtensionErrorCodeUserCancelled;
+
+#[cfg(feature = "FileProviderUI_FPUIActionExtensionContext")]
 #[cfg(feature = "FileProviderUI_FPUIActionExtensionContext")]
 pub use self::__FPUIActionExtensionContext::FPUIActionExtensionContext;
-pub use self::__FPUIActionExtensionContext::FPUIActionIdentifier;
-pub use self::__FPUIActionExtensionContext::FPUIErrorDomain;
-pub use self::__FPUIActionExtensionContext::{
-    FPUIExtensionErrorCode, FPUIExtensionErrorCodeFailed, FPUIExtensionErrorCodeUserCancelled,
-};
+pub use self::__FPUIActionExtensionContext::FPUIExtensionErrorCodeFailed;
+#[cfg(feature = "FileProviderUI_FPUIActionExtensionViewController")]
 #[cfg(feature = "FileProviderUI_FPUIActionExtensionViewController")]
 pub use self::__FPUIActionExtensionViewController::FPUIActionExtensionViewController;

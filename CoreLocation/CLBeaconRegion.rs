@@ -208,6 +208,7 @@ extern_methods!(
     unsafe impl CLBeaconRegion {
         #[cfg(feature = "Foundation_NSString")]
         #[deprecated = "Please see CLCircularRegion"]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Init initCircularRegionWithCenter:radius:identifier:)]
         pub unsafe fn initCircularRegionWithCenter_radius_identifier(
             this: Option<Allocated<Self>>,

@@ -170,18 +170,20 @@ extern_methods!(
         #[method(setEligibleForPublicIndexing:)]
         pub unsafe fn setEligibleForPublicIndexing(&self, eligible_for_public_indexing: bool);
 
-        #[cfg(not(any(target_os = "macos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         #[method(isEligibleForPrediction)]
         pub unsafe fn isEligibleForPrediction(&self) -> bool;
 
-        #[cfg(not(any(target_os = "macos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         #[method(setEligibleForPrediction:)]
         pub unsafe fn setEligibleForPrediction(&self, eligible_for_prediction: bool);
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other persistentIdentifier)]
         pub unsafe fn persistentIdentifier(&self)
             -> Option<Id<NSUserActivityPersistentIdentifier>>;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setPersistentIdentifier:)]
         pub unsafe fn setPersistentIdentifier(
             &self,
@@ -189,12 +191,14 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSArray")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(deleteSavedUserActivitiesWithPersistentIdentifiers:completionHandler:)]
         pub unsafe fn deleteSavedUserActivitiesWithPersistentIdentifiers_completionHandler(
             persistent_identifiers: &NSArray<NSUserActivityPersistentIdentifier>,
             handler: &Block<(), ()>,
         );
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(deleteAllSavedUserActivitiesWithCompletionHandler:)]
         pub unsafe fn deleteAllSavedUserActivitiesWithCompletionHandler(handler: &Block<(), ()>);
     }

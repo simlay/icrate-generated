@@ -8,7 +8,6 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSMagnificationGestureRecognizer")]
-    #[cfg(not(any(target_os = "ios")))]
     pub struct NSMagnificationGestureRecognizer;
 
     #[cfg(feature = "AppKit_NSMagnificationGestureRecognizer")]
@@ -27,11 +26,9 @@ unsafe impl NSObjectProtocol for NSMagnificationGestureRecognizer {}
 extern_methods!(
     #[cfg(feature = "AppKit_NSMagnificationGestureRecognizer")]
     unsafe impl NSMagnificationGestureRecognizer {
-        #[cfg(not(any(target_os = "ios")))]
         #[method(magnification)]
         pub unsafe fn magnification(&self) -> CGFloat;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setMagnification:)]
         pub unsafe fn setMagnification(&self, magnification: CGFloat);
     }
@@ -41,7 +38,6 @@ extern_methods!(
     /// Methods declared on superclass `NSGestureRecognizer`
     #[cfg(feature = "AppKit_NSMagnificationGestureRecognizer")]
     unsafe impl NSMagnificationGestureRecognizer {
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithTarget:action:)]
         pub unsafe fn initWithTarget_action(
             this: Option<Allocated<Self>>,

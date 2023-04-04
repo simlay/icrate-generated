@@ -8,7 +8,6 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSTableHeaderView")]
-    #[cfg(not(any(target_os = "ios")))]
     pub struct NSTableHeaderView;
 
     #[cfg(feature = "AppKit_NSTableHeaderView")]
@@ -49,32 +48,25 @@ extern_methods!(
     #[cfg(feature = "AppKit_NSTableHeaderView")]
     unsafe impl NSTableHeaderView {
         #[cfg(feature = "AppKit_NSTableView")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other tableView)]
         pub unsafe fn tableView(&self) -> Option<Id<NSTableView>>;
 
         #[cfg(feature = "AppKit_NSTableView")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setTableView:)]
         pub unsafe fn setTableView(&self, table_view: Option<&NSTableView>);
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(draggedColumn)]
         pub unsafe fn draggedColumn(&self) -> NSInteger;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(draggedDistance)]
         pub unsafe fn draggedDistance(&self) -> CGFloat;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(resizedColumn)]
         pub unsafe fn resizedColumn(&self) -> NSInteger;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(headerRectOfColumn:)]
         pub unsafe fn headerRectOfColumn(&self, column: NSInteger) -> NSRect;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(columnAtPoint:)]
         pub unsafe fn columnAtPoint(&self, point: NSPoint) -> NSInteger;
     }
@@ -84,7 +76,6 @@ extern_methods!(
     /// Methods declared on superclass `NSView`
     #[cfg(feature = "AppKit_NSTableHeaderView")]
     unsafe impl NSTableHeaderView {
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithFrame:)]
         pub unsafe fn initWithFrame(this: Option<Allocated<Self>>, frame_rect: NSRect) -> Id<Self>;
     }

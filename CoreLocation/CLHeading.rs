@@ -12,6 +12,7 @@ extern_static!(kCLHeadingFilterNone: CLLocationDegrees);
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreLocation_CLHeading")]
+    #[cfg(not(any(target_os = "tvos")))]
     pub struct CLHeading;
 
     #[cfg(feature = "CoreLocation_CLHeading")]

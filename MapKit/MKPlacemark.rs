@@ -49,6 +49,7 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "Contacts_CNPostalAddress")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Init initWithCoordinate:postalAddress:)]
         pub unsafe fn initWithCoordinate_postalAddress(
             this: Option<Allocated<Self>>,

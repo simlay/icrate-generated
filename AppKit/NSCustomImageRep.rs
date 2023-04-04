@@ -8,7 +8,6 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSCustomImageRep")]
-    #[cfg(not(any(target_os = "ios")))]
     pub struct NSCustomImageRep;
 
     #[cfg(feature = "AppKit_NSCustomImageRep")]
@@ -27,7 +26,6 @@ unsafe impl NSObjectProtocol for NSCustomImageRep {}
 extern_methods!(
     #[cfg(feature = "AppKit_NSCustomImageRep")]
     unsafe impl NSCustomImageRep {
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithSize:flipped:drawingHandler:)]
         pub unsafe fn initWithSize_flipped_drawingHandler(
             this: Option<Allocated<Self>>,
@@ -36,11 +34,9 @@ extern_methods!(
             drawing_handler: &Block<(NSRect,), Bool>,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(drawingHandler)]
         pub unsafe fn drawingHandler(&self) -> *mut Block<(NSRect,), Bool>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithDrawSelector:delegate:)]
         pub unsafe fn initWithDrawSelector_delegate(
             this: Option<Allocated<Self>>,
@@ -48,11 +44,9 @@ extern_methods!(
             delegate: &Object,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(drawSelector)]
         pub unsafe fn drawSelector(&self) -> Option<Sel>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(&self) -> Option<Id<Object>>;
     }

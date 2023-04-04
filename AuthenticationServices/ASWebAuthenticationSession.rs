@@ -8,11 +8,13 @@ extern_static!(ASWebAuthenticationSessionErrorDomain: &'static NSErrorDomain);
 
 ns_error_enum!(
     #[underlying(NSInteger)]
+    #[cfg(not(any(target_os = "tvos")))]
     pub enum ASWebAuthenticationSessionErrorCode {
+        #[cfg(not(any(target_os = "tvos")))]
         ASWebAuthenticationSessionErrorCodeCanceledLogin = 1,
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         ASWebAuthenticationSessionErrorCodePresentationContextNotProvided = 2,
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         ASWebAuthenticationSessionErrorCodePresentationContextInvalid = 3,
     }
 );
@@ -22,6 +24,7 @@ pub type ASWebAuthenticationSessionCompletionHandler = *mut Block<(*mut NSURL, *
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AuthenticationServices_ASWebAuthenticationSession")]
+    #[cfg(not(any(target_os = "tvos")))]
     pub struct ASWebAuthenticationSession;
 
     #[cfg(feature = "AuthenticationServices_ASWebAuthenticationSession")]
@@ -45,13 +48,13 @@ extern_methods!(
             completion_handler: ASWebAuthenticationSessionCompletionHandler,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other presentationContextProvider)]
         pub unsafe fn presentationContextProvider(
             &self,
         ) -> Option<Id<ProtocolObject<dyn ASWebAuthenticationPresentationContextProviding>>>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(setPresentationContextProvider:)]
         pub unsafe fn setPresentationContextProvider(
             &self,

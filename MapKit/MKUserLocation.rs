@@ -10,7 +10,7 @@ use crate::MapKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MapKit_MKUserLocation")]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+    #[cfg(not(any(target_os = "watchos")))]
     pub struct MKUserLocation;
 
     #[cfg(feature = "MapKit_MKUserLocation")]
@@ -36,6 +36,7 @@ extern_methods!(
         pub unsafe fn location(&self) -> Option<Id<CLLocation>>;
 
         #[cfg(feature = "CoreLocation_CLHeading")]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other heading)]
         pub unsafe fn heading(&self) -> Option<Id<CLHeading>>;
 

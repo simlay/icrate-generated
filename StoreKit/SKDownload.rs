@@ -49,7 +49,7 @@ extern_methods!(
         pub unsafe fn state(&self) -> SKDownloadState;
 
         #[deprecated]
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(downloadState)]
         pub unsafe fn downloadState(&self) -> SKDownloadState;
 

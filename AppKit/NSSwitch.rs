@@ -8,7 +8,6 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSSwitch")]
-    #[cfg(not(any(target_os = "ios")))]
     pub struct NSSwitch;
 
     #[cfg(feature = "AppKit_NSSwitch")]
@@ -51,11 +50,9 @@ unsafe impl NSUserInterfaceItemIdentification for NSSwitch {}
 extern_methods!(
     #[cfg(feature = "AppKit_NSSwitch")]
     unsafe impl NSSwitch {
-        #[cfg(not(any(target_os = "ios")))]
         #[method(state)]
         pub unsafe fn state(&self) -> NSControlStateValue;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setState:)]
         pub unsafe fn setState(&self, state: NSControlStateValue);
     }
@@ -65,7 +62,6 @@ extern_methods!(
     /// Methods declared on superclass `NSControl`
     #[cfg(feature = "AppKit_NSSwitch")]
     unsafe impl NSSwitch {
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithFrame:)]
         pub unsafe fn initWithFrame(this: Option<Allocated<Self>>, frame_rect: NSRect) -> Id<Self>;
     }

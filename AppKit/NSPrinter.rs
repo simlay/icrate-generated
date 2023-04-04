@@ -7,13 +7,9 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSUInteger)]
-    #[cfg(not(any(target_os = "ios")))]
     pub enum NSPrinterTableStatus {
-        #[cfg(not(any(target_os = "ios")))]
         NSPrinterTableOK = 0,
-        #[cfg(not(any(target_os = "ios")))]
         NSPrinterTableNotFound = 1,
-        #[cfg(not(any(target_os = "ios")))]
         NSPrinterTableError = 2,
     }
 );
@@ -29,7 +25,6 @@ typed_extensible_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSPrinter")]
-    #[cfg(not(any(target_os = "ios")))]
     pub struct NSPrinter;
 
     #[cfg(feature = "AppKit_NSPrinter")]
@@ -48,43 +43,34 @@ extern_methods!(
     #[cfg(feature = "AppKit_NSPrinter")]
     unsafe impl NSPrinter {
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other printerNames)]
         pub unsafe fn printerNames() -> Id<NSArray<NSString>>;
 
         #[cfg(feature = "Foundation_NSArray")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other printerTypes)]
         pub unsafe fn printerTypes() -> Id<NSArray<NSPrinterTypeName>>;
 
         #[cfg(feature = "Foundation_NSString")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other printerWithName:)]
         pub unsafe fn printerWithName(name: &NSString) -> Option<Id<NSPrinter>>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other printerWithType:)]
         pub unsafe fn printerWithType(r#type: &NSPrinterTypeName) -> Option<Id<NSPrinter>>;
 
         #[cfg(feature = "Foundation_NSString")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other name)]
         pub unsafe fn name(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other type)]
         pub unsafe fn r#type(&self) -> Id<NSPrinterTypeName>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(languageLevel)]
         pub unsafe fn languageLevel(&self) -> NSInteger;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(pageSizeForPaper:)]
         pub unsafe fn pageSizeForPaper(&self, paper_name: &NSPrinterPaperName) -> NSSize;
 
         #[cfg(feature = "Foundation_NSDictionary")]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other deviceDescription)]
         pub unsafe fn deviceDescription(&self) -> Id<NSDictionary<NSDeviceDescriptionKey, Object>>;
     }
@@ -96,19 +82,16 @@ extern_methods!(
     unsafe impl NSPrinter {
         #[cfg(feature = "Foundation_NSString")]
         #[deprecated]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(statusForTable:)]
         pub unsafe fn statusForTable(&self, table_name: &NSString) -> NSPrinterTableStatus;
 
         #[cfg(feature = "Foundation_NSString")]
         #[deprecated]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(isKey:inTable:)]
         pub unsafe fn isKey_inTable(&self, key: Option<&NSString>, table: &NSString) -> bool;
 
         #[cfg(feature = "Foundation_NSString")]
         #[deprecated]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(booleanForKey:inTable:)]
         pub unsafe fn booleanForKey_inTable(
             &self,
@@ -118,7 +101,6 @@ extern_methods!(
 
         #[cfg(feature = "Foundation_NSString")]
         #[deprecated]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(floatForKey:inTable:)]
         pub unsafe fn floatForKey_inTable(
             &self,
@@ -128,27 +110,23 @@ extern_methods!(
 
         #[cfg(feature = "Foundation_NSString")]
         #[deprecated]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(intForKey:inTable:)]
         pub unsafe fn intForKey_inTable(&self, key: Option<&NSString>, table: &NSString) -> c_int;
 
         #[cfg(feature = "Foundation_NSString")]
         #[deprecated]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(rectForKey:inTable:)]
         pub unsafe fn rectForKey_inTable(&self, key: Option<&NSString>, table: &NSString)
             -> NSRect;
 
         #[cfg(feature = "Foundation_NSString")]
         #[deprecated]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(sizeForKey:inTable:)]
         pub unsafe fn sizeForKey_inTable(&self, key: Option<&NSString>, table: &NSString)
             -> NSSize;
 
         #[cfg(feature = "Foundation_NSString")]
         #[deprecated]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other stringForKey:inTable:)]
         pub unsafe fn stringForKey_inTable(
             &self,
@@ -158,7 +136,6 @@ extern_methods!(
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
         #[deprecated]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other stringListForKey:inTable:)]
         pub unsafe fn stringListForKey_inTable(
             &self,
@@ -168,34 +145,28 @@ extern_methods!(
 
         #[cfg(feature = "Foundation_NSString")]
         #[deprecated]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(imageRectForPaper:)]
         pub unsafe fn imageRectForPaper(&self, paper_name: Option<&NSString>) -> NSRect;
 
         #[deprecated]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(acceptsBinary)]
         pub unsafe fn acceptsBinary(&self) -> bool;
 
         #[deprecated]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(isColor)]
         pub unsafe fn isColor(&self) -> bool;
 
         #[cfg(feature = "Foundation_NSString")]
         #[deprecated]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(isFontAvailable:)]
         pub unsafe fn isFontAvailable(&self, face_name: Option<&NSString>) -> bool;
 
         #[deprecated]
-        #[cfg(not(any(target_os = "ios")))]
         #[method(isOutputStackInReverseOrder)]
         pub unsafe fn isOutputStackInReverseOrder(&self) -> bool;
 
         #[cfg(feature = "Foundation_NSString")]
         #[deprecated]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other printerWithName:domain:includeUnavailable:)]
         pub unsafe fn printerWithName_domain_includeUnavailable(
             name: &NSString,
@@ -205,19 +176,16 @@ extern_methods!(
 
         #[cfg(feature = "Foundation_NSString")]
         #[deprecated]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other domain)]
         pub unsafe fn domain(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
         #[deprecated]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other host)]
         pub unsafe fn host(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
         #[deprecated]
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other note)]
         pub unsafe fn note(&self) -> Id<NSString>;
     }

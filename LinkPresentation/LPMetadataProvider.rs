@@ -8,6 +8,7 @@ use crate::LinkPresentation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "LinkPresentation_LPMetadataProvider")]
+    #[cfg(not(any(target_os = "tvos")))]
     pub struct LPMetadataProvider;
 
     #[cfg(feature = "LinkPresentation_LPMetadataProvider")]

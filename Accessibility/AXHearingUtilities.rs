@@ -6,34 +6,34 @@ use crate::Foundation::*;
 
 ns_options!(
     #[underlying(NSUInteger)]
-    #[cfg(not(any(target_os = "macos")))]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
     pub enum AXHearingDeviceEar {
-        #[cfg(not(any(target_os = "macos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         AXHearingDeviceEarNone = 0,
-        #[cfg(not(any(target_os = "macos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         AXHearingDeviceEarLeft = 1 << 1,
-        #[cfg(not(any(target_os = "macos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         AXHearingDeviceEarRight = 1 << 2,
-        #[cfg(not(any(target_os = "macos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         AXHearingDeviceEarBoth = AXHearingDeviceEarLeft | AXHearingDeviceEarRight,
     }
 );
 
 extern_fn!(
-    #[cfg(not(any(target_os = "macos")))]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
     pub unsafe fn AXMFiHearingDeviceStreamingEar() -> AXHearingDeviceEar;
 );
 
 extern_static!(AXMFiHearingDeviceStreamingEarDidChangeNotification: &'static NSNotificationName);
 
 extern_fn!(
-    #[cfg(not(any(target_os = "macos")))]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
     pub unsafe fn AXSupportsBidirectionalAXMFiHearingDeviceStreaming() -> Bool;
 );
 
 extern_fn!(
     #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSUUID"))]
-    #[cfg(not(any(target_os = "macos")))]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
     pub unsafe fn AXMFiHearingDevicePairedUUIDs() -> NonNull<NSArray<NSUUID>>;
 );
 

@@ -335,2469 +335,5407 @@ mod __NSXPCConnection;
 #[path = "NSZone.rs"]
 mod __NSZone;
 
-pub use self::__FoundationErrors::{
-    NSBundleErrorMaximum, NSBundleErrorMinimum, NSBundleOnDemandResourceExceededMaximumSizeError,
-    NSBundleOnDemandResourceInvalidTagError, NSBundleOnDemandResourceOutOfSpaceError,
-    NSCloudSharingConflictError, NSCloudSharingErrorMaximum, NSCloudSharingErrorMinimum,
-    NSCloudSharingNetworkFailureError, NSCloudSharingNoPermissionError, NSCloudSharingOtherError,
-    NSCloudSharingQuotaExceededError, NSCloudSharingTooManyParticipantsError, NSCoderErrorMaximum,
-    NSCoderErrorMinimum, NSCoderInvalidValueError, NSCoderReadCorruptError,
-    NSCoderValueNotFoundError, NSCompressionErrorMaximum, NSCompressionErrorMinimum,
-    NSCompressionFailedError, NSDecompressionFailedError, NSExecutableArchitectureMismatchError,
-    NSExecutableErrorMaximum, NSExecutableErrorMinimum, NSExecutableLinkError,
-    NSExecutableLoadError, NSExecutableNotLoadableError, NSExecutableRuntimeMismatchError,
-    NSFeatureUnsupportedError, NSFileErrorMaximum, NSFileErrorMinimum, NSFileLockingError,
-    NSFileManagerUnmountBusyError, NSFileManagerUnmountUnknownError, NSFileNoSuchFileError,
-    NSFileReadCorruptFileError, NSFileReadInapplicableStringEncodingError,
-    NSFileReadInvalidFileNameError, NSFileReadNoPermissionError, NSFileReadNoSuchFileError,
-    NSFileReadTooLargeError, NSFileReadUnknownError, NSFileReadUnknownStringEncodingError,
-    NSFileReadUnsupportedSchemeError, NSFileWriteFileExistsError,
-    NSFileWriteInapplicableStringEncodingError, NSFileWriteInvalidFileNameError,
-    NSFileWriteNoPermissionError, NSFileWriteOutOfSpaceError, NSFileWriteUnknownError,
-    NSFileWriteUnsupportedSchemeError, NSFileWriteVolumeReadOnlyError, NSFormattingError,
-    NSFormattingErrorMaximum, NSFormattingErrorMinimum, NSKeyValueValidationError,
-    NSPropertyListErrorMaximum, NSPropertyListErrorMinimum, NSPropertyListReadCorruptError,
-    NSPropertyListReadStreamError, NSPropertyListReadUnknownVersionError,
-    NSPropertyListWriteInvalidError, NSPropertyListWriteStreamError, NSUbiquitousFileErrorMaximum,
-    NSUbiquitousFileErrorMinimum, NSUbiquitousFileNotUploadedDueToQuotaError,
-    NSUbiquitousFileUbiquityServerNotAvailable, NSUbiquitousFileUnavailableError,
-    NSUserActivityConnectionUnavailableError, NSUserActivityErrorMaximum,
-    NSUserActivityErrorMinimum, NSUserActivityHandoffFailedError,
-    NSUserActivityHandoffUserInfoTooLargeError, NSUserActivityRemoteApplicationTimedOutError,
-    NSUserCancelledError, NSValidationErrorMaximum, NSValidationErrorMinimum,
-    NSXPCConnectionCodeSigningRequirementFailure, NSXPCConnectionErrorMaximum,
-    NSXPCConnectionErrorMinimum, NSXPCConnectionInterrupted, NSXPCConnectionInvalid,
-    NSXPCConnectionReplyInvalid,
-};
+pub use self::__FoundationErrors::NSFileNoSuchFileError;
+
+pub use self::__FoundationErrors::NSFileLockingError;
+
+pub use self::__FoundationErrors::NSFileReadUnknownError;
+
+pub use self::__FoundationErrors::NSFileReadNoPermissionError;
+
+pub use self::__FoundationErrors::NSFileReadInvalidFileNameError;
+
+pub use self::__FoundationErrors::NSFileReadCorruptFileError;
+
+pub use self::__FoundationErrors::NSFileReadNoSuchFileError;
+
+pub use self::__FoundationErrors::NSFileReadInapplicableStringEncodingError;
+
+pub use self::__FoundationErrors::NSFileReadUnsupportedSchemeError;
+
+pub use self::__FoundationErrors::NSFileReadTooLargeError;
+
+pub use self::__FoundationErrors::NSFileReadUnknownStringEncodingError;
+
+pub use self::__FoundationErrors::NSFileWriteUnknownError;
+
+pub use self::__FoundationErrors::NSFileWriteNoPermissionError;
+
+pub use self::__FoundationErrors::NSFileWriteInvalidFileNameError;
+
+pub use self::__FoundationErrors::NSFileWriteFileExistsError;
+
+pub use self::__FoundationErrors::NSFileWriteInapplicableStringEncodingError;
+
+pub use self::__FoundationErrors::NSFileWriteUnsupportedSchemeError;
+
+pub use self::__FoundationErrors::NSFileWriteOutOfSpaceError;
+
+pub use self::__FoundationErrors::NSFileWriteVolumeReadOnlyError;
+
+pub use self::__FoundationErrors::NSFileManagerUnmountUnknownError;
+
+pub use self::__FoundationErrors::NSFileManagerUnmountBusyError;
+
+pub use self::__FoundationErrors::NSKeyValueValidationError;
+
+pub use self::__FoundationErrors::NSFormattingError;
+
+pub use self::__FoundationErrors::NSUserCancelledError;
+
+pub use self::__FoundationErrors::NSFeatureUnsupportedError;
+
+pub use self::__FoundationErrors::NSExecutableNotLoadableError;
+
+pub use self::__FoundationErrors::NSExecutableArchitectureMismatchError;
+
+pub use self::__FoundationErrors::NSExecutableRuntimeMismatchError;
+
+pub use self::__FoundationErrors::NSExecutableLoadError;
+
+pub use self::__FoundationErrors::NSExecutableLinkError;
+
+pub use self::__FoundationErrors::NSFileErrorMinimum;
+
+pub use self::__FoundationErrors::NSFileErrorMaximum;
+
+pub use self::__FoundationErrors::NSValidationErrorMinimum;
+
+pub use self::__FoundationErrors::NSValidationErrorMaximum;
+
+pub use self::__FoundationErrors::NSExecutableErrorMinimum;
+
+pub use self::__FoundationErrors::NSExecutableErrorMaximum;
+
+pub use self::__FoundationErrors::NSFormattingErrorMinimum;
+
+pub use self::__FoundationErrors::NSFormattingErrorMaximum;
+
+pub use self::__FoundationErrors::NSPropertyListReadCorruptError;
+
+pub use self::__FoundationErrors::NSPropertyListReadUnknownVersionError;
+
+pub use self::__FoundationErrors::NSPropertyListReadStreamError;
+
+pub use self::__FoundationErrors::NSPropertyListWriteStreamError;
+
+pub use self::__FoundationErrors::NSPropertyListWriteInvalidError;
+
+pub use self::__FoundationErrors::NSPropertyListErrorMinimum;
+
+pub use self::__FoundationErrors::NSPropertyListErrorMaximum;
+
+pub use self::__FoundationErrors::NSXPCConnectionInterrupted;
+
+pub use self::__FoundationErrors::NSXPCConnectionInvalid;
+
+pub use self::__FoundationErrors::NSXPCConnectionReplyInvalid;
+
+pub use self::__FoundationErrors::NSXPCConnectionCodeSigningRequirementFailure;
+
+pub use self::__FoundationErrors::NSXPCConnectionErrorMinimum;
+
+pub use self::__FoundationErrors::NSXPCConnectionErrorMaximum;
+
+pub use self::__FoundationErrors::NSUbiquitousFileUnavailableError;
+
+pub use self::__FoundationErrors::NSUbiquitousFileNotUploadedDueToQuotaError;
+
+pub use self::__FoundationErrors::NSUbiquitousFileUbiquityServerNotAvailable;
+
+pub use self::__FoundationErrors::NSUbiquitousFileErrorMinimum;
+
+pub use self::__FoundationErrors::NSUbiquitousFileErrorMaximum;
+
+pub use self::__FoundationErrors::NSUserActivityHandoffFailedError;
+
+pub use self::__FoundationErrors::NSUserActivityConnectionUnavailableError;
+
+pub use self::__FoundationErrors::NSUserActivityRemoteApplicationTimedOutError;
+
+pub use self::__FoundationErrors::NSUserActivityHandoffUserInfoTooLargeError;
+
+pub use self::__FoundationErrors::NSUserActivityErrorMinimum;
+
+pub use self::__FoundationErrors::NSUserActivityErrorMaximum;
+
+pub use self::__FoundationErrors::NSCoderReadCorruptError;
+
+pub use self::__FoundationErrors::NSCoderValueNotFoundError;
+
+pub use self::__FoundationErrors::NSCoderInvalidValueError;
+
+pub use self::__FoundationErrors::NSCoderErrorMinimum;
+
+pub use self::__FoundationErrors::NSCoderErrorMaximum;
+
+pub use self::__FoundationErrors::NSBundleErrorMinimum;
+
+pub use self::__FoundationErrors::NSBundleErrorMaximum;
+
+pub use self::__FoundationErrors::NSBundleOnDemandResourceOutOfSpaceError;
+
+pub use self::__FoundationErrors::NSBundleOnDemandResourceExceededMaximumSizeError;
+
+pub use self::__FoundationErrors::NSBundleOnDemandResourceInvalidTagError;
+
+pub use self::__FoundationErrors::NSCloudSharingNetworkFailureError;
+
+pub use self::__FoundationErrors::NSCloudSharingQuotaExceededError;
+
+pub use self::__FoundationErrors::NSCloudSharingTooManyParticipantsError;
+
+pub use self::__FoundationErrors::NSCloudSharingConflictError;
+
+pub use self::__FoundationErrors::NSCloudSharingNoPermissionError;
+
+pub use self::__FoundationErrors::NSCloudSharingOtherError;
+
+pub use self::__FoundationErrors::NSCloudSharingErrorMinimum;
+
+pub use self::__FoundationErrors::NSCloudSharingErrorMaximum;
+
+pub use self::__FoundationErrors::NSCompressionFailedError;
+
+pub use self::__FoundationErrors::NSDecompressionFailedError;
+
+pub use self::__FoundationErrors::NSCompressionErrorMinimum;
+
+pub use self::__FoundationErrors::NSCompressionErrorMaximum;
+
+#[cfg(feature = "Foundation_NSAffineTransform")]
 #[cfg(feature = "Foundation_NSAffineTransform")]
 pub use self::__NSAffineTransform::NSAffineTransform;
 pub use self::__NSAffineTransform::NSAffineTransformStruct;
 #[cfg(feature = "Foundation_NSAppleEventDescriptor")]
+#[cfg(feature = "Foundation_NSAppleEventDescriptor")]
 pub use self::__NSAppleEventDescriptor::NSAppleEventDescriptor;
-pub use self::__NSAppleEventDescriptor::{
-    NSAppleEventSendAlwaysInteract, NSAppleEventSendCanInteract, NSAppleEventSendCanSwitchLayer,
-    NSAppleEventSendDefaultOptions, NSAppleEventSendDontAnnotate, NSAppleEventSendDontExecute,
-    NSAppleEventSendDontRecord, NSAppleEventSendNeverInteract, NSAppleEventSendNoReply,
-    NSAppleEventSendOptions, NSAppleEventSendQueueReply, NSAppleEventSendWaitForReply,
-};
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSAppleEventDescriptor::NSAppleEventSendAlwaysInteract;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSAppleEventDescriptor::NSAppleEventSendCanInteract;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSAppleEventDescriptor::NSAppleEventSendCanSwitchLayer;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSAppleEventDescriptor::NSAppleEventSendDefaultOptions;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSAppleEventDescriptor::NSAppleEventSendDontAnnotate;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSAppleEventDescriptor::NSAppleEventSendDontExecute;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSAppleEventDescriptor::NSAppleEventSendDontRecord;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSAppleEventDescriptor::NSAppleEventSendNeverInteract;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSAppleEventDescriptor::NSAppleEventSendNoReply;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSAppleEventDescriptor::NSAppleEventSendOptions;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSAppleEventDescriptor::NSAppleEventSendQueueReply;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSAppleEventDescriptor::NSAppleEventSendWaitForReply;
+
+pub use self::__NSAppleEventManager::NSAppleEventManagerSuspensionID;
+
+pub use self::__NSAppleEventManager::NSAppleEventTimeOutDefault;
+
+pub use self::__NSAppleEventManager::NSAppleEventTimeOutNone;
+
+#[cfg(feature = "Foundation_NSAppleEventManager")]
 #[cfg(feature = "Foundation_NSAppleEventManager")]
 pub use self::__NSAppleEventManager::NSAppleEventManager;
-pub use self::__NSAppleEventManager::NSAppleEventManagerSuspensionID;
 pub use self::__NSAppleEventManager::NSAppleEventManagerWillProcessFirstEventNotification;
-pub use self::__NSAppleEventManager::NSAppleEventTimeOutDefault;
-pub use self::__NSAppleEventManager::NSAppleEventTimeOutNone;
+#[cfg(feature = "Foundation_NSAppleScript")]
 #[cfg(feature = "Foundation_NSAppleScript")]
 pub use self::__NSAppleScript::NSAppleScript;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSAppleScript::NSAppleScriptErrorAppName;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSAppleScript::NSAppleScriptErrorBriefMessage;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSAppleScript::NSAppleScriptErrorMessage;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSAppleScript::NSAppleScriptErrorNumber;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSAppleScript::NSAppleScriptErrorRange;
+#[cfg(feature = "Foundation_NSArchiver")]
 #[cfg(feature = "Foundation_NSArchiver")]
 pub use self::__NSArchiver::NSArchiver;
 #[cfg(feature = "Foundation_NSUnarchiver")]
+#[cfg(feature = "Foundation_NSUnarchiver")]
 pub use self::__NSArchiver::NSUnarchiver;
 #[cfg(feature = "Foundation_NSArray")]
+#[cfg(feature = "Foundation_NSArray")]
 pub use self::__NSArray::NSArray;
+
+pub use self::__NSArray::NSBinarySearchingOptions;
+
+pub use self::__NSArray::NSBinarySearchingFirstEqual;
+
+pub use self::__NSArray::NSBinarySearchingLastEqual;
+
+pub use self::__NSArray::NSBinarySearchingInsertionIndex;
+#[cfg(feature = "Foundation_NSMutableArray")]
 #[cfg(feature = "Foundation_NSMutableArray")]
 pub use self::__NSArray::NSMutableArray;
-pub use self::__NSArray::{
-    NSBinarySearchingFirstEqual, NSBinarySearchingInsertionIndex, NSBinarySearchingLastEqual,
-    NSBinarySearchingOptions,
-};
-pub use self::__NSAttributedString::NSAlternateDescriptionAttributeName;
+
+#[cfg(feature = "Foundation_NSAttributedString")]
 #[cfg(feature = "Foundation_NSAttributedString")]
 pub use self::__NSAttributedString::NSAttributedString;
 pub use self::__NSAttributedString::NSAttributedStringKey;
+
+pub use self::__NSAttributedString::NSAttributedStringEnumerationOptions;
+
+pub use self::__NSAttributedString::NSAttributedStringEnumerationReverse;
+
+pub use self::__NSAttributedString::NSAttributedStringEnumerationLongestEffectiveRangeNotRequired;
+#[cfg(feature = "Foundation_NSMutableAttributedString")]
+#[cfg(feature = "Foundation_NSMutableAttributedString")]
+pub use self::__NSAttributedString::NSMutableAttributedString;
+
+pub use self::__NSAttributedString::NSInlinePresentationIntent;
+
+pub use self::__NSAttributedString::NSInlinePresentationIntentEmphasized;
+
+pub use self::__NSAttributedString::NSInlinePresentationIntentStronglyEmphasized;
+
+pub use self::__NSAttributedString::NSInlinePresentationIntentCode;
+
+pub use self::__NSAttributedString::NSInlinePresentationIntentStrikethrough;
+
+pub use self::__NSAttributedString::NSInlinePresentationIntentSoftBreak;
+
+pub use self::__NSAttributedString::NSInlinePresentationIntentLineBreak;
+
+pub use self::__NSAttributedString::NSInlinePresentationIntentInlineHTML;
+
+pub use self::__NSAttributedString::NSInlinePresentationIntentBlockHTML;
+
+pub use self::__NSAttributedString::NSInlinePresentationIntentAttributeName;
+
+pub use self::__NSAttributedString::NSAlternateDescriptionAttributeName;
+
+pub use self::__NSAttributedString::NSImageURLAttributeName;
+
+pub use self::__NSAttributedString::NSLanguageIdentifierAttributeName;
+
+pub use self::__NSAttributedString::NSMarkdownSourcePositionAttributeName;
+
+pub use self::__NSAttributedString::NSAttributedStringMarkdownParsingFailurePolicy;
+
+pub use self::__NSAttributedString::NSAttributedStringMarkdownParsingFailureReturnError;
+
+pub use self::__NSAttributedString::NSAttributedStringMarkdownParsingFailureReturnPartiallyParsedIfPossible;
+
+pub use self::__NSAttributedString::NSAttributedStringMarkdownInterpretedSyntax;
+
+pub use self::__NSAttributedString::NSAttributedStringMarkdownInterpretedSyntaxFull;
+
+pub use self::__NSAttributedString::NSAttributedStringMarkdownInterpretedSyntaxInlineOnly;
+
+pub use self::__NSAttributedString::NSAttributedStringMarkdownInterpretedSyntaxInlineOnlyPreservingWhitespace;
+#[cfg(feature = "Foundation_NSAttributedStringMarkdownParsingOptions")]
 #[cfg(feature = "Foundation_NSAttributedStringMarkdownParsingOptions")]
 pub use self::__NSAttributedString::NSAttributedStringMarkdownParsingOptions;
 #[cfg(feature = "Foundation_NSAttributedStringMarkdownSourcePosition")]
+#[cfg(feature = "Foundation_NSAttributedStringMarkdownSourcePosition")]
 pub use self::__NSAttributedString::NSAttributedStringMarkdownSourcePosition;
-pub use self::__NSAttributedString::NSImageURLAttributeName;
-pub use self::__NSAttributedString::NSInflectionAlternativeAttributeName;
-pub use self::__NSAttributedString::NSInflectionRuleAttributeName;
-pub use self::__NSAttributedString::NSInlinePresentationIntentAttributeName;
-pub use self::__NSAttributedString::NSLanguageIdentifierAttributeName;
-pub use self::__NSAttributedString::NSMarkdownSourcePositionAttributeName;
+
+pub use self::__NSAttributedString::NSAttributedStringFormattingOptions;
+
+pub use self::__NSAttributedString::NSAttributedStringFormattingInsertArgumentAttributesWithoutMerging;
+
+pub use self::__NSAttributedString::NSAttributedStringFormattingApplyReplacementIndexAttribute;
+
+pub use self::__NSAttributedString::NSReplacementIndexAttributeName;
+
 pub use self::__NSAttributedString::NSMorphologyAttributeName;
-#[cfg(feature = "Foundation_NSMutableAttributedString")]
-pub use self::__NSAttributedString::NSMutableAttributedString;
+
+pub use self::__NSAttributedString::NSInflectionRuleAttributeName;
+
+pub use self::__NSAttributedString::NSInflectionAlternativeAttributeName;
+
+pub use self::__NSAttributedString::NSPresentationIntentAttributeName;
+
+pub use self::__NSAttributedString::NSPresentationIntentKind;
+
+pub use self::__NSAttributedString::NSPresentationIntentKindParagraph;
+
+pub use self::__NSAttributedString::NSPresentationIntentKindHeader;
+
+pub use self::__NSAttributedString::NSPresentationIntentKindOrderedList;
+
+pub use self::__NSAttributedString::NSPresentationIntentKindUnorderedList;
+
+pub use self::__NSAttributedString::NSPresentationIntentKindListItem;
+
+pub use self::__NSAttributedString::NSPresentationIntentKindCodeBlock;
+
+pub use self::__NSAttributedString::NSPresentationIntentKindBlockQuote;
+
+pub use self::__NSAttributedString::NSPresentationIntentKindThematicBreak;
+
+pub use self::__NSAttributedString::NSPresentationIntentKindTable;
+
+pub use self::__NSAttributedString::NSPresentationIntentKindTableHeaderRow;
+
+pub use self::__NSAttributedString::NSPresentationIntentKindTableRow;
+
+pub use self::__NSAttributedString::NSPresentationIntentKindTableCell;
+
+pub use self::__NSAttributedString::NSPresentationIntentTableColumnAlignment;
+
+pub use self::__NSAttributedString::NSPresentationIntentTableColumnAlignmentLeft;
+
+pub use self::__NSAttributedString::NSPresentationIntentTableColumnAlignmentCenter;
+
+#[cfg(feature = "Foundation_NSPresentationIntent")]
 #[cfg(feature = "Foundation_NSPresentationIntent")]
 pub use self::__NSAttributedString::NSPresentationIntent;
-pub use self::__NSAttributedString::NSPresentationIntentAttributeName;
-pub use self::__NSAttributedString::NSReplacementIndexAttributeName;
-pub use self::__NSAttributedString::{
-    NSAttributedStringEnumerationLongestEffectiveRangeNotRequired,
-    NSAttributedStringEnumerationOptions, NSAttributedStringEnumerationReverse,
-};
-pub use self::__NSAttributedString::{
-    NSAttributedStringFormattingApplyReplacementIndexAttribute,
-    NSAttributedStringFormattingInsertArgumentAttributesWithoutMerging,
-    NSAttributedStringFormattingOptions,
-};
-pub use self::__NSAttributedString::{
-    NSAttributedStringMarkdownInterpretedSyntax, NSAttributedStringMarkdownInterpretedSyntaxFull,
-    NSAttributedStringMarkdownInterpretedSyntaxInlineOnly,
-    NSAttributedStringMarkdownInterpretedSyntaxInlineOnlyPreservingWhitespace,
-};
-pub use self::__NSAttributedString::{
-    NSAttributedStringMarkdownParsingFailurePolicy,
-    NSAttributedStringMarkdownParsingFailureReturnError,
-    NSAttributedStringMarkdownParsingFailureReturnPartiallyParsedIfPossible,
-};
-pub use self::__NSAttributedString::{
-    NSInlinePresentationIntent, NSInlinePresentationIntentBlockHTML,
-    NSInlinePresentationIntentCode, NSInlinePresentationIntentEmphasized,
-    NSInlinePresentationIntentInlineHTML, NSInlinePresentationIntentLineBreak,
-    NSInlinePresentationIntentSoftBreak, NSInlinePresentationIntentStrikethrough,
-    NSInlinePresentationIntentStronglyEmphasized,
-};
-pub use self::__NSAttributedString::{
-    NSPresentationIntentKind, NSPresentationIntentKindBlockQuote,
-    NSPresentationIntentKindCodeBlock, NSPresentationIntentKindHeader,
-    NSPresentationIntentKindListItem, NSPresentationIntentKindOrderedList,
-    NSPresentationIntentKindParagraph, NSPresentationIntentKindTable,
-    NSPresentationIntentKindTableCell, NSPresentationIntentKindTableHeaderRow,
-    NSPresentationIntentKindTableRow, NSPresentationIntentKindThematicBreak,
-    NSPresentationIntentKindUnorderedList,
-};
-pub use self::__NSAttributedString::{
-    NSPresentationIntentTableColumnAlignment, NSPresentationIntentTableColumnAlignmentCenter,
-    NSPresentationIntentTableColumnAlignmentLeft, NSPresentationIntentTableColumnAlignmentRight,
-};
+pub use self::__NSAttributedString::NSPresentationIntentTableColumnAlignmentRight;
+#[cfg(feature = "Foundation_NSAutoreleasePool")]
 #[cfg(feature = "Foundation_NSAutoreleasePool")]
 pub use self::__NSAutoreleasePool::NSAutoreleasePool;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSBackgroundActivityScheduler::NSBackgroundActivityCompletionHandler;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSBackgroundActivityScheduler::NSBackgroundActivityResult;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSBackgroundActivityScheduler::NSBackgroundActivityResultDeferred;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSBackgroundActivityScheduler::NSBackgroundActivityResultFinished;
 #[cfg(feature = "Foundation_NSBackgroundActivityScheduler")]
+#[cfg(feature = "Foundation_NSBackgroundActivityScheduler")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSBackgroundActivityScheduler::NSBackgroundActivityScheduler;
-pub use self::__NSBackgroundActivityScheduler::{
-    NSBackgroundActivityResult, NSBackgroundActivityResultDeferred,
-    NSBackgroundActivityResultFinished,
-};
+
+pub use self::__NSBundle::NSBundleExecutableArchitectureI386;
+
+pub use self::__NSBundle::NSBundleExecutableArchitecturePPC;
+
+pub use self::__NSBundle::NSBundleExecutableArchitectureX86_64;
+
+pub use self::__NSBundle::NSBundleExecutableArchitecturePPC64;
+
+#[cfg(feature = "Foundation_NSBundle")]
 #[cfg(feature = "Foundation_NSBundle")]
 pub use self::__NSBundle::NSBundle;
+pub use self::__NSBundle::NSBundleExecutableArchitectureARM64;
+
 pub use self::__NSBundle::NSBundleDidLoadNotification;
+
 #[cfg(feature = "Foundation_NSBundleResourceRequest")]
+#[cfg(feature = "Foundation_NSBundleResourceRequest")]
+#[cfg(not(any(target_os = "macos")))]
 pub use self::__NSBundle::NSBundleResourceRequest;
+#[cfg(not(any(target_os = "macos")))]
 pub use self::__NSBundle::NSBundleResourceRequestLoadingPriorityUrgent;
+#[cfg(not(any(target_os = "macos")))]
 pub use self::__NSBundle::NSBundleResourceRequestLowDiskSpaceNotification;
 pub use self::__NSBundle::NSLoadedClasses;
-pub use self::__NSBundle::{
-    NSBundleExecutableArchitectureARM64, NSBundleExecutableArchitectureI386,
-    NSBundleExecutableArchitecturePPC, NSBundleExecutableArchitecturePPC64,
-    NSBundleExecutableArchitectureX86_64,
-};
+
+pub use self::__NSByteCountFormatter::NSByteCountFormatterUnits;
+
+pub use self::__NSByteCountFormatter::NSByteCountFormatterUseDefault;
+
+pub use self::__NSByteCountFormatter::NSByteCountFormatterUseBytes;
+
+pub use self::__NSByteCountFormatter::NSByteCountFormatterUseKB;
+
+pub use self::__NSByteCountFormatter::NSByteCountFormatterUseMB;
+
+pub use self::__NSByteCountFormatter::NSByteCountFormatterUseGB;
+
+pub use self::__NSByteCountFormatter::NSByteCountFormatterUseTB;
+
+pub use self::__NSByteCountFormatter::NSByteCountFormatterUsePB;
+
+pub use self::__NSByteCountFormatter::NSByteCountFormatterUseEB;
+
+pub use self::__NSByteCountFormatter::NSByteCountFormatterUseZB;
+
+pub use self::__NSByteCountFormatter::NSByteCountFormatterUseYBOrHigher;
+
+pub use self::__NSByteCountFormatter::NSByteCountFormatterUseAll;
+
+pub use self::__NSByteCountFormatter::NSByteCountFormatterCountStyle;
+
+pub use self::__NSByteCountFormatter::NSByteCountFormatterCountStyleFile;
+
+pub use self::__NSByteCountFormatter::NSByteCountFormatterCountStyleMemory;
+
+pub use self::__NSByteCountFormatter::NSByteCountFormatterCountStyleDecimal;
+
+#[cfg(feature = "Foundation_NSByteCountFormatter")]
 #[cfg(feature = "Foundation_NSByteCountFormatter")]
 pub use self::__NSByteCountFormatter::NSByteCountFormatter;
-pub use self::__NSByteCountFormatter::{
-    NSByteCountFormatterCountStyle, NSByteCountFormatterCountStyleBinary,
-    NSByteCountFormatterCountStyleDecimal, NSByteCountFormatterCountStyleFile,
-    NSByteCountFormatterCountStyleMemory,
-};
-pub use self::__NSByteCountFormatter::{
-    NSByteCountFormatterUnits, NSByteCountFormatterUseAll, NSByteCountFormatterUseBytes,
-    NSByteCountFormatterUseDefault, NSByteCountFormatterUseEB, NSByteCountFormatterUseGB,
-    NSByteCountFormatterUseKB, NSByteCountFormatterUseMB, NSByteCountFormatterUsePB,
-    NSByteCountFormatterUseTB, NSByteCountFormatterUseYBOrHigher, NSByteCountFormatterUseZB,
-};
-pub use self::__NSByteOrder::NSSwappedDouble;
+pub use self::__NSByteCountFormatter::NSByteCountFormatterCountStyleBinary;
+
 pub use self::__NSByteOrder::NSSwappedFloat;
+
+pub use self::__NSByteOrder::NSSwappedDouble;
+#[cfg(feature = "Foundation_NSCache")]
 #[cfg(feature = "Foundation_NSCache")]
 pub use self::__NSCache::NSCache;
+
 pub use self::__NSCache::NSCacheDelegate;
+
+pub use self::__NSCalendar::NSCalendarIdentifier;
+
+pub use self::__NSCalendar::NSCalendarIdentifierGregorian;
+
+pub use self::__NSCalendar::NSCalendarIdentifierBuddhist;
+
+pub use self::__NSCalendar::NSCalendarIdentifierChinese;
+
+pub use self::__NSCalendar::NSCalendarIdentifierCoptic;
+
+pub use self::__NSCalendar::NSCalendarIdentifierEthiopicAmeteMihret;
+
+pub use self::__NSCalendar::NSCalendarIdentifierEthiopicAmeteAlem;
+
+pub use self::__NSCalendar::NSCalendarIdentifierHebrew;
+
+pub use self::__NSCalendar::NSCalendarIdentifierISO8601;
+
+pub use self::__NSCalendar::NSCalendarIdentifierIndian;
+
+pub use self::__NSCalendar::NSCalendarIdentifierIslamic;
+
+pub use self::__NSCalendar::NSCalendarIdentifierIslamicCivil;
+
+pub use self::__NSCalendar::NSCalendarIdentifierJapanese;
+
+pub use self::__NSCalendar::NSCalendarIdentifierPersian;
+
+pub use self::__NSCalendar::NSCalendarIdentifierRepublicOfChina;
+
+pub use self::__NSCalendar::NSCalendarIdentifierIslamicTabular;
+
+pub use self::__NSCalendar::NSCalendarIdentifierIslamicUmmAlQura;
+
+pub use self::__NSCalendar::NSCalendarUnit;
+
+pub use self::__NSCalendar::NSCalendarUnitEra;
+
+pub use self::__NSCalendar::NSCalendarUnitYear;
+
+pub use self::__NSCalendar::NSCalendarUnitMonth;
+
+pub use self::__NSCalendar::NSCalendarUnitDay;
+
+pub use self::__NSCalendar::NSCalendarUnitHour;
+
+pub use self::__NSCalendar::NSCalendarUnitMinute;
+
+pub use self::__NSCalendar::NSCalendarUnitSecond;
+
+pub use self::__NSCalendar::NSCalendarUnitWeekday;
+
+pub use self::__NSCalendar::NSCalendarUnitWeekdayOrdinal;
+
+pub use self::__NSCalendar::NSCalendarUnitQuarter;
+
+pub use self::__NSCalendar::NSCalendarUnitWeekOfMonth;
+
+pub use self::__NSCalendar::NSCalendarUnitWeekOfYear;
+
+pub use self::__NSCalendar::NSCalendarUnitYearForWeekOfYear;
+
+pub use self::__NSCalendar::NSCalendarUnitNanosecond;
+
+pub use self::__NSCalendar::NSCalendarUnitCalendar;
+
+pub use self::__NSCalendar::NSCalendarUnitTimeZone;
+
+pub use self::__NSCalendar::NSEraCalendarUnit;
+
+pub use self::__NSCalendar::NSYearCalendarUnit;
+
+pub use self::__NSCalendar::NSMonthCalendarUnit;
+
+pub use self::__NSCalendar::NSDayCalendarUnit;
+
+pub use self::__NSCalendar::NSHourCalendarUnit;
+
+pub use self::__NSCalendar::NSMinuteCalendarUnit;
+
+pub use self::__NSCalendar::NSSecondCalendarUnit;
+
+pub use self::__NSCalendar::NSWeekCalendarUnit;
+
+pub use self::__NSCalendar::NSWeekdayCalendarUnit;
+
+pub use self::__NSCalendar::NSWeekdayOrdinalCalendarUnit;
+
+pub use self::__NSCalendar::NSQuarterCalendarUnit;
+
+pub use self::__NSCalendar::NSWeekOfMonthCalendarUnit;
+
+pub use self::__NSCalendar::NSWeekOfYearCalendarUnit;
+
+pub use self::__NSCalendar::NSYearForWeekOfYearCalendarUnit;
+
+pub use self::__NSCalendar::NSCalendarCalendarUnit;
+
+pub use self::__NSCalendar::NSTimeZoneCalendarUnit;
+
+pub use self::__NSCalendar::NSCalendarOptions;
+
+pub use self::__NSCalendar::NSCalendarWrapComponents;
+
+pub use self::__NSCalendar::NSCalendarMatchStrictly;
+
+pub use self::__NSCalendar::NSCalendarSearchBackwards;
+
+pub use self::__NSCalendar::NSCalendarMatchPreviousTimePreservingSmallerUnits;
+
+pub use self::__NSCalendar::NSCalendarMatchNextTimePreservingSmallerUnits;
+
+pub use self::__NSCalendar::NSCalendarMatchNextTime;
+
+pub use self::__NSCalendar::NSCalendarMatchFirst;
+
+#[cfg(feature = "Foundation_NSCalendar")]
 #[cfg(feature = "Foundation_NSCalendar")]
 pub use self::__NSCalendar::NSCalendar;
+pub use self::__NSCalendar::NSCalendarMatchLast;
+
 pub use self::__NSCalendar::NSCalendarDayChangedNotification;
-pub use self::__NSCalendar::NSCalendarIdentifier;
-pub use self::__NSCalendar::NSCalendarIdentifierBuddhist;
-pub use self::__NSCalendar::NSCalendarIdentifierChinese;
-pub use self::__NSCalendar::NSCalendarIdentifierCoptic;
-pub use self::__NSCalendar::NSCalendarIdentifierEthiopicAmeteAlem;
-pub use self::__NSCalendar::NSCalendarIdentifierEthiopicAmeteMihret;
-pub use self::__NSCalendar::NSCalendarIdentifierGregorian;
-pub use self::__NSCalendar::NSCalendarIdentifierHebrew;
-pub use self::__NSCalendar::NSCalendarIdentifierISO8601;
-pub use self::__NSCalendar::NSCalendarIdentifierIndian;
-pub use self::__NSCalendar::NSCalendarIdentifierIslamic;
-pub use self::__NSCalendar::NSCalendarIdentifierIslamicCivil;
-pub use self::__NSCalendar::NSCalendarIdentifierIslamicTabular;
-pub use self::__NSCalendar::NSCalendarIdentifierIslamicUmmAlQura;
-pub use self::__NSCalendar::NSCalendarIdentifierJapanese;
-pub use self::__NSCalendar::NSCalendarIdentifierPersian;
-pub use self::__NSCalendar::NSCalendarIdentifierRepublicOfChina;
+
+pub use self::__NSCalendar::NSDateComponentUndefined;
+
+#[cfg(feature = "Foundation_NSDateComponents")]
 #[cfg(feature = "Foundation_NSDateComponents")]
 pub use self::__NSCalendar::NSDateComponents;
-pub use self::__NSCalendar::{
-    NSCalendarCalendarUnit, NSCalendarUnit, NSCalendarUnitCalendar, NSCalendarUnitDay,
-    NSCalendarUnitEra, NSCalendarUnitHour, NSCalendarUnitMinute, NSCalendarUnitMonth,
-    NSCalendarUnitNanosecond, NSCalendarUnitQuarter, NSCalendarUnitSecond, NSCalendarUnitTimeZone,
-    NSCalendarUnitWeekOfMonth, NSCalendarUnitWeekOfYear, NSCalendarUnitWeekday,
-    NSCalendarUnitWeekdayOrdinal, NSCalendarUnitYear, NSCalendarUnitYearForWeekOfYear,
-    NSDayCalendarUnit, NSEraCalendarUnit, NSHourCalendarUnit, NSMinuteCalendarUnit,
-    NSMonthCalendarUnit, NSQuarterCalendarUnit, NSSecondCalendarUnit, NSTimeZoneCalendarUnit,
-    NSWeekCalendarUnit, NSWeekOfMonthCalendarUnit, NSWeekOfYearCalendarUnit, NSWeekdayCalendarUnit,
-    NSWeekdayOrdinalCalendarUnit, NSYearCalendarUnit, NSYearForWeekOfYearCalendarUnit,
-};
-pub use self::__NSCalendar::{
-    NSCalendarMatchFirst, NSCalendarMatchLast, NSCalendarMatchNextTime,
-    NSCalendarMatchNextTimePreservingSmallerUnits,
-    NSCalendarMatchPreviousTimePreservingSmallerUnits, NSCalendarMatchStrictly, NSCalendarOptions,
-    NSCalendarSearchBackwards, NSCalendarWrapComponents,
-};
-pub use self::__NSCalendar::{NSDateComponentUndefined, NSUndefinedDateComponent};
+pub use self::__NSCalendar::NSUndefinedDateComponent;
+#[cfg(feature = "Foundation_NSCalendarDate")]
 #[cfg(feature = "Foundation_NSCalendarDate")]
 pub use self::__NSCalendarDate::NSCalendarDate;
+
+#[cfg(feature = "Foundation_NSCharacterSet")]
 #[cfg(feature = "Foundation_NSCharacterSet")]
 pub use self::__NSCharacterSet::NSCharacterSet;
+#[cfg(feature = "Foundation_NSMutableCharacterSet")]
 #[cfg(feature = "Foundation_NSMutableCharacterSet")]
 pub use self::__NSCharacterSet::NSMutableCharacterSet;
 pub use self::__NSCharacterSet::NSOpenStepUnicodeReservedBase;
 #[cfg(feature = "Foundation_NSClassDescription")]
+#[cfg(feature = "Foundation_NSClassDescription")]
 pub use self::__NSClassDescription::NSClassDescription;
+
 pub use self::__NSClassDescription::NSClassDescriptionNeededForClassNotification;
+
+pub use self::__NSCoder::NSDecodingFailurePolicy;
+
+pub use self::__NSCoder::NSDecodingFailurePolicyRaiseException;
+
+#[cfg(feature = "Foundation_NSCoder")]
 #[cfg(feature = "Foundation_NSCoder")]
 pub use self::__NSCoder::NSCoder;
+pub use self::__NSCoder::NSDecodingFailurePolicySetErrorAndReturn;
+#[cfg(feature = "Foundation_NSCoder")]
 #[cfg(feature = "Foundation_NSCoder")]
 pub use self::__NSCoder::NXReadNSObjectFromCoder;
-pub use self::__NSCoder::{
-    NSDecodingFailurePolicy, NSDecodingFailurePolicyRaiseException,
-    NSDecodingFailurePolicySetErrorAndReturn,
-};
+
+pub use self::__NSComparisonPredicate::NSComparisonPredicateOptions;
+
+pub use self::__NSComparisonPredicate::NSCaseInsensitivePredicateOption;
+
+pub use self::__NSComparisonPredicate::NSDiacriticInsensitivePredicateOption;
+
+pub use self::__NSComparisonPredicate::NSNormalizedPredicateOption;
+
+pub use self::__NSComparisonPredicate::NSComparisonPredicateModifier;
+
+pub use self::__NSComparisonPredicate::NSDirectPredicateModifier;
+
+pub use self::__NSComparisonPredicate::NSAllPredicateModifier;
+
+pub use self::__NSComparisonPredicate::NSAnyPredicateModifier;
+
+pub use self::__NSComparisonPredicate::NSPredicateOperatorType;
+
+pub use self::__NSComparisonPredicate::NSLessThanPredicateOperatorType;
+
+pub use self::__NSComparisonPredicate::NSLessThanOrEqualToPredicateOperatorType;
+
+pub use self::__NSComparisonPredicate::NSGreaterThanPredicateOperatorType;
+
+pub use self::__NSComparisonPredicate::NSGreaterThanOrEqualToPredicateOperatorType;
+
+pub use self::__NSComparisonPredicate::NSEqualToPredicateOperatorType;
+
+pub use self::__NSComparisonPredicate::NSNotEqualToPredicateOperatorType;
+
+pub use self::__NSComparisonPredicate::NSMatchesPredicateOperatorType;
+
+pub use self::__NSComparisonPredicate::NSLikePredicateOperatorType;
+
+pub use self::__NSComparisonPredicate::NSBeginsWithPredicateOperatorType;
+
+pub use self::__NSComparisonPredicate::NSEndsWithPredicateOperatorType;
+
+pub use self::__NSComparisonPredicate::NSInPredicateOperatorType;
+
+pub use self::__NSComparisonPredicate::NSCustomSelectorPredicateOperatorType;
+
+pub use self::__NSComparisonPredicate::NSContainsPredicateOperatorType;
+
+pub use self::__NSComparisonPredicate::NSBetweenPredicateOperatorType;
+#[cfg(feature = "Foundation_NSComparisonPredicate")]
 #[cfg(feature = "Foundation_NSComparisonPredicate")]
 pub use self::__NSComparisonPredicate::NSComparisonPredicate;
-pub use self::__NSComparisonPredicate::{
-    NSAllPredicateModifier, NSAnyPredicateModifier, NSComparisonPredicateModifier,
-    NSDirectPredicateModifier,
-};
-pub use self::__NSComparisonPredicate::{
-    NSBeginsWithPredicateOperatorType, NSBetweenPredicateOperatorType,
-    NSContainsPredicateOperatorType, NSCustomSelectorPredicateOperatorType,
-    NSEndsWithPredicateOperatorType, NSEqualToPredicateOperatorType,
-    NSGreaterThanOrEqualToPredicateOperatorType, NSGreaterThanPredicateOperatorType,
-    NSInPredicateOperatorType, NSLessThanOrEqualToPredicateOperatorType,
-    NSLessThanPredicateOperatorType, NSLikePredicateOperatorType, NSMatchesPredicateOperatorType,
-    NSNotEqualToPredicateOperatorType, NSPredicateOperatorType,
-};
-pub use self::__NSComparisonPredicate::{
-    NSCaseInsensitivePredicateOption, NSComparisonPredicateOptions,
-    NSDiacriticInsensitivePredicateOption, NSNormalizedPredicateOption,
-};
+
+pub use self::__NSCompoundPredicate::NSCompoundPredicateType;
+
+pub use self::__NSCompoundPredicate::NSNotPredicateType;
+
+pub use self::__NSCompoundPredicate::NSAndPredicateType;
+
+#[cfg(feature = "Foundation_NSCompoundPredicate")]
 #[cfg(feature = "Foundation_NSCompoundPredicate")]
 pub use self::__NSCompoundPredicate::NSCompoundPredicate;
-pub use self::__NSCompoundPredicate::{
-    NSAndPredicateType, NSCompoundPredicateType, NSNotPredicateType, NSOrPredicateType,
-};
+pub use self::__NSCompoundPredicate::NSOrPredicateType;
+#[cfg(feature = "Foundation_NSConnection")]
 #[cfg(feature = "Foundation_NSConnection")]
 pub use self::__NSConnection::NSConnection;
-pub use self::__NSConnection::NSConnectionDelegate;
-pub use self::__NSConnection::NSConnectionDidDieNotification;
-pub use self::__NSConnection::NSConnectionDidInitializeNotification;
+
 pub use self::__NSConnection::NSConnectionReplyMode;
+
+pub use self::__NSConnection::NSConnectionDidDieNotification;
+
+pub use self::__NSConnection::NSConnectionDelegate;
+
+pub use self::__NSConnection::NSFailedAuthenticationException;
+
+pub use self::__NSConnection::NSConnectionDidInitializeNotification;
+#[cfg(feature = "Foundation_NSDistantObjectRequest")]
 #[cfg(feature = "Foundation_NSDistantObjectRequest")]
 pub use self::__NSConnection::NSDistantObjectRequest;
-pub use self::__NSConnection::NSFailedAuthenticationException;
+
+pub use self::__NSData::NSDataReadingOptions;
+
+pub use self::__NSData::NSDataReadingMappedIfSafe;
+
+pub use self::__NSData::NSDataReadingUncached;
+
+pub use self::__NSData::NSDataReadingMappedAlways;
+
+pub use self::__NSData::NSDataReadingMapped;
+
+pub use self::__NSData::NSMappedRead;
+
+pub use self::__NSData::NSUncachedRead;
+
+pub use self::__NSData::NSDataWritingOptions;
+
+pub use self::__NSData::NSDataWritingAtomic;
+
+pub use self::__NSData::NSDataWritingWithoutOverwriting;
+
+pub use self::__NSData::NSDataWritingFileProtectionNone;
+
+pub use self::__NSData::NSDataWritingFileProtectionComplete;
+
+pub use self::__NSData::NSDataWritingFileProtectionCompleteUnlessOpen;
+
+pub use self::__NSData::NSDataWritingFileProtectionCompleteUntilFirstUserAuthentication;
+
+pub use self::__NSData::NSDataWritingFileProtectionMask;
+
+pub use self::__NSData::NSAtomicWrite;
+
+pub use self::__NSData::NSDataSearchOptions;
+
+pub use self::__NSData::NSDataSearchBackwards;
+
+pub use self::__NSData::NSDataSearchAnchored;
+
+pub use self::__NSData::NSDataBase64EncodingOptions;
+
+pub use self::__NSData::NSDataBase64Encoding64CharacterLineLength;
+
+pub use self::__NSData::NSDataBase64Encoding76CharacterLineLength;
+
+pub use self::__NSData::NSDataBase64EncodingEndLineWithCarriageReturn;
+
+pub use self::__NSData::NSDataBase64EncodingEndLineWithLineFeed;
+
+pub use self::__NSData::NSDataBase64DecodingOptions;
+
+#[cfg(feature = "Foundation_NSData")]
 #[cfg(feature = "Foundation_NSData")]
 pub use self::__NSData::NSData;
+pub use self::__NSData::NSDataBase64DecodingIgnoreUnknownCharacters;
+
+pub use self::__NSData::NSDataCompressionAlgorithm;
+
+pub use self::__NSData::NSDataCompressionAlgorithmLZFSE;
+
+pub use self::__NSData::NSDataCompressionAlgorithmLZ4;
+
+pub use self::__NSData::NSDataCompressionAlgorithmLZMA;
+
+pub use self::__NSData::NSDataCompressionAlgorithmZlib;
+#[cfg(feature = "Foundation_NSMutableData")]
 #[cfg(feature = "Foundation_NSMutableData")]
 pub use self::__NSData::NSMutableData;
 #[cfg(feature = "Foundation_NSPurgeableData")]
+#[cfg(feature = "Foundation_NSPurgeableData")]
 pub use self::__NSData::NSPurgeableData;
-pub use self::__NSData::{
-    NSAtomicWrite, NSDataWritingAtomic, NSDataWritingFileProtectionComplete,
-    NSDataWritingFileProtectionCompleteUnlessOpen,
-    NSDataWritingFileProtectionCompleteUntilFirstUserAuthentication,
-    NSDataWritingFileProtectionMask, NSDataWritingFileProtectionNone, NSDataWritingOptions,
-    NSDataWritingWithoutOverwriting,
-};
-pub use self::__NSData::{
-    NSDataBase64DecodingIgnoreUnknownCharacters, NSDataBase64DecodingOptions,
-};
-pub use self::__NSData::{
-    NSDataBase64Encoding64CharacterLineLength, NSDataBase64Encoding76CharacterLineLength,
-    NSDataBase64EncodingEndLineWithCarriageReturn, NSDataBase64EncodingEndLineWithLineFeed,
-    NSDataBase64EncodingOptions,
-};
-pub use self::__NSData::{
-    NSDataCompressionAlgorithm, NSDataCompressionAlgorithmLZ4, NSDataCompressionAlgorithmLZFSE,
-    NSDataCompressionAlgorithmLZMA, NSDataCompressionAlgorithmZlib,
-};
-pub use self::__NSData::{
-    NSDataReadingMapped, NSDataReadingMappedAlways, NSDataReadingMappedIfSafe,
-    NSDataReadingOptions, NSDataReadingUncached, NSMappedRead, NSUncachedRead,
-};
-pub use self::__NSData::{NSDataSearchAnchored, NSDataSearchBackwards, NSDataSearchOptions};
+
+pub use self::__NSDate::NSSystemClockDidChangeNotification;
+
+#[cfg(feature = "Foundation_NSDate")]
 #[cfg(feature = "Foundation_NSDate")]
 pub use self::__NSDate::NSDate;
-pub use self::__NSDate::NSSystemClockDidChangeNotification;
 pub use self::__NSDate::NSTimeInterval;
+
+pub use self::__NSDateComponentsFormatter::NSDateComponentsFormatterUnitsStyle;
+
+pub use self::__NSDateComponentsFormatter::NSDateComponentsFormatterUnitsStylePositional;
+
+pub use self::__NSDateComponentsFormatter::NSDateComponentsFormatterUnitsStyleAbbreviated;
+
+pub use self::__NSDateComponentsFormatter::NSDateComponentsFormatterUnitsStyleShort;
+
+pub use self::__NSDateComponentsFormatter::NSDateComponentsFormatterUnitsStyleFull;
+
+pub use self::__NSDateComponentsFormatter::NSDateComponentsFormatterUnitsStyleSpellOut;
+
+pub use self::__NSDateComponentsFormatter::NSDateComponentsFormatterUnitsStyleBrief;
+
+pub use self::__NSDateComponentsFormatter::NSDateComponentsFormatterZeroFormattingBehavior;
+
+pub use self::__NSDateComponentsFormatter::NSDateComponentsFormatterZeroFormattingBehaviorNone;
+
+pub use self::__NSDateComponentsFormatter::NSDateComponentsFormatterZeroFormattingBehaviorDefault;
+
+pub use self::__NSDateComponentsFormatter::NSDateComponentsFormatterZeroFormattingBehaviorDropLeading;
+
+pub use self::__NSDateComponentsFormatter::NSDateComponentsFormatterZeroFormattingBehaviorDropMiddle;
+
+pub use self::__NSDateComponentsFormatter::NSDateComponentsFormatterZeroFormattingBehaviorDropTrailing;
+
+pub use self::__NSDateComponentsFormatter::NSDateComponentsFormatterZeroFormattingBehaviorDropAll;
+
+#[cfg(feature = "Foundation_NSDateComponentsFormatter")]
 #[cfg(feature = "Foundation_NSDateComponentsFormatter")]
 pub use self::__NSDateComponentsFormatter::NSDateComponentsFormatter;
-pub use self::__NSDateComponentsFormatter::{
-    NSDateComponentsFormatterUnitsStyle, NSDateComponentsFormatterUnitsStyleAbbreviated,
-    NSDateComponentsFormatterUnitsStyleBrief, NSDateComponentsFormatterUnitsStyleFull,
-    NSDateComponentsFormatterUnitsStylePositional, NSDateComponentsFormatterUnitsStyleShort,
-    NSDateComponentsFormatterUnitsStyleSpellOut,
-};
-pub use self::__NSDateComponentsFormatter::{
-    NSDateComponentsFormatterZeroFormattingBehavior,
-    NSDateComponentsFormatterZeroFormattingBehaviorDefault,
-    NSDateComponentsFormatterZeroFormattingBehaviorDropAll,
-    NSDateComponentsFormatterZeroFormattingBehaviorDropLeading,
-    NSDateComponentsFormatterZeroFormattingBehaviorDropMiddle,
-    NSDateComponentsFormatterZeroFormattingBehaviorDropTrailing,
-    NSDateComponentsFormatterZeroFormattingBehaviorNone,
-    NSDateComponentsFormatterZeroFormattingBehaviorPad,
-};
+pub use self::__NSDateComponentsFormatter::NSDateComponentsFormatterZeroFormattingBehaviorPad;
+
+pub use self::__NSDateFormatter::NSDateFormatterStyle;
+
+pub use self::__NSDateFormatter::NSDateFormatterNoStyle;
+
+pub use self::__NSDateFormatter::NSDateFormatterShortStyle;
+
+pub use self::__NSDateFormatter::NSDateFormatterMediumStyle;
+
+pub use self::__NSDateFormatter::NSDateFormatterLongStyle;
+
+pub use self::__NSDateFormatter::NSDateFormatterFullStyle;
+
+pub use self::__NSDateFormatter::NSDateFormatterBehavior;
+
+pub use self::__NSDateFormatter::NSDateFormatterBehaviorDefault;
+
+pub use self::__NSDateFormatter::NSDateFormatterBehavior10_0;
+
+#[cfg(feature = "Foundation_NSDateFormatter")]
 #[cfg(feature = "Foundation_NSDateFormatter")]
 pub use self::__NSDateFormatter::NSDateFormatter;
-pub use self::__NSDateFormatter::{
-    NSDateFormatterBehavior, NSDateFormatterBehavior10_0, NSDateFormatterBehavior10_4,
-    NSDateFormatterBehaviorDefault,
-};
-pub use self::__NSDateFormatter::{
-    NSDateFormatterFullStyle, NSDateFormatterLongStyle, NSDateFormatterMediumStyle,
-    NSDateFormatterNoStyle, NSDateFormatterShortStyle, NSDateFormatterStyle,
-};
+pub use self::__NSDateFormatter::NSDateFormatterBehavior10_4;
+#[cfg(feature = "Foundation_NSDateInterval")]
 #[cfg(feature = "Foundation_NSDateInterval")]
 pub use self::__NSDateInterval::NSDateInterval;
+
+pub use self::__NSDateIntervalFormatter::NSDateIntervalFormatterStyle;
+
+pub use self::__NSDateIntervalFormatter::NSDateIntervalFormatterNoStyle;
+
+pub use self::__NSDateIntervalFormatter::NSDateIntervalFormatterShortStyle;
+
+pub use self::__NSDateIntervalFormatter::NSDateIntervalFormatterMediumStyle;
+
+pub use self::__NSDateIntervalFormatter::NSDateIntervalFormatterLongStyle;
+
+#[cfg(feature = "Foundation_NSDateIntervalFormatter")]
 #[cfg(feature = "Foundation_NSDateIntervalFormatter")]
 pub use self::__NSDateIntervalFormatter::NSDateIntervalFormatter;
-pub use self::__NSDateIntervalFormatter::{
-    NSDateIntervalFormatterFullStyle, NSDateIntervalFormatterLongStyle,
-    NSDateIntervalFormatterMediumStyle, NSDateIntervalFormatterNoStyle,
-    NSDateIntervalFormatterShortStyle, NSDateIntervalFormatterStyle,
-};
-pub use self::__NSDecimal::NSDecimalAdd;
-pub use self::__NSDecimal::NSDecimalCompact;
-pub use self::__NSDecimal::NSDecimalCompare;
+pub use self::__NSDateIntervalFormatter::NSDateIntervalFormatterFullStyle;
+
+pub use self::__NSDecimal::NSRoundingMode;
+
+pub use self::__NSDecimal::NSRoundPlain;
+
+pub use self::__NSDecimal::NSRoundDown;
+
+pub use self::__NSDecimal::NSRoundUp;
+
+pub use self::__NSDecimal::NSRoundBankers;
+
+pub use self::__NSDecimal::NSCalculationError;
+
+pub use self::__NSDecimal::NSCalculationNoError;
+
+pub use self::__NSDecimal::NSCalculationLossOfPrecision;
+
+pub use self::__NSDecimal::NSCalculationUnderflow;
+
+pub use self::__NSDecimal::NSCalculationOverflow;
+
+pub use self::__NSDecimal::NSCalculationDivideByZero;
+
 pub use self::__NSDecimal::NSDecimalCopy;
-pub use self::__NSDecimal::NSDecimalDivide;
-pub use self::__NSDecimal::NSDecimalMultiply;
-pub use self::__NSDecimal::NSDecimalMultiplyByPowerOf10;
-pub use self::__NSDecimal::NSDecimalNormalize;
-pub use self::__NSDecimal::NSDecimalPower;
+
+pub use self::__NSDecimal::NSDecimalCompact;
+
+pub use self::__NSDecimal::NSDecimalCompare;
+
 pub use self::__NSDecimal::NSDecimalRound;
+
+pub use self::__NSDecimal::NSDecimalNormalize;
+
+pub use self::__NSDecimal::NSDecimalAdd;
+
+pub use self::__NSDecimal::NSDecimalSubtract;
+
+pub use self::__NSDecimal::NSDecimalMultiply;
+
+pub use self::__NSDecimal::NSDecimalDivide;
+
+pub use self::__NSDecimal::NSDecimalPower;
+
+pub use self::__NSDecimal::NSDecimalMultiplyByPowerOf10;
+#[cfg(feature = "Foundation_NSString")]
 #[cfg(feature = "Foundation_NSString")]
 pub use self::__NSDecimal::NSDecimalString;
-pub use self::__NSDecimal::NSDecimalSubtract;
-pub use self::__NSDecimal::{
-    NSCalculationDivideByZero, NSCalculationError, NSCalculationLossOfPrecision,
-    NSCalculationNoError, NSCalculationOverflow, NSCalculationUnderflow,
-};
-pub use self::__NSDecimal::{NSRoundBankers, NSRoundDown, NSRoundPlain, NSRoundUp, NSRoundingMode};
+
+pub use self::__NSDecimalNumber::NSDecimalNumberExactnessException;
+
+pub use self::__NSDecimalNumber::NSDecimalNumberOverflowException;
+
+pub use self::__NSDecimalNumber::NSDecimalNumberUnderflowException;
+
+pub use self::__NSDecimalNumber::NSDecimalNumberDivideByZeroException;
+
+#[cfg(feature = "Foundation_NSDecimalNumber")]
 #[cfg(feature = "Foundation_NSDecimalNumber")]
 pub use self::__NSDecimalNumber::NSDecimalNumber;
 pub use self::__NSDecimalNumber::NSDecimalNumberBehaviors;
-pub use self::__NSDecimalNumber::NSDecimalNumberDivideByZeroException;
-pub use self::__NSDecimalNumber::NSDecimalNumberExactnessException;
+#[cfg(feature = "Foundation_NSDecimalNumberHandler")]
 #[cfg(feature = "Foundation_NSDecimalNumberHandler")]
 pub use self::__NSDecimalNumber::NSDecimalNumberHandler;
-pub use self::__NSDecimalNumber::NSDecimalNumberOverflowException;
-pub use self::__NSDecimalNumber::NSDecimalNumberUnderflowException;
+#[cfg(feature = "Foundation_NSDictionary")]
 #[cfg(feature = "Foundation_NSDictionary")]
 pub use self::__NSDictionary::NSDictionary;
 #[cfg(feature = "Foundation_NSMutableDictionary")]
+#[cfg(feature = "Foundation_NSMutableDictionary")]
 pub use self::__NSDictionary::NSMutableDictionary;
+#[cfg(feature = "Foundation_NSDistantObject")]
 #[cfg(feature = "Foundation_NSDistantObject")]
 pub use self::__NSDistantObject::NSDistantObject;
 #[cfg(feature = "Foundation_NSDistributedLock")]
+#[cfg(feature = "Foundation_NSDistributedLock")]
 pub use self::__NSDistributedLock::NSDistributedLock;
+
+pub use self::__NSDistributedNotificationCenter::NSDistributedNotificationCenterType;
+
+pub use self::__NSDistributedNotificationCenter::NSLocalNotificationCenterType;
+
+pub use self::__NSDistributedNotificationCenter::NSNotificationSuspensionBehavior;
+
+pub use self::__NSDistributedNotificationCenter::NSNotificationSuspensionBehaviorDrop;
+
+pub use self::__NSDistributedNotificationCenter::NSNotificationSuspensionBehaviorCoalesce;
+
+pub use self::__NSDistributedNotificationCenter::NSNotificationSuspensionBehaviorHold;
+
+pub use self::__NSDistributedNotificationCenter::NSNotificationSuspensionBehaviorDeliverImmediately;
+
+pub use self::__NSDistributedNotificationCenter::NSDistributedNotificationOptions;
+
+pub use self::__NSDistributedNotificationCenter::NSDistributedNotificationDeliverImmediately;
+
+pub use self::__NSDistributedNotificationCenter::NSDistributedNotificationPostToAllSessions;
+
+pub use self::__NSDistributedNotificationCenter::NSNotificationDeliverImmediately;
+
+#[cfg(feature = "Foundation_NSDistributedNotificationCenter")]
 #[cfg(feature = "Foundation_NSDistributedNotificationCenter")]
 pub use self::__NSDistributedNotificationCenter::NSDistributedNotificationCenter;
-pub use self::__NSDistributedNotificationCenter::NSDistributedNotificationCenterType;
-pub use self::__NSDistributedNotificationCenter::NSLocalNotificationCenterType;
-pub use self::__NSDistributedNotificationCenter::NSNotificationDeliverImmediately;
 pub use self::__NSDistributedNotificationCenter::NSNotificationPostToAllSessions;
-pub use self::__NSDistributedNotificationCenter::{
-    NSDistributedNotificationDeliverImmediately, NSDistributedNotificationOptions,
-    NSDistributedNotificationPostToAllSessions,
-};
-pub use self::__NSDistributedNotificationCenter::{
-    NSNotificationSuspensionBehavior, NSNotificationSuspensionBehaviorCoalesce,
-    NSNotificationSuspensionBehaviorDeliverImmediately, NSNotificationSuspensionBehaviorDrop,
-    NSNotificationSuspensionBehaviorHold,
-};
+
+pub use self::__NSEnergyFormatter::NSEnergyFormatterUnit;
+
+pub use self::__NSEnergyFormatter::NSEnergyFormatterUnitJoule;
+
+pub use self::__NSEnergyFormatter::NSEnergyFormatterUnitKilojoule;
+
+pub use self::__NSEnergyFormatter::NSEnergyFormatterUnitCalorie;
+
+#[cfg(feature = "Foundation_NSEnergyFormatter")]
 #[cfg(feature = "Foundation_NSEnergyFormatter")]
 pub use self::__NSEnergyFormatter::NSEnergyFormatter;
-pub use self::__NSEnergyFormatter::{
-    NSEnergyFormatterUnit, NSEnergyFormatterUnitCalorie, NSEnergyFormatterUnitJoule,
-    NSEnergyFormatterUnitKilocalorie, NSEnergyFormatterUnitKilojoule,
-};
+pub use self::__NSEnergyFormatter::NSEnergyFormatterUnitKilocalorie;
+
+pub use self::__NSEnumerator::NSFastEnumerationState;
+
+#[cfg(feature = "Foundation_NSEnumerator")]
 #[cfg(feature = "Foundation_NSEnumerator")]
 pub use self::__NSEnumerator::NSEnumerator;
 pub use self::__NSEnumerator::NSFastEnumeration;
-pub use self::__NSEnumerator::NSFastEnumerationState;
+
+pub use self::__NSError::NSErrorDomain;
+
 pub use self::__NSError::NSCocoaErrorDomain;
+
+pub use self::__NSError::NSPOSIXErrorDomain;
+
+pub use self::__NSError::NSOSStatusErrorDomain;
+
+pub use self::__NSError::NSMachErrorDomain;
+
+pub use self::__NSError::NSErrorUserInfoKey;
+
+pub use self::__NSError::NSUnderlyingErrorKey;
+
+pub use self::__NSError::NSMultipleUnderlyingErrorsKey;
+
+pub use self::__NSError::NSLocalizedDescriptionKey;
+
+pub use self::__NSError::NSLocalizedFailureReasonErrorKey;
+
+pub use self::__NSError::NSLocalizedRecoverySuggestionErrorKey;
+
+pub use self::__NSError::NSLocalizedRecoveryOptionsErrorKey;
+
+pub use self::__NSError::NSRecoveryAttempterErrorKey;
+
+pub use self::__NSError::NSHelpAnchorErrorKey;
+
 pub use self::__NSError::NSDebugDescriptionErrorKey;
+
+pub use self::__NSError::NSLocalizedFailureErrorKey;
+
+pub use self::__NSError::NSStringEncodingErrorKey;
+
+pub use self::__NSError::NSURLErrorKey;
+
+#[cfg(feature = "Foundation_NSError")]
 #[cfg(feature = "Foundation_NSError")]
 pub use self::__NSError::NSError;
-pub use self::__NSError::NSErrorDomain;
-pub use self::__NSError::NSErrorUserInfoKey;
 pub use self::__NSError::NSFilePathErrorKey;
-pub use self::__NSError::NSHelpAnchorErrorKey;
-pub use self::__NSError::NSLocalizedDescriptionKey;
-pub use self::__NSError::NSLocalizedFailureErrorKey;
-pub use self::__NSError::NSLocalizedFailureReasonErrorKey;
-pub use self::__NSError::NSLocalizedRecoveryOptionsErrorKey;
-pub use self::__NSError::NSLocalizedRecoverySuggestionErrorKey;
-pub use self::__NSError::NSMachErrorDomain;
-pub use self::__NSError::NSMultipleUnderlyingErrorsKey;
-pub use self::__NSError::NSOSStatusErrorDomain;
-pub use self::__NSError::NSPOSIXErrorDomain;
-pub use self::__NSError::NSRecoveryAttempterErrorKey;
-pub use self::__NSError::NSStringEncodingErrorKey;
-pub use self::__NSError::NSURLErrorKey;
-pub use self::__NSError::NSUnderlyingErrorKey;
+
+pub use self::__NSException::NSGenericException;
+
+pub use self::__NSException::NSRangeException;
+
+pub use self::__NSException::NSInvalidArgumentException;
+
+pub use self::__NSException::NSInternalInconsistencyException;
+
+pub use self::__NSException::NSMallocException;
+
+pub use self::__NSException::NSObjectInaccessibleException;
+
+pub use self::__NSException::NSObjectNotAvailableException;
+
+pub use self::__NSException::NSDestinationInvalidException;
+
+pub use self::__NSException::NSPortTimeoutException;
+
+pub use self::__NSException::NSInvalidSendPortException;
+
+pub use self::__NSException::NSInvalidReceivePortException;
+
+pub use self::__NSException::NSPortSendException;
+
+pub use self::__NSException::NSPortReceiveException;
+
+pub use self::__NSException::NSOldStyleException;
+
+#[cfg(feature = "Foundation_NSException")]
+#[cfg(feature = "Foundation_NSException")]
+pub use self::__NSException::NSException;
+pub use self::__NSException::NSInconsistentArchiveException;
+
+pub use self::__NSException::NSUncaughtExceptionHandler;
+
+pub use self::__NSException::NSGetUncaughtExceptionHandler;
+
+pub use self::__NSException::NSSetUncaughtExceptionHandler;
+
+#[cfg(feature = "Foundation_NSAssertionHandler")]
 #[cfg(feature = "Foundation_NSAssertionHandler")]
 pub use self::__NSException::NSAssertionHandler;
 pub use self::__NSException::NSAssertionHandlerKey;
-pub use self::__NSException::NSDestinationInvalidException;
-#[cfg(feature = "Foundation_NSException")]
-pub use self::__NSException::NSException;
-pub use self::__NSException::NSGenericException;
-pub use self::__NSException::NSGetUncaughtExceptionHandler;
-pub use self::__NSException::NSInconsistentArchiveException;
-pub use self::__NSException::NSInternalInconsistencyException;
-pub use self::__NSException::NSInvalidArgumentException;
-pub use self::__NSException::NSInvalidReceivePortException;
-pub use self::__NSException::NSInvalidSendPortException;
-pub use self::__NSException::NSMallocException;
-pub use self::__NSException::NSObjectInaccessibleException;
-pub use self::__NSException::NSObjectNotAvailableException;
-pub use self::__NSException::NSOldStyleException;
-pub use self::__NSException::NSPortReceiveException;
-pub use self::__NSException::NSPortSendException;
-pub use self::__NSException::NSPortTimeoutException;
-pub use self::__NSException::NSRangeException;
-pub use self::__NSException::NSSetUncaughtExceptionHandler;
-pub use self::__NSException::NSUncaughtExceptionHandler;
+
+pub use self::__NSExpression::NSExpressionType;
+
+pub use self::__NSExpression::NSConstantValueExpressionType;
+
+pub use self::__NSExpression::NSEvaluatedObjectExpressionType;
+
+pub use self::__NSExpression::NSVariableExpressionType;
+
+pub use self::__NSExpression::NSKeyPathExpressionType;
+
+pub use self::__NSExpression::NSFunctionExpressionType;
+
+pub use self::__NSExpression::NSUnionSetExpressionType;
+
+pub use self::__NSExpression::NSIntersectSetExpressionType;
+
+pub use self::__NSExpression::NSMinusSetExpressionType;
+
+pub use self::__NSExpression::NSSubqueryExpressionType;
+
+pub use self::__NSExpression::NSAggregateExpressionType;
+
+pub use self::__NSExpression::NSAnyKeyExpressionType;
+
+pub use self::__NSExpression::NSBlockExpressionType;
+
+pub use self::__NSExpression::NSConditionalExpressionType;
+#[cfg(feature = "Foundation_NSExpression")]
 #[cfg(feature = "Foundation_NSExpression")]
 pub use self::__NSExpression::NSExpression;
-pub use self::__NSExpression::{
-    NSAggregateExpressionType, NSAnyKeyExpressionType, NSBlockExpressionType,
-    NSConditionalExpressionType, NSConstantValueExpressionType, NSEvaluatedObjectExpressionType,
-    NSExpressionType, NSFunctionExpressionType, NSIntersectSetExpressionType,
-    NSKeyPathExpressionType, NSMinusSetExpressionType, NSSubqueryExpressionType,
-    NSUnionSetExpressionType, NSVariableExpressionType,
-};
+#[cfg(feature = "Foundation_NSExtensionContext")]
 #[cfg(feature = "Foundation_NSExtensionContext")]
 pub use self::__NSExtensionContext::NSExtensionContext;
+
+#[cfg(not(any(target_os = "macos")))]
 pub use self::__NSExtensionContext::NSExtensionHostDidBecomeActiveNotification;
+#[cfg(not(any(target_os = "macos")))]
 pub use self::__NSExtensionContext::NSExtensionHostDidEnterBackgroundNotification;
+#[cfg(not(any(target_os = "macos")))]
 pub use self::__NSExtensionContext::NSExtensionHostWillEnterForegroundNotification;
+#[cfg(not(any(target_os = "macos")))]
 pub use self::__NSExtensionContext::NSExtensionHostWillResignActiveNotification;
 pub use self::__NSExtensionContext::NSExtensionItemsAndErrorsKey;
 #[cfg(feature = "Foundation_NSExtensionItem")]
+#[cfg(feature = "Foundation_NSExtensionItem")]
 pub use self::__NSExtensionItem::NSExtensionItem;
-pub use self::__NSExtensionItem::NSExtensionItemAttachmentsKey;
-pub use self::__NSExtensionItem::NSExtensionItemAttributedContentTextKey;
+
 pub use self::__NSExtensionItem::NSExtensionItemAttributedTitleKey;
+
+pub use self::__NSExtensionItem::NSExtensionItemAttributedContentTextKey;
+
+pub use self::__NSExtensionItem::NSExtensionItemAttachmentsKey;
+
 pub use self::__NSExtensionRequestHandling::NSExtensionRequestHandling;
+
+pub use self::__NSFileCoordinator::NSFileCoordinatorReadingOptions;
+
+pub use self::__NSFileCoordinator::NSFileCoordinatorReadingWithoutChanges;
+
+pub use self::__NSFileCoordinator::NSFileCoordinatorReadingResolvesSymbolicLink;
+
+pub use self::__NSFileCoordinator::NSFileCoordinatorReadingImmediatelyAvailableMetadataOnly;
+
+pub use self::__NSFileCoordinator::NSFileCoordinatorReadingForUploading;
+
+pub use self::__NSFileCoordinator::NSFileCoordinatorWritingOptions;
+
+pub use self::__NSFileCoordinator::NSFileCoordinatorWritingForDeleting;
+
+pub use self::__NSFileCoordinator::NSFileCoordinatorWritingForMoving;
+
+pub use self::__NSFileCoordinator::NSFileCoordinatorWritingForMerging;
+
+pub use self::__NSFileCoordinator::NSFileCoordinatorWritingForReplacing;
+
+#[cfg(feature = "Foundation_NSFileAccessIntent")]
 #[cfg(feature = "Foundation_NSFileAccessIntent")]
 pub use self::__NSFileCoordinator::NSFileAccessIntent;
 #[cfg(feature = "Foundation_NSFileCoordinator")]
+#[cfg(feature = "Foundation_NSFileCoordinator")]
 pub use self::__NSFileCoordinator::NSFileCoordinator;
-pub use self::__NSFileCoordinator::{
-    NSFileCoordinatorReadingForUploading, NSFileCoordinatorReadingImmediatelyAvailableMetadataOnly,
-    NSFileCoordinatorReadingOptions, NSFileCoordinatorReadingResolvesSymbolicLink,
-    NSFileCoordinatorReadingWithoutChanges,
-};
-pub use self::__NSFileCoordinator::{
-    NSFileCoordinatorWritingContentIndependentMetadataOnly, NSFileCoordinatorWritingForDeleting,
-    NSFileCoordinatorWritingForMerging, NSFileCoordinatorWritingForMoving,
-    NSFileCoordinatorWritingForReplacing, NSFileCoordinatorWritingOptions,
-};
+pub use self::__NSFileCoordinator::NSFileCoordinatorWritingContentIndependentMetadataOnly;
+#[cfg(feature = "Foundation_NSFileHandle")]
 #[cfg(feature = "Foundation_NSFileHandle")]
 pub use self::__NSFileHandle::NSFileHandle;
-pub use self::__NSFileHandle::NSFileHandleConnectionAcceptedNotification;
-pub use self::__NSFileHandle::NSFileHandleDataAvailableNotification;
-pub use self::__NSFileHandle::NSFileHandleNotificationDataItem;
-pub use self::__NSFileHandle::NSFileHandleNotificationFileHandleItem;
-pub use self::__NSFileHandle::NSFileHandleNotificationMonitorModes;
+
 pub use self::__NSFileHandle::NSFileHandleOperationException;
+
 pub use self::__NSFileHandle::NSFileHandleReadCompletionNotification;
+
 pub use self::__NSFileHandle::NSFileHandleReadToEndOfFileCompletionNotification;
+
+pub use self::__NSFileHandle::NSFileHandleConnectionAcceptedNotification;
+
+pub use self::__NSFileHandle::NSFileHandleDataAvailableNotification;
+
+pub use self::__NSFileHandle::NSFileHandleNotificationDataItem;
+
+pub use self::__NSFileHandle::NSFileHandleNotificationFileHandleItem;
+
+pub use self::__NSFileHandle::NSFileHandleNotificationMonitorModes;
+#[cfg(feature = "Foundation_NSPipe")]
 #[cfg(feature = "Foundation_NSPipe")]
 pub use self::__NSFileHandle::NSPipe;
-#[cfg(feature = "Foundation_NSDirectoryEnumerator")]
-pub use self::__NSFileManager::NSDirectoryEnumerator;
-pub use self::__NSFileManager::NSFileAppendOnly;
+
 pub use self::__NSFileManager::NSFileAttributeKey;
+
 pub use self::__NSFileManager::NSFileAttributeType;
-pub use self::__NSFileManager::NSFileBusy;
-pub use self::__NSFileManager::NSFileCreationDate;
-pub use self::__NSFileManager::NSFileDeviceIdentifier;
-pub use self::__NSFileManager::NSFileExtensionHidden;
-pub use self::__NSFileManager::NSFileGroupOwnerAccountID;
-pub use self::__NSFileManager::NSFileGroupOwnerAccountName;
-pub use self::__NSFileManager::NSFileHFSCreatorCode;
-pub use self::__NSFileManager::NSFileHFSTypeCode;
-pub use self::__NSFileManager::NSFileImmutable;
+
+pub use self::__NSFileManager::NSFileProtectionType;
+
+pub use self::__NSFileManager::NSFileProviderServiceName;
+
+pub use self::__NSFileManager::NSVolumeEnumerationOptions;
+
+pub use self::__NSFileManager::NSVolumeEnumerationSkipHiddenVolumes;
+
+pub use self::__NSFileManager::NSVolumeEnumerationProduceFileReferenceURLs;
+
+pub use self::__NSFileManager::NSDirectoryEnumerationOptions;
+
+pub use self::__NSFileManager::NSDirectoryEnumerationSkipsSubdirectoryDescendants;
+
+pub use self::__NSFileManager::NSDirectoryEnumerationSkipsPackageDescendants;
+
+pub use self::__NSFileManager::NSDirectoryEnumerationSkipsHiddenFiles;
+
+pub use self::__NSFileManager::NSDirectoryEnumerationIncludesDirectoriesPostOrder;
+
+pub use self::__NSFileManager::NSDirectoryEnumerationProducesRelativePathURLs;
+
+pub use self::__NSFileManager::NSFileManagerItemReplacementOptions;
+
+pub use self::__NSFileManager::NSFileManagerItemReplacementUsingNewMetadataOnly;
+
+pub use self::__NSFileManager::NSFileManagerItemReplacementWithoutDeletingBackupItem;
+
+pub use self::__NSFileManager::NSURLRelationship;
+
+pub use self::__NSFileManager::NSURLRelationshipContains;
+
+pub use self::__NSFileManager::NSURLRelationshipSame;
+
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSFileManager::NSFileManagerUnmountAllPartitionsAndEjectDisk;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSFileManager::NSFileManagerUnmountDissentingProcessIdentifierErrorKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSFileManager::NSFileManagerUnmountOptions;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSFileManager::NSFileManagerUnmountWithoutUI;
+pub use self::__NSFileManager::NSURLRelationshipOther;
+
+#[cfg(feature = "Foundation_NSFileManager")]
 #[cfg(feature = "Foundation_NSFileManager")]
 pub use self::__NSFileManager::NSFileManager;
-pub use self::__NSFileManager::NSFileManagerDelegate;
-pub use self::__NSFileManager::NSFileManagerUnmountDissentingProcessIdentifierErrorKey;
-pub use self::__NSFileManager::NSFileModificationDate;
-pub use self::__NSFileManager::NSFileOwnerAccountID;
-pub use self::__NSFileManager::NSFileOwnerAccountName;
-pub use self::__NSFileManager::NSFilePosixPermissions;
-pub use self::__NSFileManager::NSFileProtectionComplete;
-pub use self::__NSFileManager::NSFileProtectionCompleteUnlessOpen;
-pub use self::__NSFileManager::NSFileProtectionCompleteUntilFirstUserAuthentication;
-pub use self::__NSFileManager::NSFileProtectionKey;
-pub use self::__NSFileManager::NSFileProtectionNone;
-pub use self::__NSFileManager::NSFileProtectionType;
-#[cfg(feature = "Foundation_NSFileProviderService")]
-pub use self::__NSFileManager::NSFileProviderService;
-pub use self::__NSFileManager::NSFileProviderServiceName;
-pub use self::__NSFileManager::NSFileReferenceCount;
-pub use self::__NSFileManager::NSFileSize;
-pub use self::__NSFileManager::NSFileSystemFileNumber;
-pub use self::__NSFileManager::NSFileSystemFreeNodes;
-pub use self::__NSFileManager::NSFileSystemFreeSize;
-pub use self::__NSFileManager::NSFileSystemNodes;
-pub use self::__NSFileManager::NSFileSystemNumber;
-pub use self::__NSFileManager::NSFileSystemSize;
-pub use self::__NSFileManager::NSFileType;
-pub use self::__NSFileManager::NSFileTypeBlockSpecial;
-pub use self::__NSFileManager::NSFileTypeCharacterSpecial;
-pub use self::__NSFileManager::NSFileTypeDirectory;
-pub use self::__NSFileManager::NSFileTypeRegular;
-pub use self::__NSFileManager::NSFileTypeSocket;
-pub use self::__NSFileManager::NSFileTypeSymbolicLink;
-pub use self::__NSFileManager::NSFileTypeUnknown;
 pub use self::__NSFileManager::NSUbiquityIdentityDidChangeNotification;
-pub use self::__NSFileManager::{
-    NSDirectoryEnumerationIncludesDirectoriesPostOrder, NSDirectoryEnumerationOptions,
-    NSDirectoryEnumerationProducesRelativePathURLs, NSDirectoryEnumerationSkipsHiddenFiles,
-    NSDirectoryEnumerationSkipsPackageDescendants,
-    NSDirectoryEnumerationSkipsSubdirectoryDescendants,
-};
-pub use self::__NSFileManager::{
-    NSFileManagerItemReplacementOptions, NSFileManagerItemReplacementUsingNewMetadataOnly,
-    NSFileManagerItemReplacementWithoutDeletingBackupItem,
-};
-pub use self::__NSFileManager::{
-    NSFileManagerUnmountAllPartitionsAndEjectDisk, NSFileManagerUnmountOptions,
-    NSFileManagerUnmountWithoutUI,
-};
-pub use self::__NSFileManager::{
-    NSURLRelationship, NSURLRelationshipContains, NSURLRelationshipOther, NSURLRelationshipSame,
-};
-pub use self::__NSFileManager::{
-    NSVolumeEnumerationOptions, NSVolumeEnumerationProduceFileReferenceURLs,
-    NSVolumeEnumerationSkipHiddenVolumes,
-};
+
+#[cfg(feature = "Foundation_NSDirectoryEnumerator")]
+#[cfg(feature = "Foundation_NSDirectoryEnumerator")]
+pub use self::__NSFileManager::NSDirectoryEnumerator;
+pub use self::__NSFileManager::NSFileManagerDelegate;
+#[cfg(feature = "Foundation_NSFileProviderService")]
+#[cfg(feature = "Foundation_NSFileProviderService")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSFileManager::NSFileProviderService;
+
+pub use self::__NSFileManager::NSFileType;
+
+pub use self::__NSFileManager::NSFileTypeDirectory;
+
+pub use self::__NSFileManager::NSFileTypeRegular;
+
+pub use self::__NSFileManager::NSFileTypeSymbolicLink;
+
+pub use self::__NSFileManager::NSFileTypeSocket;
+
+pub use self::__NSFileManager::NSFileTypeCharacterSpecial;
+
+pub use self::__NSFileManager::NSFileTypeBlockSpecial;
+
+pub use self::__NSFileManager::NSFileTypeUnknown;
+
+pub use self::__NSFileManager::NSFileSize;
+
+pub use self::__NSFileManager::NSFileModificationDate;
+
+pub use self::__NSFileManager::NSFileReferenceCount;
+
+pub use self::__NSFileManager::NSFileDeviceIdentifier;
+
+pub use self::__NSFileManager::NSFileOwnerAccountName;
+
+pub use self::__NSFileManager::NSFileGroupOwnerAccountName;
+
+pub use self::__NSFileManager::NSFilePosixPermissions;
+
+pub use self::__NSFileManager::NSFileSystemNumber;
+
+pub use self::__NSFileManager::NSFileSystemFileNumber;
+
+pub use self::__NSFileManager::NSFileExtensionHidden;
+
+pub use self::__NSFileManager::NSFileHFSCreatorCode;
+
+pub use self::__NSFileManager::NSFileHFSTypeCode;
+
+pub use self::__NSFileManager::NSFileImmutable;
+
+pub use self::__NSFileManager::NSFileAppendOnly;
+
+pub use self::__NSFileManager::NSFileCreationDate;
+
+pub use self::__NSFileManager::NSFileOwnerAccountID;
+
+pub use self::__NSFileManager::NSFileGroupOwnerAccountID;
+
+pub use self::__NSFileManager::NSFileBusy;
+
+pub use self::__NSFileManager::NSFileProtectionKey;
+
+pub use self::__NSFileManager::NSFileProtectionNone;
+
+pub use self::__NSFileManager::NSFileProtectionComplete;
+
+pub use self::__NSFileManager::NSFileProtectionCompleteUnlessOpen;
+
+pub use self::__NSFileManager::NSFileProtectionCompleteUntilFirstUserAuthentication;
+
+pub use self::__NSFileManager::NSFileSystemSize;
+
+pub use self::__NSFileManager::NSFileSystemFreeSize;
+
+pub use self::__NSFileManager::NSFileSystemNodes;
+
+pub use self::__NSFileManager::NSFileSystemFreeNodes;
+
 pub use self::__NSFilePresenter::NSFilePresenter;
+
+pub use self::__NSFileVersion::NSFileVersionAddingOptions;
+
+pub use self::__NSFileVersion::NSFileVersionAddingByMoving;
+
+pub use self::__NSFileVersion::NSFileVersionReplacingOptions;
+
+#[cfg(feature = "Foundation_NSFileVersion")]
 #[cfg(feature = "Foundation_NSFileVersion")]
 pub use self::__NSFileVersion::NSFileVersion;
-pub use self::__NSFileVersion::{NSFileVersionAddingByMoving, NSFileVersionAddingOptions};
-pub use self::__NSFileVersion::{NSFileVersionReplacingByMoving, NSFileVersionReplacingOptions};
+pub use self::__NSFileVersion::NSFileVersionReplacingByMoving;
+
+pub use self::__NSFileWrapper::NSFileWrapperReadingOptions;
+
+pub use self::__NSFileWrapper::NSFileWrapperReadingImmediate;
+
+pub use self::__NSFileWrapper::NSFileWrapperReadingWithoutMapping;
+
+pub use self::__NSFileWrapper::NSFileWrapperWritingOptions;
+
+pub use self::__NSFileWrapper::NSFileWrapperWritingAtomic;
+
+#[cfg(feature = "Foundation_NSFileWrapper")]
 #[cfg(feature = "Foundation_NSFileWrapper")]
 pub use self::__NSFileWrapper::NSFileWrapper;
-pub use self::__NSFileWrapper::{
-    NSFileWrapperReadingImmediate, NSFileWrapperReadingOptions, NSFileWrapperReadingWithoutMapping,
-};
-pub use self::__NSFileWrapper::{
-    NSFileWrapperWritingAtomic, NSFileWrapperWritingOptions, NSFileWrapperWritingWithNameUpdating,
-};
+pub use self::__NSFileWrapper::NSFileWrapperWritingWithNameUpdating;
+
+pub use self::__NSFormatter::NSFormattingContext;
+
+pub use self::__NSFormatter::NSFormattingContextUnknown;
+
+pub use self::__NSFormatter::NSFormattingContextDynamic;
+
+pub use self::__NSFormatter::NSFormattingContextStandalone;
+
+pub use self::__NSFormatter::NSFormattingContextListItem;
+
+pub use self::__NSFormatter::NSFormattingContextBeginningOfSentence;
+
+pub use self::__NSFormatter::NSFormattingContextMiddleOfSentence;
+
+pub use self::__NSFormatter::NSFormattingUnitStyle;
+
+pub use self::__NSFormatter::NSFormattingUnitStyleShort;
+
+pub use self::__NSFormatter::NSFormattingUnitStyleMedium;
+
+#[cfg(feature = "Foundation_NSFormatter")]
 #[cfg(feature = "Foundation_NSFormatter")]
 pub use self::__NSFormatter::NSFormatter;
-pub use self::__NSFormatter::{
-    NSFormattingContext, NSFormattingContextBeginningOfSentence, NSFormattingContextDynamic,
-    NSFormattingContextListItem, NSFormattingContextMiddleOfSentence,
-    NSFormattingContextStandalone, NSFormattingContextUnknown,
-};
-pub use self::__NSFormatter::{
-    NSFormattingUnitStyle, NSFormattingUnitStyleLong, NSFormattingUnitStyleMedium,
-    NSFormattingUnitStyleShort,
-};
+pub use self::__NSFormatter::NSFormattingUnitStyleLong;
 #[cfg(feature = "Foundation_NSGarbageCollector")]
+#[cfg(feature = "Foundation_NSGarbageCollector")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSGarbageCollector::NSGarbageCollector;
-pub use self::__NSGeometry::NSContainsRect;
-pub use self::__NSGeometry::NSDivideRect;
-pub use self::__NSGeometry::NSEdgeInsets;
-pub use self::__NSGeometry::NSEdgeInsetsEqual;
-pub use self::__NSGeometry::NSEdgeInsetsZero;
-pub use self::__NSGeometry::NSEqualPoints;
-pub use self::__NSGeometry::NSEqualRects;
-pub use self::__NSGeometry::NSEqualSizes;
-pub use self::__NSGeometry::NSInsetRect;
-pub use self::__NSGeometry::NSIntegralRect;
-pub use self::__NSGeometry::NSIntegralRectWithOptions;
-pub use self::__NSGeometry::NSIntersectionRect;
-pub use self::__NSGeometry::NSIntersectsRect;
-pub use self::__NSGeometry::NSIsEmptyRect;
-pub use self::__NSGeometry::NSMouseInRect;
-pub use self::__NSGeometry::NSOffsetRect;
+
+pub use self::__NSGeometry::NSPointPointer;
+
 pub use self::__NSGeometry::NSPointArray;
+
+pub use self::__NSGeometry::NSSizePointer;
+
+pub use self::__NSGeometry::NSSizeArray;
+
+pub use self::__NSGeometry::NSRectPointer;
+
+pub use self::__NSGeometry::NSRectArray;
+
+pub use self::__NSGeometry::NSEdgeInsets;
+
+pub use self::__NSGeometry::NSAlignmentOptions;
+
+pub use self::__NSGeometry::NSAlignMinXInward;
+
+pub use self::__NSGeometry::NSAlignMinYInward;
+
+pub use self::__NSGeometry::NSAlignMaxXInward;
+
+pub use self::__NSGeometry::NSAlignMaxYInward;
+
+pub use self::__NSGeometry::NSAlignWidthInward;
+
+pub use self::__NSGeometry::NSAlignHeightInward;
+
+pub use self::__NSGeometry::NSAlignMinXOutward;
+
+pub use self::__NSGeometry::NSAlignMinYOutward;
+
+pub use self::__NSGeometry::NSAlignMaxXOutward;
+
+pub use self::__NSGeometry::NSAlignMaxYOutward;
+
+pub use self::__NSGeometry::NSAlignWidthOutward;
+
+pub use self::__NSGeometry::NSAlignHeightOutward;
+
+pub use self::__NSGeometry::NSAlignMinXNearest;
+
+pub use self::__NSGeometry::NSAlignMinYNearest;
+
+pub use self::__NSGeometry::NSAlignMaxXNearest;
+
+pub use self::__NSGeometry::NSAlignMaxYNearest;
+
+pub use self::__NSGeometry::NSAlignWidthNearest;
+
+pub use self::__NSGeometry::NSAlignHeightNearest;
+
+pub use self::__NSGeometry::NSAlignRectFlipped;
+
+pub use self::__NSGeometry::NSAlignAllEdgesInward;
+
+pub use self::__NSGeometry::NSAlignAllEdgesOutward;
+
+pub use self::__NSGeometry::NSAlignAllEdgesNearest;
+
+pub use self::__NSGeometry::NSZeroPoint;
+
+pub use self::__NSGeometry::NSZeroSize;
+
+pub use self::__NSGeometry::NSZeroRect;
+
+pub use self::__NSGeometry::NSEdgeInsetsZero;
+
+pub use self::__NSGeometry::NSEqualPoints;
+
+pub use self::__NSGeometry::NSEqualSizes;
+
+pub use self::__NSGeometry::NSEqualRects;
+
+pub use self::__NSGeometry::NSIsEmptyRect;
+
+pub use self::__NSGeometry::NSEdgeInsetsEqual;
+
+pub use self::__NSGeometry::NSInsetRect;
+
+pub use self::__NSGeometry::NSIntegralRect;
+
+pub use self::__NSGeometry::NSIntegralRectWithOptions;
+
+pub use self::__NSGeometry::NSUnionRect;
+
+pub use self::__NSGeometry::NSIntersectionRect;
+
+pub use self::__NSGeometry::NSOffsetRect;
+
+pub use self::__NSGeometry::NSDivideRect;
+
+pub use self::__NSGeometry::NSPointInRect;
+
+pub use self::__NSGeometry::NSMouseInRect;
+
+pub use self::__NSGeometry::NSContainsRect;
+
+pub use self::__NSGeometry::NSIntersectsRect;
+#[cfg(feature = "Foundation_NSString")]
 #[cfg(feature = "Foundation_NSString")]
 pub use self::__NSGeometry::NSPointFromString;
-pub use self::__NSGeometry::NSPointInRect;
-pub use self::__NSGeometry::NSPointPointer;
-pub use self::__NSGeometry::NSRectArray;
+#[cfg(feature = "Foundation_NSString")]
 #[cfg(feature = "Foundation_NSString")]
 pub use self::__NSGeometry::NSRectFromString;
-pub use self::__NSGeometry::NSRectPointer;
-pub use self::__NSGeometry::NSSizeArray;
+#[cfg(feature = "Foundation_NSString")]
 #[cfg(feature = "Foundation_NSString")]
 pub use self::__NSGeometry::NSSizeFromString;
-pub use self::__NSGeometry::NSSizePointer;
+#[cfg(feature = "Foundation_NSString")]
 #[cfg(feature = "Foundation_NSString")]
 pub use self::__NSGeometry::NSStringFromPoint;
 #[cfg(feature = "Foundation_NSString")]
+#[cfg(feature = "Foundation_NSString")]
 pub use self::__NSGeometry::NSStringFromRect;
 #[cfg(feature = "Foundation_NSString")]
+#[cfg(feature = "Foundation_NSString")]
 pub use self::__NSGeometry::NSStringFromSize;
-pub use self::__NSGeometry::NSUnionRect;
-pub use self::__NSGeometry::NSZeroPoint;
-pub use self::__NSGeometry::NSZeroRect;
-pub use self::__NSGeometry::NSZeroSize;
-pub use self::__NSGeometry::{
-    NSAlignAllEdgesInward, NSAlignAllEdgesNearest, NSAlignAllEdgesOutward, NSAlignHeightInward,
-    NSAlignHeightNearest, NSAlignHeightOutward, NSAlignMaxXInward, NSAlignMaxXNearest,
-    NSAlignMaxXOutward, NSAlignMaxYInward, NSAlignMaxYNearest, NSAlignMaxYOutward,
-    NSAlignMinXInward, NSAlignMinXNearest, NSAlignMinXOutward, NSAlignMinYInward,
-    NSAlignMinYNearest, NSAlignMinYOutward, NSAlignRectFlipped, NSAlignWidthInward,
-    NSAlignWidthNearest, NSAlignWidthOutward, NSAlignmentOptions,
-};
+#[cfg(feature = "Foundation_NSString")]
 #[cfg(feature = "Foundation_NSString")]
 pub use self::__NSHFSFileTypes::NSFileTypeForHFSTypeCode;
 #[cfg(feature = "Foundation_NSString")]
+#[cfg(feature = "Foundation_NSString")]
 pub use self::__NSHFSFileTypes::NSHFSTypeCodeFromFileType;
 #[cfg(feature = "Foundation_NSString")]
+#[cfg(feature = "Foundation_NSString")]
 pub use self::__NSHFSFileTypes::NSHFSTypeOfFile;
+
+pub use self::__NSHTTPCookie::NSHTTPCookiePropertyKey;
+
+pub use self::__NSHTTPCookie::NSHTTPCookieStringPolicy;
+
+pub use self::__NSHTTPCookie::NSHTTPCookieName;
+
+pub use self::__NSHTTPCookie::NSHTTPCookieValue;
+
+pub use self::__NSHTTPCookie::NSHTTPCookieOriginURL;
+
+pub use self::__NSHTTPCookie::NSHTTPCookieVersion;
+
+pub use self::__NSHTTPCookie::NSHTTPCookieDomain;
+
+pub use self::__NSHTTPCookie::NSHTTPCookiePath;
+
+pub use self::__NSHTTPCookie::NSHTTPCookieSecure;
+
+pub use self::__NSHTTPCookie::NSHTTPCookieExpires;
+
+pub use self::__NSHTTPCookie::NSHTTPCookieComment;
+
+pub use self::__NSHTTPCookie::NSHTTPCookieCommentURL;
+
+pub use self::__NSHTTPCookie::NSHTTPCookieDiscard;
+
+pub use self::__NSHTTPCookie::NSHTTPCookieMaximumAge;
+
+pub use self::__NSHTTPCookie::NSHTTPCookiePort;
+
+pub use self::__NSHTTPCookie::NSHTTPCookieSameSitePolicy;
+
+pub use self::__NSHTTPCookie::NSHTTPCookieSameSiteLax;
+
+#[cfg(feature = "Foundation_NSHTTPCookie")]
 #[cfg(feature = "Foundation_NSHTTPCookie")]
 pub use self::__NSHTTPCookie::NSHTTPCookie;
-pub use self::__NSHTTPCookie::NSHTTPCookieComment;
-pub use self::__NSHTTPCookie::NSHTTPCookieCommentURL;
-pub use self::__NSHTTPCookie::NSHTTPCookieDiscard;
-pub use self::__NSHTTPCookie::NSHTTPCookieDomain;
-pub use self::__NSHTTPCookie::NSHTTPCookieExpires;
-pub use self::__NSHTTPCookie::NSHTTPCookieMaximumAge;
-pub use self::__NSHTTPCookie::NSHTTPCookieName;
-pub use self::__NSHTTPCookie::NSHTTPCookieOriginURL;
-pub use self::__NSHTTPCookie::NSHTTPCookiePath;
-pub use self::__NSHTTPCookie::NSHTTPCookiePort;
-pub use self::__NSHTTPCookie::NSHTTPCookiePropertyKey;
-pub use self::__NSHTTPCookie::NSHTTPCookieSameSiteLax;
-pub use self::__NSHTTPCookie::NSHTTPCookieSameSitePolicy;
 pub use self::__NSHTTPCookie::NSHTTPCookieSameSiteStrict;
-pub use self::__NSHTTPCookie::NSHTTPCookieSecure;
-pub use self::__NSHTTPCookie::NSHTTPCookieStringPolicy;
-pub use self::__NSHTTPCookie::NSHTTPCookieValue;
-pub use self::__NSHTTPCookie::NSHTTPCookieVersion;
-pub use self::__NSHTTPCookieStorage::NSHTTPCookieManagerAcceptPolicyChangedNotification;
-pub use self::__NSHTTPCookieStorage::NSHTTPCookieManagerCookiesChangedNotification;
+
+pub use self::__NSHTTPCookieStorage::NSHTTPCookieAcceptPolicy;
+
+pub use self::__NSHTTPCookieStorage::NSHTTPCookieAcceptPolicyAlways;
+
+pub use self::__NSHTTPCookieStorage::NSHTTPCookieAcceptPolicyNever;
+
+pub use self::__NSHTTPCookieStorage::NSHTTPCookieAcceptPolicyOnlyFromMainDocumentDomain;
+#[cfg(feature = "Foundation_NSHTTPCookieStorage")]
 #[cfg(feature = "Foundation_NSHTTPCookieStorage")]
 pub use self::__NSHTTPCookieStorage::NSHTTPCookieStorage;
-pub use self::__NSHTTPCookieStorage::{
-    NSHTTPCookieAcceptPolicy, NSHTTPCookieAcceptPolicyAlways, NSHTTPCookieAcceptPolicyNever,
-    NSHTTPCookieAcceptPolicyOnlyFromMainDocumentDomain,
-};
-#[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSHashTable"))]
-pub use self::__NSHashTable::NSAllHashTableObjects;
+
+pub use self::__NSHTTPCookieStorage::NSHTTPCookieManagerAcceptPolicyChangedNotification;
+
+pub use self::__NSHTTPCookieStorage::NSHTTPCookieManagerCookiesChangedNotification;
+
+pub use self::__NSHashTable::NSHashTableStrongMemory;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSHashTable::NSHashTableZeroingWeakMemory;
+
+pub use self::__NSHashTable::NSHashTableCopyIn;
+
+pub use self::__NSHashTable::NSHashTableObjectPointerPersonality;
+
+pub use self::__NSHashTable::NSHashTableWeakMemory;
+
+#[cfg(feature = "Foundation_NSHashTable")]
+#[cfg(feature = "Foundation_NSHashTable")]
+pub use self::__NSHashTable::NSHashTable;
+pub use self::__NSHashTable::NSHashTableOptions;
+
+#[cfg(feature = "Foundation_NSHashTable")]
 #[cfg(feature = "Foundation_NSHashTable")]
 pub use self::__NSHashTable::NSCompareHashTables;
 #[cfg(feature = "Foundation_NSHashTable")]
+#[cfg(feature = "Foundation_NSHashTable")]
 pub use self::__NSHashTable::NSCopyHashTableWithZone;
 #[cfg(feature = "Foundation_NSHashTable")]
-pub use self::__NSHashTable::NSCountHashTable;
-#[cfg(feature = "Foundation_NSHashTable")]
-pub use self::__NSHashTable::NSCreateHashTable;
-#[cfg(feature = "Foundation_NSHashTable")]
-pub use self::__NSHashTable::NSCreateHashTableWithZone;
-pub use self::__NSHashTable::NSEndHashTableEnumeration;
 #[cfg(feature = "Foundation_NSHashTable")]
 pub use self::__NSHashTable::NSEnumerateHashTable;
+#[cfg(feature = "Foundation_NSHashTable")]
 #[cfg(feature = "Foundation_NSHashTable")]
 pub use self::__NSHashTable::NSFreeHashTable;
 pub use self::__NSHashTable::NSHashEnumerator;
 #[cfg(feature = "Foundation_NSHashTable")]
+#[cfg(feature = "Foundation_NSHashTable")]
 pub use self::__NSHashTable::NSHashGet;
+#[cfg(feature = "Foundation_NSHashTable")]
 #[cfg(feature = "Foundation_NSHashTable")]
 pub use self::__NSHashTable::NSHashInsert;
 #[cfg(feature = "Foundation_NSHashTable")]
+#[cfg(feature = "Foundation_NSHashTable")]
 pub use self::__NSHashTable::NSHashInsertIfAbsent;
+#[cfg(feature = "Foundation_NSHashTable")]
 #[cfg(feature = "Foundation_NSHashTable")]
 pub use self::__NSHashTable::NSHashInsertKnownAbsent;
 #[cfg(feature = "Foundation_NSHashTable")]
+#[cfg(feature = "Foundation_NSHashTable")]
 pub use self::__NSHashTable::NSHashRemove;
 #[cfg(feature = "Foundation_NSHashTable")]
-pub use self::__NSHashTable::NSHashTable;
-pub use self::__NSHashTable::NSHashTableCallBacks;
-pub use self::__NSHashTable::NSHashTableCopyIn;
-pub use self::__NSHashTable::NSHashTableObjectPointerPersonality;
-pub use self::__NSHashTable::NSHashTableOptions;
-pub use self::__NSHashTable::NSHashTableStrongMemory;
-pub use self::__NSHashTable::NSHashTableWeakMemory;
-pub use self::__NSHashTable::NSHashTableZeroingWeakMemory;
-pub use self::__NSHashTable::NSIntHashCallBacks;
-pub use self::__NSHashTable::NSIntegerHashCallBacks;
-pub use self::__NSHashTable::NSNextHashEnumeratorItem;
-pub use self::__NSHashTable::NSNonOwnedPointerHashCallBacks;
-pub use self::__NSHashTable::NSNonRetainedObjectHashCallBacks;
-pub use self::__NSHashTable::NSObjectHashCallBacks;
-pub use self::__NSHashTable::NSOwnedObjectIdentityHashCallBacks;
-pub use self::__NSHashTable::NSOwnedPointerHashCallBacks;
-pub use self::__NSHashTable::NSPointerToStructHashCallBacks;
 #[cfg(feature = "Foundation_NSHashTable")]
 pub use self::__NSHashTable::NSResetHashTable;
+
+pub use self::__NSHashTable::NSNextHashEnumeratorItem;
+
+#[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSHashTable"))]
+#[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSHashTable"))]
+pub use self::__NSHashTable::NSAllHashTableObjects;
+#[cfg(feature = "Foundation_NSHashTable")]
+#[cfg(feature = "Foundation_NSHashTable")]
+pub use self::__NSHashTable::NSCountHashTable;
+pub use self::__NSHashTable::NSEndHashTableEnumeration;
+#[cfg(all(feature = "Foundation_NSHashTable", feature = "Foundation_NSString"))]
 #[cfg(all(feature = "Foundation_NSHashTable", feature = "Foundation_NSString"))]
 pub use self::__NSHashTable::NSStringFromHashTable;
+
+#[cfg(feature = "Foundation_NSHashTable")]
+#[cfg(feature = "Foundation_NSHashTable")]
+pub use self::__NSHashTable::NSCreateHashTable;
+#[cfg(feature = "Foundation_NSHashTable")]
+#[cfg(feature = "Foundation_NSHashTable")]
+pub use self::__NSHashTable::NSCreateHashTableWithZone;
+pub use self::__NSHashTable::NSHashTableCallBacks;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSHashTable::NSIntegerHashCallBacks;
+
+pub use self::__NSHashTable::NSNonOwnedPointerHashCallBacks;
+
+pub use self::__NSHashTable::NSNonRetainedObjectHashCallBacks;
+
+pub use self::__NSHashTable::NSObjectHashCallBacks;
+
+pub use self::__NSHashTable::NSOwnedObjectIdentityHashCallBacks;
+
+pub use self::__NSHashTable::NSOwnedPointerHashCallBacks;
+
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSHashTable::NSIntHashCallBacks;
+pub use self::__NSHashTable::NSPointerToStructHashCallBacks;
 #[cfg(feature = "Foundation_NSHost")]
+#[cfg(feature = "Foundation_NSHost")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSHost::NSHost;
+
+pub use self::__NSISO8601DateFormatter::NSISO8601DateFormatOptions;
+
+pub use self::__NSISO8601DateFormatter::NSISO8601DateFormatWithYear;
+
+pub use self::__NSISO8601DateFormatter::NSISO8601DateFormatWithMonth;
+
+pub use self::__NSISO8601DateFormatter::NSISO8601DateFormatWithWeekOfYear;
+
+pub use self::__NSISO8601DateFormatter::NSISO8601DateFormatWithDay;
+
+pub use self::__NSISO8601DateFormatter::NSISO8601DateFormatWithTime;
+
+pub use self::__NSISO8601DateFormatter::NSISO8601DateFormatWithTimeZone;
+
+pub use self::__NSISO8601DateFormatter::NSISO8601DateFormatWithSpaceBetweenDateAndTime;
+
+pub use self::__NSISO8601DateFormatter::NSISO8601DateFormatWithDashSeparatorInDate;
+
+pub use self::__NSISO8601DateFormatter::NSISO8601DateFormatWithColonSeparatorInTime;
+
+pub use self::__NSISO8601DateFormatter::NSISO8601DateFormatWithColonSeparatorInTimeZone;
+
+pub use self::__NSISO8601DateFormatter::NSISO8601DateFormatWithFractionalSeconds;
+
+pub use self::__NSISO8601DateFormatter::NSISO8601DateFormatWithFullDate;
+
+pub use self::__NSISO8601DateFormatter::NSISO8601DateFormatWithFullTime;
+
+pub use self::__NSISO8601DateFormatter::NSISO8601DateFormatWithInternetDateTime;
+#[cfg(feature = "Foundation_NSISO8601DateFormatter")]
 #[cfg(feature = "Foundation_NSISO8601DateFormatter")]
 pub use self::__NSISO8601DateFormatter::NSISO8601DateFormatter;
-pub use self::__NSISO8601DateFormatter::{
-    NSISO8601DateFormatOptions, NSISO8601DateFormatWithColonSeparatorInTime,
-    NSISO8601DateFormatWithColonSeparatorInTimeZone, NSISO8601DateFormatWithDashSeparatorInDate,
-    NSISO8601DateFormatWithDay, NSISO8601DateFormatWithFractionalSeconds,
-    NSISO8601DateFormatWithFullDate, NSISO8601DateFormatWithFullTime,
-    NSISO8601DateFormatWithInternetDateTime, NSISO8601DateFormatWithMonth,
-    NSISO8601DateFormatWithSpaceBetweenDateAndTime, NSISO8601DateFormatWithTime,
-    NSISO8601DateFormatWithTimeZone, NSISO8601DateFormatWithWeekOfYear,
-    NSISO8601DateFormatWithYear,
-};
+#[cfg(feature = "Foundation_NSIndexPath")]
 #[cfg(feature = "Foundation_NSIndexPath")]
 pub use self::__NSIndexPath::NSIndexPath;
 #[cfg(feature = "Foundation_NSIndexSet")]
+#[cfg(feature = "Foundation_NSIndexSet")]
 pub use self::__NSIndexSet::NSIndexSet;
+#[cfg(feature = "Foundation_NSMutableIndexSet")]
 #[cfg(feature = "Foundation_NSMutableIndexSet")]
 pub use self::__NSIndexSet::NSMutableIndexSet;
 #[cfg(feature = "Foundation_NSInflectionRule")]
+#[cfg(feature = "Foundation_NSInflectionRule")]
 pub use self::__NSInflectionRule::NSInflectionRule;
+#[cfg(feature = "Foundation_NSInflectionRuleExplicit")]
 #[cfg(feature = "Foundation_NSInflectionRuleExplicit")]
 pub use self::__NSInflectionRule::NSInflectionRuleExplicit;
 #[cfg(feature = "Foundation_NSInvocation")]
+#[cfg(feature = "Foundation_NSInvocation")]
 pub use self::__NSInvocation::NSInvocation;
-pub use self::__NSItemProvider::NSExtensionJavaScriptFinalizeArgumentKey;
-pub use self::__NSItemProvider::NSExtensionJavaScriptPreprocessingResultsKey;
+
+pub use self::__NSItemProvider::NSItemProviderRepresentationVisibility;
+
+pub use self::__NSItemProvider::NSItemProviderRepresentationVisibilityAll;
+
+pub use self::__NSItemProvider::NSItemProviderRepresentationVisibilityTeam;
+
+pub use self::__NSItemProvider::NSItemProviderRepresentationVisibilityGroup;
+
+pub use self::__NSItemProvider::NSItemProviderRepresentationVisibilityOwnProcess;
+
+pub use self::__NSItemProvider::NSItemProviderFileOptions;
+
+pub use self::__NSItemProvider::NSItemProviderFileOptionOpenInPlace;
+
+pub use self::__NSItemProvider::NSItemProviderWriting;
+
+pub use self::__NSItemProvider::NSItemProviderReading;
+
+pub use self::__NSItemProvider::NSItemProviderCompletionHandler;
+
+#[cfg(feature = "Foundation_NSItemProvider")]
 #[cfg(feature = "Foundation_NSItemProvider")]
 pub use self::__NSItemProvider::NSItemProvider;
-pub use self::__NSItemProvider::NSItemProviderCompletionHandler;
-pub use self::__NSItemProvider::NSItemProviderErrorDomain;
 pub use self::__NSItemProvider::NSItemProviderLoadHandler;
+
 pub use self::__NSItemProvider::NSItemProviderPreferredImageSizeKey;
-pub use self::__NSItemProvider::NSItemProviderReading;
-pub use self::__NSItemProvider::NSItemProviderWriting;
-pub use self::__NSItemProvider::{
-    NSItemProviderErrorCode, NSItemProviderItemUnavailableError,
-    NSItemProviderUnavailableCoercionError, NSItemProviderUnexpectedValueClassError,
-    NSItemProviderUnknownError,
-};
-pub use self::__NSItemProvider::{NSItemProviderFileOptionOpenInPlace, NSItemProviderFileOptions};
-pub use self::__NSItemProvider::{
-    NSItemProviderRepresentationVisibility, NSItemProviderRepresentationVisibilityAll,
-    NSItemProviderRepresentationVisibilityGroup, NSItemProviderRepresentationVisibilityOwnProcess,
-    NSItemProviderRepresentationVisibilityTeam,
-};
+
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__NSItemProvider::NSExtensionJavaScriptFinalizeArgumentKey;
+pub use self::__NSItemProvider::NSExtensionJavaScriptPreprocessingResultsKey;
+
+pub use self::__NSItemProvider::NSItemProviderErrorDomain;
+
+pub use self::__NSItemProvider::NSItemProviderErrorCode;
+
+pub use self::__NSItemProvider::NSItemProviderUnknownError;
+
+pub use self::__NSItemProvider::NSItemProviderItemUnavailableError;
+
+pub use self::__NSItemProvider::NSItemProviderUnexpectedValueClassError;
+
+pub use self::__NSItemProvider::NSItemProviderUnavailableCoercionError;
+
+pub use self::__NSJSONSerialization::NSJSONReadingOptions;
+
+pub use self::__NSJSONSerialization::NSJSONReadingMutableContainers;
+
+pub use self::__NSJSONSerialization::NSJSONReadingMutableLeaves;
+
+pub use self::__NSJSONSerialization::NSJSONReadingFragmentsAllowed;
+
+pub use self::__NSJSONSerialization::NSJSONReadingJSON5Allowed;
+
+pub use self::__NSJSONSerialization::NSJSONReadingTopLevelDictionaryAssumed;
+
+pub use self::__NSJSONSerialization::NSJSONReadingAllowFragments;
+
+pub use self::__NSJSONSerialization::NSJSONWritingOptions;
+
+pub use self::__NSJSONSerialization::NSJSONWritingPrettyPrinted;
+
+pub use self::__NSJSONSerialization::NSJSONWritingSortedKeys;
+
+pub use self::__NSJSONSerialization::NSJSONWritingFragmentsAllowed;
+
+#[cfg(feature = "Foundation_NSJSONSerialization")]
 #[cfg(feature = "Foundation_NSJSONSerialization")]
 pub use self::__NSJSONSerialization::NSJSONSerialization;
-pub use self::__NSJSONSerialization::{
-    NSJSONReadingAllowFragments, NSJSONReadingFragmentsAllowed, NSJSONReadingJSON5Allowed,
-    NSJSONReadingMutableContainers, NSJSONReadingMutableLeaves, NSJSONReadingOptions,
-    NSJSONReadingTopLevelDictionaryAssumed,
-};
-pub use self::__NSJSONSerialization::{
-    NSJSONWritingFragmentsAllowed, NSJSONWritingOptions, NSJSONWritingPrettyPrinted,
-    NSJSONWritingSortedKeys, NSJSONWritingWithoutEscapingSlashes,
-};
-pub use self::__NSKeyValueCoding::NSAverageKeyValueOperator;
-pub use self::__NSKeyValueCoding::NSCountKeyValueOperator;
-pub use self::__NSKeyValueCoding::NSDistinctUnionOfArraysKeyValueOperator;
-pub use self::__NSKeyValueCoding::NSDistinctUnionOfObjectsKeyValueOperator;
-pub use self::__NSKeyValueCoding::NSDistinctUnionOfSetsKeyValueOperator;
-pub use self::__NSKeyValueCoding::NSKeyValueOperator;
-pub use self::__NSKeyValueCoding::NSMaximumKeyValueOperator;
-pub use self::__NSKeyValueCoding::NSMinimumKeyValueOperator;
-pub use self::__NSKeyValueCoding::NSSumKeyValueOperator;
+pub use self::__NSJSONSerialization::NSJSONWritingWithoutEscapingSlashes;
+
 pub use self::__NSKeyValueCoding::NSUndefinedKeyException;
+
+pub use self::__NSKeyValueCoding::NSKeyValueOperator;
+
+pub use self::__NSKeyValueCoding::NSAverageKeyValueOperator;
+
+pub use self::__NSKeyValueCoding::NSCountKeyValueOperator;
+
+pub use self::__NSKeyValueCoding::NSDistinctUnionOfArraysKeyValueOperator;
+
+pub use self::__NSKeyValueCoding::NSDistinctUnionOfObjectsKeyValueOperator;
+
+pub use self::__NSKeyValueCoding::NSDistinctUnionOfSetsKeyValueOperator;
+
+pub use self::__NSKeyValueCoding::NSMaximumKeyValueOperator;
+
+pub use self::__NSKeyValueCoding::NSMinimumKeyValueOperator;
+
+pub use self::__NSKeyValueCoding::NSSumKeyValueOperator;
+
 pub use self::__NSKeyValueCoding::NSUnionOfArraysKeyValueOperator;
+
 pub use self::__NSKeyValueCoding::NSUnionOfObjectsKeyValueOperator;
+
 pub use self::__NSKeyValueCoding::NSUnionOfSetsKeyValueOperator;
-pub use self::__NSKeyValueObserving::NSKeyValueChangeIndexesKey;
+
+pub use self::__NSKeyValueObserving::NSKeyValueObservingOptions;
+
+pub use self::__NSKeyValueObserving::NSKeyValueObservingOptionNew;
+
+pub use self::__NSKeyValueObserving::NSKeyValueObservingOptionOld;
+
+pub use self::__NSKeyValueObserving::NSKeyValueObservingOptionInitial;
+
+pub use self::__NSKeyValueObserving::NSKeyValueObservingOptionPrior;
+
+pub use self::__NSKeyValueObserving::NSKeyValueChange;
+
+pub use self::__NSKeyValueObserving::NSKeyValueChangeSetting;
+
+pub use self::__NSKeyValueObserving::NSKeyValueChangeInsertion;
+
+pub use self::__NSKeyValueObserving::NSKeyValueChangeRemoval;
+
+pub use self::__NSKeyValueObserving::NSKeyValueChangeReplacement;
+
+pub use self::__NSKeyValueObserving::NSKeyValueSetMutationKind;
+
+pub use self::__NSKeyValueObserving::NSKeyValueUnionSetMutation;
+
+pub use self::__NSKeyValueObserving::NSKeyValueMinusSetMutation;
+
+pub use self::__NSKeyValueObserving::NSKeyValueIntersectSetMutation;
+
+pub use self::__NSKeyValueObserving::NSKeyValueSetSetMutation;
+
 pub use self::__NSKeyValueObserving::NSKeyValueChangeKey;
+
 pub use self::__NSKeyValueObserving::NSKeyValueChangeKindKey;
+
 pub use self::__NSKeyValueObserving::NSKeyValueChangeNewKey;
-pub use self::__NSKeyValueObserving::NSKeyValueChangeNotificationIsPriorKey;
+
 pub use self::__NSKeyValueObserving::NSKeyValueChangeOldKey;
-pub use self::__NSKeyValueObserving::{
-    NSKeyValueChange, NSKeyValueChangeInsertion, NSKeyValueChangeRemoval,
-    NSKeyValueChangeReplacement, NSKeyValueChangeSetting,
-};
-pub use self::__NSKeyValueObserving::{
-    NSKeyValueIntersectSetMutation, NSKeyValueMinusSetMutation, NSKeyValueSetMutationKind,
-    NSKeyValueSetSetMutation, NSKeyValueUnionSetMutation,
-};
-pub use self::__NSKeyValueObserving::{
-    NSKeyValueObservingOptionInitial, NSKeyValueObservingOptionNew, NSKeyValueObservingOptionOld,
-    NSKeyValueObservingOptionPrior, NSKeyValueObservingOptions,
-};
+
+pub use self::__NSKeyValueObserving::NSKeyValueChangeIndexesKey;
+
+pub use self::__NSKeyValueObserving::NSKeyValueChangeNotificationIsPriorKey;
+
 pub use self::__NSKeyedArchiver::NSInvalidArchiveOperationException;
+
 pub use self::__NSKeyedArchiver::NSInvalidUnarchiveOperationException;
+
 pub use self::__NSKeyedArchiver::NSKeyedArchiveRootObjectKey;
 #[cfg(feature = "Foundation_NSKeyedArchiver")]
+#[cfg(feature = "Foundation_NSKeyedArchiver")]
 pub use self::__NSKeyedArchiver::NSKeyedArchiver;
-pub use self::__NSKeyedArchiver::NSKeyedArchiverDelegate;
+#[cfg(feature = "Foundation_NSKeyedUnarchiver")]
 #[cfg(feature = "Foundation_NSKeyedUnarchiver")]
 pub use self::__NSKeyedArchiver::NSKeyedUnarchiver;
+
+pub use self::__NSKeyedArchiver::NSKeyedArchiverDelegate;
+
 pub use self::__NSKeyedArchiver::NSKeyedUnarchiverDelegate;
+
+pub use self::__NSLengthFormatter::NSLengthFormatterUnit;
+
+pub use self::__NSLengthFormatter::NSLengthFormatterUnitMillimeter;
+
+pub use self::__NSLengthFormatter::NSLengthFormatterUnitCentimeter;
+
+pub use self::__NSLengthFormatter::NSLengthFormatterUnitMeter;
+
+pub use self::__NSLengthFormatter::NSLengthFormatterUnitKilometer;
+
+pub use self::__NSLengthFormatter::NSLengthFormatterUnitInch;
+
+pub use self::__NSLengthFormatter::NSLengthFormatterUnitFoot;
+
+pub use self::__NSLengthFormatter::NSLengthFormatterUnitYard;
+
+#[cfg(feature = "Foundation_NSLengthFormatter")]
 #[cfg(feature = "Foundation_NSLengthFormatter")]
 pub use self::__NSLengthFormatter::NSLengthFormatter;
-pub use self::__NSLengthFormatter::{
-    NSLengthFormatterUnit, NSLengthFormatterUnitCentimeter, NSLengthFormatterUnitFoot,
-    NSLengthFormatterUnitInch, NSLengthFormatterUnitKilometer, NSLengthFormatterUnitMeter,
-    NSLengthFormatterUnitMile, NSLengthFormatterUnitMillimeter, NSLengthFormatterUnitYard,
-};
-pub use self::__NSLinguisticTagger::NSLinguisticTag;
-pub use self::__NSLinguisticTagger::NSLinguisticTagAdjective;
-pub use self::__NSLinguisticTagger::NSLinguisticTagAdverb;
-pub use self::__NSLinguisticTagger::NSLinguisticTagClassifier;
-pub use self::__NSLinguisticTagger::NSLinguisticTagCloseParenthesis;
-pub use self::__NSLinguisticTagger::NSLinguisticTagCloseQuote;
-pub use self::__NSLinguisticTagger::NSLinguisticTagConjunction;
-pub use self::__NSLinguisticTagger::NSLinguisticTagDash;
-pub use self::__NSLinguisticTagger::NSLinguisticTagDeterminer;
-pub use self::__NSLinguisticTagger::NSLinguisticTagIdiom;
-pub use self::__NSLinguisticTagger::NSLinguisticTagInterjection;
-pub use self::__NSLinguisticTagger::NSLinguisticTagNoun;
-pub use self::__NSLinguisticTagger::NSLinguisticTagNumber;
-pub use self::__NSLinguisticTagger::NSLinguisticTagOpenParenthesis;
-pub use self::__NSLinguisticTagger::NSLinguisticTagOpenQuote;
-pub use self::__NSLinguisticTagger::NSLinguisticTagOrganizationName;
-pub use self::__NSLinguisticTagger::NSLinguisticTagOther;
-pub use self::__NSLinguisticTagger::NSLinguisticTagOtherPunctuation;
-pub use self::__NSLinguisticTagger::NSLinguisticTagOtherWhitespace;
-pub use self::__NSLinguisticTagger::NSLinguisticTagOtherWord;
-pub use self::__NSLinguisticTagger::NSLinguisticTagParagraphBreak;
-pub use self::__NSLinguisticTagger::NSLinguisticTagParticle;
-pub use self::__NSLinguisticTagger::NSLinguisticTagPersonalName;
-pub use self::__NSLinguisticTagger::NSLinguisticTagPlaceName;
-pub use self::__NSLinguisticTagger::NSLinguisticTagPreposition;
-pub use self::__NSLinguisticTagger::NSLinguisticTagPronoun;
-pub use self::__NSLinguisticTagger::NSLinguisticTagPunctuation;
+pub use self::__NSLengthFormatter::NSLengthFormatterUnitMile;
+
 pub use self::__NSLinguisticTagger::NSLinguisticTagScheme;
-pub use self::__NSLinguisticTagger::NSLinguisticTagSchemeLanguage;
-pub use self::__NSLinguisticTagger::NSLinguisticTagSchemeLemma;
-pub use self::__NSLinguisticTagger::NSLinguisticTagSchemeLexicalClass;
-pub use self::__NSLinguisticTagger::NSLinguisticTagSchemeNameType;
-pub use self::__NSLinguisticTagger::NSLinguisticTagSchemeNameTypeOrLexicalClass;
-pub use self::__NSLinguisticTagger::NSLinguisticTagSchemeScript;
+
 pub use self::__NSLinguisticTagger::NSLinguisticTagSchemeTokenType;
-pub use self::__NSLinguisticTagger::NSLinguisticTagSentenceTerminator;
-pub use self::__NSLinguisticTagger::NSLinguisticTagVerb;
-pub use self::__NSLinguisticTagger::NSLinguisticTagWhitespace;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTagSchemeLexicalClass;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTagSchemeNameType;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTagSchemeNameTypeOrLexicalClass;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTagSchemeLemma;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTagSchemeLanguage;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTagSchemeScript;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTag;
+
 pub use self::__NSLinguisticTagger::NSLinguisticTagWord;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTagPunctuation;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTagWhitespace;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTagOther;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTagNoun;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTagVerb;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTagAdjective;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTagAdverb;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTagPronoun;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTagDeterminer;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTagParticle;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTagPreposition;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTagNumber;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTagConjunction;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTagInterjection;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTagClassifier;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTagIdiom;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTagOtherWord;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTagSentenceTerminator;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTagOpenQuote;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTagCloseQuote;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTagOpenParenthesis;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTagCloseParenthesis;
+
 pub use self::__NSLinguisticTagger::NSLinguisticTagWordJoiner;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTagDash;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTagOtherPunctuation;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTagParagraphBreak;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTagOtherWhitespace;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTagPersonalName;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTagPlaceName;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTagOrganizationName;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTaggerUnit;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTaggerUnitWord;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTaggerUnitSentence;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTaggerUnitParagraph;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTaggerUnitDocument;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTaggerOptions;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTaggerOmitWords;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTaggerOmitPunctuation;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTaggerOmitWhitespace;
+
+pub use self::__NSLinguisticTagger::NSLinguisticTaggerOmitOther;
+
+#[cfg(feature = "Foundation_NSLinguisticTagger")]
 #[cfg(feature = "Foundation_NSLinguisticTagger")]
 pub use self::__NSLinguisticTagger::NSLinguisticTagger;
-pub use self::__NSLinguisticTagger::{
-    NSLinguisticTaggerJoinNames, NSLinguisticTaggerOmitOther, NSLinguisticTaggerOmitPunctuation,
-    NSLinguisticTaggerOmitWhitespace, NSLinguisticTaggerOmitWords, NSLinguisticTaggerOptions,
-};
-pub use self::__NSLinguisticTagger::{
-    NSLinguisticTaggerUnit, NSLinguisticTaggerUnitDocument, NSLinguisticTaggerUnitParagraph,
-    NSLinguisticTaggerUnitSentence, NSLinguisticTaggerUnitWord,
-};
+pub use self::__NSLinguisticTagger::NSLinguisticTaggerJoinNames;
+#[cfg(feature = "Foundation_NSListFormatter")]
 #[cfg(feature = "Foundation_NSListFormatter")]
 pub use self::__NSListFormatter::NSListFormatter;
-pub use self::__NSLocale::NSBuddhistCalendar;
-pub use self::__NSLocale::NSChineseCalendar;
-pub use self::__NSLocale::NSCurrentLocaleDidChangeNotification;
-pub use self::__NSLocale::NSGregorianCalendar;
-pub use self::__NSLocale::NSHebrewCalendar;
-pub use self::__NSLocale::NSISO8601Calendar;
-pub use self::__NSLocale::NSIndianCalendar;
-pub use self::__NSLocale::NSIslamicCalendar;
-pub use self::__NSLocale::NSIslamicCivilCalendar;
-pub use self::__NSLocale::NSJapaneseCalendar;
+
+#[cfg(feature = "Foundation_NSLocale")]
 #[cfg(feature = "Foundation_NSLocale")]
 pub use self::__NSLocale::NSLocale;
-pub use self::__NSLocale::NSLocaleAlternateQuotationBeginDelimiterKey;
-pub use self::__NSLocale::NSLocaleAlternateQuotationEndDelimiterKey;
-pub use self::__NSLocale::NSLocaleCalendar;
-pub use self::__NSLocale::NSLocaleCollationIdentifier;
-pub use self::__NSLocale::NSLocaleCollatorIdentifier;
-pub use self::__NSLocale::NSLocaleCountryCode;
-pub use self::__NSLocale::NSLocaleCurrencyCode;
-pub use self::__NSLocale::NSLocaleCurrencySymbol;
-pub use self::__NSLocale::NSLocaleDecimalSeparator;
-pub use self::__NSLocale::NSLocaleExemplarCharacterSet;
-pub use self::__NSLocale::NSLocaleGroupingSeparator;
-pub use self::__NSLocale::NSLocaleIdentifier;
 pub use self::__NSLocale::NSLocaleKey;
+
+pub use self::__NSLocale::NSLocaleLanguageDirection;
+
+pub use self::__NSLocale::NSLocaleLanguageDirectionUnknown;
+
+pub use self::__NSLocale::NSLocaleLanguageDirectionLeftToRight;
+
+pub use self::__NSLocale::NSLocaleLanguageDirectionRightToLeft;
+
+pub use self::__NSLocale::NSLocaleLanguageDirectionTopToBottom;
+
+pub use self::__NSLocale::NSLocaleLanguageDirectionBottomToTop;
+
+pub use self::__NSLocale::NSCurrentLocaleDidChangeNotification;
+
+pub use self::__NSLocale::NSLocaleIdentifier;
+
 pub use self::__NSLocale::NSLocaleLanguageCode;
-pub use self::__NSLocale::NSLocaleMeasurementSystem;
-pub use self::__NSLocale::NSLocaleQuotationBeginDelimiterKey;
-pub use self::__NSLocale::NSLocaleQuotationEndDelimiterKey;
+
+pub use self::__NSLocale::NSLocaleCountryCode;
+
 pub use self::__NSLocale::NSLocaleScriptCode;
-pub use self::__NSLocale::NSLocaleUsesMetricSystem;
+
 pub use self::__NSLocale::NSLocaleVariantCode;
-pub use self::__NSLocale::NSPersianCalendar;
+
+pub use self::__NSLocale::NSLocaleExemplarCharacterSet;
+
+pub use self::__NSLocale::NSLocaleCalendar;
+
+pub use self::__NSLocale::NSLocaleCollationIdentifier;
+
+pub use self::__NSLocale::NSLocaleUsesMetricSystem;
+
+pub use self::__NSLocale::NSLocaleMeasurementSystem;
+
+pub use self::__NSLocale::NSLocaleDecimalSeparator;
+
+pub use self::__NSLocale::NSLocaleGroupingSeparator;
+
+pub use self::__NSLocale::NSLocaleCurrencySymbol;
+
+pub use self::__NSLocale::NSLocaleCurrencyCode;
+
+pub use self::__NSLocale::NSLocaleCollatorIdentifier;
+
+pub use self::__NSLocale::NSLocaleQuotationBeginDelimiterKey;
+
+pub use self::__NSLocale::NSLocaleQuotationEndDelimiterKey;
+
+pub use self::__NSLocale::NSLocaleAlternateQuotationBeginDelimiterKey;
+
+pub use self::__NSLocale::NSLocaleAlternateQuotationEndDelimiterKey;
+
+pub use self::__NSLocale::NSGregorianCalendar;
+
+pub use self::__NSLocale::NSBuddhistCalendar;
+
+pub use self::__NSLocale::NSChineseCalendar;
+
+pub use self::__NSLocale::NSHebrewCalendar;
+
+pub use self::__NSLocale::NSIslamicCalendar;
+
+pub use self::__NSLocale::NSIslamicCivilCalendar;
+
+pub use self::__NSLocale::NSJapaneseCalendar;
+
 pub use self::__NSLocale::NSRepublicOfChinaCalendar;
-pub use self::__NSLocale::{
-    NSLocaleLanguageDirection, NSLocaleLanguageDirectionBottomToTop,
-    NSLocaleLanguageDirectionLeftToRight, NSLocaleLanguageDirectionRightToLeft,
-    NSLocaleLanguageDirectionTopToBottom, NSLocaleLanguageDirectionUnknown,
-};
+
+pub use self::__NSLocale::NSPersianCalendar;
+
+pub use self::__NSLocale::NSIndianCalendar;
+
+pub use self::__NSLocale::NSISO8601Calendar;
+
+#[cfg(feature = "Foundation_NSCondition")]
 #[cfg(feature = "Foundation_NSCondition")]
 pub use self::__NSLock::NSCondition;
 #[cfg(feature = "Foundation_NSConditionLock")]
+#[cfg(feature = "Foundation_NSConditionLock")]
 pub use self::__NSLock::NSConditionLock;
+#[cfg(feature = "Foundation_NSLock")]
 #[cfg(feature = "Foundation_NSLock")]
 pub use self::__NSLock::NSLock;
 pub use self::__NSLock::NSLocking;
 #[cfg(feature = "Foundation_NSRecursiveLock")]
+#[cfg(feature = "Foundation_NSRecursiveLock")]
 pub use self::__NSLock::NSRecursiveLock;
-#[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSMapTable"))]
-pub use self::__NSMapTable::NSAllMapTableKeys;
-#[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSMapTable"))]
-pub use self::__NSMapTable::NSAllMapTableValues;
+
+pub use self::__NSMapTable::NSMapTableStrongMemory;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMapTable::NSMapTableZeroingWeakMemory;
+
+pub use self::__NSMapTable::NSMapTableCopyIn;
+
+pub use self::__NSMapTable::NSMapTableObjectPointerPersonality;
+
+pub use self::__NSMapTable::NSMapTableWeakMemory;
+
+#[cfg(feature = "Foundation_NSMapTable")]
+#[cfg(feature = "Foundation_NSMapTable")]
+pub use self::__NSMapTable::NSMapTable;
+pub use self::__NSMapTable::NSMapTableOptions;
+
+#[cfg(feature = "Foundation_NSMapTable")]
 #[cfg(feature = "Foundation_NSMapTable")]
 pub use self::__NSMapTable::NSCompareMapTables;
 #[cfg(feature = "Foundation_NSMapTable")]
+#[cfg(feature = "Foundation_NSMapTable")]
 pub use self::__NSMapTable::NSCopyMapTableWithZone;
 #[cfg(feature = "Foundation_NSMapTable")]
-pub use self::__NSMapTable::NSCountMapTable;
-#[cfg(feature = "Foundation_NSMapTable")]
-pub use self::__NSMapTable::NSCreateMapTable;
-#[cfg(feature = "Foundation_NSMapTable")]
-pub use self::__NSMapTable::NSCreateMapTableWithZone;
-pub use self::__NSMapTable::NSEndMapTableEnumeration;
 #[cfg(feature = "Foundation_NSMapTable")]
 pub use self::__NSMapTable::NSEnumerateMapTable;
-pub use self::__NSMapTable::NSIntMapKeyCallBacks;
-pub use self::__NSMapTable::NSIntMapValueCallBacks;
-pub use self::__NSMapTable::NSIntegerMapKeyCallBacks;
-pub use self::__NSMapTable::NSIntegerMapValueCallBacks;
 pub use self::__NSMapTable::NSMapEnumerator;
+#[cfg(feature = "Foundation_NSMapTable")]
 #[cfg(feature = "Foundation_NSMapTable")]
 pub use self::__NSMapTable::NSMapGet;
 #[cfg(feature = "Foundation_NSMapTable")]
+#[cfg(feature = "Foundation_NSMapTable")]
 pub use self::__NSMapTable::NSMapInsert;
+#[cfg(feature = "Foundation_NSMapTable")]
 #[cfg(feature = "Foundation_NSMapTable")]
 pub use self::__NSMapTable::NSMapInsertIfAbsent;
 #[cfg(feature = "Foundation_NSMapTable")]
+#[cfg(feature = "Foundation_NSMapTable")]
 pub use self::__NSMapTable::NSMapInsertKnownAbsent;
+#[cfg(feature = "Foundation_NSMapTable")]
 #[cfg(feature = "Foundation_NSMapTable")]
 pub use self::__NSMapTable::NSMapMember;
 #[cfg(feature = "Foundation_NSMapTable")]
+#[cfg(feature = "Foundation_NSMapTable")]
 pub use self::__NSMapTable::NSMapRemove;
 #[cfg(feature = "Foundation_NSMapTable")]
-pub use self::__NSMapTable::NSMapTable;
-pub use self::__NSMapTable::NSMapTableCopyIn;
-pub use self::__NSMapTable::NSMapTableKeyCallBacks;
-pub use self::__NSMapTable::NSMapTableObjectPointerPersonality;
-pub use self::__NSMapTable::NSMapTableOptions;
-pub use self::__NSMapTable::NSMapTableStrongMemory;
-pub use self::__NSMapTable::NSMapTableValueCallBacks;
-pub use self::__NSMapTable::NSMapTableWeakMemory;
-pub use self::__NSMapTable::NSMapTableZeroingWeakMemory;
-pub use self::__NSMapTable::NSNextMapEnumeratorPair;
-pub use self::__NSMapTable::NSNonOwnedPointerMapKeyCallBacks;
-pub use self::__NSMapTable::NSNonOwnedPointerMapValueCallBacks;
-pub use self::__NSMapTable::NSNonOwnedPointerOrNullMapKeyCallBacks;
-pub use self::__NSMapTable::NSNonRetainedObjectMapKeyCallBacks;
-pub use self::__NSMapTable::NSNonRetainedObjectMapValueCallBacks;
-pub use self::__NSMapTable::NSObjectMapKeyCallBacks;
-pub use self::__NSMapTable::NSObjectMapValueCallBacks;
-pub use self::__NSMapTable::NSOwnedPointerMapKeyCallBacks;
-pub use self::__NSMapTable::NSOwnedPointerMapValueCallBacks;
 #[cfg(feature = "Foundation_NSMapTable")]
 pub use self::__NSMapTable::NSResetMapTable;
+
+pub use self::__NSMapTable::NSNextMapEnumeratorPair;
+
+#[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSMapTable"))]
+#[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSMapTable"))]
+pub use self::__NSMapTable::NSAllMapTableKeys;
+#[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSMapTable"))]
+#[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSMapTable"))]
+pub use self::__NSMapTable::NSAllMapTableValues;
+#[cfg(feature = "Foundation_NSMapTable")]
+#[cfg(feature = "Foundation_NSMapTable")]
+pub use self::__NSMapTable::NSCountMapTable;
+pub use self::__NSMapTable::NSEndMapTableEnumeration;
+#[cfg(all(feature = "Foundation_NSMapTable", feature = "Foundation_NSString"))]
 #[cfg(all(feature = "Foundation_NSMapTable", feature = "Foundation_NSString"))]
 pub use self::__NSMapTable::NSStringFromMapTable;
+
+pub use self::__NSMapTable::NSMapTableKeyCallBacks;
+
+#[cfg(feature = "Foundation_NSMapTable")]
+#[cfg(feature = "Foundation_NSMapTable")]
+pub use self::__NSMapTable::NSCreateMapTable;
+#[cfg(feature = "Foundation_NSMapTable")]
+#[cfg(feature = "Foundation_NSMapTable")]
+pub use self::__NSMapTable::NSCreateMapTableWithZone;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMapTable::NSIntegerMapKeyCallBacks;
+pub use self::__NSMapTable::NSMapTableValueCallBacks;
+
+pub use self::__NSMapTable::NSNonOwnedPointerMapKeyCallBacks;
+
+pub use self::__NSMapTable::NSNonOwnedPointerOrNullMapKeyCallBacks;
+
+pub use self::__NSMapTable::NSNonRetainedObjectMapKeyCallBacks;
+
+pub use self::__NSMapTable::NSObjectMapKeyCallBacks;
+
+pub use self::__NSMapTable::NSOwnedPointerMapKeyCallBacks;
+
+pub use self::__NSMapTable::NSIntMapKeyCallBacks;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMapTable::NSIntegerMapValueCallBacks;
+
+pub use self::__NSMapTable::NSNonOwnedPointerMapValueCallBacks;
+
+pub use self::__NSMapTable::NSObjectMapValueCallBacks;
+
+pub use self::__NSMapTable::NSNonRetainedObjectMapValueCallBacks;
+
+pub use self::__NSMapTable::NSOwnedPointerMapValueCallBacks;
+
+pub use self::__NSMapTable::NSIntMapValueCallBacks;
+
+pub use self::__NSMassFormatter::NSMassFormatterUnit;
+
+pub use self::__NSMassFormatter::NSMassFormatterUnitGram;
+
+pub use self::__NSMassFormatter::NSMassFormatterUnitKilogram;
+
+pub use self::__NSMassFormatter::NSMassFormatterUnitOunce;
+
+pub use self::__NSMassFormatter::NSMassFormatterUnitPound;
+
+#[cfg(feature = "Foundation_NSMassFormatter")]
 #[cfg(feature = "Foundation_NSMassFormatter")]
 pub use self::__NSMassFormatter::NSMassFormatter;
-pub use self::__NSMassFormatter::{
-    NSMassFormatterUnit, NSMassFormatterUnitGram, NSMassFormatterUnitKilogram,
-    NSMassFormatterUnitOunce, NSMassFormatterUnitPound, NSMassFormatterUnitStone,
-};
+pub use self::__NSMassFormatter::NSMassFormatterUnitStone;
+#[cfg(feature = "Foundation_NSMeasurement")]
 #[cfg(feature = "Foundation_NSMeasurement")]
 pub use self::__NSMeasurement::NSMeasurement;
+
+pub use self::__NSMeasurementFormatter::NSMeasurementFormatterUnitOptions;
+
+pub use self::__NSMeasurementFormatter::NSMeasurementFormatterUnitOptionsProvidedUnit;
+
+pub use self::__NSMeasurementFormatter::NSMeasurementFormatterUnitOptionsNaturalScale;
+
+#[cfg(feature = "Foundation_NSMeasurementFormatter")]
 #[cfg(feature = "Foundation_NSMeasurementFormatter")]
 pub use self::__NSMeasurementFormatter::NSMeasurementFormatter;
-pub use self::__NSMeasurementFormatter::{
-    NSMeasurementFormatterUnitOptions, NSMeasurementFormatterUnitOptionsNaturalScale,
-    NSMeasurementFormatterUnitOptionsProvidedUnit,
-    NSMeasurementFormatterUnitOptionsTemperatureWithoutUnit,
-};
-#[cfg(feature = "Foundation_NSMetadataItem")]
-pub use self::__NSMetadata::NSMetadataItem;
+pub use self::__NSMeasurementFormatter::NSMeasurementFormatterUnitOptionsTemperatureWithoutUnit;
+#[cfg(feature = "Foundation_NSMetadataQuery")]
 #[cfg(feature = "Foundation_NSMetadataQuery")]
 pub use self::__NSMetadata::NSMetadataQuery;
-pub use self::__NSMetadata::NSMetadataQueryAccessibleUbiquitousExternalDocumentsScope;
-#[cfg(feature = "Foundation_NSMetadataQueryAttributeValueTuple")]
-pub use self::__NSMetadata::NSMetadataQueryAttributeValueTuple;
+
 pub use self::__NSMetadata::NSMetadataQueryDelegate;
-pub use self::__NSMetadata::NSMetadataQueryDidFinishGatheringNotification;
+
 pub use self::__NSMetadata::NSMetadataQueryDidStartGatheringNotification;
-pub use self::__NSMetadata::NSMetadataQueryDidUpdateNotification;
+
 pub use self::__NSMetadata::NSMetadataQueryGatheringProgressNotification;
+
+pub use self::__NSMetadata::NSMetadataQueryDidFinishGatheringNotification;
+
+pub use self::__NSMetadata::NSMetadataQueryDidUpdateNotification;
+
+pub use self::__NSMetadata::NSMetadataQueryUpdateAddedItemsKey;
+
+pub use self::__NSMetadata::NSMetadataQueryUpdateChangedItemsKey;
+
+pub use self::__NSMetadata::NSMetadataQueryUpdateRemovedItemsKey;
+
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSMetadata::NSMetadataQueryIndexedLocalComputerScope;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSMetadata::NSMetadataQueryIndexedNetworkScope;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSMetadata::NSMetadataQueryLocalComputerScope;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSMetadata::NSMetadataQueryNetworkScope;
 pub use self::__NSMetadata::NSMetadataQueryResultContentRelevanceAttribute;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadata::NSMetadataQueryUserHomeScope;
+
+pub use self::__NSMetadata::NSMetadataQueryUbiquitousDocumentsScope;
+
+pub use self::__NSMetadata::NSMetadataQueryUbiquitousDataScope;
+
+#[cfg(feature = "Foundation_NSMetadataItem")]
+#[cfg(feature = "Foundation_NSMetadataItem")]
+pub use self::__NSMetadata::NSMetadataItem;
+pub use self::__NSMetadata::NSMetadataQueryAccessibleUbiquitousExternalDocumentsScope;
+#[cfg(feature = "Foundation_NSMetadataQueryAttributeValueTuple")]
+#[cfg(feature = "Foundation_NSMetadataQueryAttributeValueTuple")]
+pub use self::__NSMetadata::NSMetadataQueryAttributeValueTuple;
+#[cfg(feature = "Foundation_NSMetadataQueryResultGroup")]
 #[cfg(feature = "Foundation_NSMetadataQueryResultGroup")]
 pub use self::__NSMetadata::NSMetadataQueryResultGroup;
-pub use self::__NSMetadata::NSMetadataQueryUbiquitousDataScope;
-pub use self::__NSMetadata::NSMetadataQueryUbiquitousDocumentsScope;
-pub use self::__NSMetadata::NSMetadataQueryUpdateAddedItemsKey;
-pub use self::__NSMetadata::NSMetadataQueryUpdateChangedItemsKey;
-pub use self::__NSMetadata::NSMetadataQueryUpdateRemovedItemsKey;
-pub use self::__NSMetadata::NSMetadataQueryUserHomeScope;
-pub use self::__NSMetadataAttributes::NSMetadataItemAcquisitionMakeKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemAcquisitionModelKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemAlbumKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemAltitudeKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemApertureKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemAppleLoopDescriptorsKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemAppleLoopsKeyFilterTypeKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemAppleLoopsLoopModeKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemAppleLoopsRootKeyKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemApplicationCategoriesKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemAttributeChangeDateKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemAudiencesKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemAudioBitRateKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemAudioChannelCountKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemAudioEncodingApplicationKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemAudioSampleRateKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemAudioTrackNumberKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemAuthorAddressesKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemAuthorEmailAddressesKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemAuthorsKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemBitsPerSampleKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemCFBundleIdentifierKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemCameraOwnerKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemCityKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemCodecsKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemColorSpaceKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemCommentKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemComposerKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemContactKeywordsKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemContentCreationDateKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemContentModificationDateKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemContentTypeKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemContentTypeTreeKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemContributorsKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemCopyrightKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemCountryKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemCoverageKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemCreatorKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemDateAddedKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemDeliveryTypeKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemDescriptionKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemDirectorKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemDisplayNameKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemDownloadedDateKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemDueDateKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemDurationSecondsKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemEXIFGPSVersionKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemEXIFVersionKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemEditorsKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemEmailAddressesKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemEncodingApplicationsKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemExecutableArchitecturesKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemExecutablePlatformKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemExposureModeKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemExposureProgramKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemExposureTimeSecondsKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemExposureTimeStringKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemFNumberKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemFSContentChangeDateKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemFSCreationDateKey;
+
 pub use self::__NSMetadataAttributes::NSMetadataItemFSNameKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemFSSizeKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemFinderCommentKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemFlashOnOffKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemFocalLength35mmKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemFocalLengthKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemFontsKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemGPSAreaInformationKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemGPSDOPKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemGPSDateStampKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemGPSDestBearingKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemGPSDestDistanceKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemGPSDestLatitudeKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemGPSDestLongitudeKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemGPSDifferentalKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemGPSMapDatumKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemGPSMeasureModeKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemGPSProcessingMethodKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemGPSStatusKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemGPSTrackKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemGenreKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemHasAlphaChannelKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemHeadlineKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemISOSpeedKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemIdentifierKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemImageDirectionKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemInformationKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemInstantMessageAddressesKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemInstructionsKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemIsApplicationManagedKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemIsGeneralMIDISequenceKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemIsLikelyJunkKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemIsUbiquitousKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemKeySignatureKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemKeywordsKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemKindKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemLanguagesKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemLastUsedDateKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemLatitudeKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemLayerNamesKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemLensModelKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemLongitudeKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemLyricistKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemMaxApertureKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemMediaTypesKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemMeteringModeKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemMusicalGenreKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemMusicalInstrumentCategoryKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemMusicalInstrumentNameKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemNamedLocationKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemNumberOfPagesKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemOrganizationsKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemOrientationKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemOriginalFormatKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemOriginalSourceKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemPageHeightKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemPageWidthKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemParticipantsKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemPathKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemPerformersKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemPhoneNumbersKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemPixelCountKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemPixelHeightKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemPixelWidthKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemProducerKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemProfileNameKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemProjectsKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemPublishersKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemRecipientAddressesKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemRecipientEmailAddressesKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemRecipientsKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemRecordingDateKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemRecordingYearKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemRedEyeOnOffKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemResolutionHeightDPIKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemResolutionWidthDPIKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemRightsKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemSecurityMethodKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemSpeedKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemStarRatingKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemStateOrProvinceKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemStreamableKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemSubjectKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemTempoKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemTextContentKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemThemeKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemTimeSignatureKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemTimestampKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemTitleKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemTotalBitRateKey;
+
+pub use self::__NSMetadataAttributes::NSMetadataItemDisplayNameKey;
+
 pub use self::__NSMetadataAttributes::NSMetadataItemURLKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemVersionKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemVideoBitRateKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemWhereFromsKey;
-pub use self::__NSMetadataAttributes::NSMetadataItemWhiteBalanceKey;
-pub use self::__NSMetadataAttributes::NSMetadataUbiquitousItemContainerDisplayNameKey;
-pub use self::__NSMetadataAttributes::NSMetadataUbiquitousItemDownloadRequestedKey;
-pub use self::__NSMetadataAttributes::NSMetadataUbiquitousItemDownloadingErrorKey;
-pub use self::__NSMetadataAttributes::NSMetadataUbiquitousItemDownloadingStatusCurrent;
-pub use self::__NSMetadataAttributes::NSMetadataUbiquitousItemDownloadingStatusDownloaded;
-pub use self::__NSMetadataAttributes::NSMetadataUbiquitousItemDownloadingStatusKey;
-pub use self::__NSMetadataAttributes::NSMetadataUbiquitousItemDownloadingStatusNotDownloaded;
+
+pub use self::__NSMetadataAttributes::NSMetadataItemPathKey;
+
+pub use self::__NSMetadataAttributes::NSMetadataItemFSSizeKey;
+
+pub use self::__NSMetadataAttributes::NSMetadataItemFSCreationDateKey;
+
+pub use self::__NSMetadataAttributes::NSMetadataItemFSContentChangeDateKey;
+
+pub use self::__NSMetadataAttributes::NSMetadataItemContentTypeKey;
+
+pub use self::__NSMetadataAttributes::NSMetadataItemContentTypeTreeKey;
+
+pub use self::__NSMetadataAttributes::NSMetadataItemIsUbiquitousKey;
+
 pub use self::__NSMetadataAttributes::NSMetadataUbiquitousItemHasUnresolvedConflictsKey;
+
 pub use self::__NSMetadataAttributes::NSMetadataUbiquitousItemIsDownloadedKey;
+
+pub use self::__NSMetadataAttributes::NSMetadataUbiquitousItemDownloadingStatusKey;
+
+pub use self::__NSMetadataAttributes::NSMetadataUbiquitousItemDownloadingStatusNotDownloaded;
+
+pub use self::__NSMetadataAttributes::NSMetadataUbiquitousItemDownloadingStatusDownloaded;
+
+pub use self::__NSMetadataAttributes::NSMetadataUbiquitousItemDownloadingStatusCurrent;
+
 pub use self::__NSMetadataAttributes::NSMetadataUbiquitousItemIsDownloadingKey;
-pub use self::__NSMetadataAttributes::NSMetadataUbiquitousItemIsExternalDocumentKey;
-pub use self::__NSMetadataAttributes::NSMetadataUbiquitousItemIsSharedKey;
+
 pub use self::__NSMetadataAttributes::NSMetadataUbiquitousItemIsUploadedKey;
+
 pub use self::__NSMetadataAttributes::NSMetadataUbiquitousItemIsUploadingKey;
+
 pub use self::__NSMetadataAttributes::NSMetadataUbiquitousItemPercentDownloadedKey;
+
 pub use self::__NSMetadataAttributes::NSMetadataUbiquitousItemPercentUploadedKey;
-pub use self::__NSMetadataAttributes::NSMetadataUbiquitousItemURLInLocalContainerKey;
+
+pub use self::__NSMetadataAttributes::NSMetadataUbiquitousItemDownloadingErrorKey;
+
 pub use self::__NSMetadataAttributes::NSMetadataUbiquitousItemUploadingErrorKey;
+
+pub use self::__NSMetadataAttributes::NSMetadataUbiquitousItemDownloadRequestedKey;
+
+pub use self::__NSMetadataAttributes::NSMetadataUbiquitousItemIsExternalDocumentKey;
+
+pub use self::__NSMetadataAttributes::NSMetadataUbiquitousItemContainerDisplayNameKey;
+
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemAcquisitionMakeKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemAcquisitionModelKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemAlbumKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemAltitudeKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemApertureKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemAppleLoopDescriptorsKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemAppleLoopsKeyFilterTypeKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemAppleLoopsLoopModeKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemAppleLoopsRootKeyKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemApplicationCategoriesKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemAttributeChangeDateKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemAudiencesKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemAudioBitRateKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemAudioChannelCountKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemAudioEncodingApplicationKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemAudioSampleRateKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemAudioTrackNumberKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemAuthorAddressesKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemAuthorEmailAddressesKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemAuthorsKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemBitsPerSampleKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemCFBundleIdentifierKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemCameraOwnerKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemCityKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemCodecsKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemColorSpaceKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemCommentKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemComposerKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemContactKeywordsKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemContentCreationDateKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemContentModificationDateKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemContributorsKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemCopyrightKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemCountryKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemCoverageKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemCreatorKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemDateAddedKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemDeliveryTypeKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemDescriptionKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemDirectorKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemDownloadedDateKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemDueDateKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemDurationSecondsKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemEXIFGPSVersionKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemEXIFVersionKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemEditorsKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemEmailAddressesKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemEncodingApplicationsKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemExecutableArchitecturesKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemExecutablePlatformKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemExposureModeKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemExposureProgramKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemExposureTimeSecondsKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemExposureTimeStringKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemFNumberKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemFinderCommentKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemFlashOnOffKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemFocalLength35mmKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemFocalLengthKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemFontsKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemGPSAreaInformationKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemGPSDOPKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemGPSDateStampKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemGPSDestBearingKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemGPSDestDistanceKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemGPSDestLatitudeKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemGPSDestLongitudeKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemGPSDifferentalKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemGPSMapDatumKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemGPSMeasureModeKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemGPSProcessingMethodKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemGPSStatusKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemGPSTrackKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemGenreKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemHasAlphaChannelKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemHeadlineKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemISOSpeedKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemIdentifierKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemImageDirectionKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemInformationKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemInstantMessageAddressesKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemInstructionsKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemIsApplicationManagedKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemIsGeneralMIDISequenceKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemIsLikelyJunkKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemKeySignatureKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemKeywordsKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemKindKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemLanguagesKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemLastUsedDateKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemLatitudeKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemLayerNamesKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemLensModelKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemLongitudeKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemLyricistKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemMaxApertureKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemMediaTypesKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemMeteringModeKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemMusicalGenreKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemMusicalInstrumentCategoryKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemMusicalInstrumentNameKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemNamedLocationKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemNumberOfPagesKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemOrganizationsKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemOrientationKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemOriginalFormatKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemOriginalSourceKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemPageHeightKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemPageWidthKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemParticipantsKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemPerformersKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemPhoneNumbersKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemPixelCountKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemPixelHeightKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemPixelWidthKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemProducerKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemProfileNameKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemProjectsKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemPublishersKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemRecipientAddressesKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemRecipientEmailAddressesKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemRecipientsKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemRecordingDateKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemRecordingYearKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemRedEyeOnOffKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemResolutionHeightDPIKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemResolutionWidthDPIKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemRightsKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemSecurityMethodKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemSpeedKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemStarRatingKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemStateOrProvinceKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemStreamableKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemSubjectKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemTempoKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemTextContentKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemThemeKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemTimeSignatureKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemTimestampKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemTitleKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemTotalBitRateKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemVersionKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemVideoBitRateKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemWhereFromsKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataItemWhiteBalanceKey;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSMetadataAttributes::NSMetadataUbiquitousItemIsSharedKey;
+pub use self::__NSMetadataAttributes::NSMetadataUbiquitousItemURLInLocalContainerKey;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSMetadataAttributes::NSMetadataUbiquitousSharedItemCurrentUserPermissionsKey;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSMetadataAttributes::NSMetadataUbiquitousSharedItemCurrentUserRoleKey;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSMetadataAttributes::NSMetadataUbiquitousSharedItemMostRecentEditorNameComponentsKey;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSMetadataAttributes::NSMetadataUbiquitousSharedItemOwnerNameComponentsKey;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSMetadataAttributes::NSMetadataUbiquitousSharedItemPermissionsReadOnly;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSMetadataAttributes::NSMetadataUbiquitousSharedItemPermissionsReadWrite;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSMetadataAttributes::NSMetadataUbiquitousSharedItemRoleOwner;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSMetadataAttributes::NSMetadataUbiquitousSharedItemRoleParticipant;
 #[cfg(feature = "Foundation_NSMethodSignature")]
+#[cfg(feature = "Foundation_NSMethodSignature")]
 pub use self::__NSMethodSignature::NSMethodSignature;
+
+pub use self::__NSMorphology::NSGrammaticalGender;
+
+pub use self::__NSMorphology::NSGrammaticalGenderNotSet;
+
+pub use self::__NSMorphology::NSGrammaticalGenderFeminine;
+
+pub use self::__NSMorphology::NSGrammaticalGenderMasculine;
+
+pub use self::__NSMorphology::NSGrammaticalGenderNeuter;
+
+pub use self::__NSMorphology::NSGrammaticalPartOfSpeech;
+
+pub use self::__NSMorphology::NSGrammaticalPartOfSpeechNotSet;
+
+pub use self::__NSMorphology::NSGrammaticalPartOfSpeechDeterminer;
+
+pub use self::__NSMorphology::NSGrammaticalPartOfSpeechPronoun;
+
+pub use self::__NSMorphology::NSGrammaticalPartOfSpeechLetter;
+
+pub use self::__NSMorphology::NSGrammaticalPartOfSpeechAdverb;
+
+pub use self::__NSMorphology::NSGrammaticalPartOfSpeechParticle;
+
+pub use self::__NSMorphology::NSGrammaticalPartOfSpeechAdjective;
+
+pub use self::__NSMorphology::NSGrammaticalPartOfSpeechAdposition;
+
+pub use self::__NSMorphology::NSGrammaticalPartOfSpeechVerb;
+
+pub use self::__NSMorphology::NSGrammaticalPartOfSpeechNoun;
+
+pub use self::__NSMorphology::NSGrammaticalPartOfSpeechConjunction;
+
+pub use self::__NSMorphology::NSGrammaticalPartOfSpeechNumeral;
+
+pub use self::__NSMorphology::NSGrammaticalPartOfSpeechInterjection;
+
+pub use self::__NSMorphology::NSGrammaticalPartOfSpeechPreposition;
+
+pub use self::__NSMorphology::NSGrammaticalPartOfSpeechAbbreviation;
+
+pub use self::__NSMorphology::NSGrammaticalNumber;
+
+pub use self::__NSMorphology::NSGrammaticalNumberNotSet;
+
+pub use self::__NSMorphology::NSGrammaticalNumberSingular;
+
+pub use self::__NSMorphology::NSGrammaticalNumberZero;
+
+pub use self::__NSMorphology::NSGrammaticalNumberPlural;
+
+pub use self::__NSMorphology::NSGrammaticalNumberPluralTwo;
+
+pub use self::__NSMorphology::NSGrammaticalNumberPluralFew;
+
+pub use self::__NSMorphology::NSGrammaticalNumberPluralMany;
+#[cfg(feature = "Foundation_NSMorphology")]
 #[cfg(feature = "Foundation_NSMorphology")]
 pub use self::__NSMorphology::NSMorphology;
 #[cfg(feature = "Foundation_NSMorphologyCustomPronoun")]
+#[cfg(feature = "Foundation_NSMorphologyCustomPronoun")]
 pub use self::__NSMorphology::NSMorphologyCustomPronoun;
-pub use self::__NSMorphology::{
-    NSGrammaticalGender, NSGrammaticalGenderFeminine, NSGrammaticalGenderMasculine,
-    NSGrammaticalGenderNeuter, NSGrammaticalGenderNotSet,
-};
-pub use self::__NSMorphology::{
-    NSGrammaticalNumber, NSGrammaticalNumberNotSet, NSGrammaticalNumberPlural,
-    NSGrammaticalNumberPluralFew, NSGrammaticalNumberPluralMany, NSGrammaticalNumberPluralTwo,
-    NSGrammaticalNumberSingular, NSGrammaticalNumberZero,
-};
-pub use self::__NSMorphology::{
-    NSGrammaticalPartOfSpeech, NSGrammaticalPartOfSpeechAbbreviation,
-    NSGrammaticalPartOfSpeechAdjective, NSGrammaticalPartOfSpeechAdposition,
-    NSGrammaticalPartOfSpeechAdverb, NSGrammaticalPartOfSpeechConjunction,
-    NSGrammaticalPartOfSpeechDeterminer, NSGrammaticalPartOfSpeechInterjection,
-    NSGrammaticalPartOfSpeechLetter, NSGrammaticalPartOfSpeechNotSet,
-    NSGrammaticalPartOfSpeechNoun, NSGrammaticalPartOfSpeechNumeral,
-    NSGrammaticalPartOfSpeechParticle, NSGrammaticalPartOfSpeechPreposition,
-    NSGrammaticalPartOfSpeechPronoun, NSGrammaticalPartOfSpeechVerb,
-};
+#[cfg(not(any(target_os = "watchos")))]
+pub use self::__NSNetServices::NSNetServicesErrorCode;
+#[cfg(not(any(target_os = "watchos")))]
+pub use self::__NSNetServices::NSNetServicesErrorDomain;
+
+pub use self::__NSNetServices::NSNetServicesError;
+
+pub use self::__NSNetServices::NSNetServicesUnknownError;
+
+pub use self::__NSNetServices::NSNetServicesCollisionError;
+
+pub use self::__NSNetServices::NSNetServicesNotFoundError;
+
+pub use self::__NSNetServices::NSNetServicesActivityInProgress;
+
+pub use self::__NSNetServices::NSNetServicesBadArgumentError;
+
+pub use self::__NSNetServices::NSNetServicesCancelledError;
+
+pub use self::__NSNetServices::NSNetServicesInvalidError;
+
+pub use self::__NSNetServices::NSNetServicesTimeoutError;
+
+pub use self::__NSNetServices::NSNetServicesMissingRequiredConfigurationError;
+
+pub use self::__NSNetServices::NSNetServiceOptions;
+
+pub use self::__NSNetServices::NSNetServiceNoAutoRename;
+
 #[cfg(feature = "Foundation_NSNetService")]
+#[cfg(feature = "Foundation_NSNetService")]
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__NSNetServices::NSNetService;
 #[cfg(feature = "Foundation_NSNetServiceBrowser")]
+#[cfg(feature = "Foundation_NSNetServiceBrowser")]
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__NSNetServices::NSNetServiceBrowser;
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__NSNetServices::NSNetServiceBrowserDelegate;
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__NSNetServices::NSNetServiceDelegate;
-pub use self::__NSNetServices::NSNetServicesErrorCode;
-pub use self::__NSNetServices::NSNetServicesErrorDomain;
-pub use self::__NSNetServices::{
-    NSNetServiceListenForConnections, NSNetServiceNoAutoRename, NSNetServiceOptions,
-};
-pub use self::__NSNetServices::{
-    NSNetServicesActivityInProgress, NSNetServicesBadArgumentError, NSNetServicesCancelledError,
-    NSNetServicesCollisionError, NSNetServicesError, NSNetServicesInvalidError,
-    NSNetServicesMissingRequiredConfigurationError, NSNetServicesNotFoundError,
-    NSNetServicesTimeoutError, NSNetServicesUnknownError,
-};
+pub use self::__NSNetServices::NSNetServiceListenForConnections;
+
+#[cfg(feature = "Foundation_NSNotification")]
 #[cfg(feature = "Foundation_NSNotification")]
 pub use self::__NSNotification::NSNotification;
 #[cfg(feature = "Foundation_NSNotificationCenter")]
+#[cfg(feature = "Foundation_NSNotificationCenter")]
 pub use self::__NSNotification::NSNotificationCenter;
 pub use self::__NSNotification::NSNotificationName;
+
+pub use self::__NSNotificationQueue::NSPostingStyle;
+
+pub use self::__NSNotificationQueue::NSPostWhenIdle;
+
+pub use self::__NSNotificationQueue::NSPostASAP;
+
+pub use self::__NSNotificationQueue::NSPostNow;
+
+pub use self::__NSNotificationQueue::NSNotificationCoalescing;
+
+pub use self::__NSNotificationQueue::NSNotificationNoCoalescing;
+
+pub use self::__NSNotificationQueue::NSNotificationCoalescingOnName;
+
+pub use self::__NSNotificationQueue::NSNotificationCoalescingOnSender;
+#[cfg(feature = "Foundation_NSNotificationQueue")]
 #[cfg(feature = "Foundation_NSNotificationQueue")]
 pub use self::__NSNotificationQueue::NSNotificationQueue;
-pub use self::__NSNotificationQueue::{
-    NSNotificationCoalescing, NSNotificationCoalescingOnName, NSNotificationCoalescingOnSender,
-    NSNotificationNoCoalescing,
-};
-pub use self::__NSNotificationQueue::{NSPostASAP, NSPostNow, NSPostWhenIdle, NSPostingStyle};
+#[cfg(feature = "Foundation_NSNull")]
 #[cfg(feature = "Foundation_NSNull")]
 pub use self::__NSNull::NSNull;
+
+pub use self::__NSNumberFormatter::NSNumberFormatterBehavior;
+
+pub use self::__NSNumberFormatter::NSNumberFormatterBehaviorDefault;
+
+pub use self::__NSNumberFormatter::NSNumberFormatterBehavior10_0;
+
+pub use self::__NSNumberFormatter::NSNumberFormatterBehavior10_4;
+
+pub use self::__NSNumberFormatter::NSNumberFormatterStyle;
+
+pub use self::__NSNumberFormatter::NSNumberFormatterNoStyle;
+
+pub use self::__NSNumberFormatter::NSNumberFormatterDecimalStyle;
+
+pub use self::__NSNumberFormatter::NSNumberFormatterCurrencyStyle;
+
+pub use self::__NSNumberFormatter::NSNumberFormatterPercentStyle;
+
+pub use self::__NSNumberFormatter::NSNumberFormatterScientificStyle;
+
+pub use self::__NSNumberFormatter::NSNumberFormatterSpellOutStyle;
+
+pub use self::__NSNumberFormatter::NSNumberFormatterOrdinalStyle;
+
+pub use self::__NSNumberFormatter::NSNumberFormatterCurrencyISOCodeStyle;
+
+pub use self::__NSNumberFormatter::NSNumberFormatterCurrencyPluralStyle;
+
+pub use self::__NSNumberFormatter::NSNumberFormatterCurrencyAccountingStyle;
+
+pub use self::__NSNumberFormatter::NSNumberFormatterPadPosition;
+
+pub use self::__NSNumberFormatter::NSNumberFormatterPadBeforePrefix;
+
+pub use self::__NSNumberFormatter::NSNumberFormatterPadAfterPrefix;
+
+pub use self::__NSNumberFormatter::NSNumberFormatterPadBeforeSuffix;
+
+pub use self::__NSNumberFormatter::NSNumberFormatterPadAfterSuffix;
+
+pub use self::__NSNumberFormatter::NSNumberFormatterRoundingMode;
+
+pub use self::__NSNumberFormatter::NSNumberFormatterRoundCeiling;
+
+pub use self::__NSNumberFormatter::NSNumberFormatterRoundFloor;
+
+pub use self::__NSNumberFormatter::NSNumberFormatterRoundDown;
+
+pub use self::__NSNumberFormatter::NSNumberFormatterRoundUp;
+
+pub use self::__NSNumberFormatter::NSNumberFormatterRoundHalfEven;
+
+pub use self::__NSNumberFormatter::NSNumberFormatterRoundHalfDown;
+
+#[cfg(feature = "Foundation_NSNumberFormatter")]
 #[cfg(feature = "Foundation_NSNumberFormatter")]
 pub use self::__NSNumberFormatter::NSNumberFormatter;
-pub use self::__NSNumberFormatter::{
-    NSNumberFormatterBehavior, NSNumberFormatterBehavior10_0, NSNumberFormatterBehavior10_4,
-    NSNumberFormatterBehaviorDefault,
-};
-pub use self::__NSNumberFormatter::{
-    NSNumberFormatterCurrencyAccountingStyle, NSNumberFormatterCurrencyISOCodeStyle,
-    NSNumberFormatterCurrencyPluralStyle, NSNumberFormatterCurrencyStyle,
-    NSNumberFormatterDecimalStyle, NSNumberFormatterNoStyle, NSNumberFormatterOrdinalStyle,
-    NSNumberFormatterPercentStyle, NSNumberFormatterScientificStyle,
-    NSNumberFormatterSpellOutStyle, NSNumberFormatterStyle,
-};
-pub use self::__NSNumberFormatter::{
-    NSNumberFormatterPadAfterPrefix, NSNumberFormatterPadAfterSuffix,
-    NSNumberFormatterPadBeforePrefix, NSNumberFormatterPadBeforeSuffix,
-    NSNumberFormatterPadPosition,
-};
-pub use self::__NSNumberFormatter::{
-    NSNumberFormatterRoundCeiling, NSNumberFormatterRoundDown, NSNumberFormatterRoundFloor,
-    NSNumberFormatterRoundHalfDown, NSNumberFormatterRoundHalfEven, NSNumberFormatterRoundHalfUp,
-    NSNumberFormatterRoundUp, NSNumberFormatterRoundingMode,
-};
+pub use self::__NSNumberFormatter::NSNumberFormatterRoundHalfUp;
+
+pub use self::__NSObjCRuntime::NSFoundationVersionNumber;
+
+pub use self::__NSObjCRuntime::NSExceptionName;
+
+#[cfg(feature = "Foundation_NSString")]
 #[cfg(feature = "Foundation_NSString")]
 pub use self::__NSObjCRuntime::NSClassFromString;
-pub use self::__NSObjCRuntime::NSComparator;
-pub use self::__NSObjCRuntime::NSExceptionName;
-pub use self::__NSObjCRuntime::NSFoundationVersionNumber;
-pub use self::__NSObjCRuntime::NSGetSizeAndAlignment;
+#[cfg(feature = "Foundation_NSString")]
 #[cfg(feature = "Foundation_NSString")]
 pub use self::__NSObjCRuntime::NSProtocolFromString;
 pub use self::__NSObjCRuntime::NSRunLoopMode;
 #[cfg(feature = "Foundation_NSString")]
+#[cfg(feature = "Foundation_NSString")]
 pub use self::__NSObjCRuntime::NSSelectorFromString;
+#[cfg(feature = "Foundation_NSString")]
 #[cfg(feature = "Foundation_NSString")]
 pub use self::__NSObjCRuntime::NSStringFromClass;
 #[cfg(feature = "Foundation_NSString")]
+#[cfg(feature = "Foundation_NSString")]
 pub use self::__NSObjCRuntime::NSStringFromProtocol;
 #[cfg(feature = "Foundation_NSString")]
+#[cfg(feature = "Foundation_NSString")]
 pub use self::__NSObjCRuntime::NSStringFromSelector;
-pub use self::__NSObjCRuntime::{
-    NSEnumerationConcurrent, NSEnumerationOptions, NSEnumerationReverse,
-};
-pub use self::__NSObjCRuntime::{
-    NSQualityOfService, NSQualityOfServiceBackground, NSQualityOfServiceDefault,
-    NSQualityOfServiceUserInitiated, NSQualityOfServiceUserInteractive, NSQualityOfServiceUtility,
-};
-pub use self::__NSObjCRuntime::{NSSortConcurrent, NSSortOptions, NSSortStable};
-pub use self::__NSObject::NSAllocateObject;
+
+pub use self::__NSObjCRuntime::NSGetSizeAndAlignment;
+
+pub use self::__NSObjCRuntime::NSComparator;
+
+pub use self::__NSObjCRuntime::NSEnumerationOptions;
+
+pub use self::__NSObjCRuntime::NSEnumerationConcurrent;
+
+pub use self::__NSObjCRuntime::NSEnumerationReverse;
+
+pub use self::__NSObjCRuntime::NSSortOptions;
+
+pub use self::__NSObjCRuntime::NSSortConcurrent;
+
+pub use self::__NSObjCRuntime::NSSortStable;
+
+pub use self::__NSObjCRuntime::NSQualityOfService;
+
+pub use self::__NSObjCRuntime::NSQualityOfServiceUserInteractive;
+
+pub use self::__NSObjCRuntime::NSQualityOfServiceUserInitiated;
+
+pub use self::__NSObjCRuntime::NSQualityOfServiceUtility;
+
+pub use self::__NSObjCRuntime::NSQualityOfServiceBackground;
+
+pub use self::__NSObjCRuntime::NSQualityOfServiceDefault;
+
 pub use self::__NSObject::NSCoding;
-pub use self::__NSObject::NSCopyObject;
-pub use self::__NSObject::NSDeallocateObject;
-pub use self::__NSObject::NSDecrementExtraRefCountWasZero;
-pub use self::__NSObject::NSDiscardableContent;
-pub use self::__NSObject::NSExtraRefCount;
-pub use self::__NSObject::NSIncrementExtraRefCount;
+
 pub use self::__NSObject::NSSecureCoding;
+
+pub use self::__NSObject::NSDiscardableContent;
+
+pub use self::__NSObject::NSAllocateObject;
+
+pub use self::__NSObject::NSDeallocateObject;
+
+pub use self::__NSObject::NSCopyObject;
+
 pub use self::__NSObject::NSShouldRetainWithZone;
+
+pub use self::__NSObject::NSIncrementExtraRefCount;
+
+pub use self::__NSObject::NSDecrementExtraRefCountWasZero;
+
+pub use self::__NSObject::NSExtraRefCount;
+
+pub use self::__NSOperation::NSOperationQueuePriority;
+
+pub use self::__NSOperation::NSOperationQueuePriorityVeryLow;
+
+pub use self::__NSOperation::NSOperationQueuePriorityLow;
+
+pub use self::__NSOperation::NSOperationQueuePriorityNormal;
+
+pub use self::__NSOperation::NSOperationQueuePriorityHigh;
+
+#[cfg(feature = "Foundation_NSBlockOperation")]
 #[cfg(feature = "Foundation_NSBlockOperation")]
 pub use self::__NSOperation::NSBlockOperation;
 #[cfg(feature = "Foundation_NSInvocationOperation")]
+#[cfg(feature = "Foundation_NSInvocationOperation")]
 pub use self::__NSOperation::NSInvocationOperation;
-pub use self::__NSOperation::NSInvocationOperationCancelledException;
-pub use self::__NSOperation::NSInvocationOperationVoidResultException;
+#[cfg(feature = "Foundation_NSOperation")]
 #[cfg(feature = "Foundation_NSOperation")]
 pub use self::__NSOperation::NSOperation;
+pub use self::__NSOperation::NSOperationQueuePriorityVeryHigh;
+
+pub use self::__NSOperation::NSInvocationOperationVoidResultException;
+
+pub use self::__NSOperation::NSInvocationOperationCancelledException;
+
+#[cfg(feature = "Foundation_NSOperationQueue")]
 #[cfg(feature = "Foundation_NSOperationQueue")]
 pub use self::__NSOperation::NSOperationQueue;
 pub use self::__NSOperation::NSOperationQueueDefaultMaxConcurrentOperationCount;
-pub use self::__NSOperation::{
-    NSOperationQueuePriority, NSOperationQueuePriorityHigh, NSOperationQueuePriorityLow,
-    NSOperationQueuePriorityNormal, NSOperationQueuePriorityVeryHigh,
-    NSOperationQueuePriorityVeryLow,
-};
+
+pub use self::__NSOrderedCollectionChange::NSCollectionChangeType;
+
+pub use self::__NSOrderedCollectionChange::NSCollectionChangeInsert;
+
+pub use self::__NSOrderedCollectionChange::NSCollectionChangeRemove;
+#[cfg(feature = "Foundation_NSOrderedCollectionChange")]
 #[cfg(feature = "Foundation_NSOrderedCollectionChange")]
 pub use self::__NSOrderedCollectionChange::NSOrderedCollectionChange;
-pub use self::__NSOrderedCollectionChange::{
-    NSCollectionChangeInsert, NSCollectionChangeRemove, NSCollectionChangeType,
-};
+
+pub use self::__NSOrderedCollectionDifference::NSOrderedCollectionDifferenceCalculationOptions;
+
+pub use self::__NSOrderedCollectionDifference::NSOrderedCollectionDifferenceCalculationOmitInsertedObjects;
+
+pub use self::__NSOrderedCollectionDifference::NSOrderedCollectionDifferenceCalculationOmitRemovedObjects;
+
+#[cfg(feature = "Foundation_NSOrderedCollectionDifference")]
 #[cfg(feature = "Foundation_NSOrderedCollectionDifference")]
 pub use self::__NSOrderedCollectionDifference::NSOrderedCollectionDifference;
-pub use self::__NSOrderedCollectionDifference::{
-    NSOrderedCollectionDifferenceCalculationInferMoves,
-    NSOrderedCollectionDifferenceCalculationOmitInsertedObjects,
-    NSOrderedCollectionDifferenceCalculationOmitRemovedObjects,
-    NSOrderedCollectionDifferenceCalculationOptions,
-};
+pub use self::__NSOrderedCollectionDifference::NSOrderedCollectionDifferenceCalculationInferMoves;
+#[cfg(feature = "Foundation_NSMutableOrderedSet")]
 #[cfg(feature = "Foundation_NSMutableOrderedSet")]
 pub use self::__NSOrderedSet::NSMutableOrderedSet;
 #[cfg(feature = "Foundation_NSOrderedSet")]
+#[cfg(feature = "Foundation_NSOrderedSet")]
 pub use self::__NSOrderedSet::NSOrderedSet;
+#[cfg(feature = "Foundation_NSOrthography")]
 #[cfg(feature = "Foundation_NSOrthography")]
 pub use self::__NSOrthography::NSOrthography;
 #[cfg(feature = "Foundation_NSString")]
+#[cfg(feature = "Foundation_NSString")]
 pub use self::__NSPathUtilities::NSFullUserName;
+#[cfg(feature = "Foundation_NSString")]
 #[cfg(feature = "Foundation_NSString")]
 pub use self::__NSPathUtilities::NSHomeDirectory;
 #[cfg(feature = "Foundation_NSString")]
+#[cfg(feature = "Foundation_NSString")]
 pub use self::__NSPathUtilities::NSHomeDirectoryForUser;
 #[cfg(feature = "Foundation_NSString")]
+#[cfg(feature = "Foundation_NSString")]
 pub use self::__NSPathUtilities::NSOpenStepRootDirectory;
-#[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
-pub use self::__NSPathUtilities::NSSearchPathForDirectoriesInDomains;
+#[cfg(feature = "Foundation_NSString")]
 #[cfg(feature = "Foundation_NSString")]
 pub use self::__NSPathUtilities::NSTemporaryDirectory;
 #[cfg(feature = "Foundation_NSString")]
+#[cfg(feature = "Foundation_NSString")]
 pub use self::__NSPathUtilities::NSUserName;
-pub use self::__NSPathUtilities::{
-    NSAdminApplicationDirectory, NSAllApplicationsDirectory, NSAllLibrariesDirectory,
-    NSApplicationDirectory, NSApplicationScriptsDirectory, NSApplicationSupportDirectory,
-    NSAutosavedInformationDirectory, NSCachesDirectory, NSCoreServiceDirectory,
-    NSDemoApplicationDirectory, NSDesktopDirectory, NSDeveloperApplicationDirectory,
-    NSDeveloperDirectory, NSDocumentDirectory, NSDocumentationDirectory, NSDownloadsDirectory,
-    NSInputMethodsDirectory, NSItemReplacementDirectory, NSLibraryDirectory, NSMoviesDirectory,
-    NSMusicDirectory, NSPicturesDirectory, NSPreferencePanesDirectory,
-    NSPrinterDescriptionDirectory, NSSearchPathDirectory, NSSharedPublicDirectory,
-    NSTrashDirectory, NSUserDirectory,
-};
-pub use self::__NSPathUtilities::{
-    NSAllDomainsMask, NSLocalDomainMask, NSNetworkDomainMask, NSSearchPathDomainMask,
-    NSSystemDomainMask, NSUserDomainMask,
-};
+
+pub use self::__NSPathUtilities::NSSearchPathDirectory;
+
+pub use self::__NSPathUtilities::NSApplicationDirectory;
+
+pub use self::__NSPathUtilities::NSDemoApplicationDirectory;
+
+pub use self::__NSPathUtilities::NSDeveloperApplicationDirectory;
+
+pub use self::__NSPathUtilities::NSAdminApplicationDirectory;
+
+pub use self::__NSPathUtilities::NSLibraryDirectory;
+
+pub use self::__NSPathUtilities::NSDeveloperDirectory;
+
+pub use self::__NSPathUtilities::NSUserDirectory;
+
+pub use self::__NSPathUtilities::NSDocumentationDirectory;
+
+pub use self::__NSPathUtilities::NSDocumentDirectory;
+
+pub use self::__NSPathUtilities::NSCoreServiceDirectory;
+
+pub use self::__NSPathUtilities::NSAutosavedInformationDirectory;
+
+pub use self::__NSPathUtilities::NSDesktopDirectory;
+
+pub use self::__NSPathUtilities::NSCachesDirectory;
+
+pub use self::__NSPathUtilities::NSApplicationSupportDirectory;
+
+pub use self::__NSPathUtilities::NSDownloadsDirectory;
+
+pub use self::__NSPathUtilities::NSInputMethodsDirectory;
+
+pub use self::__NSPathUtilities::NSMoviesDirectory;
+
+pub use self::__NSPathUtilities::NSMusicDirectory;
+
+pub use self::__NSPathUtilities::NSPicturesDirectory;
+
+pub use self::__NSPathUtilities::NSPrinterDescriptionDirectory;
+
+pub use self::__NSPathUtilities::NSSharedPublicDirectory;
+
+pub use self::__NSPathUtilities::NSPreferencePanesDirectory;
+
+pub use self::__NSPathUtilities::NSApplicationScriptsDirectory;
+
+pub use self::__NSPathUtilities::NSItemReplacementDirectory;
+
+pub use self::__NSPathUtilities::NSAllApplicationsDirectory;
+
+pub use self::__NSPathUtilities::NSAllLibrariesDirectory;
+
+pub use self::__NSPathUtilities::NSTrashDirectory;
+
+pub use self::__NSPathUtilities::NSSearchPathDomainMask;
+
+pub use self::__NSPathUtilities::NSUserDomainMask;
+
+pub use self::__NSPathUtilities::NSLocalDomainMask;
+
+pub use self::__NSPathUtilities::NSNetworkDomainMask;
+
+pub use self::__NSPathUtilities::NSSystemDomainMask;
+
+pub use self::__NSPathUtilities::NSAllDomainsMask;
+#[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+#[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+pub use self::__NSPathUtilities::NSSearchPathForDirectoriesInDomains;
+#[cfg(feature = "Foundation_NSPersonNameComponents")]
 #[cfg(feature = "Foundation_NSPersonNameComponents")]
 pub use self::__NSPersonNameComponents::NSPersonNameComponents;
-pub use self::__NSPersonNameComponentsFormatter::NSPersonNameComponentDelimiter;
-pub use self::__NSPersonNameComponentsFormatter::NSPersonNameComponentFamilyName;
-pub use self::__NSPersonNameComponentsFormatter::NSPersonNameComponentGivenName;
-pub use self::__NSPersonNameComponentsFormatter::NSPersonNameComponentKey;
-pub use self::__NSPersonNameComponentsFormatter::NSPersonNameComponentMiddleName;
-pub use self::__NSPersonNameComponentsFormatter::NSPersonNameComponentNickname;
-pub use self::__NSPersonNameComponentsFormatter::NSPersonNameComponentPrefix;
-pub use self::__NSPersonNameComponentsFormatter::NSPersonNameComponentSuffix;
+
+pub use self::__NSPersonNameComponentsFormatter::NSPersonNameComponentsFormatterStyle;
+
+pub use self::__NSPersonNameComponentsFormatter::NSPersonNameComponentsFormatterStyleDefault;
+
+pub use self::__NSPersonNameComponentsFormatter::NSPersonNameComponentsFormatterStyleShort;
+
+pub use self::__NSPersonNameComponentsFormatter::NSPersonNameComponentsFormatterStyleMedium;
+
+pub use self::__NSPersonNameComponentsFormatter::NSPersonNameComponentsFormatterStyleLong;
+
+pub use self::__NSPersonNameComponentsFormatter::NSPersonNameComponentsFormatterStyleAbbreviated;
+
+pub use self::__NSPersonNameComponentsFormatter::NSPersonNameComponentsFormatterOptions;
+
+#[cfg(feature = "Foundation_NSPersonNameComponentsFormatter")]
 #[cfg(feature = "Foundation_NSPersonNameComponentsFormatter")]
 pub use self::__NSPersonNameComponentsFormatter::NSPersonNameComponentsFormatter;
-pub use self::__NSPersonNameComponentsFormatter::{
-    NSPersonNameComponentsFormatterOptions, NSPersonNameComponentsFormatterPhonetic,
-};
-pub use self::__NSPersonNameComponentsFormatter::{
-    NSPersonNameComponentsFormatterStyle, NSPersonNameComponentsFormatterStyleAbbreviated,
-    NSPersonNameComponentsFormatterStyleDefault, NSPersonNameComponentsFormatterStyleLong,
-    NSPersonNameComponentsFormatterStyleMedium, NSPersonNameComponentsFormatterStyleShort,
-};
+pub use self::__NSPersonNameComponentsFormatter::NSPersonNameComponentsFormatterPhonetic;
+
+pub use self::__NSPersonNameComponentsFormatter::NSPersonNameComponentKey;
+
+pub use self::__NSPersonNameComponentsFormatter::NSPersonNameComponentGivenName;
+
+pub use self::__NSPersonNameComponentsFormatter::NSPersonNameComponentFamilyName;
+
+pub use self::__NSPersonNameComponentsFormatter::NSPersonNameComponentMiddleName;
+
+pub use self::__NSPersonNameComponentsFormatter::NSPersonNameComponentPrefix;
+
+pub use self::__NSPersonNameComponentsFormatter::NSPersonNameComponentSuffix;
+
+pub use self::__NSPersonNameComponentsFormatter::NSPersonNameComponentNickname;
+
+pub use self::__NSPersonNameComponentsFormatter::NSPersonNameComponentDelimiter;
+#[cfg(feature = "Foundation_NSPointerArray")]
 #[cfg(feature = "Foundation_NSPointerArray")]
 pub use self::__NSPointerArray::NSPointerArray;
+
+pub use self::__NSPointerFunctions::NSPointerFunctionsOptions;
+
+pub use self::__NSPointerFunctions::NSPointerFunctionsStrongMemory;
+
+pub use self::__NSPointerFunctions::NSPointerFunctionsZeroingWeakMemory;
+
+pub use self::__NSPointerFunctions::NSPointerFunctionsOpaqueMemory;
+
+pub use self::__NSPointerFunctions::NSPointerFunctionsMallocMemory;
+
+pub use self::__NSPointerFunctions::NSPointerFunctionsMachVirtualMemory;
+
+pub use self::__NSPointerFunctions::NSPointerFunctionsWeakMemory;
+
+pub use self::__NSPointerFunctions::NSPointerFunctionsObjectPersonality;
+
+pub use self::__NSPointerFunctions::NSPointerFunctionsOpaquePersonality;
+
+pub use self::__NSPointerFunctions::NSPointerFunctionsObjectPointerPersonality;
+
+pub use self::__NSPointerFunctions::NSPointerFunctionsCStringPersonality;
+
+pub use self::__NSPointerFunctions::NSPointerFunctionsStructPersonality;
+
+pub use self::__NSPointerFunctions::NSPointerFunctionsIntegerPersonality;
+
+#[cfg(feature = "Foundation_NSPointerFunctions")]
 #[cfg(feature = "Foundation_NSPointerFunctions")]
 pub use self::__NSPointerFunctions::NSPointerFunctions;
-pub use self::__NSPointerFunctions::{
-    NSPointerFunctionsCStringPersonality, NSPointerFunctionsCopyIn,
-    NSPointerFunctionsIntegerPersonality, NSPointerFunctionsMachVirtualMemory,
-    NSPointerFunctionsMallocMemory, NSPointerFunctionsObjectPersonality,
-    NSPointerFunctionsObjectPointerPersonality, NSPointerFunctionsOpaqueMemory,
-    NSPointerFunctionsOpaquePersonality, NSPointerFunctionsOptions, NSPointerFunctionsStrongMemory,
-    NSPointerFunctionsStructPersonality, NSPointerFunctionsWeakMemory,
-    NSPointerFunctionsZeroingWeakMemory,
-};
-#[cfg(feature = "Foundation_NSMachPort")]
-pub use self::__NSPort::NSMachPort;
-pub use self::__NSPort::NSMachPortDelegate;
-#[cfg(feature = "Foundation_NSMessagePort")]
-pub use self::__NSPort::NSMessagePort;
+pub use self::__NSPointerFunctions::NSPointerFunctionsCopyIn;
+
+pub use self::__NSPort::NSSocketNativeHandle;
+
+#[cfg(feature = "Foundation_NSPort")]
 #[cfg(feature = "Foundation_NSPort")]
 pub use self::__NSPort::NSPort;
-pub use self::__NSPort::NSPortDelegate;
 pub use self::__NSPort::NSPortDidBecomeInvalidNotification;
-pub use self::__NSPort::NSSocketNativeHandle;
+
+pub use self::__NSPort::NSPortDelegate;
+
+pub use self::__NSPort::NSMachPortOptions;
+
+pub use self::__NSPort::NSMachPortDeallocateNone;
+
+pub use self::__NSPort::NSMachPortDeallocateSendRight;
+
+#[cfg(feature = "Foundation_NSMachPort")]
+#[cfg(feature = "Foundation_NSMachPort")]
+pub use self::__NSPort::NSMachPort;
+pub use self::__NSPort::NSMachPortDeallocateReceiveRight;
+
+pub use self::__NSPort::NSMachPortDelegate;
+#[cfg(feature = "Foundation_NSMessagePort")]
+#[cfg(feature = "Foundation_NSMessagePort")]
+pub use self::__NSPort::NSMessagePort;
+#[cfg(feature = "Foundation_NSSocketPort")]
 #[cfg(feature = "Foundation_NSSocketPort")]
 pub use self::__NSPort::NSSocketPort;
-pub use self::__NSPort::{
-    NSMachPortDeallocateNone, NSMachPortDeallocateReceiveRight, NSMachPortDeallocateSendRight,
-    NSMachPortOptions,
-};
+#[cfg(feature = "Foundation_NSPortCoder")]
 #[cfg(feature = "Foundation_NSPortCoder")]
 pub use self::__NSPortCoder::NSPortCoder;
 #[cfg(feature = "Foundation_NSPortMessage")]
+#[cfg(feature = "Foundation_NSPortMessage")]
 pub use self::__NSPortMessage::NSPortMessage;
+#[cfg(feature = "Foundation_NSMachBootstrapServer")]
 #[cfg(feature = "Foundation_NSMachBootstrapServer")]
 pub use self::__NSPortNameServer::NSMachBootstrapServer;
 #[cfg(feature = "Foundation_NSMessagePortNameServer")]
+#[cfg(feature = "Foundation_NSMessagePortNameServer")]
 pub use self::__NSPortNameServer::NSMessagePortNameServer;
+#[cfg(feature = "Foundation_NSPortNameServer")]
 #[cfg(feature = "Foundation_NSPortNameServer")]
 pub use self::__NSPortNameServer::NSPortNameServer;
 #[cfg(feature = "Foundation_NSSocketPortNameServer")]
+#[cfg(feature = "Foundation_NSSocketPortNameServer")]
 pub use self::__NSPortNameServer::NSSocketPortNameServer;
 #[cfg(feature = "Foundation_NSPredicate")]
+#[cfg(feature = "Foundation_NSPredicate")]
 pub use self::__NSPredicate::NSPredicate;
+
+pub use self::__NSProcessInfo::NSWindowsNTOperatingSystem;
+
+pub use self::__NSProcessInfo::NSWindows95OperatingSystem;
+
+pub use self::__NSProcessInfo::NSSolarisOperatingSystem;
+
+pub use self::__NSProcessInfo::NSHPUXOperatingSystem;
+
+pub use self::__NSProcessInfo::NSMACHOperatingSystem;
+
+pub use self::__NSProcessInfo::NSSunOSOperatingSystem;
+
+pub use self::__NSProcessInfo::NSOSF1OperatingSystem;
+
 pub use self::__NSProcessInfo::NSOperatingSystemVersion;
 #[cfg(feature = "Foundation_NSProcessInfo")]
+#[cfg(feature = "Foundation_NSProcessInfo")]
 pub use self::__NSProcessInfo::NSProcessInfo;
-pub use self::__NSProcessInfo::NSProcessInfoPowerStateDidChangeNotification;
+
+pub use self::__NSProcessInfo::NSActivityOptions;
+
+pub use self::__NSProcessInfo::NSActivityIdleDisplaySleepDisabled;
+
+pub use self::__NSProcessInfo::NSActivityIdleSystemSleepDisabled;
+
+pub use self::__NSProcessInfo::NSActivitySuddenTerminationDisabled;
+
+pub use self::__NSProcessInfo::NSActivityAutomaticTerminationDisabled;
+
+pub use self::__NSProcessInfo::NSActivityAnimationTrackingEnabled;
+
+pub use self::__NSProcessInfo::NSActivityTrackingEnabled;
+
+pub use self::__NSProcessInfo::NSActivityUserInitiated;
+
+pub use self::__NSProcessInfo::NSActivityUserInitiatedAllowingIdleSystemSleep;
+
+pub use self::__NSProcessInfo::NSActivityBackground;
+
+pub use self::__NSProcessInfo::NSActivityLatencyCritical;
+
+pub use self::__NSProcessInfo::NSActivityUserInteractive;
+
+pub use self::__NSProcessInfo::NSProcessInfoThermalState;
+
+pub use self::__NSProcessInfo::NSProcessInfoThermalStateNominal;
+
+pub use self::__NSProcessInfo::NSProcessInfoThermalStateFair;
+
+pub use self::__NSProcessInfo::NSProcessInfoThermalStateSerious;
+
+pub use self::__NSProcessInfo::NSProcessInfoThermalStateCritical;
+
 pub use self::__NSProcessInfo::NSProcessInfoThermalStateDidChangeNotification;
-pub use self::__NSProcessInfo::{
-    NSActivityAnimationTrackingEnabled, NSActivityAutomaticTerminationDisabled,
-    NSActivityBackground, NSActivityIdleDisplaySleepDisabled, NSActivityIdleSystemSleepDisabled,
-    NSActivityLatencyCritical, NSActivityOptions, NSActivitySuddenTerminationDisabled,
-    NSActivityTrackingEnabled, NSActivityUserInitiated,
-    NSActivityUserInitiatedAllowingIdleSystemSleep, NSActivityUserInteractive,
-};
-pub use self::__NSProcessInfo::{
-    NSHPUXOperatingSystem, NSMACHOperatingSystem, NSOSF1OperatingSystem, NSSolarisOperatingSystem,
-    NSSunOSOperatingSystem, NSWindows95OperatingSystem, NSWindowsNTOperatingSystem,
-};
-pub use self::__NSProcessInfo::{
-    NSProcessInfoThermalState, NSProcessInfoThermalStateCritical, NSProcessInfoThermalStateFair,
-    NSProcessInfoThermalStateNominal, NSProcessInfoThermalStateSerious,
-};
+
+pub use self::__NSProcessInfo::NSProcessInfoPowerStateDidChangeNotification;
+
+pub use self::__NSProgress::NSProgressKind;
+
+pub use self::__NSProgress::NSProgressUserInfoKey;
+
+pub use self::__NSProgress::NSProgressFileOperationKind;
+
+pub use self::__NSProgress::NSProgressUnpublishingHandler;
+
+#[cfg(feature = "Foundation_NSProgress")]
 #[cfg(feature = "Foundation_NSProgress")]
 pub use self::__NSProgress::NSProgress;
+pub use self::__NSProgress::NSProgressPublishingHandler;
+
+pub use self::__NSProgress::NSProgressReporting;
+
 pub use self::__NSProgress::NSProgressEstimatedTimeRemainingKey;
+
+pub use self::__NSProgress::NSProgressThroughputKey;
+
+pub use self::__NSProgress::NSProgressKindFile;
+
+pub use self::__NSProgress::NSProgressFileOperationKindKey;
+
+pub use self::__NSProgress::NSProgressFileOperationKindDownloading;
+
+pub use self::__NSProgress::NSProgressFileOperationKindDecompressingAfterDownloading;
+
+pub use self::__NSProgress::NSProgressFileOperationKindReceiving;
+
+pub use self::__NSProgress::NSProgressFileOperationKindCopying;
+
+pub use self::__NSProgress::NSProgressFileOperationKindUploading;
+
+pub use self::__NSProgress::NSProgressFileOperationKindDuplicating;
+
+pub use self::__NSProgress::NSProgressFileURLKey;
+
+pub use self::__NSProgress::NSProgressFileTotalCountKey;
+
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSProgress::NSProgressFileAnimationImageKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSProgress::NSProgressFileAnimationImageOriginalRectKey;
 pub use self::__NSProgress::NSProgressFileCompletedCountKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSProgress::NSProgressFileIconKey;
-pub use self::__NSProgress::NSProgressFileOperationKind;
-pub use self::__NSProgress::NSProgressFileOperationKindCopying;
-pub use self::__NSProgress::NSProgressFileOperationKindDecompressingAfterDownloading;
-pub use self::__NSProgress::NSProgressFileOperationKindDownloading;
-pub use self::__NSProgress::NSProgressFileOperationKindDuplicating;
-pub use self::__NSProgress::NSProgressFileOperationKindKey;
-pub use self::__NSProgress::NSProgressFileOperationKindReceiving;
-pub use self::__NSProgress::NSProgressFileOperationKindUploading;
-pub use self::__NSProgress::NSProgressFileTotalCountKey;
-pub use self::__NSProgress::NSProgressFileURLKey;
-pub use self::__NSProgress::NSProgressKind;
-pub use self::__NSProgress::NSProgressKindFile;
-pub use self::__NSProgress::NSProgressPublishingHandler;
-pub use self::__NSProgress::NSProgressReporting;
-pub use self::__NSProgress::NSProgressThroughputKey;
-pub use self::__NSProgress::NSProgressUnpublishingHandler;
-pub use self::__NSProgress::NSProgressUserInfoKey;
+
+pub use self::__NSPropertyList::NSPropertyListMutabilityOptions;
+
+pub use self::__NSPropertyList::NSPropertyListImmutable;
+
+pub use self::__NSPropertyList::NSPropertyListMutableContainers;
+
+pub use self::__NSPropertyList::NSPropertyListMutableContainersAndLeaves;
+
+pub use self::__NSPropertyList::NSPropertyListFormat;
+
+pub use self::__NSPropertyList::NSPropertyListOpenStepFormat;
+
+pub use self::__NSPropertyList::NSPropertyListXMLFormat_v1_0;
+
+pub use self::__NSPropertyList::NSPropertyListBinaryFormat_v1_0;
+
 pub use self::__NSPropertyList::NSPropertyListReadOptions;
+
+#[cfg(feature = "Foundation_NSPropertyListSerialization")]
 #[cfg(feature = "Foundation_NSPropertyListSerialization")]
 pub use self::__NSPropertyList::NSPropertyListSerialization;
 pub use self::__NSPropertyList::NSPropertyListWriteOptions;
-pub use self::__NSPropertyList::{
-    NSPropertyListBinaryFormat_v1_0, NSPropertyListFormat, NSPropertyListOpenStepFormat,
-    NSPropertyListXMLFormat_v1_0,
-};
-pub use self::__NSPropertyList::{
-    NSPropertyListImmutable, NSPropertyListMutabilityOptions, NSPropertyListMutableContainers,
-    NSPropertyListMutableContainersAndLeaves,
-};
+#[cfg(feature = "Foundation_NSProtocolChecker")]
 #[cfg(feature = "Foundation_NSProtocolChecker")]
 pub use self::__NSProtocolChecker::NSProtocolChecker;
+
+pub use self::__NSRange::NSRangePointer;
+
+pub use self::__NSRange::NSUnionRange;
+
 pub use self::__NSRange::NSIntersectionRange;
 #[cfg(feature = "Foundation_NSString")]
+#[cfg(feature = "Foundation_NSString")]
 pub use self::__NSRange::NSRangeFromString;
-pub use self::__NSRange::NSRangePointer;
+#[cfg(feature = "Foundation_NSString")]
 #[cfg(feature = "Foundation_NSString")]
 pub use self::__NSRange::NSStringFromRange;
-pub use self::__NSRange::NSUnionRange;
-#[cfg(feature = "Foundation_NSDataDetector")]
-pub use self::__NSRegularExpression::NSDataDetector;
+
+pub use self::__NSRegularExpression::NSRegularExpressionOptions;
+
+pub use self::__NSRegularExpression::NSRegularExpressionCaseInsensitive;
+
+pub use self::__NSRegularExpression::NSRegularExpressionAllowCommentsAndWhitespace;
+
+pub use self::__NSRegularExpression::NSRegularExpressionIgnoreMetacharacters;
+
+pub use self::__NSRegularExpression::NSRegularExpressionDotMatchesLineSeparators;
+
+pub use self::__NSRegularExpression::NSRegularExpressionAnchorsMatchLines;
+
+pub use self::__NSRegularExpression::NSRegularExpressionUseUnixLineSeparators;
+
+#[cfg(feature = "Foundation_NSRegularExpression")]
 #[cfg(feature = "Foundation_NSRegularExpression")]
 pub use self::__NSRegularExpression::NSRegularExpression;
-pub use self::__NSRegularExpression::{
-    NSMatchingAnchored, NSMatchingOptions, NSMatchingReportCompletion, NSMatchingReportProgress,
-    NSMatchingWithTransparentBounds, NSMatchingWithoutAnchoringBounds,
-};
-pub use self::__NSRegularExpression::{
-    NSMatchingCompleted, NSMatchingFlags, NSMatchingHitEnd, NSMatchingInternalError,
-    NSMatchingProgress, NSMatchingRequiredEnd,
-};
-pub use self::__NSRegularExpression::{
-    NSRegularExpressionAllowCommentsAndWhitespace, NSRegularExpressionAnchorsMatchLines,
-    NSRegularExpressionCaseInsensitive, NSRegularExpressionDotMatchesLineSeparators,
-    NSRegularExpressionIgnoreMetacharacters, NSRegularExpressionOptions,
-    NSRegularExpressionUseUnicodeWordBoundaries, NSRegularExpressionUseUnixLineSeparators,
-};
+pub use self::__NSRegularExpression::NSRegularExpressionUseUnicodeWordBoundaries;
+
+pub use self::__NSRegularExpression::NSMatchingOptions;
+
+pub use self::__NSRegularExpression::NSMatchingReportProgress;
+
+pub use self::__NSRegularExpression::NSMatchingReportCompletion;
+
+pub use self::__NSRegularExpression::NSMatchingAnchored;
+
+pub use self::__NSRegularExpression::NSMatchingWithTransparentBounds;
+
+pub use self::__NSRegularExpression::NSMatchingWithoutAnchoringBounds;
+
+pub use self::__NSRegularExpression::NSMatchingFlags;
+
+pub use self::__NSRegularExpression::NSMatchingProgress;
+
+pub use self::__NSRegularExpression::NSMatchingCompleted;
+
+pub use self::__NSRegularExpression::NSMatchingHitEnd;
+
+pub use self::__NSRegularExpression::NSMatchingRequiredEnd;
+
+#[cfg(feature = "Foundation_NSDataDetector")]
+#[cfg(feature = "Foundation_NSDataDetector")]
+pub use self::__NSRegularExpression::NSDataDetector;
+pub use self::__NSRegularExpression::NSMatchingInternalError;
+
+pub use self::__NSRelativeDateTimeFormatter::NSRelativeDateTimeFormatterStyle;
+
+pub use self::__NSRelativeDateTimeFormatter::NSRelativeDateTimeFormatterStyleNumeric;
+
+pub use self::__NSRelativeDateTimeFormatter::NSRelativeDateTimeFormatterStyleNamed;
+
+pub use self::__NSRelativeDateTimeFormatter::NSRelativeDateTimeFormatterUnitsStyle;
+
+pub use self::__NSRelativeDateTimeFormatter::NSRelativeDateTimeFormatterUnitsStyleFull;
+
+pub use self::__NSRelativeDateTimeFormatter::NSRelativeDateTimeFormatterUnitsStyleSpellOut;
+
+pub use self::__NSRelativeDateTimeFormatter::NSRelativeDateTimeFormatterUnitsStyleShort;
+
+#[cfg(feature = "Foundation_NSRelativeDateTimeFormatter")]
 #[cfg(feature = "Foundation_NSRelativeDateTimeFormatter")]
 pub use self::__NSRelativeDateTimeFormatter::NSRelativeDateTimeFormatter;
-pub use self::__NSRelativeDateTimeFormatter::{
-    NSRelativeDateTimeFormatterStyle, NSRelativeDateTimeFormatterStyleNamed,
-    NSRelativeDateTimeFormatterStyleNumeric,
-};
-pub use self::__NSRelativeDateTimeFormatter::{
-    NSRelativeDateTimeFormatterUnitsStyle, NSRelativeDateTimeFormatterUnitsStyleAbbreviated,
-    NSRelativeDateTimeFormatterUnitsStyleFull, NSRelativeDateTimeFormatterUnitsStyleShort,
-    NSRelativeDateTimeFormatterUnitsStyleSpellOut,
-};
+pub use self::__NSRelativeDateTimeFormatter::NSRelativeDateTimeFormatterUnitsStyleAbbreviated;
+
 pub use self::__NSRunLoop::NSDefaultRunLoopMode;
+
+#[cfg(feature = "Foundation_NSRunLoop")]
 #[cfg(feature = "Foundation_NSRunLoop")]
 pub use self::__NSRunLoop::NSRunLoop;
 pub use self::__NSRunLoop::NSRunLoopCommonModes;
 #[cfg(feature = "Foundation_NSScanner")]
+#[cfg(feature = "Foundation_NSScanner")]
 pub use self::__NSScanner::NSScanner;
+#[cfg(feature = "Foundation_NSScriptClassDescription")]
 #[cfg(feature = "Foundation_NSScriptClassDescription")]
 pub use self::__NSScriptClassDescription::NSScriptClassDescription;
 #[cfg(feature = "Foundation_NSScriptCoercionHandler")]
+#[cfg(feature = "Foundation_NSScriptCoercionHandler")]
 pub use self::__NSScriptCoercionHandler::NSScriptCoercionHandler;
+
+pub use self::__NSScriptCommand::NSNoScriptError;
+
+pub use self::__NSScriptCommand::NSReceiverEvaluationScriptError;
+
+pub use self::__NSScriptCommand::NSKeySpecifierEvaluationScriptError;
+
+pub use self::__NSScriptCommand::NSArgumentEvaluationScriptError;
+
+pub use self::__NSScriptCommand::NSReceiversCantHandleCommandScriptError;
+
+pub use self::__NSScriptCommand::NSRequiredArgumentsMissingScriptError;
+
+pub use self::__NSScriptCommand::NSArgumentsWrongScriptError;
+
+pub use self::__NSScriptCommand::NSUnknownKeyScriptError;
+
+pub use self::__NSScriptCommand::NSInternalScriptError;
+
+pub use self::__NSScriptCommand::NSOperationNotSupportedForKeyScriptError;
+
+pub use self::__NSScriptCommand::NSCannotCreateScriptCommandError;
+#[cfg(feature = "Foundation_NSScriptCommand")]
 #[cfg(feature = "Foundation_NSScriptCommand")]
 pub use self::__NSScriptCommand::NSScriptCommand;
-pub use self::__NSScriptCommand::{
-    NSArgumentEvaluationScriptError, NSArgumentsWrongScriptError, NSCannotCreateScriptCommandError,
-    NSInternalScriptError, NSKeySpecifierEvaluationScriptError, NSNoScriptError,
-    NSOperationNotSupportedForKeyScriptError, NSReceiverEvaluationScriptError,
-    NSReceiversCantHandleCommandScriptError, NSRequiredArgumentsMissingScriptError,
-    NSUnknownKeyScriptError,
-};
+#[cfg(feature = "Foundation_NSScriptCommandDescription")]
 #[cfg(feature = "Foundation_NSScriptCommandDescription")]
 pub use self::__NSScriptCommandDescription::NSScriptCommandDescription;
 #[cfg(feature = "Foundation_NSScriptExecutionContext")]
+#[cfg(feature = "Foundation_NSScriptExecutionContext")]
 pub use self::__NSScriptExecutionContext::NSScriptExecutionContext;
+
 pub use self::__NSScriptKeyValueCoding::NSOperationNotSupportedForKeyException;
+
+pub use self::__NSScriptObjectSpecifiers::NSNoSpecifierError;
+
+pub use self::__NSScriptObjectSpecifiers::NSNoTopLevelContainersSpecifierError;
+
+pub use self::__NSScriptObjectSpecifiers::NSContainerSpecifierError;
+
+pub use self::__NSScriptObjectSpecifiers::NSUnknownKeySpecifierError;
+
+pub use self::__NSScriptObjectSpecifiers::NSInvalidIndexSpecifierError;
+
+pub use self::__NSScriptObjectSpecifiers::NSInternalSpecifierError;
+
+pub use self::__NSScriptObjectSpecifiers::NSOperationNotSupportedForKeySpecifierError;
+
+pub use self::__NSScriptObjectSpecifiers::NSInsertionPosition;
+
+pub use self::__NSScriptObjectSpecifiers::NSPositionAfter;
+
+pub use self::__NSScriptObjectSpecifiers::NSPositionBefore;
+
+pub use self::__NSScriptObjectSpecifiers::NSPositionBeginning;
+
+pub use self::__NSScriptObjectSpecifiers::NSPositionEnd;
+
+pub use self::__NSScriptObjectSpecifiers::NSPositionReplace;
+
+pub use self::__NSScriptObjectSpecifiers::NSRelativePosition;
+
+pub use self::__NSScriptObjectSpecifiers::NSRelativeAfter;
+
+pub use self::__NSScriptObjectSpecifiers::NSRelativeBefore;
+
+pub use self::__NSScriptObjectSpecifiers::NSWhoseSubelementIdentifier;
+
+pub use self::__NSScriptObjectSpecifiers::NSIndexSubelement;
+
+pub use self::__NSScriptObjectSpecifiers::NSEverySubelement;
+
+pub use self::__NSScriptObjectSpecifiers::NSMiddleSubelement;
+
+pub use self::__NSScriptObjectSpecifiers::NSRandomSubelement;
+
+#[cfg(feature = "Foundation_NSIndexSpecifier")]
 #[cfg(feature = "Foundation_NSIndexSpecifier")]
 pub use self::__NSScriptObjectSpecifiers::NSIndexSpecifier;
 #[cfg(feature = "Foundation_NSMiddleSpecifier")]
+#[cfg(feature = "Foundation_NSMiddleSpecifier")]
 pub use self::__NSScriptObjectSpecifiers::NSMiddleSpecifier;
 #[cfg(feature = "Foundation_NSNameSpecifier")]
+#[cfg(feature = "Foundation_NSNameSpecifier")]
 pub use self::__NSScriptObjectSpecifiers::NSNameSpecifier;
+pub use self::__NSScriptObjectSpecifiers::NSNoSubelement;
+#[cfg(feature = "Foundation_NSPositionalSpecifier")]
 #[cfg(feature = "Foundation_NSPositionalSpecifier")]
 pub use self::__NSScriptObjectSpecifiers::NSPositionalSpecifier;
 #[cfg(feature = "Foundation_NSPropertySpecifier")]
+#[cfg(feature = "Foundation_NSPropertySpecifier")]
 pub use self::__NSScriptObjectSpecifiers::NSPropertySpecifier;
+#[cfg(feature = "Foundation_NSRandomSpecifier")]
 #[cfg(feature = "Foundation_NSRandomSpecifier")]
 pub use self::__NSScriptObjectSpecifiers::NSRandomSpecifier;
 #[cfg(feature = "Foundation_NSRangeSpecifier")]
+#[cfg(feature = "Foundation_NSRangeSpecifier")]
 pub use self::__NSScriptObjectSpecifiers::NSRangeSpecifier;
+#[cfg(feature = "Foundation_NSRelativeSpecifier")]
 #[cfg(feature = "Foundation_NSRelativeSpecifier")]
 pub use self::__NSScriptObjectSpecifiers::NSRelativeSpecifier;
 #[cfg(feature = "Foundation_NSScriptObjectSpecifier")]
+#[cfg(feature = "Foundation_NSScriptObjectSpecifier")]
 pub use self::__NSScriptObjectSpecifiers::NSScriptObjectSpecifier;
+#[cfg(feature = "Foundation_NSUniqueIDSpecifier")]
 #[cfg(feature = "Foundation_NSUniqueIDSpecifier")]
 pub use self::__NSScriptObjectSpecifiers::NSUniqueIDSpecifier;
 #[cfg(feature = "Foundation_NSWhoseSpecifier")]
+#[cfg(feature = "Foundation_NSWhoseSpecifier")]
 pub use self::__NSScriptObjectSpecifiers::NSWhoseSpecifier;
-pub use self::__NSScriptObjectSpecifiers::{
-    NSContainerSpecifierError, NSInternalSpecifierError, NSInvalidIndexSpecifierError,
-    NSNoSpecifierError, NSNoTopLevelContainersSpecifierError,
-    NSOperationNotSupportedForKeySpecifierError, NSUnknownKeySpecifierError,
-};
-pub use self::__NSScriptObjectSpecifiers::{
-    NSEverySubelement, NSIndexSubelement, NSMiddleSubelement, NSNoSubelement, NSRandomSubelement,
-    NSWhoseSubelementIdentifier,
-};
-pub use self::__NSScriptObjectSpecifiers::{
-    NSInsertionPosition, NSPositionAfter, NSPositionBefore, NSPositionBeginning, NSPositionEnd,
-    NSPositionReplace,
-};
-pub use self::__NSScriptObjectSpecifiers::{NSRelativeAfter, NSRelativeBefore, NSRelativePosition};
+
+pub use self::__NSScriptStandardSuiteCommands::NSSaveOptions;
+
+pub use self::__NSScriptStandardSuiteCommands::NSSaveOptionsYes;
+
+pub use self::__NSScriptStandardSuiteCommands::NSSaveOptionsNo;
+
+#[cfg(feature = "Foundation_NSCloneCommand")]
 #[cfg(feature = "Foundation_NSCloneCommand")]
 pub use self::__NSScriptStandardSuiteCommands::NSCloneCommand;
 #[cfg(feature = "Foundation_NSCloseCommand")]
+#[cfg(feature = "Foundation_NSCloseCommand")]
 pub use self::__NSScriptStandardSuiteCommands::NSCloseCommand;
+#[cfg(feature = "Foundation_NSCountCommand")]
 #[cfg(feature = "Foundation_NSCountCommand")]
 pub use self::__NSScriptStandardSuiteCommands::NSCountCommand;
 #[cfg(feature = "Foundation_NSCreateCommand")]
+#[cfg(feature = "Foundation_NSCreateCommand")]
 pub use self::__NSScriptStandardSuiteCommands::NSCreateCommand;
+#[cfg(feature = "Foundation_NSDeleteCommand")]
 #[cfg(feature = "Foundation_NSDeleteCommand")]
 pub use self::__NSScriptStandardSuiteCommands::NSDeleteCommand;
 #[cfg(feature = "Foundation_NSExistsCommand")]
+#[cfg(feature = "Foundation_NSExistsCommand")]
 pub use self::__NSScriptStandardSuiteCommands::NSExistsCommand;
+#[cfg(feature = "Foundation_NSGetCommand")]
 #[cfg(feature = "Foundation_NSGetCommand")]
 pub use self::__NSScriptStandardSuiteCommands::NSGetCommand;
 #[cfg(feature = "Foundation_NSMoveCommand")]
+#[cfg(feature = "Foundation_NSMoveCommand")]
 pub use self::__NSScriptStandardSuiteCommands::NSMoveCommand;
 #[cfg(feature = "Foundation_NSQuitCommand")]
+#[cfg(feature = "Foundation_NSQuitCommand")]
 pub use self::__NSScriptStandardSuiteCommands::NSQuitCommand;
+pub use self::__NSScriptStandardSuiteCommands::NSSaveOptionsAsk;
+#[cfg(feature = "Foundation_NSSetCommand")]
 #[cfg(feature = "Foundation_NSSetCommand")]
 pub use self::__NSScriptStandardSuiteCommands::NSSetCommand;
-pub use self::__NSScriptStandardSuiteCommands::{
-    NSSaveOptions, NSSaveOptionsAsk, NSSaveOptionsNo, NSSaveOptionsYes,
-};
+#[cfg(feature = "Foundation_NSScriptSuiteRegistry")]
 #[cfg(feature = "Foundation_NSScriptSuiteRegistry")]
 pub use self::__NSScriptSuiteRegistry::NSScriptSuiteRegistry;
+
+pub use self::__NSScriptWhoseTests::NSTestComparisonOperation;
+
+pub use self::__NSScriptWhoseTests::NSEqualToComparison;
+
+pub use self::__NSScriptWhoseTests::NSLessThanOrEqualToComparison;
+
+pub use self::__NSScriptWhoseTests::NSLessThanComparison;
+
+pub use self::__NSScriptWhoseTests::NSGreaterThanOrEqualToComparison;
+
+pub use self::__NSScriptWhoseTests::NSGreaterThanComparison;
+
+pub use self::__NSScriptWhoseTests::NSBeginsWithComparison;
+
+pub use self::__NSScriptWhoseTests::NSEndsWithComparison;
+
+pub use self::__NSScriptWhoseTests::NSContainsComparison;
+#[cfg(feature = "Foundation_NSLogicalTest")]
 #[cfg(feature = "Foundation_NSLogicalTest")]
 pub use self::__NSScriptWhoseTests::NSLogicalTest;
 #[cfg(feature = "Foundation_NSScriptWhoseTest")]
+#[cfg(feature = "Foundation_NSScriptWhoseTest")]
 pub use self::__NSScriptWhoseTests::NSScriptWhoseTest;
 #[cfg(feature = "Foundation_NSSpecifierTest")]
+#[cfg(feature = "Foundation_NSSpecifierTest")]
 pub use self::__NSScriptWhoseTests::NSSpecifierTest;
-pub use self::__NSScriptWhoseTests::{
-    NSBeginsWithComparison, NSContainsComparison, NSEndsWithComparison, NSEqualToComparison,
-    NSGreaterThanComparison, NSGreaterThanOrEqualToComparison, NSLessThanComparison,
-    NSLessThanOrEqualToComparison, NSTestComparisonOperation,
-};
+#[cfg(feature = "Foundation_NSCountedSet")]
 #[cfg(feature = "Foundation_NSCountedSet")]
 pub use self::__NSSet::NSCountedSet;
 #[cfg(feature = "Foundation_NSMutableSet")]
+#[cfg(feature = "Foundation_NSMutableSet")]
 pub use self::__NSSet::NSMutableSet;
+#[cfg(feature = "Foundation_NSSet")]
 #[cfg(feature = "Foundation_NSSet")]
 pub use self::__NSSet::NSSet;
 #[cfg(feature = "Foundation_NSSortDescriptor")]
+#[cfg(feature = "Foundation_NSSortDescriptor")]
 pub use self::__NSSortDescriptor::NSSortDescriptor;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSSpellServer::NSGrammarCorrections;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSSpellServer::NSGrammarRange;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSSpellServer::NSGrammarUserDescription;
 #[cfg(feature = "Foundation_NSSpellServer")]
+#[cfg(feature = "Foundation_NSSpellServer")]
 pub use self::__NSSpellServer::NSSpellServer;
+
 pub use self::__NSSpellServer::NSSpellServerDelegate;
+
+pub use self::__NSStream::NSStreamPropertyKey;
+
+pub use self::__NSStream::NSStreamStatus;
+
+pub use self::__NSStream::NSStreamStatusNotOpen;
+
+pub use self::__NSStream::NSStreamStatusOpening;
+
+pub use self::__NSStream::NSStreamStatusOpen;
+
+pub use self::__NSStream::NSStreamStatusReading;
+
+pub use self::__NSStream::NSStreamStatusWriting;
+
+pub use self::__NSStream::NSStreamStatusAtEnd;
+
+pub use self::__NSStream::NSStreamStatusClosed;
+
+pub use self::__NSStream::NSStreamStatusError;
+
+pub use self::__NSStream::NSStreamEvent;
+
+pub use self::__NSStream::NSStreamEventNone;
+
+pub use self::__NSStream::NSStreamEventOpenCompleted;
+
+pub use self::__NSStream::NSStreamEventHasBytesAvailable;
+
+pub use self::__NSStream::NSStreamEventHasSpaceAvailable;
+
+pub use self::__NSStream::NSStreamEventErrorOccurred;
+
+#[cfg(feature = "Foundation_NSInputStream")]
 #[cfg(feature = "Foundation_NSInputStream")]
 pub use self::__NSStream::NSInputStream;
 #[cfg(feature = "Foundation_NSOutputStream")]
+#[cfg(feature = "Foundation_NSOutputStream")]
 pub use self::__NSStream::NSOutputStream;
 #[cfg(feature = "Foundation_NSStream")]
+#[cfg(feature = "Foundation_NSStream")]
 pub use self::__NSStream::NSStream;
-pub use self::__NSStream::NSStreamDataWrittenToMemoryStreamKey;
+pub use self::__NSStream::NSStreamEventEndEncountered;
+
 pub use self::__NSStream::NSStreamDelegate;
-pub use self::__NSStream::NSStreamFileCurrentOffsetKey;
-pub use self::__NSStream::NSStreamNetworkServiceType;
-pub use self::__NSStream::NSStreamNetworkServiceTypeBackground;
-pub use self::__NSStream::NSStreamNetworkServiceTypeCallSignaling;
-pub use self::__NSStream::NSStreamNetworkServiceTypeValue;
-pub use self::__NSStream::NSStreamNetworkServiceTypeVideo;
-pub use self::__NSStream::NSStreamNetworkServiceTypeVoIP;
-pub use self::__NSStream::NSStreamNetworkServiceTypeVoice;
-pub use self::__NSStream::NSStreamPropertyKey;
-pub use self::__NSStream::NSStreamSOCKSErrorDomain;
-pub use self::__NSStream::NSStreamSOCKSProxyConfiguration;
-pub use self::__NSStream::NSStreamSOCKSProxyConfigurationKey;
-pub use self::__NSStream::NSStreamSOCKSProxyHostKey;
-pub use self::__NSStream::NSStreamSOCKSProxyPasswordKey;
-pub use self::__NSStream::NSStreamSOCKSProxyPortKey;
-pub use self::__NSStream::NSStreamSOCKSProxyUserKey;
-pub use self::__NSStream::NSStreamSOCKSProxyVersion;
-pub use self::__NSStream::NSStreamSOCKSProxyVersion4;
-pub use self::__NSStream::NSStreamSOCKSProxyVersion5;
-pub use self::__NSStream::NSStreamSOCKSProxyVersionKey;
-pub use self::__NSStream::NSStreamSocketSSLErrorDomain;
-pub use self::__NSStream::NSStreamSocketSecurityLevel;
+
 pub use self::__NSStream::NSStreamSocketSecurityLevelKey;
-pub use self::__NSStream::NSStreamSocketSecurityLevelNegotiatedSSL;
+
+pub use self::__NSStream::NSStreamSocketSecurityLevel;
+
 pub use self::__NSStream::NSStreamSocketSecurityLevelNone;
+
 pub use self::__NSStream::NSStreamSocketSecurityLevelSSLv2;
+
 pub use self::__NSStream::NSStreamSocketSecurityLevelSSLv3;
+
 pub use self::__NSStream::NSStreamSocketSecurityLevelTLSv1;
-pub use self::__NSStream::{
-    NSStreamEvent, NSStreamEventEndEncountered, NSStreamEventErrorOccurred,
-    NSStreamEventHasBytesAvailable, NSStreamEventHasSpaceAvailable, NSStreamEventNone,
-    NSStreamEventOpenCompleted,
-};
-pub use self::__NSStream::{
-    NSStreamStatus, NSStreamStatusAtEnd, NSStreamStatusClosed, NSStreamStatusError,
-    NSStreamStatusNotOpen, NSStreamStatusOpen, NSStreamStatusOpening, NSStreamStatusReading,
-    NSStreamStatusWriting,
-};
+
+pub use self::__NSStream::NSStreamSocketSecurityLevelNegotiatedSSL;
+
+pub use self::__NSStream::NSStreamSOCKSProxyConfigurationKey;
+
+pub use self::__NSStream::NSStreamSOCKSProxyConfiguration;
+
+pub use self::__NSStream::NSStreamSOCKSProxyHostKey;
+
+pub use self::__NSStream::NSStreamSOCKSProxyPortKey;
+
+pub use self::__NSStream::NSStreamSOCKSProxyVersionKey;
+
+pub use self::__NSStream::NSStreamSOCKSProxyUserKey;
+
+pub use self::__NSStream::NSStreamSOCKSProxyPasswordKey;
+
+pub use self::__NSStream::NSStreamSOCKSProxyVersion;
+
+pub use self::__NSStream::NSStreamSOCKSProxyVersion4;
+
+pub use self::__NSStream::NSStreamSOCKSProxyVersion5;
+
+pub use self::__NSStream::NSStreamDataWrittenToMemoryStreamKey;
+
+pub use self::__NSStream::NSStreamFileCurrentOffsetKey;
+
+pub use self::__NSStream::NSStreamSocketSSLErrorDomain;
+
+pub use self::__NSStream::NSStreamSOCKSErrorDomain;
+
+pub use self::__NSStream::NSStreamNetworkServiceType;
+
+pub use self::__NSStream::NSStreamNetworkServiceTypeValue;
+
+pub use self::__NSStream::NSStreamNetworkServiceTypeVoIP;
+
+pub use self::__NSStream::NSStreamNetworkServiceTypeVideo;
+
+pub use self::__NSStream::NSStreamNetworkServiceTypeBackground;
+
+pub use self::__NSStream::NSStreamNetworkServiceTypeVoice;
+
+pub use self::__NSStream::NSStreamNetworkServiceTypeCallSignaling;
+
 pub use self::__NSString::unichar;
-pub use self::__NSString::NSCharacterConversionException;
-#[cfg(feature = "Foundation_NSConstantString")]
-pub use self::__NSString::NSConstantString;
-#[cfg(feature = "Foundation_NSMutableString")]
-pub use self::__NSString::NSMutableString;
-pub use self::__NSString::NSParseErrorException;
-#[cfg(feature = "Foundation_NSSimpleCString")]
-pub use self::__NSString::NSSimpleCString;
+
+pub use self::__NSString::NSStringCompareOptions;
+
+pub use self::__NSString::NSCaseInsensitiveSearch;
+
+pub use self::__NSString::NSLiteralSearch;
+
+pub use self::__NSString::NSBackwardsSearch;
+
+pub use self::__NSString::NSAnchoredSearch;
+
+pub use self::__NSString::NSNumericSearch;
+
+pub use self::__NSString::NSDiacriticInsensitiveSearch;
+
+pub use self::__NSString::NSWidthInsensitiveSearch;
+
+pub use self::__NSString::NSForcedOrderingSearch;
+
+pub use self::__NSString::NSRegularExpressionSearch;
+
+pub use self::__NSString::NSStringEncoding;
+
+pub use self::__NSString::NSASCIIStringEncoding;
+
+pub use self::__NSString::NSNEXTSTEPStringEncoding;
+
+pub use self::__NSString::NSJapaneseEUCStringEncoding;
+
+pub use self::__NSString::NSUTF8StringEncoding;
+
+pub use self::__NSString::NSISOLatin1StringEncoding;
+
+pub use self::__NSString::NSSymbolStringEncoding;
+
+pub use self::__NSString::NSNonLossyASCIIStringEncoding;
+
+pub use self::__NSString::NSShiftJISStringEncoding;
+
+pub use self::__NSString::NSISOLatin2StringEncoding;
+
+pub use self::__NSString::NSUnicodeStringEncoding;
+
+pub use self::__NSString::NSWindowsCP1251StringEncoding;
+
+pub use self::__NSString::NSWindowsCP1252StringEncoding;
+
+pub use self::__NSString::NSWindowsCP1253StringEncoding;
+
+pub use self::__NSString::NSWindowsCP1254StringEncoding;
+
+pub use self::__NSString::NSWindowsCP1250StringEncoding;
+
+pub use self::__NSString::NSISO2022JPStringEncoding;
+
+pub use self::__NSString::NSMacOSRomanStringEncoding;
+
+pub use self::__NSString::NSUTF16StringEncoding;
+
+pub use self::__NSString::NSUTF16BigEndianStringEncoding;
+
+pub use self::__NSString::NSUTF16LittleEndianStringEncoding;
+
+pub use self::__NSString::NSUTF32StringEncoding;
+
+pub use self::__NSString::NSUTF32BigEndianStringEncoding;
+
+pub use self::__NSString::NSUTF32LittleEndianStringEncoding;
+
+pub use self::__NSString::NSStringEncodingConversionOptions;
+
+pub use self::__NSString::NSStringEncodingConversionAllowLossy;
+
+#[cfg(feature = "Foundation_NSString")]
 #[cfg(feature = "Foundation_NSString")]
 pub use self::__NSString::NSString;
-pub use self::__NSString::NSStringEncodingDetectionAllowLossyKey;
-pub use self::__NSString::NSStringEncodingDetectionDisallowedEncodingsKey;
-pub use self::__NSString::NSStringEncodingDetectionFromWindowsKey;
-pub use self::__NSString::NSStringEncodingDetectionLikelyLanguageKey;
-pub use self::__NSString::NSStringEncodingDetectionLossySubstitutionKey;
-pub use self::__NSString::NSStringEncodingDetectionOptionsKey;
-pub use self::__NSString::NSStringEncodingDetectionSuggestedEncodingsKey;
-pub use self::__NSString::NSStringEncodingDetectionUseOnlySuggestedEncodingsKey;
+pub use self::__NSString::NSStringEncodingConversionExternalRepresentation;
+
+pub use self::__NSString::NSStringEnumerationOptions;
+
+pub use self::__NSString::NSStringEnumerationByLines;
+
+pub use self::__NSString::NSStringEnumerationByParagraphs;
+
+pub use self::__NSString::NSStringEnumerationByComposedCharacterSequences;
+
+pub use self::__NSString::NSStringEnumerationByWords;
+
+pub use self::__NSString::NSStringEnumerationBySentences;
+
+pub use self::__NSString::NSStringEnumerationByCaretPositions;
+
+pub use self::__NSString::NSStringEnumerationByDeletionClusters;
+
+pub use self::__NSString::NSStringEnumerationReverse;
+
+pub use self::__NSString::NSStringEnumerationSubstringNotRequired;
+
+pub use self::__NSString::NSStringEnumerationLocalized;
+
 pub use self::__NSString::NSStringTransform;
-pub use self::__NSString::NSStringTransformFullwidthToHalfwidth;
-pub use self::__NSString::NSStringTransformHiraganaToKatakana;
-pub use self::__NSString::NSStringTransformLatinToArabic;
-pub use self::__NSString::NSStringTransformLatinToCyrillic;
-pub use self::__NSString::NSStringTransformLatinToGreek;
-pub use self::__NSString::NSStringTransformLatinToHangul;
-pub use self::__NSString::NSStringTransformLatinToHebrew;
-pub use self::__NSString::NSStringTransformLatinToHiragana;
+
 pub use self::__NSString::NSStringTransformLatinToKatakana;
+
+pub use self::__NSString::NSStringTransformLatinToHiragana;
+
+pub use self::__NSString::NSStringTransformLatinToHangul;
+
+pub use self::__NSString::NSStringTransformLatinToArabic;
+
+pub use self::__NSString::NSStringTransformLatinToHebrew;
+
 pub use self::__NSString::NSStringTransformLatinToThai;
-pub use self::__NSString::NSStringTransformMandarinToLatin;
-pub use self::__NSString::NSStringTransformStripCombiningMarks;
-pub use self::__NSString::NSStringTransformStripDiacritics;
+
+pub use self::__NSString::NSStringTransformLatinToCyrillic;
+
+pub use self::__NSString::NSStringTransformLatinToGreek;
+
 pub use self::__NSString::NSStringTransformToLatin;
-pub use self::__NSString::NSStringTransformToUnicodeName;
+
+pub use self::__NSString::NSStringTransformMandarinToLatin;
+
+pub use self::__NSString::NSStringTransformHiraganaToKatakana;
+
+pub use self::__NSString::NSStringTransformFullwidthToHalfwidth;
+
 pub use self::__NSString::NSStringTransformToXMLHex;
-pub use self::__NSString::{
-    NSASCIIStringEncoding, NSISO2022JPStringEncoding, NSISOLatin1StringEncoding,
-    NSISOLatin2StringEncoding, NSJapaneseEUCStringEncoding, NSMacOSRomanStringEncoding,
-    NSNEXTSTEPStringEncoding, NSNonLossyASCIIStringEncoding, NSShiftJISStringEncoding,
-    NSStringEncoding, NSSymbolStringEncoding, NSUTF16BigEndianStringEncoding,
-    NSUTF16LittleEndianStringEncoding, NSUTF16StringEncoding, NSUTF32BigEndianStringEncoding,
-    NSUTF32LittleEndianStringEncoding, NSUTF32StringEncoding, NSUTF8StringEncoding,
-    NSUnicodeStringEncoding, NSWindowsCP1250StringEncoding, NSWindowsCP1251StringEncoding,
-    NSWindowsCP1252StringEncoding, NSWindowsCP1253StringEncoding, NSWindowsCP1254StringEncoding,
-};
-pub use self::__NSString::{
-    NSAnchoredSearch, NSBackwardsSearch, NSCaseInsensitiveSearch, NSDiacriticInsensitiveSearch,
-    NSForcedOrderingSearch, NSLiteralSearch, NSNumericSearch, NSRegularExpressionSearch,
-    NSStringCompareOptions, NSWidthInsensitiveSearch,
-};
-pub use self::__NSString::{
-    NSStringEncodingConversionAllowLossy, NSStringEncodingConversionExternalRepresentation,
-    NSStringEncodingConversionOptions,
-};
-pub use self::__NSString::{
-    NSStringEnumerationByCaretPositions, NSStringEnumerationByComposedCharacterSequences,
-    NSStringEnumerationByDeletionClusters, NSStringEnumerationByLines,
-    NSStringEnumerationByParagraphs, NSStringEnumerationBySentences, NSStringEnumerationByWords,
-    NSStringEnumerationLocalized, NSStringEnumerationOptions, NSStringEnumerationReverse,
-    NSStringEnumerationSubstringNotRequired,
-};
+
+pub use self::__NSString::NSStringTransformToUnicodeName;
+
+pub use self::__NSString::NSStringTransformStripCombiningMarks;
+
+pub use self::__NSString::NSStringTransformStripDiacritics;
+
+pub use self::__NSString::NSStringEncodingDetectionOptionsKey;
+
+pub use self::__NSString::NSStringEncodingDetectionSuggestedEncodingsKey;
+
+pub use self::__NSString::NSStringEncodingDetectionDisallowedEncodingsKey;
+
+pub use self::__NSString::NSStringEncodingDetectionUseOnlySuggestedEncodingsKey;
+
+pub use self::__NSString::NSStringEncodingDetectionAllowLossyKey;
+
+pub use self::__NSString::NSStringEncodingDetectionFromWindowsKey;
+
+pub use self::__NSString::NSStringEncodingDetectionLossySubstitutionKey;
+
+#[cfg(feature = "Foundation_NSMutableString")]
+#[cfg(feature = "Foundation_NSMutableString")]
+pub use self::__NSString::NSMutableString;
+pub use self::__NSString::NSStringEncodingDetectionLikelyLanguageKey;
+
+pub use self::__NSString::NSCharacterConversionException;
+
+#[cfg(feature = "Foundation_NSConstantString")]
+#[cfg(feature = "Foundation_NSConstantString")]
+pub use self::__NSString::NSConstantString;
+pub use self::__NSString::NSParseErrorException;
+#[cfg(feature = "Foundation_NSSimpleCString")]
+#[cfg(feature = "Foundation_NSSimpleCString")]
+pub use self::__NSString::NSSimpleCString;
+#[cfg(feature = "Foundation_NSTask")]
 #[cfg(feature = "Foundation_NSTask")]
 pub use self::__NSTask::NSTask;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSTask::NSTaskTerminationReason;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSTask::NSTaskTerminationReasonExit;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSTask::NSTaskTerminationReasonUncaughtSignal;
+
 pub use self::__NSTask::NSTaskDidTerminateNotification;
-pub use self::__NSTask::{
-    NSTaskTerminationReason, NSTaskTerminationReasonExit, NSTaskTerminationReasonUncaughtSignal,
-};
-pub use self::__NSTextCheckingResult::NSTextCheckingAirlineKey;
-pub use self::__NSTextCheckingResult::NSTextCheckingCityKey;
-pub use self::__NSTextCheckingResult::NSTextCheckingCountryKey;
-pub use self::__NSTextCheckingResult::NSTextCheckingFlightKey;
-pub use self::__NSTextCheckingResult::NSTextCheckingJobTitleKey;
+
+pub use self::__NSTextCheckingResult::NSTextCheckingType;
+
+pub use self::__NSTextCheckingResult::NSTextCheckingTypeOrthography;
+
+pub use self::__NSTextCheckingResult::NSTextCheckingTypeSpelling;
+
+pub use self::__NSTextCheckingResult::NSTextCheckingTypeGrammar;
+
+pub use self::__NSTextCheckingResult::NSTextCheckingTypeDate;
+
+pub use self::__NSTextCheckingResult::NSTextCheckingTypeAddress;
+
+pub use self::__NSTextCheckingResult::NSTextCheckingTypeLink;
+
+pub use self::__NSTextCheckingResult::NSTextCheckingTypeQuote;
+
+pub use self::__NSTextCheckingResult::NSTextCheckingTypeDash;
+
+pub use self::__NSTextCheckingResult::NSTextCheckingTypeReplacement;
+
+pub use self::__NSTextCheckingResult::NSTextCheckingTypeCorrection;
+
+pub use self::__NSTextCheckingResult::NSTextCheckingTypeRegularExpression;
+
+pub use self::__NSTextCheckingResult::NSTextCheckingTypePhoneNumber;
+
+pub use self::__NSTextCheckingResult::NSTextCheckingTypeTransitInformation;
+
+pub use self::__NSTextCheckingResult::NSTextCheckingTypes;
+
+pub use self::__NSTextCheckingResult::NSTextCheckingAllSystemTypes;
+
+pub use self::__NSTextCheckingResult::NSTextCheckingAllCustomTypes;
+
+pub use self::__NSTextCheckingResult::NSTextCheckingAllTypes;
+
 pub use self::__NSTextCheckingResult::NSTextCheckingKey;
-pub use self::__NSTextCheckingResult::NSTextCheckingNameKey;
-pub use self::__NSTextCheckingResult::NSTextCheckingOrganizationKey;
-pub use self::__NSTextCheckingResult::NSTextCheckingPhoneKey;
+#[cfg(feature = "Foundation_NSTextCheckingResult")]
 #[cfg(feature = "Foundation_NSTextCheckingResult")]
 pub use self::__NSTextCheckingResult::NSTextCheckingResult;
-pub use self::__NSTextCheckingResult::NSTextCheckingStateKey;
+
+pub use self::__NSTextCheckingResult::NSTextCheckingNameKey;
+
+pub use self::__NSTextCheckingResult::NSTextCheckingJobTitleKey;
+
+pub use self::__NSTextCheckingResult::NSTextCheckingOrganizationKey;
+
 pub use self::__NSTextCheckingResult::NSTextCheckingStreetKey;
+
+pub use self::__NSTextCheckingResult::NSTextCheckingCityKey;
+
+pub use self::__NSTextCheckingResult::NSTextCheckingStateKey;
+
 pub use self::__NSTextCheckingResult::NSTextCheckingZIPKey;
-pub use self::__NSTextCheckingResult::{
-    NSTextCheckingAllCustomTypes, NSTextCheckingAllSystemTypes, NSTextCheckingAllTypes,
-    NSTextCheckingTypes,
-};
-pub use self::__NSTextCheckingResult::{
-    NSTextCheckingType, NSTextCheckingTypeAddress, NSTextCheckingTypeCorrection,
-    NSTextCheckingTypeDash, NSTextCheckingTypeDate, NSTextCheckingTypeGrammar,
-    NSTextCheckingTypeLink, NSTextCheckingTypeOrthography, NSTextCheckingTypePhoneNumber,
-    NSTextCheckingTypeQuote, NSTextCheckingTypeRegularExpression, NSTextCheckingTypeReplacement,
-    NSTextCheckingTypeSpelling, NSTextCheckingTypeTransitInformation,
-};
-pub use self::__NSThread::NSDidBecomeSingleThreadedNotification;
+
+pub use self::__NSTextCheckingResult::NSTextCheckingCountryKey;
+
+pub use self::__NSTextCheckingResult::NSTextCheckingPhoneKey;
+
+pub use self::__NSTextCheckingResult::NSTextCheckingAirlineKey;
+
+pub use self::__NSTextCheckingResult::NSTextCheckingFlightKey;
+#[cfg(feature = "Foundation_NSThread")]
 #[cfg(feature = "Foundation_NSThread")]
 pub use self::__NSThread::NSThread;
-pub use self::__NSThread::NSThreadWillExitNotification;
+
 pub use self::__NSThread::NSWillBecomeMultiThreadedNotification;
-pub use self::__NSTimeZone::NSSystemTimeZoneDidChangeNotification;
+
+pub use self::__NSThread::NSDidBecomeSingleThreadedNotification;
+
+pub use self::__NSThread::NSThreadWillExitNotification;
+#[cfg(feature = "Foundation_NSTimeZone")]
 #[cfg(feature = "Foundation_NSTimeZone")]
 pub use self::__NSTimeZone::NSTimeZone;
-pub use self::__NSTimeZone::{
-    NSTimeZoneNameStyle, NSTimeZoneNameStyleDaylightSaving, NSTimeZoneNameStyleGeneric,
-    NSTimeZoneNameStyleShortDaylightSaving, NSTimeZoneNameStyleShortGeneric,
-    NSTimeZoneNameStyleShortStandard, NSTimeZoneNameStyleStandard,
-};
+
+pub use self::__NSTimeZone::NSTimeZoneNameStyle;
+
+pub use self::__NSTimeZone::NSTimeZoneNameStyleStandard;
+
+pub use self::__NSTimeZone::NSTimeZoneNameStyleShortStandard;
+
+pub use self::__NSTimeZone::NSTimeZoneNameStyleDaylightSaving;
+
+pub use self::__NSTimeZone::NSTimeZoneNameStyleShortDaylightSaving;
+
+pub use self::__NSTimeZone::NSTimeZoneNameStyleGeneric;
+
+pub use self::__NSTimeZone::NSTimeZoneNameStyleShortGeneric;
+
+pub use self::__NSTimeZone::NSSystemTimeZoneDidChangeNotification;
+#[cfg(feature = "Foundation_NSTimer")]
 #[cfg(feature = "Foundation_NSTimer")]
 pub use self::__NSTimer::NSTimer;
+
+pub use self::__NSURL::NSURLResourceKey;
+
+pub use self::__NSURL::NSURLFileScheme;
+
+pub use self::__NSURL::NSURLKeysOfUnsetValuesKey;
+
+pub use self::__NSURL::NSURLNameKey;
+
+pub use self::__NSURL::NSURLLocalizedNameKey;
+
+pub use self::__NSURL::NSURLIsRegularFileKey;
+
+pub use self::__NSURL::NSURLIsDirectoryKey;
+
+pub use self::__NSURL::NSURLIsSymbolicLinkKey;
+
+pub use self::__NSURL::NSURLIsVolumeKey;
+
+pub use self::__NSURL::NSURLIsPackageKey;
+
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSURL::NSURLApplicationIsScriptableKey;
+pub use self::__NSURL::NSURLIsApplicationKey;
+
+pub use self::__NSURL::NSURLIsSystemImmutableKey;
+
+pub use self::__NSURL::NSURLIsUserImmutableKey;
+
+pub use self::__NSURL::NSURLIsHiddenKey;
+
+pub use self::__NSURL::NSURLHasHiddenExtensionKey;
+
+pub use self::__NSURL::NSURLCreationDateKey;
+
+pub use self::__NSURL::NSURLContentAccessDateKey;
+
+pub use self::__NSURL::NSURLContentModificationDateKey;
+
+pub use self::__NSURL::NSURLAttributeModificationDateKey;
+
+pub use self::__NSURL::NSURLLinkCountKey;
+
+pub use self::__NSURL::NSURLParentDirectoryURLKey;
+
+pub use self::__NSURL::NSURLVolumeURLKey;
+
+pub use self::__NSURL::NSURLTypeIdentifierKey;
+
+pub use self::__NSURL::NSURLContentTypeKey;
+
+pub use self::__NSURL::NSURLLocalizedTypeDescriptionKey;
+
+pub use self::__NSURL::NSURLLabelNumberKey;
+
+pub use self::__NSURL::NSURLLabelColorKey;
+
+pub use self::__NSURL::NSURLLocalizedLabelKey;
+
+pub use self::__NSURL::NSURLEffectiveIconKey;
+
+pub use self::__NSURL::NSURLCustomIconKey;
+
+pub use self::__NSURL::NSURLFileResourceIdentifierKey;
+
+pub use self::__NSURL::NSURLVolumeIdentifierKey;
+
+pub use self::__NSURL::NSURLPreferredIOBlockSizeKey;
+
+pub use self::__NSURL::NSURLIsReadableKey;
+
+pub use self::__NSURL::NSURLIsWritableKey;
+
+pub use self::__NSURL::NSURLIsExecutableKey;
+
+pub use self::__NSURL::NSURLFileSecurityKey;
+
+pub use self::__NSURL::NSURLIsExcludedFromBackupKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSURL::NSURLTagNamesKey;
+
+pub use self::__NSURL::NSURLPathKey;
+
+pub use self::__NSURL::NSURLCanonicalPathKey;
+
+pub use self::__NSURL::NSURLIsMountTriggerKey;
+
+pub use self::__NSURL::NSURLGenerationIdentifierKey;
+
+pub use self::__NSURL::NSURLDocumentIdentifierKey;
+
+pub use self::__NSURL::NSURLAddedToDirectoryDateKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSURL::NSURLQuarantinePropertiesKey;
+
+pub use self::__NSURL::NSURLFileResourceTypeKey;
+
+pub use self::__NSURL::NSURLFileContentIdentifierKey;
+
+pub use self::__NSURL::NSURLMayShareFileContentKey;
+
+pub use self::__NSURL::NSURLMayHaveExtendedAttributesKey;
+
+pub use self::__NSURL::NSURLIsPurgeableKey;
+
+pub use self::__NSURL::NSURLIsSparseKey;
+
+pub use self::__NSURL::NSURLFileResourceType;
+
+pub use self::__NSURL::NSURLFileResourceTypeNamedPipe;
+
+pub use self::__NSURL::NSURLFileResourceTypeCharacterSpecial;
+
+pub use self::__NSURL::NSURLFileResourceTypeDirectory;
+
+pub use self::__NSURL::NSURLFileResourceTypeBlockSpecial;
+
+pub use self::__NSURL::NSURLFileResourceTypeRegular;
+
+pub use self::__NSURL::NSURLFileResourceTypeSymbolicLink;
+
+pub use self::__NSURL::NSURLFileResourceTypeSocket;
+
+pub use self::__NSURL::NSURLFileResourceTypeUnknown;
+
+pub use self::__NSURL::NSURLThumbnailDictionaryKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSURL::NSURLThumbnailKey;
+
+pub use self::__NSURL::NSURLThumbnailDictionaryItem;
+
+pub use self::__NSURL::NSThumbnail1024x1024SizeKey;
+
+pub use self::__NSURL::NSURLFileSizeKey;
+
+pub use self::__NSURL::NSURLFileAllocatedSizeKey;
+
+pub use self::__NSURL::NSURLTotalFileSizeKey;
+
+pub use self::__NSURL::NSURLTotalFileAllocatedSizeKey;
+
+pub use self::__NSURL::NSURLIsAliasFileKey;
+
+pub use self::__NSURL::NSURLFileProtectionKey;
+
+pub use self::__NSURL::NSURLFileProtectionType;
+
+pub use self::__NSURL::NSURLFileProtectionNone;
+
+pub use self::__NSURL::NSURLFileProtectionComplete;
+
+pub use self::__NSURL::NSURLFileProtectionCompleteUnlessOpen;
+
+pub use self::__NSURL::NSURLFileProtectionCompleteUntilFirstUserAuthentication;
+
+pub use self::__NSURL::NSURLVolumeLocalizedFormatDescriptionKey;
+
+pub use self::__NSURL::NSURLVolumeTotalCapacityKey;
+
+pub use self::__NSURL::NSURLVolumeAvailableCapacityKey;
+
+pub use self::__NSURL::NSURLVolumeResourceCountKey;
+
+pub use self::__NSURL::NSURLVolumeSupportsPersistentIDsKey;
+
+pub use self::__NSURL::NSURLVolumeSupportsSymbolicLinksKey;
+
+pub use self::__NSURL::NSURLVolumeSupportsHardLinksKey;
+
+pub use self::__NSURL::NSURLVolumeSupportsJournalingKey;
+
+pub use self::__NSURL::NSURLVolumeIsJournalingKey;
+
+pub use self::__NSURL::NSURLVolumeSupportsSparseFilesKey;
+
+pub use self::__NSURL::NSURLVolumeSupportsZeroRunsKey;
+
+pub use self::__NSURL::NSURLVolumeSupportsCaseSensitiveNamesKey;
+
+pub use self::__NSURL::NSURLVolumeSupportsCasePreservedNamesKey;
+
+pub use self::__NSURL::NSURLVolumeSupportsRootDirectoryDatesKey;
+
+pub use self::__NSURL::NSURLVolumeSupportsVolumeSizesKey;
+
+pub use self::__NSURL::NSURLVolumeSupportsRenamingKey;
+
+pub use self::__NSURL::NSURLVolumeSupportsAdvisoryFileLockingKey;
+
+pub use self::__NSURL::NSURLVolumeSupportsExtendedSecurityKey;
+
+pub use self::__NSURL::NSURLVolumeIsBrowsableKey;
+
+pub use self::__NSURL::NSURLVolumeMaximumFileSizeKey;
+
+pub use self::__NSURL::NSURLVolumeIsEjectableKey;
+
+pub use self::__NSURL::NSURLVolumeIsRemovableKey;
+
+pub use self::__NSURL::NSURLVolumeIsInternalKey;
+
+pub use self::__NSURL::NSURLVolumeIsAutomountedKey;
+
+pub use self::__NSURL::NSURLVolumeIsLocalKey;
+
+pub use self::__NSURL::NSURLVolumeIsReadOnlyKey;
+
+pub use self::__NSURL::NSURLVolumeCreationDateKey;
+
+pub use self::__NSURL::NSURLVolumeURLForRemountingKey;
+
+pub use self::__NSURL::NSURLVolumeUUIDStringKey;
+
+pub use self::__NSURL::NSURLVolumeNameKey;
+
+pub use self::__NSURL::NSURLVolumeLocalizedNameKey;
+
+pub use self::__NSURL::NSURLVolumeIsEncryptedKey;
+
+pub use self::__NSURL::NSURLVolumeIsRootFileSystemKey;
+
+pub use self::__NSURL::NSURLVolumeSupportsCompressionKey;
+
+pub use self::__NSURL::NSURLVolumeSupportsFileCloningKey;
+
+pub use self::__NSURL::NSURLVolumeSupportsSwapRenamingKey;
+
+pub use self::__NSURL::NSURLVolumeSupportsExclusiveRenamingKey;
+
+pub use self::__NSURL::NSURLVolumeSupportsImmutableFilesKey;
+
+pub use self::__NSURL::NSURLVolumeSupportsAccessPermissionsKey;
+
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSURL::NSURLVolumeAvailableCapacityForImportantUsageKey;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSURL::NSURLVolumeAvailableCapacityForOpportunisticUsageKey;
+pub use self::__NSURL::NSURLVolumeSupportsFileProtectionKey;
+
+pub use self::__NSURL::NSURLIsUbiquitousItemKey;
+
+pub use self::__NSURL::NSURLUbiquitousItemHasUnresolvedConflictsKey;
+
+pub use self::__NSURL::NSURLUbiquitousItemIsDownloadedKey;
+
+pub use self::__NSURL::NSURLUbiquitousItemIsDownloadingKey;
+
+pub use self::__NSURL::NSURLUbiquitousItemIsUploadedKey;
+
+pub use self::__NSURL::NSURLUbiquitousItemIsUploadingKey;
+
+pub use self::__NSURL::NSURLUbiquitousItemPercentDownloadedKey;
+
+pub use self::__NSURL::NSURLUbiquitousItemPercentUploadedKey;
+
+pub use self::__NSURL::NSURLUbiquitousItemDownloadingStatusKey;
+
+pub use self::__NSURL::NSURLUbiquitousItemDownloadingErrorKey;
+
+pub use self::__NSURL::NSURLUbiquitousItemUploadingErrorKey;
+
+pub use self::__NSURL::NSURLUbiquitousItemDownloadRequestedKey;
+
+pub use self::__NSURL::NSURLUbiquitousItemContainerDisplayNameKey;
+
+pub use self::__NSURL::NSURLUbiquitousItemIsExcludedFromSyncKey;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSURL::NSURLUbiquitousItemIsSharedKey;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSURL::NSURLUbiquitousSharedItemCurrentUserPermissionsKey;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSURL::NSURLUbiquitousSharedItemCurrentUserRoleKey;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSURL::NSURLUbiquitousSharedItemMostRecentEditorNameComponentsKey;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSURL::NSURLUbiquitousSharedItemOwnerNameComponentsKey;
+
+pub use self::__NSURL::NSURLUbiquitousItemDownloadingStatus;
+
+pub use self::__NSURL::NSURLUbiquitousItemDownloadingStatusNotDownloaded;
+
+pub use self::__NSURL::NSURLUbiquitousItemDownloadingStatusDownloaded;
+
+pub use self::__NSURL::NSURLUbiquitousItemDownloadingStatusCurrent;
+
+pub use self::__NSURL::NSURLUbiquitousSharedItemRole;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSURL::NSURLUbiquitousSharedItemRoleOwner;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSURL::NSURLUbiquitousSharedItemRoleParticipant;
+
+pub use self::__NSURL::NSURLUbiquitousSharedItemPermissions;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSURL::NSURLUbiquitousSharedItemPermissionsReadOnly;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSURL::NSURLUbiquitousSharedItemPermissionsReadWrite;
+
+pub use self::__NSURL::NSURLBookmarkCreationOptions;
+
+pub use self::__NSURL::NSURLBookmarkCreationPreferFileIDResolution;
+
+pub use self::__NSURL::NSURLBookmarkCreationMinimalBookmark;
+
+pub use self::__NSURL::NSURLBookmarkCreationSuitableForBookmarkFile;
+
+pub use self::__NSURL::NSURLBookmarkCreationWithSecurityScope;
+
+pub use self::__NSURL::NSURLBookmarkCreationSecurityScopeAllowOnlyReadAccess;
+
+pub use self::__NSURL::NSURLBookmarkCreationWithoutImplicitSecurityScope;
+
+pub use self::__NSURL::NSURLBookmarkResolutionOptions;
+
+pub use self::__NSURL::NSURLBookmarkResolutionWithoutUI;
+
+pub use self::__NSURL::NSURLBookmarkResolutionWithoutMounting;
+
+pub use self::__NSURL::NSURLBookmarkResolutionWithSecurityScope;
+
+pub use self::__NSURL::NSURLBookmarkResolutionWithoutImplicitStartAccessing;
+
+#[cfg(feature = "Foundation_NSFileSecurity")]
+#[cfg(feature = "Foundation_NSFileSecurity")]
+pub use self::__NSURL::NSFileSecurity;
+pub use self::__NSURL::NSURLBookmarkFileCreationOptions;
+#[cfg(feature = "Foundation_NSURLComponents")]
+#[cfg(feature = "Foundation_NSURLComponents")]
+pub use self::__NSURL::NSURLComponents;
+#[cfg(feature = "Foundation_NSURLQueryItem")]
+#[cfg(feature = "Foundation_NSURLQueryItem")]
+pub use self::__NSURL::NSURLQueryItem;
+#[cfg(feature = "Foundation_NSURL")]
+#[cfg(feature = "Foundation_NSURL")]
+pub use self::__NSURL::NSURL;
+
+#[cfg(feature = "Foundation_NSURLAuthenticationChallenge")]
 #[cfg(feature = "Foundation_NSURLAuthenticationChallenge")]
 pub use self::__NSURLAuthenticationChallenge::NSURLAuthenticationChallenge;
 pub use self::__NSURLAuthenticationChallenge::NSURLAuthenticationChallengeSender;
+
+pub use self::__NSURLCache::NSURLCacheStoragePolicy;
+
+pub use self::__NSURLCache::NSURLCacheStorageAllowed;
+
+pub use self::__NSURLCache::NSURLCacheStorageAllowedInMemoryOnly;
+
+#[cfg(feature = "Foundation_NSCachedURLResponse")]
 #[cfg(feature = "Foundation_NSCachedURLResponse")]
 pub use self::__NSURLCache::NSCachedURLResponse;
 #[cfg(feature = "Foundation_NSURLCache")]
+#[cfg(feature = "Foundation_NSURLCache")]
 pub use self::__NSURLCache::NSURLCache;
-pub use self::__NSURLCache::{
-    NSURLCacheStorageAllowed, NSURLCacheStorageAllowedInMemoryOnly, NSURLCacheStorageNotAllowed,
-    NSURLCacheStoragePolicy,
-};
+pub use self::__NSURLCache::NSURLCacheStorageNotAllowed;
+#[cfg(feature = "Foundation_NSURLConnection")]
 #[cfg(feature = "Foundation_NSURLConnection")]
 pub use self::__NSURLConnection::NSURLConnection;
-pub use self::__NSURLConnection::NSURLConnectionDataDelegate;
+
 pub use self::__NSURLConnection::NSURLConnectionDelegate;
+
+pub use self::__NSURLConnection::NSURLConnectionDataDelegate;
+
 pub use self::__NSURLConnection::NSURLConnectionDownloadDelegate;
+
+pub use self::__NSURLCredential::NSURLCredentialPersistence;
+
+pub use self::__NSURLCredential::NSURLCredentialPersistenceNone;
+
+pub use self::__NSURLCredential::NSURLCredentialPersistenceForSession;
+
+pub use self::__NSURLCredential::NSURLCredentialPersistencePermanent;
+
+#[cfg(feature = "Foundation_NSURLCredential")]
 #[cfg(feature = "Foundation_NSURLCredential")]
 pub use self::__NSURLCredential::NSURLCredential;
-pub use self::__NSURLCredential::{
-    NSURLCredentialPersistence, NSURLCredentialPersistenceForSession,
-    NSURLCredentialPersistenceNone, NSURLCredentialPersistencePermanent,
-    NSURLCredentialPersistenceSynchronizable,
-};
+pub use self::__NSURLCredential::NSURLCredentialPersistenceSynchronizable;
+#[cfg(feature = "Foundation_NSURLCredentialStorage")]
 #[cfg(feature = "Foundation_NSURLCredentialStorage")]
 pub use self::__NSURLCredentialStorage::NSURLCredentialStorage;
+
 pub use self::__NSURLCredentialStorage::NSURLCredentialStorageChangedNotification;
+
 pub use self::__NSURLCredentialStorage::NSURLCredentialStorageRemoveSynchronizableCredentials;
 #[cfg(feature = "Foundation_NSURLDownload")]
+#[cfg(feature = "Foundation_NSURLDownload")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSURLDownload::NSURLDownload;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSURLDownload::NSURLDownloadDelegate;
-pub use self::__NSURLError::NSErrorFailingURLStringKey;
-pub use self::__NSURLError::NSURLErrorBackgroundTaskCancelledReasonKey;
+
 pub use self::__NSURLError::NSURLErrorDomain;
+
 pub use self::__NSURLError::NSURLErrorFailingURLErrorKey;
-pub use self::__NSURLError::NSURLErrorFailingURLPeerTrustErrorKey;
+
 pub use self::__NSURLError::NSURLErrorFailingURLStringErrorKey;
+
+pub use self::__NSURLError::NSErrorFailingURLStringKey;
+
+pub use self::__NSURLError::NSURLErrorFailingURLPeerTrustErrorKey;
+
+pub use self::__NSURLError::NSURLErrorBackgroundTaskCancelledReasonKey;
+
+pub use self::__NSURLError::NSURLErrorCancelledReasonUserForceQuitApplication;
+
+pub use self::__NSURLError::NSURLErrorCancelledReasonBackgroundUpdatesDisabled;
+
+pub use self::__NSURLError::NSURLErrorCancelledReasonInsufficientSystemResources;
+
 pub use self::__NSURLError::NSURLErrorNetworkUnavailableReasonKey;
-pub use self::__NSURLError::{
-    NSURLErrorAppTransportSecurityRequiresSecureConnection,
-    NSURLErrorBackgroundSessionInUseByAnotherProcess,
-    NSURLErrorBackgroundSessionRequiresSharedContainer, NSURLErrorBackgroundSessionWasDisconnected,
-    NSURLErrorBadServerResponse, NSURLErrorBadURL, NSURLErrorCallIsActive, NSURLErrorCancelled,
-    NSURLErrorCannotCloseFile, NSURLErrorCannotConnectToHost, NSURLErrorCannotCreateFile,
-    NSURLErrorCannotDecodeContentData, NSURLErrorCannotDecodeRawData, NSURLErrorCannotFindHost,
-    NSURLErrorCannotLoadFromNetwork, NSURLErrorCannotMoveFile, NSURLErrorCannotOpenFile,
-    NSURLErrorCannotParseResponse, NSURLErrorCannotRemoveFile, NSURLErrorCannotWriteToFile,
-    NSURLErrorClientCertificateRejected, NSURLErrorClientCertificateRequired,
-    NSURLErrorDNSLookupFailed, NSURLErrorDataLengthExceedsMaximum, NSURLErrorDataNotAllowed,
-    NSURLErrorDownloadDecodingFailedMidStream, NSURLErrorDownloadDecodingFailedToComplete,
-    NSURLErrorFileDoesNotExist, NSURLErrorFileIsDirectory, NSURLErrorFileOutsideSafeArea,
-    NSURLErrorHTTPTooManyRedirects, NSURLErrorInternationalRoamingOff,
-    NSURLErrorNetworkConnectionLost, NSURLErrorNoPermissionsToReadFile,
-    NSURLErrorNotConnectedToInternet, NSURLErrorRedirectToNonExistentLocation,
-    NSURLErrorRequestBodyStreamExhausted, NSURLErrorResourceUnavailable,
-    NSURLErrorSecureConnectionFailed, NSURLErrorServerCertificateHasBadDate,
-    NSURLErrorServerCertificateHasUnknownRoot, NSURLErrorServerCertificateNotYetValid,
-    NSURLErrorServerCertificateUntrusted, NSURLErrorTimedOut, NSURLErrorUnknown,
-    NSURLErrorUnsupportedURL, NSURLErrorUserAuthenticationRequired,
-    NSURLErrorUserCancelledAuthentication, NSURLErrorZeroByteResource,
-};
-pub use self::__NSURLError::{
-    NSURLErrorCancelledReasonBackgroundUpdatesDisabled,
-    NSURLErrorCancelledReasonInsufficientSystemResources,
-    NSURLErrorCancelledReasonUserForceQuitApplication,
-};
-pub use self::__NSURLError::{
-    NSURLErrorNetworkUnavailableReason, NSURLErrorNetworkUnavailableReasonCellular,
-    NSURLErrorNetworkUnavailableReasonConstrained, NSURLErrorNetworkUnavailableReasonExpensive,
-};
+
+pub use self::__NSURLError::NSURLErrorNetworkUnavailableReason;
+
+pub use self::__NSURLError::NSURLErrorNetworkUnavailableReasonCellular;
+
+pub use self::__NSURLError::NSURLErrorNetworkUnavailableReasonExpensive;
+
+pub use self::__NSURLError::NSURLErrorNetworkUnavailableReasonConstrained;
+
+pub use self::__NSURLError::NSURLErrorUnknown;
+
+pub use self::__NSURLError::NSURLErrorCancelled;
+
+pub use self::__NSURLError::NSURLErrorBadURL;
+
+pub use self::__NSURLError::NSURLErrorTimedOut;
+
+pub use self::__NSURLError::NSURLErrorUnsupportedURL;
+
+pub use self::__NSURLError::NSURLErrorCannotFindHost;
+
+pub use self::__NSURLError::NSURLErrorCannotConnectToHost;
+
+pub use self::__NSURLError::NSURLErrorNetworkConnectionLost;
+
+pub use self::__NSURLError::NSURLErrorDNSLookupFailed;
+
+pub use self::__NSURLError::NSURLErrorHTTPTooManyRedirects;
+
+pub use self::__NSURLError::NSURLErrorResourceUnavailable;
+
+pub use self::__NSURLError::NSURLErrorNotConnectedToInternet;
+
+pub use self::__NSURLError::NSURLErrorRedirectToNonExistentLocation;
+
+pub use self::__NSURLError::NSURLErrorBadServerResponse;
+
+pub use self::__NSURLError::NSURLErrorUserCancelledAuthentication;
+
+pub use self::__NSURLError::NSURLErrorUserAuthenticationRequired;
+
+pub use self::__NSURLError::NSURLErrorZeroByteResource;
+
+pub use self::__NSURLError::NSURLErrorCannotDecodeRawData;
+
+pub use self::__NSURLError::NSURLErrorCannotDecodeContentData;
+
+pub use self::__NSURLError::NSURLErrorCannotParseResponse;
+
+pub use self::__NSURLError::NSURLErrorAppTransportSecurityRequiresSecureConnection;
+
+pub use self::__NSURLError::NSURLErrorFileDoesNotExist;
+
+pub use self::__NSURLError::NSURLErrorFileIsDirectory;
+
+pub use self::__NSURLError::NSURLErrorNoPermissionsToReadFile;
+
+pub use self::__NSURLError::NSURLErrorDataLengthExceedsMaximum;
+
+pub use self::__NSURLError::NSURLErrorFileOutsideSafeArea;
+
+pub use self::__NSURLError::NSURLErrorSecureConnectionFailed;
+
+pub use self::__NSURLError::NSURLErrorServerCertificateHasBadDate;
+
+pub use self::__NSURLError::NSURLErrorServerCertificateUntrusted;
+
+pub use self::__NSURLError::NSURLErrorServerCertificateHasUnknownRoot;
+
+pub use self::__NSURLError::NSURLErrorServerCertificateNotYetValid;
+
+pub use self::__NSURLError::NSURLErrorClientCertificateRejected;
+
+pub use self::__NSURLError::NSURLErrorClientCertificateRequired;
+
+pub use self::__NSURLError::NSURLErrorCannotLoadFromNetwork;
+
+pub use self::__NSURLError::NSURLErrorCannotCreateFile;
+
+pub use self::__NSURLError::NSURLErrorCannotOpenFile;
+
+pub use self::__NSURLError::NSURLErrorCannotCloseFile;
+
+pub use self::__NSURLError::NSURLErrorCannotWriteToFile;
+
+pub use self::__NSURLError::NSURLErrorCannotRemoveFile;
+
+pub use self::__NSURLError::NSURLErrorCannotMoveFile;
+
+pub use self::__NSURLError::NSURLErrorDownloadDecodingFailedMidStream;
+
+pub use self::__NSURLError::NSURLErrorDownloadDecodingFailedToComplete;
+
+pub use self::__NSURLError::NSURLErrorInternationalRoamingOff;
+
+pub use self::__NSURLError::NSURLErrorCallIsActive;
+
+pub use self::__NSURLError::NSURLErrorDataNotAllowed;
+
+pub use self::__NSURLError::NSURLErrorRequestBodyStreamExhausted;
+
+pub use self::__NSURLError::NSURLErrorBackgroundSessionRequiresSharedContainer;
+
+pub use self::__NSURLError::NSURLErrorBackgroundSessionInUseByAnotherProcess;
+
+pub use self::__NSURLError::NSURLErrorBackgroundSessionWasDisconnected;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSURLHandle::NSFTPPropertyActiveTransferModeKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSURLHandle::NSFTPPropertyFTPProxy;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSURLHandle::NSFTPPropertyFileOffsetKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSURLHandle::NSFTPPropertyUserLoginKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSURLHandle::NSFTPPropertyUserPasswordKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSURLHandle::NSHTTPPropertyErrorPageDataKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSURLHandle::NSHTTPPropertyHTTPProxy;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSURLHandle::NSHTTPPropertyRedirectionHeadersKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSURLHandle::NSHTTPPropertyServerHTTPVersionKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSURLHandle::NSHTTPPropertyStatusCodeKey;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSURLHandle::NSHTTPPropertyStatusReasonKey;
+
+pub use self::__NSURLHandle::NSURLHandleStatus;
+
+pub use self::__NSURLHandle::NSURLHandleNotLoaded;
+
+pub use self::__NSURLHandle::NSURLHandleLoadSucceeded;
+
+pub use self::__NSURLHandle::NSURLHandleLoadInProgress;
+
+#[cfg(feature = "Foundation_NSURLHandle")]
 #[cfg(feature = "Foundation_NSURLHandle")]
 pub use self::__NSURLHandle::NSURLHandle;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSURLHandle::NSURLHandleClient;
-pub use self::__NSURLHandle::{
-    NSURLHandleLoadFailed, NSURLHandleLoadInProgress, NSURLHandleLoadSucceeded,
-    NSURLHandleNotLoaded, NSURLHandleStatus,
-};
-pub use self::__NSURLProtectionSpace::NSURLAuthenticationMethodClientCertificate;
+pub use self::__NSURLHandle::NSURLHandleLoadFailed;
+
+pub use self::__NSURLProtectionSpace::NSURLProtectionSpaceHTTP;
+
+pub use self::__NSURLProtectionSpace::NSURLProtectionSpaceHTTPS;
+
+pub use self::__NSURLProtectionSpace::NSURLProtectionSpaceFTP;
+
+pub use self::__NSURLProtectionSpace::NSURLProtectionSpaceHTTPProxy;
+
+pub use self::__NSURLProtectionSpace::NSURLProtectionSpaceHTTPSProxy;
+
+pub use self::__NSURLProtectionSpace::NSURLProtectionSpaceFTPProxy;
+
+pub use self::__NSURLProtectionSpace::NSURLProtectionSpaceSOCKSProxy;
+
 pub use self::__NSURLProtectionSpace::NSURLAuthenticationMethodDefault;
-pub use self::__NSURLProtectionSpace::NSURLAuthenticationMethodHTMLForm;
+
 pub use self::__NSURLProtectionSpace::NSURLAuthenticationMethodHTTPBasic;
+
 pub use self::__NSURLProtectionSpace::NSURLAuthenticationMethodHTTPDigest;
+
+pub use self::__NSURLProtectionSpace::NSURLAuthenticationMethodHTMLForm;
+
 pub use self::__NSURLProtectionSpace::NSURLAuthenticationMethodNTLM;
+
 pub use self::__NSURLProtectionSpace::NSURLAuthenticationMethodNegotiate;
+
+pub use self::__NSURLProtectionSpace::NSURLAuthenticationMethodClientCertificate;
+
 pub use self::__NSURLProtectionSpace::NSURLAuthenticationMethodServerTrust;
 #[cfg(feature = "Foundation_NSURLProtectionSpace")]
+#[cfg(feature = "Foundation_NSURLProtectionSpace")]
 pub use self::__NSURLProtectionSpace::NSURLProtectionSpace;
-pub use self::__NSURLProtectionSpace::NSURLProtectionSpaceFTP;
-pub use self::__NSURLProtectionSpace::NSURLProtectionSpaceFTPProxy;
-pub use self::__NSURLProtectionSpace::NSURLProtectionSpaceHTTP;
-pub use self::__NSURLProtectionSpace::NSURLProtectionSpaceHTTPProxy;
-pub use self::__NSURLProtectionSpace::NSURLProtectionSpaceHTTPS;
-pub use self::__NSURLProtectionSpace::NSURLProtectionSpaceHTTPSProxy;
-pub use self::__NSURLProtectionSpace::NSURLProtectionSpaceSOCKSProxy;
+
+#[cfg(feature = "Foundation_NSURLProtocol")]
 #[cfg(feature = "Foundation_NSURLProtocol")]
 pub use self::__NSURLProtocol::NSURLProtocol;
 pub use self::__NSURLProtocol::NSURLProtocolClient;
+
+pub use self::__NSURLRequest::NSURLRequestCachePolicy;
+
+pub use self::__NSURLRequest::NSURLRequestUseProtocolCachePolicy;
+
+pub use self::__NSURLRequest::NSURLRequestReloadIgnoringLocalCacheData;
+
+pub use self::__NSURLRequest::NSURLRequestReloadIgnoringLocalAndRemoteCacheData;
+
+pub use self::__NSURLRequest::NSURLRequestReloadIgnoringCacheData;
+
+pub use self::__NSURLRequest::NSURLRequestReturnCacheDataElseLoad;
+
+pub use self::__NSURLRequest::NSURLRequestReturnCacheDataDontLoad;
+
+pub use self::__NSURLRequest::NSURLRequestReloadRevalidatingCacheData;
+
+pub use self::__NSURLRequest::NSURLRequestNetworkServiceType;
+
+pub use self::__NSURLRequest::NSURLNetworkServiceTypeDefault;
+
+pub use self::__NSURLRequest::NSURLNetworkServiceTypeVoIP;
+
+pub use self::__NSURLRequest::NSURLNetworkServiceTypeVideo;
+
+pub use self::__NSURLRequest::NSURLNetworkServiceTypeBackground;
+
+pub use self::__NSURLRequest::NSURLNetworkServiceTypeVoice;
+
+pub use self::__NSURLRequest::NSURLNetworkServiceTypeResponsiveData;
+
+pub use self::__NSURLRequest::NSURLNetworkServiceTypeAVStreaming;
+
+pub use self::__NSURLRequest::NSURLNetworkServiceTypeResponsiveAV;
+
+pub use self::__NSURLRequest::NSURLNetworkServiceTypeCallSignaling;
+
+pub use self::__NSURLRequest::NSURLRequestAttribution;
+
+pub use self::__NSURLRequest::NSURLRequestAttributionDeveloper;
+
+#[cfg(feature = "Foundation_NSMutableURLRequest")]
 #[cfg(feature = "Foundation_NSMutableURLRequest")]
 pub use self::__NSURLRequest::NSMutableURLRequest;
 #[cfg(feature = "Foundation_NSURLRequest")]
+#[cfg(feature = "Foundation_NSURLRequest")]
 pub use self::__NSURLRequest::NSURLRequest;
-pub use self::__NSURLRequest::{
-    NSURLNetworkServiceTypeAVStreaming, NSURLNetworkServiceTypeBackground,
-    NSURLNetworkServiceTypeCallSignaling, NSURLNetworkServiceTypeDefault,
-    NSURLNetworkServiceTypeResponsiveAV, NSURLNetworkServiceTypeResponsiveData,
-    NSURLNetworkServiceTypeVideo, NSURLNetworkServiceTypeVoIP, NSURLNetworkServiceTypeVoice,
-    NSURLRequestNetworkServiceType,
-};
-pub use self::__NSURLRequest::{
-    NSURLRequestAttribution, NSURLRequestAttributionDeveloper, NSURLRequestAttributionUser,
-};
-pub use self::__NSURLRequest::{
-    NSURLRequestCachePolicy, NSURLRequestReloadIgnoringCacheData,
-    NSURLRequestReloadIgnoringLocalAndRemoteCacheData, NSURLRequestReloadIgnoringLocalCacheData,
-    NSURLRequestReloadRevalidatingCacheData, NSURLRequestReturnCacheDataDontLoad,
-    NSURLRequestReturnCacheDataElseLoad, NSURLRequestUseProtocolCachePolicy,
-};
+pub use self::__NSURLRequest::NSURLRequestAttributionUser;
+#[cfg(feature = "Foundation_NSHTTPURLResponse")]
 #[cfg(feature = "Foundation_NSHTTPURLResponse")]
 pub use self::__NSURLResponse::NSHTTPURLResponse;
 #[cfg(feature = "Foundation_NSURLResponse")]
+#[cfg(feature = "Foundation_NSURLResponse")]
 pub use self::__NSURLResponse::NSURLResponse;
+
+#[cfg(feature = "Foundation_NSURLSession")]
 #[cfg(feature = "Foundation_NSURLSession")]
 pub use self::__NSURLSession::NSURLSession;
-#[cfg(feature = "Foundation_NSURLSessionConfiguration")]
-pub use self::__NSURLSession::NSURLSessionConfiguration;
-pub use self::__NSURLSession::NSURLSessionDataDelegate;
-#[cfg(feature = "Foundation_NSURLSessionDataTask")]
-pub use self::__NSURLSession::NSURLSessionDataTask;
-pub use self::__NSURLSession::NSURLSessionDelegate;
-pub use self::__NSURLSession::NSURLSessionDownloadDelegate;
-#[cfg(feature = "Foundation_NSURLSessionDownloadTask")]
-pub use self::__NSURLSession::NSURLSessionDownloadTask;
-pub use self::__NSURLSession::NSURLSessionDownloadTaskResumeData;
-pub use self::__NSURLSession::NSURLSessionStreamDelegate;
-#[cfg(feature = "Foundation_NSURLSessionStreamTask")]
-pub use self::__NSURLSession::NSURLSessionStreamTask;
+pub use self::__NSURLSession::NSURLSessionTransferSizeUnknown;
+
+pub use self::__NSURLSession::NSURLSessionTaskState;
+
+pub use self::__NSURLSession::NSURLSessionTaskStateRunning;
+
+pub use self::__NSURLSession::NSURLSessionTaskStateSuspended;
+
+pub use self::__NSURLSession::NSURLSessionTaskStateCanceling;
+
+#[cfg(feature = "Foundation_NSURLSessionTask")]
 #[cfg(feature = "Foundation_NSURLSessionTask")]
 pub use self::__NSURLSession::NSURLSessionTask;
-pub use self::__NSURLSession::NSURLSessionTaskDelegate;
-#[cfg(feature = "Foundation_NSURLSessionTaskMetrics")]
-pub use self::__NSURLSession::NSURLSessionTaskMetrics;
+pub use self::__NSURLSession::NSURLSessionTaskStateCompleted;
+
 pub use self::__NSURLSession::NSURLSessionTaskPriorityDefault;
-pub use self::__NSURLSession::NSURLSessionTaskPriorityHigh;
+
 pub use self::__NSURLSession::NSURLSessionTaskPriorityLow;
-#[cfg(feature = "Foundation_NSURLSessionTaskTransactionMetrics")]
-pub use self::__NSURLSession::NSURLSessionTaskTransactionMetrics;
-pub use self::__NSURLSession::NSURLSessionTransferSizeUnknown;
+
+#[cfg(feature = "Foundation_NSURLSessionDataTask")]
+#[cfg(feature = "Foundation_NSURLSessionDataTask")]
+pub use self::__NSURLSession::NSURLSessionDataTask;
+#[cfg(feature = "Foundation_NSURLSessionDownloadTask")]
+#[cfg(feature = "Foundation_NSURLSessionDownloadTask")]
+pub use self::__NSURLSession::NSURLSessionDownloadTask;
+#[cfg(feature = "Foundation_NSURLSessionStreamTask")]
+#[cfg(feature = "Foundation_NSURLSessionStreamTask")]
+pub use self::__NSURLSession::NSURLSessionStreamTask;
+pub use self::__NSURLSession::NSURLSessionTaskPriorityHigh;
+#[cfg(feature = "Foundation_NSURLSessionUploadTask")]
 #[cfg(feature = "Foundation_NSURLSessionUploadTask")]
 pub use self::__NSURLSession::NSURLSessionUploadTask;
-pub use self::__NSURLSession::NSURLSessionWebSocketDelegate;
+
+pub use self::__NSURLSession::NSURLSessionWebSocketMessageType;
+
+pub use self::__NSURLSession::NSURLSessionWebSocketMessageTypeData;
+
+#[cfg(feature = "Foundation_NSURLSessionWebSocketMessage")]
 #[cfg(feature = "Foundation_NSURLSessionWebSocketMessage")]
 pub use self::__NSURLSession::NSURLSessionWebSocketMessage;
+pub use self::__NSURLSession::NSURLSessionWebSocketMessageTypeString;
+
+pub use self::__NSURLSession::NSURLSessionWebSocketCloseCode;
+
+pub use self::__NSURLSession::NSURLSessionWebSocketCloseCodeInvalid;
+
+pub use self::__NSURLSession::NSURLSessionWebSocketCloseCodeNormalClosure;
+
+pub use self::__NSURLSession::NSURLSessionWebSocketCloseCodeGoingAway;
+
+pub use self::__NSURLSession::NSURLSessionWebSocketCloseCodeProtocolError;
+
+pub use self::__NSURLSession::NSURLSessionWebSocketCloseCodeUnsupportedData;
+
+pub use self::__NSURLSession::NSURLSessionWebSocketCloseCodeNoStatusReceived;
+
+pub use self::__NSURLSession::NSURLSessionWebSocketCloseCodeAbnormalClosure;
+
+pub use self::__NSURLSession::NSURLSessionWebSocketCloseCodeInvalidFramePayloadData;
+
+pub use self::__NSURLSession::NSURLSessionWebSocketCloseCodePolicyViolation;
+
+pub use self::__NSURLSession::NSURLSessionWebSocketCloseCodeMessageTooBig;
+
+pub use self::__NSURLSession::NSURLSessionWebSocketCloseCodeMandatoryExtensionMissing;
+
+pub use self::__NSURLSession::NSURLSessionWebSocketCloseCodeInternalServerError;
+
+#[cfg(feature = "Foundation_NSURLSessionConfiguration")]
+#[cfg(feature = "Foundation_NSURLSessionConfiguration")]
+pub use self::__NSURLSession::NSURLSessionConfiguration;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSURLSession::NSURLSessionMultipathServiceType;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSURLSession::NSURLSessionMultipathServiceTypeAggregate;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSURLSession::NSURLSessionMultipathServiceTypeHandover;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSURLSession::NSURLSessionMultipathServiceTypeInteractive;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSURLSession::NSURLSessionMultipathServiceTypeNone;
+pub use self::__NSURLSession::NSURLSessionWebSocketCloseCodeTLSHandshakeFailure;
+#[cfg(feature = "Foundation_NSURLSessionWebSocketTask")]
 #[cfg(feature = "Foundation_NSURLSessionWebSocketTask")]
 pub use self::__NSURLSession::NSURLSessionWebSocketTask;
-pub use self::__NSURLSession::{
-    NSURLSessionAuthChallengeCancelAuthenticationChallenge, NSURLSessionAuthChallengeDisposition,
-    NSURLSessionAuthChallengePerformDefaultHandling,
-    NSURLSessionAuthChallengeRejectProtectionSpace, NSURLSessionAuthChallengeUseCredential,
-};
-pub use self::__NSURLSession::{
-    NSURLSessionDelayedRequestCancel, NSURLSessionDelayedRequestContinueLoading,
-    NSURLSessionDelayedRequestDisposition, NSURLSessionDelayedRequestUseNewRequest,
-};
-pub use self::__NSURLSession::{
-    NSURLSessionMultipathServiceType, NSURLSessionMultipathServiceTypeAggregate,
-    NSURLSessionMultipathServiceTypeHandover, NSURLSessionMultipathServiceTypeInteractive,
-    NSURLSessionMultipathServiceTypeNone,
-};
-pub use self::__NSURLSession::{
-    NSURLSessionResponseAllow, NSURLSessionResponseBecomeDownload,
-    NSURLSessionResponseBecomeStream, NSURLSessionResponseCancel, NSURLSessionResponseDisposition,
-};
-pub use self::__NSURLSession::{
-    NSURLSessionTaskMetricsDomainResolutionProtocol,
-    NSURLSessionTaskMetricsDomainResolutionProtocolHTTPS,
-    NSURLSessionTaskMetricsDomainResolutionProtocolTCP,
-    NSURLSessionTaskMetricsDomainResolutionProtocolTLS,
-    NSURLSessionTaskMetricsDomainResolutionProtocolUDP,
-    NSURLSessionTaskMetricsDomainResolutionProtocolUnknown,
-};
-pub use self::__NSURLSession::{
-    NSURLSessionTaskMetricsResourceFetchType, NSURLSessionTaskMetricsResourceFetchTypeLocalCache,
-    NSURLSessionTaskMetricsResourceFetchTypeNetworkLoad,
-    NSURLSessionTaskMetricsResourceFetchTypeServerPush,
-    NSURLSessionTaskMetricsResourceFetchTypeUnknown,
-};
-pub use self::__NSURLSession::{
-    NSURLSessionTaskState, NSURLSessionTaskStateCanceling, NSURLSessionTaskStateCompleted,
-    NSURLSessionTaskStateRunning, NSURLSessionTaskStateSuspended,
-};
-pub use self::__NSURLSession::{
-    NSURLSessionWebSocketCloseCode, NSURLSessionWebSocketCloseCodeAbnormalClosure,
-    NSURLSessionWebSocketCloseCodeGoingAway, NSURLSessionWebSocketCloseCodeInternalServerError,
-    NSURLSessionWebSocketCloseCodeInvalid, NSURLSessionWebSocketCloseCodeInvalidFramePayloadData,
-    NSURLSessionWebSocketCloseCodeMandatoryExtensionMissing,
-    NSURLSessionWebSocketCloseCodeMessageTooBig, NSURLSessionWebSocketCloseCodeNoStatusReceived,
-    NSURLSessionWebSocketCloseCodeNormalClosure, NSURLSessionWebSocketCloseCodePolicyViolation,
-    NSURLSessionWebSocketCloseCodeProtocolError, NSURLSessionWebSocketCloseCodeTLSHandshakeFailure,
-    NSURLSessionWebSocketCloseCodeUnsupportedData,
-};
-pub use self::__NSURLSession::{
-    NSURLSessionWebSocketMessageType, NSURLSessionWebSocketMessageTypeData,
-    NSURLSessionWebSocketMessageTypeString,
-};
+
+pub use self::__NSURLSession::NSURLSessionDelayedRequestDisposition;
+
+pub use self::__NSURLSession::NSURLSessionDelayedRequestContinueLoading;
+
+pub use self::__NSURLSession::NSURLSessionDelayedRequestUseNewRequest;
+
+pub use self::__NSURLSession::NSURLSessionDelayedRequestCancel;
+
+pub use self::__NSURLSession::NSURLSessionAuthChallengeDisposition;
+
+pub use self::__NSURLSession::NSURLSessionAuthChallengeUseCredential;
+
+pub use self::__NSURLSession::NSURLSessionAuthChallengePerformDefaultHandling;
+
+pub use self::__NSURLSession::NSURLSessionAuthChallengeCancelAuthenticationChallenge;
+
+pub use self::__NSURLSession::NSURLSessionAuthChallengeRejectProtectionSpace;
+
+pub use self::__NSURLSession::NSURLSessionResponseDisposition;
+
+pub use self::__NSURLSession::NSURLSessionResponseCancel;
+
+pub use self::__NSURLSession::NSURLSessionResponseAllow;
+
+pub use self::__NSURLSession::NSURLSessionResponseBecomeDownload;
+
+pub use self::__NSURLSession::NSURLSessionResponseBecomeStream;
+
+pub use self::__NSURLSession::NSURLSessionDelegate;
+
+pub use self::__NSURLSession::NSURLSessionTaskDelegate;
+
+pub use self::__NSURLSession::NSURLSessionDataDelegate;
+
+pub use self::__NSURLSession::NSURLSessionDownloadDelegate;
+
+pub use self::__NSURLSession::NSURLSessionStreamDelegate;
+
+pub use self::__NSURLSession::NSURLSessionWebSocketDelegate;
+
+pub use self::__NSURLSession::NSURLSessionDownloadTaskResumeData;
+
+pub use self::__NSURLSession::NSURLSessionTaskMetricsResourceFetchType;
+
+pub use self::__NSURLSession::NSURLSessionTaskMetricsResourceFetchTypeUnknown;
+
+pub use self::__NSURLSession::NSURLSessionTaskMetricsResourceFetchTypeNetworkLoad;
+
+pub use self::__NSURLSession::NSURLSessionTaskMetricsResourceFetchTypeServerPush;
+
+pub use self::__NSURLSession::NSURLSessionTaskMetricsResourceFetchTypeLocalCache;
+
+pub use self::__NSURLSession::NSURLSessionTaskMetricsDomainResolutionProtocol;
+
+pub use self::__NSURLSession::NSURLSessionTaskMetricsDomainResolutionProtocolUnknown;
+
+pub use self::__NSURLSession::NSURLSessionTaskMetricsDomainResolutionProtocolUDP;
+
+pub use self::__NSURLSession::NSURLSessionTaskMetricsDomainResolutionProtocolTCP;
+
+pub use self::__NSURLSession::NSURLSessionTaskMetricsDomainResolutionProtocolTLS;
+
+#[cfg(feature = "Foundation_NSURLSessionTaskMetrics")]
+#[cfg(feature = "Foundation_NSURLSessionTaskMetrics")]
+pub use self::__NSURLSession::NSURLSessionTaskMetrics;
+pub use self::__NSURLSession::NSURLSessionTaskMetricsDomainResolutionProtocolHTTPS;
+#[cfg(feature = "Foundation_NSURLSessionTaskTransactionMetrics")]
+#[cfg(feature = "Foundation_NSURLSessionTaskTransactionMetrics")]
+pub use self::__NSURLSession::NSURLSessionTaskTransactionMetrics;
+#[cfg(feature = "Foundation_NSUbiquitousKeyValueStore")]
 #[cfg(feature = "Foundation_NSUbiquitousKeyValueStore")]
 pub use self::__NSUbiquitousKeyValueStore::NSUbiquitousKeyValueStore;
-pub use self::__NSUbiquitousKeyValueStore::NSUbiquitousKeyValueStoreChangeReasonKey;
-pub use self::__NSUbiquitousKeyValueStore::NSUbiquitousKeyValueStoreChangedKeysKey;
+#[cfg(feature = "Foundation_NSUUID")]
+#[cfg(feature = "Foundation_NSUUID")]
+pub use self::__NSUUID::NSUUID;
+
 pub use self::__NSUbiquitousKeyValueStore::NSUbiquitousKeyValueStoreDidChangeExternallyNotification;
-pub use self::__NSUbiquitousKeyValueStore::{
-    NSUbiquitousKeyValueStoreAccountChange, NSUbiquitousKeyValueStoreInitialSyncChange,
-    NSUbiquitousKeyValueStoreQuotaViolationChange, NSUbiquitousKeyValueStoreServerChange,
-};
+
+pub use self::__NSUbiquitousKeyValueStore::NSUbiquitousKeyValueStoreChangeReasonKey;
+
+pub use self::__NSUbiquitousKeyValueStore::NSUbiquitousKeyValueStoreChangedKeysKey;
+
+pub use self::__NSUbiquitousKeyValueStore::NSUbiquitousKeyValueStoreServerChange;
+
+pub use self::__NSUbiquitousKeyValueStore::NSUbiquitousKeyValueStoreInitialSyncChange;
+
+pub use self::__NSUbiquitousKeyValueStore::NSUbiquitousKeyValueStoreQuotaViolationChange;
+
+pub use self::__NSUbiquitousKeyValueStore::NSUbiquitousKeyValueStoreAccountChange;
+
 pub use self::__NSUndoManager::NSUndoCloseGroupingRunLoopOrdering;
+
+#[cfg(feature = "Foundation_NSUndoManager")]
 #[cfg(feature = "Foundation_NSUndoManager")]
 pub use self::__NSUndoManager::NSUndoManager;
-pub use self::__NSUndoManager::NSUndoManagerCheckpointNotification;
-pub use self::__NSUndoManager::NSUndoManagerDidCloseUndoGroupNotification;
-pub use self::__NSUndoManager::NSUndoManagerDidOpenUndoGroupNotification;
-pub use self::__NSUndoManager::NSUndoManagerDidRedoChangeNotification;
-pub use self::__NSUndoManager::NSUndoManagerDidUndoChangeNotification;
 pub use self::__NSUndoManager::NSUndoManagerGroupIsDiscardableKey;
-pub use self::__NSUndoManager::NSUndoManagerWillCloseUndoGroupNotification;
-pub use self::__NSUndoManager::NSUndoManagerWillRedoChangeNotification;
+
+pub use self::__NSUndoManager::NSUndoManagerCheckpointNotification;
+
 pub use self::__NSUndoManager::NSUndoManagerWillUndoChangeNotification;
+
+pub use self::__NSUndoManager::NSUndoManagerWillRedoChangeNotification;
+
+pub use self::__NSUndoManager::NSUndoManagerDidUndoChangeNotification;
+
+pub use self::__NSUndoManager::NSUndoManagerDidRedoChangeNotification;
+
+pub use self::__NSUndoManager::NSUndoManagerDidOpenUndoGroupNotification;
+
+pub use self::__NSUndoManager::NSUndoManagerWillCloseUndoGroupNotification;
+
+pub use self::__NSUndoManager::NSUndoManagerDidCloseUndoGroupNotification;
+#[cfg(feature = "Foundation_NSDimension")]
 #[cfg(feature = "Foundation_NSDimension")]
 pub use self::__NSUnit::NSDimension;
 #[cfg(feature = "Foundation_NSUnit")]
+#[cfg(feature = "Foundation_NSUnit")]
 pub use self::__NSUnit::NSUnit;
+#[cfg(feature = "Foundation_NSUnitAcceleration")]
 #[cfg(feature = "Foundation_NSUnitAcceleration")]
 pub use self::__NSUnit::NSUnitAcceleration;
 #[cfg(feature = "Foundation_NSUnitAngle")]
+#[cfg(feature = "Foundation_NSUnitAngle")]
 pub use self::__NSUnit::NSUnitAngle;
+#[cfg(feature = "Foundation_NSUnitArea")]
 #[cfg(feature = "Foundation_NSUnitArea")]
 pub use self::__NSUnit::NSUnitArea;
 #[cfg(feature = "Foundation_NSUnitConcentrationMass")]
+#[cfg(feature = "Foundation_NSUnitConcentrationMass")]
 pub use self::__NSUnit::NSUnitConcentrationMass;
+#[cfg(feature = "Foundation_NSUnitConverter")]
 #[cfg(feature = "Foundation_NSUnitConverter")]
 pub use self::__NSUnit::NSUnitConverter;
 #[cfg(feature = "Foundation_NSUnitConverterLinear")]
+#[cfg(feature = "Foundation_NSUnitConverterLinear")]
 pub use self::__NSUnit::NSUnitConverterLinear;
+#[cfg(feature = "Foundation_NSUnitDispersion")]
 #[cfg(feature = "Foundation_NSUnitDispersion")]
 pub use self::__NSUnit::NSUnitDispersion;
 #[cfg(feature = "Foundation_NSUnitDuration")]
+#[cfg(feature = "Foundation_NSUnitDuration")]
 pub use self::__NSUnit::NSUnitDuration;
+#[cfg(feature = "Foundation_NSUnitElectricCharge")]
 #[cfg(feature = "Foundation_NSUnitElectricCharge")]
 pub use self::__NSUnit::NSUnitElectricCharge;
 #[cfg(feature = "Foundation_NSUnitElectricCurrent")]
+#[cfg(feature = "Foundation_NSUnitElectricCurrent")]
 pub use self::__NSUnit::NSUnitElectricCurrent;
+#[cfg(feature = "Foundation_NSUnitElectricPotentialDifference")]
 #[cfg(feature = "Foundation_NSUnitElectricPotentialDifference")]
 pub use self::__NSUnit::NSUnitElectricPotentialDifference;
 #[cfg(feature = "Foundation_NSUnitElectricResistance")]
+#[cfg(feature = "Foundation_NSUnitElectricResistance")]
 pub use self::__NSUnit::NSUnitElectricResistance;
+#[cfg(feature = "Foundation_NSUnitEnergy")]
 #[cfg(feature = "Foundation_NSUnitEnergy")]
 pub use self::__NSUnit::NSUnitEnergy;
 #[cfg(feature = "Foundation_NSUnitFrequency")]
+#[cfg(feature = "Foundation_NSUnitFrequency")]
 pub use self::__NSUnit::NSUnitFrequency;
+#[cfg(feature = "Foundation_NSUnitFuelEfficiency")]
 #[cfg(feature = "Foundation_NSUnitFuelEfficiency")]
 pub use self::__NSUnit::NSUnitFuelEfficiency;
 #[cfg(feature = "Foundation_NSUnitIlluminance")]
+#[cfg(feature = "Foundation_NSUnitIlluminance")]
 pub use self::__NSUnit::NSUnitIlluminance;
+#[cfg(feature = "Foundation_NSUnitInformationStorage")]
 #[cfg(feature = "Foundation_NSUnitInformationStorage")]
 pub use self::__NSUnit::NSUnitInformationStorage;
 #[cfg(feature = "Foundation_NSUnitLength")]
+#[cfg(feature = "Foundation_NSUnitLength")]
 pub use self::__NSUnit::NSUnitLength;
+#[cfg(feature = "Foundation_NSUnitMass")]
 #[cfg(feature = "Foundation_NSUnitMass")]
 pub use self::__NSUnit::NSUnitMass;
 #[cfg(feature = "Foundation_NSUnitPower")]
+#[cfg(feature = "Foundation_NSUnitPower")]
 pub use self::__NSUnit::NSUnitPower;
+#[cfg(feature = "Foundation_NSUnitPressure")]
 #[cfg(feature = "Foundation_NSUnitPressure")]
 pub use self::__NSUnit::NSUnitPressure;
 #[cfg(feature = "Foundation_NSUnitSpeed")]
+#[cfg(feature = "Foundation_NSUnitSpeed")]
 pub use self::__NSUnit::NSUnitSpeed;
+#[cfg(feature = "Foundation_NSUnitTemperature")]
 #[cfg(feature = "Foundation_NSUnitTemperature")]
 pub use self::__NSUnit::NSUnitTemperature;
 #[cfg(feature = "Foundation_NSUnitVolume")]
+#[cfg(feature = "Foundation_NSUnitVolume")]
 pub use self::__NSUnit::NSUnitVolume;
+
+#[cfg(feature = "Foundation_NSUserActivity")]
 #[cfg(feature = "Foundation_NSUserActivity")]
 pub use self::__NSUserActivity::NSUserActivity;
-pub use self::__NSUserActivity::NSUserActivityDelegate;
 pub use self::__NSUserActivity::NSUserActivityPersistentIdentifier;
+
 pub use self::__NSUserActivity::NSUserActivityTypeBrowsingWeb;
-pub use self::__NSUserDefaults::NSAMPMDesignation;
-pub use self::__NSUserDefaults::NSArgumentDomain;
-pub use self::__NSUserDefaults::NSCurrencySymbol;
-pub use self::__NSUserDefaults::NSDateFormatString;
-pub use self::__NSUserDefaults::NSDateTimeOrdering;
-pub use self::__NSUserDefaults::NSDecimalDigits;
-pub use self::__NSUserDefaults::NSDecimalSeparator;
-pub use self::__NSUserDefaults::NSEarlierTimeDesignations;
+
+pub use self::__NSUserActivity::NSUserActivityDelegate;
+
 pub use self::__NSUserDefaults::NSGlobalDomain;
-pub use self::__NSUserDefaults::NSHourNameDesignations;
-pub use self::__NSUserDefaults::NSInternationalCurrencyString;
-pub use self::__NSUserDefaults::NSLaterTimeDesignations;
-pub use self::__NSUserDefaults::NSMonthNameArray;
-pub use self::__NSUserDefaults::NSNegativeCurrencyFormatString;
-pub use self::__NSUserDefaults::NSNextDayDesignations;
-pub use self::__NSUserDefaults::NSNextNextDayDesignations;
-pub use self::__NSUserDefaults::NSPositiveCurrencyFormatString;
-pub use self::__NSUserDefaults::NSPriorDayDesignations;
+
+pub use self::__NSUserDefaults::NSArgumentDomain;
+
 pub use self::__NSUserDefaults::NSRegistrationDomain;
-pub use self::__NSUserDefaults::NSShortDateFormatString;
-pub use self::__NSUserDefaults::NSShortMonthNameArray;
-pub use self::__NSUserDefaults::NSShortTimeDateFormatString;
-pub use self::__NSUserDefaults::NSShortWeekDayNameArray;
-pub use self::__NSUserDefaults::NSThisDayDesignations;
-pub use self::__NSUserDefaults::NSThousandsSeparator;
-pub use self::__NSUserDefaults::NSTimeDateFormatString;
-pub use self::__NSUserDefaults::NSTimeFormatString;
+#[cfg(not(any(target_os = "macos")))]
 pub use self::__NSUserDefaults::NSUbiquitousUserDefaultsCompletedInitialSyncNotification;
+#[cfg(not(any(target_os = "macos")))]
 pub use self::__NSUserDefaults::NSUbiquitousUserDefaultsDidChangeAccountsNotification;
+#[cfg(not(any(target_os = "macos")))]
 pub use self::__NSUserDefaults::NSUbiquitousUserDefaultsNoCloudAccountNotification;
 #[cfg(feature = "Foundation_NSUserDefaults")]
+#[cfg(feature = "Foundation_NSUserDefaults")]
 pub use self::__NSUserDefaults::NSUserDefaults;
-pub use self::__NSUserDefaults::NSUserDefaultsDidChangeNotification;
+#[cfg(not(any(target_os = "macos")))]
 pub use self::__NSUserDefaults::NSUserDefaultsSizeLimitExceededNotification;
+
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSUserDefaults::NSAMPMDesignation;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSUserDefaults::NSCurrencySymbol;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSUserDefaults::NSDateFormatString;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSUserDefaults::NSDateTimeOrdering;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSUserDefaults::NSDecimalDigits;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSUserDefaults::NSDecimalSeparator;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSUserDefaults::NSEarlierTimeDesignations;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSUserDefaults::NSHourNameDesignations;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSUserDefaults::NSInternationalCurrencyString;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSUserDefaults::NSLaterTimeDesignations;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSUserDefaults::NSMonthNameArray;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSUserDefaults::NSNegativeCurrencyFormatString;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSUserDefaults::NSNextDayDesignations;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSUserDefaults::NSNextNextDayDesignations;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSUserDefaults::NSPositiveCurrencyFormatString;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSUserDefaults::NSPriorDayDesignations;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSUserDefaults::NSShortDateFormatString;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSUserDefaults::NSShortMonthNameArray;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSUserDefaults::NSShortTimeDateFormatString;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSUserDefaults::NSShortWeekDayNameArray;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSUserDefaults::NSThisDayDesignations;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSUserDefaults::NSThousandsSeparator;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSUserDefaults::NSTimeDateFormatString;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSUserDefaults::NSTimeFormatString;
+pub use self::__NSUserDefaults::NSUserDefaultsDidChangeNotification;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSUserDefaults::NSWeekDayNameArray;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSUserDefaults::NSYearMonthWeekDesignations;
 #[cfg(feature = "Foundation_NSUserNotification")]
+#[cfg(feature = "Foundation_NSUserNotification")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSUserNotification::NSUserNotification;
 #[cfg(feature = "Foundation_NSUserNotificationAction")]
+#[cfg(feature = "Foundation_NSUserNotificationAction")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSUserNotification::NSUserNotificationAction;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSUserNotification::NSUserNotificationActivationType;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSUserNotification::NSUserNotificationActivationTypeActionButtonClicked;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSUserNotification::NSUserNotificationActivationTypeAdditionalActionClicked;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSUserNotification::NSUserNotificationActivationTypeContentsClicked;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSUserNotification::NSUserNotificationActivationTypeNone;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSUserNotification::NSUserNotificationActivationTypeReplied;
 #[cfg(feature = "Foundation_NSUserNotificationCenter")]
+#[cfg(feature = "Foundation_NSUserNotificationCenter")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSUserNotification::NSUserNotificationCenter;
-pub use self::__NSUserNotification::NSUserNotificationCenterDelegate;
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSUserNotification::NSUserNotificationDefaultSoundName;
-pub use self::__NSUserNotification::{
-    NSUserNotificationActivationType, NSUserNotificationActivationTypeActionButtonClicked,
-    NSUserNotificationActivationTypeAdditionalActionClicked,
-    NSUserNotificationActivationTypeContentsClicked, NSUserNotificationActivationTypeNone,
-    NSUserNotificationActivationTypeReplied,
-};
-#[cfg(feature = "Foundation_NSUserAppleScriptTask")]
-pub use self::__NSUserScriptTask::NSUserAppleScriptTask;
-pub use self::__NSUserScriptTask::NSUserAppleScriptTaskCompletionHandler;
-#[cfg(feature = "Foundation_NSUserAutomatorTask")]
-pub use self::__NSUserScriptTask::NSUserAutomatorTask;
-pub use self::__NSUserScriptTask::NSUserAutomatorTaskCompletionHandler;
+
+pub use self::__NSUserNotification::NSUserNotificationCenterDelegate;
+
 #[cfg(feature = "Foundation_NSUserScriptTask")]
+#[cfg(feature = "Foundation_NSUserScriptTask")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSUserScriptTask::NSUserScriptTask;
 pub use self::__NSUserScriptTask::NSUserScriptTaskCompletionHandler;
+
 #[cfg(feature = "Foundation_NSUserUnixTask")]
+#[cfg(feature = "Foundation_NSUserUnixTask")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSUserScriptTask::NSUserUnixTask;
 pub use self::__NSUserScriptTask::NSUserUnixTaskCompletionHandler;
+
+#[cfg(feature = "Foundation_NSUserAppleScriptTask")]
+#[cfg(feature = "Foundation_NSUserAppleScriptTask")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSUserScriptTask::NSUserAppleScriptTask;
+pub use self::__NSUserScriptTask::NSUserAppleScriptTaskCompletionHandler;
+
+#[cfg(feature = "Foundation_NSUserAutomatorTask")]
+#[cfg(feature = "Foundation_NSUserAutomatorTask")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
+pub use self::__NSUserScriptTask::NSUserAutomatorTask;
+pub use self::__NSUserScriptTask::NSUserAutomatorTaskCompletionHandler;
+#[cfg(feature = "Foundation_NSNumber")]
 #[cfg(feature = "Foundation_NSNumber")]
 pub use self::__NSValue::NSNumber;
 #[cfg(feature = "Foundation_NSValue")]
+#[cfg(feature = "Foundation_NSValue")]
 pub use self::__NSValue::NSValue;
-pub use self::__NSValueTransformer::NSIsNilTransformerName;
-pub use self::__NSValueTransformer::NSIsNotNilTransformerName;
-pub use self::__NSValueTransformer::NSKeyedUnarchiveFromDataTransformerName;
+
+pub use self::__NSValueTransformer::NSValueTransformerName;
+
 pub use self::__NSValueTransformer::NSNegateBooleanTransformerName;
+
+pub use self::__NSValueTransformer::NSIsNilTransformerName;
+
+pub use self::__NSValueTransformer::NSIsNotNilTransformerName;
+
+pub use self::__NSValueTransformer::NSUnarchiveFromDataTransformerName;
+
+pub use self::__NSValueTransformer::NSKeyedUnarchiveFromDataTransformerName;
+
+#[cfg(feature = "Foundation_NSSecureUnarchiveFromDataTransformer")]
 #[cfg(feature = "Foundation_NSSecureUnarchiveFromDataTransformer")]
 pub use self::__NSValueTransformer::NSSecureUnarchiveFromDataTransformer;
 pub use self::__NSValueTransformer::NSSecureUnarchiveFromDataTransformerName;
-pub use self::__NSValueTransformer::NSUnarchiveFromDataTransformerName;
+#[cfg(feature = "Foundation_NSValueTransformer")]
 #[cfg(feature = "Foundation_NSValueTransformer")]
 pub use self::__NSValueTransformer::NSValueTransformer;
-pub use self::__NSValueTransformer::NSValueTransformerName;
-#[cfg(feature = "Foundation_NSXMLDTDNode")]
-pub use self::__NSXMLDTDNode::NSXMLDTDNode;
-pub use self::__NSXMLDTDNode::{
-    NSXMLAttributeCDATAKind, NSXMLAttributeEntitiesKind, NSXMLAttributeEntityKind,
-    NSXMLAttributeEnumerationKind, NSXMLAttributeIDKind, NSXMLAttributeIDRefKind,
-    NSXMLAttributeIDRefsKind, NSXMLAttributeNMTokenKind, NSXMLAttributeNMTokensKind,
-    NSXMLAttributeNotationKind, NSXMLDTDNodeKind, NSXMLElementDeclarationAnyKind,
-    NSXMLElementDeclarationElementKind, NSXMLElementDeclarationEmptyKind,
-    NSXMLElementDeclarationMixedKind, NSXMLElementDeclarationUndefinedKind, NSXMLEntityGeneralKind,
-    NSXMLEntityParameterKind, NSXMLEntityParsedKind, NSXMLEntityPredefined,
-    NSXMLEntityUnparsedKind,
-};
-#[cfg(feature = "Foundation_NSXMLDocument")]
-pub use self::__NSXMLDocument::NSXMLDocument;
-pub use self::__NSXMLDocument::{
-    NSXMLDocumentContentKind, NSXMLDocumentHTMLKind, NSXMLDocumentTextKind, NSXMLDocumentXHTMLKind,
-    NSXMLDocumentXMLKind,
-};
-#[cfg(feature = "Foundation_NSXMLElement")]
-pub use self::__NSXMLElement::NSXMLElement;
-#[cfg(feature = "Foundation_NSXMLNode")]
-pub use self::__NSXMLNode::NSXMLNode;
-pub use self::__NSXMLNode::{
-    NSXMLAttributeDeclarationKind, NSXMLAttributeKind, NSXMLCommentKind, NSXMLDTDKind,
-    NSXMLDocumentKind, NSXMLElementDeclarationKind, NSXMLElementKind, NSXMLEntityDeclarationKind,
-    NSXMLInvalidKind, NSXMLNamespaceKind, NSXMLNodeKind, NSXMLNotationDeclarationKind,
-    NSXMLProcessingInstructionKind, NSXMLTextKind,
-};
-pub use self::__NSXMLNodeOptions::{
-    NSXMLDocumentIncludeContentTypeDeclaration, NSXMLDocumentTidyHTML, NSXMLDocumentTidyXML,
-    NSXMLDocumentValidate, NSXMLDocumentXInclude, NSXMLNodeCompactEmptyElement,
-    NSXMLNodeExpandEmptyElement, NSXMLNodeIsCDATA, NSXMLNodeLoadExternalEntitiesAlways,
-    NSXMLNodeLoadExternalEntitiesNever, NSXMLNodeLoadExternalEntitiesSameOriginOnly,
-    NSXMLNodeNeverEscapeContents, NSXMLNodeOptions, NSXMLNodeOptionsNone, NSXMLNodePreserveAll,
-    NSXMLNodePreserveAttributeOrder, NSXMLNodePreserveCDATA, NSXMLNodePreserveCharacterReferences,
-    NSXMLNodePreserveDTD, NSXMLNodePreserveEmptyElements, NSXMLNodePreserveEntities,
-    NSXMLNodePreserveNamespaceOrder, NSXMLNodePreservePrefixes, NSXMLNodePreserveQuotes,
-    NSXMLNodePreserveWhitespace, NSXMLNodePrettyPrint, NSXMLNodePromoteSignificantWhitespace,
-    NSXMLNodeUseDoubleQuotes, NSXMLNodeUseSingleQuotes,
-};
-#[cfg(feature = "Foundation_NSXMLParser")]
-pub use self::__NSXMLParser::NSXMLParser;
-pub use self::__NSXMLParser::NSXMLParserDelegate;
-pub use self::__NSXMLParser::NSXMLParserErrorDomain;
-pub use self::__NSXMLParser::{
-    NSXMLParserAttributeHasNoValueError, NSXMLParserAttributeListNotFinishedError,
-    NSXMLParserAttributeListNotStartedError, NSXMLParserAttributeNotFinishedError,
-    NSXMLParserAttributeNotStartedError, NSXMLParserAttributeRedefinedError,
-    NSXMLParserCDATANotFinishedError, NSXMLParserCharacterRefAtEOFError,
-    NSXMLParserCharacterRefInDTDError, NSXMLParserCharacterRefInEpilogError,
-    NSXMLParserCharacterRefInPrologError, NSXMLParserCommentContainsDoubleHyphenError,
-    NSXMLParserCommentNotFinishedError, NSXMLParserConditionalSectionNotFinishedError,
-    NSXMLParserConditionalSectionNotStartedError, NSXMLParserDOCTYPEDeclNotFinishedError,
-    NSXMLParserDelegateAbortedParseError, NSXMLParserDocumentStartError,
-    NSXMLParserElementContentDeclNotFinishedError, NSXMLParserElementContentDeclNotStartedError,
-    NSXMLParserEmptyDocumentError, NSXMLParserEncodingNotSupportedError,
-    NSXMLParserEntityBoundaryError, NSXMLParserEntityIsExternalError,
-    NSXMLParserEntityIsParameterError, NSXMLParserEntityNotFinishedError,
-    NSXMLParserEntityNotStartedError, NSXMLParserEntityRefAtEOFError,
-    NSXMLParserEntityRefInDTDError, NSXMLParserEntityRefInEpilogError,
-    NSXMLParserEntityRefInPrologError, NSXMLParserEntityRefLoopError,
-    NSXMLParserEntityReferenceMissingSemiError, NSXMLParserEntityReferenceWithoutNameError,
-    NSXMLParserEntityValueRequiredError, NSXMLParserEqualExpectedError, NSXMLParserError,
-    NSXMLParserExternalStandaloneEntityError, NSXMLParserExternalSubsetNotFinishedError,
-    NSXMLParserExtraContentError, NSXMLParserGTRequiredError, NSXMLParserInternalError,
-    NSXMLParserInvalidCharacterError, NSXMLParserInvalidCharacterInEntityError,
-    NSXMLParserInvalidCharacterRefError, NSXMLParserInvalidConditionalSectionError,
-    NSXMLParserInvalidDecimalCharacterRefError, NSXMLParserInvalidEncodingError,
-    NSXMLParserInvalidEncodingNameError, NSXMLParserInvalidHexCharacterRefError,
-    NSXMLParserInvalidURIError, NSXMLParserLTRequiredError, NSXMLParserLTSlashRequiredError,
-    NSXMLParserLessThanSymbolInAttributeError, NSXMLParserLiteralNotFinishedError,
-    NSXMLParserLiteralNotStartedError, NSXMLParserMisplacedCDATAEndStringError,
-    NSXMLParserMisplacedXMLDeclarationError, NSXMLParserMixedContentDeclNotFinishedError,
-    NSXMLParserMixedContentDeclNotStartedError, NSXMLParserNAMERequiredError,
-    NSXMLParserNMTOKENRequiredError, NSXMLParserNamespaceDeclarationError, NSXMLParserNoDTDError,
-    NSXMLParserNotWellBalancedError, NSXMLParserNotationNotFinishedError,
-    NSXMLParserNotationNotStartedError, NSXMLParserOutOfMemoryError,
-    NSXMLParserPCDATARequiredError, NSXMLParserParsedEntityRefAtEOFError,
-    NSXMLParserParsedEntityRefInEpilogError, NSXMLParserParsedEntityRefInInternalError,
-    NSXMLParserParsedEntityRefInInternalSubsetError, NSXMLParserParsedEntityRefInPrologError,
-    NSXMLParserParsedEntityRefMissingSemiError, NSXMLParserParsedEntityRefNoNameError,
-    NSXMLParserPrematureDocumentEndError, NSXMLParserProcessingInstructionNotFinishedError,
-    NSXMLParserProcessingInstructionNotStartedError, NSXMLParserPublicIdentifierRequiredError,
-    NSXMLParserSeparatorRequiredError, NSXMLParserSpaceRequiredError,
-    NSXMLParserStandaloneValueError, NSXMLParserStringNotClosedError,
-    NSXMLParserStringNotStartedError, NSXMLParserTagNameMismatchError, NSXMLParserURIFragmentError,
-    NSXMLParserURIRequiredError, NSXMLParserUndeclaredEntityError, NSXMLParserUnfinishedTagError,
-    NSXMLParserUnknownEncodingError, NSXMLParserUnparsedEntityError,
-    NSXMLParserXMLDeclNotFinishedError, NSXMLParserXMLDeclNotStartedError,
-};
-pub use self::__NSXMLParser::{
-    NSXMLParserExternalEntityResolvingPolicy, NSXMLParserResolveExternalEntitiesAlways,
-    NSXMLParserResolveExternalEntitiesNever, NSXMLParserResolveExternalEntitiesNoNetwork,
-    NSXMLParserResolveExternalEntitiesSameOriginOnly,
-};
-#[cfg(feature = "Foundation_NSXPCCoder")]
-pub use self::__NSXPCConnection::NSXPCCoder;
-#[cfg(feature = "Foundation_NSXPCConnection")]
-pub use self::__NSXPCConnection::NSXPCConnection;
-#[cfg(feature = "Foundation_NSXPCInterface")]
-pub use self::__NSXPCConnection::NSXPCInterface;
-#[cfg(feature = "Foundation_NSXPCListener")]
-pub use self::__NSXPCConnection::NSXPCListener;
-pub use self::__NSXPCConnection::NSXPCListenerDelegate;
-#[cfg(feature = "Foundation_NSXPCListenerEndpoint")]
-pub use self::__NSXPCConnection::NSXPCListenerEndpoint;
-pub use self::__NSXPCConnection::NSXPCProxyCreating;
-pub use self::__NSXPCConnection::{NSXPCConnectionOptions, NSXPCConnectionPrivileged};
-pub use self::__NSZone::NSAllocateCollectable;
-pub use self::__NSZone::NSAllocateMemoryPages;
-pub use self::__NSZone::NSCopyMemoryPages;
-pub use self::__NSZone::NSCreateZone;
-pub use self::__NSZone::NSDeallocateMemoryPages;
-pub use self::__NSZone::NSDefaultMallocZone;
-pub use self::__NSZone::NSLogPageSize;
-pub use self::__NSZone::NSPageSize;
-pub use self::__NSZone::NSRealMemoryAvailable;
-pub use self::__NSZone::NSReallocateCollectable;
-pub use self::__NSZone::NSRecycleZone;
-pub use self::__NSZone::NSRoundDownToMultipleOfPageSize;
-pub use self::__NSZone::NSRoundUpToMultipleOfPageSize;
-#[cfg(feature = "Foundation_NSString")]
-pub use self::__NSZone::NSSetZoneName;
-pub use self::__NSZone::NSZoneCalloc;
-pub use self::__NSZone::NSZoneFree;
-pub use self::__NSZone::NSZoneFromPointer;
-pub use self::__NSZone::NSZoneMalloc;
-#[cfg(feature = "Foundation_NSString")]
-pub use self::__NSZone::NSZoneName;
-pub use self::__NSZone::NSZoneRealloc;
-pub use self::__NSZone::{NSCollectorDisabledOption, NSScannedOption};
-#[cfg(feature = "Foundation_NSFileSecurity")]
-pub use self::__NSURL::NSFileSecurity;
-pub use self::__NSURL::NSThumbnail1024x1024SizeKey;
-pub use self::__NSURL::NSURLAddedToDirectoryDateKey;
-pub use self::__NSURL::NSURLApplicationIsScriptableKey;
-pub use self::__NSURL::NSURLAttributeModificationDateKey;
-pub use self::__NSURL::NSURLBookmarkFileCreationOptions;
-pub use self::__NSURL::NSURLCanonicalPathKey;
-#[cfg(feature = "Foundation_NSURLComponents")]
-pub use self::__NSURL::NSURLComponents;
-pub use self::__NSURL::NSURLContentAccessDateKey;
-pub use self::__NSURL::NSURLContentModificationDateKey;
-pub use self::__NSURL::NSURLContentTypeKey;
-pub use self::__NSURL::NSURLCreationDateKey;
-pub use self::__NSURL::NSURLCustomIconKey;
-pub use self::__NSURL::NSURLDocumentIdentifierKey;
-pub use self::__NSURL::NSURLEffectiveIconKey;
-pub use self::__NSURL::NSURLFileAllocatedSizeKey;
-pub use self::__NSURL::NSURLFileContentIdentifierKey;
-pub use self::__NSURL::NSURLFileProtectionComplete;
-pub use self::__NSURL::NSURLFileProtectionCompleteUnlessOpen;
-pub use self::__NSURL::NSURLFileProtectionCompleteUntilFirstUserAuthentication;
-pub use self::__NSURL::NSURLFileProtectionKey;
-pub use self::__NSURL::NSURLFileProtectionNone;
-pub use self::__NSURL::NSURLFileProtectionType;
-pub use self::__NSURL::NSURLFileResourceIdentifierKey;
-pub use self::__NSURL::NSURLFileResourceType;
-pub use self::__NSURL::NSURLFileResourceTypeBlockSpecial;
-pub use self::__NSURL::NSURLFileResourceTypeCharacterSpecial;
-pub use self::__NSURL::NSURLFileResourceTypeDirectory;
-pub use self::__NSURL::NSURLFileResourceTypeKey;
-pub use self::__NSURL::NSURLFileResourceTypeNamedPipe;
-pub use self::__NSURL::NSURLFileResourceTypeRegular;
-pub use self::__NSURL::NSURLFileResourceTypeSocket;
-pub use self::__NSURL::NSURLFileResourceTypeSymbolicLink;
-pub use self::__NSURL::NSURLFileResourceTypeUnknown;
-pub use self::__NSURL::NSURLFileScheme;
-pub use self::__NSURL::NSURLFileSecurityKey;
-pub use self::__NSURL::NSURLFileSizeKey;
-pub use self::__NSURL::NSURLGenerationIdentifierKey;
-pub use self::__NSURL::NSURLHasHiddenExtensionKey;
-pub use self::__NSURL::NSURLIsAliasFileKey;
-pub use self::__NSURL::NSURLIsApplicationKey;
-pub use self::__NSURL::NSURLIsDirectoryKey;
-pub use self::__NSURL::NSURLIsExcludedFromBackupKey;
-pub use self::__NSURL::NSURLIsExecutableKey;
-pub use self::__NSURL::NSURLIsHiddenKey;
-pub use self::__NSURL::NSURLIsMountTriggerKey;
-pub use self::__NSURL::NSURLIsPackageKey;
-pub use self::__NSURL::NSURLIsPurgeableKey;
-pub use self::__NSURL::NSURLIsReadableKey;
-pub use self::__NSURL::NSURLIsRegularFileKey;
-pub use self::__NSURL::NSURLIsSparseKey;
-pub use self::__NSURL::NSURLIsSymbolicLinkKey;
-pub use self::__NSURL::NSURLIsSystemImmutableKey;
-pub use self::__NSURL::NSURLIsUbiquitousItemKey;
-pub use self::__NSURL::NSURLIsUserImmutableKey;
-pub use self::__NSURL::NSURLIsVolumeKey;
-pub use self::__NSURL::NSURLIsWritableKey;
-pub use self::__NSURL::NSURLKeysOfUnsetValuesKey;
-pub use self::__NSURL::NSURLLabelColorKey;
-pub use self::__NSURL::NSURLLabelNumberKey;
-pub use self::__NSURL::NSURLLinkCountKey;
-pub use self::__NSURL::NSURLLocalizedLabelKey;
-pub use self::__NSURL::NSURLLocalizedNameKey;
-pub use self::__NSURL::NSURLLocalizedTypeDescriptionKey;
-pub use self::__NSURL::NSURLMayHaveExtendedAttributesKey;
-pub use self::__NSURL::NSURLMayShareFileContentKey;
-pub use self::__NSURL::NSURLNameKey;
-pub use self::__NSURL::NSURLParentDirectoryURLKey;
-pub use self::__NSURL::NSURLPathKey;
-pub use self::__NSURL::NSURLPreferredIOBlockSizeKey;
-pub use self::__NSURL::NSURLQuarantinePropertiesKey;
-#[cfg(feature = "Foundation_NSURLQueryItem")]
-pub use self::__NSURL::NSURLQueryItem;
-pub use self::__NSURL::NSURLResourceKey;
-pub use self::__NSURL::NSURLTagNamesKey;
-pub use self::__NSURL::NSURLThumbnailDictionaryItem;
-pub use self::__NSURL::NSURLThumbnailDictionaryKey;
-pub use self::__NSURL::NSURLThumbnailKey;
-pub use self::__NSURL::NSURLTotalFileAllocatedSizeKey;
-pub use self::__NSURL::NSURLTotalFileSizeKey;
-pub use self::__NSURL::NSURLTypeIdentifierKey;
-pub use self::__NSURL::NSURLUbiquitousItemContainerDisplayNameKey;
-pub use self::__NSURL::NSURLUbiquitousItemDownloadRequestedKey;
-pub use self::__NSURL::NSURLUbiquitousItemDownloadingErrorKey;
-pub use self::__NSURL::NSURLUbiquitousItemDownloadingStatus;
-pub use self::__NSURL::NSURLUbiquitousItemDownloadingStatusCurrent;
-pub use self::__NSURL::NSURLUbiquitousItemDownloadingStatusDownloaded;
-pub use self::__NSURL::NSURLUbiquitousItemDownloadingStatusKey;
-pub use self::__NSURL::NSURLUbiquitousItemDownloadingStatusNotDownloaded;
-pub use self::__NSURL::NSURLUbiquitousItemHasUnresolvedConflictsKey;
-pub use self::__NSURL::NSURLUbiquitousItemIsDownloadedKey;
-pub use self::__NSURL::NSURLUbiquitousItemIsDownloadingKey;
-pub use self::__NSURL::NSURLUbiquitousItemIsExcludedFromSyncKey;
-pub use self::__NSURL::NSURLUbiquitousItemIsSharedKey;
-pub use self::__NSURL::NSURLUbiquitousItemIsUploadedKey;
-pub use self::__NSURL::NSURLUbiquitousItemIsUploadingKey;
-pub use self::__NSURL::NSURLUbiquitousItemPercentDownloadedKey;
-pub use self::__NSURL::NSURLUbiquitousItemPercentUploadedKey;
-pub use self::__NSURL::NSURLUbiquitousItemUploadingErrorKey;
-pub use self::__NSURL::NSURLUbiquitousSharedItemCurrentUserPermissionsKey;
-pub use self::__NSURL::NSURLUbiquitousSharedItemCurrentUserRoleKey;
-pub use self::__NSURL::NSURLUbiquitousSharedItemMostRecentEditorNameComponentsKey;
-pub use self::__NSURL::NSURLUbiquitousSharedItemOwnerNameComponentsKey;
-pub use self::__NSURL::NSURLUbiquitousSharedItemPermissions;
-pub use self::__NSURL::NSURLUbiquitousSharedItemPermissionsReadOnly;
-pub use self::__NSURL::NSURLUbiquitousSharedItemPermissionsReadWrite;
-pub use self::__NSURL::NSURLUbiquitousSharedItemRole;
-pub use self::__NSURL::NSURLUbiquitousSharedItemRoleOwner;
-pub use self::__NSURL::NSURLUbiquitousSharedItemRoleParticipant;
-pub use self::__NSURL::NSURLVolumeAvailableCapacityForImportantUsageKey;
-pub use self::__NSURL::NSURLVolumeAvailableCapacityForOpportunisticUsageKey;
-pub use self::__NSURL::NSURLVolumeAvailableCapacityKey;
-pub use self::__NSURL::NSURLVolumeCreationDateKey;
-pub use self::__NSURL::NSURLVolumeIdentifierKey;
-pub use self::__NSURL::NSURLVolumeIsAutomountedKey;
-pub use self::__NSURL::NSURLVolumeIsBrowsableKey;
-pub use self::__NSURL::NSURLVolumeIsEjectableKey;
-pub use self::__NSURL::NSURLVolumeIsEncryptedKey;
-pub use self::__NSURL::NSURLVolumeIsInternalKey;
-pub use self::__NSURL::NSURLVolumeIsJournalingKey;
-pub use self::__NSURL::NSURLVolumeIsLocalKey;
-pub use self::__NSURL::NSURLVolumeIsReadOnlyKey;
-pub use self::__NSURL::NSURLVolumeIsRemovableKey;
-pub use self::__NSURL::NSURLVolumeIsRootFileSystemKey;
-pub use self::__NSURL::NSURLVolumeLocalizedFormatDescriptionKey;
-pub use self::__NSURL::NSURLVolumeLocalizedNameKey;
-pub use self::__NSURL::NSURLVolumeMaximumFileSizeKey;
-pub use self::__NSURL::NSURLVolumeNameKey;
-pub use self::__NSURL::NSURLVolumeResourceCountKey;
-pub use self::__NSURL::NSURLVolumeSupportsAccessPermissionsKey;
-pub use self::__NSURL::NSURLVolumeSupportsAdvisoryFileLockingKey;
-pub use self::__NSURL::NSURLVolumeSupportsCasePreservedNamesKey;
-pub use self::__NSURL::NSURLVolumeSupportsCaseSensitiveNamesKey;
-pub use self::__NSURL::NSURLVolumeSupportsCompressionKey;
-pub use self::__NSURL::NSURLVolumeSupportsExclusiveRenamingKey;
-pub use self::__NSURL::NSURLVolumeSupportsExtendedSecurityKey;
-pub use self::__NSURL::NSURLVolumeSupportsFileCloningKey;
-pub use self::__NSURL::NSURLVolumeSupportsFileProtectionKey;
-pub use self::__NSURL::NSURLVolumeSupportsHardLinksKey;
-pub use self::__NSURL::NSURLVolumeSupportsImmutableFilesKey;
-pub use self::__NSURL::NSURLVolumeSupportsJournalingKey;
-pub use self::__NSURL::NSURLVolumeSupportsPersistentIDsKey;
-pub use self::__NSURL::NSURLVolumeSupportsRenamingKey;
-pub use self::__NSURL::NSURLVolumeSupportsRootDirectoryDatesKey;
-pub use self::__NSURL::NSURLVolumeSupportsSparseFilesKey;
-pub use self::__NSURL::NSURLVolumeSupportsSwapRenamingKey;
-pub use self::__NSURL::NSURLVolumeSupportsSymbolicLinksKey;
-pub use self::__NSURL::NSURLVolumeSupportsVolumeSizesKey;
-pub use self::__NSURL::NSURLVolumeSupportsZeroRunsKey;
-pub use self::__NSURL::NSURLVolumeTotalCapacityKey;
-pub use self::__NSURL::NSURLVolumeURLForRemountingKey;
-pub use self::__NSURL::NSURLVolumeURLKey;
-pub use self::__NSURL::NSURLVolumeUUIDStringKey;
-#[cfg(feature = "Foundation_NSURL")]
-pub use self::__NSURL::NSURL;
-pub use self::__NSURL::{
-    NSURLBookmarkCreationMinimalBookmark, NSURLBookmarkCreationOptions,
-    NSURLBookmarkCreationPreferFileIDResolution,
-    NSURLBookmarkCreationSecurityScopeAllowOnlyReadAccess,
-    NSURLBookmarkCreationSuitableForBookmarkFile, NSURLBookmarkCreationWithSecurityScope,
-    NSURLBookmarkCreationWithoutImplicitSecurityScope,
-};
-pub use self::__NSURL::{
-    NSURLBookmarkResolutionOptions, NSURLBookmarkResolutionWithSecurityScope,
-    NSURLBookmarkResolutionWithoutImplicitStartAccessing, NSURLBookmarkResolutionWithoutMounting,
-    NSURLBookmarkResolutionWithoutUI,
-};
-#[cfg(feature = "Foundation_NSUUID")]
-pub use self::__NSUUID::NSUUID;
+#[cfg(feature = "Foundation_NSXMLDTD")]
 #[cfg(feature = "Foundation_NSXMLDTD")]
 pub use self::__NSXMLDTD::NSXMLDTD;
+
+pub use self::__NSXMLDTDNode::NSXMLDTDNodeKind;
+
+pub use self::__NSXMLDTDNode::NSXMLEntityGeneralKind;
+
+pub use self::__NSXMLDTDNode::NSXMLEntityParsedKind;
+
+pub use self::__NSXMLDTDNode::NSXMLEntityUnparsedKind;
+
+pub use self::__NSXMLDTDNode::NSXMLEntityParameterKind;
+
+pub use self::__NSXMLDTDNode::NSXMLEntityPredefined;
+
+pub use self::__NSXMLDTDNode::NSXMLAttributeCDATAKind;
+
+pub use self::__NSXMLDTDNode::NSXMLAttributeIDKind;
+
+pub use self::__NSXMLDTDNode::NSXMLAttributeIDRefKind;
+
+pub use self::__NSXMLDTDNode::NSXMLAttributeIDRefsKind;
+
+pub use self::__NSXMLDTDNode::NSXMLAttributeEntityKind;
+
+pub use self::__NSXMLDTDNode::NSXMLAttributeEntitiesKind;
+
+pub use self::__NSXMLDTDNode::NSXMLAttributeNMTokenKind;
+
+pub use self::__NSXMLDTDNode::NSXMLAttributeNMTokensKind;
+
+pub use self::__NSXMLDTDNode::NSXMLAttributeEnumerationKind;
+
+pub use self::__NSXMLDTDNode::NSXMLAttributeNotationKind;
+
+pub use self::__NSXMLDTDNode::NSXMLElementDeclarationUndefinedKind;
+
+pub use self::__NSXMLDTDNode::NSXMLElementDeclarationEmptyKind;
+
+pub use self::__NSXMLDTDNode::NSXMLElementDeclarationAnyKind;
+
+pub use self::__NSXMLDTDNode::NSXMLElementDeclarationMixedKind;
+
+#[cfg(feature = "Foundation_NSXMLDTDNode")]
+#[cfg(feature = "Foundation_NSXMLDTDNode")]
+pub use self::__NSXMLDTDNode::NSXMLDTDNode;
+pub use self::__NSXMLDTDNode::NSXMLElementDeclarationElementKind;
+
+pub use self::__NSXMLDocument::NSXMLDocumentContentKind;
+
+pub use self::__NSXMLDocument::NSXMLDocumentXMLKind;
+
+pub use self::__NSXMLDocument::NSXMLDocumentXHTMLKind;
+
+pub use self::__NSXMLDocument::NSXMLDocumentHTMLKind;
+
+#[cfg(feature = "Foundation_NSXMLDocument")]
+#[cfg(feature = "Foundation_NSXMLDocument")]
+pub use self::__NSXMLDocument::NSXMLDocument;
+pub use self::__NSXMLDocument::NSXMLDocumentTextKind;
+#[cfg(feature = "Foundation_NSXMLElement")]
+#[cfg(feature = "Foundation_NSXMLElement")]
+pub use self::__NSXMLElement::NSXMLElement;
+
+pub use self::__NSXMLNode::NSXMLNodeKind;
+
+pub use self::__NSXMLNode::NSXMLInvalidKind;
+
+pub use self::__NSXMLNode::NSXMLDocumentKind;
+
+pub use self::__NSXMLNode::NSXMLElementKind;
+
+pub use self::__NSXMLNode::NSXMLAttributeKind;
+
+pub use self::__NSXMLNode::NSXMLNamespaceKind;
+
+pub use self::__NSXMLNode::NSXMLProcessingInstructionKind;
+
+pub use self::__NSXMLNode::NSXMLCommentKind;
+
+pub use self::__NSXMLNode::NSXMLTextKind;
+
+pub use self::__NSXMLNode::NSXMLDTDKind;
+
+pub use self::__NSXMLNode::NSXMLEntityDeclarationKind;
+
+pub use self::__NSXMLNode::NSXMLAttributeDeclarationKind;
+
+pub use self::__NSXMLNode::NSXMLElementDeclarationKind;
+
+#[cfg(feature = "Foundation_NSXMLNode")]
+#[cfg(feature = "Foundation_NSXMLNode")]
+pub use self::__NSXMLNode::NSXMLNode;
+pub use self::__NSXMLNode::NSXMLNotationDeclarationKind;
+
+pub use self::__NSXMLNodeOptions::NSXMLNodeOptions;
+
+pub use self::__NSXMLNodeOptions::NSXMLNodeOptionsNone;
+
+pub use self::__NSXMLNodeOptions::NSXMLNodeIsCDATA;
+
+pub use self::__NSXMLNodeOptions::NSXMLNodeExpandEmptyElement;
+
+pub use self::__NSXMLNodeOptions::NSXMLNodeCompactEmptyElement;
+
+pub use self::__NSXMLNodeOptions::NSXMLNodeUseSingleQuotes;
+
+pub use self::__NSXMLNodeOptions::NSXMLNodeUseDoubleQuotes;
+
+pub use self::__NSXMLNodeOptions::NSXMLNodeNeverEscapeContents;
+
+pub use self::__NSXMLNodeOptions::NSXMLDocumentTidyHTML;
+
+pub use self::__NSXMLNodeOptions::NSXMLDocumentTidyXML;
+
+pub use self::__NSXMLNodeOptions::NSXMLDocumentValidate;
+
+pub use self::__NSXMLNodeOptions::NSXMLNodeLoadExternalEntitiesAlways;
+
+pub use self::__NSXMLNodeOptions::NSXMLNodeLoadExternalEntitiesSameOriginOnly;
+
+pub use self::__NSXMLNodeOptions::NSXMLNodeLoadExternalEntitiesNever;
+
+pub use self::__NSXMLNodeOptions::NSXMLDocumentXInclude;
+
+pub use self::__NSXMLNodeOptions::NSXMLNodePrettyPrint;
+
+pub use self::__NSXMLNodeOptions::NSXMLDocumentIncludeContentTypeDeclaration;
+
+pub use self::__NSXMLNodeOptions::NSXMLNodePreserveNamespaceOrder;
+
+pub use self::__NSXMLNodeOptions::NSXMLNodePreserveAttributeOrder;
+
+pub use self::__NSXMLNodeOptions::NSXMLNodePreserveEntities;
+
+pub use self::__NSXMLNodeOptions::NSXMLNodePreservePrefixes;
+
+pub use self::__NSXMLNodeOptions::NSXMLNodePreserveCDATA;
+
+pub use self::__NSXMLNodeOptions::NSXMLNodePreserveWhitespace;
+
+pub use self::__NSXMLNodeOptions::NSXMLNodePreserveDTD;
+
+pub use self::__NSXMLNodeOptions::NSXMLNodePreserveCharacterReferences;
+
+pub use self::__NSXMLNodeOptions::NSXMLNodePromoteSignificantWhitespace;
+
+pub use self::__NSXMLNodeOptions::NSXMLNodePreserveEmptyElements;
+
+pub use self::__NSXMLNodeOptions::NSXMLNodePreserveQuotes;
+
+pub use self::__NSXMLNodeOptions::NSXMLNodePreserveAll;
+
+pub use self::__NSXMLParser::NSXMLParserExternalEntityResolvingPolicy;
+
+pub use self::__NSXMLParser::NSXMLParserResolveExternalEntitiesNever;
+
+pub use self::__NSXMLParser::NSXMLParserResolveExternalEntitiesNoNetwork;
+
+pub use self::__NSXMLParser::NSXMLParserResolveExternalEntitiesSameOriginOnly;
+
+#[cfg(feature = "Foundation_NSXMLParser")]
+#[cfg(feature = "Foundation_NSXMLParser")]
+pub use self::__NSXMLParser::NSXMLParser;
+pub use self::__NSXMLParser::NSXMLParserResolveExternalEntitiesAlways;
+
+pub use self::__NSXMLParser::NSXMLParserDelegate;
+
+pub use self::__NSXMLParser::NSXMLParserErrorDomain;
+
+pub use self::__NSXMLParser::NSXMLParserError;
+
+pub use self::__NSXMLParser::NSXMLParserInternalError;
+
+pub use self::__NSXMLParser::NSXMLParserOutOfMemoryError;
+
+pub use self::__NSXMLParser::NSXMLParserDocumentStartError;
+
+pub use self::__NSXMLParser::NSXMLParserEmptyDocumentError;
+
+pub use self::__NSXMLParser::NSXMLParserPrematureDocumentEndError;
+
+pub use self::__NSXMLParser::NSXMLParserInvalidHexCharacterRefError;
+
+pub use self::__NSXMLParser::NSXMLParserInvalidDecimalCharacterRefError;
+
+pub use self::__NSXMLParser::NSXMLParserInvalidCharacterRefError;
+
+pub use self::__NSXMLParser::NSXMLParserInvalidCharacterError;
+
+pub use self::__NSXMLParser::NSXMLParserCharacterRefAtEOFError;
+
+pub use self::__NSXMLParser::NSXMLParserCharacterRefInPrologError;
+
+pub use self::__NSXMLParser::NSXMLParserCharacterRefInEpilogError;
+
+pub use self::__NSXMLParser::NSXMLParserCharacterRefInDTDError;
+
+pub use self::__NSXMLParser::NSXMLParserEntityRefAtEOFError;
+
+pub use self::__NSXMLParser::NSXMLParserEntityRefInPrologError;
+
+pub use self::__NSXMLParser::NSXMLParserEntityRefInEpilogError;
+
+pub use self::__NSXMLParser::NSXMLParserEntityRefInDTDError;
+
+pub use self::__NSXMLParser::NSXMLParserParsedEntityRefAtEOFError;
+
+pub use self::__NSXMLParser::NSXMLParserParsedEntityRefInPrologError;
+
+pub use self::__NSXMLParser::NSXMLParserParsedEntityRefInEpilogError;
+
+pub use self::__NSXMLParser::NSXMLParserParsedEntityRefInInternalSubsetError;
+
+pub use self::__NSXMLParser::NSXMLParserEntityReferenceWithoutNameError;
+
+pub use self::__NSXMLParser::NSXMLParserEntityReferenceMissingSemiError;
+
+pub use self::__NSXMLParser::NSXMLParserParsedEntityRefNoNameError;
+
+pub use self::__NSXMLParser::NSXMLParserParsedEntityRefMissingSemiError;
+
+pub use self::__NSXMLParser::NSXMLParserUndeclaredEntityError;
+
+pub use self::__NSXMLParser::NSXMLParserUnparsedEntityError;
+
+pub use self::__NSXMLParser::NSXMLParserEntityIsExternalError;
+
+pub use self::__NSXMLParser::NSXMLParserEntityIsParameterError;
+
+pub use self::__NSXMLParser::NSXMLParserUnknownEncodingError;
+
+pub use self::__NSXMLParser::NSXMLParserEncodingNotSupportedError;
+
+pub use self::__NSXMLParser::NSXMLParserStringNotStartedError;
+
+pub use self::__NSXMLParser::NSXMLParserStringNotClosedError;
+
+pub use self::__NSXMLParser::NSXMLParserNamespaceDeclarationError;
+
+pub use self::__NSXMLParser::NSXMLParserEntityNotStartedError;
+
+pub use self::__NSXMLParser::NSXMLParserEntityNotFinishedError;
+
+pub use self::__NSXMLParser::NSXMLParserLessThanSymbolInAttributeError;
+
+pub use self::__NSXMLParser::NSXMLParserAttributeNotStartedError;
+
+pub use self::__NSXMLParser::NSXMLParserAttributeNotFinishedError;
+
+pub use self::__NSXMLParser::NSXMLParserAttributeHasNoValueError;
+
+pub use self::__NSXMLParser::NSXMLParserAttributeRedefinedError;
+
+pub use self::__NSXMLParser::NSXMLParserLiteralNotStartedError;
+
+pub use self::__NSXMLParser::NSXMLParserLiteralNotFinishedError;
+
+pub use self::__NSXMLParser::NSXMLParserCommentNotFinishedError;
+
+pub use self::__NSXMLParser::NSXMLParserProcessingInstructionNotStartedError;
+
+pub use self::__NSXMLParser::NSXMLParserProcessingInstructionNotFinishedError;
+
+pub use self::__NSXMLParser::NSXMLParserNotationNotStartedError;
+
+pub use self::__NSXMLParser::NSXMLParserNotationNotFinishedError;
+
+pub use self::__NSXMLParser::NSXMLParserAttributeListNotStartedError;
+
+pub use self::__NSXMLParser::NSXMLParserAttributeListNotFinishedError;
+
+pub use self::__NSXMLParser::NSXMLParserMixedContentDeclNotStartedError;
+
+pub use self::__NSXMLParser::NSXMLParserMixedContentDeclNotFinishedError;
+
+pub use self::__NSXMLParser::NSXMLParserElementContentDeclNotStartedError;
+
+pub use self::__NSXMLParser::NSXMLParserElementContentDeclNotFinishedError;
+
+pub use self::__NSXMLParser::NSXMLParserXMLDeclNotStartedError;
+
+pub use self::__NSXMLParser::NSXMLParserXMLDeclNotFinishedError;
+
+pub use self::__NSXMLParser::NSXMLParserConditionalSectionNotStartedError;
+
+pub use self::__NSXMLParser::NSXMLParserConditionalSectionNotFinishedError;
+
+pub use self::__NSXMLParser::NSXMLParserExternalSubsetNotFinishedError;
+
+pub use self::__NSXMLParser::NSXMLParserDOCTYPEDeclNotFinishedError;
+
+pub use self::__NSXMLParser::NSXMLParserMisplacedCDATAEndStringError;
+
+pub use self::__NSXMLParser::NSXMLParserCDATANotFinishedError;
+
+pub use self::__NSXMLParser::NSXMLParserMisplacedXMLDeclarationError;
+
+pub use self::__NSXMLParser::NSXMLParserSpaceRequiredError;
+
+pub use self::__NSXMLParser::NSXMLParserSeparatorRequiredError;
+
+pub use self::__NSXMLParser::NSXMLParserNMTOKENRequiredError;
+
+pub use self::__NSXMLParser::NSXMLParserNAMERequiredError;
+
+pub use self::__NSXMLParser::NSXMLParserPCDATARequiredError;
+
+pub use self::__NSXMLParser::NSXMLParserURIRequiredError;
+
+pub use self::__NSXMLParser::NSXMLParserPublicIdentifierRequiredError;
+
+pub use self::__NSXMLParser::NSXMLParserLTRequiredError;
+
+pub use self::__NSXMLParser::NSXMLParserGTRequiredError;
+
+pub use self::__NSXMLParser::NSXMLParserLTSlashRequiredError;
+
+pub use self::__NSXMLParser::NSXMLParserEqualExpectedError;
+
+pub use self::__NSXMLParser::NSXMLParserTagNameMismatchError;
+
+pub use self::__NSXMLParser::NSXMLParserUnfinishedTagError;
+
+pub use self::__NSXMLParser::NSXMLParserStandaloneValueError;
+
+pub use self::__NSXMLParser::NSXMLParserInvalidEncodingNameError;
+
+pub use self::__NSXMLParser::NSXMLParserCommentContainsDoubleHyphenError;
+
+pub use self::__NSXMLParser::NSXMLParserInvalidEncodingError;
+
+pub use self::__NSXMLParser::NSXMLParserExternalStandaloneEntityError;
+
+pub use self::__NSXMLParser::NSXMLParserInvalidConditionalSectionError;
+
+pub use self::__NSXMLParser::NSXMLParserEntityValueRequiredError;
+
+pub use self::__NSXMLParser::NSXMLParserNotWellBalancedError;
+
+pub use self::__NSXMLParser::NSXMLParserExtraContentError;
+
+pub use self::__NSXMLParser::NSXMLParserInvalidCharacterInEntityError;
+
+pub use self::__NSXMLParser::NSXMLParserParsedEntityRefInInternalError;
+
+pub use self::__NSXMLParser::NSXMLParserEntityRefLoopError;
+
+pub use self::__NSXMLParser::NSXMLParserEntityBoundaryError;
+
+pub use self::__NSXMLParser::NSXMLParserInvalidURIError;
+
+pub use self::__NSXMLParser::NSXMLParserURIFragmentError;
+
+pub use self::__NSXMLParser::NSXMLParserNoDTDError;
+
+pub use self::__NSXMLParser::NSXMLParserDelegateAbortedParseError;
+
+pub use self::__NSXPCConnection::NSXPCProxyCreating;
+
+pub use self::__NSXPCConnection::NSXPCConnectionOptions;
+
+#[cfg(feature = "Foundation_NSXPCConnection")]
+#[cfg(feature = "Foundation_NSXPCConnection")]
+pub use self::__NSXPCConnection::NSXPCConnection;
+pub use self::__NSXPCConnection::NSXPCConnectionPrivileged;
+#[cfg(feature = "Foundation_NSXPCListener")]
+#[cfg(feature = "Foundation_NSXPCListener")]
+pub use self::__NSXPCConnection::NSXPCListener;
+
+#[cfg(feature = "Foundation_NSXPCCoder")]
+#[cfg(feature = "Foundation_NSXPCCoder")]
+pub use self::__NSXPCConnection::NSXPCCoder;
+#[cfg(feature = "Foundation_NSXPCInterface")]
+#[cfg(feature = "Foundation_NSXPCInterface")]
+pub use self::__NSXPCConnection::NSXPCInterface;
+pub use self::__NSXPCConnection::NSXPCListenerDelegate;
+#[cfg(feature = "Foundation_NSXPCListenerEndpoint")]
+#[cfg(feature = "Foundation_NSXPCListenerEndpoint")]
+pub use self::__NSXPCConnection::NSXPCListenerEndpoint;
+
+pub use self::__NSZone::NSDefaultMallocZone;
+
+pub use self::__NSZone::NSCreateZone;
+
+pub use self::__NSZone::NSRecycleZone;
+#[cfg(feature = "Foundation_NSString")]
+#[cfg(feature = "Foundation_NSString")]
+pub use self::__NSZone::NSSetZoneName;
+#[cfg(feature = "Foundation_NSString")]
+#[cfg(feature = "Foundation_NSString")]
+pub use self::__NSZone::NSZoneName;
+
+pub use self::__NSZone::NSZoneFromPointer;
+
+pub use self::__NSZone::NSZoneMalloc;
+
+pub use self::__NSZone::NSZoneCalloc;
+
+pub use self::__NSZone::NSZoneRealloc;
+
+pub use self::__NSZone::NSZoneFree;
+
+pub use self::__NSZone::NSScannedOption;
+
+pub use self::__NSZone::NSCollectorDisabledOption;
+
+pub use self::__NSZone::NSAllocateCollectable;
+
+pub use self::__NSZone::NSReallocateCollectable;
+
+pub use self::__NSZone::NSPageSize;
+
+pub use self::__NSZone::NSLogPageSize;
+
+pub use self::__NSZone::NSRoundUpToMultipleOfPageSize;
+
+pub use self::__NSZone::NSRoundDownToMultipleOfPageSize;
+
+pub use self::__NSZone::NSAllocateMemoryPages;
+
+pub use self::__NSZone::NSDeallocateMemoryPages;
+
+pub use self::__NSZone::NSCopyMemoryPages;
+
+pub use self::__NSZone::NSRealMemoryAvailable;

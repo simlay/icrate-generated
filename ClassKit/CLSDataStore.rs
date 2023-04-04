@@ -5,7 +5,6 @@ use crate::ClassKit::*;
 use crate::Foundation::*;
 
 extern_protocol!(
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub unsafe trait CLSDataStoreDelegate: NSObjectProtocol {
         #[cfg(all(
             feature = "ClassKit_CLSContext",
@@ -27,7 +26,6 @@ extern_protocol!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "ClassKit_CLSDataStore")]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct CLSDataStore;
 
     #[cfg(feature = "ClassKit_CLSDataStore")]
@@ -77,7 +75,6 @@ extern_methods!(
         pub unsafe fn saveWithCompletion(&self, completion: Option<&Block<(*mut NSError,), ()>>);
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(completeAllAssignedActivitiesMatching:)]
         pub unsafe fn completeAllAssignedActivitiesMatching(
             &self,
@@ -125,7 +122,6 @@ extern_methods!(
             feature = "Foundation_NSError",
             feature = "Foundation_NSURL"
         ))]
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(fetchActivityForURL:completion:)]
         pub unsafe fn fetchActivityForURL_completion(
             &self,

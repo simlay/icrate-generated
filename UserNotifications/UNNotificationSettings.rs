@@ -78,16 +78,19 @@ extern_methods!(
         #[method(authorizationStatus)]
         pub unsafe fn authorizationStatus(&self) -> UNAuthorizationStatus;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(soundSetting)]
         pub unsafe fn soundSetting(&self) -> UNNotificationSetting;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(badgeSetting)]
         pub unsafe fn badgeSetting(&self) -> UNNotificationSetting;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(alertSetting)]
         pub unsafe fn alertSetting(&self) -> UNNotificationSetting;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(notificationCenterSetting)]
         pub unsafe fn notificationCenterSetting(&self) -> UNNotificationSetting;
 
@@ -107,22 +110,27 @@ extern_methods!(
         #[method(showPreviewsSetting)]
         pub unsafe fn showPreviewsSetting(&self) -> UNShowPreviewsSetting;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(criticalAlertSetting)]
         pub unsafe fn criticalAlertSetting(&self) -> UNNotificationSetting;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(providesAppNotificationSettings)]
         pub unsafe fn providesAppNotificationSettings(&self) -> bool;
 
-        #[cfg(not(any(target_os = "macos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         #[method(announcementSetting)]
         pub unsafe fn announcementSetting(&self) -> UNNotificationSetting;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(timeSensitiveSetting)]
         pub unsafe fn timeSensitiveSetting(&self) -> UNNotificationSetting;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(scheduledDeliverySetting)]
         pub unsafe fn scheduledDeliverySetting(&self) -> UNNotificationSetting;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(directMessagesSetting)]
         pub unsafe fn directMessagesSetting(&self) -> UNNotificationSetting;
 

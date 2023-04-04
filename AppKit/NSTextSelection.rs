@@ -7,28 +7,19 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub enum NSTextSelectionGranularity {
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         NSTextSelectionGranularityCharacter = 0,
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         NSTextSelectionGranularityWord = 1,
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         NSTextSelectionGranularityParagraph = 2,
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         NSTextSelectionGranularityLine = 3,
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         NSTextSelectionGranularitySentence = 4,
     }
 );
 
 ns_enum!(
     #[underlying(NSInteger)]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub enum NSTextSelectionAffinity {
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         NSTextSelectionAffinityUpstream = 0,
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         NSTextSelectionAffinityDownstream = 1,
     }
 );
@@ -36,7 +27,6 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSTextSelection")]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct NSTextSelection;
 
     #[cfg(feature = "AppKit_NSTextSelection")]
