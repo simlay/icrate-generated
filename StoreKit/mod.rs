@@ -52,10 +52,8 @@ mod __SKStorefront;
 mod __StoreKitDefines;
 
 #[cfg(feature = "StoreKit_SKAdImpression")]
-#[cfg(feature = "StoreKit_SKAdImpression")]
 #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__SKAdImpression::SKAdImpression;
-#[cfg(feature = "StoreKit_SKAdNetwork")]
 #[cfg(feature = "StoreKit_SKAdNetwork")]
 #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__SKAdNetwork::SKAdNetwork;
@@ -84,7 +82,6 @@ pub use self::__SKAdNetwork::SKStoreProductParameterAdNetworkTimestamp;
 #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 pub use self::__SKAdNetwork::SKStoreProductParameterAdNetworkVersion;
 #[cfg(feature = "StoreKit_SKArcadeService")]
-#[cfg(feature = "StoreKit_SKArcadeService")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__SKArcadeService::SKArcadeService;
 
@@ -108,7 +105,6 @@ pub use self::__SKCloudServiceController::SKCloudServiceCapabilityMusicCatalogSu
 
 pub use self::__SKCloudServiceController::SKCloudServiceCapabilityAddToCloudMusicLibrary;
 #[cfg(feature = "StoreKit_SKCloudServiceController")]
-#[cfg(feature = "StoreKit_SKCloudServiceController")]
 pub use self::__SKCloudServiceController::SKCloudServiceController;
 
 pub use self::__SKCloudServiceController::SKCloudServiceCapabilitiesDidChangeNotification;
@@ -122,7 +118,6 @@ pub use self::__SKCloudServiceSetupViewController::SKCloudServiceSetupOptionsKey
 pub use self::__SKCloudServiceSetupViewController::SKCloudServiceSetupAction;
 
 pub use self::__SKCloudServiceSetupViewController::SKCloudServiceSetupMessageIdentifier;
-#[cfg(feature = "StoreKit_SKCloudServiceSetupViewController")]
 #[cfg(feature = "StoreKit_SKCloudServiceSetupViewController")]
 #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
 pub use self::__SKCloudServiceSetupViewController::SKCloudServiceSetupViewController;
@@ -163,7 +158,6 @@ pub use self::__SKDownload::SKDownloadStateFailed;
 
 pub use self::__SKDownload::SKDownloadStateCancelled;
 
-#[cfg(feature = "StoreKit_SKDownload")]
 #[cfg(feature = "StoreKit_SKDownload")]
 pub use self::__SKDownload::SKDownload;
 pub use self::__SKDownload::SKDownloadTimeRemainingUnknown;
@@ -214,20 +208,16 @@ pub use self::__SKError::SKErrorUnsupportedPlatform;
 
 pub use self::__SKError::SKErrorOverlayPresentedInBackgroundScene;
 #[cfg(feature = "StoreKit_SKOverlay")]
-#[cfg(feature = "StoreKit_SKOverlay")]
 #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__SKOverlay::SKOverlay;
 #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__SKOverlay::SKOverlayDelegate;
 #[cfg(feature = "StoreKit_SKOverlayAppClipConfiguration")]
-#[cfg(feature = "StoreKit_SKOverlayAppClipConfiguration")]
 #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__SKOverlayConfiguration::SKOverlayAppClipConfiguration;
 #[cfg(feature = "StoreKit_SKOverlayAppConfiguration")]
-#[cfg(feature = "StoreKit_SKOverlayAppConfiguration")]
 #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__SKOverlayConfiguration::SKOverlayAppConfiguration;
-#[cfg(feature = "StoreKit_SKOverlayConfiguration")]
 #[cfg(feature = "StoreKit_SKOverlayConfiguration")]
 #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__SKOverlayConfiguration::SKOverlayConfiguration;
@@ -238,19 +228,14 @@ pub use self::__SKOverlayConfiguration::SKOverlayPositionBottom;
 #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__SKOverlayConfiguration::SKOverlayPositionBottomRaised;
 #[cfg(feature = "StoreKit_SKOverlayTransitionContext")]
-#[cfg(feature = "StoreKit_SKOverlayTransitionContext")]
 #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__SKOverlayTransitionContext::SKOverlayTransitionContext;
 #[cfg(feature = "StoreKit_SKMutablePayment")]
-#[cfg(feature = "StoreKit_SKMutablePayment")]
 pub use self::__SKPayment::SKMutablePayment;
-#[cfg(feature = "StoreKit_SKPayment")]
 #[cfg(feature = "StoreKit_SKPayment")]
 pub use self::__SKPayment::SKPayment;
 #[cfg(feature = "StoreKit_SKPaymentDiscount")]
-#[cfg(feature = "StoreKit_SKPaymentDiscount")]
 pub use self::__SKPaymentDiscount::SKPaymentDiscount;
-#[cfg(feature = "StoreKit_SKPaymentQueue")]
 #[cfg(feature = "StoreKit_SKPaymentQueue")]
 pub use self::__SKPaymentQueue::SKPaymentQueue;
 
@@ -269,7 +254,6 @@ pub use self::__SKPaymentTransaction::SKPaymentTransactionStateFailed;
 pub use self::__SKPaymentTransaction::SKPaymentTransactionStateRestored;
 
 #[cfg(feature = "StoreKit_SKPaymentTransaction")]
-#[cfg(feature = "StoreKit_SKPaymentTransaction")]
 pub use self::__SKPaymentTransaction::SKPaymentTransaction;
 pub use self::__SKPaymentTransaction::SKPaymentTransactionStateDeferred;
 
@@ -282,10 +266,8 @@ pub use self::__SKProduct::SKProductPeriodUnitWeek;
 pub use self::__SKProduct::SKProductPeriodUnitMonth;
 
 #[cfg(feature = "StoreKit_SKProduct")]
-#[cfg(feature = "StoreKit_SKProduct")]
 pub use self::__SKProduct::SKProduct;
 pub use self::__SKProduct::SKProductPeriodUnitYear;
-#[cfg(feature = "StoreKit_SKProductSubscriptionPeriod")]
 #[cfg(feature = "StoreKit_SKProductSubscriptionPeriod")]
 pub use self::__SKProduct::SKProductSubscriptionPeriod;
 
@@ -302,10 +284,8 @@ pub use self::__SKProductDiscount::SKProductDiscountType;
 pub use self::__SKProductDiscount::SKProductDiscountTypeIntroductory;
 
 #[cfg(feature = "StoreKit_SKProductDiscount")]
-#[cfg(feature = "StoreKit_SKProductDiscount")]
 pub use self::__SKProductDiscount::SKProductDiscount;
 pub use self::__SKProductDiscount::SKProductDiscountTypeSubscription;
-#[cfg(feature = "StoreKit_SKProductStorePromotionController")]
 #[cfg(feature = "StoreKit_SKProductStorePromotionController")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__SKProductStorePromotionController::SKProductStorePromotionController;
@@ -319,13 +299,10 @@ pub use self::__SKProductStorePromotionController::SKProductStorePromotionVisibi
 pub use self::__SKProductStorePromotionController::SKProductStorePromotionVisibilityShow;
 
 #[cfg(feature = "StoreKit_SKProductsRequest")]
-#[cfg(feature = "StoreKit_SKProductsRequest")]
 pub use self::__SKProductsRequest::SKProductsRequest;
 pub use self::__SKProductsRequest::SKProductsRequestDelegate;
 #[cfg(feature = "StoreKit_SKProductsResponse")]
-#[cfg(feature = "StoreKit_SKProductsResponse")]
 pub use self::__SKProductsRequest::SKProductsResponse;
-#[cfg(feature = "StoreKit_SKReceiptRefreshRequest")]
 #[cfg(feature = "StoreKit_SKReceiptRefreshRequest")]
 pub use self::__SKReceiptRefreshRequest::SKReceiptRefreshRequest;
 
@@ -337,11 +314,9 @@ pub use self::__SKReceiptRefreshRequest::SKReceiptPropertyIsRevoked;
 
 pub use self::__SKReceiptRefreshRequest::SKReceiptPropertyIsVolumePurchase;
 #[cfg(feature = "StoreKit_SKRequest")]
-#[cfg(feature = "StoreKit_SKRequest")]
 pub use self::__SKRequest::SKRequest;
 
 pub use self::__SKRequest::SKRequestDelegate;
-#[cfg(feature = "StoreKit_SKStoreProductViewController")]
 #[cfg(feature = "StoreKit_SKStoreProductViewController")]
 #[cfg(not(any(target_os = "tvos")))]
 pub use self::__SKStoreProductViewController::SKStoreProductViewController;
@@ -362,9 +337,7 @@ pub use self::__SKStoreProductViewController::SKStoreProductParameterProviderTok
 
 pub use self::__SKStoreProductViewController::SKStoreProductParameterAdvertisingPartnerToken;
 #[cfg(feature = "StoreKit_SKStoreReviewController")]
-#[cfg(feature = "StoreKit_SKStoreReviewController")]
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__SKStoreReviewController::SKStoreReviewController;
-#[cfg(feature = "StoreKit_SKStorefront")]
 #[cfg(feature = "StoreKit_SKStorefront")]
 pub use self::__SKStorefront::SKStorefront;

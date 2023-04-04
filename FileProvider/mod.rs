@@ -37,14 +37,12 @@ pub use self::__NSFileProviderActions::NSFileProviderExtensionActionIdentifier;
 
 pub use self::__NSFileProviderDomain::NSFileProviderDomainIdentifier;
 #[cfg(feature = "FileProvider_NSFileProviderDomainVersion")]
-#[cfg(feature = "FileProvider_NSFileProviderDomainVersion")]
 pub use self::__NSFileProviderDomain::NSFileProviderDomainVersion;
 
 pub use self::__NSFileProviderDomain::NSFileProviderDomainTestingModes;
 
 pub use self::__NSFileProviderDomain::NSFileProviderDomainTestingModeAlwaysEnabled;
 
-#[cfg(feature = "FileProvider_NSFileProviderDomain")]
 #[cfg(feature = "FileProvider_NSFileProviderDomain")]
 pub use self::__NSFileProviderDomain::NSFileProviderDomain;
 pub use self::__NSFileProviderDomain::NSFileProviderDomainTestingModeInteractive;
@@ -115,7 +113,6 @@ pub use self::__NSFileProviderError::NSFileProviderErrorExcludedFromSync;
 
 pub use self::__NSFileProviderError::NSFileProviderErrorDomainDisabled;
 #[cfg(feature = "FileProvider_NSFileProviderExtension")]
-#[cfg(feature = "FileProvider_NSFileProviderExtension")]
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__NSFileProviderExtension::NSFileProviderExtension;
 
@@ -125,7 +122,6 @@ pub use self::__NSFileProviderItem::NSFileProviderRootContainerItemIdentifier;
 
 pub use self::__NSFileProviderItem::NSFileProviderWorkingSetContainerItemIdentifier;
 
-#[cfg(feature = "FileProvider_NSFileProviderItemVersion")]
 #[cfg(feature = "FileProvider_NSFileProviderItemVersion")]
 pub use self::__NSFileProviderItem::NSFileProviderItemVersion;
 pub use self::__NSFileProviderItem::NSFileProviderTrashContainerItemIdentifier;
@@ -220,7 +216,6 @@ pub use self::__NSFileProviderManager::NSFileProviderDomainRemovalModePreserveDi
 
 pub use self::__NSFileProviderManager::NSFileProviderDomainRemovalModePreserveDownloadedUserData;
 #[cfg(feature = "FileProvider_NSFileProviderManager")]
-#[cfg(feature = "FileProvider_NSFileProviderManager")]
 pub use self::__NSFileProviderManager::NSFileProviderManager;
 
 pub use self::__NSFileProviderManager::NSFileProviderMaterializedSetDidChange;
@@ -272,7 +267,6 @@ pub use self::__NSFileProviderReplicatedExtension::NSFileProviderUserInteraction
 pub use self::__NSFileProviderReplicatedExtension::NSFileProviderDomainState;
 #[cfg(not(any(target_os = "ios")))]
 pub use self::__NSFileProviderReplicatedExtension::NSFileProviderPartialContentFetching;
-#[cfg(feature = "FileProvider_NSFileProviderRequest")]
 #[cfg(feature = "FileProvider_NSFileProviderRequest")]
 pub use self::__NSFileProviderRequest::NSFileProviderRequest;
 

@@ -28,9 +28,7 @@ mod __CLSScoreItem;
 mod __NSUserActivity_CLSDeepLinks;
 
 #[cfg(feature = "ClassKit_CLSActivity")]
-#[cfg(feature = "ClassKit_CLSActivity")]
 pub use self::__CLSActivity::CLSActivity;
-#[cfg(feature = "ClassKit_CLSActivityItem")]
 #[cfg(feature = "ClassKit_CLSActivityItem")]
 pub use self::__CLSActivityItem::CLSActivityItem;
 
@@ -42,7 +40,6 @@ pub use self::__CLSBinaryItem::CLSBinaryValueTypePassFail;
 
 pub use self::__CLSBinaryItem::CLSBinaryValueTypeYesNo;
 
-#[cfg(feature = "ClassKit_CLSBinaryItem")]
 #[cfg(feature = "ClassKit_CLSBinaryItem")]
 pub use self::__CLSBinaryItem::CLSBinaryItem;
 pub use self::__CLSBinaryItem::CLSBinaryValueTypeCorrectIncorrect;
@@ -102,13 +99,11 @@ pub use self::__CLSContext::CLSContextTopicComputerScienceAndEngineering;
 pub use self::__CLSContext::CLSContextTopicArtsAndMusic;
 
 #[cfg(feature = "ClassKit_CLSContext")]
-#[cfg(feature = "ClassKit_CLSContext")]
 pub use self::__CLSContext::CLSContext;
 pub use self::__CLSContext::CLSContextTopicHealthAndFitness;
 
 pub use self::__CLSContextProvider::CLSContextProvider;
 
-#[cfg(feature = "ClassKit_CLSDataStore")]
 #[cfg(feature = "ClassKit_CLSDataStore")]
 pub use self::__CLSDataStore::CLSDataStore;
 pub use self::__CLSDataStore::CLSDataStoreDelegate;
@@ -161,7 +156,6 @@ pub use self::__CLSDefines::CLSPredicateKeyPathTopic;
 
 pub use self::__CLSDefines::CLSPredicateKeyPathParent;
 #[cfg(feature = "ClassKit_CLSObject")]
-#[cfg(feature = "ClassKit_CLSObject")]
 pub use self::__CLSObject::CLSObject;
 
 pub use self::__CLSProgressReportingCapability::CLSProgressReportingCapabilityKind;
@@ -175,12 +169,9 @@ pub use self::__CLSProgressReportingCapability::CLSProgressReportingCapabilityKi
 pub use self::__CLSProgressReportingCapability::CLSProgressReportingCapabilityKindQuantity;
 
 #[cfg(feature = "ClassKit_CLSProgressReportingCapability")]
-#[cfg(feature = "ClassKit_CLSProgressReportingCapability")]
 pub use self::__CLSProgressReportingCapability::CLSProgressReportingCapability;
 pub use self::__CLSProgressReportingCapability::CLSProgressReportingCapabilityKindScore;
 #[cfg(feature = "ClassKit_CLSQuantityItem")]
-#[cfg(feature = "ClassKit_CLSQuantityItem")]
 pub use self::__CLSQuantityItem::CLSQuantityItem;
-#[cfg(feature = "ClassKit_CLSScoreItem")]
 #[cfg(feature = "ClassKit_CLSScoreItem")]
 pub use self::__CLSScoreItem::CLSScoreItem;

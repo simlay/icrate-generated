@@ -94,21 +94,16 @@ pub use self::__GKAccessPoint::GKAccessPointLocationTopTrailing;
 pub use self::__GKAccessPoint::GKAccessPointLocationBottomLeading;
 
 #[cfg(feature = "GameKit_GKAccessPoint")]
-#[cfg(feature = "GameKit_GKAccessPoint")]
 pub use self::__GKAccessPoint::GKAccessPoint;
 pub use self::__GKAccessPoint::GKAccessPointLocationBottomTrailing;
 #[cfg(feature = "GameKit_GKAchievement")]
-#[cfg(feature = "GameKit_GKAchievement")]
 pub use self::__GKAchievement::GKAchievement;
 #[cfg(feature = "GameKit_GKAchievementDescription")]
-#[cfg(feature = "GameKit_GKAchievementDescription")]
 pub use self::__GKAchievementDescription::GKAchievementDescription;
-#[cfg(feature = "GameKit_GKAchievementViewController")]
 #[cfg(feature = "GameKit_GKAchievementViewController")]
 pub use self::__GKAchievementViewController::GKAchievementViewController;
 
 pub use self::__GKAchievementViewController::GKAchievementViewControllerDelegate;
-#[cfg(feature = "GameKit_GKBasePlayer")]
 #[cfg(feature = "GameKit_GKBasePlayer")]
 pub use self::__GKBasePlayer::GKBasePlayer;
 
@@ -121,36 +116,29 @@ pub use self::__GKChallenge::GKChallengeStatePending;
 pub use self::__GKChallenge::GKChallengeStateCompleted;
 
 #[cfg(feature = "GameKit_GKAchievementChallenge")]
-#[cfg(feature = "GameKit_GKAchievementChallenge")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__GKChallenge::GKAchievementChallenge;
-#[cfg(feature = "GameKit_GKChallenge")]
 #[cfg(feature = "GameKit_GKChallenge")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__GKChallenge::GKChallenge;
 pub use self::__GKChallenge::GKChallengeStateDeclined;
-#[cfg(feature = "GameKit_GKScoreChallenge")]
 #[cfg(feature = "GameKit_GKScoreChallenge")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__GKChallenge::GKScoreChallenge;
 
 pub use self::__GKChallenge::GKChallengeComposeCompletionBlock;
 #[cfg(feature = "GameKit_GKChallengeEventHandler")]
-#[cfg(feature = "GameKit_GKChallengeEventHandler")]
 pub use self::__GKChallengeEventHandler::GKChallengeEventHandler;
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__GKChallengeEventHandler::GKChallengeEventHandlerDelegate;
-#[cfg(feature = "GameKit_GKChallengesViewController")]
 #[cfg(feature = "GameKit_GKChallengesViewController")]
 pub use self::__GKChallengesViewController::GKChallengesViewController;
 
 pub use self::__GKChallengesViewController::GKChallengesViewControllerDelegate;
 #[cfg(feature = "GameKit_GKCloudPlayer")]
-#[cfg(feature = "GameKit_GKCloudPlayer")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__GKCloudPlayer::GKCloudPlayer;
 
-#[cfg(feature = "GameKit_GKDialogController")]
 #[cfg(feature = "GameKit_GKDialogController")]
 pub use self::__GKDialogController::GKDialogController;
 pub use self::__GKDialogController::GKViewController;
@@ -237,7 +225,6 @@ pub use self::__GKError::GKErrorFriendRequestNotAvailable;
 
 pub use self::__GKEventListener::GKChallengeListener;
 #[cfg(feature = "GameKit_GKFriendRequestComposeViewController")]
-#[cfg(feature = "GameKit_GKFriendRequestComposeViewController")]
 pub use self::__GKFriendRequestComposeViewController::GKFriendRequestComposeViewController;
 
 pub use self::__GKFriendRequestComposeViewController::GKFriendRequestComposeViewControllerDelegate;
@@ -257,7 +244,6 @@ pub use self::__GKGameCenterViewController::GKGameCenterViewControllerStateLocal
 pub use self::__GKGameCenterViewController::GKGameCenterViewControllerStateDashboard;
 
 #[cfg(feature = "GameKit_GKGameCenterViewController")]
-#[cfg(feature = "GameKit_GKGameCenterViewController")]
 pub use self::__GKGameCenterViewController::GKGameCenterViewController;
 pub use self::__GKGameCenterViewController::GKGameCenterViewControllerStateLocalPlayerFriendsList;
 
@@ -273,7 +259,6 @@ pub use self::__GKGameSession::GKTransportType;
 
 pub use self::__GKGameSession::GKTransportTypeUnreliable;
 
-#[cfg(feature = "GameKit_GKGameSession")]
 #[cfg(feature = "GameKit_GKGameSession")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__GKGameSession::GKGameSession;
@@ -336,24 +321,18 @@ pub use self::__GKLeaderboard::GKLeaderboardType;
 pub use self::__GKLeaderboard::GKLeaderboardTypeClassic;
 
 #[cfg(feature = "GameKit_GKLeaderboard")]
-#[cfg(feature = "GameKit_GKLeaderboard")]
 pub use self::__GKLeaderboard::GKLeaderboard;
 pub use self::__GKLeaderboard::GKLeaderboardTypeRecurring;
 #[cfg(feature = "GameKit_GKLeaderboardEntry")]
-#[cfg(feature = "GameKit_GKLeaderboardEntry")]
 pub use self::__GKLeaderboardEntry::GKLeaderboardEntry;
-#[cfg(feature = "GameKit_GKLeaderboardScore")]
 #[cfg(feature = "GameKit_GKLeaderboardScore")]
 pub use self::__GKLeaderboardScore::GKLeaderboardScore;
 #[cfg(feature = "GameKit_GKLeaderboardSet")]
-#[cfg(feature = "GameKit_GKLeaderboardSet")]
 pub use self::__GKLeaderboardSet::GKLeaderboardSet;
-#[cfg(feature = "GameKit_GKLeaderboardViewController")]
 #[cfg(feature = "GameKit_GKLeaderboardViewController")]
 pub use self::__GKLeaderboardViewController::GKLeaderboardViewController;
 
 pub use self::__GKLeaderboardViewController::GKLeaderboardViewControllerDelegate;
-#[cfg(feature = "GameKit_GKLocalPlayer")]
 #[cfg(feature = "GameKit_GKLocalPlayer")]
 pub use self::__GKLocalPlayer::GKLocalPlayer;
 
@@ -383,7 +362,6 @@ pub use self::__GKMatch::GKPlayerStateUnknown;
 
 pub use self::__GKMatch::GKPlayerStateConnected;
 
-#[cfg(feature = "GameKit_GKMatch")]
 #[cfg(feature = "GameKit_GKMatch")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__GKMatch::GKMatch;
@@ -426,16 +404,13 @@ pub use self::__GKMatchmaker::GKMatchTypePeerToPeer;
 pub use self::__GKMatchmaker::GKMatchTypeHosted;
 
 #[cfg(feature = "GameKit_GKInvite")]
-#[cfg(feature = "GameKit_GKInvite")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__GKMatchmaker::GKInvite;
-#[cfg(feature = "GameKit_GKMatchRequest")]
 #[cfg(feature = "GameKit_GKMatchRequest")]
 pub use self::__GKMatchmaker::GKMatchRequest;
 pub use self::__GKMatchmaker::GKMatchTypeTurnBased;
 
 pub use self::__GKMatchmaker::GKInviteEventListener;
-#[cfg(feature = "GameKit_GKMatchmaker")]
 #[cfg(feature = "GameKit_GKMatchmaker")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__GKMatchmaker::GKMatchmaker;
@@ -449,15 +424,12 @@ pub use self::__GKMatchmakerViewController::GKMatchmakingModeNearbyOnly;
 pub use self::__GKMatchmakerViewController::GKMatchmakingModeAutomatchOnly;
 
 #[cfg(feature = "GameKit_GKMatchmakerViewController")]
-#[cfg(feature = "GameKit_GKMatchmakerViewController")]
 pub use self::__GKMatchmakerViewController::GKMatchmakerViewController;
 pub use self::__GKMatchmakerViewController::GKMatchmakingModeInviteOnly;
 
 pub use self::__GKMatchmakerViewController::GKMatchmakerViewControllerDelegate;
 #[cfg(feature = "GameKit_GKNotificationBanner")]
-#[cfg(feature = "GameKit_GKNotificationBanner")]
 pub use self::__GKNotificationBanner::GKNotificationBanner;
-#[cfg(feature = "GameKit_GKPlayer")]
 #[cfg(feature = "GameKit_GKPlayer")]
 pub use self::__GKPlayer::GKPlayer;
 #[cfg(not(any(target_os = "watchos")))]
@@ -541,15 +513,12 @@ pub use self::__GKPublicProtocols::GKSessionDelegate;
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__GKPublicProtocols::GKVoiceChatClient;
 #[cfg(feature = "GameKit_GKSavedGame")]
-#[cfg(feature = "GameKit_GKSavedGame")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__GKSavedGame::GKSavedGame;
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__GKSavedGameListener::GKSavedGameListener;
 #[cfg(feature = "GameKit_GKScore")]
-#[cfg(feature = "GameKit_GKScore")]
 pub use self::__GKScore::GKScore;
-#[cfg(feature = "GameKit_GKSession")]
 #[cfg(feature = "GameKit_GKSession")]
 pub use self::__GKSession::GKSession;
 
@@ -637,14 +606,12 @@ pub use self::__GKTurnBasedMatch::GKTurnBasedMatchOutcomeFourth;
 
 pub use self::__GKTurnBasedMatch::GKTurnBasedMatchOutcomeCustomRange;
 #[cfg(feature = "GameKit_GKTurnBasedParticipant")]
-#[cfg(feature = "GameKit_GKTurnBasedParticipant")]
 pub use self::__GKTurnBasedMatch::GKTurnBasedParticipant;
 
 pub use self::__GKTurnBasedMatch::GKTurnBasedEventListener;
 
 pub use self::__GKTurnBasedMatch::GKTurnTimeoutDefault;
 
-#[cfg(feature = "GameKit_GKTurnBasedMatch")]
 #[cfg(feature = "GameKit_GKTurnBasedMatch")]
 pub use self::__GKTurnBasedMatch::GKTurnBasedMatch;
 pub use self::__GKTurnBasedMatch::GKTurnTimeoutNone;
@@ -665,17 +632,13 @@ pub use self::__GKTurnBasedMatch::GKExchangeTimeoutDefault;
 
 pub use self::__GKTurnBasedMatch::GKExchangeTimeoutNone;
 #[cfg(feature = "GameKit_GKTurnBasedExchange")]
-#[cfg(feature = "GameKit_GKTurnBasedExchange")]
 pub use self::__GKTurnBasedMatch::GKTurnBasedExchange;
-#[cfg(feature = "GameKit_GKTurnBasedExchangeReply")]
 #[cfg(feature = "GameKit_GKTurnBasedExchangeReply")]
 pub use self::__GKTurnBasedMatch::GKTurnBasedExchangeReply;
 
 #[cfg(feature = "GameKit_GKTurnBasedEventHandler")]
-#[cfg(feature = "GameKit_GKTurnBasedEventHandler")]
 pub use self::__GKTurnBasedMatch::GKTurnBasedEventHandler;
 pub use self::__GKTurnBasedMatch::GKTurnBasedEventHandlerDelegate;
-#[cfg(feature = "GameKit_GKTurnBasedMatchmakerViewController")]
 #[cfg(feature = "GameKit_GKTurnBasedMatchmakerViewController")]
 pub use self::__GKTurnBasedMatchmakerViewController::GKTurnBasedMatchmakerViewController;
 
@@ -692,11 +655,9 @@ pub use self::__GKVoiceChat::GKVoiceChatPlayerSpeaking;
 pub use self::__GKVoiceChat::GKVoiceChatPlayerSilent;
 
 #[cfg(feature = "GameKit_GKVoiceChat")]
-#[cfg(feature = "GameKit_GKVoiceChat")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__GKVoiceChat::GKVoiceChat;
 pub use self::__GKVoiceChat::GKVoiceChatPlayerConnecting;
-#[cfg(feature = "GameKit_GKVoiceChatService")]
 #[cfg(feature = "GameKit_GKVoiceChatService")]
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__GKVoiceChatService::GKVoiceChatService;

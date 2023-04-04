@@ -40,19 +40,15 @@ mod __CLVisit;
 pub use self::__CLBeaconIdentityConstraint::CLBeaconMajorValue;
 
 #[cfg(feature = "CoreLocation_CLBeaconIdentityConstraint")]
-#[cfg(feature = "CoreLocation_CLBeaconIdentityConstraint")]
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__CLBeaconIdentityConstraint::CLBeaconIdentityConstraint;
 pub use self::__CLBeaconIdentityConstraint::CLBeaconMinorValue;
 #[cfg(feature = "CoreLocation_CLBeacon")]
-#[cfg(feature = "CoreLocation_CLBeacon")]
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__CLBeaconRegion::CLBeacon;
 #[cfg(feature = "CoreLocation_CLBeaconRegion")]
-#[cfg(feature = "CoreLocation_CLBeaconRegion")]
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__CLBeaconRegion::CLBeaconRegion;
-#[cfg(feature = "CoreLocation_CLCircularRegion")]
 #[cfg(feature = "CoreLocation_CLCircularRegion")]
 pub use self::__CLCircularRegion::CLCircularRegion;
 
@@ -104,13 +100,11 @@ pub use self::__CLErrorDomain::kCLErrorDomain;
 
 pub use self::__CLGeocoder::CLGeocodeCompletionHandler;
 #[cfg(feature = "CoreLocation_CLGeocoder")]
-#[cfg(feature = "CoreLocation_CLGeocoder")]
 pub use self::__CLGeocoder::CLGeocoder;
 
 pub use self::__CLHeading::CLHeadingComponentValue;
 
 pub use self::__CLHeading::kCLHeadingFilterNone;
-#[cfg(feature = "CoreLocation_CLHeading")]
 #[cfg(feature = "CoreLocation_CLHeading")]
 #[cfg(not(any(target_os = "tvos")))]
 pub use self::__CLHeading::CLHeading;
@@ -156,13 +150,10 @@ pub use self::__CLLocation::kCLLocationCoordinate2DInvalid;
 pub use self::__CLLocation::CLLocationCoordinate2DIsValid;
 
 #[cfg(feature = "CoreLocation_CLFloor")]
-#[cfg(feature = "CoreLocation_CLFloor")]
 pub use self::__CLLocation::CLFloor;
-#[cfg(feature = "CoreLocation_CLLocation")]
 #[cfg(feature = "CoreLocation_CLLocation")]
 pub use self::__CLLocation::CLLocation;
 pub use self::__CLLocation::CLLocationCoordinate2DMake;
-#[cfg(feature = "CoreLocation_CLLocationSourceInformation")]
 #[cfg(feature = "CoreLocation_CLLocationSourceInformation")]
 pub use self::__CLLocation::CLLocationSourceInformation;
 
@@ -214,7 +205,6 @@ pub use self::__CLLocationManager::CLActivityTypeOtherNavigation;
 
 pub use self::__CLLocationManager::CLActivityTypeAirborne;
 #[cfg(feature = "CoreLocation_CLLocationManager")]
-#[cfg(feature = "CoreLocation_CLLocationManager")]
 pub use self::__CLLocationManager::CLLocationManager;
 
 pub use self::__CLLocationManagerDelegate::CLLocationManagerDelegate;
@@ -233,7 +223,6 @@ pub use self::__CLLocationPushServiceError::CLLocationPushServiceErrorUnknown;
 #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__CLLocationPushServiceExtension::CLLocationPushServiceExtension;
 #[cfg(feature = "CoreLocation_CLPlacemark")]
-#[cfg(feature = "CoreLocation_CLPlacemark")]
 pub use self::__CLPlacemark::CLPlacemark;
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__CLRegion::CLProximity;
@@ -246,7 +235,6 @@ pub use self::__CLRegion::CLProximityNear;
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__CLRegion::CLProximityUnknown;
 #[cfg(feature = "CoreLocation_CLRegion")]
-#[cfg(feature = "CoreLocation_CLRegion")]
 pub use self::__CLRegion::CLRegion;
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__CLRegion::CLRegionState;
@@ -256,7 +244,6 @@ pub use self::__CLRegion::CLRegionStateInside;
 pub use self::__CLRegion::CLRegionStateOutside;
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__CLRegion::CLRegionStateUnknown;
-#[cfg(feature = "CoreLocation_CLVisit")]
 #[cfg(feature = "CoreLocation_CLVisit")]
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__CLVisit::CLVisit;

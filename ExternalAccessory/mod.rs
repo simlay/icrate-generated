@@ -16,7 +16,6 @@ mod __EAWiFiUnconfiguredAccessoryBrowser;
 mod __ExternalAccessoryDefines;
 
 #[cfg(feature = "ExternalAccessory_EAAccessory")]
-#[cfg(feature = "ExternalAccessory_EAAccessory")]
 pub use self::__EAAccessory::EAAccessory;
 pub use self::__EAAccessory::EAConnectionIDNone;
 
@@ -42,11 +41,9 @@ pub use self::__EAAccessoryManager::EAAccessoryDidDisconnectNotification;
 
 pub use self::__EAAccessoryManager::EAAccessoryKey;
 #[cfg(feature = "ExternalAccessory_EAAccessoryManager")]
-#[cfg(feature = "ExternalAccessory_EAAccessoryManager")]
 pub use self::__EAAccessoryManager::EAAccessoryManager;
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__EAAccessoryManager::EAAccessorySelectedKey;
-#[cfg(feature = "ExternalAccessory_EASession")]
 #[cfg(feature = "ExternalAccessory_EASession")]
 pub use self::__EASession::EASession;
 
@@ -56,7 +53,6 @@ pub use self::__EAWiFiUnconfiguredAccessory::EAWiFiUnconfiguredAccessoryProperty
 
 pub use self::__EAWiFiUnconfiguredAccessory::EAWiFiUnconfiguredAccessoryPropertySupportsAirPrint;
 
-#[cfg(feature = "ExternalAccessory_EAWiFiUnconfiguredAccessory")]
 #[cfg(feature = "ExternalAccessory_EAWiFiUnconfiguredAccessory")]
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__EAWiFiUnconfiguredAccessory::EAWiFiUnconfiguredAccessory;
@@ -78,7 +74,6 @@ pub use self::__EAWiFiUnconfiguredAccessoryBrowser::EAWiFiUnconfiguredAccessoryC
 
 pub use self::__EAWiFiUnconfiguredAccessoryBrowser::EAWiFiUnconfiguredAccessoryConfigurationStatusUserCancelledConfiguration;
 
-#[cfg(feature = "ExternalAccessory_EAWiFiUnconfiguredAccessoryBrowser")]
 #[cfg(feature = "ExternalAccessory_EAWiFiUnconfiguredAccessoryBrowser")]
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__EAWiFiUnconfiguredAccessoryBrowser::EAWiFiUnconfiguredAccessoryBrowser;

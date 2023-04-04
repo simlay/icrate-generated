@@ -68,18 +68,14 @@ pub use self::__CAAnimation::CAAnimationRotationMode;
 pub use self::__CAAnimation::CATransitionType;
 
 #[cfg(feature = "CoreAnimation_CAAnimation")]
-#[cfg(feature = "CoreAnimation_CAAnimation")]
 pub use self::__CAAnimation::CAAnimation;
 pub use self::__CAAnimation::CATransitionSubtype;
 
 pub use self::__CAAnimation::CAAnimationDelegate;
 #[cfg(feature = "CoreAnimation_CABasicAnimation")]
-#[cfg(feature = "CoreAnimation_CABasicAnimation")]
 pub use self::__CAAnimation::CABasicAnimation;
 #[cfg(feature = "CoreAnimation_CAKeyframeAnimation")]
-#[cfg(feature = "CoreAnimation_CAKeyframeAnimation")]
 pub use self::__CAAnimation::CAKeyframeAnimation;
-#[cfg(feature = "CoreAnimation_CAPropertyAnimation")]
 #[cfg(feature = "CoreAnimation_CAPropertyAnimation")]
 pub use self::__CAAnimation::CAPropertyAnimation;
 
@@ -97,9 +93,7 @@ pub use self::__CAAnimation::kCAAnimationRotateAuto;
 
 pub use self::__CAAnimation::kCAAnimationRotateAutoReverse;
 #[cfg(feature = "CoreAnimation_CASpringAnimation")]
-#[cfg(feature = "CoreAnimation_CASpringAnimation")]
 pub use self::__CAAnimation::CASpringAnimation;
-#[cfg(feature = "CoreAnimation_CATransition")]
 #[cfg(feature = "CoreAnimation_CATransition")]
 pub use self::__CAAnimation::CATransition;
 
@@ -118,7 +112,6 @@ pub use self::__CAAnimation::kCATransitionFromLeft;
 pub use self::__CAAnimation::kCATransitionFromTop;
 
 pub use self::__CAAnimation::kCATransitionFromBottom;
-#[cfg(feature = "CoreAnimation_CAAnimationGroup")]
 #[cfg(feature = "CoreAnimation_CAAnimationGroup")]
 pub use self::__CAAnimation::CAAnimationGroup;
 
@@ -142,19 +135,14 @@ pub use self::__CAConstraintLayoutManager::kCAConstraintMaxY;
 
 pub use self::__CAConstraintLayoutManager::kCAConstraintHeight;
 #[cfg(feature = "CoreAnimation_CAConstraint")]
-#[cfg(feature = "CoreAnimation_CAConstraint")]
 pub use self::__CAConstraintLayoutManager::CAConstraint;
 #[cfg(feature = "CoreAnimation_CAConstraintLayoutManager")]
-#[cfg(feature = "CoreAnimation_CAConstraintLayoutManager")]
 pub use self::__CAConstraintLayoutManager::CAConstraintLayoutManager;
-#[cfg(feature = "CoreAnimation_CADisplayLink")]
 #[cfg(feature = "CoreAnimation_CADisplayLink")]
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__CADisplayLink::CADisplayLink;
 #[cfg(feature = "CoreAnimation_CAEDRMetadata")]
-#[cfg(feature = "CoreAnimation_CAEDRMetadata")]
 pub use self::__CAEDRMetadata::CAEDRMetadata;
-#[cfg(feature = "CoreAnimation_CAEmitterCell")]
 #[cfg(feature = "CoreAnimation_CAEmitterCell")]
 pub use self::__CAEmitterCell::CAEmitterCell;
 
@@ -162,7 +150,6 @@ pub use self::__CAEmitterLayer::CAEmitterLayerEmitterShape;
 
 pub use self::__CAEmitterLayer::CAEmitterLayerEmitterMode;
 
-#[cfg(feature = "CoreAnimation_CAEmitterLayer")]
 #[cfg(feature = "CoreAnimation_CAEmitterLayer")]
 pub use self::__CAEmitterLayer::CAEmitterLayer;
 pub use self::__CAEmitterLayer::CAEmitterLayerRenderMode;
@@ -205,7 +192,6 @@ pub use self::__CAFrameRateRange::CAFrameRateRangeMake;
 
 pub use self::__CAFrameRateRange::CAFrameRateRangeIsEqualToRange;
 
-#[cfg(feature = "CoreAnimation_CAGradientLayer")]
 #[cfg(feature = "CoreAnimation_CAGradientLayer")]
 pub use self::__CAGradientLayer::CAGradientLayer;
 pub use self::__CAGradientLayer::CAGradientLayerType;
@@ -259,7 +245,6 @@ pub use self::__CALayer::kCALayerMaxXMinYCorner;
 pub use self::__CALayer::kCALayerMinXMaxYCorner;
 
 pub use self::__CALayer::kCALayerMaxXMaxYCorner;
-#[cfg(feature = "CoreAnimation_CALayer")]
 #[cfg(feature = "CoreAnimation_CALayer")]
 pub use self::__CALayer::CALayer;
 
@@ -328,7 +313,6 @@ pub use self::__CAMediaTiming::kCAFillModeBoth;
 pub use self::__CAMediaTiming::kCAFillModeRemoved;
 
 #[cfg(feature = "CoreAnimation_CAMediaTimingFunction")]
-#[cfg(feature = "CoreAnimation_CAMediaTimingFunction")]
 pub use self::__CAMediaTimingFunction::CAMediaTimingFunction;
 pub use self::__CAMediaTimingFunction::CAMediaTimingFunctionName;
 
@@ -342,12 +326,9 @@ pub use self::__CAMediaTimingFunction::kCAMediaTimingFunctionEaseInEaseOut;
 
 pub use self::__CAMediaTimingFunction::kCAMediaTimingFunctionDefault;
 #[cfg(feature = "CoreAnimation_CARemoteLayerClient")]
-#[cfg(feature = "CoreAnimation_CARemoteLayerClient")]
 pub use self::__CARemoteLayerClient::CARemoteLayerClient;
 #[cfg(feature = "CoreAnimation_CARemoteLayerServer")]
-#[cfg(feature = "CoreAnimation_CARemoteLayerServer")]
 pub use self::__CARemoteLayerServer::CARemoteLayerServer;
-#[cfg(feature = "CoreAnimation_CARenderer")]
 #[cfg(feature = "CoreAnimation_CARenderer")]
 pub use self::__CARenderer::CARenderer;
 
@@ -355,10 +336,8 @@ pub use self::__CARenderer::kCARendererColorSpace;
 
 pub use self::__CARenderer::kCARendererMetalCommandQueue;
 #[cfg(feature = "CoreAnimation_CAReplicatorLayer")]
-#[cfg(feature = "CoreAnimation_CAReplicatorLayer")]
 pub use self::__CAReplicatorLayer::CAReplicatorLayer;
 
-#[cfg(feature = "CoreAnimation_CAScrollLayer")]
 #[cfg(feature = "CoreAnimation_CAScrollLayer")]
 pub use self::__CAScrollLayer::CAScrollLayer;
 pub use self::__CAScrollLayer::CAScrollLayerScrollMode;
@@ -375,7 +354,6 @@ pub use self::__CAShapeLayer::CAShapeLayerFillRule;
 
 pub use self::__CAShapeLayer::CAShapeLayerLineJoin;
 
-#[cfg(feature = "CoreAnimation_CAShapeLayer")]
 #[cfg(feature = "CoreAnimation_CAShapeLayer")]
 pub use self::__CAShapeLayer::CAShapeLayer;
 pub use self::__CAShapeLayer::CAShapeLayerLineCap;
@@ -399,7 +377,6 @@ pub use self::__CAShapeLayer::kCALineCapSquare;
 pub use self::__CATextLayer::CATextLayerTruncationMode;
 
 #[cfg(feature = "CoreAnimation_CATextLayer")]
-#[cfg(feature = "CoreAnimation_CATextLayer")]
 pub use self::__CATextLayer::CATextLayer;
 pub use self::__CATextLayer::CATextLayerAlignmentMode;
 
@@ -421,9 +398,7 @@ pub use self::__CATextLayer::kCAAlignmentCenter;
 
 pub use self::__CATextLayer::kCAAlignmentJustified;
 #[cfg(feature = "CoreAnimation_CATiledLayer")]
-#[cfg(feature = "CoreAnimation_CATiledLayer")]
 pub use self::__CATiledLayer::CATiledLayer;
-#[cfg(feature = "CoreAnimation_CATransaction")]
 #[cfg(feature = "CoreAnimation_CATransaction")]
 pub use self::__CATransaction::CATransaction;
 
@@ -461,10 +436,8 @@ pub use self::__CATransform3D::CATransform3DInvert;
 
 pub use self::__CATransform3D::CATransform3DIsAffine;
 #[cfg(feature = "CoreAnimation_CATransformLayer")]
-#[cfg(feature = "CoreAnimation_CATransformLayer")]
 pub use self::__CATransformLayer::CATransformLayer;
 
-#[cfg(feature = "CoreAnimation_CAValueFunction")]
 #[cfg(feature = "CoreAnimation_CAValueFunction")]
 pub use self::__CAValueFunction::CAValueFunction;
 pub use self::__CAValueFunction::CAValueFunctionName;

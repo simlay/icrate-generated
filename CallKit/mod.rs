@@ -50,22 +50,17 @@ mod __CXStartCallAction;
 mod __CXTransaction;
 
 #[cfg(feature = "CallKit_CXAction")]
-#[cfg(feature = "CallKit_CXAction")]
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__CXAction::CXAction;
-#[cfg(feature = "CallKit_CXAnswerCallAction")]
 #[cfg(feature = "CallKit_CXAnswerCallAction")]
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__CXAnswerCallAction::CXAnswerCallAction;
 #[cfg(feature = "CallKit_CXCall")]
-#[cfg(feature = "CallKit_CXCall")]
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__CXCall::CXCall;
 #[cfg(feature = "CallKit_CXCallAction")]
-#[cfg(feature = "CallKit_CXCallAction")]
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__CXCallAction::CXCallAction;
-#[cfg(feature = "CallKit_CXCallController")]
 #[cfg(feature = "CallKit_CXCallController")]
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__CXCallController::CXCallController;
@@ -73,7 +68,6 @@ pub use self::__CXCallController::CXCallController;
 pub use self::__CXCallDirectory::CXCallDirectoryPhoneNumber;
 
 pub use self::__CXCallDirectory::CXCallDirectoryPhoneNumberMax;
-#[cfg(feature = "CallKit_CXCallDirectoryExtensionContext")]
 #[cfg(feature = "CallKit_CXCallDirectoryExtensionContext")]
 #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 pub use self::__CXCallDirectoryExtensionContext::CXCallDirectoryExtensionContext;
@@ -88,24 +82,19 @@ pub use self::__CXCallDirectoryManager::CXCallDirectoryEnabledStatusEnabled;
 #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 pub use self::__CXCallDirectoryManager::CXCallDirectoryEnabledStatusUnknown;
 #[cfg(feature = "CallKit_CXCallDirectoryManager")]
-#[cfg(feature = "CallKit_CXCallDirectoryManager")]
 #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 pub use self::__CXCallDirectoryManager::CXCallDirectoryManager;
 #[cfg(feature = "CallKit_CXCallDirectoryProvider")]
-#[cfg(feature = "CallKit_CXCallDirectoryProvider")]
 #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 pub use self::__CXCallDirectoryProvider::CXCallDirectoryProvider;
-#[cfg(feature = "CallKit_CXCallObserver")]
 #[cfg(feature = "CallKit_CXCallObserver")]
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__CXCallObserver::CXCallObserver;
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__CXCallObserver::CXCallObserverDelegate;
 #[cfg(feature = "CallKit_CXCallUpdate")]
-#[cfg(feature = "CallKit_CXCallUpdate")]
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__CXCallUpdate::CXCallUpdate;
-#[cfg(feature = "CallKit_CXEndCallAction")]
 #[cfg(feature = "CallKit_CXEndCallAction")]
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__CXEndCallAction::CXEndCallAction;
@@ -188,7 +177,6 @@ pub use self::__CXError::CXErrorDomainNotificationServiceExtension;
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__CXError::CXErrorDomainRequestTransaction;
 #[cfg(feature = "CallKit_CXHandle")]
-#[cfg(feature = "CallKit_CXHandle")]
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__CXHandle::CXHandle;
 #[cfg(not(any(target_os = "macos")))]
@@ -199,7 +187,6 @@ pub use self::__CXHandle::CXHandleTypeEmailAddress;
 pub use self::__CXHandle::CXHandleTypeGeneric;
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__CXHandle::CXHandleTypePhoneNumber;
-#[cfg(feature = "CallKit_CXPlayDTMFCallAction")]
 #[cfg(feature = "CallKit_CXPlayDTMFCallAction")]
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__CXPlayDTMFCallAction::CXPlayDTMFCallAction;
@@ -224,31 +211,24 @@ pub use self::__CXProvider::CXCallEndedReasonRemoteEnded;
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__CXProvider::CXCallEndedReasonUnanswered;
 #[cfg(feature = "CallKit_CXProvider")]
-#[cfg(feature = "CallKit_CXProvider")]
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__CXProvider::CXProvider;
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__CXProvider::CXProviderDelegate;
 #[cfg(feature = "CallKit_CXProviderConfiguration")]
-#[cfg(feature = "CallKit_CXProviderConfiguration")]
 pub use self::__CXProviderConfiguration::CXProviderConfiguration;
-#[cfg(feature = "CallKit_CXSetGroupCallAction")]
 #[cfg(feature = "CallKit_CXSetGroupCallAction")]
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__CXSetGroupCallAction::CXSetGroupCallAction;
 #[cfg(feature = "CallKit_CXSetHeldCallAction")]
-#[cfg(feature = "CallKit_CXSetHeldCallAction")]
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__CXSetHeldCallAction::CXSetHeldCallAction;
-#[cfg(feature = "CallKit_CXSetMutedCallAction")]
 #[cfg(feature = "CallKit_CXSetMutedCallAction")]
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__CXSetMutedCallAction::CXSetMutedCallAction;
 #[cfg(feature = "CallKit_CXStartCallAction")]
-#[cfg(feature = "CallKit_CXStartCallAction")]
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__CXStartCallAction::CXStartCallAction;
-#[cfg(feature = "CallKit_CXTransaction")]
 #[cfg(feature = "CallKit_CXTransaction")]
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__CXTransaction::CXTransaction;

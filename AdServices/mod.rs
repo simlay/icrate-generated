@@ -14,6 +14,5 @@ pub use self::__AAAttribution::AAAttributionErrorCodeNetworkError;
 pub use self::__AAAttribution::AAAttributionErrorCodeInternalError;
 
 #[cfg(feature = "AdServices_AAAttribution")]
-#[cfg(feature = "AdServices_AAAttribution")]
 pub use self::__AAAttribution::AAAttribution;
 pub use self::__AAAttribution::AAAttributionErrorCodePlatformNotSupported;

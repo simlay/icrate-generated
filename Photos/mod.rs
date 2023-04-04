@@ -62,17 +62,13 @@ mod __PHProjectChangeRequest;
 mod __PhotosTypes;
 
 #[cfg(feature = "PhotoKit_PHAdjustmentData")]
-#[cfg(feature = "PhotoKit_PHAdjustmentData")]
 pub use self::__PHAdjustmentData::PHAdjustmentData;
 #[cfg(feature = "PhotoKit_PHAsset")]
-#[cfg(feature = "PhotoKit_PHAsset")]
 pub use self::__PHAsset::PHAsset;
-#[cfg(feature = "PhotoKit_PHAssetChangeRequest")]
 #[cfg(feature = "PhotoKit_PHAssetChangeRequest")]
 pub use self::__PHAssetChangeRequest::PHAssetChangeRequest;
 
 pub use self::__PHAssetChangeRequest::PHContentEditingInputRequestID;
-#[cfg(feature = "PhotoKit_PHContentEditingInputRequestOptions")]
 #[cfg(feature = "PhotoKit_PHContentEditingInputRequestOptions")]
 pub use self::__PHAssetChangeRequest::PHContentEditingInputRequestOptions;
 
@@ -82,15 +78,11 @@ pub use self::__PHAssetChangeRequest::PHContentEditingInputCancelledKey;
 
 pub use self::__PHAssetChangeRequest::PHContentEditingInputErrorKey;
 #[cfg(feature = "PhotoKit_PHAssetCollectionChangeRequest")]
-#[cfg(feature = "PhotoKit_PHAssetCollectionChangeRequest")]
 pub use self::__PHAssetCollectionChangeRequest::PHAssetCollectionChangeRequest;
-#[cfg(feature = "PhotoKit_PHAssetCreationRequest")]
 #[cfg(feature = "PhotoKit_PHAssetCreationRequest")]
 pub use self::__PHAssetCreationRequest::PHAssetCreationRequest;
 #[cfg(feature = "PhotoKit_PHAssetResourceCreationOptions")]
-#[cfg(feature = "PhotoKit_PHAssetResourceCreationOptions")]
 pub use self::__PHAssetCreationRequest::PHAssetResourceCreationOptions;
-#[cfg(feature = "PhotoKit_PHAssetResource")]
 #[cfg(feature = "PhotoKit_PHAssetResource")]
 pub use self::__PHAssetResource::PHAssetResource;
 
@@ -99,51 +91,36 @@ pub use self::__PHAssetResourceManager::PHAssetResourceDataRequestID;
 pub use self::__PHAssetResourceManager::PHInvalidAssetResourceDataRequestID;
 
 #[cfg(feature = "PhotoKit_PHAssetResourceManager")]
-#[cfg(feature = "PhotoKit_PHAssetResourceManager")]
 pub use self::__PHAssetResourceManager::PHAssetResourceManager;
 pub use self::__PHAssetResourceManager::PHAssetResourceProgressHandler;
 #[cfg(feature = "PhotoKit_PHAssetResourceRequestOptions")]
-#[cfg(feature = "PhotoKit_PHAssetResourceRequestOptions")]
 pub use self::__PHAssetResourceManager::PHAssetResourceRequestOptions;
-#[cfg(feature = "PhotoKit_PHChange")]
 #[cfg(feature = "PhotoKit_PHChange")]
 pub use self::__PHChange::PHChange;
 #[cfg(feature = "PhotoKit_PHFetchResultChangeDetails")]
-#[cfg(feature = "PhotoKit_PHFetchResultChangeDetails")]
 pub use self::__PHChange::PHFetchResultChangeDetails;
-#[cfg(feature = "PhotoKit_PHObjectChangeDetails")]
 #[cfg(feature = "PhotoKit_PHObjectChangeDetails")]
 pub use self::__PHChange::PHObjectChangeDetails;
 #[cfg(feature = "PhotoKit_PHChangeRequest")]
-#[cfg(feature = "PhotoKit_PHChangeRequest")]
 pub use self::__PHChangeRequest::PHChangeRequest;
-#[cfg(feature = "PhotoKit_PHCloudIdentifier")]
 #[cfg(feature = "PhotoKit_PHCloudIdentifier")]
 pub use self::__PHCloudIdentifier::PHCloudIdentifier;
 #[cfg(feature = "PhotoKit_PHCloudIdentifierMapping")]
-#[cfg(feature = "PhotoKit_PHCloudIdentifierMapping")]
 pub use self::__PHCloudIdentifier::PHCloudIdentifierMapping;
-#[cfg(feature = "PhotoKit_PHLocalIdentifierMapping")]
 #[cfg(feature = "PhotoKit_PHLocalIdentifierMapping")]
 pub use self::__PHCloudIdentifier::PHLocalIdentifierMapping;
 #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 pub use self::__PHCloudIdentifier::PHLocalIdentifierNotFound;
 #[cfg(feature = "PhotoKit_PHAssetCollection")]
-#[cfg(feature = "PhotoKit_PHAssetCollection")]
 pub use self::__PHCollection::PHAssetCollection;
-#[cfg(feature = "PhotoKit_PHCollection")]
 #[cfg(feature = "PhotoKit_PHCollection")]
 pub use self::__PHCollection::PHCollection;
 #[cfg(feature = "PhotoKit_PHCollectionList")]
-#[cfg(feature = "PhotoKit_PHCollectionList")]
 pub use self::__PHCollection::PHCollectionList;
-#[cfg(feature = "PhotoKit_PHCollectionListChangeRequest")]
 #[cfg(feature = "PhotoKit_PHCollectionListChangeRequest")]
 pub use self::__PHCollectionListChangeRequest::PHCollectionListChangeRequest;
 #[cfg(feature = "PhotoKit_PHContentEditingInput")]
-#[cfg(feature = "PhotoKit_PHContentEditingInput")]
 pub use self::__PHContentEditingInput::PHContentEditingInput;
-#[cfg(feature = "PhotoKit_PHContentEditingOutput")]
 #[cfg(feature = "PhotoKit_PHContentEditingOutput")]
 pub use self::__PHContentEditingOutput::PHContentEditingOutput;
 
@@ -195,9 +172,7 @@ pub use self::__PHError::PHPhotosErrorPersistentChangeDetailsUnavailable;
 
 pub use self::__PHError::PHPhotosErrorInvalid;
 #[cfg(feature = "PhotoKit_PHFetchOptions")]
-#[cfg(feature = "PhotoKit_PHFetchOptions")]
 pub use self::__PHFetchOptions::PHFetchOptions;
-#[cfg(feature = "PhotoKit_PHFetchResult")]
 #[cfg(feature = "PhotoKit_PHFetchResult")]
 pub use self::__PHFetchResult::PHFetchResult;
 
@@ -227,9 +202,7 @@ pub use self::__PHImageManager::PHImageRequestOptionsResizeModeExact;
 
 pub use self::__PHImageManager::PHAssetImageProgressHandler;
 #[cfg(feature = "PhotoKit_PHImageRequestOptions")]
-#[cfg(feature = "PhotoKit_PHImageRequestOptions")]
 pub use self::__PHImageManager::PHImageRequestOptions;
-#[cfg(feature = "PhotoKit_PHLivePhotoRequestOptions")]
 #[cfg(feature = "PhotoKit_PHLivePhotoRequestOptions")]
 pub use self::__PHImageManager::PHLivePhotoRequestOptions;
 
@@ -251,7 +224,6 @@ pub use self::__PHImageManager::PHVideoRequestOptionsDeliveryModeFastFormat;
 
 pub use self::__PHImageManager::PHAssetVideoProgressHandler;
 #[cfg(feature = "PhotoKit_PHVideoRequestOptions")]
-#[cfg(feature = "PhotoKit_PHVideoRequestOptions")]
 pub use self::__PHImageManager::PHVideoRequestOptions;
 
 pub use self::__PHImageManager::PHImageRequestID;
@@ -269,10 +241,8 @@ pub use self::__PHImageManager::PHImageResultRequestIDKey;
 pub use self::__PHImageManager::PHImageCancelledKey;
 
 #[cfg(feature = "PhotoKit_PHCachingImageManager")]
-#[cfg(feature = "PhotoKit_PHCachingImageManager")]
 pub use self::__PHImageManager::PHCachingImageManager;
 pub use self::__PHImageManager::PHImageErrorKey;
-#[cfg(feature = "PhotoKit_PHImageManager")]
 #[cfg(feature = "PhotoKit_PHImageManager")]
 pub use self::__PHImageManager::PHImageManager;
 
@@ -285,11 +255,9 @@ pub use self::__PHLivePhoto::PHLivePhotoInfoErrorKey;
 pub use self::__PHLivePhoto::PHLivePhotoInfoIsDegradedKey;
 
 #[cfg(feature = "PhotoKit_PHLivePhoto")]
-#[cfg(feature = "PhotoKit_PHLivePhoto")]
 pub use self::__PHLivePhoto::PHLivePhoto;
 pub use self::__PHLivePhoto::PHLivePhotoInfoCancelledKey;
 
-#[cfg(feature = "PhotoKit_PHLivePhotoEditingContext")]
 #[cfg(feature = "PhotoKit_PHLivePhotoEditingContext")]
 pub use self::__PHLivePhotoEditingContext::PHLivePhotoEditingContext;
 pub use self::__PHLivePhotoEditingContext::PHLivePhotoEditingOption;
@@ -312,21 +280,15 @@ pub use self::__PHLivePhotoEditingContext::PHLivePhotoEditingErrorCodeUnknown;
 pub use self::__PHLivePhotoEditingContext::PHLivePhotoEditingErrorDomain;
 pub use self::__PHLivePhotoEditingContext::PHLivePhotoShouldRenderAtPlaybackTime;
 #[cfg(feature = "PhotoKit_PHObject")]
-#[cfg(feature = "PhotoKit_PHObject")]
 pub use self::__PHObject::PHObject;
-#[cfg(feature = "PhotoKit_PHObjectPlaceholder")]
 #[cfg(feature = "PhotoKit_PHObjectPlaceholder")]
 pub use self::__PHObject::PHObjectPlaceholder;
 #[cfg(feature = "PhotoKit_PHPersistentChange")]
-#[cfg(feature = "PhotoKit_PHPersistentChange")]
 pub use self::__PHPersistentChange::PHPersistentChange;
-#[cfg(feature = "PhotoKit_PHPersistentChangeFetchResult")]
 #[cfg(feature = "PhotoKit_PHPersistentChangeFetchResult")]
 pub use self::__PHPersistentChangeFetchResult::PHPersistentChangeFetchResult;
 #[cfg(feature = "PhotoKit_PHPersistentChangeToken")]
-#[cfg(feature = "PhotoKit_PHPersistentChangeToken")]
 pub use self::__PHPersistentChangeToken::PHPersistentChangeToken;
-#[cfg(feature = "PhotoKit_PHPersistentObjectChangeDetails")]
 #[cfg(feature = "PhotoKit_PHPersistentObjectChangeDetails")]
 pub use self::__PHPersistentObjectChangeDetails::PHPersistentObjectChangeDetails;
 
@@ -351,14 +313,11 @@ pub use self::__PHPhotoLibrary::PHAccessLevelReadWrite;
 pub use self::__PHPhotoLibrary::PHPhotoLibraryChangeObserver;
 
 #[cfg(feature = "PhotoKit_PHPhotoLibrary")]
-#[cfg(feature = "PhotoKit_PHPhotoLibrary")]
 pub use self::__PHPhotoLibrary::PHPhotoLibrary;
 pub use self::__PHPhotoLibrary::PHPhotoLibraryAvailabilityObserver;
 #[cfg(feature = "PhotoKit_PHProject")]
-#[cfg(feature = "PhotoKit_PHProject")]
 #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 pub use self::__PHProject::PHProject;
-#[cfg(feature = "PhotoKit_PHProjectChangeRequest")]
 #[cfg(feature = "PhotoKit_PHProjectChangeRequest")]
 #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 pub use self::__PHProjectChangeRequest::PHProjectChangeRequest;

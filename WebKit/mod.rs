@@ -400,30 +400,21 @@ mod __WebUIDelegate;
 mod __WebView;
 
 #[cfg(feature = "WebKit_DOMAbstractView")]
-#[cfg(feature = "WebKit_DOMAbstractView")]
 pub use self::__DOMAbstractView::DOMAbstractView;
-#[cfg(feature = "WebKit_DOMAttr")]
 #[cfg(feature = "WebKit_DOMAttr")]
 pub use self::__DOMAttr::DOMAttr;
 #[cfg(feature = "WebKit_DOMBlob")]
-#[cfg(feature = "WebKit_DOMBlob")]
 pub use self::__DOMBlob::DOMBlob;
-#[cfg(feature = "WebKit_DOMCDATASection")]
 #[cfg(feature = "WebKit_DOMCDATASection")]
 pub use self::__DOMCDATASection::DOMCDATASection;
 #[cfg(feature = "WebKit_DOMCSSCharsetRule")]
-#[cfg(feature = "WebKit_DOMCSSCharsetRule")]
 pub use self::__DOMCSSCharsetRule::DOMCSSCharsetRule;
-#[cfg(feature = "WebKit_DOMCSSFontFaceRule")]
 #[cfg(feature = "WebKit_DOMCSSFontFaceRule")]
 pub use self::__DOMCSSFontFaceRule::DOMCSSFontFaceRule;
 #[cfg(feature = "WebKit_DOMCSSImportRule")]
-#[cfg(feature = "WebKit_DOMCSSImportRule")]
 pub use self::__DOMCSSImportRule::DOMCSSImportRule;
 #[cfg(feature = "WebKit_DOMCSSMediaRule")]
-#[cfg(feature = "WebKit_DOMCSSMediaRule")]
 pub use self::__DOMCSSMediaRule::DOMCSSMediaRule;
-#[cfg(feature = "WebKit_DOMCSSPageRule")]
 #[cfg(feature = "WebKit_DOMCSSPageRule")]
 pub use self::__DOMCSSPageRule::DOMCSSPageRule;
 
@@ -486,7 +477,6 @@ pub use self::__DOMCSSPrimitiveValue::DOM_CSS_VH;
 pub use self::__DOMCSSPrimitiveValue::DOM_CSS_VMIN;
 
 #[cfg(feature = "WebKit_DOMCSSPrimitiveValue")]
-#[cfg(feature = "WebKit_DOMCSSPrimitiveValue")]
 pub use self::__DOMCSSPrimitiveValue::DOMCSSPrimitiveValue;
 pub use self::__DOMCSSPrimitiveValue::DOM_CSS_VMAX;
 
@@ -517,22 +507,16 @@ pub use self::__DOMCSSRule::DOM_WEBKIT_REGION_RULE;
 pub use self::__DOMCSSRule::DOM_WEBKIT_KEYFRAMES_RULE;
 
 #[cfg(feature = "WebKit_DOMCSSRule")]
-#[cfg(feature = "WebKit_DOMCSSRule")]
 pub use self::__DOMCSSRule::DOMCSSRule;
 pub use self::__DOMCSSRule::DOM_WEBKIT_KEYFRAME_RULE;
 #[cfg(feature = "WebKit_DOMCSSRuleList")]
-#[cfg(feature = "WebKit_DOMCSSRuleList")]
 pub use self::__DOMCSSRuleList::DOMCSSRuleList;
-#[cfg(feature = "WebKit_DOMCSSStyleDeclaration")]
 #[cfg(feature = "WebKit_DOMCSSStyleDeclaration")]
 pub use self::__DOMCSSStyleDeclaration::DOMCSSStyleDeclaration;
 #[cfg(feature = "WebKit_DOMCSSStyleRule")]
-#[cfg(feature = "WebKit_DOMCSSStyleRule")]
 pub use self::__DOMCSSStyleRule::DOMCSSStyleRule;
 #[cfg(feature = "WebKit_DOMCSSStyleSheet")]
-#[cfg(feature = "WebKit_DOMCSSStyleSheet")]
 pub use self::__DOMCSSStyleSheet::DOMCSSStyleSheet;
-#[cfg(feature = "WebKit_DOMCSSUnknownRule")]
 #[cfg(feature = "WebKit_DOMCSSUnknownRule")]
 pub use self::__DOMCSSUnknownRule::DOMCSSUnknownRule;
 
@@ -543,39 +527,28 @@ pub use self::__DOMCSSValue::DOM_CSS_PRIMITIVE_VALUE;
 pub use self::__DOMCSSValue::DOM_CSS_VALUE_LIST;
 
 #[cfg(feature = "WebKit_DOMCSSValue")]
-#[cfg(feature = "WebKit_DOMCSSValue")]
 pub use self::__DOMCSSValue::DOMCSSValue;
 pub use self::__DOMCSSValue::DOM_CSS_CUSTOM;
 #[cfg(feature = "WebKit_DOMCSSValueList")]
-#[cfg(feature = "WebKit_DOMCSSValueList")]
 pub use self::__DOMCSSValueList::DOMCSSValueList;
-#[cfg(feature = "WebKit_DOMCharacterData")]
 #[cfg(feature = "WebKit_DOMCharacterData")]
 pub use self::__DOMCharacterData::DOMCharacterData;
 #[cfg(feature = "WebKit_DOMComment")]
-#[cfg(feature = "WebKit_DOMComment")]
 pub use self::__DOMComment::DOMComment;
-#[cfg(feature = "WebKit_DOMCounter")]
 #[cfg(feature = "WebKit_DOMCounter")]
 pub use self::__DOMCounter::DOMCounter;
 #[cfg(feature = "WebKit_DOMDocument")]
-#[cfg(feature = "WebKit_DOMDocument")]
 pub use self::__DOMDocument::DOMDocument;
 #[cfg(feature = "WebKit_DOMDocumentFragment")]
-#[cfg(feature = "WebKit_DOMDocumentFragment")]
 pub use self::__DOMDocumentFragment::DOMDocumentFragment;
-#[cfg(feature = "WebKit_DOMDocumentType")]
 #[cfg(feature = "WebKit_DOMDocumentType")]
 pub use self::__DOMDocumentType::DOMDocumentType;
 
 #[cfg(feature = "WebKit_DOMElement")]
-#[cfg(feature = "WebKit_DOMElement")]
 pub use self::__DOMElement::DOMElement;
 pub use self::__DOMElement::DOM_ALLOW_KEYBOARD_INPUT;
 #[cfg(feature = "WebKit_DOMEntity")]
-#[cfg(feature = "WebKit_DOMEntity")]
 pub use self::__DOMEntity::DOMEntity;
-#[cfg(feature = "WebKit_DOMEntityReference")]
 #[cfg(feature = "WebKit_DOMEntityReference")]
 pub use self::__DOMEntityReference::DOMEntityReference;
 
@@ -585,7 +558,6 @@ pub use self::__DOMEvent::DOM_CAPTURING_PHASE;
 
 pub use self::__DOMEvent::DOM_AT_TARGET;
 
-#[cfg(feature = "WebKit_DOMEvent")]
 #[cfg(feature = "WebKit_DOMEvent")]
 pub use self::__DOMEvent::DOMEvent;
 pub use self::__DOMEvent::DOM_BUBBLING_PHASE;
@@ -634,183 +606,123 @@ pub use self::__DOMException::DOM_NAMESPACE_ERR;
 
 pub use self::__DOMException::DOM_INVALID_ACCESS_ERR;
 #[cfg(feature = "WebKit_DOMFile")]
-#[cfg(feature = "WebKit_DOMFile")]
 pub use self::__DOMFile::DOMFile;
-#[cfg(feature = "WebKit_DOMFileList")]
 #[cfg(feature = "WebKit_DOMFileList")]
 pub use self::__DOMFileList::DOMFileList;
 #[cfg(feature = "WebKit_DOMHTMLAnchorElement")]
-#[cfg(feature = "WebKit_DOMHTMLAnchorElement")]
 pub use self::__DOMHTMLAnchorElement::DOMHTMLAnchorElement;
-#[cfg(feature = "WebKit_DOMHTMLAppletElement")]
 #[cfg(feature = "WebKit_DOMHTMLAppletElement")]
 pub use self::__DOMHTMLAppletElement::DOMHTMLAppletElement;
 #[cfg(feature = "WebKit_DOMHTMLAreaElement")]
-#[cfg(feature = "WebKit_DOMHTMLAreaElement")]
 pub use self::__DOMHTMLAreaElement::DOMHTMLAreaElement;
-#[cfg(feature = "WebKit_DOMHTMLBRElement")]
 #[cfg(feature = "WebKit_DOMHTMLBRElement")]
 pub use self::__DOMHTMLBRElement::DOMHTMLBRElement;
 #[cfg(feature = "WebKit_DOMHTMLBaseElement")]
-#[cfg(feature = "WebKit_DOMHTMLBaseElement")]
 pub use self::__DOMHTMLBaseElement::DOMHTMLBaseElement;
-#[cfg(feature = "WebKit_DOMHTMLBaseFontElement")]
 #[cfg(feature = "WebKit_DOMHTMLBaseFontElement")]
 pub use self::__DOMHTMLBaseFontElement::DOMHTMLBaseFontElement;
 #[cfg(feature = "WebKit_DOMHTMLBodyElement")]
-#[cfg(feature = "WebKit_DOMHTMLBodyElement")]
 pub use self::__DOMHTMLBodyElement::DOMHTMLBodyElement;
-#[cfg(feature = "WebKit_DOMHTMLButtonElement")]
 #[cfg(feature = "WebKit_DOMHTMLButtonElement")]
 pub use self::__DOMHTMLButtonElement::DOMHTMLButtonElement;
 #[cfg(feature = "WebKit_DOMHTMLCollection")]
-#[cfg(feature = "WebKit_DOMHTMLCollection")]
 pub use self::__DOMHTMLCollection::DOMHTMLCollection;
-#[cfg(feature = "WebKit_DOMHTMLDListElement")]
 #[cfg(feature = "WebKit_DOMHTMLDListElement")]
 pub use self::__DOMHTMLDListElement::DOMHTMLDListElement;
 #[cfg(feature = "WebKit_DOMHTMLDirectoryElement")]
-#[cfg(feature = "WebKit_DOMHTMLDirectoryElement")]
 pub use self::__DOMHTMLDirectoryElement::DOMHTMLDirectoryElement;
-#[cfg(feature = "WebKit_DOMHTMLDivElement")]
 #[cfg(feature = "WebKit_DOMHTMLDivElement")]
 pub use self::__DOMHTMLDivElement::DOMHTMLDivElement;
 #[cfg(feature = "WebKit_DOMHTMLDocument")]
-#[cfg(feature = "WebKit_DOMHTMLDocument")]
 pub use self::__DOMHTMLDocument::DOMHTMLDocument;
-#[cfg(feature = "WebKit_DOMHTMLElement")]
 #[cfg(feature = "WebKit_DOMHTMLElement")]
 pub use self::__DOMHTMLElement::DOMHTMLElement;
 #[cfg(feature = "WebKit_DOMHTMLEmbedElement")]
-#[cfg(feature = "WebKit_DOMHTMLEmbedElement")]
 pub use self::__DOMHTMLEmbedElement::DOMHTMLEmbedElement;
-#[cfg(feature = "WebKit_DOMHTMLFieldSetElement")]
 #[cfg(feature = "WebKit_DOMHTMLFieldSetElement")]
 pub use self::__DOMHTMLFieldSetElement::DOMHTMLFieldSetElement;
 #[cfg(feature = "WebKit_DOMHTMLFontElement")]
-#[cfg(feature = "WebKit_DOMHTMLFontElement")]
 pub use self::__DOMHTMLFontElement::DOMHTMLFontElement;
-#[cfg(feature = "WebKit_DOMHTMLFormElement")]
 #[cfg(feature = "WebKit_DOMHTMLFormElement")]
 pub use self::__DOMHTMLFormElement::DOMHTMLFormElement;
 #[cfg(feature = "WebKit_DOMHTMLFrameElement")]
-#[cfg(feature = "WebKit_DOMHTMLFrameElement")]
 pub use self::__DOMHTMLFrameElement::DOMHTMLFrameElement;
-#[cfg(feature = "WebKit_DOMHTMLFrameSetElement")]
 #[cfg(feature = "WebKit_DOMHTMLFrameSetElement")]
 pub use self::__DOMHTMLFrameSetElement::DOMHTMLFrameSetElement;
 #[cfg(feature = "WebKit_DOMHTMLHRElement")]
-#[cfg(feature = "WebKit_DOMHTMLHRElement")]
 pub use self::__DOMHTMLHRElement::DOMHTMLHRElement;
-#[cfg(feature = "WebKit_DOMHTMLHeadElement")]
 #[cfg(feature = "WebKit_DOMHTMLHeadElement")]
 pub use self::__DOMHTMLHeadElement::DOMHTMLHeadElement;
 #[cfg(feature = "WebKit_DOMHTMLHeadingElement")]
-#[cfg(feature = "WebKit_DOMHTMLHeadingElement")]
 pub use self::__DOMHTMLHeadingElement::DOMHTMLHeadingElement;
-#[cfg(feature = "WebKit_DOMHTMLHtmlElement")]
 #[cfg(feature = "WebKit_DOMHTMLHtmlElement")]
 pub use self::__DOMHTMLHtmlElement::DOMHTMLHtmlElement;
 #[cfg(feature = "WebKit_DOMHTMLIFrameElement")]
-#[cfg(feature = "WebKit_DOMHTMLIFrameElement")]
 pub use self::__DOMHTMLIFrameElement::DOMHTMLIFrameElement;
-#[cfg(feature = "WebKit_DOMHTMLImageElement")]
 #[cfg(feature = "WebKit_DOMHTMLImageElement")]
 pub use self::__DOMHTMLImageElement::DOMHTMLImageElement;
 #[cfg(feature = "WebKit_DOMHTMLInputElement")]
-#[cfg(feature = "WebKit_DOMHTMLInputElement")]
 pub use self::__DOMHTMLInputElement::DOMHTMLInputElement;
-#[cfg(feature = "WebKit_DOMHTMLLIElement")]
 #[cfg(feature = "WebKit_DOMHTMLLIElement")]
 pub use self::__DOMHTMLLIElement::DOMHTMLLIElement;
 #[cfg(feature = "WebKit_DOMHTMLLabelElement")]
-#[cfg(feature = "WebKit_DOMHTMLLabelElement")]
 pub use self::__DOMHTMLLabelElement::DOMHTMLLabelElement;
-#[cfg(feature = "WebKit_DOMHTMLLegendElement")]
 #[cfg(feature = "WebKit_DOMHTMLLegendElement")]
 pub use self::__DOMHTMLLegendElement::DOMHTMLLegendElement;
 #[cfg(feature = "WebKit_DOMHTMLLinkElement")]
-#[cfg(feature = "WebKit_DOMHTMLLinkElement")]
 pub use self::__DOMHTMLLinkElement::DOMHTMLLinkElement;
-#[cfg(feature = "WebKit_DOMHTMLMapElement")]
 #[cfg(feature = "WebKit_DOMHTMLMapElement")]
 pub use self::__DOMHTMLMapElement::DOMHTMLMapElement;
 #[cfg(feature = "WebKit_DOMHTMLMarqueeElement")]
-#[cfg(feature = "WebKit_DOMHTMLMarqueeElement")]
 pub use self::__DOMHTMLMarqueeElement::DOMHTMLMarqueeElement;
-#[cfg(feature = "WebKit_DOMHTMLMenuElement")]
 #[cfg(feature = "WebKit_DOMHTMLMenuElement")]
 pub use self::__DOMHTMLMenuElement::DOMHTMLMenuElement;
 #[cfg(feature = "WebKit_DOMHTMLMetaElement")]
-#[cfg(feature = "WebKit_DOMHTMLMetaElement")]
 pub use self::__DOMHTMLMetaElement::DOMHTMLMetaElement;
-#[cfg(feature = "WebKit_DOMHTMLModElement")]
 #[cfg(feature = "WebKit_DOMHTMLModElement")]
 pub use self::__DOMHTMLModElement::DOMHTMLModElement;
 #[cfg(feature = "WebKit_DOMHTMLOListElement")]
-#[cfg(feature = "WebKit_DOMHTMLOListElement")]
 pub use self::__DOMHTMLOListElement::DOMHTMLOListElement;
-#[cfg(feature = "WebKit_DOMHTMLObjectElement")]
 #[cfg(feature = "WebKit_DOMHTMLObjectElement")]
 pub use self::__DOMHTMLObjectElement::DOMHTMLObjectElement;
 #[cfg(feature = "WebKit_DOMHTMLOptGroupElement")]
-#[cfg(feature = "WebKit_DOMHTMLOptGroupElement")]
 pub use self::__DOMHTMLOptGroupElement::DOMHTMLOptGroupElement;
-#[cfg(feature = "WebKit_DOMHTMLOptionElement")]
 #[cfg(feature = "WebKit_DOMHTMLOptionElement")]
 pub use self::__DOMHTMLOptionElement::DOMHTMLOptionElement;
 #[cfg(feature = "WebKit_DOMHTMLOptionsCollection")]
-#[cfg(feature = "WebKit_DOMHTMLOptionsCollection")]
 pub use self::__DOMHTMLOptionsCollection::DOMHTMLOptionsCollection;
-#[cfg(feature = "WebKit_DOMHTMLParagraphElement")]
 #[cfg(feature = "WebKit_DOMHTMLParagraphElement")]
 pub use self::__DOMHTMLParagraphElement::DOMHTMLParagraphElement;
 #[cfg(feature = "WebKit_DOMHTMLParamElement")]
-#[cfg(feature = "WebKit_DOMHTMLParamElement")]
 pub use self::__DOMHTMLParamElement::DOMHTMLParamElement;
-#[cfg(feature = "WebKit_DOMHTMLPreElement")]
 #[cfg(feature = "WebKit_DOMHTMLPreElement")]
 pub use self::__DOMHTMLPreElement::DOMHTMLPreElement;
 #[cfg(feature = "WebKit_DOMHTMLQuoteElement")]
-#[cfg(feature = "WebKit_DOMHTMLQuoteElement")]
 pub use self::__DOMHTMLQuoteElement::DOMHTMLQuoteElement;
-#[cfg(feature = "WebKit_DOMHTMLScriptElement")]
 #[cfg(feature = "WebKit_DOMHTMLScriptElement")]
 pub use self::__DOMHTMLScriptElement::DOMHTMLScriptElement;
 #[cfg(feature = "WebKit_DOMHTMLSelectElement")]
-#[cfg(feature = "WebKit_DOMHTMLSelectElement")]
 pub use self::__DOMHTMLSelectElement::DOMHTMLSelectElement;
-#[cfg(feature = "WebKit_DOMHTMLStyleElement")]
 #[cfg(feature = "WebKit_DOMHTMLStyleElement")]
 pub use self::__DOMHTMLStyleElement::DOMHTMLStyleElement;
 #[cfg(feature = "WebKit_DOMHTMLTableCaptionElement")]
-#[cfg(feature = "WebKit_DOMHTMLTableCaptionElement")]
 pub use self::__DOMHTMLTableCaptionElement::DOMHTMLTableCaptionElement;
-#[cfg(feature = "WebKit_DOMHTMLTableCellElement")]
 #[cfg(feature = "WebKit_DOMHTMLTableCellElement")]
 pub use self::__DOMHTMLTableCellElement::DOMHTMLTableCellElement;
 #[cfg(feature = "WebKit_DOMHTMLTableColElement")]
-#[cfg(feature = "WebKit_DOMHTMLTableColElement")]
 pub use self::__DOMHTMLTableColElement::DOMHTMLTableColElement;
-#[cfg(feature = "WebKit_DOMHTMLTableElement")]
 #[cfg(feature = "WebKit_DOMHTMLTableElement")]
 pub use self::__DOMHTMLTableElement::DOMHTMLTableElement;
 #[cfg(feature = "WebKit_DOMHTMLTableRowElement")]
-#[cfg(feature = "WebKit_DOMHTMLTableRowElement")]
 pub use self::__DOMHTMLTableRowElement::DOMHTMLTableRowElement;
-#[cfg(feature = "WebKit_DOMHTMLTableSectionElement")]
 #[cfg(feature = "WebKit_DOMHTMLTableSectionElement")]
 pub use self::__DOMHTMLTableSectionElement::DOMHTMLTableSectionElement;
 #[cfg(feature = "WebKit_DOMHTMLTextAreaElement")]
-#[cfg(feature = "WebKit_DOMHTMLTextAreaElement")]
 pub use self::__DOMHTMLTextAreaElement::DOMHTMLTextAreaElement;
-#[cfg(feature = "WebKit_DOMHTMLTitleElement")]
 #[cfg(feature = "WebKit_DOMHTMLTitleElement")]
 pub use self::__DOMHTMLTitleElement::DOMHTMLTitleElement;
 #[cfg(feature = "WebKit_DOMHTMLUListElement")]
-#[cfg(feature = "WebKit_DOMHTMLUListElement")]
 pub use self::__DOMHTMLUListElement::DOMHTMLUListElement;
-#[cfg(feature = "WebKit_DOMImplementation")]
 #[cfg(feature = "WebKit_DOMImplementation")]
 pub use self::__DOMImplementation::DOMImplementation;
 
@@ -821,13 +733,10 @@ pub use self::__DOMKeyboardEvent::DOM_KEY_LOCATION_LEFT;
 pub use self::__DOMKeyboardEvent::DOM_KEY_LOCATION_RIGHT;
 
 #[cfg(feature = "WebKit_DOMKeyboardEvent")]
-#[cfg(feature = "WebKit_DOMKeyboardEvent")]
 pub use self::__DOMKeyboardEvent::DOMKeyboardEvent;
 pub use self::__DOMKeyboardEvent::DOM_KEY_LOCATION_NUMPAD;
 #[cfg(feature = "WebKit_DOMMediaList")]
-#[cfg(feature = "WebKit_DOMMediaList")]
 pub use self::__DOMMediaList::DOMMediaList;
-#[cfg(feature = "WebKit_DOMMouseEvent")]
 #[cfg(feature = "WebKit_DOMMouseEvent")]
 pub use self::__DOMMouseEvent::DOMMouseEvent;
 
@@ -836,10 +745,8 @@ pub use self::__DOMMutationEvent::DOM_MODIFICATION;
 pub use self::__DOMMutationEvent::DOM_ADDITION;
 
 #[cfg(feature = "WebKit_DOMMutationEvent")]
-#[cfg(feature = "WebKit_DOMMutationEvent")]
 pub use self::__DOMMutationEvent::DOMMutationEvent;
 pub use self::__DOMMutationEvent::DOM_REMOVAL;
-#[cfg(feature = "WebKit_DOMNamedNodeMap")]
 #[cfg(feature = "WebKit_DOMNamedNodeMap")]
 pub use self::__DOMNamedNodeMap::DOMNamedNodeMap;
 
@@ -878,7 +785,6 @@ pub use self::__DOMNode::DOM_DOCUMENT_POSITION_CONTAINS;
 pub use self::__DOMNode::DOM_DOCUMENT_POSITION_CONTAINED_BY;
 
 #[cfg(feature = "WebKit_DOMNode")]
-#[cfg(feature = "WebKit_DOMNode")]
 pub use self::__DOMNode::DOMNode;
 pub use self::__DOMNode::DOM_DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC;
 
@@ -916,13 +822,10 @@ pub use self::__DOMNodeFilter::DOM_SHOW_NOTATION;
 
 pub use self::__DOMNodeFilter::DOMNodeFilter;
 #[cfg(feature = "WebKit_DOMNodeIterator")]
-#[cfg(feature = "WebKit_DOMNodeIterator")]
 pub use self::__DOMNodeIterator::DOMNodeIterator;
-#[cfg(feature = "WebKit_DOMNodeList")]
 #[cfg(feature = "WebKit_DOMNodeList")]
 pub use self::__DOMNodeList::DOMNodeList;
 
-#[cfg(feature = "WebKit_DOMObject")]
 #[cfg(feature = "WebKit_DOMObject")]
 pub use self::__DOMObject::DOMObject;
 pub use self::__DOMObject::DOMTimeStamp;
@@ -932,16 +835,12 @@ pub use self::__DOMOverflowEvent::DOM_HORIZONTAL;
 pub use self::__DOMOverflowEvent::DOM_VERTICAL;
 
 #[cfg(feature = "WebKit_DOMOverflowEvent")]
-#[cfg(feature = "WebKit_DOMOverflowEvent")]
 pub use self::__DOMOverflowEvent::DOMOverflowEvent;
 pub use self::__DOMOverflowEvent::DOM_BOTH;
 #[cfg(feature = "WebKit_DOMProcessingInstruction")]
-#[cfg(feature = "WebKit_DOMProcessingInstruction")]
 pub use self::__DOMProcessingInstruction::DOMProcessingInstruction;
 #[cfg(feature = "WebKit_DOMProgressEvent")]
-#[cfg(feature = "WebKit_DOMProgressEvent")]
 pub use self::__DOMProgressEvent::DOMProgressEvent;
-#[cfg(feature = "WebKit_DOMRGBColor")]
 #[cfg(feature = "WebKit_DOMRGBColor")]
 pub use self::__DOMRGBColor::DOMRGBColor;
 
@@ -960,7 +859,6 @@ pub use self::__DOMRange::DOM_NODE_AFTER;
 pub use self::__DOMRange::DOM_NODE_BEFORE_AND_AFTER;
 
 #[cfg(feature = "WebKit_DOMRange")]
-#[cfg(feature = "WebKit_DOMRange")]
 pub use self::__DOMRange::DOMRange;
 pub use self::__DOMRange::DOM_NODE_INSIDE;
 
@@ -972,21 +870,15 @@ pub use self::__DOMRangeException::DOM_BAD_BOUNDARYPOINTS_ERR;
 
 pub use self::__DOMRangeException::DOM_INVALID_NODE_TYPE_ERR;
 #[cfg(feature = "WebKit_DOMRect")]
-#[cfg(feature = "WebKit_DOMRect")]
 pub use self::__DOMRect::DOMRect;
-#[cfg(feature = "WebKit_DOMStyleSheet")]
 #[cfg(feature = "WebKit_DOMStyleSheet")]
 pub use self::__DOMStyleSheet::DOMStyleSheet;
 #[cfg(feature = "WebKit_DOMStyleSheetList")]
-#[cfg(feature = "WebKit_DOMStyleSheetList")]
 pub use self::__DOMStyleSheetList::DOMStyleSheetList;
-#[cfg(feature = "WebKit_DOMText")]
 #[cfg(feature = "WebKit_DOMText")]
 pub use self::__DOMText::DOMText;
 #[cfg(feature = "WebKit_DOMTreeWalker")]
-#[cfg(feature = "WebKit_DOMTreeWalker")]
 pub use self::__DOMTreeWalker::DOMTreeWalker;
-#[cfg(feature = "WebKit_DOMUIEvent")]
 #[cfg(feature = "WebKit_DOMUIEvent")]
 pub use self::__DOMUIEvent::DOMUIEvent;
 
@@ -994,7 +886,6 @@ pub use self::__DOMWheelEvent::DOM_DOM_DELTA_PIXEL;
 
 pub use self::__DOMWheelEvent::DOM_DOM_DELTA_LINE;
 
-#[cfg(feature = "WebKit_DOMWheelEvent")]
 #[cfg(feature = "WebKit_DOMWheelEvent")]
 pub use self::__DOMWheelEvent::DOMWheelEvent;
 pub use self::__DOMWheelEvent::DOM_DOM_DELTA_PAGE;
@@ -1006,7 +897,6 @@ pub use self::__DOMXPathException::DOMXPathExceptionCode;
 pub use self::__DOMXPathException::DOM_INVALID_EXPRESSION_ERR;
 
 pub use self::__DOMXPathException::DOM_TYPE_ERR;
-#[cfg(feature = "WebKit_DOMXPathExpression")]
 #[cfg(feature = "WebKit_DOMXPathExpression")]
 pub use self::__DOMXPathExpression::DOMXPathExpression;
 
@@ -1031,7 +921,6 @@ pub use self::__DOMXPathResult::DOM_ORDERED_NODE_SNAPSHOT_TYPE;
 pub use self::__DOMXPathResult::DOM_ANY_UNORDERED_NODE_TYPE;
 
 #[cfg(feature = "WebKit_DOMXPathResult")]
-#[cfg(feature = "WebKit_DOMXPathResult")]
 pub use self::__DOMXPathResult::DOMXPathResult;
 pub use self::__DOMXPathResult::DOM_FIRST_ORDERED_NODE_TYPE;
 
@@ -1039,21 +928,15 @@ pub use self::__NSAttributedString::NSReadAccessURLDocumentOption;
 
 pub use self::__NSAttributedString::NSAttributedStringCompletionHandler;
 #[cfg(feature = "WebKit_WKBackForwardList")]
-#[cfg(feature = "WebKit_WKBackForwardList")]
 pub use self::__WKBackForwardList::WKBackForwardList;
-#[cfg(feature = "WebKit_WKBackForwardListItem")]
 #[cfg(feature = "WebKit_WKBackForwardListItem")]
 pub use self::__WKBackForwardListItem::WKBackForwardListItem;
 #[cfg(feature = "WebKit_WKContentRuleList")]
-#[cfg(feature = "WebKit_WKContentRuleList")]
 pub use self::__WKContentRuleList::WKContentRuleList;
-#[cfg(feature = "WebKit_WKContentRuleListStore")]
 #[cfg(feature = "WebKit_WKContentRuleListStore")]
 pub use self::__WKContentRuleListStore::WKContentRuleListStore;
 #[cfg(feature = "WebKit_WKContentWorld")]
-#[cfg(feature = "WebKit_WKContentWorld")]
 pub use self::__WKContentWorld::WKContentWorld;
-#[cfg(feature = "WebKit_WKDownload")]
 #[cfg(feature = "WebKit_WKDownload")]
 pub use self::__WKDownload::WKDownload;
 
@@ -1103,20 +986,15 @@ pub use self::__WKError::WKErrorMalformedCredential;
 
 pub use self::__WKError::WKErrorCredentialNotFound;
 #[cfg(feature = "WebKit_WKFindConfiguration")]
-#[cfg(feature = "WebKit_WKFindConfiguration")]
 pub use self::__WKFindConfiguration::WKFindConfiguration;
 #[cfg(feature = "WebKit_WKFindResult")]
-#[cfg(feature = "WebKit_WKFindResult")]
 pub use self::__WKFindResult::WKFindResult;
-#[cfg(feature = "WebKit_WKFrameInfo")]
 #[cfg(feature = "WebKit_WKFrameInfo")]
 pub use self::__WKFrameInfo::WKFrameInfo;
 
 #[cfg(feature = "WebKit_WKHTTPCookieStore")]
-#[cfg(feature = "WebKit_WKHTTPCookieStore")]
 pub use self::__WKHTTPCookieStore::WKHTTPCookieStore;
 pub use self::__WKHTTPCookieStore::WKHTTPCookieStoreObserver;
-#[cfg(feature = "WebKit_WKNavigation")]
 #[cfg(feature = "WebKit_WKNavigation")]
 pub use self::__WKNavigation::WKNavigation;
 
@@ -1132,7 +1010,6 @@ pub use self::__WKNavigationAction::WKNavigationTypeReload;
 
 pub use self::__WKNavigationAction::WKNavigationTypeFormResubmitted;
 
-#[cfg(feature = "WebKit_WKNavigationAction")]
 #[cfg(feature = "WebKit_WKNavigationAction")]
 pub use self::__WKNavigationAction::WKNavigationAction;
 pub use self::__WKNavigationAction::WKNavigationTypeOther;
@@ -1155,21 +1032,15 @@ pub use self::__WKNavigationDelegate::WKNavigationResponsePolicyDownload;
 
 pub use self::__WKNavigationDelegate::WKNavigationDelegate;
 #[cfg(feature = "WebKit_WKNavigationResponse")]
-#[cfg(feature = "WebKit_WKNavigationResponse")]
 pub use self::__WKNavigationResponse::WKNavigationResponse;
-#[cfg(feature = "WebKit_WKOpenPanelParameters")]
 #[cfg(feature = "WebKit_WKOpenPanelParameters")]
 pub use self::__WKOpenPanelParameters::WKOpenPanelParameters;
 #[cfg(feature = "WebKit_WKPDFConfiguration")]
-#[cfg(feature = "WebKit_WKPDFConfiguration")]
 pub use self::__WKPDFConfiguration::WKPDFConfiguration;
-#[cfg(feature = "WebKit_WKPreferences")]
 #[cfg(feature = "WebKit_WKPreferences")]
 pub use self::__WKPreferences::WKPreferences;
 #[cfg(feature = "WebKit_WKProcessPool")]
-#[cfg(feature = "WebKit_WKProcessPool")]
 pub use self::__WKProcessPool::WKProcessPool;
-#[cfg(feature = "WebKit_WKScriptMessage")]
 #[cfg(feature = "WebKit_WKScriptMessage")]
 pub use self::__WKScriptMessage::WKScriptMessage;
 
@@ -1177,9 +1048,7 @@ pub use self::__WKScriptMessageHandler::WKScriptMessageHandler;
 
 pub use self::__WKScriptMessageHandlerWithReply::WKScriptMessageHandlerWithReply;
 #[cfg(feature = "WebKit_WKSecurityOrigin")]
-#[cfg(feature = "WebKit_WKSecurityOrigin")]
 pub use self::__WKSecurityOrigin::WKSecurityOrigin;
-#[cfg(feature = "WebKit_WKSnapshotConfiguration")]
 #[cfg(feature = "WebKit_WKSnapshotConfiguration")]
 pub use self::__WKSnapshotConfiguration::WKSnapshotConfiguration;
 
@@ -1213,14 +1082,12 @@ pub use self::__WKURLSchemeHandler::WKURLSchemeHandler;
 
 pub use self::__WKURLSchemeTask::WKURLSchemeTask;
 #[cfg(feature = "WebKit_WKUserContentController")]
-#[cfg(feature = "WebKit_WKUserContentController")]
 pub use self::__WKUserContentController::WKUserContentController;
 
 pub use self::__WKUserScript::WKUserScriptInjectionTime;
 
 pub use self::__WKUserScript::WKUserScriptInjectionTimeAtDocumentStart;
 
-#[cfg(feature = "WebKit_WKUserScript")]
 #[cfg(feature = "WebKit_WKUserScript")]
 pub use self::__WKUserScript::WKUserScript;
 pub use self::__WKUserScript::WKUserScriptInjectionTimeAtDocumentEnd;
@@ -1253,7 +1120,6 @@ pub use self::__WKWebView::WKFullscreenStateInFullscreen;
 
 pub use self::__WKWebView::WKFullscreenStateExitingFullscreen;
 #[cfg(feature = "WebKit_WKWebView")]
-#[cfg(feature = "WebKit_WKWebView")]
 pub use self::__WKWebView::WKWebView;
 
 pub use self::__WKWebViewConfiguration::WKUserInterfaceDirectionPolicy;
@@ -1272,7 +1138,6 @@ pub use self::__WKWebViewConfiguration::WKAudiovisualMediaTypeVideo;
 
 pub use self::__WKWebViewConfiguration::WKAudiovisualMediaTypeAll;
 #[cfg(feature = "WebKit_WKWebViewConfiguration")]
-#[cfg(feature = "WebKit_WKWebViewConfiguration")]
 pub use self::__WKWebViewConfiguration::WKWebViewConfiguration;
 
 pub use self::__WKWebpagePreferences::WKContentMode;
@@ -1282,7 +1147,6 @@ pub use self::__WKWebpagePreferences::WKContentModeRecommended;
 pub use self::__WKWebpagePreferences::WKContentModeMobile;
 
 pub use self::__WKWebpagePreferences::WKContentModeDesktop;
-#[cfg(feature = "WebKit_WKWebpagePreferences")]
 #[cfg(feature = "WebKit_WKWebpagePreferences")]
 pub use self::__WKWebpagePreferences::WKWebpagePreferences;
 
@@ -1307,24 +1171,18 @@ pub use self::__WKWebsiteDataRecord::WKWebsiteDataTypeIndexedDBDatabases;
 pub use self::__WKWebsiteDataRecord::WKWebsiteDataTypeServiceWorkerRegistrations;
 
 #[cfg(feature = "WebKit_WKWebsiteDataRecord")]
-#[cfg(feature = "WebKit_WKWebsiteDataRecord")]
 pub use self::__WKWebsiteDataRecord::WKWebsiteDataRecord;
 pub use self::__WKWebsiteDataRecord::WKWebsiteDataTypeFileSystem;
 #[cfg(feature = "WebKit_WKWebsiteDataStore")]
-#[cfg(feature = "WebKit_WKWebsiteDataStore")]
 pub use self::__WKWebsiteDataStore::WKWebsiteDataStore;
-#[cfg(feature = "WebKit_WKWindowFeatures")]
 #[cfg(feature = "WebKit_WKWindowFeatures")]
 pub use self::__WKWindowFeatures::WKWindowFeatures;
 
 #[cfg(feature = "WebKit_WebArchive")]
-#[cfg(feature = "WebKit_WebArchive")]
 pub use self::__WebArchive::WebArchive;
 pub use self::__WebArchive::WebArchivePboardType;
 #[cfg(feature = "WebKit_WebBackForwardList")]
-#[cfg(feature = "WebKit_WebBackForwardList")]
 pub use self::__WebBackForwardList::WebBackForwardList;
-#[cfg(feature = "WebKit_WebDataSource")]
 #[cfg(feature = "WebKit_WebDataSource")]
 pub use self::__WebDataSource::WebDataSource;
 
@@ -1335,7 +1193,6 @@ pub use self::__WebDocument::WebDocumentSearching;
 pub use self::__WebDocument::WebDocumentText;
 
 pub use self::__WebDocument::WebDocumentRepresentation;
-#[cfg(feature = "WebKit_WebDownload")]
 #[cfg(feature = "WebKit_WebDownload")]
 pub use self::__WebDownload::WebDownload;
 
@@ -1351,11 +1208,9 @@ pub use self::__WebEditingDelegate::WebViewInsertActionDropped;
 
 pub use self::__WebEditingDelegate::WebEditingDelegate;
 #[cfg(feature = "WebKit_WebFrame")]
-#[cfg(feature = "WebKit_WebFrame")]
 pub use self::__WebFrame::WebFrame;
 
 pub use self::__WebFrameLoadDelegate::WebFrameLoadDelegate;
-#[cfg(feature = "WebKit_WebFrameView")]
 #[cfg(feature = "WebKit_WebFrameView")]
 pub use self::__WebFrameView::WebFrameView;
 
@@ -1370,11 +1225,9 @@ pub use self::__WebHistory::WebHistoryLoadedNotification;
 pub use self::__WebHistory::WebHistorySavedNotification;
 
 #[cfg(feature = "WebKit_WebHistory")]
-#[cfg(feature = "WebKit_WebHistory")]
 pub use self::__WebHistory::WebHistory;
 pub use self::__WebHistory::WebHistoryItemsKey;
 
-#[cfg(feature = "WebKit_WebHistoryItem")]
 #[cfg(feature = "WebKit_WebHistoryItem")]
 pub use self::__WebHistoryItem::WebHistoryItem;
 pub use self::__WebHistoryItem::WebHistoryItemChangedNotification;
@@ -1450,18 +1303,14 @@ pub use self::__WebPreferences::WebCacheModelDocumentBrowser;
 pub use self::__WebPreferences::WebCacheModelPrimaryWebBrowser;
 
 #[cfg(feature = "WebKit_WebPreferences")]
-#[cfg(feature = "WebKit_WebPreferences")]
 pub use self::__WebPreferences::WebPreferences;
 pub use self::__WebPreferences::WebPreferencesChangedNotification;
-#[cfg(feature = "WebKit_WebResource")]
 #[cfg(feature = "WebKit_WebResource")]
 pub use self::__WebResource::WebResource;
 
 pub use self::__WebResourceLoadDelegate::WebResourceLoadDelegate;
 #[cfg(feature = "WebKit_WebScriptObject")]
-#[cfg(feature = "WebKit_WebScriptObject")]
 pub use self::__WebScriptObject::WebScriptObject;
-#[cfg(feature = "WebKit_WebUndefined")]
 #[cfg(feature = "WebKit_WebUndefined")]
 pub use self::__WebScriptObject::WebUndefined;
 
@@ -1585,7 +1434,6 @@ pub use self::__WebView::WebViewProgressStartedNotification;
 
 pub use self::__WebView::WebViewProgressEstimateChangedNotification;
 
-#[cfg(feature = "WebKit_WebView")]
 #[cfg(feature = "WebKit_WebView")]
 pub use self::__WebView::WebView;
 pub use self::__WebView::WebViewProgressFinishedNotification;

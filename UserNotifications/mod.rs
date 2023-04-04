@@ -61,9 +61,7 @@ pub use self::__UNError::UNErrorCodeContentProvidingInvalid;
 
 pub use self::__UNError::UNErrorCodeBadgeInputInvalid;
 #[cfg(feature = "UserNotifications_UNNotification")]
-#[cfg(feature = "UserNotifications_UNNotification")]
 pub use self::__UNNotification::UNNotification;
-#[cfg(feature = "UserNotifications_UNNotificationAction")]
 #[cfg(feature = "UserNotifications_UNNotificationAction")]
 #[cfg(not(any(target_os = "tvos")))]
 pub use self::__UNNotificationAction::UNNotificationAction;
@@ -78,13 +76,10 @@ pub use self::__UNNotificationAction::UNNotificationActionOptionNone;
 #[cfg(not(any(target_os = "tvos")))]
 pub use self::__UNNotificationAction::UNNotificationActionOptions;
 #[cfg(feature = "UserNotifications_UNTextInputNotificationAction")]
-#[cfg(feature = "UserNotifications_UNTextInputNotificationAction")]
 #[cfg(not(any(target_os = "tvos")))]
 pub use self::__UNNotificationAction::UNTextInputNotificationAction;
 #[cfg(feature = "UserNotifications_UNNotificationActionIcon")]
-#[cfg(feature = "UserNotifications_UNNotificationActionIcon")]
 pub use self::__UNNotificationActionIcon::UNNotificationActionIcon;
-#[cfg(feature = "UserNotifications_UNNotificationAttachment")]
 #[cfg(feature = "UserNotifications_UNNotificationAttachment")]
 #[cfg(not(any(target_os = "tvos")))]
 pub use self::__UNNotificationAttachment::UNNotificationAttachment;
@@ -96,7 +91,6 @@ pub use self::__UNNotificationAttachment::UNNotificationAttachmentOptionsThumbna
 pub use self::__UNNotificationAttachment::UNNotificationAttachmentOptionsThumbnailTimeKey;
 #[cfg(not(any(target_os = "tvos")))]
 pub use self::__UNNotificationAttachment::UNNotificationAttachmentOptionsTypeHintKey;
-#[cfg(feature = "UserNotifications_UNNotificationCategory")]
 #[cfg(feature = "UserNotifications_UNNotificationCategory")]
 #[cfg(not(any(target_os = "tvos")))]
 pub use self::__UNNotificationCategory::UNNotificationCategory;
@@ -126,13 +120,10 @@ pub use self::__UNNotificationContent::UNNotificationInterruptionLevelActive;
 pub use self::__UNNotificationContent::UNNotificationInterruptionLevelTimeSensitive;
 
 #[cfg(feature = "UserNotifications_UNMutableNotificationContent")]
-#[cfg(feature = "UserNotifications_UNMutableNotificationContent")]
 pub use self::__UNNotificationContent::UNMutableNotificationContent;
-#[cfg(feature = "UserNotifications_UNNotificationContent")]
 #[cfg(feature = "UserNotifications_UNNotificationContent")]
 pub use self::__UNNotificationContent::UNNotificationContent;
 pub use self::__UNNotificationContent::UNNotificationInterruptionLevelCritical;
-#[cfg(feature = "UserNotifications_UNNotificationRequest")]
 #[cfg(feature = "UserNotifications_UNNotificationRequest")]
 pub use self::__UNNotificationRequest::UNNotificationRequest;
 #[cfg(not(any(target_os = "tvos")))]
@@ -140,14 +131,11 @@ pub use self::__UNNotificationResponse::UNNotificationDefaultActionIdentifier;
 #[cfg(not(any(target_os = "tvos")))]
 pub use self::__UNNotificationResponse::UNNotificationDismissActionIdentifier;
 #[cfg(feature = "UserNotifications_UNNotificationResponse")]
-#[cfg(feature = "UserNotifications_UNNotificationResponse")]
 #[cfg(not(any(target_os = "tvos")))]
 pub use self::__UNNotificationResponse::UNNotificationResponse;
 #[cfg(feature = "UserNotifications_UNTextInputNotificationResponse")]
-#[cfg(feature = "UserNotifications_UNTextInputNotificationResponse")]
 #[cfg(not(any(target_os = "tvos")))]
 pub use self::__UNNotificationResponse::UNTextInputNotificationResponse;
-#[cfg(feature = "UserNotifications_UNNotificationServiceExtension")]
 #[cfg(feature = "UserNotifications_UNNotificationServiceExtension")]
 #[cfg(not(any(target_os = "tvos")))]
 pub use self::__UNNotificationServiceExtension::UNNotificationServiceExtension;
@@ -188,28 +176,21 @@ pub use self::__UNNotificationSettings::UNAlertStyleBanner;
 pub use self::__UNNotificationSettings::UNAlertStyleNone;
 pub use self::__UNNotificationSettings::UNNotificationSettingEnabled;
 #[cfg(feature = "UserNotifications_UNNotificationSettings")]
-#[cfg(feature = "UserNotifications_UNNotificationSettings")]
 pub use self::__UNNotificationSettings::UNNotificationSettings;
 
-#[cfg(feature = "UserNotifications_UNNotificationSound")]
 #[cfg(feature = "UserNotifications_UNNotificationSound")]
 #[cfg(not(any(target_os = "tvos")))]
 pub use self::__UNNotificationSound::UNNotificationSound;
 pub use self::__UNNotificationSound::UNNotificationSoundName;
 #[cfg(feature = "UserNotifications_UNCalendarNotificationTrigger")]
-#[cfg(feature = "UserNotifications_UNCalendarNotificationTrigger")]
 pub use self::__UNNotificationTrigger::UNCalendarNotificationTrigger;
-#[cfg(feature = "UserNotifications_UNLocationNotificationTrigger")]
 #[cfg(feature = "UserNotifications_UNLocationNotificationTrigger")]
 #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
 pub use self::__UNNotificationTrigger::UNLocationNotificationTrigger;
 #[cfg(feature = "UserNotifications_UNNotificationTrigger")]
-#[cfg(feature = "UserNotifications_UNNotificationTrigger")]
 pub use self::__UNNotificationTrigger::UNNotificationTrigger;
 #[cfg(feature = "UserNotifications_UNPushNotificationTrigger")]
-#[cfg(feature = "UserNotifications_UNPushNotificationTrigger")]
 pub use self::__UNNotificationTrigger::UNPushNotificationTrigger;
-#[cfg(feature = "UserNotifications_UNTimeIntervalNotificationTrigger")]
 #[cfg(feature = "UserNotifications_UNTimeIntervalNotificationTrigger")]
 pub use self::__UNNotificationTrigger::UNTimeIntervalNotificationTrigger;
 
@@ -234,7 +215,6 @@ pub use self::__UNUserNotificationCenter::UNAuthorizationOptionAnnouncement;
 pub use self::__UNUserNotificationCenter::UNAuthorizationOptionTimeSensitive;
 
 pub use self::__UNUserNotificationCenter::UNAuthorizationOptionNone;
-#[cfg(feature = "UserNotifications_UNUserNotificationCenter")]
 #[cfg(feature = "UserNotifications_UNUserNotificationCenter")]
 pub use self::__UNUserNotificationCenter::UNUserNotificationCenter;
 

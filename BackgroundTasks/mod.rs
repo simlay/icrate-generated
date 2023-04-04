@@ -12,21 +12,15 @@ mod __BGTaskRequest;
 mod __BGTaskScheduler;
 
 #[cfg(feature = "BackgroundTasks_BGAppRefreshTask")]
-#[cfg(feature = "BackgroundTasks_BGAppRefreshTask")]
 pub use self::__BGTask::BGAppRefreshTask;
-#[cfg(feature = "BackgroundTasks_BGProcessingTask")]
 #[cfg(feature = "BackgroundTasks_BGProcessingTask")]
 pub use self::__BGTask::BGProcessingTask;
 #[cfg(feature = "BackgroundTasks_BGTask")]
-#[cfg(feature = "BackgroundTasks_BGTask")]
 pub use self::__BGTask::BGTask;
-#[cfg(feature = "BackgroundTasks_BGAppRefreshTaskRequest")]
 #[cfg(feature = "BackgroundTasks_BGAppRefreshTaskRequest")]
 pub use self::__BGTaskRequest::BGAppRefreshTaskRequest;
 #[cfg(feature = "BackgroundTasks_BGProcessingTaskRequest")]
-#[cfg(feature = "BackgroundTasks_BGProcessingTaskRequest")]
 pub use self::__BGTaskRequest::BGProcessingTaskRequest;
-#[cfg(feature = "BackgroundTasks_BGTaskRequest")]
 #[cfg(feature = "BackgroundTasks_BGTaskRequest")]
 pub use self::__BGTaskRequest::BGTaskRequest;
 
@@ -38,7 +32,6 @@ pub use self::__BGTaskScheduler::BGTaskSchedulerErrorCodeUnavailable;
 
 pub use self::__BGTaskScheduler::BGTaskSchedulerErrorCodeTooManyPendingTaskRequests;
 
-#[cfg(feature = "BackgroundTasks_BGTaskScheduler")]
 #[cfg(feature = "BackgroundTasks_BGTaskScheduler")]
 pub use self::__BGTaskScheduler::BGTaskScheduler;
 pub use self::__BGTaskScheduler::BGTaskSchedulerErrorCodeNotPermitted;

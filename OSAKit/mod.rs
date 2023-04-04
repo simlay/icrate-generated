@@ -30,10 +30,8 @@ pub use self::__OSALanguage::OSASupportsConvenience;
 pub use self::__OSALanguage::OSASupportsDialects;
 
 #[cfg(feature = "OSAKit_OSALanguage")]
-#[cfg(feature = "OSAKit_OSALanguage")]
 pub use self::__OSALanguage::OSALanguage;
 pub use self::__OSALanguage::OSASupportsEventHandling;
-#[cfg(feature = "OSAKit_OSALanguageInstance")]
 #[cfg(feature = "OSAKit_OSALanguageInstance")]
 pub use self::__OSALanguageInstance::OSALanguageInstance;
 
@@ -88,7 +86,6 @@ pub use self::__OSAScript::OSADontSetScriptLocation;
 pub use self::__OSAScript::OSAStayOpenApplet;
 
 #[cfg(feature = "OSAKit_OSAScript")]
-#[cfg(feature = "OSAKit_OSAScript")]
 pub use self::__OSAScript::OSAScript;
 pub use self::__OSAScript::OSAShowStartupScreen;
 
@@ -99,9 +96,7 @@ pub use self::__OSAScriptController::OSAScriptStopped;
 pub use self::__OSAScriptController::OSAScriptRunning;
 
 #[cfg(feature = "OSAKit_OSAScriptController")]
-#[cfg(feature = "OSAKit_OSAScriptController")]
 pub use self::__OSAScriptController::OSAScriptController;
 pub use self::__OSAScriptController::OSAScriptRecording;
-#[cfg(feature = "OSAKit_OSAScriptView")]
 #[cfg(feature = "OSAKit_OSAScriptView")]
 pub use self::__OSAScriptView::OSAScriptView;

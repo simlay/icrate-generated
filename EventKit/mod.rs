@@ -40,12 +40,9 @@ mod __EKVirtualConferenceProvider;
 mod __EventKitDefines;
 
 #[cfg(feature = "EventKit_EKAlarm")]
-#[cfg(feature = "EventKit_EKAlarm")]
 pub use self::__EKAlarm::EKAlarm;
 #[cfg(feature = "EventKit_EKCalendar")]
-#[cfg(feature = "EventKit_EKCalendar")]
 pub use self::__EKCalendar::EKCalendar;
-#[cfg(feature = "EventKit_EKCalendarItem")]
 #[cfg(feature = "EventKit_EKCalendarItem")]
 pub use self::__EKCalendarItem::EKCalendarItem;
 
@@ -150,7 +147,6 @@ pub use self::__EKEvent::EKEventStatusConfirmed;
 pub use self::__EKEvent::EKEventStatusTentative;
 
 #[cfg(feature = "EventKit_EKEvent")]
-#[cfg(feature = "EventKit_EKEvent")]
 pub use self::__EKEvent::EKEvent;
 pub use self::__EKEvent::EKEventStatusCanceled;
 
@@ -163,33 +159,24 @@ pub use self::__EKEventStore::EKSpanFutureEvents;
 pub use self::__EKEventStore::EKEventSearchCallback;
 
 #[cfg(feature = "EventKit_EKEventStore")]
-#[cfg(feature = "EventKit_EKEventStore")]
 pub use self::__EKEventStore::EKEventStore;
 pub use self::__EKEventStore::EKEventStoreRequestAccessCompletionHandler;
 
 pub use self::__EKEventStore::EKEventStoreChangedNotification;
 #[cfg(feature = "EventKit_EKObject")]
-#[cfg(feature = "EventKit_EKObject")]
 pub use self::__EKObject::EKObject;
-#[cfg(feature = "EventKit_EKParticipant")]
 #[cfg(feature = "EventKit_EKParticipant")]
 pub use self::__EKParticipant::EKParticipant;
 #[cfg(feature = "EventKit_EKRecurrenceDayOfWeek")]
-#[cfg(feature = "EventKit_EKRecurrenceDayOfWeek")]
 pub use self::__EKRecurrenceDayOfWeek::EKRecurrenceDayOfWeek;
-#[cfg(feature = "EventKit_EKRecurrenceEnd")]
 #[cfg(feature = "EventKit_EKRecurrenceEnd")]
 pub use self::__EKRecurrenceEnd::EKRecurrenceEnd;
 #[cfg(feature = "EventKit_EKRecurrenceRule")]
-#[cfg(feature = "EventKit_EKRecurrenceRule")]
 pub use self::__EKRecurrenceRule::EKRecurrenceRule;
-#[cfg(feature = "EventKit_EKReminder")]
 #[cfg(feature = "EventKit_EKReminder")]
 pub use self::__EKReminder::EKReminder;
 #[cfg(feature = "EventKit_EKSource")]
-#[cfg(feature = "EventKit_EKSource")]
 pub use self::__EKSource::EKSource;
-#[cfg(feature = "EventKit_EKStructuredLocation")]
 #[cfg(feature = "EventKit_EKStructuredLocation")]
 pub use self::__EKStructuredLocation::EKStructuredLocation;
 
@@ -384,15 +371,11 @@ pub use self::__EKTypes::EKReminderPriorityMedium;
 pub use self::__EKTypes::EKReminderPriorityLow;
 
 #[cfg(feature = "EventKit_EKVirtualConferenceDescriptor")]
-#[cfg(feature = "EventKit_EKVirtualConferenceDescriptor")]
 pub use self::__EKVirtualConferenceDescriptor::EKVirtualConferenceDescriptor;
-#[cfg(feature = "EventKit_EKVirtualConferenceRoomTypeDescriptor")]
 #[cfg(feature = "EventKit_EKVirtualConferenceRoomTypeDescriptor")]
 pub use self::__EKVirtualConferenceDescriptor::EKVirtualConferenceRoomTypeDescriptor;
 pub use self::__EKVirtualConferenceDescriptor::EKVirtualConferenceRoomTypeIdentifier;
 #[cfg(feature = "EventKit_EKVirtualConferenceURLDescriptor")]
-#[cfg(feature = "EventKit_EKVirtualConferenceURLDescriptor")]
 pub use self::__EKVirtualConferenceDescriptor::EKVirtualConferenceURLDescriptor;
-#[cfg(feature = "EventKit_EKVirtualConferenceProvider")]
 #[cfg(feature = "EventKit_EKVirtualConferenceProvider")]
 pub use self::__EKVirtualConferenceProvider::EKVirtualConferenceProvider;

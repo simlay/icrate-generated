@@ -6,5 +6,4 @@
 mod __ASIdentifierManager;
 
 #[cfg(feature = "AdSupport_ASIdentifierManager")]
-#[cfg(feature = "AdSupport_ASIdentifierManager")]
 pub use self::__ASIdentifierManager::ASIdentifierManager;

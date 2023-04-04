@@ -22,18 +22,13 @@ mod __SFTranscriptionSegment;
 mod __SFVoiceAnalytics;
 
 #[cfg(feature = "Speech_SFSpeechRecognitionMetadata")]
-#[cfg(feature = "Speech_SFSpeechRecognitionMetadata")]
 pub use self::__SFSpeechRecognitionMetadata::SFSpeechRecognitionMetadata;
-#[cfg(feature = "Speech_SFSpeechAudioBufferRecognitionRequest")]
 #[cfg(feature = "Speech_SFSpeechAudioBufferRecognitionRequest")]
 pub use self::__SFSpeechRecognitionRequest::SFSpeechAudioBufferRecognitionRequest;
 #[cfg(feature = "Speech_SFSpeechRecognitionRequest")]
-#[cfg(feature = "Speech_SFSpeechRecognitionRequest")]
 pub use self::__SFSpeechRecognitionRequest::SFSpeechRecognitionRequest;
 #[cfg(feature = "Speech_SFSpeechURLRecognitionRequest")]
-#[cfg(feature = "Speech_SFSpeechURLRecognitionRequest")]
 pub use self::__SFSpeechRecognitionRequest::SFSpeechURLRecognitionRequest;
-#[cfg(feature = "Speech_SFSpeechRecognitionResult")]
 #[cfg(feature = "Speech_SFSpeechRecognitionResult")]
 pub use self::__SFSpeechRecognitionResult::SFSpeechRecognitionResult;
 
@@ -47,7 +42,6 @@ pub use self::__SFSpeechRecognitionTask::SFSpeechRecognitionTaskStateFinishing;
 
 pub use self::__SFSpeechRecognitionTask::SFSpeechRecognitionTaskStateCanceling;
 
-#[cfg(feature = "Speech_SFSpeechRecognitionTask")]
 #[cfg(feature = "Speech_SFSpeechRecognitionTask")]
 pub use self::__SFSpeechRecognitionTask::SFSpeechRecognitionTask;
 pub use self::__SFSpeechRecognitionTask::SFSpeechRecognitionTaskStateCompleted;
@@ -73,20 +67,15 @@ pub use self::__SFSpeechRecognizer::SFSpeechRecognizerAuthorizationStatusDenied;
 pub use self::__SFSpeechRecognizer::SFSpeechRecognizerAuthorizationStatusRestricted;
 
 #[cfg(feature = "Speech_SFSpeechRecognizer")]
-#[cfg(feature = "Speech_SFSpeechRecognizer")]
 pub use self::__SFSpeechRecognizer::SFSpeechRecognizer;
 pub use self::__SFSpeechRecognizer::SFSpeechRecognizerAuthorizationStatusAuthorized;
 
 pub use self::__SFSpeechRecognizer::SFSpeechRecognizerDelegate;
 #[cfg(feature = "Speech_SFTranscription")]
-#[cfg(feature = "Speech_SFTranscription")]
 pub use self::__SFTranscription::SFTranscription;
-#[cfg(feature = "Speech_SFTranscriptionSegment")]
 #[cfg(feature = "Speech_SFTranscriptionSegment")]
 pub use self::__SFTranscriptionSegment::SFTranscriptionSegment;
 #[cfg(feature = "Speech_SFAcousticFeature")]
-#[cfg(feature = "Speech_SFAcousticFeature")]
 pub use self::__SFVoiceAnalytics::SFAcousticFeature;
-#[cfg(feature = "Speech_SFVoiceAnalytics")]
 #[cfg(feature = "Speech_SFVoiceAnalytics")]
 pub use self::__SFVoiceAnalytics::SFVoiceAnalytics;

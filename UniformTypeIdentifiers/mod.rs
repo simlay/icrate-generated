@@ -281,5 +281,4 @@ pub use self::__UTTagClass::UTTagClassFilenameExtension;
 
 pub use self::__UTTagClass::UTTagClassMIMEType;
 #[cfg(feature = "UniformTypeIdentifiers_UTType")]
-#[cfg(feature = "UniformTypeIdentifiers_UTType")]
 pub use self::__UTType::UTType;

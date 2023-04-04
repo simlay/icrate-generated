@@ -64,44 +64,31 @@ mod __CNSocialProfile;
 mod __ContactsDefines;
 
 #[cfg(feature = "Contacts_CNChangeHistoryAddContactEvent")]
-#[cfg(feature = "Contacts_CNChangeHistoryAddContactEvent")]
 pub use self::__CNChangeHistoryEvent::CNChangeHistoryAddContactEvent;
-#[cfg(feature = "Contacts_CNChangeHistoryAddGroupEvent")]
 #[cfg(feature = "Contacts_CNChangeHistoryAddGroupEvent")]
 pub use self::__CNChangeHistoryEvent::CNChangeHistoryAddGroupEvent;
 #[cfg(feature = "Contacts_CNChangeHistoryAddMemberToGroupEvent")]
-#[cfg(feature = "Contacts_CNChangeHistoryAddMemberToGroupEvent")]
 pub use self::__CNChangeHistoryEvent::CNChangeHistoryAddMemberToGroupEvent;
-#[cfg(feature = "Contacts_CNChangeHistoryAddSubgroupToGroupEvent")]
 #[cfg(feature = "Contacts_CNChangeHistoryAddSubgroupToGroupEvent")]
 pub use self::__CNChangeHistoryEvent::CNChangeHistoryAddSubgroupToGroupEvent;
 #[cfg(feature = "Contacts_CNChangeHistoryDeleteContactEvent")]
-#[cfg(feature = "Contacts_CNChangeHistoryDeleteContactEvent")]
 pub use self::__CNChangeHistoryEvent::CNChangeHistoryDeleteContactEvent;
-#[cfg(feature = "Contacts_CNChangeHistoryDeleteGroupEvent")]
 #[cfg(feature = "Contacts_CNChangeHistoryDeleteGroupEvent")]
 pub use self::__CNChangeHistoryEvent::CNChangeHistoryDeleteGroupEvent;
 #[cfg(feature = "Contacts_CNChangeHistoryDropEverythingEvent")]
-#[cfg(feature = "Contacts_CNChangeHistoryDropEverythingEvent")]
 pub use self::__CNChangeHistoryEvent::CNChangeHistoryDropEverythingEvent;
-#[cfg(feature = "Contacts_CNChangeHistoryEvent")]
 #[cfg(feature = "Contacts_CNChangeHistoryEvent")]
 pub use self::__CNChangeHistoryEvent::CNChangeHistoryEvent;
 #[cfg(feature = "Contacts_CNChangeHistoryRemoveMemberFromGroupEvent")]
-#[cfg(feature = "Contacts_CNChangeHistoryRemoveMemberFromGroupEvent")]
 pub use self::__CNChangeHistoryEvent::CNChangeHistoryRemoveMemberFromGroupEvent;
-#[cfg(feature = "Contacts_CNChangeHistoryRemoveSubgroupFromGroupEvent")]
 #[cfg(feature = "Contacts_CNChangeHistoryRemoveSubgroupFromGroupEvent")]
 pub use self::__CNChangeHistoryEvent::CNChangeHistoryRemoveSubgroupFromGroupEvent;
 #[cfg(feature = "Contacts_CNChangeHistoryUpdateContactEvent")]
-#[cfg(feature = "Contacts_CNChangeHistoryUpdateContactEvent")]
 pub use self::__CNChangeHistoryEvent::CNChangeHistoryUpdateContactEvent;
-#[cfg(feature = "Contacts_CNChangeHistoryUpdateGroupEvent")]
 #[cfg(feature = "Contacts_CNChangeHistoryUpdateGroupEvent")]
 pub use self::__CNChangeHistoryEvent::CNChangeHistoryUpdateGroupEvent;
 
 pub use self::__CNChangeHistoryEvent::CNChangeHistoryEventVisitor;
-#[cfg(feature = "Contacts_CNChangeHistoryFetchRequest")]
 #[cfg(feature = "Contacts_CNChangeHistoryFetchRequest")]
 pub use self::__CNChangeHistoryFetchRequest::CNChangeHistoryFetchRequest;
 
@@ -121,7 +108,6 @@ pub use self::__CNContact::CNContactSortOrderGivenName;
 
 pub use self::__CNContact::CNContactSortOrderFamilyName;
 
-#[cfg(feature = "Contacts_CNContact")]
 #[cfg(feature = "Contacts_CNContact")]
 pub use self::__CNContact::CNContact;
 pub use self::__CNContact::CNKeyDescriptor;
@@ -188,7 +174,6 @@ pub use self::__CNContact::CNContactSocialProfilesKey;
 
 pub use self::__CNContact::CNContactInstantMessageAddressesKey;
 #[cfg(feature = "Contacts_CNContactFetchRequest")]
-#[cfg(feature = "Contacts_CNContactFetchRequest")]
 pub use self::__CNContactFetchRequest::CNContactFetchRequest;
 
 pub use self::__CNContactFormatter::CNContactFormatterStyle;
@@ -205,14 +190,11 @@ pub use self::__CNContactFormatter::CNContactDisplayNameOrderGivenNameFirst;
 
 pub use self::__CNContactFormatter::CNContactDisplayNameOrderFamilyNameFirst;
 #[cfg(feature = "Contacts_CNContactFormatter")]
-#[cfg(feature = "Contacts_CNContactFormatter")]
 pub use self::__CNContactFormatter::CNContactFormatter;
 
 pub use self::__CNContactFormatter::CNContactPropertyAttribute;
 #[cfg(feature = "Contacts_CNContactProperty")]
-#[cfg(feature = "Contacts_CNContactProperty")]
 pub use self::__CNContactProperty::CNContactProperty;
-#[cfg(feature = "Contacts_CNContactRelation")]
 #[cfg(feature = "Contacts_CNContactRelation")]
 pub use self::__CNContactRelation::CNContactRelation;
 
@@ -662,14 +644,11 @@ pub use self::__CNContactStore::CNAuthorizationStatusDenied;
 
 pub use self::__CNContactStore::CNAuthorizationStatusAuthorized;
 #[cfg(feature = "Contacts_CNContactStore")]
-#[cfg(feature = "Contacts_CNContactStore")]
 pub use self::__CNContactStore::CNContactStore;
 
 pub use self::__CNContactStore::CNContactStoreDidChangeNotification;
 #[cfg(feature = "Contacts_CNContactVCardSerialization")]
-#[cfg(feature = "Contacts_CNContactVCardSerialization")]
 pub use self::__CNContactVCardSerialization::CNContactVCardSerialization;
-#[cfg(feature = "Contacts_CNContactsUserDefaults")]
 #[cfg(feature = "Contacts_CNContactsUserDefaults")]
 pub use self::__CNContactsUserDefaults::CNContactsUserDefaults;
 
@@ -681,7 +660,6 @@ pub use self::__CNContainer::CNContainerTypeLocal;
 
 pub use self::__CNContainer::CNContainerTypeExchange;
 
-#[cfg(feature = "Contacts_CNContainer")]
 #[cfg(feature = "Contacts_CNContainer")]
 pub use self::__CNContainer::CNContainer;
 pub use self::__CNContainer::CNContainerTypeCardDAV;
@@ -758,19 +736,15 @@ pub use self::__CNError::CNErrorUserInfoValidationErrorsKey;
 
 pub use self::__CNError::CNErrorUserInfoKeyPathsKey;
 #[cfg(feature = "Contacts_CNFetchRequest")]
-#[cfg(feature = "Contacts_CNFetchRequest")]
 pub use self::__CNFetchRequest::CNFetchRequest;
 #[cfg(feature = "Contacts_CNFetchResult")]
-#[cfg(feature = "Contacts_CNFetchResult")]
 pub use self::__CNFetchResult::CNFetchResult;
-#[cfg(feature = "Contacts_CNGroup")]
 #[cfg(feature = "Contacts_CNGroup")]
 pub use self::__CNGroup::CNGroup;
 
 pub use self::__CNGroup::CNGroupIdentifierKey;
 
 pub use self::__CNGroup::CNGroupNameKey;
-#[cfg(feature = "Contacts_CNInstantMessageAddress")]
 #[cfg(feature = "Contacts_CNInstantMessageAddress")]
 pub use self::__CNInstantMessageAddress::CNInstantMessageAddress;
 
@@ -798,7 +772,6 @@ pub use self::__CNInstantMessageAddress::CNInstantMessageServiceSkype;
 
 pub use self::__CNInstantMessageAddress::CNInstantMessageServiceYahoo;
 #[cfg(feature = "Contacts_CNLabeledValue")]
-#[cfg(feature = "Contacts_CNLabeledValue")]
 pub use self::__CNLabeledValue::CNLabeledValue;
 
 pub use self::__CNLabeledValue::CNLabelHome;
@@ -815,15 +788,11 @@ pub use self::__CNLabeledValue::CNLabelURLAddressHomePage;
 
 pub use self::__CNLabeledValue::CNLabelDateAnniversary;
 #[cfg(feature = "Contacts_CNMutableContact")]
-#[cfg(feature = "Contacts_CNMutableContact")]
 pub use self::__CNMutableContact::CNMutableContact;
-#[cfg(feature = "Contacts_CNMutableGroup")]
 #[cfg(feature = "Contacts_CNMutableGroup")]
 pub use self::__CNMutableGroup::CNMutableGroup;
 #[cfg(feature = "Contacts_CNMutablePostalAddress")]
-#[cfg(feature = "Contacts_CNMutablePostalAddress")]
 pub use self::__CNMutablePostalAddress::CNMutablePostalAddress;
-#[cfg(feature = "Contacts_CNPhoneNumber")]
 #[cfg(feature = "Contacts_CNPhoneNumber")]
 pub use self::__CNPhoneNumber::CNPhoneNumber;
 
@@ -842,7 +811,6 @@ pub use self::__CNPhoneNumber::CNLabelPhoneNumberWorkFax;
 pub use self::__CNPhoneNumber::CNLabelPhoneNumberOtherFax;
 
 pub use self::__CNPhoneNumber::CNLabelPhoneNumberPager;
-#[cfg(feature = "Contacts_CNPostalAddress")]
 #[cfg(feature = "Contacts_CNPostalAddress")]
 pub use self::__CNPostalAddress::CNPostalAddress;
 
@@ -865,7 +833,6 @@ pub use self::__CNPostalAddress::CNPostalAddressISOCountryCodeKey;
 pub use self::__CNPostalAddressFormatter::CNPostalAddressFormatterStyle;
 
 #[cfg(feature = "Contacts_CNPostalAddressFormatter")]
-#[cfg(feature = "Contacts_CNPostalAddressFormatter")]
 pub use self::__CNPostalAddressFormatter::CNPostalAddressFormatter;
 pub use self::__CNPostalAddressFormatter::CNPostalAddressFormatterStyleMailingAddress;
 
@@ -873,10 +840,8 @@ pub use self::__CNPostalAddressFormatter::CNPostalAddressPropertyAttribute;
 
 pub use self::__CNPostalAddressFormatter::CNPostalAddressLocalizedPropertyNameAttribute;
 #[cfg(feature = "Contacts_CNSaveRequest")]
-#[cfg(feature = "Contacts_CNSaveRequest")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__CNSaveRequest::CNSaveRequest;
-#[cfg(feature = "Contacts_CNSocialProfile")]
 #[cfg(feature = "Contacts_CNSocialProfile")]
 pub use self::__CNSocialProfile::CNSocialProfile;
 

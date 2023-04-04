@@ -34,16 +34,13 @@ pub use self::__IMKCandidates::kIMKLocateCandidatesLeftHint;
 pub use self::__IMKCandidates::kIMKLocateCandidatesRightHint;
 
 #[cfg(feature = "InputMethodKit_IMKCandidates")]
-#[cfg(feature = "InputMethodKit_IMKCandidates")]
 pub use self::__IMKCandidates::IMKCandidates;
 pub use self::__IMKCandidates::IMKCandidatesLocationHint;
 
 pub use self::__IMKInputController::IMKStateSetting;
 
 #[cfg(feature = "InputMethodKit_IMKInputController")]
-#[cfg(feature = "InputMethodKit_IMKInputController")]
 pub use self::__IMKInputController::IMKInputController;
 pub use self::__IMKInputController::IMKMouseHandling;
-#[cfg(feature = "InputMethodKit_IMKServer")]
 #[cfg(feature = "InputMethodKit_IMKServer")]
 pub use self::__IMKServer::IMKServer;

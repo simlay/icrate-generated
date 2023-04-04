@@ -22,18 +22,13 @@ mod __SNTimeDurationConstraint;
 mod __SNTypes;
 
 #[cfg(feature = "SoundAnalysis_SNAudioFileAnalyzer")]
-#[cfg(feature = "SoundAnalysis_SNAudioFileAnalyzer")]
 pub use self::__SNAnalyzer::SNAudioFileAnalyzer;
-#[cfg(feature = "SoundAnalysis_SNAudioStreamAnalyzer")]
 #[cfg(feature = "SoundAnalysis_SNAudioStreamAnalyzer")]
 pub use self::__SNAnalyzer::SNAudioStreamAnalyzer;
 #[cfg(feature = "SoundAnalysis_SNClassification")]
-#[cfg(feature = "SoundAnalysis_SNClassification")]
 pub use self::__SNClassificationResult::SNClassification;
 #[cfg(feature = "SoundAnalysis_SNClassificationResult")]
-#[cfg(feature = "SoundAnalysis_SNClassificationResult")]
 pub use self::__SNClassificationResult::SNClassificationResult;
-#[cfg(feature = "SoundAnalysis_SNClassifySoundRequest")]
 #[cfg(feature = "SoundAnalysis_SNClassifySoundRequest")]
 pub use self::__SNClassifySoundRequest::SNClassifySoundRequest;
 
@@ -61,7 +56,6 @@ pub use self::__SNTimeDurationConstraint::SNTimeDurationConstraintType;
 
 pub use self::__SNTimeDurationConstraint::SNTimeDurationConstraintTypeEnumerated;
 
-#[cfg(feature = "SoundAnalysis_SNTimeDurationConstraint")]
 #[cfg(feature = "SoundAnalysis_SNTimeDurationConstraint")]
 pub use self::__SNTimeDurationConstraint::SNTimeDurationConstraint;
 pub use self::__SNTimeDurationConstraint::SNTimeDurationConstraintTypeRange;

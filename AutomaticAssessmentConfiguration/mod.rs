@@ -18,7 +18,6 @@ mod __AEErrors;
 mod __AEVisibility;
 
 #[cfg(feature = "AutomaticAssessmentConfiguration_AEAssessmentApplication")]
-#[cfg(feature = "AutomaticAssessmentConfiguration_AEAssessmentApplication")]
 pub use self::__AEAssessmentApplication::AEAssessmentApplication;
 
 pub use self::__AEAssessmentConfiguration::AEAutocorrectMode;
@@ -28,13 +27,10 @@ pub use self::__AEAssessmentConfiguration::AEAutocorrectModeNone;
 pub use self::__AEAssessmentConfiguration::AEAutocorrectModeSpelling;
 
 #[cfg(feature = "AutomaticAssessmentConfiguration_AEAssessmentConfiguration")]
-#[cfg(feature = "AutomaticAssessmentConfiguration_AEAssessmentConfiguration")]
 pub use self::__AEAssessmentConfiguration::AEAssessmentConfiguration;
 pub use self::__AEAssessmentConfiguration::AEAutocorrectModePunctuation;
 #[cfg(feature = "AutomaticAssessmentConfiguration_AEAssessmentParticipantConfiguration")]
-#[cfg(feature = "AutomaticAssessmentConfiguration_AEAssessmentParticipantConfiguration")]
 pub use self::__AEAssessmentParticipantConfiguration::AEAssessmentParticipantConfiguration;
-#[cfg(feature = "AutomaticAssessmentConfiguration_AEAssessmentSession")]
 #[cfg(feature = "AutomaticAssessmentConfiguration_AEAssessmentSession")]
 pub use self::__AEAssessmentSession::AEAssessmentSession;
 

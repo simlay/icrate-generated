@@ -10,9 +10,7 @@ mod __DCDevice;
 mod __DCError;
 
 #[cfg(feature = "DeviceCheck_DCAppAttestService")]
-#[cfg(feature = "DeviceCheck_DCAppAttestService")]
 pub use self::__DCAppAttestService::DCAppAttestService;
-#[cfg(feature = "DeviceCheck_DCDevice")]
 #[cfg(feature = "DeviceCheck_DCDevice")]
 pub use self::__DCDevice::DCDevice;
 

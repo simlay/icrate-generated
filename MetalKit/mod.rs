@@ -16,28 +16,16 @@ pub use self::__MTKModel::MTKModelError;
 pub use self::__MTKModel::MTKModelErrorDomain;
 
 #[cfg(feature = "MetalKit_MTKMesh")]
-#[cfg(feature = "MetalKit_MTKMesh")]
 pub use self::__MTKModel::MTKMesh;
 #[cfg(feature = "MetalKit_MTKMeshBuffer")]
-#[cfg(feature = "MetalKit_MTKMeshBuffer")]
 pub use self::__MTKModel::MTKMeshBuffer;
-#[cfg(feature = "MetalKit_MTKMeshBufferAllocator")]
 #[cfg(feature = "MetalKit_MTKMeshBufferAllocator")]
 pub use self::__MTKModel::MTKMeshBufferAllocator;
 #[cfg(all(
     feature = "Metal_MTLVertexDescriptor",
     feature = "ModelIO_MDLVertexDescriptor"
 ))]
-#[cfg(all(
-    feature = "Metal_MTLVertexDescriptor",
-    feature = "ModelIO_MDLVertexDescriptor"
-))]
 pub use self::__MTKModel::MTKMetalVertexDescriptorFromModelIO;
-#[cfg(all(
-    feature = "Foundation_NSError",
-    feature = "Metal_MTLVertexDescriptor",
-    feature = "ModelIO_MDLVertexDescriptor"
-))]
 #[cfg(all(
     feature = "Foundation_NSError",
     feature = "Metal_MTLVertexDescriptor",
@@ -49,23 +37,13 @@ pub use self::__MTKModel::MTKModelErrorKey;
     feature = "Metal_MTLVertexDescriptor",
     feature = "ModelIO_MDLVertexDescriptor"
 ))]
-#[cfg(all(
-    feature = "Metal_MTLVertexDescriptor",
-    feature = "ModelIO_MDLVertexDescriptor"
-))]
 pub use self::__MTKModel::MTKModelIOVertexDescriptorFromMetal;
 #[cfg(all(
     feature = "Foundation_NSError",
     feature = "Metal_MTLVertexDescriptor",
     feature = "ModelIO_MDLVertexDescriptor"
 ))]
-#[cfg(all(
-    feature = "Foundation_NSError",
-    feature = "Metal_MTLVertexDescriptor",
-    feature = "ModelIO_MDLVertexDescriptor"
-))]
 pub use self::__MTKModel::MTKModelIOVertexDescriptorFromMetalWithError;
-#[cfg(feature = "MetalKit_MTKSubmesh")]
 #[cfg(feature = "MetalKit_MTKSubmesh")]
 pub use self::__MTKModel::MTKSubmesh;
 
@@ -108,10 +86,8 @@ pub use self::__MTKTextureLoader::MTKTextureLoaderOriginFlippedVertically;
 pub use self::__MTKTextureLoader::MTKTextureLoaderCallback;
 
 #[cfg(feature = "MetalKit_MTKTextureLoader")]
-#[cfg(feature = "MetalKit_MTKTextureLoader")]
 pub use self::__MTKTextureLoader::MTKTextureLoader;
 pub use self::__MTKTextureLoader::MTKTextureLoaderArrayCallback;
-#[cfg(feature = "MetalKit_MTKView")]
 #[cfg(feature = "MetalKit_MTKView")]
 pub use self::__MTKView::MTKView;
 

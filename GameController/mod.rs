@@ -119,7 +119,6 @@ pub use self::__GCAxisInput::GCAxisInput;
 
 pub use self::__GCButtonElement::GCButtonElement;
 #[cfg(feature = "GameController_GCColor")]
-#[cfg(feature = "GameController_GCColor")]
 pub use self::__GCColor::GCColor;
 
 pub use self::__GCController::GCControllerDidConnectNotification;
@@ -143,11 +142,9 @@ pub use self::__GCController::GCControllerPlayerIndex2;
 pub use self::__GCController::GCControllerPlayerIndex3;
 
 #[cfg(feature = "GameController_GCController")]
-#[cfg(feature = "GameController_GCController")]
 pub use self::__GCController::GCController;
 pub use self::__GCController::GCControllerPlayerIndex4;
 
-#[cfg(feature = "GameController_GCControllerAxisInput")]
 #[cfg(feature = "GameController_GCControllerAxisInput")]
 pub use self::__GCControllerAxisInput::GCControllerAxisInput;
 pub use self::__GCControllerAxisInput::GCControllerAxisValueChangedHandler;
@@ -155,11 +152,9 @@ pub use self::__GCControllerAxisInput::GCControllerAxisValueChangedHandler;
 pub use self::__GCControllerButtonInput::GCControllerButtonValueChangedHandler;
 
 #[cfg(feature = "GameController_GCControllerButtonInput")]
-#[cfg(feature = "GameController_GCControllerButtonInput")]
 pub use self::__GCControllerButtonInput::GCControllerButtonInput;
 pub use self::__GCControllerButtonInput::GCControllerButtonTouchedChangedHandler;
 
-#[cfg(feature = "GameController_GCControllerDirectionPad")]
 #[cfg(feature = "GameController_GCControllerDirectionPad")]
 pub use self::__GCControllerDirectionPad::GCControllerDirectionPad;
 pub use self::__GCControllerDirectionPad::GCControllerDirectionPadValueChangedHandler;
@@ -170,7 +165,6 @@ pub use self::__GCControllerElement::GCSystemGestureStateEnabled;
 
 pub use self::__GCControllerElement::GCSystemGestureStateAlwaysReceive;
 
-#[cfg(feature = "GameController_GCControllerElement")]
 #[cfg(feature = "GameController_GCControllerElement")]
 pub use self::__GCControllerElement::GCControllerElement;
 pub use self::__GCControllerElement::GCSystemGestureStateDisabled;
@@ -183,7 +177,6 @@ pub use self::__GCControllerTouchpad::GCTouchStateDown;
 
 pub use self::__GCControllerTouchpad::GCTouchStateMoving;
 
-#[cfg(feature = "GameController_GCControllerTouchpad")]
 #[cfg(feature = "GameController_GCControllerTouchpad")]
 pub use self::__GCControllerTouchpad::GCControllerTouchpad;
 pub use self::__GCControllerTouchpad::GCControllerTouchpadHandler;
@@ -199,10 +192,8 @@ pub use self::__GCDeviceBattery::GCDeviceBatteryStateDischarging;
 pub use self::__GCDeviceBattery::GCDeviceBatteryStateCharging;
 
 #[cfg(feature = "GameController_GCDeviceBattery")]
-#[cfg(feature = "GameController_GCDeviceBattery")]
 pub use self::__GCDeviceBattery::GCDeviceBattery;
 pub use self::__GCDeviceBattery::GCDeviceBatteryStateFull;
-#[cfg(feature = "GameController_GCDeviceCursor")]
 #[cfg(feature = "GameController_GCDeviceCursor")]
 pub use self::__GCDeviceCursor::GCDeviceCursor;
 
@@ -225,10 +216,8 @@ pub use self::__GCDeviceHaptics::GCHapticsLocalityLeftTrigger;
 pub use self::__GCDeviceHaptics::GCHapticsLocalityRightTrigger;
 
 #[cfg(feature = "GameController_GCDeviceHaptics")]
-#[cfg(feature = "GameController_GCDeviceHaptics")]
 pub use self::__GCDeviceHaptics::GCDeviceHaptics;
 pub use self::__GCDeviceHaptics::GCHapticDurationInfinite;
-#[cfg(feature = "GameController_GCDeviceLight")]
 #[cfg(feature = "GameController_GCDeviceLight")]
 pub use self::__GCDeviceLight::GCDeviceLight;
 
@@ -254,7 +243,6 @@ pub use self::__GCDirectionalGamepad::GCInputDirectionalTouchSurfaceButton;
 
 pub use self::__GCDirectionalGamepad::GCInputDirectionalCardinalDpad;
 
-#[cfg(feature = "GameController_GCDirectionalGamepad")]
 #[cfg(feature = "GameController_GCDirectionalGamepad")]
 pub use self::__GCDirectionalGamepad::GCDirectionalGamepad;
 pub use self::__GCDirectionalGamepad::GCInputDirectionalCenterButton;
@@ -300,24 +288,18 @@ pub use self::__GCDualSenseAdaptiveTrigger::GCDualSenseAdaptiveTriggerStatusSlop
 pub use self::__GCDualSenseAdaptiveTrigger::GCDualSenseAdaptiveTriggerPositionalAmplitudes;
 
 #[cfg(feature = "GameController_GCDualSenseAdaptiveTrigger")]
-#[cfg(feature = "GameController_GCDualSenseAdaptiveTrigger")]
 pub use self::__GCDualSenseAdaptiveTrigger::GCDualSenseAdaptiveTrigger;
 pub use self::__GCDualSenseAdaptiveTrigger::GCDualSenseAdaptiveTriggerPositionalResistiveStrengths;
 #[cfg(feature = "GameController_GCDualSenseGamepad")]
-#[cfg(feature = "GameController_GCDualSenseGamepad")]
 pub use self::__GCDualSenseGamepad::GCDualSenseGamepad;
 #[cfg(feature = "GameController_GCDualShockGamepad")]
-#[cfg(feature = "GameController_GCDualShockGamepad")]
 pub use self::__GCDualShockGamepad::GCDualShockGamepad;
-#[cfg(feature = "GameController_GCEventViewController")]
 #[cfg(feature = "GameController_GCEventViewController")]
 pub use self::__GCEventViewController::GCEventViewController;
 
 #[cfg(feature = "GameController_GCExtendedGamepad")]
-#[cfg(feature = "GameController_GCExtendedGamepad")]
 pub use self::__GCExtendedGamepad::GCExtendedGamepad;
 pub use self::__GCExtendedGamepad::GCExtendedGamepadValueChangedHandler;
-#[cfg(feature = "GameController_GCExtendedGamepadSnapshot")]
 #[cfg(feature = "GameController_GCExtendedGamepadSnapshot")]
 pub use self::__GCExtendedGamepadSnapshot::GCExtendedGamepadSnapshot;
 
@@ -329,36 +311,27 @@ pub use self::__GCExtendedGamepadSnapshot::GCExtendedGamepadSnapshotDataVersion2
 
 pub use self::__GCExtendedGamepadSnapshot::GCCurrentExtendedGamepadSnapshotDataVersion;
 #[cfg(feature = "Foundation_NSData")]
-#[cfg(feature = "Foundation_NSData")]
 pub use self::__GCExtendedGamepadSnapshot::GCExtendedGamepadSnapshotDataFromNSData;
-#[cfg(feature = "Foundation_NSData")]
 #[cfg(feature = "Foundation_NSData")]
 pub use self::__GCExtendedGamepadSnapshot::NSDataFromGCExtendedGamepadSnapshotData;
 
 pub use self::__GCExtendedGamepadSnapshot::GCExtendedGamepadSnapShotDataV100;
 #[cfg(feature = "Foundation_NSData")]
-#[cfg(feature = "Foundation_NSData")]
 pub use self::__GCExtendedGamepadSnapshot::GCExtendedGamepadSnapShotDataV100FromNSData;
-#[cfg(feature = "Foundation_NSData")]
 #[cfg(feature = "Foundation_NSData")]
 pub use self::__GCExtendedGamepadSnapshot::NSDataFromGCExtendedGamepadSnapShotDataV100;
 
 #[cfg(feature = "GameController_GCGamepad")]
-#[cfg(feature = "GameController_GCGamepad")]
 pub use self::__GCGamepad::GCGamepad;
 pub use self::__GCGamepad::GCGamepadValueChangedHandler;
-#[cfg(feature = "GameController_GCGamepadSnapshot")]
 #[cfg(feature = "GameController_GCGamepadSnapshot")]
 pub use self::__GCGamepadSnapshot::GCGamepadSnapshot;
 
 pub use self::__GCGamepadSnapshot::GCGamepadSnapShotDataV100;
 #[cfg(feature = "Foundation_NSData")]
-#[cfg(feature = "Foundation_NSData")]
 pub use self::__GCGamepadSnapshot::GCGamepadSnapShotDataV100FromNSData;
 #[cfg(feature = "Foundation_NSData")]
-#[cfg(feature = "Foundation_NSData")]
 pub use self::__GCGamepadSnapshot::NSDataFromGCGamepadSnapShotDataV100;
-#[cfg(feature = "GameController_GCGearShifterElement")]
 #[cfg(feature = "GameController_GCGearShifterElement")]
 #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 pub use self::__GCGearShifterElement::GCGearShifterElement;
@@ -912,11 +885,9 @@ pub use self::__GCKeyNames::GCKeyRightGUI;
 pub use self::__GCKeyboard::GCKeyboardDidConnectNotification;
 
 #[cfg(feature = "GameController_GCKeyboard")]
-#[cfg(feature = "GameController_GCKeyboard")]
 pub use self::__GCKeyboard::GCKeyboard;
 pub use self::__GCKeyboard::GCKeyboardDidDisconnectNotification;
 
-#[cfg(feature = "GameController_GCKeyboardInput")]
 #[cfg(feature = "GameController_GCKeyboardInput")]
 pub use self::__GCKeyboardInput::GCKeyboardInput;
 pub use self::__GCKeyboardInput::GCKeyboardValueChangedHandler;
@@ -932,10 +903,8 @@ pub use self::__GCMicroGamepad::GCInputMicroGamepadButtonX;
 pub use self::__GCMicroGamepad::GCInputMicroGamepadButtonMenu;
 
 #[cfg(feature = "GameController_GCMicroGamepad")]
-#[cfg(feature = "GameController_GCMicroGamepad")]
 pub use self::__GCMicroGamepad::GCMicroGamepad;
 pub use self::__GCMicroGamepad::GCMicroGamepadValueChangedHandler;
-#[cfg(feature = "GameController_GCMicroGamepadSnapshot")]
 #[cfg(feature = "GameController_GCMicroGamepadSnapshot")]
 pub use self::__GCMicroGamepadSnapshot::GCMicroGamepadSnapshot;
 
@@ -947,17 +916,13 @@ pub use self::__GCMicroGamepadSnapshot::GCCurrentMicroGamepadSnapshotDataVersion
 
 pub use self::__GCMicroGamepadSnapshot::GCMicroGamepadSnapshotData;
 #[cfg(feature = "Foundation_NSData")]
-#[cfg(feature = "Foundation_NSData")]
 pub use self::__GCMicroGamepadSnapshot::GCMicroGamepadSnapshotDataFromNSData;
-#[cfg(feature = "Foundation_NSData")]
 #[cfg(feature = "Foundation_NSData")]
 pub use self::__GCMicroGamepadSnapshot::NSDataFromGCMicroGamepadSnapshotData;
 
 pub use self::__GCMicroGamepadSnapshot::GCMicroGamepadSnapShotDataV100;
 #[cfg(feature = "Foundation_NSData")]
-#[cfg(feature = "Foundation_NSData")]
 pub use self::__GCMicroGamepadSnapshot::GCMicroGamepadSnapShotDataV100FromNSData;
-#[cfg(feature = "Foundation_NSData")]
 #[cfg(feature = "Foundation_NSData")]
 pub use self::__GCMicroGamepadSnapshot::NSDataFromGCMicroGamepadSnapShotDataV100;
 
@@ -970,7 +935,6 @@ pub use self::__GCMotion::GCEulerAngles;
 pub use self::__GCMotion::GCQuaternion;
 
 #[cfg(feature = "GameController_GCMotion")]
-#[cfg(feature = "GameController_GCMotion")]
 pub use self::__GCMotion::GCMotion;
 pub use self::__GCMotion::GCMotionValueChangedHandler;
 
@@ -981,20 +945,16 @@ pub use self::__GCMouse::GCMouseDidDisconnectNotification;
 pub use self::__GCMouse::GCMouseDidBecomeCurrentNotification;
 
 #[cfg(feature = "GameController_GCMouse")]
-#[cfg(feature = "GameController_GCMouse")]
 pub use self::__GCMouse::GCMouse;
 pub use self::__GCMouse::GCMouseDidStopBeingCurrentNotification;
 
-#[cfg(feature = "GameController_GCMouseInput")]
 #[cfg(feature = "GameController_GCMouseInput")]
 pub use self::__GCMouseInput::GCMouseInput;
 pub use self::__GCMouseInput::GCMouseMoved;
 
 pub use self::__GCPhysicalInputElement::GCPhysicalInputElement;
 #[cfg(feature = "GameController_GCPhysicalInputElementCollection")]
-#[cfg(feature = "GameController_GCPhysicalInputElementCollection")]
 pub use self::__GCPhysicalInputElement::GCPhysicalInputElementCollection;
-#[cfg(feature = "GameController_GCPhysicalInputProfile")]
 #[cfg(feature = "GameController_GCPhysicalInputProfile")]
 pub use self::__GCPhysicalInputProfile::GCPhysicalInputProfile;
 
@@ -1024,7 +984,6 @@ pub use self::__GCProductCategories::GCProductCategoryMouse;
 
 pub use self::__GCProductCategories::GCProductCategoryKeyboard;
 #[cfg(feature = "GameController_GCRacingWheel")]
-#[cfg(feature = "GameController_GCRacingWheel")]
 #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 pub use self::__GCRacingWheel::GCRacingWheel;
 #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
@@ -1032,16 +991,13 @@ pub use self::__GCRacingWheel::GCRacingWheelDidConnectNotification;
 #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 pub use self::__GCRacingWheel::GCRacingWheelDidDisconnectNotification;
 #[cfg(feature = "GameController_GCRacingWheelInput")]
-#[cfg(feature = "GameController_GCRacingWheelInput")]
 #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 pub use self::__GCRacingWheelInput::GCRacingWheelInput;
-#[cfg(feature = "GameController_GCRacingWheelInputState")]
 #[cfg(feature = "GameController_GCRacingWheelInputState")]
 #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 pub use self::__GCRacingWheelInput::GCRacingWheelInputState;
 
 pub use self::__GCRelativeInput::GCRelativeInput;
-#[cfg(feature = "GameController_GCSteeringWheelElement")]
 #[cfg(feature = "GameController_GCSteeringWheelElement")]
 #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 pub use self::__GCSteeringWheelElement::GCSteeringWheelElement;
@@ -1051,6 +1007,5 @@ pub use self::__GCSwitchElement::GCSwitchElement;
 pub use self::__GCSwitchPositionInput::GCSwitchPositionInput;
 
 pub use self::__GCTouchedStateInput::GCTouchedStateInput;
-#[cfg(feature = "GameController_GCXboxGamepad")]
 #[cfg(feature = "GameController_GCXboxGamepad")]
 pub use self::__GCXboxGamepad::GCXboxGamepad;

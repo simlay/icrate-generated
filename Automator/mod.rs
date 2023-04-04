@@ -32,30 +32,22 @@ pub use self::__AMAction::AMLogLevelInfo;
 pub use self::__AMAction::AMLogLevelWarn;
 
 #[cfg(feature = "Automator_AMAction")]
-#[cfg(feature = "Automator_AMAction")]
 pub use self::__AMAction::AMAction;
 pub use self::__AMAction::AMLogLevelError;
 #[cfg(feature = "Automator_AMAppleScriptAction")]
-#[cfg(feature = "Automator_AMAppleScriptAction")]
 pub use self::__AMAppleScriptAction::AMAppleScriptAction;
-#[cfg(feature = "Automator_AMBundleAction")]
 #[cfg(feature = "Automator_AMBundleAction")]
 pub use self::__AMBundleAction::AMBundleAction;
 #[cfg(feature = "Automator_AMShellScriptAction")]
-#[cfg(feature = "Automator_AMShellScriptAction")]
 pub use self::__AMShellScriptAction::AMShellScriptAction;
 #[cfg(feature = "Automator_AMWorkflow")]
-#[cfg(feature = "Automator_AMWorkflow")]
 pub use self::__AMWorkflow::AMWorkflow;
-#[cfg(feature = "Automator_AMWorkflowController")]
 #[cfg(feature = "Automator_AMWorkflowController")]
 pub use self::__AMWorkflowController::AMWorkflowController;
 
 pub use self::__AMWorkflowController::AMWorkflowControllerDelegate;
 #[cfg(feature = "Automator_AMWorkflowView")]
-#[cfg(feature = "Automator_AMWorkflowView")]
 pub use self::__AMWorkflowView::AMWorkflowView;
-#[cfg(feature = "Automator_AMWorkspace")]
 #[cfg(feature = "Automator_AMWorkspace")]
 pub use self::__AMWorkspace::AMWorkspace;
 

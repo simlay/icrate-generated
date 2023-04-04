@@ -44,6 +44,5 @@ pub use self::__NSExceptionHandler::NSHangOnUncaughtRuntimeErrorMask;
 pub use self::__NSExceptionHandler::NSHangOnTopLevelExceptionMask;
 
 #[cfg(feature = "ExceptionHandling_NSExceptionHandler")]
-#[cfg(feature = "ExceptionHandling_NSExceptionHandler")]
 pub use self::__NSExceptionHandler::NSExceptionHandler;
 pub use self::__NSExceptionHandler::NSHangOnOtherExceptionMask;

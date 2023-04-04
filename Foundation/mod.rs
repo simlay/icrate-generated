@@ -504,10 +504,8 @@ pub use self::__FoundationErrors::NSCompressionErrorMinimum;
 pub use self::__FoundationErrors::NSCompressionErrorMaximum;
 
 #[cfg(feature = "Foundation_NSAffineTransform")]
-#[cfg(feature = "Foundation_NSAffineTransform")]
 pub use self::__NSAffineTransform::NSAffineTransform;
 pub use self::__NSAffineTransform::NSAffineTransformStruct;
-#[cfg(feature = "Foundation_NSAppleEventDescriptor")]
 #[cfg(feature = "Foundation_NSAppleEventDescriptor")]
 pub use self::__NSAppleEventDescriptor::NSAppleEventDescriptor;
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
@@ -542,10 +540,8 @@ pub use self::__NSAppleEventManager::NSAppleEventTimeOutDefault;
 pub use self::__NSAppleEventManager::NSAppleEventTimeOutNone;
 
 #[cfg(feature = "Foundation_NSAppleEventManager")]
-#[cfg(feature = "Foundation_NSAppleEventManager")]
 pub use self::__NSAppleEventManager::NSAppleEventManager;
 pub use self::__NSAppleEventManager::NSAppleEventManagerWillProcessFirstEventNotification;
-#[cfg(feature = "Foundation_NSAppleScript")]
 #[cfg(feature = "Foundation_NSAppleScript")]
 pub use self::__NSAppleScript::NSAppleScript;
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
@@ -559,12 +555,9 @@ pub use self::__NSAppleScript::NSAppleScriptErrorNumber;
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSAppleScript::NSAppleScriptErrorRange;
 #[cfg(feature = "Foundation_NSArchiver")]
-#[cfg(feature = "Foundation_NSArchiver")]
 pub use self::__NSArchiver::NSArchiver;
 #[cfg(feature = "Foundation_NSUnarchiver")]
-#[cfg(feature = "Foundation_NSUnarchiver")]
 pub use self::__NSArchiver::NSUnarchiver;
-#[cfg(feature = "Foundation_NSArray")]
 #[cfg(feature = "Foundation_NSArray")]
 pub use self::__NSArray::NSArray;
 
@@ -576,10 +569,8 @@ pub use self::__NSArray::NSBinarySearchingLastEqual;
 
 pub use self::__NSArray::NSBinarySearchingInsertionIndex;
 #[cfg(feature = "Foundation_NSMutableArray")]
-#[cfg(feature = "Foundation_NSMutableArray")]
 pub use self::__NSArray::NSMutableArray;
 
-#[cfg(feature = "Foundation_NSAttributedString")]
 #[cfg(feature = "Foundation_NSAttributedString")]
 pub use self::__NSAttributedString::NSAttributedString;
 pub use self::__NSAttributedString::NSAttributedStringKey;
@@ -589,7 +580,6 @@ pub use self::__NSAttributedString::NSAttributedStringEnumerationOptions;
 pub use self::__NSAttributedString::NSAttributedStringEnumerationReverse;
 
 pub use self::__NSAttributedString::NSAttributedStringEnumerationLongestEffectiveRangeNotRequired;
-#[cfg(feature = "Foundation_NSMutableAttributedString")]
 #[cfg(feature = "Foundation_NSMutableAttributedString")]
 pub use self::__NSAttributedString::NSMutableAttributedString;
 
@@ -635,9 +625,7 @@ pub use self::__NSAttributedString::NSAttributedStringMarkdownInterpretedSyntaxI
 
 pub use self::__NSAttributedString::NSAttributedStringMarkdownInterpretedSyntaxInlineOnlyPreservingWhitespace;
 #[cfg(feature = "Foundation_NSAttributedStringMarkdownParsingOptions")]
-#[cfg(feature = "Foundation_NSAttributedStringMarkdownParsingOptions")]
 pub use self::__NSAttributedString::NSAttributedStringMarkdownParsingOptions;
-#[cfg(feature = "Foundation_NSAttributedStringMarkdownSourcePosition")]
 #[cfg(feature = "Foundation_NSAttributedStringMarkdownSourcePosition")]
 pub use self::__NSAttributedString::NSAttributedStringMarkdownSourcePosition;
 
@@ -690,10 +678,8 @@ pub use self::__NSAttributedString::NSPresentationIntentTableColumnAlignmentLeft
 pub use self::__NSAttributedString::NSPresentationIntentTableColumnAlignmentCenter;
 
 #[cfg(feature = "Foundation_NSPresentationIntent")]
-#[cfg(feature = "Foundation_NSPresentationIntent")]
 pub use self::__NSAttributedString::NSPresentationIntent;
 pub use self::__NSAttributedString::NSPresentationIntentTableColumnAlignmentRight;
-#[cfg(feature = "Foundation_NSAutoreleasePool")]
 #[cfg(feature = "Foundation_NSAutoreleasePool")]
 pub use self::__NSAutoreleasePool::NSAutoreleasePool;
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
@@ -704,7 +690,6 @@ pub use self::__NSBackgroundActivityScheduler::NSBackgroundActivityResult;
 pub use self::__NSBackgroundActivityScheduler::NSBackgroundActivityResultDeferred;
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSBackgroundActivityScheduler::NSBackgroundActivityResultFinished;
-#[cfg(feature = "Foundation_NSBackgroundActivityScheduler")]
 #[cfg(feature = "Foundation_NSBackgroundActivityScheduler")]
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSBackgroundActivityScheduler::NSBackgroundActivityScheduler;
@@ -718,13 +703,11 @@ pub use self::__NSBundle::NSBundleExecutableArchitectureX86_64;
 pub use self::__NSBundle::NSBundleExecutableArchitecturePPC64;
 
 #[cfg(feature = "Foundation_NSBundle")]
-#[cfg(feature = "Foundation_NSBundle")]
 pub use self::__NSBundle::NSBundle;
 pub use self::__NSBundle::NSBundleExecutableArchitectureARM64;
 
 pub use self::__NSBundle::NSBundleDidLoadNotification;
 
-#[cfg(feature = "Foundation_NSBundleResourceRequest")]
 #[cfg(feature = "Foundation_NSBundleResourceRequest")]
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__NSBundle::NSBundleResourceRequest;
@@ -767,14 +750,12 @@ pub use self::__NSByteCountFormatter::NSByteCountFormatterCountStyleMemory;
 pub use self::__NSByteCountFormatter::NSByteCountFormatterCountStyleDecimal;
 
 #[cfg(feature = "Foundation_NSByteCountFormatter")]
-#[cfg(feature = "Foundation_NSByteCountFormatter")]
 pub use self::__NSByteCountFormatter::NSByteCountFormatter;
 pub use self::__NSByteCountFormatter::NSByteCountFormatterCountStyleBinary;
 
 pub use self::__NSByteOrder::NSSwappedFloat;
 
 pub use self::__NSByteOrder::NSSwappedDouble;
-#[cfg(feature = "Foundation_NSCache")]
 #[cfg(feature = "Foundation_NSCache")]
 pub use self::__NSCache::NSCache;
 
@@ -897,7 +878,6 @@ pub use self::__NSCalendar::NSCalendarMatchNextTime;
 pub use self::__NSCalendar::NSCalendarMatchFirst;
 
 #[cfg(feature = "Foundation_NSCalendar")]
-#[cfg(feature = "Foundation_NSCalendar")]
 pub use self::__NSCalendar::NSCalendar;
 pub use self::__NSCalendar::NSCalendarMatchLast;
 
@@ -906,21 +886,16 @@ pub use self::__NSCalendar::NSCalendarDayChangedNotification;
 pub use self::__NSCalendar::NSDateComponentUndefined;
 
 #[cfg(feature = "Foundation_NSDateComponents")]
-#[cfg(feature = "Foundation_NSDateComponents")]
 pub use self::__NSCalendar::NSDateComponents;
 pub use self::__NSCalendar::NSUndefinedDateComponent;
-#[cfg(feature = "Foundation_NSCalendarDate")]
 #[cfg(feature = "Foundation_NSCalendarDate")]
 pub use self::__NSCalendarDate::NSCalendarDate;
 
 #[cfg(feature = "Foundation_NSCharacterSet")]
-#[cfg(feature = "Foundation_NSCharacterSet")]
 pub use self::__NSCharacterSet::NSCharacterSet;
-#[cfg(feature = "Foundation_NSMutableCharacterSet")]
 #[cfg(feature = "Foundation_NSMutableCharacterSet")]
 pub use self::__NSCharacterSet::NSMutableCharacterSet;
 pub use self::__NSCharacterSet::NSOpenStepUnicodeReservedBase;
-#[cfg(feature = "Foundation_NSClassDescription")]
 #[cfg(feature = "Foundation_NSClassDescription")]
 pub use self::__NSClassDescription::NSClassDescription;
 
@@ -931,10 +906,8 @@ pub use self::__NSCoder::NSDecodingFailurePolicy;
 pub use self::__NSCoder::NSDecodingFailurePolicyRaiseException;
 
 #[cfg(feature = "Foundation_NSCoder")]
-#[cfg(feature = "Foundation_NSCoder")]
 pub use self::__NSCoder::NSCoder;
 pub use self::__NSCoder::NSDecodingFailurePolicySetErrorAndReturn;
-#[cfg(feature = "Foundation_NSCoder")]
 #[cfg(feature = "Foundation_NSCoder")]
 pub use self::__NSCoder::NXReadNSObjectFromCoder;
 
@@ -984,7 +957,6 @@ pub use self::__NSComparisonPredicate::NSContainsPredicateOperatorType;
 
 pub use self::__NSComparisonPredicate::NSBetweenPredicateOperatorType;
 #[cfg(feature = "Foundation_NSComparisonPredicate")]
-#[cfg(feature = "Foundation_NSComparisonPredicate")]
 pub use self::__NSComparisonPredicate::NSComparisonPredicate;
 
 pub use self::__NSCompoundPredicate::NSCompoundPredicateType;
@@ -994,10 +966,8 @@ pub use self::__NSCompoundPredicate::NSNotPredicateType;
 pub use self::__NSCompoundPredicate::NSAndPredicateType;
 
 #[cfg(feature = "Foundation_NSCompoundPredicate")]
-#[cfg(feature = "Foundation_NSCompoundPredicate")]
 pub use self::__NSCompoundPredicate::NSCompoundPredicate;
 pub use self::__NSCompoundPredicate::NSOrPredicateType;
-#[cfg(feature = "Foundation_NSConnection")]
 #[cfg(feature = "Foundation_NSConnection")]
 pub use self::__NSConnection::NSConnection;
 
@@ -1010,7 +980,6 @@ pub use self::__NSConnection::NSConnectionDelegate;
 pub use self::__NSConnection::NSFailedAuthenticationException;
 
 pub use self::__NSConnection::NSConnectionDidInitializeNotification;
-#[cfg(feature = "Foundation_NSDistantObjectRequest")]
 #[cfg(feature = "Foundation_NSDistantObjectRequest")]
 pub use self::__NSConnection::NSDistantObjectRequest;
 
@@ -1065,7 +1034,6 @@ pub use self::__NSData::NSDataBase64EncodingEndLineWithLineFeed;
 pub use self::__NSData::NSDataBase64DecodingOptions;
 
 #[cfg(feature = "Foundation_NSData")]
-#[cfg(feature = "Foundation_NSData")]
 pub use self::__NSData::NSData;
 pub use self::__NSData::NSDataBase64DecodingIgnoreUnknownCharacters;
 
@@ -1079,15 +1047,12 @@ pub use self::__NSData::NSDataCompressionAlgorithmLZMA;
 
 pub use self::__NSData::NSDataCompressionAlgorithmZlib;
 #[cfg(feature = "Foundation_NSMutableData")]
-#[cfg(feature = "Foundation_NSMutableData")]
 pub use self::__NSData::NSMutableData;
-#[cfg(feature = "Foundation_NSPurgeableData")]
 #[cfg(feature = "Foundation_NSPurgeableData")]
 pub use self::__NSData::NSPurgeableData;
 
 pub use self::__NSDate::NSSystemClockDidChangeNotification;
 
-#[cfg(feature = "Foundation_NSDate")]
 #[cfg(feature = "Foundation_NSDate")]
 pub use self::__NSDate::NSDate;
 pub use self::__NSDate::NSTimeInterval;
@@ -1121,7 +1086,6 @@ pub use self::__NSDateComponentsFormatter::NSDateComponentsFormatterZeroFormatti
 pub use self::__NSDateComponentsFormatter::NSDateComponentsFormatterZeroFormattingBehaviorDropAll;
 
 #[cfg(feature = "Foundation_NSDateComponentsFormatter")]
-#[cfg(feature = "Foundation_NSDateComponentsFormatter")]
 pub use self::__NSDateComponentsFormatter::NSDateComponentsFormatter;
 pub use self::__NSDateComponentsFormatter::NSDateComponentsFormatterZeroFormattingBehaviorPad;
 
@@ -1144,10 +1108,8 @@ pub use self::__NSDateFormatter::NSDateFormatterBehaviorDefault;
 pub use self::__NSDateFormatter::NSDateFormatterBehavior10_0;
 
 #[cfg(feature = "Foundation_NSDateFormatter")]
-#[cfg(feature = "Foundation_NSDateFormatter")]
 pub use self::__NSDateFormatter::NSDateFormatter;
 pub use self::__NSDateFormatter::NSDateFormatterBehavior10_4;
-#[cfg(feature = "Foundation_NSDateInterval")]
 #[cfg(feature = "Foundation_NSDateInterval")]
 pub use self::__NSDateInterval::NSDateInterval;
 
@@ -1161,7 +1123,6 @@ pub use self::__NSDateIntervalFormatter::NSDateIntervalFormatterMediumStyle;
 
 pub use self::__NSDateIntervalFormatter::NSDateIntervalFormatterLongStyle;
 
-#[cfg(feature = "Foundation_NSDateIntervalFormatter")]
 #[cfg(feature = "Foundation_NSDateIntervalFormatter")]
 pub use self::__NSDateIntervalFormatter::NSDateIntervalFormatter;
 pub use self::__NSDateIntervalFormatter::NSDateIntervalFormatterFullStyle;
@@ -1210,7 +1171,6 @@ pub use self::__NSDecimal::NSDecimalPower;
 
 pub use self::__NSDecimal::NSDecimalMultiplyByPowerOf10;
 #[cfg(feature = "Foundation_NSString")]
-#[cfg(feature = "Foundation_NSString")]
 pub use self::__NSDecimal::NSDecimalString;
 
 pub use self::__NSDecimalNumber::NSDecimalNumberExactnessException;
@@ -1222,22 +1182,16 @@ pub use self::__NSDecimalNumber::NSDecimalNumberUnderflowException;
 pub use self::__NSDecimalNumber::NSDecimalNumberDivideByZeroException;
 
 #[cfg(feature = "Foundation_NSDecimalNumber")]
-#[cfg(feature = "Foundation_NSDecimalNumber")]
 pub use self::__NSDecimalNumber::NSDecimalNumber;
 pub use self::__NSDecimalNumber::NSDecimalNumberBehaviors;
 #[cfg(feature = "Foundation_NSDecimalNumberHandler")]
-#[cfg(feature = "Foundation_NSDecimalNumberHandler")]
 pub use self::__NSDecimalNumber::NSDecimalNumberHandler;
-#[cfg(feature = "Foundation_NSDictionary")]
 #[cfg(feature = "Foundation_NSDictionary")]
 pub use self::__NSDictionary::NSDictionary;
 #[cfg(feature = "Foundation_NSMutableDictionary")]
-#[cfg(feature = "Foundation_NSMutableDictionary")]
 pub use self::__NSDictionary::NSMutableDictionary;
 #[cfg(feature = "Foundation_NSDistantObject")]
-#[cfg(feature = "Foundation_NSDistantObject")]
 pub use self::__NSDistantObject::NSDistantObject;
-#[cfg(feature = "Foundation_NSDistributedLock")]
 #[cfg(feature = "Foundation_NSDistributedLock")]
 pub use self::__NSDistributedLock::NSDistributedLock;
 
@@ -1264,7 +1218,6 @@ pub use self::__NSDistributedNotificationCenter::NSDistributedNotificationPostTo
 pub use self::__NSDistributedNotificationCenter::NSNotificationDeliverImmediately;
 
 #[cfg(feature = "Foundation_NSDistributedNotificationCenter")]
-#[cfg(feature = "Foundation_NSDistributedNotificationCenter")]
 pub use self::__NSDistributedNotificationCenter::NSDistributedNotificationCenter;
 pub use self::__NSDistributedNotificationCenter::NSNotificationPostToAllSessions;
 
@@ -1277,13 +1230,11 @@ pub use self::__NSEnergyFormatter::NSEnergyFormatterUnitKilojoule;
 pub use self::__NSEnergyFormatter::NSEnergyFormatterUnitCalorie;
 
 #[cfg(feature = "Foundation_NSEnergyFormatter")]
-#[cfg(feature = "Foundation_NSEnergyFormatter")]
 pub use self::__NSEnergyFormatter::NSEnergyFormatter;
 pub use self::__NSEnergyFormatter::NSEnergyFormatterUnitKilocalorie;
 
 pub use self::__NSEnumerator::NSFastEnumerationState;
 
-#[cfg(feature = "Foundation_NSEnumerator")]
 #[cfg(feature = "Foundation_NSEnumerator")]
 pub use self::__NSEnumerator::NSEnumerator;
 pub use self::__NSEnumerator::NSFastEnumeration;
@@ -1325,7 +1276,6 @@ pub use self::__NSError::NSStringEncodingErrorKey;
 pub use self::__NSError::NSURLErrorKey;
 
 #[cfg(feature = "Foundation_NSError")]
-#[cfg(feature = "Foundation_NSError")]
 pub use self::__NSError::NSError;
 pub use self::__NSError::NSFilePathErrorKey;
 
@@ -1358,7 +1308,6 @@ pub use self::__NSException::NSPortReceiveException;
 pub use self::__NSException::NSOldStyleException;
 
 #[cfg(feature = "Foundation_NSException")]
-#[cfg(feature = "Foundation_NSException")]
 pub use self::__NSException::NSException;
 pub use self::__NSException::NSInconsistentArchiveException;
 
@@ -1368,7 +1317,6 @@ pub use self::__NSException::NSGetUncaughtExceptionHandler;
 
 pub use self::__NSException::NSSetUncaughtExceptionHandler;
 
-#[cfg(feature = "Foundation_NSAssertionHandler")]
 #[cfg(feature = "Foundation_NSAssertionHandler")]
 pub use self::__NSException::NSAssertionHandler;
 pub use self::__NSException::NSAssertionHandlerKey;
@@ -1401,9 +1349,7 @@ pub use self::__NSExpression::NSBlockExpressionType;
 
 pub use self::__NSExpression::NSConditionalExpressionType;
 #[cfg(feature = "Foundation_NSExpression")]
-#[cfg(feature = "Foundation_NSExpression")]
 pub use self::__NSExpression::NSExpression;
-#[cfg(feature = "Foundation_NSExtensionContext")]
 #[cfg(feature = "Foundation_NSExtensionContext")]
 pub use self::__NSExtensionContext::NSExtensionContext;
 
@@ -1416,7 +1362,6 @@ pub use self::__NSExtensionContext::NSExtensionHostWillEnterForegroundNotificati
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__NSExtensionContext::NSExtensionHostWillResignActiveNotification;
 pub use self::__NSExtensionContext::NSExtensionItemsAndErrorsKey;
-#[cfg(feature = "Foundation_NSExtensionItem")]
 #[cfg(feature = "Foundation_NSExtensionItem")]
 pub use self::__NSExtensionItem::NSExtensionItem;
 
@@ -1449,13 +1394,10 @@ pub use self::__NSFileCoordinator::NSFileCoordinatorWritingForMerging;
 pub use self::__NSFileCoordinator::NSFileCoordinatorWritingForReplacing;
 
 #[cfg(feature = "Foundation_NSFileAccessIntent")]
-#[cfg(feature = "Foundation_NSFileAccessIntent")]
 pub use self::__NSFileCoordinator::NSFileAccessIntent;
-#[cfg(feature = "Foundation_NSFileCoordinator")]
 #[cfg(feature = "Foundation_NSFileCoordinator")]
 pub use self::__NSFileCoordinator::NSFileCoordinator;
 pub use self::__NSFileCoordinator::NSFileCoordinatorWritingContentIndependentMetadataOnly;
-#[cfg(feature = "Foundation_NSFileHandle")]
 #[cfg(feature = "Foundation_NSFileHandle")]
 pub use self::__NSFileHandle::NSFileHandle;
 
@@ -1474,7 +1416,6 @@ pub use self::__NSFileHandle::NSFileHandleNotificationDataItem;
 pub use self::__NSFileHandle::NSFileHandleNotificationFileHandleItem;
 
 pub use self::__NSFileHandle::NSFileHandleNotificationMonitorModes;
-#[cfg(feature = "Foundation_NSPipe")]
 #[cfg(feature = "Foundation_NSPipe")]
 pub use self::__NSFileHandle::NSPipe;
 
@@ -1527,15 +1468,12 @@ pub use self::__NSFileManager::NSFileManagerUnmountWithoutUI;
 pub use self::__NSFileManager::NSURLRelationshipOther;
 
 #[cfg(feature = "Foundation_NSFileManager")]
-#[cfg(feature = "Foundation_NSFileManager")]
 pub use self::__NSFileManager::NSFileManager;
 pub use self::__NSFileManager::NSUbiquityIdentityDidChangeNotification;
 
 #[cfg(feature = "Foundation_NSDirectoryEnumerator")]
-#[cfg(feature = "Foundation_NSDirectoryEnumerator")]
 pub use self::__NSFileManager::NSDirectoryEnumerator;
 pub use self::__NSFileManager::NSFileManagerDelegate;
-#[cfg(feature = "Foundation_NSFileProviderService")]
 #[cfg(feature = "Foundation_NSFileProviderService")]
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSFileManager::NSFileProviderService;
@@ -1619,7 +1557,6 @@ pub use self::__NSFileVersion::NSFileVersionAddingByMoving;
 pub use self::__NSFileVersion::NSFileVersionReplacingOptions;
 
 #[cfg(feature = "Foundation_NSFileVersion")]
-#[cfg(feature = "Foundation_NSFileVersion")]
 pub use self::__NSFileVersion::NSFileVersion;
 pub use self::__NSFileVersion::NSFileVersionReplacingByMoving;
 
@@ -1633,7 +1570,6 @@ pub use self::__NSFileWrapper::NSFileWrapperWritingOptions;
 
 pub use self::__NSFileWrapper::NSFileWrapperWritingAtomic;
 
-#[cfg(feature = "Foundation_NSFileWrapper")]
 #[cfg(feature = "Foundation_NSFileWrapper")]
 pub use self::__NSFileWrapper::NSFileWrapper;
 pub use self::__NSFileWrapper::NSFileWrapperWritingWithNameUpdating;
@@ -1659,10 +1595,8 @@ pub use self::__NSFormatter::NSFormattingUnitStyleShort;
 pub use self::__NSFormatter::NSFormattingUnitStyleMedium;
 
 #[cfg(feature = "Foundation_NSFormatter")]
-#[cfg(feature = "Foundation_NSFormatter")]
 pub use self::__NSFormatter::NSFormatter;
 pub use self::__NSFormatter::NSFormattingUnitStyleLong;
-#[cfg(feature = "Foundation_NSGarbageCollector")]
 #[cfg(feature = "Foundation_NSGarbageCollector")]
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSGarbageCollector::NSGarbageCollector;
@@ -1767,30 +1701,21 @@ pub use self::__NSGeometry::NSContainsRect;
 
 pub use self::__NSGeometry::NSIntersectsRect;
 #[cfg(feature = "Foundation_NSString")]
-#[cfg(feature = "Foundation_NSString")]
 pub use self::__NSGeometry::NSPointFromString;
-#[cfg(feature = "Foundation_NSString")]
 #[cfg(feature = "Foundation_NSString")]
 pub use self::__NSGeometry::NSRectFromString;
 #[cfg(feature = "Foundation_NSString")]
-#[cfg(feature = "Foundation_NSString")]
 pub use self::__NSGeometry::NSSizeFromString;
-#[cfg(feature = "Foundation_NSString")]
 #[cfg(feature = "Foundation_NSString")]
 pub use self::__NSGeometry::NSStringFromPoint;
 #[cfg(feature = "Foundation_NSString")]
-#[cfg(feature = "Foundation_NSString")]
 pub use self::__NSGeometry::NSStringFromRect;
-#[cfg(feature = "Foundation_NSString")]
 #[cfg(feature = "Foundation_NSString")]
 pub use self::__NSGeometry::NSStringFromSize;
 #[cfg(feature = "Foundation_NSString")]
-#[cfg(feature = "Foundation_NSString")]
 pub use self::__NSHFSFileTypes::NSFileTypeForHFSTypeCode;
 #[cfg(feature = "Foundation_NSString")]
-#[cfg(feature = "Foundation_NSString")]
 pub use self::__NSHFSFileTypes::NSHFSTypeCodeFromFileType;
-#[cfg(feature = "Foundation_NSString")]
 #[cfg(feature = "Foundation_NSString")]
 pub use self::__NSHFSFileTypes::NSHFSTypeOfFile;
 
@@ -1829,7 +1754,6 @@ pub use self::__NSHTTPCookie::NSHTTPCookieSameSitePolicy;
 pub use self::__NSHTTPCookie::NSHTTPCookieSameSiteLax;
 
 #[cfg(feature = "Foundation_NSHTTPCookie")]
-#[cfg(feature = "Foundation_NSHTTPCookie")]
 pub use self::__NSHTTPCookie::NSHTTPCookie;
 pub use self::__NSHTTPCookie::NSHTTPCookieSameSiteStrict;
 
@@ -1840,7 +1764,6 @@ pub use self::__NSHTTPCookieStorage::NSHTTPCookieAcceptPolicyAlways;
 pub use self::__NSHTTPCookieStorage::NSHTTPCookieAcceptPolicyNever;
 
 pub use self::__NSHTTPCookieStorage::NSHTTPCookieAcceptPolicyOnlyFromMainDocumentDomain;
-#[cfg(feature = "Foundation_NSHTTPCookieStorage")]
 #[cfg(feature = "Foundation_NSHTTPCookieStorage")]
 pub use self::__NSHTTPCookieStorage::NSHTTPCookieStorage;
 
@@ -1859,59 +1782,43 @@ pub use self::__NSHashTable::NSHashTableObjectPointerPersonality;
 pub use self::__NSHashTable::NSHashTableWeakMemory;
 
 #[cfg(feature = "Foundation_NSHashTable")]
-#[cfg(feature = "Foundation_NSHashTable")]
 pub use self::__NSHashTable::NSHashTable;
 pub use self::__NSHashTable::NSHashTableOptions;
 
 #[cfg(feature = "Foundation_NSHashTable")]
-#[cfg(feature = "Foundation_NSHashTable")]
 pub use self::__NSHashTable::NSCompareHashTables;
-#[cfg(feature = "Foundation_NSHashTable")]
 #[cfg(feature = "Foundation_NSHashTable")]
 pub use self::__NSHashTable::NSCopyHashTableWithZone;
 #[cfg(feature = "Foundation_NSHashTable")]
-#[cfg(feature = "Foundation_NSHashTable")]
 pub use self::__NSHashTable::NSEnumerateHashTable;
-#[cfg(feature = "Foundation_NSHashTable")]
 #[cfg(feature = "Foundation_NSHashTable")]
 pub use self::__NSHashTable::NSFreeHashTable;
 pub use self::__NSHashTable::NSHashEnumerator;
 #[cfg(feature = "Foundation_NSHashTable")]
-#[cfg(feature = "Foundation_NSHashTable")]
 pub use self::__NSHashTable::NSHashGet;
-#[cfg(feature = "Foundation_NSHashTable")]
 #[cfg(feature = "Foundation_NSHashTable")]
 pub use self::__NSHashTable::NSHashInsert;
 #[cfg(feature = "Foundation_NSHashTable")]
-#[cfg(feature = "Foundation_NSHashTable")]
 pub use self::__NSHashTable::NSHashInsertIfAbsent;
-#[cfg(feature = "Foundation_NSHashTable")]
 #[cfg(feature = "Foundation_NSHashTable")]
 pub use self::__NSHashTable::NSHashInsertKnownAbsent;
 #[cfg(feature = "Foundation_NSHashTable")]
-#[cfg(feature = "Foundation_NSHashTable")]
 pub use self::__NSHashTable::NSHashRemove;
-#[cfg(feature = "Foundation_NSHashTable")]
 #[cfg(feature = "Foundation_NSHashTable")]
 pub use self::__NSHashTable::NSResetHashTable;
 
 pub use self::__NSHashTable::NSNextHashEnumeratorItem;
 
 #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSHashTable"))]
-#[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSHashTable"))]
 pub use self::__NSHashTable::NSAllHashTableObjects;
-#[cfg(feature = "Foundation_NSHashTable")]
 #[cfg(feature = "Foundation_NSHashTable")]
 pub use self::__NSHashTable::NSCountHashTable;
 pub use self::__NSHashTable::NSEndHashTableEnumeration;
 #[cfg(all(feature = "Foundation_NSHashTable", feature = "Foundation_NSString"))]
-#[cfg(all(feature = "Foundation_NSHashTable", feature = "Foundation_NSString"))]
 pub use self::__NSHashTable::NSStringFromHashTable;
 
 #[cfg(feature = "Foundation_NSHashTable")]
-#[cfg(feature = "Foundation_NSHashTable")]
 pub use self::__NSHashTable::NSCreateHashTable;
-#[cfg(feature = "Foundation_NSHashTable")]
 #[cfg(feature = "Foundation_NSHashTable")]
 pub use self::__NSHashTable::NSCreateHashTableWithZone;
 pub use self::__NSHashTable::NSHashTableCallBacks;
@@ -1931,7 +1838,6 @@ pub use self::__NSHashTable::NSOwnedPointerHashCallBacks;
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSHashTable::NSIntHashCallBacks;
 pub use self::__NSHashTable::NSPointerToStructHashCallBacks;
-#[cfg(feature = "Foundation_NSHost")]
 #[cfg(feature = "Foundation_NSHost")]
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSHost::NSHost;
@@ -1966,24 +1872,17 @@ pub use self::__NSISO8601DateFormatter::NSISO8601DateFormatWithFullTime;
 
 pub use self::__NSISO8601DateFormatter::NSISO8601DateFormatWithInternetDateTime;
 #[cfg(feature = "Foundation_NSISO8601DateFormatter")]
-#[cfg(feature = "Foundation_NSISO8601DateFormatter")]
 pub use self::__NSISO8601DateFormatter::NSISO8601DateFormatter;
-#[cfg(feature = "Foundation_NSIndexPath")]
 #[cfg(feature = "Foundation_NSIndexPath")]
 pub use self::__NSIndexPath::NSIndexPath;
 #[cfg(feature = "Foundation_NSIndexSet")]
-#[cfg(feature = "Foundation_NSIndexSet")]
 pub use self::__NSIndexSet::NSIndexSet;
-#[cfg(feature = "Foundation_NSMutableIndexSet")]
 #[cfg(feature = "Foundation_NSMutableIndexSet")]
 pub use self::__NSIndexSet::NSMutableIndexSet;
 #[cfg(feature = "Foundation_NSInflectionRule")]
-#[cfg(feature = "Foundation_NSInflectionRule")]
 pub use self::__NSInflectionRule::NSInflectionRule;
 #[cfg(feature = "Foundation_NSInflectionRuleExplicit")]
-#[cfg(feature = "Foundation_NSInflectionRuleExplicit")]
 pub use self::__NSInflectionRule::NSInflectionRuleExplicit;
-#[cfg(feature = "Foundation_NSInvocation")]
 #[cfg(feature = "Foundation_NSInvocation")]
 pub use self::__NSInvocation::NSInvocation;
 
@@ -2007,7 +1906,6 @@ pub use self::__NSItemProvider::NSItemProviderReading;
 
 pub use self::__NSItemProvider::NSItemProviderCompletionHandler;
 
-#[cfg(feature = "Foundation_NSItemProvider")]
 #[cfg(feature = "Foundation_NSItemProvider")]
 pub use self::__NSItemProvider::NSItemProvider;
 pub use self::__NSItemProvider::NSItemProviderLoadHandler;
@@ -2052,7 +1950,6 @@ pub use self::__NSJSONSerialization::NSJSONWritingSortedKeys;
 
 pub use self::__NSJSONSerialization::NSJSONWritingFragmentsAllowed;
 
-#[cfg(feature = "Foundation_NSJSONSerialization")]
 #[cfg(feature = "Foundation_NSJSONSerialization")]
 pub use self::__NSJSONSerialization::NSJSONSerialization;
 pub use self::__NSJSONSerialization::NSJSONWritingWithoutEscapingSlashes;
@@ -2131,9 +2028,7 @@ pub use self::__NSKeyedArchiver::NSInvalidUnarchiveOperationException;
 
 pub use self::__NSKeyedArchiver::NSKeyedArchiveRootObjectKey;
 #[cfg(feature = "Foundation_NSKeyedArchiver")]
-#[cfg(feature = "Foundation_NSKeyedArchiver")]
 pub use self::__NSKeyedArchiver::NSKeyedArchiver;
-#[cfg(feature = "Foundation_NSKeyedUnarchiver")]
 #[cfg(feature = "Foundation_NSKeyedUnarchiver")]
 pub use self::__NSKeyedArchiver::NSKeyedUnarchiver;
 
@@ -2157,7 +2052,6 @@ pub use self::__NSLengthFormatter::NSLengthFormatterUnitFoot;
 
 pub use self::__NSLengthFormatter::NSLengthFormatterUnitYard;
 
-#[cfg(feature = "Foundation_NSLengthFormatter")]
 #[cfg(feature = "Foundation_NSLengthFormatter")]
 pub use self::__NSLengthFormatter::NSLengthFormatter;
 pub use self::__NSLengthFormatter::NSLengthFormatterUnitMile;
@@ -2263,14 +2157,11 @@ pub use self::__NSLinguisticTagger::NSLinguisticTaggerOmitWhitespace;
 pub use self::__NSLinguisticTagger::NSLinguisticTaggerOmitOther;
 
 #[cfg(feature = "Foundation_NSLinguisticTagger")]
-#[cfg(feature = "Foundation_NSLinguisticTagger")]
 pub use self::__NSLinguisticTagger::NSLinguisticTagger;
 pub use self::__NSLinguisticTagger::NSLinguisticTaggerJoinNames;
 #[cfg(feature = "Foundation_NSListFormatter")]
-#[cfg(feature = "Foundation_NSListFormatter")]
 pub use self::__NSListFormatter::NSListFormatter;
 
-#[cfg(feature = "Foundation_NSLocale")]
 #[cfg(feature = "Foundation_NSLocale")]
 pub use self::__NSLocale::NSLocale;
 pub use self::__NSLocale::NSLocaleKey;
@@ -2350,16 +2241,12 @@ pub use self::__NSLocale::NSIndianCalendar;
 pub use self::__NSLocale::NSISO8601Calendar;
 
 #[cfg(feature = "Foundation_NSCondition")]
-#[cfg(feature = "Foundation_NSCondition")]
 pub use self::__NSLock::NSCondition;
-#[cfg(feature = "Foundation_NSConditionLock")]
 #[cfg(feature = "Foundation_NSConditionLock")]
 pub use self::__NSLock::NSConditionLock;
 #[cfg(feature = "Foundation_NSLock")]
-#[cfg(feature = "Foundation_NSLock")]
 pub use self::__NSLock::NSLock;
 pub use self::__NSLock::NSLocking;
-#[cfg(feature = "Foundation_NSRecursiveLock")]
 #[cfg(feature = "Foundation_NSRecursiveLock")]
 pub use self::__NSLock::NSRecursiveLock;
 
@@ -2374,64 +2261,47 @@ pub use self::__NSMapTable::NSMapTableObjectPointerPersonality;
 pub use self::__NSMapTable::NSMapTableWeakMemory;
 
 #[cfg(feature = "Foundation_NSMapTable")]
-#[cfg(feature = "Foundation_NSMapTable")]
 pub use self::__NSMapTable::NSMapTable;
 pub use self::__NSMapTable::NSMapTableOptions;
 
 #[cfg(feature = "Foundation_NSMapTable")]
-#[cfg(feature = "Foundation_NSMapTable")]
 pub use self::__NSMapTable::NSCompareMapTables;
 #[cfg(feature = "Foundation_NSMapTable")]
-#[cfg(feature = "Foundation_NSMapTable")]
 pub use self::__NSMapTable::NSCopyMapTableWithZone;
-#[cfg(feature = "Foundation_NSMapTable")]
 #[cfg(feature = "Foundation_NSMapTable")]
 pub use self::__NSMapTable::NSEnumerateMapTable;
 pub use self::__NSMapTable::NSMapEnumerator;
 #[cfg(feature = "Foundation_NSMapTable")]
-#[cfg(feature = "Foundation_NSMapTable")]
 pub use self::__NSMapTable::NSMapGet;
-#[cfg(feature = "Foundation_NSMapTable")]
 #[cfg(feature = "Foundation_NSMapTable")]
 pub use self::__NSMapTable::NSMapInsert;
 #[cfg(feature = "Foundation_NSMapTable")]
-#[cfg(feature = "Foundation_NSMapTable")]
 pub use self::__NSMapTable::NSMapInsertIfAbsent;
-#[cfg(feature = "Foundation_NSMapTable")]
 #[cfg(feature = "Foundation_NSMapTable")]
 pub use self::__NSMapTable::NSMapInsertKnownAbsent;
 #[cfg(feature = "Foundation_NSMapTable")]
-#[cfg(feature = "Foundation_NSMapTable")]
 pub use self::__NSMapTable::NSMapMember;
 #[cfg(feature = "Foundation_NSMapTable")]
-#[cfg(feature = "Foundation_NSMapTable")]
 pub use self::__NSMapTable::NSMapRemove;
-#[cfg(feature = "Foundation_NSMapTable")]
 #[cfg(feature = "Foundation_NSMapTable")]
 pub use self::__NSMapTable::NSResetMapTable;
 
 pub use self::__NSMapTable::NSNextMapEnumeratorPair;
 
 #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSMapTable"))]
-#[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSMapTable"))]
 pub use self::__NSMapTable::NSAllMapTableKeys;
-#[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSMapTable"))]
 #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSMapTable"))]
 pub use self::__NSMapTable::NSAllMapTableValues;
 #[cfg(feature = "Foundation_NSMapTable")]
-#[cfg(feature = "Foundation_NSMapTable")]
 pub use self::__NSMapTable::NSCountMapTable;
 pub use self::__NSMapTable::NSEndMapTableEnumeration;
-#[cfg(all(feature = "Foundation_NSMapTable", feature = "Foundation_NSString"))]
 #[cfg(all(feature = "Foundation_NSMapTable", feature = "Foundation_NSString"))]
 pub use self::__NSMapTable::NSStringFromMapTable;
 
 pub use self::__NSMapTable::NSMapTableKeyCallBacks;
 
 #[cfg(feature = "Foundation_NSMapTable")]
-#[cfg(feature = "Foundation_NSMapTable")]
 pub use self::__NSMapTable::NSCreateMapTable;
-#[cfg(feature = "Foundation_NSMapTable")]
 #[cfg(feature = "Foundation_NSMapTable")]
 pub use self::__NSMapTable::NSCreateMapTableWithZone;
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
@@ -2473,10 +2343,8 @@ pub use self::__NSMassFormatter::NSMassFormatterUnitOunce;
 pub use self::__NSMassFormatter::NSMassFormatterUnitPound;
 
 #[cfg(feature = "Foundation_NSMassFormatter")]
-#[cfg(feature = "Foundation_NSMassFormatter")]
 pub use self::__NSMassFormatter::NSMassFormatter;
 pub use self::__NSMassFormatter::NSMassFormatterUnitStone;
-#[cfg(feature = "Foundation_NSMeasurement")]
 #[cfg(feature = "Foundation_NSMeasurement")]
 pub use self::__NSMeasurement::NSMeasurement;
 
@@ -2487,10 +2355,8 @@ pub use self::__NSMeasurementFormatter::NSMeasurementFormatterUnitOptionsProvide
 pub use self::__NSMeasurementFormatter::NSMeasurementFormatterUnitOptionsNaturalScale;
 
 #[cfg(feature = "Foundation_NSMeasurementFormatter")]
-#[cfg(feature = "Foundation_NSMeasurementFormatter")]
 pub use self::__NSMeasurementFormatter::NSMeasurementFormatter;
 pub use self::__NSMeasurementFormatter::NSMeasurementFormatterUnitOptionsTemperatureWithoutUnit;
-#[cfg(feature = "Foundation_NSMetadataQuery")]
 #[cfg(feature = "Foundation_NSMetadataQuery")]
 pub use self::__NSMetadata::NSMetadataQuery;
 
@@ -2527,13 +2393,10 @@ pub use self::__NSMetadata::NSMetadataQueryUbiquitousDocumentsScope;
 pub use self::__NSMetadata::NSMetadataQueryUbiquitousDataScope;
 
 #[cfg(feature = "Foundation_NSMetadataItem")]
-#[cfg(feature = "Foundation_NSMetadataItem")]
 pub use self::__NSMetadata::NSMetadataItem;
 pub use self::__NSMetadata::NSMetadataQueryAccessibleUbiquitousExternalDocumentsScope;
 #[cfg(feature = "Foundation_NSMetadataQueryAttributeValueTuple")]
-#[cfg(feature = "Foundation_NSMetadataQueryAttributeValueTuple")]
 pub use self::__NSMetadata::NSMetadataQueryAttributeValueTuple;
-#[cfg(feature = "Foundation_NSMetadataQueryResultGroup")]
 #[cfg(feature = "Foundation_NSMetadataQueryResultGroup")]
 pub use self::__NSMetadata::NSMetadataQueryResultGroup;
 
@@ -2899,7 +2762,6 @@ pub use self::__NSMetadataAttributes::NSMetadataUbiquitousSharedItemRoleOwner;
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSMetadataAttributes::NSMetadataUbiquitousSharedItemRoleParticipant;
 #[cfg(feature = "Foundation_NSMethodSignature")]
-#[cfg(feature = "Foundation_NSMethodSignature")]
 pub use self::__NSMethodSignature::NSMethodSignature;
 
 pub use self::__NSMorphology::NSGrammaticalGender;
@@ -2960,9 +2822,7 @@ pub use self::__NSMorphology::NSGrammaticalNumberPluralFew;
 
 pub use self::__NSMorphology::NSGrammaticalNumberPluralMany;
 #[cfg(feature = "Foundation_NSMorphology")]
-#[cfg(feature = "Foundation_NSMorphology")]
 pub use self::__NSMorphology::NSMorphology;
-#[cfg(feature = "Foundation_NSMorphologyCustomPronoun")]
 #[cfg(feature = "Foundation_NSMorphologyCustomPronoun")]
 pub use self::__NSMorphology::NSMorphologyCustomPronoun;
 #[cfg(not(any(target_os = "watchos")))]
@@ -2995,10 +2855,8 @@ pub use self::__NSNetServices::NSNetServiceOptions;
 pub use self::__NSNetServices::NSNetServiceNoAutoRename;
 
 #[cfg(feature = "Foundation_NSNetService")]
-#[cfg(feature = "Foundation_NSNetService")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__NSNetServices::NSNetService;
-#[cfg(feature = "Foundation_NSNetServiceBrowser")]
 #[cfg(feature = "Foundation_NSNetServiceBrowser")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__NSNetServices::NSNetServiceBrowser;
@@ -3009,9 +2867,7 @@ pub use self::__NSNetServices::NSNetServiceDelegate;
 pub use self::__NSNetServices::NSNetServiceListenForConnections;
 
 #[cfg(feature = "Foundation_NSNotification")]
-#[cfg(feature = "Foundation_NSNotification")]
 pub use self::__NSNotification::NSNotification;
-#[cfg(feature = "Foundation_NSNotificationCenter")]
 #[cfg(feature = "Foundation_NSNotificationCenter")]
 pub use self::__NSNotification::NSNotificationCenter;
 pub use self::__NSNotification::NSNotificationName;
@@ -3032,9 +2888,7 @@ pub use self::__NSNotificationQueue::NSNotificationCoalescingOnName;
 
 pub use self::__NSNotificationQueue::NSNotificationCoalescingOnSender;
 #[cfg(feature = "Foundation_NSNotificationQueue")]
-#[cfg(feature = "Foundation_NSNotificationQueue")]
 pub use self::__NSNotificationQueue::NSNotificationQueue;
-#[cfg(feature = "Foundation_NSNull")]
 #[cfg(feature = "Foundation_NSNull")]
 pub use self::__NSNull::NSNull;
 
@@ -3093,7 +2947,6 @@ pub use self::__NSNumberFormatter::NSNumberFormatterRoundHalfEven;
 pub use self::__NSNumberFormatter::NSNumberFormatterRoundHalfDown;
 
 #[cfg(feature = "Foundation_NSNumberFormatter")]
-#[cfg(feature = "Foundation_NSNumberFormatter")]
 pub use self::__NSNumberFormatter::NSNumberFormatter;
 pub use self::__NSNumberFormatter::NSNumberFormatterRoundHalfUp;
 
@@ -3102,22 +2955,16 @@ pub use self::__NSObjCRuntime::NSFoundationVersionNumber;
 pub use self::__NSObjCRuntime::NSExceptionName;
 
 #[cfg(feature = "Foundation_NSString")]
-#[cfg(feature = "Foundation_NSString")]
 pub use self::__NSObjCRuntime::NSClassFromString;
-#[cfg(feature = "Foundation_NSString")]
 #[cfg(feature = "Foundation_NSString")]
 pub use self::__NSObjCRuntime::NSProtocolFromString;
 pub use self::__NSObjCRuntime::NSRunLoopMode;
 #[cfg(feature = "Foundation_NSString")]
-#[cfg(feature = "Foundation_NSString")]
 pub use self::__NSObjCRuntime::NSSelectorFromString;
-#[cfg(feature = "Foundation_NSString")]
 #[cfg(feature = "Foundation_NSString")]
 pub use self::__NSObjCRuntime::NSStringFromClass;
 #[cfg(feature = "Foundation_NSString")]
-#[cfg(feature = "Foundation_NSString")]
 pub use self::__NSObjCRuntime::NSStringFromProtocol;
-#[cfg(feature = "Foundation_NSString")]
 #[cfg(feature = "Foundation_NSString")]
 pub use self::__NSObjCRuntime::NSStringFromSelector;
 
@@ -3180,12 +3027,9 @@ pub use self::__NSOperation::NSOperationQueuePriorityNormal;
 pub use self::__NSOperation::NSOperationQueuePriorityHigh;
 
 #[cfg(feature = "Foundation_NSBlockOperation")]
-#[cfg(feature = "Foundation_NSBlockOperation")]
 pub use self::__NSOperation::NSBlockOperation;
 #[cfg(feature = "Foundation_NSInvocationOperation")]
-#[cfg(feature = "Foundation_NSInvocationOperation")]
 pub use self::__NSOperation::NSInvocationOperation;
-#[cfg(feature = "Foundation_NSOperation")]
 #[cfg(feature = "Foundation_NSOperation")]
 pub use self::__NSOperation::NSOperation;
 pub use self::__NSOperation::NSOperationQueuePriorityVeryHigh;
@@ -3194,7 +3038,6 @@ pub use self::__NSOperation::NSInvocationOperationVoidResultException;
 
 pub use self::__NSOperation::NSInvocationOperationCancelledException;
 
-#[cfg(feature = "Foundation_NSOperationQueue")]
 #[cfg(feature = "Foundation_NSOperationQueue")]
 pub use self::__NSOperation::NSOperationQueue;
 pub use self::__NSOperation::NSOperationQueueDefaultMaxConcurrentOperationCount;
@@ -3205,7 +3048,6 @@ pub use self::__NSOrderedCollectionChange::NSCollectionChangeInsert;
 
 pub use self::__NSOrderedCollectionChange::NSCollectionChangeRemove;
 #[cfg(feature = "Foundation_NSOrderedCollectionChange")]
-#[cfg(feature = "Foundation_NSOrderedCollectionChange")]
 pub use self::__NSOrderedCollectionChange::NSOrderedCollectionChange;
 
 pub use self::__NSOrderedCollectionDifference::NSOrderedCollectionDifferenceCalculationOptions;
@@ -3215,34 +3057,24 @@ pub use self::__NSOrderedCollectionDifference::NSOrderedCollectionDifferenceCalc
 pub use self::__NSOrderedCollectionDifference::NSOrderedCollectionDifferenceCalculationOmitRemovedObjects;
 
 #[cfg(feature = "Foundation_NSOrderedCollectionDifference")]
-#[cfg(feature = "Foundation_NSOrderedCollectionDifference")]
 pub use self::__NSOrderedCollectionDifference::NSOrderedCollectionDifference;
 pub use self::__NSOrderedCollectionDifference::NSOrderedCollectionDifferenceCalculationInferMoves;
 #[cfg(feature = "Foundation_NSMutableOrderedSet")]
-#[cfg(feature = "Foundation_NSMutableOrderedSet")]
 pub use self::__NSOrderedSet::NSMutableOrderedSet;
-#[cfg(feature = "Foundation_NSOrderedSet")]
 #[cfg(feature = "Foundation_NSOrderedSet")]
 pub use self::__NSOrderedSet::NSOrderedSet;
 #[cfg(feature = "Foundation_NSOrthography")]
-#[cfg(feature = "Foundation_NSOrthography")]
 pub use self::__NSOrthography::NSOrthography;
-#[cfg(feature = "Foundation_NSString")]
 #[cfg(feature = "Foundation_NSString")]
 pub use self::__NSPathUtilities::NSFullUserName;
 #[cfg(feature = "Foundation_NSString")]
-#[cfg(feature = "Foundation_NSString")]
 pub use self::__NSPathUtilities::NSHomeDirectory;
-#[cfg(feature = "Foundation_NSString")]
 #[cfg(feature = "Foundation_NSString")]
 pub use self::__NSPathUtilities::NSHomeDirectoryForUser;
 #[cfg(feature = "Foundation_NSString")]
-#[cfg(feature = "Foundation_NSString")]
 pub use self::__NSPathUtilities::NSOpenStepRootDirectory;
 #[cfg(feature = "Foundation_NSString")]
-#[cfg(feature = "Foundation_NSString")]
 pub use self::__NSPathUtilities::NSTemporaryDirectory;
-#[cfg(feature = "Foundation_NSString")]
 #[cfg(feature = "Foundation_NSString")]
 pub use self::__NSPathUtilities::NSUserName;
 
@@ -3314,9 +3146,7 @@ pub use self::__NSPathUtilities::NSSystemDomainMask;
 
 pub use self::__NSPathUtilities::NSAllDomainsMask;
 #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
-#[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
 pub use self::__NSPathUtilities::NSSearchPathForDirectoriesInDomains;
-#[cfg(feature = "Foundation_NSPersonNameComponents")]
 #[cfg(feature = "Foundation_NSPersonNameComponents")]
 pub use self::__NSPersonNameComponents::NSPersonNameComponents;
 
@@ -3334,7 +3164,6 @@ pub use self::__NSPersonNameComponentsFormatter::NSPersonNameComponentsFormatter
 
 pub use self::__NSPersonNameComponentsFormatter::NSPersonNameComponentsFormatterOptions;
 
-#[cfg(feature = "Foundation_NSPersonNameComponentsFormatter")]
 #[cfg(feature = "Foundation_NSPersonNameComponentsFormatter")]
 pub use self::__NSPersonNameComponentsFormatter::NSPersonNameComponentsFormatter;
 pub use self::__NSPersonNameComponentsFormatter::NSPersonNameComponentsFormatterPhonetic;
@@ -3354,7 +3183,6 @@ pub use self::__NSPersonNameComponentsFormatter::NSPersonNameComponentSuffix;
 pub use self::__NSPersonNameComponentsFormatter::NSPersonNameComponentNickname;
 
 pub use self::__NSPersonNameComponentsFormatter::NSPersonNameComponentDelimiter;
-#[cfg(feature = "Foundation_NSPointerArray")]
 #[cfg(feature = "Foundation_NSPointerArray")]
 pub use self::__NSPointerArray::NSPointerArray;
 
@@ -3385,13 +3213,11 @@ pub use self::__NSPointerFunctions::NSPointerFunctionsStructPersonality;
 pub use self::__NSPointerFunctions::NSPointerFunctionsIntegerPersonality;
 
 #[cfg(feature = "Foundation_NSPointerFunctions")]
-#[cfg(feature = "Foundation_NSPointerFunctions")]
 pub use self::__NSPointerFunctions::NSPointerFunctions;
 pub use self::__NSPointerFunctions::NSPointerFunctionsCopyIn;
 
 pub use self::__NSPort::NSSocketNativeHandle;
 
-#[cfg(feature = "Foundation_NSPort")]
 #[cfg(feature = "Foundation_NSPort")]
 pub use self::__NSPort::NSPort;
 pub use self::__NSPort::NSPortDidBecomeInvalidNotification;
@@ -3405,36 +3231,26 @@ pub use self::__NSPort::NSMachPortDeallocateNone;
 pub use self::__NSPort::NSMachPortDeallocateSendRight;
 
 #[cfg(feature = "Foundation_NSMachPort")]
-#[cfg(feature = "Foundation_NSMachPort")]
 pub use self::__NSPort::NSMachPort;
 pub use self::__NSPort::NSMachPortDeallocateReceiveRight;
 
 pub use self::__NSPort::NSMachPortDelegate;
 #[cfg(feature = "Foundation_NSMessagePort")]
-#[cfg(feature = "Foundation_NSMessagePort")]
 pub use self::__NSPort::NSMessagePort;
-#[cfg(feature = "Foundation_NSSocketPort")]
 #[cfg(feature = "Foundation_NSSocketPort")]
 pub use self::__NSPort::NSSocketPort;
 #[cfg(feature = "Foundation_NSPortCoder")]
-#[cfg(feature = "Foundation_NSPortCoder")]
 pub use self::__NSPortCoder::NSPortCoder;
-#[cfg(feature = "Foundation_NSPortMessage")]
 #[cfg(feature = "Foundation_NSPortMessage")]
 pub use self::__NSPortMessage::NSPortMessage;
 #[cfg(feature = "Foundation_NSMachBootstrapServer")]
-#[cfg(feature = "Foundation_NSMachBootstrapServer")]
 pub use self::__NSPortNameServer::NSMachBootstrapServer;
-#[cfg(feature = "Foundation_NSMessagePortNameServer")]
 #[cfg(feature = "Foundation_NSMessagePortNameServer")]
 pub use self::__NSPortNameServer::NSMessagePortNameServer;
 #[cfg(feature = "Foundation_NSPortNameServer")]
-#[cfg(feature = "Foundation_NSPortNameServer")]
 pub use self::__NSPortNameServer::NSPortNameServer;
 #[cfg(feature = "Foundation_NSSocketPortNameServer")]
-#[cfg(feature = "Foundation_NSSocketPortNameServer")]
 pub use self::__NSPortNameServer::NSSocketPortNameServer;
-#[cfg(feature = "Foundation_NSPredicate")]
 #[cfg(feature = "Foundation_NSPredicate")]
 pub use self::__NSPredicate::NSPredicate;
 
@@ -3453,7 +3269,6 @@ pub use self::__NSProcessInfo::NSSunOSOperatingSystem;
 pub use self::__NSProcessInfo::NSOSF1OperatingSystem;
 
 pub use self::__NSProcessInfo::NSOperatingSystemVersion;
-#[cfg(feature = "Foundation_NSProcessInfo")]
 #[cfg(feature = "Foundation_NSProcessInfo")]
 pub use self::__NSProcessInfo::NSProcessInfo;
 
@@ -3503,7 +3318,6 @@ pub use self::__NSProgress::NSProgressFileOperationKind;
 
 pub use self::__NSProgress::NSProgressUnpublishingHandler;
 
-#[cfg(feature = "Foundation_NSProgress")]
 #[cfg(feature = "Foundation_NSProgress")]
 pub use self::__NSProgress::NSProgress;
 pub use self::__NSProgress::NSProgressPublishingHandler;
@@ -3561,10 +3375,8 @@ pub use self::__NSPropertyList::NSPropertyListBinaryFormat_v1_0;
 pub use self::__NSPropertyList::NSPropertyListReadOptions;
 
 #[cfg(feature = "Foundation_NSPropertyListSerialization")]
-#[cfg(feature = "Foundation_NSPropertyListSerialization")]
 pub use self::__NSPropertyList::NSPropertyListSerialization;
 pub use self::__NSPropertyList::NSPropertyListWriteOptions;
-#[cfg(feature = "Foundation_NSProtocolChecker")]
 #[cfg(feature = "Foundation_NSProtocolChecker")]
 pub use self::__NSProtocolChecker::NSProtocolChecker;
 
@@ -3574,9 +3386,7 @@ pub use self::__NSRange::NSUnionRange;
 
 pub use self::__NSRange::NSIntersectionRange;
 #[cfg(feature = "Foundation_NSString")]
-#[cfg(feature = "Foundation_NSString")]
 pub use self::__NSRange::NSRangeFromString;
-#[cfg(feature = "Foundation_NSString")]
 #[cfg(feature = "Foundation_NSString")]
 pub use self::__NSRange::NSStringFromRange;
 
@@ -3594,7 +3404,6 @@ pub use self::__NSRegularExpression::NSRegularExpressionAnchorsMatchLines;
 
 pub use self::__NSRegularExpression::NSRegularExpressionUseUnixLineSeparators;
 
-#[cfg(feature = "Foundation_NSRegularExpression")]
 #[cfg(feature = "Foundation_NSRegularExpression")]
 pub use self::__NSRegularExpression::NSRegularExpression;
 pub use self::__NSRegularExpression::NSRegularExpressionUseUnicodeWordBoundaries;
@@ -3622,7 +3431,6 @@ pub use self::__NSRegularExpression::NSMatchingHitEnd;
 pub use self::__NSRegularExpression::NSMatchingRequiredEnd;
 
 #[cfg(feature = "Foundation_NSDataDetector")]
-#[cfg(feature = "Foundation_NSDataDetector")]
 pub use self::__NSRegularExpression::NSDataDetector;
 pub use self::__NSRegularExpression::NSMatchingInternalError;
 
@@ -3641,23 +3449,18 @@ pub use self::__NSRelativeDateTimeFormatter::NSRelativeDateTimeFormatterUnitsSty
 pub use self::__NSRelativeDateTimeFormatter::NSRelativeDateTimeFormatterUnitsStyleShort;
 
 #[cfg(feature = "Foundation_NSRelativeDateTimeFormatter")]
-#[cfg(feature = "Foundation_NSRelativeDateTimeFormatter")]
 pub use self::__NSRelativeDateTimeFormatter::NSRelativeDateTimeFormatter;
 pub use self::__NSRelativeDateTimeFormatter::NSRelativeDateTimeFormatterUnitsStyleAbbreviated;
 
 pub use self::__NSRunLoop::NSDefaultRunLoopMode;
 
 #[cfg(feature = "Foundation_NSRunLoop")]
-#[cfg(feature = "Foundation_NSRunLoop")]
 pub use self::__NSRunLoop::NSRunLoop;
 pub use self::__NSRunLoop::NSRunLoopCommonModes;
 #[cfg(feature = "Foundation_NSScanner")]
-#[cfg(feature = "Foundation_NSScanner")]
 pub use self::__NSScanner::NSScanner;
 #[cfg(feature = "Foundation_NSScriptClassDescription")]
-#[cfg(feature = "Foundation_NSScriptClassDescription")]
 pub use self::__NSScriptClassDescription::NSScriptClassDescription;
-#[cfg(feature = "Foundation_NSScriptCoercionHandler")]
 #[cfg(feature = "Foundation_NSScriptCoercionHandler")]
 pub use self::__NSScriptCoercionHandler::NSScriptCoercionHandler;
 
@@ -3683,12 +3486,9 @@ pub use self::__NSScriptCommand::NSOperationNotSupportedForKeyScriptError;
 
 pub use self::__NSScriptCommand::NSCannotCreateScriptCommandError;
 #[cfg(feature = "Foundation_NSScriptCommand")]
-#[cfg(feature = "Foundation_NSScriptCommand")]
 pub use self::__NSScriptCommand::NSScriptCommand;
 #[cfg(feature = "Foundation_NSScriptCommandDescription")]
-#[cfg(feature = "Foundation_NSScriptCommandDescription")]
 pub use self::__NSScriptCommandDescription::NSScriptCommandDescription;
-#[cfg(feature = "Foundation_NSScriptExecutionContext")]
 #[cfg(feature = "Foundation_NSScriptExecutionContext")]
 pub use self::__NSScriptExecutionContext::NSScriptExecutionContext;
 
@@ -3737,37 +3537,26 @@ pub use self::__NSScriptObjectSpecifiers::NSMiddleSubelement;
 pub use self::__NSScriptObjectSpecifiers::NSRandomSubelement;
 
 #[cfg(feature = "Foundation_NSIndexSpecifier")]
-#[cfg(feature = "Foundation_NSIndexSpecifier")]
 pub use self::__NSScriptObjectSpecifiers::NSIndexSpecifier;
 #[cfg(feature = "Foundation_NSMiddleSpecifier")]
-#[cfg(feature = "Foundation_NSMiddleSpecifier")]
 pub use self::__NSScriptObjectSpecifiers::NSMiddleSpecifier;
-#[cfg(feature = "Foundation_NSNameSpecifier")]
 #[cfg(feature = "Foundation_NSNameSpecifier")]
 pub use self::__NSScriptObjectSpecifiers::NSNameSpecifier;
 pub use self::__NSScriptObjectSpecifiers::NSNoSubelement;
 #[cfg(feature = "Foundation_NSPositionalSpecifier")]
-#[cfg(feature = "Foundation_NSPositionalSpecifier")]
 pub use self::__NSScriptObjectSpecifiers::NSPositionalSpecifier;
-#[cfg(feature = "Foundation_NSPropertySpecifier")]
 #[cfg(feature = "Foundation_NSPropertySpecifier")]
 pub use self::__NSScriptObjectSpecifiers::NSPropertySpecifier;
 #[cfg(feature = "Foundation_NSRandomSpecifier")]
-#[cfg(feature = "Foundation_NSRandomSpecifier")]
 pub use self::__NSScriptObjectSpecifiers::NSRandomSpecifier;
-#[cfg(feature = "Foundation_NSRangeSpecifier")]
 #[cfg(feature = "Foundation_NSRangeSpecifier")]
 pub use self::__NSScriptObjectSpecifiers::NSRangeSpecifier;
 #[cfg(feature = "Foundation_NSRelativeSpecifier")]
-#[cfg(feature = "Foundation_NSRelativeSpecifier")]
 pub use self::__NSScriptObjectSpecifiers::NSRelativeSpecifier;
-#[cfg(feature = "Foundation_NSScriptObjectSpecifier")]
 #[cfg(feature = "Foundation_NSScriptObjectSpecifier")]
 pub use self::__NSScriptObjectSpecifiers::NSScriptObjectSpecifier;
 #[cfg(feature = "Foundation_NSUniqueIDSpecifier")]
-#[cfg(feature = "Foundation_NSUniqueIDSpecifier")]
 pub use self::__NSScriptObjectSpecifiers::NSUniqueIDSpecifier;
-#[cfg(feature = "Foundation_NSWhoseSpecifier")]
 #[cfg(feature = "Foundation_NSWhoseSpecifier")]
 pub use self::__NSScriptObjectSpecifiers::NSWhoseSpecifier;
 
@@ -3778,37 +3567,26 @@ pub use self::__NSScriptStandardSuiteCommands::NSSaveOptionsYes;
 pub use self::__NSScriptStandardSuiteCommands::NSSaveOptionsNo;
 
 #[cfg(feature = "Foundation_NSCloneCommand")]
-#[cfg(feature = "Foundation_NSCloneCommand")]
 pub use self::__NSScriptStandardSuiteCommands::NSCloneCommand;
-#[cfg(feature = "Foundation_NSCloseCommand")]
 #[cfg(feature = "Foundation_NSCloseCommand")]
 pub use self::__NSScriptStandardSuiteCommands::NSCloseCommand;
 #[cfg(feature = "Foundation_NSCountCommand")]
-#[cfg(feature = "Foundation_NSCountCommand")]
 pub use self::__NSScriptStandardSuiteCommands::NSCountCommand;
-#[cfg(feature = "Foundation_NSCreateCommand")]
 #[cfg(feature = "Foundation_NSCreateCommand")]
 pub use self::__NSScriptStandardSuiteCommands::NSCreateCommand;
 #[cfg(feature = "Foundation_NSDeleteCommand")]
-#[cfg(feature = "Foundation_NSDeleteCommand")]
 pub use self::__NSScriptStandardSuiteCommands::NSDeleteCommand;
-#[cfg(feature = "Foundation_NSExistsCommand")]
 #[cfg(feature = "Foundation_NSExistsCommand")]
 pub use self::__NSScriptStandardSuiteCommands::NSExistsCommand;
 #[cfg(feature = "Foundation_NSGetCommand")]
-#[cfg(feature = "Foundation_NSGetCommand")]
 pub use self::__NSScriptStandardSuiteCommands::NSGetCommand;
 #[cfg(feature = "Foundation_NSMoveCommand")]
-#[cfg(feature = "Foundation_NSMoveCommand")]
 pub use self::__NSScriptStandardSuiteCommands::NSMoveCommand;
-#[cfg(feature = "Foundation_NSQuitCommand")]
 #[cfg(feature = "Foundation_NSQuitCommand")]
 pub use self::__NSScriptStandardSuiteCommands::NSQuitCommand;
 pub use self::__NSScriptStandardSuiteCommands::NSSaveOptionsAsk;
 #[cfg(feature = "Foundation_NSSetCommand")]
-#[cfg(feature = "Foundation_NSSetCommand")]
 pub use self::__NSScriptStandardSuiteCommands::NSSetCommand;
-#[cfg(feature = "Foundation_NSScriptSuiteRegistry")]
 #[cfg(feature = "Foundation_NSScriptSuiteRegistry")]
 pub use self::__NSScriptSuiteRegistry::NSScriptSuiteRegistry;
 
@@ -3830,24 +3608,17 @@ pub use self::__NSScriptWhoseTests::NSEndsWithComparison;
 
 pub use self::__NSScriptWhoseTests::NSContainsComparison;
 #[cfg(feature = "Foundation_NSLogicalTest")]
-#[cfg(feature = "Foundation_NSLogicalTest")]
 pub use self::__NSScriptWhoseTests::NSLogicalTest;
-#[cfg(feature = "Foundation_NSScriptWhoseTest")]
 #[cfg(feature = "Foundation_NSScriptWhoseTest")]
 pub use self::__NSScriptWhoseTests::NSScriptWhoseTest;
 #[cfg(feature = "Foundation_NSSpecifierTest")]
-#[cfg(feature = "Foundation_NSSpecifierTest")]
 pub use self::__NSScriptWhoseTests::NSSpecifierTest;
-#[cfg(feature = "Foundation_NSCountedSet")]
 #[cfg(feature = "Foundation_NSCountedSet")]
 pub use self::__NSSet::NSCountedSet;
 #[cfg(feature = "Foundation_NSMutableSet")]
-#[cfg(feature = "Foundation_NSMutableSet")]
 pub use self::__NSSet::NSMutableSet;
 #[cfg(feature = "Foundation_NSSet")]
-#[cfg(feature = "Foundation_NSSet")]
 pub use self::__NSSet::NSSet;
-#[cfg(feature = "Foundation_NSSortDescriptor")]
 #[cfg(feature = "Foundation_NSSortDescriptor")]
 pub use self::__NSSortDescriptor::NSSortDescriptor;
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
@@ -3856,7 +3627,6 @@ pub use self::__NSSpellServer::NSGrammarCorrections;
 pub use self::__NSSpellServer::NSGrammarRange;
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSSpellServer::NSGrammarUserDescription;
-#[cfg(feature = "Foundation_NSSpellServer")]
 #[cfg(feature = "Foundation_NSSpellServer")]
 pub use self::__NSSpellServer::NSSpellServer;
 
@@ -3895,12 +3665,9 @@ pub use self::__NSStream::NSStreamEventHasSpaceAvailable;
 pub use self::__NSStream::NSStreamEventErrorOccurred;
 
 #[cfg(feature = "Foundation_NSInputStream")]
-#[cfg(feature = "Foundation_NSInputStream")]
 pub use self::__NSStream::NSInputStream;
 #[cfg(feature = "Foundation_NSOutputStream")]
-#[cfg(feature = "Foundation_NSOutputStream")]
 pub use self::__NSStream::NSOutputStream;
-#[cfg(feature = "Foundation_NSStream")]
 #[cfg(feature = "Foundation_NSStream")]
 pub use self::__NSStream::NSStream;
 pub use self::__NSStream::NSStreamEventEndEncountered;
@@ -4038,7 +3805,6 @@ pub use self::__NSString::NSStringEncodingConversionOptions;
 pub use self::__NSString::NSStringEncodingConversionAllowLossy;
 
 #[cfg(feature = "Foundation_NSString")]
-#[cfg(feature = "Foundation_NSString")]
 pub use self::__NSString::NSString;
 pub use self::__NSString::NSStringEncodingConversionExternalRepresentation;
 
@@ -4113,20 +3879,16 @@ pub use self::__NSString::NSStringEncodingDetectionFromWindowsKey;
 pub use self::__NSString::NSStringEncodingDetectionLossySubstitutionKey;
 
 #[cfg(feature = "Foundation_NSMutableString")]
-#[cfg(feature = "Foundation_NSMutableString")]
 pub use self::__NSString::NSMutableString;
 pub use self::__NSString::NSStringEncodingDetectionLikelyLanguageKey;
 
 pub use self::__NSString::NSCharacterConversionException;
 
 #[cfg(feature = "Foundation_NSConstantString")]
-#[cfg(feature = "Foundation_NSConstantString")]
 pub use self::__NSString::NSConstantString;
 pub use self::__NSString::NSParseErrorException;
 #[cfg(feature = "Foundation_NSSimpleCString")]
-#[cfg(feature = "Foundation_NSSimpleCString")]
 pub use self::__NSString::NSSimpleCString;
-#[cfg(feature = "Foundation_NSTask")]
 #[cfg(feature = "Foundation_NSTask")]
 pub use self::__NSTask::NSTask;
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
@@ -4176,7 +3938,6 @@ pub use self::__NSTextCheckingResult::NSTextCheckingAllTypes;
 
 pub use self::__NSTextCheckingResult::NSTextCheckingKey;
 #[cfg(feature = "Foundation_NSTextCheckingResult")]
-#[cfg(feature = "Foundation_NSTextCheckingResult")]
 pub use self::__NSTextCheckingResult::NSTextCheckingResult;
 
 pub use self::__NSTextCheckingResult::NSTextCheckingNameKey;
@@ -4201,7 +3962,6 @@ pub use self::__NSTextCheckingResult::NSTextCheckingAirlineKey;
 
 pub use self::__NSTextCheckingResult::NSTextCheckingFlightKey;
 #[cfg(feature = "Foundation_NSThread")]
-#[cfg(feature = "Foundation_NSThread")]
 pub use self::__NSThread::NSThread;
 
 pub use self::__NSThread::NSWillBecomeMultiThreadedNotification;
@@ -4209,7 +3969,6 @@ pub use self::__NSThread::NSWillBecomeMultiThreadedNotification;
 pub use self::__NSThread::NSDidBecomeSingleThreadedNotification;
 
 pub use self::__NSThread::NSThreadWillExitNotification;
-#[cfg(feature = "Foundation_NSTimeZone")]
 #[cfg(feature = "Foundation_NSTimeZone")]
 pub use self::__NSTimeZone::NSTimeZone;
 
@@ -4228,7 +3987,6 @@ pub use self::__NSTimeZone::NSTimeZoneNameStyleGeneric;
 pub use self::__NSTimeZone::NSTimeZoneNameStyleShortGeneric;
 
 pub use self::__NSTimeZone::NSSystemTimeZoneDidChangeNotification;
-#[cfg(feature = "Foundation_NSTimer")]
 #[cfg(feature = "Foundation_NSTimer")]
 pub use self::__NSTimer::NSTimer;
 
@@ -4553,20 +4311,15 @@ pub use self::__NSURL::NSURLBookmarkResolutionWithSecurityScope;
 pub use self::__NSURL::NSURLBookmarkResolutionWithoutImplicitStartAccessing;
 
 #[cfg(feature = "Foundation_NSFileSecurity")]
-#[cfg(feature = "Foundation_NSFileSecurity")]
 pub use self::__NSURL::NSFileSecurity;
 pub use self::__NSURL::NSURLBookmarkFileCreationOptions;
 #[cfg(feature = "Foundation_NSURLComponents")]
-#[cfg(feature = "Foundation_NSURLComponents")]
 pub use self::__NSURL::NSURLComponents;
-#[cfg(feature = "Foundation_NSURLQueryItem")]
 #[cfg(feature = "Foundation_NSURLQueryItem")]
 pub use self::__NSURL::NSURLQueryItem;
 #[cfg(feature = "Foundation_NSURL")]
-#[cfg(feature = "Foundation_NSURL")]
 pub use self::__NSURL::NSURL;
 
-#[cfg(feature = "Foundation_NSURLAuthenticationChallenge")]
 #[cfg(feature = "Foundation_NSURLAuthenticationChallenge")]
 pub use self::__NSURLAuthenticationChallenge::NSURLAuthenticationChallenge;
 pub use self::__NSURLAuthenticationChallenge::NSURLAuthenticationChallengeSender;
@@ -4578,13 +4331,10 @@ pub use self::__NSURLCache::NSURLCacheStorageAllowed;
 pub use self::__NSURLCache::NSURLCacheStorageAllowedInMemoryOnly;
 
 #[cfg(feature = "Foundation_NSCachedURLResponse")]
-#[cfg(feature = "Foundation_NSCachedURLResponse")]
 pub use self::__NSURLCache::NSCachedURLResponse;
-#[cfg(feature = "Foundation_NSURLCache")]
 #[cfg(feature = "Foundation_NSURLCache")]
 pub use self::__NSURLCache::NSURLCache;
 pub use self::__NSURLCache::NSURLCacheStorageNotAllowed;
-#[cfg(feature = "Foundation_NSURLConnection")]
 #[cfg(feature = "Foundation_NSURLConnection")]
 pub use self::__NSURLConnection::NSURLConnection;
 
@@ -4603,17 +4353,14 @@ pub use self::__NSURLCredential::NSURLCredentialPersistenceForSession;
 pub use self::__NSURLCredential::NSURLCredentialPersistencePermanent;
 
 #[cfg(feature = "Foundation_NSURLCredential")]
-#[cfg(feature = "Foundation_NSURLCredential")]
 pub use self::__NSURLCredential::NSURLCredential;
 pub use self::__NSURLCredential::NSURLCredentialPersistenceSynchronizable;
-#[cfg(feature = "Foundation_NSURLCredentialStorage")]
 #[cfg(feature = "Foundation_NSURLCredentialStorage")]
 pub use self::__NSURLCredentialStorage::NSURLCredentialStorage;
 
 pub use self::__NSURLCredentialStorage::NSURLCredentialStorageChangedNotification;
 
 pub use self::__NSURLCredentialStorage::NSURLCredentialStorageRemoveSynchronizableCredentials;
-#[cfg(feature = "Foundation_NSURLDownload")]
 #[cfg(feature = "Foundation_NSURLDownload")]
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSURLDownload::NSURLDownload;
@@ -4777,7 +4524,6 @@ pub use self::__NSURLHandle::NSURLHandleLoadSucceeded;
 pub use self::__NSURLHandle::NSURLHandleLoadInProgress;
 
 #[cfg(feature = "Foundation_NSURLHandle")]
-#[cfg(feature = "Foundation_NSURLHandle")]
 pub use self::__NSURLHandle::NSURLHandle;
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSURLHandle::NSURLHandleClient;
@@ -4813,10 +4559,8 @@ pub use self::__NSURLProtectionSpace::NSURLAuthenticationMethodClientCertificate
 
 pub use self::__NSURLProtectionSpace::NSURLAuthenticationMethodServerTrust;
 #[cfg(feature = "Foundation_NSURLProtectionSpace")]
-#[cfg(feature = "Foundation_NSURLProtectionSpace")]
 pub use self::__NSURLProtectionSpace::NSURLProtectionSpace;
 
-#[cfg(feature = "Foundation_NSURLProtocol")]
 #[cfg(feature = "Foundation_NSURLProtocol")]
 pub use self::__NSURLProtocol::NSURLProtocol;
 pub use self::__NSURLProtocol::NSURLProtocolClient;
@@ -4862,20 +4606,15 @@ pub use self::__NSURLRequest::NSURLRequestAttribution;
 pub use self::__NSURLRequest::NSURLRequestAttributionDeveloper;
 
 #[cfg(feature = "Foundation_NSMutableURLRequest")]
-#[cfg(feature = "Foundation_NSMutableURLRequest")]
 pub use self::__NSURLRequest::NSMutableURLRequest;
-#[cfg(feature = "Foundation_NSURLRequest")]
 #[cfg(feature = "Foundation_NSURLRequest")]
 pub use self::__NSURLRequest::NSURLRequest;
 pub use self::__NSURLRequest::NSURLRequestAttributionUser;
 #[cfg(feature = "Foundation_NSHTTPURLResponse")]
-#[cfg(feature = "Foundation_NSHTTPURLResponse")]
 pub use self::__NSURLResponse::NSHTTPURLResponse;
-#[cfg(feature = "Foundation_NSURLResponse")]
 #[cfg(feature = "Foundation_NSURLResponse")]
 pub use self::__NSURLResponse::NSURLResponse;
 
-#[cfg(feature = "Foundation_NSURLSession")]
 #[cfg(feature = "Foundation_NSURLSession")]
 pub use self::__NSURLSession::NSURLSession;
 pub use self::__NSURLSession::NSURLSessionTransferSizeUnknown;
@@ -4889,7 +4628,6 @@ pub use self::__NSURLSession::NSURLSessionTaskStateSuspended;
 pub use self::__NSURLSession::NSURLSessionTaskStateCanceling;
 
 #[cfg(feature = "Foundation_NSURLSessionTask")]
-#[cfg(feature = "Foundation_NSURLSessionTask")]
 pub use self::__NSURLSession::NSURLSessionTask;
 pub use self::__NSURLSession::NSURLSessionTaskStateCompleted;
 
@@ -4898,16 +4636,12 @@ pub use self::__NSURLSession::NSURLSessionTaskPriorityDefault;
 pub use self::__NSURLSession::NSURLSessionTaskPriorityLow;
 
 #[cfg(feature = "Foundation_NSURLSessionDataTask")]
-#[cfg(feature = "Foundation_NSURLSessionDataTask")]
 pub use self::__NSURLSession::NSURLSessionDataTask;
-#[cfg(feature = "Foundation_NSURLSessionDownloadTask")]
 #[cfg(feature = "Foundation_NSURLSessionDownloadTask")]
 pub use self::__NSURLSession::NSURLSessionDownloadTask;
 #[cfg(feature = "Foundation_NSURLSessionStreamTask")]
-#[cfg(feature = "Foundation_NSURLSessionStreamTask")]
 pub use self::__NSURLSession::NSURLSessionStreamTask;
 pub use self::__NSURLSession::NSURLSessionTaskPriorityHigh;
-#[cfg(feature = "Foundation_NSURLSessionUploadTask")]
 #[cfg(feature = "Foundation_NSURLSessionUploadTask")]
 pub use self::__NSURLSession::NSURLSessionUploadTask;
 
@@ -4915,7 +4649,6 @@ pub use self::__NSURLSession::NSURLSessionWebSocketMessageType;
 
 pub use self::__NSURLSession::NSURLSessionWebSocketMessageTypeData;
 
-#[cfg(feature = "Foundation_NSURLSessionWebSocketMessage")]
 #[cfg(feature = "Foundation_NSURLSessionWebSocketMessage")]
 pub use self::__NSURLSession::NSURLSessionWebSocketMessage;
 pub use self::__NSURLSession::NSURLSessionWebSocketMessageTypeString;
@@ -4947,7 +4680,6 @@ pub use self::__NSURLSession::NSURLSessionWebSocketCloseCodeMandatoryExtensionMi
 pub use self::__NSURLSession::NSURLSessionWebSocketCloseCodeInternalServerError;
 
 #[cfg(feature = "Foundation_NSURLSessionConfiguration")]
-#[cfg(feature = "Foundation_NSURLSessionConfiguration")]
 pub use self::__NSURLSession::NSURLSessionConfiguration;
 #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSURLSession::NSURLSessionMultipathServiceType;
@@ -4960,7 +4692,6 @@ pub use self::__NSURLSession::NSURLSessionMultipathServiceTypeInteractive;
 #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSURLSession::NSURLSessionMultipathServiceTypeNone;
 pub use self::__NSURLSession::NSURLSessionWebSocketCloseCodeTLSHandshakeFailure;
-#[cfg(feature = "Foundation_NSURLSessionWebSocketTask")]
 #[cfg(feature = "Foundation_NSURLSessionWebSocketTask")]
 pub use self::__NSURLSession::NSURLSessionWebSocketTask;
 
@@ -5027,16 +4758,12 @@ pub use self::__NSURLSession::NSURLSessionTaskMetricsDomainResolutionProtocolTCP
 pub use self::__NSURLSession::NSURLSessionTaskMetricsDomainResolutionProtocolTLS;
 
 #[cfg(feature = "Foundation_NSURLSessionTaskMetrics")]
-#[cfg(feature = "Foundation_NSURLSessionTaskMetrics")]
 pub use self::__NSURLSession::NSURLSessionTaskMetrics;
 pub use self::__NSURLSession::NSURLSessionTaskMetricsDomainResolutionProtocolHTTPS;
 #[cfg(feature = "Foundation_NSURLSessionTaskTransactionMetrics")]
-#[cfg(feature = "Foundation_NSURLSessionTaskTransactionMetrics")]
 pub use self::__NSURLSession::NSURLSessionTaskTransactionMetrics;
 #[cfg(feature = "Foundation_NSUbiquitousKeyValueStore")]
-#[cfg(feature = "Foundation_NSUbiquitousKeyValueStore")]
 pub use self::__NSUbiquitousKeyValueStore::NSUbiquitousKeyValueStore;
-#[cfg(feature = "Foundation_NSUUID")]
 #[cfg(feature = "Foundation_NSUUID")]
 pub use self::__NSUUID::NSUUID;
 
@@ -5057,7 +4784,6 @@ pub use self::__NSUbiquitousKeyValueStore::NSUbiquitousKeyValueStoreAccountChang
 pub use self::__NSUndoManager::NSUndoCloseGroupingRunLoopOrdering;
 
 #[cfg(feature = "Foundation_NSUndoManager")]
-#[cfg(feature = "Foundation_NSUndoManager")]
 pub use self::__NSUndoManager::NSUndoManager;
 pub use self::__NSUndoManager::NSUndoManagerGroupIsDiscardableKey;
 
@@ -5077,85 +4803,58 @@ pub use self::__NSUndoManager::NSUndoManagerWillCloseUndoGroupNotification;
 
 pub use self::__NSUndoManager::NSUndoManagerDidCloseUndoGroupNotification;
 #[cfg(feature = "Foundation_NSDimension")]
-#[cfg(feature = "Foundation_NSDimension")]
 pub use self::__NSUnit::NSDimension;
-#[cfg(feature = "Foundation_NSUnit")]
 #[cfg(feature = "Foundation_NSUnit")]
 pub use self::__NSUnit::NSUnit;
 #[cfg(feature = "Foundation_NSUnitAcceleration")]
-#[cfg(feature = "Foundation_NSUnitAcceleration")]
 pub use self::__NSUnit::NSUnitAcceleration;
-#[cfg(feature = "Foundation_NSUnitAngle")]
 #[cfg(feature = "Foundation_NSUnitAngle")]
 pub use self::__NSUnit::NSUnitAngle;
 #[cfg(feature = "Foundation_NSUnitArea")]
-#[cfg(feature = "Foundation_NSUnitArea")]
 pub use self::__NSUnit::NSUnitArea;
-#[cfg(feature = "Foundation_NSUnitConcentrationMass")]
 #[cfg(feature = "Foundation_NSUnitConcentrationMass")]
 pub use self::__NSUnit::NSUnitConcentrationMass;
 #[cfg(feature = "Foundation_NSUnitConverter")]
-#[cfg(feature = "Foundation_NSUnitConverter")]
 pub use self::__NSUnit::NSUnitConverter;
-#[cfg(feature = "Foundation_NSUnitConverterLinear")]
 #[cfg(feature = "Foundation_NSUnitConverterLinear")]
 pub use self::__NSUnit::NSUnitConverterLinear;
 #[cfg(feature = "Foundation_NSUnitDispersion")]
-#[cfg(feature = "Foundation_NSUnitDispersion")]
 pub use self::__NSUnit::NSUnitDispersion;
-#[cfg(feature = "Foundation_NSUnitDuration")]
 #[cfg(feature = "Foundation_NSUnitDuration")]
 pub use self::__NSUnit::NSUnitDuration;
 #[cfg(feature = "Foundation_NSUnitElectricCharge")]
-#[cfg(feature = "Foundation_NSUnitElectricCharge")]
 pub use self::__NSUnit::NSUnitElectricCharge;
-#[cfg(feature = "Foundation_NSUnitElectricCurrent")]
 #[cfg(feature = "Foundation_NSUnitElectricCurrent")]
 pub use self::__NSUnit::NSUnitElectricCurrent;
 #[cfg(feature = "Foundation_NSUnitElectricPotentialDifference")]
-#[cfg(feature = "Foundation_NSUnitElectricPotentialDifference")]
 pub use self::__NSUnit::NSUnitElectricPotentialDifference;
-#[cfg(feature = "Foundation_NSUnitElectricResistance")]
 #[cfg(feature = "Foundation_NSUnitElectricResistance")]
 pub use self::__NSUnit::NSUnitElectricResistance;
 #[cfg(feature = "Foundation_NSUnitEnergy")]
-#[cfg(feature = "Foundation_NSUnitEnergy")]
 pub use self::__NSUnit::NSUnitEnergy;
-#[cfg(feature = "Foundation_NSUnitFrequency")]
 #[cfg(feature = "Foundation_NSUnitFrequency")]
 pub use self::__NSUnit::NSUnitFrequency;
 #[cfg(feature = "Foundation_NSUnitFuelEfficiency")]
-#[cfg(feature = "Foundation_NSUnitFuelEfficiency")]
 pub use self::__NSUnit::NSUnitFuelEfficiency;
-#[cfg(feature = "Foundation_NSUnitIlluminance")]
 #[cfg(feature = "Foundation_NSUnitIlluminance")]
 pub use self::__NSUnit::NSUnitIlluminance;
 #[cfg(feature = "Foundation_NSUnitInformationStorage")]
-#[cfg(feature = "Foundation_NSUnitInformationStorage")]
 pub use self::__NSUnit::NSUnitInformationStorage;
-#[cfg(feature = "Foundation_NSUnitLength")]
 #[cfg(feature = "Foundation_NSUnitLength")]
 pub use self::__NSUnit::NSUnitLength;
 #[cfg(feature = "Foundation_NSUnitMass")]
-#[cfg(feature = "Foundation_NSUnitMass")]
 pub use self::__NSUnit::NSUnitMass;
-#[cfg(feature = "Foundation_NSUnitPower")]
 #[cfg(feature = "Foundation_NSUnitPower")]
 pub use self::__NSUnit::NSUnitPower;
 #[cfg(feature = "Foundation_NSUnitPressure")]
-#[cfg(feature = "Foundation_NSUnitPressure")]
 pub use self::__NSUnit::NSUnitPressure;
-#[cfg(feature = "Foundation_NSUnitSpeed")]
 #[cfg(feature = "Foundation_NSUnitSpeed")]
 pub use self::__NSUnit::NSUnitSpeed;
 #[cfg(feature = "Foundation_NSUnitTemperature")]
-#[cfg(feature = "Foundation_NSUnitTemperature")]
 pub use self::__NSUnit::NSUnitTemperature;
-#[cfg(feature = "Foundation_NSUnitVolume")]
 #[cfg(feature = "Foundation_NSUnitVolume")]
 pub use self::__NSUnit::NSUnitVolume;
 
-#[cfg(feature = "Foundation_NSUserActivity")]
 #[cfg(feature = "Foundation_NSUserActivity")]
 pub use self::__NSUserActivity::NSUserActivity;
 pub use self::__NSUserActivity::NSUserActivityPersistentIdentifier;
@@ -5175,7 +4874,6 @@ pub use self::__NSUserDefaults::NSUbiquitousUserDefaultsCompletedInitialSyncNoti
 pub use self::__NSUserDefaults::NSUbiquitousUserDefaultsDidChangeAccountsNotification;
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__NSUserDefaults::NSUbiquitousUserDefaultsNoCloudAccountNotification;
-#[cfg(feature = "Foundation_NSUserDefaults")]
 #[cfg(feature = "Foundation_NSUserDefaults")]
 pub use self::__NSUserDefaults::NSUserDefaults;
 #[cfg(not(any(target_os = "macos")))]
@@ -5235,10 +4933,8 @@ pub use self::__NSUserDefaults::NSWeekDayNameArray;
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSUserDefaults::NSYearMonthWeekDesignations;
 #[cfg(feature = "Foundation_NSUserNotification")]
-#[cfg(feature = "Foundation_NSUserNotification")]
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSUserNotification::NSUserNotification;
-#[cfg(feature = "Foundation_NSUserNotificationAction")]
 #[cfg(feature = "Foundation_NSUserNotificationAction")]
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSUserNotification::NSUserNotificationAction;
@@ -5255,7 +4951,6 @@ pub use self::__NSUserNotification::NSUserNotificationActivationTypeNone;
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSUserNotification::NSUserNotificationActivationTypeReplied;
 #[cfg(feature = "Foundation_NSUserNotificationCenter")]
-#[cfg(feature = "Foundation_NSUserNotificationCenter")]
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSUserNotification::NSUserNotificationCenter;
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
@@ -5264,32 +4959,26 @@ pub use self::__NSUserNotification::NSUserNotificationDefaultSoundName;
 pub use self::__NSUserNotification::NSUserNotificationCenterDelegate;
 
 #[cfg(feature = "Foundation_NSUserScriptTask")]
-#[cfg(feature = "Foundation_NSUserScriptTask")]
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSUserScriptTask::NSUserScriptTask;
 pub use self::__NSUserScriptTask::NSUserScriptTaskCompletionHandler;
 
-#[cfg(feature = "Foundation_NSUserUnixTask")]
 #[cfg(feature = "Foundation_NSUserUnixTask")]
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSUserScriptTask::NSUserUnixTask;
 pub use self::__NSUserScriptTask::NSUserUnixTaskCompletionHandler;
 
 #[cfg(feature = "Foundation_NSUserAppleScriptTask")]
-#[cfg(feature = "Foundation_NSUserAppleScriptTask")]
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSUserScriptTask::NSUserAppleScriptTask;
 pub use self::__NSUserScriptTask::NSUserAppleScriptTaskCompletionHandler;
 
 #[cfg(feature = "Foundation_NSUserAutomatorTask")]
-#[cfg(feature = "Foundation_NSUserAutomatorTask")]
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub use self::__NSUserScriptTask::NSUserAutomatorTask;
 pub use self::__NSUserScriptTask::NSUserAutomatorTaskCompletionHandler;
 #[cfg(feature = "Foundation_NSNumber")]
-#[cfg(feature = "Foundation_NSNumber")]
 pub use self::__NSValue::NSNumber;
-#[cfg(feature = "Foundation_NSValue")]
 #[cfg(feature = "Foundation_NSValue")]
 pub use self::__NSValue::NSValue;
 
@@ -5306,13 +4995,10 @@ pub use self::__NSValueTransformer::NSUnarchiveFromDataTransformerName;
 pub use self::__NSValueTransformer::NSKeyedUnarchiveFromDataTransformerName;
 
 #[cfg(feature = "Foundation_NSSecureUnarchiveFromDataTransformer")]
-#[cfg(feature = "Foundation_NSSecureUnarchiveFromDataTransformer")]
 pub use self::__NSValueTransformer::NSSecureUnarchiveFromDataTransformer;
 pub use self::__NSValueTransformer::NSSecureUnarchiveFromDataTransformerName;
 #[cfg(feature = "Foundation_NSValueTransformer")]
-#[cfg(feature = "Foundation_NSValueTransformer")]
 pub use self::__NSValueTransformer::NSValueTransformer;
-#[cfg(feature = "Foundation_NSXMLDTD")]
 #[cfg(feature = "Foundation_NSXMLDTD")]
 pub use self::__NSXMLDTD::NSXMLDTD;
 
@@ -5357,7 +5043,6 @@ pub use self::__NSXMLDTDNode::NSXMLElementDeclarationAnyKind;
 pub use self::__NSXMLDTDNode::NSXMLElementDeclarationMixedKind;
 
 #[cfg(feature = "Foundation_NSXMLDTDNode")]
-#[cfg(feature = "Foundation_NSXMLDTDNode")]
 pub use self::__NSXMLDTDNode::NSXMLDTDNode;
 pub use self::__NSXMLDTDNode::NSXMLElementDeclarationElementKind;
 
@@ -5370,10 +5055,8 @@ pub use self::__NSXMLDocument::NSXMLDocumentXHTMLKind;
 pub use self::__NSXMLDocument::NSXMLDocumentHTMLKind;
 
 #[cfg(feature = "Foundation_NSXMLDocument")]
-#[cfg(feature = "Foundation_NSXMLDocument")]
 pub use self::__NSXMLDocument::NSXMLDocument;
 pub use self::__NSXMLDocument::NSXMLDocumentTextKind;
-#[cfg(feature = "Foundation_NSXMLElement")]
 #[cfg(feature = "Foundation_NSXMLElement")]
 pub use self::__NSXMLElement::NSXMLElement;
 
@@ -5403,7 +5086,6 @@ pub use self::__NSXMLNode::NSXMLAttributeDeclarationKind;
 
 pub use self::__NSXMLNode::NSXMLElementDeclarationKind;
 
-#[cfg(feature = "Foundation_NSXMLNode")]
 #[cfg(feature = "Foundation_NSXMLNode")]
 pub use self::__NSXMLNode::NSXMLNode;
 pub use self::__NSXMLNode::NSXMLNotationDeclarationKind;
@@ -5474,7 +5156,6 @@ pub use self::__NSXMLParser::NSXMLParserResolveExternalEntitiesNoNetwork;
 
 pub use self::__NSXMLParser::NSXMLParserResolveExternalEntitiesSameOriginOnly;
 
-#[cfg(feature = "Foundation_NSXMLParser")]
 #[cfg(feature = "Foundation_NSXMLParser")]
 pub use self::__NSXMLParser::NSXMLParser;
 pub use self::__NSXMLParser::NSXMLParserResolveExternalEntitiesAlways;
@@ -5676,21 +5357,16 @@ pub use self::__NSXPCConnection::NSXPCProxyCreating;
 pub use self::__NSXPCConnection::NSXPCConnectionOptions;
 
 #[cfg(feature = "Foundation_NSXPCConnection")]
-#[cfg(feature = "Foundation_NSXPCConnection")]
 pub use self::__NSXPCConnection::NSXPCConnection;
 pub use self::__NSXPCConnection::NSXPCConnectionPrivileged;
-#[cfg(feature = "Foundation_NSXPCListener")]
 #[cfg(feature = "Foundation_NSXPCListener")]
 pub use self::__NSXPCConnection::NSXPCListener;
 
 #[cfg(feature = "Foundation_NSXPCCoder")]
-#[cfg(feature = "Foundation_NSXPCCoder")]
 pub use self::__NSXPCConnection::NSXPCCoder;
-#[cfg(feature = "Foundation_NSXPCInterface")]
 #[cfg(feature = "Foundation_NSXPCInterface")]
 pub use self::__NSXPCConnection::NSXPCInterface;
 pub use self::__NSXPCConnection::NSXPCListenerDelegate;
-#[cfg(feature = "Foundation_NSXPCListenerEndpoint")]
 #[cfg(feature = "Foundation_NSXPCListenerEndpoint")]
 pub use self::__NSXPCConnection::NSXPCListenerEndpoint;
 
@@ -5700,9 +5376,7 @@ pub use self::__NSZone::NSCreateZone;
 
 pub use self::__NSZone::NSRecycleZone;
 #[cfg(feature = "Foundation_NSString")]
-#[cfg(feature = "Foundation_NSString")]
 pub use self::__NSZone::NSSetZoneName;
-#[cfg(feature = "Foundation_NSString")]
 #[cfg(feature = "Foundation_NSString")]
 pub use self::__NSZone::NSZoneName;
 

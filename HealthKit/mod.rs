@@ -154,14 +154,11 @@ mod __HKWorkoutRouteQuery;
 mod __HKWorkoutSession;
 
 #[cfg(feature = "HealthKit_HKActivitySummary")]
-#[cfg(feature = "HealthKit_HKActivitySummary")]
 pub use self::__HKActivitySummary::HKActivitySummary;
 
 pub use self::__HKActivitySummary::HKPredicateKeyPathDateComponents;
 #[cfg(feature = "HealthKit_HKActivitySummaryQuery")]
-#[cfg(feature = "HealthKit_HKActivitySummaryQuery")]
 pub use self::__HKActivitySummaryQuery::HKActivitySummaryQuery;
-#[cfg(feature = "HealthKit_HKAnchoredObjectQuery")]
 #[cfg(feature = "HealthKit_HKAnchoredObjectQuery")]
 pub use self::__HKAnchoredObjectQuery::HKAnchoredObjectQuery;
 
@@ -172,32 +169,23 @@ pub use self::__HKAppleWalkingSteadinessClassification::HKAppleWalkingSteadiness
 pub use self::__HKAppleWalkingSteadinessClassification::HKAppleWalkingSteadinessClassificationLow;
 
 #[cfg(all(feature = "Foundation_NSError", feature = "HealthKit_HKQuantity"))]
-#[cfg(all(feature = "Foundation_NSError", feature = "HealthKit_HKQuantity"))]
 pub use self::__HKAppleWalkingSteadinessClassification::HKAppleWalkingSteadinessClassificationForQuantity;
 pub use self::__HKAppleWalkingSteadinessClassification::HKAppleWalkingSteadinessClassificationVeryLow;
 #[cfg(feature = "HealthKit_HKQuantity")]
-#[cfg(feature = "HealthKit_HKQuantity")]
 pub use self::__HKAppleWalkingSteadinessClassification::HKAppleWalkingSteadinessMaximumQuantityForClassification;
-#[cfg(feature = "HealthKit_HKQuantity")]
 #[cfg(feature = "HealthKit_HKQuantity")]
 pub use self::__HKAppleWalkingSteadinessClassification::HKAppleWalkingSteadinessMinimumQuantityForClassification;
 #[cfg(feature = "HealthKit_HKAttachment")]
-#[cfg(feature = "HealthKit_HKAttachment")]
 pub use self::__HKAttachment::HKAttachment;
-#[cfg(feature = "HealthKit_HKAttachmentStore")]
 #[cfg(feature = "HealthKit_HKAttachmentStore")]
 pub use self::__HKAttachmentStore::HKAttachmentStore;
 #[cfg(feature = "HealthKit_HKAudiogramSample")]
-#[cfg(feature = "HealthKit_HKAudiogramSample")]
 pub use self::__HKAudiogramSample::HKAudiogramSample;
-#[cfg(feature = "HealthKit_HKAudiogramSensitivityPoint")]
 #[cfg(feature = "HealthKit_HKAudiogramSensitivityPoint")]
 pub use self::__HKAudiogramSample::HKAudiogramSensitivityPoint;
 #[cfg(feature = "HealthKit_HKCDADocument")]
-#[cfg(feature = "HealthKit_HKCDADocument")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__HKCDADocumentSample::HKCDADocument;
-#[cfg(feature = "HealthKit_HKCDADocumentSample")]
 #[cfg(feature = "HealthKit_HKCDADocumentSample")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__HKCDADocumentSample::HKCDADocumentSample;
@@ -212,26 +200,19 @@ pub use self::__HKCDADocumentSample::HKPredicateKeyPathCDACustodianName;
 
 pub use self::__HKCDADocumentSample::HKDetailedCDAValidationErrorKey;
 #[cfg(feature = "HealthKit_HKCategorySample")]
-#[cfg(feature = "HealthKit_HKCategorySample")]
 pub use self::__HKCategorySample::HKCategorySample;
 
 pub use self::__HKCategorySample::HKPredicateKeyPathCategoryValue;
 #[cfg(feature = "HealthKit_HKActivityMoveModeObject")]
-#[cfg(feature = "HealthKit_HKActivityMoveModeObject")]
 pub use self::__HKCharacteristicObjects::HKActivityMoveModeObject;
-#[cfg(feature = "HealthKit_HKBiologicalSexObject")]
 #[cfg(feature = "HealthKit_HKBiologicalSexObject")]
 pub use self::__HKCharacteristicObjects::HKBiologicalSexObject;
 #[cfg(feature = "HealthKit_HKBloodTypeObject")]
-#[cfg(feature = "HealthKit_HKBloodTypeObject")]
 pub use self::__HKCharacteristicObjects::HKBloodTypeObject;
-#[cfg(feature = "HealthKit_HKFitzpatrickSkinTypeObject")]
 #[cfg(feature = "HealthKit_HKFitzpatrickSkinTypeObject")]
 pub use self::__HKCharacteristicObjects::HKFitzpatrickSkinTypeObject;
 #[cfg(feature = "HealthKit_HKWheelchairUseObject")]
-#[cfg(feature = "HealthKit_HKWheelchairUseObject")]
 pub use self::__HKCharacteristicObjects::HKWheelchairUseObject;
-#[cfg(feature = "HealthKit_HKClinicalRecord")]
 #[cfg(feature = "HealthKit_HKClinicalRecord")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__HKClinicalRecord::HKClinicalRecord;
@@ -257,27 +238,20 @@ pub use self::__HKClinicalType::HKClinicalTypeIdentifierProcedureRecord;
 pub use self::__HKClinicalType::HKClinicalTypeIdentifierVitalSignRecord;
 
 #[cfg(feature = "HealthKit_HKClinicalType")]
-#[cfg(feature = "HealthKit_HKClinicalType")]
 pub use self::__HKClinicalType::HKClinicalType;
 pub use self::__HKClinicalType::HKClinicalTypeIdentifierCoverageRecord;
 #[cfg(feature = "HealthKit_HKContactsLensSpecification")]
-#[cfg(feature = "HealthKit_HKContactsLensSpecification")]
 pub use self::__HKContactsLensSpecification::HKContactsLensSpecification;
-#[cfg(feature = "HealthKit_HKContactsPrescription")]
 #[cfg(feature = "HealthKit_HKContactsPrescription")]
 pub use self::__HKContactsPrescription::HKContactsPrescription;
 #[cfg(feature = "HealthKit_HKCorrelation")]
-#[cfg(feature = "HealthKit_HKCorrelation")]
 pub use self::__HKCorrelation::HKCorrelation;
 #[cfg(feature = "HealthKit_HKCorrelationQuery")]
-#[cfg(feature = "HealthKit_HKCorrelationQuery")]
 pub use self::__HKCorrelationQuery::HKCorrelationQuery;
-#[cfg(feature = "HealthKit_HKCumulativeQuantitySample")]
 #[cfg(feature = "HealthKit_HKCumulativeQuantitySample")]
 pub use self::__HKCumulativeQuantitySample::HKCumulativeQuantitySample;
 
 pub use self::__HKCumulativeQuantitySample::HKPredicateKeyPathSum;
-#[cfg(feature = "HealthKit_HKCumulativeQuantitySeriesSample")]
 #[cfg(feature = "HealthKit_HKCumulativeQuantitySeriesSample")]
 pub use self::__HKCumulativeQuantitySeriesSample::HKCumulativeQuantitySeriesSample;
 
@@ -380,7 +354,6 @@ pub use self::__HKDefines::HKCategoryValueSleepAnalysisAsleepCore;
 pub use self::__HKDefines::HKCategoryValueSleepAnalysisAsleepDeep;
 
 pub use self::__HKDefines::HKCategoryValueSleepAnalysisAsleepREM;
-#[cfg(all(feature = "Foundation_NSNumber", feature = "Foundation_NSSet"))]
 #[cfg(all(feature = "Foundation_NSNumber", feature = "Foundation_NSSet"))]
 pub use self::__HKDefines::HKCategoryValueSleepAnalysisAsleepValues;
 
@@ -546,7 +519,6 @@ pub use self::__HKDefines::HKCategoryValueAppleWalkingSteadinessEventRepeatLow;
 
 pub use self::__HKDefines::HKCategoryValueAppleWalkingSteadinessEventRepeatVeryLow;
 #[cfg(feature = "HealthKit_HKDeletedObject")]
-#[cfg(feature = "HealthKit_HKDeletedObject")]
 pub use self::__HKDeletedObject::HKDeletedObject;
 
 pub use self::__HKDevice::HKDevicePropertyKeyName;
@@ -564,10 +536,8 @@ pub use self::__HKDevice::HKDevicePropertyKeySoftwareVersion;
 pub use self::__HKDevice::HKDevicePropertyKeyLocalIdentifier;
 
 #[cfg(feature = "HealthKit_HKDevice")]
-#[cfg(feature = "HealthKit_HKDevice")]
 pub use self::__HKDevice::HKDevice;
 pub use self::__HKDevice::HKDevicePropertyKeyUDIDeviceIdentifier;
-#[cfg(feature = "HealthKit_HKDiscreteQuantitySample")]
 #[cfg(feature = "HealthKit_HKDiscreteQuantitySample")]
 pub use self::__HKDiscreteQuantitySample::HKDiscreteQuantitySample;
 
@@ -585,9 +555,7 @@ pub use self::__HKDiscreteQuantitySample::HKPredicateKeyPathMostRecentEndDate;
 
 pub use self::__HKDiscreteQuantitySample::HKPredicateKeyPathMostRecentDuration;
 #[cfg(feature = "HealthKit_HKDocumentQuery")]
-#[cfg(feature = "HealthKit_HKDocumentQuery")]
 pub use self::__HKDocumentQuery::HKDocumentQuery;
-#[cfg(feature = "HealthKit_HKDocumentSample")]
 #[cfg(feature = "HealthKit_HKDocumentSample")]
 pub use self::__HKDocumentSample::HKDocumentSample;
 
@@ -620,7 +588,6 @@ pub use self::__HKElectrocardiogram::HKElectrocardiogramSymptomsStatusNotSet;
 pub use self::__HKElectrocardiogram::HKElectrocardiogramSymptomsStatusNone;
 
 #[cfg(feature = "HealthKit_HKElectrocardiogram")]
-#[cfg(feature = "HealthKit_HKElectrocardiogram")]
 pub use self::__HKElectrocardiogram::HKElectrocardiogram;
 pub use self::__HKElectrocardiogram::HKElectrocardiogramSymptomsStatusPresent;
 
@@ -630,9 +597,7 @@ pub use self::__HKElectrocardiogram::HKPredicateKeyPathECGClassification;
 
 pub use self::__HKElectrocardiogram::HKPredicateKeyPathECGSymptomsStatus;
 #[cfg(feature = "HealthKit_HKElectrocardiogramQuery")]
-#[cfg(feature = "HealthKit_HKElectrocardiogramQuery")]
 pub use self::__HKElectrocardiogramQuery::HKElectrocardiogramQuery;
-#[cfg(feature = "HealthKit_HKElectrocardiogramVoltageMeasurement")]
 #[cfg(feature = "HealthKit_HKElectrocardiogramVoltageMeasurement")]
 pub use self::__HKElectrocardiogramQuery::HKElectrocardiogramVoltageMeasurement;
 
@@ -643,7 +608,6 @@ pub use self::__HKFHIRRelease::HKFHIRReleaseDSTU2;
 pub use self::__HKFHIRRelease::HKFHIRReleaseR4;
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__HKFHIRRelease::HKFHIRReleaseUnknown;
-#[cfg(feature = "HealthKit_HKFHIRResource")]
 #[cfg(feature = "HealthKit_HKFHIRResource")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__HKFHIRResource::HKFHIRResource;
@@ -670,39 +634,29 @@ pub use self::__HKFHIRResource::HKFHIRResourceTypeObservation;
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__HKFHIRResource::HKFHIRResourceTypeProcedure;
 #[cfg(feature = "HealthKit_HKFHIRVersion")]
-#[cfg(feature = "HealthKit_HKFHIRVersion")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__HKFHIRVersion::HKFHIRVersion;
 #[cfg(feature = "HealthKit_HKGlassesLensSpecification")]
-#[cfg(feature = "HealthKit_HKGlassesLensSpecification")]
 pub use self::__HKGlassesLensSpecification::HKGlassesLensSpecification;
 #[cfg(feature = "HealthKit_HKGlassesPrescription")]
-#[cfg(feature = "HealthKit_HKGlassesPrescription")]
 pub use self::__HKGlassesPrescription::HKGlassesPrescription;
-#[cfg(feature = "HealthKit_HKHealthStore")]
 #[cfg(feature = "HealthKit_HKHealthStore")]
 pub use self::__HKHealthStore::HKHealthStore;
 
 pub use self::__HKHealthStore::HKUserPreferencesDidChangeNotification;
 #[cfg(feature = "HealthKit_HKHeartbeatSeriesBuilder")]
-#[cfg(feature = "HealthKit_HKHeartbeatSeriesBuilder")]
 pub use self::__HKHeartbeatSeriesBuilder::HKHeartbeatSeriesBuilder;
-#[cfg(feature = "HealthKit_HKHeartbeatSeriesQuery")]
 #[cfg(feature = "HealthKit_HKHeartbeatSeriesQuery")]
 pub use self::__HKHeartbeatSeriesQuery::HKHeartbeatSeriesQuery;
 #[cfg(feature = "HealthKit_HKHeartbeatSeriesSample")]
-#[cfg(feature = "HealthKit_HKHeartbeatSeriesSample")]
 pub use self::__HKHeartbeatSeriesSample::HKHeartbeatSeriesSample;
 #[cfg(feature = "HealthKit_HKLensSpecification")]
-#[cfg(feature = "HealthKit_HKLensSpecification")]
 pub use self::__HKLensSpecification::HKLensSpecification;
-#[cfg(feature = "HealthKit_HKLiveWorkoutBuilder")]
 #[cfg(feature = "HealthKit_HKLiveWorkoutBuilder")]
 #[cfg(not(any(target_os = "ios")))]
 pub use self::__HKLiveWorkoutBuilder::HKLiveWorkoutBuilder;
 #[cfg(not(any(target_os = "ios")))]
 pub use self::__HKLiveWorkoutBuilder::HKLiveWorkoutBuilderDelegate;
-#[cfg(feature = "HealthKit_HKLiveWorkoutDataSource")]
 #[cfg(feature = "HealthKit_HKLiveWorkoutDataSource")]
 #[cfg(not(any(target_os = "ios")))]
 pub use self::__HKLiveWorkoutDataSource::HKLiveWorkoutDataSource;
@@ -1017,7 +971,6 @@ pub use self::__HKMetadata::HKMetadataKeyQuantityClampedToUpperBound;
 
 pub use self::__HKMetadata::HKMetadataKeyGlassesPrescriptionDescription;
 #[cfg(feature = "HealthKit_HKObject")]
-#[cfg(feature = "HealthKit_HKObject")]
 pub use self::__HKObject::HKObject;
 
 pub use self::__HKObject::HKPredicateKeyPathUUID;
@@ -1034,50 +987,35 @@ pub use self::__HKObject::HKPredicateKeyPathDevice;
 
 pub use self::__HKObject::HKPredicateKeyPathSourceRevision;
 #[cfg(feature = "HealthKit_HKActivitySummaryType")]
-#[cfg(feature = "HealthKit_HKActivitySummaryType")]
 pub use self::__HKObjectType::HKActivitySummaryType;
-#[cfg(feature = "HealthKit_HKAudiogramSampleType")]
 #[cfg(feature = "HealthKit_HKAudiogramSampleType")]
 pub use self::__HKObjectType::HKAudiogramSampleType;
 #[cfg(feature = "HealthKit_HKCategoryType")]
-#[cfg(feature = "HealthKit_HKCategoryType")]
 pub use self::__HKObjectType::HKCategoryType;
-#[cfg(feature = "HealthKit_HKCharacteristicType")]
 #[cfg(feature = "HealthKit_HKCharacteristicType")]
 pub use self::__HKObjectType::HKCharacteristicType;
 #[cfg(feature = "HealthKit_HKCorrelationType")]
-#[cfg(feature = "HealthKit_HKCorrelationType")]
 pub use self::__HKObjectType::HKCorrelationType;
-#[cfg(feature = "HealthKit_HKDocumentType")]
 #[cfg(feature = "HealthKit_HKDocumentType")]
 pub use self::__HKObjectType::HKDocumentType;
 #[cfg(feature = "HealthKit_HKElectrocardiogramType")]
-#[cfg(feature = "HealthKit_HKElectrocardiogramType")]
 pub use self::__HKObjectType::HKElectrocardiogramType;
-#[cfg(feature = "HealthKit_HKObjectType")]
 #[cfg(feature = "HealthKit_HKObjectType")]
 pub use self::__HKObjectType::HKObjectType;
 #[cfg(feature = "HealthKit_HKPrescriptionType")]
-#[cfg(feature = "HealthKit_HKPrescriptionType")]
 pub use self::__HKObjectType::HKPrescriptionType;
-#[cfg(feature = "HealthKit_HKQuantityType")]
 #[cfg(feature = "HealthKit_HKQuantityType")]
 pub use self::__HKObjectType::HKQuantityType;
 #[cfg(feature = "HealthKit_HKSampleType")]
-#[cfg(feature = "HealthKit_HKSampleType")]
 pub use self::__HKObjectType::HKSampleType;
 #[cfg(feature = "HealthKit_HKSeriesType")]
-#[cfg(feature = "HealthKit_HKSeriesType")]
 pub use self::__HKObjectType::HKSeriesType;
-#[cfg(feature = "HealthKit_HKWorkoutType")]
 #[cfg(feature = "HealthKit_HKWorkoutType")]
 pub use self::__HKObjectType::HKWorkoutType;
 
 #[cfg(feature = "HealthKit_HKObserverQuery")]
-#[cfg(feature = "HealthKit_HKObserverQuery")]
 pub use self::__HKObserverQuery::HKObserverQuery;
 pub use self::__HKObserverQuery::HKObserverQueryCompletionHandler;
-#[cfg(feature = "HealthKit_HKQuantity")]
 #[cfg(feature = "HealthKit_HKQuantity")]
 pub use self::__HKQuantity::HKQuantity;
 
@@ -1093,19 +1031,15 @@ pub use self::__HKQuantityAggregationStyle::HKQuantityAggregationStyleDiscreteTe
 
 pub use self::__HKQuantityAggregationStyle::HKQuantityAggregationStyleDiscreteEquivalentContinuousLevel;
 #[cfg(feature = "HealthKit_HKQuantitySample")]
-#[cfg(feature = "HealthKit_HKQuantitySample")]
 pub use self::__HKQuantitySample::HKQuantitySample;
 
 pub use self::__HKQuantitySample::HKPredicateKeyPathQuantity;
 
 pub use self::__HKQuantitySample::HKPredicateKeyPathCount;
 #[cfg(feature = "HealthKit_HKQuantitySeriesSampleBuilder")]
-#[cfg(feature = "HealthKit_HKQuantitySeriesSampleBuilder")]
 pub use self::__HKQuantitySeriesSampleBuilder::HKQuantitySeriesSampleBuilder;
 #[cfg(feature = "HealthKit_HKQuantitySeriesSampleQuery")]
-#[cfg(feature = "HealthKit_HKQuantitySeriesSampleQuery")]
 pub use self::__HKQuantitySeriesSampleQuery::HKQuantitySeriesSampleQuery;
-#[cfg(feature = "HealthKit_HKQuery")]
 #[cfg(feature = "HealthKit_HKQuery")]
 pub use self::__HKQuery::HKQuery;
 
@@ -1117,12 +1051,9 @@ pub use self::__HKQuery::HKQueryOptionStrictStartDate;
 
 pub use self::__HKQuery::HKQueryOptionStrictEndDate;
 #[cfg(feature = "HealthKit_HKQueryAnchor")]
-#[cfg(feature = "HealthKit_HKQueryAnchor")]
 pub use self::__HKQueryAnchor::HKQueryAnchor;
 #[cfg(feature = "HealthKit_HKQueryDescriptor")]
-#[cfg(feature = "HealthKit_HKQueryDescriptor")]
 pub use self::__HKQueryDescriptor::HKQueryDescriptor;
-#[cfg(feature = "HealthKit_HKSample")]
 #[cfg(feature = "HealthKit_HKSample")]
 pub use self::__HKSample::HKSample;
 
@@ -1136,21 +1067,15 @@ pub use self::__HKSample::HKPredicateKeyPathEndDate;
 
 pub use self::__HKSampleQuery::HKObjectQueryNoLimit;
 #[cfg(feature = "HealthKit_HKSampleQuery")]
-#[cfg(feature = "HealthKit_HKSampleQuery")]
 pub use self::__HKSampleQuery::HKSampleQuery;
-#[cfg(feature = "HealthKit_HKSeriesBuilder")]
 #[cfg(feature = "HealthKit_HKSeriesBuilder")]
 pub use self::__HKSeriesBuilder::HKSeriesBuilder;
 #[cfg(feature = "HealthKit_HKSeriesSample")]
-#[cfg(feature = "HealthKit_HKSeriesSample")]
 pub use self::__HKSeriesSample::HKSeriesSample;
-#[cfg(feature = "HealthKit_HKSource")]
 #[cfg(feature = "HealthKit_HKSource")]
 pub use self::__HKSource::HKSource;
 #[cfg(feature = "HealthKit_HKSourceQuery")]
-#[cfg(feature = "HealthKit_HKSourceQuery")]
 pub use self::__HKSourceQuery::HKSourceQuery;
-#[cfg(feature = "HealthKit_HKSourceRevision")]
 #[cfg(feature = "HealthKit_HKSourceRevision")]
 pub use self::__HKSourceRevision::HKSourceRevision;
 
@@ -1179,16 +1104,12 @@ pub use self::__HKStatistics::HKStatisticsOptionMostRecent;
 pub use self::__HKStatistics::HKStatisticsOptionDiscreteMostRecent;
 
 #[cfg(feature = "HealthKit_HKStatistics")]
-#[cfg(feature = "HealthKit_HKStatistics")]
 pub use self::__HKStatistics::HKStatistics;
 pub use self::__HKStatistics::HKStatisticsOptionDuration;
 #[cfg(feature = "HealthKit_HKStatisticsCollection")]
-#[cfg(feature = "HealthKit_HKStatisticsCollection")]
 pub use self::__HKStatisticsCollectionQuery::HKStatisticsCollection;
 #[cfg(feature = "HealthKit_HKStatisticsCollectionQuery")]
-#[cfg(feature = "HealthKit_HKStatisticsCollectionQuery")]
 pub use self::__HKStatisticsCollectionQuery::HKStatisticsCollectionQuery;
-#[cfg(feature = "HealthKit_HKStatisticsQuery")]
 #[cfg(feature = "HealthKit_HKStatisticsQuery")]
 pub use self::__HKStatisticsQuery::HKStatisticsQuery;
 
@@ -1566,7 +1487,6 @@ pub use self::__HKTypeIdentifiers::HKDataTypeIdentifierHeartbeatSeries;
 
 pub use self::__HKTypeIdentifiers::HKVisionPrescriptionTypeIdentifier;
 #[cfg(feature = "HealthKit_HKUnit")]
-#[cfg(feature = "HealthKit_HKUnit")]
 pub use self::__HKUnit::HKUnit;
 
 pub use self::__HKUnit::HKMetricPrefix;
@@ -1614,15 +1534,12 @@ pub use self::__HKVerifiableClinicalRecord::HKVerifiableClinicalRecordCredential
 pub use self::__HKVerifiableClinicalRecord::HKVerifiableClinicalRecordCredentialTypeLaboratory;
 
 #[cfg(feature = "HealthKit_HKVerifiableClinicalRecord")]
-#[cfg(feature = "HealthKit_HKVerifiableClinicalRecord")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__HKVerifiableClinicalRecord::HKVerifiableClinicalRecord;
 pub use self::__HKVerifiableClinicalRecord::HKVerifiableClinicalRecordCredentialTypeRecovery;
 #[cfg(feature = "HealthKit_HKVerifiableClinicalRecordQuery")]
-#[cfg(feature = "HealthKit_HKVerifiableClinicalRecordQuery")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__HKVerifiableClinicalRecordQuery::HKVerifiableClinicalRecordQuery;
-#[cfg(feature = "HealthKit_HKVerifiableClinicalRecordSubject")]
 #[cfg(feature = "HealthKit_HKVerifiableClinicalRecordSubject")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__HKVerifiableClinicalRecordSubject::HKVerifiableClinicalRecordSubject;
@@ -1631,7 +1548,6 @@ pub use self::__HKVisionPrescription::HKVisionPrescriptionType;
 
 pub use self::__HKVisionPrescription::HKVisionPrescriptionTypeGlasses;
 
-#[cfg(feature = "HealthKit_HKVisionPrescription")]
 #[cfg(feature = "HealthKit_HKVisionPrescription")]
 pub use self::__HKVisionPrescription::HKVisionPrescription;
 pub use self::__HKVisionPrescription::HKVisionPrescriptionTypeContacts;
@@ -1653,7 +1569,6 @@ pub use self::__HKVisionPrism::HKVisionEye;
 pub use self::__HKVisionPrism::HKVisionEyeLeft;
 
 pub use self::__HKVisionPrism::HKVisionEyeRight;
-#[cfg(feature = "HealthKit_HKVisionPrism")]
 #[cfg(feature = "HealthKit_HKVisionPrism")]
 pub use self::__HKVisionPrism::HKVisionPrism;
 
@@ -1842,9 +1757,7 @@ pub use self::__HKWorkout::HKWorkoutEventTypeMotionResumed;
 pub use self::__HKWorkout::HKWorkoutEventTypeSegment;
 
 #[cfg(feature = "HealthKit_HKWorkout")]
-#[cfg(feature = "HealthKit_HKWorkout")]
 pub use self::__HKWorkout::HKWorkout;
-#[cfg(feature = "HealthKit_HKWorkoutEvent")]
 #[cfg(feature = "HealthKit_HKWorkoutEvent")]
 pub use self::__HKWorkout::HKWorkoutEvent;
 pub use self::__HKWorkout::HKWorkoutEventTypePauseOrResumeRequest;
@@ -1881,7 +1794,6 @@ pub use self::__HKWorkout::HKWorkoutSortIdentifierTotalSwimmingStrokeCount;
 
 pub use self::__HKWorkout::HKWorkoutSortIdentifierTotalFlightsClimbed;
 #[cfg(feature = "HealthKit_HKWorkoutActivity")]
-#[cfg(feature = "HealthKit_HKWorkoutActivity")]
 pub use self::__HKWorkoutActivity::HKWorkoutActivity;
 
 pub use self::__HKWorkoutActivity::HKPredicateKeyPathWorkoutActivityType;
@@ -1900,7 +1812,6 @@ pub use self::__HKWorkoutActivity::HKPredicateKeyPathWorkoutActivityMaximumQuant
 
 pub use self::__HKWorkoutActivity::HKPredicateKeyPathWorkoutActivityAverageQuantity;
 #[cfg(feature = "HealthKit_HKWorkoutBuilder")]
-#[cfg(feature = "HealthKit_HKWorkoutBuilder")]
 pub use self::__HKWorkoutBuilder::HKWorkoutBuilder;
 
 pub use self::__HKWorkoutConfiguration::HKWorkoutSessionLocationType;
@@ -1910,19 +1821,14 @@ pub use self::__HKWorkoutConfiguration::HKWorkoutSessionLocationTypeUnknown;
 pub use self::__HKWorkoutConfiguration::HKWorkoutSessionLocationTypeIndoor;
 
 #[cfg(feature = "HealthKit_HKWorkoutConfiguration")]
-#[cfg(feature = "HealthKit_HKWorkoutConfiguration")]
 pub use self::__HKWorkoutConfiguration::HKWorkoutConfiguration;
 pub use self::__HKWorkoutConfiguration::HKWorkoutSessionLocationTypeOutdoor;
 #[cfg(feature = "HealthKit_HKWorkoutRoute")]
-#[cfg(feature = "HealthKit_HKWorkoutRoute")]
 pub use self::__HKWorkoutRoute::HKWorkoutRoute;
-#[cfg(feature = "HealthKit_HKWorkoutRouteBuilder")]
 #[cfg(feature = "HealthKit_HKWorkoutRouteBuilder")]
 pub use self::__HKWorkoutRouteBuilder::HKWorkoutRouteBuilder;
 #[cfg(feature = "HealthKit_HKWorkoutRouteQuery")]
-#[cfg(feature = "HealthKit_HKWorkoutRouteQuery")]
 pub use self::__HKWorkoutRouteQuery::HKWorkoutRouteQuery;
-#[cfg(feature = "HealthKit_HKWorkoutSession")]
 #[cfg(feature = "HealthKit_HKWorkoutSession")]
 #[cfg(not(any(target_os = "ios")))]
 pub use self::__HKWorkoutSession::HKWorkoutSession;

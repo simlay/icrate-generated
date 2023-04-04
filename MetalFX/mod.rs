@@ -15,11 +15,9 @@ pub use self::__MTLFXSpatialScaler::MTLFXSpatialScalerColorProcessingModeLinear;
 
 pub use self::__MTLFXSpatialScaler::MTLFXSpatialScalerColorProcessingModeHDR;
 #[cfg(feature = "MetalFX_MTLFXSpatialScalerDescriptor")]
-#[cfg(feature = "MetalFX_MTLFXSpatialScalerDescriptor")]
 pub use self::__MTLFXSpatialScaler::MTLFXSpatialScalerDescriptor;
 
 pub use self::__MTLFXSpatialScaler::MTLFXSpatialScaler;
-#[cfg(feature = "MetalFX_MTLFXTemporalScalerDescriptor")]
 #[cfg(feature = "MetalFX_MTLFXTemporalScalerDescriptor")]
 pub use self::__MTLFXTemporalScaler::MTLFXTemporalScalerDescriptor;
 
