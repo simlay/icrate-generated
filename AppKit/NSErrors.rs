@@ -75,4 +75,5 @@ extern_static!(NSNibLoadingException: &'static NSExceptionName);
 
 extern_static!(NSBrowserIllegalDelegateException: &'static NSExceptionName);
 
+#[deprecated = "Exceptions are no longer appropriate for indicating errors in accessibility API. Unexpected values should be handled through appropriate type checking."]
 extern_static!(NSAccessibilityException: &'static NSExceptionName);

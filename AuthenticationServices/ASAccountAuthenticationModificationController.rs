@@ -38,6 +38,7 @@ extern_protocol!(
         );
     }
 
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl ProtocolType for dyn ASAccountAuthenticationModificationControllerDelegate {}
 );
 
@@ -54,6 +55,7 @@ extern_protocol!(
         ) -> Id<ASPresentationAnchor>;
     }
 
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl ProtocolType
         for dyn ASAccountAuthenticationModificationControllerPresentationContextProviding
     {

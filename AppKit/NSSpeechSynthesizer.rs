@@ -93,6 +93,7 @@ extern_static!(NSSpeechResetProperty: &'static NSSpeechPropertyKey);
 
 extern_static!(NSSpeechOutputToFileURLProperty: &'static NSSpeechPropertyKey);
 
+#[deprecated]
 extern_static!(NSVoiceLanguage: &'static NSVoiceAttributeKey);
 
 ns_enum!(

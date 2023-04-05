@@ -30,6 +30,7 @@ extern_protocol!(
         unsafe fn viewDidMoveToHostWindow(&self);
     }
 
+    #[deprecated]
     unsafe impl ProtocolType for dyn WebDocumentView {}
 );
 
@@ -47,6 +48,7 @@ extern_protocol!(
         ) -> bool;
     }
 
+    #[deprecated]
     unsafe impl ProtocolType for dyn WebDocumentSearching {}
 );
 
@@ -79,6 +81,7 @@ extern_protocol!(
         unsafe fn deselectAll(&self);
     }
 
+    #[deprecated]
     unsafe impl ProtocolType for dyn WebDocumentText {}
 );
 
@@ -121,5 +124,6 @@ extern_protocol!(
         unsafe fn title(&self) -> Option<Id<NSString>>;
     }
 
+    #[deprecated]
     unsafe impl ProtocolType for dyn WebDocumentRepresentation {}
 );

@@ -145,6 +145,7 @@ extern_protocol!(
         );
     }
 
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl ProtocolType for dyn CXProviderDelegate {}
 );
 

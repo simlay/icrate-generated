@@ -4,6 +4,7 @@ use crate::common::*;
 use crate::CoreData::*;
 use crate::Foundation::*;
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(
     NSCoreDataCoreSpotlightDelegateIndexDidUpdateNotification: &'static NSNotificationName
 );

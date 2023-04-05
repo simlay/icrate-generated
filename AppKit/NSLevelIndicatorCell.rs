@@ -107,20 +107,24 @@ extern_methods!(
     }
 );
 
+#[deprecated]
 extern_static!(
     NSRelevancyLevelIndicatorStyle: NSLevelIndicatorStyle = NSLevelIndicatorStyleRelevancy
 );
 
+#[deprecated]
 extern_static!(
     NSContinuousCapacityLevelIndicatorStyle: NSLevelIndicatorStyle =
         NSLevelIndicatorStyleContinuousCapacity
 );
 
+#[deprecated]
 extern_static!(
     NSDiscreteCapacityLevelIndicatorStyle: NSLevelIndicatorStyle =
         NSLevelIndicatorStyleDiscreteCapacity
 );
 
+#[deprecated]
 extern_static!(NSRatingLevelIndicatorStyle: NSLevelIndicatorStyle = NSLevelIndicatorStyleRating);
 
 extern_methods!(

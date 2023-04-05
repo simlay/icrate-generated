@@ -292,8 +292,11 @@ extern_static!(NSProgressFileTotalCountKey: &'static NSProgressUserInfoKey);
 
 extern_static!(NSProgressFileCompletedCountKey: &'static NSProgressUserInfoKey);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSProgressFileAnimationImageKey: &'static NSProgressUserInfoKey);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSProgressFileAnimationImageOriginalRectKey: &'static NSProgressUserInfoKey);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSProgressFileIconKey: &'static NSProgressUserInfoKey);

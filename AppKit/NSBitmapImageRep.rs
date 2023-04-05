@@ -341,36 +341,49 @@ extern_methods!(
     }
 );
 
+#[deprecated]
 extern_static!(NSTIFFFileType: NSBitmapImageFileType = NSBitmapImageFileTypeTIFF);
 
+#[deprecated]
 extern_static!(NSBMPFileType: NSBitmapImageFileType = NSBitmapImageFileTypeBMP);
 
+#[deprecated]
 extern_static!(NSGIFFileType: NSBitmapImageFileType = NSBitmapImageFileTypeGIF);
 
+#[deprecated]
 extern_static!(NSJPEGFileType: NSBitmapImageFileType = NSBitmapImageFileTypeJPEG);
 
+#[deprecated]
 extern_static!(NSPNGFileType: NSBitmapImageFileType = NSBitmapImageFileTypePNG);
 
+#[deprecated]
 extern_static!(NSJPEG2000FileType: NSBitmapImageFileType = NSBitmapImageFileTypeJPEG2000);
 
+#[deprecated]
 extern_static!(NSAlphaFirstBitmapFormat: NSBitmapFormat = NSBitmapFormatAlphaFirst);
 
+#[deprecated]
 extern_static!(
     NSAlphaNonpremultipliedBitmapFormat: NSBitmapFormat = NSBitmapFormatAlphaNonpremultiplied
 );
 
+#[deprecated]
 extern_static!(
     NSFloatingPointSamplesBitmapFormat: NSBitmapFormat = NSBitmapFormatFloatingPointSamples
 );
 
+#[deprecated]
 extern_static!(
     NS16BitLittleEndianBitmapFormat: NSBitmapFormat = NSBitmapFormatSixteenBitLittleEndian
 );
 
+#[deprecated]
 extern_static!(
     NS32BitLittleEndianBitmapFormat: NSBitmapFormat = NSBitmapFormatThirtyTwoBitLittleEndian
 );
 
+#[deprecated]
 extern_static!(NS16BitBigEndianBitmapFormat: NSBitmapFormat = NSBitmapFormatSixteenBitBigEndian);
 
+#[deprecated]
 extern_static!(NS32BitBigEndianBitmapFormat: NSBitmapFormat = NSBitmapFormatThirtyTwoBitBigEndian);

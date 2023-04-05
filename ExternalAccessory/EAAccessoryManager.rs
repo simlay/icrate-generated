@@ -24,6 +24,7 @@ extern_static!(EAAccessoryDidDisconnectNotification: &'static NSString);
 
 extern_static!(EAAccessoryKey: &'static NSString);
 
+#[cfg(not(any(target_os = "macos")))]
 extern_static!(EAAccessorySelectedKey: &'static NSString);
 
 extern_class!(

@@ -5,6 +5,8 @@ use crate::Foundation::*;
 
 extern_static!(NSMapTableStrongMemory: NSPointerFunctionsOptions = NSPointerFunctionsStrongMemory);
 
+#[deprecated = "GC no longer supported"]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(
     NSMapTableZeroingWeakMemory: NSPointerFunctionsOptions = NSPointerFunctionsZeroingWeakMemory
 );
@@ -341,6 +343,7 @@ extern_fn!(
     ) -> NonNull<NSMapTable>;
 );
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSIntegerMapKeyCallBacks: NSMapTableKeyCallBacks);
 
 extern_static!(NSNonOwnedPointerMapKeyCallBacks: NSMapTableKeyCallBacks);
@@ -353,8 +356,10 @@ extern_static!(NSObjectMapKeyCallBacks: NSMapTableKeyCallBacks);
 
 extern_static!(NSOwnedPointerMapKeyCallBacks: NSMapTableKeyCallBacks);
 
+#[deprecated = "Not supported"]
 extern_static!(NSIntMapKeyCallBacks: NSMapTableKeyCallBacks);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSIntegerMapValueCallBacks: NSMapTableValueCallBacks);
 
 extern_static!(NSNonOwnedPointerMapValueCallBacks: NSMapTableValueCallBacks);
@@ -365,4 +370,5 @@ extern_static!(NSNonRetainedObjectMapValueCallBacks: NSMapTableValueCallBacks);
 
 extern_static!(NSOwnedPointerMapValueCallBacks: NSMapTableValueCallBacks);
 
+#[deprecated = "Not supported"]
 extern_static!(NSIntMapValueCallBacks: NSMapTableValueCallBacks);

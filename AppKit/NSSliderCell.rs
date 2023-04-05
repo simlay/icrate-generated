@@ -210,16 +210,22 @@ extern_methods!(
     }
 );
 
+#[deprecated]
 extern_static!(NSTickMarkBelow: NSTickMarkPosition = NSTickMarkPositionBelow);
 
+#[deprecated]
 extern_static!(NSTickMarkAbove: NSTickMarkPosition = NSTickMarkPositionAbove);
 
+#[deprecated]
 extern_static!(NSTickMarkLeft: NSTickMarkPosition = NSTickMarkPositionLeading);
 
+#[deprecated]
 extern_static!(NSTickMarkRight: NSTickMarkPosition = NSTickMarkPositionTrailing);
 
+#[deprecated]
 extern_static!(NSLinearSlider: NSSliderType = NSSliderTypeLinear);
 
+#[deprecated]
 extern_static!(NSCircularSlider: NSSliderType = NSSliderTypeCircular);
 
 extern_methods!(

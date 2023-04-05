@@ -48,10 +48,14 @@ extern_methods!(
 
 extern_static!(NSExtensionItemsAndErrorsKey: Option<&'static NSString>);
 
+#[cfg(not(any(target_os = "macos")))]
 extern_static!(NSExtensionHostWillEnterForegroundNotification: Option<&'static NSString>);
 
+#[cfg(not(any(target_os = "macos")))]
 extern_static!(NSExtensionHostDidEnterBackgroundNotification: Option<&'static NSString>);
 
+#[cfg(not(any(target_os = "macos")))]
 extern_static!(NSExtensionHostWillResignActiveNotification: Option<&'static NSString>);
 
+#[cfg(not(any(target_os = "macos")))]
 extern_static!(NSExtensionHostDidBecomeActiveNotification: Option<&'static NSString>);

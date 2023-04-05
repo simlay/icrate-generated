@@ -41,70 +41,99 @@ ns_enum!(
     }
 );
 
+#[deprecated]
 extern_static!(NSCompositeClear: NSCompositingOperation = NSCompositingOperationClear);
 
+#[deprecated]
 extern_static!(NSCompositeCopy: NSCompositingOperation = NSCompositingOperationCopy);
 
+#[deprecated]
 extern_static!(NSCompositeSourceOver: NSCompositingOperation = NSCompositingOperationSourceOver);
 
+#[deprecated]
 extern_static!(NSCompositeSourceIn: NSCompositingOperation = NSCompositingOperationSourceIn);
 
+#[deprecated]
 extern_static!(NSCompositeSourceOut: NSCompositingOperation = NSCompositingOperationSourceOut);
 
+#[deprecated]
 extern_static!(NSCompositeSourceAtop: NSCompositingOperation = NSCompositingOperationSourceAtop);
 
+#[deprecated]
 extern_static!(
     NSCompositeDestinationOver: NSCompositingOperation = NSCompositingOperationDestinationOver
 );
 
+#[deprecated]
 extern_static!(
     NSCompositeDestinationIn: NSCompositingOperation = NSCompositingOperationDestinationIn
 );
 
+#[deprecated]
 extern_static!(
     NSCompositeDestinationOut: NSCompositingOperation = NSCompositingOperationDestinationOut
 );
 
+#[deprecated]
 extern_static!(
     NSCompositeDestinationAtop: NSCompositingOperation = NSCompositingOperationDestinationAtop
 );
 
+#[deprecated]
 extern_static!(NSCompositeXOR: NSCompositingOperation = NSCompositingOperationXOR);
 
+#[deprecated]
 extern_static!(NSCompositePlusDarker: NSCompositingOperation = NSCompositingOperationPlusDarker);
 
+#[deprecated]
 extern_static!(NSCompositeHighlight: NSCompositingOperation = NSCompositingOperationHighlight);
 
+#[deprecated]
 extern_static!(NSCompositePlusLighter: NSCompositingOperation = NSCompositingOperationPlusLighter);
 
+#[deprecated]
 extern_static!(NSCompositeMultiply: NSCompositingOperation = NSCompositingOperationMultiply);
 
+#[deprecated]
 extern_static!(NSCompositeScreen: NSCompositingOperation = NSCompositingOperationScreen);
 
+#[deprecated]
 extern_static!(NSCompositeOverlay: NSCompositingOperation = NSCompositingOperationOverlay);
 
+#[deprecated]
 extern_static!(NSCompositeDarken: NSCompositingOperation = NSCompositingOperationDarken);
 
+#[deprecated]
 extern_static!(NSCompositeLighten: NSCompositingOperation = NSCompositingOperationLighten);
 
+#[deprecated]
 extern_static!(NSCompositeColorDodge: NSCompositingOperation = NSCompositingOperationColorDodge);
 
+#[deprecated]
 extern_static!(NSCompositeColorBurn: NSCompositingOperation = NSCompositingOperationColorBurn);
 
+#[deprecated]
 extern_static!(NSCompositeSoftLight: NSCompositingOperation = NSCompositingOperationSoftLight);
 
+#[deprecated]
 extern_static!(NSCompositeHardLight: NSCompositingOperation = NSCompositingOperationHardLight);
 
+#[deprecated]
 extern_static!(NSCompositeDifference: NSCompositingOperation = NSCompositingOperationDifference);
 
+#[deprecated]
 extern_static!(NSCompositeExclusion: NSCompositingOperation = NSCompositingOperationExclusion);
 
+#[deprecated]
 extern_static!(NSCompositeHue: NSCompositingOperation = NSCompositingOperationHue);
 
+#[deprecated]
 extern_static!(NSCompositeSaturation: NSCompositingOperation = NSCompositingOperationSaturation);
 
+#[deprecated]
 extern_static!(NSCompositeColor: NSCompositingOperation = NSCompositingOperationColor);
 
+#[deprecated]
 extern_static!(NSCompositeLuminosity: NSCompositingOperation = NSCompositingOperationLuminosity);
 
 ns_enum!(
@@ -176,8 +205,10 @@ extern_static!(NSPatternColorSpace: &'static NSColorSpaceName);
 
 extern_static!(NSCustomColorSpace: &'static NSColorSpaceName);
 
+#[deprecated]
 extern_static!(NSCalibratedBlackColorSpace: &'static NSColorSpaceName);
 
+#[deprecated]
 extern_static!(NSDeviceBlackColorSpace: &'static NSColorSpaceName);
 
 ns_enum!(

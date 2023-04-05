@@ -7,6 +7,7 @@ use crate::CoreLocation::*;
 use crate::Foundation::*;
 use crate::MapKit::*;
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointsOfInterestRequestMaxRadius: CLLocationDistance);
 
 extern_class!(

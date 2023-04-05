@@ -59,10 +59,14 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "tvos")))]
 extern_static!(UNNotificationAttachmentOptionsTypeHintKey: &'static NSString);
 
+#[cfg(not(any(target_os = "tvos")))]
 extern_static!(UNNotificationAttachmentOptionsThumbnailHiddenKey: &'static NSString);
 
+#[cfg(not(any(target_os = "tvos")))]
 extern_static!(UNNotificationAttachmentOptionsThumbnailClippingRectKey: &'static NSString);
 
+#[cfg(not(any(target_os = "tvos")))]
 extern_static!(UNNotificationAttachmentOptionsThumbnailTimeKey: &'static NSString);

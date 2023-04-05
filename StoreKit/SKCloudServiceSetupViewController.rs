@@ -87,34 +87,44 @@ extern_protocol!(
     unsafe impl ProtocolType for dyn SKCloudServiceSetupViewControllerDelegate {}
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_static!(SKCloudServiceSetupOptionsActionKey: &'static SKCloudServiceSetupOptionsKey);
 
+#[cfg(not(any(target_os = "macos")))]
 extern_static!(
     SKCloudServiceSetupOptionsITunesItemIdentifierKey: &'static SKCloudServiceSetupOptionsKey
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_static!(SKCloudServiceSetupOptionsAffiliateTokenKey: &'static SKCloudServiceSetupOptionsKey);
 
+#[cfg(not(any(target_os = "macos")))]
 extern_static!(SKCloudServiceSetupOptionsCampaignTokenKey: &'static SKCloudServiceSetupOptionsKey);
 
+#[cfg(not(any(target_os = "macos")))]
 extern_static!(
     SKCloudServiceSetupOptionsMessageIdentifierKey: &'static SKCloudServiceSetupOptionsKey
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_static!(SKCloudServiceSetupActionSubscribe: &'static SKCloudServiceSetupAction);
 
+#[cfg(not(any(target_os = "macos")))]
 extern_static!(
     SKCloudServiceSetupMessageIdentifierJoin: &'static SKCloudServiceSetupMessageIdentifier
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_static!(
     SKCloudServiceSetupMessageIdentifierConnect: &'static SKCloudServiceSetupMessageIdentifier
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_static!(
     SKCloudServiceSetupMessageIdentifierAddMusic: &'static SKCloudServiceSetupMessageIdentifier
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_static!(
     SKCloudServiceSetupMessageIdentifierPlayMusic: &'static SKCloudServiceSetupMessageIdentifier
 );

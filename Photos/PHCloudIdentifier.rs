@@ -162,4 +162,6 @@ extern_methods!(
     }
 );
 
+#[deprecated]
+#[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 extern_static!(PHLocalIdentifierNotFound: &'static NSString);

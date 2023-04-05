@@ -676,6 +676,7 @@ extern_protocol!(
         unsafe fn handleMatchEnded(&self, r#match: &GKTurnBasedMatch);
     }
 
+    #[deprecated = "Use registerListener on GKLocalPlayer with an object that implements the GKTurnBasedEventListener protocol"]
     unsafe impl ProtocolType for dyn GKTurnBasedEventHandlerDelegate {}
 );
 

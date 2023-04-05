@@ -50,10 +50,13 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSGrammarRange: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSGrammarUserDescription: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSGrammarCorrections: &'static NSString);
 
 extern_protocol!(

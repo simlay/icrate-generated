@@ -5,12 +5,16 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::WebKit::*;
 
+#[deprecated]
 extern_static!(WebKitErrorDomain: Option<&'static NSString>);
 
+#[deprecated]
 extern_static!(WebKitErrorMIMETypeKey: Option<&'static NSString>);
 
+#[deprecated]
 extern_static!(WebKitErrorPlugInNameKey: Option<&'static NSString>);
 
+#[deprecated]
 extern_static!(WebKitErrorPlugInPageURLStringKey: Option<&'static NSString>);
 
 extern_enum!(

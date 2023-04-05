@@ -24,6 +24,7 @@ extern_fn!(
     pub unsafe fn AXMFiHearingDeviceStreamingEar() -> AXHearingDeviceEar;
 );
 
+#[cfg(not(any(target_os = "macos", target_os = "tvos")))]
 extern_static!(AXMFiHearingDeviceStreamingEarDidChangeNotification: &'static NSNotificationName);
 
 extern_fn!(
@@ -37,4 +38,5 @@ extern_fn!(
     pub unsafe fn AXMFiHearingDevicePairedUUIDs() -> NonNull<NSArray<NSUUID>>;
 );
 
+#[cfg(not(any(target_os = "macos", target_os = "tvos")))]
 extern_static!(AXMFiHearingDevicePairedUUIDsDidChangeNotification: &'static NSNotificationName);

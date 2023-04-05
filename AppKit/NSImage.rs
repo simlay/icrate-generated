@@ -695,6 +695,7 @@ extern_static!(NSImageNameRightFacingTriangleTemplate: &'static NSImageName);
 
 extern_static!(NSImageNameLeftFacingTriangleTemplate: &'static NSImageName);
 
+#[deprecated]
 extern_static!(NSImageNameDotMac: &'static NSImageName);
 
 extern_static!(NSImageNameMobileMe: &'static NSImageName);

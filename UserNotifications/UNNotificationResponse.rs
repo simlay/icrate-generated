@@ -5,8 +5,10 @@ use crate::CoreLocation::*;
 use crate::Foundation::*;
 use crate::UserNotifications::*;
 
+#[cfg(not(any(target_os = "tvos")))]
 extern_static!(UNNotificationDefaultActionIdentifier: &'static NSString);
 
+#[cfg(not(any(target_os = "tvos")))]
 extern_static!(UNNotificationDismissActionIdentifier: &'static NSString);
 
 extern_class!(

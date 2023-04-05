@@ -4,63 +4,76 @@ use crate::common::*;
 use crate::AuthenticationServices::*;
 use crate::Foundation::*;
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 typed_extensible_enum!(
     pub type ASAuthorizationPublicKeyCredentialUserVerificationPreference = NSString;
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(
     ASAuthorizationPublicKeyCredentialUserVerificationPreferencePreferred:
         Option<&'static ASAuthorizationPublicKeyCredentialUserVerificationPreference>
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(
     ASAuthorizationPublicKeyCredentialUserVerificationPreferenceRequired:
         Option<&'static ASAuthorizationPublicKeyCredentialUserVerificationPreference>
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(
     ASAuthorizationPublicKeyCredentialUserVerificationPreferenceDiscouraged:
         Option<&'static ASAuthorizationPublicKeyCredentialUserVerificationPreference>
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 typed_extensible_enum!(
     pub type ASAuthorizationPublicKeyCredentialAttestationKind = NSString;
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(
     ASAuthorizationPublicKeyCredentialAttestationKindNone:
         Option<&'static ASAuthorizationPublicKeyCredentialAttestationKind>
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(
     ASAuthorizationPublicKeyCredentialAttestationKindDirect:
         Option<&'static ASAuthorizationPublicKeyCredentialAttestationKind>
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(
     ASAuthorizationPublicKeyCredentialAttestationKindIndirect:
         Option<&'static ASAuthorizationPublicKeyCredentialAttestationKind>
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(
     ASAuthorizationPublicKeyCredentialAttestationKindEnterprise:
         Option<&'static ASAuthorizationPublicKeyCredentialAttestationKind>
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 typed_extensible_enum!(
     pub type ASAuthorizationPublicKeyCredentialResidentKeyPreference = NSString;
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(
     ASAuthorizationPublicKeyCredentialResidentKeyPreferenceDiscouraged:
         Option<&'static ASAuthorizationPublicKeyCredentialResidentKeyPreference>
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(
     ASAuthorizationPublicKeyCredentialResidentKeyPreferencePreferred:
         Option<&'static ASAuthorizationPublicKeyCredentialResidentKeyPreference>
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(
     ASAuthorizationPublicKeyCredentialResidentKeyPreferenceRequired:
         Option<&'static ASAuthorizationPublicKeyCredentialResidentKeyPreference>

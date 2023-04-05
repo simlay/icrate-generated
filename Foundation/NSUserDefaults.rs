@@ -211,66 +211,122 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_static!(NSUserDefaultsSizeLimitExceededNotification: &'static NSNotificationName);
 
+#[cfg(not(any(target_os = "macos")))]
 extern_static!(NSUbiquitousUserDefaultsNoCloudAccountNotification: &'static NSNotificationName);
 
+#[cfg(not(any(target_os = "macos")))]
 extern_static!(NSUbiquitousUserDefaultsDidChangeAccountsNotification: &'static NSNotificationName);
 
+#[cfg(not(any(target_os = "macos")))]
 extern_static!(
     NSUbiquitousUserDefaultsCompletedInitialSyncNotification: &'static NSNotificationName
 );
 
 extern_static!(NSUserDefaultsDidChangeNotification: &'static NSNotificationName);
 
+#[deprecated]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSWeekDayNameArray: &'static NSString);
 
+#[deprecated]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSShortWeekDayNameArray: &'static NSString);
 
+#[deprecated]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMonthNameArray: &'static NSString);
 
+#[deprecated]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSShortMonthNameArray: &'static NSString);
 
+#[deprecated]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSTimeFormatString: &'static NSString);
 
+#[deprecated]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSDateFormatString: &'static NSString);
 
+#[deprecated]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSTimeDateFormatString: &'static NSString);
 
+#[deprecated]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSShortTimeDateFormatString: &'static NSString);
 
+#[deprecated]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSCurrencySymbol: &'static NSString);
 
+#[deprecated]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSDecimalSeparator: &'static NSString);
 
+#[deprecated]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSThousandsSeparator: &'static NSString);
 
+#[deprecated]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSDecimalDigits: &'static NSString);
 
+#[deprecated]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSAMPMDesignation: &'static NSString);
 
+#[deprecated]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSHourNameDesignations: &'static NSString);
 
+#[deprecated]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSYearMonthWeekDesignations: &'static NSString);
 
+#[deprecated]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSEarlierTimeDesignations: &'static NSString);
 
+#[deprecated]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSLaterTimeDesignations: &'static NSString);
 
+#[deprecated]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSThisDayDesignations: &'static NSString);
 
+#[deprecated]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSNextDayDesignations: &'static NSString);
 
+#[deprecated]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSNextNextDayDesignations: &'static NSString);
 
+#[deprecated]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSPriorDayDesignations: &'static NSString);
 
+#[deprecated]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSDateTimeOrdering: &'static NSString);
 
+#[deprecated]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSInternationalCurrencyString: &'static NSString);
 
+#[deprecated]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSShortDateFormatString: &'static NSString);
 
+#[deprecated]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSPositiveCurrencyFormatString: &'static NSString);
 
+#[deprecated]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSNegativeCurrencyFormatString: &'static NSString);

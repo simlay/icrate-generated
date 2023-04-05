@@ -25,6 +25,7 @@ extern_static!(NSMetadataItemIsUbiquitousKey: &'static NSString);
 
 extern_static!(NSMetadataUbiquitousItemHasUnresolvedConflictsKey: &'static NSString);
 
+#[deprecated = "Use NSMetadataUbiquitousItemDownloadingStatusKey instead"]
 extern_static!(NSMetadataUbiquitousItemIsDownloadedKey: &'static NSString);
 
 extern_static!(NSMetadataUbiquitousItemDownloadingStatusKey: &'static NSString);
@@ -57,310 +58,464 @@ extern_static!(NSMetadataUbiquitousItemContainerDisplayNameKey: &'static NSStrin
 
 extern_static!(NSMetadataUbiquitousItemURLInLocalContainerKey: &'static NSString);
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataUbiquitousItemIsSharedKey: &'static NSString);
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataUbiquitousSharedItemCurrentUserRoleKey: &'static NSString);
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataUbiquitousSharedItemCurrentUserPermissionsKey: &'static NSString);
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataUbiquitousSharedItemOwnerNameComponentsKey: &'static NSString);
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataUbiquitousSharedItemMostRecentEditorNameComponentsKey: &'static NSString);
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataUbiquitousSharedItemRoleOwner: &'static NSString);
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataUbiquitousSharedItemRoleParticipant: &'static NSString);
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataUbiquitousSharedItemPermissionsReadOnly: &'static NSString);
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataUbiquitousSharedItemPermissionsReadWrite: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemAttributeChangeDateKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemKeywordsKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemTitleKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemAuthorsKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemEditorsKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemParticipantsKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemProjectsKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemDownloadedDateKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemWhereFromsKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemCommentKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemCopyrightKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemLastUsedDateKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemContentCreationDateKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemContentModificationDateKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemDateAddedKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemDurationSecondsKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemContactKeywordsKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemVersionKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemPixelHeightKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemPixelWidthKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemPixelCountKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemColorSpaceKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemBitsPerSampleKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemFlashOnOffKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemFocalLengthKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemAcquisitionMakeKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemAcquisitionModelKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemISOSpeedKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemOrientationKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemLayerNamesKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemWhiteBalanceKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemApertureKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemProfileNameKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemResolutionWidthDPIKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemResolutionHeightDPIKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemExposureModeKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemExposureTimeSecondsKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemEXIFVersionKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemCameraOwnerKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemFocalLength35mmKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemLensModelKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemEXIFGPSVersionKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemAltitudeKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemLatitudeKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemLongitudeKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemSpeedKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemTimestampKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemGPSTrackKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemImageDirectionKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemNamedLocationKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemGPSStatusKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemGPSMeasureModeKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemGPSDOPKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemGPSMapDatumKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemGPSDestLatitudeKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemGPSDestLongitudeKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemGPSDestBearingKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemGPSDestDistanceKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemGPSProcessingMethodKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemGPSAreaInformationKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemGPSDateStampKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemGPSDifferentalKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemCodecsKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemMediaTypesKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemStreamableKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemTotalBitRateKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemVideoBitRateKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemAudioBitRateKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemDeliveryTypeKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemAlbumKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemHasAlphaChannelKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemRedEyeOnOffKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemMeteringModeKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemMaxApertureKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemFNumberKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemExposureProgramKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemExposureTimeStringKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemHeadlineKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemInstructionsKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemCityKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemStateOrProvinceKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemCountryKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemTextContentKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemAudioSampleRateKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemAudioChannelCountKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemTempoKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemKeySignatureKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemTimeSignatureKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemAudioEncodingApplicationKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemComposerKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemLyricistKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemAudioTrackNumberKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemRecordingDateKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemMusicalGenreKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemIsGeneralMIDISequenceKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemRecordingYearKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemOrganizationsKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemLanguagesKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemRightsKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemPublishersKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemContributorsKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemCoverageKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemSubjectKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemThemeKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemDescriptionKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemIdentifierKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemAudiencesKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemNumberOfPagesKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemPageWidthKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemPageHeightKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemSecurityMethodKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemCreatorKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemEncodingApplicationsKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemDueDateKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemStarRatingKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemPhoneNumbersKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemEmailAddressesKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemInstantMessageAddressesKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemKindKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemRecipientsKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemFinderCommentKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemFontsKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemAppleLoopsRootKeyKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemAppleLoopsKeyFilterTypeKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemAppleLoopsLoopModeKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemAppleLoopDescriptorsKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemMusicalInstrumentCategoryKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemMusicalInstrumentNameKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemCFBundleIdentifierKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemInformationKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemDirectorKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemProducerKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemGenreKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemPerformersKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemOriginalFormatKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemOriginalSourceKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemAuthorEmailAddressesKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemRecipientEmailAddressesKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemAuthorAddressesKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemRecipientAddressesKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemIsLikelyJunkKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemExecutableArchitecturesKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemExecutablePlatformKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemApplicationCategoriesKey: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataItemIsApplicationManagedKey: &'static NSString);

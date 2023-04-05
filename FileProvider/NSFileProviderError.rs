@@ -8,6 +8,8 @@ use crate::UniformTypeIdentifiers::*;
 
 extern_static!(NSFileProviderErrorDomain: &'static NSErrorDomain);
 
+#[deprecated = "NSFileProviderErrorItemKey"]
+#[cfg(not(any(target_os = "macos")))]
 extern_static!(NSFileProviderErrorCollidingItemKey: &'static NSErrorUserInfoKey);
 
 extern_static!(NSFileProviderErrorItemKey: &'static NSErrorUserInfoKey);

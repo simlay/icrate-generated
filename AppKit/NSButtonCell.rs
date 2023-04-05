@@ -275,60 +275,88 @@ ns_enum!(
     }
 );
 
+#[deprecated]
 extern_static!(NSMomentaryLightButton: NSButtonType = NSButtonTypeMomentaryLight);
 
+#[deprecated]
 extern_static!(NSPushOnPushOffButton: NSButtonType = NSButtonTypePushOnPushOff);
 
+#[deprecated]
 extern_static!(NSToggleButton: NSButtonType = NSButtonTypeToggle);
 
+#[deprecated]
 extern_static!(NSSwitchButton: NSButtonType = NSButtonTypeSwitch);
 
+#[deprecated]
 extern_static!(NSRadioButton: NSButtonType = NSButtonTypeRadio);
 
+#[deprecated]
 extern_static!(NSMomentaryChangeButton: NSButtonType = NSButtonTypeMomentaryChange);
 
+#[deprecated]
 extern_static!(NSOnOffButton: NSButtonType = NSButtonTypeOnOff);
 
+#[deprecated]
 extern_static!(NSMomentaryPushInButton: NSButtonType = NSButtonTypeMomentaryPushIn);
 
+#[deprecated]
 extern_static!(NSAcceleratorButton: NSButtonType = NSButtonTypeAccelerator);
 
+#[deprecated]
 extern_static!(NSMultiLevelAcceleratorButton: NSButtonType = NSButtonTypeMultiLevelAccelerator);
 
+#[deprecated = "This constant is misnamed and has the same effect as NSButtonTypeMomentaryLight. Use that name instead, or switch to NSButtonTypeMomentaryPushIn."]
 extern_static!(NSMomentaryPushButton: NSButtonType = NSButtonTypeMomentaryLight);
 
+#[deprecated = "This constant is misnamed and has the same effect as NSButtonTypeMomentaryPushIn. Use that name instead, or switch to NSButtonTypeMomentaryLight."]
 extern_static!(NSMomentaryLight: NSButtonType = NSButtonTypeMomentaryPushIn);
 
+#[deprecated]
 extern_static!(NSRoundedBezelStyle: NSBezelStyle = NSBezelStyleRounded);
 
+#[deprecated]
 extern_static!(NSRegularSquareBezelStyle: NSBezelStyle = NSBezelStyleRegularSquare);
 
+#[deprecated]
 extern_static!(NSDisclosureBezelStyle: NSBezelStyle = NSBezelStyleDisclosure);
 
+#[deprecated]
 extern_static!(NSShadowlessSquareBezelStyle: NSBezelStyle = NSBezelStyleShadowlessSquare);
 
+#[deprecated]
 extern_static!(NSCircularBezelStyle: NSBezelStyle = NSBezelStyleCircular);
 
+#[deprecated]
 extern_static!(NSTexturedSquareBezelStyle: NSBezelStyle = NSBezelStyleTexturedSquare);
 
+#[deprecated]
 extern_static!(NSHelpButtonBezelStyle: NSBezelStyle = NSBezelStyleHelpButton);
 
+#[deprecated]
 extern_static!(NSSmallSquareBezelStyle: NSBezelStyle = NSBezelStyleSmallSquare);
 
+#[deprecated]
 extern_static!(NSTexturedRoundedBezelStyle: NSBezelStyle = NSBezelStyleTexturedRounded);
 
+#[deprecated]
 extern_static!(NSRoundRectBezelStyle: NSBezelStyle = NSBezelStyleRoundRect);
 
+#[deprecated]
 extern_static!(NSRecessedBezelStyle: NSBezelStyle = NSBezelStyleRecessed);
 
+#[deprecated]
 extern_static!(NSRoundedDisclosureBezelStyle: NSBezelStyle = NSBezelStyleRoundedDisclosure);
 
+#[deprecated]
 extern_static!(NSInlineBezelStyle: NSBezelStyle = NSBezelStyleInline);
 
+#[deprecated = "This bezel style is obsolete and should not be used."]
 extern_static!(NSSmallIconButtonBezelStyle: NSBezelStyle = 2);
 
+#[deprecated]
 extern_static!(NSThickSquareBezelStyle: NSBezelStyle = 3);
 
+#[deprecated]
 extern_static!(NSThickerSquareBezelStyle: NSBezelStyle = 4);
 
 extern_methods!(

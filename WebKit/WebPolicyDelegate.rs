@@ -24,14 +24,19 @@ ns_enum!(
     }
 );
 
+#[deprecated]
 extern_static!(WebActionNavigationTypeKey: Option<&'static NSString>);
 
+#[deprecated]
 extern_static!(WebActionElementKey: Option<&'static NSString>);
 
+#[deprecated]
 extern_static!(WebActionButtonKey: Option<&'static NSString>);
 
+#[deprecated]
 extern_static!(WebActionModifierFlagsKey: Option<&'static NSString>);
 
+#[deprecated]
 extern_static!(WebActionOriginalURLKey: Option<&'static NSString>);
 
 extern_protocol!(
@@ -47,6 +52,7 @@ extern_protocol!(
         unsafe fn ignore(&self);
     }
 
+    #[deprecated]
     unsafe impl ProtocolType for dyn WebPolicyDecisionListener {}
 );
 
@@ -119,5 +125,6 @@ extern_protocol!(
         );
     }
 
+    #[deprecated]
     unsafe impl ProtocolType for dyn WebPolicyDelegate {}
 );

@@ -38,6 +38,7 @@ extern_protocol!(
         ) -> Option<Id<NSWindow>>;
     }
 
+    #[deprecated]
     unsafe impl ProtocolType for dyn WebDownloadDelegate {}
 );
 

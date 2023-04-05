@@ -31,4 +31,5 @@ ns_enum!(
     }
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(kCLErrorUserInfoAlternateRegionKey: &'static NSString);

@@ -4,6 +4,7 @@ use crate::common::*;
 use crate::AuthenticationServices::*;
 use crate::Foundation::*;
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(ASCredentialIdentityStoreErrorDomain: &'static NSErrorDomain);
 
 ns_error_enum!(

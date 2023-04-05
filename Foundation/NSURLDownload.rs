@@ -198,5 +198,6 @@ extern_protocol!(
         unsafe fn download_didFailWithError(&self, download: &NSURLDownload, error: &NSError);
     }
 
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl ProtocolType for dyn NSURLDownloadDelegate {}
 );

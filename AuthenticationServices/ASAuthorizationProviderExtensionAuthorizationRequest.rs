@@ -4,15 +4,18 @@ use crate::common::*;
 use crate::AuthenticationServices::*;
 use crate::Foundation::*;
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 typed_extensible_enum!(
     pub type ASAuthorizationProviderAuthorizationOperation = NSString;
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(
     ASAuthorizationProviderAuthorizationOperationConfigurationRemoved:
         &'static ASAuthorizationProviderAuthorizationOperation
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(
     ASAuthorizationProviderAuthorizationOperationDirectRequest:
         &'static ASAuthorizationProviderAuthorizationOperation
@@ -43,6 +46,7 @@ extern_protocol!(
         );
     }
 
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl ProtocolType for dyn ASAuthorizationProviderExtensionAuthorizationRequestHandler {}
 );
 

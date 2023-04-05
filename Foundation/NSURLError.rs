@@ -9,6 +9,7 @@ extern_static!(NSURLErrorFailingURLErrorKey: &'static NSString);
 
 extern_static!(NSURLErrorFailingURLStringErrorKey: &'static NSString);
 
+#[deprecated = "Use NSURLErrorFailingURLStringErrorKey instead"]
 extern_static!(NSErrorFailingURLStringKey: &'static NSString);
 
 extern_static!(NSURLErrorFailingURLPeerTrustErrorKey: &'static NSString);

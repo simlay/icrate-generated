@@ -26,26 +26,35 @@ ns_enum!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 typed_extensible_enum!(
     pub type MKFeatureDisplayPriority = c_float;
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKFeatureDisplayPriorityRequired: MKFeatureDisplayPriority = 1000);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKFeatureDisplayPriorityDefaultHigh: MKFeatureDisplayPriority = 750);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKFeatureDisplayPriorityDefaultLow: MKFeatureDisplayPriority = 250);
 
+#[cfg(not(any(target_os = "watchos")))]
 typed_extensible_enum!(
     pub type MKAnnotationViewZPriority = c_float;
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKAnnotationViewZPriorityMax: MKAnnotationViewZPriority = 1000);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKAnnotationViewZPriorityDefaultSelected: MKAnnotationViewZPriority = 1000);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKAnnotationViewZPriorityDefaultUnselected: MKAnnotationViewZPriority = 500);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKAnnotationViewZPriorityMin: MKAnnotationViewZPriority = 0);
 
 ns_enum!(

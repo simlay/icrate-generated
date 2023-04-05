@@ -22,5 +22,6 @@ extern_protocol!(
         );
     }
 
+    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     unsafe impl ProtocolType for dyn ASWebAuthenticationSessionWebBrowserSessionHandling {}
 );

@@ -27,6 +27,7 @@ extern_static!(NSURLIsPackageKey: &'static NSURLResourceKey);
 
 extern_static!(NSURLIsApplicationKey: &'static NSURLResourceKey);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSURLApplicationIsScriptableKey: &'static NSURLResourceKey);
 
 extern_static!(NSURLIsSystemImmutableKey: &'static NSURLResourceKey);
@@ -51,6 +52,7 @@ extern_static!(NSURLParentDirectoryURLKey: &'static NSURLResourceKey);
 
 extern_static!(NSURLVolumeURLKey: &'static NSURLResourceKey);
 
+#[deprecated = "Use NSURLContentTypeKey instead"]
 extern_static!(NSURLTypeIdentifierKey: &'static NSURLResourceKey);
 
 extern_static!(NSURLContentTypeKey: &'static NSURLResourceKey);
@@ -83,6 +85,7 @@ extern_static!(NSURLFileSecurityKey: &'static NSURLResourceKey);
 
 extern_static!(NSURLIsExcludedFromBackupKey: &'static NSURLResourceKey);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSURLTagNamesKey: &'static NSURLResourceKey);
 
 extern_static!(NSURLPathKey: &'static NSURLResourceKey);
@@ -97,6 +100,7 @@ extern_static!(NSURLDocumentIdentifierKey: &'static NSURLResourceKey);
 
 extern_static!(NSURLAddedToDirectoryDateKey: &'static NSURLResourceKey);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSURLQuarantinePropertiesKey: &'static NSURLResourceKey);
 
 extern_static!(NSURLFileResourceTypeKey: &'static NSURLResourceKey);
@@ -131,14 +135,18 @@ extern_static!(NSURLFileResourceTypeSocket: &'static NSURLFileResourceType);
 
 extern_static!(NSURLFileResourceTypeUnknown: &'static NSURLFileResourceType);
 
+#[deprecated = "Use the QuickLookThumbnailing framework and extension point instead"]
 extern_static!(NSURLThumbnailDictionaryKey: &'static NSURLResourceKey);
 
+#[deprecated = "Use the QuickLookThumbnailing framework and extension point instead"]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSURLThumbnailKey: &'static NSURLResourceKey);
 
 typed_extensible_enum!(
     pub type NSURLThumbnailDictionaryItem = NSString;
 );
 
+#[deprecated = "Use the QuickLookThumbnailing framework and extension point instead"]
 extern_static!(NSThumbnail1024x1024SizeKey: &'static NSURLThumbnailDictionaryItem);
 
 extern_static!(NSURLFileSizeKey: &'static NSURLResourceKey);
@@ -247,14 +255,17 @@ extern_static!(NSURLVolumeSupportsAccessPermissionsKey: &'static NSURLResourceKe
 
 extern_static!(NSURLVolumeSupportsFileProtectionKey: &'static NSURLResourceKey);
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSURLVolumeAvailableCapacityForImportantUsageKey: &'static NSURLResourceKey);
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSURLVolumeAvailableCapacityForOpportunisticUsageKey: &'static NSURLResourceKey);
 
 extern_static!(NSURLIsUbiquitousItemKey: &'static NSURLResourceKey);
 
 extern_static!(NSURLUbiquitousItemHasUnresolvedConflictsKey: &'static NSURLResourceKey);
 
+#[deprecated = "Use NSURLUbiquitousItemDownloadingStatusKey instead"]
 extern_static!(NSURLUbiquitousItemIsDownloadedKey: &'static NSURLResourceKey);
 
 extern_static!(NSURLUbiquitousItemIsDownloadingKey: &'static NSURLResourceKey);
@@ -263,8 +274,10 @@ extern_static!(NSURLUbiquitousItemIsUploadedKey: &'static NSURLResourceKey);
 
 extern_static!(NSURLUbiquitousItemIsUploadingKey: &'static NSURLResourceKey);
 
+#[deprecated = "Use NSMetadataUbiquitousItemPercentDownloadedKey instead"]
 extern_static!(NSURLUbiquitousItemPercentDownloadedKey: &'static NSURLResourceKey);
 
+#[deprecated = "Use NSMetadataUbiquitousItemPercentUploadedKey instead"]
 extern_static!(NSURLUbiquitousItemPercentUploadedKey: &'static NSURLResourceKey);
 
 extern_static!(NSURLUbiquitousItemDownloadingStatusKey: &'static NSURLResourceKey);
@@ -279,14 +292,19 @@ extern_static!(NSURLUbiquitousItemContainerDisplayNameKey: &'static NSURLResourc
 
 extern_static!(NSURLUbiquitousItemIsExcludedFromSyncKey: &'static NSURLResourceKey);
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSURLUbiquitousItemIsSharedKey: &'static NSURLResourceKey);
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSURLUbiquitousSharedItemCurrentUserRoleKey: &'static NSURLResourceKey);
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSURLUbiquitousSharedItemCurrentUserPermissionsKey: &'static NSURLResourceKey);
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSURLUbiquitousSharedItemOwnerNameComponentsKey: &'static NSURLResourceKey);
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(
     NSURLUbiquitousSharedItemMostRecentEditorNameComponentsKey: &'static NSURLResourceKey
 );
@@ -312,18 +330,22 @@ typed_enum!(
     pub type NSURLUbiquitousSharedItemRole = NSString;
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSURLUbiquitousSharedItemRoleOwner: &'static NSURLUbiquitousSharedItemRole);
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSURLUbiquitousSharedItemRoleParticipant: &'static NSURLUbiquitousSharedItemRole);
 
 typed_enum!(
     pub type NSURLUbiquitousSharedItemPermissions = NSString;
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(
     NSURLUbiquitousSharedItemPermissionsReadOnly: &'static NSURLUbiquitousSharedItemPermissions
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(
     NSURLUbiquitousSharedItemPermissionsReadWrite: &'static NSURLUbiquitousSharedItemPermissions
 );

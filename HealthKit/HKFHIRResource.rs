@@ -6,28 +6,39 @@ use crate::Foundation::*;
 use crate::HealthKit::*;
 use crate::UniformTypeIdentifiers::*;
 
+#[cfg(not(any(target_os = "watchos")))]
 typed_enum!(
     pub type HKFHIRResourceType = NSString;
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(HKFHIRResourceTypeAllergyIntolerance: &'static HKFHIRResourceType);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(HKFHIRResourceTypeCondition: &'static HKFHIRResourceType);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(HKFHIRResourceTypeCoverage: &'static HKFHIRResourceType);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(HKFHIRResourceTypeImmunization: &'static HKFHIRResourceType);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(HKFHIRResourceTypeMedicationDispense: &'static HKFHIRResourceType);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(HKFHIRResourceTypeMedicationOrder: &'static HKFHIRResourceType);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(HKFHIRResourceTypeMedicationRequest: &'static HKFHIRResourceType);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(HKFHIRResourceTypeMedicationStatement: &'static HKFHIRResourceType);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(HKFHIRResourceTypeObservation: &'static HKFHIRResourceType);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(HKFHIRResourceTypeProcedure: &'static HKFHIRResourceType);
 
 extern_class!(

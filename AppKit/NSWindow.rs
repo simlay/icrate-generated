@@ -1842,38 +1842,53 @@ extern_methods!(
     }
 );
 
+#[deprecated]
 extern_static!(NSBorderlessWindowMask: NSWindowStyleMask = NSWindowStyleMaskBorderless);
 
+#[deprecated]
 extern_static!(NSTitledWindowMask: NSWindowStyleMask = NSWindowStyleMaskTitled);
 
+#[deprecated]
 extern_static!(NSClosableWindowMask: NSWindowStyleMask = NSWindowStyleMaskClosable);
 
+#[deprecated]
 extern_static!(NSMiniaturizableWindowMask: NSWindowStyleMask = NSWindowStyleMaskMiniaturizable);
 
+#[deprecated]
 extern_static!(NSResizableWindowMask: NSWindowStyleMask = NSWindowStyleMaskResizable);
 
+#[deprecated]
 extern_static!(
     NSTexturedBackgroundWindowMask: NSWindowStyleMask = NSWindowStyleMaskTexturedBackground
 );
 
+#[deprecated]
 extern_static!(
     NSUnifiedTitleAndToolbarWindowMask: NSWindowStyleMask = NSWindowStyleMaskUnifiedTitleAndToolbar
 );
 
+#[deprecated]
 extern_static!(NSFullScreenWindowMask: NSWindowStyleMask = NSWindowStyleMaskFullScreen);
 
+#[deprecated]
 extern_static!(
     NSFullSizeContentViewWindowMask: NSWindowStyleMask = NSWindowStyleMaskFullSizeContentView
 );
 
+#[deprecated]
 extern_static!(NSUtilityWindowMask: NSWindowStyleMask = NSWindowStyleMaskUtilityWindow);
 
+#[deprecated]
 extern_static!(NSDocModalWindowMask: NSWindowStyleMask = NSWindowStyleMaskDocModalWindow);
 
+#[deprecated]
 extern_static!(NSNonactivatingPanelMask: NSWindowStyleMask = NSWindowStyleMaskNonactivatingPanel);
 
+#[deprecated]
 extern_static!(NSHUDWindowMask: NSWindowStyleMask = NSWindowStyleMaskHUDWindow);
 
+#[deprecated = "NSUnscaledWindowMask is deprecated and has no effect. The scale factor for a window backing store is dynamic and dependent on the screen it is placed on."]
 extern_static!(NSUnscaledWindowMask: NSWindowStyleMask = 1 << 11);
 
+#[deprecated = "The standard window button for NSWindowFullScreenButton is always nil; use NSWindowZoomButton instead"]
 extern_static!(NSWindowFullScreenButton: NSWindowButton = 7);

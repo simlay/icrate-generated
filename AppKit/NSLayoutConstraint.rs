@@ -327,6 +327,7 @@ extern_methods!(
     }
 );
 
+#[deprecated]
 extern_static!(NSViewNoInstrinsicMetric: CGFloat);
 
 extern_static!(NSViewNoIntrinsicMetric: CGFloat);

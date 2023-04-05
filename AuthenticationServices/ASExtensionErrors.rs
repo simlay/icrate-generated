@@ -4,6 +4,7 @@ use crate::common::*;
 use crate::AuthenticationServices::*;
 use crate::Foundation::*;
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(ASExtensionErrorDomain: Option<&'static NSErrorDomain>);
 
 ns_error_enum!(
@@ -21,4 +22,5 @@ ns_error_enum!(
     }
 );
 
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_static!(ASExtensionLocalizedFailureReasonErrorKey: Option<&'static NSErrorUserInfoKey>);

@@ -107,4 +107,5 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 extern_static!(MPMusicPlayerControllerQueueDidChangeNotification: &'static NSString);

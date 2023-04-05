@@ -299,6 +299,7 @@ extern_methods!(
 
 extern_static!(NSExtensionJavaScriptPreprocessingResultsKey: Option<&'static NSString>);
 
+#[cfg(not(any(target_os = "macos")))]
 extern_static!(NSExtensionJavaScriptFinalizeArgumentKey: Option<&'static NSString>);
 
 extern_static!(NSItemProviderErrorDomain: &'static NSString);

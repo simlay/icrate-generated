@@ -116,18 +116,26 @@ extern_methods!(
     }
 );
 
+#[deprecated]
 extern_static!(NSUnknownColorSpaceModel: NSColorSpaceModel = NSColorSpaceModelUnknown);
 
+#[deprecated]
 extern_static!(NSGrayColorSpaceModel: NSColorSpaceModel = NSColorSpaceModelGray);
 
+#[deprecated]
 extern_static!(NSRGBColorSpaceModel: NSColorSpaceModel = NSColorSpaceModelRGB);
 
+#[deprecated]
 extern_static!(NSCMYKColorSpaceModel: NSColorSpaceModel = NSColorSpaceModelCMYK);
 
+#[deprecated]
 extern_static!(NSLABColorSpaceModel: NSColorSpaceModel = NSColorSpaceModelLAB);
 
+#[deprecated]
 extern_static!(NSDeviceNColorSpaceModel: NSColorSpaceModel = NSColorSpaceModelDeviceN);
 
+#[deprecated]
 extern_static!(NSIndexedColorSpaceModel: NSColorSpaceModel = NSColorSpaceModelIndexed);
 
+#[deprecated]
 extern_static!(NSPatternColorSpaceModel: NSColorSpaceModel = NSColorSpaceModelPatterned);

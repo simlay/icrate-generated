@@ -58,6 +58,7 @@ ns_enum!(
     }
 );
 
+#[deprecated = "GCMicroGamepadSnapshot has been deprecated, use [GCController controllerWithMicroGamepad] instead"]
 extern_static!(GCCurrentMicroGamepadSnapshotDataVersion: GCMicroGamepadSnapshotDataVersion);
 
 extern_struct!(

@@ -5,14 +5,18 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::StoreKit::*;
 
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 typed_enum!(
     pub type SKAdNetworkCoarseConversionValue = NSString;
 );
 
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_static!(SKAdNetworkCoarseConversionValueHigh: &'static SKAdNetworkCoarseConversionValue);
 
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_static!(SKAdNetworkCoarseConversionValueMedium: &'static SKAdNetworkCoarseConversionValue);
 
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_static!(SKAdNetworkCoarseConversionValueLow: &'static SKAdNetworkCoarseConversionValue);
 
 extern_class!(
@@ -88,18 +92,26 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 extern_static!(SKStoreProductParameterAdNetworkAttributionSignature: &'static NSString);
 
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 extern_static!(SKStoreProductParameterAdNetworkCampaignIdentifier: &'static NSString);
 
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 extern_static!(SKStoreProductParameterAdNetworkSourceIdentifier: &'static NSString);
 
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 extern_static!(SKStoreProductParameterAdNetworkIdentifier: &'static NSString);
 
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 extern_static!(SKStoreProductParameterAdNetworkNonce: &'static NSString);
 
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 extern_static!(SKStoreProductParameterAdNetworkTimestamp: &'static NSString);
 
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 extern_static!(SKStoreProductParameterAdNetworkSourceAppStoreIdentifier: &'static NSString);
 
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 extern_static!(SKStoreProductParameterAdNetworkVersion: &'static NSString);

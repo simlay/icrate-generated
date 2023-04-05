@@ -200,40 +200,51 @@ extern_protocol!(
     unsafe impl ProtocolType for dyn NSDatePickerCellDelegate {}
 );
 
+#[deprecated]
 extern_static!(
     NSTextFieldAndStepperDatePickerStyle: NSDatePickerStyle = NSDatePickerStyleTextFieldAndStepper
 );
 
+#[deprecated]
 extern_static!(
     NSClockAndCalendarDatePickerStyle: NSDatePickerStyle = NSDatePickerStyleClockAndCalendar
 );
 
+#[deprecated]
 extern_static!(NSTextFieldDatePickerStyle: NSDatePickerStyle = NSDatePickerStyleTextField);
 
+#[deprecated]
 extern_static!(NSSingleDateMode: NSDatePickerMode = NSDatePickerModeSingle);
 
+#[deprecated]
 extern_static!(NSRangeDateMode: NSDatePickerMode = NSDatePickerModeRange);
 
+#[deprecated]
 extern_static!(
     NSHourMinuteDatePickerElementFlag: NSDatePickerElementFlags = NSDatePickerElementFlagHourMinute
 );
 
+#[deprecated]
 extern_static!(
     NSHourMinuteSecondDatePickerElementFlag: NSDatePickerElementFlags =
         NSDatePickerElementFlagHourMinuteSecond
 );
 
+#[deprecated]
 extern_static!(
     NSTimeZoneDatePickerElementFlag: NSDatePickerElementFlags = NSDatePickerElementFlagTimeZone
 );
 
+#[deprecated]
 extern_static!(
     NSYearMonthDatePickerElementFlag: NSDatePickerElementFlags = NSDatePickerElementFlagYearMonth
 );
 
+#[deprecated]
 extern_static!(
     NSYearMonthDayDatePickerElementFlag: NSDatePickerElementFlags =
         NSDatePickerElementFlagYearMonthDay
 );
 
+#[deprecated]
 extern_static!(NSEraDatePickerElementFlag: NSDatePickerElementFlags = NSDatePickerElementFlagEra);

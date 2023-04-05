@@ -222,14 +222,19 @@ extern_static!(NSMetadataQueryUpdateRemovedItemsKey: &'static NSString);
 
 extern_static!(NSMetadataQueryResultContentRelevanceAttribute: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataQueryUserHomeScope: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataQueryLocalComputerScope: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataQueryNetworkScope: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataQueryIndexedLocalComputerScope: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSMetadataQueryIndexedNetworkScope: &'static NSString);
 
 extern_static!(NSMetadataQueryUbiquitousDocumentsScope: &'static NSString);

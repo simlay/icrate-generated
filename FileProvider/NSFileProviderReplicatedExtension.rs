@@ -303,6 +303,7 @@ extern_protocol!(
         ) -> bool;
     }
 
+    #[cfg(not(any(target_os = "ios")))]
     unsafe impl ProtocolType for dyn NSFileProviderUserInteractionSuppressing {}
 );
 
@@ -352,5 +353,6 @@ extern_protocol!(
         ) -> Id<NSProgress>;
     }
 
+    #[cfg(not(any(target_os = "ios")))]
     unsafe impl ProtocolType for dyn NSFileProviderPartialContentFetching {}
 );

@@ -394,12 +394,17 @@ extern_enum!(
     }
 );
 
+#[deprecated]
 extern_static!(NSLeftTextAlignment: NSTextAlignment = NSTextAlignmentLeft);
 
+#[deprecated]
 extern_static!(NSRightTextAlignment: NSTextAlignment = NSTextAlignmentRight);
 
+#[deprecated]
 extern_static!(NSCenterTextAlignment: NSTextAlignment = NSTextAlignmentCenter);
 
+#[deprecated]
 extern_static!(NSJustifiedTextAlignment: NSTextAlignment = NSTextAlignmentJustified);
 
+#[deprecated]
 extern_static!(NSNaturalTextAlignment: NSTextAlignment = NSTextAlignmentNatural);

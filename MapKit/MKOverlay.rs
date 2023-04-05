@@ -25,5 +25,6 @@ extern_protocol!(
         unsafe fn canReplaceMapContent(&self) -> bool;
     }
 
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl ProtocolType for dyn MKOverlay {}
 );

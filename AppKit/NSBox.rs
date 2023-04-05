@@ -176,8 +176,10 @@ extern_methods!(
     }
 );
 
+#[deprecated]
 extern_static!(NSBoxSecondary: NSBoxType = 1);
 
+#[deprecated = "NSBoxOldStyle is discouraged in modern application design. It should be replaced with either NSBoxPrimary or NSBoxCustom."]
 extern_static!(NSBoxOldStyle: NSBoxType = 3);
 
 extern_methods!(

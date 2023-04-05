@@ -106,24 +106,34 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "tvos")))]
 extern_static!(MKLaunchOptionsDirectionsModeKey: &'static NSString);
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(MKLaunchOptionsMapTypeKey: &'static NSString);
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(MKLaunchOptionsShowsTrafficKey: &'static NSString);
 
+#[cfg(not(any(target_os = "tvos")))]
 extern_static!(MKLaunchOptionsDirectionsModeDefault: &'static NSString);
 
+#[cfg(not(any(target_os = "tvos")))]
 extern_static!(MKLaunchOptionsDirectionsModeDriving: &'static NSString);
 
+#[cfg(not(any(target_os = "tvos")))]
 extern_static!(MKLaunchOptionsDirectionsModeWalking: &'static NSString);
 
+#[cfg(not(any(target_os = "tvos")))]
 extern_static!(MKLaunchOptionsDirectionsModeTransit: &'static NSString);
 
+#[cfg(not(any(target_os = "tvos")))]
 extern_static!(MKLaunchOptionsMapCenterKey: &'static NSString);
 
+#[cfg(not(any(target_os = "tvos")))]
 extern_static!(MKLaunchOptionsMapSpanKey: &'static NSString);
 
+#[cfg(not(any(target_os = "tvos")))]
 extern_static!(MKLaunchOptionsCameraKey: &'static NSString);
 
 extern_methods!(

@@ -27,5 +27,6 @@ extern_protocol!(
         );
     }
 
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl ProtocolType for dyn GKSavedGameListener {}
 );

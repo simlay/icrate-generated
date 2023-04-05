@@ -63,6 +63,7 @@ extern_protocol!(
         );
     }
 
+    #[deprecated = "Use GKGameCenterViewController instead"]
     unsafe impl ProtocolType for dyn GKAchievementViewControllerDelegate {}
 );
 

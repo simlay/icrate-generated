@@ -59,10 +59,13 @@ extern_methods!(
     }
 );
 
+#[deprecated]
 extern_static!(NSMultipleValuesMarker: &'static Object);
 
+#[deprecated]
 extern_static!(NSNoSelectionMarker: &'static Object);
 
+#[deprecated]
 extern_static!(NSNotApplicableMarker: &'static Object);
 
 extern_fn!(

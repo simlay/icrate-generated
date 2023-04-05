@@ -1201,10 +1201,12 @@ extern_methods!(
 
 extern_static!(NSViewFrameDidChangeNotification: &'static NSNotificationName);
 
+#[deprecated]
 extern_static!(NSViewFocusDidChangeNotification: &'static NSNotificationName);
 
 extern_static!(NSViewBoundsDidChangeNotification: &'static NSNotificationName);
 
+#[deprecated = "Use NSOpenGLView instead."]
 extern_static!(NSViewGlobalFrameDidChangeNotification: &'static NSNotificationName);
 
 extern_static!(NSViewDidUpdateTrackingAreasNotification: &'static NSNotificationName);

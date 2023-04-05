@@ -5,6 +5,7 @@ use crate::Contacts::*;
 use crate::CoreLocation::*;
 use crate::Foundation::*;
 
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_static!(CLLocationPushServiceErrorDomain: Option<&'static NSErrorDomain>);
 
 ns_error_enum!(

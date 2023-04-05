@@ -127,6 +127,7 @@ extern_protocol!(
         unsafe fn cancel(&self);
     }
 
+    #[deprecated]
     unsafe impl ProtocolType for dyn WebOpenPanelResultListener {}
 );
 
@@ -473,5 +474,6 @@ extern_protocol!(
         unsafe fn webViewContentRect(&self, sender: Option<&WebView>) -> NSRect;
     }
 
+    #[deprecated]
     unsafe impl ProtocolType for dyn WebUIDelegate {}
 );

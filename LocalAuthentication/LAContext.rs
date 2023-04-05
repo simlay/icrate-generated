@@ -19,6 +19,7 @@ ns_enum!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(LATouchIDAuthenticationMaximumAllowableReuseDuration: NSTimeInterval);
 
 ns_enum!(

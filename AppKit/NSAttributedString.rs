@@ -644,8 +644,10 @@ extern_static!(NSUnderlinePatternDashDotDot: NSUnderlineStyle = NSUnderlineStyle
 
 extern_static!(NSUnderlineByWord: NSUnderlineStyle = NSUnderlineStyleByWord);
 
+#[deprecated = "This attribute is bound to a specific implementation of ATS feature and not generically supported by wide range of fonts. The majority of characters accessed through this API are now encoded in the Unicode standard. Use the CTFont feature API for fine control over character shape choices."]
 extern_static!(NSCharacterShapeAttributeName: &'static NSAttributedStringKey);
 
+#[deprecated]
 extern_static!(NSUsesScreenFontsDocumentAttribute: &'static NSAttributedStringKey);
 
 extern_enum!(
@@ -658,8 +660,10 @@ extern_enum!(
     }
 );
 
+#[deprecated = "Use NSStrikethroughStyleAttributeName instead"]
 extern_static!(NSUnderlineStrikethroughMask: NSUInteger);
 
+#[deprecated = "Use NSUnderlineByWord instead"]
 extern_static!(NSUnderlineByWordMask: NSUInteger);
 
 extern_methods!(

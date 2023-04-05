@@ -4,14 +4,18 @@ use crate::common::*;
 use crate::AuthenticationServices::*;
 use crate::Foundation::*;
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 typed_extensible_enum!(
     pub type ASCOSEAlgorithmIdentifier = NSInteger;
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(ASCOSEAlgorithmIdentifierES256: ASCOSEAlgorithmIdentifier = -7);
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 typed_extensible_enum!(
     pub type ASCOSEEllipticCurveIdentifier = NSInteger;
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(ASCOSEEllipticCurveIdentifierP256: ASCOSEEllipticCurveIdentifier = 1);

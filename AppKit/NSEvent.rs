@@ -45,50 +45,73 @@ ns_enum!(
     }
 );
 
+#[deprecated]
 extern_static!(NSLeftMouseDown: NSEventType = NSEventTypeLeftMouseDown);
 
+#[deprecated]
 extern_static!(NSLeftMouseUp: NSEventType = NSEventTypeLeftMouseUp);
 
+#[deprecated]
 extern_static!(NSRightMouseDown: NSEventType = NSEventTypeRightMouseDown);
 
+#[deprecated]
 extern_static!(NSRightMouseUp: NSEventType = NSEventTypeRightMouseUp);
 
+#[deprecated]
 extern_static!(NSMouseMoved: NSEventType = NSEventTypeMouseMoved);
 
+#[deprecated]
 extern_static!(NSLeftMouseDragged: NSEventType = NSEventTypeLeftMouseDragged);
 
+#[deprecated]
 extern_static!(NSRightMouseDragged: NSEventType = NSEventTypeRightMouseDragged);
 
+#[deprecated]
 extern_static!(NSMouseEntered: NSEventType = NSEventTypeMouseEntered);
 
+#[deprecated]
 extern_static!(NSMouseExited: NSEventType = NSEventTypeMouseExited);
 
+#[deprecated]
 extern_static!(NSKeyDown: NSEventType = NSEventTypeKeyDown);
 
+#[deprecated]
 extern_static!(NSKeyUp: NSEventType = NSEventTypeKeyUp);
 
+#[deprecated]
 extern_static!(NSFlagsChanged: NSEventType = NSEventTypeFlagsChanged);
 
+#[deprecated]
 extern_static!(NSAppKitDefined: NSEventType = NSEventTypeAppKitDefined);
 
+#[deprecated]
 extern_static!(NSSystemDefined: NSEventType = NSEventTypeSystemDefined);
 
+#[deprecated]
 extern_static!(NSApplicationDefined: NSEventType = NSEventTypeApplicationDefined);
 
+#[deprecated]
 extern_static!(NSPeriodic: NSEventType = NSEventTypePeriodic);
 
+#[deprecated]
 extern_static!(NSCursorUpdate: NSEventType = NSEventTypeCursorUpdate);
 
+#[deprecated]
 extern_static!(NSScrollWheel: NSEventType = NSEventTypeScrollWheel);
 
+#[deprecated]
 extern_static!(NSTabletPoint: NSEventType = NSEventTypeTabletPoint);
 
+#[deprecated]
 extern_static!(NSTabletProximity: NSEventType = NSEventTypeTabletProximity);
 
+#[deprecated]
 extern_static!(NSOtherMouseDown: NSEventType = NSEventTypeOtherMouseDown);
 
+#[deprecated]
 extern_static!(NSOtherMouseUp: NSEventType = NSEventTypeOtherMouseUp);
 
+#[deprecated]
 extern_static!(NSOtherMouseDragged: NSEventType = NSEventTypeOtherMouseDragged);
 
 ns_options!(
@@ -131,50 +154,73 @@ ns_options!(
     }
 );
 
+#[deprecated]
 extern_static!(NSLeftMouseDownMask: NSEventMask = NSEventMaskLeftMouseDown);
 
+#[deprecated]
 extern_static!(NSLeftMouseUpMask: NSEventMask = NSEventMaskLeftMouseUp);
 
+#[deprecated]
 extern_static!(NSRightMouseDownMask: NSEventMask = NSEventMaskRightMouseDown);
 
+#[deprecated]
 extern_static!(NSRightMouseUpMask: NSEventMask = NSEventMaskRightMouseUp);
 
+#[deprecated]
 extern_static!(NSMouseMovedMask: NSEventMask = NSEventMaskMouseMoved);
 
+#[deprecated]
 extern_static!(NSLeftMouseDraggedMask: NSEventMask = NSEventMaskLeftMouseDragged);
 
+#[deprecated]
 extern_static!(NSRightMouseDraggedMask: NSEventMask = NSEventMaskRightMouseDragged);
 
+#[deprecated]
 extern_static!(NSMouseEnteredMask: NSEventMask = NSEventMaskMouseEntered);
 
+#[deprecated]
 extern_static!(NSMouseExitedMask: NSEventMask = NSEventMaskMouseExited);
 
+#[deprecated]
 extern_static!(NSKeyDownMask: NSEventMask = NSEventMaskKeyDown);
 
+#[deprecated]
 extern_static!(NSKeyUpMask: NSEventMask = NSEventMaskKeyUp);
 
+#[deprecated]
 extern_static!(NSFlagsChangedMask: NSEventMask = NSEventMaskFlagsChanged);
 
+#[deprecated]
 extern_static!(NSAppKitDefinedMask: NSEventMask = NSEventMaskAppKitDefined);
 
+#[deprecated]
 extern_static!(NSSystemDefinedMask: NSEventMask = NSEventMaskSystemDefined);
 
+#[deprecated]
 extern_static!(NSApplicationDefinedMask: NSEventMask = NSEventMaskApplicationDefined);
 
+#[deprecated]
 extern_static!(NSPeriodicMask: NSEventMask = NSEventMaskPeriodic);
 
+#[deprecated]
 extern_static!(NSCursorUpdateMask: NSEventMask = NSEventMaskCursorUpdate);
 
+#[deprecated]
 extern_static!(NSScrollWheelMask: NSEventMask = NSEventMaskScrollWheel);
 
+#[deprecated]
 extern_static!(NSTabletPointMask: NSEventMask = NSEventMaskTabletPoint);
 
+#[deprecated]
 extern_static!(NSTabletProximityMask: NSEventMask = NSEventMaskTabletProximity);
 
+#[deprecated]
 extern_static!(NSOtherMouseDownMask: NSEventMask = NSEventMaskOtherMouseDown);
 
+#[deprecated]
 extern_static!(NSOtherMouseUpMask: NSEventMask = NSEventMaskOtherMouseUp);
 
+#[deprecated]
 extern_static!(NSOtherMouseDraggedMask: NSEventMask = NSEventMaskOtherMouseDragged);
 
 inline_fn!(
@@ -198,22 +244,31 @@ ns_options!(
     }
 );
 
+#[deprecated]
 extern_static!(NSAlphaShiftKeyMask: NSEventModifierFlags = NSEventModifierFlagCapsLock);
 
+#[deprecated]
 extern_static!(NSShiftKeyMask: NSEventModifierFlags = NSEventModifierFlagShift);
 
+#[deprecated]
 extern_static!(NSControlKeyMask: NSEventModifierFlags = NSEventModifierFlagControl);
 
+#[deprecated]
 extern_static!(NSAlternateKeyMask: NSEventModifierFlags = NSEventModifierFlagOption);
 
+#[deprecated]
 extern_static!(NSCommandKeyMask: NSEventModifierFlags = NSEventModifierFlagCommand);
 
+#[deprecated]
 extern_static!(NSNumericPadKeyMask: NSEventModifierFlags = NSEventModifierFlagNumericPad);
 
+#[deprecated]
 extern_static!(NSHelpKeyMask: NSEventModifierFlags = NSEventModifierFlagHelp);
 
+#[deprecated]
 extern_static!(NSFunctionKeyMask: NSEventModifierFlags = NSEventModifierFlagFunction);
 
+#[deprecated]
 extern_static!(
     NSDeviceIndependentModifierFlagsMask: NSEventModifierFlags =
         NSEventModifierFlagDeviceIndependentFlagsMask
@@ -229,12 +284,16 @@ ns_enum!(
     }
 );
 
+#[deprecated]
 extern_static!(NSUnknownPointingDevice: NSPointingDeviceType = NSPointingDeviceTypeUnknown);
 
+#[deprecated]
 extern_static!(NSPenPointingDevice: NSPointingDeviceType = NSPointingDeviceTypePen);
 
+#[deprecated]
 extern_static!(NSCursorPointingDevice: NSPointingDeviceType = NSPointingDeviceTypeCursor);
 
+#[deprecated]
 extern_static!(NSEraserPointingDevice: NSPointingDeviceType = NSPointingDeviceTypeEraser);
 
 ns_options!(
@@ -246,10 +305,13 @@ ns_options!(
     }
 );
 
+#[deprecated]
 extern_static!(NSPenTipMask: NSEventButtonMask = NSEventButtonMaskPenTip);
 
+#[deprecated]
 extern_static!(NSPenLowerSideMask: NSEventButtonMask = NSEventButtonMaskPenLowerSide);
 
+#[deprecated]
 extern_static!(NSPenUpperSideMask: NSEventButtonMask = NSEventButtonMaskPenUpperSide);
 
 ns_options!(
@@ -298,30 +360,41 @@ ns_enum!(
     }
 );
 
+#[deprecated]
 extern_static!(NSWindowExposedEventType: NSEventSubtype = NSEventSubtypeWindowExposed);
 
+#[deprecated]
 extern_static!(
     NSApplicationActivatedEventType: NSEventSubtype = NSEventSubtypeApplicationActivated
 );
 
+#[deprecated]
 extern_static!(
     NSApplicationDeactivatedEventType: NSEventSubtype = NSEventSubtypeApplicationDeactivated
 );
 
+#[deprecated]
 extern_static!(NSWindowMovedEventType: NSEventSubtype = NSEventSubtypeWindowMoved);
 
+#[deprecated]
 extern_static!(NSScreenChangedEventType: NSEventSubtype = NSEventSubtypeScreenChanged);
 
+#[deprecated = "This subtype no longer exists"]
 extern_static!(NSAWTEventType: NSEventSubtype = 16);
 
+#[deprecated]
 extern_static!(NSPowerOffEventType: NSEventSubtype = NSEventSubtypePowerOff);
 
+#[deprecated]
 extern_static!(NSMouseEventSubtype: NSEventSubtype = NSEventSubtypeMouseEvent);
 
+#[deprecated]
 extern_static!(NSTabletPointEventSubtype: NSEventSubtype = NSEventSubtypeTabletPoint);
 
+#[deprecated]
 extern_static!(NSTabletProximityEventSubtype: NSEventSubtype = NSEventSubtypeTabletProximity);
 
+#[deprecated]
 extern_static!(NSTouchEventSubtype: NSEventSubtype = NSEventSubtypeTouch);
 
 ns_enum!(

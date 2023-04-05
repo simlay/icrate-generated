@@ -21,5 +21,6 @@ extern_protocol!(
         unsafe fn serviceExtensionWillTerminate(&self);
     }
 
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl ProtocolType for dyn CLLocationPushServiceExtension {}
 );

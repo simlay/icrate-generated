@@ -438,8 +438,10 @@ extern_static!(NSAccessibilityLabelUIElementsAttribute: &'static NSAccessibility
 
 extern_static!(NSAccessibilityLabelValueAttribute: &'static NSAccessibilityAttributeName);
 
+#[deprecated]
 extern_static!(NSAccessibilityMatteHoleAttribute: &'static NSAccessibilityAttributeName);
 
+#[deprecated]
 extern_static!(
     NSAccessibilityMatteContentUIElementAttribute: &'static NSAccessibilityAttributeName
 );
@@ -881,4 +883,5 @@ ns_enum!(
 
 pub type NSAccessibilityLoadingToken = TodoProtocols;
 
+#[deprecated]
 extern_static!(NSAccessibilitySortButtonRole: &'static NSAccessibilityRole);

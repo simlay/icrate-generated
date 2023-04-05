@@ -47,6 +47,7 @@ extern_protocol!(
         unsafe fn session_didFailWithError(&self, session: &GKSession, error: &NSError);
     }
 
+    #[deprecated = "Use MCSession in association with MCSessionDelegate from the MultipeerConnectivity framework instead"]
     unsafe impl ProtocolType for dyn GKSessionDelegate {}
 );
 
@@ -138,5 +139,6 @@ extern_protocol!(
         );
     }
 
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl ProtocolType for dyn GKVoiceChatClient {}
 );

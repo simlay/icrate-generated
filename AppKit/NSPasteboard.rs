@@ -421,50 +421,74 @@ extern_fn!(
     ) -> *mut NSArray<NSString>;
 );
 
+#[deprecated]
 extern_static!(NSStringPboardType: &'static NSPasteboardType);
 
+#[deprecated = "Create multiple pasteboard items with NSPasteboardTypeFileURL or kUTTypeFileURL instead"]
 extern_static!(NSFilenamesPboardType: &'static NSPasteboardType);
 
+#[deprecated]
 extern_static!(NSTIFFPboardType: &'static NSPasteboardType);
 
+#[deprecated]
 extern_static!(NSRTFPboardType: &'static NSPasteboardType);
 
+#[deprecated]
 extern_static!(NSTabularTextPboardType: &'static NSPasteboardType);
 
+#[deprecated]
 extern_static!(NSFontPboardType: &'static NSPasteboardType);
 
+#[deprecated]
 extern_static!(NSRulerPboardType: &'static NSPasteboardType);
 
+#[deprecated]
 extern_static!(NSColorPboardType: &'static NSPasteboardType);
 
+#[deprecated]
 extern_static!(NSRTFDPboardType: &'static NSPasteboardType);
 
+#[deprecated]
 extern_static!(NSHTMLPboardType: &'static NSPasteboardType);
 
+#[deprecated]
 extern_static!(NSURLPboardType: &'static NSPasteboardType);
 
+#[deprecated]
 extern_static!(NSPDFPboardType: &'static NSPasteboardType);
 
+#[deprecated]
 extern_static!(NSMultipleTextSelectionPboardType: &'static NSPasteboardType);
 
+#[deprecated]
 extern_static!(NSPostScriptPboardType: &'static NSPasteboardType);
 
+#[deprecated]
 extern_static!(NSVCardPboardType: &'static NSPasteboardType);
 
+#[deprecated]
 extern_static!(NSInkTextPboardType: &'static NSPasteboardType);
 
+#[deprecated]
 extern_static!(NSFilesPromisePboardType: &'static NSPasteboardType);
 
+#[deprecated]
 extern_static!(NSPasteboardTypeFindPanelSearchOptions: &'static NSPasteboardType);
 
+#[deprecated]
 extern_static!(NSGeneralPboard: &'static NSPasteboardName);
 
+#[deprecated]
 extern_static!(NSFontPboard: &'static NSPasteboardName);
 
+#[deprecated]
 extern_static!(NSRulerPboard: &'static NSPasteboardName);
 
+#[deprecated]
 extern_static!(NSFindPboard: &'static NSPasteboardName);
 
+#[deprecated]
 extern_static!(NSDragPboard: &'static NSPasteboardName);
 
+#[deprecated]
 extern_static!(NSPICTPboardType: &'static NSPasteboardType);

@@ -1151,6 +1151,7 @@ extern_static!(NSApplicationLaunchIsDefaultLaunchKey: &'static NSString);
 
 extern_static!(NSApplicationLaunchUserNotificationKey: &'static NSString);
 
+#[deprecated]
 extern_static!(NSApplicationLaunchRemoteNotificationKey: &'static NSString);
 
 extern_static!(NSApplicationDidChangeOcclusionStateNotification: &'static NSNotificationName);

@@ -243,6 +243,8 @@ extern_methods!(
     }
 );
 
+#[deprecated = "All NSUserNotifications API should be replaced with UserNotifications.frameworks API"]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSUserNotificationDefaultSoundName: &'static NSString);
 
 extern_class!(

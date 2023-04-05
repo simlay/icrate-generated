@@ -4,6 +4,7 @@ use crate::common::*;
 use crate::AuthenticationServices::*;
 use crate::Foundation::*;
 
+#[cfg(not(any(target_os = "tvos")))]
 extern_static!(ASWebAuthenticationSessionErrorDomain: &'static NSErrorDomain);
 
 ns_error_enum!(
@@ -102,5 +103,6 @@ extern_protocol!(
         ) -> Id<ASPresentationAnchor>;
     }
 
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl ProtocolType for dyn ASWebAuthenticationPresentationContextProviding {}
 );

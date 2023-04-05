@@ -5,8 +5,10 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::GameController::*;
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 extern_static!(GCRacingWheelDidConnectNotification: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 extern_static!(GCRacingWheelDidDisconnectNotification: &'static NSString);
 
 extern_class!(

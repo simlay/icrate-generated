@@ -45,7 +45,9 @@ extern_protocol!(
         unsafe fn endSeeking(&self);
     }
 
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     unsafe impl ProtocolType for dyn MPMediaPlayback {}
 );
 
+#[deprecated = "Use AVPlayerViewController in AVKit."]
 extern_static!(MPMediaPlaybackIsPreparedToPlayDidChangeNotification: Option<&'static NSString>);

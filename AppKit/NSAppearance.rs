@@ -83,6 +83,7 @@ extern_static!(NSAppearanceNameAqua: &'static NSAppearanceName);
 
 extern_static!(NSAppearanceNameDarkAqua: &'static NSAppearanceName);
 
+#[deprecated = "Light content should use the default Aqua apppearance."]
 extern_static!(NSAppearanceNameLightContent: &'static NSAppearanceName);
 
 extern_static!(NSAppearanceNameVibrantDark: &'static NSAppearanceName);

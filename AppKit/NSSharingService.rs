@@ -23,28 +23,40 @@ extern_static!(NSSharingServiceNameAddToAperture: &'static NSSharingServiceName)
 
 extern_static!(NSSharingServiceNameUseAsDesktopPicture: &'static NSSharingServiceName);
 
+#[deprecated = "This service is no longer included with the system."]
 extern_static!(NSSharingServiceNamePostOnFacebook: &'static NSSharingServiceName);
 
+#[deprecated = "This service is no longer included with the system."]
 extern_static!(NSSharingServiceNamePostOnTwitter: &'static NSSharingServiceName);
 
+#[deprecated = "This service is no longer included with the system."]
 extern_static!(NSSharingServiceNamePostOnSinaWeibo: &'static NSSharingServiceName);
 
+#[deprecated = "This service is no longer included with the system."]
 extern_static!(NSSharingServiceNamePostOnTencentWeibo: &'static NSSharingServiceName);
 
+#[deprecated = "This service is no longer included with the system."]
 extern_static!(NSSharingServiceNamePostOnLinkedIn: &'static NSSharingServiceName);
 
+#[deprecated = "This service is no longer included with the system."]
 extern_static!(NSSharingServiceNameUseAsTwitterProfileImage: &'static NSSharingServiceName);
 
+#[deprecated = "This service is no longer included with the system."]
 extern_static!(NSSharingServiceNameUseAsFacebookProfileImage: &'static NSSharingServiceName);
 
+#[deprecated = "This service is no longer included with the system."]
 extern_static!(NSSharingServiceNameUseAsLinkedInProfileImage: &'static NSSharingServiceName);
 
+#[deprecated = "This service is no longer included with the system."]
 extern_static!(NSSharingServiceNamePostImageOnFlickr: &'static NSSharingServiceName);
 
+#[deprecated = "This service is no longer included with the system."]
 extern_static!(NSSharingServiceNamePostVideoOnVimeo: &'static NSSharingServiceName);
 
+#[deprecated = "This service is no longer included with the system."]
 extern_static!(NSSharingServiceNamePostVideoOnYouku: &'static NSSharingServiceName);
 
+#[deprecated = "This service is no longer included with the system."]
 extern_static!(NSSharingServiceNamePostVideoOnTudou: &'static NSSharingServiceName);
 
 extern_static!(NSSharingServiceNameCloudSharing: &'static NSSharingServiceName);

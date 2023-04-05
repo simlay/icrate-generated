@@ -19,6 +19,7 @@ extern_enum!(
     }
 );
 
+#[deprecated]
 pub type NSInterfaceStyle = NSUInteger;
 
 extern_fn!(
@@ -44,4 +45,5 @@ extern_methods!(
     }
 );
 
+#[deprecated]
 extern_static!(NSInterfaceStyleDefault: Option<&'static NSString>);

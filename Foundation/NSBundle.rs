@@ -472,6 +472,8 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_static!(NSBundleResourceRequestLowDiskSpaceNotification: &'static NSNotificationName);
 
+#[cfg(not(any(target_os = "macos")))]
 extern_static!(NSBundleResourceRequestLoadingPriorityUrgent: c_double);

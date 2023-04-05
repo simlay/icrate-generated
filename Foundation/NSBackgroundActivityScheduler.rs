@@ -14,6 +14,7 @@ ns_enum!(
     }
 );
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 pub type NSBackgroundActivityCompletionHandler = *mut Block<(NSBackgroundActivityResult,), ()>;
 
 extern_class!(

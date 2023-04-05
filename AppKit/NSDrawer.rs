@@ -201,10 +201,14 @@ extern_protocol!(
     unsafe impl ProtocolType for dyn NSDrawerDelegate {}
 );
 
+#[deprecated = "Drawers are deprecated; consider using NSSplitViewController"]
 extern_static!(NSDrawerWillOpenNotification: &'static NSNotificationName);
 
+#[deprecated = "Drawers are deprecated; consider using NSSplitViewController"]
 extern_static!(NSDrawerDidOpenNotification: &'static NSNotificationName);
 
+#[deprecated = "Drawers are deprecated; consider using NSSplitViewController"]
 extern_static!(NSDrawerWillCloseNotification: &'static NSNotificationName);
 
+#[deprecated = "Drawers are deprecated; consider using NSSplitViewController"]
 extern_static!(NSDrawerDidCloseNotification: &'static NSNotificationName);

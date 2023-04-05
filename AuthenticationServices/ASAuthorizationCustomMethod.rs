@@ -4,14 +4,18 @@ use crate::common::*;
 use crate::AuthenticationServices::*;
 use crate::Foundation::*;
 
+#[cfg(not(any(target_os = "ios", target_os = "macos", target_os = "watchos")))]
 typed_enum!(
     pub type ASAuthorizationCustomMethod = NSString;
 );
 
+#[cfg(not(any(target_os = "ios", target_os = "macos", target_os = "watchos")))]
 extern_static!(
     ASAuthorizationCustomMethodVideoSubscriberAccount: &'static ASAuthorizationCustomMethod
 );
 
+#[cfg(not(any(target_os = "ios", target_os = "macos", target_os = "watchos")))]
 extern_static!(ASAuthorizationCustomMethodRestorePurchase: &'static ASAuthorizationCustomMethod);
 
+#[cfg(not(any(target_os = "ios", target_os = "macos", target_os = "watchos")))]
 extern_static!(ASAuthorizationCustomMethodOther: &'static ASAuthorizationCustomMethod);

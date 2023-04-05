@@ -24,6 +24,7 @@ ns_closed_enum!(
     }
 );
 
+#[deprecated = "Hosted content is no longer supported"]
 extern_static!(SKDownloadTimeRemainingUnknown: NSTimeInterval);
 
 extern_class!(

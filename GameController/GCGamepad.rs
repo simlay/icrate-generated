@@ -5,6 +5,7 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::GameController::*;
 
+#[deprecated = "GCGamepad has been deprecated"]
 pub type GCGamepadValueChangedHandler =
     *mut Block<(NonNull<GCGamepad>, NonNull<GCControllerElement>), ()>;
 

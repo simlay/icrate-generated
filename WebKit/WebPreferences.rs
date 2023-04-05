@@ -18,6 +18,7 @@ ns_enum!(
     }
 );
 
+#[deprecated]
 extern_static!(WebPreferencesChangedNotification: Option<&'static NSString>);
 
 extern_class!(

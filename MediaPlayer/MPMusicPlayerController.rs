@@ -193,12 +193,15 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 extern_static!(
     MPMusicPlayerControllerPlaybackStateDidChangeNotification: &'static NSNotificationName
 );
 
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 extern_static!(
     MPMusicPlayerControllerNowPlayingItemDidChangeNotification: &'static NSNotificationName
 );
 
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_static!(MPMusicPlayerControllerVolumeDidChangeNotification: &'static NSNotificationName);

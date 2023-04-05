@@ -13,8 +13,10 @@ extern_static!(NSIsNilTransformerName: &'static NSValueTransformerName);
 
 extern_static!(NSIsNotNilTransformerName: &'static NSValueTransformerName);
 
+#[deprecated]
 extern_static!(NSUnarchiveFromDataTransformerName: &'static NSValueTransformerName);
 
+#[deprecated]
 extern_static!(NSKeyedUnarchiveFromDataTransformerName: &'static NSValueTransformerName);
 
 extern_static!(NSSecureUnarchiveFromDataTransformerName: &'static NSValueTransformerName);

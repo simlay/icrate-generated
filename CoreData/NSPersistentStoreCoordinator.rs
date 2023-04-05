@@ -6,6 +6,7 @@ use crate::Foundation::*;
 
 extern_static!(NSSQLiteStoreType: &'static NSString);
 
+#[cfg(not(any(target_os = "ios")))]
 extern_static!(NSXMLStoreType: &'static NSString);
 
 extern_static!(NSBinaryStoreType: &'static NSString);
@@ -30,6 +31,7 @@ extern_static!(NSUUIDChangedPersistentStoresKey: &'static NSString);
 
 extern_static!(NSReadOnlyPersistentStoreOption: &'static NSString);
 
+#[cfg(not(any(target_os = "ios")))]
 extern_static!(NSValidateXMLStoreOption: &'static NSString);
 
 extern_static!(NSPersistentStoreTimeoutOption: &'static NSString);
@@ -54,30 +56,52 @@ extern_static!(NSPersistentStoreOSCompatibility: &'static NSString);
 
 extern_static!(NSPersistentStoreConnectionPoolMaxSizeKey: &'static NSString);
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSCoreDataCoreSpotlightExporter: &'static NSString);
 
+#[deprecated = "Spotlight integration is deprecated. Use CoreSpotlight integration instead."]
+#[cfg(not(any(target_os = "ios")))]
 extern_static!(NSXMLExternalRecordType: &'static NSString);
 
+#[deprecated = "Spotlight integration is deprecated. Use CoreSpotlight integration instead."]
+#[cfg(not(any(target_os = "ios")))]
 extern_static!(NSBinaryExternalRecordType: &'static NSString);
 
+#[deprecated = "Spotlight integration is deprecated. Use CoreSpotlight integration instead."]
+#[cfg(not(any(target_os = "ios")))]
 extern_static!(NSExternalRecordsFileFormatOption: &'static NSString);
 
+#[deprecated = "Spotlight integration is deprecated. Use CoreSpotlight integration instead."]
+#[cfg(not(any(target_os = "ios")))]
 extern_static!(NSExternalRecordsDirectoryOption: &'static NSString);
 
+#[deprecated = "Spotlight integration is deprecated. Use CoreSpotlight integration instead."]
+#[cfg(not(any(target_os = "ios")))]
 extern_static!(NSExternalRecordExtensionOption: &'static NSString);
 
+#[deprecated = "Spotlight integration is deprecated. Use CoreSpotlight integration instead."]
+#[cfg(not(any(target_os = "ios")))]
 extern_static!(NSEntityNameInPathKey: &'static NSString);
 
+#[deprecated = "Spotlight integration is deprecated. Use CoreSpotlight integration instead."]
+#[cfg(not(any(target_os = "ios")))]
 extern_static!(NSStoreUUIDInPathKey: &'static NSString);
 
+#[deprecated = "Spotlight integration is deprecated. Use CoreSpotlight integration instead."]
+#[cfg(not(any(target_os = "ios")))]
 extern_static!(NSStorePathKey: &'static NSString);
 
+#[deprecated = "Spotlight integration is deprecated. Use CoreSpotlight integration instead."]
+#[cfg(not(any(target_os = "ios")))]
 extern_static!(NSModelPathKey: &'static NSString);
 
+#[deprecated = "Spotlight integration is deprecated. Use CoreSpotlight integration instead."]
+#[cfg(not(any(target_os = "ios")))]
 extern_static!(NSObjectURIKey: &'static NSString);
 
 extern_static!(NSPersistentStoreForceDestroyOption: &'static NSString);
 
+#[cfg(not(any(target_os = "macos")))]
 extern_static!(NSPersistentStoreFileProtectionKey: &'static NSString);
 
 extern_static!(NSPersistentHistoryTrackingKey: &'static NSString);
@@ -437,18 +461,26 @@ ns_enum!(
     }
 );
 
+#[deprecated = "Please see the release notes and Core Data documentation."]
 extern_static!(NSPersistentStoreUbiquitousContentNameKey: &'static NSString);
 
+#[deprecated = "Please see the release notes and Core Data documentation."]
 extern_static!(NSPersistentStoreUbiquitousContentURLKey: &'static NSString);
 
+#[deprecated = "Please see the release notes and Core Data documentation."]
 extern_static!(NSPersistentStoreDidImportUbiquitousContentChangesNotification: &'static NSString);
 
+#[deprecated = "Please see the release notes and Core Data documentation."]
 extern_static!(NSPersistentStoreUbiquitousTransitionTypeKey: &'static NSString);
 
+#[deprecated = "Please see the release notes and Core Data documentation."]
 extern_static!(NSPersistentStoreUbiquitousPeerTokenOption: &'static NSString);
 
+#[deprecated = "Please see the release notes and Core Data documentation."]
 extern_static!(NSPersistentStoreRemoveUbiquitousMetadataOption: &'static NSString);
 
+#[deprecated = "Please see the release notes and Core Data documentation."]
 extern_static!(NSPersistentStoreUbiquitousContainerIdentifierKey: &'static NSString);
 
+#[deprecated = "Please see the release notes and Core Data documentation."]
 extern_static!(NSPersistentStoreRebuildFromUbiquitousContentOption: &'static NSString);

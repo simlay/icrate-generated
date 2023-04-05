@@ -74,6 +74,8 @@ extern_protocol!(
         );
     }
 
+    #[deprecated = "Use GKLocalPlayerListener for multiplayer event notifications."]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl ProtocolType for dyn GKGameSessionEventListener {}
 );
 

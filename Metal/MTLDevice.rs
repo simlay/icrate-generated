@@ -25,16 +25,21 @@ extern_fn!(
     pub unsafe fn MTLCopyAllDevices() -> NonNull<NSArray<ProtocolObject<dyn MTLDevice>>>;
 );
 
+#[cfg(not(any(target_os = "ios")))]
 typed_enum!(
     pub type MTLDeviceNotificationName = NSString;
 );
 
+#[cfg(not(any(target_os = "ios")))]
 extern_static!(MTLDeviceWasAddedNotification: &'static MTLDeviceNotificationName);
 
+#[cfg(not(any(target_os = "ios")))]
 extern_static!(MTLDeviceRemovalRequestedNotification: &'static MTLDeviceNotificationName);
 
+#[cfg(not(any(target_os = "ios")))]
 extern_static!(MTLDeviceWasRemovedNotification: &'static MTLDeviceNotificationName);
 
+#[cfg(not(any(target_os = "ios")))]
 pub type MTLDeviceNotificationHandler = *mut Block<
     (
         NonNull<ProtocolObject<dyn MTLDevice>>,

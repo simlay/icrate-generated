@@ -6,8 +6,10 @@ use crate::Foundation::*;
 use crate::HealthKit::*;
 use crate::UniformTypeIdentifiers::*;
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(HKPredicateKeyPathClinicalRecordFHIRResourceIdentifier: &'static NSString);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(HKPredicateKeyPathClinicalRecordFHIRResourceType: &'static NSString);
 
 extern_class!(

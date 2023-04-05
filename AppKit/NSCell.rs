@@ -851,24 +851,34 @@ extern_methods!(
     }
 );
 
+#[deprecated]
 extern_static!(NSBackgroundStyleLight: NSBackgroundStyle = NSBackgroundStyleNormal);
 
+#[deprecated]
 extern_static!(NSBackgroundStyleDark: NSBackgroundStyle = NSBackgroundStyleEmphasized);
 
+#[deprecated]
 pub type NSCellStateValue = NSControlStateValue;
 
+#[deprecated]
 extern_static!(NSMixedState: NSControlStateValue = NSControlStateValueMixed);
 
+#[deprecated]
 extern_static!(NSOffState: NSControlStateValue = NSControlStateValueOff);
 
+#[deprecated]
 extern_static!(NSOnState: NSControlStateValue = NSControlStateValueOn);
 
+#[deprecated]
 extern_static!(NSRegularControlSize: NSControlSize = NSControlSizeRegular);
 
+#[deprecated]
 extern_static!(NSSmallControlSize: NSControlSize = NSControlSizeSmall);
 
+#[deprecated]
 extern_static!(NSMiniControlSize: NSControlSize = NSControlSizeMini);
 
+#[deprecated = "Changes to the accent color can be manually observed by implementing -viewDidChangeEffectiveAppearance in a NSView subclass, or by Key-Value Observing the -effectiveAppearance property on NSApplication. Views are automatically redisplayed when the accent color changes."]
 extern_static!(NSControlTintDidChangeNotification: &'static NSNotificationName);
 
 extern_enum!(

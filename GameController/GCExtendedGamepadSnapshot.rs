@@ -60,6 +60,7 @@ ns_enum!(
     }
 );
 
+#[deprecated = "GCExtendedGamepadSnapshot has been deprecated, use [GCController controllerWithExtendedGamepad] instead"]
 extern_static!(GCCurrentExtendedGamepadSnapshotDataVersion: GCExtendedGamepadSnapshotDataVersion);
 
 extern_fn!(

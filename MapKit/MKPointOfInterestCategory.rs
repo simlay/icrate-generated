@@ -11,84 +11,124 @@ typed_enum!(
     pub type MKPointOfInterestCategory = NSString;
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategoryAirport: Option<&'static MKPointOfInterestCategory>);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategoryAmusementPark: Option<&'static MKPointOfInterestCategory>);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategoryAquarium: Option<&'static MKPointOfInterestCategory>);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategoryATM: Option<&'static MKPointOfInterestCategory>);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategoryBakery: Option<&'static MKPointOfInterestCategory>);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategoryBank: Option<&'static MKPointOfInterestCategory>);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategoryBeach: Option<&'static MKPointOfInterestCategory>);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategoryBrewery: Option<&'static MKPointOfInterestCategory>);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategoryCafe: Option<&'static MKPointOfInterestCategory>);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategoryCampground: Option<&'static MKPointOfInterestCategory>);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategoryCarRental: Option<&'static MKPointOfInterestCategory>);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategoryEVCharger: Option<&'static MKPointOfInterestCategory>);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategoryFireStation: Option<&'static MKPointOfInterestCategory>);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategoryFitnessCenter: Option<&'static MKPointOfInterestCategory>);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategoryFoodMarket: Option<&'static MKPointOfInterestCategory>);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategoryGasStation: Option<&'static MKPointOfInterestCategory>);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategoryHospital: Option<&'static MKPointOfInterestCategory>);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategoryHotel: Option<&'static MKPointOfInterestCategory>);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategoryLaundry: Option<&'static MKPointOfInterestCategory>);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategoryLibrary: Option<&'static MKPointOfInterestCategory>);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategoryMarina: Option<&'static MKPointOfInterestCategory>);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategoryMovieTheater: Option<&'static MKPointOfInterestCategory>);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategoryMuseum: Option<&'static MKPointOfInterestCategory>);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategoryNationalPark: Option<&'static MKPointOfInterestCategory>);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategoryNightlife: Option<&'static MKPointOfInterestCategory>);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategoryPark: Option<&'static MKPointOfInterestCategory>);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategoryParking: Option<&'static MKPointOfInterestCategory>);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategoryPharmacy: Option<&'static MKPointOfInterestCategory>);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategoryPolice: Option<&'static MKPointOfInterestCategory>);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategoryPostOffice: Option<&'static MKPointOfInterestCategory>);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(
     MKPointOfInterestCategoryPublicTransport: Option<&'static MKPointOfInterestCategory>
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategoryRestaurant: Option<&'static MKPointOfInterestCategory>);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategoryRestroom: Option<&'static MKPointOfInterestCategory>);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategorySchool: Option<&'static MKPointOfInterestCategory>);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategoryStadium: Option<&'static MKPointOfInterestCategory>);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategoryStore: Option<&'static MKPointOfInterestCategory>);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategoryTheater: Option<&'static MKPointOfInterestCategory>);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategoryUniversity: Option<&'static MKPointOfInterestCategory>);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategoryWinery: Option<&'static MKPointOfInterestCategory>);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKPointOfInterestCategoryZoo: Option<&'static MKPointOfInterestCategory>);

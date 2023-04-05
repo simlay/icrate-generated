@@ -4,14 +4,19 @@ use crate::common::*;
 use crate::CallKit::*;
 use crate::Foundation::*;
 
+#[cfg(not(any(target_os = "macos")))]
 extern_static!(CXErrorDomain: &'static NSErrorDomain);
 
+#[cfg(not(any(target_os = "macos")))]
 extern_static!(CXErrorDomainIncomingCall: &'static NSErrorDomain);
 
+#[cfg(not(any(target_os = "macos")))]
 extern_static!(CXErrorDomainRequestTransaction: &'static NSErrorDomain);
 
+#[cfg(not(any(target_os = "macos")))]
 extern_static!(CXErrorDomainCallDirectoryManager: &'static NSErrorDomain);
 
+#[cfg(not(any(target_os = "macos")))]
 extern_static!(CXErrorDomainNotificationServiceExtension: &'static NSErrorDomain);
 
 ns_error_enum!(

@@ -4,6 +4,7 @@ use crate::common::*;
 use crate::Foundation::*;
 use crate::MetricKit::*;
 
+#[cfg(not(any(target_os = "macos")))]
 extern_static!(MXErrorDomain: Option<&'static NSErrorDomain>);
 
 ns_error_enum!(

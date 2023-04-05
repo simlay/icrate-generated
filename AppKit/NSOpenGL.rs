@@ -106,6 +106,7 @@ extern_enum!(
     }
 );
 
+#[deprecated = "OpenGL API deprecated; please use Metal and MetalKit.  (Define GL_SILENCE_DEPRECATION to silence these warnings.)"]
 pub type NSOpenGLPixelFormatAttribute = u32;
 
 extern_enum!(
@@ -157,68 +158,83 @@ ns_enum!(
     }
 );
 
+#[deprecated]
 extern_static!(
     NSOpenGLCPSwapInterval: NSOpenGLContextParameter = NSOpenGLContextParameterSwapInterval
 );
 
+#[deprecated]
 extern_static!(
     NSOpenGLCPSurfaceOrder: NSOpenGLContextParameter = NSOpenGLContextParameterSurfaceOrder
 );
 
+#[deprecated]
 extern_static!(
     NSOpenGLCPSurfaceOpacity: NSOpenGLContextParameter = NSOpenGLContextParameterSurfaceOpacity
 );
 
+#[deprecated]
 extern_static!(
     NSOpenGLCPSurfaceBackingSize: NSOpenGLContextParameter =
         NSOpenGLContextParameterSurfaceBackingSize
 );
 
+#[deprecated]
 extern_static!(
     NSOpenGLCPReclaimResources: NSOpenGLContextParameter = NSOpenGLContextParameterReclaimResources
 );
 
+#[deprecated]
 extern_static!(
     NSOpenGLCPCurrentRendererID: NSOpenGLContextParameter =
         NSOpenGLContextParameterCurrentRendererID
 );
 
+#[deprecated]
 extern_static!(
     NSOpenGLCPGPUVertexProcessing: NSOpenGLContextParameter =
         NSOpenGLContextParameterGPUVertexProcessing
 );
 
+#[deprecated]
 extern_static!(
     NSOpenGLCPGPUFragmentProcessing: NSOpenGLContextParameter =
         NSOpenGLContextParameterGPUFragmentProcessing
 );
 
+#[deprecated]
 extern_static!(
     NSOpenGLCPHasDrawable: NSOpenGLContextParameter = NSOpenGLContextParameterHasDrawable
 );
 
+#[deprecated]
 extern_static!(
     NSOpenGLCPMPSwapsInFlight: NSOpenGLContextParameter = NSOpenGLContextParameterMPSwapsInFlight
 );
 
+#[deprecated]
 extern_static!(
     NSOpenGLCPSwapRectangle: NSOpenGLContextParameter = NSOpenGLContextParameterSwapRectangle
 );
 
+#[deprecated]
 extern_static!(
     NSOpenGLCPSwapRectangleEnable: NSOpenGLContextParameter =
         NSOpenGLContextParameterSwapRectangleEnable
 );
 
+#[deprecated]
 extern_static!(
     NSOpenGLCPRasterizationEnable: NSOpenGLContextParameter =
         NSOpenGLContextParameterRasterizationEnable
 );
 
+#[deprecated]
 extern_static!(
     NSOpenGLCPStateValidation: NSOpenGLContextParameter = NSOpenGLContextParameterStateValidation
 );
 
+#[deprecated]
 extern_static!(
     NSOpenGLCPSurfaceSurfaceVolatile: NSOpenGLContextParameter =
         NSOpenGLContextParameterSurfaceSurfaceVolatile

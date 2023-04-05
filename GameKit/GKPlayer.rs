@@ -5,6 +5,7 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::GameKit::*;
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(GKPlayerIDNoLongerAvailable: &'static NSString);
 
 extern_class!(

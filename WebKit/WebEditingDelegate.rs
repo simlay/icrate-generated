@@ -157,5 +157,6 @@ extern_protocol!(
         ) -> Option<Id<NSUndoManager>>;
     }
 
+    #[deprecated]
     unsafe impl ProtocolType for dyn WebEditingDelegate {}
 );

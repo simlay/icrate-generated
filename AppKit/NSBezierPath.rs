@@ -356,26 +356,38 @@ extern_methods!(
     }
 );
 
+#[deprecated]
 extern_static!(NSButtLineCapStyle: NSLineCapStyle = NSLineCapStyleButt);
 
+#[deprecated]
 extern_static!(NSRoundLineCapStyle: NSLineCapStyle = NSLineCapStyleRound);
 
+#[deprecated]
 extern_static!(NSSquareLineCapStyle: NSLineCapStyle = NSLineCapStyleSquare);
 
+#[deprecated]
 extern_static!(NSMiterLineJoinStyle: NSLineJoinStyle = NSLineJoinStyleMiter);
 
+#[deprecated]
 extern_static!(NSRoundLineJoinStyle: NSLineJoinStyle = NSLineJoinStyleRound);
 
+#[deprecated]
 extern_static!(NSBevelLineJoinStyle: NSLineJoinStyle = NSLineJoinStyleBevel);
 
+#[deprecated]
 extern_static!(NSNonZeroWindingRule: NSWindingRule = NSWindingRuleNonZero);
 
+#[deprecated]
 extern_static!(NSEvenOddWindingRule: NSWindingRule = NSWindingRuleEvenOdd);
 
+#[deprecated]
 extern_static!(NSMoveToBezierPathElement: NSBezierPathElement = NSBezierPathElementMoveTo);
 
+#[deprecated]
 extern_static!(NSLineToBezierPathElement: NSBezierPathElement = NSBezierPathElementLineTo);
 
+#[deprecated]
 extern_static!(NSCurveToBezierPathElement: NSBezierPathElement = NSBezierPathElementCurveTo);
 
+#[deprecated]
 extern_static!(NSClosePathBezierPathElement: NSBezierPathElement = NSBezierPathElementClosePath);

@@ -57,6 +57,7 @@ extern_protocol!(
         ) -> Id<ASPresentationAnchor>;
     }
 
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl ProtocolType for dyn ASAuthorizationControllerPresentationContextProviding {}
 );
 

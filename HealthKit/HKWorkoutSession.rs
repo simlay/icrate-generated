@@ -222,5 +222,6 @@ extern_protocol!(
         );
     }
 
+    #[cfg(not(any(target_os = "ios")))]
     unsafe impl ProtocolType for dyn HKWorkoutSessionDelegate {}
 );

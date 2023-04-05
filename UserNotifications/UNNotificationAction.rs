@@ -18,6 +18,7 @@ ns_options!(
     }
 );
 
+#[cfg(not(any(target_os = "tvos")))]
 extern_static!(UNNotificationActionOptionNone: UNNotificationActionOptions = 0);
 
 extern_class!(

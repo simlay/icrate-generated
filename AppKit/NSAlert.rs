@@ -163,8 +163,11 @@ extern_methods!(
     }
 );
 
+#[deprecated]
 extern_static!(NSWarningAlertStyle: NSAlertStyle = NSAlertStyleWarning);
 
+#[deprecated]
 extern_static!(NSInformationalAlertStyle: NSAlertStyle = NSAlertStyleInformational);
 
+#[deprecated]
 extern_static!(NSCriticalAlertStyle: NSAlertStyle = NSAlertStyleCritical);

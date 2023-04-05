@@ -514,6 +514,7 @@ extern_static!(NSWorkspaceDidChangeFileLabelsNotification: &'static NSNotificati
 
 extern_static!(NSWorkspaceActiveSpaceDidChangeNotification: &'static NSNotificationName);
 
+#[deprecated]
 typed_enum!(
     pub type NSWorkspaceFileOperationName = NSString;
 );
@@ -548,20 +549,25 @@ ns_options!(
     }
 );
 
+#[deprecated = "Use NSWorkspaceOpenConfiguration instead."]
 typed_enum!(
     pub type NSWorkspaceLaunchConfigurationKey = NSString;
 );
 
+#[deprecated = "Use -[NSWorkspaceOpenConfiguration setAppleEvent:] instead."]
 extern_static!(
     NSWorkspaceLaunchConfigurationAppleEvent: &'static NSWorkspaceLaunchConfigurationKey
 );
 
+#[deprecated = "Use -[NSWorkspaceOpenConfiguration setArguments:] instead."]
 extern_static!(NSWorkspaceLaunchConfigurationArguments: &'static NSWorkspaceLaunchConfigurationKey);
 
+#[deprecated = "Use -[NSWorkspaceOpenConfiguration setEnvironment:] instead."]
 extern_static!(
     NSWorkspaceLaunchConfigurationEnvironment: &'static NSWorkspaceLaunchConfigurationKey
 );
 
+#[deprecated = "Do not specify an architecutre. When unspecified, the architecture for a new application instance will be determined based on the available architectures in its executable."]
 extern_static!(
     NSWorkspaceLaunchConfigurationArchitecture: &'static NSWorkspaceLaunchConfigurationKey
 );
@@ -852,34 +858,50 @@ extern_methods!(
     }
 );
 
+#[deprecated = "Use -[NSFileManager moveItemAtURL:toURL:error:] instead."]
 extern_static!(NSWorkspaceMoveOperation: &'static NSWorkspaceFileOperationName);
 
+#[deprecated = "Use -[NSFileManager copyItemAtURL:toURL:error:] instead."]
 extern_static!(NSWorkspaceCopyOperation: &'static NSWorkspaceFileOperationName);
 
+#[deprecated = "Use -[NSFileManager linkItemAtURL:toURL:error:] instead."]
 extern_static!(NSWorkspaceLinkOperation: &'static NSWorkspaceFileOperationName);
 
+#[deprecated = "This operation is unimplemented."]
 extern_static!(NSWorkspaceCompressOperation: &'static NSWorkspaceFileOperationName);
 
+#[deprecated = "This operation is unimplemented."]
 extern_static!(NSWorkspaceDecompressOperation: &'static NSWorkspaceFileOperationName);
 
+#[deprecated = "This operation is unimplemented."]
 extern_static!(NSWorkspaceEncryptOperation: &'static NSWorkspaceFileOperationName);
 
+#[deprecated = "This operation is unimplemented."]
 extern_static!(NSWorkspaceDecryptOperation: &'static NSWorkspaceFileOperationName);
 
+#[deprecated = "Use -[NSFileManager removeItemAtURL:error:] instead."]
 extern_static!(NSWorkspaceDestroyOperation: &'static NSWorkspaceFileOperationName);
 
+#[deprecated = "Use -[NSWorkspace recycleURLs:completionHandler:] instead."]
 extern_static!(NSWorkspaceRecycleOperation: &'static NSWorkspaceFileOperationName);
 
+#[deprecated = "Use -[NSWorkspace duplicateURLs:completionHandler:] instead."]
 extern_static!(NSWorkspaceDuplicateOperation: &'static NSWorkspaceFileOperationName);
 
+#[deprecated]
 extern_static!(NSWorkspaceDidPerformFileOperationNotification: &'static NSNotificationName);
 
+#[deprecated]
 extern_static!(NSPlainFileType: &'static NSString);
 
+#[deprecated]
 extern_static!(NSDirectoryFileType: &'static NSString);
 
+#[deprecated]
 extern_static!(NSApplicationFileType: &'static NSString);
 
+#[deprecated]
 extern_static!(NSFilesystemFileType: &'static NSString);
 
+#[deprecated]
 extern_static!(NSShellCommandFileType: &'static NSString);

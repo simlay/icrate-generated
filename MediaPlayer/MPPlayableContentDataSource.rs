@@ -56,5 +56,7 @@ extern_protocol!(
         ) -> Option<Id<MPContentItem>>;
     }
 
+    #[deprecated = "Use CarPlay framework"]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl ProtocolType for dyn MPPlayableContentDataSource {}
 );

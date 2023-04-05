@@ -10,8 +10,11 @@ typed_enum!(
     pub type HKFHIRRelease = NSString;
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(HKFHIRReleaseDSTU2: &'static HKFHIRRelease);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(HKFHIRReleaseR4: &'static HKFHIRRelease);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(HKFHIRReleaseUnknown: &'static HKFHIRRelease);

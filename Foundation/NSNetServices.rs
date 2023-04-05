@@ -3,8 +3,10 @@
 use crate::common::*;
 use crate::Foundation::*;
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(NSNetServicesErrorCode: &'static NSString);
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_static!(NSNetServicesErrorDomain: &'static NSErrorDomain);
 
 ns_enum!(
@@ -325,6 +327,7 @@ extern_protocol!(
         );
     }
 
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl ProtocolType for dyn NSNetServiceDelegate {}
 );
 
@@ -408,5 +411,6 @@ extern_protocol!(
         );
     }
 
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl ProtocolType for dyn NSNetServiceBrowserDelegate {}
 );

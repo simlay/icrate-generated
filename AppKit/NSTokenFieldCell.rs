@@ -199,10 +199,13 @@ extern_protocol!(
     unsafe impl ProtocolType for dyn NSTokenFieldCellDelegate {}
 );
 
+#[deprecated]
 extern_static!(NSDefaultTokenStyle: NSTokenStyle = NSTokenStyleDefault);
 
+#[deprecated]
 extern_static!(NSPlainTextTokenStyle: NSTokenStyle = NSTokenStyleNone);
 
+#[deprecated]
 extern_static!(NSRoundedTokenStyle: NSTokenStyle = NSTokenStyleRounded);
 
 extern_methods!(

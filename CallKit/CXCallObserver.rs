@@ -12,6 +12,7 @@ extern_protocol!(
         unsafe fn callObserver_callChanged(&self, call_observer: &CXCallObserver, call: &CXCall);
     }
 
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl ProtocolType for dyn CXCallObserverDelegate {}
 );
 

@@ -3,14 +3,19 @@
 use crate::common::*;
 use crate::Foundation::*;
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSAppleScriptErrorMessage: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSAppleScriptErrorNumber: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSAppleScriptErrorAppName: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSAppleScriptErrorBriefMessage: &'static NSString);
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSAppleScriptErrorRange: &'static NSString);
 
 extern_class!(

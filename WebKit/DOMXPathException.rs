@@ -5,6 +5,7 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::WebKit::*;
 
+#[deprecated]
 extern_static!(DOMXPathException: Option<&'static NSString>);
 
 extern_enum!(

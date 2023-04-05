@@ -297,16 +297,22 @@ extern_methods!(
     }
 );
 
+#[deprecated = "NSPrintInfo does not recognize this attribute"]
 extern_static!(NSPrintFormName: &'static NSString);
 
+#[deprecated = "NSPrintInfo does not recognize this attribute. -[NSPrintInfo setUpPrintOperationDefaultValues] sets a default value of an empty dictionary"]
 extern_static!(NSPrintJobFeatures: &'static NSString);
 
+#[deprecated = "NSPrintInfo does not recognize this attribute"]
 extern_static!(NSPrintManualFeed: &'static NSString);
 
+#[deprecated = "NSPrintInfo does not recognize this attribute. -[NSPrintInfo setUpPrintOperationDefaultValues] sets a default value of 1"]
 extern_static!(NSPrintPagesPerSheet: &'static NSString);
 
+#[deprecated = "NSPrintInfo does not recognize this attribute"]
 extern_static!(NSPrintPaperFeed: &'static NSString);
 
+#[deprecated = "Use NSPrintJobSavingURL instead"]
 extern_static!(NSPrintSavePath: &'static NSString);
 
 ns_enum!(
@@ -320,8 +326,11 @@ ns_enum!(
     }
 );
 
+#[deprecated]
 extern_static!(NSAutoPagination: NSPrintingPaginationMode = NSPrintingPaginationModeAutomatic);
 
+#[deprecated]
 extern_static!(NSFitPagination: NSPrintingPaginationMode = NSPrintingPaginationModeFit);
 
+#[deprecated]
 extern_static!(NSClipPagination: NSPrintingPaginationMode = NSPrintingPaginationModeClip);

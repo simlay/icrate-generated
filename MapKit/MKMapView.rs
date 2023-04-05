@@ -745,6 +745,7 @@ extern_protocol!(
         ) -> Id<MKClusterAnnotation>;
     }
 
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl ProtocolType for dyn MKMapViewDelegate {}
 );
 
