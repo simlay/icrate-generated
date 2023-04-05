@@ -5,14 +5,10 @@
 #[path = "AAAttribution.rs"]
 mod __AAAttribution;
 
-pub use self::__AAAttribution::AAAttributionErrorDomain;
-
-pub use self::__AAAttribution::AAAttributionErrorCode;
-
-pub use self::__AAAttribution::AAAttributionErrorCodeNetworkError;
-
-pub use self::__AAAttribution::AAAttributionErrorCodeInternalError;
-
 #[cfg(feature = "AdServices_AAAttribution")]
 pub use self::__AAAttribution::AAAttribution;
+pub use self::__AAAttribution::AAAttributionErrorCode;
+pub use self::__AAAttribution::AAAttributionErrorCodeInternalError;
+pub use self::__AAAttribution::AAAttributionErrorCodeNetworkError;
 pub use self::__AAAttribution::AAAttributionErrorCodePlatformNotSupported;
+pub use self::__AAAttribution::AAAttributionErrorDomain;

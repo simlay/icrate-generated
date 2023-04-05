@@ -7,18 +7,13 @@ mod __MTLFXSpatialScaler;
 #[path = "MTLFXTemporalScaler.rs"]
 mod __MTLFXTemporalScaler;
 
+pub use self::__MTLFXSpatialScaler::MTLFXSpatialScaler;
 pub use self::__MTLFXSpatialScaler::MTLFXSpatialScalerColorProcessingMode;
-
-pub use self::__MTLFXSpatialScaler::MTLFXSpatialScalerColorProcessingModePerceptual;
-
-pub use self::__MTLFXSpatialScaler::MTLFXSpatialScalerColorProcessingModeLinear;
-
 pub use self::__MTLFXSpatialScaler::MTLFXSpatialScalerColorProcessingModeHDR;
+pub use self::__MTLFXSpatialScaler::MTLFXSpatialScalerColorProcessingModeLinear;
+pub use self::__MTLFXSpatialScaler::MTLFXSpatialScalerColorProcessingModePerceptual;
 #[cfg(feature = "MetalFX_MTLFXSpatialScalerDescriptor")]
 pub use self::__MTLFXSpatialScaler::MTLFXSpatialScalerDescriptor;
-
-pub use self::__MTLFXSpatialScaler::MTLFXSpatialScaler;
+pub use self::__MTLFXTemporalScaler::MTLFXTemporalScaler;
 #[cfg(feature = "MetalFX_MTLFXTemporalScalerDescriptor")]
 pub use self::__MTLFXTemporalScaler::MTLFXTemporalScalerDescriptor;
-
-pub use self::__MTLFXTemporalScaler::MTLFXTemporalScaler;

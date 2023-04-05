@@ -25,46 +25,34 @@ mod __LARightStore;
 #[path = "LASecret.rs"]
 mod __LASecret;
 
-pub use self::__LAContext::LAPolicy;
-
-pub use self::__LAContext::LAPolicyDeviceOwnerAuthenticationWithBiometrics;
-
-pub use self::__LAContext::LAPolicyDeviceOwnerAuthentication;
-
-pub use self::__LAContext::LAPolicyDeviceOwnerAuthenticationWithWatch;
-
-pub use self::__LAContext::LAPolicyDeviceOwnerAuthenticationWithBiometricsOrWatch;
-
-pub use self::__LAContext::LAPolicyDeviceOwnerAuthenticationWithWristDetection;
-#[cfg(not(any(target_os = "watchos")))]
-pub use self::__LAContext::LATouchIDAuthenticationMaximumAllowableReuseDuration;
-
 pub use self::__LAContext::LAAccessControlOperation;
-
 pub use self::__LAContext::LAAccessControlOperationCreateItem;
-
-pub use self::__LAContext::LAAccessControlOperationUseItem;
-
 pub use self::__LAContext::LAAccessControlOperationCreateKey;
-
-pub use self::__LAContext::LAAccessControlOperationUseKeySign;
-
+pub use self::__LAContext::LAAccessControlOperationUseItem;
 pub use self::__LAContext::LAAccessControlOperationUseKeyDecrypt;
-
 pub use self::__LAContext::LAAccessControlOperationUseKeyKeyExchange;
-#[cfg(not(any(target_os = "watchos")))]
+pub use self::__LAContext::LAAccessControlOperationUseKeySign;
 pub use self::__LAContext::LABiometryNone;
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__LAContext::LABiometryType;
-#[cfg(not(any(target_os = "watchos")))]
 pub use self::__LAContext::LABiometryTypeFaceID;
-#[cfg(not(any(target_os = "watchos")))]
 pub use self::__LAContext::LABiometryTypeNone;
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__LAContext::LABiometryTypeTouchID;
 #[cfg(feature = "LocalAuthentication_LAContext")]
 pub use self::__LAContext::LAContext;
-
+pub use self::__LAContext::LAPolicy;
+pub use self::__LAContext::LAPolicyDeviceOwnerAuthentication;
+#[cfg(not(any(target_os = "watchos")))]
+pub use self::__LAContext::LAPolicyDeviceOwnerAuthenticationWithBiometrics;
+#[cfg(not(any(target_os = "ios", target_os = "watchos")))]
+pub use self::__LAContext::LAPolicyDeviceOwnerAuthenticationWithBiometricsOrWatch;
+#[cfg(not(any(target_os = "ios", target_os = "watchos")))]
+pub use self::__LAContext::LAPolicyDeviceOwnerAuthenticationWithWatch;
+#[cfg(not(any(target_os = "ios", target_os = "macos")))]
+pub use self::__LAContext::LAPolicyDeviceOwnerAuthenticationWithWristDetection;
+#[cfg(not(any(target_os = "watchos")))]
+pub use self::__LAContext::LATouchIDAuthenticationMaximumAllowableReuseDuration;
 pub use self::__LAError::LAErrorDomain;
 #[cfg(feature = "LocalAuthentication_LAPersistedRight")]
 #[cfg(not(any(target_os = "watchos")))]

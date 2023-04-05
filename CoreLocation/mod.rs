@@ -37,11 +37,10 @@ mod __CLRegion;
 #[path = "CLVisit.rs"]
 mod __CLVisit;
 
-pub use self::__CLBeaconIdentityConstraint::CLBeaconMajorValue;
-
 #[cfg(feature = "CoreLocation_CLBeaconIdentityConstraint")]
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__CLBeaconIdentityConstraint::CLBeaconIdentityConstraint;
+pub use self::__CLBeaconIdentityConstraint::CLBeaconMajorValue;
 pub use self::__CLBeaconIdentityConstraint::CLBeaconMinorValue;
 #[cfg(feature = "CoreLocation_CLBeacon")]
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
@@ -51,162 +50,93 @@ pub use self::__CLBeaconRegion::CLBeacon;
 pub use self::__CLBeaconRegion::CLBeaconRegion;
 #[cfg(feature = "CoreLocation_CLCircularRegion")]
 pub use self::__CLCircularRegion::CLCircularRegion;
-
-pub use self::__CLError::CLError;
-
-pub use self::__CLError::kCLErrorLocationUnknown;
-
-pub use self::__CLError::kCLErrorDenied;
-
-pub use self::__CLError::kCLErrorNetwork;
-
-pub use self::__CLError::kCLErrorHeadingFailure;
-
-pub use self::__CLError::kCLErrorRegionMonitoringDenied;
-
-pub use self::__CLError::kCLErrorRegionMonitoringFailure;
-
-pub use self::__CLError::kCLErrorRegionMonitoringSetupDelayed;
-
-pub use self::__CLError::kCLErrorRegionMonitoringResponseDelayed;
-
-pub use self::__CLError::kCLErrorGeocodeFoundNoResult;
-
-pub use self::__CLError::kCLErrorGeocodeFoundPartialResult;
-
-pub use self::__CLError::kCLErrorGeocodeCanceled;
-
-pub use self::__CLError::kCLErrorDeferredFailed;
-
-pub use self::__CLError::kCLErrorDeferredNotUpdatingLocation;
-
 pub use self::__CLError::kCLErrorDeferredAccuracyTooLow;
-
-pub use self::__CLError::kCLErrorDeferredDistanceFiltered;
-
 pub use self::__CLError::kCLErrorDeferredCanceled;
-
-pub use self::__CLError::kCLErrorRangingUnavailable;
-
-pub use self::__CLError::kCLErrorRangingFailure;
-
-pub use self::__CLError::kCLErrorPromptDeclined;
-
+pub use self::__CLError::kCLErrorDeferredDistanceFiltered;
+pub use self::__CLError::kCLErrorDeferredFailed;
+pub use self::__CLError::kCLErrorDeferredNotUpdatingLocation;
+pub use self::__CLError::kCLErrorDenied;
+pub use self::__CLError::kCLErrorGeocodeCanceled;
+pub use self::__CLError::kCLErrorGeocodeFoundNoResult;
+pub use self::__CLError::kCLErrorGeocodeFoundPartialResult;
+pub use self::__CLError::kCLErrorHeadingFailure;
 pub use self::__CLError::kCLErrorHistoricalLocationError;
+pub use self::__CLError::kCLErrorLocationUnknown;
+pub use self::__CLError::kCLErrorNetwork;
+pub use self::__CLError::kCLErrorPromptDeclined;
+pub use self::__CLError::kCLErrorRangingFailure;
+pub use self::__CLError::kCLErrorRangingUnavailable;
+pub use self::__CLError::kCLErrorRegionMonitoringDenied;
+pub use self::__CLError::kCLErrorRegionMonitoringFailure;
+pub use self::__CLError::kCLErrorRegionMonitoringResponseDelayed;
+pub use self::__CLError::kCLErrorRegionMonitoringSetupDelayed;
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__CLError::kCLErrorUserInfoAlternateRegionKey;
-
+pub use self::__CLError::CLError;
 pub use self::__CLErrorDomain::kCLErrorDomain;
-
 pub use self::__CLGeocoder::CLGeocodeCompletionHandler;
 #[cfg(feature = "CoreLocation_CLGeocoder")]
 pub use self::__CLGeocoder::CLGeocoder;
-
-pub use self::__CLHeading::CLHeadingComponentValue;
-
 pub use self::__CLHeading::kCLHeadingFilterNone;
 #[cfg(feature = "CoreLocation_CLHeading")]
 #[cfg(not(any(target_os = "tvos")))]
 pub use self::__CLHeading::CLHeading;
-
-pub use self::__CLLocation::CLLocationDegrees;
-
-pub use self::__CLLocation::CLLocationAccuracy;
-
-pub use self::__CLLocation::CLLocationSpeed;
-
-pub use self::__CLLocation::CLLocationSpeedAccuracy;
-
-pub use self::__CLLocation::CLLocationDirection;
-
-pub use self::__CLLocation::CLLocationDirectionAccuracy;
-
-pub use self::__CLLocation::CLLocationCoordinate2D;
-
-pub use self::__CLLocation::CLLocationDistance;
-
+pub use self::__CLHeading::CLHeadingComponentValue;
 pub use self::__CLLocation::kCLDistanceFilterNone;
-
-pub use self::__CLLocation::kCLLocationAccuracyBestForNavigation;
-
 pub use self::__CLLocation::kCLLocationAccuracyBest;
-
-pub use self::__CLLocation::kCLLocationAccuracyNearestTenMeters;
-
+pub use self::__CLLocation::kCLLocationAccuracyBestForNavigation;
 pub use self::__CLLocation::kCLLocationAccuracyHundredMeters;
-
 pub use self::__CLLocation::kCLLocationAccuracyKilometer;
-
-pub use self::__CLLocation::kCLLocationAccuracyThreeKilometers;
-
+pub use self::__CLLocation::kCLLocationAccuracyNearestTenMeters;
 pub use self::__CLLocation::kCLLocationAccuracyReduced;
-
-pub use self::__CLLocation::CLLocationDistanceMax;
-
-pub use self::__CLLocation::CLTimeIntervalMax;
-
+pub use self::__CLLocation::kCLLocationAccuracyThreeKilometers;
 pub use self::__CLLocation::kCLLocationCoordinate2DInvalid;
-
-pub use self::__CLLocation::CLLocationCoordinate2DIsValid;
-
 #[cfg(feature = "CoreLocation_CLFloor")]
 pub use self::__CLLocation::CLFloor;
 #[cfg(feature = "CoreLocation_CLLocation")]
 pub use self::__CLLocation::CLLocation;
+pub use self::__CLLocation::CLLocationAccuracy;
+pub use self::__CLLocation::CLLocationCoordinate2D;
+pub use self::__CLLocation::CLLocationCoordinate2DIsValid;
 pub use self::__CLLocation::CLLocationCoordinate2DMake;
+pub use self::__CLLocation::CLLocationDegrees;
+pub use self::__CLLocation::CLLocationDirection;
+pub use self::__CLLocation::CLLocationDirectionAccuracy;
+pub use self::__CLLocation::CLLocationDistance;
+pub use self::__CLLocation::CLLocationDistanceMax;
 #[cfg(feature = "CoreLocation_CLLocationSourceInformation")]
 pub use self::__CLLocation::CLLocationSourceInformation;
-
-pub use self::__CLLocationManager::CLDeviceOrientation;
-
-pub use self::__CLLocationManager::CLDeviceOrientationUnknown;
-
-pub use self::__CLLocationManager::CLDeviceOrientationPortrait;
-
-pub use self::__CLLocationManager::CLDeviceOrientationPortraitUpsideDown;
-
-pub use self::__CLLocationManager::CLDeviceOrientationLandscapeLeft;
-
-pub use self::__CLLocationManager::CLDeviceOrientationLandscapeRight;
-
-pub use self::__CLLocationManager::CLDeviceOrientationFaceUp;
-
-pub use self::__CLLocationManager::CLDeviceOrientationFaceDown;
-
-pub use self::__CLLocationManager::CLAuthorizationStatus;
-
-pub use self::__CLLocationManager::kCLAuthorizationStatusNotDetermined;
-
-pub use self::__CLLocationManager::kCLAuthorizationStatusRestricted;
-
-pub use self::__CLLocationManager::kCLAuthorizationStatusDenied;
-
-pub use self::__CLLocationManager::kCLAuthorizationStatusAuthorizedAlways;
-
-pub use self::__CLLocationManager::kCLAuthorizationStatusAuthorizedWhenInUse;
-
+pub use self::__CLLocation::CLLocationSpeed;
+pub use self::__CLLocation::CLLocationSpeedAccuracy;
+pub use self::__CLLocation::CLTimeIntervalMax;
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__CLLocationManager::kCLAuthorizationStatusAuthorized;
-
+pub use self::__CLLocationManager::kCLAuthorizationStatusAuthorizedAlways;
+#[cfg(not(any(target_os = "macos")))]
+pub use self::__CLLocationManager::kCLAuthorizationStatusAuthorizedWhenInUse;
+pub use self::__CLLocationManager::kCLAuthorizationStatusDenied;
+pub use self::__CLLocationManager::kCLAuthorizationStatusNotDetermined;
+pub use self::__CLLocationManager::kCLAuthorizationStatusRestricted;
 pub use self::__CLLocationManager::CLAccuracyAuthorization;
-
 pub use self::__CLLocationManager::CLAccuracyAuthorizationFullAccuracy;
-
 pub use self::__CLLocationManager::CLAccuracyAuthorizationReducedAccuracy;
-
 pub use self::__CLLocationManager::CLActivityType;
-
-pub use self::__CLLocationManager::CLActivityTypeOther;
-
-pub use self::__CLLocationManager::CLActivityTypeAutomotiveNavigation;
-
-pub use self::__CLLocationManager::CLActivityTypeFitness;
-
-pub use self::__CLLocationManager::CLActivityTypeOtherNavigation;
-
 pub use self::__CLLocationManager::CLActivityTypeAirborne;
+pub use self::__CLLocationManager::CLActivityTypeAutomotiveNavigation;
+pub use self::__CLLocationManager::CLActivityTypeFitness;
+pub use self::__CLLocationManager::CLActivityTypeOther;
+pub use self::__CLLocationManager::CLActivityTypeOtherNavigation;
+pub use self::__CLLocationManager::CLAuthorizationStatus;
+pub use self::__CLLocationManager::CLDeviceOrientation;
+pub use self::__CLLocationManager::CLDeviceOrientationFaceDown;
+pub use self::__CLLocationManager::CLDeviceOrientationFaceUp;
+pub use self::__CLLocationManager::CLDeviceOrientationLandscapeLeft;
+pub use self::__CLLocationManager::CLDeviceOrientationLandscapeRight;
+pub use self::__CLLocationManager::CLDeviceOrientationPortrait;
+pub use self::__CLLocationManager::CLDeviceOrientationPortraitUpsideDown;
+pub use self::__CLLocationManager::CLDeviceOrientationUnknown;
 #[cfg(feature = "CoreLocation_CLLocationManager")]
 pub use self::__CLLocationManager::CLLocationManager;
-
 pub use self::__CLLocationManagerDelegate::CLLocationManagerDelegate;
 #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__CLLocationPushServiceError::CLLocationPushServiceError;

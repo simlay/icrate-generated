@@ -49,33 +49,21 @@ mod __MEOutgoingMessageEncodingStatus;
 
 #[cfg(feature = "MailKit_MEAddressAnnotation")]
 pub use self::__MEAddressAnnotation::MEAddressAnnotation;
-
-pub use self::__MEComposeContext::MEComposeUserAction;
-
-pub use self::__MEComposeContext::MEComposeUserActionNewMessage;
-
-pub use self::__MEComposeContext::MEComposeUserActionReply;
-
-pub use self::__MEComposeContext::MEComposeUserActionReplyAll;
-
 #[cfg(feature = "MailKit_MEComposeContext")]
 pub use self::__MEComposeContext::MEComposeContext;
+pub use self::__MEComposeContext::MEComposeUserAction;
 pub use self::__MEComposeContext::MEComposeUserActionForward;
+pub use self::__MEComposeContext::MEComposeUserActionNewMessage;
+pub use self::__MEComposeContext::MEComposeUserActionReply;
+pub use self::__MEComposeContext::MEComposeUserActionReplyAll;
 #[cfg(feature = "MailKit_MEComposeSession")]
 pub use self::__MEComposeSession::MEComposeSession;
-
-pub use self::__MEComposeSession::MEComposeSessionErrorDomain;
-
 pub use self::__MEComposeSession::MEComposeSessionErrorCode;
-
-pub use self::__MEComposeSession::MEComposeSessionErrorCodeInvalidRecipients;
-
-pub use self::__MEComposeSession::MEComposeSessionErrorCodeInvalidHeaders;
-
 pub use self::__MEComposeSession::MEComposeSessionErrorCodeInvalidBody;
-
+pub use self::__MEComposeSession::MEComposeSessionErrorCodeInvalidHeaders;
+pub use self::__MEComposeSession::MEComposeSessionErrorCodeInvalidRecipients;
+pub use self::__MEComposeSession::MEComposeSessionErrorDomain;
 pub use self::__MEComposeSession::MEComposeSessionHandler;
-
 pub use self::__MEContentBlocker::MEContentBlocker;
 #[cfg(feature = "MailKit_MEDecodedMessage")]
 pub use self::__MEDecodedMessage::MEDecodedMessage;
@@ -85,89 +73,53 @@ pub use self::__MEDecodedMessageBanner::MEDecodedMessageBanner;
 pub use self::__MEEmailAddress::MEEmailAddress;
 #[cfg(feature = "MailKit_MEEncodedOutgoingMessage")]
 pub use self::__MEEncodedOutgoingMessage::MEEncodedOutgoingMessage;
-
 pub use self::__MEExtension::MEExtension;
 #[cfg(feature = "MailKit_MEExtensionManager")]
 pub use self::__MEExtensionManager::MEExtensionManager;
 #[cfg(feature = "MailKit_MEExtensionViewController")]
 pub use self::__MEExtensionViewController::MEExtensionViewController;
-
-pub use self::__MEMessage::MEMessageState;
-
-pub use self::__MEMessage::MEMessageStateReceived;
-
-pub use self::__MEMessage::MEMessageStateDraft;
-
-pub use self::__MEMessage::MEMessageStateSending;
-
-pub use self::__MEMessage::MEMessageEncryptionState;
-
-pub use self::__MEMessage::MEMessageEncryptionStateUnknown;
-
-pub use self::__MEMessage::MEMessageEncryptionStateNotEncrypted;
-
 #[cfg(feature = "MailKit_MEMessage")]
 pub use self::__MEMessage::MEMessage;
+pub use self::__MEMessage::MEMessageEncryptionState;
 pub use self::__MEMessage::MEMessageEncryptionStateEncrypted;
-
-pub use self::__MEMessageAction::MEMessageActionMessageColor;
-
-pub use self::__MEMessageAction::MEMessageActionMessageColorNone;
-
-pub use self::__MEMessageAction::MEMessageActionMessageColorGreen;
-
-pub use self::__MEMessageAction::MEMessageActionMessageColorYellow;
-
-pub use self::__MEMessageAction::MEMessageActionMessageColorOrange;
-
-pub use self::__MEMessageAction::MEMessageActionMessageColorRed;
-
-pub use self::__MEMessageAction::MEMessageActionMessageColorPurple;
-
-pub use self::__MEMessageAction::MEMessageActionMessageColorBlue;
-
-pub use self::__MEMessageAction::MEMessageActionMessageColorGray;
-
-pub use self::__MEMessageAction::MEMessageActionFlag;
-
-pub use self::__MEMessageAction::MEMessageActionFlagNone;
-
-pub use self::__MEMessageAction::MEMessageActionFlagDefaultColor;
-
-pub use self::__MEMessageAction::MEMessageActionFlagRed;
-
-pub use self::__MEMessageAction::MEMessageActionFlagOrange;
-
-pub use self::__MEMessageAction::MEMessageActionFlagYellow;
-
-pub use self::__MEMessageAction::MEMessageActionFlagGreen;
-
-pub use self::__MEMessageAction::MEMessageActionFlagBlue;
-
-pub use self::__MEMessageAction::MEMessageActionFlagPurple;
-
+pub use self::__MEMessage::MEMessageEncryptionStateNotEncrypted;
+pub use self::__MEMessage::MEMessageEncryptionStateUnknown;
+pub use self::__MEMessage::MEMessageState;
+pub use self::__MEMessage::MEMessageStateDraft;
+pub use self::__MEMessage::MEMessageStateReceived;
+pub use self::__MEMessage::MEMessageStateSending;
 #[cfg(feature = "MailKit_MEMessageAction")]
 pub use self::__MEMessageAction::MEMessageAction;
+pub use self::__MEMessageAction::MEMessageActionFlag;
+pub use self::__MEMessageAction::MEMessageActionFlagBlue;
+pub use self::__MEMessageAction::MEMessageActionFlagDefaultColor;
 pub use self::__MEMessageAction::MEMessageActionFlagGray;
+pub use self::__MEMessageAction::MEMessageActionFlagGreen;
+pub use self::__MEMessageAction::MEMessageActionFlagNone;
+pub use self::__MEMessageAction::MEMessageActionFlagOrange;
+pub use self::__MEMessageAction::MEMessageActionFlagPurple;
+pub use self::__MEMessageAction::MEMessageActionFlagRed;
+pub use self::__MEMessageAction::MEMessageActionFlagYellow;
+pub use self::__MEMessageAction::MEMessageActionMessageColor;
+pub use self::__MEMessageAction::MEMessageActionMessageColorBlue;
+pub use self::__MEMessageAction::MEMessageActionMessageColorGray;
+pub use self::__MEMessageAction::MEMessageActionMessageColorGreen;
+pub use self::__MEMessageAction::MEMessageActionMessageColorNone;
+pub use self::__MEMessageAction::MEMessageActionMessageColorOrange;
+pub use self::__MEMessageAction::MEMessageActionMessageColorPurple;
+pub use self::__MEMessageAction::MEMessageActionMessageColorRed;
+pub use self::__MEMessageAction::MEMessageActionMessageColorYellow;
 #[cfg(feature = "MailKit_MEMessageActionDecision")]
 pub use self::__MEMessageActionDecision::MEMessageActionDecision;
-
 pub use self::__MEMessageActionHandler::MEMessageActionHandler;
-
 pub use self::__MEMessageDecoder::MEMessageDecoder;
-
 pub use self::__MEMessageEncoder::MEMessageEncoder;
 #[cfg(feature = "MailKit_MEMessageEncodingResult")]
 pub use self::__MEMessageEncodingResult::MEMessageEncodingResult;
-
-pub use self::__MEMessageSecurityHandler::MEMessageSecurityErrorDomain;
-
-pub use self::__MEMessageSecurityHandler::MEMessageSecurityErrorCode;
-
-pub use self::__MEMessageSecurityHandler::MEMessageSecurityEncodingError;
-
 pub use self::__MEMessageSecurityHandler::MEMessageSecurityDecodingError;
-
+pub use self::__MEMessageSecurityHandler::MEMessageSecurityEncodingError;
+pub use self::__MEMessageSecurityHandler::MEMessageSecurityErrorCode;
+pub use self::__MEMessageSecurityHandler::MEMessageSecurityErrorDomain;
 pub use self::__MEMessageSecurityHandler::MEMessageSecurityHandler;
 #[cfg(feature = "MailKit_MEMessageSecurityInformation")]
 pub use self::__MEMessageSecurityInformation::MEMessageSecurityInformation;

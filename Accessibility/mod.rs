@@ -15,58 +15,41 @@ mod __AXFoundation;
 #[path = "AXHearingUtilities.rs"]
 mod __AXHearingUtilities;
 
-pub use self::__AXAudiograph::AXChart;
-
-pub use self::__AXAudiograph::AXDataAxisDescriptor;
-
-pub use self::__AXAudiograph::AXNumericDataAxisDescriptorScale;
-
-pub use self::__AXAudiograph::AXScaleTypeLinear;
-
-pub use self::__AXAudiograph::AXScaleTypeLog10;
-
 #[cfg(feature = "Accessibility_AXCategoricalDataAxisDescriptor")]
 pub use self::__AXAudiograph::AXCategoricalDataAxisDescriptor;
+pub use self::__AXAudiograph::AXChart;
+pub use self::__AXAudiograph::AXChartContentDirectionBottomToTop;
+pub use self::__AXAudiograph::AXChartContentDirectionLeftToRight;
+pub use self::__AXAudiograph::AXChartContentDirectionRadialClockwise;
+pub use self::__AXAudiograph::AXChartContentDirectionRadialCounterClockwise;
+pub use self::__AXAudiograph::AXChartContentDirectionRightToLeft;
+pub use self::__AXAudiograph::AXChartContentDirectionTopToBottom;
+#[cfg(feature = "Accessibility_AXChartDescriptor")]
+pub use self::__AXAudiograph::AXChartDescriptor;
+pub use self::__AXAudiograph::AXChartDescriptorContentDirection;
+pub use self::__AXAudiograph::AXDataAxisDescriptor;
 #[cfg(feature = "Accessibility_AXDataPoint")]
 pub use self::__AXAudiograph::AXDataPoint;
 #[cfg(feature = "Accessibility_AXDataPointValue")]
 pub use self::__AXAudiograph::AXDataPointValue;
 #[cfg(feature = "Accessibility_AXDataSeriesDescriptor")]
 pub use self::__AXAudiograph::AXDataSeriesDescriptor;
-#[cfg(feature = "Accessibility_AXNumericDataAxisDescriptor")]
-pub use self::__AXAudiograph::AXNumericDataAxisDescriptor;
-pub use self::__AXAudiograph::AXScaleTypeLn;
-
-pub use self::__AXAudiograph::AXChartDescriptorContentDirection;
-
-pub use self::__AXAudiograph::AXChartContentDirectionLeftToRight;
-
-pub use self::__AXAudiograph::AXChartContentDirectionRightToLeft;
-
-pub use self::__AXAudiograph::AXChartContentDirectionTopToBottom;
-
-pub use self::__AXAudiograph::AXChartContentDirectionBottomToTop;
-
-pub use self::__AXAudiograph::AXChartContentDirectionRadialClockwise;
-
-pub use self::__AXAudiograph::AXChartContentDirectionRadialCounterClockwise;
-#[cfg(feature = "Accessibility_AXChartDescriptor")]
-pub use self::__AXAudiograph::AXChartDescriptor;
 #[cfg(feature = "Accessibility_AXLiveAudioGraph")]
 pub use self::__AXAudiograph::AXLiveAudioGraph;
+#[cfg(feature = "Accessibility_AXNumericDataAxisDescriptor")]
+pub use self::__AXAudiograph::AXNumericDataAxisDescriptor;
+pub use self::__AXAudiograph::AXNumericDataAxisDescriptorScale;
+pub use self::__AXAudiograph::AXScaleTypeLinear;
+pub use self::__AXAudiograph::AXScaleTypeLn;
+pub use self::__AXAudiograph::AXScaleTypeLog10;
 #[cfg(feature = "Accessibility_AXBrailleMap")]
 pub use self::__AXBrailleMap::AXBrailleMap;
-
 pub use self::__AXBrailleMap::AXBrailleMapRenderer;
-
-pub use self::__AXCustomContent::AXCustomContentImportance;
-
-pub use self::__AXCustomContent::AXCustomContentImportanceDefault;
-
 #[cfg(feature = "Accessibility_AXCustomContent")]
 pub use self::__AXCustomContent::AXCustomContent;
+pub use self::__AXCustomContent::AXCustomContentImportance;
+pub use self::__AXCustomContent::AXCustomContentImportanceDefault;
 pub use self::__AXCustomContent::AXCustomContentImportanceHigh;
-
 pub use self::__AXCustomContent::AXCustomContentProvider;
 #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
 pub use self::__AXHearingUtilities::AXHearingDeviceEar;

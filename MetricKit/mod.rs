@@ -155,7 +155,6 @@ pub use self::__MXMetaData::MXMetaData;
 pub use self::__MXMetric::MXMetric;
 #[cfg(feature = "MetricKit_MXMetricManager")]
 pub use self::__MXMetricManager::MXMetricManager;
-
 pub use self::__MXMetricManager::MXMetricManagerSubscriber;
 #[cfg(feature = "MetricKit_MXMetricPayload")]
 #[cfg(not(any(target_os = "macos")))]

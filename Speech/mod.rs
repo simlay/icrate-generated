@@ -31,45 +31,27 @@ pub use self::__SFSpeechRecognitionRequest::SFSpeechRecognitionRequest;
 pub use self::__SFSpeechRecognitionRequest::SFSpeechURLRecognitionRequest;
 #[cfg(feature = "Speech_SFSpeechRecognitionResult")]
 pub use self::__SFSpeechRecognitionResult::SFSpeechRecognitionResult;
-
-pub use self::__SFSpeechRecognitionTask::SFSpeechRecognitionTaskState;
-
-pub use self::__SFSpeechRecognitionTask::SFSpeechRecognitionTaskStateStarting;
-
-pub use self::__SFSpeechRecognitionTask::SFSpeechRecognitionTaskStateRunning;
-
-pub use self::__SFSpeechRecognitionTask::SFSpeechRecognitionTaskStateFinishing;
-
-pub use self::__SFSpeechRecognitionTask::SFSpeechRecognitionTaskStateCanceling;
-
 #[cfg(feature = "Speech_SFSpeechRecognitionTask")]
 pub use self::__SFSpeechRecognitionTask::SFSpeechRecognitionTask;
-pub use self::__SFSpeechRecognitionTask::SFSpeechRecognitionTaskStateCompleted;
-
 pub use self::__SFSpeechRecognitionTask::SFSpeechRecognitionTaskDelegate;
-
+pub use self::__SFSpeechRecognitionTask::SFSpeechRecognitionTaskState;
+pub use self::__SFSpeechRecognitionTask::SFSpeechRecognitionTaskStateCanceling;
+pub use self::__SFSpeechRecognitionTask::SFSpeechRecognitionTaskStateCompleted;
+pub use self::__SFSpeechRecognitionTask::SFSpeechRecognitionTaskStateFinishing;
+pub use self::__SFSpeechRecognitionTask::SFSpeechRecognitionTaskStateRunning;
+pub use self::__SFSpeechRecognitionTask::SFSpeechRecognitionTaskStateStarting;
 pub use self::__SFSpeechRecognitionTaskHint::SFSpeechRecognitionTaskHint;
-
-pub use self::__SFSpeechRecognitionTaskHint::SFSpeechRecognitionTaskHintUnspecified;
-
-pub use self::__SFSpeechRecognitionTaskHint::SFSpeechRecognitionTaskHintDictation;
-
-pub use self::__SFSpeechRecognitionTaskHint::SFSpeechRecognitionTaskHintSearch;
-
 pub use self::__SFSpeechRecognitionTaskHint::SFSpeechRecognitionTaskHintConfirmation;
-
-pub use self::__SFSpeechRecognizer::SFSpeechRecognizerAuthorizationStatus;
-
-pub use self::__SFSpeechRecognizer::SFSpeechRecognizerAuthorizationStatusNotDetermined;
-
-pub use self::__SFSpeechRecognizer::SFSpeechRecognizerAuthorizationStatusDenied;
-
-pub use self::__SFSpeechRecognizer::SFSpeechRecognizerAuthorizationStatusRestricted;
-
+pub use self::__SFSpeechRecognitionTaskHint::SFSpeechRecognitionTaskHintDictation;
+pub use self::__SFSpeechRecognitionTaskHint::SFSpeechRecognitionTaskHintSearch;
+pub use self::__SFSpeechRecognitionTaskHint::SFSpeechRecognitionTaskHintUnspecified;
 #[cfg(feature = "Speech_SFSpeechRecognizer")]
 pub use self::__SFSpeechRecognizer::SFSpeechRecognizer;
+pub use self::__SFSpeechRecognizer::SFSpeechRecognizerAuthorizationStatus;
 pub use self::__SFSpeechRecognizer::SFSpeechRecognizerAuthorizationStatusAuthorized;
-
+pub use self::__SFSpeechRecognizer::SFSpeechRecognizerAuthorizationStatusDenied;
+pub use self::__SFSpeechRecognizer::SFSpeechRecognizerAuthorizationStatusNotDetermined;
+pub use self::__SFSpeechRecognizer::SFSpeechRecognizerAuthorizationStatusRestricted;
 pub use self::__SFSpeechRecognizer::SFSpeechRecognizerDelegate;
 #[cfg(feature = "Speech_SFTranscription")]
 pub use self::__SFTranscription::SFTranscription;

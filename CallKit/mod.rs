@@ -64,9 +64,7 @@ pub use self::__CXCallAction::CXCallAction;
 #[cfg(feature = "CallKit_CXCallController")]
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__CXCallController::CXCallController;
-
 pub use self::__CXCallDirectory::CXCallDirectoryPhoneNumber;
-
 pub use self::__CXCallDirectory::CXCallDirectoryPhoneNumberMax;
 #[cfg(feature = "CallKit_CXCallDirectoryExtensionContext")]
 #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
@@ -102,7 +100,6 @@ pub use self::__CXEndCallAction::CXEndCallAction;
 pub use self::__CXError::CXErrorCode;
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__CXError::CXErrorCodeCallDirectoryManagerError;
-#[cfg(not(any(target_os = "macos")))]
 pub use self::__CXError::CXErrorCodeCallDirectoryManagerErrorCurrentlyLoading;
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__CXError::CXErrorCodeCallDirectoryManagerErrorDuplicateEntries;
@@ -116,7 +113,6 @@ pub use self::__CXError::CXErrorCodeCallDirectoryManagerErrorLoadingInterrupted;
 pub use self::__CXError::CXErrorCodeCallDirectoryManagerErrorMaximumEntriesExceeded;
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__CXError::CXErrorCodeCallDirectoryManagerErrorNoExtensionFound;
-#[cfg(not(any(target_os = "macos")))]
 pub use self::__CXError::CXErrorCodeCallDirectoryManagerErrorUnexpectedIncrementalRemoval;
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__CXError::CXErrorCodeCallDirectoryManagerErrorUnknown;

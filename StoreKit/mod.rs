@@ -84,46 +84,25 @@ pub use self::__SKAdNetwork::SKStoreProductParameterAdNetworkVersion;
 #[cfg(feature = "StoreKit_SKArcadeService")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__SKArcadeService::SKArcadeService;
-
 pub use self::__SKCloudServiceController::SKCloudServiceAuthorizationStatus;
-
-pub use self::__SKCloudServiceController::SKCloudServiceAuthorizationStatusNotDetermined;
-
-pub use self::__SKCloudServiceController::SKCloudServiceAuthorizationStatusDenied;
-
-pub use self::__SKCloudServiceController::SKCloudServiceAuthorizationStatusRestricted;
-
 pub use self::__SKCloudServiceController::SKCloudServiceAuthorizationStatusAuthorized;
-
+pub use self::__SKCloudServiceController::SKCloudServiceAuthorizationStatusDenied;
+pub use self::__SKCloudServiceController::SKCloudServiceAuthorizationStatusNotDetermined;
+pub use self::__SKCloudServiceController::SKCloudServiceAuthorizationStatusRestricted;
+pub use self::__SKCloudServiceController::SKCloudServiceCapabilitiesDidChangeNotification;
 pub use self::__SKCloudServiceController::SKCloudServiceCapability;
-
-pub use self::__SKCloudServiceController::SKCloudServiceCapabilityNone;
-
-pub use self::__SKCloudServiceController::SKCloudServiceCapabilityMusicCatalogPlayback;
-
-pub use self::__SKCloudServiceController::SKCloudServiceCapabilityMusicCatalogSubscriptionEligible;
-
 pub use self::__SKCloudServiceController::SKCloudServiceCapabilityAddToCloudMusicLibrary;
+pub use self::__SKCloudServiceController::SKCloudServiceCapabilityMusicCatalogPlayback;
+pub use self::__SKCloudServiceController::SKCloudServiceCapabilityMusicCatalogSubscriptionEligible;
+pub use self::__SKCloudServiceController::SKCloudServiceCapabilityNone;
 #[cfg(feature = "StoreKit_SKCloudServiceController")]
 pub use self::__SKCloudServiceController::SKCloudServiceController;
-
-pub use self::__SKCloudServiceController::SKCloudServiceCapabilitiesDidChangeNotification;
-
 pub use self::__SKCloudServiceController::SKStorefrontCountryCodeDidChangeNotification;
-
 pub use self::__SKCloudServiceController::SKStorefrontIdentifierDidChangeNotification;
-
-pub use self::__SKCloudServiceSetupViewController::SKCloudServiceSetupOptionsKey;
-
 pub use self::__SKCloudServiceSetupViewController::SKCloudServiceSetupAction;
-
-pub use self::__SKCloudServiceSetupViewController::SKCloudServiceSetupMessageIdentifier;
-#[cfg(feature = "StoreKit_SKCloudServiceSetupViewController")]
-#[cfg(not(any(target_os = "macos", target_os = "tvos")))]
-pub use self::__SKCloudServiceSetupViewController::SKCloudServiceSetupViewController;
-
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__SKCloudServiceSetupViewController::SKCloudServiceSetupActionSubscribe;
+pub use self::__SKCloudServiceSetupViewController::SKCloudServiceSetupMessageIdentifier;
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__SKCloudServiceSetupViewController::SKCloudServiceSetupMessageIdentifierAddMusic;
 #[cfg(not(any(target_os = "macos")))]
@@ -140,73 +119,50 @@ pub use self::__SKCloudServiceSetupViewController::SKCloudServiceSetupOptionsAff
 pub use self::__SKCloudServiceSetupViewController::SKCloudServiceSetupOptionsCampaignTokenKey;
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__SKCloudServiceSetupViewController::SKCloudServiceSetupOptionsITunesItemIdentifierKey;
+pub use self::__SKCloudServiceSetupViewController::SKCloudServiceSetupOptionsKey;
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__SKCloudServiceSetupViewController::SKCloudServiceSetupOptionsMessageIdentifierKey;
+#[cfg(feature = "StoreKit_SKCloudServiceSetupViewController")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos")))]
+pub use self::__SKCloudServiceSetupViewController::SKCloudServiceSetupViewController;
 pub use self::__SKCloudServiceSetupViewController::SKCloudServiceSetupViewControllerDelegate;
-
-pub use self::__SKDownload::SKDownloadState;
-
-pub use self::__SKDownload::SKDownloadStateWaiting;
-
-pub use self::__SKDownload::SKDownloadStateActive;
-
-pub use self::__SKDownload::SKDownloadStatePaused;
-
-pub use self::__SKDownload::SKDownloadStateFinished;
-
-pub use self::__SKDownload::SKDownloadStateFailed;
-
-pub use self::__SKDownload::SKDownloadStateCancelled;
-
 #[cfg(feature = "StoreKit_SKDownload")]
 pub use self::__SKDownload::SKDownload;
+pub use self::__SKDownload::SKDownloadState;
+pub use self::__SKDownload::SKDownloadStateActive;
+pub use self::__SKDownload::SKDownloadStateCancelled;
+pub use self::__SKDownload::SKDownloadStateFailed;
+pub use self::__SKDownload::SKDownloadStateFinished;
+pub use self::__SKDownload::SKDownloadStatePaused;
+pub use self::__SKDownload::SKDownloadStateWaiting;
 pub use self::__SKDownload::SKDownloadTimeRemainingUnknown;
-
-pub use self::__SKError::SKErrorDomain;
-
-pub use self::__SKError::SKErrorCode;
-
-pub use self::__SKError::SKErrorUnknown;
-
 pub use self::__SKError::SKErrorClientInvalid;
-
-pub use self::__SKError::SKErrorPaymentCancelled;
-
-pub use self::__SKError::SKErrorPaymentInvalid;
-
-pub use self::__SKError::SKErrorPaymentNotAllowed;
-
-pub use self::__SKError::SKErrorStoreProductNotAvailable;
-
-pub use self::__SKError::SKErrorCloudServicePermissionDenied;
-
 pub use self::__SKError::SKErrorCloudServiceNetworkConnectionFailed;
-
+pub use self::__SKError::SKErrorCloudServicePermissionDenied;
 pub use self::__SKError::SKErrorCloudServiceRevoked;
-
-pub use self::__SKError::SKErrorPrivacyAcknowledgementRequired;
-
-pub use self::__SKError::SKErrorUnauthorizedRequestData;
-
-pub use self::__SKError::SKErrorInvalidOfferIdentifier;
-
-pub use self::__SKError::SKErrorInvalidSignature;
-
-pub use self::__SKError::SKErrorMissingOfferParams;
-
-pub use self::__SKError::SKErrorInvalidOfferPrice;
-
-pub use self::__SKError::SKErrorOverlayCancelled;
-
-pub use self::__SKError::SKErrorOverlayInvalidConfiguration;
-
-pub use self::__SKError::SKErrorOverlayTimeout;
-
+pub use self::__SKError::SKErrorCode;
+pub use self::__SKError::SKErrorDomain;
 pub use self::__SKError::SKErrorIneligibleForOffer;
-
-pub use self::__SKError::SKErrorUnsupportedPlatform;
-
+pub use self::__SKError::SKErrorInvalidOfferIdentifier;
+pub use self::__SKError::SKErrorInvalidOfferPrice;
+pub use self::__SKError::SKErrorInvalidSignature;
+pub use self::__SKError::SKErrorMissingOfferParams;
+pub use self::__SKError::SKErrorOverlayCancelled;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+pub use self::__SKError::SKErrorOverlayInvalidConfiguration;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__SKError::SKErrorOverlayPresentedInBackgroundScene;
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+pub use self::__SKError::SKErrorOverlayTimeout;
+pub use self::__SKError::SKErrorPaymentCancelled;
+pub use self::__SKError::SKErrorPaymentInvalid;
+pub use self::__SKError::SKErrorPaymentNotAllowed;
+pub use self::__SKError::SKErrorPrivacyAcknowledgementRequired;
+pub use self::__SKError::SKErrorStoreProductNotAvailable;
+pub use self::__SKError::SKErrorUnauthorizedRequestData;
+pub use self::__SKError::SKErrorUnknown;
+#[cfg(not(any(target_os = "tvos")))]
+pub use self::__SKError::SKErrorUnsupportedPlatform;
 #[cfg(feature = "StoreKit_SKOverlay")]
 #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__SKOverlay::SKOverlay;
@@ -238,53 +194,33 @@ pub use self::__SKPayment::SKPayment;
 pub use self::__SKPaymentDiscount::SKPaymentDiscount;
 #[cfg(feature = "StoreKit_SKPaymentQueue")]
 pub use self::__SKPaymentQueue::SKPaymentQueue;
-
 pub use self::__SKPaymentQueue::SKPaymentQueueDelegate;
-
 pub use self::__SKPaymentQueue::SKPaymentTransactionObserver;
-
-pub use self::__SKPaymentTransaction::SKPaymentTransactionState;
-
-pub use self::__SKPaymentTransaction::SKPaymentTransactionStatePurchasing;
-
-pub use self::__SKPaymentTransaction::SKPaymentTransactionStatePurchased;
-
-pub use self::__SKPaymentTransaction::SKPaymentTransactionStateFailed;
-
-pub use self::__SKPaymentTransaction::SKPaymentTransactionStateRestored;
-
 #[cfg(feature = "StoreKit_SKPaymentTransaction")]
 pub use self::__SKPaymentTransaction::SKPaymentTransaction;
+pub use self::__SKPaymentTransaction::SKPaymentTransactionState;
 pub use self::__SKPaymentTransaction::SKPaymentTransactionStateDeferred;
-
-pub use self::__SKProduct::SKProductPeriodUnit;
-
-pub use self::__SKProduct::SKProductPeriodUnitDay;
-
-pub use self::__SKProduct::SKProductPeriodUnitWeek;
-
-pub use self::__SKProduct::SKProductPeriodUnitMonth;
-
+pub use self::__SKPaymentTransaction::SKPaymentTransactionStateFailed;
+pub use self::__SKPaymentTransaction::SKPaymentTransactionStatePurchased;
+pub use self::__SKPaymentTransaction::SKPaymentTransactionStatePurchasing;
+pub use self::__SKPaymentTransaction::SKPaymentTransactionStateRestored;
 #[cfg(feature = "StoreKit_SKProduct")]
 pub use self::__SKProduct::SKProduct;
+pub use self::__SKProduct::SKProductPeriodUnit;
+pub use self::__SKProduct::SKProductPeriodUnitDay;
+pub use self::__SKProduct::SKProductPeriodUnitMonth;
+pub use self::__SKProduct::SKProductPeriodUnitWeek;
 pub use self::__SKProduct::SKProductPeriodUnitYear;
 #[cfg(feature = "StoreKit_SKProductSubscriptionPeriod")]
 pub use self::__SKProduct::SKProductSubscriptionPeriod;
-
-pub use self::__SKProductDiscount::SKProductDiscountPaymentMode;
-
-pub use self::__SKProductDiscount::SKProductDiscountPaymentModePayAsYouGo;
-
-pub use self::__SKProductDiscount::SKProductDiscountPaymentModePayUpFront;
-
-pub use self::__SKProductDiscount::SKProductDiscountPaymentModeFreeTrial;
-
-pub use self::__SKProductDiscount::SKProductDiscountType;
-
-pub use self::__SKProductDiscount::SKProductDiscountTypeIntroductory;
-
 #[cfg(feature = "StoreKit_SKProductDiscount")]
 pub use self::__SKProductDiscount::SKProductDiscount;
+pub use self::__SKProductDiscount::SKProductDiscountPaymentMode;
+pub use self::__SKProductDiscount::SKProductDiscountPaymentModeFreeTrial;
+pub use self::__SKProductDiscount::SKProductDiscountPaymentModePayAsYouGo;
+pub use self::__SKProductDiscount::SKProductDiscountPaymentModePayUpFront;
+pub use self::__SKProductDiscount::SKProductDiscountType;
+pub use self::__SKProductDiscount::SKProductDiscountTypeIntroductory;
 pub use self::__SKProductDiscount::SKProductDiscountTypeSubscription;
 #[cfg(feature = "StoreKit_SKProductStorePromotionController")]
 #[cfg(not(any(target_os = "watchos")))]
@@ -297,45 +233,31 @@ pub use self::__SKProductStorePromotionController::SKProductStorePromotionVisibi
 pub use self::__SKProductStorePromotionController::SKProductStorePromotionVisibilityHide;
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__SKProductStorePromotionController::SKProductStorePromotionVisibilityShow;
-
 #[cfg(feature = "StoreKit_SKProductsRequest")]
 pub use self::__SKProductsRequest::SKProductsRequest;
 pub use self::__SKProductsRequest::SKProductsRequestDelegate;
 #[cfg(feature = "StoreKit_SKProductsResponse")]
 pub use self::__SKProductsRequest::SKProductsResponse;
+pub use self::__SKReceiptRefreshRequest::SKReceiptPropertyIsExpired;
+pub use self::__SKReceiptRefreshRequest::SKReceiptPropertyIsRevoked;
+pub use self::__SKReceiptRefreshRequest::SKReceiptPropertyIsVolumePurchase;
 #[cfg(feature = "StoreKit_SKReceiptRefreshRequest")]
 pub use self::__SKReceiptRefreshRequest::SKReceiptRefreshRequest;
-
 pub use self::__SKReceiptRefreshRequest::SKTerminateForInvalidReceipt;
-
-pub use self::__SKReceiptRefreshRequest::SKReceiptPropertyIsExpired;
-
-pub use self::__SKReceiptRefreshRequest::SKReceiptPropertyIsRevoked;
-
-pub use self::__SKReceiptRefreshRequest::SKReceiptPropertyIsVolumePurchase;
 #[cfg(feature = "StoreKit_SKRequest")]
 pub use self::__SKRequest::SKRequest;
-
 pub use self::__SKRequest::SKRequestDelegate;
+pub use self::__SKStoreProductViewController::SKStoreProductParameterAdvertisingPartnerToken;
+pub use self::__SKStoreProductViewController::SKStoreProductParameterAffiliateToken;
+pub use self::__SKStoreProductViewController::SKStoreProductParameterCampaignToken;
+pub use self::__SKStoreProductViewController::SKStoreProductParameterCustomProductPageIdentifier;
+pub use self::__SKStoreProductViewController::SKStoreProductParameterITunesItemIdentifier;
+pub use self::__SKStoreProductViewController::SKStoreProductParameterProductIdentifier;
+pub use self::__SKStoreProductViewController::SKStoreProductParameterProviderToken;
 #[cfg(feature = "StoreKit_SKStoreProductViewController")]
 #[cfg(not(any(target_os = "tvos")))]
 pub use self::__SKStoreProductViewController::SKStoreProductViewController;
-
 pub use self::__SKStoreProductViewController::SKStoreProductViewControllerDelegate;
-
-pub use self::__SKStoreProductViewController::SKStoreProductParameterITunesItemIdentifier;
-
-pub use self::__SKStoreProductViewController::SKStoreProductParameterProductIdentifier;
-
-pub use self::__SKStoreProductViewController::SKStoreProductParameterCustomProductPageIdentifier;
-
-pub use self::__SKStoreProductViewController::SKStoreProductParameterAffiliateToken;
-
-pub use self::__SKStoreProductViewController::SKStoreProductParameterCampaignToken;
-
-pub use self::__SKStoreProductViewController::SKStoreProductParameterProviderToken;
-
-pub use self::__SKStoreProductViewController::SKStoreProductParameterAdvertisingPartnerToken;
 #[cfg(feature = "StoreKit_SKStoreReviewController")]
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__SKStoreReviewController::SKStoreReviewController;

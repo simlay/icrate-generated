@@ -31,145 +31,80 @@ mod __NSUserActivity_CLSDeepLinks;
 pub use self::__CLSActivity::CLSActivity;
 #[cfg(feature = "ClassKit_CLSActivityItem")]
 pub use self::__CLSActivityItem::CLSActivityItem;
-
-pub use self::__CLSBinaryItem::CLSBinaryValueType;
-
-pub use self::__CLSBinaryItem::CLSBinaryValueTypeTrueFalse;
-
-pub use self::__CLSBinaryItem::CLSBinaryValueTypePassFail;
-
-pub use self::__CLSBinaryItem::CLSBinaryValueTypeYesNo;
-
 #[cfg(feature = "ClassKit_CLSBinaryItem")]
 pub use self::__CLSBinaryItem::CLSBinaryItem;
+pub use self::__CLSBinaryItem::CLSBinaryValueType;
 pub use self::__CLSBinaryItem::CLSBinaryValueTypeCorrectIncorrect;
-
-pub use self::__CLSContext::CLSContextType;
-
-pub use self::__CLSContext::CLSContextTypeNone;
-
-pub use self::__CLSContext::CLSContextTypeApp;
-
-pub use self::__CLSContext::CLSContextTypeChapter;
-
-pub use self::__CLSContext::CLSContextTypeSection;
-
-pub use self::__CLSContext::CLSContextTypeLevel;
-
-pub use self::__CLSContext::CLSContextTypePage;
-
-pub use self::__CLSContext::CLSContextTypeTask;
-
-pub use self::__CLSContext::CLSContextTypeChallenge;
-
-pub use self::__CLSContext::CLSContextTypeQuiz;
-
-pub use self::__CLSContext::CLSContextTypeExercise;
-
-pub use self::__CLSContext::CLSContextTypeLesson;
-
-pub use self::__CLSContext::CLSContextTypeBook;
-
-pub use self::__CLSContext::CLSContextTypeGame;
-
-pub use self::__CLSContext::CLSContextTypeDocument;
-
-pub use self::__CLSContext::CLSContextTypeAudio;
-
-pub use self::__CLSContext::CLSContextTypeVideo;
-
-pub use self::__CLSContext::CLSContextTypeCourse;
-
-pub use self::__CLSContext::CLSContextTypeCustom;
-
-pub use self::__CLSContext::CLSContextTopic;
-
-pub use self::__CLSContext::CLSContextTopicMath;
-
-pub use self::__CLSContext::CLSContextTopicScience;
-
-pub use self::__CLSContext::CLSContextTopicLiteracyAndWriting;
-
-pub use self::__CLSContext::CLSContextTopicWorldLanguage;
-
-pub use self::__CLSContext::CLSContextTopicSocialScience;
-
-pub use self::__CLSContext::CLSContextTopicComputerScienceAndEngineering;
-
-pub use self::__CLSContext::CLSContextTopicArtsAndMusic;
-
+pub use self::__CLSBinaryItem::CLSBinaryValueTypePassFail;
+pub use self::__CLSBinaryItem::CLSBinaryValueTypeTrueFalse;
+pub use self::__CLSBinaryItem::CLSBinaryValueTypeYesNo;
 #[cfg(feature = "ClassKit_CLSContext")]
 pub use self::__CLSContext::CLSContext;
+pub use self::__CLSContext::CLSContextTopic;
+pub use self::__CLSContext::CLSContextTopicArtsAndMusic;
+pub use self::__CLSContext::CLSContextTopicComputerScienceAndEngineering;
 pub use self::__CLSContext::CLSContextTopicHealthAndFitness;
-
+pub use self::__CLSContext::CLSContextTopicLiteracyAndWriting;
+pub use self::__CLSContext::CLSContextTopicMath;
+pub use self::__CLSContext::CLSContextTopicScience;
+pub use self::__CLSContext::CLSContextTopicSocialScience;
+pub use self::__CLSContext::CLSContextTopicWorldLanguage;
+pub use self::__CLSContext::CLSContextType;
+pub use self::__CLSContext::CLSContextTypeApp;
+pub use self::__CLSContext::CLSContextTypeAudio;
+pub use self::__CLSContext::CLSContextTypeBook;
+pub use self::__CLSContext::CLSContextTypeChallenge;
+pub use self::__CLSContext::CLSContextTypeChapter;
+pub use self::__CLSContext::CLSContextTypeCourse;
+pub use self::__CLSContext::CLSContextTypeCustom;
+pub use self::__CLSContext::CLSContextTypeDocument;
+pub use self::__CLSContext::CLSContextTypeExercise;
+pub use self::__CLSContext::CLSContextTypeGame;
+pub use self::__CLSContext::CLSContextTypeLesson;
+pub use self::__CLSContext::CLSContextTypeLevel;
+pub use self::__CLSContext::CLSContextTypeNone;
+pub use self::__CLSContext::CLSContextTypePage;
+pub use self::__CLSContext::CLSContextTypeQuiz;
+pub use self::__CLSContext::CLSContextTypeSection;
+pub use self::__CLSContext::CLSContextTypeTask;
+pub use self::__CLSContext::CLSContextTypeVideo;
 pub use self::__CLSContextProvider::CLSContextProvider;
-
 #[cfg(feature = "ClassKit_CLSDataStore")]
 pub use self::__CLSDataStore::CLSDataStore;
 pub use self::__CLSDataStore::CLSDataStoreDelegate;
-
-pub use self::__CLSDefines::CLSErrorCodeDomain;
-
 pub use self::__CLSDefines::CLSErrorCode;
-
-pub use self::__CLSDefines::CLSErrorCodeNone;
-
-pub use self::__CLSDefines::CLSErrorCodeClassKitUnavailable;
-
-pub use self::__CLSDefines::CLSErrorCodeInvalidArgument;
-
-pub use self::__CLSDefines::CLSErrorCodeInvalidModification;
-
 pub use self::__CLSDefines::CLSErrorCodeAuthorizationDenied;
-
+pub use self::__CLSDefines::CLSErrorCodeClassKitUnavailable;
 pub use self::__CLSDefines::CLSErrorCodeDatabaseInaccessible;
-
-pub use self::__CLSDefines::CLSErrorCodeLimits;
-
-pub use self::__CLSDefines::CLSErrorCodeInvalidCreate;
-
-pub use self::__CLSDefines::CLSErrorCodeInvalidUpdate;
-
-pub use self::__CLSDefines::CLSErrorCodePartialFailure;
-
+pub use self::__CLSDefines::CLSErrorCodeDomain;
 pub use self::__CLSDefines::CLSErrorCodeInvalidAccountCredentials;
-
-pub use self::__CLSDefines::CLSErrorUserInfoKey;
-
+pub use self::__CLSDefines::CLSErrorCodeInvalidArgument;
+pub use self::__CLSDefines::CLSErrorCodeInvalidCreate;
+pub use self::__CLSDefines::CLSErrorCodeInvalidModification;
+pub use self::__CLSDefines::CLSErrorCodeInvalidUpdate;
+pub use self::__CLSDefines::CLSErrorCodeLimits;
+pub use self::__CLSDefines::CLSErrorCodeNone;
+pub use self::__CLSDefines::CLSErrorCodePartialFailure;
 pub use self::__CLSDefines::CLSErrorObjectKey;
-
-pub use self::__CLSDefines::CLSErrorUnderlyingErrorsKey;
-
 pub use self::__CLSDefines::CLSErrorSuccessfulObjectsKey;
-
+pub use self::__CLSDefines::CLSErrorUnderlyingErrorsKey;
+pub use self::__CLSDefines::CLSErrorUserInfoKey;
 pub use self::__CLSDefines::CLSPredicateKeyPath;
-
 pub use self::__CLSDefines::CLSPredicateKeyPathDateCreated;
-
 pub use self::__CLSDefines::CLSPredicateKeyPathIdentifier;
-
-pub use self::__CLSDefines::CLSPredicateKeyPathTitle;
-
-pub use self::__CLSDefines::CLSPredicateKeyPathUniversalLinkURL;
-
-pub use self::__CLSDefines::CLSPredicateKeyPathTopic;
-
 pub use self::__CLSDefines::CLSPredicateKeyPathParent;
+pub use self::__CLSDefines::CLSPredicateKeyPathTitle;
+pub use self::__CLSDefines::CLSPredicateKeyPathTopic;
+pub use self::__CLSDefines::CLSPredicateKeyPathUniversalLinkURL;
 #[cfg(feature = "ClassKit_CLSObject")]
 pub use self::__CLSObject::CLSObject;
-
-pub use self::__CLSProgressReportingCapability::CLSProgressReportingCapabilityKind;
-
-pub use self::__CLSProgressReportingCapability::CLSProgressReportingCapabilityKindDuration;
-
-pub use self::__CLSProgressReportingCapability::CLSProgressReportingCapabilityKindPercent;
-
-pub use self::__CLSProgressReportingCapability::CLSProgressReportingCapabilityKindBinary;
-
-pub use self::__CLSProgressReportingCapability::CLSProgressReportingCapabilityKindQuantity;
-
 #[cfg(feature = "ClassKit_CLSProgressReportingCapability")]
 pub use self::__CLSProgressReportingCapability::CLSProgressReportingCapability;
+pub use self::__CLSProgressReportingCapability::CLSProgressReportingCapabilityKind;
+pub use self::__CLSProgressReportingCapability::CLSProgressReportingCapabilityKindBinary;
+pub use self::__CLSProgressReportingCapability::CLSProgressReportingCapabilityKindDuration;
+pub use self::__CLSProgressReportingCapability::CLSProgressReportingCapabilityKindPercent;
+pub use self::__CLSProgressReportingCapability::CLSProgressReportingCapabilityKindQuantity;
 pub use self::__CLSProgressReportingCapability::CLSProgressReportingCapabilityKindScore;
 #[cfg(feature = "ClassKit_CLSQuantityItem")]
 pub use self::__CLSQuantityItem::CLSQuantityItem;

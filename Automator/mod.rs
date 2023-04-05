@@ -23,17 +23,13 @@ mod __AMWorkspace;
 #[path = "AutomatorErrors.rs"]
 mod __AutomatorErrors;
 
-pub use self::__AMAction::AMLogLevel;
-
-pub use self::__AMAction::AMLogLevelDebug;
-
-pub use self::__AMAction::AMLogLevelInfo;
-
-pub use self::__AMAction::AMLogLevelWarn;
-
 #[cfg(feature = "Automator_AMAction")]
 pub use self::__AMAction::AMAction;
+pub use self::__AMAction::AMLogLevel;
+pub use self::__AMAction::AMLogLevelDebug;
 pub use self::__AMAction::AMLogLevelError;
+pub use self::__AMAction::AMLogLevelInfo;
+pub use self::__AMAction::AMLogLevelWarn;
 #[cfg(feature = "Automator_AMAppleScriptAction")]
 pub use self::__AMAppleScriptAction::AMAppleScriptAction;
 #[cfg(feature = "Automator_AMBundleAction")]
@@ -44,79 +40,43 @@ pub use self::__AMShellScriptAction::AMShellScriptAction;
 pub use self::__AMWorkflow::AMWorkflow;
 #[cfg(feature = "Automator_AMWorkflowController")]
 pub use self::__AMWorkflowController::AMWorkflowController;
-
 pub use self::__AMWorkflowController::AMWorkflowControllerDelegate;
 #[cfg(feature = "Automator_AMWorkflowView")]
 pub use self::__AMWorkflowView::AMWorkflowView;
 #[cfg(feature = "Automator_AMWorkspace")]
 pub use self::__AMWorkspace::AMWorkspace;
-
-pub use self::__AutomatorErrors::AMErrorCode;
-
-pub use self::__AutomatorErrors::AMWorkflowNewerVersionError;
-
-pub use self::__AutomatorErrors::AMWorkflowPropertyListInvalidError;
-
-pub use self::__AutomatorErrors::AMWorkflowNewerActionVersionError;
-
-pub use self::__AutomatorErrors::AMWorkflowOlderActionVersionError;
-
-pub use self::__AutomatorErrors::AMWorkflowActionsNotLoadedError;
-
-pub use self::__AutomatorErrors::AMWorkflowNoEnabledActionsError;
-
-pub use self::__AutomatorErrors::AMUserCanceledError;
-
-pub use self::__AutomatorErrors::AMNoSuchActionError;
-
-pub use self::__AutomatorErrors::AMActionNotLoadableError;
-
-pub use self::__AutomatorErrors::AMActionArchitectureMismatchError;
-
-pub use self::__AutomatorErrors::AMActionRuntimeMismatchError;
-
-pub use self::__AutomatorErrors::AMActionLoadError;
-
-pub use self::__AutomatorErrors::AMActionLinkError;
-
 pub use self::__AutomatorErrors::AMActionApplicationResourceError;
-
 pub use self::__AutomatorErrors::AMActionApplicationVersionResourceError;
-
-pub use self::__AutomatorErrors::AMActionFileResourceError;
-
-pub use self::__AutomatorErrors::AMActionLicenseResourceError;
-
-pub use self::__AutomatorErrors::AMActionRequiredActionResourceError;
-
-pub use self::__AutomatorErrors::AMActionInitializationError;
-
-pub use self::__AutomatorErrors::AMActionExecutionError;
-
+pub use self::__AutomatorErrors::AMActionArchitectureMismatchError;
 pub use self::__AutomatorErrors::AMActionExceptionError;
-
-pub use self::__AutomatorErrors::AMActionPropertyListInvalidError;
-
-pub use self::__AutomatorErrors::AMActionInsufficientDataError;
-
-pub use self::__AutomatorErrors::AMActionIsDeprecatedError;
-
+pub use self::__AutomatorErrors::AMActionExecutionError;
 pub use self::__AutomatorErrors::AMActionFailedGatekeeperError;
-
-pub use self::__AutomatorErrors::AMActionSignatureCorruptError;
-
-pub use self::__AutomatorErrors::AMActionQuarantineError;
-
-pub use self::__AutomatorErrors::AMActionXProtectError;
-
+pub use self::__AutomatorErrors::AMActionFileResourceError;
+pub use self::__AutomatorErrors::AMActionInitializationError;
+pub use self::__AutomatorErrors::AMActionInsufficientDataError;
+pub use self::__AutomatorErrors::AMActionIsDeprecatedError;
+pub use self::__AutomatorErrors::AMActionLicenseResourceError;
+pub use self::__AutomatorErrors::AMActionLinkError;
+pub use self::__AutomatorErrors::AMActionLoadError;
 pub use self::__AutomatorErrors::AMActionMalwareError;
-
+pub use self::__AutomatorErrors::AMActionNotLoadableError;
+pub use self::__AutomatorErrors::AMActionPropertyListInvalidError;
+pub use self::__AutomatorErrors::AMActionQuarantineError;
+pub use self::__AutomatorErrors::AMActionRequiredActionResourceError;
+pub use self::__AutomatorErrors::AMActionRuntimeMismatchError;
+pub use self::__AutomatorErrors::AMActionSignatureCorruptError;
 pub use self::__AutomatorErrors::AMActionThirdPartyActionsNotAllowedError;
-
 pub use self::__AutomatorErrors::AMActionXPCError;
-
-pub use self::__AutomatorErrors::AMConversionNotPossibleError;
-
-pub use self::__AutomatorErrors::AMConversionNoDataError;
-
+pub use self::__AutomatorErrors::AMActionXProtectError;
 pub use self::__AutomatorErrors::AMConversionFailedError;
+pub use self::__AutomatorErrors::AMConversionNoDataError;
+pub use self::__AutomatorErrors::AMConversionNotPossibleError;
+pub use self::__AutomatorErrors::AMErrorCode;
+pub use self::__AutomatorErrors::AMNoSuchActionError;
+pub use self::__AutomatorErrors::AMUserCanceledError;
+pub use self::__AutomatorErrors::AMWorkflowActionsNotLoadedError;
+pub use self::__AutomatorErrors::AMWorkflowNewerActionVersionError;
+pub use self::__AutomatorErrors::AMWorkflowNewerVersionError;
+pub use self::__AutomatorErrors::AMWorkflowNoEnabledActionsError;
+pub use self::__AutomatorErrors::AMWorkflowOlderActionVersionError;
+pub use self::__AutomatorErrors::AMWorkflowPropertyListInvalidError;

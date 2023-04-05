@@ -23,15 +23,10 @@ pub use self::__BGTaskRequest::BGAppRefreshTaskRequest;
 pub use self::__BGTaskRequest::BGProcessingTaskRequest;
 #[cfg(feature = "BackgroundTasks_BGTaskRequest")]
 pub use self::__BGTaskRequest::BGTaskRequest;
-
-pub use self::__BGTaskScheduler::BGTaskSchedulerErrorDomain;
-
-pub use self::__BGTaskScheduler::BGTaskSchedulerErrorCode;
-
-pub use self::__BGTaskScheduler::BGTaskSchedulerErrorCodeUnavailable;
-
-pub use self::__BGTaskScheduler::BGTaskSchedulerErrorCodeTooManyPendingTaskRequests;
-
 #[cfg(feature = "BackgroundTasks_BGTaskScheduler")]
 pub use self::__BGTaskScheduler::BGTaskScheduler;
+pub use self::__BGTaskScheduler::BGTaskSchedulerErrorCode;
 pub use self::__BGTaskScheduler::BGTaskSchedulerErrorCodeNotPermitted;
+pub use self::__BGTaskScheduler::BGTaskSchedulerErrorCodeTooManyPendingTaskRequests;
+pub use self::__BGTaskScheduler::BGTaskSchedulerErrorCodeUnavailable;
+pub use self::__BGTaskScheduler::BGTaskSchedulerErrorDomain;

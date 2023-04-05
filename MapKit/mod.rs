@@ -136,7 +136,6 @@ mod __MKZoomControl;
 mod __NSUserActivity_MKMapItem;
 
 pub use self::__MKAnnotation::MKAnnotation;
-
 pub use self::__MKAnnotationView::MKAnnotationCalloutInfoDidChangeNotification;
 #[cfg(feature = "MapKit_MKAnnotationView")]
 pub use self::__MKAnnotationView::MKAnnotationView;
@@ -190,21 +189,16 @@ pub use self::__MKClusterAnnotation::MKClusterAnnotation;
 #[cfg(feature = "MapKit_MKCompassButton")]
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__MKCompassButton::MKCompassButton;
-
-pub use self::__MKDirections::MKDirectionsHandler;
-
 #[cfg(feature = "MapKit_MKDirections")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKDirections::MKDirections;
+pub use self::__MKDirections::MKDirectionsHandler;
 pub use self::__MKDirections::MKETAHandler;
-
-pub use self::__MKDirectionsRequest::MKDirectionsRoutePreference;
-
-pub use self::__MKDirectionsRequest::MKDirectionsRoutePreferenceAny;
-
 #[cfg(feature = "MapKit_MKDirectionsRequest")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKDirectionsRequest::MKDirectionsRequest;
+pub use self::__MKDirectionsRequest::MKDirectionsRoutePreference;
+pub use self::__MKDirectionsRequest::MKDirectionsRoutePreferenceAny;
 pub use self::__MKDirectionsRequest::MKDirectionsRoutePreferenceAvoid;
 #[cfg(feature = "MapKit_MKDirectionsResponse")]
 #[cfg(not(any(target_os = "watchos")))]
@@ -224,30 +218,20 @@ pub use self::__MKDirectionsTypes::MKDirectionsTransportType;
 pub use self::__MKDirectionsTypes::MKDirectionsTransportTypeAny;
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKDirectionsTypes::MKDirectionsTransportTypeAutomobile;
-#[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKDirectionsTypes::MKDirectionsTransportTypeTransit;
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKDirectionsTypes::MKDirectionsTransportTypeWalking;
-
-pub use self::__MKDistanceFormatter::MKDistanceFormatterUnits;
-
-pub use self::__MKDistanceFormatter::MKDistanceFormatterUnitsDefault;
-
-pub use self::__MKDistanceFormatter::MKDistanceFormatterUnitsMetric;
-
-pub use self::__MKDistanceFormatter::MKDistanceFormatterUnitsImperial;
-
-pub use self::__MKDistanceFormatter::MKDistanceFormatterUnitsImperialWithYards;
-
-pub use self::__MKDistanceFormatter::MKDistanceFormatterUnitStyle;
-
-pub use self::__MKDistanceFormatter::MKDistanceFormatterUnitStyleDefault;
-
-pub use self::__MKDistanceFormatter::MKDistanceFormatterUnitStyleAbbreviated;
-
 #[cfg(feature = "MapKit_MKDistanceFormatter")]
 pub use self::__MKDistanceFormatter::MKDistanceFormatter;
+pub use self::__MKDistanceFormatter::MKDistanceFormatterUnitStyle;
+pub use self::__MKDistanceFormatter::MKDistanceFormatterUnitStyleAbbreviated;
+pub use self::__MKDistanceFormatter::MKDistanceFormatterUnitStyleDefault;
 pub use self::__MKDistanceFormatter::MKDistanceFormatterUnitStyleFull;
+pub use self::__MKDistanceFormatter::MKDistanceFormatterUnits;
+pub use self::__MKDistanceFormatter::MKDistanceFormatterUnitsDefault;
+pub use self::__MKDistanceFormatter::MKDistanceFormatterUnitsImperial;
+pub use self::__MKDistanceFormatter::MKDistanceFormatterUnitsImperialWithYards;
+pub use self::__MKDistanceFormatter::MKDistanceFormatterUnitsMetric;
 #[cfg(feature = "MapKit_MKGeoJSONDecoder")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKGeoJSONSerialization::MKGeoJSONDecoder;
@@ -259,56 +243,31 @@ pub use self::__MKGeoJSONSerialization::MKGeoJSONObject;
 #[cfg(feature = "MapKit_MKGeodesicPolyline")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKGeodesicPolyline::MKGeodesicPolyline;
-
-pub use self::__MKGeometry::MKCoordinateSpan;
-
-pub use self::__MKGeometry::MKCoordinateRegion;
-
-pub use self::__MKGeometry::MKCoordinateRegionMakeWithDistance;
-
-pub use self::__MKGeometry::MKMapPoint;
-
-pub use self::__MKGeometry::MKMapSize;
-
-pub use self::__MKGeometry::MKMapRect;
-
-pub use self::__MKGeometry::MKZoomScale;
-
-pub use self::__MKGeometry::MKMapSizeWorld;
-
-pub use self::__MKGeometry::MKMapRectWorld;
-
-pub use self::__MKGeometry::MKMapPointForCoordinate;
-
 pub use self::__MKGeometry::MKCoordinateForMapPoint;
-
-pub use self::__MKGeometry::MKMetersPerMapPointAtLatitude;
-
-pub use self::__MKGeometry::MKMapPointsPerMeterAtLatitude;
-
-pub use self::__MKGeometry::MKMetersBetweenMapPoints;
-
-pub use self::__MKGeometry::MKMapRectNull;
-
-pub use self::__MKGeometry::MKMapRectUnion;
-
-pub use self::__MKGeometry::MKMapRectIntersection;
-
-pub use self::__MKGeometry::MKMapRectInset;
-
-pub use self::__MKGeometry::MKMapRectOffset;
-
-pub use self::__MKGeometry::MKMapRectContainsPoint;
-
-pub use self::__MKGeometry::MKMapRectContainsRect;
-
-pub use self::__MKGeometry::MKMapRectIntersectsRect;
-
+pub use self::__MKGeometry::MKCoordinateRegion;
 pub use self::__MKGeometry::MKCoordinateRegionForMapRect;
-
-pub use self::__MKGeometry::MKMapRectSpans180thMeridian;
-
+pub use self::__MKGeometry::MKCoordinateRegionMakeWithDistance;
+pub use self::__MKGeometry::MKCoordinateSpan;
+pub use self::__MKGeometry::MKMapPoint;
+pub use self::__MKGeometry::MKMapPointForCoordinate;
+pub use self::__MKGeometry::MKMapPointsPerMeterAtLatitude;
+pub use self::__MKGeometry::MKMapRect;
+pub use self::__MKGeometry::MKMapRectContainsPoint;
+pub use self::__MKGeometry::MKMapRectContainsRect;
+pub use self::__MKGeometry::MKMapRectInset;
+pub use self::__MKGeometry::MKMapRectIntersection;
+pub use self::__MKGeometry::MKMapRectIntersectsRect;
+pub use self::__MKGeometry::MKMapRectNull;
+pub use self::__MKGeometry::MKMapRectOffset;
 pub use self::__MKGeometry::MKMapRectRemainder;
+pub use self::__MKGeometry::MKMapRectSpans180thMeridian;
+pub use self::__MKGeometry::MKMapRectUnion;
+pub use self::__MKGeometry::MKMapRectWorld;
+pub use self::__MKGeometry::MKMapSize;
+pub use self::__MKGeometry::MKMapSizeWorld;
+pub use self::__MKGeometry::MKMetersBetweenMapPoints;
+pub use self::__MKGeometry::MKMetersPerMapPointAtLatitude;
+pub use self::__MKGeometry::MKZoomScale;
 #[cfg(feature = "MapKit_MKGradientPolylineRenderer")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKGradientPolylineRenderer::MKGradientPolylineRenderer;
@@ -323,7 +282,6 @@ pub use self::__MKImageryMapConfiguration::MKImageryMapConfiguration;
 pub use self::__MKLocalPointsOfInterestRequest::MKLocalPointsOfInterestRequest;
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKLocalPointsOfInterestRequest::MKPointsOfInterestRequestMaxRadius;
-
 #[cfg(feature = "MapKit_MKLocalSearch")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKLocalSearch::MKLocalSearch;
@@ -401,14 +359,11 @@ pub use self::__MKMapCameraZoomRange::MKMapCameraZoomDefault;
 #[cfg(feature = "MapKit_MKMapCameraZoomRange")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKMapCameraZoomRange::MKMapCameraZoomRange;
-
-pub use self::__MKMapConfiguration::MKMapElevationStyle;
-
-pub use self::__MKMapConfiguration::MKMapElevationStyleFlat;
-
 #[cfg(feature = "MapKit_MKMapConfiguration")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKMapConfiguration::MKMapConfiguration;
+pub use self::__MKMapConfiguration::MKMapElevationStyle;
+pub use self::__MKMapConfiguration::MKMapElevationStyleFlat;
 pub use self::__MKMapConfiguration::MKMapElevationStyleRealistic;
 #[cfg(not(any(target_os = "tvos")))]
 pub use self::__MKMapItem::MKLaunchOptionsCameraKey;
@@ -432,7 +387,6 @@ pub use self::__MKMapItem::MKLaunchOptionsMapTypeKey;
 pub use self::__MKMapItem::MKLaunchOptionsShowsTrafficKey;
 #[cfg(feature = "MapKit_MKMapItem")]
 pub use self::__MKMapItem::MKMapItem;
-
 pub use self::__MKMapItem::MKMapItemTypeIdentifier;
 #[cfg(feature = "MapKit_MKMapSnapshot")]
 #[cfg(not(any(target_os = "watchos")))]
@@ -440,24 +394,13 @@ pub use self::__MKMapSnapshot::MKMapSnapshot;
 #[cfg(feature = "MapKit_MKMapSnapshotOptions")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKMapSnapshotOptions::MKMapSnapshotOptions;
-
 pub use self::__MKMapSnapshotter::MKMapSnapshotCompletionHandler;
 #[cfg(feature = "MapKit_MKMapSnapshotter")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKMapSnapshotter::MKMapSnapshotter;
-#[cfg(not(any(target_os = "watchos")))]
-pub use self::__MKMapView::MKUserTrackingMode;
-#[cfg(not(any(target_os = "watchos")))]
-pub use self::__MKMapView::MKUserTrackingModeFollow;
-#[cfg(not(any(target_os = "watchos")))]
-pub use self::__MKMapView::MKUserTrackingModeFollowWithHeading;
-#[cfg(not(any(target_os = "watchos")))]
-pub use self::__MKMapView::MKUserTrackingModeNone;
-
-pub use self::__MKMapView::MKMapViewDefaultAnnotationViewReuseIdentifier;
-
 #[cfg(feature = "MapKit_MKMapView")]
 pub use self::__MKMapView::MKMapView;
+pub use self::__MKMapView::MKMapViewDefaultAnnotationViewReuseIdentifier;
 pub use self::__MKMapView::MKMapViewDefaultClusterAnnotationViewReuseIdentifier;
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKMapView::MKMapViewDelegate;
@@ -467,6 +410,14 @@ pub use self::__MKMapView::MKOverlayLevel;
 pub use self::__MKMapView::MKOverlayLevelAboveLabels;
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKMapView::MKOverlayLevelAboveRoads;
+#[cfg(not(any(target_os = "watchos")))]
+pub use self::__MKMapView::MKUserTrackingMode;
+#[cfg(not(any(target_os = "watchos")))]
+pub use self::__MKMapView::MKUserTrackingModeFollow;
+#[cfg(not(any(target_os = "macos", target_os = "tvos")))]
+pub use self::__MKMapView::MKUserTrackingModeFollowWithHeading;
+#[cfg(not(any(target_os = "watchos")))]
+pub use self::__MKMapView::MKUserTrackingModeNone;
 #[cfg(feature = "MapKit_MKMarkerAnnotationView")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKMarkerAnnotationView::MKMarkerAnnotationView;
@@ -514,7 +465,6 @@ pub use self::__MKPlacemark::MKPlacemark;
 #[cfg(feature = "MapKit_MKPointAnnotation")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKPointAnnotation::MKPointAnnotation;
-
 pub use self::__MKPointOfInterestCategory::MKPointOfInterestCategory;
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKPointOfInterestCategory::MKPointOfInterestCategoryATM;
@@ -614,43 +564,23 @@ pub use self::__MKPolylineRenderer::MKPolylineRenderer;
 #[cfg(feature = "MapKit_MKShape")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKShape::MKShape;
-
-pub use self::__MKStandardMapConfiguration::MKStandardMapEmphasisStyle;
-
-pub use self::__MKStandardMapConfiguration::MKStandardMapEmphasisStyleDefault;
-
 #[cfg(feature = "MapKit_MKStandardMapConfiguration")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKStandardMapConfiguration::MKStandardMapConfiguration;
+pub use self::__MKStandardMapConfiguration::MKStandardMapEmphasisStyle;
+pub use self::__MKStandardMapConfiguration::MKStandardMapEmphasisStyleDefault;
 pub use self::__MKStandardMapConfiguration::MKStandardMapEmphasisStyleMuted;
 #[cfg(feature = "MapKit_MKTileOverlay")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKTileOverlay::MKTileOverlay;
-
 pub use self::__MKTileOverlay::MKTileOverlayPath;
 #[cfg(feature = "MapKit_MKTileOverlayRenderer")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKTileOverlayRenderer::MKTileOverlayRenderer;
 #[cfg(not(any(target_os = "watchos")))]
-pub use self::__MKTypes::MKMapType;
-#[cfg(not(any(target_os = "watchos")))]
-pub use self::__MKTypes::MKMapTypeHybrid;
-#[cfg(not(any(target_os = "watchos")))]
-pub use self::__MKTypes::MKMapTypeHybridFlyover;
-#[cfg(not(any(target_os = "watchos")))]
-pub use self::__MKTypes::MKMapTypeMutedStandard;
-#[cfg(not(any(target_os = "watchos")))]
-pub use self::__MKTypes::MKMapTypeSatellite;
-#[cfg(not(any(target_os = "watchos")))]
-pub use self::__MKTypes::MKMapTypeSatelliteFlyover;
-#[cfg(not(any(target_os = "watchos")))]
-pub use self::__MKTypes::MKMapTypeStandard;
-
-#[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKTypes::MKErrorCode;
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKTypes::MKErrorDecodingFailed;
-#[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKTypes::MKErrorDirectionsNotFound;
 pub use self::__MKTypes::MKErrorDomain;
 #[cfg(not(any(target_os = "watchos")))]
@@ -669,6 +599,17 @@ pub use self::__MKTypes::MKFeatureVisibilityAdaptive;
 pub use self::__MKTypes::MKFeatureVisibilityHidden;
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKTypes::MKFeatureVisibilityVisible;
+#[cfg(not(any(target_os = "watchos")))]
+pub use self::__MKTypes::MKMapType;
+#[cfg(not(any(target_os = "watchos")))]
+pub use self::__MKTypes::MKMapTypeHybrid;
+pub use self::__MKTypes::MKMapTypeHybridFlyover;
+pub use self::__MKTypes::MKMapTypeMutedStandard;
+#[cfg(not(any(target_os = "watchos")))]
+pub use self::__MKTypes::MKMapTypeSatellite;
+pub use self::__MKTypes::MKMapTypeSatelliteFlyover;
+#[cfg(not(any(target_os = "watchos")))]
+pub use self::__MKTypes::MKMapTypeStandard;
 #[cfg(feature = "MapKit_MKUserLocation")]
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKUserLocation::MKUserLocation;

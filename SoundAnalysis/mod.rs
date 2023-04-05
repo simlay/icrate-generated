@@ -31,35 +31,20 @@ pub use self::__SNClassificationResult::SNClassification;
 pub use self::__SNClassificationResult::SNClassificationResult;
 #[cfg(feature = "SoundAnalysis_SNClassifySoundRequest")]
 pub use self::__SNClassifySoundRequest::SNClassifySoundRequest;
-
-pub use self::__SNError::SNErrorDomain;
-
 pub use self::__SNError::SNErrorCode;
-
-pub use self::__SNError::SNErrorCodeUnknownError;
-
-pub use self::__SNError::SNErrorCodeOperationFailed;
-
-pub use self::__SNError::SNErrorCodeInvalidFormat;
-
-pub use self::__SNError::SNErrorCodeInvalidModel;
-
 pub use self::__SNError::SNErrorCodeInvalidFile;
-
+pub use self::__SNError::SNErrorCodeInvalidFormat;
+pub use self::__SNError::SNErrorCodeInvalidModel;
+pub use self::__SNError::SNErrorCodeOperationFailed;
+pub use self::__SNError::SNErrorCodeUnknownError;
+pub use self::__SNError::SNErrorDomain;
 pub use self::__SNRequest::SNRequest;
-
 pub use self::__SNResult::SNResult;
-
 pub use self::__SNResult::SNResultsObserving;
-
-pub use self::__SNTimeDurationConstraint::SNTimeDurationConstraintType;
-
-pub use self::__SNTimeDurationConstraint::SNTimeDurationConstraintTypeEnumerated;
-
 #[cfg(feature = "SoundAnalysis_SNTimeDurationConstraint")]
 pub use self::__SNTimeDurationConstraint::SNTimeDurationConstraint;
+pub use self::__SNTimeDurationConstraint::SNTimeDurationConstraintType;
+pub use self::__SNTimeDurationConstraint::SNTimeDurationConstraintTypeEnumerated;
 pub use self::__SNTimeDurationConstraint::SNTimeDurationConstraintTypeRange;
-
 pub use self::__SNTypes::SNClassifierIdentifier;
-
 pub use self::__SNTypes::SNClassifierIdentifierVersion1;

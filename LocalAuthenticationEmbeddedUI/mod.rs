@@ -12,5 +12,4 @@ mod __LARight_UI;
 #[cfg(feature = "LocalAuthenticationEmbeddedUI_LAAuthenticationView")]
 #[cfg(not(any(target_os = "ios")))]
 pub use self::__LAAuthenticationView::LAAuthenticationView;
-
 pub use self::__LAPresentationContext::LAPresentationContext;
