@@ -5,9 +5,9 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::WebKit::*;
 
+#[deprecated]
 extern_enum!(
     #[underlying(c_uint)]
-    #[deprecated]
     pub enum __anonymous__ {
         #[deprecated]
         DOM_HORIZONTAL = 0,
@@ -24,6 +24,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMOverflowEvent;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMOverflowEvent")]
     unsafe impl ClassType for DOMOverflowEvent {
         #[inherits(DOMObject, WebScriptObject, NSObject)]

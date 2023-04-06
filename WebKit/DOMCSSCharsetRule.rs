@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMCSSCharsetRule;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMCSSCharsetRule")]
     unsafe impl ClassType for DOMCSSCharsetRule {
         #[inherits(DOMObject, WebScriptObject, NSObject)]

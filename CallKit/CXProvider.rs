@@ -4,9 +4,9 @@ use crate::common::*;
 use crate::CallKit::*;
 use crate::Foundation::*;
 
+#[cfg(not(any(target_os = "macos")))]
 ns_enum!(
     #[underlying(NSInteger)]
-    #[cfg(not(any(target_os = "macos")))]
     pub enum CXCallEndedReason {
         #[cfg(not(any(target_os = "macos")))]
         CXCallEndedReasonFailed = 1,
@@ -155,6 +155,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct CXProvider;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "CallKit_CXProvider")]
     unsafe impl ClassType for CXProvider {
         type Super = NSObject;
@@ -162,11 +163,14 @@ extern_class!(
 );
 
 #[cfg(feature = "CallKit_CXProvider")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSObjectProtocol for CXProvider {}
 
 extern_methods!(
     #[cfg(feature = "CallKit_CXProvider")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXProvider {
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "CallKit_CXProviderConfiguration")]
         #[method_id(@__retain_semantics Init initWithConfiguration:)]
         pub unsafe fn initWithConfiguration(
@@ -174,12 +178,15 @@ extern_methods!(
             configuration: &CXProviderConfiguration,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "CallKit_CXCallUpdate",
             feature = "Foundation_NSError",
@@ -193,10 +200,12 @@ extern_methods!(
             completion: &Block<(*mut NSError,), ()>,
         );
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(feature = "CallKit_CXCallUpdate", feature = "Foundation_NSUUID"))]
         #[method(reportCallWithUUID:updated:)]
         pub unsafe fn reportCallWithUUID_updated(&self, uuid: &NSUUID, update: &CXCallUpdate);
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(feature = "Foundation_NSDate", feature = "Foundation_NSUUID"))]
         #[method(reportCallWithUUID:endedAtDate:reason:)]
         pub unsafe fn reportCallWithUUID_endedAtDate_reason(
@@ -206,6 +215,7 @@ extern_methods!(
             ended_reason: CXCallEndedReason,
         );
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(feature = "Foundation_NSDate", feature = "Foundation_NSUUID"))]
         #[method(reportOutgoingCallWithUUID:startedConnectingAtDate:)]
         pub unsafe fn reportOutgoingCallWithUUID_startedConnectingAtDate(
@@ -214,6 +224,7 @@ extern_methods!(
             date_started_connecting: Option<&NSDate>,
         );
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(feature = "Foundation_NSDate", feature = "Foundation_NSUUID"))]
         #[method(reportOutgoingCallWithUUID:connectedAtDate:)]
         pub unsafe fn reportOutgoingCallWithUUID_connectedAtDate(
@@ -222,6 +233,7 @@ extern_methods!(
             date_connected: Option<&NSDate>,
         );
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSError"))]
         #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(reportNewIncomingVoIPPushPayload:completion:)]
@@ -230,21 +242,26 @@ extern_methods!(
             completion: Option<&Block<(*mut NSError,), ()>>,
         );
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "CallKit_CXProviderConfiguration")]
         #[method_id(@__retain_semantics Other configuration)]
         pub unsafe fn configuration(&self) -> Id<CXProviderConfiguration>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "CallKit_CXProviderConfiguration")]
         #[method(setConfiguration:)]
         pub unsafe fn setConfiguration(&self, configuration: &CXProviderConfiguration);
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method(invalidate)]
         pub unsafe fn invalidate(&self);
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(feature = "CallKit_CXTransaction", feature = "Foundation_NSArray"))]
         #[method_id(@__retain_semantics Other pendingTransactions)]
         pub unsafe fn pendingTransactions(&self) -> Id<NSArray<CXTransaction>>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "CallKit_CXCallAction",
             feature = "Foundation_NSArray",

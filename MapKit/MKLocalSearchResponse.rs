@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKLocalSearchResponse;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKLocalSearchResponse")]
     unsafe impl ClassType for MKLocalSearchResponse {
         type Super = NSObject;
@@ -20,15 +21,19 @@ extern_class!(
 );
 
 #[cfg(feature = "MapKit_MKLocalSearchResponse")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKLocalSearchResponse {}
 
 extern_methods!(
     #[cfg(feature = "MapKit_MKLocalSearchResponse")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKLocalSearchResponse {
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "MapKit_MKMapItem"))]
         #[method_id(@__retain_semantics Other mapItems)]
         pub unsafe fn mapItems(&self) -> Id<NSArray<MKMapItem>>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(boundingRegion)]
         pub unsafe fn boundingRegion(&self) -> MKCoordinateRegion;
     }

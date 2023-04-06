@@ -5,9 +5,9 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::WebKit::*;
 
+#[deprecated]
 extern_enum!(
     #[underlying(c_uint)]
-    #[deprecated]
     pub enum __anonymous__ {
         #[deprecated]
         DOM_ALLOW_KEYBOARD_INPUT = 1,
@@ -20,6 +20,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMElement;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMElement")]
     unsafe impl ClassType for DOMElement {
         #[inherits(DOMObject, WebScriptObject, NSObject)]

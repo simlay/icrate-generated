@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct ASAuthorizationProviderExtensionAuthorizationResult;
 
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionAuthorizationResult")]
     unsafe impl ClassType for ASAuthorizationProviderExtensionAuthorizationResult {
         type Super = NSObject;
@@ -17,11 +18,14 @@ extern_class!(
 );
 
 #[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionAuthorizationResult")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for ASAuthorizationProviderExtensionAuthorizationResult {}
 
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionAuthorizationResult")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAuthorizationProviderExtensionAuthorizationResult {
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
         #[method_id(@__retain_semantics Init initWithHTTPAuthorizationHeaders:)]
         pub unsafe fn initWithHTTPAuthorizationHeaders(
@@ -29,6 +33,7 @@ extern_methods!(
             http_authorization_headers: &NSDictionary<NSString, NSString>,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSData",
             feature = "Foundation_NSHTTPURLResponse"
@@ -40,12 +45,14 @@ extern_methods!(
             http_body: Option<&NSData>,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
         #[method_id(@__retain_semantics Other httpAuthorizationHeaders)]
         pub unsafe fn httpAuthorizationHeaders(
             &self,
         ) -> Option<Id<NSDictionary<NSString, NSString>>>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
         #[method(setHttpAuthorizationHeaders:)]
         pub unsafe fn setHttpAuthorizationHeaders(
@@ -53,26 +60,32 @@ extern_methods!(
             http_authorization_headers: Option<&NSDictionary<NSString, NSString>>,
         );
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSHTTPURLResponse")]
         #[method_id(@__retain_semantics Other httpResponse)]
         pub unsafe fn httpResponse(&self) -> Option<Id<NSHTTPURLResponse>>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSHTTPURLResponse")]
         #[method(setHttpResponse:)]
         pub unsafe fn setHttpResponse(&self, http_response: Option<&NSHTTPURLResponse>);
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSData")]
         #[method_id(@__retain_semantics Other httpBody)]
         pub unsafe fn httpBody(&self) -> Option<Id<NSData>>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSData")]
         #[method(setHttpBody:)]
         pub unsafe fn setHttpBody(&self, http_body: Option<&NSData>);
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSArray")]
         #[method_id(@__retain_semantics Other privateKeys)]
         pub unsafe fn privateKeys(&self) -> Id<NSArray>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSArray")]
         #[method(setPrivateKeys:)]
         pub unsafe fn setPrivateKeys(&self, private_keys: &NSArray);

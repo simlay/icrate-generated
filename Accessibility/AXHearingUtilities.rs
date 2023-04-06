@@ -4,9 +4,9 @@ use crate::common::*;
 use crate::Accessibility::*;
 use crate::Foundation::*;
 
+#[cfg(not(any(target_os = "macos", target_os = "tvos")))]
 ns_options!(
     #[underlying(NSUInteger)]
-    #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
     pub enum AXHearingDeviceEar {
         #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         AXHearingDeviceEarNone = 0,

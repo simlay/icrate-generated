@@ -9,6 +9,7 @@ extern_class!(
     #[deprecated = "Use NSXPCConnection instead"]
     pub struct NSConnection;
 
+    #[deprecated = "Use NSXPCConnection instead"]
     #[cfg(feature = "Foundation_NSConnection")]
     unsafe impl ClassType for NSConnection {
         type Super = NSObject;
@@ -285,7 +286,6 @@ extern_protocol!(
         ) -> bool;
     }
 
-    #[deprecated = "Use NSXPCConnection instead"]
     unsafe impl ProtocolType for dyn NSConnectionDelegate {}
 );
 
@@ -301,6 +301,7 @@ extern_class!(
     #[deprecated = "Use NSXPCConnection instead"]
     pub struct NSDistantObjectRequest;
 
+    #[deprecated = "Use NSXPCConnection instead"]
     #[cfg(feature = "Foundation_NSDistantObjectRequest")]
     unsafe impl ClassType for NSDistantObjectRequest {
         type Super = NSObject;

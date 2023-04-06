@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct MKCompassButton;
 
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKCompassButton")]
     unsafe impl ClassType for MKCompassButton {
         #[inherits(NSResponder, NSObject)]
@@ -21,47 +22,61 @@ extern_class!(
 );
 
 #[cfg(feature = "MapKit_MKCompassButton")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSAccessibility for MKCompassButton {}
 
 #[cfg(feature = "MapKit_MKCompassButton")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSAccessibilityElementProtocol for MKCompassButton {}
 
 #[cfg(feature = "MapKit_MKCompassButton")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSAnimatablePropertyContainer for MKCompassButton {}
 
 #[cfg(feature = "MapKit_MKCompassButton")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSAppearanceCustomization for MKCompassButton {}
 
 #[cfg(feature = "MapKit_MKCompassButton")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSCoding for MKCompassButton {}
 
 #[cfg(feature = "MapKit_MKCompassButton")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSDraggingDestination for MKCompassButton {}
 
 #[cfg(feature = "MapKit_MKCompassButton")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKCompassButton {}
 
 #[cfg(feature = "MapKit_MKCompassButton")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSUserInterfaceItemIdentification for MKCompassButton {}
 
 extern_methods!(
     #[cfg(feature = "MapKit_MKCompassButton")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl MKCompassButton {
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKMapView")]
         #[method_id(@__retain_semantics Other compassButtonWithMapView:)]
         pub unsafe fn compassButtonWithMapView(map_view: Option<&MKMapView>) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKMapView")]
         #[method_id(@__retain_semantics Other mapView)]
         pub unsafe fn mapView(&self) -> Option<Id<MKMapView>>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKMapView")]
         #[method(setMapView:)]
         pub unsafe fn setMapView(&self, map_view: Option<&MKMapView>);
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(compassVisibility)]
         pub unsafe fn compassVisibility(&self) -> MKFeatureVisibility;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(setCompassVisibility:)]
         pub unsafe fn setCompassVisibility(&self, compass_visibility: MKFeatureVisibility);
     }
@@ -70,7 +85,9 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `NSView`
     #[cfg(feature = "MapKit_MKCompassButton")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl MKCompassButton {
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Init initWithFrame:)]
         pub unsafe fn initWithFrame(this: Option<Allocated<Self>>, frame_rect: NSRect) -> Id<Self>;
     }

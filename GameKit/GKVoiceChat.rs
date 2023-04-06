@@ -22,6 +22,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct GKVoiceChat;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "GameKit_GKVoiceChat")]
     unsafe impl ClassType for GKVoiceChat {
         type Super = NSObject;
@@ -29,27 +30,34 @@ extern_class!(
 );
 
 #[cfg(feature = "GameKit_GKVoiceChat")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for GKVoiceChat {}
 
 extern_methods!(
     #[cfg(feature = "GameKit_GKVoiceChat")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl GKVoiceChat {
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(start)]
         pub unsafe fn start(&self);
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(stop)]
         pub unsafe fn stop(&self);
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "GameKit_GKPlayer")]
         #[method(setPlayer:muted:)]
         pub unsafe fn setPlayer_muted(&self, player: &GKPlayer, is_muted: bool);
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "GameKit_GKPlayer")]
         #[method(playerVoiceChatStateDidChangeHandler)]
         pub unsafe fn playerVoiceChatStateDidChangeHandler(
             &self,
         ) -> NonNull<Block<(NonNull<GKPlayer>, GKVoiceChatPlayerState), ()>>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "GameKit_GKPlayer")]
         #[method(setPlayerVoiceChatStateDidChangeHandler:)]
         pub unsafe fn setPlayerVoiceChatStateDidChangeHandler(
@@ -60,26 +68,33 @@ extern_methods!(
             >,
         );
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other name)]
         pub unsafe fn name(&self) -> Id<NSString>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(isActive)]
         pub unsafe fn isActive(&self) -> bool;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(setActive:)]
         pub unsafe fn setActive(&self, active: bool);
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(volume)]
         pub unsafe fn volume(&self) -> c_float;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(setVolume:)]
         pub unsafe fn setVolume(&self, volume: c_float);
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "GameKit_GKPlayer"))]
         #[method_id(@__retain_semantics Other players)]
         pub unsafe fn players(&self) -> Id<NSArray<GKPlayer>>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(isVoIPAllowed)]
         pub unsafe fn isVoIPAllowed() -> bool;
     }
@@ -88,7 +103,9 @@ extern_methods!(
 extern_methods!(
     /// Deprecated
     #[cfg(feature = "GameKit_GKVoiceChat")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl GKVoiceChat {
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[deprecated = "use setPlayerVoiceChatStateDidChangeHandler:"]
         #[method(playerStateUpdateHandler)]
@@ -96,6 +113,7 @@ extern_methods!(
             &self,
         ) -> NonNull<Block<(NonNull<NSString>, GKVoiceChatPlayerState), ()>>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[deprecated = "use setPlayerVoiceChatStateDidChangeHandler:"]
         #[method(setPlayerStateUpdateHandler:)]
@@ -109,12 +127,15 @@ extern_methods!(
 extern_methods!(
     /// Obsoleted
     #[cfg(feature = "GameKit_GKVoiceChat")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl GKVoiceChat {
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
         #[deprecated = "use players"]
         #[method_id(@__retain_semantics Other playerIDs)]
         pub unsafe fn playerIDs(&self) -> Option<Id<NSArray<NSString>>>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[deprecated = "This is never invoked and its implementation does nothing, use setPlayer:muted:"]
         #[method(setMute:forPlayer:)]

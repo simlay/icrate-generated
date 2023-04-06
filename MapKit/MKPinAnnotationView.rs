@@ -7,10 +7,10 @@ use crate::CoreLocation::*;
 use crate::Foundation::*;
 use crate::MapKit::*;
 
+#[deprecated = "Use MKPinAnnotationView's pinTintColor instead"]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSUInteger)]
-    #[deprecated = "Use MKPinAnnotationView's pinTintColor instead"]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub enum MKPinAnnotationColor {
         #[deprecated = "Use MKPinAnnotationView's pinTintColor instead"]
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
@@ -31,6 +31,8 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKPinAnnotationView;
 
+    #[deprecated]
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKPinAnnotationView")]
     unsafe impl ClassType for MKPinAnnotationView {
         #[inherits(NSView, NSResponder, NSObject)]
@@ -39,63 +41,81 @@ extern_class!(
 );
 
 #[cfg(feature = "MapKit_MKPinAnnotationView")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSAccessibility for MKPinAnnotationView {}
 
 #[cfg(feature = "MapKit_MKPinAnnotationView")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSAccessibilityElementProtocol for MKPinAnnotationView {}
 
 #[cfg(feature = "MapKit_MKPinAnnotationView")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSAnimatablePropertyContainer for MKPinAnnotationView {}
 
 #[cfg(feature = "MapKit_MKPinAnnotationView")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSAppearanceCustomization for MKPinAnnotationView {}
 
 #[cfg(feature = "MapKit_MKPinAnnotationView")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSCoding for MKPinAnnotationView {}
 
 #[cfg(feature = "MapKit_MKPinAnnotationView")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSDraggingDestination for MKPinAnnotationView {}
 
 #[cfg(feature = "MapKit_MKPinAnnotationView")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKPinAnnotationView {}
 
 #[cfg(feature = "MapKit_MKPinAnnotationView")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSUserInterfaceItemIdentification for MKPinAnnotationView {}
 
 extern_methods!(
     #[cfg(feature = "MapKit_MKPinAnnotationView")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKPinAnnotationView {
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "AppKit_NSColor")]
         #[method_id(@__retain_semantics Other redPinColor)]
         pub unsafe fn redPinColor() -> Id<NSColor>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "AppKit_NSColor")]
         #[method_id(@__retain_semantics Other greenPinColor)]
         pub unsafe fn greenPinColor() -> Id<NSColor>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "AppKit_NSColor")]
         #[method_id(@__retain_semantics Other purplePinColor)]
         pub unsafe fn purplePinColor() -> Id<NSColor>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "AppKit_NSColor")]
         #[method_id(@__retain_semantics Other pinTintColor)]
         pub unsafe fn pinTintColor(&self) -> Option<Id<NSColor>>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "AppKit_NSColor")]
         #[method(setPinTintColor:)]
         pub unsafe fn setPinTintColor(&self, pin_tint_color: Option<&NSColor>);
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(animatesDrop)]
         pub unsafe fn animatesDrop(&self) -> bool;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(setAnimatesDrop:)]
         pub unsafe fn setAnimatesDrop(&self, animates_drop: bool);
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[deprecated = "Use pinTintColor instead"]
         #[cfg(not(any(target_os = "tvos")))]
         #[method(pinColor)]
         pub unsafe fn pinColor(&self) -> MKPinAnnotationColor;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[deprecated = "Use pinTintColor instead"]
         #[cfg(not(any(target_os = "tvos")))]
         #[method(setPinColor:)]
@@ -106,7 +126,9 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `MKAnnotationView`
     #[cfg(feature = "MapKit_MKPinAnnotationView")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKPinAnnotationView {
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Init initWithAnnotation:reuseIdentifier:)]
         pub unsafe fn initWithAnnotation_reuseIdentifier(
@@ -120,7 +142,9 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `NSView`
     #[cfg(feature = "MapKit_MKPinAnnotationView")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKPinAnnotationView {
+        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init initWithFrame:)]
         pub unsafe fn initWithFrame(this: Option<Allocated<Self>>, frame_rect: NSRect) -> Id<Self>;
     }

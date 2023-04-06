@@ -21,6 +21,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct GKChallenge;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "GameKit_GKChallenge")]
     unsafe impl ClassType for GKChallenge {
         type Super = NSObject;
@@ -28,45 +29,57 @@ extern_class!(
 );
 
 #[cfg(feature = "GameKit_GKChallenge")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSCoding for GKChallenge {}
 
 #[cfg(feature = "GameKit_GKChallenge")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for GKChallenge {}
 
 #[cfg(feature = "GameKit_GKChallenge")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSSecureCoding for GKChallenge {}
 
 extern_methods!(
     #[cfg(feature = "GameKit_GKChallenge")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl GKChallenge {
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSError"))]
         #[method(loadReceivedChallengesWithCompletionHandler:)]
         pub unsafe fn loadReceivedChallengesWithCompletionHandler(
             completion_handler: Option<&Block<(*mut NSArray<GKChallenge>, *mut NSError), ()>>,
         );
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(decline)]
         pub unsafe fn decline(&self);
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "GameKit_GKPlayer")]
         #[method_id(@__retain_semantics Other issuingPlayer)]
         pub unsafe fn issuingPlayer(&self) -> Option<Id<GKPlayer>>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "GameKit_GKPlayer")]
         #[method_id(@__retain_semantics Other receivingPlayer)]
         pub unsafe fn receivingPlayer(&self) -> Option<Id<GKPlayer>>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(state)]
         pub unsafe fn state(&self) -> GKChallengeState;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSDate")]
         #[method_id(@__retain_semantics Other issueDate)]
         pub unsafe fn issueDate(&self) -> Id<NSDate>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSDate")]
         #[method_id(@__retain_semantics Other completionDate)]
         pub unsafe fn completionDate(&self) -> Option<Id<NSDate>>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other message)]
         pub unsafe fn message(&self) -> Option<Id<NSString>>;
@@ -76,12 +89,15 @@ extern_methods!(
 extern_methods!(
     /// Obsoleted
     #[cfg(feature = "GameKit_GKChallenge")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl GKChallenge {
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[deprecated = " This property is obsolete, Use issuingPlayer instead"]
         #[method_id(@__retain_semantics Other issuingPlayerID)]
         pub unsafe fn issuingPlayerID(&self) -> Option<Id<NSString>>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[deprecated = " This property is obsolete, Use receivingPlayer instead"]
         #[method_id(@__retain_semantics Other receivingPlayerID)]
@@ -95,6 +111,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct GKScoreChallenge;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "GameKit_GKScoreChallenge")]
     unsafe impl ClassType for GKScoreChallenge {
         #[inherits(NSObject)]
@@ -103,17 +120,22 @@ extern_class!(
 );
 
 #[cfg(feature = "GameKit_GKScoreChallenge")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSCoding for GKScoreChallenge {}
 
 #[cfg(feature = "GameKit_GKScoreChallenge")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for GKScoreChallenge {}
 
 #[cfg(feature = "GameKit_GKScoreChallenge")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSSecureCoding for GKScoreChallenge {}
 
 extern_methods!(
     #[cfg(feature = "GameKit_GKScoreChallenge")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl GKScoreChallenge {
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "GameKit_GKScore")]
         #[method_id(@__retain_semantics Other score)]
         pub unsafe fn score(&self) -> Option<Id<GKScore>>;
@@ -126,6 +148,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct GKAchievementChallenge;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "GameKit_GKAchievementChallenge")]
     unsafe impl ClassType for GKAchievementChallenge {
         #[inherits(NSObject)]
@@ -134,17 +157,22 @@ extern_class!(
 );
 
 #[cfg(feature = "GameKit_GKAchievementChallenge")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSCoding for GKAchievementChallenge {}
 
 #[cfg(feature = "GameKit_GKAchievementChallenge")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for GKAchievementChallenge {}
 
 #[cfg(feature = "GameKit_GKAchievementChallenge")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSSecureCoding for GKAchievementChallenge {}
 
 extern_methods!(
     #[cfg(feature = "GameKit_GKAchievementChallenge")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl GKAchievementChallenge {
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "GameKit_GKAchievement")]
         #[method_id(@__retain_semantics Other achievement)]
         pub unsafe fn achievement(&self) -> Option<Id<GKAchievement>>;

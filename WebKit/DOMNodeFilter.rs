@@ -5,9 +5,9 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::WebKit::*;
 
+#[deprecated]
 extern_enum!(
     #[underlying(c_uint)]
-    #[deprecated]
     pub enum __anonymous__ {
         #[deprecated]
         DOM_FILTER_ACCEPT = 1,
@@ -52,6 +52,5 @@ extern_protocol!(
         unsafe fn acceptNode(&self, n: Option<&DOMNode>) -> c_short;
     }
 
-    #[deprecated]
     unsafe impl ProtocolType for dyn DOMNodeFilter {}
 );

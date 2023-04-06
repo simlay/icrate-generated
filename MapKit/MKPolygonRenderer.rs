@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKPolygonRenderer;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKPolygonRenderer")]
     unsafe impl ClassType for MKPolygonRenderer {
         #[inherits(MKOverlayRenderer, NSObject)]
@@ -21,11 +22,14 @@ extern_class!(
 );
 
 #[cfg(feature = "MapKit_MKPolygonRenderer")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKPolygonRenderer {}
 
 extern_methods!(
     #[cfg(feature = "MapKit_MKPolygonRenderer")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKPolygonRenderer {
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKPolygon")]
         #[method_id(@__retain_semantics Init initWithPolygon:)]
         pub unsafe fn initWithPolygon(
@@ -33,22 +37,27 @@ extern_methods!(
             polygon: &MKPolygon,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKPolygon")]
         #[method_id(@__retain_semantics Other polygon)]
         pub unsafe fn polygon(&self) -> Id<MKPolygon>;
 
         #[cfg(not(any(target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(strokeStart)]
         pub unsafe fn strokeStart(&self) -> CGFloat;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(not(any(target_os = "watchos")))]
         #[method(setStrokeStart:)]
         pub unsafe fn setStrokeStart(&self, stroke_start: CGFloat);
 
         #[cfg(not(any(target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(strokeEnd)]
         pub unsafe fn strokeEnd(&self) -> CGFloat;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(not(any(target_os = "watchos")))]
         #[method(setStrokeEnd:)]
         pub unsafe fn setStrokeEnd(&self, stroke_end: CGFloat);
@@ -58,7 +67,9 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `MKOverlayRenderer`
     #[cfg(feature = "MapKit_MKPolygonRenderer")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKPolygonRenderer {
+        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init initWithOverlay:)]
         pub unsafe fn initWithOverlay(
             this: Option<Allocated<Self>>,

@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct WebDataSource;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_WebDataSource")]
     unsafe impl ClassType for WebDataSource {
         type Super = NSObject;

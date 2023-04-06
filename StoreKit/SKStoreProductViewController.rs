@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos")))]
     pub struct SKStoreProductViewController;
 
+    #[cfg(not(any(target_os = "tvos")))]
     #[cfg(feature = "StoreKit_SKStoreProductViewController")]
     unsafe impl ClassType for SKStoreProductViewController {
         #[inherits(NSResponder, NSObject)]
@@ -19,23 +20,30 @@ extern_class!(
 );
 
 #[cfg(feature = "StoreKit_SKStoreProductViewController")]
+#[cfg(not(any(target_os = "tvos")))]
 unsafe impl NSCoding for SKStoreProductViewController {}
 
 #[cfg(feature = "StoreKit_SKStoreProductViewController")]
+#[cfg(not(any(target_os = "tvos")))]
 unsafe impl NSEditor for SKStoreProductViewController {}
 
 #[cfg(feature = "StoreKit_SKStoreProductViewController")]
+#[cfg(not(any(target_os = "tvos")))]
 unsafe impl NSObjectProtocol for SKStoreProductViewController {}
 
 #[cfg(feature = "StoreKit_SKStoreProductViewController")]
+#[cfg(not(any(target_os = "tvos")))]
 unsafe impl NSSeguePerforming for SKStoreProductViewController {}
 
 #[cfg(feature = "StoreKit_SKStoreProductViewController")]
+#[cfg(not(any(target_os = "tvos")))]
 unsafe impl NSUserInterfaceItemIdentification for SKStoreProductViewController {}
 
 extern_methods!(
     #[cfg(feature = "StoreKit_SKStoreProductViewController")]
+    #[cfg(not(any(target_os = "tvos")))]
     unsafe impl SKStoreProductViewController {
+        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(
@@ -43,12 +51,14 @@ extern_methods!(
         ) -> Option<Id<ProtocolObject<dyn SKStoreProductViewControllerDelegate>>>;
 
         #[cfg(not(any(target_os = "tvos")))]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
             delegate: Option<&ProtocolObject<dyn SKStoreProductViewControllerDelegate>>,
         );
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(all(
             feature = "Foundation_NSDictionary",
             feature = "Foundation_NSError",
@@ -62,6 +72,7 @@ extern_methods!(
             block: Option<&Block<(Bool, *mut NSError), ()>>,
         );
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(all(
             feature = "Foundation_NSDictionary",
             feature = "Foundation_NSError",
@@ -111,7 +122,9 @@ extern_static!(SKStoreProductParameterAdvertisingPartnerToken: &'static NSString
 extern_methods!(
     /// Methods declared on superclass `NSViewController`
     #[cfg(feature = "StoreKit_SKStoreProductViewController")]
+    #[cfg(not(any(target_os = "tvos")))]
     unsafe impl SKStoreProductViewController {
+        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(feature = "Foundation_NSBundle")]
         #[method_id(@__retain_semantics Init initWithNibName:bundle:)]
         pub unsafe fn initWithNibName_bundle(

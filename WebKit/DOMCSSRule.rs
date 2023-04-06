@@ -5,9 +5,9 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::WebKit::*;
 
+#[deprecated]
 extern_enum!(
     #[underlying(c_uint)]
-    #[deprecated]
     pub enum __anonymous__ {
         #[deprecated]
         DOM_UNKNOWN_RULE = 0,
@@ -46,6 +46,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMCSSRule;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMCSSRule")]
     unsafe impl ClassType for DOMCSSRule {
         #[inherits(WebScriptObject, NSObject)]

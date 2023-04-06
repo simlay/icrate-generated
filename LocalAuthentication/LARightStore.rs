@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct LARightStore;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "LocalAuthentication_LARightStore")]
     unsafe impl ClassType for LARightStore {
         type Super = NSObject;
@@ -17,14 +18,18 @@ extern_class!(
 );
 
 #[cfg(feature = "LocalAuthentication_LARightStore")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for LARightStore {}
 
 extern_methods!(
     #[cfg(feature = "LocalAuthentication_LARightStore")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl LARightStore {
+        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other sharedStore)]
         pub unsafe fn sharedStore() -> Id<LARightStore>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSError",
             feature = "Foundation_NSString",
@@ -37,6 +42,7 @@ extern_methods!(
             handler: &Block<(*mut LAPersistedRight, *mut NSError), ()>,
         );
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSError",
             feature = "Foundation_NSString",
@@ -51,6 +57,7 @@ extern_methods!(
             handler: &Block<(*mut LAPersistedRight, *mut NSError), ()>,
         );
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSData",
             feature = "Foundation_NSError",
@@ -67,6 +74,7 @@ extern_methods!(
             handler: &Block<(*mut LAPersistedRight, *mut NSError), ()>,
         );
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSError",
             feature = "LocalAuthentication_LAPersistedRight"
@@ -78,6 +86,7 @@ extern_methods!(
             handler: &Block<(*mut NSError,), ()>,
         );
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSString"))]
         #[method(removeRightForIdentifier:completion:)]
         pub unsafe fn removeRightForIdentifier_completion(
@@ -86,13 +95,16 @@ extern_methods!(
             handler: &Block<(*mut NSError,), ()>,
         );
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSError")]
         #[method(removeAllRightsWithCompletion:)]
         pub unsafe fn removeAllRightsWithCompletion(&self, handler: &Block<(*mut NSError,), ()>);
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
     }

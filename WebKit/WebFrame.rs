@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct WebFrame;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_WebFrame")]
     unsafe impl ClassType for WebFrame {
         type Super = NSObject;

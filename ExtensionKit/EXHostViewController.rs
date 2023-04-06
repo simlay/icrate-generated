@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub struct EXHostViewController;
 
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "ExtensionKit_EXHostViewController")]
     unsafe impl ClassType for EXHostViewController {
         #[inherits(NSResponder, NSObject)]
@@ -19,42 +20,53 @@ extern_class!(
 );
 
 #[cfg(feature = "ExtensionKit_EXHostViewController")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSCoding for EXHostViewController {}
 
 #[cfg(feature = "ExtensionKit_EXHostViewController")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSEditor for EXHostViewController {}
 
 #[cfg(feature = "ExtensionKit_EXHostViewController")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for EXHostViewController {}
 
 #[cfg(feature = "ExtensionKit_EXHostViewController")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSSeguePerforming for EXHostViewController {}
 
 #[cfg(feature = "ExtensionKit_EXHostViewController")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSUserInterfaceItemIdentification for EXHostViewController {}
 
 extern_methods!(
     #[cfg(feature = "ExtensionKit_EXHostViewController")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl EXHostViewController {
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(
             &self,
         ) -> Option<Id<ProtocolObject<dyn EXHostViewControllerDelegate>>>;
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
             delegate: Option<&ProtocolObject<dyn EXHostViewControllerDelegate>>,
         );
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "AppKit_NSView")]
         #[method_id(@__retain_semantics Other placeholderView)]
         pub unsafe fn placeholderView(&self) -> Id<NSView>;
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "AppKit_NSView")]
         #[method(setPlaceholderView:)]
         pub unsafe fn setPlaceholderView(&self, placeholder_view: &NSView);
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSXPCConnection"))]
         #[method_id(@__retain_semantics Other makeXPCConnectionWithError:_)]
         pub unsafe fn makeXPCConnectionWithError(&self)
@@ -90,7 +102,9 @@ extern_protocol!(
 extern_methods!(
     /// Methods declared on superclass `NSViewController`
     #[cfg(feature = "ExtensionKit_EXHostViewController")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl EXHostViewController {
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSBundle")]
         #[method_id(@__retain_semantics Init initWithNibName:bundle:)]
         pub unsafe fn initWithNibName_bundle(

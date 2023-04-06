@@ -4,9 +4,9 @@ use crate::common::*;
 use crate::Foundation::*;
 use crate::LocalAuthentication::*;
 
+#[cfg(not(any(target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
-    #[cfg(not(any(target_os = "watchos")))]
     pub enum LARightState {
         #[cfg(not(any(target_os = "watchos")))]
         LARightStateUnknown = 0,
@@ -25,6 +25,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct LARight;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "LocalAuthentication_LARight")]
     unsafe impl ClassType for LARight {
         type Super = NSObject;
@@ -32,23 +33,30 @@ extern_class!(
 );
 
 #[cfg(feature = "LocalAuthentication_LARight")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for LARight {}
 
 extern_methods!(
     #[cfg(feature = "LocalAuthentication_LARight")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl LARight {
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(state)]
         pub unsafe fn state(&self) -> LARightState;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(tag)]
         pub unsafe fn tag(&self) -> NSInteger;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(setTag:)]
         pub unsafe fn setTag(&self, tag: NSInteger);
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "LocalAuthentication_LAAuthenticationRequirement")]
         #[method_id(@__retain_semantics Init initWithRequirement:)]
         pub unsafe fn initWithRequirement(
@@ -56,6 +64,7 @@ extern_methods!(
             requirement: &LAAuthenticationRequirement,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSString"))]
         #[method(authorizeWithLocalizedReason:completion:)]
         pub unsafe fn authorizeWithLocalizedReason_completion(
@@ -64,10 +73,12 @@ extern_methods!(
             handler: &Block<(*mut NSError,), ()>,
         );
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSError")]
         #[method(checkCanAuthorizeWithCompletion:)]
         pub unsafe fn checkCanAuthorizeWithCompletion(&self, handler: &Block<(*mut NSError,), ()>);
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(deauthorizeWithCompletion:)]
         pub unsafe fn deauthorizeWithCompletion(&self, handler: &Block<(), ()>);
     }

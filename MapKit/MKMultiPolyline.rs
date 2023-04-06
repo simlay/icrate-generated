@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKMultiPolyline;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKMultiPolyline")]
     unsafe impl ClassType for MKMultiPolyline {
         #[inherits(NSObject)]
@@ -21,17 +22,22 @@ extern_class!(
 );
 
 #[cfg(feature = "MapKit_MKMultiPolyline")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl MKAnnotation for MKMultiPolyline {}
 
 #[cfg(feature = "MapKit_MKMultiPolyline")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl MKOverlay for MKMultiPolyline {}
 
 #[cfg(feature = "MapKit_MKMultiPolyline")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKMultiPolyline {}
 
 extern_methods!(
     #[cfg(feature = "MapKit_MKMultiPolyline")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKMultiPolyline {
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "MapKit_MKPolyline"))]
         #[method_id(@__retain_semantics Init initWithPolylines:)]
         pub unsafe fn initWithPolylines(
@@ -39,6 +45,7 @@ extern_methods!(
             polylines: &NSArray<MKPolyline>,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "MapKit_MKPolyline"))]
         #[method_id(@__retain_semantics Other polylines)]
         pub unsafe fn polylines(&self) -> Id<NSArray<MKPolyline>>;

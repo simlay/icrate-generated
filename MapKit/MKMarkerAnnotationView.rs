@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKMarkerAnnotationView;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKMarkerAnnotationView")]
     unsafe impl ClassType for MKMarkerAnnotationView {
         #[inherits(NSView, NSResponder, NSObject)]
@@ -21,87 +22,112 @@ extern_class!(
 );
 
 #[cfg(feature = "MapKit_MKMarkerAnnotationView")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSAccessibility for MKMarkerAnnotationView {}
 
 #[cfg(feature = "MapKit_MKMarkerAnnotationView")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSAccessibilityElementProtocol for MKMarkerAnnotationView {}
 
 #[cfg(feature = "MapKit_MKMarkerAnnotationView")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSAnimatablePropertyContainer for MKMarkerAnnotationView {}
 
 #[cfg(feature = "MapKit_MKMarkerAnnotationView")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSAppearanceCustomization for MKMarkerAnnotationView {}
 
 #[cfg(feature = "MapKit_MKMarkerAnnotationView")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSCoding for MKMarkerAnnotationView {}
 
 #[cfg(feature = "MapKit_MKMarkerAnnotationView")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSDraggingDestination for MKMarkerAnnotationView {}
 
 #[cfg(feature = "MapKit_MKMarkerAnnotationView")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKMarkerAnnotationView {}
 
 #[cfg(feature = "MapKit_MKMarkerAnnotationView")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSUserInterfaceItemIdentification for MKMarkerAnnotationView {}
 
 extern_methods!(
     #[cfg(feature = "MapKit_MKMarkerAnnotationView")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKMarkerAnnotationView {
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(titleVisibility)]
         pub unsafe fn titleVisibility(&self) -> MKFeatureVisibility;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(setTitleVisibility:)]
         pub unsafe fn setTitleVisibility(&self, title_visibility: MKFeatureVisibility);
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(subtitleVisibility)]
         pub unsafe fn subtitleVisibility(&self) -> MKFeatureVisibility;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(setSubtitleVisibility:)]
         pub unsafe fn setSubtitleVisibility(&self, subtitle_visibility: MKFeatureVisibility);
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "AppKit_NSColor")]
         #[method_id(@__retain_semantics Other markerTintColor)]
         pub unsafe fn markerTintColor(&self) -> Option<Id<NSColor>>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "AppKit_NSColor")]
         #[method(setMarkerTintColor:)]
         pub unsafe fn setMarkerTintColor(&self, marker_tint_color: Option<&NSColor>);
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "AppKit_NSColor")]
         #[method_id(@__retain_semantics Other glyphTintColor)]
         pub unsafe fn glyphTintColor(&self) -> Option<Id<NSColor>>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "AppKit_NSColor")]
         #[method(setGlyphTintColor:)]
         pub unsafe fn setGlyphTintColor(&self, glyph_tint_color: Option<&NSColor>);
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other glyphText)]
         pub unsafe fn glyphText(&self) -> Option<Id<NSString>>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setGlyphText:)]
         pub unsafe fn setGlyphText(&self, glyph_text: Option<&NSString>);
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "AppKit_NSImage")]
         #[method_id(@__retain_semantics Other glyphImage)]
         pub unsafe fn glyphImage(&self) -> Option<Id<NSImage>>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "AppKit_NSImage")]
         #[method(setGlyphImage:)]
         pub unsafe fn setGlyphImage(&self, glyph_image: Option<&NSImage>);
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "AppKit_NSImage")]
         #[method_id(@__retain_semantics Other selectedGlyphImage)]
         pub unsafe fn selectedGlyphImage(&self) -> Option<Id<NSImage>>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "AppKit_NSImage")]
         #[method(setSelectedGlyphImage:)]
         pub unsafe fn setSelectedGlyphImage(&self, selected_glyph_image: Option<&NSImage>);
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(animatesWhenAdded)]
         pub unsafe fn animatesWhenAdded(&self) -> bool;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(setAnimatesWhenAdded:)]
         pub unsafe fn setAnimatesWhenAdded(&self, animates_when_added: bool);
     }
@@ -110,7 +136,9 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `MKAnnotationView`
     #[cfg(feature = "MapKit_MKMarkerAnnotationView")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKMarkerAnnotationView {
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Init initWithAnnotation:reuseIdentifier:)]
         pub unsafe fn initWithAnnotation_reuseIdentifier(
@@ -124,7 +152,9 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `NSView`
     #[cfg(feature = "MapKit_MKMarkerAnnotationView")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKMarkerAnnotationView {
+        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init initWithFrame:)]
         pub unsafe fn initWithFrame(this: Option<Allocated<Self>>, frame_rect: NSRect) -> Id<Self>;
     }

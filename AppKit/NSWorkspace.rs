@@ -514,7 +514,6 @@ extern_static!(NSWorkspaceDidChangeFileLabelsNotification: &'static NSNotificati
 
 extern_static!(NSWorkspaceActiveSpaceDidChangeNotification: &'static NSNotificationName);
 
-#[deprecated]
 typed_enum!(
     pub type NSWorkspaceFileOperationName = NSString;
 );
@@ -549,7 +548,6 @@ ns_options!(
     }
 );
 
-#[deprecated = "Use NSWorkspaceOpenConfiguration instead."]
 typed_enum!(
     pub type NSWorkspaceLaunchConfigurationKey = NSString;
 );

@@ -111,7 +111,9 @@ extern_protocol!(
 extern_methods!(
     /// NSFileProviderEnumeration
     #[cfg(feature = "FileProvider_NSFileProviderExtension")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl NSFileProviderExtension {
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSError")]
         #[method_id(@__retain_semantics Other enumeratorForContainerItemIdentifier:error:_)]
         pub unsafe fn enumeratorForContainerItemIdentifier_error(

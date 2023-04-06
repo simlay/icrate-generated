@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct ILMessageFilterQueryResponse;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "IdentityLookup_ILMessageFilterQueryResponse")]
     unsafe impl ClassType for ILMessageFilterQueryResponse {
         type Super = NSObject;
@@ -17,27 +18,35 @@ extern_class!(
 );
 
 #[cfg(feature = "IdentityLookup_ILMessageFilterQueryResponse")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSCoding for ILMessageFilterQueryResponse {}
 
 #[cfg(feature = "IdentityLookup_ILMessageFilterQueryResponse")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSObjectProtocol for ILMessageFilterQueryResponse {}
 
 #[cfg(feature = "IdentityLookup_ILMessageFilterQueryResponse")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for ILMessageFilterQueryResponse {}
 
 extern_methods!(
     #[cfg(feature = "IdentityLookup_ILMessageFilterQueryResponse")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl ILMessageFilterQueryResponse {
+        #[cfg(not(any(target_os = "macos")))]
         #[method(action)]
         pub unsafe fn action(&self) -> ILMessageFilterAction;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method(setAction:)]
         pub unsafe fn setAction(&self, action: ILMessageFilterAction);
 
         #[cfg(not(any(target_os = "macos")))]
+        #[cfg(not(any(target_os = "macos")))]
         #[method(subAction)]
         pub unsafe fn subAction(&self) -> ILMessageFilterSubAction;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(not(any(target_os = "macos")))]
         #[method(setSubAction:)]
         pub unsafe fn setSubAction(&self, sub_action: ILMessageFilterSubAction);

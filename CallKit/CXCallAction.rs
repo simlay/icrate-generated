@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct CXCallAction;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "CallKit_CXCallAction")]
     unsafe impl ClassType for CXCallAction {
         #[inherits(NSObject)]
@@ -18,21 +19,27 @@ extern_class!(
 );
 
 #[cfg(feature = "CallKit_CXCallAction")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSCoding for CXCallAction {}
 
 #[cfg(feature = "CallKit_CXCallAction")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSObjectProtocol for CXCallAction {}
 
 #[cfg(feature = "CallKit_CXCallAction")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for CXCallAction {}
 
 extern_methods!(
     #[cfg(feature = "CallKit_CXCallAction")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXCallAction {
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSUUID")]
         #[method_id(@__retain_semantics Other callUUID)]
         pub unsafe fn callUUID(&self) -> Id<NSUUID>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSUUID")]
         #[method_id(@__retain_semantics Init initWithCallUUID:)]
         pub unsafe fn initWithCallUUID(
@@ -40,6 +47,7 @@ extern_methods!(
             call_uuid: &NSUUID,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSCoder")]
         #[method_id(@__retain_semantics Init initWithCoder:)]
         pub unsafe fn initWithCoder(
@@ -47,6 +55,7 @@ extern_methods!(
             a_decoder: &NSCoder,
         ) -> Option<Id<Self>>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
     }

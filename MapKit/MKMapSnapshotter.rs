@@ -15,6 +15,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKMapSnapshotter;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKMapSnapshotter")]
     unsafe impl ClassType for MKMapSnapshotter {
         type Super = NSObject;
@@ -22,11 +23,14 @@ extern_class!(
 );
 
 #[cfg(feature = "MapKit_MKMapSnapshotter")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKMapSnapshotter {}
 
 extern_methods!(
     #[cfg(feature = "MapKit_MKMapSnapshotter")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKMapSnapshotter {
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKMapSnapshotOptions")]
         #[method_id(@__retain_semantics Init initWithOptions:)]
         pub unsafe fn initWithOptions(
@@ -34,15 +38,18 @@ extern_methods!(
             options: &MKMapSnapshotOptions,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(startWithCompletionHandler:)]
         pub unsafe fn startWithCompletionHandler(
             &self,
             completion_handler: MKMapSnapshotCompletionHandler,
         );
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(cancel)]
         pub unsafe fn cancel(&self);
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(isLoading)]
         pub unsafe fn isLoading(&self) -> bool;
     }

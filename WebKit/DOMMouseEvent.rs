@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMMouseEvent;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMMouseEvent")]
     unsafe impl ClassType for DOMMouseEvent {
         #[inherits(DOMEvent, DOMObject, WebScriptObject, NSObject)]

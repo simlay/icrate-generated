@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct ILCallClassificationRequest;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "IdentityLookup_ILCallClassificationRequest")]
     unsafe impl ClassType for ILCallClassificationRequest {
         #[inherits(NSObject)]
@@ -18,17 +19,22 @@ extern_class!(
 );
 
 #[cfg(feature = "IdentityLookup_ILCallClassificationRequest")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSCoding for ILCallClassificationRequest {}
 
 #[cfg(feature = "IdentityLookup_ILCallClassificationRequest")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSObjectProtocol for ILCallClassificationRequest {}
 
 #[cfg(feature = "IdentityLookup_ILCallClassificationRequest")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for ILCallClassificationRequest {}
 
 extern_methods!(
     #[cfg(feature = "IdentityLookup_ILCallClassificationRequest")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl ILCallClassificationRequest {
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSArray",
             feature = "IdentityLookup_ILCallCommunication"
@@ -36,6 +42,7 @@ extern_methods!(
         #[method_id(@__retain_semantics Other callCommunications)]
         pub unsafe fn callCommunications(&self) -> Id<NSArray<ILCallCommunication>>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
     }

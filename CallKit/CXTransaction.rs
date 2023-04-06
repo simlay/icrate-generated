@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct CXTransaction;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "CallKit_CXTransaction")]
     unsafe impl ClassType for CXTransaction {
         type Super = NSObject;
@@ -17,28 +18,36 @@ extern_class!(
 );
 
 #[cfg(feature = "CallKit_CXTransaction")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSCoding for CXTransaction {}
 
 #[cfg(feature = "CallKit_CXTransaction")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSObjectProtocol for CXTransaction {}
 
 #[cfg(feature = "CallKit_CXTransaction")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for CXTransaction {}
 
 extern_methods!(
     #[cfg(feature = "CallKit_CXTransaction")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXTransaction {
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSUUID")]
         #[method_id(@__retain_semantics Other UUID)]
         pub unsafe fn UUID(&self) -> Id<NSUUID>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method(isComplete)]
         pub unsafe fn isComplete(&self) -> bool;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(feature = "CallKit_CXAction", feature = "Foundation_NSArray"))]
         #[method_id(@__retain_semantics Other actions)]
         pub unsafe fn actions(&self) -> Id<NSArray<CXAction>>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(feature = "CallKit_CXAction", feature = "Foundation_NSArray"))]
         #[method_id(@__retain_semantics Init initWithActions:)]
         pub unsafe fn initWithActions(
@@ -46,10 +55,12 @@ extern_methods!(
             actions: &NSArray<CXAction>,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "CallKit_CXAction")]
         #[method_id(@__retain_semantics Init initWithAction:)]
         pub unsafe fn initWithAction(this: Option<Allocated<Self>>, action: &CXAction) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "CallKit_CXAction")]
         #[method(addAction:)]
         pub unsafe fn addAction(&self, action: &CXAction);

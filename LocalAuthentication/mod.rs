@@ -32,10 +32,13 @@ pub use self::__LAContext::LAAccessControlOperationUseItem;
 pub use self::__LAContext::LAAccessControlOperationUseKeyDecrypt;
 pub use self::__LAContext::LAAccessControlOperationUseKeyKeyExchange;
 pub use self::__LAContext::LAAccessControlOperationUseKeySign;
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__LAContext::LABiometryNone;
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__LAContext::LABiometryType;
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__LAContext::LABiometryTypeFaceID;
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__LAContext::LABiometryTypeNone;
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__LAContext::LABiometryTypeTouchID;

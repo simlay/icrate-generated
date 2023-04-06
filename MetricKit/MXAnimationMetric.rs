@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct MXAnimationMetric;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "MetricKit_MXAnimationMetric")]
     unsafe impl ClassType for MXAnimationMetric {
         #[inherits(NSObject)]
@@ -18,17 +19,22 @@ extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXAnimationMetric")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSCoding for MXAnimationMetric {}
 
 #[cfg(feature = "MetricKit_MXAnimationMetric")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSObjectProtocol for MXAnimationMetric {}
 
 #[cfg(feature = "MetricKit_MXAnimationMetric")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for MXAnimationMetric {}
 
 extern_methods!(
     #[cfg(feature = "MetricKit_MXAnimationMetric")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXAnimationMetric {
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(feature = "Foundation_NSMeasurement", feature = "Foundation_NSUnit"))]
         #[method_id(@__retain_semantics Other scrollHitchTimeRatio)]
         pub unsafe fn scrollHitchTimeRatio(&self) -> Id<NSMeasurement<NSUnit>>;

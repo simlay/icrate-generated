@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct ASCredentialProviderExtensionContext;
 
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "AuthenticationServices_ASCredentialProviderExtensionContext")]
     unsafe impl ClassType for ASCredentialProviderExtensionContext {
         #[inherits(NSObject)]
@@ -18,11 +19,14 @@ extern_class!(
 );
 
 #[cfg(feature = "AuthenticationServices_ASCredentialProviderExtensionContext")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for ASCredentialProviderExtensionContext {}
 
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASCredentialProviderExtensionContext")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASCredentialProviderExtensionContext {
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "AuthenticationServices_ASPasswordCredential")]
         #[method(completeRequestWithSelectedCredential:completionHandler:)]
         pub unsafe fn completeRequestWithSelectedCredential_completionHandler(
@@ -31,9 +35,11 @@ extern_methods!(
             completion_handler: Option<&Block<(Bool,), ()>>,
         );
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(completeExtensionConfigurationRequest)]
         pub unsafe fn completeExtensionConfigurationRequest(&self);
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSArray")]
         #[method(completeRequestReturningItems:completionHandler:)]
         pub unsafe fn completeRequestReturningItems_completionHandler(
@@ -42,6 +48,7 @@ extern_methods!(
             completion_handler: Option<&Block<(Bool,), ()>>,
         );
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSError")]
         #[method(cancelRequestWithError:)]
         pub unsafe fn cancelRequestWithError(&self, error: &NSError);

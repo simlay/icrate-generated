@@ -132,9 +132,9 @@ extern_methods!(
     }
 );
 
+#[deprecated = "These constants do not accurately represent the geometry of NSProgressIndicator.  Use `controlSize` and `sizeToFit` instead."]
 ns_enum!(
     #[underlying(NSUInteger)]
-    #[deprecated = "These constants do not accurately represent the geometry of NSProgressIndicator.  Use `controlSize` and `sizeToFit` instead."]
     pub enum NSProgressIndicatorThickness {
         #[deprecated = "These constants do not accurately represent the geometry of NSProgressIndicator.  Use `controlSize` and `sizeToFit` instead."]
         NSProgressIndicatorPreferredThickness = 14,

@@ -5,9 +5,9 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::WebKit::*;
 
+#[deprecated]
 ns_enum!(
     #[underlying(NSUInteger)]
-    #[deprecated]
     pub enum WebCacheModel {
         #[deprecated]
         WebCacheModelDocumentViewer = 0,
@@ -27,6 +27,7 @@ extern_class!(
     #[deprecated]
     pub struct WebPreferences;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_WebPreferences")]
     unsafe impl ClassType for WebPreferences {
         type Super = NSObject;

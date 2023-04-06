@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct MKLookAroundSnapshotOptions;
 
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKLookAroundSnapshotOptions")]
     unsafe impl ClassType for MKLookAroundSnapshotOptions {
         type Super = NSObject;
@@ -20,15 +21,19 @@ extern_class!(
 );
 
 #[cfg(feature = "MapKit_MKLookAroundSnapshotOptions")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKLookAroundSnapshotOptions {}
 
 extern_methods!(
     #[cfg(feature = "MapKit_MKLookAroundSnapshotOptions")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl MKLookAroundSnapshotOptions {
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKPointOfInterestFilter")]
         #[method_id(@__retain_semantics Other pointOfInterestFilter)]
         pub unsafe fn pointOfInterestFilter(&self) -> Option<Id<MKPointOfInterestFilter>>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKPointOfInterestFilter")]
         #[method(setPointOfInterestFilter:)]
         pub unsafe fn setPointOfInterestFilter(
@@ -36,9 +41,11 @@ extern_methods!(
             point_of_interest_filter: Option<&MKPointOfInterestFilter>,
         );
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(size)]
         pub unsafe fn size(&self) -> CGSize;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(setSize:)]
         pub unsafe fn setSize(&self, size: CGSize);
     }

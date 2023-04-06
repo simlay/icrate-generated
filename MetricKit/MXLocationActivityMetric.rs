@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct MXLocationActivityMetric;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "MetricKit_MXLocationActivityMetric")]
     unsafe impl ClassType for MXLocationActivityMetric {
         #[inherits(NSObject)]
@@ -18,17 +19,22 @@ extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXLocationActivityMetric")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSCoding for MXLocationActivityMetric {}
 
 #[cfg(feature = "MetricKit_MXLocationActivityMetric")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSObjectProtocol for MXLocationActivityMetric {}
 
 #[cfg(feature = "MetricKit_MXLocationActivityMetric")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for MXLocationActivityMetric {}
 
 extern_methods!(
     #[cfg(feature = "MetricKit_MXLocationActivityMetric")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXLocationActivityMetric {
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"
@@ -36,6 +42,7 @@ extern_methods!(
         #[method_id(@__retain_semantics Other cumulativeBestAccuracyTime)]
         pub unsafe fn cumulativeBestAccuracyTime(&self) -> Id<NSMeasurement<NSUnitDuration>>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"
@@ -45,6 +52,7 @@ extern_methods!(
             &self,
         ) -> Id<NSMeasurement<NSUnitDuration>>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"
@@ -54,6 +62,7 @@ extern_methods!(
             &self,
         ) -> Id<NSMeasurement<NSUnitDuration>>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"
@@ -63,6 +72,7 @@ extern_methods!(
             &self,
         ) -> Id<NSMeasurement<NSUnitDuration>>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"
@@ -70,6 +80,7 @@ extern_methods!(
         #[method_id(@__retain_semantics Other cumulativeKilometerAccuracyTime)]
         pub unsafe fn cumulativeKilometerAccuracyTime(&self) -> Id<NSMeasurement<NSUnitDuration>>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"

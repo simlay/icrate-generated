@@ -5,9 +5,9 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::WebKit::*;
 
+#[deprecated]
 extern_enum!(
     #[underlying(c_uint)]
-    #[deprecated]
     pub enum __anonymous__ {
         #[deprecated]
         DOM_KEY_LOCATION_STANDARD = 0x00,
@@ -26,6 +26,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMKeyboardEvent;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMKeyboardEvent")]
     unsafe impl ClassType for DOMKeyboardEvent {
         #[inherits(DOMEvent, DOMObject, WebScriptObject, NSObject)]

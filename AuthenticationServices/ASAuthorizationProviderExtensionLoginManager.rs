@@ -4,9 +4,9 @@ use crate::common::*;
 use crate::AuthenticationServices::*;
 use crate::Foundation::*;
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub enum ASAuthorizationProviderExtensionKeyType {
         #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         ASAuthorizationProviderExtensionKeyTypeUserDeviceSigning = 1,
@@ -23,6 +23,7 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub struct ASAuthorizationProviderExtensionLoginManager;
 
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionLoginManager")]
     unsafe impl ClassType for ASAuthorizationProviderExtensionLoginManager {
         type Super = NSObject;
@@ -30,43 +31,55 @@ extern_class!(
 );
 
 #[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionLoginManager")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for ASAuthorizationProviderExtensionLoginManager {}
 
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionLoginManager")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAuthorizationProviderExtensionLoginManager {
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(isDeviceRegistered)]
         pub unsafe fn isDeviceRegistered(&self) -> bool;
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(isUserRegistered)]
         pub unsafe fn isUserRegistered(&self) -> bool;
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other registrationToken)]
         pub unsafe fn registrationToken(&self) -> Option<Id<NSString>>;
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other loginUserName)]
         pub unsafe fn loginUserName(&self) -> Option<Id<NSString>>;
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setLoginUserName:)]
         pub unsafe fn setLoginUserName(&self, login_user_name: Option<&NSString>);
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSDictionary")]
         #[method_id(@__retain_semantics Other ssoTokens)]
         pub unsafe fn ssoTokens(&self) -> Option<Id<NSDictionary>>;
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSDictionary")]
         #[method(setSsoTokens:)]
         pub unsafe fn setSsoTokens(&self, sso_tokens: Option<&NSDictionary>);
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(
             feature = "AuthenticationServices_ASAuthorizationProviderExtensionLoginConfiguration"
         )]
@@ -75,6 +88,7 @@ extern_methods!(
             &self,
         ) -> Option<Id<ASAuthorizationProviderExtensionLoginConfiguration>>;
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "AuthenticationServices_ASAuthorizationProviderExtensionLoginConfiguration",
             feature = "Foundation_NSError"
@@ -85,6 +99,7 @@ extern_methods!(
             login_configuration: &ASAuthorizationProviderExtensionLoginConfiguration,
         ) -> Result<(), Id<NSError>>;
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSError")]
         #[method(userNeedsReauthenticationWithCompletion:)]
         pub unsafe fn userNeedsReauthenticationWithCompletion(
@@ -92,15 +107,19 @@ extern_methods!(
             completion: &Block<(*mut NSError,), ()>,
         );
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(deviceRegistrationsNeedsRepair)]
         pub unsafe fn deviceRegistrationsNeedsRepair(&self);
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(userRegistrationsNeedsRepair)]
         pub unsafe fn userRegistrationsNeedsRepair(&self);
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(resetKeys)]
         pub unsafe fn resetKeys(&self);
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSError")]
         #[method(presentRegistrationViewControllerWithCompletion:)]
         pub unsafe fn presentRegistrationViewControllerWithCompletion(

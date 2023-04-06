@@ -195,7 +195,9 @@ pub use self::__PHLivePhoto::PHLivePhotoRequestIDInvalid;
 pub use self::__PHLivePhotoEditingContext::PHLivePhotoEditingContext;
 #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 pub use self::__PHLivePhotoEditingContext::PHLivePhotoEditingErrorCode;
+#[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 pub use self::__PHLivePhotoEditingContext::PHLivePhotoEditingErrorCodeAborted;
+#[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 pub use self::__PHLivePhotoEditingContext::PHLivePhotoEditingErrorCodeUnknown;
 #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 pub use self::__PHLivePhotoEditingContext::PHLivePhotoEditingErrorDomain;

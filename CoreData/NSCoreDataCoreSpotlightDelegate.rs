@@ -15,6 +15,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct NSCoreDataCoreSpotlightDelegate;
 
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "CoreData_NSCoreDataCoreSpotlightDelegate")]
     unsafe impl ClassType for NSCoreDataCoreSpotlightDelegate {
         type Super = NSObject;
@@ -22,26 +23,33 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreData_NSCoreDataCoreSpotlightDelegate")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for NSCoreDataCoreSpotlightDelegate {}
 
 extern_methods!(
     #[cfg(feature = "CoreData_NSCoreDataCoreSpotlightDelegate")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSCoreDataCoreSpotlightDelegate {
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(isIndexingEnabled)]
         pub unsafe fn isIndexingEnabled(&self) -> bool;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other domainIdentifier)]
         pub unsafe fn domainIdentifier(&self) -> Id<NSString>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other indexName)]
         pub unsafe fn indexName(&self) -> Option<Id<NSString>>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "CoreData_NSPersistentStoreCoordinator",
             feature = "CoreData_NSPersistentStoreDescription"
@@ -54,6 +62,7 @@ extern_methods!(
             psc: &NSPersistentStoreCoordinator,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "CoreData_NSManagedObjectModel",
             feature = "CoreData_NSPersistentStoreDescription"
@@ -67,13 +76,16 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(startSpotlightIndexing)]
         pub unsafe fn startSpotlightIndexing(&self);
 
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(stopSpotlightIndexing)]
         pub unsafe fn stopSpotlightIndexing(&self);
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSError")]
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(deleteSpotlightIndexWithCompletionHandler:)]

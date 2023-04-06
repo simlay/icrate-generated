@@ -9,6 +9,7 @@ extern_class!(
     #[deprecated = "Use NSKeyedArchiver instead"]
     pub struct NSArchiver;
 
+    #[deprecated = "Use NSKeyedArchiver instead"]
     #[cfg(feature = "Foundation_NSArchiver")]
     unsafe impl ClassType for NSArchiver {
         #[inherits(NSObject)]
@@ -73,6 +74,7 @@ extern_class!(
     #[deprecated = "Use NSKeyedUnarchiver instead"]
     pub struct NSUnarchiver;
 
+    #[deprecated = "Use NSKeyedUnarchiver instead"]
     #[cfg(feature = "Foundation_NSUnarchiver")]
     unsafe impl ClassType for NSUnarchiver {
         #[inherits(NSObject)]

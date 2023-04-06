@@ -15,6 +15,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos")))]
     pub struct CLHeading;
 
+    #[cfg(not(any(target_os = "tvos")))]
     #[cfg(feature = "CoreLocation_CLHeading")]
     unsafe impl ClassType for CLHeading {
         type Super = NSObject;
@@ -22,35 +23,46 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreLocation_CLHeading")]
+#[cfg(not(any(target_os = "tvos")))]
 unsafe impl NSCoding for CLHeading {}
 
 #[cfg(feature = "CoreLocation_CLHeading")]
+#[cfg(not(any(target_os = "tvos")))]
 unsafe impl NSObjectProtocol for CLHeading {}
 
 #[cfg(feature = "CoreLocation_CLHeading")]
+#[cfg(not(any(target_os = "tvos")))]
 unsafe impl NSSecureCoding for CLHeading {}
 
 extern_methods!(
     #[cfg(feature = "CoreLocation_CLHeading")]
+    #[cfg(not(any(target_os = "tvos")))]
     unsafe impl CLHeading {
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(magneticHeading)]
         pub unsafe fn magneticHeading(&self) -> CLLocationDirection;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(trueHeading)]
         pub unsafe fn trueHeading(&self) -> CLLocationDirection;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(headingAccuracy)]
         pub unsafe fn headingAccuracy(&self) -> CLLocationDirection;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(x)]
         pub unsafe fn x(&self) -> CLHeadingComponentValue;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(y)]
         pub unsafe fn y(&self) -> CLHeadingComponentValue;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(z)]
         pub unsafe fn z(&self) -> CLHeadingComponentValue;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(feature = "Foundation_NSDate")]
         #[method_id(@__retain_semantics Other timestamp)]
         pub unsafe fn timestamp(&self) -> Id<NSDate>;

@@ -7,9 +7,9 @@ use crate::Foundation::*;
 #[cfg(not(any(target_os = "tvos")))]
 extern_static!(ASWebAuthenticationSessionErrorDomain: &'static NSErrorDomain);
 
+#[cfg(not(any(target_os = "tvos")))]
 ns_error_enum!(
     #[underlying(NSInteger)]
-    #[cfg(not(any(target_os = "tvos")))]
     pub enum ASWebAuthenticationSessionErrorCode {
         #[cfg(not(any(target_os = "tvos")))]
         ASWebAuthenticationSessionErrorCodeCanceledLogin = 1,
@@ -28,6 +28,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos")))]
     pub struct ASWebAuthenticationSession;
 
+    #[cfg(not(any(target_os = "tvos")))]
     #[cfg(feature = "AuthenticationServices_ASWebAuthenticationSession")]
     unsafe impl ClassType for ASWebAuthenticationSession {
         type Super = NSObject;
@@ -35,11 +36,14 @@ extern_class!(
 );
 
 #[cfg(feature = "AuthenticationServices_ASWebAuthenticationSession")]
+#[cfg(not(any(target_os = "tvos")))]
 unsafe impl NSObjectProtocol for ASWebAuthenticationSession {}
 
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASWebAuthenticationSession")]
+    #[cfg(not(any(target_os = "tvos")))]
     unsafe impl ASWebAuthenticationSession {
+        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(all(feature = "Foundation_NSString", feature = "Foundation_NSURL"))]
         #[method_id(@__retain_semantics Init initWithURL:callbackURLScheme:completionHandler:)]
         pub unsafe fn initWithURL_callbackURLScheme_completionHandler(
@@ -49,12 +53,14 @@ extern_methods!(
             completion_handler: ASWebAuthenticationSessionCompletionHandler,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other presentationContextProvider)]
         pub unsafe fn presentationContextProvider(
             &self,
         ) -> Option<Id<ProtocolObject<dyn ASWebAuthenticationPresentationContextProviding>>>;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(not(any(target_os = "watchos")))]
         #[method(setPresentationContextProvider:)]
         pub unsafe fn setPresentationContextProvider(
@@ -64,27 +70,34 @@ extern_methods!(
             >,
         );
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(prefersEphemeralWebBrowserSession)]
         pub unsafe fn prefersEphemeralWebBrowserSession(&self) -> bool;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setPrefersEphemeralWebBrowserSession:)]
         pub unsafe fn setPrefersEphemeralWebBrowserSession(
             &self,
             prefers_ephemeral_web_browser_session: bool,
         );
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(canStart)]
         pub unsafe fn canStart(&self) -> bool;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(start)]
         pub unsafe fn start(&self) -> bool;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(cancel)]
         pub unsafe fn cancel(&self);
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
     }

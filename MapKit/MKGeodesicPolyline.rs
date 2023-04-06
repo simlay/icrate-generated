@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKGeodesicPolyline;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKGeodesicPolyline")]
     unsafe impl ClassType for MKGeodesicPolyline {
         #[inherits(MKMultiPoint, MKShape, NSObject)]
@@ -21,23 +22,29 @@ extern_class!(
 );
 
 #[cfg(feature = "MapKit_MKGeodesicPolyline")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl MKAnnotation for MKGeodesicPolyline {}
 
 #[cfg(feature = "MapKit_MKGeodesicPolyline")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl MKOverlay for MKGeodesicPolyline {}
 
 #[cfg(feature = "MapKit_MKGeodesicPolyline")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKGeodesicPolyline {}
 
 extern_methods!(
     #[cfg(feature = "MapKit_MKGeodesicPolyline")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKGeodesicPolyline {
+        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other polylineWithPoints:count:)]
         pub unsafe fn polylineWithPoints_count(
             points: NonNull<MKMapPoint>,
             count: NSUInteger,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other polylineWithCoordinates:count:)]
         pub unsafe fn polylineWithCoordinates_count(
             coords: NonNull<CLLocationCoordinate2D>,

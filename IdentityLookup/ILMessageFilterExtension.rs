@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct ILMessageFilterExtension;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "IdentityLookup_ILMessageFilterExtension")]
     unsafe impl ClassType for ILMessageFilterExtension {
         type Super = NSObject;
@@ -17,9 +18,11 @@ extern_class!(
 );
 
 #[cfg(feature = "IdentityLookup_ILMessageFilterExtension")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSObjectProtocol for ILMessageFilterExtension {}
 
 extern_methods!(
     #[cfg(feature = "IdentityLookup_ILMessageFilterExtension")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl ILMessageFilterExtension {}
 );

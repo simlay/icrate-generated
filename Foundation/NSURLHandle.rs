@@ -100,7 +100,6 @@ extern_protocol!(
         );
     }
 
-    #[deprecated]
     #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl ProtocolType for dyn NSURLHandleClient {}
 );

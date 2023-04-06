@@ -7,9 +7,9 @@ use crate::CoreLocation::*;
 use crate::Foundation::*;
 use crate::MapKit::*;
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub enum MKLookAroundBadgePosition {
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         MKLookAroundBadgePositionTopLeading = 0,
@@ -26,6 +26,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct MKLookAroundViewController;
 
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKLookAroundViewController")]
     unsafe impl ClassType for MKLookAroundViewController {
         #[inherits(NSResponder, NSObject)]
@@ -34,26 +35,34 @@ extern_class!(
 );
 
 #[cfg(feature = "MapKit_MKLookAroundViewController")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSCoding for MKLookAroundViewController {}
 
 #[cfg(feature = "MapKit_MKLookAroundViewController")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSEditor for MKLookAroundViewController {}
 
 #[cfg(feature = "MapKit_MKLookAroundViewController")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKLookAroundViewController {}
 
 #[cfg(feature = "MapKit_MKLookAroundViewController")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSSecureCoding for MKLookAroundViewController {}
 
 #[cfg(feature = "MapKit_MKLookAroundViewController")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSSeguePerforming for MKLookAroundViewController {}
 
 #[cfg(feature = "MapKit_MKLookAroundViewController")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSUserInterfaceItemIdentification for MKLookAroundViewController {}
 
 extern_methods!(
     #[cfg(feature = "MapKit_MKLookAroundViewController")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl MKLookAroundViewController {
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKLookAroundScene")]
         #[method_id(@__retain_semantics Init initWithScene:)]
         pub unsafe fn initWithScene(
@@ -61,6 +70,7 @@ extern_methods!(
             scene: &MKLookAroundScene,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSBundle", feature = "Foundation_NSString"))]
         #[method_id(@__retain_semantics Init initWithNibName:bundle:)]
         pub unsafe fn initWithNibName_bundle(
@@ -69,6 +79,7 @@ extern_methods!(
             nib_bundle_or_nil: Option<&NSBundle>,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSCoder")]
         #[method_id(@__retain_semantics Init initWithCoder:)]
         pub unsafe fn initWithCoder(
@@ -76,41 +87,51 @@ extern_methods!(
             coder: &NSCoder,
         ) -> Option<Id<Self>>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(
             &self,
         ) -> Option<Id<ProtocolObject<dyn MKLookAroundViewControllerDelegate>>>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
             delegate: Option<&ProtocolObject<dyn MKLookAroundViewControllerDelegate>>,
         );
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKLookAroundScene")]
         #[method_id(@__retain_semantics Other scene)]
         pub unsafe fn scene(&self) -> Option<Id<MKLookAroundScene>>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKLookAroundScene")]
         #[method(setScene:)]
         pub unsafe fn setScene(&self, scene: Option<&MKLookAroundScene>);
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(isNavigationEnabled)]
         pub unsafe fn isNavigationEnabled(&self) -> bool;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(setNavigationEnabled:)]
         pub unsafe fn setNavigationEnabled(&self, navigation_enabled: bool);
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(showsRoadLabels)]
         pub unsafe fn showsRoadLabels(&self) -> bool;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(setShowsRoadLabels:)]
         pub unsafe fn setShowsRoadLabels(&self, shows_road_labels: bool);
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKPointOfInterestFilter")]
         #[method_id(@__retain_semantics Other pointOfInterestFilter)]
         pub unsafe fn pointOfInterestFilter(&self) -> Option<Id<MKPointOfInterestFilter>>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKPointOfInterestFilter")]
         #[method(setPointOfInterestFilter:)]
         pub unsafe fn setPointOfInterestFilter(
@@ -118,9 +139,11 @@ extern_methods!(
             point_of_interest_filter: Option<&MKPointOfInterestFilter>,
         );
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(badgePosition)]
         pub unsafe fn badgePosition(&self) -> MKLookAroundBadgePosition;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(setBadgePosition:)]
         pub unsafe fn setBadgePosition(&self, badge_position: MKLookAroundBadgePosition);
     }

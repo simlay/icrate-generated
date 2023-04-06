@@ -83,7 +83,7 @@ pub use self::__UNNotificationAttachment::UNNotificationAttachmentOptionsTypeHin
 pub use self::__UNNotificationCategory::UNNotificationCategory;
 #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
 pub use self::__UNNotificationCategory::UNNotificationCategoryOptionAllowAnnouncement;
-#[cfg(not(any(target_os = "macos")))]
+#[cfg(not(any(target_os = "macos", target_os = "tvos")))]
 pub use self::__UNNotificationCategory::UNNotificationCategoryOptionAllowInCarPlay;
 #[cfg(not(any(target_os = "tvos")))]
 pub use self::__UNNotificationCategory::UNNotificationCategoryOptionCustomDismissAction;

@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct CXSetMutedCallAction;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "CallKit_CXSetMutedCallAction")]
     unsafe impl ClassType for CXSetMutedCallAction {
         #[inherits(CXAction, NSObject)]
@@ -18,17 +19,22 @@ extern_class!(
 );
 
 #[cfg(feature = "CallKit_CXSetMutedCallAction")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSCoding for CXSetMutedCallAction {}
 
 #[cfg(feature = "CallKit_CXSetMutedCallAction")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSObjectProtocol for CXSetMutedCallAction {}
 
 #[cfg(feature = "CallKit_CXSetMutedCallAction")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for CXSetMutedCallAction {}
 
 extern_methods!(
     #[cfg(feature = "CallKit_CXSetMutedCallAction")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXSetMutedCallAction {
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSUUID")]
         #[method_id(@__retain_semantics Init initWithCallUUID:muted:)]
         pub unsafe fn initWithCallUUID_muted(
@@ -37,6 +43,7 @@ extern_methods!(
             muted: bool,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSCoder")]
         #[method_id(@__retain_semantics Init initWithCoder:)]
         pub unsafe fn initWithCoder(
@@ -44,6 +51,7 @@ extern_methods!(
             a_decoder: &NSCoder,
         ) -> Option<Id<Self>>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSUUID")]
         #[method_id(@__retain_semantics Init initWithCallUUID:)]
         pub unsafe fn initWithCallUUID(
@@ -51,9 +59,11 @@ extern_methods!(
             call_uuid: &NSUUID,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method(isMuted)]
         pub unsafe fn isMuted(&self) -> bool;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method(setMuted:)]
         pub unsafe fn setMuted(&self, muted: bool);
     }

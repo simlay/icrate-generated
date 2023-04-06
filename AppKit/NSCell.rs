@@ -857,7 +857,6 @@ extern_static!(NSBackgroundStyleLight: NSBackgroundStyle = NSBackgroundStyleNorm
 #[deprecated]
 extern_static!(NSBackgroundStyleDark: NSBackgroundStyle = NSBackgroundStyleEmphasized);
 
-#[deprecated]
 pub type NSCellStateValue = NSControlStateValue;
 
 #[deprecated]

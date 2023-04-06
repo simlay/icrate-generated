@@ -315,9 +315,9 @@ extern_static!(NSPrintPaperFeed: &'static NSString);
 #[deprecated = "Use NSPrintJobSavingURL instead"]
 extern_static!(NSPrintSavePath: &'static NSString);
 
+#[deprecated]
 ns_enum!(
     #[underlying(NSUInteger)]
-    #[deprecated]
     pub enum NSPrintingOrientation {
         #[deprecated]
         NSPortraitOrientation = 0,

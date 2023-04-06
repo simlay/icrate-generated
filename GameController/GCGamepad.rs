@@ -5,7 +5,6 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::GameController::*;
 
-#[deprecated = "GCGamepad has been deprecated"]
 pub type GCGamepadValueChangedHandler =
     *mut Block<(NonNull<GCGamepad>, NonNull<GCControllerElement>), ()>;
 
@@ -15,6 +14,7 @@ extern_class!(
     #[deprecated]
     pub struct GCGamepad;
 
+    #[deprecated]
     #[cfg(feature = "GameController_GCGamepad")]
     unsafe impl ClassType for GCGamepad {
         #[inherits(NSObject)]

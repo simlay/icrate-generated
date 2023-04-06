@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos")))]
     pub struct LPMetadataProvider;
 
+    #[cfg(not(any(target_os = "tvos")))]
     #[cfg(feature = "LinkPresentation_LPMetadataProvider")]
     unsafe impl ClassType for LPMetadataProvider {
         type Super = NSObject;
@@ -18,11 +19,14 @@ extern_class!(
 );
 
 #[cfg(feature = "LinkPresentation_LPMetadataProvider")]
+#[cfg(not(any(target_os = "tvos")))]
 unsafe impl NSObjectProtocol for LPMetadataProvider {}
 
 extern_methods!(
     #[cfg(feature = "LinkPresentation_LPMetadataProvider")]
+    #[cfg(not(any(target_os = "tvos")))]
     unsafe impl LPMetadataProvider {
+        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(all(
             feature = "Foundation_NSError",
             feature = "Foundation_NSURL",
@@ -35,6 +39,7 @@ extern_methods!(
             completion_handler: &Block<(*mut LPLinkMetadata, *mut NSError), ()>,
         );
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(all(
             feature = "Foundation_NSError",
             feature = "Foundation_NSURLRequest",
@@ -47,18 +52,23 @@ extern_methods!(
             completion_handler: &Block<(*mut LPLinkMetadata, *mut NSError), ()>,
         );
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(cancel)]
         pub unsafe fn cancel(&self);
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(shouldFetchSubresources)]
         pub unsafe fn shouldFetchSubresources(&self) -> bool;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setShouldFetchSubresources:)]
         pub unsafe fn setShouldFetchSubresources(&self, should_fetch_subresources: bool);
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(timeout)]
         pub unsafe fn timeout(&self) -> NSTimeInterval;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(setTimeout:)]
         pub unsafe fn setTimeout(&self, timeout: NSTimeInterval);
     }

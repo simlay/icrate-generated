@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMRect;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMRect")]
     unsafe impl ClassType for DOMRect {
         #[inherits(WebScriptObject, NSObject)]

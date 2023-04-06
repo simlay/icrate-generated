@@ -5,9 +5,9 @@ use crate::CoreLocation::*;
 use crate::Foundation::*;
 use crate::UserNotifications::*;
 
+#[cfg(not(any(target_os = "tvos")))]
 ns_options!(
     #[underlying(NSUInteger)]
-    #[cfg(not(any(target_os = "tvos")))]
     pub enum UNNotificationActionOptions {
         #[cfg(not(any(target_os = "tvos")))]
         UNNotificationActionOptionAuthenticationRequired = 1 << 0,
@@ -27,6 +27,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos")))]
     pub struct UNNotificationAction;
 
+    #[cfg(not(any(target_os = "tvos")))]
     #[cfg(feature = "UserNotifications_UNNotificationAction")]
     unsafe impl ClassType for UNNotificationAction {
         type Super = NSObject;
@@ -34,32 +35,41 @@ extern_class!(
 );
 
 #[cfg(feature = "UserNotifications_UNNotificationAction")]
+#[cfg(not(any(target_os = "tvos")))]
 unsafe impl NSCoding for UNNotificationAction {}
 
 #[cfg(feature = "UserNotifications_UNNotificationAction")]
+#[cfg(not(any(target_os = "tvos")))]
 unsafe impl NSObjectProtocol for UNNotificationAction {}
 
 #[cfg(feature = "UserNotifications_UNNotificationAction")]
+#[cfg(not(any(target_os = "tvos")))]
 unsafe impl NSSecureCoding for UNNotificationAction {}
 
 extern_methods!(
     #[cfg(feature = "UserNotifications_UNNotificationAction")]
+    #[cfg(not(any(target_os = "tvos")))]
     unsafe impl UNNotificationAction {
+        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Id<NSString>;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Id<NSString>;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method(options)]
         pub unsafe fn options(&self) -> UNNotificationActionOptions;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(feature = "UserNotifications_UNNotificationActionIcon")]
         #[method_id(@__retain_semantics Other icon)]
         pub unsafe fn icon(&self) -> Option<Id<UNNotificationActionIcon>>;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other actionWithIdentifier:title:options:)]
         pub unsafe fn actionWithIdentifier_title_options(
@@ -68,6 +78,7 @@ extern_methods!(
             options: UNNotificationActionOptions,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(all(
             feature = "Foundation_NSString",
             feature = "UserNotifications_UNNotificationActionIcon"
@@ -80,6 +91,7 @@ extern_methods!(
             icon: Option<&UNNotificationActionIcon>,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
     }
@@ -91,6 +103,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos")))]
     pub struct UNTextInputNotificationAction;
 
+    #[cfg(not(any(target_os = "tvos")))]
     #[cfg(feature = "UserNotifications_UNTextInputNotificationAction")]
     unsafe impl ClassType for UNTextInputNotificationAction {
         #[inherits(NSObject)]
@@ -99,17 +112,22 @@ extern_class!(
 );
 
 #[cfg(feature = "UserNotifications_UNTextInputNotificationAction")]
+#[cfg(not(any(target_os = "tvos")))]
 unsafe impl NSCoding for UNTextInputNotificationAction {}
 
 #[cfg(feature = "UserNotifications_UNTextInputNotificationAction")]
+#[cfg(not(any(target_os = "tvos")))]
 unsafe impl NSObjectProtocol for UNTextInputNotificationAction {}
 
 #[cfg(feature = "UserNotifications_UNTextInputNotificationAction")]
+#[cfg(not(any(target_os = "tvos")))]
 unsafe impl NSSecureCoding for UNTextInputNotificationAction {}
 
 extern_methods!(
     #[cfg(feature = "UserNotifications_UNTextInputNotificationAction")]
+    #[cfg(not(any(target_os = "tvos")))]
     unsafe impl UNTextInputNotificationAction {
+        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other actionWithIdentifier:title:options:textInputButtonTitle:textInputPlaceholder:)]
         pub unsafe fn actionWithIdentifier_title_options_textInputButtonTitle_textInputPlaceholder(
@@ -120,6 +138,7 @@ extern_methods!(
             text_input_placeholder: &NSString,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(all(
             feature = "Foundation_NSString",
             feature = "UserNotifications_UNNotificationActionIcon"
@@ -134,10 +153,12 @@ extern_methods!(
             text_input_placeholder: &NSString,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other textInputButtonTitle)]
         pub unsafe fn textInputButtonTitle(&self) -> Id<NSString>;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other textInputPlaceholder)]
         pub unsafe fn textInputPlaceholder(&self) -> Id<NSString>;
@@ -147,7 +168,9 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `UNNotificationAction`
     #[cfg(feature = "UserNotifications_UNTextInputNotificationAction")]
+    #[cfg(not(any(target_os = "tvos")))]
     unsafe impl UNTextInputNotificationAction {
+        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other actionWithIdentifier:title:options:)]
         pub unsafe fn actionWithIdentifier_title_options(
@@ -156,6 +179,7 @@ extern_methods!(
             options: UNNotificationActionOptions,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(all(
             feature = "Foundation_NSString",
             feature = "UserNotifications_UNNotificationActionIcon"

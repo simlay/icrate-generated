@@ -15,6 +15,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos")))]
     pub struct UNNotificationSound;
 
+    #[cfg(not(any(target_os = "tvos")))]
     #[cfg(feature = "UserNotifications_UNNotificationSound")]
     unsafe impl ClassType for UNNotificationSound {
         type Super = NSObject;
@@ -22,44 +23,56 @@ extern_class!(
 );
 
 #[cfg(feature = "UserNotifications_UNNotificationSound")]
+#[cfg(not(any(target_os = "tvos")))]
 unsafe impl NSCoding for UNNotificationSound {}
 
 #[cfg(feature = "UserNotifications_UNNotificationSound")]
+#[cfg(not(any(target_os = "tvos")))]
 unsafe impl NSObjectProtocol for UNNotificationSound {}
 
 #[cfg(feature = "UserNotifications_UNNotificationSound")]
+#[cfg(not(any(target_os = "tvos")))]
 unsafe impl NSSecureCoding for UNNotificationSound {}
 
 extern_methods!(
     #[cfg(feature = "UserNotifications_UNNotificationSound")]
+    #[cfg(not(any(target_os = "tvos")))]
     unsafe impl UNNotificationSound {
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other defaultSound)]
         pub unsafe fn defaultSound() -> Id<UNNotificationSound>;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other defaultRingtoneSound)]
         pub unsafe fn defaultRingtoneSound() -> Id<UNNotificationSound>;
 
         #[cfg(not(any(target_os = "tvos")))]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other defaultCriticalSound)]
         pub unsafe fn defaultCriticalSound() -> Id<UNNotificationSound>;
 
         #[cfg(not(any(target_os = "tvos")))]
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other defaultCriticalSoundWithAudioVolume:)]
         pub unsafe fn defaultCriticalSoundWithAudioVolume(volume: c_float) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other soundNamed:)]
         pub unsafe fn soundNamed(name: &UNNotificationSoundName) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other ringtoneSoundNamed:)]
         pub unsafe fn ringtoneSoundNamed(name: &UNNotificationSoundName) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other criticalSoundNamed:)]
         pub unsafe fn criticalSoundNamed(name: &UNNotificationSoundName) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other criticalSoundNamed:withAudioVolume:)]
         pub unsafe fn criticalSoundNamed_withAudioVolume(
@@ -67,6 +80,7 @@ extern_methods!(
             volume: c_float,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
     }

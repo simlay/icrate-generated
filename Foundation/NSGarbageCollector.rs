@@ -10,6 +10,8 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub struct NSGarbageCollector;
 
+    #[deprecated = "Building Garbage Collected apps is no longer supported."]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "Foundation_NSGarbageCollector")]
     unsafe impl ClassType for NSGarbageCollector {
         type Super = NSObject;
@@ -17,40 +19,52 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSGarbageCollector")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for NSGarbageCollector {}
 
 extern_methods!(
     #[cfg(feature = "Foundation_NSGarbageCollector")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSGarbageCollector {
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other defaultCollector)]
         pub unsafe fn defaultCollector() -> Id<Object>;
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[deprecated]
         #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(isCollecting)]
         pub unsafe fn isCollecting(&self) -> bool;
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(disable)]
         pub unsafe fn disable(&self);
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(enable)]
         pub unsafe fn enable(&self);
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(isEnabled)]
         pub unsafe fn isEnabled(&self) -> bool;
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(collectIfNeeded)]
         pub unsafe fn collectIfNeeded(&self);
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(collectExhaustively)]
         pub unsafe fn collectExhaustively(&self);
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(disableCollectorForPointer:)]
         pub unsafe fn disableCollectorForPointer(&self, ptr: NonNull<c_void>);
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(enableCollectorForPointer:)]
         pub unsafe fn enableCollectorForPointer(&self, ptr: NonNull<c_void>);
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(zone)]
         pub unsafe fn zone(&self) -> NonNull<NSZone>;
     }

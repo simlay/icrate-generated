@@ -108,6 +108,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     pub struct MPMediaItem;
 
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPMediaItem")]
     unsafe impl ClassType for MPMediaItem {
         #[inherits(NSObject)]
@@ -116,147 +117,190 @@ extern_class!(
 );
 
 #[cfg(feature = "MediaPlayer_MPMediaItem")]
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 unsafe impl NSCoding for MPMediaItem {}
 
 #[cfg(feature = "MediaPlayer_MPMediaItem")]
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MPMediaItem {}
 
 #[cfg(feature = "MediaPlayer_MPMediaItem")]
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 unsafe impl NSSecureCoding for MPMediaItem {}
 
 extern_methods!(
     #[cfg(feature = "MediaPlayer_MPMediaItem")]
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     unsafe impl MPMediaItem {
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(persistentID)]
         pub unsafe fn persistentID(&self) -> MPMediaEntityPersistentID;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(mediaType)]
         pub unsafe fn mediaType(&self) -> MPMediaType;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Option<Id<NSString>>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other albumTitle)]
         pub unsafe fn albumTitle(&self) -> Option<Id<NSString>>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(albumPersistentID)]
         pub unsafe fn albumPersistentID(&self) -> MPMediaEntityPersistentID;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other artist)]
         pub unsafe fn artist(&self) -> Option<Id<NSString>>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(artistPersistentID)]
         pub unsafe fn artistPersistentID(&self) -> MPMediaEntityPersistentID;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other albumArtist)]
         pub unsafe fn albumArtist(&self) -> Option<Id<NSString>>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(albumArtistPersistentID)]
         pub unsafe fn albumArtistPersistentID(&self) -> MPMediaEntityPersistentID;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other genre)]
         pub unsafe fn genre(&self) -> Option<Id<NSString>>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(genrePersistentID)]
         pub unsafe fn genrePersistentID(&self) -> MPMediaEntityPersistentID;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other composer)]
         pub unsafe fn composer(&self) -> Option<Id<NSString>>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(composerPersistentID)]
         pub unsafe fn composerPersistentID(&self) -> MPMediaEntityPersistentID;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(playbackDuration)]
         pub unsafe fn playbackDuration(&self) -> NSTimeInterval;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(albumTrackNumber)]
         pub unsafe fn albumTrackNumber(&self) -> NSUInteger;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(albumTrackCount)]
         pub unsafe fn albumTrackCount(&self) -> NSUInteger;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(discNumber)]
         pub unsafe fn discNumber(&self) -> NSUInteger;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(discCount)]
         pub unsafe fn discCount(&self) -> NSUInteger;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(feature = "MediaPlayer_MPMediaItemArtwork")]
         #[method_id(@__retain_semantics Other artwork)]
         pub unsafe fn artwork(&self) -> Option<Id<MPMediaItemArtwork>>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(isExplicitItem)]
         pub unsafe fn isExplicitItem(&self) -> bool;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other lyrics)]
         pub unsafe fn lyrics(&self) -> Option<Id<NSString>>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(isCompilation)]
         pub unsafe fn isCompilation(&self) -> bool;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSDate")]
         #[method_id(@__retain_semantics Other releaseDate)]
         pub unsafe fn releaseDate(&self) -> Option<Id<NSDate>>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(beatsPerMinute)]
         pub unsafe fn beatsPerMinute(&self) -> NSUInteger;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other comments)]
         pub unsafe fn comments(&self) -> Option<Id<NSString>>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSURL")]
         #[method_id(@__retain_semantics Other assetURL)]
         pub unsafe fn assetURL(&self) -> Option<Id<NSURL>>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(isCloudItem)]
         pub unsafe fn isCloudItem(&self) -> bool;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(hasProtectedAsset)]
         pub unsafe fn hasProtectedAsset(&self) -> bool;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other podcastTitle)]
         pub unsafe fn podcastTitle(&self) -> Option<Id<NSString>>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(podcastPersistentID)]
         pub unsafe fn podcastPersistentID(&self) -> MPMediaEntityPersistentID;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(playCount)]
         pub unsafe fn playCount(&self) -> NSUInteger;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(skipCount)]
         pub unsafe fn skipCount(&self) -> NSUInteger;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(rating)]
         pub unsafe fn rating(&self) -> NSUInteger;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSDate")]
         #[method_id(@__retain_semantics Other lastPlayedDate)]
         pub unsafe fn lastPlayedDate(&self) -> Option<Id<NSDate>>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other userGrouping)]
         pub unsafe fn userGrouping(&self) -> Option<Id<NSString>>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(bookmarkTime)]
         pub unsafe fn bookmarkTime(&self) -> NSTimeInterval;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSDate")]
         #[method_id(@__retain_semantics Other dateAdded)]
         pub unsafe fn dateAdded(&self) -> Id<NSDate>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other playbackStoreID)]
         pub unsafe fn playbackStoreID(&self) -> Id<NSString>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(isPreorder)]
         pub unsafe fn isPreorder(&self) -> bool;
     }

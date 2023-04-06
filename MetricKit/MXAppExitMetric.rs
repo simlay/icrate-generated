@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct MXForegroundExitData;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "MetricKit_MXForegroundExitData")]
     unsafe impl ClassType for MXForegroundExitData {
         type Super = NSObject;
@@ -17,32 +18,42 @@ extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXForegroundExitData")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSCoding for MXForegroundExitData {}
 
 #[cfg(feature = "MetricKit_MXForegroundExitData")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSObjectProtocol for MXForegroundExitData {}
 
 #[cfg(feature = "MetricKit_MXForegroundExitData")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for MXForegroundExitData {}
 
 extern_methods!(
     #[cfg(feature = "MetricKit_MXForegroundExitData")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXForegroundExitData {
+        #[cfg(not(any(target_os = "macos")))]
         #[method(cumulativeNormalAppExitCount)]
         pub unsafe fn cumulativeNormalAppExitCount(&self) -> NSUInteger;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method(cumulativeMemoryResourceLimitExitCount)]
         pub unsafe fn cumulativeMemoryResourceLimitExitCount(&self) -> NSUInteger;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method(cumulativeBadAccessExitCount)]
         pub unsafe fn cumulativeBadAccessExitCount(&self) -> NSUInteger;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method(cumulativeAbnormalExitCount)]
         pub unsafe fn cumulativeAbnormalExitCount(&self) -> NSUInteger;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method(cumulativeIllegalInstructionExitCount)]
         pub unsafe fn cumulativeIllegalInstructionExitCount(&self) -> NSUInteger;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method(cumulativeAppWatchdogExitCount)]
         pub unsafe fn cumulativeAppWatchdogExitCount(&self) -> NSUInteger;
     }
@@ -54,6 +65,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct MXBackgroundExitData;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "MetricKit_MXBackgroundExitData")]
     unsafe impl ClassType for MXBackgroundExitData {
         type Super = NSObject;
@@ -61,44 +73,58 @@ extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXBackgroundExitData")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSCoding for MXBackgroundExitData {}
 
 #[cfg(feature = "MetricKit_MXBackgroundExitData")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSObjectProtocol for MXBackgroundExitData {}
 
 #[cfg(feature = "MetricKit_MXBackgroundExitData")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for MXBackgroundExitData {}
 
 extern_methods!(
     #[cfg(feature = "MetricKit_MXBackgroundExitData")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXBackgroundExitData {
+        #[cfg(not(any(target_os = "macos")))]
         #[method(cumulativeNormalAppExitCount)]
         pub unsafe fn cumulativeNormalAppExitCount(&self) -> NSUInteger;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method(cumulativeMemoryResourceLimitExitCount)]
         pub unsafe fn cumulativeMemoryResourceLimitExitCount(&self) -> NSUInteger;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method(cumulativeCPUResourceLimitExitCount)]
         pub unsafe fn cumulativeCPUResourceLimitExitCount(&self) -> NSUInteger;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method(cumulativeMemoryPressureExitCount)]
         pub unsafe fn cumulativeMemoryPressureExitCount(&self) -> NSUInteger;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method(cumulativeBadAccessExitCount)]
         pub unsafe fn cumulativeBadAccessExitCount(&self) -> NSUInteger;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method(cumulativeAbnormalExitCount)]
         pub unsafe fn cumulativeAbnormalExitCount(&self) -> NSUInteger;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method(cumulativeIllegalInstructionExitCount)]
         pub unsafe fn cumulativeIllegalInstructionExitCount(&self) -> NSUInteger;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method(cumulativeAppWatchdogExitCount)]
         pub unsafe fn cumulativeAppWatchdogExitCount(&self) -> NSUInteger;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method(cumulativeSuspendedWithLockedFileExitCount)]
         pub unsafe fn cumulativeSuspendedWithLockedFileExitCount(&self) -> NSUInteger;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method(cumulativeBackgroundTaskAssertionTimeoutExitCount)]
         pub unsafe fn cumulativeBackgroundTaskAssertionTimeoutExitCount(&self) -> NSUInteger;
     }
@@ -110,6 +136,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct MXAppExitMetric;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "MetricKit_MXAppExitMetric")]
     unsafe impl ClassType for MXAppExitMetric {
         #[inherits(NSObject)]
@@ -118,21 +145,27 @@ extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXAppExitMetric")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSCoding for MXAppExitMetric {}
 
 #[cfg(feature = "MetricKit_MXAppExitMetric")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSObjectProtocol for MXAppExitMetric {}
 
 #[cfg(feature = "MetricKit_MXAppExitMetric")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for MXAppExitMetric {}
 
 extern_methods!(
     #[cfg(feature = "MetricKit_MXAppExitMetric")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXAppExitMetric {
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "MetricKit_MXForegroundExitData")]
         #[method_id(@__retain_semantics Other foregroundExitData)]
         pub unsafe fn foregroundExitData(&self) -> Id<MXForegroundExitData>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "MetricKit_MXBackgroundExitData")]
         #[method_id(@__retain_semantics Other backgroundExitData)]
         pub unsafe fn backgroundExitData(&self) -> Id<MXBackgroundExitData>;

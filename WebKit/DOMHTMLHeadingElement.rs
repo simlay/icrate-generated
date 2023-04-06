@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLHeadingElement;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLHeadingElement")]
     unsafe impl ClassType for DOMHTMLHeadingElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]

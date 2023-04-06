@@ -7,9 +7,9 @@ use crate::Foundation::*;
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(ASCredentialIdentityStoreErrorDomain: &'static NSErrorDomain);
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 ns_error_enum!(
     #[underlying(NSInteger)]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub enum ASCredentialIdentityStoreErrorCode {
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         ASCredentialIdentityStoreErrorCodeInternalError = 0,
@@ -26,6 +26,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct ASCredentialIdentityStore;
 
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "AuthenticationServices_ASCredentialIdentityStore")]
     unsafe impl ClassType for ASCredentialIdentityStore {
         type Super = NSObject;
@@ -33,17 +34,22 @@ extern_class!(
 );
 
 #[cfg(feature = "AuthenticationServices_ASCredentialIdentityStore")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for ASCredentialIdentityStore {}
 
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASCredentialIdentityStore")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASCredentialIdentityStore {
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other sharedStore)]
         pub unsafe fn sharedStore() -> Id<ASCredentialIdentityStore>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "AuthenticationServices_ASCredentialIdentityStoreState")]
         #[method(getCredentialIdentityStoreStateWithCompletion:)]
         pub unsafe fn getCredentialIdentityStoreStateWithCompletion(
@@ -51,6 +57,7 @@ extern_methods!(
             completion: &Block<(NonNull<ASCredentialIdentityStoreState>,), ()>,
         );
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "AuthenticationServices_ASPasswordCredentialIdentity",
             feature = "Foundation_NSArray",
@@ -63,6 +70,7 @@ extern_methods!(
             completion: Option<&Block<(Bool, *mut NSError), ()>>,
         );
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "AuthenticationServices_ASPasswordCredentialIdentity",
             feature = "Foundation_NSArray",
@@ -75,6 +83,7 @@ extern_methods!(
             completion: Option<&Block<(Bool, *mut NSError), ()>>,
         );
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSError")]
         #[method(removeAllCredentialIdentitiesWithCompletion:)]
         pub unsafe fn removeAllCredentialIdentitiesWithCompletion(
@@ -82,6 +91,7 @@ extern_methods!(
             completion: Option<&Block<(Bool, *mut NSError), ()>>,
         );
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "AuthenticationServices_ASPasswordCredentialIdentity",
             feature = "Foundation_NSArray",

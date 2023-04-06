@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct ASAccountAuthenticationModificationExtensionContext;
 
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationExtensionContext")]
     unsafe impl ClassType for ASAccountAuthenticationModificationExtensionContext {
         #[inherits(NSObject)]
@@ -18,11 +19,14 @@ extern_class!(
 );
 
 #[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationExtensionContext")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for ASAccountAuthenticationModificationExtensionContext {}
 
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationExtensionContext")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAccountAuthenticationModificationExtensionContext {
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "AuthenticationServices_ASAuthorizationAppleIDCredential",
             feature = "Foundation_NSError",
@@ -36,6 +40,7 @@ extern_methods!(
             completion_handler: &Block<(*mut ASAuthorizationAppleIDCredential, *mut NSError), ()>,
         );
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSDictionary")]
         #[method(completeUpgradeToSignInWithAppleWithUserInfo:)]
         pub unsafe fn completeUpgradeToSignInWithAppleWithUserInfo(
@@ -43,6 +48,7 @@ extern_methods!(
             user_info: Option<&NSDictionary>,
         );
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "AuthenticationServices_ASPasswordCredential",
             feature = "Foundation_NSDictionary"
@@ -54,6 +60,7 @@ extern_methods!(
             user_info: Option<&NSDictionary>,
         );
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSError")]
         #[method(cancelRequestWithError:)]
         pub unsafe fn cancelRequestWithError(&self, error: &NSError);

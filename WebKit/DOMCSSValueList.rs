@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMCSSValueList;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMCSSValueList")]
     unsafe impl ClassType for DOMCSSValueList {
         #[inherits(DOMObject, WebScriptObject, NSObject)]

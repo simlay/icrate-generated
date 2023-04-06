@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub struct EXAppExtensionBrowserViewController;
 
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "ExtensionKit_EXAppExtensionBrowserViewController")]
     unsafe impl ClassType for EXAppExtensionBrowserViewController {
         #[inherits(NSResponder, NSObject)]
@@ -19,29 +20,37 @@ extern_class!(
 );
 
 #[cfg(feature = "ExtensionKit_EXAppExtensionBrowserViewController")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSCoding for EXAppExtensionBrowserViewController {}
 
 #[cfg(feature = "ExtensionKit_EXAppExtensionBrowserViewController")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSEditor for EXAppExtensionBrowserViewController {}
 
 #[cfg(feature = "ExtensionKit_EXAppExtensionBrowserViewController")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for EXAppExtensionBrowserViewController {}
 
 #[cfg(feature = "ExtensionKit_EXAppExtensionBrowserViewController")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSSeguePerforming for EXAppExtensionBrowserViewController {}
 
 #[cfg(feature = "ExtensionKit_EXAppExtensionBrowserViewController")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSUserInterfaceItemIdentification for EXAppExtensionBrowserViewController {}
 
 extern_methods!(
     #[cfg(feature = "ExtensionKit_EXAppExtensionBrowserViewController")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl EXAppExtensionBrowserViewController {}
 );
 
 extern_methods!(
     /// Methods declared on superclass `NSViewController`
     #[cfg(feature = "ExtensionKit_EXAppExtensionBrowserViewController")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl EXAppExtensionBrowserViewController {
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSBundle")]
         #[method_id(@__retain_semantics Init initWithNibName:bundle:)]
         pub unsafe fn initWithNibName_bundle(

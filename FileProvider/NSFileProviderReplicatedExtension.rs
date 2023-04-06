@@ -21,18 +21,18 @@ ns_options!(
     }
 );
 
+#[cfg(not(any(target_os = "ios")))]
 ns_options!(
     #[underlying(NSUInteger)]
-    #[cfg(not(any(target_os = "ios")))]
     pub enum NSFileProviderMaterializationFlags {
         #[cfg(not(any(target_os = "ios")))]
         NSFileProviderMaterializationFlagsKnownSparseRanges = 1 << 0,
     }
 );
 
+#[cfg(not(any(target_os = "ios")))]
 ns_options!(
     #[underlying(NSUInteger)]
-    #[cfg(not(any(target_os = "ios")))]
     pub enum NSFileProviderFetchContentsOptions {
         #[cfg(not(any(target_os = "ios")))]
         NSFileProviderFetchContentsOptionsStrictVersioning = 1 << 0,

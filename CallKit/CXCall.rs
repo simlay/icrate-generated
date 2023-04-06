@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct CXCall;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "CallKit_CXCall")]
     unsafe impl ClassType for CXCall {
         type Super = NSObject;
@@ -17,30 +18,39 @@ extern_class!(
 );
 
 #[cfg(feature = "CallKit_CXCall")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSObjectProtocol for CXCall {}
 
 extern_methods!(
     #[cfg(feature = "CallKit_CXCall")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXCall {
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSUUID")]
         #[method_id(@__retain_semantics Other UUID)]
         pub unsafe fn UUID(&self) -> Id<NSUUID>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method(isOutgoing)]
         pub unsafe fn isOutgoing(&self) -> bool;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method(isOnHold)]
         pub unsafe fn isOnHold(&self) -> bool;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method(hasConnected)]
         pub unsafe fn hasConnected(&self) -> bool;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method(hasEnded)]
         pub unsafe fn hasEnded(&self) -> bool;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method(isEqualToCall:)]
         pub unsafe fn isEqualToCall(&self, call: &CXCall) -> bool;
     }

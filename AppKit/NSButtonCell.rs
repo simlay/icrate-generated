@@ -263,9 +263,9 @@ extern_methods!(
     }
 );
 
+#[deprecated]
 ns_enum!(
     #[underlying(NSUInteger)]
-    #[deprecated]
     pub enum NSGradientType {
         NSGradientNone = 0,
         NSGradientConcaveWeak = 1,

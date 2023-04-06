@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct MXNetworkTransferMetric;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "MetricKit_MXNetworkTransferMetric")]
     unsafe impl ClassType for MXNetworkTransferMetric {
         #[inherits(NSObject)]
@@ -18,17 +19,22 @@ extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXNetworkTransferMetric")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSCoding for MXNetworkTransferMetric {}
 
 #[cfg(feature = "MetricKit_MXNetworkTransferMetric")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSObjectProtocol for MXNetworkTransferMetric {}
 
 #[cfg(feature = "MetricKit_MXNetworkTransferMetric")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for MXNetworkTransferMetric {}
 
 extern_methods!(
     #[cfg(feature = "MetricKit_MXNetworkTransferMetric")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXNetworkTransferMetric {
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitInformationStorage"
@@ -36,6 +42,7 @@ extern_methods!(
         #[method_id(@__retain_semantics Other cumulativeWifiUpload)]
         pub unsafe fn cumulativeWifiUpload(&self) -> Id<NSMeasurement<NSUnitInformationStorage>>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitInformationStorage"
@@ -43,6 +50,7 @@ extern_methods!(
         #[method_id(@__retain_semantics Other cumulativeWifiDownload)]
         pub unsafe fn cumulativeWifiDownload(&self) -> Id<NSMeasurement<NSUnitInformationStorage>>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitInformationStorage"
@@ -52,6 +60,7 @@ extern_methods!(
             &self,
         ) -> Id<NSMeasurement<NSUnitInformationStorage>>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitInformationStorage"

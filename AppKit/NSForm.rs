@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated = "Use NSTextField directly instead, and consider NSStackView for layout assistance"]
     pub struct NSForm;
 
+    #[deprecated = "Use NSTextField directly instead, and consider NSStackView for layout assistance"]
     #[cfg(feature = "AppKit_NSForm")]
     unsafe impl ClassType for NSForm {
         #[inherits(NSControl, NSView, NSResponder, NSObject)]

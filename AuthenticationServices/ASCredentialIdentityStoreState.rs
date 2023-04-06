@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct ASCredentialIdentityStoreState;
 
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "AuthenticationServices_ASCredentialIdentityStoreState")]
     unsafe impl ClassType for ASCredentialIdentityStoreState {
         type Super = NSObject;
@@ -17,14 +18,18 @@ extern_class!(
 );
 
 #[cfg(feature = "AuthenticationServices_ASCredentialIdentityStoreState")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for ASCredentialIdentityStoreState {}
 
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASCredentialIdentityStoreState")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASCredentialIdentityStoreState {
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(isEnabled)]
         pub unsafe fn isEnabled(&self) -> bool;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(supportsIncrementalUpdates)]
         pub unsafe fn supportsIncrementalUpdates(&self) -> bool;
     }

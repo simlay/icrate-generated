@@ -148,6 +148,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
     pub struct UNLocationNotificationTrigger;
 
+    #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
     #[cfg(feature = "UserNotifications_UNLocationNotificationTrigger")]
     unsafe impl ClassType for UNLocationNotificationTrigger {
         #[inherits(NSObject)]
@@ -156,21 +157,27 @@ extern_class!(
 );
 
 #[cfg(feature = "UserNotifications_UNLocationNotificationTrigger")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos")))]
 unsafe impl NSCoding for UNLocationNotificationTrigger {}
 
 #[cfg(feature = "UserNotifications_UNLocationNotificationTrigger")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos")))]
 unsafe impl NSObjectProtocol for UNLocationNotificationTrigger {}
 
 #[cfg(feature = "UserNotifications_UNLocationNotificationTrigger")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos")))]
 unsafe impl NSSecureCoding for UNLocationNotificationTrigger {}
 
 extern_methods!(
     #[cfg(feature = "UserNotifications_UNLocationNotificationTrigger")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
     unsafe impl UNLocationNotificationTrigger {
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         #[cfg(feature = "CoreLocation_CLRegion")]
         #[method_id(@__retain_semantics Other region)]
         pub unsafe fn region(&self) -> Id<CLRegion>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         #[cfg(feature = "CoreLocation_CLRegion")]
         #[method_id(@__retain_semantics Other triggerWithRegion:repeats:)]
         pub unsafe fn triggerWithRegion_repeats(region: &CLRegion, repeats: bool) -> Id<Self>;

@@ -136,9 +136,9 @@ extern_enum!(
     }
 );
 
+#[deprecated]
 extern_enum!(
     #[underlying(c_uint)]
-    #[deprecated]
     pub enum __anonymous__ {
         NSFPPreviewButton = 131,
         NSFPRevertButton = 130,

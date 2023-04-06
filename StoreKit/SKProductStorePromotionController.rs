@@ -5,9 +5,9 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::StoreKit::*;
 
+#[cfg(not(any(target_os = "watchos")))]
 ns_closed_enum!(
     #[underlying(NSInteger)]
-    #[cfg(not(any(target_os = "watchos")))]
     pub enum SKProductStorePromotionVisibility {
         #[cfg(not(any(target_os = "watchos")))]
         SKProductStorePromotionVisibilityDefault = 0,
@@ -24,6 +24,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct SKProductStorePromotionController;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "StoreKit_SKProductStorePromotionController")]
     unsafe impl ClassType for SKProductStorePromotionController {
         type Super = NSObject;
@@ -31,15 +32,19 @@ extern_class!(
 );
 
 #[cfg(feature = "StoreKit_SKProductStorePromotionController")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for SKProductStorePromotionController {}
 
 extern_methods!(
     #[cfg(feature = "StoreKit_SKProductStorePromotionController")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl SKProductStorePromotionController {
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other defaultController)]
         pub unsafe fn defaultController() -> Id<Self>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSError", feature = "StoreKit_SKProduct"))]
         #[cfg(not(any(target_os = "watchos")))]
         #[method(fetchStorePromotionVisibilityForProduct:completionHandler:)]
@@ -51,6 +56,7 @@ extern_methods!(
             >,
         );
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSError", feature = "StoreKit_SKProduct"))]
         #[cfg(not(any(target_os = "watchos")))]
         #[method(updateStorePromotionVisibility:forProduct:completionHandler:)]
@@ -61,6 +67,7 @@ extern_methods!(
             completion_handler: Option<&Block<(*mut NSError,), ()>>,
         );
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSError",
@@ -73,6 +80,7 @@ extern_methods!(
             completion_handler: Option<&Block<(NonNull<NSArray<SKProduct>>, *mut NSError), ()>>,
         );
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSError",

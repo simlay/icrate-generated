@@ -5,9 +5,9 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::StoreKit::*;
 
+#[deprecated = "Hosted content is no longer supported"]
 ns_closed_enum!(
     #[underlying(NSInteger)]
-    #[deprecated = "Hosted content is no longer supported"]
     pub enum SKDownloadState {
         #[deprecated = "Hosted content is no longer supported"]
         SKDownloadStateWaiting = 0,
@@ -33,6 +33,7 @@ extern_class!(
     #[deprecated = "Hosted content is no longer supported"]
     pub struct SKDownload;
 
+    #[deprecated = "Hosted content is no longer supported"]
     #[cfg(feature = "StoreKit_SKDownload")]
     unsafe impl ClassType for SKDownload {
         type Super = NSObject;

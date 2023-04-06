@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct GKFriendRequestComposeViewController;
 
+    #[deprecated]
     #[cfg(feature = "GameKit_GKFriendRequestComposeViewController")]
     unsafe impl ClassType for GKFriendRequestComposeViewController {
         #[inherits(NSResponder, NSObject)]
@@ -93,7 +94,6 @@ extern_protocol!(
         );
     }
 
-    #[deprecated]
     unsafe impl ProtocolType for dyn GKFriendRequestComposeViewControllerDelegate {}
 );
 

@@ -25,6 +25,7 @@ extern_class!(
     #[deprecated = "Drawers are deprecated; consider using NSSplitViewController"]
     pub struct NSDrawer;
 
+    #[deprecated = "Drawers are deprecated; consider using NSSplitViewController"]
     #[cfg(feature = "AppKit_NSDrawer")]
     unsafe impl ClassType for NSDrawer {
         #[inherits(NSObject)]

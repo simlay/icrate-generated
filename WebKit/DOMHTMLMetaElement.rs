@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLMetaElement;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLMetaElement")]
     unsafe impl ClassType for DOMHTMLMetaElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]

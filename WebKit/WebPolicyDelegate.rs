@@ -5,9 +5,9 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::WebKit::*;
 
+#[deprecated]
 ns_enum!(
     #[underlying(NSInteger)]
-    #[deprecated]
     pub enum WebNavigationType {
         #[deprecated]
         WebNavigationTypeLinkClicked = 0,
@@ -52,7 +52,6 @@ extern_protocol!(
         unsafe fn ignore(&self);
     }
 
-    #[deprecated]
     unsafe impl ProtocolType for dyn WebPolicyDecisionListener {}
 );
 
@@ -125,6 +124,5 @@ extern_protocol!(
         );
     }
 
-    #[deprecated]
     unsafe impl ProtocolType for dyn WebPolicyDelegate {}
 );

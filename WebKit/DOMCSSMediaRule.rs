@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMCSSMediaRule;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMCSSMediaRule")]
     unsafe impl ClassType for DOMCSSMediaRule {
         #[inherits(DOMObject, WebScriptObject, NSObject)]

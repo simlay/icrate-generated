@@ -6,9 +6,9 @@ use crate::Foundation::*;
 use crate::HealthKit::*;
 use crate::UniformTypeIdentifiers::*;
 
+#[cfg(not(any(target_os = "ios")))]
 ns_enum!(
     #[underlying(NSInteger)]
-    #[cfg(not(any(target_os = "ios")))]
     pub enum HKWorkoutSessionState {
         #[cfg(not(any(target_os = "ios")))]
         HKWorkoutSessionStateNotStarted = 1,
@@ -28,6 +28,7 @@ extern_class!(
     #[cfg(not(any(target_os = "ios")))]
     pub struct HKWorkoutSession;
 
+    #[cfg(not(any(target_os = "ios")))]
     #[cfg(feature = "HealthKit_HKWorkoutSession")]
     unsafe impl ClassType for HKWorkoutSession {
         type Super = NSObject;
@@ -35,53 +36,67 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKWorkoutSession")]
+#[cfg(not(any(target_os = "ios")))]
 unsafe impl NSCoding for HKWorkoutSession {}
 
 #[cfg(feature = "HealthKit_HKWorkoutSession")]
+#[cfg(not(any(target_os = "ios")))]
 unsafe impl NSObjectProtocol for HKWorkoutSession {}
 
 #[cfg(feature = "HealthKit_HKWorkoutSession")]
+#[cfg(not(any(target_os = "ios")))]
 unsafe impl NSSecureCoding for HKWorkoutSession {}
 
 extern_methods!(
     #[cfg(feature = "HealthKit_HKWorkoutSession")]
+    #[cfg(not(any(target_os = "ios")))]
     unsafe impl HKWorkoutSession {
+        #[cfg(not(any(target_os = "ios")))]
         #[deprecated]
         #[method(activityType)]
         pub unsafe fn activityType(&self) -> HKWorkoutActivityType;
 
+        #[cfg(not(any(target_os = "ios")))]
         #[deprecated]
         #[method(locationType)]
         pub unsafe fn locationType(&self) -> HKWorkoutSessionLocationType;
 
+        #[cfg(not(any(target_os = "ios")))]
         #[cfg(feature = "HealthKit_HKWorkoutConfiguration")]
         #[method_id(@__retain_semantics Other workoutConfiguration)]
         pub unsafe fn workoutConfiguration(&self) -> Id<HKWorkoutConfiguration>;
 
+        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(&self) -> Option<Id<ProtocolObject<dyn HKWorkoutSessionDelegate>>>;
 
+        #[cfg(not(any(target_os = "ios")))]
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
             delegate: Option<&ProtocolObject<dyn HKWorkoutSessionDelegate>>,
         );
 
+        #[cfg(not(any(target_os = "ios")))]
         #[method(state)]
         pub unsafe fn state(&self) -> HKWorkoutSessionState;
 
+        #[cfg(not(any(target_os = "ios")))]
         #[cfg(feature = "Foundation_NSDate")]
         #[method_id(@__retain_semantics Other startDate)]
         pub unsafe fn startDate(&self) -> Option<Id<NSDate>>;
 
+        #[cfg(not(any(target_os = "ios")))]
         #[cfg(feature = "Foundation_NSDate")]
         #[method_id(@__retain_semantics Other endDate)]
         pub unsafe fn endDate(&self) -> Option<Id<NSDate>>;
 
+        #[cfg(not(any(target_os = "ios")))]
         #[cfg(feature = "HealthKit_HKWorkoutActivity")]
         #[method_id(@__retain_semantics Other currentActivity)]
         pub unsafe fn currentActivity(&self) -> Id<HKWorkoutActivity>;
 
+        #[cfg(not(any(target_os = "ios")))]
         #[deprecated]
         #[method_id(@__retain_semantics Init initWithActivityType:locationType:)]
         pub unsafe fn initWithActivityType_locationType(
@@ -90,6 +105,7 @@ extern_methods!(
             location_type: HKWorkoutSessionLocationType,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "ios")))]
         #[cfg(all(
             feature = "Foundation_NSError",
             feature = "HealthKit_HKWorkoutConfiguration"
@@ -101,6 +117,7 @@ extern_methods!(
             workout_configuration: &HKWorkoutConfiguration,
         ) -> Result<Id<Self>, Id<NSError>>;
 
+        #[cfg(not(any(target_os = "ios")))]
         #[cfg(all(
             feature = "Foundation_NSError",
             feature = "HealthKit_HKHealthStore",
@@ -113,33 +130,42 @@ extern_methods!(
             workout_configuration: &HKWorkoutConfiguration,
         ) -> Result<Id<Self>, Id<NSError>>;
 
+        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "ios")))]
         #[method(prepare)]
         pub unsafe fn prepare(&self);
 
+        #[cfg(not(any(target_os = "ios")))]
         #[cfg(feature = "Foundation_NSDate")]
         #[method(startActivityWithDate:)]
         pub unsafe fn startActivityWithDate(&self, date: Option<&NSDate>);
 
+        #[cfg(not(any(target_os = "ios")))]
         #[cfg(feature = "Foundation_NSDate")]
         #[method(stopActivityWithDate:)]
         pub unsafe fn stopActivityWithDate(&self, date: Option<&NSDate>);
 
+        #[cfg(not(any(target_os = "ios")))]
         #[method(end)]
         pub unsafe fn end(&self);
 
+        #[cfg(not(any(target_os = "ios")))]
         #[method(pause)]
         pub unsafe fn pause(&self);
 
+        #[cfg(not(any(target_os = "ios")))]
         #[method(resume)]
         pub unsafe fn resume(&self);
 
+        #[cfg(not(any(target_os = "ios")))]
         #[cfg(feature = "HealthKit_HKLiveWorkoutBuilder")]
         #[method_id(@__retain_semantics Other associatedWorkoutBuilder)]
         pub unsafe fn associatedWorkoutBuilder(&self) -> Id<HKLiveWorkoutBuilder>;
 
+        #[cfg(not(any(target_os = "ios")))]
         #[cfg(all(
             feature = "Foundation_NSDate",
             feature = "Foundation_NSDictionary",
@@ -154,6 +180,7 @@ extern_methods!(
             metadata: Option<&NSDictionary<NSString, Object>>,
         );
 
+        #[cfg(not(any(target_os = "ios")))]
         #[cfg(feature = "Foundation_NSDate")]
         #[method(endCurrentActivityOnDate:)]
         pub unsafe fn endCurrentActivityOnDate(&self, date: &NSDate);

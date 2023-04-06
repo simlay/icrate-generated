@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKCircleRenderer;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKCircleRenderer")]
     unsafe impl ClassType for MKCircleRenderer {
         #[inherits(MKOverlayRenderer, NSObject)]
@@ -21,31 +22,39 @@ extern_class!(
 );
 
 #[cfg(feature = "MapKit_MKCircleRenderer")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKCircleRenderer {}
 
 extern_methods!(
     #[cfg(feature = "MapKit_MKCircleRenderer")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKCircleRenderer {
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKCircle")]
         #[method_id(@__retain_semantics Init initWithCircle:)]
         pub unsafe fn initWithCircle(this: Option<Allocated<Self>>, circle: &MKCircle) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKCircle")]
         #[method_id(@__retain_semantics Other circle)]
         pub unsafe fn circle(&self) -> Id<MKCircle>;
 
         #[cfg(not(any(target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(strokeStart)]
         pub unsafe fn strokeStart(&self) -> CGFloat;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(not(any(target_os = "watchos")))]
         #[method(setStrokeStart:)]
         pub unsafe fn setStrokeStart(&self, stroke_start: CGFloat);
 
         #[cfg(not(any(target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(strokeEnd)]
         pub unsafe fn strokeEnd(&self) -> CGFloat;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(not(any(target_os = "watchos")))]
         #[method(setStrokeEnd:)]
         pub unsafe fn setStrokeEnd(&self, stroke_end: CGFloat);
@@ -55,7 +64,9 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `MKOverlayRenderer`
     #[cfg(feature = "MapKit_MKCircleRenderer")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKCircleRenderer {
+        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init initWithOverlay:)]
         pub unsafe fn initWithOverlay(
             this: Option<Allocated<Self>>,

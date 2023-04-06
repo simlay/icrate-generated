@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct SKArcadeService;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "StoreKit_SKArcadeService")]
     unsafe impl ClassType for SKArcadeService {
         type Super = NSObject;
@@ -18,11 +19,14 @@ extern_class!(
 );
 
 #[cfg(feature = "StoreKit_SKArcadeService")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for SKArcadeService {}
 
 extern_methods!(
     #[cfg(feature = "StoreKit_SKArcadeService")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl SKArcadeService {
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSData", feature = "Foundation_NSError"))]
         #[cfg(not(any(target_os = "watchos")))]
         #[method(registerArcadeAppWithRandomFromLib:randomFromLibLength:resultHandler:)]
@@ -32,6 +36,7 @@ extern_methods!(
             result_handler: &Block<(*mut NSData, u32, *mut NSData, u32, *mut NSError), ()>,
         );
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSData", feature = "Foundation_NSError"))]
         #[cfg(not(any(target_os = "watchos")))]
         #[method(arcadeSubscriptionStatusWithNonce:resultHandler:)]
@@ -40,6 +45,7 @@ extern_methods!(
             result_handler: &Block<(*mut NSData, u32, *mut NSData, u32, *mut NSError), ()>,
         );
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(not(any(target_os = "watchos")))]
         #[method(repairArcadeApp)]
         pub unsafe fn repairArcadeApp();

@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKMultiPoint;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKMultiPoint")]
     unsafe impl ClassType for MKMultiPoint {
         #[inherits(NSObject)]
@@ -21,20 +22,26 @@ extern_class!(
 );
 
 #[cfg(feature = "MapKit_MKMultiPoint")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl MKAnnotation for MKMultiPoint {}
 
 #[cfg(feature = "MapKit_MKMultiPoint")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKMultiPoint {}
 
 extern_methods!(
     #[cfg(feature = "MapKit_MKMultiPoint")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKMultiPoint {
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(points)]
         pub unsafe fn points(&self) -> NonNull<MKMapPoint>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(pointCount)]
         pub unsafe fn pointCount(&self) -> NSUInteger;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(getCoordinates:range:)]
         pub unsafe fn getCoordinates_range(
             &self,
@@ -43,9 +50,11 @@ extern_methods!(
         );
 
         #[cfg(not(any(target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(locationAtPointIndex:)]
         pub unsafe fn locationAtPointIndex(&self, index: NSUInteger) -> CGFloat;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSIndexSet",

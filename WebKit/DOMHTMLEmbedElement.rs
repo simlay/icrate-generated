@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLEmbedElement;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLEmbedElement")]
     unsafe impl ClassType for DOMHTMLEmbedElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]

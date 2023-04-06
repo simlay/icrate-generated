@@ -12,6 +12,7 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     pub struct PHProjectChangeRequest;
 
+    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     #[cfg(feature = "PhotoKit_PHProjectChangeRequest")]
     unsafe impl ClassType for PHProjectChangeRequest {
         #[inherits(NSObject)]
@@ -20,11 +21,14 @@ extern_class!(
 );
 
 #[cfg(feature = "PhotoKit_PHProjectChangeRequest")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 unsafe impl NSObjectProtocol for PHProjectChangeRequest {}
 
 extern_methods!(
     #[cfg(feature = "PhotoKit_PHProjectChangeRequest")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     unsafe impl PHProjectChangeRequest {
+        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[cfg(feature = "PhotoKit_PHProject")]
         #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[method_id(@__retain_semantics Init initWithProject:)]
@@ -33,37 +37,44 @@ extern_methods!(
             project: &PHProject,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Id<NSString>;
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[method(setTitle:)]
         pub unsafe fn setTitle(&self, title: &NSString);
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[cfg(feature = "Foundation_NSData")]
         #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[method_id(@__retain_semantics Other projectExtensionData)]
         pub unsafe fn projectExtensionData(&self) -> Id<NSData>;
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[cfg(feature = "Foundation_NSData")]
         #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[method(setProjectExtensionData:)]
         pub unsafe fn setProjectExtensionData(&self, project_extension_data: &NSData);
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[cfg(feature = "PhotoKit_PHAsset")]
         #[deprecated]
         #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[method(setKeyAsset:)]
         pub unsafe fn setKeyAsset(&self, key_asset: Option<&PHAsset>);
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[cfg(feature = "AppKit_NSImage")]
         #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[method(setProjectPreviewImage:)]
         pub unsafe fn setProjectPreviewImage(&self, preview_image: &NSImage);
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[method(removeAssets:)]
         pub unsafe fn removeAssets(&self, assets: &ProtocolObject<dyn NSFastEnumeration>);

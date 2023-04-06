@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct SKOverlayTransitionContext;
 
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "StoreKit_SKOverlayTransitionContext")]
     unsafe impl ClassType for SKOverlayTransitionContext {
         type Super = NSObject;
@@ -18,23 +19,30 @@ extern_class!(
 );
 
 #[cfg(feature = "StoreKit_SKOverlayTransitionContext")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for SKOverlayTransitionContext {}
 
 extern_methods!(
     #[cfg(feature = "StoreKit_SKOverlayTransitionContext")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl SKOverlayTransitionContext {
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(addAnimationBlock:)]
         pub unsafe fn addAnimationBlock(&self, block: &Block<(), ()>);
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(startFrame)]
         pub unsafe fn startFrame(&self) -> CGRect;
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(endFrame)]
         pub unsafe fn endFrame(&self) -> CGRect;
     }

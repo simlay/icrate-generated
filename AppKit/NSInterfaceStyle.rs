@@ -19,7 +19,6 @@ extern_enum!(
     }
 );
 
-#[deprecated]
 pub type NSInterfaceStyle = NSUInteger;
 
 extern_fn!(

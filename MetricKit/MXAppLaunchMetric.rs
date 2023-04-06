@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct MXAppLaunchMetric;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "MetricKit_MXAppLaunchMetric")]
     unsafe impl ClassType for MXAppLaunchMetric {
         #[inherits(NSObject)]
@@ -18,17 +19,22 @@ extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXAppLaunchMetric")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSCoding for MXAppLaunchMetric {}
 
 #[cfg(feature = "MetricKit_MXAppLaunchMetric")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSObjectProtocol for MXAppLaunchMetric {}
 
 #[cfg(feature = "MetricKit_MXAppLaunchMetric")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for MXAppLaunchMetric {}
 
 extern_methods!(
     #[cfg(feature = "MetricKit_MXAppLaunchMetric")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXAppLaunchMetric {
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSUnitDuration",
             feature = "MetricKit_MXHistogram"
@@ -36,6 +42,7 @@ extern_methods!(
         #[method_id(@__retain_semantics Other histogrammedTimeToFirstDraw)]
         pub unsafe fn histogrammedTimeToFirstDraw(&self) -> Id<MXHistogram<NSUnitDuration>>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSUnitDuration",
             feature = "MetricKit_MXHistogram"
@@ -43,6 +50,7 @@ extern_methods!(
         #[method_id(@__retain_semantics Other histogrammedApplicationResumeTime)]
         pub unsafe fn histogrammedApplicationResumeTime(&self) -> Id<MXHistogram<NSUnitDuration>>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSUnitDuration",
             feature = "MetricKit_MXHistogram"
@@ -53,6 +61,7 @@ extern_methods!(
             &self,
         ) -> Id<MXHistogram<NSUnitDuration>>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSUnitDuration",
             feature = "MetricKit_MXHistogram"

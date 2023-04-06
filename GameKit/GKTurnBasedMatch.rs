@@ -676,7 +676,6 @@ extern_protocol!(
         unsafe fn handleMatchEnded(&self, r#match: &GKTurnBasedMatch);
     }
 
-    #[deprecated = "Use registerListener on GKLocalPlayer with an object that implements the GKTurnBasedEventListener protocol"]
     unsafe impl ProtocolType for dyn GKTurnBasedEventHandlerDelegate {}
 );
 
@@ -686,6 +685,7 @@ extern_class!(
     #[deprecated = "Use registerListener on GKLocalPlayer with an object that implements the GKTurnBasedEventListener protocol"]
     pub struct GKTurnBasedEventHandler;
 
+    #[deprecated = "Use registerListener on GKLocalPlayer with an object that implements the GKTurnBasedEventListener protocol"]
     #[cfg(feature = "GameKit_GKTurnBasedEventHandler")]
     unsafe impl ClassType for GKTurnBasedEventHandler {
         type Super = NSObject;

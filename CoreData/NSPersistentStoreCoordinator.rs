@@ -446,9 +446,9 @@ extern_methods!(
     }
 );
 
+#[deprecated = "Please see the release notes and Core Data documentation."]
 ns_enum!(
     #[underlying(NSUInteger)]
-    #[deprecated = "Please see the release notes and Core Data documentation."]
     pub enum NSPersistentStoreUbiquitousTransitionType {
         #[deprecated = "Please see the release notes and Core Data documentation."]
         NSPersistentStoreUbiquitousTransitionTypeAccountAdded = 1,

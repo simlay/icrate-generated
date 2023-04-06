@@ -5,9 +5,9 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::WebKit::*;
 
+#[deprecated]
 extern_enum!(
     #[underlying(c_uint)]
-    #[deprecated]
     pub enum __anonymous__ {
         #[deprecated]
         DOM_CSS_UNKNOWN = 0,
@@ -78,6 +78,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMCSSPrimitiveValue;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMCSSPrimitiveValue")]
     unsafe impl ClassType for DOMCSSPrimitiveValue {
         #[inherits(DOMObject, WebScriptObject, NSObject)]

@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMCSSFontFaceRule;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMCSSFontFaceRule")]
     unsafe impl ClassType for DOMCSSFontFaceRule {
         #[inherits(DOMObject, WebScriptObject, NSObject)]

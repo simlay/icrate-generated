@@ -50,6 +50,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct HKVerifiableClinicalRecord;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "HealthKit_HKVerifiableClinicalRecord")]
     unsafe impl ClassType for HKVerifiableClinicalRecord {
         #[inherits(HKObject, NSObject)]
@@ -58,60 +59,76 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKVerifiableClinicalRecord")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSCoding for HKVerifiableClinicalRecord {}
 
 #[cfg(feature = "HealthKit_HKVerifiableClinicalRecord")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for HKVerifiableClinicalRecord {}
 
 #[cfg(feature = "HealthKit_HKVerifiableClinicalRecord")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSSecureCoding for HKVerifiableClinicalRecord {}
 
 extern_methods!(
     #[cfg(feature = "HealthKit_HKVerifiableClinicalRecord")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl HKVerifiableClinicalRecord {
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
         #[method_id(@__retain_semantics Other recordTypes)]
         pub unsafe fn recordTypes(&self) -> Id<NSArray<NSString>>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other issuerIdentifier)]
         pub unsafe fn issuerIdentifier(&self) -> Id<NSString>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "HealthKit_HKVerifiableClinicalRecordSubject")]
         #[method_id(@__retain_semantics Other subject)]
         pub unsafe fn subject(&self) -> Id<HKVerifiableClinicalRecordSubject>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSDate")]
         #[method_id(@__retain_semantics Other issuedDate)]
         pub unsafe fn issuedDate(&self) -> Id<NSDate>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSDate")]
         #[method_id(@__retain_semantics Other relevantDate)]
         pub unsafe fn relevantDate(&self) -> Id<NSDate>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSDate")]
         #[method_id(@__retain_semantics Other expirationDate)]
         pub unsafe fn expirationDate(&self) -> Option<Id<NSDate>>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
         #[method_id(@__retain_semantics Other itemNames)]
         pub unsafe fn itemNames(&self) -> Id<NSArray<NSString>>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other sourceType)]
         pub unsafe fn sourceType(&self) -> Option<Id<HKVerifiableClinicalRecordSourceType>>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSData")]
         #[method_id(@__retain_semantics Other dataRepresentation)]
         pub unsafe fn dataRepresentation(&self) -> Id<NSData>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSData")]
         #[deprecated]
         #[method_id(@__retain_semantics Other JWSRepresentation)]
         pub unsafe fn JWSRepresentation(&self) -> Id<NSData>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
     }

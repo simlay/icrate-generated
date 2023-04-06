@@ -5,9 +5,9 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::WebKit::*;
 
+#[deprecated]
 extern_enum!(
     #[underlying(c_uint)]
-    #[deprecated]
     pub enum __anonymous__ {
         #[deprecated]
         DOM_START_TO_START = 0,
@@ -34,6 +34,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMRange;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMRange")]
     unsafe impl ClassType for DOMRange {
         #[inherits(WebScriptObject, NSObject)]

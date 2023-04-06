@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLImageElement;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLImageElement")]
     unsafe impl ClassType for DOMHTMLImageElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]

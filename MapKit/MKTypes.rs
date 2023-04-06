@@ -7,9 +7,9 @@ use crate::CoreLocation::*;
 use crate::Foundation::*;
 use crate::MapKit::*;
 
+#[cfg(not(any(target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSUInteger)]
-    #[cfg(not(any(target_os = "watchos")))]
     pub enum MKMapType {
         #[cfg(not(any(target_os = "watchos")))]
         MKMapTypeStandard = 0,
@@ -25,9 +25,9 @@ ns_enum!(
 
 extern_static!(MKErrorDomain: &'static NSString);
 
+#[cfg(not(any(target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSUInteger)]
-    #[cfg(not(any(target_os = "watchos")))]
     pub enum MKErrorCode {
         #[cfg(not(any(target_os = "watchos")))]
         MKErrorUnknown = 1,
@@ -43,9 +43,9 @@ ns_enum!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
-    #[cfg(not(any(target_os = "watchos")))]
     pub enum MKFeatureVisibility {
         #[cfg(not(any(target_os = "watchos")))]
         MKFeatureVisibilityAdaptive = 0,

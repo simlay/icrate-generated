@@ -218,6 +218,7 @@ pub use self::__MKDirectionsTypes::MKDirectionsTransportType;
 pub use self::__MKDirectionsTypes::MKDirectionsTransportTypeAny;
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKDirectionsTypes::MKDirectionsTransportTypeAutomobile;
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKDirectionsTypes::MKDirectionsTransportTypeTransit;
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKDirectionsTypes::MKDirectionsTransportTypeWalking;
@@ -414,7 +415,7 @@ pub use self::__MKMapView::MKOverlayLevelAboveRoads;
 pub use self::__MKMapView::MKUserTrackingMode;
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKMapView::MKUserTrackingModeFollow;
-#[cfg(not(any(target_os = "macos", target_os = "tvos")))]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 pub use self::__MKMapView::MKUserTrackingModeFollowWithHeading;
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKMapView::MKUserTrackingModeNone;
@@ -581,6 +582,7 @@ pub use self::__MKTileOverlayRenderer::MKTileOverlayRenderer;
 pub use self::__MKTypes::MKErrorCode;
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKTypes::MKErrorDecodingFailed;
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKTypes::MKErrorDirectionsNotFound;
 pub use self::__MKTypes::MKErrorDomain;
 #[cfg(not(any(target_os = "watchos")))]
@@ -603,10 +605,13 @@ pub use self::__MKTypes::MKFeatureVisibilityVisible;
 pub use self::__MKTypes::MKMapType;
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKTypes::MKMapTypeHybrid;
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKTypes::MKMapTypeHybridFlyover;
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKTypes::MKMapTypeMutedStandard;
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKTypes::MKMapTypeSatellite;
+#[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKTypes::MKMapTypeSatelliteFlyover;
 #[cfg(not(any(target_os = "watchos")))]
 pub use self::__MKTypes::MKMapTypeStandard;

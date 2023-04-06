@@ -165,6 +165,5 @@ extern_protocol!(
         );
     }
 
-    #[deprecated]
     unsafe impl ProtocolType for dyn WebFrameLoadDelegate {}
 );

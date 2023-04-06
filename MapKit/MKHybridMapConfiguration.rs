@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKHybridMapConfiguration;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKHybridMapConfiguration")]
     unsafe impl ClassType for MKHybridMapConfiguration {
         #[inherits(NSObject)]
@@ -21,30 +22,38 @@ extern_class!(
 );
 
 #[cfg(feature = "MapKit_MKHybridMapConfiguration")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSCoding for MKHybridMapConfiguration {}
 
 #[cfg(feature = "MapKit_MKHybridMapConfiguration")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKHybridMapConfiguration {}
 
 #[cfg(feature = "MapKit_MKHybridMapConfiguration")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSSecureCoding for MKHybridMapConfiguration {}
 
 extern_methods!(
     #[cfg(feature = "MapKit_MKHybridMapConfiguration")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKHybridMapConfiguration {
+        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init initWithElevationStyle:)]
         pub unsafe fn initWithElevationStyle(
             this: Option<Allocated<Self>>,
             elevation_style: MKMapElevationStyle,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKPointOfInterestFilter")]
         #[method_id(@__retain_semantics Other pointOfInterestFilter)]
         pub unsafe fn pointOfInterestFilter(&self) -> Option<Id<MKPointOfInterestFilter>>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKPointOfInterestFilter")]
         #[method(setPointOfInterestFilter:)]
         pub unsafe fn setPointOfInterestFilter(
@@ -52,9 +61,11 @@ extern_methods!(
             point_of_interest_filter: Option<&MKPointOfInterestFilter>,
         );
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(showsTraffic)]
         pub unsafe fn showsTraffic(&self) -> bool;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(setShowsTraffic:)]
         pub unsafe fn setShowsTraffic(&self, shows_traffic: bool);
     }

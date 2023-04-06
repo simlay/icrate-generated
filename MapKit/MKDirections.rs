@@ -17,6 +17,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKDirections;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKDirections")]
     unsafe impl ClassType for MKDirections {
         type Super = NSObject;
@@ -24,11 +25,14 @@ extern_class!(
 );
 
 #[cfg(feature = "MapKit_MKDirections")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKDirections {}
 
 extern_methods!(
     #[cfg(feature = "MapKit_MKDirections")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKDirections {
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKDirectionsRequest")]
         #[method_id(@__retain_semantics Init initWithRequest:)]
         pub unsafe fn initWithRequest(
@@ -36,18 +40,22 @@ extern_methods!(
             request: &MKDirectionsRequest,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(calculateDirectionsWithCompletionHandler:)]
         pub unsafe fn calculateDirectionsWithCompletionHandler(
             &self,
             completion_handler: MKDirectionsHandler,
         );
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(calculateETAWithCompletionHandler:)]
         pub unsafe fn calculateETAWithCompletionHandler(&self, completion_handler: MKETAHandler);
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(cancel)]
         pub unsafe fn cancel(&self);
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(isCalculating)]
         pub unsafe fn isCalculating(&self) -> bool;
     }

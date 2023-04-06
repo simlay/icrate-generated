@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMEntityReference;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMEntityReference")]
     unsafe impl ClassType for DOMEntityReference {
         #[inherits(DOMObject, WebScriptObject, NSObject)]

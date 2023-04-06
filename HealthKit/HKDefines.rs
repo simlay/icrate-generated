@@ -188,9 +188,9 @@ ns_enum!(
     }
 );
 
+#[deprecated]
 ns_enum!(
     #[underlying(NSInteger)]
-    #[deprecated]
     pub enum HKCategoryValueAudioExposureEvent {
         #[deprecated]
         HKCategoryValueAudioExposureEventLoudEnvironment = 1,

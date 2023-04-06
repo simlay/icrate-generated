@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct ILNetworkResponse;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "IdentityLookup_ILNetworkResponse")]
     unsafe impl ClassType for ILNetworkResponse {
         type Super = NSObject;
@@ -17,25 +18,32 @@ extern_class!(
 );
 
 #[cfg(feature = "IdentityLookup_ILNetworkResponse")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSCoding for ILNetworkResponse {}
 
 #[cfg(feature = "IdentityLookup_ILNetworkResponse")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSObjectProtocol for ILNetworkResponse {}
 
 #[cfg(feature = "IdentityLookup_ILNetworkResponse")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for ILNetworkResponse {}
 
 extern_methods!(
     #[cfg(feature = "IdentityLookup_ILNetworkResponse")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl ILNetworkResponse {
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSHTTPURLResponse")]
         #[method_id(@__retain_semantics Other urlResponse)]
         pub unsafe fn urlResponse(&self) -> Id<NSHTTPURLResponse>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSData")]
         #[method_id(@__retain_semantics Other data)]
         pub unsafe fn data(&self) -> Id<NSData>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
     }

@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct MXAppLaunchDiagnostic;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "MetricKit_MXAppLaunchDiagnostic")]
     unsafe impl ClassType for MXAppLaunchDiagnostic {
         #[inherits(NSObject)]
@@ -18,21 +19,27 @@ extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXAppLaunchDiagnostic")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSCoding for MXAppLaunchDiagnostic {}
 
 #[cfg(feature = "MetricKit_MXAppLaunchDiagnostic")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSObjectProtocol for MXAppLaunchDiagnostic {}
 
 #[cfg(feature = "MetricKit_MXAppLaunchDiagnostic")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for MXAppLaunchDiagnostic {}
 
 extern_methods!(
     #[cfg(feature = "MetricKit_MXAppLaunchDiagnostic")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXAppLaunchDiagnostic {
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "MetricKit_MXCallStackTree")]
         #[method_id(@__retain_semantics Other callStackTree)]
         pub unsafe fn callStackTree(&self) -> Id<MXCallStackTree>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"

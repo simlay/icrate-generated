@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct ILClassificationRequest;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "IdentityLookup_ILClassificationRequest")]
     unsafe impl ClassType for ILClassificationRequest {
         type Super = NSObject;
@@ -17,15 +18,19 @@ extern_class!(
 );
 
 #[cfg(feature = "IdentityLookup_ILClassificationRequest")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSCoding for ILClassificationRequest {}
 
 #[cfg(feature = "IdentityLookup_ILClassificationRequest")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSObjectProtocol for ILClassificationRequest {}
 
 #[cfg(feature = "IdentityLookup_ILClassificationRequest")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for ILClassificationRequest {}
 
 extern_methods!(
     #[cfg(feature = "IdentityLookup_ILClassificationRequest")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl ILClassificationRequest {}
 );

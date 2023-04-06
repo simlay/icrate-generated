@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated = "Use MCSession from the MultipeerConnectivity framework instead"]
     pub struct GKSession;
 
+    #[deprecated = "Use MCSession from the MultipeerConnectivity framework instead"]
     #[cfg(feature = "GameKit_GKSession")]
     unsafe impl ClassType for GKSession {
         type Super = NSObject;

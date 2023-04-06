@@ -463,9 +463,9 @@ pub use self::__ASWebAuthenticationSession::ASWebAuthenticationSessionCompletion
 pub use self::__ASWebAuthenticationSession::ASWebAuthenticationSessionErrorCode;
 #[cfg(not(any(target_os = "tvos")))]
 pub use self::__ASWebAuthenticationSession::ASWebAuthenticationSessionErrorCodeCanceledLogin;
-#[cfg(not(any(target_os = "watchos")))]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASWebAuthenticationSession::ASWebAuthenticationSessionErrorCodePresentationContextInvalid;
-#[cfg(not(any(target_os = "watchos")))]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 pub use self::__ASWebAuthenticationSession::ASWebAuthenticationSessionErrorCodePresentationContextNotProvided;
 #[cfg(not(any(target_os = "tvos")))]
 pub use self::__ASWebAuthenticationSession::ASWebAuthenticationSessionErrorDomain;

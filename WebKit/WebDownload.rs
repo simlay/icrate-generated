@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct WebDownload;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_WebDownload")]
     unsafe impl ClassType for WebDownload {
         #[inherits(NSObject)]
@@ -38,7 +39,6 @@ extern_protocol!(
         ) -> Option<Id<NSWindow>>;
     }
 
-    #[deprecated]
     unsafe impl ProtocolType for dyn WebDownloadDelegate {}
 );
 

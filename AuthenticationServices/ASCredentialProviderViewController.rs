@@ -6,11 +6,14 @@ use crate::Foundation::*;
 
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASCredentialProviderViewController")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASCredentialProviderViewController {
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "AuthenticationServices_ASCredentialProviderExtensionContext")]
         #[method_id(@__retain_semantics Other extensionContext)]
         pub unsafe fn extensionContext(&self) -> Id<ASCredentialProviderExtensionContext>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "AuthenticationServices_ASCredentialServiceIdentifier",
             feature = "Foundation_NSArray"
@@ -21,6 +24,7 @@ extern_methods!(
             service_identifiers: &NSArray<ASCredentialServiceIdentifier>,
         );
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "AuthenticationServices_ASPasswordCredentialIdentity")]
         #[method(provideCredentialWithoutUserInteractionForIdentity:)]
         pub unsafe fn provideCredentialWithoutUserInteractionForIdentity(
@@ -28,6 +32,7 @@ extern_methods!(
             credential_identity: &ASPasswordCredentialIdentity,
         );
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "AuthenticationServices_ASPasswordCredentialIdentity")]
         #[method(prepareInterfaceToProvideCredentialForIdentity:)]
         pub unsafe fn prepareInterfaceToProvideCredentialForIdentity(
@@ -35,6 +40,7 @@ extern_methods!(
             credential_identity: &ASPasswordCredentialIdentity,
         );
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(prepareInterfaceForExtensionConfiguration)]
         pub unsafe fn prepareInterfaceForExtensionConfiguration(&self);
     }

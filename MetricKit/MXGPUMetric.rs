@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct MXGPUMetric;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "MetricKit_MXGPUMetric")]
     unsafe impl ClassType for MXGPUMetric {
         #[inherits(NSObject)]
@@ -18,17 +19,22 @@ extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXGPUMetric")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSCoding for MXGPUMetric {}
 
 #[cfg(feature = "MetricKit_MXGPUMetric")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSObjectProtocol for MXGPUMetric {}
 
 #[cfg(feature = "MetricKit_MXGPUMetric")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for MXGPUMetric {}
 
 extern_methods!(
     #[cfg(feature = "MetricKit_MXGPUMetric")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXGPUMetric {
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"

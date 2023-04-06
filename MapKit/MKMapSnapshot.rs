@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKMapSnapshot;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKMapSnapshot")]
     unsafe impl ClassType for MKMapSnapshot {
         type Super = NSObject;
@@ -20,20 +21,25 @@ extern_class!(
 );
 
 #[cfg(feature = "MapKit_MKMapSnapshot")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKMapSnapshot {}
 
 extern_methods!(
     #[cfg(feature = "MapKit_MKMapSnapshot")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKMapSnapshot {
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "AppKit_NSImage")]
         #[method_id(@__retain_semantics Other image)]
         pub unsafe fn image(&self) -> Id<NSImage>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "AppKit_NSAppearance")]
         #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other appearance)]
         pub unsafe fn appearance(&self) -> Id<NSAppearance>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(pointForCoordinate:)]
         pub unsafe fn pointForCoordinate(&self, coordinate: CLLocationCoordinate2D) -> NSPoint;
     }

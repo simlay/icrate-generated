@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct ILCommunication;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "IdentityLookup_ILCommunication")]
     unsafe impl ClassType for ILCommunication {
         type Super = NSObject;
@@ -17,28 +18,36 @@ extern_class!(
 );
 
 #[cfg(feature = "IdentityLookup_ILCommunication")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSCoding for ILCommunication {}
 
 #[cfg(feature = "IdentityLookup_ILCommunication")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSObjectProtocol for ILCommunication {}
 
 #[cfg(feature = "IdentityLookup_ILCommunication")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for ILCommunication {}
 
 extern_methods!(
     #[cfg(feature = "IdentityLookup_ILCommunication")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl ILCommunication {
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other sender)]
         pub unsafe fn sender(&self) -> Option<Id<NSString>>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSDate")]
         #[method_id(@__retain_semantics Other dateReceived)]
         pub unsafe fn dateReceived(&self) -> Id<NSDate>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method(isEqualToCommunication:)]
         pub unsafe fn isEqualToCommunication(&self, communication: &ILCommunication) -> bool;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
     }

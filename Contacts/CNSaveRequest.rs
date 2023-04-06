@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct CNSaveRequest;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "Contacts_CNSaveRequest")]
     unsafe impl ClassType for CNSaveRequest {
         type Super = NSObject;
@@ -17,11 +18,14 @@ extern_class!(
 );
 
 #[cfg(feature = "Contacts_CNSaveRequest")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for CNSaveRequest {}
 
 extern_methods!(
     #[cfg(feature = "Contacts_CNSaveRequest")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl CNSaveRequest {
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Contacts_CNMutableContact", feature = "Foundation_NSString"))]
         #[method(addContact:toContainerWithIdentifier:)]
         pub unsafe fn addContact_toContainerWithIdentifier(
@@ -30,14 +34,17 @@ extern_methods!(
             identifier: Option<&NSString>,
         );
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Contacts_CNMutableContact")]
         #[method(updateContact:)]
         pub unsafe fn updateContact(&self, contact: &CNMutableContact);
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Contacts_CNMutableContact")]
         #[method(deleteContact:)]
         pub unsafe fn deleteContact(&self, contact: &CNMutableContact);
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Contacts_CNMutableGroup", feature = "Foundation_NSString"))]
         #[method(addGroup:toContainerWithIdentifier:)]
         pub unsafe fn addGroup_toContainerWithIdentifier(
@@ -46,43 +53,53 @@ extern_methods!(
             identifier: Option<&NSString>,
         );
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Contacts_CNMutableGroup")]
         #[method(updateGroup:)]
         pub unsafe fn updateGroup(&self, group: &CNMutableGroup);
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Contacts_CNMutableGroup")]
         #[method(deleteGroup:)]
         pub unsafe fn deleteGroup(&self, group: &CNMutableGroup);
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Contacts_CNGroup")]
         #[cfg(not(any(target_os = "ios")))]
         #[method(addSubgroup:toGroup:)]
         pub unsafe fn addSubgroup_toGroup(&self, subgroup: &CNGroup, group: &CNGroup);
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Contacts_CNGroup")]
         #[cfg(not(any(target_os = "ios")))]
         #[method(removeSubgroup:fromGroup:)]
         pub unsafe fn removeSubgroup_fromGroup(&self, subgroup: &CNGroup, group: &CNGroup);
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Contacts_CNContact", feature = "Contacts_CNGroup"))]
         #[method(addMember:toGroup:)]
         pub unsafe fn addMember_toGroup(&self, contact: &CNContact, group: &CNGroup);
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Contacts_CNContact", feature = "Contacts_CNGroup"))]
         #[method(removeMember:fromGroup:)]
         pub unsafe fn removeMember_fromGroup(&self, contact: &CNContact, group: &CNGroup);
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other transactionAuthor)]
         pub unsafe fn transactionAuthor(&self) -> Option<Id<NSString>>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setTransactionAuthor:)]
         pub unsafe fn setTransactionAuthor(&self, transaction_author: Option<&NSString>);
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(shouldRefetchContacts)]
         pub unsafe fn shouldRefetchContacts(&self) -> bool;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(setShouldRefetchContacts:)]
         pub unsafe fn setShouldRefetchContacts(&self, should_refetch_contacts: bool);
     }

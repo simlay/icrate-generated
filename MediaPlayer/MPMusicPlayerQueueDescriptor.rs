@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     pub struct MPMusicPlayerQueueDescriptor;
 
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPMusicPlayerQueueDescriptor")]
     unsafe impl ClassType for MPMusicPlayerQueueDescriptor {
         type Super = NSObject;
@@ -18,14 +19,18 @@ extern_class!(
 );
 
 #[cfg(feature = "MediaPlayer_MPMusicPlayerQueueDescriptor")]
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MPMusicPlayerQueueDescriptor {}
 
 extern_methods!(
     #[cfg(feature = "MediaPlayer_MPMusicPlayerQueueDescriptor")]
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     unsafe impl MPMusicPlayerQueueDescriptor {
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
     }
@@ -37,6 +42,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct MPMusicPlayerMediaItemQueueDescriptor;
 
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPMusicPlayerMediaItemQueueDescriptor")]
     unsafe impl ClassType for MPMusicPlayerMediaItemQueueDescriptor {
         #[inherits(NSObject)]
@@ -45,11 +51,14 @@ extern_class!(
 );
 
 #[cfg(feature = "MediaPlayer_MPMusicPlayerMediaItemQueueDescriptor")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MPMusicPlayerMediaItemQueueDescriptor {}
 
 extern_methods!(
     #[cfg(feature = "MediaPlayer_MPMusicPlayerMediaItemQueueDescriptor")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl MPMusicPlayerMediaItemQueueDescriptor {
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "MediaPlayer_MPMediaQuery")]
         #[method_id(@__retain_semantics Init initWithQuery:)]
         pub unsafe fn initWithQuery(
@@ -57,6 +66,7 @@ extern_methods!(
             query: &MPMediaQuery,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "MediaPlayer_MPMediaItemCollection")]
         #[method_id(@__retain_semantics Init initWithItemCollection:)]
         pub unsafe fn initWithItemCollection(
@@ -64,22 +74,27 @@ extern_methods!(
             item_collection: &MPMediaItemCollection,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "MediaPlayer_MPMediaQuery")]
         #[method_id(@__retain_semantics Other query)]
         pub unsafe fn query(&self) -> Id<MPMediaQuery>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "MediaPlayer_MPMediaItemCollection")]
         #[method_id(@__retain_semantics Other itemCollection)]
         pub unsafe fn itemCollection(&self) -> Id<MPMediaItemCollection>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "MediaPlayer_MPMediaItem")]
         #[method_id(@__retain_semantics Other startItem)]
         pub unsafe fn startItem(&self) -> Option<Id<MPMediaItem>>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "MediaPlayer_MPMediaItem")]
         #[method(setStartItem:)]
         pub unsafe fn setStartItem(&self, start_item: Option<&MPMediaItem>);
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "MediaPlayer_MPMediaItem")]
         #[method(setStartTime:forItem:)]
         pub unsafe fn setStartTime_forItem(
@@ -88,6 +103,7 @@ extern_methods!(
             media_item: &MPMediaItem,
         );
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "MediaPlayer_MPMediaItem")]
         #[method(setEndTime:forItem:)]
         pub unsafe fn setEndTime_forItem(&self, end_time: NSTimeInterval, media_item: &MPMediaItem);
@@ -100,6 +116,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     pub struct MPMusicPlayerStoreQueueDescriptor;
 
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPMusicPlayerStoreQueueDescriptor")]
     unsafe impl ClassType for MPMusicPlayerStoreQueueDescriptor {
         #[inherits(NSObject)]
@@ -108,11 +125,14 @@ extern_class!(
 );
 
 #[cfg(feature = "MediaPlayer_MPMusicPlayerStoreQueueDescriptor")]
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MPMusicPlayerStoreQueueDescriptor {}
 
 extern_methods!(
     #[cfg(feature = "MediaPlayer_MPMusicPlayerStoreQueueDescriptor")]
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     unsafe impl MPMusicPlayerStoreQueueDescriptor {
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
         #[method_id(@__retain_semantics Init initWithStoreIDs:)]
         pub unsafe fn initWithStoreIDs(
@@ -120,22 +140,27 @@ extern_methods!(
             store_i_ds: &NSArray<NSString>,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
         #[method_id(@__retain_semantics Other storeIDs)]
         pub unsafe fn storeIDs(&self) -> Option<Id<NSArray<NSString>>>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
         #[method(setStoreIDs:)]
         pub unsafe fn setStoreIDs(&self, store_i_ds: Option<&NSArray<NSString>>);
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other startItemID)]
         pub unsafe fn startItemID(&self) -> Option<Id<NSString>>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setStartItemID:)]
         pub unsafe fn setStartItemID(&self, start_item_id: Option<&NSString>);
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setStartTime:forItemWithStoreID:)]
         pub unsafe fn setStartTime_forItemWithStoreID(
@@ -144,6 +169,7 @@ extern_methods!(
             store_id: &NSString,
         );
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setEndTime:forItemWithStoreID:)]
         pub unsafe fn setEndTime_forItemWithStoreID(
@@ -160,6 +186,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     pub struct MPMusicPlayerPlayParameters;
 
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPMusicPlayerPlayParameters")]
     unsafe impl ClassType for MPMusicPlayerPlayParameters {
         type Super = NSObject;
@@ -167,11 +194,14 @@ extern_class!(
 );
 
 #[cfg(feature = "MediaPlayer_MPMusicPlayerPlayParameters")]
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MPMusicPlayerPlayParameters {}
 
 extern_methods!(
     #[cfg(feature = "MediaPlayer_MPMusicPlayerPlayParameters")]
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     unsafe impl MPMusicPlayerPlayParameters {
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
         #[method_id(@__retain_semantics Init initWithDictionary:)]
         pub unsafe fn initWithDictionary(
@@ -179,6 +209,7 @@ extern_methods!(
             dictionary: &NSDictionary<NSString, Object>,
         ) -> Option<Id<Self>>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
         #[method_id(@__retain_semantics Other dictionary)]
         pub unsafe fn dictionary(&self) -> Id<NSDictionary<NSString, Object>>;
@@ -191,6 +222,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     pub struct MPMusicPlayerPlayParametersQueueDescriptor;
 
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPMusicPlayerPlayParametersQueueDescriptor")]
     unsafe impl ClassType for MPMusicPlayerPlayParametersQueueDescriptor {
         #[inherits(NSObject)]
@@ -199,11 +231,14 @@ extern_class!(
 );
 
 #[cfg(feature = "MediaPlayer_MPMusicPlayerPlayParametersQueueDescriptor")]
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MPMusicPlayerPlayParametersQueueDescriptor {}
 
 extern_methods!(
     #[cfg(feature = "MediaPlayer_MPMusicPlayerPlayParametersQueueDescriptor")]
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     unsafe impl MPMusicPlayerPlayParametersQueueDescriptor {
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSArray",
             feature = "MediaPlayer_MPMusicPlayerPlayParameters"
@@ -214,6 +249,7 @@ extern_methods!(
             play_parameters_queue: &NSArray<MPMusicPlayerPlayParameters>,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSArray",
             feature = "MediaPlayer_MPMusicPlayerPlayParameters"
@@ -221,6 +257,7 @@ extern_methods!(
         #[method_id(@__retain_semantics Other playParametersQueue)]
         pub unsafe fn playParametersQueue(&self) -> Id<NSArray<MPMusicPlayerPlayParameters>>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSArray",
             feature = "MediaPlayer_MPMusicPlayerPlayParameters"
@@ -231,10 +268,12 @@ extern_methods!(
             play_parameters_queue: &NSArray<MPMusicPlayerPlayParameters>,
         );
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(feature = "MediaPlayer_MPMusicPlayerPlayParameters")]
         #[method_id(@__retain_semantics Other startItemPlayParameters)]
         pub unsafe fn startItemPlayParameters(&self) -> Option<Id<MPMusicPlayerPlayParameters>>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(feature = "MediaPlayer_MPMusicPlayerPlayParameters")]
         #[method(setStartItemPlayParameters:)]
         pub unsafe fn setStartItemPlayParameters(
@@ -242,6 +281,7 @@ extern_methods!(
             start_item_play_parameters: Option<&MPMusicPlayerPlayParameters>,
         );
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(feature = "MediaPlayer_MPMusicPlayerPlayParameters")]
         #[method(setStartTime:forItemWithPlayParameters:)]
         pub unsafe fn setStartTime_forItemWithPlayParameters(
@@ -250,6 +290,7 @@ extern_methods!(
             play_parameters: &MPMusicPlayerPlayParameters,
         );
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(feature = "MediaPlayer_MPMusicPlayerPlayParameters")]
         #[method(setEndTime:forItemWithPlayParameters:)]
         pub unsafe fn setEndTime_forItemWithPlayParameters(

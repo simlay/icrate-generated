@@ -9,6 +9,7 @@ extern_class!(
     #[deprecated = "Use NSCalendar and NSDateComponents and NSDateFormatter instead"]
     pub struct NSCalendarDate;
 
+    #[deprecated = "Use NSCalendar and NSDateComponents and NSDateFormatter instead"]
     #[cfg(feature = "Foundation_NSCalendarDate")]
     unsafe impl ClassType for NSCalendarDate {
         #[inherits(NSObject)]

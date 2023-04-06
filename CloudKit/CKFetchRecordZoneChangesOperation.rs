@@ -327,6 +327,7 @@ extern_class!(
     #[deprecated]
     pub struct CKFetchRecordZoneChangesOptions;
 
+    #[deprecated]
     #[cfg(feature = "CloudKit_CKFetchRecordZoneChangesOptions")]
     unsafe impl ClassType for CKFetchRecordZoneChangesOptions {
         type Super = NSObject;

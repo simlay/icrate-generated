@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLParagraphElement;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLParagraphElement")]
     unsafe impl ClassType for DOMHTMLParagraphElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]

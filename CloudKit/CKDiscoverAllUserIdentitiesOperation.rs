@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos")))]
     pub struct CKDiscoverAllUserIdentitiesOperation;
 
+    #[cfg(not(any(target_os = "tvos")))]
     #[cfg(feature = "CloudKit_CKDiscoverAllUserIdentitiesOperation")]
     unsafe impl ClassType for CKDiscoverAllUserIdentitiesOperation {
         #[inherits(NSOperation, NSObject)]
@@ -19,20 +20,25 @@ extern_class!(
 );
 
 #[cfg(feature = "CloudKit_CKDiscoverAllUserIdentitiesOperation")]
+#[cfg(not(any(target_os = "tvos")))]
 unsafe impl NSObjectProtocol for CKDiscoverAllUserIdentitiesOperation {}
 
 extern_methods!(
     #[cfg(feature = "CloudKit_CKDiscoverAllUserIdentitiesOperation")]
+    #[cfg(not(any(target_os = "tvos")))]
     unsafe impl CKDiscoverAllUserIdentitiesOperation {
+        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(feature = "CloudKit_CKUserIdentity")]
         #[method(userIdentityDiscoveredBlock)]
         pub unsafe fn userIdentityDiscoveredBlock(
             &self,
         ) -> *mut Block<(NonNull<CKUserIdentity>,), ()>;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(feature = "CloudKit_CKUserIdentity")]
         #[method(setUserIdentityDiscoveredBlock:)]
         pub unsafe fn setUserIdentityDiscoveredBlock(
@@ -40,12 +46,14 @@ extern_methods!(
             user_identity_discovered_block: Option<&Block<(NonNull<CKUserIdentity>,), ()>>,
         );
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(feature = "Foundation_NSError")]
         #[method(discoverAllUserIdentitiesCompletionBlock)]
         pub unsafe fn discoverAllUserIdentitiesCompletionBlock(
             &self,
         ) -> *mut Block<(*mut NSError,), ()>;
 
+        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(feature = "Foundation_NSError")]
         #[method(setDiscoverAllUserIdentitiesCompletionBlock:)]
         pub unsafe fn setDiscoverAllUserIdentitiesCompletionBlock(

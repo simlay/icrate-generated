@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct GKChallengesViewController;
 
+    #[deprecated]
     #[cfg(feature = "GameKit_GKChallengesViewController")]
     unsafe impl ClassType for GKChallengesViewController {
         #[inherits(NSResponder, NSObject)]

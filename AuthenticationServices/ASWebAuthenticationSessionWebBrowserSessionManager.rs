@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     pub struct ASWebAuthenticationSessionWebBrowserSessionManager;
 
+    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     #[cfg(feature = "AuthenticationServices_ASWebAuthenticationSessionWebBrowserSessionManager")]
     unsafe impl ClassType for ASWebAuthenticationSessionWebBrowserSessionManager {
         type Super = NSObject;
@@ -17,19 +18,24 @@ extern_class!(
 );
 
 #[cfg(feature = "AuthenticationServices_ASWebAuthenticationSessionWebBrowserSessionManager")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 unsafe impl NSObjectProtocol for ASWebAuthenticationSessionWebBrowserSessionManager {}
 
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASWebAuthenticationSessionWebBrowserSessionManager")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     unsafe impl ASWebAuthenticationSessionWebBrowserSessionManager {
+        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[method_id(@__retain_semantics Other sharedManager)]
         pub unsafe fn sharedManager() -> Id<ASWebAuthenticationSessionWebBrowserSessionManager>;
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[method_id(@__retain_semantics Other sessionHandler)]
         pub unsafe fn sessionHandler(
             &self,
         ) -> Id<ProtocolObject<dyn ASWebAuthenticationSessionWebBrowserSessionHandling>>;
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[method(setSessionHandler:)]
         pub unsafe fn setSessionHandler(
             &self,
@@ -38,6 +44,7 @@ extern_methods!(
             >,
         );
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[method(wasLaunchedByAuthenticationServices)]
         pub unsafe fn wasLaunchedByAuthenticationServices(&self) -> bool;
     }

@@ -12,6 +12,8 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct MPPlayableContentManagerContext;
 
+    #[deprecated = "Use CarPlay framework"]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPPlayableContentManagerContext")]
     unsafe impl ClassType for MPPlayableContentManagerContext {
         type Super = NSObject;
@@ -19,24 +21,31 @@ extern_class!(
 );
 
 #[cfg(feature = "MediaPlayer_MPPlayableContentManagerContext")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MPPlayableContentManagerContext {}
 
 extern_methods!(
     #[cfg(feature = "MediaPlayer_MPPlayableContentManagerContext")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl MPPlayableContentManagerContext {
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(enforcedContentItemsCount)]
         pub unsafe fn enforcedContentItemsCount(&self) -> NSInteger;
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(enforcedContentTreeDepth)]
         pub unsafe fn enforcedContentTreeDepth(&self) -> NSInteger;
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(contentLimitsEnforced)]
         pub unsafe fn contentLimitsEnforced(&self) -> bool;
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[deprecated]
         #[method(contentLimitsEnabled)]
         pub unsafe fn contentLimitsEnabled(&self) -> bool;
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(endpointAvailable)]
         pub unsafe fn endpointAvailable(&self) -> bool;
     }

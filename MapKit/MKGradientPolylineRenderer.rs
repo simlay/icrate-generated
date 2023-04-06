@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKGradientPolylineRenderer;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKGradientPolylineRenderer")]
     unsafe impl ClassType for MKGradientPolylineRenderer {
         #[inherits(MKOverlayPathRenderer, MKOverlayRenderer, NSObject)]
@@ -21,19 +22,24 @@ extern_class!(
 );
 
 #[cfg(feature = "MapKit_MKGradientPolylineRenderer")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKGradientPolylineRenderer {}
 
 extern_methods!(
     #[cfg(feature = "MapKit_MKGradientPolylineRenderer")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKGradientPolylineRenderer {
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSNumber"))]
         #[method_id(@__retain_semantics Other locations)]
         pub unsafe fn locations(&self) -> Id<NSArray<NSNumber>>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "AppKit_NSColor", feature = "Foundation_NSArray"))]
         #[method_id(@__retain_semantics Other colors)]
         pub unsafe fn colors(&self) -> Id<NSArray<NSColor>>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(
             feature = "AppKit_NSColor",
             feature = "Foundation_NSArray",
@@ -51,7 +57,9 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `MKPolylineRenderer`
     #[cfg(feature = "MapKit_MKGradientPolylineRenderer")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKGradientPolylineRenderer {
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKPolyline")]
         #[method_id(@__retain_semantics Init initWithPolyline:)]
         pub unsafe fn initWithPolyline(
@@ -64,7 +72,9 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `MKOverlayRenderer`
     #[cfg(feature = "MapKit_MKGradientPolylineRenderer")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKGradientPolylineRenderer {
+        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init initWithOverlay:)]
         pub unsafe fn initWithOverlay(
             this: Option<Allocated<Self>>,

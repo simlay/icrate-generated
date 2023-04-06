@@ -12,6 +12,8 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct MPPlayableContentManager;
 
+    #[deprecated = "Use CarPlay framework"]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPPlayableContentManager")]
     unsafe impl ClassType for MPPlayableContentManager {
         type Super = NSObject;
@@ -19,55 +21,68 @@ extern_class!(
 );
 
 #[cfg(feature = "MediaPlayer_MPPlayableContentManager")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MPPlayableContentManager {}
 
 extern_methods!(
     #[cfg(feature = "MediaPlayer_MPPlayableContentManager")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl MPPlayableContentManager {
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other dataSource)]
         pub unsafe fn dataSource(
             &self,
         ) -> Option<Id<ProtocolObject<dyn MPPlayableContentDataSource>>>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(setDataSource:)]
         pub unsafe fn setDataSource(
             &self,
             data_source: Option<&ProtocolObject<dyn MPPlayableContentDataSource>>,
         );
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(&self) -> Option<Id<ProtocolObject<dyn MPPlayableContentDelegate>>>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
             delegate: Option<&ProtocolObject<dyn MPPlayableContentDelegate>>,
         );
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "MediaPlayer_MPPlayableContentManagerContext")]
         #[deprecated = "Use CarPlay framework"]
         #[method_id(@__retain_semantics Other context)]
         pub unsafe fn context(&self) -> Id<MPPlayableContentManagerContext>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
         #[deprecated = "Use CarPlay framework"]
         #[method_id(@__retain_semantics Other nowPlayingIdentifiers)]
         pub unsafe fn nowPlayingIdentifiers(&self) -> Id<NSArray<NSString>>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
         #[deprecated = "Use CarPlay framework"]
         #[method(setNowPlayingIdentifiers:)]
         pub unsafe fn setNowPlayingIdentifiers(&self, now_playing_identifiers: &NSArray<NSString>);
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other sharedContentManager)]
         pub unsafe fn sharedContentManager() -> Id<Self>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(reloadData)]
         pub unsafe fn reloadData(&self);
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(beginUpdates)]
         pub unsafe fn beginUpdates(&self);
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(endUpdates)]
         pub unsafe fn endUpdates(&self);
     }

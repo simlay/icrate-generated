@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct WebFrameView;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_WebFrameView")]
     unsafe impl ClassType for WebFrameView {
         #[inherits(NSResponder, NSObject)]

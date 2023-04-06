@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLMapElement;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLMapElement")]
     unsafe impl ClassType for DOMHTMLMapElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]

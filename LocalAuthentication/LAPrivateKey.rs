@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct LAPrivateKey;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "LocalAuthentication_LAPrivateKey")]
     unsafe impl ClassType for LAPrivateKey {
         type Super = NSObject;
@@ -17,18 +18,23 @@ extern_class!(
 );
 
 #[cfg(feature = "LocalAuthentication_LAPrivateKey")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for LAPrivateKey {}
 
 extern_methods!(
     #[cfg(feature = "LocalAuthentication_LAPrivateKey")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl LAPrivateKey {
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "LocalAuthentication_LAPublicKey")]
         #[method_id(@__retain_semantics Other publicKey)]
         pub unsafe fn publicKey(&self) -> Id<LAPublicKey>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
     }

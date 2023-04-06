@@ -31,7 +31,9 @@ extern_protocol!(
 extern_methods!(
     /// NSFileProviderService
     #[cfg(feature = "FileProvider_NSFileProviderExtension")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl NSFileProviderExtension {
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSError"))]
         #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics Other supportedServiceSourcesForItemIdentifier:error:_)]

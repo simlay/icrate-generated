@@ -1723,9 +1723,9 @@ extern_static!(NSWindowDidExitVersionBrowserNotification: &'static NSNotificatio
 
 extern_static!(NSWindowDidChangeOcclusionStateNotification: &'static NSNotificationName);
 
+#[deprecated]
 ns_enum!(
     #[underlying(NSUInteger)]
-    #[deprecated]
     pub enum NSWindowBackingLocation {
         NSWindowBackingLocationDefault = 0,
         NSWindowBackingLocationVideoMemory = 1,

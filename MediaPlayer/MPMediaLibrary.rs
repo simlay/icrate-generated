@@ -5,9 +5,9 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::MediaPlayer::*;
 
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub enum MPMediaLibraryAuthorizationStatus {
         #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         MPMediaLibraryAuthorizationStatusNotDetermined = 0,
@@ -26,6 +26,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct MPMediaLibrary;
 
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPMediaLibrary")]
     unsafe impl ClassType for MPMediaLibrary {
         type Super = NSObject;
@@ -33,38 +34,49 @@ extern_class!(
 );
 
 #[cfg(feature = "MediaPlayer_MPMediaLibrary")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSCoding for MPMediaLibrary {}
 
 #[cfg(feature = "MediaPlayer_MPMediaLibrary")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MPMediaLibrary {}
 
 #[cfg(feature = "MediaPlayer_MPMediaLibrary")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSSecureCoding for MPMediaLibrary {}
 
 extern_methods!(
     #[cfg(feature = "MediaPlayer_MPMediaLibrary")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl MPMediaLibrary {
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other defaultMediaLibrary)]
         pub unsafe fn defaultMediaLibrary() -> Id<MPMediaLibrary>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSDate")]
         #[method_id(@__retain_semantics Other lastModifiedDate)]
         pub unsafe fn lastModifiedDate(&self) -> Id<NSDate>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(beginGeneratingLibraryChangeNotifications)]
         pub unsafe fn beginGeneratingLibraryChangeNotifications(&self);
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(endGeneratingLibraryChangeNotifications)]
         pub unsafe fn endGeneratingLibraryChangeNotifications(&self);
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(authorizationStatus)]
         pub unsafe fn authorizationStatus() -> MPMediaLibraryAuthorizationStatus;
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(requestAuthorization:)]
         pub unsafe fn requestAuthorization(
             completion_handler: &Block<(MPMediaLibraryAuthorizationStatus,), ()>,
         );
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSError",
@@ -78,6 +90,7 @@ extern_methods!(
             completion_handler: Option<&Block<(NonNull<NSArray<MPMediaEntity>>, *mut NSError), ()>>,
         );
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSError",
             feature = "Foundation_NSUUID",

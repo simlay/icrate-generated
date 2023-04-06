@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated = "No longer supported, will cease working at some point in the future"]
     pub struct CKModifyBadgeOperation;
 
+    #[deprecated = "No longer supported, will cease working at some point in the future"]
     #[cfg(feature = "CloudKit_CKModifyBadgeOperation")]
     unsafe impl ClassType for CKModifyBadgeOperation {
         #[inherits(NSOperation, NSObject)]

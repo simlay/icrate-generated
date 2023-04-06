@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMNodeIterator;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMNodeIterator")]
     unsafe impl ClassType for DOMNodeIterator {
         #[inherits(WebScriptObject, NSObject)]

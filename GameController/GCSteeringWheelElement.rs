@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     pub struct GCSteeringWheelElement;
 
+    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     #[cfg(feature = "GameController_GCSteeringWheelElement")]
     unsafe impl ClassType for GCSteeringWheelElement {
         type Super = NSObject;
@@ -18,20 +19,26 @@ extern_class!(
 );
 
 #[cfg(feature = "GameController_GCSteeringWheelElement")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 unsafe impl GCAxisElement for GCSteeringWheelElement {}
 
 #[cfg(feature = "GameController_GCSteeringWheelElement")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 unsafe impl GCPhysicalInputElement for GCSteeringWheelElement {}
 
 #[cfg(feature = "GameController_GCSteeringWheelElement")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 unsafe impl NSObjectProtocol for GCSteeringWheelElement {}
 
 extern_methods!(
     #[cfg(feature = "GameController_GCSteeringWheelElement")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     unsafe impl GCSteeringWheelElement {
+        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[method(maximumDegreesOfRotation)]
         pub unsafe fn maximumDegreesOfRotation(&self) -> c_float;
     }

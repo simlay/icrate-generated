@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLOptGroupElement;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLOptGroupElement")]
     unsafe impl ClassType for DOMHTMLOptGroupElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]

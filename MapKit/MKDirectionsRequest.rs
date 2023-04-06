@@ -21,6 +21,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKDirectionsRequest;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKDirectionsRequest")]
     unsafe impl ClassType for MKDirectionsRequest {
         type Super = NSObject;
@@ -28,23 +29,29 @@ extern_class!(
 );
 
 #[cfg(feature = "MapKit_MKDirectionsRequest")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKDirectionsRequest {}
 
 extern_methods!(
     #[cfg(feature = "MapKit_MKDirectionsRequest")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKDirectionsRequest {
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKMapItem")]
         #[method_id(@__retain_semantics Other source)]
         pub unsafe fn source(&self) -> Option<Id<MKMapItem>>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKMapItem")]
         #[method(setSource:)]
         pub unsafe fn setSource(&self, source: Option<&MKMapItem>);
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKMapItem")]
         #[method_id(@__retain_semantics Other destination)]
         pub unsafe fn destination(&self) -> Option<Id<MKMapItem>>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKMapItem")]
         #[method(setDestination:)]
         pub unsafe fn setDestination(&self, destination: Option<&MKMapItem>);

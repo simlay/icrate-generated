@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated = "Use GKGameCenterViewController instead"]
     pub struct GKLeaderboardViewController;
 
+    #[deprecated = "Use GKGameCenterViewController instead"]
     #[cfg(feature = "GameKit_GKLeaderboardViewController")]
     unsafe impl ClassType for GKLeaderboardViewController {
         #[inherits(NSViewController, NSResponder, NSObject)]
@@ -82,7 +83,6 @@ extern_protocol!(
         );
     }
 
-    #[deprecated = "Use GKGameCenterViewController instead"]
     unsafe impl ProtocolType for dyn GKLeaderboardViewControllerDelegate {}
 );
 

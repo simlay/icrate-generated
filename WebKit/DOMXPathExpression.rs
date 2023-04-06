@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMXPathExpression;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMXPathExpression")]
     unsafe impl ClassType for DOMXPathExpression {
         #[inherits(WebScriptObject, NSObject)]

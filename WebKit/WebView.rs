@@ -53,6 +53,7 @@ extern_class!(
     #[deprecated = "No longer supported; please adopt WKWebView."]
     pub struct WebView;
 
+    #[deprecated = "No longer supported; please adopt WKWebView."]
     #[cfg(feature = "WebKit_WebView")]
     unsafe impl ClassType for WebView {
         #[inherits(NSResponder, NSObject)]

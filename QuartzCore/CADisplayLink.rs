@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct CADisplayLink;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "CoreAnimation_CADisplayLink")]
     unsafe impl ClassType for CADisplayLink {
         type Super = NSObject;
@@ -17,62 +18,79 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreAnimation_CADisplayLink")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSObjectProtocol for CADisplayLink {}
 
 extern_methods!(
     #[cfg(feature = "CoreAnimation_CADisplayLink")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CADisplayLink {
+        #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics Other displayLinkWithTarget:selector:)]
         pub unsafe fn displayLinkWithTarget_selector(
             target: &Object,
             sel: Sel,
         ) -> Id<CADisplayLink>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSRunLoop")]
         #[method(addToRunLoop:forMode:)]
         pub unsafe fn addToRunLoop_forMode(&self, runloop: &NSRunLoop, mode: &NSRunLoopMode);
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSRunLoop")]
         #[method(removeFromRunLoop:forMode:)]
         pub unsafe fn removeFromRunLoop_forMode(&self, runloop: &NSRunLoop, mode: &NSRunLoopMode);
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method(invalidate)]
         pub unsafe fn invalidate(&self);
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method(timestamp)]
         pub unsafe fn timestamp(&self) -> CFTimeInterval;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method(duration)]
         pub unsafe fn duration(&self) -> CFTimeInterval;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method(targetTimestamp)]
         pub unsafe fn targetTimestamp(&self) -> CFTimeInterval;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method(isPaused)]
         pub unsafe fn isPaused(&self) -> bool;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method(setPaused:)]
         pub unsafe fn setPaused(&self, paused: bool);
 
+        #[cfg(not(any(target_os = "macos")))]
         #[deprecated = "preferredFramesPerSecond"]
         #[method(frameInterval)]
         pub unsafe fn frameInterval(&self) -> NSInteger;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[deprecated = "preferredFramesPerSecond"]
         #[method(setFrameInterval:)]
         pub unsafe fn setFrameInterval(&self, frame_interval: NSInteger);
 
+        #[cfg(not(any(target_os = "macos")))]
         #[deprecated]
         #[method(preferredFramesPerSecond)]
         pub unsafe fn preferredFramesPerSecond(&self) -> NSInteger;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[deprecated]
         #[method(setPreferredFramesPerSecond:)]
         pub unsafe fn setPreferredFramesPerSecond(&self, preferred_frames_per_second: NSInteger);
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method(preferredFrameRateRange)]
         pub unsafe fn preferredFrameRateRange(&self) -> CAFrameRateRange;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method(setPreferredFrameRateRange:)]
         pub unsafe fn setPreferredFrameRateRange(
             &self,

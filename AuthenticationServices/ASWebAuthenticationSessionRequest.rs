@@ -42,6 +42,7 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     pub struct ASWebAuthenticationSessionRequest;
 
+    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     #[cfg(feature = "AuthenticationServices_ASWebAuthenticationSessionRequest")]
     unsafe impl ClassType for ASWebAuthenticationSessionRequest {
         type Super = NSObject;
@@ -49,53 +50,67 @@ extern_class!(
 );
 
 #[cfg(feature = "AuthenticationServices_ASWebAuthenticationSessionRequest")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 unsafe impl NSCoding for ASWebAuthenticationSessionRequest {}
 
 #[cfg(feature = "AuthenticationServices_ASWebAuthenticationSessionRequest")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 unsafe impl NSObjectProtocol for ASWebAuthenticationSessionRequest {}
 
 #[cfg(feature = "AuthenticationServices_ASWebAuthenticationSessionRequest")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 unsafe impl NSSecureCoding for ASWebAuthenticationSessionRequest {}
 
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASWebAuthenticationSessionRequest")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     unsafe impl ASWebAuthenticationSessionRequest {
+        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[cfg(feature = "Foundation_NSUUID")]
         #[method_id(@__retain_semantics Other UUID)]
         pub unsafe fn UUID(&self) -> Id<NSUUID>;
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[cfg(feature = "Foundation_NSURL")]
         #[method_id(@__retain_semantics Other URL)]
         pub unsafe fn URL(&self) -> Id<NSURL>;
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other callbackURLScheme)]
         pub unsafe fn callbackURLScheme(&self) -> Option<Id<NSString>>;
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[method(shouldUseEphemeralSession)]
         pub unsafe fn shouldUseEphemeralSession(&self) -> bool;
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(
             &self,
         ) -> Option<Id<ProtocolObject<dyn ASWebAuthenticationSessionRequestDelegate>>>;
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
             delegate: Option<&ProtocolObject<dyn ASWebAuthenticationSessionRequestDelegate>>,
         );
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[cfg(feature = "Foundation_NSError")]
         #[method(cancelWithError:)]
         pub unsafe fn cancelWithError(&self, error: &NSError);
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[cfg(feature = "Foundation_NSURL")]
         #[method(completeWithCallbackURL:)]
         pub unsafe fn completeWithCallbackURL(&self, url: &NSURL);

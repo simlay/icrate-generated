@@ -28,6 +28,5 @@ extern_protocol!(
         unsafe fn plugInViewWithArguments(arguments: Option<&NSDictionary>) -> Option<Id<NSView>>;
     }
 
-    #[deprecated]
     unsafe impl ProtocolType for dyn WebPlugInViewFactory {}
 );

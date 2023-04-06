@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct NSCachedImageRep;
 
+    #[deprecated]
     #[cfg(feature = "AppKit_NSCachedImageRep")]
     unsafe impl ClassType for NSCachedImageRep {
         #[inherits(NSObject)]

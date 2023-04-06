@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct SKStoreReviewController;
 
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "StoreKit_SKStoreReviewController")]
     unsafe impl ClassType for SKStoreReviewController {
         type Super = NSObject;
@@ -18,11 +19,14 @@ extern_class!(
 );
 
 #[cfg(feature = "StoreKit_SKStoreReviewController")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for SKStoreReviewController {}
 
 extern_methods!(
     #[cfg(feature = "StoreKit_SKStoreReviewController")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl SKStoreReviewController {
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[deprecated]
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(requestReview)]

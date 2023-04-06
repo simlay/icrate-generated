@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMCharacterData;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMCharacterData")]
     unsafe impl ClassType for DOMCharacterData {
         #[inherits(DOMObject, WebScriptObject, NSObject)]

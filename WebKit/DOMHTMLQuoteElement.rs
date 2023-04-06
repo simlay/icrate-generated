@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLQuoteElement;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLQuoteElement")]
     unsafe impl ClassType for DOMHTMLQuoteElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]

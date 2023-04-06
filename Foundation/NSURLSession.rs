@@ -812,9 +812,9 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub enum NSURLSessionMultipathServiceType {
         #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         NSURLSessionMultipathServiceTypeNone = 0,

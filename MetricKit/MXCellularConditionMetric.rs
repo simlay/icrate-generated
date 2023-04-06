@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct MXCellularConditionMetric;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "MetricKit_MXCellularConditionMetric")]
     unsafe impl ClassType for MXCellularConditionMetric {
         #[inherits(NSObject)]
@@ -18,17 +19,22 @@ extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXCellularConditionMetric")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSCoding for MXCellularConditionMetric {}
 
 #[cfg(feature = "MetricKit_MXCellularConditionMetric")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSObjectProtocol for MXCellularConditionMetric {}
 
 #[cfg(feature = "MetricKit_MXCellularConditionMetric")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for MXCellularConditionMetric {}
 
 extern_methods!(
     #[cfg(feature = "MetricKit_MXCellularConditionMetric")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXCellularConditionMetric {
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "MetricKit_MXHistogram",
             feature = "MetricKit_MXUnitSignalBars"

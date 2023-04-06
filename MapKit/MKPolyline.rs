@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKPolyline;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKPolyline")]
     unsafe impl ClassType for MKPolyline {
         #[inherits(MKShape, NSObject)]
@@ -21,23 +22,29 @@ extern_class!(
 );
 
 #[cfg(feature = "MapKit_MKPolyline")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl MKAnnotation for MKPolyline {}
 
 #[cfg(feature = "MapKit_MKPolyline")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl MKOverlay for MKPolyline {}
 
 #[cfg(feature = "MapKit_MKPolyline")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKPolyline {}
 
 extern_methods!(
     #[cfg(feature = "MapKit_MKPolyline")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKPolyline {
+        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other polylineWithPoints:count:)]
         pub unsafe fn polylineWithPoints_count(
             points: NonNull<MKMapPoint>,
             count: NSUInteger,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other polylineWithCoordinates:count:)]
         pub unsafe fn polylineWithCoordinates_count(
             coords: NonNull<CLLocationCoordinate2D>,

@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct CLVisit;
 
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "CoreLocation_CLVisit")]
     unsafe impl ClassType for CLVisit {
         type Super = NSObject;
@@ -18,28 +19,36 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreLocation_CLVisit")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSCoding for CLVisit {}
 
 #[cfg(feature = "CoreLocation_CLVisit")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for CLVisit {}
 
 #[cfg(feature = "CoreLocation_CLVisit")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSSecureCoding for CLVisit {}
 
 extern_methods!(
     #[cfg(feature = "CoreLocation_CLVisit")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl CLVisit {
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSDate")]
         #[method_id(@__retain_semantics Other arrivalDate)]
         pub unsafe fn arrivalDate(&self) -> Id<NSDate>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSDate")]
         #[method_id(@__retain_semantics Other departureDate)]
         pub unsafe fn departureDate(&self) -> Id<NSDate>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(coordinate)]
         pub unsafe fn coordinate(&self) -> CLLocationCoordinate2D;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(horizontalAccuracy)]
         pub unsafe fn horizontalAccuracy(&self) -> CLLocationAccuracy;
     }

@@ -118,9 +118,9 @@ ns_enum!(
     }
 );
 
+#[deprecated]
 ns_enum!(
     #[underlying(NSUInteger)]
-    #[deprecated]
     pub enum MTLArgumentType {
         #[deprecated]
         MTLArgumentTypeBuffer = 0,
@@ -374,6 +374,7 @@ extern_class!(
     #[deprecated]
     pub struct MTLArgument;
 
+    #[deprecated]
     #[cfg(feature = "Metal_MTLArgument")]
     unsafe impl ClassType for MTLArgument {
         type Super = NSObject;

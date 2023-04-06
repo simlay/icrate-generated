@@ -5,9 +5,9 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::WebKit::*;
 
+#[deprecated]
 extern_enum!(
     #[underlying(c_uint)]
-    #[deprecated]
     pub enum __anonymous__ {
         #[deprecated]
         DOM_ANY_TYPE = 0,
@@ -38,6 +38,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMXPathResult;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMXPathResult")]
     unsafe impl ClassType for DOMXPathResult {
         #[inherits(WebScriptObject, NSObject)]

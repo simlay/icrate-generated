@@ -29,6 +29,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     pub struct CXCallDirectoryExtensionContext;
 
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     #[cfg(feature = "CallKit_CXCallDirectoryExtensionContext")]
     unsafe impl ClassType for CXCallDirectoryExtensionContext {
         #[inherits(NSObject)]
@@ -37,16 +38,20 @@ extern_class!(
 );
 
 #[cfg(feature = "CallKit_CXCallDirectoryExtensionContext")]
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for CXCallDirectoryExtensionContext {}
 
 extern_methods!(
     #[cfg(feature = "CallKit_CXCallDirectoryExtensionContext")]
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     unsafe impl CXCallDirectoryExtensionContext {
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(
             &self,
         ) -> Option<Id<ProtocolObject<dyn CXCallDirectoryExtensionContextDelegate>>>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
@@ -54,15 +59,18 @@ extern_methods!(
         );
 
         #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(isIncremental)]
         pub unsafe fn isIncremental(&self) -> bool;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(addBlockingEntryWithNextSequentialPhoneNumber:)]
         pub unsafe fn addBlockingEntryWithNextSequentialPhoneNumber(
             &self,
             phone_number: CXCallDirectoryPhoneNumber,
         );
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(removeBlockingEntryWithPhoneNumber:)]
         pub unsafe fn removeBlockingEntryWithPhoneNumber(
@@ -71,9 +79,11 @@ extern_methods!(
         );
 
         #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(removeAllBlockingEntries)]
         pub unsafe fn removeAllBlockingEntries(&self);
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(addIdentificationEntryWithNextSequentialPhoneNumber:label:)]
         pub unsafe fn addIdentificationEntryWithNextSequentialPhoneNumber_label(
@@ -83,6 +93,7 @@ extern_methods!(
         );
 
         #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(removeIdentificationEntryWithPhoneNumber:)]
         pub unsafe fn removeIdentificationEntryWithPhoneNumber(
             &self,
@@ -90,15 +101,18 @@ extern_methods!(
         );
 
         #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(removeAllIdentificationEntries)]
         pub unsafe fn removeAllIdentificationEntries(&self);
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(completeRequestWithCompletionHandler:)]
         pub unsafe fn completeRequestWithCompletionHandler(
             &self,
             completion: Option<&Block<(Bool,), ()>>,
         );
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSArray")]
         #[method(completeRequestReturningItems:completionHandler:)]
         pub unsafe fn completeRequestReturningItems_completionHandler(

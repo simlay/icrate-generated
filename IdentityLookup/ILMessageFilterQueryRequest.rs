@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct ILMessageFilterQueryRequest;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "IdentityLookup_ILMessageFilterQueryRequest")]
     unsafe impl ClassType for ILMessageFilterQueryRequest {
         type Super = NSObject;
@@ -17,33 +18,42 @@ extern_class!(
 );
 
 #[cfg(feature = "IdentityLookup_ILMessageFilterQueryRequest")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSCoding for ILMessageFilterQueryRequest {}
 
 #[cfg(feature = "IdentityLookup_ILMessageFilterQueryRequest")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSObjectProtocol for ILMessageFilterQueryRequest {}
 
 #[cfg(feature = "IdentityLookup_ILMessageFilterQueryRequest")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for ILMessageFilterQueryRequest {}
 
 extern_methods!(
     #[cfg(feature = "IdentityLookup_ILMessageFilterQueryRequest")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl ILMessageFilterQueryRequest {
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other sender)]
         pub unsafe fn sender(&self) -> Option<Id<NSString>>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other messageBody)]
         pub unsafe fn messageBody(&self) -> Option<Id<NSString>>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics Other receiverISOCountryCode)]
         pub unsafe fn receiverISOCountryCode(&self) -> Option<Id<NSString>>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
     }

@@ -54,7 +54,6 @@ extern_protocol!(
         unsafe fn remotePlayerDidCompleteChallenge(&self, challenge: Option<&GKChallenge>);
     }
 
-    #[deprecated = "You should instead implement the GKChallengeListener protocol and register a listener with GKLocalPlayer."]
     #[cfg(not(any(target_os = "watchos")))]
     unsafe impl ProtocolType for dyn GKChallengeEventHandlerDelegate {}
 );
@@ -65,6 +64,7 @@ extern_class!(
     #[deprecated = "You should instead implement the GKChallengeListener protocol and register a listener with GKLocalPlayer."]
     pub struct GKChallengeEventHandler;
 
+    #[deprecated = "You should instead implement the GKChallengeListener protocol and register a listener with GKLocalPlayer."]
     #[cfg(feature = "GameKit_GKChallengeEventHandler")]
     unsafe impl ClassType for GKChallengeEventHandler {
         type Super = NSObject;

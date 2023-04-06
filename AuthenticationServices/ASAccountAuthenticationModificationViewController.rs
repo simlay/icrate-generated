@@ -6,7 +6,9 @@ use crate::Foundation::*;
 
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationViewController")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAccountAuthenticationModificationViewController {
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(
             feature = "AuthenticationServices_ASAccountAuthenticationModificationExtensionContext"
         )]
@@ -15,6 +17,7 @@ extern_methods!(
             &self,
         ) -> Id<ASAccountAuthenticationModificationExtensionContext>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "AuthenticationServices_ASCredentialServiceIdentifier",
             feature = "AuthenticationServices_ASPasswordCredential",
@@ -28,6 +31,7 @@ extern_methods!(
             user_info: Option<&NSDictionary>,
         );
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "AuthenticationServices_ASCredentialServiceIdentifier",
             feature = "AuthenticationServices_ASPasswordCredential",
@@ -41,6 +45,7 @@ extern_methods!(
             user_info: Option<&NSDictionary>,
         );
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "AuthenticationServices_ASCredentialServiceIdentifier",
             feature = "AuthenticationServices_ASPasswordCredential",
@@ -56,6 +61,7 @@ extern_methods!(
             user_info: Option<&NSDictionary>,
         );
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "AuthenticationServices_ASCredentialServiceIdentifier",
             feature = "AuthenticationServices_ASPasswordCredential",
@@ -71,6 +77,7 @@ extern_methods!(
             user_info: Option<&NSDictionary>,
         );
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(cancelRequest)]
         pub unsafe fn cancelRequest(&self);
     }

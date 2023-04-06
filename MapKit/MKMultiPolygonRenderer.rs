@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKMultiPolygonRenderer;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKMultiPolygonRenderer")]
     unsafe impl ClassType for MKMultiPolygonRenderer {
         #[inherits(MKOverlayRenderer, NSObject)]
@@ -21,11 +22,14 @@ extern_class!(
 );
 
 #[cfg(feature = "MapKit_MKMultiPolygonRenderer")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKMultiPolygonRenderer {}
 
 extern_methods!(
     #[cfg(feature = "MapKit_MKMultiPolygonRenderer")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKMultiPolygonRenderer {
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKMultiPolygon")]
         #[method_id(@__retain_semantics Init initWithMultiPolygon:)]
         pub unsafe fn initWithMultiPolygon(
@@ -33,6 +37,7 @@ extern_methods!(
             multi_polygon: &MKMultiPolygon,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKMultiPolygon")]
         #[method_id(@__retain_semantics Other multiPolygon)]
         pub unsafe fn multiPolygon(&self) -> Id<MKMultiPolygon>;
@@ -42,7 +47,9 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `MKOverlayRenderer`
     #[cfg(feature = "MapKit_MKMultiPolygonRenderer")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKMultiPolygonRenderer {
+        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init initWithOverlay:)]
         pub unsafe fn initWithOverlay(
             this: Option<Allocated<Self>>,

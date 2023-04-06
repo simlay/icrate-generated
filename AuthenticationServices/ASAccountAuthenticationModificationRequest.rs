@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct ASAccountAuthenticationModificationRequest;
 
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationRequest")]
     unsafe impl ClassType for ASAccountAuthenticationModificationRequest {
         type Super = NSObject;
@@ -17,9 +18,11 @@ extern_class!(
 );
 
 #[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationRequest")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for ASAccountAuthenticationModificationRequest {}
 
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationRequest")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAccountAuthenticationModificationRequest {}
 );

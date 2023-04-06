@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     pub struct MPAdTimeRange;
 
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPAdTimeRange")]
     unsafe impl ClassType for MPAdTimeRange {
         type Super = NSObject;
@@ -18,15 +19,19 @@ extern_class!(
 );
 
 #[cfg(feature = "MediaPlayer_MPAdTimeRange")]
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MPAdTimeRange {}
 
 extern_methods!(
     #[cfg(feature = "MediaPlayer_MPAdTimeRange")]
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     unsafe impl MPAdTimeRange {
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
@@ -39,6 +44,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     pub struct MPNowPlayingSession;
 
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPNowPlayingSession")]
     unsafe impl ClassType for MPNowPlayingSession {
         type Super = NSObject;
@@ -46,11 +52,14 @@ extern_class!(
 );
 
 #[cfg(feature = "MediaPlayer_MPNowPlayingSession")]
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MPNowPlayingSession {}
 
 extern_methods!(
     #[cfg(feature = "MediaPlayer_MPNowPlayingSession")]
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     unsafe impl MPNowPlayingSession {
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(all(feature = "AVFoundation_AVPlayer", feature = "Foundation_NSArray"))]
         #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Init initWithPlayers:)]
@@ -60,24 +69,29 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
 
         #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(all(feature = "AVFoundation_AVPlayer", feature = "Foundation_NSArray"))]
         #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other players)]
         pub unsafe fn players(&self) -> Id<NSArray<AVPlayer>>;
 
         #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(
             &self,
         ) -> Option<Id<ProtocolObject<dyn MPNowPlayingSessionDelegate>>>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
@@ -86,9 +100,11 @@ extern_methods!(
         );
 
         #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(automaticallyPublishesNowPlayingInfo)]
         pub unsafe fn automaticallyPublishesNowPlayingInfo(&self) -> bool;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(setAutomaticallyPublishesNowPlayingInfo:)]
         pub unsafe fn setAutomaticallyPublishesNowPlayingInfo(
@@ -96,24 +112,29 @@ extern_methods!(
             automatically_publishes_now_playing_info: bool,
         );
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(feature = "MediaPlayer_MPNowPlayingInfoCenter")]
         #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other nowPlayingInfoCenter)]
         pub unsafe fn nowPlayingInfoCenter(&self) -> Id<MPNowPlayingInfoCenter>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(feature = "MediaPlayer_MPRemoteCommandCenter")]
         #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other remoteCommandCenter)]
         pub unsafe fn remoteCommandCenter(&self) -> Id<MPRemoteCommandCenter>;
 
         #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(canBecomeActive)]
         pub unsafe fn canBecomeActive(&self) -> bool;
 
         #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(isActive)]
         pub unsafe fn isActive(&self) -> bool;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(becomeActiveIfPossibleWithCompletion:)]
         pub unsafe fn becomeActiveIfPossibleWithCompletion(
@@ -121,11 +142,13 @@ extern_methods!(
             completion: Option<&Block<(Bool,), ()>>,
         );
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(feature = "AVFoundation_AVPlayer")]
         #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(addPlayer:)]
         pub unsafe fn addPlayer(&self, player: &AVPlayer);
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(feature = "AVFoundation_AVPlayer")]
         #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(removePlayer:)]

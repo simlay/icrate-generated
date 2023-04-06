@@ -12,6 +12,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct HKVerifiableClinicalRecordSubject;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "HealthKit_HKVerifiableClinicalRecordSubject")]
     unsafe impl ClassType for HKVerifiableClinicalRecordSubject {
         type Super = NSObject;
@@ -19,28 +20,36 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKVerifiableClinicalRecordSubject")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSCoding for HKVerifiableClinicalRecordSubject {}
 
 #[cfg(feature = "HealthKit_HKVerifiableClinicalRecordSubject")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for HKVerifiableClinicalRecordSubject {}
 
 #[cfg(feature = "HealthKit_HKVerifiableClinicalRecordSubject")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSSecureCoding for HKVerifiableClinicalRecordSubject {}
 
 extern_methods!(
     #[cfg(feature = "HealthKit_HKVerifiableClinicalRecordSubject")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl HKVerifiableClinicalRecordSubject {
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other fullName)]
         pub unsafe fn fullName(&self) -> Id<NSString>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSDateComponents")]
         #[method_id(@__retain_semantics Other dateOfBirthComponents)]
         pub unsafe fn dateOfBirthComponents(&self) -> Option<Id<NSDateComponents>>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
     }

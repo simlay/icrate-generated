@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct MPMediaQuerySection;
 
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPMediaQuerySection")]
     unsafe impl ClassType for MPMediaQuerySection {
         type Super = NSObject;
@@ -18,21 +19,27 @@ extern_class!(
 );
 
 #[cfg(feature = "MediaPlayer_MPMediaQuerySection")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSCoding for MPMediaQuerySection {}
 
 #[cfg(feature = "MediaPlayer_MPMediaQuerySection")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MPMediaQuerySection {}
 
 #[cfg(feature = "MediaPlayer_MPMediaQuerySection")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSSecureCoding for MPMediaQuerySection {}
 
 extern_methods!(
     #[cfg(feature = "MediaPlayer_MPMediaQuerySection")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl MPMediaQuerySection {
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Id<NSString>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(range)]
         pub unsafe fn range(&self) -> NSRange;
     }

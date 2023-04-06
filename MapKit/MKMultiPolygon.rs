@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKMultiPolygon;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKMultiPolygon")]
     unsafe impl ClassType for MKMultiPolygon {
         #[inherits(NSObject)]
@@ -21,17 +22,22 @@ extern_class!(
 );
 
 #[cfg(feature = "MapKit_MKMultiPolygon")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl MKAnnotation for MKMultiPolygon {}
 
 #[cfg(feature = "MapKit_MKMultiPolygon")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl MKOverlay for MKMultiPolygon {}
 
 #[cfg(feature = "MapKit_MKMultiPolygon")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKMultiPolygon {}
 
 extern_methods!(
     #[cfg(feature = "MapKit_MKMultiPolygon")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKMultiPolygon {
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "MapKit_MKPolygon"))]
         #[method_id(@__retain_semantics Init initWithPolygons:)]
         pub unsafe fn initWithPolygons(
@@ -39,6 +45,7 @@ extern_methods!(
             polygons: &NSArray<MKPolygon>,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "MapKit_MKPolygon"))]
         #[method_id(@__retain_semantics Other polygons)]
         pub unsafe fn polygons(&self) -> Id<NSArray<MKPolygon>>;

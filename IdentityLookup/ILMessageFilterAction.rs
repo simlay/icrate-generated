@@ -4,9 +4,9 @@ use crate::common::*;
 use crate::Foundation::*;
 use crate::IdentityLookup::*;
 
+#[cfg(not(any(target_os = "macos")))]
 ns_enum!(
     #[underlying(NSInteger)]
-    #[cfg(not(any(target_os = "macos")))]
     pub enum ILMessageFilterAction {
         #[cfg(not(any(target_os = "macos")))]
         ILMessageFilterActionNone = 0,
@@ -24,9 +24,9 @@ ns_enum!(
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 ns_enum!(
     #[underlying(NSInteger)]
-    #[cfg(not(any(target_os = "macos")))]
     pub enum ILMessageFilterSubAction {
         #[cfg(not(any(target_os = "macos")))]
         ILMessageFilterSubActionNone = 0,

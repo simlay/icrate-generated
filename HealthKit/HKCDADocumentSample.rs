@@ -12,6 +12,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct HKCDADocumentSample;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "HealthKit_HKCDADocumentSample")]
     unsafe impl ClassType for HKCDADocumentSample {
         #[inherits(HKSample, HKObject, NSObject)]
@@ -20,21 +21,27 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKCDADocumentSample")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSCoding for HKCDADocumentSample {}
 
 #[cfg(feature = "HealthKit_HKCDADocumentSample")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for HKCDADocumentSample {}
 
 #[cfg(feature = "HealthKit_HKCDADocumentSample")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSSecureCoding for HKCDADocumentSample {}
 
 extern_methods!(
     #[cfg(feature = "HealthKit_HKCDADocumentSample")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl HKCDADocumentSample {
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "HealthKit_HKCDADocument")]
         #[method_id(@__retain_semantics Other document)]
         pub unsafe fn document(&self) -> Option<Id<HKCDADocument>>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSData",
             feature = "Foundation_NSDate",
@@ -59,6 +66,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct HKCDADocument;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "HealthKit_HKCDADocument")]
     unsafe impl ClassType for HKCDADocument {
         type Super = NSObject;
@@ -66,27 +74,34 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKCDADocument")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for HKCDADocument {}
 
 extern_methods!(
     #[cfg(feature = "HealthKit_HKCDADocument")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl HKCDADocument {
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSData")]
         #[method_id(@__retain_semantics Other documentData)]
         pub unsafe fn documentData(&self) -> Option<Id<NSData>>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Id<NSString>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other patientName)]
         pub unsafe fn patientName(&self) -> Id<NSString>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other authorName)]
         pub unsafe fn authorName(&self) -> Id<NSString>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other custodianName)]
         pub unsafe fn custodianName(&self) -> Id<NSString>;

@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKUserLocation;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKUserLocation")]
     unsafe impl ClassType for MKUserLocation {
         type Super = NSObject;
@@ -20,38 +21,48 @@ extern_class!(
 );
 
 #[cfg(feature = "MapKit_MKUserLocation")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl MKAnnotation for MKUserLocation {}
 
 #[cfg(feature = "MapKit_MKUserLocation")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKUserLocation {}
 
 extern_methods!(
     #[cfg(feature = "MapKit_MKUserLocation")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKUserLocation {
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(isUpdating)]
         pub unsafe fn isUpdating(&self) -> bool;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "CoreLocation_CLLocation")]
         #[method_id(@__retain_semantics Other location)]
         pub unsafe fn location(&self) -> Option<Id<CLLocation>>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "CoreLocation_CLHeading")]
         #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other heading)]
         pub unsafe fn heading(&self) -> Option<Id<CLHeading>>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Option<Id<NSString>>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setTitle:)]
         pub unsafe fn setTitle(&self, title: Option<&NSString>);
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other subtitle)]
         pub unsafe fn subtitle(&self) -> Option<Id<NSString>>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setSubtitle:)]
         pub unsafe fn setSubtitle(&self, subtitle: Option<&NSString>);

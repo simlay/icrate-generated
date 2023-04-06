@@ -25,6 +25,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct SKAdNetwork;
 
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "StoreKit_SKAdNetwork")]
     unsafe impl ClassType for SKAdNetwork {
         type Super = NSObject;
@@ -32,11 +33,14 @@ extern_class!(
 );
 
 #[cfg(feature = "StoreKit_SKAdNetwork")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for SKAdNetwork {}
 
 extern_methods!(
     #[cfg(feature = "StoreKit_SKAdNetwork")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl SKAdNetwork {
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSError", feature = "StoreKit_SKAdImpression"))]
         #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(startImpression:completionHandler:)]
@@ -45,6 +49,7 @@ extern_methods!(
             completion: Option<&Block<(*mut NSError,), ()>>,
         );
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSError", feature = "StoreKit_SKAdImpression"))]
         #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(endImpression:completionHandler:)]
@@ -53,16 +58,19 @@ extern_methods!(
             completion: Option<&Block<(*mut NSError,), ()>>,
         );
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[deprecated = "Use updatePostbackConversionValue:completionHandler: instead"]
         #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(registerAppForAdNetworkAttribution)]
         pub unsafe fn registerAppForAdNetworkAttribution();
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[deprecated = "Use updatePostbackConversionValue:completionHandler: instead"]
         #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(updateConversionValue:)]
         pub unsafe fn updateConversionValue(conversion_value: NSInteger);
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSError")]
         #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(updatePostbackConversionValue:completionHandler:)]
@@ -71,6 +79,7 @@ extern_methods!(
             completion: Option<&Block<(*mut NSError,), ()>>,
         );
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSError")]
         #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(updatePostbackConversionValue:coarseValue:completionHandler:)]
@@ -80,6 +89,7 @@ extern_methods!(
             completion: Option<&Block<(*mut NSError,), ()>>,
         );
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSError")]
         #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(updatePostbackConversionValue:coarseValue:lockWindow:completionHandler:)]

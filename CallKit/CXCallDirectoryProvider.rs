@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     pub struct CXCallDirectoryProvider;
 
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     #[cfg(feature = "CallKit_CXCallDirectoryProvider")]
     unsafe impl ClassType for CXCallDirectoryProvider {
         type Super = NSObject;
@@ -17,14 +18,18 @@ extern_class!(
 );
 
 #[cfg(feature = "CallKit_CXCallDirectoryProvider")]
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 unsafe impl NSExtensionRequestHandling for CXCallDirectoryProvider {}
 
 #[cfg(feature = "CallKit_CXCallDirectoryProvider")]
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for CXCallDirectoryProvider {}
 
 extern_methods!(
     #[cfg(feature = "CallKit_CXCallDirectoryProvider")]
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     unsafe impl CXCallDirectoryProvider {
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(feature = "CallKit_CXCallDirectoryExtensionContext")]
         #[method(beginRequestWithExtensionContext:)]
         pub unsafe fn beginRequestWithExtensionContext(

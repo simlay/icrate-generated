@@ -13,6 +13,5 @@ extern_protocol!(
         unsafe fn lookupNamespaceURI(&self, prefix: Option<&NSString>) -> Option<Id<NSString>>;
     }
 
-    #[deprecated]
     unsafe impl ProtocolType for dyn DOMXPathNSResolver {}
 );

@@ -156,6 +156,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct GKInvite;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "GameKit_GKInvite")]
     unsafe impl ClassType for GKInvite {
         type Super = NSObject;
@@ -163,24 +164,31 @@ extern_class!(
 );
 
 #[cfg(feature = "GameKit_GKInvite")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for GKInvite {}
 
 extern_methods!(
     #[cfg(feature = "GameKit_GKInvite")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl GKInvite {
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "GameKit_GKPlayer")]
         #[method_id(@__retain_semantics Other sender)]
         pub unsafe fn sender(&self) -> Id<GKPlayer>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(isHosted)]
         pub unsafe fn isHosted(&self) -> bool;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(playerGroup)]
         pub unsafe fn playerGroup(&self) -> NSUInteger;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(playerAttributes)]
         pub unsafe fn playerAttributes(&self) -> u32;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[deprecated = "This property is obsolete, use sender instead"]
         #[method_id(@__retain_semantics Other inviter)]
@@ -230,6 +238,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct GKMatchmaker;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "GameKit_GKMatchmaker")]
     unsafe impl ClassType for GKMatchmaker {
         type Super = NSObject;
@@ -237,14 +246,18 @@ extern_class!(
 );
 
 #[cfg(feature = "GameKit_GKMatchmaker")]
+#[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for GKMatchmaker {}
 
 extern_methods!(
     #[cfg(feature = "GameKit_GKMatchmaker")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl GKMatchmaker {
+        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other sharedMatchmaker)]
         pub unsafe fn sharedMatchmaker() -> Id<GKMatchmaker>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSError",
             feature = "GameKit_GKInvite",
@@ -257,6 +270,7 @@ extern_methods!(
             completion_handler: Option<&Block<(*mut GKMatch, *mut NSError), ()>>,
         );
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSError",
             feature = "GameKit_GKMatch",
@@ -269,6 +283,7 @@ extern_methods!(
             completion_handler: Option<&Block<(*mut GKMatch, *mut NSError), ()>>,
         );
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSError",
@@ -282,6 +297,7 @@ extern_methods!(
             completion_handler: Option<&Block<(*mut NSArray<GKPlayer>, *mut NSError), ()>>,
         );
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSError",
             feature = "GameKit_GKMatch",
@@ -295,17 +311,21 @@ extern_methods!(
             completion_handler: Option<&Block<(*mut NSError,), ()>>,
         );
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(cancel)]
         pub unsafe fn cancel(&self);
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "GameKit_GKPlayer")]
         #[method(cancelPendingInviteToPlayer:)]
         pub unsafe fn cancelPendingInviteToPlayer(&self, player: &GKPlayer);
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "GameKit_GKMatch")]
         #[method(finishMatchmakingForMatch:)]
         pub unsafe fn finishMatchmakingForMatch(&self, r#match: &GKMatch);
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSError")]
         #[method(queryPlayerGroupActivity:withCompletionHandler:)]
         pub unsafe fn queryPlayerGroupActivity_withCompletionHandler(
@@ -314,6 +334,7 @@ extern_methods!(
             completion_handler: Option<&Block<(NSInteger, *mut NSError), ()>>,
         );
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSError")]
         #[method(queryActivityWithCompletionHandler:)]
         pub unsafe fn queryActivityWithCompletionHandler(
@@ -321,6 +342,7 @@ extern_methods!(
             completion_handler: Option<&Block<(NSInteger, *mut NSError), ()>>,
         );
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "GameKit_GKPlayer")]
         #[method(startBrowsingForNearbyPlayersWithHandler:)]
         pub unsafe fn startBrowsingForNearbyPlayersWithHandler(
@@ -328,6 +350,7 @@ extern_methods!(
             reachable_handler: Option<&Block<(NonNull<GKPlayer>, Bool), ()>>,
         );
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(stopBrowsingForNearbyPlayers)]
         pub unsafe fn stopBrowsingForNearbyPlayers(&self);
     }
@@ -336,12 +359,15 @@ extern_methods!(
 extern_methods!(
     /// GKDeprecated
     #[cfg(feature = "GameKit_GKMatchmaker")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl GKMatchmaker {
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "GameKit_GKInvite"))]
         #[deprecated = "Use registerListener on GKLocalPlayer to register an object that implements the GKInviteEventListenerProtocol instead"]
         #[method(inviteHandler)]
         pub unsafe fn inviteHandler(&self) -> *mut Block<(NonNull<GKInvite>, *mut NSArray), ()>;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "GameKit_GKInvite"))]
         #[deprecated = "Use registerListener on GKLocalPlayer to register an object that implements the GKInviteEventListenerProtocol instead"]
         #[method(setInviteHandler:)]
@@ -355,7 +381,9 @@ extern_methods!(
 extern_methods!(
     /// Obsoleted
     #[cfg(feature = "GameKit_GKMatchmaker")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl GKMatchmaker {
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[deprecated = "This is never invoked and its implementation does nothing, Use startBrowsingForNearbyPlayersWithHandler: instead"]
         #[method(startBrowsingForNearbyPlayersWithReachableHandler:)]
@@ -364,11 +392,13 @@ extern_methods!(
             reachable_handler: Option<&Block<(NonNull<NSString>, Bool), ()>>,
         );
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[deprecated = "This is never invoked and its implementation does nothing, use cancelPendingInviteToPlayer:"]
         #[method(cancelInviteToPlayer:)]
         pub unsafe fn cancelInviteToPlayer(&self, player_id: &NSString);
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSError",

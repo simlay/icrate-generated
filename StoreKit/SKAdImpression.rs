@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct SKAdImpression;
 
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "StoreKit_SKAdImpression")]
     unsafe impl ClassType for SKAdImpression {
         type Super = NSObject;
@@ -18,15 +19,19 @@ extern_class!(
 );
 
 #[cfg(feature = "StoreKit_SKAdImpression")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for SKAdImpression {}
 
 extern_methods!(
     #[cfg(feature = "StoreKit_SKAdImpression")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl SKAdImpression {
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSNumber")]
         #[method_id(@__retain_semantics Other sourceAppStoreItemIdentifier)]
         pub unsafe fn sourceAppStoreItemIdentifier(&self) -> Id<NSNumber>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSNumber")]
         #[method(setSourceAppStoreItemIdentifier:)]
         pub unsafe fn setSourceAppStoreItemIdentifier(
@@ -34,10 +39,12 @@ extern_methods!(
             source_app_store_item_identifier: &NSNumber,
         );
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSNumber")]
         #[method_id(@__retain_semantics Other advertisedAppStoreItemIdentifier)]
         pub unsafe fn advertisedAppStoreItemIdentifier(&self) -> Id<NSNumber>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSNumber")]
         #[method(setAdvertisedAppStoreItemIdentifier:)]
         pub unsafe fn setAdvertisedAppStoreItemIdentifier(
@@ -45,84 +52,104 @@ extern_methods!(
             advertised_app_store_item_identifier: &NSNumber,
         );
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other adNetworkIdentifier)]
         pub unsafe fn adNetworkIdentifier(&self) -> Id<NSString>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setAdNetworkIdentifier:)]
         pub unsafe fn setAdNetworkIdentifier(&self, ad_network_identifier: &NSString);
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSNumber")]
         #[method_id(@__retain_semantics Other adCampaignIdentifier)]
         pub unsafe fn adCampaignIdentifier(&self) -> Id<NSNumber>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSNumber")]
         #[method(setAdCampaignIdentifier:)]
         pub unsafe fn setAdCampaignIdentifier(&self, ad_campaign_identifier: &NSNumber);
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSNumber")]
         #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other sourceIdentifier)]
         pub unsafe fn sourceIdentifier(&self) -> Id<NSNumber>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSNumber")]
         #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(setSourceIdentifier:)]
         pub unsafe fn setSourceIdentifier(&self, source_identifier: &NSNumber);
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other adImpressionIdentifier)]
         pub unsafe fn adImpressionIdentifier(&self) -> Id<NSString>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setAdImpressionIdentifier:)]
         pub unsafe fn setAdImpressionIdentifier(&self, ad_impression_identifier: &NSString);
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other adType)]
         pub unsafe fn adType(&self) -> Option<Id<NSString>>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setAdType:)]
         pub unsafe fn setAdType(&self, ad_type: Option<&NSString>);
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other adDescription)]
         pub unsafe fn adDescription(&self) -> Option<Id<NSString>>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setAdDescription:)]
         pub unsafe fn setAdDescription(&self, ad_description: Option<&NSString>);
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other adPurchaserName)]
         pub unsafe fn adPurchaserName(&self) -> Option<Id<NSString>>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setAdPurchaserName:)]
         pub unsafe fn setAdPurchaserName(&self, ad_purchaser_name: Option<&NSString>);
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSNumber")]
         #[method_id(@__retain_semantics Other timestamp)]
         pub unsafe fn timestamp(&self) -> Id<NSNumber>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSNumber")]
         #[method(setTimestamp:)]
         pub unsafe fn setTimestamp(&self, timestamp: &NSNumber);
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other signature)]
         pub unsafe fn signature(&self) -> Id<NSString>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setSignature:)]
         pub unsafe fn setSignature(&self, signature: &NSString);
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other version)]
         pub unsafe fn version(&self) -> Id<NSString>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setVersion:)]
         pub unsafe fn setVersion(&self, version: &NSString);

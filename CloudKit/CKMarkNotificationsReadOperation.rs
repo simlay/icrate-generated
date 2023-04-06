@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated = "Instead of iterating notifications, consider using CKDatabaseSubscription, CKFetchDatabaseChangesOperation, and CKFetchRecordZoneChangesOperation as appropriate"]
     pub struct CKMarkNotificationsReadOperation;
 
+    #[deprecated = "Instead of iterating notifications, consider using CKDatabaseSubscription, CKFetchDatabaseChangesOperation, and CKFetchRecordZoneChangesOperation as appropriate"]
     #[cfg(feature = "CloudKit_CKMarkNotificationsReadOperation")]
     unsafe impl ClassType for CKMarkNotificationsReadOperation {
         #[inherits(NSOperation, NSObject)]

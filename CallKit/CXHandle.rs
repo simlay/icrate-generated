@@ -4,9 +4,9 @@ use crate::common::*;
 use crate::CallKit::*;
 use crate::Foundation::*;
 
+#[cfg(not(any(target_os = "macos")))]
 ns_enum!(
     #[underlying(NSInteger)]
-    #[cfg(not(any(target_os = "macos")))]
     pub enum CXHandleType {
         #[cfg(not(any(target_os = "macos")))]
         CXHandleTypeGeneric = 1,
@@ -23,6 +23,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct CXHandle;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "CallKit_CXHandle")]
     unsafe impl ClassType for CXHandle {
         type Super = NSObject;
@@ -30,24 +31,31 @@ extern_class!(
 );
 
 #[cfg(feature = "CallKit_CXHandle")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSCoding for CXHandle {}
 
 #[cfg(feature = "CallKit_CXHandle")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSObjectProtocol for CXHandle {}
 
 #[cfg(feature = "CallKit_CXHandle")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for CXHandle {}
 
 extern_methods!(
     #[cfg(feature = "CallKit_CXHandle")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXHandle {
+        #[cfg(not(any(target_os = "macos")))]
         #[method(type)]
         pub unsafe fn r#type(&self) -> CXHandleType;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other value)]
         pub unsafe fn value(&self) -> Id<NSString>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Init initWithType:value:)]
         pub unsafe fn initWithType_value(
@@ -56,9 +64,11 @@ extern_methods!(
             value: &NSString,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method(isEqualToHandle:)]
         pub unsafe fn isEqualToHandle(&self, handle: &CXHandle) -> bool;
     }

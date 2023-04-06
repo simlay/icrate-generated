@@ -100,6 +100,7 @@ pub use self::__CXEndCallAction::CXEndCallAction;
 pub use self::__CXError::CXErrorCode;
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__CXError::CXErrorCodeCallDirectoryManagerError;
+#[cfg(not(any(target_os = "macos")))]
 pub use self::__CXError::CXErrorCodeCallDirectoryManagerErrorCurrentlyLoading;
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__CXError::CXErrorCodeCallDirectoryManagerErrorDuplicateEntries;
@@ -113,6 +114,7 @@ pub use self::__CXError::CXErrorCodeCallDirectoryManagerErrorLoadingInterrupted;
 pub use self::__CXError::CXErrorCodeCallDirectoryManagerErrorMaximumEntriesExceeded;
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__CXError::CXErrorCodeCallDirectoryManagerErrorNoExtensionFound;
+#[cfg(not(any(target_os = "macos")))]
 pub use self::__CXError::CXErrorCodeCallDirectoryManagerErrorUnexpectedIncrementalRemoval;
 #[cfg(not(any(target_os = "macos")))]
 pub use self::__CXError::CXErrorCodeCallDirectoryManagerErrorUnknown;

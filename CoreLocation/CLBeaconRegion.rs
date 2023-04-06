@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct CLBeaconRegion;
 
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "CoreLocation_CLBeaconRegion")]
     unsafe impl ClassType for CLBeaconRegion {
         #[inherits(NSObject)]
@@ -19,17 +20,22 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreLocation_CLBeaconRegion")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSCoding for CLBeaconRegion {}
 
 #[cfg(feature = "CoreLocation_CLBeaconRegion")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for CLBeaconRegion {}
 
 #[cfg(feature = "CoreLocation_CLBeaconRegion")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSSecureCoding for CLBeaconRegion {}
 
 extern_methods!(
     #[cfg(feature = "CoreLocation_CLBeaconRegion")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl CLBeaconRegion {
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSString", feature = "Foundation_NSUUID"))]
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Init initWithUUID:identifier:)]
@@ -39,6 +45,7 @@ extern_methods!(
             identifier: &NSString,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSString", feature = "Foundation_NSUUID"))]
         #[deprecated]
         #[method_id(@__retain_semantics Init initWithProximityUUID:identifier:)]
@@ -48,6 +55,7 @@ extern_methods!(
             identifier: &NSString,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSString", feature = "Foundation_NSUUID"))]
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Init initWithUUID:major:identifier:)]
@@ -58,6 +66,7 @@ extern_methods!(
             identifier: &NSString,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSString", feature = "Foundation_NSUUID"))]
         #[deprecated]
         #[method_id(@__retain_semantics Init initWithProximityUUID:major:identifier:)]
@@ -68,6 +77,7 @@ extern_methods!(
             identifier: &NSString,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSString", feature = "Foundation_NSUUID"))]
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Init initWithUUID:major:minor:identifier:)]
@@ -79,6 +89,7 @@ extern_methods!(
             identifier: &NSString,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSString", feature = "Foundation_NSUUID"))]
         #[deprecated]
         #[method_id(@__retain_semantics Init initWithProximityUUID:major:minor:identifier:)]
@@ -90,6 +101,7 @@ extern_methods!(
             identifier: &NSString,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "CoreLocation_CLBeaconIdentityConstraint",
             feature = "Foundation_NSString"
@@ -102,6 +114,7 @@ extern_methods!(
             identifier: &NSString,
         ) -> Id<Self>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSMutableDictionary",
             feature = "Foundation_NSNumber",
@@ -113,32 +126,39 @@ extern_methods!(
             measured_power: Option<&NSNumber>,
         ) -> Id<NSMutableDictionary<NSString, Object>, Owned>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "CoreLocation_CLBeaconIdentityConstraint")]
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other beaconIdentityConstraint)]
         pub unsafe fn beaconIdentityConstraint(&self) -> Id<CLBeaconIdentityConstraint>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSUUID")]
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other UUID)]
         pub unsafe fn UUID(&self) -> Id<NSUUID>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSUUID")]
         #[deprecated]
         #[method_id(@__retain_semantics Other proximityUUID)]
         pub unsafe fn proximityUUID(&self) -> Id<NSUUID>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSNumber")]
         #[method_id(@__retain_semantics Other major)]
         pub unsafe fn major(&self) -> Option<Id<NSNumber>>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSNumber")]
         #[method_id(@__retain_semantics Other minor)]
         pub unsafe fn minor(&self) -> Option<Id<NSNumber>>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(notifyEntryStateOnDisplay)]
         pub unsafe fn notifyEntryStateOnDisplay(&self) -> bool;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(setNotifyEntryStateOnDisplay:)]
         pub unsafe fn setNotifyEntryStateOnDisplay(&self, notify_entry_state_on_display: bool);
     }
@@ -150,6 +170,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct CLBeacon;
 
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "CoreLocation_CLBeacon")]
     unsafe impl ClassType for CLBeacon {
         type Super = NSObject;
@@ -157,46 +178,58 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreLocation_CLBeacon")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSCoding for CLBeacon {}
 
 #[cfg(feature = "CoreLocation_CLBeacon")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for CLBeacon {}
 
 #[cfg(feature = "CoreLocation_CLBeacon")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSSecureCoding for CLBeacon {}
 
 extern_methods!(
     #[cfg(feature = "CoreLocation_CLBeacon")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl CLBeacon {
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSDate")]
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other timestamp)]
         pub unsafe fn timestamp(&self) -> Id<NSDate>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSUUID")]
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other UUID)]
         pub unsafe fn UUID(&self) -> Id<NSUUID>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSUUID")]
         #[deprecated]
         #[method_id(@__retain_semantics Other proximityUUID)]
         pub unsafe fn proximityUUID(&self) -> Id<NSUUID>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSNumber")]
         #[method_id(@__retain_semantics Other major)]
         pub unsafe fn major(&self) -> Id<NSNumber>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSNumber")]
         #[method_id(@__retain_semantics Other minor)]
         pub unsafe fn minor(&self) -> Id<NSNumber>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(proximity)]
         pub unsafe fn proximity(&self) -> CLProximity;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(accuracy)]
         pub unsafe fn accuracy(&self) -> CLLocationAccuracy;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(rssi)]
         pub unsafe fn rssi(&self) -> NSInteger;
     }
@@ -205,7 +238,9 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `CLRegion`
     #[cfg(feature = "CoreLocation_CLBeaconRegion")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl CLBeaconRegion {
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[deprecated = "Please see CLCircularRegion"]
         #[cfg(not(any(target_os = "tvos")))]

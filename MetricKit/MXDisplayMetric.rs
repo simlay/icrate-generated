@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct MXDisplayMetric;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "MetricKit_MXDisplayMetric")]
     unsafe impl ClassType for MXDisplayMetric {
         #[inherits(NSObject)]
@@ -18,17 +19,22 @@ extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXDisplayMetric")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSCoding for MXDisplayMetric {}
 
 #[cfg(feature = "MetricKit_MXDisplayMetric")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSObjectProtocol for MXDisplayMetric {}
 
 #[cfg(feature = "MetricKit_MXDisplayMetric")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for MXDisplayMetric {}
 
 extern_methods!(
     #[cfg(feature = "MetricKit_MXDisplayMetric")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXDisplayMetric {
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "MetricKit_MXAverage",
             feature = "MetricKit_MXUnitAveragePixelLuminance"

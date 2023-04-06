@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct ILCallCommunication;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "IdentityLookup_ILCallCommunication")]
     unsafe impl ClassType for ILCallCommunication {
         #[inherits(NSObject)]
@@ -18,23 +19,29 @@ extern_class!(
 );
 
 #[cfg(feature = "IdentityLookup_ILCallCommunication")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSCoding for ILCallCommunication {}
 
 #[cfg(feature = "IdentityLookup_ILCallCommunication")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSObjectProtocol for ILCallCommunication {}
 
 #[cfg(feature = "IdentityLookup_ILCallCommunication")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for ILCallCommunication {}
 
 extern_methods!(
     #[cfg(feature = "IdentityLookup_ILCallCommunication")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl ILCallCommunication {
+        #[cfg(not(any(target_os = "macos")))]
         #[method(isEqualToCallCommunication:)]
         pub unsafe fn isEqualToCallCommunication(
             &self,
             communication: &ILCallCommunication,
         ) -> bool;
 
+        #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
     }

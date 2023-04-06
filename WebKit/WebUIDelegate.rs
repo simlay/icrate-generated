@@ -5,9 +5,9 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::WebKit::*;
 
+#[deprecated]
 extern_enum!(
     #[underlying(c_uint)]
-    #[deprecated]
     pub enum __anonymous__ {
         #[deprecated]
         WebMenuItemTagOpenLinkInNewWindow = 1,
@@ -76,9 +76,9 @@ extern_enum!(
     }
 );
 
+#[deprecated]
 ns_options!(
     #[underlying(NSUInteger)]
-    #[deprecated]
     pub enum WebDragDestinationAction {
         #[deprecated]
         WebDragDestinationActionNone = 0,
@@ -93,9 +93,9 @@ ns_options!(
     }
 );
 
+#[deprecated]
 ns_options!(
     #[underlying(NSUInteger)]
-    #[deprecated]
     pub enum WebDragSourceAction {
         #[deprecated]
         WebDragSourceActionNone = 0,
@@ -127,7 +127,6 @@ extern_protocol!(
         unsafe fn cancel(&self);
     }
 
-    #[deprecated]
     unsafe impl ProtocolType for dyn WebOpenPanelResultListener {}
 );
 
@@ -474,6 +473,5 @@ extern_protocol!(
         unsafe fn webViewContentRect(&self, sender: Option<&WebView>) -> NSRect;
     }
 
-    #[deprecated]
     unsafe impl ProtocolType for dyn WebUIDelegate {}
 );

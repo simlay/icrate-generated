@@ -68,6 +68,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct ASAccountAuthenticationModificationController;
 
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationController")]
     unsafe impl ClassType for ASAccountAuthenticationModificationController {
         type Super = NSObject;
@@ -75,16 +76,20 @@ extern_class!(
 );
 
 #[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationController")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for ASAccountAuthenticationModificationController {}
 
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationController")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAccountAuthenticationModificationController {
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(
             &self,
         ) -> Option<Id<ProtocolObject<dyn ASAccountAuthenticationModificationControllerDelegate>>>;
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
@@ -93,6 +98,7 @@ extern_methods!(
             >,
         );
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other presentationContextProvider)]
         pub unsafe fn presentationContextProvider(
             &self,
@@ -104,6 +110,7 @@ extern_methods!(
             >,
         >;
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(setPresentationContextProvider:)]
         pub unsafe fn setPresentationContextProvider(
             &self,
@@ -114,6 +121,7 @@ extern_methods!(
             >,
         );
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationRequest")]
         #[method(performRequest:)]
         pub unsafe fn performRequest(&self, request: &ASAccountAuthenticationModificationRequest);

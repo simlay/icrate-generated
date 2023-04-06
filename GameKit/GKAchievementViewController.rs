@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated = "Use GKGameCenterViewController instead"]
     pub struct GKAchievementViewController;
 
+    #[deprecated = "Use GKGameCenterViewController instead"]
     #[cfg(feature = "GameKit_GKAchievementViewController")]
     unsafe impl ClassType for GKAchievementViewController {
         #[inherits(NSViewController, NSResponder, NSObject)]
@@ -63,7 +64,6 @@ extern_protocol!(
         );
     }
 
-    #[deprecated = "Use GKGameCenterViewController instead"]
     unsafe impl ProtocolType for dyn GKAchievementViewControllerDelegate {}
 );
 

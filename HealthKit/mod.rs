@@ -1117,8 +1117,11 @@ pub use self::__HKWorkoutSession::HKWorkoutSessionState;
 pub use self::__HKWorkoutSession::HKWorkoutSessionStateEnded;
 #[cfg(not(any(target_os = "ios")))]
 pub use self::__HKWorkoutSession::HKWorkoutSessionStateNotStarted;
+#[cfg(not(any(target_os = "ios")))]
 pub use self::__HKWorkoutSession::HKWorkoutSessionStatePaused;
+#[cfg(not(any(target_os = "ios")))]
 pub use self::__HKWorkoutSession::HKWorkoutSessionStatePrepared;
 #[cfg(not(any(target_os = "ios")))]
 pub use self::__HKWorkoutSession::HKWorkoutSessionStateRunning;
+#[cfg(not(any(target_os = "ios")))]
 pub use self::__HKWorkoutSession::HKWorkoutSessionStateStopped;

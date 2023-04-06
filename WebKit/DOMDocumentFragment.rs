@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMDocumentFragment;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMDocumentFragment")]
     unsafe impl ClassType for DOMDocumentFragment {
         #[inherits(DOMObject, WebScriptObject, NSObject)]

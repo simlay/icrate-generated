@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct MXDiskIOMetric;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "MetricKit_MXDiskIOMetric")]
     unsafe impl ClassType for MXDiskIOMetric {
         #[inherits(NSObject)]
@@ -18,17 +19,22 @@ extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXDiskIOMetric")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSCoding for MXDiskIOMetric {}
 
 #[cfg(feature = "MetricKit_MXDiskIOMetric")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSObjectProtocol for MXDiskIOMetric {}
 
 #[cfg(feature = "MetricKit_MXDiskIOMetric")]
+#[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for MXDiskIOMetric {}
 
 extern_methods!(
     #[cfg(feature = "MetricKit_MXDiskIOMetric")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXDiskIOMetric {
+        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitInformationStorage"

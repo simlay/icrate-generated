@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMProcessingInstruction;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMProcessingInstruction")]
     unsafe impl ClassType for DOMProcessingInstruction {
         #[inherits(DOMNode, DOMObject, WebScriptObject, NSObject)]
