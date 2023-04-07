@@ -7,9 +7,9 @@ use crate::CoreLocation::*;
 use crate::Foundation::*;
 use crate::MapKit::*;
 
-#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub enum MKLookAroundBadgePosition {
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         MKLookAroundBadgePositionTopLeading = 0,

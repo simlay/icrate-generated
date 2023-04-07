@@ -7,7 +7,6 @@ use crate::Foundation::*;
 
 extern_static!(CKCurrentUserDefaultName: &'static NSString);
 
-#[deprecated]
 extern_static!(CKOwnerDefaultName: &'static NSString);
 
 extern_class!(

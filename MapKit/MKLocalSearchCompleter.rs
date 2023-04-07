@@ -7,10 +7,10 @@ use crate::CoreLocation::*;
 use crate::Foundation::*;
 use crate::MapKit::*;
 
-#[deprecated = "Use MKLocalSearchCompleterResultType"]
-#[cfg(not(any(target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
+    #[deprecated = "Use MKLocalSearchCompleterResultType"]
+    #[cfg(not(any(target_os = "watchos")))]
     pub enum MKSearchCompletionFilterType {
         #[deprecated = "Use MKLocalSearchCompleterResultType"]
         #[cfg(not(any(target_os = "watchos")))]
@@ -21,9 +21,9 @@ ns_enum!(
     }
 );
 
-#[cfg(not(any(target_os = "watchos")))]
 ns_options!(
     #[underlying(NSUInteger)]
+    #[cfg(not(any(target_os = "watchos")))]
     pub enum MKLocalSearchCompleterResultType {
         #[cfg(not(any(target_os = "watchos")))]
         MKLocalSearchCompleterResultTypeAddress = 1 << 0,

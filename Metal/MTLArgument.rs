@@ -118,9 +118,9 @@ ns_enum!(
     }
 );
 
-#[deprecated]
 ns_enum!(
     #[underlying(NSUInteger)]
+    #[deprecated]
     pub enum MTLArgumentType {
         #[deprecated]
         MTLArgumentTypeBuffer = 0,

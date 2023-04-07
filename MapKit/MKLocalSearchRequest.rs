@@ -7,9 +7,9 @@ use crate::CoreLocation::*;
 use crate::Foundation::*;
 use crate::MapKit::*;
 
-#[cfg(not(any(target_os = "watchos")))]
 ns_options!(
     #[underlying(NSUInteger)]
+    #[cfg(not(any(target_os = "watchos")))]
     pub enum MKLocalSearchResultType {
         #[cfg(not(any(target_os = "watchos")))]
         MKLocalSearchResultTypeAddress = 1 << 0,

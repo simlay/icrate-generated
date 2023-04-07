@@ -17,9 +17,9 @@ ns_enum!(
     }
 );
 
-#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub enum UNShowPreviewsSetting {
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         UNShowPreviewsSettingAlways = 0,
@@ -39,9 +39,9 @@ ns_enum!(
     }
 );
 
-#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub enum UNAlertStyle {
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         UNAlertStyleNone = 0,

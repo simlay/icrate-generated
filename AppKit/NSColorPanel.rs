@@ -175,31 +175,22 @@ extern_protocol!(
 
 extern_static!(NSColorPanelColorDidChangeNotification: &'static NSNotificationName);
 
-#[deprecated]
 extern_static!(NSNoModeColorPanel: NSColorPanelMode = NSColorPanelModeNone);
 
-#[deprecated]
 extern_static!(NSGrayModeColorPanel: NSColorPanelMode = NSColorPanelModeGray);
 
-#[deprecated]
 extern_static!(NSRGBModeColorPanel: NSColorPanelMode = NSColorPanelModeRGB);
 
-#[deprecated]
 extern_static!(NSCMYKModeColorPanel: NSColorPanelMode = NSColorPanelModeCMYK);
 
-#[deprecated]
 extern_static!(NSHSBModeColorPanel: NSColorPanelMode = NSColorPanelModeHSB);
 
-#[deprecated]
 extern_static!(NSCustomPaletteModeColorPanel: NSColorPanelMode = NSColorPanelModeCustomPalette);
 
-#[deprecated]
 extern_static!(NSColorListModeColorPanel: NSColorPanelMode = NSColorPanelModeColorList);
 
-#[deprecated]
 extern_static!(NSWheelModeColorPanel: NSColorPanelMode = NSColorPanelModeWheel);
 
-#[deprecated]
 extern_static!(NSCrayonModeColorPanel: NSColorPanelMode = NSColorPanelModeCrayon);
 
 extern_methods!(

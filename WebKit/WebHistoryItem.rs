@@ -5,7 +5,6 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::WebKit::*;
 
-#[deprecated]
 extern_static!(WebHistoryItemChangedNotification: Option<&'static NSString>);
 
 extern_class!(

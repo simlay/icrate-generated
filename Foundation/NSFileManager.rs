@@ -55,9 +55,9 @@ ns_enum!(
     }
 );
 
-#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 ns_options!(
     #[underlying(NSUInteger)]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub enum NSFileManagerUnmountOptions {
         #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         NSFileManagerUnmountAllPartitionsAndEjectDisk = 1 << 0,

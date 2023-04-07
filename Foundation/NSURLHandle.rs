@@ -3,47 +3,36 @@
 use crate::common::*;
 use crate::Foundation::*;
 
-#[deprecated]
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSHTTPPropertyStatusCodeKey: Option<&'static NSString>);
 
-#[deprecated]
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSHTTPPropertyStatusReasonKey: Option<&'static NSString>);
 
-#[deprecated]
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSHTTPPropertyServerHTTPVersionKey: Option<&'static NSString>);
 
-#[deprecated]
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSHTTPPropertyRedirectionHeadersKey: Option<&'static NSString>);
 
-#[deprecated]
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSHTTPPropertyErrorPageDataKey: Option<&'static NSString>);
 
-#[deprecated]
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSHTTPPropertyHTTPProxy: Option<&'static NSString>);
 
-#[deprecated]
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSFTPPropertyUserLoginKey: Option<&'static NSString>);
 
-#[deprecated]
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSFTPPropertyUserPasswordKey: Option<&'static NSString>);
 
-#[deprecated]
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSFTPPropertyActiveTransferModeKey: Option<&'static NSString>);
 
-#[deprecated]
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSFTPPropertyFileOffsetKey: Option<&'static NSString>);
 
-#[deprecated]
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSFTPPropertyFTPProxy: Option<&'static NSString>);
 

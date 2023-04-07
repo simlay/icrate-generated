@@ -5,9 +5,9 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::GameKit::*;
 
-#[deprecated]
 ns_enum!(
     #[underlying(c_int)]
+    #[deprecated]
     pub enum GKSendDataMode {
         #[deprecated]
         GKSendDataReliable = 0,
@@ -16,9 +16,9 @@ ns_enum!(
     }
 );
 
-#[deprecated]
 ns_enum!(
     #[underlying(c_int)]
+    #[deprecated]
     pub enum GKSessionMode {
         #[deprecated]
         GKSessionModeServer = 0,
@@ -29,9 +29,9 @@ ns_enum!(
     }
 );
 
-#[deprecated]
 ns_enum!(
     #[underlying(c_int)]
+    #[deprecated]
     pub enum GKPeerConnectionState {
         #[deprecated]
         GKPeerStateAvailable = 0,
@@ -50,9 +50,9 @@ ns_enum!(
 
 extern_static!(GKVoiceChatServiceErrorDomain: Option<&'static NSString>);
 
-#[cfg(not(any(target_os = "macos")))]
 ns_enum!(
     #[underlying(c_int)]
+    #[cfg(not(any(target_os = "macos")))]
     pub enum GKVoiceChatServiceError {
         #[cfg(not(any(target_os = "macos")))]
         GKVoiceChatServiceInternalError = 32000,

@@ -7,122 +7,84 @@ typed_extensible_enum!(
     pub type NSLinguisticTagScheme = NSString;
 );
 
-#[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
 extern_static!(NSLinguisticTagSchemeTokenType: &'static NSLinguisticTagScheme);
 
-#[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
 extern_static!(NSLinguisticTagSchemeLexicalClass: &'static NSLinguisticTagScheme);
 
-#[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
 extern_static!(NSLinguisticTagSchemeNameType: &'static NSLinguisticTagScheme);
 
-#[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
 extern_static!(NSLinguisticTagSchemeNameTypeOrLexicalClass: &'static NSLinguisticTagScheme);
 
-#[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
 extern_static!(NSLinguisticTagSchemeLemma: &'static NSLinguisticTagScheme);
 
-#[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
 extern_static!(NSLinguisticTagSchemeLanguage: &'static NSLinguisticTagScheme);
 
-#[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
 extern_static!(NSLinguisticTagSchemeScript: &'static NSLinguisticTagScheme);
 
 typed_extensible_enum!(
     pub type NSLinguisticTag = NSString;
 );
 
-#[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
 extern_static!(NSLinguisticTagWord: &'static NSLinguisticTag);
 
-#[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
 extern_static!(NSLinguisticTagPunctuation: &'static NSLinguisticTag);
 
-#[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
 extern_static!(NSLinguisticTagWhitespace: &'static NSLinguisticTag);
 
-#[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
 extern_static!(NSLinguisticTagOther: &'static NSLinguisticTag);
 
-#[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
 extern_static!(NSLinguisticTagNoun: &'static NSLinguisticTag);
 
-#[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
 extern_static!(NSLinguisticTagVerb: &'static NSLinguisticTag);
 
-#[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
 extern_static!(NSLinguisticTagAdjective: &'static NSLinguisticTag);
 
-#[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
 extern_static!(NSLinguisticTagAdverb: &'static NSLinguisticTag);
 
-#[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
 extern_static!(NSLinguisticTagPronoun: &'static NSLinguisticTag);
 
-#[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
 extern_static!(NSLinguisticTagDeterminer: &'static NSLinguisticTag);
 
-#[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
 extern_static!(NSLinguisticTagParticle: &'static NSLinguisticTag);
 
-#[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
 extern_static!(NSLinguisticTagPreposition: &'static NSLinguisticTag);
 
-#[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
 extern_static!(NSLinguisticTagNumber: &'static NSLinguisticTag);
 
-#[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
 extern_static!(NSLinguisticTagConjunction: &'static NSLinguisticTag);
 
-#[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
 extern_static!(NSLinguisticTagInterjection: &'static NSLinguisticTag);
 
-#[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
 extern_static!(NSLinguisticTagClassifier: &'static NSLinguisticTag);
 
-#[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
 extern_static!(NSLinguisticTagIdiom: &'static NSLinguisticTag);
 
-#[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
 extern_static!(NSLinguisticTagOtherWord: &'static NSLinguisticTag);
 
-#[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
 extern_static!(NSLinguisticTagSentenceTerminator: &'static NSLinguisticTag);
 
-#[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
 extern_static!(NSLinguisticTagOpenQuote: &'static NSLinguisticTag);
 
-#[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
 extern_static!(NSLinguisticTagCloseQuote: &'static NSLinguisticTag);
 
-#[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
 extern_static!(NSLinguisticTagOpenParenthesis: &'static NSLinguisticTag);
 
-#[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
 extern_static!(NSLinguisticTagCloseParenthesis: &'static NSLinguisticTag);
 
-#[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
 extern_static!(NSLinguisticTagWordJoiner: &'static NSLinguisticTag);
 
-#[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
 extern_static!(NSLinguisticTagDash: &'static NSLinguisticTag);
 
-#[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
 extern_static!(NSLinguisticTagOtherPunctuation: &'static NSLinguisticTag);
 
-#[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
 extern_static!(NSLinguisticTagParagraphBreak: &'static NSLinguisticTag);
 
-#[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
 extern_static!(NSLinguisticTagOtherWhitespace: &'static NSLinguisticTag);
 
-#[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
 extern_static!(NSLinguisticTagPersonalName: &'static NSLinguisticTag);
 
-#[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
 extern_static!(NSLinguisticTagPlaceName: &'static NSLinguisticTag);
 
-#[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
 extern_static!(NSLinguisticTagOrganizationName: &'static NSLinguisticTag);
 
 ns_enum!(

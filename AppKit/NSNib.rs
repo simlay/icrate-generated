@@ -76,8 +76,6 @@ extern_methods!(
     }
 );
 
-#[deprecated]
 extern_static!(NSNibOwner: &'static NSString);
 
-#[deprecated]
 extern_static!(NSNibTopLevelObjects: &'static NSString);

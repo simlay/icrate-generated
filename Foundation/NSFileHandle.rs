@@ -151,7 +151,6 @@ extern_static!(NSFileHandleNotificationDataItem: &'static NSString);
 
 extern_static!(NSFileHandleNotificationFileHandleItem: &'static NSString);
 
-#[deprecated = "Not supported"]
 extern_static!(NSFileHandleNotificationMonitorModes: &'static NSString);
 
 extern_methods!(

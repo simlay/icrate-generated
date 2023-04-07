@@ -6,9 +6,9 @@ use crate::Foundation::*;
 use crate::HealthKit::*;
 use crate::UniformTypeIdentifiers::*;
 
-#[cfg(not(any(target_os = "ios")))]
 ns_enum!(
     #[underlying(NSInteger)]
+    #[cfg(not(any(target_os = "ios")))]
     pub enum HKWorkoutSessionState {
         #[cfg(not(any(target_os = "ios")))]
         HKWorkoutSessionStateNotStarted = 1,

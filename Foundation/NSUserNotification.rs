@@ -3,10 +3,10 @@
 use crate::common::*;
 use crate::Foundation::*;
 
-#[deprecated = "All NSUserNotifications API should be replaced with UserNotifications.frameworks API"]
-#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
+    #[deprecated = "All NSUserNotifications API should be replaced with UserNotifications.frameworks API"]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub enum NSUserNotificationActivationType {
         #[deprecated = "All NSUserNotifications API should be replaced with UserNotifications.frameworks API"]
         #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
@@ -291,7 +291,6 @@ extern_methods!(
     }
 );
 
-#[deprecated = "All NSUserNotifications API should be replaced with UserNotifications.frameworks API"]
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSUserNotificationDefaultSoundName: &'static NSString);
 

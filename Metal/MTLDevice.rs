@@ -53,9 +53,9 @@ extern_fn!(
     pub unsafe fn MTLRemoveDeviceObserver(observer: &NSObject);
 );
 
-#[deprecated = "Use MTLGPUFamily instead"]
 ns_enum!(
     #[underlying(NSUInteger)]
+    #[deprecated = "Use MTLGPUFamily instead"]
     pub enum MTLFeatureSet {
         #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         MTLFeatureSet_iOS_GPUFamily1_v1 = 0,
@@ -151,9 +151,9 @@ ns_enum!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
 ns_enum!(
     #[underlying(NSUInteger)]
+    #[cfg(not(any(target_os = "ios")))]
     pub enum MTLDeviceLocation {
         #[cfg(not(any(target_os = "ios")))]
         MTLDeviceLocationBuiltIn = 0,

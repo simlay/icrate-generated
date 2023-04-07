@@ -346,35 +346,24 @@ extern_static!(NSLocaleAlternateQuotationBeginDelimiterKey: &'static NSLocaleKey
 
 extern_static!(NSLocaleAlternateQuotationEndDelimiterKey: &'static NSLocaleKey);
 
-#[deprecated]
 extern_static!(NSGregorianCalendar: &'static NSString);
 
-#[deprecated]
 extern_static!(NSBuddhistCalendar: &'static NSString);
 
-#[deprecated]
 extern_static!(NSChineseCalendar: &'static NSString);
 
-#[deprecated]
 extern_static!(NSHebrewCalendar: &'static NSString);
 
-#[deprecated]
 extern_static!(NSIslamicCalendar: &'static NSString);
 
-#[deprecated]
 extern_static!(NSIslamicCivilCalendar: &'static NSString);
 
-#[deprecated]
 extern_static!(NSJapaneseCalendar: &'static NSString);
 
-#[deprecated]
 extern_static!(NSRepublicOfChinaCalendar: &'static NSString);
 
-#[deprecated]
 extern_static!(NSPersianCalendar: &'static NSString);
 
-#[deprecated]
 extern_static!(NSIndianCalendar: &'static NSString);
 
-#[deprecated]
 extern_static!(NSISO8601Calendar: &'static NSString);

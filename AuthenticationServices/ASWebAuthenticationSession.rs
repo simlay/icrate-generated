@@ -7,9 +7,9 @@ use crate::Foundation::*;
 #[cfg(not(any(target_os = "tvos")))]
 extern_static!(ASWebAuthenticationSessionErrorDomain: &'static NSErrorDomain);
 
-#[cfg(not(any(target_os = "tvos")))]
 ns_error_enum!(
     #[underlying(NSInteger)]
+    #[cfg(not(any(target_os = "tvos")))]
     pub enum ASWebAuthenticationSessionErrorCode {
         #[cfg(not(any(target_os = "tvos")))]
         ASWebAuthenticationSessionErrorCodeCanceledLogin = 1,

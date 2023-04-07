@@ -4,9 +4,9 @@ use crate::common::*;
 use crate::CallKit::*;
 use crate::Foundation::*;
 
-#[cfg(not(any(target_os = "macos")))]
 ns_enum!(
     #[underlying(NSInteger)]
+    #[cfg(not(any(target_os = "macos")))]
     pub enum CXPlayDTMFCallActionType {
         #[cfg(not(any(target_os = "macos")))]
         CXPlayDTMFCallActionTypeSingleTone = 1,

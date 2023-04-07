@@ -5,9 +5,9 @@ use crate::CoreLocation::*;
 use crate::Foundation::*;
 use crate::UserNotifications::*;
 
-#[cfg(not(any(target_os = "tvos")))]
 ns_options!(
     #[underlying(NSUInteger)]
+    #[cfg(not(any(target_os = "tvos")))]
     pub enum UNNotificationActionOptions {
         #[cfg(not(any(target_os = "tvos")))]
         UNNotificationActionOptionAuthenticationRequired = 1 << 0,

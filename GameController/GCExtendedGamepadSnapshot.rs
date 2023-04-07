@@ -50,9 +50,9 @@ extern_methods!(
     }
 );
 
-#[deprecated = "GCExtendedGamepadSnapshot has been deprecated, use [GCController controllerWithExtendedGamepad] instead"]
 ns_enum!(
     #[underlying(NSInteger)]
+    #[deprecated = "GCExtendedGamepadSnapshot has been deprecated, use [GCController controllerWithExtendedGamepad] instead"]
     pub enum GCExtendedGamepadSnapshotDataVersion {
         #[deprecated = "GCExtendedGamepadSnapshot has been deprecated, use [GCController controllerWithExtendedGamepad] instead"]
         GCExtendedGamepadSnapshotDataVersion1 = 0x0100,
@@ -61,7 +61,6 @@ ns_enum!(
     }
 );
 
-#[deprecated = "GCExtendedGamepadSnapshot has been deprecated, use [GCController controllerWithExtendedGamepad] instead"]
 extern_static!(GCCurrentExtendedGamepadSnapshotDataVersion: GCExtendedGamepadSnapshotDataVersion);
 
 extern_fn!(

@@ -4,9 +4,9 @@ use crate::common::*;
 use crate::AuthenticationServices::*;
 use crate::Foundation::*;
 
-#[cfg(not(any(target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
+    #[cfg(not(any(target_os = "watchos")))]
     pub enum ASAuthorizationAppleIDButtonType {
         #[cfg(not(any(target_os = "watchos")))]
         ASAuthorizationAppleIDButtonTypeSignIn = 0,
@@ -19,9 +19,9 @@ ns_enum!(
     }
 );
 
-#[cfg(not(any(target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
+    #[cfg(not(any(target_os = "watchos")))]
     pub enum ASAuthorizationAppleIDButtonStyle {
         #[cfg(not(any(target_os = "watchos")))]
         ASAuthorizationAppleIDButtonStyleWhite = 0,

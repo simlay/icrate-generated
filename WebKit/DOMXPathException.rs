@@ -5,12 +5,11 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::WebKit::*;
 
-#[deprecated]
 extern_static!(DOMXPathException: Option<&'static NSString>);
 
-#[deprecated]
 extern_enum!(
     #[underlying(c_uint)]
+    #[deprecated]
     pub enum DOMXPathExceptionCode {
         #[deprecated]
         DOM_INVALID_EXPRESSION_ERR = 51,

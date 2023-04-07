@@ -5,9 +5,9 @@ use crate::AppKit::*;
 use crate::CoreData::*;
 use crate::Foundation::*;
 
-#[deprecated]
 ns_enum!(
     #[underlying(NSInteger)]
+    #[deprecated]
     pub enum NSPopoverAppearance {
         #[deprecated]
         NSPopoverAppearanceMinimal = 0,

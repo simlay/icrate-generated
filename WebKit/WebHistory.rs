@@ -5,22 +5,16 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::WebKit::*;
 
-#[deprecated]
 extern_static!(WebHistoryItemsAddedNotification: Option<&'static NSString>);
 
-#[deprecated]
 extern_static!(WebHistoryItemsRemovedNotification: Option<&'static NSString>);
 
-#[deprecated]
 extern_static!(WebHistoryAllItemsRemovedNotification: Option<&'static NSString>);
 
-#[deprecated]
 extern_static!(WebHistoryLoadedNotification: Option<&'static NSString>);
 
-#[deprecated]
 extern_static!(WebHistorySavedNotification: Option<&'static NSString>);
 
-#[deprecated]
 extern_static!(WebHistoryItemsKey: Option<&'static NSString>);
 
 extern_class!(

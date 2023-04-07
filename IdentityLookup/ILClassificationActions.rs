@@ -4,9 +4,9 @@ use crate::common::*;
 use crate::Foundation::*;
 use crate::IdentityLookup::*;
 
-#[cfg(not(any(target_os = "macos")))]
 ns_enum!(
     #[underlying(NSInteger)]
+    #[cfg(not(any(target_os = "macos")))]
     pub enum ILClassificationAction {
         #[cfg(not(any(target_os = "macos")))]
         ILClassificationActionNone = 0,

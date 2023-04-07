@@ -5,19 +5,14 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::WebKit::*;
 
-#[deprecated]
 extern_static!(WebPlugInBaseURLKey: Option<&'static NSString>);
 
-#[deprecated]
 extern_static!(WebPlugInAttributesKey: Option<&'static NSString>);
 
-#[deprecated]
 extern_static!(WebPlugInContainerKey: Option<&'static NSString>);
 
-#[deprecated]
 extern_static!(WebPlugInContainingElementKey: Option<&'static NSString>);
 
-#[deprecated]
 extern_static!(WebPlugInShouldLoadMainResourceKey: Option<&'static NSString>);
 
 extern_protocol!(

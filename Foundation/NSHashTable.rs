@@ -5,7 +5,6 @@ use crate::Foundation::*;
 
 extern_static!(NSHashTableStrongMemory: NSPointerFunctionsOptions = NSPointerFunctionsStrongMemory);
 
-#[deprecated = "GC no longer supported"]
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(
     NSHashTableZeroingWeakMemory: NSPointerFunctionsOptions = NSPointerFunctionsZeroingWeakMemory
@@ -286,6 +285,5 @@ extern_static!(NSOwnedPointerHashCallBacks: NSHashTableCallBacks);
 
 extern_static!(NSPointerToStructHashCallBacks: NSHashTableCallBacks);
 
-#[deprecated = "Not supported"]
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSIntHashCallBacks: NSHashTableCallBacks);

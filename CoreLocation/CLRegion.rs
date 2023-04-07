@@ -5,9 +5,9 @@ use crate::Contacts::*;
 use crate::CoreLocation::*;
 use crate::Foundation::*;
 
-#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 ns_closed_enum!(
     #[underlying(NSInteger)]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub enum CLRegionState {
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         CLRegionStateUnknown = 0,
@@ -18,9 +18,9 @@ ns_closed_enum!(
     }
 );
 
-#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub enum CLProximity {
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         CLProximityUnknown = 0,

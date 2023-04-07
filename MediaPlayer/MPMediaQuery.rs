@@ -5,9 +5,9 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::MediaPlayer::*;
 
-#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub enum MPMediaGrouping {
         #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         MPMediaGroupingTitle = 0,
@@ -194,9 +194,9 @@ extern_methods!(
     unsafe impl MPMediaPredicate {}
 );
 
-#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub enum MPMediaPredicateComparison {
         #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         MPMediaPredicateComparisonEqualTo = 0,

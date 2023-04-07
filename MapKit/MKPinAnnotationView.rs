@@ -7,10 +7,10 @@ use crate::CoreLocation::*;
 use crate::Foundation::*;
 use crate::MapKit::*;
 
-#[deprecated = "Use MKPinAnnotationView's pinTintColor instead"]
-#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSUInteger)]
+    #[deprecated = "Use MKPinAnnotationView's pinTintColor instead"]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub enum MKPinAnnotationColor {
         #[deprecated = "Use MKPinAnnotationView's pinTintColor instead"]
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]

@@ -227,10 +227,8 @@ extern_methods!(
     }
 );
 
-#[deprecated = "Use NSXPCConnection instead"]
 extern_static!(NSConnectionReplyMode: &'static NSString);
 
-#[deprecated = "Use NSXPCConnection instead"]
 extern_static!(NSConnectionDidDieNotification: &'static NSString);
 
 extern_protocol!(
@@ -289,10 +287,8 @@ extern_protocol!(
     unsafe impl ProtocolType for dyn NSConnectionDelegate {}
 );
 
-#[deprecated = "Use NSXPCConnection instead"]
 extern_static!(NSFailedAuthenticationException: &'static NSString);
 
-#[deprecated = "Use NSXPCConnection instead"]
 extern_static!(NSConnectionDidInitializeNotification: &'static NSString);
 
 extern_class!(

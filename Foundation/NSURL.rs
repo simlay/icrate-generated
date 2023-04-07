@@ -52,7 +52,6 @@ extern_static!(NSURLParentDirectoryURLKey: &'static NSURLResourceKey);
 
 extern_static!(NSURLVolumeURLKey: &'static NSURLResourceKey);
 
-#[deprecated = "Use NSURLContentTypeKey instead"]
 extern_static!(NSURLTypeIdentifierKey: &'static NSURLResourceKey);
 
 extern_static!(NSURLContentTypeKey: &'static NSURLResourceKey);
@@ -135,10 +134,8 @@ extern_static!(NSURLFileResourceTypeSocket: &'static NSURLFileResourceType);
 
 extern_static!(NSURLFileResourceTypeUnknown: &'static NSURLFileResourceType);
 
-#[deprecated = "Use the QuickLookThumbnailing framework and extension point instead"]
 extern_static!(NSURLThumbnailDictionaryKey: &'static NSURLResourceKey);
 
-#[deprecated = "Use the QuickLookThumbnailing framework and extension point instead"]
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_static!(NSURLThumbnailKey: &'static NSURLResourceKey);
 
@@ -146,7 +143,6 @@ typed_extensible_enum!(
     pub type NSURLThumbnailDictionaryItem = NSString;
 );
 
-#[deprecated = "Use the QuickLookThumbnailing framework and extension point instead"]
 extern_static!(NSThumbnail1024x1024SizeKey: &'static NSURLThumbnailDictionaryItem);
 
 extern_static!(NSURLFileSizeKey: &'static NSURLResourceKey);
@@ -265,7 +261,6 @@ extern_static!(NSURLIsUbiquitousItemKey: &'static NSURLResourceKey);
 
 extern_static!(NSURLUbiquitousItemHasUnresolvedConflictsKey: &'static NSURLResourceKey);
 
-#[deprecated = "Use NSURLUbiquitousItemDownloadingStatusKey instead"]
 extern_static!(NSURLUbiquitousItemIsDownloadedKey: &'static NSURLResourceKey);
 
 extern_static!(NSURLUbiquitousItemIsDownloadingKey: &'static NSURLResourceKey);
@@ -274,10 +269,8 @@ extern_static!(NSURLUbiquitousItemIsUploadedKey: &'static NSURLResourceKey);
 
 extern_static!(NSURLUbiquitousItemIsUploadingKey: &'static NSURLResourceKey);
 
-#[deprecated = "Use NSMetadataUbiquitousItemPercentDownloadedKey instead"]
 extern_static!(NSURLUbiquitousItemPercentDownloadedKey: &'static NSURLResourceKey);
 
-#[deprecated = "Use NSMetadataUbiquitousItemPercentUploadedKey instead"]
 extern_static!(NSURLUbiquitousItemPercentUploadedKey: &'static NSURLResourceKey);
 
 extern_static!(NSURLUbiquitousItemDownloadingStatusKey: &'static NSURLResourceKey);

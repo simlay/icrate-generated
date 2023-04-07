@@ -7,9 +7,9 @@ use crate::GameKit::*;
 
 extern_static!(GKSessionErrorDomain: &'static NSString);
 
-#[cfg(not(any(target_os = "macos")))]
 ns_enum!(
     #[underlying(c_int)]
+    #[cfg(not(any(target_os = "macos")))]
     pub enum GKSessionError {
         #[cfg(not(any(target_os = "macos")))]
         GKSessionInvalidParameterError = 30500,

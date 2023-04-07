@@ -354,7 +354,6 @@ extern_enum!(
     }
 );
 
-#[deprecated]
 extern_static!(NSFontColorAttribute: &'static NSString);
 
 extern_methods!(

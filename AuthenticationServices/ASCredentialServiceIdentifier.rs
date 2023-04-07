@@ -4,9 +4,9 @@ use crate::common::*;
 use crate::AuthenticationServices::*;
 use crate::Foundation::*;
 
-#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub enum ASCredentialServiceIdentifierType {
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         ASCredentialServiceIdentifierTypeDomain = 0,

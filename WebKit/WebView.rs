@@ -5,46 +5,32 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::WebKit::*;
 
-#[deprecated]
 extern_static!(WebElementDOMNodeKey: Option<&'static NSString>);
 
-#[deprecated]
 extern_static!(WebElementFrameKey: Option<&'static NSString>);
 
-#[deprecated]
 extern_static!(WebElementImageAltStringKey: Option<&'static NSString>);
 
-#[deprecated]
 extern_static!(WebElementImageKey: Option<&'static NSString>);
 
-#[deprecated]
 extern_static!(WebElementImageRectKey: Option<&'static NSString>);
 
-#[deprecated]
 extern_static!(WebElementImageURLKey: Option<&'static NSString>);
 
-#[deprecated]
 extern_static!(WebElementIsSelectedKey: Option<&'static NSString>);
 
-#[deprecated]
 extern_static!(WebElementLinkURLKey: Option<&'static NSString>);
 
-#[deprecated]
 extern_static!(WebElementLinkTargetFrameKey: Option<&'static NSString>);
 
-#[deprecated]
 extern_static!(WebElementLinkTitleKey: Option<&'static NSString>);
 
-#[deprecated]
 extern_static!(WebElementLinkLabelKey: Option<&'static NSString>);
 
-#[deprecated]
 extern_static!(WebViewProgressStartedNotification: Option<&'static NSString>);
 
-#[deprecated]
 extern_static!(WebViewProgressEstimateChangedNotification: Option<&'static NSString>);
 
-#[deprecated]
 extern_static!(WebViewProgressFinishedNotification: Option<&'static NSString>);
 
 extern_class!(

@@ -5,9 +5,9 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::MediaPlayer::*;
 
-#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub enum MPMediaLibraryAuthorizationStatus {
         #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         MPMediaLibraryAuthorizationStatusNotDetermined = 0,

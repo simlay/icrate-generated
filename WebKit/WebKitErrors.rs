@@ -5,21 +5,17 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::WebKit::*;
 
-#[deprecated]
 extern_static!(WebKitErrorDomain: Option<&'static NSString>);
 
-#[deprecated]
 extern_static!(WebKitErrorMIMETypeKey: Option<&'static NSString>);
 
-#[deprecated]
 extern_static!(WebKitErrorPlugInNameKey: Option<&'static NSString>);
 
-#[deprecated]
 extern_static!(WebKitErrorPlugInPageURLStringKey: Option<&'static NSString>);
 
-#[deprecated]
 extern_enum!(
     #[underlying(c_uint)]
+    #[deprecated]
     pub enum __anonymous__ {
         #[deprecated]
         WebKitErrorCannotShowMIMEType = 100,
@@ -30,9 +26,9 @@ extern_enum!(
     }
 );
 
-#[deprecated]
 extern_enum!(
     #[underlying(c_uint)]
+    #[deprecated]
     pub enum __anonymous__ {
         #[deprecated]
         WebKitErrorCannotFindPlugIn = 200,

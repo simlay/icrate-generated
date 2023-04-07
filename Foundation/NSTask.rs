@@ -3,9 +3,9 @@
 use crate::common::*;
 use crate::Foundation::*;
 
-#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub enum NSTaskTerminationReason {
         #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         NSTaskTerminationReasonExit = 1,

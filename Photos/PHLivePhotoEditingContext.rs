@@ -106,13 +106,12 @@ extern_protocol!(
 
 extern_static!(PHLivePhotoShouldRenderAtPlaybackTime: &'static PHLivePhotoEditingOption);
 
-#[deprecated]
 #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 extern_static!(PHLivePhotoEditingErrorDomain: &'static NSString);
 
-#[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 ns_enum!(
     #[underlying(NSInteger)]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     pub enum PHLivePhotoEditingErrorCode {
         #[deprecated]
         PHLivePhotoEditingErrorCodeUnknown = 0,

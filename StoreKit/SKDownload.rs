@@ -5,9 +5,9 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::StoreKit::*;
 
-#[deprecated = "Hosted content is no longer supported"]
 ns_closed_enum!(
     #[underlying(NSInteger)]
+    #[deprecated = "Hosted content is no longer supported"]
     pub enum SKDownloadState {
         #[deprecated = "Hosted content is no longer supported"]
         SKDownloadStateWaiting = 0,
@@ -24,7 +24,6 @@ ns_closed_enum!(
     }
 );
 
-#[deprecated = "Hosted content is no longer supported"]
 extern_static!(SKDownloadTimeRemainingUnknown: NSTimeInterval);
 
 extern_class!(

@@ -284,7 +284,6 @@ extern_static!(
     HKCategoryTypeIdentifierIrregularHeartRhythmEvent: &'static HKCategoryTypeIdentifier
 );
 
-#[deprecated]
 extern_static!(HKCategoryTypeIdentifierAudioExposureEvent: &'static HKCategoryTypeIdentifier);
 
 extern_static!(HKCategoryTypeIdentifierToothbrushingEvent: &'static HKCategoryTypeIdentifier);

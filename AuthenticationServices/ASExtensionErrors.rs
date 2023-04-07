@@ -7,9 +7,9 @@ use crate::Foundation::*;
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_static!(ASExtensionErrorDomain: Option<&'static NSErrorDomain>);
 
-#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 ns_error_enum!(
     #[underlying(NSInteger)]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub enum ASExtensionErrorCode {
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         ASExtensionErrorCodeFailed = 0,

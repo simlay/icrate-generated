@@ -50,16 +50,15 @@ extern_methods!(
     }
 );
 
-#[deprecated = "GCMicroGamepadSnapshot has been deprecated, use [GCController controllerWithMicroGamepad] instead"]
 ns_enum!(
     #[underlying(NSInteger)]
+    #[deprecated = "GCMicroGamepadSnapshot has been deprecated, use [GCController controllerWithMicroGamepad] instead"]
     pub enum GCMicroGamepadSnapshotDataVersion {
         #[deprecated = "GCMicroGamepadSnapshot has been deprecated, use [GCController controllerWithMicroGamepad] instead"]
         GCMicroGamepadSnapshotDataVersion1 = 0x0100,
     }
 );
 
-#[deprecated = "GCMicroGamepadSnapshot has been deprecated, use [GCController controllerWithMicroGamepad] instead"]
 extern_static!(GCCurrentMicroGamepadSnapshotDataVersion: GCMicroGamepadSnapshotDataVersion);
 
 extern_struct!(

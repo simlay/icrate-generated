@@ -5,9 +5,9 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::MediaPlayer::*;
 
-#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 ns_options!(
     #[underlying(NSUInteger)]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub enum MPMediaPlaylistAttribute {
         #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         MPMediaPlaylistAttributeNone = 0,

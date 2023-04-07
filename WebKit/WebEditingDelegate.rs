@@ -5,9 +5,9 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::WebKit::*;
 
-#[deprecated]
 ns_enum!(
     #[underlying(NSInteger)]
+    #[deprecated]
     pub enum WebViewInsertAction {
         #[deprecated]
         WebViewInsertActionTyped = 0,

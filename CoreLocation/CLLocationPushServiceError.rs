@@ -8,9 +8,9 @@ use crate::Foundation::*;
 #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_static!(CLLocationPushServiceErrorDomain: Option<&'static NSErrorDomain>);
 
-#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 ns_error_enum!(
     #[underlying(NSInteger)]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub enum CLLocationPushServiceError {
         #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         CLLocationPushServiceErrorUnknown = 0,

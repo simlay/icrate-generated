@@ -5,12 +5,11 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::WebKit::*;
 
-#[deprecated]
 extern_static!(DOMException: Option<&'static NSString>);
 
-#[deprecated]
 extern_enum!(
     #[underlying(c_uint)]
+    #[deprecated]
     pub enum DOMExceptionCode {
         #[deprecated]
         DOM_INDEX_SIZE_ERR = 1,

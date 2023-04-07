@@ -229,8 +229,6 @@ extern_static!(NSToolbarCloudSharingItemIdentifier: &'static NSToolbarItemIdenti
 
 extern_static!(NSToolbarSidebarTrackingSeparatorItemIdentifier: &'static NSToolbarItemIdentifier);
 
-#[deprecated = "This item is no longer recommended and will be ignored on 10.7 and later."]
 extern_static!(NSToolbarSeparatorItemIdentifier: &'static NSToolbarItemIdentifier);
 
-#[deprecated = "This item is no longer recommended and will be ignored on 10.7 and later."]
 extern_static!(NSToolbarCustomizeToolbarItemIdentifier: &'static NSToolbarItemIdentifier);

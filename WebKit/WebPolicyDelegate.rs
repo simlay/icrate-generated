@@ -5,9 +5,9 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::WebKit::*;
 
-#[deprecated]
 ns_enum!(
     #[underlying(NSInteger)]
+    #[deprecated]
     pub enum WebNavigationType {
         #[deprecated]
         WebNavigationTypeLinkClicked = 0,
@@ -24,19 +24,14 @@ ns_enum!(
     }
 );
 
-#[deprecated]
 extern_static!(WebActionNavigationTypeKey: Option<&'static NSString>);
 
-#[deprecated]
 extern_static!(WebActionElementKey: Option<&'static NSString>);
 
-#[deprecated]
 extern_static!(WebActionButtonKey: Option<&'static NSString>);
 
-#[deprecated]
 extern_static!(WebActionModifierFlagsKey: Option<&'static NSString>);
 
-#[deprecated]
 extern_static!(WebActionOriginalURLKey: Option<&'static NSString>);
 
 extern_protocol!(

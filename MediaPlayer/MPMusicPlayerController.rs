@@ -5,9 +5,9 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::MediaPlayer::*;
 
-#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     pub enum MPMusicPlaybackState {
         #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         MPMusicPlaybackStateStopped = 0,
@@ -24,9 +24,9 @@ ns_enum!(
     }
 );
 
-#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     pub enum MPMusicRepeatMode {
         #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         MPMusicRepeatModeDefault = 0,
@@ -39,9 +39,9 @@ ns_enum!(
     }
 );
 
-#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     pub enum MPMusicShuffleMode {
         #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         MPMusicShuffleModeDefault = 0,

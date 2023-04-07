@@ -5,9 +5,9 @@ use crate::CloudKit::*;
 use crate::CoreLocation::*;
 use crate::Foundation::*;
 
-#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 ns_options!(
     #[underlying(NSUInteger)]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub enum CKSharingParticipantAccessOption {
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         CKSharingParticipantAccessOptionAnyoneWithLink = 1 << 0,
@@ -19,9 +19,9 @@ ns_options!(
     }
 );
 
-#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 ns_options!(
     #[underlying(NSUInteger)]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub enum CKSharingParticipantPermissionOption {
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         CKSharingParticipantPermissionOptionReadOnly = 1 << 0,

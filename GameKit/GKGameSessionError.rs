@@ -5,14 +5,13 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::GameKit::*;
 
-#[deprecated = "GKGameSession is deprecated, use real-time and turn-based matchmaking APIs instead."]
 #[cfg(not(any(target_os = "watchos")))]
 extern_static!(GKGameSessionErrorDomain: &'static NSString);
 
-#[deprecated = "GKGameSession is deprecated, use real-time and turn-based matchmaking APIs instead."]
-#[cfg(not(any(target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
+    #[deprecated = "GKGameSession is deprecated, use real-time and turn-based matchmaking APIs instead."]
+    #[cfg(not(any(target_os = "watchos")))]
     pub enum GKGameSessionErrorCode {
         #[deprecated = "GKGameSession is deprecated, use real-time and turn-based matchmaking APIs instead."]
         #[cfg(not(any(target_os = "watchos")))]

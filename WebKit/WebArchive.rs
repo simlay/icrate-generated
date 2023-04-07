@@ -5,7 +5,6 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::WebKit::*;
 
-#[deprecated]
 extern_static!(WebArchivePboardType: Option<&'static NSString>);
 
 extern_class!(

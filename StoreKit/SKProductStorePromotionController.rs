@@ -5,9 +5,9 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::StoreKit::*;
 
-#[cfg(not(any(target_os = "watchos")))]
 ns_closed_enum!(
     #[underlying(NSInteger)]
+    #[cfg(not(any(target_os = "watchos")))]
     pub enum SKProductStorePromotionVisibility {
         #[cfg(not(any(target_os = "watchos")))]
         SKProductStorePromotionVisibilityDefault = 0,

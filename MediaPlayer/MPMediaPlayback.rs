@@ -49,5 +49,4 @@ extern_protocol!(
     unsafe impl ProtocolType for dyn MPMediaPlayback {}
 );
 
-#[deprecated = "Use AVPlayerViewController in AVKit."]
 extern_static!(MPMediaPlaybackIsPreparedToPlayDidChangeNotification: Option<&'static NSString>);

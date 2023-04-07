@@ -4,9 +4,9 @@ use crate::common::*;
 use crate::Foundation::*;
 use crate::LocalAuthentication::*;
 
-#[cfg(not(any(target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
+    #[cfg(not(any(target_os = "watchos")))]
     pub enum LARightState {
         #[cfg(not(any(target_os = "watchos")))]
         LARightStateUnknown = 0,

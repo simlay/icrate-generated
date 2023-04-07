@@ -44,5 +44,4 @@ extern_methods!(
     }
 );
 
-#[deprecated]
 extern_static!(NSInterfaceStyleDefault: Option<&'static NSString>);

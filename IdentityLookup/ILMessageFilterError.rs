@@ -7,9 +7,9 @@ use crate::IdentityLookup::*;
 #[cfg(not(any(target_os = "macos")))]
 extern_static!(ILMessageFilterErrorDomain: &'static NSErrorDomain);
 
-#[cfg(not(any(target_os = "macos")))]
 ns_error_enum!(
     #[underlying(NSInteger)]
+    #[cfg(not(any(target_os = "macos")))]
     pub enum ILMessageFilterError {
         #[cfg(not(any(target_os = "macos")))]
         ILMessageFilterErrorSystem = 1,

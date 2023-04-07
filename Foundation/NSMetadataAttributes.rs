@@ -25,7 +25,6 @@ extern_static!(NSMetadataItemIsUbiquitousKey: &'static NSString);
 
 extern_static!(NSMetadataUbiquitousItemHasUnresolvedConflictsKey: &'static NSString);
 
-#[deprecated = "Use NSMetadataUbiquitousItemDownloadingStatusKey instead"]
 extern_static!(NSMetadataUbiquitousItemIsDownloadedKey: &'static NSString);
 
 extern_static!(NSMetadataUbiquitousItemDownloadingStatusKey: &'static NSString);

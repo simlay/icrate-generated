@@ -61,9 +61,9 @@ extern_protocol!(
     unsafe impl ProtocolType for dyn ASAuthorizationControllerPresentationContextProviding {}
 );
 
-#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 ns_options!(
     #[underlying(NSUInteger)]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub enum ASAuthorizationControllerRequestOptions {
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         ASAuthorizationControllerRequestOptionPreferImmediatelyAvailableCredentials = 1 << 0,

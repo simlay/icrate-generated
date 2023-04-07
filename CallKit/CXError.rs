@@ -19,9 +19,9 @@ extern_static!(CXErrorDomainCallDirectoryManager: &'static NSErrorDomain);
 #[cfg(not(any(target_os = "macos")))]
 extern_static!(CXErrorDomainNotificationServiceExtension: &'static NSErrorDomain);
 
-#[cfg(not(any(target_os = "macos")))]
 ns_error_enum!(
     #[underlying(NSInteger)]
+    #[cfg(not(any(target_os = "macos")))]
     pub enum CXErrorCode {
         #[cfg(not(any(target_os = "macos")))]
         CXErrorCodeUnknownError = 0,
@@ -34,9 +34,9 @@ ns_error_enum!(
     }
 );
 
-#[cfg(not(any(target_os = "macos")))]
 ns_error_enum!(
     #[underlying(NSInteger)]
+    #[cfg(not(any(target_os = "macos")))]
     pub enum CXErrorCodeIncomingCallError {
         #[cfg(not(any(target_os = "macos")))]
         CXErrorCodeIncomingCallErrorUnknown = 0,
@@ -51,9 +51,9 @@ ns_error_enum!(
     }
 );
 
-#[cfg(not(any(target_os = "macos")))]
 ns_error_enum!(
     #[underlying(NSInteger)]
+    #[cfg(not(any(target_os = "macos")))]
     pub enum CXErrorCodeRequestTransactionError {
         #[cfg(not(any(target_os = "macos")))]
         CXErrorCodeRequestTransactionErrorUnknown = 0,
@@ -74,9 +74,9 @@ ns_error_enum!(
     }
 );
 
-#[cfg(not(any(target_os = "macos")))]
 ns_error_enum!(
     #[underlying(NSInteger)]
+    #[cfg(not(any(target_os = "macos")))]
     pub enum CXErrorCodeCallDirectoryManagerError {
         #[cfg(not(any(target_os = "macos")))]
         CXErrorCodeCallDirectoryManagerErrorUnknown = 0,
@@ -97,9 +97,9 @@ ns_error_enum!(
     }
 );
 
-#[cfg(not(any(target_os = "macos")))]
 ns_error_enum!(
     #[underlying(NSInteger)]
+    #[cfg(not(any(target_os = "macos")))]
     pub enum CXErrorCodeNotificationServiceExtensionError {
         #[cfg(not(any(target_os = "macos")))]
         CXErrorCodeNotificationServiceExtensionErrorUnknown = 0,

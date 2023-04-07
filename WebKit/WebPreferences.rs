@@ -5,9 +5,9 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::WebKit::*;
 
-#[deprecated]
 ns_enum!(
     #[underlying(NSUInteger)]
+    #[deprecated]
     pub enum WebCacheModel {
         #[deprecated]
         WebCacheModelDocumentViewer = 0,
@@ -18,7 +18,6 @@ ns_enum!(
     }
 );
 
-#[deprecated]
 extern_static!(WebPreferencesChangedNotification: Option<&'static NSString>);
 
 extern_class!(
