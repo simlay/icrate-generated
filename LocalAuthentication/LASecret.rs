@@ -21,11 +21,10 @@ extern_class!(
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for LASecret {}
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "LocalAuthentication_LASecret")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl LASecret {
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSData", feature = "Foundation_NSError"))]
         #[method(loadDataWithCompletion:)]
         pub unsafe fn loadDataWithCompletion(
@@ -33,11 +32,9 @@ extern_methods!(
             handler: &Block<(*mut NSData, *mut NSError), ()>,
         );
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
     }

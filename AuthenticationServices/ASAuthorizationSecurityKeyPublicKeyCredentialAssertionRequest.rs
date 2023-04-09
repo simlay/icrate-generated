@@ -49,13 +49,12 @@ unsafe impl NSObjectProtocol for ASAuthorizationSecurityKeyPublicKeyCredentialAs
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSSecureCoding for ASAuthorizationSecurityKeyPublicKeyCredentialAssertionRequest {}
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(
         feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialAssertionRequest"
     )]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAuthorizationSecurityKeyPublicKeyCredentialAssertionRequest {
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor",
             feature = "Foundation_NSArray"
@@ -65,7 +64,6 @@ extern_methods!(
             &self,
         ) -> Id<NSArray<ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor>>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor",
             feature = "Foundation_NSArray"

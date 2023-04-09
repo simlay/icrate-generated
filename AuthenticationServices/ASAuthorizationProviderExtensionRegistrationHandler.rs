@@ -4,9 +4,9 @@ use crate::common::*;
 use crate::AuthenticationServices::*;
 use crate::Foundation::*;
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub enum ASAuthorizationProviderExtensionAuthenticationMethod {
         #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         ASAuthorizationProviderExtensionAuthenticationMethodPassword = 1,
@@ -24,9 +24,9 @@ ns_options!(
     }
 );
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub enum ASAuthorizationProviderExtensionRegistrationResult {
         #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         ASAuthorizationProviderExtensionRegistrationResultSuccess = 0,
@@ -39,8 +39,8 @@ ns_enum!(
     }
 );
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_protocol!(
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub unsafe trait ASAuthorizationProviderExtensionRegistrationHandler:
         NSObjectProtocol
     {
@@ -72,6 +72,5 @@ extern_protocol!(
         unsafe fn registrationDidComplete(&self);
     }
 
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl ProtocolType for dyn ASAuthorizationProviderExtensionRegistrationHandler {}
 );

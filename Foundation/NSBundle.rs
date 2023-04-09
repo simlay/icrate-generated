@@ -388,11 +388,10 @@ unsafe impl NSObjectProtocol for NSBundleResourceRequest {}
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSProgressReporting for NSBundleResourceRequest {}
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "Foundation_NSBundleResourceRequest")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl NSBundleResourceRequest {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(not(any(
             target_os = "ios",
             target_os = "macos",
@@ -402,7 +401,6 @@ extern_methods!(
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(feature = "Foundation_NSSet", feature = "Foundation_NSString"))]
         #[method_id(@__retain_semantics Init initWithTags:)]
         pub unsafe fn initWithTags(
@@ -410,7 +408,6 @@ extern_methods!(
             tags: &NSSet<NSString>,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSBundle",
             feature = "Foundation_NSSet",
@@ -423,25 +420,20 @@ extern_methods!(
             bundle: &NSBundle,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[method(loadingPriority)]
         pub unsafe fn loadingPriority(&self) -> c_double;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[method(setLoadingPriority:)]
         pub unsafe fn setLoadingPriority(&self, loading_priority: c_double);
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(feature = "Foundation_NSSet", feature = "Foundation_NSString"))]
         #[method_id(@__retain_semantics Other tags)]
         pub unsafe fn tags(&self) -> Id<NSSet<NSString>>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSBundle")]
         #[method_id(@__retain_semantics Other bundle)]
         pub unsafe fn bundle(&self) -> Id<NSBundle>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSError")]
         #[method(beginAccessingResourcesWithCompletionHandler:)]
         pub unsafe fn beginAccessingResourcesWithCompletionHandler(
@@ -449,18 +441,15 @@ extern_methods!(
             completion_handler: &Block<(*mut NSError,), ()>,
         );
 
-        #[cfg(not(any(target_os = "macos")))]
         #[method(conditionallyBeginAccessingResourcesWithCompletionHandler:)]
         pub unsafe fn conditionallyBeginAccessingResourcesWithCompletionHandler(
             &self,
             completion_handler: &Block<(Bool,), ()>,
         );
 
-        #[cfg(not(any(target_os = "macos")))]
         #[method(endAccessingResources)]
         pub unsafe fn endAccessingResources(&self);
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSProgress")]
         #[method_id(@__retain_semantics Other progress)]
         pub unsafe fn progress(&self) -> Id<NSProgress>;

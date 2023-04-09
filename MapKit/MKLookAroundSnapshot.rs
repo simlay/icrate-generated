@@ -24,11 +24,10 @@ extern_class!(
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKLookAroundSnapshot {}
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKLookAroundSnapshot")]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl MKLookAroundSnapshot {
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "AppKit_NSImage")]
         #[method_id(@__retain_semantics Other image)]
         pub unsafe fn image(&self) -> Id<NSImage>;

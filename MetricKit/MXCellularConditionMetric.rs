@@ -30,11 +30,10 @@ unsafe impl NSObjectProtocol for MXCellularConditionMetric {}
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for MXCellularConditionMetric {}
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "MetricKit_MXCellularConditionMetric")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXCellularConditionMetric {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "MetricKit_MXHistogram",
             feature = "MetricKit_MXUnitSignalBars"

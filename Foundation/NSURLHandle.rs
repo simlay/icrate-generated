@@ -46,9 +46,8 @@ ns_enum!(
     }
 );
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_protocol!(
-    #[deprecated]
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub unsafe trait NSURLHandleClient {
         #[cfg(all(feature = "Foundation_NSData", feature = "Foundation_NSURLHandle"))]
         #[deprecated]
@@ -89,7 +88,6 @@ extern_protocol!(
         );
     }
 
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl ProtocolType for dyn NSURLHandleClient {}
 );
 

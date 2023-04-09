@@ -44,15 +44,13 @@ unsafe impl NSObjectProtocol for ASAuthorizationPlatformPublicKeyCredentialAsser
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSSecureCoding for ASAuthorizationPlatformPublicKeyCredentialAssertion {}
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASAuthorizationPlatformPublicKeyCredentialAssertion")]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAuthorizationPlatformPublicKeyCredentialAssertion {
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
     }

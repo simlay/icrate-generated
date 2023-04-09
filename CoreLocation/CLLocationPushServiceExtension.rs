@@ -5,8 +5,8 @@ use crate::Contacts::*;
 use crate::CoreLocation::*;
 use crate::Foundation::*;
 
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_protocol!(
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub unsafe trait CLLocationPushServiceExtension: NSObjectProtocol {
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
         #[method(didReceiveLocationPushPayload:completion:)]
@@ -21,6 +21,5 @@ extern_protocol!(
         unsafe fn serviceExtensionWillTerminate(&self);
     }
 
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl ProtocolType for dyn CLLocationPushServiceExtension {}
 );

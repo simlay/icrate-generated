@@ -22,36 +22,31 @@ extern_class!(
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for LAPersistedRight {}
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "LocalAuthentication_LAPersistedRight")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl LAPersistedRight {
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "LocalAuthentication_LAPrivateKey")]
         #[method_id(@__retain_semantics Other key)]
         pub unsafe fn key(&self) -> Id<LAPrivateKey>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "LocalAuthentication_LASecret")]
         #[method_id(@__retain_semantics Other secret)]
         pub unsafe fn secret(&self) -> Id<LASecret>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `LARight`
     #[cfg(feature = "LocalAuthentication_LAPersistedRight")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl LAPersistedRight {
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "LocalAuthentication_LAAuthenticationRequirement")]
         #[method_id(@__retain_semantics Init initWithRequirement:)]
         pub unsafe fn initWithRequirement(

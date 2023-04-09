@@ -29,8 +29,8 @@ unsafe impl NSObjectProtocol for ILClassificationRequest {}
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for ILClassificationRequest {}
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "IdentityLookup_ILClassificationRequest")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl ILClassificationRequest {}
 );

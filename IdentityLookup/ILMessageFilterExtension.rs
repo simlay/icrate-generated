@@ -21,8 +21,8 @@ extern_class!(
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSObjectProtocol for ILMessageFilterExtension {}
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "IdentityLookup_ILMessageFilterExtension")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl ILMessageFilterExtension {}
 );

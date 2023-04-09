@@ -4,9 +4,9 @@ use crate::common::*;
 use crate::CallKit::*;
 use crate::Foundation::*;
 
+#[cfg(not(any(target_os = "macos")))]
 ns_enum!(
     #[underlying(NSInteger)]
-    #[cfg(not(any(target_os = "macos")))]
     pub enum CXPlayDTMFCallActionType {
         #[cfg(not(any(target_os = "macos")))]
         CXPlayDTMFCallActionTypeSingleTone = 1,
@@ -43,11 +43,10 @@ unsafe impl NSObjectProtocol for CXPlayDTMFCallAction {}
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for CXPlayDTMFCallAction {}
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "CallKit_CXPlayDTMFCallAction")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXPlayDTMFCallAction {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(feature = "Foundation_NSString", feature = "Foundation_NSUUID"))]
         #[method_id(@__retain_semantics Init initWithCallUUID:digits:type:)]
         pub unsafe fn initWithCallUUID_digits_type(
@@ -57,7 +56,6 @@ extern_methods!(
             r#type: CXPlayDTMFCallActionType,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSCoder")]
         #[method_id(@__retain_semantics Init initWithCoder:)]
         pub unsafe fn initWithCoder(
@@ -65,7 +63,6 @@ extern_methods!(
             a_decoder: &NSCoder,
         ) -> Option<Id<Self>>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSUUID")]
         #[method_id(@__retain_semantics Init initWithCallUUID:)]
         pub unsafe fn initWithCallUUID(
@@ -73,21 +70,17 @@ extern_methods!(
             call_uuid: &NSUUID,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other digits)]
         pub unsafe fn digits(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setDigits:)]
         pub unsafe fn setDigits(&self, digits: &NSString);
 
-        #[cfg(not(any(target_os = "macos")))]
         #[method(type)]
         pub unsafe fn r#type(&self) -> CXPlayDTMFCallActionType;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[method(setType:)]
         pub unsafe fn setType(&self, r#type: CXPlayDTMFCallActionType);
     }

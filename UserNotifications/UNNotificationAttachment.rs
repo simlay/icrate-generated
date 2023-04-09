@@ -30,26 +30,22 @@ unsafe impl NSObjectProtocol for UNNotificationAttachment {}
 #[cfg(not(any(target_os = "tvos")))]
 unsafe impl NSSecureCoding for UNNotificationAttachment {}
 
+#[cfg(not(any(target_os = "tvos")))]
 extern_methods!(
     #[cfg(feature = "UserNotifications_UNNotificationAttachment")]
-    #[cfg(not(any(target_os = "tvos")))]
     unsafe impl UNNotificationAttachment {
-        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(feature = "Foundation_NSURL")]
         #[method_id(@__retain_semantics Other URL)]
         pub unsafe fn URL(&self) -> Id<NSURL>;
 
-        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other type)]
         pub unsafe fn r#type(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(all(
             feature = "Foundation_NSDictionary",
             feature = "Foundation_NSError",
@@ -63,7 +59,6 @@ extern_methods!(
             options: Option<&NSDictionary>,
         ) -> Result<Id<Self>, Id<NSError>>;
 
-        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
     }

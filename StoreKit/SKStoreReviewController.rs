@@ -22,11 +22,10 @@ extern_class!(
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for SKStoreReviewController {}
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "StoreKit_SKStoreReviewController")]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl SKStoreReviewController {
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[deprecated]
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(requestReview)]

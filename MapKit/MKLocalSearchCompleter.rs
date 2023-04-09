@@ -7,10 +7,9 @@ use crate::CoreLocation::*;
 use crate::Foundation::*;
 use crate::MapKit::*;
 
+#[cfg(not(any(target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
-    #[deprecated = "Use MKLocalSearchCompleterResultType"]
-    #[cfg(not(any(target_os = "watchos")))]
     pub enum MKSearchCompletionFilterType {
         #[deprecated = "Use MKLocalSearchCompleterResultType"]
         #[cfg(not(any(target_os = "watchos")))]
@@ -21,9 +20,9 @@ ns_enum!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 ns_options!(
     #[underlying(NSUInteger)]
-    #[cfg(not(any(target_os = "watchos")))]
     pub enum MKLocalSearchCompleterResultType {
         #[cfg(not(any(target_os = "watchos")))]
         MKLocalSearchCompleterResultTypeAddress = 1 << 0,
@@ -51,57 +50,47 @@ extern_class!(
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKLocalSearchCompleter {}
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKLocalSearchCompleter")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKLocalSearchCompleter {
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other queryFragment)]
         pub unsafe fn queryFragment(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setQueryFragment:)]
         pub unsafe fn setQueryFragment(&self, query_fragment: &NSString);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(region)]
         pub unsafe fn region(&self) -> MKCoordinateRegion;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(setRegion:)]
         pub unsafe fn setRegion(&self, region: MKCoordinateRegion);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[deprecated = "Use resultTypes"]
         #[cfg(not(any(target_os = "watchos")))]
         #[method(filterType)]
         pub unsafe fn filterType(&self) -> MKSearchCompletionFilterType;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[deprecated = "Use resultTypes"]
         #[cfg(not(any(target_os = "watchos")))]
         #[method(setFilterType:)]
         pub unsafe fn setFilterType(&self, filter_type: MKSearchCompletionFilterType);
 
         #[cfg(not(any(target_os = "watchos")))]
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(resultTypes)]
         pub unsafe fn resultTypes(&self) -> MKLocalSearchCompleterResultType;
 
         #[cfg(not(any(target_os = "watchos")))]
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(setResultTypes:)]
         pub unsafe fn setResultTypes(&self, result_types: MKLocalSearchCompleterResultType);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKPointOfInterestFilter")]
         #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other pointOfInterestFilter)]
         pub unsafe fn pointOfInterestFilter(&self) -> Option<Id<MKPointOfInterestFilter>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKPointOfInterestFilter")]
         #[cfg(not(any(target_os = "watchos")))]
         #[method(setPointOfInterestFilter:)]
@@ -110,20 +99,17 @@ extern_methods!(
             point_of_interest_filter: Option<&MKPointOfInterestFilter>,
         );
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(
             &self,
         ) -> Option<Id<ProtocolObject<dyn MKLocalSearchCompleterDelegate>>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
             delegate: Option<&ProtocolObject<dyn MKLocalSearchCompleterDelegate>>,
         );
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSArray",
             feature = "MapKit_MKLocalSearchCompletion"
@@ -131,18 +117,16 @@ extern_methods!(
         #[method_id(@__retain_semantics Other results)]
         pub unsafe fn results(&self) -> Id<NSArray<MKLocalSearchCompletion>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(isSearching)]
         pub unsafe fn isSearching(&self) -> bool;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(cancel)]
         pub unsafe fn cancel(&self);
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_protocol!(
-    #[cfg(not(any(target_os = "watchos")))]
     pub unsafe trait MKLocalSearchCompleterDelegate: NSObjectProtocol {
         #[cfg(feature = "MapKit_MKLocalSearchCompleter")]
         #[optional]
@@ -162,7 +146,6 @@ extern_protocol!(
         );
     }
 
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl ProtocolType for dyn MKLocalSearchCompleterDelegate {}
 );
 
@@ -183,26 +166,22 @@ extern_class!(
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKLocalSearchCompletion {}
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKLocalSearchCompletion")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKLocalSearchCompletion {
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSValue"))]
         #[method_id(@__retain_semantics Other titleHighlightRanges)]
         pub unsafe fn titleHighlightRanges(&self) -> Id<NSArray<NSValue>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other subtitle)]
         pub unsafe fn subtitle(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSValue"))]
         #[method_id(@__retain_semantics Other subtitleHighlightRanges)]
         pub unsafe fn subtitleHighlightRanges(&self) -> Id<NSArray<NSValue>>;

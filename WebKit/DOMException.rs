@@ -9,7 +9,6 @@ extern_static!(DOMException: Option<&'static NSString>);
 
 extern_enum!(
     #[underlying(c_uint)]
-    #[deprecated]
     pub enum DOMExceptionCode {
         #[deprecated]
         DOM_INDEX_SIZE_ERR = 1,

@@ -51,11 +51,10 @@ unsafe impl NSSeguePerforming for SKCloudServiceSetupViewController {}
 #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
 unsafe impl NSUserInterfaceItemIdentification for SKCloudServiceSetupViewController {}
 
+#[cfg(not(any(target_os = "macos", target_os = "tvos")))]
 extern_methods!(
     #[cfg(feature = "StoreKit_SKCloudServiceSetupViewController")]
-    #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
     unsafe impl SKCloudServiceSetupViewController {
-        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(
@@ -63,14 +62,12 @@ extern_methods!(
         ) -> Option<Id<ProtocolObject<dyn SKCloudServiceSetupViewControllerDelegate>>>;
 
         #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
-        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
             delegate: Option<&ProtocolObject<dyn SKCloudServiceSetupViewControllerDelegate>>,
         );
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSError"))]
         #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         #[method(loadWithOptions:completionHandler:)]
@@ -139,12 +136,11 @@ extern_static!(
     SKCloudServiceSetupMessageIdentifierPlayMusic: &'static SKCloudServiceSetupMessageIdentifier
 );
 
+#[cfg(not(any(target_os = "macos", target_os = "tvos")))]
 extern_methods!(
     /// Methods declared on superclass `NSViewController`
     #[cfg(feature = "StoreKit_SKCloudServiceSetupViewController")]
-    #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
     unsafe impl SKCloudServiceSetupViewController {
-        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         #[cfg(feature = "Foundation_NSBundle")]
         #[method_id(@__retain_semantics Init initWithNibName:bundle:)]
         pub unsafe fn initWithNibName_bundle(

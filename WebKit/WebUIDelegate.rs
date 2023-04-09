@@ -7,7 +7,6 @@ use crate::WebKit::*;
 
 extern_enum!(
     #[underlying(c_uint)]
-    #[deprecated]
     pub enum __anonymous__ {
         #[deprecated]
         WebMenuItemTagOpenLinkInNewWindow = 1,
@@ -78,7 +77,6 @@ extern_enum!(
 
 ns_options!(
     #[underlying(NSUInteger)]
-    #[deprecated]
     pub enum WebDragDestinationAction {
         #[deprecated]
         WebDragDestinationActionNone = 0,
@@ -95,7 +93,6 @@ ns_options!(
 
 ns_options!(
     #[underlying(NSUInteger)]
-    #[deprecated]
     pub enum WebDragSourceAction {
         #[deprecated]
         WebDragSourceActionNone = 0,
@@ -113,7 +110,6 @@ ns_options!(
 );
 
 extern_protocol!(
-    #[deprecated]
     pub unsafe trait WebOpenPanelResultListener: NSObjectProtocol {
         #[cfg(feature = "Foundation_NSString")]
         #[method(chooseFilename:)]
@@ -131,7 +127,6 @@ extern_protocol!(
 );
 
 extern_protocol!(
-    #[deprecated]
     pub unsafe trait WebUIDelegate: NSObjectProtocol {
         #[cfg(all(feature = "Foundation_NSURLRequest", feature = "WebKit_WebView"))]
         #[optional]

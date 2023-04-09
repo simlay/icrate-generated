@@ -15,7 +15,6 @@ extern_static!(WebKitErrorPlugInPageURLStringKey: Option<&'static NSString>);
 
 extern_enum!(
     #[underlying(c_uint)]
-    #[deprecated]
     pub enum __anonymous__ {
         #[deprecated]
         WebKitErrorCannotShowMIMEType = 100,
@@ -28,7 +27,6 @@ extern_enum!(
 
 extern_enum!(
     #[underlying(c_uint)]
-    #[deprecated]
     pub enum __anonymous__ {
         #[deprecated]
         WebKitErrorCannotFindPlugIn = 200,

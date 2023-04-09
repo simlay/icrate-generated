@@ -21,67 +21,53 @@ extern_class!(
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSObjectProtocol for CXCallUpdate {}
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "CallKit_CXCallUpdate")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXCallUpdate {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "CallKit_CXHandle")]
         #[method_id(@__retain_semantics Other remoteHandle)]
         pub unsafe fn remoteHandle(&self) -> Option<Id<CXHandle>>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "CallKit_CXHandle")]
         #[method(setRemoteHandle:)]
         pub unsafe fn setRemoteHandle(&self, remote_handle: Option<&CXHandle>);
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other localizedCallerName)]
         pub unsafe fn localizedCallerName(&self) -> Option<Id<NSString>>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setLocalizedCallerName:)]
         pub unsafe fn setLocalizedCallerName(&self, localized_caller_name: Option<&NSString>);
 
-        #[cfg(not(any(target_os = "macos")))]
         #[method(supportsHolding)]
         pub unsafe fn supportsHolding(&self) -> bool;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[method(setSupportsHolding:)]
         pub unsafe fn setSupportsHolding(&self, supports_holding: bool);
 
-        #[cfg(not(any(target_os = "macos")))]
         #[method(supportsGrouping)]
         pub unsafe fn supportsGrouping(&self) -> bool;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[method(setSupportsGrouping:)]
         pub unsafe fn setSupportsGrouping(&self, supports_grouping: bool);
 
-        #[cfg(not(any(target_os = "macos")))]
         #[method(supportsUngrouping)]
         pub unsafe fn supportsUngrouping(&self) -> bool;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[method(setSupportsUngrouping:)]
         pub unsafe fn setSupportsUngrouping(&self, supports_ungrouping: bool);
 
-        #[cfg(not(any(target_os = "macos")))]
         #[method(supportsDTMF)]
         pub unsafe fn supportsDTMF(&self) -> bool;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[method(setSupportsDTMF:)]
         pub unsafe fn setSupportsDTMF(&self, supports_dtmf: bool);
 
-        #[cfg(not(any(target_os = "macos")))]
         #[method(hasVideo)]
         pub unsafe fn hasVideo(&self) -> bool;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[method(setHasVideo:)]
         pub unsafe fn setHasVideo(&self, has_video: bool);
     }

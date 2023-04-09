@@ -33,18 +33,16 @@ unsafe impl MKOverlay for MKPolyline {}
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKPolyline {}
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKPolyline")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKPolyline {
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other polylineWithPoints:count:)]
         pub unsafe fn polylineWithPoints_count(
             points: NonNull<MKMapPoint>,
             count: NSUInteger,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other polylineWithCoordinates:count:)]
         pub unsafe fn polylineWithCoordinates_count(
             coords: NonNull<CLLocationCoordinate2D>,

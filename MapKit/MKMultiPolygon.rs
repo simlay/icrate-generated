@@ -33,11 +33,10 @@ unsafe impl MKOverlay for MKMultiPolygon {}
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKMultiPolygon {}
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKMultiPolygon")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKMultiPolygon {
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "MapKit_MKPolygon"))]
         #[method_id(@__retain_semantics Init initWithPolygons:)]
         pub unsafe fn initWithPolygons(
@@ -45,7 +44,6 @@ extern_methods!(
             polygons: &NSArray<MKPolygon>,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "MapKit_MKPolygon"))]
         #[method_id(@__retain_semantics Other polygons)]
         pub unsafe fn polygons(&self) -> Id<NSArray<MKPolygon>>;

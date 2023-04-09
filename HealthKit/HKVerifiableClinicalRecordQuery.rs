@@ -24,29 +24,24 @@ extern_class!(
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for HKVerifiableClinicalRecordQuery {}
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "HealthKit_HKVerifiableClinicalRecordQuery")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl HKVerifiableClinicalRecordQuery {
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
         #[method_id(@__retain_semantics Other recordTypes)]
         pub unsafe fn recordTypes(&self) -> Id<NSArray<NSString>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSArray")]
         #[method_id(@__retain_semantics Other sourceTypes)]
         pub unsafe fn sourceTypes(&self) -> Id<NSArray<HKVerifiableClinicalRecordSourceType>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSError",
@@ -69,7 +64,6 @@ extern_methods!(
             >,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSError",

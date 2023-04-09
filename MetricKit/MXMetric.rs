@@ -29,23 +29,20 @@ unsafe impl NSObjectProtocol for MXMetric {}
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for MXMetric {}
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "MetricKit_MXMetric")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXMetric {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSData")]
         #[method_id(@__retain_semantics Other JSONRepresentation)]
         pub unsafe fn JSONRepresentation(&self) -> Id<NSData>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSDictionary")]
         #[deprecated]
         #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics Other DictionaryRepresentation)]
         pub unsafe fn DictionaryRepresentation(&self) -> Id<NSDictionary>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSDictionary")]
         #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics Other dictionaryRepresentation)]

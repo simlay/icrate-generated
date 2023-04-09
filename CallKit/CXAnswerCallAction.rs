@@ -30,23 +30,21 @@ unsafe impl NSObjectProtocol for CXAnswerCallAction {}
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for CXAnswerCallAction {}
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "CallKit_CXAnswerCallAction")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXAnswerCallAction {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSDate")]
         #[method(fulfillWithDateConnected:)]
         pub unsafe fn fulfillWithDateConnected(&self, date_connected: &NSDate);
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// Methods declared on superclass `CXCallAction`
     #[cfg(feature = "CallKit_CXAnswerCallAction")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXAnswerCallAction {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSUUID")]
         #[method_id(@__retain_semantics Init initWithCallUUID:)]
         pub unsafe fn initWithCallUUID(

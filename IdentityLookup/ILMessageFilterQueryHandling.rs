@@ -4,8 +4,8 @@ use crate::common::*;
 use crate::Foundation::*;
 use crate::IdentityLookup::*;
 
+#[cfg(not(any(target_os = "macos")))]
 extern_protocol!(
-    #[cfg(not(any(target_os = "macos")))]
     pub unsafe trait ILMessageFilterQueryHandling: NSObjectProtocol {
         #[cfg(all(
             feature = "IdentityLookup_ILMessageFilterExtensionContext",
@@ -21,6 +21,5 @@ extern_protocol!(
         );
     }
 
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl ProtocolType for dyn ILMessageFilterQueryHandling {}
 );

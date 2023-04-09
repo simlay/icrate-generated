@@ -25,11 +25,10 @@ extern_class!(
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for GKCloudPlayer {}
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "GameKit_GKCloudPlayer")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl GKCloudPlayer {
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSString"))]
         #[method(getCurrentSignedInPlayerForContainer:completionHandler:)]
         pub unsafe fn getCurrentSignedInPlayerForContainer_completionHandler(

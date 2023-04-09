@@ -5,9 +5,9 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::MediaPlayer::*;
 
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 ns_options!(
     #[underlying(NSUInteger)]
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub enum MPMediaPlaylistAttribute {
         #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         MPMediaPlaylistAttributeNone = 0,
@@ -60,44 +60,36 @@ unsafe impl NSObjectProtocol for MPMediaPlaylist {}
 #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSSecureCoding for MPMediaPlaylist {}
 
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MediaPlayer_MPMediaPlaylist")]
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl MPMediaPlaylist {
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(persistentID)]
         pub unsafe fn persistentID(&self) -> MPMediaEntityPersistentID;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other cloudGlobalID)]
         pub unsafe fn cloudGlobalID(&self) -> Option<Id<NSString>>;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other name)]
         pub unsafe fn name(&self) -> Option<Id<NSString>>;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(playlistAttributes)]
         pub unsafe fn playlistAttributes(&self) -> MPMediaPlaylistAttribute;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "MediaPlayer_MPMediaItem"))]
         #[method_id(@__retain_semantics Other seedItems)]
         pub unsafe fn seedItems(&self) -> Option<Id<NSArray<MPMediaItem>>>;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other descriptionText)]
         pub unsafe fn descriptionText(&self) -> Option<Id<NSString>>;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other authorDisplayName)]
         pub unsafe fn authorDisplayName(&self) -> Option<Id<NSString>>;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSString"))]
         #[cfg(not(any(target_os = "macos")))]
         #[method(addItemWithProductID:completionHandler:)]
@@ -107,7 +99,6 @@ extern_methods!(
             completion_handler: Option<&Block<(*mut NSError,), ()>>,
         );
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSError",
@@ -140,56 +131,47 @@ extern_class!(
 #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MPMediaPlaylistCreationMetadata {}
 
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MediaPlayer_MPMediaPlaylistCreationMetadata")]
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl MPMediaPlaylistCreationMetadata {
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Init initWithName:)]
         pub unsafe fn initWithName(this: Option<Allocated<Self>>, name: &NSString) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other name)]
         pub unsafe fn name(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other authorDisplayName)]
         pub unsafe fn authorDisplayName(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setAuthorDisplayName:)]
         pub unsafe fn setAuthorDisplayName(&self, author_display_name: Option<&NSString>);
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other descriptionText)]
         pub unsafe fn descriptionText(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setDescriptionText:)]
         pub unsafe fn setDescriptionText(&self, description_text: &NSString);
     }
 );
 
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `MPMediaItemCollection`
     #[cfg(feature = "MediaPlayer_MPMediaPlaylist")]
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl MPMediaPlaylist {
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "MediaPlayer_MPMediaItem"))]
         #[method_id(@__retain_semantics Init initWithItems:)]
         pub unsafe fn initWithItems(

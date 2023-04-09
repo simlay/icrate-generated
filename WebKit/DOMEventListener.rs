@@ -6,7 +6,6 @@ use crate::Foundation::*;
 use crate::WebKit::*;
 
 extern_protocol!(
-    #[deprecated]
     pub unsafe trait DOMEventListener: NSObjectProtocol {
         #[cfg(feature = "WebKit_DOMEvent")]
         #[method(handleEvent:)]

@@ -34,9 +34,9 @@ ns_enum!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
-    #[cfg(not(any(target_os = "watchos")))]
     pub enum LABiometryType {
         LABiometryTypeNone = 0,
         #[deprecated]

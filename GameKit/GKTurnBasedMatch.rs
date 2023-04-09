@@ -647,7 +647,6 @@ extern_methods!(
 );
 
 extern_protocol!(
-    #[deprecated = "Use registerListener on GKLocalPlayer with an object that implements the GKTurnBasedEventListener protocol"]
     pub unsafe trait GKTurnBasedEventHandlerDelegate {
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
         #[deprecated]

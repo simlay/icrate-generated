@@ -7,7 +7,6 @@ use crate::WebKit::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
-    #[deprecated]
     pub enum WebViewInsertAction {
         #[deprecated]
         WebViewInsertActionTyped = 0,
@@ -19,7 +18,6 @@ ns_enum!(
 );
 
 extern_protocol!(
-    #[deprecated]
     pub unsafe trait WebEditingDelegate: NSObjectProtocol {
         #[cfg(all(feature = "WebKit_DOMRange", feature = "WebKit_WebView"))]
         #[optional]

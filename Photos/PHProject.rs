@@ -24,17 +24,15 @@ extern_class!(
 #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 unsafe impl NSObjectProtocol for PHProject {}
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 extern_methods!(
     #[cfg(feature = "PhotoKit_PHProject")]
-    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     unsafe impl PHProject {
-        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[cfg(feature = "Foundation_NSData")]
         #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[method_id(@__retain_semantics Other projectExtensionData)]
         pub unsafe fn projectExtensionData(&self) -> Id<NSData>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[method(hasProjectPreview)]
         pub unsafe fn hasProjectPreview(&self) -> bool;

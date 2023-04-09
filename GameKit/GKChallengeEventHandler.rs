@@ -5,9 +5,8 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::GameKit::*;
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_protocol!(
-    #[deprecated = "You should instead implement the GKChallengeListener protocol and register a listener with GKLocalPlayer."]
-    #[cfg(not(any(target_os = "watchos")))]
     pub unsafe trait GKChallengeEventHandlerDelegate: NSObjectProtocol {
         #[cfg(feature = "GameKit_GKChallenge")]
         #[optional]
@@ -54,7 +53,6 @@ extern_protocol!(
         unsafe fn remotePlayerDidCompleteChallenge(&self, challenge: Option<&GKChallenge>);
     }
 
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl ProtocolType for dyn GKChallengeEventHandlerDelegate {}
 );
 

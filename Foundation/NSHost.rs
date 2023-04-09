@@ -22,67 +22,55 @@ extern_class!(
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for NSHost {}
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "Foundation_NSHost")]
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSHost {
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other currentHost)]
         pub unsafe fn currentHost() -> Id<Self>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other hostWithName:)]
         pub unsafe fn hostWithName(name: Option<&NSString>) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other hostWithAddress:)]
         pub unsafe fn hostWithAddress(address: &NSString) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(isEqualToHost:)]
         pub unsafe fn isEqualToHost(&self, a_host: &NSHost) -> bool;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other name)]
         pub unsafe fn name(&self) -> Option<Id<NSString>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
         #[method_id(@__retain_semantics Other names)]
         pub unsafe fn names(&self) -> Id<NSArray<NSString>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other address)]
         pub unsafe fn address(&self) -> Option<Id<NSString>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
         #[method_id(@__retain_semantics Other addresses)]
         pub unsafe fn addresses(&self) -> Id<NSArray<NSString>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other localizedName)]
         pub unsafe fn localizedName(&self) -> Option<Id<NSString>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[deprecated = "Caching no longer supported"]
         #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(setHostCacheEnabled:)]
         pub unsafe fn setHostCacheEnabled(flag: bool);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[deprecated = "Caching no longer supported"]
         #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(isHostCacheEnabled)]
         pub unsafe fn isHostCacheEnabled() -> bool;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[deprecated = "Caching no longer supported"]
         #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(flushHostCache)]

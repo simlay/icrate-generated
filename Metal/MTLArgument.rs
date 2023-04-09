@@ -120,7 +120,6 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
-    #[deprecated]
     pub enum MTLArgumentType {
         #[deprecated]
         MTLArgumentTypeBuffer = 0,

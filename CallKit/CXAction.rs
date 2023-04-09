@@ -29,29 +29,24 @@ unsafe impl NSObjectProtocol for CXAction {}
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for CXAction {}
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "CallKit_CXAction")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXAction {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSUUID")]
         #[method_id(@__retain_semantics Other UUID)]
         pub unsafe fn UUID(&self) -> Id<NSUUID>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[method(isComplete)]
         pub unsafe fn isComplete(&self) -> bool;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSDate")]
         #[method_id(@__retain_semantics Other timeoutDate)]
         pub unsafe fn timeoutDate(&self) -> Id<NSDate>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSCoder")]
         #[method_id(@__retain_semantics Init initWithCoder:)]
         pub unsafe fn initWithCoder(
@@ -59,11 +54,9 @@ extern_methods!(
             a_decoder: &NSCoder,
         ) -> Option<Id<Self>>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[method(fulfill)]
         pub unsafe fn fulfill(&self);
 
-        #[cfg(not(any(target_os = "macos")))]
         #[method(fail)]
         pub unsafe fn fail(&self);
     }

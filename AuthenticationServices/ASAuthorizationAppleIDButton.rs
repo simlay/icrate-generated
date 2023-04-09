@@ -4,9 +4,9 @@ use crate::common::*;
 use crate::AuthenticationServices::*;
 use crate::Foundation::*;
 
+#[cfg(not(any(target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
-    #[cfg(not(any(target_os = "watchos")))]
     pub enum ASAuthorizationAppleIDButtonType {
         #[cfg(not(any(target_os = "watchos")))]
         ASAuthorizationAppleIDButtonTypeSignIn = 0,
@@ -19,9 +19,9 @@ ns_enum!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
-    #[cfg(not(any(target_os = "watchos")))]
     pub enum ASAuthorizationAppleIDButtonStyle {
         #[cfg(not(any(target_os = "watchos")))]
         ASAuthorizationAppleIDButtonStyleWhite = 0,
@@ -32,18 +32,16 @@ ns_enum!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASAuthorizationAppleIDButton")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl ASAuthorizationAppleIDButton {
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other buttonWithType:style:)]
         pub unsafe fn buttonWithType_style(
             r#type: ASAuthorizationAppleIDButtonType,
             style: ASAuthorizationAppleIDButtonStyle,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init initWithAuthorizationButtonType:authorizationButtonStyle:)]
         pub unsafe fn initWithAuthorizationButtonType_authorizationButtonStyle(
             this: Option<Allocated<Self>>,
@@ -51,12 +49,10 @@ extern_methods!(
             style: ASAuthorizationAppleIDButtonStyle,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(not(any(target_os = "tvos")))]
         #[method(cornerRadius)]
         pub unsafe fn cornerRadius(&self) -> CGFloat;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(not(any(target_os = "tvos")))]
         #[method(setCornerRadius:)]
         pub unsafe fn setCornerRadius(&self, corner_radius: CGFloat);

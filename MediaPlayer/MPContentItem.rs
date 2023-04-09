@@ -22,11 +22,10 @@ extern_class!(
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MPContentItem {}
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MediaPlayer_MPContentItem")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MPContentItem {
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Init initWithIdentifier:)]
         pub unsafe fn initWithIdentifier(
@@ -34,78 +33,61 @@ extern_methods!(
             identifier: &NSString,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Option<Id<NSString>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setTitle:)]
         pub unsafe fn setTitle(&self, title: Option<&NSString>);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other subtitle)]
         pub unsafe fn subtitle(&self) -> Option<Id<NSString>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setSubtitle:)]
         pub unsafe fn setSubtitle(&self, subtitle: Option<&NSString>);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "MediaPlayer_MPMediaItemArtwork")]
         #[method_id(@__retain_semantics Other artwork)]
         pub unsafe fn artwork(&self) -> Option<Id<MPMediaItemArtwork>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "MediaPlayer_MPMediaItemArtwork")]
         #[method(setArtwork:)]
         pub unsafe fn setArtwork(&self, artwork: Option<&MPMediaItemArtwork>);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(playbackProgress)]
         pub unsafe fn playbackProgress(&self) -> c_float;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(setPlaybackProgress:)]
         pub unsafe fn setPlaybackProgress(&self, playback_progress: c_float);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(isStreamingContent)]
         pub unsafe fn isStreamingContent(&self) -> bool;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(setStreamingContent:)]
         pub unsafe fn setStreamingContent(&self, streaming_content: bool);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(isExplicitContent)]
         pub unsafe fn isExplicitContent(&self) -> bool;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(setExplicitContent:)]
         pub unsafe fn setExplicitContent(&self, explicit_content: bool);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(isContainer)]
         pub unsafe fn isContainer(&self) -> bool;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(setContainer:)]
         pub unsafe fn setContainer(&self, container: bool);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(isPlayable)]
         pub unsafe fn isPlayable(&self) -> bool;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(setPlayable:)]
         pub unsafe fn setPlayable(&self, playable: bool);
     }

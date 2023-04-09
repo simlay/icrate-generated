@@ -30,11 +30,10 @@ unsafe impl NSObjectProtocol for MXDiskIOMetric {}
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for MXDiskIOMetric {}
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "MetricKit_MXDiskIOMetric")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXDiskIOMetric {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitInformationStorage"

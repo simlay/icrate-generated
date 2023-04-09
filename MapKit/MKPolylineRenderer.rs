@@ -25,11 +25,10 @@ extern_class!(
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKPolylineRenderer {}
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKPolylineRenderer")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKPolylineRenderer {
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKPolyline")]
         #[method_id(@__retain_semantics Init initWithPolyline:)]
         pub unsafe fn initWithPolyline(
@@ -37,39 +36,33 @@ extern_methods!(
             polyline: &MKPolyline,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKPolyline")]
         #[method_id(@__retain_semantics Other polyline)]
         pub unsafe fn polyline(&self) -> Id<MKPolyline>;
 
         #[cfg(not(any(target_os = "watchos")))]
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(strokeStart)]
         pub unsafe fn strokeStart(&self) -> CGFloat;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(not(any(target_os = "watchos")))]
         #[method(setStrokeStart:)]
         pub unsafe fn setStrokeStart(&self, stroke_start: CGFloat);
 
         #[cfg(not(any(target_os = "watchos")))]
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(strokeEnd)]
         pub unsafe fn strokeEnd(&self) -> CGFloat;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(not(any(target_os = "watchos")))]
         #[method(setStrokeEnd:)]
         pub unsafe fn setStrokeEnd(&self, stroke_end: CGFloat);
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `MKOverlayRenderer`
     #[cfg(feature = "MapKit_MKPolylineRenderer")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKPolylineRenderer {
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init initWithOverlay:)]
         pub unsafe fn initWithOverlay(
             this: Option<Allocated<Self>>,

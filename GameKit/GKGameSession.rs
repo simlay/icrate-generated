@@ -40,50 +40,41 @@ extern_class!(
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for GKGameSession {}
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "GameKit_GKGameSession")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl GKGameSession {
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "GameKit_GKCloudPlayer")]
         #[method_id(@__retain_semantics Other owner)]
         pub unsafe fn owner(&self) -> Id<GKCloudPlayer>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "GameKit_GKCloudPlayer"))]
         #[method_id(@__retain_semantics Other players)]
         pub unsafe fn players(&self) -> Id<NSArray<GKCloudPlayer>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSDate")]
         #[method_id(@__retain_semantics Other lastModifiedDate)]
         pub unsafe fn lastModifiedDate(&self) -> Id<NSDate>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "GameKit_GKCloudPlayer")]
         #[method_id(@__retain_semantics Other lastModifiedPlayer)]
         pub unsafe fn lastModifiedPlayer(&self) -> Id<GKCloudPlayer>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(maxNumberOfConnectedPlayers)]
         pub unsafe fn maxNumberOfConnectedPlayers(&self) -> NSInteger;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "GameKit_GKCloudPlayer"))]
         #[method_id(@__retain_semantics Other badgedPlayers)]
         pub unsafe fn badgedPlayers(&self) -> Id<NSArray<GKCloudPlayer>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSString"))]
         #[method(createSessionInContainer:withTitle:maxConnectedPlayers:completionHandler:)]
         pub unsafe fn createSessionInContainer_withTitle_maxConnectedPlayers_completionHandler(
@@ -93,7 +84,6 @@ extern_methods!(
             completion_handler: &Block<(*mut GKGameSession, *mut NSError), ()>,
         );
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSError",
@@ -105,7 +95,6 @@ extern_methods!(
             completion_handler: &Block<(*mut NSArray<GKGameSession>, *mut NSError), ()>,
         );
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSString"))]
         #[method(loadSessionWithIdentifier:completionHandler:)]
         pub unsafe fn loadSessionWithIdentifier_completionHandler(
@@ -113,7 +102,6 @@ extern_methods!(
             completion_handler: &Block<(*mut GKGameSession, *mut NSError), ()>,
         );
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSString"))]
         #[method(removeSessionWithIdentifier:completionHandler:)]
         pub unsafe fn removeSessionWithIdentifier_completionHandler(
@@ -121,7 +109,6 @@ extern_methods!(
             completion_handler: &Block<(*mut NSError,), ()>,
         );
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSURL"))]
         #[method(getShareURLWithCompletionHandler:)]
         pub unsafe fn getShareURLWithCompletionHandler(
@@ -129,7 +116,6 @@ extern_methods!(
             completion_handler: &Block<(*mut NSURL, *mut NSError), ()>,
         );
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSData", feature = "Foundation_NSError"))]
         #[method(loadDataWithCompletionHandler:)]
         pub unsafe fn loadDataWithCompletionHandler(
@@ -137,7 +123,6 @@ extern_methods!(
             completion_handler: &Block<(*mut NSData, *mut NSError), ()>,
         );
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSData", feature = "Foundation_NSError"))]
         #[method(saveData:completionHandler:)]
         pub unsafe fn saveData_completionHandler(
@@ -146,7 +131,6 @@ extern_methods!(
             completion_handler: &Block<(*mut NSData, *mut NSError), ()>,
         );
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSError")]
         #[method(setConnectionState:completionHandler:)]
         pub unsafe fn setConnectionState_completionHandler(
@@ -155,7 +139,6 @@ extern_methods!(
             completion_handler: &Block<(*mut NSError,), ()>,
         );
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "GameKit_GKCloudPlayer"))]
         #[method_id(@__retain_semantics Other playersWithConnectionState:)]
         pub unsafe fn playersWithConnectionState(
@@ -163,7 +146,6 @@ extern_methods!(
             state: GKConnectionState,
         ) -> Id<NSArray<GKCloudPlayer>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSData", feature = "Foundation_NSError"))]
         #[method(sendData:withTransportType:completionHandler:)]
         pub unsafe fn sendData_withTransportType_completionHandler(
@@ -173,7 +155,6 @@ extern_methods!(
             completion_handler: &Block<(*mut NSError,), ()>,
         );
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSData",
@@ -192,7 +173,6 @@ extern_methods!(
             completion_handler: &Block<(*mut NSError,), ()>,
         );
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSError",

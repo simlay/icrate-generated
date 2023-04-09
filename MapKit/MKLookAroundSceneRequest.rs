@@ -24,26 +24,22 @@ extern_class!(
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKLookAroundSceneRequest {}
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKLookAroundSceneRequest")]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl MKLookAroundSceneRequest {
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Init initWithCoordinate:)]
         pub unsafe fn initWithCoordinate(
             this: Option<Allocated<Self>>,
             coordinate: CLLocationCoordinate2D,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKMapItem")]
         #[method_id(@__retain_semantics Init initWithMapItem:)]
         pub unsafe fn initWithMapItem(
@@ -51,24 +47,19 @@ extern_methods!(
             map_item: &MKMapItem,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(coordinate)]
         pub unsafe fn coordinate(&self) -> CLLocationCoordinate2D;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKMapItem")]
         #[method_id(@__retain_semantics Other mapItem)]
         pub unsafe fn mapItem(&self) -> Option<Id<MKMapItem>>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(isCancelled)]
         pub unsafe fn isCancelled(&self) -> bool;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(isLoading)]
         pub unsafe fn isLoading(&self) -> bool;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSError", feature = "MapKit_MKLookAroundScene"))]
         #[method(getSceneWithCompletionHandler:)]
         pub unsafe fn getSceneWithCompletionHandler(
@@ -76,7 +67,6 @@ extern_methods!(
             completion_handler: &Block<(*mut MKLookAroundScene, *mut NSError), ()>,
         );
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(cancel)]
         pub unsafe fn cancel(&self);
     }

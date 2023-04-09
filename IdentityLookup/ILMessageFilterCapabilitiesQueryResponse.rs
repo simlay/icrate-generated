@@ -29,16 +29,14 @@ unsafe impl NSObjectProtocol for ILMessageFilterCapabilitiesQueryResponse {}
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for ILMessageFilterCapabilitiesQueryResponse {}
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "IdentityLookup_ILMessageFilterCapabilitiesQueryResponse")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl ILMessageFilterCapabilitiesQueryResponse {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSNumber"))]
         #[method_id(@__retain_semantics Other transactionalSubActions)]
         pub unsafe fn transactionalSubActions(&self) -> Id<NSArray<NSNumber>>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSNumber"))]
         #[method(setTransactionalSubActions:)]
         pub unsafe fn setTransactionalSubActions(
@@ -46,12 +44,10 @@ extern_methods!(
             transactional_sub_actions: &NSArray<NSNumber>,
         );
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSNumber"))]
         #[method_id(@__retain_semantics Other promotionalSubActions)]
         pub unsafe fn promotionalSubActions(&self) -> Id<NSArray<NSNumber>>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSNumber"))]
         #[method(setPromotionalSubActions:)]
         pub unsafe fn setPromotionalSubActions(&self, promotional_sub_actions: &NSArray<NSNumber>);

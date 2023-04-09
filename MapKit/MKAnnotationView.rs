@@ -9,9 +9,9 @@ use crate::MapKit::*;
 
 extern_static!(MKAnnotationCalloutInfoDidChangeNotification: &'static NSString);
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSUInteger)]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub enum MKAnnotationViewDragState {
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         MKAnnotationViewDragStateNone = 0,
@@ -57,9 +57,9 @@ extern_static!(MKAnnotationViewZPriorityDefaultUnselected: MKAnnotationViewZPrio
 #[cfg(not(any(target_os = "watchos")))]
 extern_static!(MKAnnotationViewZPriorityMin: MKAnnotationViewZPriority = 0);
 
+#[cfg(not(any(target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
-    #[cfg(not(any(target_os = "watchos")))]
     pub enum MKAnnotationViewCollisionMode {
         #[cfg(not(any(target_os = "watchos")))]
         MKAnnotationViewCollisionModeRectangle = 0,

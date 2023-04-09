@@ -21,23 +21,19 @@ extern_class!(
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for LAAuthenticationRequirement {}
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "LocalAuthentication_LAAuthenticationRequirement")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl LAAuthenticationRequirement {
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other defaultRequirement)]
         pub unsafe fn defaultRequirement() -> Id<LAAuthenticationRequirement>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other biometryRequirement)]
         pub unsafe fn biometryRequirement() -> Id<LAAuthenticationRequirement>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other biometryCurrentSetRequirement)]
         pub unsafe fn biometryCurrentSetRequirement() -> Id<LAAuthenticationRequirement>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "LocalAuthentication_LABiometryFallbackRequirement")]
         #[method_id(@__retain_semantics Other biometryRequirementWithFallback:)]
         pub unsafe fn biometryRequirementWithFallback(
@@ -63,15 +59,13 @@ extern_class!(
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for LABiometryFallbackRequirement {}
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "LocalAuthentication_LABiometryFallbackRequirement")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl LABiometryFallbackRequirement {
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other defaultRequirement)]
         pub unsafe fn defaultRequirement() -> Id<LABiometryFallbackRequirement>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other devicePasscodeRequirement)]
         pub unsafe fn devicePasscodeRequirement() -> Id<LABiometryFallbackRequirement>;
     }

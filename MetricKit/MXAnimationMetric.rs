@@ -30,11 +30,10 @@ unsafe impl NSObjectProtocol for MXAnimationMetric {}
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for MXAnimationMetric {}
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "MetricKit_MXAnimationMetric")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXAnimationMetric {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(feature = "Foundation_NSMeasurement", feature = "Foundation_NSUnit"))]
         #[method_id(@__retain_semantics Other scrollHitchTimeRatio)]
         pub unsafe fn scrollHitchTimeRatio(&self) -> Id<NSMeasurement<NSUnit>>;

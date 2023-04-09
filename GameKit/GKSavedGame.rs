@@ -22,26 +22,22 @@ extern_class!(
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for GKSavedGame {}
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "GameKit_GKSavedGame")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl GKSavedGame {
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other name)]
         pub unsafe fn name(&self) -> Option<Id<NSString>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other deviceName)]
         pub unsafe fn deviceName(&self) -> Option<Id<NSString>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSDate")]
         #[method_id(@__retain_semantics Other modificationDate)]
         pub unsafe fn modificationDate(&self) -> Option<Id<NSDate>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSData", feature = "Foundation_NSError"))]
         #[method(loadDataWithCompletionHandler:)]
         pub unsafe fn loadDataWithCompletionHandler(

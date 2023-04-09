@@ -3,9 +3,9 @@
 use crate::common::*;
 use crate::Foundation::*;
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub enum NSBackgroundActivityResult {
         #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         NSBackgroundActivityResultFinished = 1,
@@ -34,11 +34,10 @@ extern_class!(
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for NSBackgroundActivityScheduler {}
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "Foundation_NSBackgroundActivityScheduler")]
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSBackgroundActivityScheduler {
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Init initWithIdentifier:)]
         pub unsafe fn initWithIdentifier(
@@ -46,55 +45,43 @@ extern_methods!(
             identifier: &NSString,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(qualityOfService)]
         pub unsafe fn qualityOfService(&self) -> NSQualityOfService;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(setQualityOfService:)]
         pub unsafe fn setQualityOfService(&self, quality_of_service: NSQualityOfService);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(repeats)]
         pub unsafe fn repeats(&self) -> bool;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(setRepeats:)]
         pub unsafe fn setRepeats(&self, repeats: bool);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(interval)]
         pub unsafe fn interval(&self) -> NSTimeInterval;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(setInterval:)]
         pub unsafe fn setInterval(&self, interval: NSTimeInterval);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(tolerance)]
         pub unsafe fn tolerance(&self) -> NSTimeInterval;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(setTolerance:)]
         pub unsafe fn setTolerance(&self, tolerance: NSTimeInterval);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(scheduleWithBlock:)]
         pub unsafe fn scheduleWithBlock(
             &self,
             block: &Block<(NSBackgroundActivityCompletionHandler,), ()>,
         );
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(invalidate)]
         pub unsafe fn invalidate(&self);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(shouldDefer)]
         pub unsafe fn shouldDefer(&self) -> bool;
     }

@@ -27,15 +27,13 @@ extern_class!(
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKLocalPointsOfInterestRequest {}
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKLocalPointsOfInterestRequest")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKLocalPointsOfInterestRequest {
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init initWithCenterCoordinate:radius:)]
         pub unsafe fn initWithCenterCoordinate_radius(
             this: Option<Allocated<Self>>,
@@ -43,31 +41,25 @@ extern_methods!(
             radius: CLLocationDistance,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init initWithCoordinateRegion:)]
         pub unsafe fn initWithCoordinateRegion(
             this: Option<Allocated<Self>>,
             region: MKCoordinateRegion,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(coordinate)]
         pub unsafe fn coordinate(&self) -> CLLocationCoordinate2D;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(radius)]
         pub unsafe fn radius(&self) -> CLLocationDistance;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(region)]
         pub unsafe fn region(&self) -> MKCoordinateRegion;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKPointOfInterestFilter")]
         #[method_id(@__retain_semantics Other pointOfInterestFilter)]
         pub unsafe fn pointOfInterestFilter(&self) -> Option<Id<MKPointOfInterestFilter>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKPointOfInterestFilter")]
         #[method(setPointOfInterestFilter:)]
         pub unsafe fn setPointOfInterestFilter(

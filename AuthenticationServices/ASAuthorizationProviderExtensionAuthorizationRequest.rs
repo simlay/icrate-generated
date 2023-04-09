@@ -21,8 +21,8 @@ extern_static!(
         &'static ASAuthorizationProviderAuthorizationOperation
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_protocol!(
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub unsafe trait ASAuthorizationProviderExtensionAuthorizationRequestHandler:
         NSObjectProtocol
     {
@@ -46,7 +46,6 @@ extern_protocol!(
         );
     }
 
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl ProtocolType for dyn ASAuthorizationProviderExtensionAuthorizationRequestHandler {}
 );
 
@@ -67,23 +66,19 @@ extern_class!(
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for ASAuthorizationProviderExtensionAuthorizationRequest {}
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionAuthorizationRequest")]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAuthorizationProviderExtensionAuthorizationRequest {
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(doNotHandle)]
         pub unsafe fn doNotHandle(&self);
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(cancel)]
         pub unsafe fn cancel(&self);
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(complete)]
         pub unsafe fn complete(&self);
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
         #[method(completeWithHTTPAuthorizationHeaders:)]
         pub unsafe fn completeWithHTTPAuthorizationHeaders(
@@ -91,7 +86,6 @@ extern_methods!(
             http_authorization_headers: &NSDictionary<NSString, NSString>,
         );
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSData",
             feature = "Foundation_NSHTTPURLResponse"
@@ -103,7 +97,6 @@ extern_methods!(
             http_body: Option<&NSData>,
         );
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(
             feature = "AuthenticationServices_ASAuthorizationProviderExtensionAuthorizationResult"
         )]
@@ -114,12 +107,10 @@ extern_methods!(
             authorization_result: &ASAuthorizationProviderExtensionAuthorizationResult,
         );
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSError")]
         #[method(completeWithError:)]
         pub unsafe fn completeWithError(&self, error: &NSError);
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSError")]
         #[method(presentAuthorizationViewControllerWithCompletion:)]
         pub unsafe fn presentAuthorizationViewControllerWithCompletion(
@@ -127,70 +118,57 @@ extern_methods!(
             completion: &Block<(Bool, *mut NSError), ()>,
         );
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSURL")]
         #[method_id(@__retain_semantics Other url)]
         pub unsafe fn url(&self) -> Id<NSURL>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other requestedOperation)]
         pub unsafe fn requestedOperation(
             &self,
         ) -> Id<ASAuthorizationProviderAuthorizationOperation>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
         #[method_id(@__retain_semantics Other httpHeaders)]
         pub unsafe fn httpHeaders(&self) -> Id<NSDictionary<NSString, NSString>>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSData")]
         #[method_id(@__retain_semantics Other httpBody)]
         pub unsafe fn httpBody(&self) -> Id<NSData>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other realm)]
         pub unsafe fn realm(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSDictionary")]
         #[method_id(@__retain_semantics Other extensionData)]
         pub unsafe fn extensionData(&self) -> Id<NSDictionary>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other callerBundleIdentifier)]
         pub unsafe fn callerBundleIdentifier(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSDictionary")]
         #[method_id(@__retain_semantics Other authorizationOptions)]
         pub unsafe fn authorizationOptions(&self) -> Id<NSDictionary>;
 
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(isCallerManaged)]
         pub unsafe fn isCallerManaged(&self) -> bool;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other callerTeamIdentifier)]
         pub unsafe fn callerTeamIdentifier(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other localizedCallerDisplayName)]
         pub unsafe fn localizedCallerDisplayName(&self) -> Id<NSString>;
 
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(isUserInterfaceEnabled)]
         pub unsafe fn isUserInterfaceEnabled(&self) -> bool;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionLoginManager")]
         #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other loginManager)]

@@ -30,11 +30,10 @@ unsafe impl NSObjectProtocol for MXMemoryMetric {}
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for MXMemoryMetric {}
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "MetricKit_MXMemoryMetric")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXMemoryMetric {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitInformationStorage"
@@ -42,7 +41,6 @@ extern_methods!(
         #[method_id(@__retain_semantics Other peakMemoryUsage)]
         pub unsafe fn peakMemoryUsage(&self) -> Id<NSMeasurement<NSUnitInformationStorage>>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSUnitInformationStorage",
             feature = "MetricKit_MXAverage"

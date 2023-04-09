@@ -5,7 +5,6 @@ use crate::Foundation::*;
 
 extern_enum!(
     #[underlying(c_uint)]
-    #[deprecated = "Not supported"]
     pub enum __anonymous__ {
         #[deprecated = "Not supported"]
         NSWindowsNTOperatingSystem = 1,

@@ -10,12 +10,11 @@ typed_extensible_enum!(
     pub type NSFileProviderExtensionActionIdentifier = NSString;
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// NSFileProviderActions
     #[cfg(feature = "FileProvider_NSFileProviderExtension")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl NSFileProviderExtension {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSURL"))]
         #[method(importDocumentAtURL:toParentItemIdentifier:completionHandler:)]
         pub unsafe fn importDocumentAtURL_toParentItemIdentifier_completionHandler(
@@ -25,7 +24,6 @@ extern_methods!(
             completion_handler: &Block<(*mut NSFileProviderItem, *mut NSError), ()>,
         );
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSString"))]
         #[method(createDirectoryWithName:inParentItemIdentifier:completionHandler:)]
         pub unsafe fn createDirectoryWithName_inParentItemIdentifier_completionHandler(
@@ -35,7 +33,6 @@ extern_methods!(
             completion_handler: &Block<(*mut NSFileProviderItem, *mut NSError), ()>,
         );
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSString"))]
         #[method(renameItemWithIdentifier:toName:completionHandler:)]
         pub unsafe fn renameItemWithIdentifier_toName_completionHandler(
@@ -45,7 +42,6 @@ extern_methods!(
             completion_handler: &Block<(*mut NSFileProviderItem, *mut NSError), ()>,
         );
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSString"))]
         #[method(reparentItemWithIdentifier:toParentItemWithIdentifier:newName:completionHandler:)]
         pub unsafe fn reparentItemWithIdentifier_toParentItemWithIdentifier_newName_completionHandler(
@@ -56,7 +52,6 @@ extern_methods!(
             completion_handler: &Block<(*mut NSFileProviderItem, *mut NSError), ()>,
         );
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSError")]
         #[method(trashItemWithIdentifier:completionHandler:)]
         pub unsafe fn trashItemWithIdentifier_completionHandler(
@@ -65,7 +60,6 @@ extern_methods!(
             completion_handler: &Block<(*mut NSFileProviderItem, *mut NSError), ()>,
         );
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSError")]
         #[method(untrashItemWithIdentifier:toParentItemIdentifier:completionHandler:)]
         pub unsafe fn untrashItemWithIdentifier_toParentItemIdentifier_completionHandler(
@@ -75,7 +69,6 @@ extern_methods!(
             completion_handler: &Block<(*mut NSFileProviderItem, *mut NSError), ()>,
         );
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSError")]
         #[method(deleteItemWithIdentifier:completionHandler:)]
         pub unsafe fn deleteItemWithIdentifier_completionHandler(
@@ -84,7 +77,6 @@ extern_methods!(
             completion_handler: &Block<(*mut NSError,), ()>,
         );
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(feature = "Foundation_NSDate", feature = "Foundation_NSError"))]
         #[method(setLastUsedDate:forItemIdentifier:completionHandler:)]
         pub unsafe fn setLastUsedDate_forItemIdentifier_completionHandler(
@@ -94,7 +86,6 @@ extern_methods!(
             completion_handler: &Block<(*mut NSFileProviderItem, *mut NSError), ()>,
         );
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(feature = "Foundation_NSData", feature = "Foundation_NSError"))]
         #[method(setTagData:forItemIdentifier:completionHandler:)]
         pub unsafe fn setTagData_forItemIdentifier_completionHandler(
@@ -104,7 +95,6 @@ extern_methods!(
             completion_handler: &Block<(*mut NSFileProviderItem, *mut NSError), ()>,
         );
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSNumber"))]
         #[method(setFavoriteRank:forItemIdentifier:completionHandler:)]
         pub unsafe fn setFavoriteRank_forItemIdentifier_completionHandler(

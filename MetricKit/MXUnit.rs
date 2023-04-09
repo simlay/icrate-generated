@@ -30,11 +30,10 @@ unsafe impl NSObjectProtocol for MXUnitSignalBars {}
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for MXUnitSignalBars {}
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "MetricKit_MXUnitSignalBars")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXUnitSignalBars {
-        #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics Other bars)]
         pub unsafe fn bars() -> Id<MXUnitSignalBars>;
     }
@@ -66,22 +65,20 @@ unsafe impl NSObjectProtocol for MXUnitAveragePixelLuminance {}
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for MXUnitAveragePixelLuminance {}
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "MetricKit_MXUnitAveragePixelLuminance")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXUnitAveragePixelLuminance {
-        #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics Other apl)]
         pub unsafe fn apl() -> Id<MXUnitAveragePixelLuminance>;
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// Methods declared on superclass `NSDimension`
     #[cfg(feature = "MetricKit_MXUnitSignalBars")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXUnitSignalBars {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSString",
             feature = "Foundation_NSUnitConverter"
@@ -93,30 +90,27 @@ extern_methods!(
             converter: &NSUnitConverter,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics Other baseUnit)]
         pub unsafe fn baseUnit() -> Id<Self>;
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// Methods declared on superclass `NSUnit`
     #[cfg(feature = "MetricKit_MXUnitSignalBars")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXUnitSignalBars {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Init initWithSymbol:)]
         pub unsafe fn initWithSymbol(this: Option<Allocated<Self>>, symbol: &NSString) -> Id<Self>;
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// Methods declared on superclass `NSDimension`
     #[cfg(feature = "MetricKit_MXUnitAveragePixelLuminance")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXUnitAveragePixelLuminance {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSString",
             feature = "Foundation_NSUnitConverter"
@@ -128,18 +122,16 @@ extern_methods!(
             converter: &NSUnitConverter,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics Other baseUnit)]
         pub unsafe fn baseUnit() -> Id<Self>;
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// Methods declared on superclass `NSUnit`
     #[cfg(feature = "MetricKit_MXUnitAveragePixelLuminance")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXUnitAveragePixelLuminance {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Init initWithSymbol:)]
         pub unsafe fn initWithSymbol(this: Option<Allocated<Self>>, symbol: &NSString) -> Id<Self>;

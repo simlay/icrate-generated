@@ -6,7 +6,6 @@ use crate::Foundation::*;
 use crate::GameKit::*;
 
 extern_protocol!(
-    #[deprecated = "Use MCSession in association with MCSessionDelegate from the MultipeerConnectivity framework instead"]
     pub unsafe trait GKSessionDelegate: NSObjectProtocol {
         #[cfg(all(feature = "Foundation_NSString", feature = "GameKit_GKSession"))]
         #[optional]
@@ -50,8 +49,8 @@ extern_protocol!(
     unsafe impl ProtocolType for dyn GKSessionDelegate {}
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_protocol!(
-    #[cfg(not(any(target_os = "macos")))]
     pub unsafe trait GKVoiceChatClient: NSObjectProtocol {
         #[cfg(all(
             feature = "Foundation_NSData",
@@ -138,6 +137,5 @@ extern_protocol!(
         );
     }
 
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl ProtocolType for dyn GKVoiceChatClient {}
 );

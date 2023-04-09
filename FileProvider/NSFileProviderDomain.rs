@@ -137,12 +137,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// NSFileProviderDomain
     #[cfg(feature = "FileProvider_NSFileProviderExtension")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl NSFileProviderExtension {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "FileProvider_NSFileProviderDomain")]
         #[method_id(@__retain_semantics Other domain)]
         pub unsafe fn domain(&self) -> Option<Id<NSFileProviderDomain>>;

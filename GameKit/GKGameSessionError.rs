@@ -8,10 +8,9 @@ use crate::GameKit::*;
 #[cfg(not(any(target_os = "watchos")))]
 extern_static!(GKGameSessionErrorDomain: &'static NSString);
 
+#[cfg(not(any(target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
-    #[deprecated = "GKGameSession is deprecated, use real-time and turn-based matchmaking APIs instead."]
-    #[cfg(not(any(target_os = "watchos")))]
     pub enum GKGameSessionErrorCode {
         #[deprecated = "GKGameSession is deprecated, use real-time and turn-based matchmaking APIs instead."]
         #[cfg(not(any(target_os = "watchos")))]

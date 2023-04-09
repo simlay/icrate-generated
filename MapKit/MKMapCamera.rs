@@ -32,24 +32,20 @@ unsafe impl NSObjectProtocol for MKMapCamera {}
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSSecureCoding for MKMapCamera {}
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKMapCamera")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKMapCamera {
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(centerCoordinate)]
         pub unsafe fn centerCoordinate(&self) -> CLLocationCoordinate2D;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(setCenterCoordinate:)]
         pub unsafe fn setCenterCoordinate(&self, center_coordinate: CLLocationCoordinate2D);
 
         #[cfg(not(any(target_os = "watchos")))]
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(centerCoordinateDistance)]
         pub unsafe fn centerCoordinateDistance(&self) -> CLLocationDistance;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(not(any(target_os = "watchos")))]
         #[method(setCenterCoordinateDistance:)]
         pub unsafe fn setCenterCoordinateDistance(
@@ -57,39 +53,31 @@ extern_methods!(
             center_coordinate_distance: CLLocationDistance,
         );
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(heading)]
         pub unsafe fn heading(&self) -> CLLocationDirection;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(setHeading:)]
         pub unsafe fn setHeading(&self, heading: CLLocationDirection);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(pitch)]
         pub unsafe fn pitch(&self) -> CGFloat;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(setPitch:)]
         pub unsafe fn setPitch(&self, pitch: CGFloat);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[deprecated = "Use centerCoordinateDistance"]
         #[cfg(not(any(target_os = "watchos")))]
         #[method(altitude)]
         pub unsafe fn altitude(&self) -> CLLocationDistance;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[deprecated = "Use centerCoordinateDistance"]
         #[cfg(not(any(target_os = "watchos")))]
         #[method(setAltitude:)]
         pub unsafe fn setAltitude(&self, altitude: CLLocationDistance);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other camera)]
         pub unsafe fn camera() -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other cameraLookingAtCenterCoordinate:fromEyeCoordinate:eyeAltitude:)]
         pub unsafe fn cameraLookingAtCenterCoordinate_fromEyeCoordinate_eyeAltitude(
             center_coordinate: CLLocationCoordinate2D,
@@ -97,7 +85,6 @@ extern_methods!(
             eye_altitude: CLLocationDistance,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other cameraLookingAtCenterCoordinate:fromDistance:pitch:heading:)]
         pub unsafe fn cameraLookingAtCenterCoordinate_fromDistance_pitch_heading(
             center_coordinate: CLLocationCoordinate2D,
@@ -106,7 +93,6 @@ extern_methods!(
             heading: CLLocationDirection,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKMapItem")]
         #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other cameraLookingAtMapItem:forViewSize:allowPitch:)]

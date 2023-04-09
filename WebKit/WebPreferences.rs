@@ -7,7 +7,6 @@ use crate::WebKit::*;
 
 ns_enum!(
     #[underlying(NSUInteger)]
-    #[deprecated]
     pub enum WebCacheModel {
         #[deprecated]
         WebCacheModelDocumentViewer = 0,

@@ -6,7 +6,6 @@ use crate::Foundation::*;
 use crate::WebKit::*;
 
 extern_protocol!(
-    #[deprecated]
     pub unsafe trait WebResourceLoadDelegate: NSObjectProtocol {
         #[cfg(all(
             feature = "Foundation_NSURLRequest",

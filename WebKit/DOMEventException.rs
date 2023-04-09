@@ -9,7 +9,6 @@ extern_static!(DOMEventException: Option<&'static NSString>);
 
 extern_enum!(
     #[underlying(c_uint)]
-    #[deprecated]
     pub enum DOMEventExceptionCode {
         #[deprecated]
         DOM_UNSPECIFIED_EVENT_TYPE_ERR = 0,

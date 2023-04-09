@@ -5,9 +5,9 @@ use crate::CloudKit::*;
 use crate::CoreLocation::*;
 use crate::Foundation::*;
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 ns_options!(
     #[underlying(NSUInteger)]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub enum CKSharingParticipantAccessOption {
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         CKSharingParticipantAccessOptionAnyoneWithLink = 1 << 0,
@@ -19,9 +19,9 @@ ns_options!(
     }
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 ns_options!(
     #[underlying(NSUInteger)]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub enum CKSharingParticipantPermissionOption {
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         CKSharingParticipantPermissionOptionReadOnly = 1 << 0,
@@ -58,11 +58,10 @@ unsafe impl NSObjectProtocol for CKAllowedSharingOptions {}
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSSecureCoding for CKAllowedSharingOptions {}
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "CloudKit_CKAllowedSharingOptions")]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl CKAllowedSharingOptions {
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Init initWithAllowedParticipantPermissionOptions:allowedParticipantAccessOptions:)]
         pub unsafe fn initWithAllowedParticipantPermissionOptions_allowedParticipantAccessOptions(
             this: Option<Allocated<Self>>,
@@ -70,31 +69,26 @@ extern_methods!(
             allowed_participant_access_options: CKSharingParticipantAccessOption,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(allowedParticipantPermissionOptions)]
         pub unsafe fn allowedParticipantPermissionOptions(
             &self,
         ) -> CKSharingParticipantPermissionOption;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(setAllowedParticipantPermissionOptions:)]
         pub unsafe fn setAllowedParticipantPermissionOptions(
             &self,
             allowed_participant_permission_options: CKSharingParticipantPermissionOption,
         );
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(allowedParticipantAccessOptions)]
         pub unsafe fn allowedParticipantAccessOptions(&self) -> CKSharingParticipantAccessOption;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(setAllowedParticipantAccessOptions:)]
         pub unsafe fn setAllowedParticipantAccessOptions(
             &self,
             allowed_participant_access_options: CKSharingParticipantAccessOption,
         );
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other standardOptions)]
         pub unsafe fn standardOptions() -> Id<CKAllowedSharingOptions>;
     }

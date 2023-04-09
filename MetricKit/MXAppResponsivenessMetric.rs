@@ -30,11 +30,10 @@ unsafe impl NSObjectProtocol for MXAppResponsivenessMetric {}
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for MXAppResponsivenessMetric {}
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "MetricKit_MXAppResponsivenessMetric")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXAppResponsivenessMetric {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSUnitDuration",
             feature = "MetricKit_MXHistogram"

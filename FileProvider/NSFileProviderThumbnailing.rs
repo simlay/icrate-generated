@@ -6,12 +6,11 @@ use crate::FileProvider::*;
 use crate::Foundation::*;
 use crate::UniformTypeIdentifiers::*;
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// NSFileProviderThumbnailing
     #[cfg(feature = "FileProvider_NSFileProviderExtension")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl NSFileProviderExtension {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSData",

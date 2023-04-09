@@ -35,16 +35,14 @@ unsafe impl NSObjectProtocol for MPMediaEntity {}
 #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 unsafe impl NSSecureCoding for MPMediaEntity {}
 
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MediaPlayer_MPMediaEntity")]
-    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     unsafe impl MPMediaEntity {
-        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(canFilterByProperty:)]
         pub unsafe fn canFilterByProperty(property: &NSString) -> bool;
 
-        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSSet", feature = "Foundation_NSString"))]
         #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(enumerateValuesForProperties:usingBlock:)]
@@ -55,16 +53,13 @@ extern_methods!(
         );
 
         #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
-        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other objectForKeyedSubscript:)]
         pub unsafe fn objectForKeyedSubscript(&self, key: &Object) -> Option<Id<Object>>;
 
-        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other valueForProperty:)]
         pub unsafe fn valueForProperty(&self, property: &NSString) -> Option<Id<Object>>;
 
-        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(persistentID)]
         pub unsafe fn persistentID(&self) -> MPMediaEntityPersistentID;

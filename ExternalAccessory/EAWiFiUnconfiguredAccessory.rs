@@ -30,36 +30,30 @@ extern_class!(
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSObjectProtocol for EAWiFiUnconfiguredAccessory {}
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "ExternalAccessory_EAWiFiUnconfiguredAccessory")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl EAWiFiUnconfiguredAccessory {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other name)]
         pub unsafe fn name(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other manufacturer)]
         pub unsafe fn manufacturer(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other model)]
         pub unsafe fn model(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other ssid)]
         pub unsafe fn ssid(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other macAddress)]
         pub unsafe fn macAddress(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[method(properties)]
         pub unsafe fn properties(&self) -> EAWiFiUnconfiguredAccessoryProperties;
     }

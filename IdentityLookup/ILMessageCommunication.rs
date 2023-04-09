@@ -30,23 +30,20 @@ unsafe impl NSObjectProtocol for ILMessageCommunication {}
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for ILMessageCommunication {}
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "IdentityLookup_ILMessageCommunication")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl ILMessageCommunication {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other messageBody)]
         pub unsafe fn messageBody(&self) -> Option<Id<NSString>>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[method(isEqualToMessageCommunication:)]
         pub unsafe fn isEqualToMessageCommunication(
             &self,
             communication: &ILMessageCommunication,
         ) -> bool;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
     }

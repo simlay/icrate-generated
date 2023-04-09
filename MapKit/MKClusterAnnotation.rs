@@ -28,40 +28,33 @@ unsafe impl MKAnnotation for MKClusterAnnotation {}
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKClusterAnnotation {}
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKClusterAnnotation")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKClusterAnnotation {
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Option<Id<NSString>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setTitle:)]
         pub unsafe fn setTitle(&self, title: Option<&NSString>);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other subtitle)]
         pub unsafe fn subtitle(&self) -> Option<Id<NSString>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setSubtitle:)]
         pub unsafe fn setSubtitle(&self, subtitle: Option<&NSString>);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSArray")]
         #[method_id(@__retain_semantics Other memberAnnotations)]
         pub unsafe fn memberAnnotations(&self) -> Id<NSArray<ProtocolObject<dyn MKAnnotation>>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSArray")]
         #[method_id(@__retain_semantics Init initWithMemberAnnotations:)]
         pub unsafe fn initWithMemberAnnotations(

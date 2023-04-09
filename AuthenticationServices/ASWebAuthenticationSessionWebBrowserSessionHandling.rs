@@ -4,8 +4,8 @@ use crate::common::*;
 use crate::AuthenticationServices::*;
 use crate::Foundation::*;
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 extern_protocol!(
-    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     pub unsafe trait ASWebAuthenticationSessionWebBrowserSessionHandling {
         #[cfg(feature = "AuthenticationServices_ASWebAuthenticationSessionRequest")]
         #[method(beginHandlingWebAuthenticationSessionRequest:)]
@@ -22,6 +22,5 @@ extern_protocol!(
         );
     }
 
-    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     unsafe impl ProtocolType for dyn ASWebAuthenticationSessionWebBrowserSessionHandling {}
 );

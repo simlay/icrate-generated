@@ -21,20 +21,17 @@ extern_class!(
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSObjectProtocol for CXCallController {}
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "CallKit_CXCallController")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXCallController {
-        #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "CallKit_CXCallObserver")]
         #[method_id(@__retain_semantics Other callObserver)]
         pub unsafe fn callObserver(&self) -> Id<CXCallObserver>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(feature = "CallKit_CXTransaction", feature = "Foundation_NSError"))]
         #[method(requestTransaction:completion:)]
         pub unsafe fn requestTransaction_completion(
@@ -43,7 +40,6 @@ extern_methods!(
             completion: &Block<(*mut NSError,), ()>,
         );
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "CallKit_CXAction",
             feature = "Foundation_NSArray",
@@ -56,7 +52,6 @@ extern_methods!(
             completion: &Block<(*mut NSError,), ()>,
         );
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(feature = "CallKit_CXAction", feature = "Foundation_NSError"))]
         #[method(requestTransactionWithAction:completion:)]
         pub unsafe fn requestTransactionWithAction_completion(

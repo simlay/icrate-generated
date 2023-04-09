@@ -22,11 +22,10 @@ extern_class!(
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for NSUserScriptTask {}
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "Foundation_NSUserScriptTask")]
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSUserScriptTask {
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSURL"))]
         #[method_id(@__retain_semantics Init initWithURL:error:_)]
         pub unsafe fn initWithURL_error(
@@ -34,12 +33,10 @@ extern_methods!(
             url: &NSURL,
         ) -> Result<Id<Self>, Id<NSError>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSURL")]
         #[method_id(@__retain_semantics Other scriptURL)]
         pub unsafe fn scriptURL(&self) -> Id<NSURL>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(executeWithCompletionHandler:)]
         pub unsafe fn executeWithCompletionHandler(
             &self,
@@ -68,41 +65,34 @@ extern_class!(
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for NSUserUnixTask {}
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "Foundation_NSUserUnixTask")]
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSUserUnixTask {
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSFileHandle")]
         #[method_id(@__retain_semantics Other standardInput)]
         pub unsafe fn standardInput(&self) -> Option<Id<NSFileHandle>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSFileHandle")]
         #[method(setStandardInput:)]
         pub unsafe fn setStandardInput(&self, standard_input: Option<&NSFileHandle>);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSFileHandle")]
         #[method_id(@__retain_semantics Other standardOutput)]
         pub unsafe fn standardOutput(&self) -> Option<Id<NSFileHandle>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSFileHandle")]
         #[method(setStandardOutput:)]
         pub unsafe fn setStandardOutput(&self, standard_output: Option<&NSFileHandle>);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSFileHandle")]
         #[method_id(@__retain_semantics Other standardError)]
         pub unsafe fn standardError(&self) -> Option<Id<NSFileHandle>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSFileHandle")]
         #[method(setStandardError:)]
         pub unsafe fn setStandardError(&self, standard_error: Option<&NSFileHandle>);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
         #[method(executeWithArguments:completionHandler:)]
         pub unsafe fn executeWithArguments_completionHandler(
@@ -134,11 +124,10 @@ extern_class!(
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for NSUserAppleScriptTask {}
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "Foundation_NSUserAppleScriptTask")]
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSUserAppleScriptTask {
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSAppleEventDescriptor")]
         #[method(executeWithAppleEvent:completionHandler:)]
         pub unsafe fn executeWithAppleEvent_completionHandler(
@@ -169,21 +158,18 @@ extern_class!(
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for NSUserAutomatorTask {}
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "Foundation_NSUserAutomatorTask")]
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSUserAutomatorTask {
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
         #[method_id(@__retain_semantics Other variables)]
         pub unsafe fn variables(&self) -> Option<Id<NSDictionary<NSString, Object>>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
         #[method(setVariables:)]
         pub unsafe fn setVariables(&self, variables: Option<&NSDictionary<NSString, Object>>);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(executeWithInput:completionHandler:)]
         pub unsafe fn executeWithInput_completionHandler(
             &self,
@@ -193,12 +179,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSUserScriptTask`
     #[cfg(feature = "Foundation_NSUserUnixTask")]
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSUserUnixTask {
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSURL"))]
         #[method_id(@__retain_semantics Init initWithURL:error:_)]
         pub unsafe fn initWithURL_error(
@@ -208,12 +193,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSUserScriptTask`
     #[cfg(feature = "Foundation_NSUserAppleScriptTask")]
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSUserAppleScriptTask {
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSURL"))]
         #[method_id(@__retain_semantics Init initWithURL:error:_)]
         pub unsafe fn initWithURL_error(
@@ -223,12 +207,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSUserScriptTask`
     #[cfg(feature = "Foundation_NSUserAutomatorTask")]
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSUserAutomatorTask {
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSURL"))]
         #[method_id(@__retain_semantics Init initWithURL:error:_)]
         pub unsafe fn initWithURL_error(

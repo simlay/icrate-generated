@@ -5,9 +5,8 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::GameKit::*;
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_protocol!(
-    #[deprecated = "Use GKLocalPlayerListener for multiplayer event notifications."]
-    #[cfg(not(any(target_os = "watchos")))]
     pub unsafe trait GKGameSessionEventListener: NSObjectProtocol {
         #[cfg(all(feature = "GameKit_GKCloudPlayer", feature = "GameKit_GKGameSession"))]
         #[optional]
@@ -74,7 +73,6 @@ extern_protocol!(
         );
     }
 
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl ProtocolType for dyn GKGameSessionEventListener {}
 );
 

@@ -232,7 +232,6 @@ extern_static!(NSConnectionReplyMode: &'static NSString);
 extern_static!(NSConnectionDidDieNotification: &'static NSString);
 
 extern_protocol!(
-    #[deprecated = "Use NSXPCConnection instead"]
     pub unsafe trait NSConnectionDelegate: NSObjectProtocol {
         #[cfg(feature = "Foundation_NSConnection")]
         #[optional]

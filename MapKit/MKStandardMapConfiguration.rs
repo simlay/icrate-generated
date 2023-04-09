@@ -41,22 +41,19 @@ unsafe impl NSObjectProtocol for MKStandardMapConfiguration {}
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSSecureCoding for MKStandardMapConfiguration {}
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKStandardMapConfiguration")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKStandardMapConfiguration {
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init initWithElevationStyle:)]
         pub unsafe fn initWithElevationStyle(
             this: Option<Allocated<Self>>,
             elevation_style: MKMapElevationStyle,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init initWithElevationStyle:emphasisStyle:)]
         pub unsafe fn initWithElevationStyle_emphasisStyle(
             this: Option<Allocated<Self>>,
@@ -64,27 +61,22 @@ extern_methods!(
             emphasis_style: MKStandardMapEmphasisStyle,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init initWithEmphasisStyle:)]
         pub unsafe fn initWithEmphasisStyle(
             this: Option<Allocated<Self>>,
             emphasis_style: MKStandardMapEmphasisStyle,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(emphasisStyle)]
         pub unsafe fn emphasisStyle(&self) -> MKStandardMapEmphasisStyle;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(setEmphasisStyle:)]
         pub unsafe fn setEmphasisStyle(&self, emphasis_style: MKStandardMapEmphasisStyle);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKPointOfInterestFilter")]
         #[method_id(@__retain_semantics Other pointOfInterestFilter)]
         pub unsafe fn pointOfInterestFilter(&self) -> Option<Id<MKPointOfInterestFilter>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKPointOfInterestFilter")]
         #[method(setPointOfInterestFilter:)]
         pub unsafe fn setPointOfInterestFilter(
@@ -92,11 +84,9 @@ extern_methods!(
             point_of_interest_filter: Option<&MKPointOfInterestFilter>,
         );
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(showsTraffic)]
         pub unsafe fn showsTraffic(&self) -> bool;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(setShowsTraffic:)]
         pub unsafe fn setShowsTraffic(&self, shows_traffic: bool);
     }

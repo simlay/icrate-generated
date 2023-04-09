@@ -20,16 +20,14 @@ extern_class!(
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for NSURLDownload {}
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "Foundation_NSURLDownload")]
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSURLDownload {
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(canResumeDownloadDecodedWithEncodingMIMEType:)]
         pub unsafe fn canResumeDownloadDecodedWithEncodingMIMEType(mime_type: &NSString) -> bool;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSURLRequest")]
         #[deprecated = "Use NSURLSession downloadTask (see NSURLSession.h)"]
         #[method_id(@__retain_semantics Init initWithRequest:delegate:)]
@@ -39,7 +37,6 @@ extern_methods!(
             delegate: Option<&ProtocolObject<dyn NSURLDownloadDelegate>>,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSData", feature = "Foundation_NSString"))]
         #[deprecated = "Use NSURLSession downloadTask (see NSURLSession.h)"]
         #[method_id(@__retain_semantics Init initWithResumeData:delegate:path:)]
@@ -50,37 +47,31 @@ extern_methods!(
             path: &NSString,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(cancel)]
         pub unsafe fn cancel(&self);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setDestination:allowOverwrite:)]
         pub unsafe fn setDestination_allowOverwrite(&self, path: &NSString, allow_overwrite: bool);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSURLRequest")]
         #[method_id(@__retain_semantics Other request)]
         pub unsafe fn request(&self) -> Id<NSURLRequest>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSData")]
         #[method_id(@__retain_semantics Other resumeData)]
         pub unsafe fn resumeData(&self) -> Option<Id<NSData>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(deletesFileUponFailure)]
         pub unsafe fn deletesFileUponFailure(&self) -> bool;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(setDeletesFileUponFailure:)]
         pub unsafe fn setDeletesFileUponFailure(&self, deletes_file_upon_failure: bool);
     }
 );
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_protocol!(
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub unsafe trait NSURLDownloadDelegate: NSObjectProtocol {
         #[cfg(feature = "Foundation_NSURLDownload")]
         #[optional]
@@ -210,6 +201,5 @@ extern_protocol!(
         unsafe fn download_didFailWithError(&self, download: &NSURLDownload, error: &NSError);
     }
 
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl ProtocolType for dyn NSURLDownloadDelegate {}
 );

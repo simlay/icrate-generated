@@ -30,11 +30,10 @@ unsafe impl NSObjectProtocol for CXStartCallAction {}
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for CXStartCallAction {}
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "CallKit_CXStartCallAction")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXStartCallAction {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(feature = "CallKit_CXHandle", feature = "Foundation_NSUUID"))]
         #[method_id(@__retain_semantics Init initWithCallUUID:handle:)]
         pub unsafe fn initWithCallUUID_handle(
@@ -43,7 +42,6 @@ extern_methods!(
             handle: &CXHandle,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSCoder")]
         #[method_id(@__retain_semantics Init initWithCoder:)]
         pub unsafe fn initWithCoder(
@@ -51,7 +49,6 @@ extern_methods!(
             a_decoder: &NSCoder,
         ) -> Option<Id<Self>>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSUUID")]
         #[method_id(@__retain_semantics Init initWithCallUUID:)]
         pub unsafe fn initWithCallUUID(
@@ -59,35 +56,28 @@ extern_methods!(
             call_uuid: &NSUUID,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "CallKit_CXHandle")]
         #[method_id(@__retain_semantics Other handle)]
         pub unsafe fn handle(&self) -> Id<CXHandle>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "CallKit_CXHandle")]
         #[method(setHandle:)]
         pub unsafe fn setHandle(&self, handle: &CXHandle);
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other contactIdentifier)]
         pub unsafe fn contactIdentifier(&self) -> Option<Id<NSString>>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setContactIdentifier:)]
         pub unsafe fn setContactIdentifier(&self, contact_identifier: Option<&NSString>);
 
-        #[cfg(not(any(target_os = "macos")))]
         #[method(isVideo)]
         pub unsafe fn isVideo(&self) -> bool;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[method(setVideo:)]
         pub unsafe fn setVideo(&self, video: bool);
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSDate")]
         #[method(fulfillWithDateStarted:)]
         pub unsafe fn fulfillWithDateStarted(&self, date_started: &NSDate);

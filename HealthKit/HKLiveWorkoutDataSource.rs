@@ -23,20 +23,17 @@ extern_class!(
 #[cfg(not(any(target_os = "ios")))]
 unsafe impl NSObjectProtocol for HKLiveWorkoutDataSource {}
 
+#[cfg(not(any(target_os = "ios")))]
 extern_methods!(
     #[cfg(feature = "HealthKit_HKLiveWorkoutDataSource")]
-    #[cfg(not(any(target_os = "ios")))]
     unsafe impl HKLiveWorkoutDataSource {
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[cfg(all(feature = "Foundation_NSSet", feature = "HealthKit_HKQuantityType"))]
         #[method_id(@__retain_semantics Other typesToCollect)]
         pub unsafe fn typesToCollect(&self) -> Id<NSSet<HKQuantityType>>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[cfg(all(
             feature = "HealthKit_HKHealthStore",
             feature = "HealthKit_HKWorkoutConfiguration"
@@ -48,7 +45,6 @@ extern_methods!(
             configuration: Option<&HKWorkoutConfiguration>,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[cfg(all(
             feature = "Foundation_NSPredicate",
             feature = "HealthKit_HKQuantityType"
@@ -60,7 +56,6 @@ extern_methods!(
             predicate: Option<&NSPredicate>,
         );
 
-        #[cfg(not(any(target_os = "ios")))]
         #[cfg(feature = "HealthKit_HKQuantityType")]
         #[method(disableCollectionForType:)]
         pub unsafe fn disableCollectionForType(&self, quantity_type: &HKQuantityType);

@@ -38,30 +38,25 @@ unsafe impl NSObjectProtocol for HKClinicalRecord {}
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSSecureCoding for HKClinicalRecord {}
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "HealthKit_HKClinicalRecord")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl HKClinicalRecord {
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "HealthKit_HKClinicalType")]
         #[method_id(@__retain_semantics Other clinicalType)]
         pub unsafe fn clinicalType(&self) -> Id<HKClinicalType>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other displayName)]
         pub unsafe fn displayName(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "HealthKit_HKFHIRResource")]
         #[method_id(@__retain_semantics Other FHIRResource)]
         pub unsafe fn FHIRResource(&self) -> Option<Id<HKFHIRResource>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
     }

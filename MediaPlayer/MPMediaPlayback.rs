@@ -5,8 +5,8 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::MediaPlayer::*;
 
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 extern_protocol!(
-    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     pub unsafe trait MPMediaPlayback {
         #[method(prepareToPlay)]
         unsafe fn prepareToPlay(&self);
@@ -45,7 +45,6 @@ extern_protocol!(
         unsafe fn endSeeking(&self);
     }
 
-    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     unsafe impl ProtocolType for dyn MPMediaPlayback {}
 );
 

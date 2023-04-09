@@ -30,11 +30,10 @@ unsafe impl NSObjectProtocol for MXGPUMetric {}
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for MXGPUMetric {}
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "MetricKit_MXGPUMetric")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXGPUMetric {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"

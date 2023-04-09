@@ -30,11 +30,10 @@ unsafe impl NSObjectProtocol for MXAppRunTimeMetric {}
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for MXAppRunTimeMetric {}
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "MetricKit_MXAppRunTimeMetric")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXAppRunTimeMetric {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"
@@ -42,7 +41,6 @@ extern_methods!(
         #[method_id(@__retain_semantics Other cumulativeForegroundTime)]
         pub unsafe fn cumulativeForegroundTime(&self) -> Id<NSMeasurement<NSUnitDuration>>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"
@@ -50,7 +48,6 @@ extern_methods!(
         #[method_id(@__retain_semantics Other cumulativeBackgroundTime)]
         pub unsafe fn cumulativeBackgroundTime(&self) -> Id<NSMeasurement<NSUnitDuration>>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"
@@ -58,7 +55,6 @@ extern_methods!(
         #[method_id(@__retain_semantics Other cumulativeBackgroundAudioTime)]
         pub unsafe fn cumulativeBackgroundAudioTime(&self) -> Id<NSMeasurement<NSUnitDuration>>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"

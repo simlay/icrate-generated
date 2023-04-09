@@ -24,19 +24,16 @@ extern_class!(
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKLookAroundSnapshotter {}
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKLookAroundSnapshotter")]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl MKLookAroundSnapshotter {
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "MapKit_MKLookAroundScene",
             feature = "MapKit_MKLookAroundSnapshotOptions"
@@ -48,7 +45,6 @@ extern_methods!(
             options: &MKLookAroundSnapshotOptions,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSError",
             feature = "MapKit_MKLookAroundSnapshot"
@@ -59,11 +55,9 @@ extern_methods!(
             completion_handler: &Block<(*mut MKLookAroundSnapshot, *mut NSError), ()>,
         );
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(cancel)]
         pub unsafe fn cancel(&self);
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(isLoading)]
         pub unsafe fn isLoading(&self) -> bool;
     }

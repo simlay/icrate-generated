@@ -66,36 +66,30 @@ unsafe impl NSObjectProtocol for HKFHIRResource {}
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSSecureCoding for HKFHIRResource {}
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "HealthKit_HKFHIRResource")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl HKFHIRResource {
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "HealthKit_HKFHIRVersion")]
         #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other FHIRVersion)]
         pub unsafe fn FHIRVersion(&self) -> Id<HKFHIRVersion>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other resourceType)]
         pub unsafe fn resourceType(&self) -> Id<HKFHIRResourceType>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSData")]
         #[method_id(@__retain_semantics Other data)]
         pub unsafe fn data(&self) -> Id<NSData>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSURL")]
         #[method_id(@__retain_semantics Other sourceURL)]
         pub unsafe fn sourceURL(&self) -> Option<Id<NSURL>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
     }

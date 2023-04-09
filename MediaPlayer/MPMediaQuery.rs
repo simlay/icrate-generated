@@ -5,9 +5,9 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::MediaPlayer::*;
 
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub enum MPMediaGrouping {
         #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         MPMediaGroupingTitle = 0,
@@ -53,11 +53,10 @@ unsafe impl NSObjectProtocol for MPMediaQuery {}
 #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSSecureCoding for MPMediaQuery {}
 
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MediaPlayer_MPMediaQuery")]
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl MPMediaQuery {
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSSet", feature = "MediaPlayer_MPMediaPredicate"))]
         #[method_id(@__retain_semantics Init initWithFilterPredicates:)]
         pub unsafe fn initWithFilterPredicates(
@@ -65,12 +64,10 @@ extern_methods!(
             filter_predicates: Option<&NSSet<MPMediaPredicate>>,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSSet", feature = "MediaPlayer_MPMediaPredicate"))]
         #[method_id(@__retain_semantics Other filterPredicates)]
         pub unsafe fn filterPredicates(&self) -> Option<Id<NSSet<MPMediaPredicate>>>;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSSet", feature = "MediaPlayer_MPMediaPredicate"))]
         #[method(setFilterPredicates:)]
         pub unsafe fn setFilterPredicates(
@@ -78,22 +75,18 @@ extern_methods!(
             filter_predicates: Option<&NSSet<MPMediaPredicate>>,
         );
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "MediaPlayer_MPMediaPredicate")]
         #[method(addFilterPredicate:)]
         pub unsafe fn addFilterPredicate(&self, predicate: &MPMediaPredicate);
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "MediaPlayer_MPMediaPredicate")]
         #[method(removeFilterPredicate:)]
         pub unsafe fn removeFilterPredicate(&self, predicate: &MPMediaPredicate);
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "MediaPlayer_MPMediaItem"))]
         #[method_id(@__retain_semantics Other items)]
         pub unsafe fn items(&self) -> Option<Id<NSArray<MPMediaItem>>>;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSArray",
             feature = "MediaPlayer_MPMediaItemCollection"
@@ -101,15 +94,12 @@ extern_methods!(
         #[method_id(@__retain_semantics Other collections)]
         pub unsafe fn collections(&self) -> Option<Id<NSArray<MPMediaItemCollection>>>;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(groupingType)]
         pub unsafe fn groupingType(&self) -> MPMediaGrouping;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(setGroupingType:)]
         pub unsafe fn setGroupingType(&self, grouping_type: MPMediaGrouping);
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSArray",
             feature = "MediaPlayer_MPMediaQuerySection"
@@ -117,7 +107,6 @@ extern_methods!(
         #[method_id(@__retain_semantics Other itemSections)]
         pub unsafe fn itemSections(&self) -> Option<Id<NSArray<MPMediaQuerySection>>>;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSArray",
             feature = "MediaPlayer_MPMediaQuerySection"
@@ -125,39 +114,30 @@ extern_methods!(
         #[method_id(@__retain_semantics Other collectionSections)]
         pub unsafe fn collectionSections(&self) -> Option<Id<NSArray<MPMediaQuerySection>>>;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other albumsQuery)]
         pub unsafe fn albumsQuery() -> Id<MPMediaQuery>;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other artistsQuery)]
         pub unsafe fn artistsQuery() -> Id<MPMediaQuery>;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other songsQuery)]
         pub unsafe fn songsQuery() -> Id<MPMediaQuery>;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other playlistsQuery)]
         pub unsafe fn playlistsQuery() -> Id<MPMediaQuery>;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other podcastsQuery)]
         pub unsafe fn podcastsQuery() -> Id<MPMediaQuery>;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other audiobooksQuery)]
         pub unsafe fn audiobooksQuery() -> Id<MPMediaQuery>;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other compilationsQuery)]
         pub unsafe fn compilationsQuery() -> Id<MPMediaQuery>;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other composersQuery)]
         pub unsafe fn composersQuery() -> Id<MPMediaQuery>;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other genresQuery)]
         pub unsafe fn genresQuery() -> Id<MPMediaQuery>;
     }
@@ -188,15 +168,15 @@ unsafe impl NSObjectProtocol for MPMediaPredicate {}
 #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSSecureCoding for MPMediaPredicate {}
 
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MediaPlayer_MPMediaPredicate")]
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl MPMediaPredicate {}
 );
 
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub enum MPMediaPredicateComparison {
         #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         MPMediaPredicateComparisonEqualTo = 0,
@@ -231,11 +211,10 @@ unsafe impl NSObjectProtocol for MPMediaPropertyPredicate {}
 #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSSecureCoding for MPMediaPropertyPredicate {}
 
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MediaPlayer_MPMediaPropertyPredicate")]
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl MPMediaPropertyPredicate {
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other predicateWithValue:forProperty:)]
         pub unsafe fn predicateWithValue_forProperty(
@@ -243,7 +222,6 @@ extern_methods!(
             property: &NSString,
         ) -> Id<MPMediaPropertyPredicate>;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other predicateWithValue:forProperty:comparisonType:)]
         pub unsafe fn predicateWithValue_forProperty_comparisonType(
@@ -252,16 +230,13 @@ extern_methods!(
             comparison_type: MPMediaPredicateComparison,
         ) -> Id<MPMediaPropertyPredicate>;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other property)]
         pub unsafe fn property(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other value)]
         pub unsafe fn value(&self) -> Option<Id<Object>>;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(comparisonType)]
         pub unsafe fn comparisonType(&self) -> MPMediaPredicateComparison;
     }

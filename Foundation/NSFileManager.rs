@@ -55,9 +55,9 @@ ns_enum!(
     }
 );
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 ns_options!(
     #[underlying(NSUInteger)]
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub enum NSFileManagerUnmountOptions {
         #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         NSFileManagerUnmountAllPartitionsAndEjectDisk = 1 << 0,
@@ -939,11 +939,10 @@ extern_class!(
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for NSFileProviderService {}
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "Foundation_NSFileProviderService")]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSFileProviderService {
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSXPCConnection"))]
         #[method(getFileProviderConnectionWithCompletionHandler:)]
         pub unsafe fn getFileProviderConnectionWithCompletionHandler(
@@ -951,7 +950,6 @@ extern_methods!(
             completion_handler: &Block<(*mut NSXPCConnection, *mut NSError), ()>,
         );
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other name)]
         pub unsafe fn name(&self) -> Id<NSFileProviderServiceName>;
     }

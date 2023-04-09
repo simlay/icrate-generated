@@ -5,8 +5,8 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::GameKit::*;
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_protocol!(
-    #[cfg(not(any(target_os = "watchos")))]
     pub unsafe trait GKSavedGameListener: NSObjectProtocol {
         #[cfg(all(feature = "GameKit_GKPlayer", feature = "GameKit_GKSavedGame"))]
         #[optional]
@@ -27,6 +27,5 @@ extern_protocol!(
         );
     }
 
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl ProtocolType for dyn GKSavedGameListener {}
 );

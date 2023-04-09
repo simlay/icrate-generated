@@ -265,7 +265,6 @@ extern_methods!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
-    #[deprecated]
     pub enum NSGradientType {
         NSGradientNone = 0,
         NSGradientConcaveWeak = 1,

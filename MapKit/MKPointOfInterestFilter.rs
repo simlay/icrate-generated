@@ -32,19 +32,16 @@ unsafe impl NSObjectProtocol for MKPointOfInterestFilter {}
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSSecureCoding for MKPointOfInterestFilter {}
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKPointOfInterestFilter")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKPointOfInterestFilter {
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other filterIncludingAllCategories)]
         pub unsafe fn filterIncludingAllCategories() -> Id<MKPointOfInterestFilter>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other filterExcludingAllCategories)]
         pub unsafe fn filterExcludingAllCategories() -> Id<MKPointOfInterestFilter>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSArray")]
         #[method_id(@__retain_semantics Init initIncludingCategories:)]
         pub unsafe fn initIncludingCategories(
@@ -52,7 +49,6 @@ extern_methods!(
             categories: &NSArray<MKPointOfInterestCategory>,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSArray")]
         #[method_id(@__retain_semantics Init initExcludingCategories:)]
         pub unsafe fn initExcludingCategories(
@@ -60,11 +56,9 @@ extern_methods!(
             categories: &NSArray<MKPointOfInterestCategory>,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(includesCategory:)]
         pub unsafe fn includesCategory(&self, category: &MKPointOfInterestCategory) -> bool;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(excludesCategory:)]
         pub unsafe fn excludesCategory(&self, category: &MKPointOfInterestCategory) -> bool;
     }

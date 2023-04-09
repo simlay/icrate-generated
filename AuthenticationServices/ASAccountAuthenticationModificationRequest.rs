@@ -21,8 +21,8 @@ extern_class!(
 #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for ASAccountAuthenticationModificationRequest {}
 
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationRequest")]
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAccountAuthenticationModificationRequest {}
 );

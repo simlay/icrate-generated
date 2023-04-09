@@ -73,7 +73,6 @@ extern_methods!(
 );
 
 extern_protocol!(
-    #[deprecated = "Use GKGameCenterViewController instead"]
     pub unsafe trait GKLeaderboardViewControllerDelegate: NSObjectProtocol {
         #[cfg(feature = "GameKit_GKLeaderboardViewController")]
         #[method(leaderboardViewControllerDidFinish:)]

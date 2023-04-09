@@ -31,18 +31,16 @@ unsafe impl NSObjectProtocol for MPMediaItemCollection {}
 #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSSecureCoding for MPMediaItemCollection {}
 
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MediaPlayer_MPMediaItemCollection")]
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl MPMediaItemCollection {
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "MediaPlayer_MPMediaItem"))]
         #[method_id(@__retain_semantics Other collectionWithItems:)]
         pub unsafe fn collectionWithItems(
             items: &NSArray<MPMediaItem>,
         ) -> Id<MPMediaItemCollection>;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "MediaPlayer_MPMediaItem"))]
         #[method_id(@__retain_semantics Init initWithItems:)]
         pub unsafe fn initWithItems(
@@ -50,21 +48,17 @@ extern_methods!(
             items: &NSArray<MPMediaItem>,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "MediaPlayer_MPMediaItem"))]
         #[method_id(@__retain_semantics Other items)]
         pub unsafe fn items(&self) -> Id<NSArray<MPMediaItem>>;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "MediaPlayer_MPMediaItem")]
         #[method_id(@__retain_semantics Other representativeItem)]
         pub unsafe fn representativeItem(&self) -> Option<Id<MPMediaItem>>;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(count)]
         pub unsafe fn count(&self) -> NSUInteger;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(mediaTypes)]
         pub unsafe fn mediaTypes(&self) -> MPMediaType;
     }

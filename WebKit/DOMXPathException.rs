@@ -9,7 +9,6 @@ extern_static!(DOMXPathException: Option<&'static NSString>);
 
 extern_enum!(
     #[underlying(c_uint)]
-    #[deprecated]
     pub enum DOMXPathExceptionCode {
         #[deprecated]
         DOM_INVALID_EXPRESSION_ERR = 51,

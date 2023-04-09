@@ -30,23 +30,21 @@ unsafe impl NSObjectProtocol for CXEndCallAction {}
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for CXEndCallAction {}
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "CallKit_CXEndCallAction")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXEndCallAction {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSDate")]
         #[method(fulfillWithDateEnded:)]
         pub unsafe fn fulfillWithDateEnded(&self, date_ended: &NSDate);
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// Methods declared on superclass `CXCallAction`
     #[cfg(feature = "CallKit_CXEndCallAction")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXEndCallAction {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSUUID")]
         #[method_id(@__retain_semantics Init initWithCallUUID:)]
         pub unsafe fn initWithCallUUID(

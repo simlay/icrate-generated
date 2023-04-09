@@ -28,7 +28,6 @@ extern_methods!(
 );
 
 extern_protocol!(
-    #[deprecated]
     pub unsafe trait WebDownloadDelegate: NSURLDownloadDelegate {
         #[cfg(all(feature = "AppKit_NSWindow", feature = "WebKit_WebDownload"))]
         #[optional]

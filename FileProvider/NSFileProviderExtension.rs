@@ -23,11 +23,10 @@ extern_class!(
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSObjectProtocol for NSFileProviderExtension {}
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "FileProvider_NSFileProviderExtension")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl NSFileProviderExtension {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSError")]
         #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics Other itemForIdentifier:error:_)]
@@ -36,7 +35,6 @@ extern_methods!(
             identifier: &NSFileProviderItemIdentifier,
         ) -> Result<Id<NSFileProviderItem>, Id<NSError>>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSURL")]
         #[method_id(@__retain_semantics Other URLForItemWithPersistentIdentifier:)]
         pub unsafe fn URLForItemWithPersistentIdentifier(
@@ -44,7 +42,6 @@ extern_methods!(
             identifier: &NSFileProviderItemIdentifier,
         ) -> Option<Id<NSURL>>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSURL")]
         #[method_id(@__retain_semantics Other persistentIdentifierForItemAtURL:)]
         pub unsafe fn persistentIdentifierForItemAtURL(
@@ -52,7 +49,6 @@ extern_methods!(
             url: &NSURL,
         ) -> Option<Id<NSFileProviderItemIdentifier>>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSURL"))]
         #[method(providePlaceholderAtURL:completionHandler:)]
         pub unsafe fn providePlaceholderAtURL_completionHandler(
@@ -61,7 +57,6 @@ extern_methods!(
             completion_handler: &Block<(*mut NSError,), ()>,
         );
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSURL"))]
         #[method(startProvidingItemAtURL:completionHandler:)]
         pub unsafe fn startProvidingItemAtURL_completionHandler(
@@ -70,24 +65,21 @@ extern_methods!(
             completion_handler: &Block<(*mut NSError,), ()>,
         );
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSURL")]
         #[method(stopProvidingItemAtURL:)]
         pub unsafe fn stopProvidingItemAtURL(&self, url: &NSURL);
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSURL")]
         #[method(itemChangedAtURL:)]
         pub unsafe fn itemChangedAtURL(&self, url: &NSURL);
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// Deprecated
     #[cfg(feature = "FileProvider_NSFileProviderExtension")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl NSFileProviderExtension {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSDictionary",
             feature = "Foundation_NSError",
@@ -101,21 +93,18 @@ extern_methods!(
             metadata: &NSDictionary<NSURLResourceKey, Object>,
         ) -> Result<(), Id<NSError>>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSURL")]
         #[deprecated]
         #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics Other placeholderURLForURL:)]
         pub unsafe fn placeholderURLForURL(url: &NSURL) -> Id<NSURL>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[deprecated]
         #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics Other providerIdentifier)]
         pub unsafe fn providerIdentifier(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSURL")]
         #[deprecated]
         #[cfg(not(any(target_os = "macos")))]

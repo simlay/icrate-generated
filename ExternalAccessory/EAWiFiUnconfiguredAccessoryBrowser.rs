@@ -40,24 +40,21 @@ extern_class!(
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSObjectProtocol for EAWiFiUnconfiguredAccessoryBrowser {}
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "ExternalAccessory_EAWiFiUnconfiguredAccessoryBrowser")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl EAWiFiUnconfiguredAccessoryBrowser {
-        #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(
             &self,
         ) -> Option<Id<ProtocolObject<dyn EAWiFiUnconfiguredAccessoryBrowserDelegate>>>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
             delegate: Option<&ProtocolObject<dyn EAWiFiUnconfiguredAccessoryBrowserDelegate>>,
         );
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "ExternalAccessory_EAWiFiUnconfiguredAccessory",
             feature = "Foundation_NSSet"
@@ -65,7 +62,6 @@ extern_methods!(
         #[method_id(@__retain_semantics Other unconfiguredAccessories)]
         pub unsafe fn unconfiguredAccessories(&self) -> Id<NSSet<EAWiFiUnconfiguredAccessory>>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSPredicate")]
         #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         #[method(startSearchingForUnconfiguredAccessoriesMatchingPredicate:)]
@@ -74,12 +70,10 @@ extern_methods!(
             predicate: Option<&NSPredicate>,
         );
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         #[method(stopSearchingForUnconfiguredAccessories)]
         pub unsafe fn stopSearchingForUnconfiguredAccessories(&self);
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "ExternalAccessory_EAWiFiUnconfiguredAccessory",
             feature = "ExternalAccessory_UIViewController"

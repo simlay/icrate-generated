@@ -25,11 +25,10 @@ unsafe impl ASAuthorizationProvider for ASAuthorizationPlatformPublicKeyCredenti
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for ASAuthorizationPlatformPublicKeyCredentialProvider {}
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASAuthorizationPlatformPublicKeyCredentialProvider")]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAuthorizationPlatformPublicKeyCredentialProvider {
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Init initWithRelyingPartyIdentifier:)]
         pub unsafe fn initWithRelyingPartyIdentifier(
@@ -37,7 +36,6 @@ extern_methods!(
             relying_party_identifier: &NSString,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "AuthenticationServices_ASAuthorizationPlatformPublicKeyCredentialRegistrationRequest",
             feature = "Foundation_NSData",
@@ -51,7 +49,6 @@ extern_methods!(
             user_id: &NSData,
         ) -> Id<ASAuthorizationPlatformPublicKeyCredentialRegistrationRequest>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "AuthenticationServices_ASAuthorizationPlatformPublicKeyCredentialAssertionRequest",
             feature = "Foundation_NSData"
@@ -62,16 +59,13 @@ extern_methods!(
             challenge: &NSData,
         ) -> Id<ASAuthorizationPlatformPublicKeyCredentialAssertionRequest>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other relyingPartyIdentifier)]
         pub unsafe fn relyingPartyIdentifier(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
     }

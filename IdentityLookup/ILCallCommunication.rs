@@ -30,18 +30,16 @@ unsafe impl NSObjectProtocol for ILCallCommunication {}
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for ILCallCommunication {}
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "IdentityLookup_ILCallCommunication")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl ILCallCommunication {
-        #[cfg(not(any(target_os = "macos")))]
         #[method(isEqualToCallCommunication:)]
         pub unsafe fn isEqualToCallCommunication(
             &self,
             communication: &ILCallCommunication,
         ) -> bool;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
     }

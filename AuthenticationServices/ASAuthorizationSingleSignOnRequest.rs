@@ -30,16 +30,14 @@ unsafe impl NSObjectProtocol for ASAuthorizationSingleSignOnRequest {}
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSSecureCoding for ASAuthorizationSingleSignOnRequest {}
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASAuthorizationSingleSignOnRequest")]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAuthorizationSingleSignOnRequest {
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSURLQueryItem"))]
         #[method_id(@__retain_semantics Other authorizationOptions)]
         pub unsafe fn authorizationOptions(&self) -> Id<NSArray<NSURLQueryItem>>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSURLQueryItem"))]
         #[method(setAuthorizationOptions:)]
         pub unsafe fn setAuthorizationOptions(
@@ -48,11 +46,9 @@ extern_methods!(
         );
 
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(isUserInterfaceEnabled)]
         pub unsafe fn isUserInterfaceEnabled(&self) -> bool;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(setUserInterfaceEnabled:)]
         pub unsafe fn setUserInterfaceEnabled(&self, user_interface_enabled: bool);

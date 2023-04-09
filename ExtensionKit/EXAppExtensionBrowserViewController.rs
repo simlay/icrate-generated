@@ -39,18 +39,17 @@ unsafe impl NSSeguePerforming for EXAppExtensionBrowserViewController {}
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSUserInterfaceItemIdentification for EXAppExtensionBrowserViewController {}
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "ExtensionKit_EXAppExtensionBrowserViewController")]
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl EXAppExtensionBrowserViewController {}
 );
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSViewController`
     #[cfg(feature = "ExtensionKit_EXAppExtensionBrowserViewController")]
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl EXAppExtensionBrowserViewController {
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSBundle")]
         #[method_id(@__retain_semantics Init initWithNibName:bundle:)]
         pub unsafe fn initWithNibName_bundle(

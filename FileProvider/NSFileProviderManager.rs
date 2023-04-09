@@ -298,9 +298,9 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "ios")))]
 ns_options!(
     #[underlying(NSUInteger)]
-    #[cfg(not(any(target_os = "ios")))]
     pub enum NSFileProviderManagerDisconnectionOptions {
         #[cfg(not(any(target_os = "ios")))]
         NSFileProviderManagerDisconnectionOptionsTemporary = 1 << 0,

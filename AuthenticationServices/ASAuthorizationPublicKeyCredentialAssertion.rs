@@ -4,8 +4,8 @@ use crate::common::*;
 use crate::AuthenticationServices::*;
 use crate::Foundation::*;
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_protocol!(
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub unsafe trait ASAuthorizationPublicKeyCredentialAssertion:
         ASPublicKeyCredential
     {
@@ -22,6 +22,5 @@ extern_protocol!(
         unsafe fn signature(&self) -> Id<NSData>;
     }
 
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl ProtocolType for dyn ASAuthorizationPublicKeyCredentialAssertion {}
 );

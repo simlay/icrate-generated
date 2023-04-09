@@ -7,9 +7,9 @@ use crate::CoreLocation::*;
 use crate::Foundation::*;
 use crate::MapKit::*;
 
+#[cfg(not(any(target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
-    #[cfg(not(any(target_os = "watchos")))]
     pub enum MKUserTrackingMode {
         #[cfg(not(any(target_os = "watchos")))]
         MKUserTrackingModeNone = 0,
@@ -443,9 +443,9 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
-    #[cfg(not(any(target_os = "watchos")))]
     pub enum MKOverlayLevel {
         #[cfg(not(any(target_os = "watchos")))]
         MKOverlayLevelAboveRoads = 0,
@@ -550,8 +550,8 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_protocol!(
-    #[cfg(not(any(target_os = "watchos")))]
     pub unsafe trait MKMapViewDelegate: NSObjectProtocol {
         #[cfg(feature = "MapKit_MKMapView")]
         #[optional]
@@ -745,7 +745,6 @@ extern_protocol!(
         ) -> Id<MKClusterAnnotation>;
     }
 
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl ProtocolType for dyn MKMapViewDelegate {}
 );
 

@@ -65,10 +65,10 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// NSItemProvider
     #[cfg(feature = "PhotoKit_PHLivePhoto")]
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl PHLivePhoto {}
 );
 

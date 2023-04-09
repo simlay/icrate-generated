@@ -6,7 +6,6 @@ use crate::Foundation::*;
 use crate::WebKit::*;
 
 extern_protocol!(
-    #[deprecated]
     pub unsafe trait WebDocumentView: NSObjectProtocol {
         #[cfg(feature = "WebKit_WebDataSource")]
         #[method(setDataSource:)]
@@ -34,7 +33,6 @@ extern_protocol!(
 );
 
 extern_protocol!(
-    #[deprecated]
     pub unsafe trait WebDocumentSearching: NSObjectProtocol {
         #[cfg(feature = "Foundation_NSString")]
         #[method(searchFor:direction:caseSensitive:wrap:)]
@@ -51,7 +49,6 @@ extern_protocol!(
 );
 
 extern_protocol!(
-    #[deprecated]
     pub unsafe trait WebDocumentText: NSObjectProtocol {
         #[method(supportsTextEncoding)]
         unsafe fn supportsTextEncoding(&self) -> bool;
@@ -83,7 +80,6 @@ extern_protocol!(
 );
 
 extern_protocol!(
-    #[deprecated]
     pub unsafe trait WebDocumentRepresentation: NSObjectProtocol {
         #[cfg(feature = "WebKit_WebDataSource")]
         #[method(setDataSource:)]

@@ -7,7 +7,6 @@ use crate::StoreKit::*;
 
 ns_closed_enum!(
     #[underlying(NSInteger)]
-    #[deprecated = "Hosted content is no longer supported"]
     pub enum SKDownloadState {
         #[deprecated = "Hosted content is no longer supported"]
         SKDownloadStateWaiting = 0,

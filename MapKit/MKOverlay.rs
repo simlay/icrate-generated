@@ -7,8 +7,8 @@ use crate::CoreLocation::*;
 use crate::Foundation::*;
 use crate::MapKit::*;
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_protocol!(
-    #[cfg(not(any(target_os = "watchos")))]
     pub unsafe trait MKOverlay: MKAnnotation {
         #[method(coordinate)]
         unsafe fn coordinate(&self) -> CLLocationCoordinate2D;
@@ -25,6 +25,5 @@ extern_protocol!(
         unsafe fn canReplaceMapContent(&self) -> bool;
     }
 
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl ProtocolType for dyn MKOverlay {}
 );

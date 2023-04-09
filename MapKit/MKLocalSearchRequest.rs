@@ -7,9 +7,9 @@ use crate::CoreLocation::*;
 use crate::Foundation::*;
 use crate::MapKit::*;
 
+#[cfg(not(any(target_os = "watchos")))]
 ns_options!(
     #[underlying(NSUInteger)]
-    #[cfg(not(any(target_os = "watchos")))]
     pub enum MKLocalSearchResultType {
         #[cfg(not(any(target_os = "watchos")))]
         MKLocalSearchResultTypeAddress = 1 << 0,
@@ -35,15 +35,13 @@ extern_class!(
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKLocalSearchRequest {}
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKLocalSearchRequest")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKLocalSearchRequest {
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init initWithNaturalLanguageQuery:)]
@@ -52,7 +50,6 @@ extern_methods!(
             natural_language_query: &NSString,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init initWithNaturalLanguageQuery:region:)]
@@ -62,41 +59,33 @@ extern_methods!(
             region: MKCoordinateRegion,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other naturalLanguageQuery)]
         pub unsafe fn naturalLanguageQuery(&self) -> Option<Id<NSString>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setNaturalLanguageQuery:)]
         pub unsafe fn setNaturalLanguageQuery(&self, natural_language_query: Option<&NSString>);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(region)]
         pub unsafe fn region(&self) -> MKCoordinateRegion;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(setRegion:)]
         pub unsafe fn setRegion(&self, region: MKCoordinateRegion);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(not(any(target_os = "watchos")))]
         #[method(resultTypes)]
         pub unsafe fn resultTypes(&self) -> MKLocalSearchResultType;
 
         #[cfg(not(any(target_os = "watchos")))]
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(setResultTypes:)]
         pub unsafe fn setResultTypes(&self, result_types: MKLocalSearchResultType);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKPointOfInterestFilter")]
         #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other pointOfInterestFilter)]
         pub unsafe fn pointOfInterestFilter(&self) -> Option<Id<MKPointOfInterestFilter>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKPointOfInterestFilter")]
         #[cfg(not(any(target_os = "watchos")))]
         #[method(setPointOfInterestFilter:)]

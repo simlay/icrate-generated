@@ -30,11 +30,10 @@ unsafe impl NSObjectProtocol for MXCPUMetric {}
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for MXCPUMetric {}
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "MetricKit_MXCPUMetric")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXCPUMetric {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"
@@ -42,7 +41,6 @@ extern_methods!(
         #[method_id(@__retain_semantics Other cumulativeCPUTime)]
         pub unsafe fn cumulativeCPUTime(&self) -> Id<NSMeasurement<NSUnitDuration>>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(feature = "Foundation_NSMeasurement", feature = "Foundation_NSUnit"))]
         #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics Other cumulativeCPUInstructions)]

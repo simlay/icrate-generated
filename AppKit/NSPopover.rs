@@ -7,7 +7,6 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
-    #[deprecated]
     pub enum NSPopoverAppearance {
         #[deprecated]
         NSPopoverAppearanceMinimal = 0,

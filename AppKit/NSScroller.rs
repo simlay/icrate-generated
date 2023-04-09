@@ -153,7 +153,6 @@ extern_static!(NSPreferredScrollerStyleDidChangeNotification: &'static NSNotific
 
 ns_enum!(
     #[underlying(NSUInteger)]
-    #[deprecated = "Scroller arrows are not used anymore."]
     pub enum NSScrollArrowPosition {
         NSScrollerArrowsMaxEnd = 0,
         NSScrollerArrowsMinEnd = 1,
@@ -164,7 +163,6 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
-    #[deprecated = "Scroller arrows are not used anymore."]
     pub enum NSScrollerArrow {
         NSScrollerIncrementArrow = 0,
         NSScrollerDecrementArrow = 1,

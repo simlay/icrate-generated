@@ -24,16 +24,14 @@ extern_class!(
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKLocalSearchResponse {}
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKLocalSearchResponse")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKLocalSearchResponse {
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "MapKit_MKMapItem"))]
         #[method_id(@__retain_semantics Other mapItems)]
         pub unsafe fn mapItems(&self) -> Id<NSArray<MKMapItem>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(boundingRegion)]
         pub unsafe fn boundingRegion(&self) -> MKCoordinateRegion;
     }

@@ -33,18 +33,16 @@ unsafe impl MKOverlay for MKPolygon {}
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKPolygon {}
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKPolygon")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKPolygon {
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other polygonWithPoints:count:)]
         pub unsafe fn polygonWithPoints_count(
             points: NonNull<MKMapPoint>,
             count: NSUInteger,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSArray")]
         #[method_id(@__retain_semantics Other polygonWithPoints:count:interiorPolygons:)]
         pub unsafe fn polygonWithPoints_count_interiorPolygons(
@@ -53,14 +51,12 @@ extern_methods!(
             interior_polygons: Option<&NSArray<MKPolygon>>,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other polygonWithCoordinates:count:)]
         pub unsafe fn polygonWithCoordinates_count(
             coords: NonNull<CLLocationCoordinate2D>,
             count: NSUInteger,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSArray")]
         #[method_id(@__retain_semantics Other polygonWithCoordinates:count:interiorPolygons:)]
         pub unsafe fn polygonWithCoordinates_count_interiorPolygons(
@@ -69,7 +65,6 @@ extern_methods!(
             interior_polygons: Option<&NSArray<MKPolygon>>,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSArray")]
         #[method_id(@__retain_semantics Other interiorPolygons)]
         pub unsafe fn interiorPolygons(&self) -> Option<Id<NSArray<MKPolygon>>>;

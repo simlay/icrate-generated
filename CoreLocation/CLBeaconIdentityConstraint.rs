@@ -34,31 +34,26 @@ unsafe impl NSObjectProtocol for CLBeaconIdentityConstraint {}
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSSecureCoding for CLBeaconIdentityConstraint {}
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "CoreLocation_CLBeaconIdentityConstraint")]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl CLBeaconIdentityConstraint {
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSUUID")]
         #[method_id(@__retain_semantics Other UUID)]
         pub unsafe fn UUID(&self) -> Id<NSUUID>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSNumber")]
         #[method_id(@__retain_semantics Other major)]
         pub unsafe fn major(&self) -> Option<Id<NSNumber>>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSNumber")]
         #[method_id(@__retain_semantics Other minor)]
         pub unsafe fn minor(&self) -> Option<Id<NSNumber>>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSUUID")]
         #[method_id(@__retain_semantics Init initWithUUID:)]
         pub unsafe fn initWithUUID(this: Option<Allocated<Self>>, uuid: &NSUUID) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSUUID")]
         #[method_id(@__retain_semantics Init initWithUUID:major:)]
         pub unsafe fn initWithUUID_major(
@@ -67,7 +62,6 @@ extern_methods!(
             major: CLBeaconMajorValue,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSUUID")]
         #[method_id(@__retain_semantics Init initWithUUID:major:minor:)]
         pub unsafe fn initWithUUID_major_minor(

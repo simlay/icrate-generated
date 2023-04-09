@@ -29,11 +29,10 @@ unsafe impl NSObjectProtocol for MXSignpostIntervalData {}
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for MXSignpostIntervalData {}
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "MetricKit_MXSignpostIntervalData")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXSignpostIntervalData {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSUnitDuration",
             feature = "MetricKit_MXHistogram"
@@ -41,7 +40,6 @@ extern_methods!(
         #[method_id(@__retain_semantics Other histogrammedSignpostDuration)]
         pub unsafe fn histogrammedSignpostDuration(&self) -> Id<MXHistogram<NSUnitDuration>>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"
@@ -49,7 +47,6 @@ extern_methods!(
         #[method_id(@__retain_semantics Other cumulativeCPUTime)]
         pub unsafe fn cumulativeCPUTime(&self) -> Option<Id<NSMeasurement<NSUnitDuration>>>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSUnitInformationStorage",
             feature = "MetricKit_MXAverage"
@@ -57,7 +54,6 @@ extern_methods!(
         #[method_id(@__retain_semantics Other averageMemory)]
         pub unsafe fn averageMemory(&self) -> Option<Id<MXAverage<NSUnitInformationStorage>>>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitInformationStorage"
@@ -67,7 +63,6 @@ extern_methods!(
             &self,
         ) -> Option<Id<NSMeasurement<NSUnitInformationStorage>>>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(feature = "Foundation_NSMeasurement", feature = "Foundation_NSUnit"))]
         #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics Other cumulativeHitchTimeRatio)]
@@ -101,26 +96,22 @@ unsafe impl NSObjectProtocol for MXSignpostMetric {}
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for MXSignpostMetric {}
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "MetricKit_MXSignpostMetric")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXSignpostMetric {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other signpostName)]
         pub unsafe fn signpostName(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other signpostCategory)]
         pub unsafe fn signpostCategory(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "MetricKit_MXSignpostIntervalData")]
         #[method_id(@__retain_semantics Other signpostIntervalData)]
         pub unsafe fn signpostIntervalData(&self) -> Option<Id<MXSignpostIntervalData>>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[method(totalCount)]
         pub unsafe fn totalCount(&self) -> NSUInteger;
     }

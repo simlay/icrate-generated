@@ -35,11 +35,10 @@ unsafe impl NSObjectProtocol for MKMapCameraZoomRange {}
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSSecureCoding for MKMapCameraZoomRange {}
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKMapCameraZoomRange")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKMapCameraZoomRange {
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init initWithMinCenterCoordinateDistance:maxCenterCoordinateDistance:)]
         pub unsafe fn initWithMinCenterCoordinateDistance_maxCenterCoordinateDistance(
             this: Option<Allocated<Self>>,
@@ -47,25 +46,21 @@ extern_methods!(
             max_distance: CLLocationDistance,
         ) -> Option<Id<Self>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init initWithMinCenterCoordinateDistance:)]
         pub unsafe fn initWithMinCenterCoordinateDistance(
             this: Option<Allocated<Self>>,
             min_distance: CLLocationDistance,
         ) -> Option<Id<Self>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init initWithMaxCenterCoordinateDistance:)]
         pub unsafe fn initWithMaxCenterCoordinateDistance(
             this: Option<Allocated<Self>>,
             max_distance: CLLocationDistance,
         ) -> Option<Id<Self>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(minCenterCoordinateDistance)]
         pub unsafe fn minCenterCoordinateDistance(&self) -> CLLocationDistance;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(maxCenterCoordinateDistance)]
         pub unsafe fn maxCenterCoordinateDistance(&self) -> CLLocationDistance;
     }

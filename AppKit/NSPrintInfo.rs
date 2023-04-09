@@ -311,7 +311,6 @@ extern_static!(NSPrintSavePath: &'static NSString);
 
 ns_enum!(
     #[underlying(NSUInteger)]
-    #[deprecated]
     pub enum NSPrintingOrientation {
         #[deprecated]
         NSPortraitOrientation = 0,

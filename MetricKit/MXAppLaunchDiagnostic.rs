@@ -30,16 +30,14 @@ unsafe impl NSObjectProtocol for MXAppLaunchDiagnostic {}
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for MXAppLaunchDiagnostic {}
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "MetricKit_MXAppLaunchDiagnostic")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXAppLaunchDiagnostic {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "MetricKit_MXCallStackTree")]
         #[method_id(@__retain_semantics Other callStackTree)]
         pub unsafe fn callStackTree(&self) -> Id<MXCallStackTree>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"

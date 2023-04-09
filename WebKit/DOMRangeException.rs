@@ -9,7 +9,6 @@ extern_static!(DOMRangeException: Option<&'static NSString>);
 
 extern_enum!(
     #[underlying(c_uint)]
-    #[deprecated]
     pub enum DOMRangeExceptionCode {
         #[deprecated]
         DOM_BAD_BOUNDARYPOINTS_ERR = 1,

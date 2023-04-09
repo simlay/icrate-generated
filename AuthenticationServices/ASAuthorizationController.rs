@@ -44,8 +44,8 @@ extern_protocol!(
     unsafe impl ProtocolType for dyn ASAuthorizationControllerDelegate {}
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_protocol!(
-    #[cfg(not(any(target_os = "watchos")))]
     pub unsafe trait ASAuthorizationControllerPresentationContextProviding:
         NSObjectProtocol
     {
@@ -57,13 +57,12 @@ extern_protocol!(
         ) -> Id<ASPresentationAnchor>;
     }
 
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl ProtocolType for dyn ASAuthorizationControllerPresentationContextProviding {}
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 ns_options!(
     #[underlying(NSUInteger)]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub enum ASAuthorizationControllerRequestOptions {
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         ASAuthorizationControllerRequestOptionPreferImmediatelyAvailableCredentials = 1 << 0,

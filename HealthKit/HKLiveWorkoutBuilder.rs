@@ -6,8 +6,8 @@ use crate::Foundation::*;
 use crate::HealthKit::*;
 use crate::UniformTypeIdentifiers::*;
 
+#[cfg(not(any(target_os = "ios")))]
 extern_protocol!(
-    #[cfg(not(any(target_os = "ios")))]
     pub unsafe trait HKLiveWorkoutBuilderDelegate: NSObjectProtocol {
         #[cfg(all(
             feature = "Foundation_NSSet",
@@ -50,7 +50,6 @@ extern_protocol!(
         );
     }
 
-    #[cfg(not(any(target_os = "ios")))]
     unsafe impl ProtocolType for dyn HKLiveWorkoutBuilderDelegate {}
 );
 
@@ -72,11 +71,10 @@ extern_class!(
 #[cfg(not(any(target_os = "ios")))]
 unsafe impl NSObjectProtocol for HKLiveWorkoutBuilder {}
 
+#[cfg(not(any(target_os = "ios")))]
 extern_methods!(
     #[cfg(feature = "HealthKit_HKLiveWorkoutBuilder")]
-    #[cfg(not(any(target_os = "ios")))]
     unsafe impl HKLiveWorkoutBuilder {
-        #[cfg(not(any(target_os = "ios")))]
         #[cfg(all(
             feature = "HealthKit_HKDevice",
             feature = "HealthKit_HKHealthStore",
@@ -90,47 +88,38 @@ extern_methods!(
             device: Option<&HKDevice>,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(
             &self,
         ) -> Option<Id<ProtocolObject<dyn HKLiveWorkoutBuilderDelegate>>>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
             delegate: Option<&ProtocolObject<dyn HKLiveWorkoutBuilderDelegate>>,
         );
 
-        #[cfg(not(any(target_os = "ios")))]
         #[cfg(feature = "HealthKit_HKWorkoutSession")]
         #[method_id(@__retain_semantics Other workoutSession)]
         pub unsafe fn workoutSession(&self) -> Option<Id<HKWorkoutSession>>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(shouldCollectWorkoutEvents)]
         pub unsafe fn shouldCollectWorkoutEvents(&self) -> bool;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(setShouldCollectWorkoutEvents:)]
         pub unsafe fn setShouldCollectWorkoutEvents(&self, should_collect_workout_events: bool);
 
-        #[cfg(not(any(target_os = "ios")))]
         #[cfg(feature = "HealthKit_HKLiveWorkoutDataSource")]
         #[method_id(@__retain_semantics Other dataSource)]
         pub unsafe fn dataSource(&self) -> Option<Id<HKLiveWorkoutDataSource>>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[cfg(feature = "HealthKit_HKLiveWorkoutDataSource")]
         #[method(setDataSource:)]
         pub unsafe fn setDataSource(&self, data_source: Option<&HKLiveWorkoutDataSource>);
 
-        #[cfg(not(any(target_os = "ios")))]
         #[method(elapsedTime)]
         pub unsafe fn elapsedTime(&self) -> NSTimeInterval;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[cfg(feature = "HealthKit_HKWorkoutActivity")]
         #[method_id(@__retain_semantics Other currentWorkoutActivity)]
         pub unsafe fn currentWorkoutActivity(&self) -> Option<Id<HKWorkoutActivity>>;

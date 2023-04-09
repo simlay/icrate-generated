@@ -32,25 +32,22 @@ unsafe impl NSObjectProtocol for MKMapCameraBoundary {}
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSSecureCoding for MKMapCameraBoundary {}
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKMapCameraBoundary")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKMapCameraBoundary {
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init initWithMapRect:)]
         pub unsafe fn initWithMapRect(
             this: Option<Allocated<Self>>,
             map_rect: MKMapRect,
         ) -> Option<Id<Self>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init initWithCoordinateRegion:)]
         pub unsafe fn initWithCoordinateRegion(
             this: Option<Allocated<Self>>,
             region: MKCoordinateRegion,
         ) -> Option<Id<Self>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSCoder")]
         #[method_id(@__retain_semantics Init initWithCoder:)]
         pub unsafe fn initWithCoder(
@@ -58,11 +55,9 @@ extern_methods!(
             coder: &NSCoder,
         ) -> Option<Id<Self>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(mapRect)]
         pub unsafe fn mapRect(&self) -> MKMapRect;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(region)]
         pub unsafe fn region(&self) -> MKCoordinateRegion;
     }

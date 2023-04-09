@@ -25,90 +25,73 @@ extern_class!(
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKOverlayPathRenderer {}
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKOverlayPathRenderer")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKOverlayPathRenderer {
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "AppKit_NSColor")]
         #[method_id(@__retain_semantics Other fillColor)]
         pub unsafe fn fillColor(&self) -> Option<Id<NSColor>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "AppKit_NSColor")]
         #[method(setFillColor:)]
         pub unsafe fn setFillColor(&self, fill_color: Option<&NSColor>);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "AppKit_NSColor")]
         #[method_id(@__retain_semantics Other strokeColor)]
         pub unsafe fn strokeColor(&self) -> Option<Id<NSColor>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "AppKit_NSColor")]
         #[method(setStrokeColor:)]
         pub unsafe fn setStrokeColor(&self, stroke_color: Option<&NSColor>);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(lineWidth)]
         pub unsafe fn lineWidth(&self) -> CGFloat;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(setLineWidth:)]
         pub unsafe fn setLineWidth(&self, line_width: CGFloat);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(miterLimit)]
         pub unsafe fn miterLimit(&self) -> CGFloat;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(setMiterLimit:)]
         pub unsafe fn setMiterLimit(&self, miter_limit: CGFloat);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(lineDashPhase)]
         pub unsafe fn lineDashPhase(&self) -> CGFloat;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(setLineDashPhase:)]
         pub unsafe fn setLineDashPhase(&self, line_dash_phase: CGFloat);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSNumber"))]
         #[method_id(@__retain_semantics Other lineDashPattern)]
         pub unsafe fn lineDashPattern(&self) -> Option<Id<NSArray<NSNumber>>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSNumber"))]
         #[method(setLineDashPattern:)]
         pub unsafe fn setLineDashPattern(&self, line_dash_pattern: Option<&NSArray<NSNumber>>);
 
         #[cfg(not(any(target_os = "watchos")))]
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(shouldRasterize)]
         pub unsafe fn shouldRasterize(&self) -> bool;
 
         #[cfg(not(any(target_os = "watchos")))]
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(setShouldRasterize:)]
         pub unsafe fn setShouldRasterize(&self, should_rasterize: bool);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(createPath)]
         pub unsafe fn createPath(&self);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(invalidatePath)]
         pub unsafe fn invalidatePath(&self);
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `MKOverlayRenderer`
     #[cfg(feature = "MapKit_MKOverlayPathRenderer")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKOverlayPathRenderer {
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init initWithOverlay:)]
         pub unsafe fn initWithOverlay(
             this: Option<Allocated<Self>>,

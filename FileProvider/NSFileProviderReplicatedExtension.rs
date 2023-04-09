@@ -21,18 +21,18 @@ ns_options!(
     }
 );
 
+#[cfg(not(any(target_os = "ios")))]
 ns_options!(
     #[underlying(NSUInteger)]
-    #[cfg(not(any(target_os = "ios")))]
     pub enum NSFileProviderMaterializationFlags {
         #[cfg(not(any(target_os = "ios")))]
         NSFileProviderMaterializationFlagsKnownSparseRanges = 1 << 0,
     }
 );
 
+#[cfg(not(any(target_os = "ios")))]
 ns_options!(
     #[underlying(NSUInteger)]
-    #[cfg(not(any(target_os = "ios")))]
     pub enum NSFileProviderFetchContentsOptions {
         #[cfg(not(any(target_os = "ios")))]
         NSFileProviderFetchContentsOptionsStrictVersioning = 1 << 0,
@@ -284,8 +284,8 @@ extern_protocol!(
     unsafe impl ProtocolType for dyn NSFileProviderCustomAction {}
 );
 
+#[cfg(not(any(target_os = "ios")))]
 extern_protocol!(
-    #[cfg(not(any(target_os = "ios")))]
     pub unsafe trait NSFileProviderUserInteractionSuppressing: NSObjectProtocol {
         #[cfg(feature = "Foundation_NSString")]
         #[method(setInteractionSuppressed:forIdentifier:)]
@@ -303,7 +303,6 @@ extern_protocol!(
         ) -> bool;
     }
 
-    #[cfg(not(any(target_os = "ios")))]
     unsafe impl ProtocolType for dyn NSFileProviderUserInteractionSuppressing {}
 );
 
@@ -321,8 +320,8 @@ extern_protocol!(
     unsafe impl ProtocolType for dyn NSFileProviderDomainState {}
 );
 
+#[cfg(not(any(target_os = "ios")))]
 extern_protocol!(
-    #[cfg(not(any(target_os = "ios")))]
     pub unsafe trait NSFileProviderPartialContentFetching: NSObjectProtocol {
         #[cfg(all(
             feature = "FileProvider_NSFileProviderItemVersion",
@@ -353,6 +352,5 @@ extern_protocol!(
         ) -> Id<NSProgress>;
     }
 
-    #[cfg(not(any(target_os = "ios")))]
     unsafe impl ProtocolType for dyn NSFileProviderPartialContentFetching {}
 );

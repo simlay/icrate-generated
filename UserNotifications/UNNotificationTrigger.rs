@@ -168,16 +168,14 @@ unsafe impl NSObjectProtocol for UNLocationNotificationTrigger {}
 #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
 unsafe impl NSSecureCoding for UNLocationNotificationTrigger {}
 
+#[cfg(not(any(target_os = "macos", target_os = "tvos")))]
 extern_methods!(
     #[cfg(feature = "UserNotifications_UNLocationNotificationTrigger")]
-    #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
     unsafe impl UNLocationNotificationTrigger {
-        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         #[cfg(feature = "CoreLocation_CLRegion")]
         #[method_id(@__retain_semantics Other region)]
         pub unsafe fn region(&self) -> Id<CLRegion>;
 
-        #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         #[cfg(feature = "CoreLocation_CLRegion")]
         #[method_id(@__retain_semantics Other triggerWithRegion:repeats:)]
         pub unsafe fn triggerWithRegion_repeats(region: &CLRegion, repeats: bool) -> Id<Self>;

@@ -53,33 +53,29 @@ unsafe impl NSObjectProtocol for MKPitchControl {}
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSUserInterfaceItemIdentification for MKPitchControl {}
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKPitchControl")]
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl MKPitchControl {
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKMapView")]
         #[method_id(@__retain_semantics Other pitchControlWithMapView:)]
         pub unsafe fn pitchControlWithMapView(map_view: Option<&MKMapView>) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKMapView")]
         #[method_id(@__retain_semantics Other mapView)]
         pub unsafe fn mapView(&self) -> Option<Id<MKMapView>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKMapView")]
         #[method(setMapView:)]
         pub unsafe fn setMapView(&self, map_view: Option<&MKMapView>);
     }
 );
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSView`
     #[cfg(feature = "MapKit_MKPitchControl")]
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl MKPitchControl {
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Init initWithFrame:)]
         pub unsafe fn initWithFrame(this: Option<Allocated<Self>>, frame_rect: NSRect) -> Id<Self>;
     }

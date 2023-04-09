@@ -16,7 +16,6 @@ extern_static!(WebPlugInContainingElementKey: Option<&'static NSString>);
 extern_static!(WebPlugInShouldLoadMainResourceKey: Option<&'static NSString>);
 
 extern_protocol!(
-    #[deprecated]
     pub unsafe trait WebPlugInViewFactory: NSObjectProtocol {
         #[cfg(all(feature = "AppKit_NSView", feature = "Foundation_NSDictionary"))]
         #[method_id(@__retain_semantics Other plugInViewWithArguments:)]

@@ -4,9 +4,9 @@ use crate::common::*;
 use crate::CallKit::*;
 use crate::Foundation::*;
 
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
-    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     pub enum CXCallDirectoryEnabledStatus {
         #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         CXCallDirectoryEnabledStatusUnknown = 0,
@@ -34,15 +34,13 @@ extern_class!(
 #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for CXCallDirectoryManager {}
 
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "CallKit_CXCallDirectoryManager")]
-    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     unsafe impl CXCallDirectoryManager {
-        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other sharedInstance)]
         pub unsafe fn sharedInstance() -> Id<CXCallDirectoryManager>;
 
-        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSString"))]
         #[method(reloadExtensionWithIdentifier:completionHandler:)]
         pub unsafe fn reloadExtensionWithIdentifier_completionHandler(
@@ -51,7 +49,6 @@ extern_methods!(
             completion: Option<&Block<(*mut NSError,), ()>>,
         );
 
-        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSString"))]
         #[method(getEnabledStatusForExtensionWithIdentifier:completionHandler:)]
         pub unsafe fn getEnabledStatusForExtensionWithIdentifier_completionHandler(
@@ -60,7 +57,6 @@ extern_methods!(
             completion: &Block<(CXCallDirectoryEnabledStatus, *mut NSError), ()>,
         );
 
-        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSError")]
         #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(openSettingsWithCompletionHandler:)]

@@ -21,66 +21,54 @@ extern_class!(
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for ASAuthorizationProviderExtensionKerberosMapping {}
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionKerberosMapping")]
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAuthorizationProviderExtensionKerberosMapping {
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other ticketKeyPath)]
         pub unsafe fn ticketKeyPath(&self) -> Option<Id<NSString>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setTicketKeyPath:)]
         pub unsafe fn setTicketKeyPath(&self, ticket_key_path: Option<&NSString>);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other messageBufferKeyName)]
         pub unsafe fn messageBufferKeyName(&self) -> Option<Id<NSString>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setMessageBufferKeyName:)]
         pub unsafe fn setMessageBufferKeyName(&self, message_buffer_key_name: Option<&NSString>);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other realmKeyName)]
         pub unsafe fn realmKeyName(&self) -> Option<Id<NSString>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setRealmKeyName:)]
         pub unsafe fn setRealmKeyName(&self, realm_key_name: Option<&NSString>);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other serviceNameKeyName)]
         pub unsafe fn serviceNameKeyName(&self) -> Option<Id<NSString>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setServiceNameKeyName:)]
         pub unsafe fn setServiceNameKeyName(&self, service_name_key_name: Option<&NSString>);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other clientNameKeyName)]
         pub unsafe fn clientNameKeyName(&self) -> Option<Id<NSString>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setClientNameKeyName:)]
         pub unsafe fn setClientNameKeyName(&self, client_name_key_name: Option<&NSString>);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other encryptionKeyTypeKeyName)]
         pub unsafe fn encryptionKeyTypeKeyName(&self) -> Option<Id<NSString>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setEncryptionKeyTypeKeyName:)]
         pub unsafe fn setEncryptionKeyTypeKeyName(
@@ -88,12 +76,10 @@ extern_methods!(
             encryption_key_type_key_name: Option<&NSString>,
         );
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other sessionKeyKeyName)]
         pub unsafe fn sessionKeyKeyName(&self) -> Option<Id<NSString>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setSessionKeyKeyName:)]
         pub unsafe fn setSessionKeyKeyName(&self, session_key_key_name: Option<&NSString>);
@@ -117,19 +103,16 @@ extern_class!(
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for ASAuthorizationProviderExtensionLoginConfiguration {}
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionLoginConfiguration")]
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAuthorizationProviderExtensionLoginConfiguration {
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSString", feature = "Foundation_NSURL"))]
         #[method_id(@__retain_semantics Init initWithClientID:issuer:tokenEndpointURL:jwksEndpointURL:audience:)]
         pub unsafe fn initWithClientID_issuer_tokenEndpointURL_jwksEndpointURL_audience(
@@ -141,7 +124,6 @@ extern_methods!(
             audience: Option<&NSString>,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSError",
             feature = "Foundation_NSString",
@@ -161,12 +143,10 @@ extern_methods!(
             >,
         );
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other invalidCredentialPredicate)]
         pub unsafe fn invalidCredentialPredicate(&self) -> Option<Id<NSString>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setInvalidCredentialPredicate:)]
         pub unsafe fn setInvalidCredentialPredicate(
@@ -174,92 +154,74 @@ extern_methods!(
             invalid_credential_predicate: Option<&NSString>,
         );
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other accountDisplayName)]
         pub unsafe fn accountDisplayName(&self) -> Option<Id<NSString>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setAccountDisplayName:)]
         pub unsafe fn setAccountDisplayName(&self, account_display_name: Option<&NSString>);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other clientID)]
         pub unsafe fn clientID(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other issuer)]
         pub unsafe fn issuer(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other audience)]
         pub unsafe fn audience(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setAudience:)]
         pub unsafe fn setAudience(&self, audience: &NSString);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSURL")]
         #[method_id(@__retain_semantics Other tokenEndpointURL)]
         pub unsafe fn tokenEndpointURL(&self) -> Id<NSURL>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSURL")]
         #[method(setTokenEndpointURL:)]
         pub unsafe fn setTokenEndpointURL(&self, token_endpoint_url: &NSURL);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSURL")]
         #[method_id(@__retain_semantics Other jwksEndpointURL)]
         pub unsafe fn jwksEndpointURL(&self) -> Id<NSURL>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSURL")]
         #[method(setJwksEndpointURL:)]
         pub unsafe fn setJwksEndpointURL(&self, jwks_endpoint_url: &NSURL);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSURL")]
         #[method_id(@__retain_semantics Other nonceEndpointURL)]
         pub unsafe fn nonceEndpointURL(&self) -> Id<NSURL>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSURL")]
         #[method(setNonceEndpointURL:)]
         pub unsafe fn setNonceEndpointURL(&self, nonce_endpoint_url: &NSURL);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other nonceResponseKeypath)]
         pub unsafe fn nonceResponseKeypath(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setNonceResponseKeypath:)]
         pub unsafe fn setNonceResponseKeypath(&self, nonce_response_keypath: &NSString);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other serverNonceClaimName)]
         pub unsafe fn serverNonceClaimName(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setServerNonceClaimName:)]
         pub unsafe fn setServerNonceClaimName(&self, server_nonce_claim_name: &NSString);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSURLQueryItem"))]
         #[method_id(@__retain_semantics Other customNonceRequestValues)]
         pub unsafe fn customNonceRequestValues(&self) -> Id<NSArray<NSURLQueryItem>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSURLQueryItem"))]
         #[method(setCustomNonceRequestValues:)]
         pub unsafe fn setCustomNonceRequestValues(
@@ -267,7 +229,6 @@ extern_methods!(
             custom_nonce_request_values: &NSArray<NSURLQueryItem>,
         );
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSDictionary",
             feature = "Foundation_NSError",
@@ -279,7 +240,6 @@ extern_methods!(
             claims: &NSDictionary<NSString, Object>,
         ) -> Result<(), Id<NSError>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSDictionary",
             feature = "Foundation_NSError",
@@ -291,33 +251,27 @@ extern_methods!(
             claims: &NSDictionary<NSString, Object>,
         ) -> Result<(), Id<NSError>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other additionalScopes)]
         pub unsafe fn additionalScopes(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setAdditionalScopes:)]
         pub unsafe fn setAdditionalScopes(&self, additional_scopes: &NSString);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(includePreviousRefreshTokenInLoginRequest)]
         pub unsafe fn includePreviousRefreshTokenInLoginRequest(&self) -> bool;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(setIncludePreviousRefreshTokenInLoginRequest:)]
         pub unsafe fn setIncludePreviousRefreshTokenInLoginRequest(
             &self,
             include_previous_refresh_token_in_login_request: bool,
         );
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other previousRefreshTokenClaimName)]
         pub unsafe fn previousRefreshTokenClaimName(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setPreviousRefreshTokenClaimName:)]
         pub unsafe fn setPreviousRefreshTokenClaimName(
@@ -325,12 +279,10 @@ extern_methods!(
             previous_refresh_token_claim_name: &NSString,
         );
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSURLQueryItem"))]
         #[method_id(@__retain_semantics Other customLoginRequestValues)]
         pub unsafe fn customLoginRequestValues(&self) -> Id<NSArray<NSURLQueryItem>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSURLQueryItem"))]
         #[method(setCustomLoginRequestValues:)]
         pub unsafe fn setCustomLoginRequestValues(
@@ -338,7 +290,6 @@ extern_methods!(
             custom_login_request_values: &NSArray<NSURLQueryItem>,
         );
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSDictionary",
             feature = "Foundation_NSError",
@@ -350,7 +301,6 @@ extern_methods!(
             claims: &NSDictionary<NSString, Object>,
         ) -> Result<(), Id<NSError>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSDictionary",
             feature = "Foundation_NSError",
@@ -362,7 +312,6 @@ extern_methods!(
             claims: &NSDictionary<NSString, Object>,
         ) -> Result<(), Id<NSError>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "AuthenticationServices_ASAuthorizationProviderExtensionKerberosMapping",
             feature = "Foundation_NSArray"
@@ -372,7 +321,6 @@ extern_methods!(
             &self,
         ) -> Id<NSArray<ASAuthorizationProviderExtensionKerberosMapping>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "AuthenticationServices_ASAuthorizationProviderExtensionKerberosMapping",
             feature = "Foundation_NSArray"

@@ -22,19 +22,16 @@ extern_class!(
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for CKSystemSharingUIObserver {}
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "CloudKit_CKSystemSharingUIObserver")]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl CKSystemSharingUIObserver {
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "CloudKit_CKContainer")]
         #[method_id(@__retain_semantics Init initWithContainer:)]
         pub unsafe fn initWithContainer(
@@ -42,7 +39,6 @@ extern_methods!(
             container: &CKContainer,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "CloudKit_CKRecordID",
             feature = "CloudKit_CKShare",
@@ -53,7 +49,6 @@ extern_methods!(
             &self,
         ) -> *mut Block<(NonNull<CKRecordID>, *mut CKShare, *mut NSError), ()>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "CloudKit_CKRecordID",
             feature = "CloudKit_CKShare",
@@ -67,14 +62,12 @@ extern_methods!(
             >,
         );
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "CloudKit_CKRecordID", feature = "Foundation_NSError"))]
         #[method(systemSharingUIDidStopSharingBlock)]
         pub unsafe fn systemSharingUIDidStopSharingBlock(
             &self,
         ) -> *mut Block<(NonNull<CKRecordID>, *mut NSError), ()>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "CloudKit_CKRecordID", feature = "Foundation_NSError"))]
         #[method(setSystemSharingUIDidStopSharingBlock:)]
         pub unsafe fn setSystemSharingUIDidStopSharingBlock(

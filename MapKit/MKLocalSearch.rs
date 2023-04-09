@@ -27,11 +27,10 @@ extern_class!(
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKLocalSearch {}
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKLocalSearch")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKLocalSearch {
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKLocalSearchRequest")]
         #[method_id(@__retain_semantics Init initWithRequest:)]
         pub unsafe fn initWithRequest(
@@ -39,7 +38,6 @@ extern_methods!(
             request: &MKLocalSearchRequest,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKLocalPointsOfInterestRequest")]
         #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init initWithPointsOfInterestRequest:)]
@@ -48,18 +46,15 @@ extern_methods!(
             request: &MKLocalPointsOfInterestRequest,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(startWithCompletionHandler:)]
         pub unsafe fn startWithCompletionHandler(
             &self,
             completion_handler: MKLocalSearchCompletionHandler,
         );
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(cancel)]
         pub unsafe fn cancel(&self);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(isSearching)]
         pub unsafe fn isSearching(&self) -> bool;
     }

@@ -52,11 +52,10 @@ extern_class!(
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for NSNetService {}
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "Foundation_NSNetService")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl NSNetService {
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Init initWithDomain:type:name:port:)]
         pub unsafe fn initWithDomain_type_name_port(
@@ -67,7 +66,6 @@ extern_methods!(
             port: c_int,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Init initWithDomain:type:name:)]
         pub unsafe fn initWithDomain_type_name(
@@ -77,7 +75,6 @@ extern_methods!(
             name: &NSString,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSRunLoop")]
         #[method(scheduleInRunLoop:forMode:)]
         pub unsafe fn scheduleInRunLoop_forMode(
@@ -86,7 +83,6 @@ extern_methods!(
             mode: &NSRunLoopMode,
         );
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSRunLoop")]
         #[method(removeFromRunLoop:forMode:)]
         pub unsafe fn removeFromRunLoop_forMode(
@@ -95,72 +91,57 @@ extern_methods!(
             mode: &NSRunLoopMode,
         );
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(&self) -> Option<Id<ProtocolObject<dyn NSNetServiceDelegate>>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
             delegate: Option<&ProtocolObject<dyn NSNetServiceDelegate>>,
         );
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(includesPeerToPeer)]
         pub unsafe fn includesPeerToPeer(&self) -> bool;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(setIncludesPeerToPeer:)]
         pub unsafe fn setIncludesPeerToPeer(&self, includes_peer_to_peer: bool);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other name)]
         pub unsafe fn name(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other type)]
         pub unsafe fn r#type(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other domain)]
         pub unsafe fn domain(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other hostName)]
         pub unsafe fn hostName(&self) -> Option<Id<NSString>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSData"))]
         #[method_id(@__retain_semantics Other addresses)]
         pub unsafe fn addresses(&self) -> Option<Id<NSArray<NSData>>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(port)]
         pub unsafe fn port(&self) -> NSInteger;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(publish)]
         pub unsafe fn publish(&self);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(publishWithOptions:)]
         pub unsafe fn publishWithOptions(&self, options: NSNetServiceOptions);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[deprecated = "Not supported"]
         #[method(resolve)]
         pub unsafe fn resolve(&self);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(stop)]
         pub unsafe fn stop(&self);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSData",
             feature = "Foundation_NSDictionary",
@@ -171,7 +152,6 @@ extern_methods!(
             txt_data: &NSData,
         ) -> Id<NSDictionary<NSString, NSData>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSData",
             feature = "Foundation_NSDictionary",
@@ -182,25 +162,20 @@ extern_methods!(
             txt_dictionary: &NSDictionary<NSString, NSData>,
         ) -> Id<NSData>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(resolveWithTimeout:)]
         pub unsafe fn resolveWithTimeout(&self, timeout: NSTimeInterval);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSData")]
         #[method(setTXTRecordData:)]
         pub unsafe fn setTXTRecordData(&self, record_data: Option<&NSData>) -> bool;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSData")]
         #[method_id(@__retain_semantics Other TXTRecordData)]
         pub unsafe fn TXTRecordData(&self) -> Option<Id<NSData>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(startMonitoring)]
         pub unsafe fn startMonitoring(&self);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(stopMonitoring)]
         pub unsafe fn stopMonitoring(&self);
     }
@@ -225,36 +200,30 @@ extern_class!(
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for NSNetServiceBrowser {}
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "Foundation_NSNetServiceBrowser")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl NSNetServiceBrowser {
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(
             &self,
         ) -> Option<Id<ProtocolObject<dyn NSNetServiceBrowserDelegate>>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
             delegate: Option<&ProtocolObject<dyn NSNetServiceBrowserDelegate>>,
         );
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(includesPeerToPeer)]
         pub unsafe fn includesPeerToPeer(&self) -> bool;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(setIncludesPeerToPeer:)]
         pub unsafe fn setIncludesPeerToPeer(&self, includes_peer_to_peer: bool);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSRunLoop")]
         #[method(scheduleInRunLoop:forMode:)]
         pub unsafe fn scheduleInRunLoop_forMode(
@@ -263,7 +232,6 @@ extern_methods!(
             mode: &NSRunLoopMode,
         );
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSRunLoop")]
         #[method(removeFromRunLoop:forMode:)]
         pub unsafe fn removeFromRunLoop_forMode(
@@ -272,15 +240,12 @@ extern_methods!(
             mode: &NSRunLoopMode,
         );
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(searchForBrowsableDomains)]
         pub unsafe fn searchForBrowsableDomains(&self);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(searchForRegistrationDomains)]
         pub unsafe fn searchForRegistrationDomains(&self);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(searchForServicesOfType:inDomain:)]
         pub unsafe fn searchForServicesOfType_inDomain(
@@ -289,14 +254,13 @@ extern_methods!(
             domain_string: &NSString,
         );
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(stop)]
         pub unsafe fn stop(&self);
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_protocol!(
-    #[cfg(not(any(target_os = "watchos")))]
     pub unsafe trait NSNetServiceDelegate: NSObjectProtocol {
         #[cfg(feature = "Foundation_NSNetService")]
         #[optional]
@@ -371,12 +335,11 @@ extern_protocol!(
         );
     }
 
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl ProtocolType for dyn NSNetServiceDelegate {}
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_protocol!(
-    #[cfg(not(any(target_os = "watchos")))]
     pub unsafe trait NSNetServiceBrowserDelegate: NSObjectProtocol {
         #[cfg(feature = "Foundation_NSNetServiceBrowser")]
         #[optional]
@@ -455,6 +418,5 @@ extern_protocol!(
         );
     }
 
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl ProtocolType for dyn NSNetServiceBrowserDelegate {}
 );

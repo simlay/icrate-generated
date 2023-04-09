@@ -30,11 +30,10 @@ unsafe impl NSObjectProtocol for MXLocationActivityMetric {}
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for MXLocationActivityMetric {}
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "MetricKit_MXLocationActivityMetric")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXLocationActivityMetric {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"
@@ -42,7 +41,6 @@ extern_methods!(
         #[method_id(@__retain_semantics Other cumulativeBestAccuracyTime)]
         pub unsafe fn cumulativeBestAccuracyTime(&self) -> Id<NSMeasurement<NSUnitDuration>>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"
@@ -52,7 +50,6 @@ extern_methods!(
             &self,
         ) -> Id<NSMeasurement<NSUnitDuration>>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"
@@ -62,7 +59,6 @@ extern_methods!(
             &self,
         ) -> Id<NSMeasurement<NSUnitDuration>>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"
@@ -72,7 +68,6 @@ extern_methods!(
             &self,
         ) -> Id<NSMeasurement<NSUnitDuration>>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"
@@ -80,7 +75,6 @@ extern_methods!(
         #[method_id(@__retain_semantics Other cumulativeKilometerAccuracyTime)]
         pub unsafe fn cumulativeKilometerAccuracyTime(&self) -> Id<NSMeasurement<NSUnitDuration>>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"

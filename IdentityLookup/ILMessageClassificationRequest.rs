@@ -30,11 +30,10 @@ unsafe impl NSObjectProtocol for ILMessageClassificationRequest {}
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for ILMessageClassificationRequest {}
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "IdentityLookup_ILMessageClassificationRequest")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl ILMessageClassificationRequest {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSArray",
             feature = "IdentityLookup_ILMessageCommunication"
@@ -42,7 +41,6 @@ extern_methods!(
         #[method_id(@__retain_semantics Other messageCommunications)]
         pub unsafe fn messageCommunications(&self) -> Id<NSArray<ILMessageCommunication>>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
     }

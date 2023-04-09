@@ -25,11 +25,10 @@ extern_class!(
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKTileOverlayRenderer {}
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKTileOverlayRenderer")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKTileOverlayRenderer {
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "MapKit_MKTileOverlay")]
         #[method_id(@__retain_semantics Init initWithTileOverlay:)]
         pub unsafe fn initWithTileOverlay(
@@ -37,18 +36,16 @@ extern_methods!(
             overlay: &MKTileOverlay,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(reloadData)]
         pub unsafe fn reloadData(&self);
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `MKOverlayRenderer`
     #[cfg(feature = "MapKit_MKTileOverlayRenderer")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKTileOverlayRenderer {
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init initWithOverlay:)]
         pub unsafe fn initWithOverlay(
             this: Option<Allocated<Self>>,

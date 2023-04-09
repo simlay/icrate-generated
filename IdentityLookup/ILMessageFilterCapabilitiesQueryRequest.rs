@@ -29,11 +29,10 @@ unsafe impl NSObjectProtocol for ILMessageFilterCapabilitiesQueryRequest {}
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for ILMessageFilterCapabilitiesQueryRequest {}
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "IdentityLookup_ILMessageFilterCapabilitiesQueryRequest")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl ILMessageFilterCapabilitiesQueryRequest {
-        #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
     }

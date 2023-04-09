@@ -30,11 +30,10 @@ unsafe impl NSObjectProtocol for CXSetGroupCallAction {}
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for CXSetGroupCallAction {}
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "CallKit_CXSetGroupCallAction")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXSetGroupCallAction {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSUUID")]
         #[method_id(@__retain_semantics Init initWithCallUUID:callUUIDToGroupWith:)]
         pub unsafe fn initWithCallUUID_callUUIDToGroupWith(
@@ -43,7 +42,6 @@ extern_methods!(
             call_uuid_to_group_with: Option<&NSUUID>,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSCoder")]
         #[method_id(@__retain_semantics Init initWithCoder:)]
         pub unsafe fn initWithCoder(
@@ -51,7 +49,6 @@ extern_methods!(
             a_decoder: &NSCoder,
         ) -> Option<Id<Self>>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSUUID")]
         #[method_id(@__retain_semantics Init initWithCallUUID:)]
         pub unsafe fn initWithCallUUID(
@@ -59,12 +56,10 @@ extern_methods!(
             call_uuid: &NSUUID,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSUUID")]
         #[method_id(@__retain_semantics Other callUUIDToGroupWith)]
         pub unsafe fn callUUIDToGroupWith(&self) -> Option<Id<NSUUID>>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(feature = "Foundation_NSUUID")]
         #[method(setCallUUIDToGroupWith:)]
         pub unsafe fn setCallUUIDToGroupWith(&self, call_uuid_to_group_with: Option<&NSUUID>);

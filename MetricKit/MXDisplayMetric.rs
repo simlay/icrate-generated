@@ -30,11 +30,10 @@ unsafe impl NSObjectProtocol for MXDisplayMetric {}
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for MXDisplayMetric {}
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "MetricKit_MXDisplayMetric")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXDisplayMetric {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "MetricKit_MXAverage",
             feature = "MetricKit_MXUnitAveragePixelLuminance"

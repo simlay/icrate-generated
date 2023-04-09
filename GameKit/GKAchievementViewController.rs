@@ -54,7 +54,6 @@ extern_methods!(
 );
 
 extern_protocol!(
-    #[deprecated = "Use GKGameCenterViewController instead"]
     pub unsafe trait GKAchievementViewControllerDelegate: NSObjectProtocol {
         #[cfg(feature = "GameKit_GKAchievementViewController")]
         #[method(achievementViewControllerDidFinish:)]

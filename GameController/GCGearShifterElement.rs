@@ -26,15 +26,13 @@ unsafe impl GCPhysicalInputElement for GCGearShifterElement {}
 #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 unsafe impl NSObjectProtocol for GCGearShifterElement {}
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 extern_methods!(
     #[cfg(feature = "GameController_GCGearShifterElement")]
-    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     unsafe impl GCGearShifterElement {
-        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[method_id(@__retain_semantics Other patternInput)]
         pub unsafe fn patternInput(&self) -> Option<Id<ProtocolObject<dyn GCSwitchPositionInput>>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[method_id(@__retain_semantics Other sequentialInput)]
         pub unsafe fn sequentialInput(&self) -> Option<Id<ProtocolObject<dyn GCRelativeInput>>>;
     }

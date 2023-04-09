@@ -7,7 +7,6 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(u32)]
-    #[deprecated = "OpenGL API deprecated; please use Metal and MetalKit.  (Define GL_SILENCE_DEPRECATION to silence these warnings.)"]
     pub enum NSOpenGLGlobalOption {
         #[deprecated = "OpenGL API deprecated; please use Metal and MetalKit.  (Define GL_SILENCE_DEPRECATION to silence these warnings.)"]
         NSOpenGLGOFormatCacheSize = 501,
@@ -122,7 +121,6 @@ extern_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
-    #[deprecated = "OpenGL API deprecated; please use Metal and MetalKit.  (Define GL_SILENCE_DEPRECATION to silence these warnings.)"]
     pub enum NSOpenGLContextParameter {
         #[deprecated = "OpenGL API deprecated; please use Metal and MetalKit.  (Define GL_SILENCE_DEPRECATION to silence these warnings.)"]
         NSOpenGLContextParameterSwapInterval = 222,

@@ -52,20 +52,17 @@ unsafe impl NSObjectProtocol for LAAuthenticationView {}
 #[cfg(not(any(target_os = "ios")))]
 unsafe impl NSUserInterfaceItemIdentification for LAAuthenticationView {}
 
+#[cfg(not(any(target_os = "ios")))]
 extern_methods!(
     #[cfg(feature = "LocalAuthenticationEmbeddedUI_LAAuthenticationView")]
-    #[cfg(not(any(target_os = "ios")))]
     unsafe impl LAAuthenticationView {
-        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithFrame:)]
         pub unsafe fn initWithFrame(this: Option<Allocated<Self>>, frame_rect: NSRect) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[cfg(feature = "Foundation_NSCoder")]
         #[method_id(@__retain_semantics Init initWithCoder:)]
         pub unsafe fn initWithCoder(this: Option<Allocated<Self>>, coder: &NSCoder) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[cfg(feature = "LocalAuthentication_LAContext")]
         #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithContext:)]
@@ -74,7 +71,6 @@ extern_methods!(
             context: &LAContext,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[cfg(feature = "LocalAuthentication_LAContext")]
         #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithContext:controlSize:)]
@@ -84,13 +80,11 @@ extern_methods!(
             control_size: NSControlSize,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[cfg(feature = "LocalAuthentication_LAContext")]
         #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other context)]
         pub unsafe fn context(&self) -> Id<LAContext>;
 
-        #[cfg(not(any(target_os = "ios")))]
         #[cfg(not(any(target_os = "ios")))]
         #[method(controlSize)]
         pub unsafe fn controlSize(&self) -> NSControlSize;

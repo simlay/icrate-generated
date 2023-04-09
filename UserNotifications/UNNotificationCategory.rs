@@ -5,9 +5,9 @@ use crate::CoreLocation::*;
 use crate::Foundation::*;
 use crate::UserNotifications::*;
 
+#[cfg(not(any(target_os = "tvos")))]
 ns_options!(
     #[underlying(NSUInteger)]
-    #[cfg(not(any(target_os = "tvos")))]
     pub enum UNNotificationCategoryOptions {
         #[cfg(not(any(target_os = "tvos")))]
         UNNotificationCategoryOptionCustomDismissAction = 1 << 0,
@@ -51,16 +51,14 @@ unsafe impl NSObjectProtocol for UNNotificationCategory {}
 #[cfg(not(any(target_os = "tvos")))]
 unsafe impl NSSecureCoding for UNNotificationCategory {}
 
+#[cfg(not(any(target_os = "tvos")))]
 extern_methods!(
     #[cfg(feature = "UserNotifications_UNNotificationCategory")]
-    #[cfg(not(any(target_os = "tvos")))]
     unsafe impl UNNotificationCategory {
-        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(all(
             feature = "Foundation_NSArray",
             feature = "UserNotifications_UNNotificationAction"
@@ -68,28 +66,23 @@ extern_methods!(
         #[method_id(@__retain_semantics Other actions)]
         pub unsafe fn actions(&self) -> Id<NSArray<UNNotificationAction>>;
 
-        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
         #[method_id(@__retain_semantics Other intentIdentifiers)]
         pub unsafe fn intentIdentifiers(&self) -> Id<NSArray<NSString>>;
 
-        #[cfg(not(any(target_os = "tvos")))]
         #[method(options)]
         pub unsafe fn options(&self) -> UNNotificationCategoryOptions;
 
-        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other hiddenPreviewsBodyPlaceholder)]
         pub unsafe fn hiddenPreviewsBodyPlaceholder(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other categorySummaryFormat)]
         pub unsafe fn categorySummaryFormat(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(all(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSString",
@@ -103,7 +96,6 @@ extern_methods!(
             options: UNNotificationCategoryOptions,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(all(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSString",
@@ -119,7 +111,6 @@ extern_methods!(
             options: UNNotificationCategoryOptions,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "tvos")))]
         #[cfg(all(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSString",
@@ -136,7 +127,6 @@ extern_methods!(
             options: UNNotificationCategoryOptions,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
     }

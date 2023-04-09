@@ -6,7 +6,6 @@ use crate::Foundation::*;
 use crate::WebKit::*;
 
 extern_protocol!(
-    #[deprecated]
     pub unsafe trait WebFrameLoadDelegate: NSObjectProtocol {
         #[cfg(all(feature = "WebKit_WebFrame", feature = "WebKit_WebView"))]
         #[optional]

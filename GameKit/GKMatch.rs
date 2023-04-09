@@ -39,28 +39,23 @@ extern_class!(
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for GKMatch {}
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "GameKit_GKMatch")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl GKMatch {
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "GameKit_GKPlayer"))]
         #[method_id(@__retain_semantics Other players)]
         pub unsafe fn players(&self) -> Id<NSArray<GKPlayer>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(&self) -> Option<Id<ProtocolObject<dyn GKMatchDelegate>>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(&self, delegate: Option<&ProtocolObject<dyn GKMatchDelegate>>);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(expectedPlayerCount)]
         pub unsafe fn expectedPlayerCount(&self) -> NSUInteger;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSData",
@@ -75,7 +70,6 @@ extern_methods!(
             mode: GKMatchSendDataMode,
         ) -> Result<(), Id<NSError>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSData", feature = "Foundation_NSError"))]
         #[method(sendDataToAllPlayers:withDataMode:error:_)]
         pub unsafe fn sendDataToAllPlayers_withDataMode_error(
@@ -84,16 +78,13 @@ extern_methods!(
             mode: GKMatchSendDataMode,
         ) -> Result<(), Id<NSError>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(disconnect)]
         pub unsafe fn disconnect(&self);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSString", feature = "GameKit_GKVoiceChat"))]
         #[method_id(@__retain_semantics Other voiceChatWithName:)]
         pub unsafe fn voiceChatWithName(&self, name: &NSString) -> Option<Id<GKVoiceChat>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "GameKit_GKPlayer")]
         #[method(chooseBestHostingPlayerWithCompletionHandler:)]
         pub unsafe fn chooseBestHostingPlayerWithCompletionHandler(
@@ -101,7 +92,6 @@ extern_methods!(
             completion_handler: &Block<(*mut GKPlayer,), ()>,
         );
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSError")]
         #[method(rematchWithCompletionHandler:)]
         pub unsafe fn rematchWithCompletionHandler(
@@ -111,8 +101,8 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_protocol!(
-    #[cfg(not(any(target_os = "watchos")))]
     pub unsafe trait GKMatchDelegate: NSObjectProtocol {
         #[cfg(all(
             feature = "Foundation_NSData",
@@ -204,16 +194,14 @@ extern_protocol!(
         ) -> bool;
     }
 
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl ProtocolType for dyn GKMatchDelegate {}
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Obsoleted
     #[cfg(feature = "GameKit_GKMatch")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl GKMatch {
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[deprecated = "This is never invoked and its implementation does nothing, use chooseBestHostingPlayerWithCompletionHandler:"]
         #[method(chooseBestHostPlayerWithCompletionHandler:)]
@@ -222,7 +210,6 @@ extern_methods!(
             completion_handler: &Block<(*mut NSString,), ()>,
         );
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSData",
@@ -238,7 +225,6 @@ extern_methods!(
             mode: GKMatchSendDataMode,
         ) -> Result<(), Id<NSError>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
         #[deprecated = "This is never invoked and its implementation does nothing, use players instead."]
         #[method_id(@__retain_semantics Other playerIDs)]

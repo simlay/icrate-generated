@@ -3,9 +3,9 @@
 use crate::common::*;
 use crate::Foundation::*;
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 ns_options!(
     #[underlying(NSUInteger)]
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub enum NSAppleEventSendOptions {
         #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         NSAppleEventSendNoReply = 1,

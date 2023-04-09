@@ -4,9 +4,9 @@ use crate::common::*;
 use crate::AuthenticationServices::*;
 use crate::Foundation::*;
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub enum ASCredentialServiceIdentifierType {
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         ASCredentialServiceIdentifierTypeDomain = 0,
@@ -40,11 +40,10 @@ unsafe impl NSObjectProtocol for ASCredentialServiceIdentifier {}
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSSecureCoding for ASCredentialServiceIdentifier {}
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASCredentialServiceIdentifier")]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASCredentialServiceIdentifier {
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Init initWithIdentifier:type:)]
         pub unsafe fn initWithIdentifier_type(
@@ -53,12 +52,10 @@ extern_methods!(
             r#type: ASCredentialServiceIdentifierType,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(type)]
         pub unsafe fn r#type(&self) -> ASCredentialServiceIdentifierType;
     }

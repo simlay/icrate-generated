@@ -29,15 +29,13 @@ unsafe impl MKAnnotation for MKPointAnnotation {}
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKPointAnnotation {}
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKPointAnnotation")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKPointAnnotation {
-        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init initWithCoordinate:)]
         pub unsafe fn initWithCoordinate(
@@ -45,7 +43,6 @@ extern_methods!(
             coordinate: CLLocationCoordinate2D,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Init initWithCoordinate:title:subtitle:)]
@@ -56,11 +53,9 @@ extern_methods!(
             subtitle: Option<&NSString>,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(coordinate)]
         pub unsafe fn coordinate(&self) -> CLLocationCoordinate2D;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(setCoordinate:)]
         pub unsafe fn setCoordinate(&self, coordinate: CLLocationCoordinate2D);
     }

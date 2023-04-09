@@ -22,11 +22,10 @@ extern_class!(
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSObjectProtocol for ILMessageFilterExtensionContext {}
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "IdentityLookup_ILMessageFilterExtensionContext")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl ILMessageFilterExtensionContext {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSError",
             feature = "IdentityLookup_ILNetworkResponse"

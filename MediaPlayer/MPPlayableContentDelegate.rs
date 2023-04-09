@@ -5,9 +5,8 @@ use crate::AppKit::*;
 use crate::Foundation::*;
 use crate::MediaPlayer::*;
 
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_protocol!(
-    #[deprecated = "Use CarPlay framework"]
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub unsafe trait MPPlayableContentDelegate: NSObjectProtocol {
         #[cfg(all(
             feature = "Foundation_NSError",
@@ -70,6 +69,5 @@ extern_protocol!(
         );
     }
 
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl ProtocolType for dyn MPPlayableContentDelegate {}
 );

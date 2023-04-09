@@ -7,7 +7,6 @@ use crate::WebKit::*;
 
 extern_enum!(
     #[underlying(c_uint)]
-    #[deprecated]
     pub enum __anonymous__ {
         #[deprecated]
         DOM_FILTER_ACCEPT = 1,
@@ -45,7 +44,6 @@ extern_enum!(
 );
 
 extern_protocol!(
-    #[deprecated]
     pub unsafe trait DOMNodeFilter: NSObjectProtocol {
         #[cfg(feature = "WebKit_DOMNode")]
         #[method(acceptNode:)]

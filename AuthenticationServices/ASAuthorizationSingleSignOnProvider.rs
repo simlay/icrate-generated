@@ -25,34 +25,28 @@ unsafe impl ASAuthorizationProvider for ASAuthorizationSingleSignOnProvider {}
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for ASAuthorizationSingleSignOnProvider {}
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASAuthorizationSingleSignOnProvider")]
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAuthorizationSingleSignOnProvider {
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSURL")]
         #[method_id(@__retain_semantics Other authorizationProviderWithIdentityProviderURL:)]
         pub unsafe fn authorizationProviderWithIdentityProviderURL(url: &NSURL) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "AuthenticationServices_ASAuthorizationSingleSignOnRequest")]
         #[method_id(@__retain_semantics Other createRequest)]
         pub unsafe fn createRequest(&self) -> Id<ASAuthorizationSingleSignOnRequest>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSURL")]
         #[method_id(@__retain_semantics Other url)]
         pub unsafe fn url(&self) -> Id<NSURL>;
 
-        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(canPerformAuthorization)]
         pub unsafe fn canPerformAuthorization(&self) -> bool;
     }

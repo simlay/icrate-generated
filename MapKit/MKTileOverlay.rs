@@ -32,11 +32,10 @@ unsafe impl MKOverlay for MKTileOverlay {}
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSObjectProtocol for MKTileOverlay {}
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKTileOverlay")]
-    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKTileOverlay {
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Init initWithURLTemplate:)]
         pub unsafe fn initWithURLTemplate(
@@ -44,48 +43,37 @@ extern_methods!(
             url_template: Option<&NSString>,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(tileSize)]
         pub unsafe fn tileSize(&self) -> CGSize;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(setTileSize:)]
         pub unsafe fn setTileSize(&self, tile_size: CGSize);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(isGeometryFlipped)]
         pub unsafe fn isGeometryFlipped(&self) -> bool;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(setGeometryFlipped:)]
         pub unsafe fn setGeometryFlipped(&self, geometry_flipped: bool);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(minimumZ)]
         pub unsafe fn minimumZ(&self) -> NSInteger;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(setMinimumZ:)]
         pub unsafe fn setMinimumZ(&self, minimum_z: NSInteger);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(maximumZ)]
         pub unsafe fn maximumZ(&self) -> NSInteger;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(setMaximumZ:)]
         pub unsafe fn setMaximumZ(&self, maximum_z: NSInteger);
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other URLTemplate)]
         pub unsafe fn URLTemplate(&self) -> Option<Id<NSString>>;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(canReplaceMapContent)]
         pub unsafe fn canReplaceMapContent(&self) -> bool;
 
-        #[cfg(not(any(target_os = "watchos")))]
         #[method(setCanReplaceMapContent:)]
         pub unsafe fn setCanReplaceMapContent(&self, can_replace_map_content: bool);
     }

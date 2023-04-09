@@ -7,7 +7,6 @@ use crate::WebKit::*;
 
 extern_enum!(
     #[underlying(c_uint)]
-    #[deprecated]
     pub enum __anonymous__ {
         #[deprecated]
         DOM_ELEMENT_NODE = 1,

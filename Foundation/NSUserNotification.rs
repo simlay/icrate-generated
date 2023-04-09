@@ -3,10 +3,9 @@
 use crate::common::*;
 use crate::Foundation::*;
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
-    #[deprecated = "All NSUserNotifications API should be replaced with UserNotifications.frameworks API"]
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub enum NSUserNotificationActivationType {
         #[deprecated = "All NSUserNotifications API should be replaced with UserNotifications.frameworks API"]
         #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
@@ -43,90 +42,73 @@ extern_class!(
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for NSUserNotification {}
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "Foundation_NSUserNotification")]
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSUserNotification {
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Option<Id<NSString>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setTitle:)]
         pub unsafe fn setTitle(&self, title: Option<&NSString>);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other subtitle)]
         pub unsafe fn subtitle(&self) -> Option<Id<NSString>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setSubtitle:)]
         pub unsafe fn setSubtitle(&self, subtitle: Option<&NSString>);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other informativeText)]
         pub unsafe fn informativeText(&self) -> Option<Id<NSString>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setInformativeText:)]
         pub unsafe fn setInformativeText(&self, informative_text: Option<&NSString>);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other actionButtonTitle)]
         pub unsafe fn actionButtonTitle(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setActionButtonTitle:)]
         pub unsafe fn setActionButtonTitle(&self, action_button_title: &NSString);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
         #[method_id(@__retain_semantics Other userInfo)]
         pub unsafe fn userInfo(&self) -> Option<Id<NSDictionary<NSString, Object>>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
         #[method(setUserInfo:)]
         pub unsafe fn setUserInfo(&self, user_info: Option<&NSDictionary<NSString, Object>>);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSDate")]
         #[method_id(@__retain_semantics Other deliveryDate)]
         pub unsafe fn deliveryDate(&self) -> Option<Id<NSDate>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSDate")]
         #[method(setDeliveryDate:)]
         pub unsafe fn setDeliveryDate(&self, delivery_date: Option<&NSDate>);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSTimeZone")]
         #[method_id(@__retain_semantics Other deliveryTimeZone)]
         pub unsafe fn deliveryTimeZone(&self) -> Option<Id<NSTimeZone>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSTimeZone")]
         #[method(setDeliveryTimeZone:)]
         pub unsafe fn setDeliveryTimeZone(&self, delivery_time_zone: Option<&NSTimeZone>);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSDateComponents")]
         #[method_id(@__retain_semantics Other deliveryRepeatInterval)]
         pub unsafe fn deliveryRepeatInterval(&self) -> Option<Id<NSDateComponents>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSDateComponents")]
         #[method(setDeliveryRepeatInterval:)]
         pub unsafe fn setDeliveryRepeatInterval(
@@ -134,92 +116,74 @@ extern_methods!(
             delivery_repeat_interval: Option<&NSDateComponents>,
         );
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSDate")]
         #[method_id(@__retain_semantics Other actualDeliveryDate)]
         pub unsafe fn actualDeliveryDate(&self) -> Option<Id<NSDate>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(isPresented)]
         pub unsafe fn isPresented(&self) -> bool;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(isRemote)]
         pub unsafe fn isRemote(&self) -> bool;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other soundName)]
         pub unsafe fn soundName(&self) -> Option<Id<NSString>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setSoundName:)]
         pub unsafe fn setSoundName(&self, sound_name: Option<&NSString>);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(hasActionButton)]
         pub unsafe fn hasActionButton(&self) -> bool;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(setHasActionButton:)]
         pub unsafe fn setHasActionButton(&self, has_action_button: bool);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(activationType)]
         pub unsafe fn activationType(&self) -> NSUserNotificationActivationType;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other otherButtonTitle)]
         pub unsafe fn otherButtonTitle(&self) -> Id<NSString>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method(setOtherButtonTitle:)]
         pub unsafe fn setOtherButtonTitle(&self, other_button_title: &NSString);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Option<Id<NSString>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(setIdentifier:)]
         pub unsafe fn setIdentifier(&self, identifier: Option<&NSString>);
 
         #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(hasReplyButton)]
         pub unsafe fn hasReplyButton(&self) -> bool;
 
         #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(setHasReplyButton:)]
         pub unsafe fn setHasReplyButton(&self, has_reply_button: bool);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other responsePlaceholder)]
         pub unsafe fn responsePlaceholder(&self) -> Option<Id<NSString>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(setResponsePlaceholder:)]
         pub unsafe fn setResponsePlaceholder(&self, response_placeholder: Option<&NSString>);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSAttributedString")]
         #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other response)]
         pub unsafe fn response(&self) -> Option<Id<NSAttributedString>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSUserNotificationAction"
@@ -228,7 +192,6 @@ extern_methods!(
         #[method_id(@__retain_semantics Other additionalActions)]
         pub unsafe fn additionalActions(&self) -> Option<Id<NSArray<NSUserNotificationAction>>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSUserNotificationAction"
@@ -240,7 +203,6 @@ extern_methods!(
             additional_actions: Option<&NSArray<NSUserNotificationAction>>,
         );
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSUserNotificationAction")]
         #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other additionalActivationAction)]
@@ -267,11 +229,10 @@ extern_class!(
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for NSUserNotificationAction {}
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "Foundation_NSUserNotificationAction")]
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSUserNotificationAction {
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other actionWithIdentifier:title:)]
         pub unsafe fn actionWithIdentifier_title(
@@ -279,12 +240,10 @@ extern_methods!(
             title: Option<&NSString>,
         ) -> Id<Self>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Option<Id<NSString>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Option<Id<NSString>>;
@@ -313,28 +272,24 @@ extern_class!(
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for NSUserNotificationCenter {}
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "Foundation_NSUserNotificationCenter")]
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSUserNotificationCenter {
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other defaultUserNotificationCenter)]
         pub unsafe fn defaultUserNotificationCenter() -> Id<NSUserNotificationCenter>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(
             &self,
         ) -> Option<Id<ProtocolObject<dyn NSUserNotificationCenterDelegate>>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
             delegate: Option<&ProtocolObject<dyn NSUserNotificationCenterDelegate>>,
         );
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSUserNotification"
@@ -342,7 +297,6 @@ extern_methods!(
         #[method_id(@__retain_semantics Other scheduledNotifications)]
         pub unsafe fn scheduledNotifications(&self) -> Id<NSArray<NSUserNotification>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSUserNotification"
@@ -353,17 +307,14 @@ extern_methods!(
             scheduled_notifications: &NSArray<NSUserNotification>,
         );
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSUserNotification")]
         #[method(scheduleNotification:)]
         pub unsafe fn scheduleNotification(&self, notification: &NSUserNotification);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSUserNotification")]
         #[method(removeScheduledNotification:)]
         pub unsafe fn removeScheduledNotification(&self, notification: &NSUserNotification);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(all(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSUserNotification"
@@ -371,17 +322,14 @@ extern_methods!(
         #[method_id(@__retain_semantics Other deliveredNotifications)]
         pub unsafe fn deliveredNotifications(&self) -> Id<NSArray<NSUserNotification>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSUserNotification")]
         #[method(deliverNotification:)]
         pub unsafe fn deliverNotification(&self, notification: &NSUserNotification);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[cfg(feature = "Foundation_NSUserNotification")]
         #[method(removeDeliveredNotification:)]
         pub unsafe fn removeDeliveredNotification(&self, notification: &NSUserNotification);
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(removeAllDeliveredNotifications)]
         pub unsafe fn removeAllDeliveredNotifications(&self);
     }

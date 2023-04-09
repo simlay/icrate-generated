@@ -253,7 +253,6 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
-    #[deprecated]
     pub enum NSMultibyteGlyphPacking {
         #[deprecated]
         NSNativeShortGlyphPacking = 5,

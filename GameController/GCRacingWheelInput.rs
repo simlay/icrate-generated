@@ -26,28 +26,23 @@ unsafe impl GCDevicePhysicalInputState for GCRacingWheelInputState {}
 #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 unsafe impl NSObjectProtocol for GCRacingWheelInputState {}
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 extern_methods!(
     #[cfg(feature = "GameController_GCRacingWheelInputState")]
-    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     unsafe impl GCRacingWheelInputState {
-        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[cfg(feature = "GameController_GCSteeringWheelElement")]
         #[method_id(@__retain_semantics Other wheel)]
         pub unsafe fn wheel(&self) -> Id<GCSteeringWheelElement>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[method_id(@__retain_semantics Other acceleratorPedal)]
         pub unsafe fn acceleratorPedal(&self) -> Option<Id<ProtocolObject<dyn GCButtonElement>>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[method_id(@__retain_semantics Other brakePedal)]
         pub unsafe fn brakePedal(&self) -> Option<Id<ProtocolObject<dyn GCButtonElement>>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[method_id(@__retain_semantics Other clutchPedal)]
         pub unsafe fn clutchPedal(&self) -> Option<Id<ProtocolObject<dyn GCButtonElement>>>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[cfg(feature = "GameController_GCGearShifterElement")]
         #[method_id(@__retain_semantics Other shifter)]
         pub unsafe fn shifter(&self) -> Option<Id<GCGearShifterElement>>;
@@ -80,15 +75,13 @@ unsafe impl GCDevicePhysicalInputState for GCRacingWheelInput {}
 #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 unsafe impl NSObjectProtocol for GCRacingWheelInput {}
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 extern_methods!(
     #[cfg(feature = "GameController_GCRacingWheelInput")]
-    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     unsafe impl GCRacingWheelInput {
-        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[method_id(@__retain_semantics Other capture)]
         pub unsafe fn capture(&self) -> Id<GCRacingWheelInputState>;
 
-        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[method_id(@__retain_semantics Other nextInputState)]
         pub unsafe fn nextInputState(&self) -> Option<Id<GCRacingWheelInputState>>;
     }

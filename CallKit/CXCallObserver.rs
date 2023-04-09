@@ -4,15 +4,14 @@ use crate::common::*;
 use crate::CallKit::*;
 use crate::Foundation::*;
 
+#[cfg(not(any(target_os = "macos")))]
 extern_protocol!(
-    #[cfg(not(any(target_os = "macos")))]
     pub unsafe trait CXCallObserverDelegate: NSObjectProtocol {
         #[cfg(all(feature = "CallKit_CXCall", feature = "CallKit_CXCallObserver"))]
         #[method(callObserver:callChanged:)]
         unsafe fn callObserver_callChanged(&self, call_observer: &CXCallObserver, call: &CXCall);
     }
 
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl ProtocolType for dyn CXCallObserverDelegate {}
 );
 
@@ -33,11 +32,10 @@ extern_class!(
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSObjectProtocol for CXCallObserver {}
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "CallKit_CXCallObserver")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXCallObserver {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(feature = "CallKit_CXCall", feature = "Foundation_NSArray"))]
         #[method_id(@__retain_semantics Other calls)]
         pub unsafe fn calls(&self) -> Id<NSArray<CXCall>>;

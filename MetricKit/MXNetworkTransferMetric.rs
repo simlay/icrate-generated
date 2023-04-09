@@ -30,11 +30,10 @@ unsafe impl NSObjectProtocol for MXNetworkTransferMetric {}
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSSecureCoding for MXNetworkTransferMetric {}
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "MetricKit_MXNetworkTransferMetric")]
-    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXNetworkTransferMetric {
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitInformationStorage"
@@ -42,7 +41,6 @@ extern_methods!(
         #[method_id(@__retain_semantics Other cumulativeWifiUpload)]
         pub unsafe fn cumulativeWifiUpload(&self) -> Id<NSMeasurement<NSUnitInformationStorage>>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitInformationStorage"
@@ -50,7 +48,6 @@ extern_methods!(
         #[method_id(@__retain_semantics Other cumulativeWifiDownload)]
         pub unsafe fn cumulativeWifiDownload(&self) -> Id<NSMeasurement<NSUnitInformationStorage>>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitInformationStorage"
@@ -60,7 +57,6 @@ extern_methods!(
             &self,
         ) -> Id<NSMeasurement<NSUnitInformationStorage>>;
 
-        #[cfg(not(any(target_os = "macos")))]
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitInformationStorage"

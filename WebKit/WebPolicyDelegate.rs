@@ -7,7 +7,6 @@ use crate::WebKit::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
-    #[deprecated]
     pub enum WebNavigationType {
         #[deprecated]
         WebNavigationTypeLinkClicked = 0,
@@ -35,7 +34,6 @@ extern_static!(WebActionModifierFlagsKey: Option<&'static NSString>);
 extern_static!(WebActionOriginalURLKey: Option<&'static NSString>);
 
 extern_protocol!(
-    #[deprecated]
     pub unsafe trait WebPolicyDecisionListener: NSObjectProtocol {
         #[method(use)]
         unsafe fn r#use(&self);
@@ -51,7 +49,6 @@ extern_protocol!(
 );
 
 extern_protocol!(
-    #[deprecated]
     pub unsafe trait WebPolicyDelegate: NSObjectProtocol {
         #[cfg(all(
             feature = "Foundation_NSDictionary",

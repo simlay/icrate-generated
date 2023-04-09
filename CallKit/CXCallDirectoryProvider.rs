@@ -25,11 +25,10 @@ unsafe impl NSExtensionRequestHandling for CXCallDirectoryProvider {}
 #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 unsafe impl NSObjectProtocol for CXCallDirectoryProvider {}
 
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "CallKit_CXCallDirectoryProvider")]
-    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     unsafe impl CXCallDirectoryProvider {
-        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(feature = "CallKit_CXCallDirectoryExtensionContext")]
         #[method(beginRequestWithExtensionContext:)]
         pub unsafe fn beginRequestWithExtensionContext(
