@@ -7,6 +7,10 @@ use crate::MetricKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MetricKit_MXAppResponsivenessMetric")]
+    /**
+     @class         MXAppResponsivenessMetric
+    @abstract      An MXMetric subclass that encapsulates app responsiveness metrics.
+    */
     pub struct MXAppResponsivenessMetric;
 
     #[cfg(feature = "MetricKit_MXAppResponsivenessMetric")]
@@ -17,21 +21,45 @@ extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXAppResponsivenessMetric")]
+/**
+ @class         MXAppResponsivenessMetric
+@abstract      An MXMetric subclass that encapsulates app responsiveness metrics.
+*/
 unsafe impl NSCoding for MXAppResponsivenessMetric {}
 
 #[cfg(feature = "MetricKit_MXAppResponsivenessMetric")]
+/**
+ @class         MXAppResponsivenessMetric
+@abstract      An MXMetric subclass that encapsulates app responsiveness metrics.
+*/
 unsafe impl NSObjectProtocol for MXAppResponsivenessMetric {}
 
 #[cfg(feature = "MetricKit_MXAppResponsivenessMetric")]
+/**
+ @class         MXAppResponsivenessMetric
+@abstract      An MXMetric subclass that encapsulates app responsiveness metrics.
+*/
 unsafe impl NSSecureCoding for MXAppResponsivenessMetric {}
 
 extern_methods!(
+    /**
+     @class         MXAppResponsivenessMetric
+    @abstract      An MXMetric subclass that encapsulates app responsiveness metrics.
+    */
     #[cfg(feature = "MetricKit_MXAppResponsivenessMetric")]
     unsafe impl MXAppResponsivenessMetric {
         #[cfg(all(
             feature = "Foundation_NSUnitDuration",
             feature = "MetricKit_MXHistogram"
         ))]
+        /**
+         @property      histogrammedApplicationHangTime
+        @abstract      Histogrammed app hang time data.
+        @discussion    Applications are considered to be "hanging" when they are unable to handle user input responsively.
+        @discussion    The durations for periods of hangs will be reported in the histogram returned here.
+        @discussion    Application hang times that exceeds 9 seconds of wall clock time are reported in the final bucket of the histogram.
+        @discussion    Dimensioned as NSUnitDuration.
+        */
         #[method_id(@__retain_semantics Other histogrammedApplicationHangTime)]
         pub unsafe fn histogrammedApplicationHangTime(&self) -> Id<MXHistogram<NSUnitDuration>>;
     }

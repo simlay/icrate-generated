@@ -77,9 +77,19 @@ extern_methods!(
         #[method(addChild:withPendingUnitCount:)]
         pub unsafe fn addChild_withPendingUnitCount(&self, child: &NSProgress, in_unit_count: i64);
 
+        /**
+          The size of the job whose progress is being reported, and how much of it has been completed so far, respectively. For an NSProgress with a kind of NSProgressKindFile, the unit of these properties is bytes while the NSProgressFileTotalCountKey and NSProgressFileCompletedCountKey keys in the userInfo dictionary are used for the overall count of files. For any other kind of NSProgress, the unit of measurement you use does not matter as long as you are consistent. The values may be reported to the user in the localizedDescription and localizedAdditionalDescription.
+
+        If the receiver NSProgress object is a "leaf progress" (no children), then the fractionCompleted is generally completedUnitCount / totalUnitCount. If the receiver NSProgress has children, the fractionCompleted will reflect progress made in child objects in addition to its own completedUnitCount. As children finish, the completedUnitCount of the parent will be updated.
+        */
         #[method(totalUnitCount)]
         pub unsafe fn totalUnitCount(&self) -> i64;
 
+        /**
+          The size of the job whose progress is being reported, and how much of it has been completed so far, respectively. For an NSProgress with a kind of NSProgressKindFile, the unit of these properties is bytes while the NSProgressFileTotalCountKey and NSProgressFileCompletedCountKey keys in the userInfo dictionary are used for the overall count of files. For any other kind of NSProgress, the unit of measurement you use does not matter as long as you are consistent. The values may be reported to the user in the localizedDescription and localizedAdditionalDescription.
+
+        If the receiver NSProgress object is a "leaf progress" (no children), then the fractionCompleted is generally completedUnitCount / totalUnitCount. If the receiver NSProgress has children, the fractionCompleted will reflect progress made in child objects in addition to its own completedUnitCount. As children finish, the completedUnitCount of the parent will be updated.
+        */
         #[method(setTotalUnitCount:)]
         pub unsafe fn setTotalUnitCount(&self, total_unit_count: i64);
 
@@ -90,27 +100,69 @@ extern_methods!(
         pub unsafe fn setCompletedUnitCount(&self, completed_unit_count: i64);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          A description of what progress is being made, fit to present to the user. NSProgress is by default KVO-compliant for this property, with the notifications always being sent on thread which updates the property. The default implementation of the getter for this property does not always return the most recently set value of the property. If the most recently set value of this property is nil then NSProgress uses the value of the kind property to determine how to use the values of other properties, as well as values in the user info dictionary, to return a computed string. If it fails to do that then it returns an empty string.
+
+        For example, depending on the kind of progress, the completed and total unit counts, and other parameters, these kinds of strings may be generated:
+        Copying 10 files…
+        30% completed
+        Copying “TextEdit”…
+        */
         #[method_id(@__retain_semantics Other localizedDescription)]
         pub unsafe fn localizedDescription(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          A description of what progress is being made, fit to present to the user. NSProgress is by default KVO-compliant for this property, with the notifications always being sent on thread which updates the property. The default implementation of the getter for this property does not always return the most recently set value of the property. If the most recently set value of this property is nil then NSProgress uses the value of the kind property to determine how to use the values of other properties, as well as values in the user info dictionary, to return a computed string. If it fails to do that then it returns an empty string.
+
+        For example, depending on the kind of progress, the completed and total unit counts, and other parameters, these kinds of strings may be generated:
+        Copying 10 files…
+        30% completed
+        Copying “TextEdit”…
+        */
         #[method(setLocalizedDescription:)]
         pub unsafe fn setLocalizedDescription(&self, localized_description: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          A more specific description of what progress is being made, fit to present to the user. NSProgress is by default KVO-compliant for this property, with the notifications always being sent on thread which updates the property. The default implementation of the getter for this property does not always return the most recently set value of the property. If the most recently set value of this property is nil then NSProgress uses the value of the kind property to determine how to use the values of other properties, as well as values in the user info dictionary, to return a computed string. If it fails to do that then it returns an empty string. The difference between this and localizedDescription is that this text is meant to be more specific about what work is being done at any particular moment.
+
+        For example, depending on the kind of progress, the completed and total unit counts, and other parameters, these kinds of strings may be generated:
+        3 of 10 files
+        123 KB of 789.1 MB
+        3.3 MB of 103.92 GB — 2 minutes remaining
+        1.61 GB of 3.22 GB (2 KB/sec) — 2 minutes remaining
+        1 minute remaining (1 KB/sec)
+        */
         #[method_id(@__retain_semantics Other localizedAdditionalDescription)]
         pub unsafe fn localizedAdditionalDescription(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          A more specific description of what progress is being made, fit to present to the user. NSProgress is by default KVO-compliant for this property, with the notifications always being sent on thread which updates the property. The default implementation of the getter for this property does not always return the most recently set value of the property. If the most recently set value of this property is nil then NSProgress uses the value of the kind property to determine how to use the values of other properties, as well as values in the user info dictionary, to return a computed string. If it fails to do that then it returns an empty string. The difference between this and localizedDescription is that this text is meant to be more specific about what work is being done at any particular moment.
+
+        For example, depending on the kind of progress, the completed and total unit counts, and other parameters, these kinds of strings may be generated:
+        3 of 10 files
+        123 KB of 789.1 MB
+        3.3 MB of 103.92 GB — 2 minutes remaining
+        1.61 GB of 3.22 GB (2 KB/sec) — 2 minutes remaining
+        1 minute remaining (1 KB/sec)
+        */
         #[method(setLocalizedAdditionalDescription:)]
         pub unsafe fn setLocalizedAdditionalDescription(
             &self,
             localized_additional_description: Option<&NSString>,
         );
 
+        /**
+          Whether the work being done can be cancelled or paused, respectively. By default NSProgresses are cancellable but not pausable. NSProgress is by default KVO-compliant for these properties, with the notifications always being sent on the thread which updates the property. These properties are for communicating whether controls for cancelling and pausing should appear in a progress reporting user interface. NSProgress itself does not do anything with these properties other than help pass their values from progress reporters to progress observers. It is valid for the values of these properties to change in virtually any way during the lifetime of an NSProgress. Of course, if an NSProgress is cancellable you should actually implement cancellability by setting a cancellation handler or by making your code poll the result of invoking -isCancelled. Likewise for pausability.
+        */
         #[method(isCancellable)]
         pub unsafe fn isCancellable(&self) -> bool;
 
+        /**
+          Whether the work being done can be cancelled or paused, respectively. By default NSProgresses are cancellable but not pausable. NSProgress is by default KVO-compliant for these properties, with the notifications always being sent on the thread which updates the property. These properties are for communicating whether controls for cancelling and pausing should appear in a progress reporting user interface. NSProgress itself does not do anything with these properties other than help pass their values from progress reporters to progress observers. It is valid for the values of these properties to change in virtually any way during the lifetime of an NSProgress. Of course, if an NSProgress is cancellable you should actually implement cancellability by setting a cancellation handler or by making your code poll the result of invoking -isCancelled. Likewise for pausability.
+        */
         #[method(setCancellable:)]
         pub unsafe fn setCancellable(&self, cancellable: bool);
 
@@ -120,27 +172,48 @@ extern_methods!(
         #[method(setPausable:)]
         pub unsafe fn setPausable(&self, pausable: bool);
 
+        /**
+          Whether the work being done has been cancelled or paused, respectively. NSProgress is by default KVO-compliant for these properties, with the notifications always being sent on the thread which updates the property. Instances of NSProgress that have parents are at least as cancelled or paused as their parents.
+        */
         #[method(isCancelled)]
         pub unsafe fn isCancelled(&self) -> bool;
 
         #[method(isPaused)]
         pub unsafe fn isPaused(&self) -> bool;
 
+        /**
+          A block to be invoked when cancel is invoked. The block will be invoked even when the method is invoked on an ancestor of the receiver, or an instance of NSProgress in another process that resulted from publishing the receiver or an ancestor of the receiver. Your block won't be invoked on any particular queue. If it must do work on a specific queue then it should schedule that work on that queue.
+        */
         #[method(cancellationHandler)]
         pub unsafe fn cancellationHandler(&self) -> *mut Block<(), ()>;
 
+        /**
+          A block to be invoked when cancel is invoked. The block will be invoked even when the method is invoked on an ancestor of the receiver, or an instance of NSProgress in another process that resulted from publishing the receiver or an ancestor of the receiver. Your block won't be invoked on any particular queue. If it must do work on a specific queue then it should schedule that work on that queue.
+        */
         #[method(setCancellationHandler:)]
         pub unsafe fn setCancellationHandler(&self, cancellation_handler: Option<&Block<(), ()>>);
 
+        /**
+          A block to be invoked when pause is invoked. The block will be invoked even when the method is invoked on an ancestor of the receiver, or an instance of NSProgress in another process that resulted from publishing the receiver or an ancestor of the receiver. Your block won't be invoked on any particular queue. If it must do work on a specific queue then it should schedule that work on that queue.
+        */
         #[method(pausingHandler)]
         pub unsafe fn pausingHandler(&self) -> *mut Block<(), ()>;
 
+        /**
+          A block to be invoked when pause is invoked. The block will be invoked even when the method is invoked on an ancestor of the receiver, or an instance of NSProgress in another process that resulted from publishing the receiver or an ancestor of the receiver. Your block won't be invoked on any particular queue. If it must do work on a specific queue then it should schedule that work on that queue.
+        */
         #[method(setPausingHandler:)]
         pub unsafe fn setPausingHandler(&self, pausing_handler: Option<&Block<(), ()>>);
 
+        /**
+          A block to be invoked when resume is invoked. The block will be invoked even when the method is invoked on an ancestor of the receiver, or an instance of NSProgress in another process that resulted from publishing the receiver or an ancestor of the receiver. Your block won't be invoked on any particular queue. If it must do work on a specific queue then it should schedule that work on that queue.
+        */
         #[method(resumingHandler)]
         pub unsafe fn resumingHandler(&self) -> *mut Block<(), ()>;
 
+        /**
+          A block to be invoked when resume is invoked. The block will be invoked even when the method is invoked on an ancestor of the receiver, or an instance of NSProgress in another process that resulted from publishing the receiver or an ancestor of the receiver. Your block won't be invoked on any particular queue. If it must do work on a specific queue then it should schedule that work on that queue.
+        */
         #[method(setResumingHandler:)]
         pub unsafe fn setResumingHandler(&self, resuming_handler: Option<&Block<(), ()>>);
 
@@ -151,12 +224,21 @@ extern_methods!(
             key: &NSProgressUserInfoKey,
         );
 
+        /**
+          Whether the progress being made is indeterminate. -isIndeterminate returns YES when the value of the totalUnitCount or completedUnitCount property is less than zero. Zero values for both of those properties indicates that there turned out to not be any work to do after all; -isIndeterminate returns NO and -fractionCompleted returns 1.0 in that case. NSProgress is by default KVO-compliant for these properties, with the notifications always being sent on the thread which updates the property.
+        */
         #[method(isIndeterminate)]
         pub unsafe fn isIndeterminate(&self) -> bool;
 
+        /**
+          The fraction of the overall work completed by this progress object, including work done by any children it may have.
+        */
         #[method(fractionCompleted)]
         pub unsafe fn fractionCompleted(&self) -> c_double;
 
+        /**
+          True if the progress is considered finished. This property is observable.
+        */
         #[method(isFinished)]
         pub unsafe fn isFinished(&self) -> bool;
 
@@ -170,34 +252,73 @@ extern_methods!(
         pub unsafe fn resume(&self);
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          Arbitrary values associated with the receiver. Returns a KVO-compliant dictionary that changes as -setUserInfoObject:forKey: is sent to the receiver. The dictionary will send all of its KVO notifications on the thread which updates the property. The result will never be nil, but may be an empty dictionary. Some entries have meanings that are recognized by the NSProgress class itself. See the NSProgress...Key string constants listed below.
+        */
         #[method_id(@__retain_semantics Other userInfo)]
         pub unsafe fn userInfo(&self) -> Id<NSDictionary<NSProgressUserInfoKey, Object>>;
 
+        /**
+          Either a string identifying what kind of progress is being made, like NSProgressKindFile, or nil. If the value of the localizedDescription property has not been set to a non-nil value then the default implementation of -localizedDescription uses the progress kind to determine how to use the values of other properties, as well as values in the user info dictionary, to create a string that is presentable to the user. This is most useful when -localizedDescription is actually being invoked in another process, whose localization language may be different, as a result of using the publish and subscribe mechanism described here.
+        */
         #[method_id(@__retain_semantics Other kind)]
         pub unsafe fn kind(&self) -> Option<Id<NSProgressKind>>;
 
+        /**
+          Either a string identifying what kind of progress is being made, like NSProgressKindFile, or nil. If the value of the localizedDescription property has not been set to a non-nil value then the default implementation of -localizedDescription uses the progress kind to determine how to use the values of other properties, as well as values in the user info dictionary, to create a string that is presentable to the user. This is most useful when -localizedDescription is actually being invoked in another process, whose localization language may be different, as a result of using the publish and subscribe mechanism described here.
+        */
         #[method(setKind:)]
         pub unsafe fn setKind(&self, kind: Option<&NSProgressKind>);
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+          How much time is probably left in the operation, as an NSNumber containing a number of seconds.
+        This property is optional. If present, NSProgress will use the information to present more information in its localized description.
+        This property sets a value in the userInfo dictionary.
+        */
         #[method_id(@__retain_semantics Other estimatedTimeRemaining)]
         pub unsafe fn estimatedTimeRemaining(&self) -> Option<Id<NSNumber>>;
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+          How much time is probably left in the operation, as an NSNumber containing a number of seconds.
+        This property is optional. If present, NSProgress will use the information to present more information in its localized description.
+        This property sets a value in the userInfo dictionary.
+        */
         #[method(setEstimatedTimeRemaining:)]
         pub unsafe fn setEstimatedTimeRemaining(&self, estimated_time_remaining: Option<&NSNumber>);
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+          How fast data is being processed, as an NSNumber containing bytes per second.
+        This property is optional. If present, NSProgress will use the information to present more information in its localized description.
+        This property sets a value in the userInfo dictionary.
+        */
         #[method_id(@__retain_semantics Other throughput)]
         pub unsafe fn throughput(&self) -> Option<Id<NSNumber>>;
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+          How fast data is being processed, as an NSNumber containing bytes per second.
+        This property is optional. If present, NSProgress will use the information to present more information in its localized description.
+        This property sets a value in the userInfo dictionary.
+        */
         #[method(setThroughput:)]
         pub unsafe fn setThroughput(&self, throughput: Option<&NSNumber>);
 
+        /**
+         When the kind property is NSProgressKindFile, this value should be set. It describes the kind of file operation being performed.
+        If present, NSProgress will use the information to present more information in its localized description.
+        This property sets a value in the userInfo dictionary.
+        */
         #[method_id(@__retain_semantics Other fileOperationKind)]
         pub unsafe fn fileOperationKind(&self) -> Option<Id<NSProgressFileOperationKind>>;
 
+        /**
+         When the kind property is NSProgressKindFile, this value should be set. It describes the kind of file operation being performed.
+        If present, NSProgress will use the information to present more information in its localized description.
+        This property sets a value in the userInfo dictionary.
+        */
         #[method(setFileOperationKind:)]
         pub unsafe fn setFileOperationKind(
             &self,
@@ -205,26 +326,56 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+         A URL identifying the item on which progress is being made. This is required for any NSProgress that is published using -publish to be reported to subscribers registered with +addSubscriberForFileURL:withPublishingHandler:
+        If present, NSProgress will use the information to present more information in its localized description.
+        This property sets a value in the userInfo dictionary.
+        */
         #[method_id(@__retain_semantics Other fileURL)]
         pub unsafe fn fileURL(&self) -> Option<Id<NSURL>>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+         A URL identifying the item on which progress is being made. This is required for any NSProgress that is published using -publish to be reported to subscribers registered with +addSubscriberForFileURL:withPublishingHandler:
+        If present, NSProgress will use the information to present more information in its localized description.
+        This property sets a value in the userInfo dictionary.
+        */
         #[method(setFileURL:)]
         pub unsafe fn setFileURL(&self, file_url: Option<&NSURL>);
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+         If the progress is operating on a set of files, then set to the total number of files in the operation.
+        This property is optional. If present, NSProgress will use the information to present more information in its localized description.
+        This property sets a value in the userInfo dictionary.
+        */
         #[method_id(@__retain_semantics Other fileTotalCount)]
         pub unsafe fn fileTotalCount(&self) -> Option<Id<NSNumber>>;
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+         If the progress is operating on a set of files, then set to the total number of files in the operation.
+        This property is optional. If present, NSProgress will use the information to present more information in its localized description.
+        This property sets a value in the userInfo dictionary.
+        */
         #[method(setFileTotalCount:)]
         pub unsafe fn setFileTotalCount(&self, file_total_count: Option<&NSNumber>);
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+         If the progress is operating on a set of files, then set to the number of completed files in the operation.
+        This property is optional. If present, NSProgress will use the information to present more information in its localized description.
+        This property sets a value in the userInfo dictionary.
+        */
         #[method_id(@__retain_semantics Other fileCompletedCount)]
         pub unsafe fn fileCompletedCount(&self) -> Option<Id<NSNumber>>;
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+         If the progress is operating on a set of files, then set to the number of completed files in the operation.
+        This property is optional. If present, NSProgress will use the information to present more information in its localized description.
+        This property sets a value in the userInfo dictionary.
+        */
         #[method(setFileCompletedCount:)]
         pub unsafe fn setFileCompletedCount(&self, file_completed_count: Option<&NSNumber>);
 
@@ -244,12 +395,20 @@ extern_methods!(
         #[method(removeSubscriber:)]
         pub unsafe fn removeSubscriber(subscriber: &Object);
 
+        /**
+          Return YES if the receiver represents progress that was published before the invocation of +addSubscriberForFileURL:withPublishingHandler: that resulted in the receiver appearing in this process, NO otherwise. The publish and subscribe mechanism described here is generally "level triggered," in that when you invoke +addSubscriberForFileURL:withPublishingHandler: your block will be invoked for every relevant NSProgress that has already been published and not yet unpublished. Sometimes however you need to implement "edge triggered" behavior, in which you do something either exactly when new progress begins or not at all. In the example described above, the Dock does not animate file icon flying when this method returns YES.
+
+        Note that there is no reliable definition of "before" in this case, which involves multiple processes in a preemptively scheduled system. You should not use this method for anything more important than best efforts at animating perfectly in the face of processes coming and going due to unpredictable user actions.
+        */
         #[method(isOld)]
         pub unsafe fn isOld(&self) -> bool;
     }
 );
 
 extern_protocol!(
+    /**
+      If your class supports reporting progress, then you can adopt the NSProgressReporting protocol. Objects that adopt this protocol should typically be "one-shot" -- that is, the progress is setup at initialization of the object and is updated when work is done. The value of the property should not be set to another progress object. Instead, the user of the NSProgressReporting class should create a new instance to represent a new set of work.
+    */
     pub unsafe trait NSProgressReporting: NSObjectProtocol {
         #[cfg(feature = "Foundation_NSProgress")]
         #[method_id(@__retain_semantics Other progress)]

@@ -36,6 +36,10 @@ ns_options!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSStream")]
+    /**
+      NSStream is an abstract class encapsulating the common API to NSInputStream and NSOutputStream.
+     Subclassers of NSInputStream and NSOutputStream must also implement these methods.
+    */
     pub struct NSStream;
 
     #[cfg(feature = "Foundation_NSStream")]
@@ -45,9 +49,17 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSStream")]
+/**
+  NSStream is an abstract class encapsulating the common API to NSInputStream and NSOutputStream.
+ Subclassers of NSInputStream and NSOutputStream must also implement these methods.
+*/
 unsafe impl NSObjectProtocol for NSStream {}
 
 extern_methods!(
+    /**
+      NSStream is an abstract class encapsulating the common API to NSInputStream and NSOutputStream.
+     Subclassers of NSInputStream and NSOutputStream must also implement these methods.
+    */
     #[cfg(feature = "Foundation_NSStream")]
     unsafe impl NSStream {
         #[method(open)]
@@ -100,6 +112,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSInputStream")]
+    /**
+      NSInputStream is an abstract class representing the base functionality of a read stream.
+     Subclassers are required to implement these methods.
+    */
     pub struct NSInputStream;
 
     #[cfg(feature = "Foundation_NSInputStream")]
@@ -110,9 +126,17 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSInputStream")]
+/**
+  NSInputStream is an abstract class representing the base functionality of a read stream.
+ Subclassers are required to implement these methods.
+*/
 unsafe impl NSObjectProtocol for NSInputStream {}
 
 extern_methods!(
+    /**
+      NSInputStream is an abstract class representing the base functionality of a read stream.
+     Subclassers are required to implement these methods.
+    */
     #[cfg(feature = "Foundation_NSInputStream")]
     unsafe impl NSInputStream {
         #[method(read:maxLength:)]
@@ -125,6 +149,9 @@ extern_methods!(
             len: NonNull<NSUInteger>,
         ) -> bool;
 
+        /**
+          returns in O(1) a pointer to the buffer in 'buffer' and by reference in 'len' how many bytes are available. This buffer is only valid until the next stream operation. Subclassers may return NO for this if it is not appropriate for the stream type. This may return NO if the buffer is not available.
+        */
         #[method(hasBytesAvailable)]
         pub unsafe fn hasBytesAvailable(&self) -> bool;
 
@@ -141,6 +168,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSOutputStream")]
+    /**
+      NSOutputStream is an abstract class representing the base functionality of a write stream.
+     Subclassers are required to implement these methods.
+    */
     pub struct NSOutputStream;
 
     #[cfg(feature = "Foundation_NSOutputStream")]
@@ -151,14 +182,25 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSOutputStream")]
+/**
+  NSOutputStream is an abstract class representing the base functionality of a write stream.
+ Subclassers are required to implement these methods.
+*/
 unsafe impl NSObjectProtocol for NSOutputStream {}
 
 extern_methods!(
+    /**
+      NSOutputStream is an abstract class representing the base functionality of a write stream.
+     Subclassers are required to implement these methods.
+    */
     #[cfg(feature = "Foundation_NSOutputStream")]
     unsafe impl NSOutputStream {
         #[method(write:maxLength:)]
         pub unsafe fn write_maxLength(&self, buffer: NonNull<u8>, len: NSUInteger) -> NSInteger;
 
+        /**
+          writes the bytes from the specified buffer to the stream up to len bytes. Returns the number of bytes actually written.
+        */
         #[method(hasSpaceAvailable)]
         pub unsafe fn hasSpaceAvailable(&self) -> bool;
 
@@ -234,6 +276,9 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      The NSInputStreamExtensions category contains additional initializers and convenience routines for dealing with NSInputStreams.
+    */
     /// NSInputStreamExtensions
     #[cfg(feature = "Foundation_NSInputStream")]
     unsafe impl NSInputStream {
@@ -259,6 +304,9 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      The NSOutputStreamExtensions category contains additional initializers and convenience routines for dealing with NSOutputStreams.
+    */
     /// NSOutputStreamExtensions
     #[cfg(feature = "Foundation_NSOutputStream")]
     unsafe impl NSOutputStream {

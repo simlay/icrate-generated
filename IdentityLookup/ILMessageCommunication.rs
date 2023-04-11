@@ -29,6 +29,9 @@ extern_methods!(
     #[cfg(feature = "IdentityLookup_ILMessageCommunication")]
     unsafe impl ILMessageCommunication {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Contains the contents of the message
+        */
         #[method_id(@__retain_semantics Other messageBody)]
         pub unsafe fn messageBody(&self) -> Option<Id<NSString>>;
 

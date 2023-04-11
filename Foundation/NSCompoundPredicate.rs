@@ -5,6 +5,9 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      Compound predicates are predicates which act on the results of evaluating other operators. We provide the basic boolean operators: AND, OR, and NOT.
+    */
     pub enum NSCompoundPredicateType {
         NSNotPredicateType = 0,
         NSAndPredicateType = 1,

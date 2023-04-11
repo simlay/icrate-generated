@@ -77,6 +77,12 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreData_NSConstraintConflict")]
+    /**
+      Used to report merge conflicts which include uniqueness constraint violations. Optimistic locking failures will be reported
+    separately from uniquness conflicts and will be resolved first. Each constraint violated will result in a separate NSMergeConflict,
+    although if an entity hierarchy has a constraint which is extended in subentities, all constraint violations for that constraint
+    will be collapsed into a single report.
+    */
     pub struct NSConstraintConflict;
 
     #[cfg(feature = "CoreData_NSConstraintConflict")]
@@ -86,32 +92,62 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreData_NSConstraintConflict")]
+/**
+  Used to report merge conflicts which include uniqueness constraint violations. Optimistic locking failures will be reported
+separately from uniquness conflicts and will be resolved first. Each constraint violated will result in a separate NSMergeConflict,
+although if an entity hierarchy has a constraint which is extended in subentities, all constraint violations for that constraint
+will be collapsed into a single report.
+*/
 unsafe impl NSObjectProtocol for NSConstraintConflict {}
 
 extern_methods!(
+    /**
+      Used to report merge conflicts which include uniqueness constraint violations. Optimistic locking failures will be reported
+    separately from uniquness conflicts and will be resolved first. Each constraint violated will result in a separate NSMergeConflict,
+    although if an entity hierarchy has a constraint which is extended in subentities, all constraint violations for that constraint
+    will be collapsed into a single report.
+    */
     #[cfg(feature = "CoreData_NSConstraintConflict")]
     unsafe impl NSConstraintConflict {
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          The constraint which has been violated.
+        */
         #[method_id(@__retain_semantics Other constraint)]
         pub unsafe fn constraint(&self) -> Id<NSArray<NSString>>;
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+          The values which the conflictingObjects had when this conflict was created. May no longer match the values of any conflicted object if something else resolved the conflict.
+        */
         #[method_id(@__retain_semantics Other constraintValues)]
         pub unsafe fn constraintValues(&self) -> Id<NSDictionary<NSString, Object>>;
 
         #[cfg(feature = "CoreData_NSManagedObject")]
+        /**
+          Object whose DB row is using constraint values. May be null if this is a context-level violation.
+        */
         #[method_id(@__retain_semantics Other databaseObject)]
         pub unsafe fn databaseObject(&self) -> Option<Id<NSManagedObject>>;
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+          DB row already using constraint values. May be null if this is a context-level violation.
+        */
         #[method_id(@__retain_semantics Other databaseSnapshot)]
         pub unsafe fn databaseSnapshot(&self) -> Option<Id<NSDictionary<NSString, Object>>>;
 
         #[cfg(all(feature = "CoreData_NSManagedObject", feature = "Foundation_NSArray"))]
+        /**
+          The objects in violation of the constraint. May contain one (in the case of a db level conflict) or more objects.
+        */
         #[method_id(@__retain_semantics Other conflictingObjects)]
         pub unsafe fn conflictingObjects(&self) -> Id<NSArray<NSManagedObject>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSDictionary"))]
+        /**
+          The original property values of objects in violation of the constraint.  Will contain as many objects as there are conflictingObjects. If an object was unchanged, its snapshot will instead be -[NSNull null].
+        */
         #[method_id(@__retain_semantics Other conflictingSnapshots)]
         pub unsafe fn conflictingSnapshots(&self) -> Id<NSArray<NSDictionary>>;
 

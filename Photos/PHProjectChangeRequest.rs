@@ -9,6 +9,9 @@ use crate::PhotoKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "PhotoKit_PHProjectChangeRequest")]
+    /**
+      PHProjectChangeRequest can only be created or used within a -[PHPhotoLibrary performChanges:] or -[PHPhotoLibrary performChangesAndWait:] block.
+    */
     pub struct PHProjectChangeRequest;
 
     #[cfg(feature = "PhotoKit_PHProjectChangeRequest")]
@@ -19,9 +22,15 @@ extern_class!(
 );
 
 #[cfg(feature = "PhotoKit_PHProjectChangeRequest")]
+/**
+  PHProjectChangeRequest can only be created or used within a -[PHPhotoLibrary performChanges:] or -[PHPhotoLibrary performChangesAndWait:] block.
+*/
 unsafe impl NSObjectProtocol for PHProjectChangeRequest {}
 
 extern_methods!(
+    /**
+      PHProjectChangeRequest can only be created or used within a -[PHPhotoLibrary performChanges:] or -[PHPhotoLibrary performChangesAndWait:] block.
+    */
     #[cfg(feature = "PhotoKit_PHProjectChangeRequest")]
     unsafe impl PHProjectChangeRequest {
         #[cfg(feature = "PhotoKit_PHProject")]
@@ -40,10 +49,22 @@ extern_methods!(
         pub unsafe fn setTitle(&self, title: &NSString);
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+         The projectExtensionData property is intended for storage of compressed, project specific data
+        only. Do not include things like rasterized images that can be locally cached in this data. The
+        total size of stored data is limited to 1 MB. Attempting to store more data than allowed will result
+        in an error.
+        */
         #[method_id(@__retain_semantics Other projectExtensionData)]
         pub unsafe fn projectExtensionData(&self) -> Id<NSData>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+         The projectExtensionData property is intended for storage of compressed, project specific data
+        only. Do not include things like rasterized images that can be locally cached in this data. The
+        total size of stored data is limited to 1 MB. Attempting to store more data than allowed will result
+        in an error.
+        */
         #[method(setProjectExtensionData:)]
         pub unsafe fn setProjectExtensionData(&self, project_extension_data: &NSData);
 

@@ -7,6 +7,13 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNMutablePostalAddress")]
+    /**
+      @abstract A mutable value object representing a postal address.
+
+     @discussion CNMutablePostalAddress is not thread safe.
+
+     @note To remove properties when saving a mutable postal address, set string properties to empty values.
+    */
     pub struct CNMutablePostalAddress;
 
     #[cfg(feature = "Contacts_CNMutablePostalAddress")]
@@ -17,22 +24,56 @@ extern_class!(
 );
 
 #[cfg(feature = "Contacts_CNMutablePostalAddress")]
+/**
+  @abstract A mutable value object representing a postal address.
+
+ @discussion CNMutablePostalAddress is not thread safe.
+
+ @note To remove properties when saving a mutable postal address, set string properties to empty values.
+*/
 unsafe impl NSCoding for CNMutablePostalAddress {}
 
 #[cfg(feature = "Contacts_CNMutablePostalAddress")]
+/**
+  @abstract A mutable value object representing a postal address.
+
+ @discussion CNMutablePostalAddress is not thread safe.
+
+ @note To remove properties when saving a mutable postal address, set string properties to empty values.
+*/
 unsafe impl NSObjectProtocol for CNMutablePostalAddress {}
 
 #[cfg(feature = "Contacts_CNMutablePostalAddress")]
+/**
+  @abstract A mutable value object representing a postal address.
+
+ @discussion CNMutablePostalAddress is not thread safe.
+
+ @note To remove properties when saving a mutable postal address, set string properties to empty values.
+*/
 unsafe impl NSSecureCoding for CNMutablePostalAddress {}
 
 extern_methods!(
+    /**
+      @abstract A mutable value object representing a postal address.
+
+     @discussion CNMutablePostalAddress is not thread safe.
+
+     @note To remove properties when saving a mutable postal address, set string properties to empty values.
+    */
     #[cfg(feature = "Contacts_CNMutablePostalAddress")]
     unsafe impl CNMutablePostalAddress {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          multi-street address is delimited with carriage returns “\n”
+        */
         #[method_id(@__retain_semantics Other street)]
         pub unsafe fn street(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          multi-street address is delimited with carriage returns “\n”
+        */
         #[method(setStreet:)]
         pub unsafe fn setStreet(&self, street: &NSString);
 

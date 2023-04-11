@@ -93,6 +93,9 @@ extern_methods!(
         pub unsafe fn weakObjectsHashTable() -> Id<NSHashTable<ObjectType>>;
 
         #[cfg(feature = "Foundation_NSPointerFunctions")]
+        /**
+          return an NSPointerFunctions object reflecting the functions in use.  This is a new autoreleased object that can be subsequently modified and/or used directly in the creation of other pointer "collections".
+        */
         #[method_id(@__retain_semantics Other pointerFunctions)]
         pub unsafe fn pointerFunctions(&self) -> Id<NSPointerFunctions>;
 
@@ -119,6 +122,9 @@ extern_methods!(
         pub unsafe fn removeAllObjects(&self);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          convenience
+        */
         #[method_id(@__retain_semantics Other allObjects)]
         pub unsafe fn allObjects(&self) -> Id<NSArray<ObjectType>>;
 
@@ -147,6 +153,9 @@ extern_methods!(
         pub unsafe fn minusHashTable(&self, other: &NSHashTable<ObjectType>);
 
         #[cfg(feature = "Foundation_NSSet")]
+        /**
+          create a set of the contents
+        */
         #[method_id(@__retain_semantics Other setRepresentation)]
         pub unsafe fn setRepresentation(&self) -> Id<NSSet<ObjectType>>;
     }
@@ -154,6 +163,9 @@ extern_methods!(
 
 extern_struct!(
     #[encoding_name("?")]
+    /**
+         (void *) Hash table operations
+    */
     pub struct NSHashEnumerator {
         _pi: NSUInteger,
         _si: NSUInteger,
@@ -239,6 +251,9 @@ extern_fn!(
 
 extern_struct!(
     #[encoding_name("?")]
+    /**
+         Legacy
+    */
     pub struct NSHashTableCallBacks {
         pub hash: Option<unsafe extern "C" fn(NonNull<NSHashTable>, NonNull<c_void>) -> NSUInteger>,
         pub isEqual: Option<

@@ -27,6 +27,9 @@ extern_static!(UNAuthorizationOptionNone: UNAuthorizationOptions = 0);
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "UserNotifications_UNUserNotificationCenter")]
+    /**
+      UNNotificationRequests can be scheduled using UNUserNotificationCenter. They can also be sent to the device from a server using Apple Push Notification Service. If the application is authorized then the UNNotificationRequest will be used to create a UNNotification and it will be used to notify the user. If the user acts on the UNNotification then a UNNotificationResponse will be sent to the application.
+    */
     pub struct UNUserNotificationCenter;
 
     #[cfg(feature = "UserNotifications_UNUserNotificationCenter")]
@@ -36,22 +39,37 @@ extern_class!(
 );
 
 #[cfg(feature = "UserNotifications_UNUserNotificationCenter")]
+/**
+  UNNotificationRequests can be scheduled using UNUserNotificationCenter. They can also be sent to the device from a server using Apple Push Notification Service. If the application is authorized then the UNNotificationRequest will be used to create a UNNotification and it will be used to notify the user. If the user acts on the UNNotification then a UNNotificationResponse will be sent to the application.
+*/
 unsafe impl NSObjectProtocol for UNUserNotificationCenter {}
 
 extern_methods!(
+    /**
+      UNNotificationRequests can be scheduled using UNUserNotificationCenter. They can also be sent to the device from a server using Apple Push Notification Service. If the application is authorized then the UNNotificationRequest will be used to create a UNNotification and it will be used to notify the user. If the user acts on the UNNotification then a UNNotificationResponse will be sent to the application.
+    */
     #[cfg(feature = "UserNotifications_UNUserNotificationCenter")]
     unsafe impl UNUserNotificationCenter {
+        /**
+          The delegate can only be set from an application
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(
             &self,
         ) -> Option<Id<ProtocolObject<dyn UNUserNotificationCenterDelegate>>>;
 
+        /**
+          The delegate can only be set from an application
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
             delegate: Option<&ProtocolObject<dyn UNUserNotificationCenterDelegate>>,
         );
 
+        /**
+          Returns YES if the current device supports content extensions
+        */
         #[method(supportsContentExtensions)]
         pub unsafe fn supportsContentExtensions(&self) -> bool;
 

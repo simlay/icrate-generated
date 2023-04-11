@@ -8,6 +8,9 @@ use crate::MailKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MailKit_MEDecodedMessageBanner")]
+    /**
+      @brief Contains security information in order to populate a banner in the message view.
+    */
     pub struct MEDecodedMessageBanner;
 
     #[cfg(feature = "MailKit_MEDecodedMessageBanner")]
@@ -17,15 +20,27 @@ extern_class!(
 );
 
 #[cfg(feature = "MailKit_MEDecodedMessageBanner")]
+/**
+  @brief Contains security information in order to populate a banner in the message view.
+*/
 unsafe impl NSCoding for MEDecodedMessageBanner {}
 
 #[cfg(feature = "MailKit_MEDecodedMessageBanner")]
+/**
+  @brief Contains security information in order to populate a banner in the message view.
+*/
 unsafe impl NSObjectProtocol for MEDecodedMessageBanner {}
 
 #[cfg(feature = "MailKit_MEDecodedMessageBanner")]
+/**
+  @brief Contains security information in order to populate a banner in the message view.
+*/
 unsafe impl NSSecureCoding for MEDecodedMessageBanner {}
 
 extern_methods!(
+    /**
+      @brief Contains security information in order to populate a banner in the message view.
+    */
     #[cfg(feature = "MailKit_MEDecodedMessageBanner")]
     unsafe impl MEDecodedMessageBanner {
         #[cfg(feature = "Foundation_NSString")]

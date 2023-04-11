@@ -7,6 +7,9 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CallKit_CXCallUpdate")]
+    /**
+      Any property that is not set will be ignored
+    */
     pub struct CXCallUpdate;
 
     #[cfg(feature = "CallKit_CXCallUpdate")]
@@ -16,54 +19,104 @@ extern_class!(
 );
 
 #[cfg(feature = "CallKit_CXCallUpdate")]
+/**
+  Any property that is not set will be ignored
+*/
 unsafe impl NSObjectProtocol for CXCallUpdate {}
 
 extern_methods!(
+    /**
+      Any property that is not set will be ignored
+    */
     #[cfg(feature = "CallKit_CXCallUpdate")]
     unsafe impl CXCallUpdate {
         #[cfg(feature = "CallKit_CXHandle")]
+        /**
+          Handle for the remote party (for an incoming call, the caller; for an outgoing call, the callee)
+        */
         #[method_id(@__retain_semantics Other remoteHandle)]
         pub unsafe fn remoteHandle(&self) -> Option<Id<CXHandle>>;
 
         #[cfg(feature = "CallKit_CXHandle")]
+        /**
+          Handle for the remote party (for an incoming call, the caller; for an outgoing call, the callee)
+        */
         #[method(setRemoteHandle:)]
         pub unsafe fn setRemoteHandle(&self, remote_handle: Option<&CXHandle>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Override the computed caller name to a provider-defined value.
+         Normally the system will determine the appropriate caller name to display (e.g. using the user's contacts) based on the supplied caller identifier. Set this property to customize.
+        */
         #[method_id(@__retain_semantics Other localizedCallerName)]
         pub unsafe fn localizedCallerName(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Override the computed caller name to a provider-defined value.
+         Normally the system will determine the appropriate caller name to display (e.g. using the user's contacts) based on the supplied caller identifier. Set this property to customize.
+        */
         #[method(setLocalizedCallerName:)]
         pub unsafe fn setLocalizedCallerName(&self, localized_caller_name: Option<&NSString>);
 
+        /**
+          Whether the call can be held on its own or swapped with another call
+        */
         #[method(supportsHolding)]
         pub unsafe fn supportsHolding(&self) -> bool;
 
+        /**
+          Whether the call can be held on its own or swapped with another call
+        */
         #[method(setSupportsHolding:)]
         pub unsafe fn setSupportsHolding(&self, supports_holding: bool);
 
+        /**
+          Whether the call can be grouped (merged) with other calls when it is ungrouped
+        */
         #[method(supportsGrouping)]
         pub unsafe fn supportsGrouping(&self) -> bool;
 
+        /**
+          Whether the call can be grouped (merged) with other calls when it is ungrouped
+        */
         #[method(setSupportsGrouping:)]
         pub unsafe fn setSupportsGrouping(&self, supports_grouping: bool);
 
+        /**
+          The call can be ungrouped (taken private) when it is grouped
+        */
         #[method(supportsUngrouping)]
         pub unsafe fn supportsUngrouping(&self) -> bool;
 
+        /**
+          The call can be ungrouped (taken private) when it is grouped
+        */
         #[method(setSupportsUngrouping:)]
         pub unsafe fn setSupportsUngrouping(&self, supports_ungrouping: bool);
 
+        /**
+          The call can send DTMF tones via hard pause digits or in-call keypad entries
+        */
         #[method(supportsDTMF)]
         pub unsafe fn supportsDTMF(&self) -> bool;
 
+        /**
+          The call can send DTMF tones via hard pause digits or in-call keypad entries
+        */
         #[method(setSupportsDTMF:)]
         pub unsafe fn setSupportsDTMF(&self, supports_dtmf: bool);
 
+        /**
+          The call includes video in addition to audio.
+        */
         #[method(hasVideo)]
         pub unsafe fn hasVideo(&self) -> bool;
 
+        /**
+          The call includes video in addition to audio.
+        */
         #[method(setHasVideo:)]
         pub unsafe fn setHasVideo(&self, has_video: bool);
     }

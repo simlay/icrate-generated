@@ -50,6 +50,10 @@ extern_methods!(
         #[method(removeFromRunLoop:forMode:)]
         pub unsafe fn removeFromRunLoop_forMode(&self, run_loop: &NSRunLoop, mode: &NSRunLoopMode);
 
+        /**
+          DO Transport API; subclassers should implement these methods
+         default is 0
+        */
         #[method(reservedSpaceLength)]
         pub unsafe fn reservedSpaceLength(&self) -> NSUInteger;
 
@@ -188,6 +192,10 @@ extern_protocol!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSMessagePort")]
+    /**
+      A subclass of NSPort which can be used for local
+     message sending on all platforms.
+    */
     pub struct NSMessagePort;
 
     #[cfg(feature = "Foundation_NSMessagePort")]
@@ -198,12 +206,24 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSMessagePort")]
+/**
+  A subclass of NSPort which can be used for local
+ message sending on all platforms.
+*/
 unsafe impl NSCoding for NSMessagePort {}
 
 #[cfg(feature = "Foundation_NSMessagePort")]
+/**
+  A subclass of NSPort which can be used for local
+ message sending on all platforms.
+*/
 unsafe impl NSObjectProtocol for NSMessagePort {}
 
 extern_methods!(
+    /**
+      A subclass of NSPort which can be used for local
+     message sending on all platforms.
+    */
     #[cfg(feature = "Foundation_NSMessagePort")]
     unsafe impl NSMessagePort {}
 );
@@ -211,6 +231,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSSocketPort")]
+    /**
+      A subclass of NSPort which can be used for remote
+     message sending on all platforms.
+    */
     pub struct NSSocketPort;
 
     #[cfg(feature = "Foundation_NSSocketPort")]
@@ -221,12 +245,24 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSSocketPort")]
+/**
+  A subclass of NSPort which can be used for remote
+ message sending on all platforms.
+*/
 unsafe impl NSCoding for NSSocketPort {}
 
 #[cfg(feature = "Foundation_NSSocketPort")]
+/**
+  A subclass of NSPort which can be used for remote
+ message sending on all platforms.
+*/
 unsafe impl NSObjectProtocol for NSSocketPort {}
 
 extern_methods!(
+    /**
+      A subclass of NSPort which can be used for remote
+     message sending on all platforms.
+    */
     #[cfg(feature = "Foundation_NSSocketPort")]
     unsafe impl NSSocketPort {
         #[method_id(@__retain_semantics Init init)]

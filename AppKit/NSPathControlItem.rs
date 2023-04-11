@@ -8,6 +8,10 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSPathControlItem")]
+    /**
+       NSPathControlItem is used to represent an individual path segment in an NSPathControl.
+    NSPathControlItem should not be subclassed.
+    */
     pub struct NSPathControlItem;
 
     #[cfg(feature = "AppKit_NSPathControlItem")]
@@ -17,16 +21,30 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSPathControlItem")]
+/**
+   NSPathControlItem is used to represent an individual path segment in an NSPathControl.
+NSPathControlItem should not be subclassed.
+*/
 unsafe impl NSObjectProtocol for NSPathControlItem {}
 
 extern_methods!(
+    /**
+       NSPathControlItem is used to represent an individual path segment in an NSPathControl.
+    NSPathControlItem should not be subclassed.
+    */
     #[cfg(feature = "AppKit_NSPathControlItem")]
     unsafe impl NSPathControlItem {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The title of the path item.
+        */
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The title of the path item.
+        */
         #[method(setTitle:)]
         pub unsafe fn setTitle(&self, title: &NSString);
 
@@ -39,14 +57,23 @@ extern_methods!(
         pub unsafe fn setAttributedTitle(&self, attributed_title: &NSAttributedString);
 
         #[cfg(feature = "AppKit_NSImage")]
+        /**
+          The image/icon shown for this particular component along the path. The NSPathControlItem can display both an image and title.  When drawing, your image will be scaled to fit the available area, which in 10.10 and earlier releases is 16x16 points for NSPathStyleStandard or NSPathStylePopUp, and 14x14 points for NSPathStyleNavigationBar.
+        */
         #[method_id(@__retain_semantics Other image)]
         pub unsafe fn image(&self) -> Option<Id<NSImage>>;
 
         #[cfg(feature = "AppKit_NSImage")]
+        /**
+          The image/icon shown for this particular component along the path. The NSPathControlItem can display both an image and title.  When drawing, your image will be scaled to fit the available area, which in 10.10 and earlier releases is 16x16 points for NSPathStyleStandard or NSPathStylePopUp, and 14x14 points for NSPathStyleNavigationBar.
+        */
         #[method(setImage:)]
         pub unsafe fn setImage(&self, image: Option<&NSImage>);
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          A url for the partial path from the beginning up to this particular item.
+        */
         #[method_id(@__retain_semantics Other URL)]
         pub unsafe fn URL(&self) -> Option<Id<NSURL>>;
     }

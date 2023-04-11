@@ -17,6 +17,10 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "OSAKit_OSAScriptController")]
+    /**
+      OSAScriptController
+     =====================
+    */
     pub struct OSAScriptController;
 
     #[cfg(feature = "OSAKit_OSAScriptController")]
@@ -27,25 +31,51 @@ extern_class!(
 );
 
 #[cfg(feature = "OSAKit_OSAScriptController")]
+/**
+  OSAScriptController
+ =====================
+*/
 unsafe impl NSCoding for OSAScriptController {}
 
 #[cfg(feature = "OSAKit_OSAScriptController")]
+/**
+  OSAScriptController
+ =====================
+*/
 unsafe impl NSEditor for OSAScriptController {}
 
 #[cfg(feature = "OSAKit_OSAScriptController")]
+/**
+  OSAScriptController
+ =====================
+*/
 unsafe impl NSEditorRegistration for OSAScriptController {}
 
 #[cfg(feature = "OSAKit_OSAScriptController")]
+/**
+  OSAScriptController
+ =====================
+*/
 unsafe impl NSObjectProtocol for OSAScriptController {}
 
 extern_methods!(
+    /**
+      OSAScriptController
+     =====================
+    */
     #[cfg(feature = "OSAKit_OSAScriptController")]
     unsafe impl OSAScriptController {
         #[cfg(feature = "OSAKit_OSAScriptView")]
+        /**
+          Accessors
+        */
         #[method_id(@__retain_semantics Other scriptView)]
         pub unsafe fn scriptView(&self) -> Option<Id<OSAScriptView>>;
 
         #[cfg(feature = "OSAKit_OSAScriptView")]
+        /**
+          Accessors
+        */
         #[method(setScriptView:)]
         pub unsafe fn setScriptView(&self, script_view: Option<&OSAScriptView>);
 

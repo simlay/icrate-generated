@@ -6,6 +6,10 @@ use crate::Foundation::*;
 use crate::WebKit::*;
 
 extern_protocol!(
+    /**
+      A class conforming to  the WKScriptMessageHandlerWithReply protocol provides a
+    method for receiving messages from JavaScript running in a webpage and replying to them asynchronously.
+    */
     pub unsafe trait WKScriptMessageHandlerWithReply: NSObjectProtocol {
         #[cfg(all(
             feature = "Foundation_NSString",

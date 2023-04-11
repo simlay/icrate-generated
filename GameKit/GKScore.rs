@@ -8,6 +8,9 @@ use crate::GameKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameKit_GKScore")]
+    /**
+      GKScore represents a score in the leaderboards.
+    */
     #[deprecated = "Replaced by GKLeaderboardScore"]
     pub struct GKScore;
 
@@ -18,15 +21,27 @@ extern_class!(
 );
 
 #[cfg(feature = "GameKit_GKScore")]
+/**
+  GKScore represents a score in the leaderboards.
+*/
 unsafe impl NSCoding for GKScore {}
 
 #[cfg(feature = "GameKit_GKScore")]
+/**
+  GKScore represents a score in the leaderboards.
+*/
 unsafe impl NSObjectProtocol for GKScore {}
 
 #[cfg(feature = "GameKit_GKScore")]
+/**
+  GKScore represents a score in the leaderboards.
+*/
 unsafe impl NSSecureCoding for GKScore {}
 
 extern_methods!(
+    /**
+      GKScore represents a score in the leaderboards.
+    */
     #[cfg(feature = "GameKit_GKScore")]
     unsafe impl GKScore {
         #[cfg(feature = "Foundation_NSString")]
@@ -44,44 +59,82 @@ extern_methods!(
             player: &GKPlayer,
         ) -> Id<Self>;
 
+        /**
+          The score value as a 64bit integer.
+        */
         #[method(value)]
         pub unsafe fn value(&self) -> i64;
 
+        /**
+          The score value as a 64bit integer.
+        */
         #[method(setValue:)]
         pub unsafe fn setValue(&self, value: i64);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The score formatted as a string, localized with a label
+        */
         #[method_id(@__retain_semantics Other formattedValue)]
         pub unsafe fn formattedValue(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          leaderboard identifier (required)
+        */
         #[method_id(@__retain_semantics Other leaderboardIdentifier)]
         pub unsafe fn leaderboardIdentifier(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          leaderboard identifier (required)
+        */
         #[method(setLeaderboardIdentifier:)]
         pub unsafe fn setLeaderboardIdentifier(&self, leaderboard_identifier: &NSString);
 
+        /**
+          optional additional context that allows a game to store and retrieve additional data associated with the store.  Default value of zero is returned if no value is set.
+        */
         #[method(context)]
         pub unsafe fn context(&self) -> u64;
 
+        /**
+          optional additional context that allows a game to store and retrieve additional data associated with the store.  Default value of zero is returned if no value is set.
+        */
         #[method(setContext:)]
         pub unsafe fn setContext(&self, context: u64);
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          The date this score was recorded. A newly initialized, unsubmitted GKScore records the current date at init time.
+        */
         #[method_id(@__retain_semantics Other date)]
         pub unsafe fn date(&self) -> Id<NSDate>;
 
         #[cfg(feature = "GameKit_GKPlayer")]
+        /**
+          The player that recorded the score.
+        */
         #[method_id(@__retain_semantics Other player)]
         pub unsafe fn player(&self) -> Option<Id<GKPlayer>>;
 
+        /**
+          The rank of the player within the leaderboard, only valid when returned from GKLeaderboard
+        */
         #[method(rank)]
         pub unsafe fn rank(&self) -> NSInteger;
 
+        /**
+          Convenience property to make the leaderboard associated with this GKScore, the default leaderboard for this player. Default value is false.
+         If true, reporting that score will make the category this score belongs to, the default leaderboard for this user
+        */
         #[method(shouldSetDefaultLeaderboard)]
         pub unsafe fn shouldSetDefaultLeaderboard(&self) -> bool;
 
+        /**
+          Convenience property to make the leaderboard associated with this GKScore, the default leaderboard for this player. Default value is false.
+         If true, reporting that score will make the category this score belongs to, the default leaderboard for this user
+        */
         #[method(setShouldSetDefaultLeaderboard:)]
         pub unsafe fn setShouldSetDefaultLeaderboard(&self, should_set_default_leaderboard: bool);
 
@@ -139,6 +192,9 @@ extern_methods!(
         ) -> Option<Id<Self>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The identifier of the player that recorded the score.
+        */
         #[deprecated = "use player instead"]
         #[method_id(@__retain_semantics Other playerID)]
         pub unsafe fn playerID(&self) -> Option<Id<NSString>>;

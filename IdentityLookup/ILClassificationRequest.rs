@@ -7,6 +7,9 @@ use crate::IdentityLookup::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "IdentityLookup_ILClassificationRequest")]
+    /**
+      A request to classify a communication.
+    */
     pub struct ILClassificationRequest;
 
     #[cfg(feature = "IdentityLookup_ILClassificationRequest")]
@@ -16,15 +19,27 @@ extern_class!(
 );
 
 #[cfg(feature = "IdentityLookup_ILClassificationRequest")]
+/**
+  A request to classify a communication.
+*/
 unsafe impl NSCoding for ILClassificationRequest {}
 
 #[cfg(feature = "IdentityLookup_ILClassificationRequest")]
+/**
+  A request to classify a communication.
+*/
 unsafe impl NSObjectProtocol for ILClassificationRequest {}
 
 #[cfg(feature = "IdentityLookup_ILClassificationRequest")]
+/**
+  A request to classify a communication.
+*/
 unsafe impl NSSecureCoding for ILClassificationRequest {}
 
 extern_methods!(
+    /**
+      A request to classify a communication.
+    */
     #[cfg(feature = "IdentityLookup_ILClassificationRequest")]
     unsafe impl ILClassificationRequest {}
 );

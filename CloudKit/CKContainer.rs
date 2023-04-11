@@ -12,6 +12,16 @@ extern_static!(CKOwnerDefaultName: &'static NSString);
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CloudKit_CKContainer")]
+    /**
+      @class CKContainer
+
+      @abstract A CKContainer, and its CKDatabases, are the main entry points into the CloudKit framework.
+
+      @discussion
+      Several methods in CloudKit accept completion handlers to indicate when they're completed.
+      All CKOperation subclasses include progress and completion blocks to report significant events in their lifecycles.
+      Each of these handlers and blocks is invoked on a non-main serial queue.  The receiver is responsible for handling the message on a different queue or thread if it is required.
+    */
     pub struct CKContainer;
 
     #[cfg(feature = "CloudKit_CKContainer")]
@@ -21,9 +31,29 @@ extern_class!(
 );
 
 #[cfg(feature = "CloudKit_CKContainer")]
+/**
+  @class CKContainer
+
+  @abstract A CKContainer, and its CKDatabases, are the main entry points into the CloudKit framework.
+
+  @discussion
+  Several methods in CloudKit accept completion handlers to indicate when they're completed.
+  All CKOperation subclasses include progress and completion blocks to report significant events in their lifecycles.
+  Each of these handlers and blocks is invoked on a non-main serial queue.  The receiver is responsible for handling the message on a different queue or thread if it is required.
+*/
 unsafe impl NSObjectProtocol for CKContainer {}
 
 extern_methods!(
+    /**
+      @class CKContainer
+
+      @abstract A CKContainer, and its CKDatabases, are the main entry points into the CloudKit framework.
+
+      @discussion
+      Several methods in CloudKit accept completion handlers to indicate when they're completed.
+      All CKOperation subclasses include progress and completion blocks to report significant events in their lifecycles.
+      Each of these handlers and blocks is invoked on a non-main serial queue.  The receiver is responsible for handling the message on a different queue or thread if it is required.
+    */
     #[cfg(feature = "CloudKit_CKContainer")]
     unsafe impl CKContainer {
         #[method_id(@__retain_semantics Init init)]
@@ -50,6 +80,23 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      @discussion
+      Database properties:
+      Records in a public database
+      - By default are world readable, owner writable.
+      - Can be locked down by Roles, a process done in the Developer Portal, a web interface.  Roles are not present in the client API.
+      - Are visible to the application developer via the Developer Portal.
+      - Do not contribute to the owner's iCloud account storage quota.
+      Records in a private database
+      - By default are only owner readable and owner writable.
+      - Are not visible to the application developer via the Developer Portal.
+      - Are counted towards the owner's iCloud account storage quota.
+      Records in a shared database
+      - Are available to share participants based on the permissions of the enclosing CKShare
+      - Are not visible to the application developer via the Developer Portal.
+      - Are counted towards the originating owner's iCloud account storage quota.
+    */
     /// Database
     #[cfg(feature = "CloudKit_CKContainer")]
     unsafe impl CKContainer {
@@ -76,6 +123,15 @@ extern_methods!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      @enum CKAccountStatus
+      @constant CKAccountStatusCouldNotDetermine An error occurred when getting the account status, consult the corresponding NSError.
+      @constant CKAccountStatusAvailable The iCloud account credentials are available for this application
+      @constant CKAccountStatusRestricted Parental Controls / Device Management has denied access to iCloud account credentials
+      @constant CKAccountStatusNoAccount No iCloud account is logged in on this device
+      @constant CKAccountStatusTemporarilyUnavailable An iCloud account is logged in but not ready. The user can be asked to verify their
+      credentials in Settings app.
+    */
     pub enum CKAccountStatus {
         CKAccountStatusCouldNotDetermine = 0,
         CKAccountStatusAvailable = 1,
@@ -109,6 +165,13 @@ ns_options!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      @enum CKApplicationPermissionStatus
+      @constant CKApplicationPermissionStatusInitialState The user has not made a decision for this application permission.
+      @constant CKApplicationPermissionStatusCouldNotComplete An error occurred when getting or setting the application permission status, consult the corresponding NSError
+      @constant CKApplicationPermissionStatusDenied The user has denied this application permission
+      @constant CKApplicationPermissionStatusGranted The user has granted this application permission
+    */
     pub enum CKApplicationPermissionStatus {
         CKApplicationPermissionStatusInitialState = 0,
         CKApplicationPermissionStatusCouldNotComplete = 1,

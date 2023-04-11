@@ -22,27 +22,57 @@ unsafe impl NSObjectProtocol for NSTypesetter {}
 extern_methods!(
     #[cfg(feature = "AppKit_NSTypesetter")]
     unsafe impl NSTypesetter {
+        /**
+          Primitive typesetting methods
+         NSLayoutManager attributes
+         Controls whether leading value specified by fonts affects line spacing
+        */
         #[method(usesFontLeading)]
         pub unsafe fn usesFontLeading(&self) -> bool;
 
+        /**
+          Primitive typesetting methods
+         NSLayoutManager attributes
+         Controls whether leading value specified by fonts affects line spacing
+        */
         #[method(setUsesFontLeading:)]
         pub unsafe fn setUsesFontLeading(&self, uses_font_leading: bool);
 
+        /**
+          Controls various typesetting behavior for backward compatibility
+        */
         #[method(typesetterBehavior)]
         pub unsafe fn typesetterBehavior(&self) -> NSTypesetterBehavior;
 
+        /**
+          Controls various typesetting behavior for backward compatibility
+        */
         #[method(setTypesetterBehavior:)]
         pub unsafe fn setTypesetterBehavior(&self, typesetter_behavior: NSTypesetterBehavior);
 
+        /**
+          Controls hyphenation factor. The value should be between 0.0 and 1.0.
+        */
         #[method(hyphenationFactor)]
         pub unsafe fn hyphenationFactor(&self) -> c_float;
 
+        /**
+          Controls hyphenation factor. The value should be between 0.0 and 1.0.
+        */
         #[method(setHyphenationFactor:)]
         pub unsafe fn setHyphenationFactor(&self, hyphenation_factor: c_float);
 
+        /**
+          NSTextContainer attributes
+         Controls padding at both ends of line fragment.
+        */
         #[method(lineFragmentPadding)]
         pub unsafe fn lineFragmentPadding(&self) -> CGFloat;
 
+        /**
+          NSTextContainer attributes
+         Controls padding at both ends of line fragment.
+        */
         #[method(setLineFragmentPadding:)]
         pub unsafe fn setLineFragmentPadding(&self, line_fragment_padding: CGFloat);
 
@@ -59,9 +89,17 @@ extern_methods!(
             max_location: CGFloat,
         ) -> Option<Id<NSTextTab>>;
 
+        /**
+          Bidi control
+         Controls whether to perform bi-directional processing.  You can disable the layout stage if you know the parapgraph does not need this stage (i.e. the backing-store is in the display order).
+        */
         #[method(bidiProcessingEnabled)]
         pub unsafe fn bidiProcessingEnabled(&self) -> bool;
 
+        /**
+          Bidi control
+         Controls whether to perform bi-directional processing.  You can disable the layout stage if you know the parapgraph does not need this stage (i.e. the backing-store is in the display order).
+        */
         #[method(setBidiProcessingEnabled:)]
         pub unsafe fn setBidiProcessingEnabled(&self, bidi_processing_enabled: bool);
 
@@ -80,6 +118,9 @@ extern_methods!(
             paragraph_separator_range: NSRange,
         );
 
+        /**
+          does not include paragraphSeparatorGlyphRange
+        */
         #[method(paragraphGlyphRange)]
         pub unsafe fn paragraphGlyphRange(&self) -> NSRange;
 
@@ -141,12 +182,21 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          Extra line fragment handling
+         This method returns the attributes used to layout the extra line fragment. The default implementation tries to use -[NSTextView typingAttributes] if possible; otherwise, uses attributes for the last character.
+        */
         #[method_id(@__retain_semantics Other attributesForExtraLineFragment)]
         pub unsafe fn attributesForExtraLineFragment(
             &self,
         ) -> Id<NSDictionary<NSAttributedStringKey, Object>>;
 
         #[cfg(feature = "AppKit_NSLayoutManager")]
+        /**
+          Control/format character handling
+         Cocoa Text System specific interface methods
+         Friend class accessors
+        */
         #[method_id(@__retain_semantics Other layoutManager)]
         pub unsafe fn layoutManager(&self) -> Option<Id<NSLayoutManager>>;
 
@@ -201,6 +251,9 @@ extern_methods!(
             glyph_index: NSUInteger,
         ) -> CGFloat;
 
+        /**
+          Factory methods
+        */
         #[method_id(@__retain_semantics Other sharedSystemTypesetter)]
         pub unsafe fn sharedSystemTypesetter() -> Id<NSTypesetter>;
 
@@ -215,6 +268,9 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      NSLayoutPhaseInterface declares various subclass override points that are invoked if implemented
+    */
     /// NSLayoutPhaseInterface
     #[cfg(feature = "AppKit_NSTypesetter")]
     unsafe impl NSTypesetter {
@@ -259,6 +315,9 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      NSGlyphStorageInterface declares all primitives interfacing to the glyph storage (usually NSLayoutManager). By overriding all the methods, you can implement an NSTypesetter subclass that interacts with custom glyph storage.
+    */
     /// NSGlyphStorageInterface
     #[cfg(feature = "AppKit_NSTypesetter")]
     unsafe impl NSTypesetter {

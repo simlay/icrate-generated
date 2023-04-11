@@ -7,6 +7,9 @@ use crate::LocalAuthentication::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "LocalAuthentication_LAAuthenticationRequirement")]
+    /**
+      @brief Builds requirements that can be used for protecting a @c LARight
+    */
     pub struct LAAuthenticationRequirement;
 
     #[cfg(feature = "LocalAuthentication_LAAuthenticationRequirement")]
@@ -16,17 +19,42 @@ extern_class!(
 );
 
 #[cfg(feature = "LocalAuthentication_LAAuthenticationRequirement")]
+/**
+  @brief Builds requirements that can be used for protecting a @c LARight
+*/
 unsafe impl NSObjectProtocol for LAAuthenticationRequirement {}
 
 extern_methods!(
+    /**
+      @brief Builds requirements that can be used for protecting a @c LARight
+    */
     #[cfg(feature = "LocalAuthentication_LAAuthenticationRequirement")]
     unsafe impl LAAuthenticationRequirement {
+        /**
+          @brief Requires user authentication
+         @return @c LAAuthenticationRequirement instance
+        */
         #[method_id(@__retain_semantics Other defaultRequirement)]
         pub unsafe fn defaultRequirement() -> Id<LAAuthenticationRequirement>;
 
+        /**
+          @brief Requires biometric authentication
+         @discussion The authorization will fail if:
+         @li • Biometry is not available in the current device
+         @li • There are no biometric enrollments
+         @return @c LAAuthenticationRequirement instance
+        */
         #[method_id(@__retain_semantics Other biometryRequirement)]
         pub unsafe fn biometryRequirement() -> Id<LAAuthenticationRequirement>;
 
+        /**
+          @brief Requires user authentication with the current biometric set
+         @discussion The authorization will fail if:
+         @li • Biometry is not available in the current device
+         @li • There are no biometric enrollments
+         @li • There is a change in the enrollment database -e.g a new TouchID finger is enrolled.
+         @return @c LAAuthenticationRequirement instance
+        */
         #[method_id(@__retain_semantics Other biometryCurrentSetRequirement)]
         pub unsafe fn biometryCurrentSetRequirement() -> Id<LAAuthenticationRequirement>;
 
@@ -41,6 +69,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "LocalAuthentication_LABiometryFallbackRequirement")]
+    /**
+      @brief Builds authentication requirements that can be used as fallbacks for  biometric authentication
+    */
     pub struct LABiometryFallbackRequirement;
 
     #[cfg(feature = "LocalAuthentication_LABiometryFallbackRequirement")]
@@ -50,14 +81,28 @@ extern_class!(
 );
 
 #[cfg(feature = "LocalAuthentication_LABiometryFallbackRequirement")]
+/**
+  @brief Builds authentication requirements that can be used as fallbacks for  biometric authentication
+*/
 unsafe impl NSObjectProtocol for LABiometryFallbackRequirement {}
 
 extern_methods!(
+    /**
+      @brief Builds authentication requirements that can be used as fallbacks for  biometric authentication
+    */
     #[cfg(feature = "LocalAuthentication_LABiometryFallbackRequirement")]
     unsafe impl LABiometryFallbackRequirement {
+        /**
+          @brief Use default biometric fallback
+         @return @c LABiometryFallbackRequirement instance
+        */
         #[method_id(@__retain_semantics Other defaultRequirement)]
         pub unsafe fn defaultRequirement() -> Id<LABiometryFallbackRequirement>;
 
+        /**
+          @brief Requires authorization using the device passcode
+         @return @c LABiometryFallbackRequirement instance
+        */
         #[method_id(@__retain_semantics Other devicePasscodeRequirement)]
         pub unsafe fn devicePasscodeRequirement() -> Id<LABiometryFallbackRequirement>;
     }

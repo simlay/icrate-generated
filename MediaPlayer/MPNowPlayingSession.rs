@@ -61,6 +61,9 @@ extern_methods!(
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
         #[cfg(all(feature = "AVFoundation_AVPlayer", feature = "Foundation_NSArray"))]
+        /**
+          AVPlayer instances associated with this session.
+        */
         #[method_id(@__retain_semantics Other players)]
         pub unsafe fn players(&self) -> Id<NSArray<AVPlayer>>;
 
@@ -75,9 +78,17 @@ extern_methods!(
             delegate: Option<&ProtocolObject<dyn MPNowPlayingSessionDelegate>>,
         );
 
+        /**
+          When YES, now playing info will be automatically published, and nowPlayingInfoCenter must not be used.
+          Now playing info keys to be incorporated by automatic publishing can be set on the AVPlayerItem's nowPlayingInfo property.
+        */
         #[method(automaticallyPublishesNowPlayingInfo)]
         pub unsafe fn automaticallyPublishesNowPlayingInfo(&self) -> bool;
 
+        /**
+          When YES, now playing info will be automatically published, and nowPlayingInfoCenter must not be used.
+          Now playing info keys to be incorporated by automatic publishing can be set on the AVPlayerItem's nowPlayingInfo property.
+        */
         #[method(setAutomaticallyPublishesNowPlayingInfo:)]
         pub unsafe fn setAutomaticallyPublishesNowPlayingInfo(
             &self,
@@ -85,16 +96,28 @@ extern_methods!(
         );
 
         #[cfg(feature = "MediaPlayer_MPNowPlayingInfoCenter")]
+        /**
+          The now playing info center that is associated with this session.
+        */
         #[method_id(@__retain_semantics Other nowPlayingInfoCenter)]
         pub unsafe fn nowPlayingInfoCenter(&self) -> Id<MPNowPlayingInfoCenter>;
 
         #[cfg(feature = "MediaPlayer_MPRemoteCommandCenter")]
+        /**
+          The remote command center that is associated with this session.
+        */
         #[method_id(@__retain_semantics Other remoteCommandCenter)]
         pub unsafe fn remoteCommandCenter(&self) -> Id<MPRemoteCommandCenter>;
 
+        /**
+          Returns a Boolean value indicating whether this session can become the App's active now playing session.
+        */
         #[method(canBecomeActive)]
         pub unsafe fn canBecomeActive(&self) -> bool;
 
+        /**
+          Returns a Boolean value indicating whether this session is the App's active now playing session.
+        */
         #[method(isActive)]
         pub unsafe fn isActive(&self) -> bool;
 

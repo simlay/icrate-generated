@@ -7,6 +7,11 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AuthenticationServices_ASPasswordCredentialIdentity")]
+    /**
+      @class ASPasswordCredentialIdentity
+    An ASPasswordCredentialIdentity is used to describe an identity that can use a service upon successful password based authentication.
+    Use this class to save entries into ASCredentialIdentityStore.
+    */
     pub struct ASPasswordCredentialIdentity;
 
     #[cfg(feature = "AuthenticationServices_ASPasswordCredentialIdentity")]
@@ -16,15 +21,35 @@ extern_class!(
 );
 
 #[cfg(feature = "AuthenticationServices_ASPasswordCredentialIdentity")]
+/**
+  @class ASPasswordCredentialIdentity
+An ASPasswordCredentialIdentity is used to describe an identity that can use a service upon successful password based authentication.
+Use this class to save entries into ASCredentialIdentityStore.
+*/
 unsafe impl NSCoding for ASPasswordCredentialIdentity {}
 
 #[cfg(feature = "AuthenticationServices_ASPasswordCredentialIdentity")]
+/**
+  @class ASPasswordCredentialIdentity
+An ASPasswordCredentialIdentity is used to describe an identity that can use a service upon successful password based authentication.
+Use this class to save entries into ASCredentialIdentityStore.
+*/
 unsafe impl NSObjectProtocol for ASPasswordCredentialIdentity {}
 
 #[cfg(feature = "AuthenticationServices_ASPasswordCredentialIdentity")]
+/**
+  @class ASPasswordCredentialIdentity
+An ASPasswordCredentialIdentity is used to describe an identity that can use a service upon successful password based authentication.
+Use this class to save entries into ASCredentialIdentityStore.
+*/
 unsafe impl NSSecureCoding for ASPasswordCredentialIdentity {}
 
 extern_methods!(
+    /**
+      @class ASPasswordCredentialIdentity
+    An ASPasswordCredentialIdentity is used to describe an identity that can use a service upon successful password based authentication.
+    Use this class to save entries into ASCredentialIdentityStore.
+    */
     #[cfg(feature = "AuthenticationServices_ASPasswordCredentialIdentity")]
     unsafe impl ASPasswordCredentialIdentity {
         #[method_id(@__retain_semantics Init init)]
@@ -54,20 +79,47 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "AuthenticationServices_ASCredentialServiceIdentifier")]
+        /**
+          @abstract Get the service identifier.
+        @result The service identifier for this credential identity.
+        */
         #[method_id(@__retain_semantics Other serviceIdentifier)]
         pub unsafe fn serviceIdentifier(&self) -> Id<ASCredentialServiceIdentifier>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract Get the user.
+        @result The user string.
+        */
         #[method_id(@__retain_semantics Other user)]
         pub unsafe fn user(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract Get the record identifier.
+        @result The record identifier.
+        @discussion You can utilize the record identifier to uniquely identify the credential identity in your local database.
+        */
         #[method_id(@__retain_semantics Other recordIdentifier)]
         pub unsafe fn recordIdentifier(&self) -> Option<Id<NSString>>;
 
+        /**
+          @abstract Get or set the rank of the credential identity object.
+        @discussion The system may utilize the rank to decide which credential identity precedes the other
+        if two identities have the same service identifier. A credential identity with a larger rank value
+        precedes one with a smaller value if both credential identities have the same service identifier.
+        The default value of this property is 0.
+        */
         #[method(rank)]
         pub unsafe fn rank(&self) -> NSInteger;
 
+        /**
+          @abstract Get or set the rank of the credential identity object.
+        @discussion The system may utilize the rank to decide which credential identity precedes the other
+        if two identities have the same service identifier. A credential identity with a larger rank value
+        precedes one with a smaller value if both credential identities have the same service identifier.
+        The default value of this property is 0.
+        */
         #[method(setRank:)]
         pub unsafe fn setRank(&self, rank: NSInteger);
     }

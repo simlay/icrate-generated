@@ -33,6 +33,10 @@ extern_static!(HKFHIRResourceTypeProcedure: &'static HKFHIRResourceType);
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKFHIRResource")]
+    /**
+     @class         HKFHIRResource
+    @abstract      The HKFHIRResource class encapsulates a FHIR (Fast Healthcare Interoperability Resources) resource.
+    */
     pub struct HKFHIRResource;
 
     #[cfg(feature = "HealthKit_HKFHIRResource")]
@@ -42,33 +46,75 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKFHIRResource")]
+/**
+ @class         HKFHIRResource
+@abstract      The HKFHIRResource class encapsulates a FHIR (Fast Healthcare Interoperability Resources) resource.
+*/
 unsafe impl NSCoding for HKFHIRResource {}
 
 #[cfg(feature = "HealthKit_HKFHIRResource")]
+/**
+ @class         HKFHIRResource
+@abstract      The HKFHIRResource class encapsulates a FHIR (Fast Healthcare Interoperability Resources) resource.
+*/
 unsafe impl NSObjectProtocol for HKFHIRResource {}
 
 #[cfg(feature = "HealthKit_HKFHIRResource")]
+/**
+ @class         HKFHIRResource
+@abstract      The HKFHIRResource class encapsulates a FHIR (Fast Healthcare Interoperability Resources) resource.
+*/
 unsafe impl NSSecureCoding for HKFHIRResource {}
 
 extern_methods!(
+    /**
+     @class         HKFHIRResource
+    @abstract      The HKFHIRResource class encapsulates a FHIR (Fast Healthcare Interoperability Resources) resource.
+    */
     #[cfg(feature = "HealthKit_HKFHIRResource")]
     unsafe impl HKFHIRResource {
         #[cfg(feature = "HealthKit_HKFHIRVersion")]
+        /**
+         @property      FHIRVersion
+        @abstract      The FHIR version of the resource data.
+        */
         #[method_id(@__retain_semantics Other FHIRVersion)]
         pub unsafe fn FHIRVersion(&self) -> Id<HKFHIRVersion>;
 
+        /**
+         @property      resourceType
+        @abstract      The resource type, corresponding to the 'resourceType' field in the resource's JSON representation.
+        @discussion    May be one of 8 FHIR resource types supported within HealthKit: AllergyIntolerance, Condition,
+        Immunization, MedicationDispense, MedicationOrder, MedicationStatement, Observation, and Procedure.
+        */
         #[method_id(@__retain_semantics Other resourceType)]
         pub unsafe fn resourceType(&self) -> Id<HKFHIRResourceType>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property      identifier
+        @abstract      The identifier of the resource, corresponding to the 'id' field in the resource's JSON representation.
+        @discussion    Unique within a given resource type and FHIR end-point, as represented by an HKSource.
+        */
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+         @property      data
+        @abstract      The JSON representation of the FHIR resource.
+        @discussion    Conforms to the HL7 Argonaut Project resource type definitions.
+        */
         #[method_id(@__retain_semantics Other data)]
         pub unsafe fn data(&self) -> Id<NSData>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+         @property      sourceURL
+        @abstract      The fully specified source URL of the FHIR resource.
+        @discussion    This URL can be used to help determine the provenance of the resource. Direct access is protected by
+        OAuth: querying without suitable authorization will result in an authorization error.
+        */
         #[method_id(@__retain_semantics Other sourceURL)]
         pub unsafe fn sourceURL(&self) -> Option<Id<NSURL>>;
 

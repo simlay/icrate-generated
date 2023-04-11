@@ -5,6 +5,10 @@ use crate::ClassKit::*;
 use crate::Foundation::*;
 
 extern_protocol!(
+    /**
+     @abstract      The CLSContext provider protocol.
+    @discussion    The app extension that provides CLSContexts should adopt this protocol.
+    */
     pub unsafe trait CLSContextProvider {
         #[cfg(all(feature = "ClassKit_CLSContext", feature = "Foundation_NSError"))]
         #[method(updateDescendantsOfContext:completion:)]

@@ -10,6 +10,9 @@ extern_methods!(
     #[cfg(feature = "Foundation_NSAppleScript")]
     unsafe impl NSAppleScript {
         #[cfg(feature = "Foundation_NSAttributedString")]
+        /**
+          Return the syntax-highlighted source code of the script if the script has been compiled and its source code is available, nil otherwise.  It is possible for an NSAppleScript that has been instantiated with -initWithContentsOfURL:error: to be a script for which the source code is not available, but is nonetheless executable.
+        */
         #[method_id(@__retain_semantics Other richTextSource)]
         pub unsafe fn richTextSource(&self) -> Option<Id<NSAttributedString>>;
     }

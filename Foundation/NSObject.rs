@@ -19,7 +19,15 @@ extern_protocol!(
 );
 
 extern_protocol!(
+    /**
+      Objects which are safe to be encoded and decoded across privilege boundaries should adopt NSSecureCoding instead of NSCoding. Secure coders (those that respond YES to requiresSecureCoding) will only encode objects that adopt the NSSecureCoding protocol.
+     NOTE: NSSecureCoding guarantees only that an archive contains the classes it claims. It makes no guarantees about the suitability for consumption by the receiver of the decoded content of the archive. Archived objects which  may trigger code evaluation should be validated independently by the consumer of the objects to verify that no malicious code is executed (i.e. by checking key paths, selectors etc. specified in the archive).
+    */
     pub unsafe trait NSSecureCoding: NSCoding {
+        /**
+          This property must return YES on all classes that allow secure coding. Subclasses of classes that adopt NSSecureCoding and override initWithCoder: must also override this method and return YES.
+         The Secure Coding Guide should be consulted when writing methods that decode data.
+        */
         #[method(supportsSecureCoding)]
         unsafe fn supportsSecureCoding() -> bool;
     }
@@ -28,6 +36,9 @@ extern_protocol!(
 );
 
 extern_protocol!(
+    /**
+         Discardable Content
+    */
     pub unsafe trait NSDiscardableContent {
         #[method(beginContentAccess)]
         unsafe fn beginContentAccess(&self) -> bool;

@@ -8,6 +8,11 @@ use crate::WebKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "WebKit_WKWebsiteDataStore")]
+    /**
+      A WKWebsiteDataStore represents various types of data that a website might
+    make use of. This includes cookies, disk and memory caches, and persistent data such as WebSQL,
+    IndexedDB databases, and local storage.
+    */
     pub struct WKWebsiteDataStore;
 
     #[cfg(feature = "WebKit_WKWebsiteDataStore")]
@@ -17,15 +22,35 @@ extern_class!(
 );
 
 #[cfg(feature = "WebKit_WKWebsiteDataStore")]
+/**
+  A WKWebsiteDataStore represents various types of data that a website might
+make use of. This includes cookies, disk and memory caches, and persistent data such as WebSQL,
+IndexedDB databases, and local storage.
+*/
 unsafe impl NSCoding for WKWebsiteDataStore {}
 
 #[cfg(feature = "WebKit_WKWebsiteDataStore")]
+/**
+  A WKWebsiteDataStore represents various types of data that a website might
+make use of. This includes cookies, disk and memory caches, and persistent data such as WebSQL,
+IndexedDB databases, and local storage.
+*/
 unsafe impl NSObjectProtocol for WKWebsiteDataStore {}
 
 #[cfg(feature = "WebKit_WKWebsiteDataStore")]
+/**
+  A WKWebsiteDataStore represents various types of data that a website might
+make use of. This includes cookies, disk and memory caches, and persistent data such as WebSQL,
+IndexedDB databases, and local storage.
+*/
 unsafe impl NSSecureCoding for WKWebsiteDataStore {}
 
 extern_methods!(
+    /**
+      A WKWebsiteDataStore represents various types of data that a website might
+    make use of. This includes cookies, disk and memory caches, and persistent data such as WebSQL,
+    IndexedDB databases, and local storage.
+    */
     #[cfg(feature = "WebKit_WKWebsiteDataStore")]
     unsafe impl WKWebsiteDataStore {
         #[method_id(@__retain_semantics Other defaultDataStore)]
@@ -40,6 +65,9 @@ extern_methods!(
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
+        /**
+          @abstract Whether the data store is persistent or not.
+        */
         #[method(isPersistent)]
         pub unsafe fn isPersistent(&self) -> bool;
 
@@ -88,6 +116,9 @@ extern_methods!(
         );
 
         #[cfg(feature = "WebKit_WKHTTPCookieStore")]
+        /**
+          @abstract Returns the cookie store representing HTTP cookies in this website data store.
+        */
         #[method_id(@__retain_semantics Other httpCookieStore)]
         pub unsafe fn httpCookieStore(&self) -> Id<WKHTTPCookieStore>;
     }

@@ -69,15 +69,24 @@ extern_methods!(
             initial_values: Option<&NSDictionary<NSString, Object>>,
         );
 
+        /**
+          default: YES
+        */
         #[method(appliesImmediately)]
         pub unsafe fn appliesImmediately(&self) -> bool;
 
+        /**
+          default: YES
+        */
         #[method(setAppliesImmediately:)]
         pub unsafe fn setAppliesImmediately(&self, applies_immediately: bool);
 
         #[method(hasUnappliedChanges)]
         pub unsafe fn hasUnappliedChanges(&self) -> bool;
 
+        /**
+          accessor object for default values (independent of whether they are derived directly from the NSUserDefaults or from the initial values)
+        */
         #[method_id(@__retain_semantics Other values)]
         pub unsafe fn values(&self) -> Id<Object>;
 

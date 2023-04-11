@@ -8,6 +8,9 @@ use crate::UniformTypeIdentifiers::*;
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+     Options passed on item creation.
+    */
     pub enum NSFileProviderCreateItemOptions {
         NSFileProviderCreateItemMayAlreadyExist = 1 << 0,
         NSFileProviderCreateItemDeletionConflicted = 1 << 1,
@@ -16,6 +19,9 @@ ns_options!(
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+     Options passed on item deletion.
+    */
     pub enum NSFileProviderDeleteItemOptions {
         NSFileProviderDeleteItemRecursive = 1 << 0,
     }
@@ -23,6 +29,11 @@ ns_options!(
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+     NSFileProviderMaterializationFlags are used to inform the system about specific conditions
+    that apply to the content retrieved by the provider in fetchPartialContentsForItemWithIdentifier.
+
+    */
     pub enum NSFileProviderMaterializationFlags {
         NSFileProviderMaterializationFlagsKnownSparseRanges = 1 << 0,
     }
@@ -30,6 +41,9 @@ ns_options!(
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+     Used by the system to express options and constraints to the provider in fetchPartialContentsForItemWithIdentifier.
+    */
     pub enum NSFileProviderFetchContentsOptions {
         NSFileProviderFetchContentsOptionsStrictVersioning = 1 << 0,
     }
@@ -53,6 +67,43 @@ extern_protocol!(
 );
 
 extern_protocol!(
+    /**
+     FileProvider extension for which the system replicates the content on disk.
+
+    The extension exposes a hierarchy of NSFileProviderItem instances that the system
+    will replicate on disk as a file hierarchy. The file hierarchy reflects the filename,
+    parent, content, and metadata described by the NSFileProviderItem. In case two items
+    are at the same disk location (same parent and filename), the system may choose to
+    "bounce" an item.
+
+    The system lazily replicates the item hierarchy: items are created "dataless" on disk
+    and the content (for files) or list of children (for folders) is fetched on first
+    access by calling fetchContentsForItemWithIdentifier, or enumeratorForContainerItemIdentifier.
+
+    The provider can notify the system of changes on the items by publishing those on the
+    enumerator for the working set. The system notifies the extension of changes made by the
+    user on disk by calling createItemBasedOnTemplate, modifyItem, or deleteItemWithIdentifier.
+
+    Concurrency:
+    ------------
+    A replicated extension class must be prepared to handle multiple concurrent calls since the
+    system may perform several concurrent operations (for instance, modifying an item, while enumerating
+    the working set, creating another item, and fetching the contents of yet another item).
+
+    The system has limits to the number of concurrent operations.When the number of concurrent
+    operations is reached, the system will not schedule additional operations falling in that category
+    until at least one of the running operation has completed by calling its completion handler.
+
+    The system currently separates the operations into the following categories:
+    - enumeration of the working set. At most 1 enumeration of the working set can happen at a given time
+    - downloads. The system has a per-domain limit on the number of concurrent calls to fetchContents and similar calls.
+    That limit is configurable by setting the NSExtensionFileProviderDownloadPipelineDepth key to an integer
+    value (between 1 and 128) in the Info.plist of the extension.
+    - uploads. The system has a per-domain limit on the number of concurrent calls to createItemBasedOnTemplate and
+    modifyItem when the call includes new content to be uploaded. That limit is configurable by setting the
+    NSExtensionFileProviderUploadPipelineDepth key to an integer value (between 1 and 128) in the Info.plist
+    of the extension.
+    */
     pub unsafe trait NSFileProviderReplicatedExtension:
         NSFileProviderEnumerating + NSObjectProtocol
     {
@@ -186,6 +237,9 @@ extern_protocol!(
 );
 
 extern_protocol!(
+    /**
+     Protocol to implement if the provider instance supports fetching incremental content changes.
+    */
     pub unsafe trait NSFileProviderIncrementalContentFetching: NSObjectProtocol {
         #[cfg(all(
             feature = "FileProvider_NSFileProviderItemVersion",
@@ -234,6 +288,9 @@ extern_protocol!(
 );
 
 extern_protocol!(
+    /**
+     Protocol to implement if the provider supports fetching thumbnails for its items.
+    */
     pub unsafe trait NSFileProviderThumbnailing: NSObjectProtocol {
         #[cfg(all(
             feature = "Foundation_NSArray",
@@ -281,6 +338,9 @@ extern_protocol!(
 );
 
 extern_protocol!(
+    /**
+     Protocol to implement for managing UserInteraction alerts.
+    */
     pub unsafe trait NSFileProviderUserInteractionSuppressing: NSObjectProtocol {
         #[cfg(feature = "Foundation_NSString")]
         #[method(setInteractionSuppressed:forIdentifier:)]
@@ -304,10 +364,41 @@ extern_protocol!(
 extern_protocol!(
     pub unsafe trait NSFileProviderDomainState: NSObjectProtocol {
         #[cfg(feature = "FileProvider_NSFileProviderDomainVersion")]
+        /**
+         Version of the domain.
+
+        The domain version is an opaque value assigned by the provider. It is read by the system in the
+        completion handler for createItemBasedOnTemplate, modifyItem, deleteItem and itemForIdentifier, as
+        well as in the finish calls when enumerating the working set. The read is guaranteed to happen
+        on the same dispatch queue the completion handler was called on.
+
+        When the system discovers a change on disk, it associates that change to the currently known
+        domain version. When that change get communicated to the extension, that version is included in
+        the NSFileProviderRequest object passed by the system to the extension. As a consequence, the
+        provider can use the domain version to identify the state of the system when a change was made on disk.
+
+        The provider is responsible for defining when the domain version changes. When that value is
+        updated, the provider must notify the system by signaling the working set.
+
+        The system ignore any domain version that is smaller than the previously known version.
+        */
         #[method_id(@__retain_semantics Other domainVersion)]
         unsafe fn domainVersion(&self) -> Id<NSFileProviderDomainVersion>;
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+         Global state of the domain.
+
+        Use this dictionary to add state information to the domain. It is accessible to predicates for
+        User Interactions, FileProvider Actions, and FileProviderUI Actions, via the top-level `domainUserInfo` context
+        key.
+
+        This dictionary must only contain key and value classes in the following list:
+        NSString, NSNumber, NSDate, and NSPersonNameComponents.
+
+        The system expects the domainVersion to be updated when the value of the userInfo property
+        changes.
+        */
         #[method_id(@__retain_semantics Other userInfo)]
         unsafe fn userInfo(&self) -> Id<NSDictionary>;
     }

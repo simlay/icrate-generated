@@ -9,14 +9,23 @@ extern_protocol!(
         ASPublicKeyCredential
     {
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          @abstract A byte sequence containing the encoded authenticatorData blob returned by the authenticator.
+        */
         #[method_id(@__retain_semantics Other rawAuthenticatorData)]
         unsafe fn rawAuthenticatorData(&self) -> Id<NSData>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          @abstract The userID provided when creating this credential.
+        */
         #[method_id(@__retain_semantics Other userID)]
         unsafe fn userID(&self) -> Id<NSData>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          @abstract The signature provided by the authenticator using the credential's private key.
+        */
         #[method_id(@__retain_semantics Other signature)]
         unsafe fn signature(&self) -> Id<NSData>;
     }

@@ -8,6 +8,9 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSCollectionViewGridLayout")]
+    /**
+      NSCollectionView's default "Grid" layout, which matches NSCollectionView's layout behavior on OS X 10.5 through 10.10.  When you create a new NSCollectionView, its collectionViewLayout property defaults to an instance of NSCollectionViewGridLayout.
+    */
     pub struct NSCollectionViewGridLayout;
 
     #[cfg(feature = "AppKit_NSCollectionViewGridLayout")]
@@ -18,61 +21,118 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSCollectionViewGridLayout")]
+/**
+  NSCollectionView's default "Grid" layout, which matches NSCollectionView's layout behavior on OS X 10.5 through 10.10.  When you create a new NSCollectionView, its collectionViewLayout property defaults to an instance of NSCollectionViewGridLayout.
+*/
 unsafe impl NSCoding for NSCollectionViewGridLayout {}
 
 #[cfg(feature = "AppKit_NSCollectionViewGridLayout")]
+/**
+  NSCollectionView's default "Grid" layout, which matches NSCollectionView's layout behavior on OS X 10.5 through 10.10.  When you create a new NSCollectionView, its collectionViewLayout property defaults to an instance of NSCollectionViewGridLayout.
+*/
 unsafe impl NSObjectProtocol for NSCollectionViewGridLayout {}
 
 extern_methods!(
+    /**
+      NSCollectionView's default "Grid" layout, which matches NSCollectionView's layout behavior on OS X 10.5 through 10.10.  When you create a new NSCollectionView, its collectionViewLayout property defaults to an instance of NSCollectionViewGridLayout.
+    */
     #[cfg(feature = "AppKit_NSCollectionViewGridLayout")]
     unsafe impl NSCollectionViewGridLayout {
+        /**
+          The amount of empty space to leave between the edges of the CollectionView's frame and the items within it.  Items will be laid out in the rectangle that remains after margins have been subtracted.  Defaults to NSEdgeInsetsZero.
+        */
         #[method(margins)]
         pub unsafe fn margins(&self) -> NSEdgeInsets;
 
+        /**
+          The amount of empty space to leave between the edges of the CollectionView's frame and the items within it.  Items will be laid out in the rectangle that remains after margins have been subtracted.  Defaults to NSEdgeInsetsZero.
+        */
         #[method(setMargins:)]
         pub unsafe fn setMargins(&self, margins: NSEdgeInsets);
 
+        /**
+          For a vertically scrolling grid, this value represents the minimum spacing between items in the same row.  For a horizontally scrolling grid, this value represents the minimum spacing between items in the same column. This spacing is used to compute how many items can fit in a single line, but after the number of items is determined, the actual spacing may possibly be adjusted upward.  Defaults to 0 for a Grid layout.
+        */
         #[method(minimumInteritemSpacing)]
         pub unsafe fn minimumInteritemSpacing(&self) -> CGFloat;
 
+        /**
+          For a vertically scrolling grid, this value represents the minimum spacing between items in the same row.  For a horizontally scrolling grid, this value represents the minimum spacing between items in the same column. This spacing is used to compute how many items can fit in a single line, but after the number of items is determined, the actual spacing may possibly be adjusted upward.  Defaults to 0 for a Grid layout.
+        */
         #[method(setMinimumInteritemSpacing:)]
         pub unsafe fn setMinimumInteritemSpacing(&self, minimum_interitem_spacing: CGFloat);
 
+        /**
+          For a vertically scrolling grid, this value represents the minimum spacing between successive rows.  For a horizontally scrolling grid, this value represents the minimum spacing between successive columns.  This spacing is not applied to the space between the header and the first line or between the last line and the footer.  Defaults to 0 for a Grid layout.
+        */
         #[method(minimumLineSpacing)]
         pub unsafe fn minimumLineSpacing(&self) -> CGFloat;
 
+        /**
+          For a vertically scrolling grid, this value represents the minimum spacing between successive rows.  For a horizontally scrolling grid, this value represents the minimum spacing between successive columns.  This spacing is not applied to the space between the header and the first line or between the last line and the footer.  Defaults to 0 for a Grid layout.
+        */
         #[method(setMinimumLineSpacing:)]
         pub unsafe fn setMinimumLineSpacing(&self, minimum_line_spacing: CGFloat);
 
+        /**
+          The largest number of item rows to attempt to fit in the CollectionView's visible area (if enclosed in a ScrollView).  Defaults to 0, which is interpreted to mean there should be no limit other than minimumItemSize.height.
+        */
         #[method(maximumNumberOfRows)]
         pub unsafe fn maximumNumberOfRows(&self) -> NSUInteger;
 
+        /**
+          The largest number of item rows to attempt to fit in the CollectionView's visible area (if enclosed in a ScrollView).  Defaults to 0, which is interpreted to mean there should be no limit other than minimumItemSize.height.
+        */
         #[method(setMaximumNumberOfRows:)]
         pub unsafe fn setMaximumNumberOfRows(&self, maximum_number_of_rows: NSUInteger);
 
+        /**
+          The largest number of item columns to attempt to fit in the CollectionView's visible area (if enclosed in a ScrollView).  Defaults to 0, which is interpreted to mean there should be no limit other than minimumItemSize.width.
+        */
         #[method(maximumNumberOfColumns)]
         pub unsafe fn maximumNumberOfColumns(&self) -> NSUInteger;
 
+        /**
+          The largest number of item columns to attempt to fit in the CollectionView's visible area (if enclosed in a ScrollView).  Defaults to 0, which is interpreted to mean there should be no limit other than minimumItemSize.width.
+        */
         #[method(setMaximumNumberOfColumns:)]
         pub unsafe fn setMaximumNumberOfColumns(&self, maximum_number_of_columns: NSUInteger);
 
+        /**
+          The smallest allowed dimensions for an item's root view.  Defaults to NSZeroSize, which makes the layout attempt to infer minimum dimensions from the provided itemPrototype's view's frame size.
+        */
         #[method(minimumItemSize)]
         pub unsafe fn minimumItemSize(&self) -> NSSize;
 
+        /**
+          The smallest allowed dimensions for an item's root view.  Defaults to NSZeroSize, which makes the layout attempt to infer minimum dimensions from the provided itemPrototype's view's frame size.
+        */
         #[method(setMinimumItemSize:)]
         pub unsafe fn setMinimumItemSize(&self, minimum_item_size: NSSize);
 
+        /**
+          The largest allowed dimensions for an item's root view.  Defaults to NSZeroSize, which makes the layout attempt to infer maximum dimensions from the provided itemPrototype's view's frame size.
+        */
         #[method(maximumItemSize)]
         pub unsafe fn maximumItemSize(&self) -> NSSize;
 
+        /**
+          The largest allowed dimensions for an item's root view.  Defaults to NSZeroSize, which makes the layout attempt to infer maximum dimensions from the provided itemPrototype's view's frame size.
+        */
         #[method(setMaximumItemSize:)]
         pub unsafe fn setMaximumItemSize(&self, maximum_item_size: NSSize);
 
         #[cfg(all(feature = "AppKit_NSColor", feature = "Foundation_NSArray"))]
+        /**
+          The colors with which to fill the background.  Defaults to nil.  Setting this to nil causes a default background color to be used.  Setting it to an empty array causes the CollectionView to draw no background fill.  Setting it to a single-NSColor array causes the entire CollectionView to be drawn with the given background fill color.  For CollectionViews using the old, pre-10.11 API: Setting it to an array of (N >= 2) colors causes the CollectionView to use them in sequence, applying color (index % N) behind the item at "index”.  For new, 10.11-and-later NSCollectionViews, colors after the first are ignored.
+        */
         #[method_id(@__retain_semantics Other backgroundColors)]
         pub unsafe fn backgroundColors(&self) -> Id<NSArray<NSColor>>;
 
         #[cfg(all(feature = "AppKit_NSColor", feature = "Foundation_NSArray"))]
+        /**
+          The colors with which to fill the background.  Defaults to nil.  Setting this to nil causes a default background color to be used.  Setting it to an empty array causes the CollectionView to draw no background fill.  Setting it to a single-NSColor array causes the entire CollectionView to be drawn with the given background fill color.  For CollectionViews using the old, pre-10.11 API: Setting it to an array of (N >= 2) colors causes the CollectionView to use them in sequence, applying color (index % N) behind the item at "index”.  For new, 10.11-and-later NSCollectionViews, colors after the first are ignored.
+        */
         #[method(setBackgroundColors:)]
         pub unsafe fn setBackgroundColors(&self, background_colors: Option<&NSArray<NSColor>>);
     }

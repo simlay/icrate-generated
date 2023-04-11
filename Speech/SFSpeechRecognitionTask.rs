@@ -35,12 +35,18 @@ extern_methods!(
         #[method(state)]
         pub unsafe fn state(&self) -> SFSpeechRecognitionTaskState;
 
+        /**
+          True if recognition audio input has stopped
+        */
         #[method(isFinishing)]
         pub unsafe fn isFinishing(&self) -> bool;
 
         #[method(finish)]
         pub unsafe fn finish(&self);
 
+        /**
+          True if recognition has been cancelled
+        */
         #[method(isCancelled)]
         pub unsafe fn isCancelled(&self) -> bool;
 
@@ -48,12 +54,18 @@ extern_methods!(
         pub unsafe fn cancel(&self);
 
         #[cfg(feature = "Foundation_NSError")]
+        /**
+          Reports error that occurred during recognition, if applicable
+        */
         #[method_id(@__retain_semantics Other error)]
         pub unsafe fn error(&self) -> Option<Id<NSError>>;
     }
 );
 
 extern_protocol!(
+    /**
+      Recognition result receiver, to be used for complex or multi-utterance speech recognition requests
+    */
     pub unsafe trait SFSpeechRecognitionTaskDelegate: NSObjectProtocol {
         #[cfg(feature = "Speech_SFSpeechRecognitionTask")]
         #[optional]

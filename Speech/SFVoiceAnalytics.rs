@@ -7,6 +7,9 @@ use crate::Speech::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Speech_SFAcousticFeature")]
+    /**
+      An acoustic feature
+    */
     pub struct SFAcousticFeature;
 
     #[cfg(feature = "Speech_SFAcousticFeature")]
@@ -16,21 +19,39 @@ extern_class!(
 );
 
 #[cfg(feature = "Speech_SFAcousticFeature")]
+/**
+  An acoustic feature
+*/
 unsafe impl NSCoding for SFAcousticFeature {}
 
 #[cfg(feature = "Speech_SFAcousticFeature")]
+/**
+  An acoustic feature
+*/
 unsafe impl NSObjectProtocol for SFAcousticFeature {}
 
 #[cfg(feature = "Speech_SFAcousticFeature")]
+/**
+  An acoustic feature
+*/
 unsafe impl NSSecureCoding for SFAcousticFeature {}
 
 extern_methods!(
+    /**
+      An acoustic feature
+    */
     #[cfg(feature = "Speech_SFAcousticFeature")]
     unsafe impl SFAcousticFeature {
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSNumber"))]
+        /**
+          Array of feature values per audio frame, corresponding to a segment of recorded audio
+        */
         #[method_id(@__retain_semantics Other acousticFeatureValuePerFrame)]
         pub unsafe fn acousticFeatureValuePerFrame(&self) -> Id<NSArray<NSNumber>>;
 
+        /**
+          Duration of an audio frame
+        */
         #[method(frameDuration)]
         pub unsafe fn frameDuration(&self) -> NSTimeInterval;
     }
@@ -39,6 +60,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Speech_SFVoiceAnalytics")]
+    /**
+      Voice analytics corresponding to a segment of recorded audio
+    */
     pub struct SFVoiceAnalytics;
 
     #[cfg(feature = "Speech_SFVoiceAnalytics")]
@@ -48,30 +72,54 @@ extern_class!(
 );
 
 #[cfg(feature = "Speech_SFVoiceAnalytics")]
+/**
+  Voice analytics corresponding to a segment of recorded audio
+*/
 unsafe impl NSCoding for SFVoiceAnalytics {}
 
 #[cfg(feature = "Speech_SFVoiceAnalytics")]
+/**
+  Voice analytics corresponding to a segment of recorded audio
+*/
 unsafe impl NSObjectProtocol for SFVoiceAnalytics {}
 
 #[cfg(feature = "Speech_SFVoiceAnalytics")]
+/**
+  Voice analytics corresponding to a segment of recorded audio
+*/
 unsafe impl NSSecureCoding for SFVoiceAnalytics {}
 
 extern_methods!(
+    /**
+      Voice analytics corresponding to a segment of recorded audio
+    */
     #[cfg(feature = "Speech_SFVoiceAnalytics")]
     unsafe impl SFVoiceAnalytics {
         #[cfg(feature = "Speech_SFAcousticFeature")]
+        /**
+          Jitter measures vocal stability and is measured as an absolute difference between consecutive periods, divided by the average period. It is expressed as a percentage
+        */
         #[method_id(@__retain_semantics Other jitter)]
         pub unsafe fn jitter(&self) -> Id<SFAcousticFeature>;
 
         #[cfg(feature = "Speech_SFAcousticFeature")]
+        /**
+          Shimmer measures vocal stability and is measured in decibels
+        */
         #[method_id(@__retain_semantics Other shimmer)]
         pub unsafe fn shimmer(&self) -> Id<SFAcousticFeature>;
 
         #[cfg(feature = "Speech_SFAcousticFeature")]
+        /**
+          Pitch measures the highness and lowness of tone and is measured in logarithm of normalized pitch estimates
+        */
         #[method_id(@__retain_semantics Other pitch)]
         pub unsafe fn pitch(&self) -> Id<SFAcousticFeature>;
 
         #[cfg(feature = "Speech_SFAcousticFeature")]
+        /**
+          Voicing measures the probability of whether a frame is voiced or not and is measured as a probability
+        */
         #[method_id(@__retain_semantics Other voicing)]
         pub unsafe fn voicing(&self) -> Id<SFAcousticFeature>;
     }

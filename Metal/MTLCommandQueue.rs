@@ -5,15 +5,28 @@ use crate::Foundation::*;
 use crate::Metal::*;
 
 extern_protocol!(
+    /**
+     @protocol MTLCommandQueue
+    @brief A serial queue of command buffers to be executed by the device.
+    */
     pub unsafe trait MTLCommandQueue: NSObjectProtocol {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @brief A string to help identify this object
+        */
         #[method_id(@__retain_semantics Other label)]
         fn label(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @brief A string to help identify this object
+        */
         #[method(setLabel:)]
         fn setLabel(&self, label: Option<&NSString>);
 
+        /**
+          @brief The device this queue will submit to
+        */
         #[method_id(@__retain_semantics Other device)]
         fn device(&self) -> Id<ProtocolObject<dyn MTLDevice>>;
 

@@ -8,6 +8,9 @@ pub type NSUserScriptTaskCompletionHandler = *mut Block<(*mut NSError,), ()>;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSUserScriptTask")]
+    /**
+      NSUserScriptTask: An abstract "user script".
+    */
     pub struct NSUserScriptTask;
 
     #[cfg(feature = "Foundation_NSUserScriptTask")]
@@ -17,9 +20,15 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSUserScriptTask")]
+/**
+  NSUserScriptTask: An abstract "user script".
+*/
 unsafe impl NSObjectProtocol for NSUserScriptTask {}
 
 extern_methods!(
+    /**
+      NSUserScriptTask: An abstract "user script".
+    */
     #[cfg(feature = "Foundation_NSUserScriptTask")]
     unsafe impl NSUserScriptTask {
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSURL"))]
@@ -46,6 +55,9 @@ pub type NSUserUnixTaskCompletionHandler = *mut Block<(*mut NSError,), ()>;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSUserUnixTask")]
+    /**
+      NSUserUnixTask: a Unix executable file, typically a shell script.
+    */
     pub struct NSUserUnixTask;
 
     #[cfg(feature = "Foundation_NSUserUnixTask")]
@@ -56,16 +68,28 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSUserUnixTask")]
+/**
+  NSUserUnixTask: a Unix executable file, typically a shell script.
+*/
 unsafe impl NSObjectProtocol for NSUserUnixTask {}
 
 extern_methods!(
+    /**
+      NSUserUnixTask: a Unix executable file, typically a shell script.
+    */
     #[cfg(feature = "Foundation_NSUserUnixTask")]
     unsafe impl NSUserUnixTask {
         #[cfg(feature = "Foundation_NSFileHandle")]
+        /**
+          Standard I/O streams.  Setting them to nil (the default) will bind them to /dev/null.
+        */
         #[method_id(@__retain_semantics Other standardInput)]
         pub unsafe fn standardInput(&self) -> Option<Id<NSFileHandle>>;
 
         #[cfg(feature = "Foundation_NSFileHandle")]
+        /**
+          Standard I/O streams.  Setting them to nil (the default) will bind them to /dev/null.
+        */
         #[method(setStandardInput:)]
         pub unsafe fn setStandardInput(&self, standard_input: Option<&NSFileHandle>);
 
@@ -101,6 +125,9 @@ pub type NSUserAppleScriptTaskCompletionHandler =
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSUserAppleScriptTask")]
+    /**
+      NSUserAppleScriptTask: an AppleScript script.
+    */
     pub struct NSUserAppleScriptTask;
 
     #[cfg(feature = "Foundation_NSUserAppleScriptTask")]
@@ -111,9 +138,15 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSUserAppleScriptTask")]
+/**
+  NSUserAppleScriptTask: an AppleScript script.
+*/
 unsafe impl NSObjectProtocol for NSUserAppleScriptTask {}
 
 extern_methods!(
+    /**
+      NSUserAppleScriptTask: an AppleScript script.
+    */
     #[cfg(feature = "Foundation_NSUserAppleScriptTask")]
     unsafe impl NSUserAppleScriptTask {
         #[cfg(feature = "Foundation_NSAppleEventDescriptor")]
@@ -131,6 +164,9 @@ pub type NSUserAutomatorTaskCompletionHandler = *mut Block<(*mut Object, *mut NS
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSUserAutomatorTask")]
+    /**
+      NSUserAutomatorTask: an Automator workflow.
+    */
     pub struct NSUserAutomatorTask;
 
     #[cfg(feature = "Foundation_NSUserAutomatorTask")]
@@ -141,16 +177,28 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSUserAutomatorTask")]
+/**
+  NSUserAutomatorTask: an Automator workflow.
+*/
 unsafe impl NSObjectProtocol for NSUserAutomatorTask {}
 
 extern_methods!(
+    /**
+      NSUserAutomatorTask: an Automator workflow.
+    */
     #[cfg(feature = "Foundation_NSUserAutomatorTask")]
     unsafe impl NSUserAutomatorTask {
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+          Workflow variables.
+        */
         #[method_id(@__retain_semantics Other variables)]
         pub unsafe fn variables(&self) -> Option<Id<NSDictionary<NSString, Object>>>;
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+          Workflow variables.
+        */
         #[method(setVariables:)]
         pub unsafe fn setVariables(&self, variables: Option<&NSDictionary<NSString, Object>>);
 
@@ -165,6 +213,9 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSUserScriptTask`
+    /**
+      NSUserUnixTask: a Unix executable file, typically a shell script.
+    */
     #[cfg(feature = "Foundation_NSUserUnixTask")]
     unsafe impl NSUserUnixTask {
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSURL"))]
@@ -178,6 +229,9 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSUserScriptTask`
+    /**
+      NSUserAppleScriptTask: an AppleScript script.
+    */
     #[cfg(feature = "Foundation_NSUserAppleScriptTask")]
     unsafe impl NSUserAppleScriptTask {
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSURL"))]
@@ -191,6 +245,9 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSUserScriptTask`
+    /**
+      NSUserAutomatorTask: an Automator workflow.
+    */
     #[cfg(feature = "Foundation_NSUserAutomatorTask")]
     unsafe impl NSUserAutomatorTask {
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSURL"))]

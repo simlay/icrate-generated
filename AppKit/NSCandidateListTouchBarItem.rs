@@ -43,10 +43,16 @@ extern_methods!(
         NSCandidateListTouchBarItem<CandidateType, CandidateTypeOwnership>
     {
         #[cfg(feature = "AppKit_NSView")]
+        /**
+          The client object for the receiver.
+        */
         #[method_id(@__retain_semantics Other client)]
         pub unsafe fn client(&self) -> Option<Id<NSView>>;
 
         #[cfg(feature = "AppKit_NSView")]
+        /**
+          The client object for the receiver.
+        */
         #[method(setClient:)]
         pub unsafe fn setClient(&self, client: Option<&NSView>);
 
@@ -61,27 +67,48 @@ extern_methods!(
             delegate: Option<&ProtocolObject<dyn NSCandidateListTouchBarItemDelegate>>,
         );
 
+        /**
+          Controls the visible state of the item. The default is YES.
+        */
         #[method(isCollapsed)]
         pub unsafe fn isCollapsed(&self) -> bool;
 
+        /**
+          Controls the visible state of the item. The default is YES.
+        */
         #[method(setCollapsed:)]
         pub unsafe fn setCollapsed(&self, collapsed: bool);
 
+        /**
+          When YES, the item is allowed to be collapsed. YES by default.
+        */
         #[method(allowsCollapsing)]
         pub unsafe fn allowsCollapsing(&self) -> bool;
 
+        /**
+          When YES, the item is allowed to be collapsed. YES by default.
+        */
         #[method(setAllowsCollapsing:)]
         pub unsafe fn setAllowsCollapsing(&self, allows_collapsing: bool);
 
+        /**
+          Returns the state of its native candidate list visibility. When -collapsed=NO and not obscured by UI from the text input system, this property returns YES. KVO compliant. Clients should set candidates when YES.
+        */
         #[method(isCandidateListVisible)]
         pub unsafe fn isCandidateListVisible(&self) -> bool;
 
         #[method(updateWithInsertionPointVisibility:)]
         pub unsafe fn updateWithInsertionPointVisibility(&self, is_visible: bool);
 
+        /**
+          When YES, the item displays candidates from input methods when available instead of -candidates. YES by default.
+        */
         #[method(allowsTextInputContextCandidates)]
         pub unsafe fn allowsTextInputContextCandidates(&self) -> bool;
 
+        /**
+          When YES, the item displays candidates from input methods when available instead of -candidates. YES by default.
+        */
         #[method(setAllowsTextInputContextCandidates:)]
         pub unsafe fn setAllowsTextInputContextCandidates(
             &self,
@@ -89,12 +116,18 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSAttributedString")]
+        /**
+          A block function for converting a candidate object into an NSAttributedString that will be displayed in the candidate bar. nil by default. Not required for displaying NSString, NSAttributedString, and NSTextCheckingResult candidates. In absence of NSFontAttributeName and NSForegroundColorAttributeName in the returned string, the standard bar appearance font and color are used instead of Helvetica 12.0 and +[NSColor blackColor].
+        */
         #[method(attributedStringForCandidate)]
         pub unsafe fn attributedStringForCandidate(
             &self,
         ) -> *mut Block<(NonNull<CandidateType>, NSInteger), NonNull<NSAttributedString>>;
 
         #[cfg(feature = "Foundation_NSAttributedString")]
+        /**
+          A block function for converting a candidate object into an NSAttributedString that will be displayed in the candidate bar. nil by default. Not required for displaying NSString, NSAttributedString, and NSTextCheckingResult candidates. In absence of NSFontAttributeName and NSForegroundColorAttributeName in the returned string, the standard bar appearance font and color are used instead of Helvetica 12.0 and +[NSColor blackColor].
+        */
         #[method(setAttributedStringForCandidate:)]
         pub unsafe fn setAttributedStringForCandidate(
             &self,
@@ -104,6 +137,9 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Returns an array of candidate objects previously set via -setCandidates:forSelectedRange:inString:view:
+        */
         #[method_id(@__retain_semantics Other candidates)]
         pub unsafe fn candidates(&self) -> Id<NSArray<CandidateType>>;
 
@@ -117,10 +153,16 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The label displayed in the customization panel. The default is an empty string.
+        */
         #[method_id(@__retain_semantics Other customizationLabel)]
         pub unsafe fn customizationLabel(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The label displayed in the customization panel. The default is an empty string.
+        */
         #[method(setCustomizationLabel:)]
         pub unsafe fn setCustomizationLabel(&self, customization_label: Option<&NSString>);
     }
@@ -174,6 +216,9 @@ extern_methods!(
     #[cfg(feature = "AppKit_NSView")]
     unsafe impl NSView {
         #[cfg(feature = "AppKit_NSCandidateListTouchBarItem")]
+        /**
+          Returns NSCandidateListTouchBarItem used by the receiver when the first responder. The default implementation just returns nil. NSTextInputContext uses the item returned from this method for showing the candidates from input methods.
+        */
         #[method_id(@__retain_semantics Other candidateListTouchBarItem)]
         pub unsafe fn candidateListTouchBarItem(&self) -> Option<Id<NSCandidateListTouchBarItem>>;
     }

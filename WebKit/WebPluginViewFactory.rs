@@ -17,6 +17,11 @@ extern_static!(WebPlugInShouldLoadMainResourceKey: Option<&'static NSString>);
 
 extern_protocol!(
     #[deprecated]
+    /**
+     @protocol WebPlugInViewFactory
+    @discussion WebPlugInViewFactory are used to create the NSView for a plug-in.
+    The principal class of the plug-in bundle must implement this protocol.
+    */
     pub unsafe trait WebPlugInViewFactory: NSObjectProtocol {
         #[cfg(all(feature = "AppKit_NSView", feature = "Foundation_NSDictionary"))]
         #[method_id(@__retain_semantics Other plugInViewWithArguments:)]

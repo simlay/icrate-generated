@@ -5,6 +5,11 @@ use crate::Foundation::*;
 use crate::IdentityLookup::*;
 
 extern_protocol!(
+    /**
+     Functionality related to MessageFilter extension capabilities query requests.
+
+    Subclasses of ILMessageFilterExtension which support querying must conform to this protocol.
+    */
     pub unsafe trait ILMessageFilterCapabilitiesQueryHandling: NSObjectProtocol {
         #[cfg(all(
             feature = "IdentityLookup_ILMessageFilterCapabilitiesQueryRequest",

@@ -5,6 +5,11 @@ use crate::Contacts::*;
 use crate::Foundation::*;
 
 extern_methods!(
+    /**
+      @abstract The predicates to match containers against.
+
+     @discussion Can only use these predicates with CNContactStore.
+    */
     /// Predicates
     #[cfg(feature = "Contacts_CNContainer")]
     unsafe impl CNContainer {

@@ -5,6 +5,17 @@ use crate::Foundation::*;
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+     NSPointerFunctions
+
+    This object defines callout functions appropriate for managing a pointer reference held somewhere else.
+
+    Used by NSHashTable, NSMapTable, and NSPointerArray, this object defines the acquision and retention behavior for the pointers provided to these collection objects.
+
+    The functions are separated into two clusters - those that define "personality", such as object or cString, and those that describe memory management issues such as a memory deallocation function.  Common personalities and memory manager selections are provided as enumerations, and further customization is provided by methods such that the composition of the actual list of functions is done opaquely such that they can be extended in the future.
+
+    The pointer collections copy NSPointerFunctions objects on input and output, and so NSPointerFunctions is not usefully subclassed.
+    */
     pub enum NSPointerFunctionsOptions {
         NSPointerFunctionsStrongMemory = 0 << 0,
         #[deprecated = "GC no longer supported"]
@@ -51,6 +62,9 @@ extern_methods!(
             options: NSPointerFunctionsOptions,
         ) -> Id<NSPointerFunctions>;
 
+        /**
+          pointer personality functions
+        */
         #[method(hashFunction)]
         pub unsafe fn hashFunction(
             &self,
@@ -61,6 +75,9 @@ extern_methods!(
             ) -> NSUInteger,
         >;
 
+        /**
+          pointer personality functions
+        */
         #[method(setHashFunction:)]
         pub unsafe fn setHashFunction(
             &self,
@@ -119,6 +136,9 @@ extern_methods!(
             description_function: Option<unsafe extern "C" fn(NonNull<c_void>) -> *mut NSString>,
         );
 
+        /**
+          custom memory configuration
+        */
         #[method(relinquishFunction)]
         pub unsafe fn relinquishFunction(
             &self,
@@ -129,6 +149,9 @@ extern_methods!(
             ),
         >;
 
+        /**
+          custom memory configuration
+        */
         #[method(setRelinquishFunction:)]
         pub unsafe fn setRelinquishFunction(
             &self,
@@ -163,18 +186,30 @@ extern_methods!(
             >,
         );
 
+        /**
+          pointers should (not) be assigned using the GC strong write barrier
+        */
         #[deprecated = "Garbage collection no longer supported"]
         #[method(usesStrongWriteBarrier)]
         pub unsafe fn usesStrongWriteBarrier(&self) -> bool;
 
+        /**
+          pointers should (not) be assigned using the GC strong write barrier
+        */
         #[deprecated = "Garbage collection no longer supported"]
         #[method(setUsesStrongWriteBarrier:)]
         pub unsafe fn setUsesStrongWriteBarrier(&self, uses_strong_write_barrier: bool);
 
+        /**
+          pointers should (not) use GC weak read and write barriers
+        */
         #[deprecated = "Garbage collection no longer supported"]
         #[method(usesWeakReadAndWriteBarriers)]
         pub unsafe fn usesWeakReadAndWriteBarriers(&self) -> bool;
 
+        /**
+          pointers should (not) use GC weak read and write barriers
+        */
         #[deprecated = "Garbage collection no longer supported"]
         #[method(setUsesWeakReadAndWriteBarriers:)]
         pub unsafe fn setUsesWeakReadAndWriteBarriers(

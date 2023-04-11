@@ -6,6 +6,9 @@ use crate::IdentityLookup::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      Describes an action to take in response to a received message.
+    */
     pub enum ILMessageFilterAction {
         ILMessageFilterActionNone = 0,
         ILMessageFilterActionAllow = 1,
@@ -19,6 +22,9 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      Describes a sub-action to take in response to a received message.
+    */
     pub enum ILMessageFilterSubAction {
         ILMessageFilterSubActionNone = 0,
         ILMessageFilterSubActionTransactionalOthers = 10000,

@@ -75,11 +75,17 @@ extern_methods!(
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
+        /**
+          The viewport layout delegate.
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(
             &self,
         ) -> Option<Id<ProtocolObject<dyn NSTextViewportLayoutControllerDelegate>>>;
 
+        /**
+          The viewport layout delegate.
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
@@ -87,13 +93,24 @@ extern_methods!(
         );
 
         #[cfg(feature = "AppKit_NSTextLayoutManager")]
+        /**
+          The provider of viewport text layout fragments.
+        */
         #[method_id(@__retain_semantics Other textLayoutManager)]
         pub unsafe fn textLayoutManager(&self) -> Option<Id<NSTextLayoutManager>>;
 
+        /**
+          The viewport of the current layout.
+         Not KVO-compliant.
+        */
         #[method(viewportBounds)]
         pub unsafe fn viewportBounds(&self) -> CGRect;
 
         #[cfg(feature = "AppKit_NSTextRange")]
+        /**
+          The text range of the current viewport layout.
+         Not KVO-compliant.
+        */
         #[method_id(@__retain_semantics Other viewportRange)]
         pub unsafe fn viewportRange(&self) -> Option<Id<NSTextRange>>;
 

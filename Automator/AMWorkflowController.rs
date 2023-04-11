@@ -49,11 +49,17 @@ extern_methods!(
         #[method(setWorkflowView:)]
         pub unsafe fn setWorkflowView(&self, workflow_view: Option<&AMWorkflowView>);
 
+        /**
+          This property was previously "assign" in 10.12. It is now "weak" in 10.13 and above.
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(
             &self,
         ) -> Option<Id<ProtocolObject<dyn AMWorkflowControllerDelegate>>>;
 
+        /**
+          This property was previously "assign" in 10.12. It is now "weak" in 10.13 and above.
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,

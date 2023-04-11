@@ -9,6 +9,10 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKObjectType")]
+    /**
+     @class         HKObjectType
+    @abstract      An abstract class representing a type of object that can be stored by HealthKit.
+    */
     pub struct HKObjectType;
 
     #[cfg(feature = "HealthKit_HKObjectType")]
@@ -18,18 +22,39 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKObjectType")]
+/**
+ @class         HKObjectType
+@abstract      An abstract class representing a type of object that can be stored by HealthKit.
+*/
 unsafe impl NSCoding for HKObjectType {}
 
 #[cfg(feature = "HealthKit_HKObjectType")]
+/**
+ @class         HKObjectType
+@abstract      An abstract class representing a type of object that can be stored by HealthKit.
+*/
 unsafe impl NSObjectProtocol for HKObjectType {}
 
 #[cfg(feature = "HealthKit_HKObjectType")]
+/**
+ @class         HKObjectType
+@abstract      An abstract class representing a type of object that can be stored by HealthKit.
+*/
 unsafe impl NSSecureCoding for HKObjectType {}
 
 extern_methods!(
+    /**
+     @class         HKObjectType
+    @abstract      An abstract class representing a type of object that can be stored by HealthKit.
+    */
     #[cfg(feature = "HealthKit_HKObjectType")]
     unsafe impl HKObjectType {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property      identifier
+        @abstract      A unique string identifying a type of health object.
+        @discussion    See HKTypeIdentifiers.h for possible values.
+        */
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Id<NSString>;
 
@@ -98,6 +123,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKCharacteristicType")]
+    /**
+     @class         HKCharacteristicType
+    @abstract      Represents a type of object that describes a characteristic of the user (such as date of birth).
+    */
     pub struct HKCharacteristicType;
 
     #[cfg(feature = "HealthKit_HKCharacteristicType")]
@@ -108,15 +137,31 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKCharacteristicType")]
+/**
+ @class         HKCharacteristicType
+@abstract      Represents a type of object that describes a characteristic of the user (such as date of birth).
+*/
 unsafe impl NSCoding for HKCharacteristicType {}
 
 #[cfg(feature = "HealthKit_HKCharacteristicType")]
+/**
+ @class         HKCharacteristicType
+@abstract      Represents a type of object that describes a characteristic of the user (such as date of birth).
+*/
 unsafe impl NSObjectProtocol for HKCharacteristicType {}
 
 #[cfg(feature = "HealthKit_HKCharacteristicType")]
+/**
+ @class         HKCharacteristicType
+@abstract      Represents a type of object that describes a characteristic of the user (such as date of birth).
+*/
 unsafe impl NSSecureCoding for HKCharacteristicType {}
 
 extern_methods!(
+    /**
+     @class         HKCharacteristicType
+    @abstract      Represents a type of object that describes a characteristic of the user (such as date of birth).
+    */
     #[cfg(feature = "HealthKit_HKCharacteristicType")]
     unsafe impl HKCharacteristicType {}
 );
@@ -124,6 +169,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKSampleType")]
+    /**
+     @class         HKSampleType
+    @abstract      Represents a type of HKSample.
+    */
     pub struct HKSampleType;
 
     #[cfg(feature = "HealthKit_HKSampleType")]
@@ -134,29 +183,70 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKSampleType")]
+/**
+ @class         HKSampleType
+@abstract      Represents a type of HKSample.
+*/
 unsafe impl NSCoding for HKSampleType {}
 
 #[cfg(feature = "HealthKit_HKSampleType")]
+/**
+ @class         HKSampleType
+@abstract      Represents a type of HKSample.
+*/
 unsafe impl NSObjectProtocol for HKSampleType {}
 
 #[cfg(feature = "HealthKit_HKSampleType")]
+/**
+ @class         HKSampleType
+@abstract      Represents a type of HKSample.
+*/
 unsafe impl NSSecureCoding for HKSampleType {}
 
 extern_methods!(
+    /**
+     @class         HKSampleType
+    @abstract      Represents a type of HKSample.
+    */
     #[cfg(feature = "HealthKit_HKSampleType")]
     unsafe impl HKSampleType {
+        /**
+         @property      isMaximumDurationRestricted
+        @abstract      Returns YES if the start and end date for samples of this type are restricted by a maximum duration.
+        */
         #[method(isMaximumDurationRestricted)]
         pub unsafe fn isMaximumDurationRestricted(&self) -> bool;
 
+        /**
+         @property      maximumAllowedDuration
+        @abstract      When the duration is restricted for samples of this type, returns the maximum duration allowed,
+        calculated as the difference between end and start dates.
+        @discussion    Throws an exception if there is no maximum restriction on duration for samples of this type.
+        */
         #[method(maximumAllowedDuration)]
         pub unsafe fn maximumAllowedDuration(&self) -> NSTimeInterval;
 
+        /**
+         @property      isMinimumDurationRestricted
+        @abstract      Returns YES if the start and end date for samples of this type are restricted by a minimum duration.
+        */
         #[method(isMinimumDurationRestricted)]
         pub unsafe fn isMinimumDurationRestricted(&self) -> bool;
 
+        /**
+         @property      minimumAllowedDuration
+        @abstract      When the duration is restricted for samples of this type, returns the minimum duration allowed,
+        calculated as the difference between end and start dates.
+        @discussion    Throws an exception if there is no minimum restriction on duration for samples of this type.
+        */
         #[method(minimumAllowedDuration)]
         pub unsafe fn minimumAllowedDuration(&self) -> NSTimeInterval;
 
+        /**
+         @property      allowsRecalibrationForEstimates
+        @abstract      Returns YES if first-party samples of this type are produced using a prediction algorithm, and that algorithm supports recalibration. To recalibrate the
+        estimates for a sample type, see -[HKHealthStore recalibrateEstimatesForSampleType:atDate:completion:]
+        */
         #[method(allowsRecalibrationForEstimates)]
         pub unsafe fn allowsRecalibrationForEstimates(&self) -> bool;
     }
@@ -165,6 +255,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKCategoryType")]
+    /**
+     @class         HKCategoryType
+    @abstract      Represent a type of HKCategorySample.
+    */
     pub struct HKCategoryType;
 
     #[cfg(feature = "HealthKit_HKCategoryType")]
@@ -175,15 +269,31 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKCategoryType")]
+/**
+ @class         HKCategoryType
+@abstract      Represent a type of HKCategorySample.
+*/
 unsafe impl NSCoding for HKCategoryType {}
 
 #[cfg(feature = "HealthKit_HKCategoryType")]
+/**
+ @class         HKCategoryType
+@abstract      Represent a type of HKCategorySample.
+*/
 unsafe impl NSObjectProtocol for HKCategoryType {}
 
 #[cfg(feature = "HealthKit_HKCategoryType")]
+/**
+ @class         HKCategoryType
+@abstract      Represent a type of HKCategorySample.
+*/
 unsafe impl NSSecureCoding for HKCategoryType {}
 
 extern_methods!(
+    /**
+     @class         HKCategoryType
+    @abstract      Represent a type of HKCategorySample.
+    */
     #[cfg(feature = "HealthKit_HKCategoryType")]
     unsafe impl HKCategoryType {}
 );
@@ -191,6 +301,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKCorrelationType")]
+    /**
+     @class         HKCorrelationType
+    @abstract      Represents a type of HKCorrelation
+    */
     pub struct HKCorrelationType;
 
     #[cfg(feature = "HealthKit_HKCorrelationType")]
@@ -201,15 +315,31 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKCorrelationType")]
+/**
+ @class         HKCorrelationType
+@abstract      Represents a type of HKCorrelation
+*/
 unsafe impl NSCoding for HKCorrelationType {}
 
 #[cfg(feature = "HealthKit_HKCorrelationType")]
+/**
+ @class         HKCorrelationType
+@abstract      Represents a type of HKCorrelation
+*/
 unsafe impl NSObjectProtocol for HKCorrelationType {}
 
 #[cfg(feature = "HealthKit_HKCorrelationType")]
+/**
+ @class         HKCorrelationType
+@abstract      Represents a type of HKCorrelation
+*/
 unsafe impl NSSecureCoding for HKCorrelationType {}
 
 extern_methods!(
+    /**
+     @class         HKCorrelationType
+    @abstract      Represents a type of HKCorrelation
+    */
     #[cfg(feature = "HealthKit_HKCorrelationType")]
     unsafe impl HKCorrelationType {}
 );
@@ -217,6 +347,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKDocumentType")]
+    /**
+     @class         HKDocumentType
+    @abstract      Represents a type of HKDocument.
+    */
     pub struct HKDocumentType;
 
     #[cfg(feature = "HealthKit_HKDocumentType")]
@@ -227,15 +361,31 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKDocumentType")]
+/**
+ @class         HKDocumentType
+@abstract      Represents a type of HKDocument.
+*/
 unsafe impl NSCoding for HKDocumentType {}
 
 #[cfg(feature = "HealthKit_HKDocumentType")]
+/**
+ @class         HKDocumentType
+@abstract      Represents a type of HKDocument.
+*/
 unsafe impl NSObjectProtocol for HKDocumentType {}
 
 #[cfg(feature = "HealthKit_HKDocumentType")]
+/**
+ @class         HKDocumentType
+@abstract      Represents a type of HKDocument.
+*/
 unsafe impl NSSecureCoding for HKDocumentType {}
 
 extern_methods!(
+    /**
+     @class         HKDocumentType
+    @abstract      Represents a type of HKDocument.
+    */
     #[cfg(feature = "HealthKit_HKDocumentType")]
     unsafe impl HKDocumentType {}
 );
@@ -243,6 +393,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKQuantityType")]
+    /**
+     @class         HKQuantityType
+    @abstract      Represents types of HKQuantitySamples.
+    */
     pub struct HKQuantityType;
 
     #[cfg(feature = "HealthKit_HKQuantityType")]
@@ -253,15 +407,31 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKQuantityType")]
+/**
+ @class         HKQuantityType
+@abstract      Represents types of HKQuantitySamples.
+*/
 unsafe impl NSCoding for HKQuantityType {}
 
 #[cfg(feature = "HealthKit_HKQuantityType")]
+/**
+ @class         HKQuantityType
+@abstract      Represents types of HKQuantitySamples.
+*/
 unsafe impl NSObjectProtocol for HKQuantityType {}
 
 #[cfg(feature = "HealthKit_HKQuantityType")]
+/**
+ @class         HKQuantityType
+@abstract      Represents types of HKQuantitySamples.
+*/
 unsafe impl NSSecureCoding for HKQuantityType {}
 
 extern_methods!(
+    /**
+     @class         HKQuantityType
+    @abstract      Represents types of HKQuantitySamples.
+    */
     #[cfg(feature = "HealthKit_HKQuantityType")]
     unsafe impl HKQuantityType {
         #[method(aggregationStyle)]
@@ -276,6 +446,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKWorkoutType")]
+    /**
+     @class         HKWorkoutType
+    @abstract      Represents a workout or exercise
+    */
     pub struct HKWorkoutType;
 
     #[cfg(feature = "HealthKit_HKWorkoutType")]
@@ -286,15 +460,31 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKWorkoutType")]
+/**
+ @class         HKWorkoutType
+@abstract      Represents a workout or exercise
+*/
 unsafe impl NSCoding for HKWorkoutType {}
 
 #[cfg(feature = "HealthKit_HKWorkoutType")]
+/**
+ @class         HKWorkoutType
+@abstract      Represents a workout or exercise
+*/
 unsafe impl NSObjectProtocol for HKWorkoutType {}
 
 #[cfg(feature = "HealthKit_HKWorkoutType")]
+/**
+ @class         HKWorkoutType
+@abstract      Represents a workout or exercise
+*/
 unsafe impl NSSecureCoding for HKWorkoutType {}
 
 extern_methods!(
+    /**
+     @class         HKWorkoutType
+    @abstract      Represents a workout or exercise
+    */
     #[cfg(feature = "HealthKit_HKWorkoutType")]
     unsafe impl HKWorkoutType {}
 );
@@ -302,6 +492,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKSeriesType")]
+    /**
+     @class         HKSeriesType
+    @abstract      Represents a type of HKSeriesSample
+    */
     pub struct HKSeriesType;
 
     #[cfg(feature = "HealthKit_HKSeriesType")]
@@ -312,15 +506,31 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKSeriesType")]
+/**
+ @class         HKSeriesType
+@abstract      Represents a type of HKSeriesSample
+*/
 unsafe impl NSCoding for HKSeriesType {}
 
 #[cfg(feature = "HealthKit_HKSeriesType")]
+/**
+ @class         HKSeriesType
+@abstract      Represents a type of HKSeriesSample
+*/
 unsafe impl NSObjectProtocol for HKSeriesType {}
 
 #[cfg(feature = "HealthKit_HKSeriesType")]
+/**
+ @class         HKSeriesType
+@abstract      Represents a type of HKSeriesSample
+*/
 unsafe impl NSSecureCoding for HKSeriesType {}
 
 extern_methods!(
+    /**
+     @class         HKSeriesType
+    @abstract      Represents a type of HKSeriesSample
+    */
     #[cfg(feature = "HealthKit_HKSeriesType")]
     unsafe impl HKSeriesType {
         #[method_id(@__retain_semantics Other workoutRouteType)]
@@ -334,6 +544,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKActivitySummaryType")]
+    /**
+     @class         HKActivitySummaryType
+    @abstract      Represents an HKActivitySummary
+    */
     pub struct HKActivitySummaryType;
 
     #[cfg(feature = "HealthKit_HKActivitySummaryType")]
@@ -344,15 +558,31 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKActivitySummaryType")]
+/**
+ @class         HKActivitySummaryType
+@abstract      Represents an HKActivitySummary
+*/
 unsafe impl NSCoding for HKActivitySummaryType {}
 
 #[cfg(feature = "HealthKit_HKActivitySummaryType")]
+/**
+ @class         HKActivitySummaryType
+@abstract      Represents an HKActivitySummary
+*/
 unsafe impl NSObjectProtocol for HKActivitySummaryType {}
 
 #[cfg(feature = "HealthKit_HKActivitySummaryType")]
+/**
+ @class         HKActivitySummaryType
+@abstract      Represents an HKActivitySummary
+*/
 unsafe impl NSSecureCoding for HKActivitySummaryType {}
 
 extern_methods!(
+    /**
+     @class         HKActivitySummaryType
+    @abstract      Represents an HKActivitySummary
+    */
     #[cfg(feature = "HealthKit_HKActivitySummaryType")]
     unsafe impl HKActivitySummaryType {}
 );
@@ -360,6 +590,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKAudiogramSampleType")]
+    /**
+     @class    HKAudiogramSampleType
+    @abstract Represents an audiogram sample.
+    */
     pub struct HKAudiogramSampleType;
 
     #[cfg(feature = "HealthKit_HKAudiogramSampleType")]
@@ -370,15 +604,31 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKAudiogramSampleType")]
+/**
+ @class    HKAudiogramSampleType
+@abstract Represents an audiogram sample.
+*/
 unsafe impl NSCoding for HKAudiogramSampleType {}
 
 #[cfg(feature = "HealthKit_HKAudiogramSampleType")]
+/**
+ @class    HKAudiogramSampleType
+@abstract Represents an audiogram sample.
+*/
 unsafe impl NSObjectProtocol for HKAudiogramSampleType {}
 
 #[cfg(feature = "HealthKit_HKAudiogramSampleType")]
+/**
+ @class    HKAudiogramSampleType
+@abstract Represents an audiogram sample.
+*/
 unsafe impl NSSecureCoding for HKAudiogramSampleType {}
 
 extern_methods!(
+    /**
+     @class    HKAudiogramSampleType
+    @abstract Represents an audiogram sample.
+    */
     #[cfg(feature = "HealthKit_HKAudiogramSampleType")]
     unsafe impl HKAudiogramSampleType {}
 );
@@ -386,6 +636,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKElectrocardiogramType")]
+    /**
+     @class    HKElectrocardiogramType
+    @abstract Represents an electrocardiogram sample.
+    */
     pub struct HKElectrocardiogramType;
 
     #[cfg(feature = "HealthKit_HKElectrocardiogramType")]
@@ -396,15 +650,31 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKElectrocardiogramType")]
+/**
+ @class    HKElectrocardiogramType
+@abstract Represents an electrocardiogram sample.
+*/
 unsafe impl NSCoding for HKElectrocardiogramType {}
 
 #[cfg(feature = "HealthKit_HKElectrocardiogramType")]
+/**
+ @class    HKElectrocardiogramType
+@abstract Represents an electrocardiogram sample.
+*/
 unsafe impl NSObjectProtocol for HKElectrocardiogramType {}
 
 #[cfg(feature = "HealthKit_HKElectrocardiogramType")]
+/**
+ @class    HKElectrocardiogramType
+@abstract Represents an electrocardiogram sample.
+*/
 unsafe impl NSSecureCoding for HKElectrocardiogramType {}
 
 extern_methods!(
+    /**
+     @class    HKElectrocardiogramType
+    @abstract Represents an electrocardiogram sample.
+    */
     #[cfg(feature = "HealthKit_HKElectrocardiogramType")]
     unsafe impl HKElectrocardiogramType {}
 );
@@ -412,6 +682,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKPrescriptionType")]
+    /**
+     @class         HKPrescriptionType
+    @abstract      Represents a prescription type
+    */
     pub struct HKPrescriptionType;
 
     #[cfg(feature = "HealthKit_HKPrescriptionType")]
@@ -422,15 +696,31 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKPrescriptionType")]
+/**
+ @class         HKPrescriptionType
+@abstract      Represents a prescription type
+*/
 unsafe impl NSCoding for HKPrescriptionType {}
 
 #[cfg(feature = "HealthKit_HKPrescriptionType")]
+/**
+ @class         HKPrescriptionType
+@abstract      Represents a prescription type
+*/
 unsafe impl NSObjectProtocol for HKPrescriptionType {}
 
 #[cfg(feature = "HealthKit_HKPrescriptionType")]
+/**
+ @class         HKPrescriptionType
+@abstract      Represents a prescription type
+*/
 unsafe impl NSSecureCoding for HKPrescriptionType {}
 
 extern_methods!(
+    /**
+     @class         HKPrescriptionType
+    @abstract      Represents a prescription type
+    */
     #[cfg(feature = "HealthKit_HKPrescriptionType")]
     unsafe impl HKPrescriptionType {}
 );

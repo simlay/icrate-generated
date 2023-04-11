@@ -5,6 +5,9 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      Expressions are the core of the predicate implementation. When expressionValueWithObject: is called, the expression is evaluated, and a value returned which can then be handled by an operator. Expressions can be anything from constants to method invocations. Scalars should be wrapped in appropriate NSValue classes.
+    */
     pub enum NSExpressionType {
         NSConstantValueExpressionType = 0,
         NSEvaluatedObjectExpressionType = 1,
@@ -154,6 +157,9 @@ extern_methods!(
             coder: &NSCoder,
         ) -> Option<Id<Self>>;
 
+        /**
+          accessors for individual parameters - raise if not applicable
+        */
         #[method(expressionType)]
         pub unsafe fn expressionType(&self) -> NSExpressionType;
 
@@ -172,10 +178,16 @@ extern_methods!(
         #[method_id(@__retain_semantics Other variable)]
         pub unsafe fn variable(&self) -> Id<NSString>;
 
+        /**
+          the object on which the selector will be invoked (the result of evaluating a key path or one of the defined functions)
+        */
         #[method_id(@__retain_semantics Other operand)]
         pub unsafe fn operand(&self) -> Id<NSExpression>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          array of expressions which will be passed as parameters during invocation of the selector on the operand of a function expression
+        */
         #[method_id(@__retain_semantics Other arguments)]
         pub unsafe fn arguments(&self) -> Option<Id<NSArray<NSExpression>>>;
 
@@ -186,15 +198,27 @@ extern_methods!(
         #[method_id(@__retain_semantics Other predicate)]
         pub unsafe fn predicate(&self) -> Id<NSPredicate>;
 
+        /**
+          expression which represents the left side of a set expression
+        */
         #[method_id(@__retain_semantics Other leftExpression)]
         pub unsafe fn leftExpression(&self) -> Id<NSExpression>;
 
+        /**
+          expression which represents the right side of a set expression
+        */
         #[method_id(@__retain_semantics Other rightExpression)]
         pub unsafe fn rightExpression(&self) -> Id<NSExpression>;
 
+        /**
+          expression which will be evaluated if a conditional expression's predicate evaluates to true
+        */
         #[method_id(@__retain_semantics Other trueExpression)]
         pub unsafe fn trueExpression(&self) -> Id<NSExpression>;
 
+        /**
+          expression which will be evaluated if a conditional expression's predicate evaluates to false
+        */
         #[method_id(@__retain_semantics Other falseExpression)]
         pub unsafe fn falseExpression(&self) -> Id<NSExpression>;
 

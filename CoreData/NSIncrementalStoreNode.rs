@@ -7,6 +7,9 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreData_NSIncrementalStoreNode")]
+    /**
+      Provides the basic unit of external data that the Core Data stack interacts with.
+    */
     pub struct NSIncrementalStoreNode;
 
     #[cfg(feature = "CoreData_NSIncrementalStoreNode")]
@@ -16,9 +19,15 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreData_NSIncrementalStoreNode")]
+/**
+  Provides the basic unit of external data that the Core Data stack interacts with.
+*/
 unsafe impl NSObjectProtocol for NSIncrementalStoreNode {}
 
 extern_methods!(
+    /**
+      Provides the basic unit of external data that the Core Data stack interacts with.
+    */
     #[cfg(feature = "CoreData_NSIncrementalStoreNode")]
     unsafe impl NSIncrementalStoreNode {
         #[cfg(all(
@@ -43,9 +52,15 @@ extern_methods!(
         );
 
         #[cfg(feature = "CoreData_NSManagedObjectID")]
+        /**
+          Return the object ID that identifies the data stored by this node
+        */
         #[method_id(@__retain_semantics Other objectID)]
         pub unsafe fn objectID(&self) -> Id<NSManagedObjectID>;
 
+        /**
+          Return the version of data in this node.
+        */
         #[method(version)]
         pub unsafe fn version(&self) -> u64;
 

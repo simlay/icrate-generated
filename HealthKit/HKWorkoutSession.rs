@@ -8,6 +8,10 @@ use crate::UniformTypeIdentifiers::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum          HKWorkoutSessionState
+    @abstract      This enumerated type is used to represent the state of a workout session.
+    */
     pub enum HKWorkoutSessionState {
         HKWorkoutSessionStateNotStarted = 1,
         HKWorkoutSessionStateRunning = 2,
@@ -21,6 +25,10 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKWorkoutSession")]
+    /**
+     @class         HKWorkoutSession
+    @abstract      An HKWorkoutSession is an object describing the properties of a workout activity session.
+    */
     pub struct HKWorkoutSession;
 
     #[cfg(feature = "HealthKit_HKWorkoutSession")]
@@ -30,50 +38,118 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKWorkoutSession")]
+/**
+ @class         HKWorkoutSession
+@abstract      An HKWorkoutSession is an object describing the properties of a workout activity session.
+*/
 unsafe impl NSCoding for HKWorkoutSession {}
 
 #[cfg(feature = "HealthKit_HKWorkoutSession")]
+/**
+ @class         HKWorkoutSession
+@abstract      An HKWorkoutSession is an object describing the properties of a workout activity session.
+*/
 unsafe impl NSObjectProtocol for HKWorkoutSession {}
 
 #[cfg(feature = "HealthKit_HKWorkoutSession")]
+/**
+ @class         HKWorkoutSession
+@abstract      An HKWorkoutSession is an object describing the properties of a workout activity session.
+*/
 unsafe impl NSSecureCoding for HKWorkoutSession {}
 
 extern_methods!(
+    /**
+     @class         HKWorkoutSession
+    @abstract      An HKWorkoutSession is an object describing the properties of a workout activity session.
+    */
     #[cfg(feature = "HealthKit_HKWorkoutSession")]
     unsafe impl HKWorkoutSession {
+        /**
+         @property      activityType
+        @abstract      Indicates the type of workout that will be performed during the session.
+        */
         #[deprecated]
         #[method(activityType)]
         pub unsafe fn activityType(&self) -> HKWorkoutActivityType;
 
+        /**
+         @property      locationType
+        @abstract      Indicates the type of location (indoors vs. outdoors) where the workout will take place.
+        @discussion    Knowing the location type allows for more accurate measurements and better performance.
+        */
         #[deprecated]
         #[method(locationType)]
         pub unsafe fn locationType(&self) -> HKWorkoutSessionLocationType;
 
         #[cfg(feature = "HealthKit_HKWorkoutConfiguration")]
+        /**
+         @property      workoutConfiguration
+        @abstract      The configuration object describing the workout.
+        @discussion    This returns a copy of the configuration passed when creating the HKWorkoutSession. Changes made to
+        the returned object have no impact on the HKWorkoutSession.
+        */
         #[method_id(@__retain_semantics Other workoutConfiguration)]
         pub unsafe fn workoutConfiguration(&self) -> Id<HKWorkoutConfiguration>;
 
+        /**
+         @property      delegate
+        @abstract      The session delegate, which receives
+        @discussion    The session delegate object is the one implementing the methods that get called when the session
+        state changes or a failure occurs in the session.
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(&self) -> Option<Id<ProtocolObject<dyn HKWorkoutSessionDelegate>>>;
 
+        /**
+         @property      delegate
+        @abstract      The session delegate, which receives
+        @discussion    The session delegate object is the one implementing the methods that get called when the session
+        state changes or a failure occurs in the session.
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
             delegate: Option<&ProtocolObject<dyn HKWorkoutSessionDelegate>>,
         );
 
+        /**
+         @property      state
+        @abstract      Indicates the current state of the workout session.
+        @discussion    Each time this value is updated, the delegate method workoutSession:didChangeToState:fromState:date:
+        will be called.
+        */
         #[method(state)]
         pub unsafe fn state(&self) -> HKWorkoutSessionState;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+         @property      startDate
+        @abstract      Indicates the date when the workout session started running.
+        @discussion    This value is nil when a workout session is initialized. It is set when the workout session state
+        changes to HKWorkoutSessionStateRunning.
+        */
         #[method_id(@__retain_semantics Other startDate)]
         pub unsafe fn startDate(&self) -> Option<Id<NSDate>>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+         @property      endDate
+        @abstract      Indicates the date when the workout session ended.
+        @discussion    This value is nil when a workout session is initialized. It is set when the workout session state
+        changes to HKWorkoutSessionStateEnded.
+        */
         #[method_id(@__retain_semantics Other endDate)]
         pub unsafe fn endDate(&self) -> Option<Id<NSDate>>;
 
         #[cfg(feature = "HealthKit_HKWorkoutActivity")]
+        /**
+         @property      currentActivity
+        @abstract      The current workout activity.
+        @discussion    This returns a copy of the session's current workout activity. It will return
+        a copy of the main workout activity if no new activity has begun. Changes made
+        to the returned object have no impact on the HKWorkoutSession.
+        */
         #[method_id(@__retain_semantics Other currentActivity)]
         pub unsafe fn currentActivity(&self) -> Id<HKWorkoutActivity>;
 
@@ -156,6 +232,11 @@ extern_methods!(
 );
 
 extern_protocol!(
+    /**
+     @enum          HKWorkoutSessionStateDelegate
+    @abstract      This protocol should be implemented to be notified when a workout session's state changes.
+    @discussion    The methods on this protocol are called on an anonymous serial background queue.
+    */
     pub unsafe trait HKWorkoutSessionDelegate: NSObjectProtocol {
         #[cfg(all(feature = "Foundation_NSDate", feature = "HealthKit_HKWorkoutSession"))]
         #[method(workoutSession:didChangeToState:fromState:date:)]

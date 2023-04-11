@@ -115,54 +115,104 @@ extern_methods!(
         #[method(close)]
         pub unsafe fn close(&self);
 
+        /**
+         @property shouldCloseWithWindow
+        @abstract Whether the receiver closes when either it's window or hostWindow closes.
+        @discussion Defaults to YES in garbage collected applications, otherwise NO to maintain backwards compatibility.
+        */
         #[method(shouldCloseWithWindow)]
         pub unsafe fn shouldCloseWithWindow(&self) -> bool;
 
+        /**
+         @property shouldCloseWithWindow
+        @abstract Whether the receiver closes when either it's window or hostWindow closes.
+        @discussion Defaults to YES in garbage collected applications, otherwise NO to maintain backwards compatibility.
+        */
         #[method(setShouldCloseWithWindow:)]
         pub unsafe fn setShouldCloseWithWindow(&self, should_close_with_window: bool);
 
+        /**
+         @property UIDelegate
+        @abstract The WebView's WebUIDelegate.
+        */
         #[method_id(@__retain_semantics Other UIDelegate)]
         pub unsafe fn UIDelegate(&self) -> Option<Id<ProtocolObject<dyn WebUIDelegate>>>;
 
+        /**
+         @property UIDelegate
+        @abstract The WebView's WebUIDelegate.
+        */
         #[method(setUIDelegate:)]
         pub unsafe fn setUIDelegate(&self, ui_delegate: Option<&ProtocolObject<dyn WebUIDelegate>>);
 
+        /**
+         @property resourceLoadDelegate
+        @abstract The WebView's WebResourceLoadDelegate.
+        */
         #[method_id(@__retain_semantics Other resourceLoadDelegate)]
         pub unsafe fn resourceLoadDelegate(
             &self,
         ) -> Option<Id<ProtocolObject<dyn WebResourceLoadDelegate>>>;
 
+        /**
+         @property resourceLoadDelegate
+        @abstract The WebView's WebResourceLoadDelegate.
+        */
         #[method(setResourceLoadDelegate:)]
         pub unsafe fn setResourceLoadDelegate(
             &self,
             resource_load_delegate: Option<&ProtocolObject<dyn WebResourceLoadDelegate>>,
         );
 
+        /**
+         @property downloadDelegate
+        @abstract The WebView's WebDownloadDelegate.
+        */
         #[method_id(@__retain_semantics Other downloadDelegate)]
         pub unsafe fn downloadDelegate(
             &self,
         ) -> Option<Id<ProtocolObject<dyn WebDownloadDelegate>>>;
 
+        /**
+         @property downloadDelegate
+        @abstract The WebView's WebDownloadDelegate.
+        */
         #[method(setDownloadDelegate:)]
         pub unsafe fn setDownloadDelegate(
             &self,
             download_delegate: Option<&ProtocolObject<dyn WebDownloadDelegate>>,
         );
 
+        /**
+         @property frameLoadDelegate
+        @abstract The WebView's WebFrameLoadDelegate delegate.
+        */
         #[method_id(@__retain_semantics Other frameLoadDelegate)]
         pub unsafe fn frameLoadDelegate(
             &self,
         ) -> Option<Id<ProtocolObject<dyn WebFrameLoadDelegate>>>;
 
+        /**
+         @property frameLoadDelegate
+        @abstract The WebView's WebFrameLoadDelegate delegate.
+        */
         #[method(setFrameLoadDelegate:)]
         pub unsafe fn setFrameLoadDelegate(
             &self,
             frame_load_delegate: Option<&ProtocolObject<dyn WebFrameLoadDelegate>>,
         );
 
+        /**
+         @property policyDelegate
+        @abstract The WebView's WebPolicyDelegate.
+        */
         #[method_id(@__retain_semantics Other policyDelegate)]
         pub unsafe fn policyDelegate(&self) -> Option<Id<ProtocolObject<dyn WebPolicyDelegate>>>;
 
+        /**
+         @property policyDelegate
+        @abstract The WebView's WebPolicyDelegate.
+        */
         #[method(setPolicyDelegate:)]
         pub unsafe fn setPolicyDelegate(
             &self,
@@ -170,14 +220,29 @@ extern_methods!(
         );
 
         #[cfg(feature = "WebKit_WebFrame")]
+        /**
+         @property mainFrame
+        @abstract The top level frame.
+        @discussion Note that even documents that are not framesets will have a mainFrame.
+        */
         #[method_id(@__retain_semantics Other mainFrame)]
         pub unsafe fn mainFrame(&self) -> Option<Id<WebFrame>>;
 
         #[cfg(feature = "WebKit_WebFrame")]
+        /**
+         @property selectedFrame
+        @abstract The frame that has the active selection.
+        @discussion Returns the frame that contains the first responder, if any. Otherwise returns the
+        frame that contains a non-zero-length selection, if any. Returns nil if no frame meets these criteria.
+        */
         #[method_id(@__retain_semantics Other selectedFrame)]
         pub unsafe fn selectedFrame(&self) -> Option<Id<WebFrame>>;
 
         #[cfg(feature = "WebKit_WebBackForwardList")]
+        /**
+         @property backForwardList
+        @abstract The backforward list for this WebView.
+        */
         #[method_id(@__retain_semantics Other backForwardList)]
         pub unsafe fn backForwardList(&self) -> Option<Id<WebBackForwardList>>;
 
@@ -194,17 +259,33 @@ extern_methods!(
         #[method(goToBackForwardItem:)]
         pub unsafe fn goToBackForwardItem(&self, item: Option<&WebHistoryItem>) -> bool;
 
+        /**
+         @property textSizeMultiplier
+        @abstract The text size multipler.
+        */
         #[method(textSizeMultiplier)]
         pub unsafe fn textSizeMultiplier(&self) -> c_float;
 
+        /**
+         @property textSizeMultiplier
+        @abstract The text size multipler.
+        */
         #[method(setTextSizeMultiplier:)]
         pub unsafe fn setTextSizeMultiplier(&self, text_size_multiplier: c_float);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property applicationNameForUserAgent
+        @abstract The name of the application as used in the user-agent string.
+        */
         #[method_id(@__retain_semantics Other applicationNameForUserAgent)]
         pub unsafe fn applicationNameForUserAgent(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property applicationNameForUserAgent
+        @abstract The name of the application as used in the user-agent string.
+        */
         #[method(setApplicationNameForUserAgent:)]
         pub unsafe fn setApplicationNameForUserAgent(
             &self,
@@ -212,10 +293,26 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property customUserAgent
+        @abstract The custom user-agent string or nil if no custom user-agent string has been set.
+        @discussion Setting this means that the webView should use this user-agent string
+        instead of constructing a user-agent string for each URL. Setting it to nil
+        causes the webView to construct the user-agent string for each URL
+        for best results rendering web pages
+        */
         #[method_id(@__retain_semantics Other customUserAgent)]
         pub unsafe fn customUserAgent(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property customUserAgent
+        @abstract The custom user-agent string or nil if no custom user-agent string has been set.
+        @discussion Setting this means that the webView should use this user-agent string
+        instead of constructing a user-agent string for each URL. Setting it to nil
+        causes the webView to construct the user-agent string for each URL
+        for best results rendering web pages
+        */
         #[method(setCustomUserAgent:)]
         pub unsafe fn setCustomUserAgent(&self, custom_user_agent: Option<&NSString>);
 
@@ -223,14 +320,38 @@ extern_methods!(
         #[method_id(@__retain_semantics Other userAgentForURL:)]
         pub unsafe fn userAgentForURL(&self, url: Option<&NSURL>) -> Option<Id<NSString>>;
 
+        /**
+         @property supportsTextEncoding
+        @abstract If the document view of the current web page can support different text encodings.
+        */
         #[method(supportsTextEncoding)]
         pub unsafe fn supportsTextEncoding(&self) -> bool;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property customTextEncodingName
+        @abstract The custom text encoding name or nil if no custom text encoding name has been set.
+        @discussion Make the page display with a different text encoding; stops any load in progress.
+        The text encoding passed in overrides the normal text encoding smarts including
+        what's specified in a web page's header or HTTP response.
+        The text encoding automatically goes back to the default when the top level frame
+        changes to a new location.
+        Setting the text encoding name to nil makes the webView use default encoding rules.
+        */
         #[method_id(@__retain_semantics Other customTextEncodingName)]
         pub unsafe fn customTextEncodingName(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property customTextEncodingName
+        @abstract The custom text encoding name or nil if no custom text encoding name has been set.
+        @discussion Make the page display with a different text encoding; stops any load in progress.
+        The text encoding passed in overrides the normal text encoding smarts including
+        what's specified in a web page's header or HTTP response.
+        The text encoding automatically goes back to the default when the top level frame
+        changes to a new location.
+        Setting the text encoding name to nil makes the webView use default encoding rules.
+        */
         #[method(setCustomTextEncodingName:)]
         pub unsafe fn setCustomTextEncodingName(
             &self,
@@ -238,10 +359,22 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property mediaStyle
+        @abstract The media style for the WebView.
+        @discussion The mediaStyle will override the normal value
+        of the CSS media property. Setting the value to nil will restore the normal value. The value will be nil unless explicitly set.
+        */
         #[method_id(@__retain_semantics Other mediaStyle)]
         pub unsafe fn mediaStyle(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property mediaStyle
+        @abstract The media style for the WebView.
+        @discussion The mediaStyle will override the normal value
+        of the CSS media property. Setting the value to nil will restore the normal value. The value will be nil unless explicitly set.
+        */
         #[method(setMediaStyle:)]
         pub unsafe fn setMediaStyle(&self, media_style: Option<&NSString>);
 
@@ -253,30 +386,71 @@ extern_methods!(
         ) -> Option<Id<NSString>>;
 
         #[cfg(feature = "WebKit_WebScriptObject")]
+        /**
+         @property windowScriptObject
+        @abstract A WebScriptObject that represents the
+        window object from the script environment.
+        */
         #[method_id(@__retain_semantics Other windowScriptObject)]
         pub unsafe fn windowScriptObject(&self) -> Option<Id<WebScriptObject>>;
 
         #[cfg(feature = "WebKit_WebPreferences")]
+        /**
+         @property preferences
+        @abstract The preferences used by this WebView.
+        @discussion This method will return [WebPreferences standardPreferences] if no
+        other instance of WebPreferences has been set.
+        */
         #[method_id(@__retain_semantics Other preferences)]
         pub unsafe fn preferences(&self) -> Option<Id<WebPreferences>>;
 
         #[cfg(feature = "WebKit_WebPreferences")]
+        /**
+         @property preferences
+        @abstract The preferences used by this WebView.
+        @discussion This method will return [WebPreferences standardPreferences] if no
+        other instance of WebPreferences has been set.
+        */
         #[method(setPreferences:)]
         pub unsafe fn setPreferences(&self, preferences: Option<&WebPreferences>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property preferencesIdentifier
+        @abstract The WebPreferences key prefix.
+        @discussion If the WebPreferences for this WebView are stored in the user defaults database, this string will be used as a key prefix.
+        */
         #[method_id(@__retain_semantics Other preferencesIdentifier)]
         pub unsafe fn preferencesIdentifier(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property preferencesIdentifier
+        @abstract The WebPreferences key prefix.
+        @discussion If the WebPreferences for this WebView are stored in the user defaults database, this string will be used as a key prefix.
+        */
         #[method(setPreferencesIdentifier:)]
         pub unsafe fn setPreferencesIdentifier(&self, preferences_identifier: Option<&NSString>);
 
         #[cfg(feature = "AppKit_NSWindow")]
+        /**
+         @property hostWindow
+        @abstract The host window for the web view.
+        @discussion Parts of WebKit (such as plug-ins and JavaScript) depend on a window to function
+        properly. Set a host window so these parts continue to function even when the web view is
+        not in an actual window.
+        */
         #[method_id(@__retain_semantics Other hostWindow)]
         pub unsafe fn hostWindow(&self) -> Option<Id<NSWindow>>;
 
         #[cfg(feature = "AppKit_NSWindow")]
+        /**
+         @property hostWindow
+        @abstract The host window for the web view.
+        @discussion Parts of WebKit (such as plug-ins and JavaScript) depend on a window to function
+        properly. Set a host window so these parts continue to function even when the web view is
+        not in an actual window.
+        */
         #[method(setHostWindow:)]
         pub unsafe fn setHostWindow(&self, host_window: Option<&NSWindow>);
 
@@ -299,16 +473,40 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property groupName
+        @abstract The group name for this WebView.
+        @discussion JavaScript may access named frames within the same group.
+        */
         #[method_id(@__retain_semantics Other groupName)]
         pub unsafe fn groupName(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property groupName
+        @abstract The group name for this WebView.
+        @discussion JavaScript may access named frames within the same group.
+        */
         #[method(setGroupName:)]
         pub unsafe fn setGroupName(&self, group_name: Option<&NSString>);
 
+        /**
+         @property estimatedProgress
+        @discussion An estimate of the percent complete for a document load.  This
+        value will range from 0 to 1.0 and, once a load completes, will remain at 1.0
+        until a new load starts, at which point it will be reset to 0.  The value is an
+        estimate based on the total number of bytes expected to be received
+        for a document, including all it's possible subresources.  For more accurate progress
+        indication it is recommended that you implement a WebFrameLoadDelegate and a
+        WebResourceLoadDelegate.
+        */
         #[method(estimatedProgress)]
         pub unsafe fn estimatedProgress(&self) -> c_double;
 
+        /**
+         @property loading
+        @abstract Whether there are any pending loads in this WebView.
+        */
         #[method(isLoading)]
         pub unsafe fn isLoading(&self) -> bool;
 
@@ -317,6 +515,10 @@ extern_methods!(
         pub unsafe fn elementAtPoint(&self, point: NSPoint) -> Option<Id<NSDictionary>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+         @property pasteboardTypesForSelection
+        @abstract The pasteboard types that the WebView can use for the current selection
+        */
         #[method_id(@__retain_semantics Other pasteboardTypesForSelection)]
         pub unsafe fn pasteboardTypesForSelection(&self) -> Id<NSArray>;
 
@@ -354,35 +556,77 @@ extern_methods!(
         #[method(removeDragCaret)]
         pub unsafe fn removeDragCaret(&self);
 
+        /**
+         @property drawsBackground
+        @abstract Whether the receiver draws a default white background when the loaded page has no background specified.
+        */
         #[method(drawsBackground)]
         pub unsafe fn drawsBackground(&self) -> bool;
 
+        /**
+         @property drawsBackground
+        @abstract Whether the receiver draws a default white background when the loaded page has no background specified.
+        */
         #[method(setDrawsBackground:)]
         pub unsafe fn setDrawsBackground(&self, draws_background: bool);
 
+        /**
+         @property shouldUpdateWhileOffscreen
+        @abstract Whether the WebView is always updated even when it is not in a window that is currently visible.
+        @discussion If set to NO, then whenever the web view is not in a visible window, updates to the web page will not necessarily be rendered in the view.
+        However, when the window is made visible, the view will be updated automatically. Not updating while hidden can improve performance. If set to is YES,
+        hidden web views are always updated. This is the default.
+        */
         #[method(shouldUpdateWhileOffscreen)]
         pub unsafe fn shouldUpdateWhileOffscreen(&self) -> bool;
 
+        /**
+         @property shouldUpdateWhileOffscreen
+        @abstract Whether the WebView is always updated even when it is not in a window that is currently visible.
+        @discussion If set to NO, then whenever the web view is not in a visible window, updates to the web page will not necessarily be rendered in the view.
+        However, when the window is made visible, the view will be updated automatically. Not updating while hidden can improve performance. If set to is YES,
+        hidden web views are always updated. This is the default.
+        */
         #[method(setShouldUpdateWhileOffscreen:)]
         pub unsafe fn setShouldUpdateWhileOffscreen(&self, should_update_while_offscreen: bool);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property mainFrameURL
+        @abstract The main frame's current URL.
+        */
         #[method_id(@__retain_semantics Other mainFrameURL)]
         pub unsafe fn mainFrameURL(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property mainFrameURL
+        @abstract The main frame's current URL.
+        */
         #[method(setMainFrameURL:)]
         pub unsafe fn setMainFrameURL(&self, main_frame_url: Option<&NSString>);
 
         #[cfg(feature = "WebKit_DOMDocument")]
+        /**
+         @property mainFrameDocument
+        @abstract The main frame's DOMDocument.
+        */
         #[method_id(@__retain_semantics Other mainFrameDocument)]
         pub unsafe fn mainFrameDocument(&self) -> Option<Id<DOMDocument>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property mainFrameTitle
+        @abstract The main frame's title if any, otherwise an empty string.
+        */
         #[method_id(@__retain_semantics Other mainFrameTitle)]
         pub unsafe fn mainFrameTitle(&self) -> Id<NSString>;
 
         #[cfg(feature = "AppKit_NSImage")]
+        /**
+         @property mainFrameIcon
+        @abstract The site icon for the current page loaded in the mainFrame, or nil.
+        */
         #[method_id(@__retain_semantics Other mainFrameIcon)]
         pub unsafe fn mainFrameIcon(&self) -> Option<Id<NSImage>>;
     }

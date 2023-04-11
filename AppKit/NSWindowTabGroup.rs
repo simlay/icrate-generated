@@ -8,6 +8,9 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSWindowTabGroup")]
+    /**
+      NSWindowTabGroup represents a group of windows that are shown together in one tab group. See NSWindow's tabGroup property.
+    */
     pub struct NSWindowTabGroup;
 
     #[cfg(feature = "AppKit_NSWindowTabGroup")]
@@ -17,32 +20,59 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSWindowTabGroup")]
+/**
+  NSWindowTabGroup represents a group of windows that are shown together in one tab group. See NSWindow's tabGroup property.
+*/
 unsafe impl NSObjectProtocol for NSWindowTabGroup {}
 
 extern_methods!(
+    /**
+      NSWindowTabGroup represents a group of windows that are shown together in one tab group. See NSWindow's tabGroup property.
+    */
     #[cfg(feature = "AppKit_NSWindowTabGroup")]
     unsafe impl NSWindowTabGroup {
+        /**
+          The identifier for this group; all windows in the group will have the same identifier.
+        */
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Id<NSWindowTabbingIdentifier>;
 
         #[cfg(all(feature = "AppKit_NSWindow", feature = "Foundation_NSArray"))]
+        /**
+          Returns the entire group (stack) of windows that are all visually shown together in one virtual tabbed window and associated with this particular window tab group. Operations can then be done on each window, as necessary. For instance, iterating over each window in the group and calling performClose: will close the entire stack. The order of items in the array is the same order as the tabs visually shown (leading to trailing). This property is KVO compliant
+        */
         #[method_id(@__retain_semantics Other windows)]
         pub unsafe fn windows(&self) -> Id<NSArray<NSWindow>>;
 
+        /**
+          Determines if the Tab Picker / Tab Overview UI is visible, and can be set to make it explicitly visible or hidden. KVO compliant and can be observed so that UI can be updated or disabled when the tab overview is visible.
+        */
         #[method(isOverviewVisible)]
         pub unsafe fn isOverviewVisible(&self) -> bool;
 
+        /**
+          Determines if the Tab Picker / Tab Overview UI is visible, and can be set to make it explicitly visible or hidden. KVO compliant and can be observed so that UI can be updated or disabled when the tab overview is visible.
+        */
         #[method(setOverviewVisible:)]
         pub unsafe fn setOverviewVisible(&self, overview_visible: bool);
 
+        /**
+          Returns YES when the tab bar is visible.
+        */
         #[method(isTabBarVisible)]
         pub unsafe fn isTabBarVisible(&self) -> bool;
 
         #[cfg(feature = "AppKit_NSWindow")]
+        /**
+          Returns the current window that is selected. This is KVO compliant. Assignments can only work for a window in the tab group, otherwise an exception will be thrown.
+        */
         #[method_id(@__retain_semantics Other selectedWindow)]
         pub unsafe fn selectedWindow(&self) -> Option<Id<NSWindow>>;
 
         #[cfg(feature = "AppKit_NSWindow")]
+        /**
+          Returns the current window that is selected. This is KVO compliant. Assignments can only work for a window in the tab group, otherwise an exception will be thrown.
+        */
         #[method(setSelectedWindow:)]
         pub unsafe fn setSelectedWindow(&self, selected_window: Option<&NSWindow>);
 

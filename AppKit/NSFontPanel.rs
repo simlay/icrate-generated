@@ -121,6 +121,9 @@ extern_methods!(
 
 extern_enum!(
     #[underlying(c_uint)]
+    /**
+      The following enum items are deprecated. Use NSFontPanelModeMask instead
+    */
     pub enum __anonymous__ {
         NSFontPanelFaceModeMask = 1 << 0,
         NSFontPanelSizeModeMask = 1 << 1,
@@ -138,6 +141,10 @@ extern_enum!(
 
 extern_enum!(
     #[underlying(c_uint)]
+    /**
+      Tags of views in the FontPanel
+    THESE ARE ALL OBSOLETE and should not be used.
+    */
     #[deprecated]
     pub enum __anonymous__ {
         NSFPPreviewButton = 131,

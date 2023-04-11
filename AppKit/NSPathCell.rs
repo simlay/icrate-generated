@@ -7,6 +7,23 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     NSPathCell
+
+    This cell maintains a collection of NSPathComponentCells that represent a particular path to be displayed to the user. The path shown can be set by calling -setURL:. Doing so will remove all displayed NSPathComponentCells and automatically fill it up with NSPathComponentCells set to have the appropriate icons, display titles, and NSURL values for the particular path component they represent. One can manually fill up the control by setting the cell array or directly modifying existing cells.
+
+    Both an action and doubleAction can be set for the control. To find out what path component cell was clicked upon in the action, you can access the 'clickedPathComponentCell'. When the style is set to NSPathStylePopUp, the action is still sent, and the 'clickedPathComponentCell' for the represented menu item is correctly set. The 'clickedPathComponentCell' is only valid when the action is being sent. It will also be valid when the keyboard is used to invoke the action.
+
+    Automatic animated expansion of partially hidden NSPathComponentCells will happen if you correctly call mouseEntered: and mouseExited: for each NSPathComponentCell in the NSPathCell. This is not required if the pathStyle is set to NSPathStylePopUp, or if you wish to not have the animation.
+
+    The NSPathCell supports several path display styles. The NSPathStyleStandard has a light blue background with arrows indicating the path. The NSPathStylePopUp will look and work like an NSPopUpButton to display the full path, or select a new path, if the cell is editable.
+
+    If the cell isEditable (the default is YES), one can drag and drop into the cell to change the value. You can constrain what can be dropped using UTIs (Uniform Type Identifier) in the allowedTypes, or the appropriate delegate methods on NSPathControl.
+
+    If the cell isSelectable (the default is YES), the cell's contents can automatically be draged out. The proper UTI and filename and URL will be placed on the pasteboard. You can further control or limit this by using the appropriate delegate methods on NSPathControl.
+
+    If the cell isEditable and has the pathStyle set to NSPathStylePopUp, an additional item in the pop up menu will allow selecting another location. By default, an NSOpenPanel will be configured based on the allowedTypes. The NSOpenPanel that is used can be customized with a delegate method.
+    */
     pub enum NSPathStyle {
         NSPathStyleStandard = 0,
         NSPathStylePopUp = 2,
@@ -51,9 +68,15 @@ unsafe impl NSUserInterfaceItemIdentification for NSPathCell {}
 extern_methods!(
     #[cfg(feature = "AppKit_NSPathCell")]
     unsafe impl NSPathCell {
+        /**
+          See NSPathControl for documentation on all the properties listed below. The NSPathControl directly calls the cell's methods.
+        */
         #[method(pathStyle)]
         pub unsafe fn pathStyle(&self) -> NSPathStyle;
 
+        /**
+          See NSPathControl for documentation on all the properties listed below. The NSPathControl directly calls the cell's methods.
+        */
         #[method(setPathStyle:)]
         pub unsafe fn setPathStyle(&self, path_style: NSPathStyle);
 
@@ -82,6 +105,9 @@ extern_methods!(
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(&self, delegate: Option<&ProtocolObject<dyn NSPathCellDelegate>>);
 
+        /**
+          Returns the class used to create pathComponentCells when automatically filling up the control. Subclassers can override this method to return a custom cell class that will automatically be used. By default, it will return [NSPathComponentCell class], or a specialized subclass thereof.
+        */
         #[method(pathComponentCellClass)]
         pub unsafe fn pathComponentCellClass() -> &'static Class;
 
@@ -115,6 +141,9 @@ extern_methods!(
         ) -> Option<Id<NSPathComponentCell>>;
 
         #[cfg(feature = "AppKit_NSPathComponentCell")]
+        /**
+          Returns the clicked cell, or nil, if a no cell has been clicked. The clickedPathComponentCell is generally only valid when the action or doubleAction is being sent.
+        */
         #[method_id(@__retain_semantics Other clickedPathComponentCell)]
         pub unsafe fn clickedPathComponentCell(&self) -> Option<Id<NSPathComponentCell>>;
 
@@ -136,17 +165,29 @@ extern_methods!(
             view: &NSView,
         );
 
+        /**
+          Allows you to set the selector that will be called when the user double clicks on a particular NSPathComponentCell.
+        */
         #[method(doubleAction)]
         pub unsafe fn doubleAction(&self) -> Option<Sel>;
 
+        /**
+          Allows you to set the selector that will be called when the user double clicks on a particular NSPathComponentCell.
+        */
         #[method(setDoubleAction:)]
         pub unsafe fn setDoubleAction(&self, double_action: Option<Sel>);
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+          The background color to be drawn. By default, it will be set to a light blue color for NSPathStyleStandard, and nil for everything else. You can use [NSColor clearColor] to make the background transparent. NSPathCell will return YES from isOpaque if the backgroundColor has an alphaComponent of 1.0, otherwise, it will return NO. When drawing with the background color, NSCompositeSourceOver is used for the compositing operation.
+        */
         #[method_id(@__retain_semantics Other backgroundColor)]
         pub unsafe fn backgroundColor(&self) -> Option<Id<NSColor>>;
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+          The background color to be drawn. By default, it will be set to a light blue color for NSPathStyleStandard, and nil for everything else. You can use [NSColor clearColor] to make the background transparent. NSPathCell will return YES from isOpaque if the backgroundColor has an alphaComponent of 1.0, otherwise, it will return NO. When drawing with the background color, NSCompositeSourceOver is used for the compositing operation.
+        */
         #[method(setBackgroundColor:)]
         pub unsafe fn setBackgroundColor(&self, background_color: Option<&NSColor>);
 

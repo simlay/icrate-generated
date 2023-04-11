@@ -6,6 +6,9 @@ use crate::CoreData::*;
 use crate::Foundation::*;
 
 extern_protocol!(
+    /**
+      NSTextInput is deprecated in Mac OS X 10.6. Use NSTextInputClient instead.
+    */
     pub unsafe trait NSTextInput {
         #[deprecated]
         #[method(insertText:)]
@@ -67,6 +70,9 @@ extern_protocol!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSInputManager")]
+    /**
+      NSInputManager is deprecated in Mac OS X 10.6. Use NSTextInputContext instead.
+    */
     #[deprecated = "Use NSTextInputContext instead"]
     pub struct NSInputManager;
 
@@ -77,12 +83,21 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSInputManager")]
+/**
+  NSInputManager is deprecated in Mac OS X 10.6. Use NSTextInputContext instead.
+*/
 unsafe impl NSObjectProtocol for NSInputManager {}
 
 #[cfg(feature = "AppKit_NSInputManager")]
+/**
+  NSInputManager is deprecated in Mac OS X 10.6. Use NSTextInputContext instead.
+*/
 unsafe impl NSTextInput for NSInputManager {}
 
 extern_methods!(
+    /**
+      NSInputManager is deprecated in Mac OS X 10.6. Use NSTextInputContext instead.
+    */
     #[cfg(feature = "AppKit_NSInputManager")]
     unsafe impl NSInputManager {
         #[deprecated]

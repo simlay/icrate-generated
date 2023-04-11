@@ -12,6 +12,12 @@ extern_static!(kCLHeadingFilterNone: CLLocationDegrees);
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreLocation_CLHeading")]
+    /**
+       CLHeading
+
+      Discussion:
+        Represents a vector pointing to magnetic North constructed from axis component values x, y, and z. An accuracy of the heading calculation is also provided along with timestamp information.
+    */
     pub struct CLHeading;
 
     #[cfg(feature = "CoreLocation_CLHeading")]
@@ -21,36 +27,113 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreLocation_CLHeading")]
+/**
+   CLHeading
+
+  Discussion:
+    Represents a vector pointing to magnetic North constructed from axis component values x, y, and z. An accuracy of the heading calculation is also provided along with timestamp information.
+*/
 unsafe impl NSCoding for CLHeading {}
 
 #[cfg(feature = "CoreLocation_CLHeading")]
+/**
+   CLHeading
+
+  Discussion:
+    Represents a vector pointing to magnetic North constructed from axis component values x, y, and z. An accuracy of the heading calculation is also provided along with timestamp information.
+*/
 unsafe impl NSObjectProtocol for CLHeading {}
 
 #[cfg(feature = "CoreLocation_CLHeading")]
+/**
+   CLHeading
+
+  Discussion:
+    Represents a vector pointing to magnetic North constructed from axis component values x, y, and z. An accuracy of the heading calculation is also provided along with timestamp information.
+*/
 unsafe impl NSSecureCoding for CLHeading {}
 
 extern_methods!(
+    /**
+       CLHeading
+
+      Discussion:
+        Represents a vector pointing to magnetic North constructed from axis component values x, y, and z. An accuracy of the heading calculation is also provided along with timestamp information.
+    */
     #[cfg(feature = "CoreLocation_CLHeading")]
     unsafe impl CLHeading {
+        /**
+           magneticHeading
+
+          Discussion:
+            Represents the direction in degrees, where 0 degrees is magnetic North. The direction is referenced from the top of the device regardless of device orientation as well as the orientation of the user interface.
+
+          Range:
+            0.0 - 359.9 degrees, 0 being magnetic North
+        */
         #[method(magneticHeading)]
         pub unsafe fn magneticHeading(&self) -> CLLocationDirection;
 
+        /**
+           trueHeading
+
+          Discussion:
+            Represents the direction in degrees, where 0 degrees is true North. The direction is referenced
+            from the top of the device regardless of device orientation as well as the orientation of the
+            user interface.
+
+          Range:
+            0.0 - 359.9 degrees, 0 being true North
+        */
         #[method(trueHeading)]
         pub unsafe fn trueHeading(&self) -> CLLocationDirection;
 
+        /**
+           headingAccuracy
+
+          Discussion:
+            Represents the maximum deviation of where the magnetic heading may differ from the actual geomagnetic heading in degrees. A negative value indicates an invalid heading.
+        */
         #[method(headingAccuracy)]
         pub unsafe fn headingAccuracy(&self) -> CLLocationDirection;
 
+        /**
+           x
+
+          Discussion:
+            Returns a raw value for the geomagnetism measured in the x-axis.
+
+        */
         #[method(x)]
         pub unsafe fn x(&self) -> CLHeadingComponentValue;
 
+        /**
+           y
+
+          Discussion:
+            Returns a raw value for the geomagnetism measured in the y-axis.
+
+        */
         #[method(y)]
         pub unsafe fn y(&self) -> CLHeadingComponentValue;
 
+        /**
+           z
+
+          Discussion:
+            Returns a raw value for the geomagnetism measured in the z-axis.
+
+        */
         #[method(z)]
         pub unsafe fn z(&self) -> CLHeadingComponentValue;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+           timestamp
+
+          Discussion:
+            Returns a timestamp for when the magnetic heading was determined.
+        */
         #[method_id(@__retain_semantics Other timestamp)]
         pub unsafe fn timestamp(&self) -> Id<NSDate>;
     }

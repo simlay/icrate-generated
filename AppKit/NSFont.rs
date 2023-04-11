@@ -131,12 +131,21 @@ extern_methods!(
         #[method_id(@__retain_semantics Other fontWithSize:)]
         pub unsafe fn fontWithSize(&self, font_size: CGFloat) -> Id<NSFont>;
 
+        /**
+          size of the standard System font.
+        */
         #[method(systemFontSize)]
         pub unsafe fn systemFontSize() -> CGFloat;
 
+        /**
+          size of standard small System font.
+        */
         #[method(smallSystemFontSize)]
         pub unsafe fn smallSystemFontSize() -> CGFloat;
 
+        /**
+          size of the standard Label Font.
+        */
         #[method(labelFontSize)]
         pub unsafe fn labelFontSize() -> CGFloat;
 
@@ -144,6 +153,9 @@ extern_methods!(
         pub unsafe fn systemFontSizeForControlSize(control_size: NSControlSize) -> CGFloat;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Core font attribute
+        */
         #[method_id(@__retain_semantics Other fontName)]
         pub unsafe fn fontName(&self) -> Id<NSString>;
 
@@ -169,6 +181,9 @@ extern_methods!(
         #[method_id(@__retain_semantics Other textTransform)]
         pub unsafe fn textTransform(&self) -> Id<NSAffineTransform>;
 
+        /**
+          Glyph coverage
+        */
         #[method(numberOfGlyphs)]
         pub unsafe fn numberOfGlyphs(&self) -> NSUInteger;
 
@@ -179,6 +194,10 @@ extern_methods!(
         #[method_id(@__retain_semantics Other coveredCharacterSet)]
         pub unsafe fn coveredCharacterSet(&self) -> Id<NSCharacterSet>;
 
+        /**
+          Font instance-wide metrics
+         These methods return scaled numbers.  If the font was created with a matrix, the matrix is applied automatically; otherwise the coordinates are multiplied by size.
+        */
         #[method(boundingRectForFont)]
         pub unsafe fn boundingRectForFont(&self) -> NSRect;
 
@@ -219,9 +238,16 @@ extern_methods!(
         #[method(setInContext:)]
         pub unsafe fn setInContext(&self, graphics_context: &NSGraphicsContext);
 
+        /**
+          Vertical mode
+         Returns a vertical version of the receiver if such a configuration is supported.  Returns the receiver if no vertical variant available.  A vertical font applies appropriate rotation to the text matrix in -setInContext:, returns vertical metrics, and enables the vertical glyph substitution feature by default.
+        */
         #[method_id(@__retain_semantics Other verticalFont)]
         pub unsafe fn verticalFont(&self) -> Id<NSFont>;
 
+        /**
+          Returns YES if a vertical variant
+        */
         #[method(isVertical)]
         pub unsafe fn isVertical(&self) -> bool;
     }
@@ -243,6 +269,10 @@ extern_enum!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      NSFontRenderingMode-related API is now deprecated.
+    ********* Screen Font Rendering Mode
+    */
     pub enum NSFontRenderingMode {
         NSFontDefaultRenderingMode = 0,
         NSFontAntialiasedRenderingMode = 1,
@@ -308,6 +338,9 @@ extern_methods!(
             length: NSUInteger,
         );
 
+        /**
+          Rendering mode
+        */
         #[method_id(@__retain_semantics Other printerFont)]
         pub unsafe fn printerFont(&self) -> Id<NSFont>;
 

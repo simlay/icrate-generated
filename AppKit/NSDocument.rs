@@ -101,32 +101,64 @@ extern_methods!(
         ) -> Result<Id<Self>, Id<NSError>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The name of the document's format. The set method isn't for _changing_ the document's format, it's just for initially recording the document's format during opening or saving.
+        */
         #[method_id(@__retain_semantics Other fileType)]
         pub unsafe fn fileType(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The name of the document's format. The set method isn't for _changing_ the document's format, it's just for initially recording the document's format during opening or saving.
+        */
         #[method(setFileType:)]
         pub unsafe fn setFileType(&self, file_type: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          The location of the document's on-disk representation. The set method doesn't actually rename the document, it's just for recording the document's location during initial opening or saving. The default implementation of -setFileURL: just records the URL so that the default implementation of -fileURL can return it. The default implementation of -fileURL returns whatever was stored by a previous invocation of the default implementation of -setFileURL:.
+
+        Starting in Mac OS 10.7 the default implementations of these methods are thread safe enough that -setFileURL: being invoked on the main thread while -fileURL is being invoked on a different thread won't cause a crash. If you override one of these methods you must maintain that thread safety because AppKit itself may invoke -fileURL on a non-main thread. (It's still not a good idea to invoke -setFileURL: on a non-main thread though.)
+
+        For backward binary compatibility with Mac OS 10.3 and earlier, the default implementation of -setFileURL: instead invokes [self setFileName:[url path]] if -setFileName: is overridden and the URL is nil or uses the "file:" scheme. Likewise, the default implementation of -fileURL instead invokes -[self fileName] and returns the result as a URL if -fileName is overridden.
+        */
         #[method_id(@__retain_semantics Other fileURL)]
         pub unsafe fn fileURL(&self) -> Option<Id<NSURL>>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          The location of the document's on-disk representation. The set method doesn't actually rename the document, it's just for recording the document's location during initial opening or saving. The default implementation of -setFileURL: just records the URL so that the default implementation of -fileURL can return it. The default implementation of -fileURL returns whatever was stored by a previous invocation of the default implementation of -setFileURL:.
+
+        Starting in Mac OS 10.7 the default implementations of these methods are thread safe enough that -setFileURL: being invoked on the main thread while -fileURL is being invoked on a different thread won't cause a crash. If you override one of these methods you must maintain that thread safety because AppKit itself may invoke -fileURL on a non-main thread. (It's still not a good idea to invoke -setFileURL: on a non-main thread though.)
+
+        For backward binary compatibility with Mac OS 10.3 and earlier, the default implementation of -setFileURL: instead invokes [self setFileName:[url path]] if -setFileName: is overridden and the URL is nil or uses the "file:" scheme. Likewise, the default implementation of -fileURL instead invokes -[self fileName] and returns the result as a URL if -fileName is overridden.
+        */
         #[method(setFileURL:)]
         pub unsafe fn setFileURL(&self, file_url: Option<&NSURL>);
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          The last known modification date of the document's on-disk representation.
+        */
         #[method_id(@__retain_semantics Other fileModificationDate)]
         pub unsafe fn fileModificationDate(&self) -> Option<Id<NSDate>>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          The last known modification date of the document's on-disk representation.
+        */
         #[method(setFileModificationDate:)]
         pub unsafe fn setFileModificationDate(&self, file_modification_date: Option<&NSDate>);
 
+        /**
+          Whether the document is a draft that the user has not expressed an interest in keeping around. A save panel will be presented when the user closes a draft document. Only documents with non-nil values for [self fileURL] should be considered drafts.
+        */
         #[method(isDraft)]
         pub unsafe fn isDraft(&self) -> bool;
 
+        /**
+          Whether the document is a draft that the user has not expressed an interest in keeping around. A save panel will be presented when the user closes a draft document. Only documents with non-nil values for [self fileURL] should be considered drafts.
+        */
         #[method(setDraft:)]
         pub unsafe fn setDraft(&self, draft: bool);
 
@@ -203,6 +235,9 @@ extern_methods!(
             type_name: &NSString,
         ) -> Result<(), Id<NSError>>;
 
+        /**
+          Return YES if the document's entire file is loaded into memory, NO otherwise. The default implementation of this method returns YES. You can override this method to return NO if additional data may need to be read from the file. NSDocument may use this value to do things like prevent volume ejection or warn the user when a partially loaded file disappears from the file system.
+        */
         #[method(isEntireFileLoaded)]
         pub unsafe fn isEntireFileLoaded(&self) -> bool;
 
@@ -243,6 +278,11 @@ extern_methods!(
         #[method(unblockUserInteraction)]
         pub unsafe fn unblockUserInteraction(&self);
 
+        /**
+          Return YES if autosaving is being done right now but nothing bad would happen if it were to be cancelled, NO otherwise. For example, when periodic autosaving is being done just for crash protection, which doesn't really have to be done all of the time, this method returns YES. When autosaving is being done because the document is being closed this method returns NO.
+
+        You can use this notion of implicitly cancellable autosaving when implementing a "stop-copying-on-write" model so that your document class' writing code can invoke -unblockUserInteraction relatively quickly during writing on a non-main thread regardless of how much work must actually be done to make the sort of snapshot mentioned in the comment for -unblockUserInteraction. When this method returns YES your writing code can invoke -unblockUserInteraction after having merely recorded the fact that changes to the document model made by the user should first cancel the rest of the writing. Your code that makes changes to the document model then has to actually always do that cancellation first. (This may be a significant amount of work but hopefully less than implementing a copy-on-write model, which is another option for invoking -unblockUserInteraction as quickly as possible.) If your writing code is implicitly cancelled like that it should signal NSCocoaErrorDomain/NSUserCancelledError, the one kind of error that is never actually presented to the user.
+        */
         #[method(autosavingIsImplicitlyCancellable)]
         pub unsafe fn autosavingIsImplicitlyCancellable(&self) -> bool;
 
@@ -288,10 +328,22 @@ extern_methods!(
             absolute_original_contents_url: Option<&NSURL>,
         ) -> Result<Id<NSDictionary<NSString, Object>>, Id<NSError>>;
 
+        /**
+          Return YES if the old on-disk version of a document that is being overwritten should be preserved during an NSSaveOperation, NO otherwise. The default implementation of this method returns NO. For applications that return YES from +preservesVersions, this method has no effect.
+        */
         #[method(keepBackupFile)]
         pub unsafe fn keepBackupFile(&self) -> bool;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          Return the URL that will be used when preserving a backup file during an NSSaveOperation or NSAutosaveInPlaceOperation, or nil if the backup file can't be created or isn't needed.
+
+        On Mac OS 10.8, document versions can be preserved using a backup file that is stored at the returned URL during safe-saving. Using this backup file for preserving versions is much more efficient because NSDocument is able to use NSFileVersionReplacingByMoving. NSDocument calls this method twice during saving: once before -writeSafelyToURL:ofType:forSaveOperation:error: to check whether NSFileVersionReplacingByMoving will be possible (and to preserve by copying if it's not), and once within that method to discover where to put the backup file.
+
+        Implementations of -writeSafelyToURL:ofType:forSaveOperation:error: must check the value returned by this method during NSSaveOperations and NSAutosaveInPlaceOperations and, if the URL is non-nil, move the previous contents of the file that would be overwritten to that location. (The default implementation of -writeSafelyToURL:ofType:forSaveOperation:error: does this.) Custom implementations of -writeSafelyToURL:ofType:forSaveOperation:error: can use -[NSFileManager replaceItemAtURL:withItemAtURL:backupItemName:options:resultingItemURL:error:] with a backup item name of [[self backupFileURL] lastPathComponent] and the NSFileManagerItemReplacementWithoutDeletingBackupItem option to easily create the backup file. If your custom implementation is unable to keep the backup file, you must override this method and return nil to ensure that the document's file gets correctly preserved before it gets overwritten.
+
+        The default implementation of this method returns a non-nil value based off the value of [self fileURL] only if the document's file needs to be preserved prior to saving, or if +preservesVersions returns NO. Otherwise, it returns nil.
+        */
         #[method_id(@__retain_semantics Other backupFileURL)]
         pub unsafe fn backupFileURL(&self) -> Option<Id<NSURL>>;
 
@@ -321,6 +373,9 @@ extern_methods!(
             context_info: *mut c_void,
         );
 
+        /**
+          Return YES if -runModalSavePanelForSaveOperation:delegate:didSaveSelector:contextInfo: should add NSDocument's standard file format accessory view to the save panel, NO otherwise. The default implementation of this method returns YES. You can override this method to prevent NSDocument from adding an accessory view to the save panel so that your application can add its own when -prepareSavePanel is invoked.
+        */
         #[method(shouldRunSavePanelWithAccessoryView)]
         pub unsafe fn shouldRunSavePanelWithAccessoryView(&self) -> bool;
 
@@ -328,10 +383,16 @@ extern_methods!(
         #[method(prepareSavePanel:)]
         pub unsafe fn prepareSavePanel(&self, save_panel: &NSSavePanel) -> bool;
 
+        /**
+          Return YES if a save panel has been presented by this document and the user chose to hide the name extension of the file that was selected in that save panel, NO otherwise.
+        */
         #[method(fileNameExtensionWasHiddenInLastRunSavePanel)]
         pub unsafe fn fileNameExtensionWasHiddenInLastRunSavePanel(&self) -> bool;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          If a save panel has been presented by this document, and a choice of file type was presented in that panel, return the name of the file type that the user chose.
+        */
         #[method_id(@__retain_semantics Other fileTypeFromLastRunSavePanel)]
         pub unsafe fn fileTypeFromLastRunSavePanel(&self) -> Option<Id<NSString>>;
 
@@ -377,6 +438,9 @@ extern_methods!(
         #[method(scheduleAutosaving)]
         pub unsafe fn scheduleAutosaving(&self);
 
+        /**
+          Return YES if the document has changes that have not been autosaved, NO otherwise, as determined by the history of previous invocations of -updateChangeCount:. The default implementation of this method returns NO immediately after invocation of -updateChangeCount:NSChangeCleared or -updateChangeCount:NSChangeAutosaved. It will then return YES if subsequent invocations of -updateChangeCount: have recorded a situation in which the document has changes that have not been autosaved. (-updateChangeCount:NSChangeReadOtherContents has no effect on what the default implementation of this method returns.)
+        */
         #[method(hasUnautosavedChanges)]
         pub unsafe fn hasUnautosavedChanges(&self) -> bool;
 
@@ -396,15 +460,28 @@ extern_methods!(
             completion_handler: &Block<(*mut NSError,), ()>,
         );
 
+        /**
+          Return YES if the receiving subclass of NSDocument supports Mac OS 10.7 autosaving in place, NO otherwise. The default implementation of this method returns NO. You can override it and return YES to declare your NSDocument subclass' ability to do Mac OS 10.7 autosaving in place. You should not invoke this method to find out whether autosaving in place is actually being done at any particular moment. You should instead use the NSSaveOperationType parameter passed to your overrides of -save... and -write... methods.
+
+        AppKit invokes this method at a variety of times, and not always on the main thread. For example, -autosaveWithImplicitCancellability:completionHandler: invokes this as part of determining whether the autosaving will be an NSAutosaveInPlaceOperation instead of an NSAutosaveElsewhereOperation. For another example, -canCloseDocumentWithDelegate:shouldCloseSelector:contextInfo: and NSDocumentController's machinery for handling unsaved changes at application termination time both invoke this as part of determining whether alerts about unsaved changes should be presented to the user.
+        */
         #[method(autosavesInPlace)]
         pub unsafe fn autosavesInPlace() -> bool;
 
+        /**
+          Return YES if the receiving subclass of NSDocument supports Mac OS 10.7 version preservation, NO otherwise. The default implementation of this method returns [self autosavesInPlace]. You can override it and return NO to declare that NSDocument should not preserve old document versions.
+
+        Returning NO from this method will disable version browsing and -revertDocumentToSaved:, which rely on version preservation when autosaving in place. Returning YES from this method when +autosavesInPlace returns NO will result in undefined behavior.
+        */
         #[method(preservesVersions)]
         pub unsafe fn preservesVersions() -> bool;
 
         #[method(browseDocumentVersions:)]
         pub unsafe fn browseDocumentVersions(&self, sender: Option<&Object>);
 
+        /**
+          Whether the receiver is currently displaying the Versions browser. KVO-compliant.
+        */
         #[method(isBrowsingVersions)]
         pub unsafe fn isBrowsingVersions(&self) -> bool;
 
@@ -414,18 +491,36 @@ extern_methods!(
             completion_handler: Option<&Block<(), ()>>,
         );
 
+        /**
+          Return YES if the receiving subclass of NSDocument supports Mac OS 10.8 autosaving of drafts, NO otherwise. The default implementation of this method returns YES for applications linked on or after Mac OS 10.8. You can override it and return YES to declare your NSDocument subclass' ability to do Mac OS 10.8 autosaving of drafts. You can also override it and return NO to opt out of this behavior after linking with 10.8. You should not invoke this method to find out whether autosaving of a draft will be done. Instances of subclasses that return YES from this method should be ready to properly handle save operations with NSAutosaveAsOperation.
+
+        AppKit invokes this method at a variety of times. For example, when -updateChangeCount is called with NSChangeDone (without NSChangeDiscardable), NSDocument will the next autosave to use NSAutosaveAsOperation and return the document into a draft.
+        */
         #[method(autosavesDrafts)]
         pub unsafe fn autosavesDrafts() -> bool;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Return the document type that should be used for an autosave operation. The default implementation just returns [self fileType].
+        */
         #[method_id(@__retain_semantics Other autosavingFileType)]
         pub unsafe fn autosavingFileType(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          The location of the most recently autosaved document contents. The default implementation of -setAutosavedContentsFileURL: records the URL and notifies the shared document controller that this document should be autoreopened if the application is quit or crashes before the document is saved. The default implementation of -autosavedContentsFileURL just returns whatever was stored by a previous invocation of the default implementation of -setAutosavedContentsFileURL:.
+
+        Starting in Mac OS 10.7 the default implementations of these methods are thread safe enough that -setAutosavedContentsFileURL: being invoked on the main thread while -autosavedContentsFileURL is being invoked on a different thread won't cause a crash. If you override one of these methods you must maintain that thread safety because AppKit itself may invoke -autosavedContentsFileURL on a background thread. (It's still not a good idea to invoke -setAutosavedContentsFileURL: on a non-main thread though.)
+        */
         #[method_id(@__retain_semantics Other autosavedContentsFileURL)]
         pub unsafe fn autosavedContentsFileURL(&self) -> Option<Id<NSURL>>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          The location of the most recently autosaved document contents. The default implementation of -setAutosavedContentsFileURL: records the URL and notifies the shared document controller that this document should be autoreopened if the application is quit or crashes before the document is saved. The default implementation of -autosavedContentsFileURL just returns whatever was stored by a previous invocation of the default implementation of -setAutosavedContentsFileURL:.
+
+        Starting in Mac OS 10.7 the default implementations of these methods are thread safe enough that -setAutosavedContentsFileURL: being invoked on the main thread while -autosavedContentsFileURL is being invoked on a different thread won't cause a crash. If you override one of these methods you must maintain that thread safety because AppKit itself may invoke -autosavedContentsFileURL on a background thread. (It's still not a good idea to invoke -setAutosavedContentsFileURL: on a non-main thread though.)
+        */
         #[method(setAutosavedContentsFileURL:)]
         pub unsafe fn setAutosavedContentsFileURL(
             &self,
@@ -513,6 +608,9 @@ extern_methods!(
             completion_handler: Option<&Block<(*mut NSError,), ()>>,
         );
 
+        /**
+          Returns YES when it appears the file at [self fileURL] cannot be written to. The conditions that cause this to return YES are subject to change, but may include the lack of write permissions, the "user immutable" flag, a read-only parent directory or volume, a return value of NO from -checkAutosavingSafetyAndReturnError:. You should not override this method.
+        */
         #[method(isLocked)]
         pub unsafe fn isLocked(&self) -> bool;
 
@@ -538,10 +636,16 @@ extern_methods!(
         pub unsafe fn shouldChangePrintInfo(&self, new_print_info: &NSPrintInfo) -> bool;
 
         #[cfg(feature = "AppKit_NSPrintInfo")]
+        /**
+          The print info for the document. The default implementation of -setPrintInfo: records the change as an undoable change, if the document has an undo manager. If the document has no undo manager, it invokes [self updateChangeCount:NSChangeDone].
+        */
         #[method_id(@__retain_semantics Other printInfo)]
         pub unsafe fn printInfo(&self) -> Id<NSPrintInfo>;
 
         #[cfg(feature = "AppKit_NSPrintInfo")]
+        /**
+          The print info for the document. The default implementation of -setPrintInfo: records the change as an undoable change, if the document has an undo manager. If the document has no undo manager, it invokes [self updateChangeCount:NSChangeDone].
+        */
         #[method(setPrintInfo:)]
         pub unsafe fn setPrintInfo(&self, print_info: &NSPrintInfo);
 
@@ -584,9 +688,17 @@ extern_methods!(
         pub unsafe fn saveDocumentToPDF(&self, sender: Option<&Object>);
 
         #[cfg(feature = "AppKit_NSPrintOperation")]
+        /**
+          Create a print operation that can be run to create a PDF representation of the document's current contents, and return it if successful. You typically should not use [self printInfo] when creating this print operation, but you should instead maintain a separate NSPrintInfo instance specifically for creating PDFs. The default implementation of this method simply invokes [self printOperationWithSettings:@{ NSPrintJobDisposition : NSPrintSaveJob } error:NULL], but you are highly encouraged to override it if your document subclass supports creating PDF representations.
+        */
         #[method_id(@__retain_semantics Other PDFPrintOperation)]
         pub unsafe fn PDFPrintOperation(&self) -> Id<NSPrintOperation>;
 
+        /**
+          If YES, allows this instance to be shared via NSDocumentController's standard Share menu. If NO, the standard Share menu will be disabled when this document is targeted.
+
+        By default, this returns the same value as [[self class] autosavesInPlace].
+        */
         #[method(allowsDocumentSharing)]
         pub unsafe fn allowsDocumentSharing(&self) -> bool;
 
@@ -605,9 +717,15 @@ extern_methods!(
             sharing_service_picker: &NSSharingServicePicker,
         );
 
+        /**
+          Return YES if the document has changes that have not been saved, NO otherwise, primarily determined by the history of previous invocations of -updateChangeCount:. The default implementation of this method returns NO immediately after invocation of -updateChangeCount:NSChangeCleared. It will then return YES if subsequent invocations of -updateChangeCount: have recorded a situation in which the document has changes that have not been saved. Also, it will always return YES after invocation of -updateChangeCount:NSChangeReadOtherContents, until the next invocation of -updateChangeCount:NSChangeCleared. (-updateChangeCount:NSChangeAutosaved has no effect on what the default implementation of this method returns.) Lastly, because NSDocument implements Cocoa Bindings' NSEditorRegistration protocol, the default implementation will return YES whenever there are registered key-value binding editors.
+        */
         #[method(isDocumentEdited)]
         pub unsafe fn isDocumentEdited(&self) -> bool;
 
+        /**
+          Return YES if the document is in read-only "viewing mode". You may use this information to prevent certain kinds of user actions or changes when the user is viewing an old document version.
+        */
         #[method(isInViewingMode)]
         pub unsafe fn isInViewingMode(&self) -> bool;
 
@@ -628,16 +746,28 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSUndoManager")]
+        /**
+          The document's undo manager. The default implementation of -setUndoManager:, in addition to recording the undo manager, registers the document as an observer of various NSUndoManager notifications so that -updateChangeCount: is invoked as undoable changes are made to the document. The default implementation of -undoManager creates an undo manager if the document does not already have one and -hasUndoManager would return YES.
+        */
         #[method_id(@__retain_semantics Other undoManager)]
         pub unsafe fn undoManager(&self) -> Option<Id<NSUndoManager>>;
 
         #[cfg(feature = "Foundation_NSUndoManager")]
+        /**
+          The document's undo manager. The default implementation of -setUndoManager:, in addition to recording the undo manager, registers the document as an observer of various NSUndoManager notifications so that -updateChangeCount: is invoked as undoable changes are made to the document. The default implementation of -undoManager creates an undo manager if the document does not already have one and -hasUndoManager would return YES.
+        */
         #[method(setUndoManager:)]
         pub unsafe fn setUndoManager(&self, undo_manager: Option<&NSUndoManager>);
 
+        /**
+          Whether or not the document has an undo manager. The default implementation of -setHasUndoManager: releases the document's current undo manager if it has one before the invocation but is not to have one afterward.
+        */
         #[method(hasUndoManager)]
         pub unsafe fn hasUndoManager(&self) -> bool;
 
+        /**
+          Whether or not the document has an undo manager. The default implementation of -setHasUndoManager: releases the document's current undo manager if it has one before the invocation but is not to have one afterward.
+        */
         #[method(setHasUndoManager:)]
         pub unsafe fn setHasUndoManager(&self, has_undo_manager: bool);
 
@@ -667,6 +797,9 @@ extern_methods!(
         #[method(makeWindowControllers)]
         pub unsafe fn makeWindowControllers(&self);
 
+        /**
+          Return the name of the nib to be used by -makeWindowControllers. The default implementation returns nil. You can override this method to return the name of a nib in your application's resources; the class of the file's owner in that nib must match the class of this object, and the window outlet of the file's owner should be connected to a window. Virtually every subclass of NSDocument has to override either -makeWindowControllers or -windowNibName.
+        */
         #[method_id(@__retain_semantics Other windowNibName)]
         pub unsafe fn windowNibName(&self) -> Option<Id<NSNibName>>;
 
@@ -694,6 +827,9 @@ extern_methods!(
         pub unsafe fn showWindows(&self);
 
         #[cfg(all(feature = "AppKit_NSWindowController", feature = "Foundation_NSArray"))]
+        /**
+          Return an array of all window controllers that have been added to this document with -addWindowController: but not yet removed with -removeWindowController:.
+        */
         #[method_id(@__retain_semantics Other windowControllers)]
         pub unsafe fn windowControllers(&self) -> Id<NSArray<NSWindowController>>;
 
@@ -708,6 +844,9 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Returns the name for this document that is fit for presentation to the user. You can override this method, but overriding -[NSWindowController windowTitleForDocumentDisplayName:] is usually better, because a document's display name is used in error alerts, alerts presented during document saving, the alert that's presented when the user attempts to close a document that has unsaved changes, and save panels (as the default value of the "Save As:" field). In those places the document file's actual name really is what should be used.
+        */
         #[method_id(@__retain_semantics Other displayName)]
         pub unsafe fn displayName(&self) -> Id<NSString>;
 
@@ -716,14 +855,23 @@ extern_methods!(
         pub unsafe fn defaultDraftName(&self) -> Id<NSString>;
 
         #[cfg(feature = "AppKit_NSWindow")]
+        /**
+          Of the windows associated with this document, return the one most appropriate to use as the parent window of a document-modal sheet. This method may return nil, in which case the invoker should present an application-modal panel. NSDocument's implementation of this method returns the window of the first window controller, or nil if there are no window controllers or if the first window controller has no window.
+        */
         #[method_id(@__retain_semantics Other windowForSheet)]
         pub unsafe fn windowForSheet(&self) -> Option<Id<NSWindow>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          Return the names of the types for which this class can be instantiated for the application to play the Editor or Viewer role. The default implementation of this method returns information derived from the application's Info.plist. You must typically override it in document classes that are dynamically loaded from plugins. NSDocumentController uses this method when presenting an open panel and when trying to figure the NSDocument subclass to instantiate when opening a particular type of document.
+        */
         #[method_id(@__retain_semantics Other readableTypes)]
         pub unsafe fn readableTypes() -> Id<NSArray<NSString>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          Return the names of the types which this class can save. Typically this includes types for which the application can play the Editor role, plus types than can be merely exported by the application. The default implementation of this method returns information derived from the application's Info.plist. You must typically override it in document classes that are dynamically loaded from plugins.
+        */
         #[method_id(@__retain_semantics Other writableTypes)]
         pub unsafe fn writableTypes() -> Id<NSArray<NSString>>;
 
@@ -752,10 +900,16 @@ extern_methods!(
             item: &ProtocolObject<dyn NSValidatedUserInterfaceItem>,
         ) -> bool;
 
+        /**
+          Return YES if instances of this class should allow the use of ubiquitous document storage. The default implementation of this method returns YES if the application has a valid ubiquity container entitlement. When this method returns YES, NSDocument may do things like add new menu items and other UI for ubiquitous documents and allow documents to be saved or moved into the default ubiquity container. You can override this method to return NO for document classes that should not include these features.
+        */
         #[method(usesUbiquitousStorage)]
         pub unsafe fn usesUbiquitousStorage() -> bool;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          The following are declared by NSFilePresenter and are implemented by NSDocument. They will be invoked on the thread specified by -presentedItemOperationQueue: and their implementations should be thread safe.
+        */
         #[method_id(@__retain_semantics Other presentedItemURL)]
         pub unsafe fn presentedItemURL(&self) -> Option<Id<NSURL>>;
 

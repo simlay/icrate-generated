@@ -95,9 +95,15 @@ extern_methods!(
         #[method(drawPackedGlyphs:atPoint:)]
         pub unsafe fn drawPackedGlyphs_atPoint(packed_glyphs: NonNull<c_char>, point: NSPoint);
 
+        /**
+          Default path rendering parameters.
+        */
         #[method(defaultMiterLimit)]
         pub unsafe fn defaultMiterLimit() -> CGFloat;
 
+        /**
+          Default path rendering parameters.
+        */
         #[method(setDefaultMiterLimit:)]
         pub unsafe fn setDefaultMiterLimit(default_miter_limit: CGFloat);
 
@@ -165,9 +171,15 @@ extern_methods!(
             control_point2: NSPoint,
         );
 
+        /**
+          Path rendering parameters.
+        */
         #[method(lineWidth)]
         pub unsafe fn lineWidth(&self) -> CGFloat;
 
+        /**
+          Path rendering parameters.
+        */
         #[method(setLineWidth:)]
         pub unsafe fn setLineWidth(&self, line_width: CGFloat);
 
@@ -229,6 +241,9 @@ extern_methods!(
         #[method(setClip)]
         pub unsafe fn setClip(&self);
 
+        /**
+          Path modifications.
+        */
         #[method_id(@__retain_semantics Other bezierPathByFlatteningPath)]
         pub unsafe fn bezierPathByFlatteningPath(&self) -> Id<NSBezierPath>;
 
@@ -239,6 +254,9 @@ extern_methods!(
         #[method(transformUsingAffineTransform:)]
         pub unsafe fn transformUsingAffineTransform(&self, transform: &NSAffineTransform);
 
+        /**
+          Path info
+        */
         #[method(isEmpty)]
         pub unsafe fn isEmpty(&self) -> bool;
 
@@ -251,6 +269,9 @@ extern_methods!(
         #[method(bounds)]
         pub unsafe fn bounds(&self) -> NSRect;
 
+        /**
+          Elements.
+        */
         #[method(elementCount)]
         pub unsafe fn elementCount(&self) -> NSInteger;
 

@@ -7,6 +7,13 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreData_NSBatchUpdateRequest")]
+    /**
+       Used to request that Core Data do a batch update of data in a persistent store without
+      loading any data into memory. May not be supported by all store types.
+      WARNING:
+      It is up to the developer creating the request to ensure that changes made by the request to
+      the underlying store do not violate any validation rules specified in the model.
+    */
     pub struct NSBatchUpdateRequest;
 
     #[cfg(feature = "CoreData_NSBatchUpdateRequest")]
@@ -17,9 +24,23 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreData_NSBatchUpdateRequest")]
+/**
+   Used to request that Core Data do a batch update of data in a persistent store without
+  loading any data into memory. May not be supported by all store types.
+  WARNING:
+  It is up to the developer creating the request to ensure that changes made by the request to
+  the underlying store do not violate any validation rules specified in the model.
+*/
 unsafe impl NSObjectProtocol for NSBatchUpdateRequest {}
 
 extern_methods!(
+    /**
+       Used to request that Core Data do a batch update of data in a persistent store without
+      loading any data into memory. May not be supported by all store types.
+      WARNING:
+      It is up to the developer creating the request to ensure that changes made by the request to
+      the underlying store do not violate any validation rules specified in the model.
+    */
     #[cfg(feature = "CoreData_NSBatchUpdateRequest")]
     unsafe impl NSBatchUpdateRequest {
         #[cfg(feature = "Foundation_NSString")]
@@ -56,23 +77,43 @@ extern_methods!(
         #[method(setPredicate:)]
         pub unsafe fn setPredicate(&self, predicate: Option<&NSPredicate>);
 
+        /**
+          Should the update include subentities? Defaults to YES.
+        */
         #[method(includesSubentities)]
         pub unsafe fn includesSubentities(&self) -> bool;
 
+        /**
+          Should the update include subentities? Defaults to YES.
+        */
         #[method(setIncludesSubentities:)]
         pub unsafe fn setIncludesSubentities(&self, includes_subentities: bool);
 
+        /**
+          The type of result that should be returned from this request. Defaults to NSStatusOnlyResultType
+        */
         #[method(resultType)]
         pub unsafe fn resultType(&self) -> NSBatchUpdateRequestResultType;
 
+        /**
+          The type of result that should be returned from this request. Defaults to NSStatusOnlyResultType
+        */
         #[method(setResultType:)]
         pub unsafe fn setResultType(&self, result_type: NSBatchUpdateRequestResultType);
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          Dictionary of NSPropertyDescription|property name string -> constantValue/NSExpression pairs describing the desired updates.
+         The expressions can be any NSExpression that evaluates to a scalar value.
+        */
         #[method_id(@__retain_semantics Other propertiesToUpdate)]
         pub unsafe fn propertiesToUpdate(&self) -> Option<Id<NSDictionary>>;
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          Dictionary of NSPropertyDescription|property name string -> constantValue/NSExpression pairs describing the desired updates.
+         The expressions can be any NSExpression that evaluates to a scalar value.
+        */
         #[method(setPropertiesToUpdate:)]
         pub unsafe fn setPropertiesToUpdate(&self, properties_to_update: Option<&NSDictionary>);
     }

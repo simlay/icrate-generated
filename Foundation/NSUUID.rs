@@ -43,6 +43,9 @@ extern_methods!(
         pub unsafe fn compare(&self, other_uuid: &NSUUID) -> NSComparisonResult;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Return a string description of the UUID, such as "E621E1F8-C36C-495A-93FC-0C247A3E6E5F"
+        */
         #[method_id(@__retain_semantics Other UUIDString)]
         pub fn UUIDString(&self) -> Id<NSString>;
     }

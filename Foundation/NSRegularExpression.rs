@@ -5,6 +5,9 @@ use crate::Foundation::*;
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+      NSRegularExpression is a class used to represent and apply regular expressions.  An instance of this class is an immutable representation of a compiled regular expression pattern and various option flags.
+    */
     pub enum NSRegularExpressionOptions {
         NSRegularExpressionCaseInsensitive = 1 << 0,
         NSRegularExpressionAllowCommentsAndWhitespace = 1 << 1,

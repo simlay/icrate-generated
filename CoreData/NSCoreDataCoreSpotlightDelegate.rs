@@ -11,6 +11,10 @@ extern_static!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreData_NSCoreDataCoreSpotlightDelegate")]
+    /**
+      NSCoreDataSpotlightDelegate implements the CSSearchableIndexDelegate API, but can't
+    publicly declare it due to linkage requirements.
+    */
     pub struct NSCoreDataCoreSpotlightDelegate;
 
     #[cfg(feature = "CoreData_NSCoreDataCoreSpotlightDelegate")]
@@ -20,11 +24,22 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreData_NSCoreDataCoreSpotlightDelegate")]
+/**
+  NSCoreDataSpotlightDelegate implements the CSSearchableIndexDelegate API, but can't
+publicly declare it due to linkage requirements.
+*/
 unsafe impl NSObjectProtocol for NSCoreDataCoreSpotlightDelegate {}
 
 extern_methods!(
+    /**
+      NSCoreDataSpotlightDelegate implements the CSSearchableIndexDelegate API, but can't
+    publicly declare it due to linkage requirements.
+    */
     #[cfg(feature = "CoreData_NSCoreDataCoreSpotlightDelegate")]
     unsafe impl NSCoreDataCoreSpotlightDelegate {
+        /**
+          Returns if indexing is enabled or not.
+        */
         #[method(isIndexingEnabled)]
         pub unsafe fn isIndexingEnabled(&self) -> bool;
 

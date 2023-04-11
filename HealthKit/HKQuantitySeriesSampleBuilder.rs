@@ -9,6 +9,17 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKQuantitySeriesSampleBuilder")]
+    /**
+     @class         HKQuantitySeriesSampleBuilder
+    @abstract      An HKQuantitySeriesSampleBuilder is used to generate HKQuantitySample(s) with multiple
+    quantities.
+    @discussion    An HKQuantitySeriesSampleBuilder is used to incrementally create a new quantity series
+    sample in the HealthKit database. This class may be used to create long-running quantity
+    series samples that are associated with an activity like a workout. After inserting each
+    of the quantities that make up the series, the series may be finalized by calling
+    -finishSeriesWithMetadata:completion:. Calling -discard invalidates the series and
+    discards any data that was previously associated with it.
+    */
     pub struct HKQuantitySeriesSampleBuilder;
 
     #[cfg(feature = "HealthKit_HKQuantitySeriesSampleBuilder")]
@@ -18,9 +29,31 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKQuantitySeriesSampleBuilder")]
+/**
+ @class         HKQuantitySeriesSampleBuilder
+@abstract      An HKQuantitySeriesSampleBuilder is used to generate HKQuantitySample(s) with multiple
+quantities.
+@discussion    An HKQuantitySeriesSampleBuilder is used to incrementally create a new quantity series
+sample in the HealthKit database. This class may be used to create long-running quantity
+series samples that are associated with an activity like a workout. After inserting each
+of the quantities that make up the series, the series may be finalized by calling
+-finishSeriesWithMetadata:completion:. Calling -discard invalidates the series and
+discards any data that was previously associated with it.
+*/
 unsafe impl NSObjectProtocol for HKQuantitySeriesSampleBuilder {}
 
 extern_methods!(
+    /**
+     @class         HKQuantitySeriesSampleBuilder
+    @abstract      An HKQuantitySeriesSampleBuilder is used to generate HKQuantitySample(s) with multiple
+    quantities.
+    @discussion    An HKQuantitySeriesSampleBuilder is used to incrementally create a new quantity series
+    sample in the HealthKit database. This class may be used to create long-running quantity
+    series samples that are associated with an activity like a workout. After inserting each
+    of the quantities that make up the series, the series may be finalized by calling
+    -finishSeriesWithMetadata:completion:. Calling -discard invalidates the series and
+    discards any data that was previously associated with it.
+    */
     #[cfg(feature = "HealthKit_HKQuantitySeriesSampleBuilder")]
     unsafe impl HKQuantitySeriesSampleBuilder {
         #[cfg(all(
@@ -42,14 +75,23 @@ extern_methods!(
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
         #[cfg(feature = "HealthKit_HKQuantityType")]
+        /**
+         @property      quantityType
+        */
         #[method_id(@__retain_semantics Other quantityType)]
         pub unsafe fn quantityType(&self) -> Id<HKQuantityType>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+         @property      startDate
+        */
         #[method_id(@__retain_semantics Other startDate)]
         pub unsafe fn startDate(&self) -> Id<NSDate>;
 
         #[cfg(feature = "HealthKit_HKDevice")]
+        /**
+         @property      device
+        */
         #[method_id(@__retain_semantics Other device)]
         pub unsafe fn device(&self) -> Option<Id<HKDevice>>;
 

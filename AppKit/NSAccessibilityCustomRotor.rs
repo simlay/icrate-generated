@@ -7,6 +7,9 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      @brief Direction to search for an NSAccessibilityCustomRotorItemResult.
+    */
     pub enum NSAccessibilityCustomRotorSearchDirection {
         NSAccessibilityCustomRotorSearchDirectionPrevious = 0,
         NSAccessibilityCustomRotorSearchDirectionNext = 1,
@@ -15,6 +18,11 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      @brief Use NSAccessibilityCustomRotorType when providing results for the
+     following types. This allows assistive technologies to assign keyboard
+     commands and gestures for these common search types.
+    */
     pub enum NSAccessibilityCustomRotorType {
         NSAccessibilityCustomRotorTypeCustom = 0,
         NSAccessibilityCustomRotorTypeAny = 1,
@@ -44,6 +52,10 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSAccessibilityCustomRotor")]
+    /**
+      @brief NSAccessibilityCustomRotors allow assistive technologies, like
+     VoiceOver, to search applications for content related to the given label.
+    */
     pub struct NSAccessibilityCustomRotor;
 
     #[cfg(feature = "AppKit_NSAccessibilityCustomRotor")]
@@ -53,9 +65,17 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSAccessibilityCustomRotor")]
+/**
+  @brief NSAccessibilityCustomRotors allow assistive technologies, like
+ VoiceOver, to search applications for content related to the given label.
+*/
 unsafe impl NSObjectProtocol for NSAccessibilityCustomRotor {}
 
 extern_methods!(
+    /**
+      @brief NSAccessibilityCustomRotors allow assistive technologies, like
+     VoiceOver, to search applications for content related to the given label.
+    */
     #[cfg(feature = "AppKit_NSAccessibilityCustomRotor")]
     unsafe impl NSAccessibilityCustomRotor {
         #[cfg(feature = "Foundation_NSString")]
@@ -73,25 +93,57 @@ extern_methods!(
             item_search_delegate: &ProtocolObject<dyn NSAccessibilityCustomRotorItemSearchDelegate>,
         ) -> Id<Self>;
 
+        /**
+          @brief The rotor type to provide results for.
+         @remark The default type is NSAccessibilityCustomRotorTypeCustom, unless
+         the rotor type was specified in the initializer.
+        */
         #[method(type)]
         pub unsafe fn r#type(&self) -> NSAccessibilityCustomRotorType;
 
+        /**
+          @brief The rotor type to provide results for.
+         @remark The default type is NSAccessibilityCustomRotorTypeCustom, unless
+         the rotor type was specified in the initializer.
+        */
         #[method(setType:)]
         pub unsafe fn setType(&self, r#type: NSAccessibilityCustomRotorType);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @brief The localized label assistive technologies will use to describe
+         the custom rotor.
+         @remark The label is only used when the rotor type is
+         NSAccessibilityCustomRotorTypeCustom since a default is provided
+         for all other types.
+        */
         #[method_id(@__retain_semantics Other label)]
         pub unsafe fn label(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @brief The localized label assistive technologies will use to describe
+         the custom rotor.
+         @remark The label is only used when the rotor type is
+         NSAccessibilityCustomRotorTypeCustom since a default is provided
+         for all other types.
+        */
         #[method(setLabel:)]
         pub unsafe fn setLabel(&self, label: &NSString);
 
+        /**
+          @brief The itemSearchDelegate will be asked to find the next item result
+         after performing a search with the given search parameters.
+        */
         #[method_id(@__retain_semantics Other itemSearchDelegate)]
         pub unsafe fn itemSearchDelegate(
             &self,
         ) -> Option<Id<ProtocolObject<dyn NSAccessibilityCustomRotorItemSearchDelegate>>>;
 
+        /**
+          @brief The itemSearchDelegate will be asked to find the next item result
+         after performing a search with the given search parameters.
+        */
         #[method(setItemSearchDelegate:)]
         pub unsafe fn setItemSearchDelegate(
             &self,
@@ -100,11 +152,25 @@ extern_methods!(
             >,
         );
 
+        /**
+          @brief Provide an item load delegate if the rotor vends item results that
+         do not have a backing UI element yet. The loader will be asked to load an
+         element via the accessibilityElementWithToken protocol method when the
+         item result is selected by an assistive client. Applications can use the
+         item result's token to determine which item to return.
+        */
         #[method_id(@__retain_semantics Other itemLoadingDelegate)]
         pub unsafe fn itemLoadingDelegate(
             &self,
         ) -> Option<Id<ProtocolObject<dyn NSAccessibilityElementLoading>>>;
 
+        /**
+          @brief Provide an item load delegate if the rotor vends item results that
+         do not have a backing UI element yet. The loader will be asked to load an
+         element via the accessibilityElementWithToken protocol method when the
+         item result is selected by an assistive client. Applications can use the
+         item result's token to determine which item to return.
+        */
         #[method(setItemLoadingDelegate:)]
         pub unsafe fn setItemLoadingDelegate(
             &self,
@@ -116,6 +182,11 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSAccessibilityCustomRotorSearchParameters")]
+    /**
+      @brief NSAccessibilityCustomRotorSearchParameters is a container for
+     search parameters. It should be examined to determine the next matching
+     NSAccessibilityCustomRotorItemResult.
+    */
     pub struct NSAccessibilityCustomRotorSearchParameters;
 
     #[cfg(feature = "AppKit_NSAccessibilityCustomRotorSearchParameters")]
@@ -125,25 +196,55 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSAccessibilityCustomRotorSearchParameters")]
+/**
+  @brief NSAccessibilityCustomRotorSearchParameters is a container for
+ search parameters. It should be examined to determine the next matching
+ NSAccessibilityCustomRotorItemResult.
+*/
 unsafe impl NSObjectProtocol for NSAccessibilityCustomRotorSearchParameters {}
 
 extern_methods!(
+    /**
+      @brief NSAccessibilityCustomRotorSearchParameters is a container for
+     search parameters. It should be examined to determine the next matching
+     NSAccessibilityCustomRotorItemResult.
+    */
     #[cfg(feature = "AppKit_NSAccessibilityCustomRotorSearchParameters")]
     unsafe impl NSAccessibilityCustomRotorSearchParameters {
         #[cfg(feature = "AppKit_NSAccessibilityCustomRotorItemResult")]
+        /**
+          @brief The currentItem determines where the search will start from. If
+         it is nil, the search should begin from, and include, the first or last
+         item, depending on which search direction is used (e.g. search direction
+         next will return the first item and previous will return the last item).
+        */
         #[method_id(@__retain_semantics Other currentItem)]
         pub unsafe fn currentItem(&self) -> Option<Id<NSAccessibilityCustomRotorItemResult>>;
 
         #[cfg(feature = "AppKit_NSAccessibilityCustomRotorItemResult")]
+        /**
+          @brief The currentItem determines where the search will start from. If
+         it is nil, the search should begin from, and include, the first or last
+         item, depending on which search direction is used (e.g. search direction
+         next will return the first item and previous will return the last item).
+        */
         #[method(setCurrentItem:)]
         pub unsafe fn setCurrentItem(
             &self,
             current_item: Option<&NSAccessibilityCustomRotorItemResult>,
         );
 
+        /**
+          @brief Either NSAccessibilityCustomRotorSearchDirectionPrevious or
+         NSAccessibilityCustomRotorSearchDirectionNext.
+        */
         #[method(searchDirection)]
         pub unsafe fn searchDirection(&self) -> NSAccessibilityCustomRotorSearchDirection;
 
+        /**
+          @brief Either NSAccessibilityCustomRotorSearchDirectionPrevious or
+         NSAccessibilityCustomRotorSearchDirectionNext.
+        */
         #[method(setSearchDirection:)]
         pub unsafe fn setSearchDirection(
             &self,
@@ -151,10 +252,20 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @brief A string of text to filter the results against. This is used to get
+         type-ahead results. For example, given a list of primary colors and filter
+         text "Re", color item "Red" would be returned as a result.
+        */
         #[method_id(@__retain_semantics Other filterString)]
         pub unsafe fn filterString(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @brief A string of text to filter the results against. This is used to get
+         type-ahead results. For example, given a list of primary colors and filter
+         text "Re", color item "Red" would be returned as a result.
+        */
         #[method(setFilterString:)]
         pub unsafe fn setFilterString(&self, filter_string: &NSString);
     }
@@ -163,6 +274,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSAccessibilityCustomRotorItemResult")]
+    /**
+      @brief NSAccessibilityCustomRotorItemResults are the objects returned
+     to assistive technologies that match a search parameter criteria.
+    */
     pub struct NSAccessibilityCustomRotorItemResult;
 
     #[cfg(feature = "AppKit_NSAccessibilityCustomRotorItemResult")]
@@ -172,9 +287,17 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSAccessibilityCustomRotorItemResult")]
+/**
+  @brief NSAccessibilityCustomRotorItemResults are the objects returned
+ to assistive technologies that match a search parameter criteria.
+*/
 unsafe impl NSObjectProtocol for NSAccessibilityCustomRotorItemResult {}
 
 extern_methods!(
+    /**
+      @brief NSAccessibilityCustomRotorItemResults are the objects returned
+     to assistive technologies that match a search parameter criteria.
+    */
     #[cfg(feature = "AppKit_NSAccessibilityCustomRotorItemResult")]
     unsafe impl NSAccessibilityCustomRotorItemResult {
         #[method_id(@__retain_semantics New new)]
@@ -197,25 +320,57 @@ extern_methods!(
             custom_label: &NSString,
         ) -> Id<Self>;
 
+        /**
+          @brief A target element references an element that will be messaged for
+         other accessibility properties. If it is not nil, assistive technologies
+         may try to set accessibility focus on it.
+        */
         #[method_id(@__retain_semantics Other targetElement)]
         pub unsafe fn targetElement(
             &self,
         ) -> Option<Id<ProtocolObject<dyn NSAccessibilityElementProtocol>>>;
 
+        /**
+          @brief Provide an item load token if the application has not yet
+         loaded the element backing the item result. Application can use the token
+         to determine which item to return.
+        */
         #[method_id(@__retain_semantics Other itemLoadingToken)]
         pub unsafe fn itemLoadingToken(&self) -> Option<Id<NSAccessibilityLoadingToken>>;
 
+        /**
+          @brief For text-based elements such as an NSTextView, this is an NSRange
+         that specifies the area of interest. If the target range has NSNotFound
+         for the location, the search should begin from the first or last character
+         of the text element, depending on the search direction.
+        */
         #[method(targetRange)]
         pub unsafe fn targetRange(&self) -> NSRange;
 
+        /**
+          @brief For text-based elements such as an NSTextView, this is an NSRange
+         that specifies the area of interest. If the target range has NSNotFound
+         for the location, the search should begin from the first or last character
+         of the text element, depending on the search direction.
+        */
         #[method(setTargetRange:)]
         pub unsafe fn setTargetRange(&self, target_range: NSRange);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @brief A localized label that can be used instead of the default item
+         label to describe the item result.
+         @remark Required if using the loader-based initializer. Optional otherwise.
+        */
         #[method_id(@__retain_semantics Other customLabel)]
         pub unsafe fn customLabel(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @brief A localized label that can be used instead of the default item
+         label to describe the item result.
+         @remark Required if using the loader-based initializer. Optional otherwise.
+        */
         #[method(setCustomLabel:)]
         pub unsafe fn setCustomLabel(&self, custom_label: Option<&NSString>);
     }

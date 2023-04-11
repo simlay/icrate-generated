@@ -43,6 +43,13 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "LocalAuthentication_LAContext")]
+    /**
+      Class that represents an authentication context.
+
+     @discussion This context can be used for evaluating policies.
+
+     @see LAPolicy
+    */
     pub struct LAContext;
 
     #[cfg(feature = "LocalAuthentication_LAContext")]
@@ -52,9 +59,23 @@ extern_class!(
 );
 
 #[cfg(feature = "LocalAuthentication_LAContext")]
+/**
+  Class that represents an authentication context.
+
+ @discussion This context can be used for evaluating policies.
+
+ @see LAPolicy
+*/
 unsafe impl NSObjectProtocol for LAContext {}
 
 extern_methods!(
+    /**
+      Class that represents an authentication context.
+
+     @discussion This context can be used for evaluating policies.
+
+     @see LAPolicy
+    */
     #[cfg(feature = "LocalAuthentication_LAContext")]
     unsafe impl LAContext {
         #[cfg(feature = "Foundation_NSError")]
@@ -85,38 +106,112 @@ extern_methods!(
         pub unsafe fn isCredentialSet(&self, r#type: LACredentialType) -> bool;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Fallback button title.
+         @discussion Allows fallback button title customization. If set to empty string, the button will be hidden.
+                     A default title "Use Password…" is used when this property is left nil.
+        */
         #[method_id(@__retain_semantics Other localizedFallbackTitle)]
         pub unsafe fn localizedFallbackTitle(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Fallback button title.
+         @discussion Allows fallback button title customization. If set to empty string, the button will be hidden.
+                     A default title "Use Password…" is used when this property is left nil.
+        */
         #[method(setLocalizedFallbackTitle:)]
         pub unsafe fn setLocalizedFallbackTitle(&self, localized_fallback_title: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+          This property is deprecated and setting it has no effect.
+        */
         #[deprecated = "No longer supported"]
         #[method_id(@__retain_semantics Other maxBiometryFailures)]
         pub unsafe fn maxBiometryFailures(&self) -> Option<Id<NSNumber>>;
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+          This property is deprecated and setting it has no effect.
+        */
         #[deprecated = "No longer supported"]
         #[method(setMaxBiometryFailures:)]
         pub unsafe fn setMaxBiometryFailures(&self, max_biometry_failures: Option<&NSNumber>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Cancel button title.
+         @discussion Allows cancel button title customization. A default title "Cancel" is used when
+                     this property is left nil or is set to empty string.
+        */
         #[method_id(@__retain_semantics Other localizedCancelTitle)]
         pub unsafe fn localizedCancelTitle(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Cancel button title.
+         @discussion Allows cancel button title customization. A default title "Cancel" is used when
+                     this property is left nil or is set to empty string.
+        */
         #[method(setLocalizedCancelTitle:)]
         pub unsafe fn setLocalizedCancelTitle(&self, localized_cancel_title: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          Contains policy domain state.
+
+         @discussion  This property is set only when evaluatePolicy is called and succesful Touch ID or Face ID authentication
+                      was performed, or when canEvaluatePolicy succeeds for a biometric policy.
+                      It stays nil for all other cases.
+                      If biometric database was modified (fingers or faces were removed or added), evaluatedPolicyDomainState
+                      data will change. Nature of such database changes cannot be determined
+                      but comparing data of evaluatedPolicyDomainState after different evaluatePolicy
+                      will reveal the fact database was changed between calls.
+
+         @warning Please note that the value returned by this property can change exceptionally between major OS versions even if
+                  the state of biometry has not changed.
+        */
         #[method_id(@__retain_semantics Other evaluatedPolicyDomainState)]
         pub unsafe fn evaluatedPolicyDomainState(&self) -> Option<Id<NSData>>;
 
+        /**
+          Time interval for accepting a successful Touch ID or Face ID device unlock (on the lock screen) from the past.
+
+         @discussion This property can be set with a time interval in seconds. If the device was successfully unlocked by
+                     biometry within this time interval, then biometric authentication on this context will succeed
+                     automatically and the reply block will be called without prompting user for Touch ID or Face ID.
+
+                     The default value is 0, meaning that no previous biometric unlock can be reused.
+
+                     This property is meant only for reusing biometric matches from the device lock screen.
+                     It does not allow reusing previous biometric matches in application or between applications.
+
+                     The maximum supported interval is 5 minutes and setting the value beyond 5 minutes does not increase
+                     the accepted interval.
+
+         @see LATouchIDAuthenticationMaximumAllowableReuseDuration
+        */
         #[method(touchIDAuthenticationAllowableReuseDuration)]
         pub unsafe fn touchIDAuthenticationAllowableReuseDuration(&self) -> NSTimeInterval;
 
+        /**
+          Time interval for accepting a successful Touch ID or Face ID device unlock (on the lock screen) from the past.
+
+         @discussion This property can be set with a time interval in seconds. If the device was successfully unlocked by
+                     biometry within this time interval, then biometric authentication on this context will succeed
+                     automatically and the reply block will be called without prompting user for Touch ID or Face ID.
+
+                     The default value is 0, meaning that no previous biometric unlock can be reused.
+
+                     This property is meant only for reusing biometric matches from the device lock screen.
+                     It does not allow reusing previous biometric matches in application or between applications.
+
+                     The maximum supported interval is 5 minutes and setting the value beyond 5 minutes does not increase
+                     the accepted interval.
+
+         @see LATouchIDAuthenticationMaximumAllowableReuseDuration
+        */
         #[method(setTouchIDAuthenticationAllowableReuseDuration:)]
         pub unsafe fn setTouchIDAuthenticationAllowableReuseDuration(
             &self,
@@ -124,19 +219,61 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Allows setting the default localized authentication reason on context.
+
+         @discussion A localized string from this property is displayed in the authentication UI if the caller didn't specify
+                     its own authentication reason (e.g. a keychain operation with kSecUseAuthenticationContext). This property
+                     is ignored if the authentication reason was provided by caller.
+        */
         #[method_id(@__retain_semantics Other localizedReason)]
         pub unsafe fn localizedReason(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Allows setting the default localized authentication reason on context.
+
+         @discussion A localized string from this property is displayed in the authentication UI if the caller didn't specify
+                     its own authentication reason (e.g. a keychain operation with kSecUseAuthenticationContext). This property
+                     is ignored if the authentication reason was provided by caller.
+        */
         #[method(setLocalizedReason:)]
         pub unsafe fn setLocalizedReason(&self, localized_reason: &NSString);
 
+        /**
+          Allows running authentication in non-interactive mode.
+
+         @discussion If the context is used in a keychain query by the means of kSecUseAuthenticationContext,
+                     then setting this property to YES has the same effect as passing kSecUseNoAuthenticationUI
+                     in the query, i.e. the keychain call will eventually fail with errSecInteractionNotAllowed
+                     instead of displaying the authentication UI.
+
+                     If this property is used with a LocalAuthentication evaluation, it will eventually fail with
+                     LAErrorNotInteractive instead of displaying the authentication UI.
+        */
         #[method(interactionNotAllowed)]
         pub unsafe fn interactionNotAllowed(&self) -> bool;
 
+        /**
+          Allows running authentication in non-interactive mode.
+
+         @discussion If the context is used in a keychain query by the means of kSecUseAuthenticationContext,
+                     then setting this property to YES has the same effect as passing kSecUseNoAuthenticationUI
+                     in the query, i.e. the keychain call will eventually fail with errSecInteractionNotAllowed
+                     instead of displaying the authentication UI.
+
+                     If this property is used with a LocalAuthentication evaluation, it will eventually fail with
+                     LAErrorNotInteractive instead of displaying the authentication UI.
+        */
         #[method(setInteractionNotAllowed:)]
         pub unsafe fn setInteractionNotAllowed(&self, interaction_not_allowed: bool);
 
+        /**
+          Indicates the type of the biometry supported by the device.
+
+         @discussion  This property is set when canEvaluatePolicy has been called for a biometric policy.
+                      The default value is LABiometryTypeNone.
+        */
         #[method(biometryType)]
         pub unsafe fn biometryType(&self) -> LABiometryType;
     }

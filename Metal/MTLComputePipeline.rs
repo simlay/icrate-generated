@@ -50,34 +50,66 @@ extern_methods!(
     #[cfg(feature = "Metal_MTLComputePipelineDescriptor")]
     unsafe impl MTLComputePipelineDescriptor {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property label
+        @abstract A string to help identify this object.
+        */
         #[method_id(@__retain_semantics Other label)]
         pub fn label(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property label
+        @abstract A string to help identify this object.
+        */
         #[method(setLabel:)]
         pub fn setLabel(&self, label: Option<&NSString>);
 
+        /**
+         @property computeFunction
+        @abstract The function to use with the MTLComputePipelineState
+        */
         #[method_id(@__retain_semantics Other computeFunction)]
         pub fn computeFunction(&self) -> Option<Id<ProtocolObject<dyn MTLFunction>>>;
 
+        /**
+         @property computeFunction
+        @abstract The function to use with the MTLComputePipelineState
+        */
         #[method(setComputeFunction:)]
         pub fn setComputeFunction(
             &self,
             compute_function: Option<&ProtocolObject<dyn MTLFunction>>,
         );
 
+        /**
+         @property threadGroupSizeIsMultipleOfThreadExecutionWidth
+        @abstract An optimization flag, set if the thread group size will always be a multiple of thread execution width
+        */
         #[method(threadGroupSizeIsMultipleOfThreadExecutionWidth)]
         pub fn threadGroupSizeIsMultipleOfThreadExecutionWidth(&self) -> bool;
 
+        /**
+         @property threadGroupSizeIsMultipleOfThreadExecutionWidth
+        @abstract An optimization flag, set if the thread group size will always be a multiple of thread execution width
+        */
         #[method(setThreadGroupSizeIsMultipleOfThreadExecutionWidth:)]
         pub unsafe fn setThreadGroupSizeIsMultipleOfThreadExecutionWidth(
             &self,
             thread_group_size_is_multiple_of_thread_execution_width: bool,
         );
 
+        /**
+         @property maxTotalThreadsPerThreadgroup
+        @abstract Optional property. Set the maxTotalThreadsPerThreadgroup. If it is not set, returns zero.
+        */
         #[method(maxTotalThreadsPerThreadgroup)]
         pub fn maxTotalThreadsPerThreadgroup(&self) -> NSUInteger;
 
+        /**
+         @property maxTotalThreadsPerThreadgroup
+        @abstract Optional property. Set the maxTotalThreadsPerThreadgroup. If it is not set, returns zero.
+        */
         #[method(setMaxTotalThreadsPerThreadgroup:)]
         pub fn setMaxTotalThreadsPerThreadgroup(
             &self,
@@ -85,10 +117,18 @@ extern_methods!(
         );
 
         #[cfg(feature = "Metal_MTLStageInputOutputDescriptor")]
+        /**
+         @property computeDataDescriptor
+        @abstract An MTLStageInputOutputDescriptor to fetch data from buffers
+        */
         #[method_id(@__retain_semantics Other stageInputDescriptor)]
         pub fn stageInputDescriptor(&self) -> Option<Id<MTLStageInputOutputDescriptor>>;
 
         #[cfg(feature = "Metal_MTLStageInputOutputDescriptor")]
+        /**
+         @property computeDataDescriptor
+        @abstract An MTLStageInputOutputDescriptor to fetch data from buffers
+        */
         #[method(setStageInputDescriptor:)]
         pub fn setStageInputDescriptor(
             &self,
@@ -96,22 +136,50 @@ extern_methods!(
         );
 
         #[cfg(feature = "Metal_MTLPipelineBufferDescriptorArray")]
+        /**
+         @property buffers
+        @abstract Optional properties for each buffer binding used by the compute function.
+        */
         #[method_id(@__retain_semantics Other buffers)]
         pub fn buffers(&self) -> Id<MTLPipelineBufferDescriptorArray>;
 
+        /**
+         @property supportIndirectCommandBuffers
+        @abstract This flag makes this pipeline usable with indirect command buffers.
+        */
         #[method(supportIndirectCommandBuffers)]
         pub fn supportIndirectCommandBuffers(&self) -> bool;
 
+        /**
+         @property supportIndirectCommandBuffers
+        @abstract This flag makes this pipeline usable with indirect command buffers.
+        */
         #[method(setSupportIndirectCommandBuffers:)]
         pub fn setSupportIndirectCommandBuffers(&self, support_indirect_command_buffers: bool);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+         @property insertLibraries
+        @abstract The set of MTLDynamicLibrary to use to resolve external symbols before considering symbols from dependent MTLDynamicLibrary.
+        @discussion Typical workflows use the libraries property of MTLCompileOptions to record dependent libraries at compile time without having to use insertLibraries.
+        This property can be used to override symbols from dependent libraries for experimentation or evaluating alternative implementations.
+        It can also be used to provide dynamic libraries that are dynamically created (for example, from source) that have no stable installName that can be used to automatically load from the file system.
+        @see MTLDynamicLibrary
+        */
         #[deprecated]
         #[method_id(@__retain_semantics Other insertLibraries)]
         pub fn insertLibraries(&self)
             -> Option<Id<NSArray<ProtocolObject<dyn MTLDynamicLibrary>>>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+         @property insertLibraries
+        @abstract The set of MTLDynamicLibrary to use to resolve external symbols before considering symbols from dependent MTLDynamicLibrary.
+        @discussion Typical workflows use the libraries property of MTLCompileOptions to record dependent libraries at compile time without having to use insertLibraries.
+        This property can be used to override symbols from dependent libraries for experimentation or evaluating alternative implementations.
+        It can also be used to provide dynamic libraries that are dynamically created (for example, from source) that have no stable installName that can be used to automatically load from the file system.
+        @see MTLDynamicLibrary
+        */
         #[deprecated]
         #[method(setInsertLibraries:)]
         pub fn setInsertLibraries(
@@ -120,10 +188,26 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+         @property preloadedLibraries
+        @abstract The set of MTLDynamicLibrary to use to resolve external symbols before considering symbols from dependent MTLDynamicLibrary.
+        @discussion Typical workflows use the libraries property of MTLCompileOptions to record dependent libraries at compile time without having to use preloadedLibraries.
+        This property can be used to override symbols from dependent libraries for experimentation or evaluating alternative implementations.
+        It can also be used to provide dynamic libraries that are dynamically created (for example, from source) that have no stable installName that can be used to automatically load from the file system.
+        @see MTLDynamicLibrary
+        */
         #[method_id(@__retain_semantics Other preloadedLibraries)]
         pub fn preloadedLibraries(&self) -> Id<NSArray<ProtocolObject<dyn MTLDynamicLibrary>>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+         @property preloadedLibraries
+        @abstract The set of MTLDynamicLibrary to use to resolve external symbols before considering symbols from dependent MTLDynamicLibrary.
+        @discussion Typical workflows use the libraries property of MTLCompileOptions to record dependent libraries at compile time without having to use preloadedLibraries.
+        This property can be used to override symbols from dependent libraries for experimentation or evaluating alternative implementations.
+        It can also be used to provide dynamic libraries that are dynamically created (for example, from source) that have no stable installName that can be used to automatically load from the file system.
+        @see MTLDynamicLibrary
+        */
         #[method(setPreloadedLibraries:)]
         pub fn setPreloadedLibraries(
             &self,
@@ -131,10 +215,22 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+         @property binaryArchives
+        @abstract The set of MTLBinaryArchive to search for compiled code when creating the pipeline state.
+        @discussion Accelerate pipeline state creation by providing archives of compiled code such that no compilation needs to happen on the fast path.
+        @see MTLBinaryArchive
+        */
         #[method_id(@__retain_semantics Other binaryArchives)]
         pub fn binaryArchives(&self) -> Option<Id<NSArray<ProtocolObject<dyn MTLBinaryArchive>>>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+         @property binaryArchives
+        @abstract The set of MTLBinaryArchive to search for compiled code when creating the pipeline state.
+        @discussion Accelerate pipeline state creation by providing archives of compiled code such that no compilation needs to happen on the fast path.
+        @see MTLBinaryArchive
+        */
         #[method(setBinaryArchives:)]
         pub fn setBinaryArchives(
             &self,
@@ -145,42 +241,89 @@ extern_methods!(
         pub fn reset(&self);
 
         #[cfg(feature = "Metal_MTLLinkedFunctions")]
+        /**
+         @property linkedFunctions
+        @abstract The set of functions to be linked with the pipeline state and accessed from the compute function.
+        @see MTLLinkedFunctions
+        */
         #[method_id(@__retain_semantics Other linkedFunctions)]
         pub fn linkedFunctions(&self) -> Option<Id<MTLLinkedFunctions>>;
 
         #[cfg(feature = "Metal_MTLLinkedFunctions")]
+        /**
+         @property linkedFunctions
+        @abstract The set of functions to be linked with the pipeline state and accessed from the compute function.
+        @see MTLLinkedFunctions
+        */
         #[method(setLinkedFunctions:)]
         pub fn setLinkedFunctions(&self, linked_functions: Option<&MTLLinkedFunctions>);
 
+        /**
+         @property supportAddingBinaryFunctions
+        @abstract This flag makes this pipeline support creating a new pipeline by adding binary functions.
+        */
         #[method(supportAddingBinaryFunctions)]
         pub fn supportAddingBinaryFunctions(&self) -> bool;
 
+        /**
+         @property supportAddingBinaryFunctions
+        @abstract This flag makes this pipeline support creating a new pipeline by adding binary functions.
+        */
         #[method(setSupportAddingBinaryFunctions:)]
         pub fn setSupportAddingBinaryFunctions(&self, support_adding_binary_functions: bool);
 
+        /**
+         @property maxCallStackDepth
+        @abstract The maximum depth of the call stack in stack frames from the kernel. Defaults to 1 additional stack frame.
+        */
         #[method(maxCallStackDepth)]
         pub fn maxCallStackDepth(&self) -> NSUInteger;
 
+        /**
+         @property maxCallStackDepth
+        @abstract The maximum depth of the call stack in stack frames from the kernel. Defaults to 1 additional stack frame.
+        */
         #[method(setMaxCallStackDepth:)]
         pub fn setMaxCallStackDepth(&self, max_call_stack_depth: NSUInteger);
     }
 );
 
 extern_protocol!(
+    /**
+     @protocol MTLComputePipelineState
+    @abstract A handle to compiled code for a compute function.
+    @discussion MTLComputePipelineState is a single compute function.  It can only be used with the device that it was created against.
+    */
     pub unsafe trait MTLComputePipelineState: NSObjectProtocol {
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other label)]
         fn label(&self) -> Option<Id<NSString>>;
 
+        /**
+         @property device
+        @abstract The device this resource was created against.  This resource can only be used with this device.
+        */
         #[method_id(@__retain_semantics Other device)]
         fn device(&self) -> Id<ProtocolObject<dyn MTLDevice>>;
 
+        /**
+         @property maxTotalThreadsPerThreadgroup
+        @abstract The maximum total number of threads that can be in a single compute threadgroup.
+        */
         #[method(maxTotalThreadsPerThreadgroup)]
         fn maxTotalThreadsPerThreadgroup(&self) -> NSUInteger;
 
+        /**
+         @property threadExecutionWidth
+        @abstract For most efficient execution, the threadgroup size should be a multiple of this when executing the kernel.
+        */
         #[method(threadExecutionWidth)]
         fn threadExecutionWidth(&self) -> NSUInteger;
 
+        /**
+         @property staticThreadgroupMemoryLength
+        @abstract The length in bytes of threadgroup memory that is statically allocated.
+        */
         #[method(staticThreadgroupMemoryLength)]
         fn staticThreadgroupMemoryLength(&self) -> NSUInteger;
 
@@ -190,9 +333,17 @@ extern_protocol!(
             imageblock_dimensions: MTLSize,
         ) -> NSUInteger;
 
+        /**
+         @property supportIndirectCommandBuffers
+        @abstract Tells whether this pipeline state is usable through an Indirect Command Buffer.
+        */
         #[method(supportIndirectCommandBuffers)]
         fn supportIndirectCommandBuffers(&self) -> bool;
 
+        /**
+         @property gpuResourceID
+        @abstract Handle of the GPU resource suitable for storing in an Argument Buffer
+        */
         #[method(gpuResourceID)]
         unsafe fn gpuResourceID(&self) -> MTLResourceID;
 

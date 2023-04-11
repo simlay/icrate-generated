@@ -6,6 +6,9 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      @abstract The formatting styles for postal addresses.
+    */
     pub enum CNPostalAddressFormatterStyle {
         CNPostalAddressFormatterStyleMailingAddress = 0,
     }
@@ -14,6 +17,11 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNPostalAddressFormatter")]
+    /**
+      @abstract Formats a postal address.
+
+     @discussion This formatter handles international formatting of a postal address.
+    */
     pub struct CNPostalAddressFormatter;
 
     #[cfg(feature = "Contacts_CNPostalAddressFormatter")]
@@ -24,12 +32,27 @@ extern_class!(
 );
 
 #[cfg(feature = "Contacts_CNPostalAddressFormatter")]
+/**
+  @abstract Formats a postal address.
+
+ @discussion This formatter handles international formatting of a postal address.
+*/
 unsafe impl NSCoding for CNPostalAddressFormatter {}
 
 #[cfg(feature = "Contacts_CNPostalAddressFormatter")]
+/**
+  @abstract Formats a postal address.
+
+ @discussion This formatter handles international formatting of a postal address.
+*/
 unsafe impl NSObjectProtocol for CNPostalAddressFormatter {}
 
 extern_methods!(
+    /**
+      @abstract Formats a postal address.
+
+     @discussion This formatter handles international formatting of a postal address.
+    */
     #[cfg(feature = "Contacts_CNPostalAddressFormatter")]
     unsafe impl CNPostalAddressFormatter {
         #[cfg(all(feature = "Contacts_CNPostalAddress", feature = "Foundation_NSString"))]
@@ -51,9 +74,19 @@ extern_methods!(
             attributes: &NSDictionary,
         ) -> Id<NSAttributedString>;
 
+        /**
+          @abstract The style for a postal address formatter instance.
+
+         @discussion The default value is CNPostalAddressFormatterStyleMailingAddress.
+        */
         #[method(style)]
         pub unsafe fn style(&self) -> CNPostalAddressFormatterStyle;
 
+        /**
+          @abstract The style for a postal address formatter instance.
+
+         @discussion The default value is CNPostalAddressFormatterStyleMailingAddress.
+        */
         #[method(setStyle:)]
         pub unsafe fn setStyle(&self, style: CNPostalAddressFormatterStyle);
 

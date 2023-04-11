@@ -8,6 +8,10 @@ use crate::UniformTypeIdentifiers::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum          HKPrismBase
+    @abstract      Represents the prism base for rectangular coordinates
+    */
     pub enum HKPrismBase {
         HKPrismBaseNone = 0,
         HKPrismBaseUp = 1,
@@ -19,6 +23,10 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum          HKVisionEye
+    @abstract      Represents an eye
+    */
     pub enum HKVisionEye {
         HKVisionEyeLeft = 1,
         HKVisionEyeRight = 2,
@@ -28,6 +36,11 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKVisionPrism")]
+    /**
+     @class         HKVisionPrism
+    @abstract      An object subclass representing prism vision fields used in eye glasses to correct double vision.
+    The prism aligns the two images so only one is seen.
+    */
     pub struct HKVisionPrism;
 
     #[cfg(feature = "HealthKit_HKVisionPrism")]
@@ -37,39 +50,89 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKVisionPrism")]
+/**
+ @class         HKVisionPrism
+@abstract      An object subclass representing prism vision fields used in eye glasses to correct double vision.
+The prism aligns the two images so only one is seen.
+*/
 unsafe impl NSCoding for HKVisionPrism {}
 
 #[cfg(feature = "HealthKit_HKVisionPrism")]
+/**
+ @class         HKVisionPrism
+@abstract      An object subclass representing prism vision fields used in eye glasses to correct double vision.
+The prism aligns the two images so only one is seen.
+*/
 unsafe impl NSObjectProtocol for HKVisionPrism {}
 
 #[cfg(feature = "HealthKit_HKVisionPrism")]
+/**
+ @class         HKVisionPrism
+@abstract      An object subclass representing prism vision fields used in eye glasses to correct double vision.
+The prism aligns the two images so only one is seen.
+*/
 unsafe impl NSSecureCoding for HKVisionPrism {}
 
 extern_methods!(
+    /**
+     @class         HKVisionPrism
+    @abstract      An object subclass representing prism vision fields used in eye glasses to correct double vision.
+    The prism aligns the two images so only one is seen.
+    */
     #[cfg(feature = "HealthKit_HKVisionPrism")]
     unsafe impl HKVisionPrism {
         #[cfg(feature = "HealthKit_HKQuantity")]
+        /**
+         @property      amount
+        @abstract      The compensation in prism diopters to correct eye misalignment [polar coordinates]
+        */
         #[method_id(@__retain_semantics Other amount)]
         pub unsafe fn amount(&self) -> Id<HKQuantity>;
 
         #[cfg(feature = "HealthKit_HKQuantity")]
+        /**
+         @property      angle
+        @abstract      The direction of the prism base [polar coordinates]
+        */
         #[method_id(@__retain_semantics Other angle)]
         pub unsafe fn angle(&self) -> Id<HKQuantity>;
 
         #[cfg(feature = "HealthKit_HKQuantity")]
+        /**
+         @property      verticalAmount
+        @abstract      The vertical component of compensation in prism diopters [rectangular coordinates]
+        */
         #[method_id(@__retain_semantics Other verticalAmount)]
         pub unsafe fn verticalAmount(&self) -> Id<HKQuantity>;
 
         #[cfg(feature = "HealthKit_HKQuantity")]
+        /**
+         @property      horizontalAmount
+        @abstract      The horizontal component of compensation in prism diopters [rectangular coordinates]
+        */
         #[method_id(@__retain_semantics Other horizontalAmount)]
         pub unsafe fn horizontalAmount(&self) -> Id<HKQuantity>;
 
+        /**
+         @property      verticalBase
+        @abstract      The direction of the prism base relative to the vertical axis of the lens;
+        base up or base down. [rectangular coordinates]
+        */
         #[method(verticalBase)]
         pub unsafe fn verticalBase(&self) -> HKPrismBase;
 
+        /**
+         @property      horizontalBase
+        @abstract      The direction of the prism base relative to the horizontal axis of the lens;
+        base in (toward the nose) or base out (away from the nose). [rectangular coordinates]
+        */
         #[method(horizontalBase)]
         pub unsafe fn horizontalBase(&self) -> HKPrismBase;
 
+        /**
+         @property      eye
+        @abstract      Which eye (left or right)
+        */
         #[method(eye)]
         pub unsafe fn eye(&self) -> HKVisionEye;
 

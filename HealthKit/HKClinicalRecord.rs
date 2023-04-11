@@ -13,6 +13,14 @@ extern_static!(HKPredicateKeyPathClinicalRecordFHIRResourceType: &'static NSStri
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKClinicalRecord")]
+    /**
+     @class		   HKClinicalRecord
+    @abstract     An HKObject subclass representing a health record.
+    @discussion   The startDate and endDate properties (inherited from HKSample) are set to the date the sample was
+    added to Health. Unlike other HKObject subclasses, UUID is not a stable identifier
+    for a given sample. Use a combination of HKSource, FHIRResource.resourceType, and
+    FHIRResource.identifier instead.
+    */
     pub struct HKClinicalRecord;
 
     #[cfg(feature = "HealthKit_HKClinicalRecord")]
@@ -23,15 +31,47 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKClinicalRecord")]
+/**
+ @class		   HKClinicalRecord
+@abstract     An HKObject subclass representing a health record.
+@discussion   The startDate and endDate properties (inherited from HKSample) are set to the date the sample was
+added to Health. Unlike other HKObject subclasses, UUID is not a stable identifier
+for a given sample. Use a combination of HKSource, FHIRResource.resourceType, and
+FHIRResource.identifier instead.
+*/
 unsafe impl NSCoding for HKClinicalRecord {}
 
 #[cfg(feature = "HealthKit_HKClinicalRecord")]
+/**
+ @class		   HKClinicalRecord
+@abstract     An HKObject subclass representing a health record.
+@discussion   The startDate and endDate properties (inherited from HKSample) are set to the date the sample was
+added to Health. Unlike other HKObject subclasses, UUID is not a stable identifier
+for a given sample. Use a combination of HKSource, FHIRResource.resourceType, and
+FHIRResource.identifier instead.
+*/
 unsafe impl NSObjectProtocol for HKClinicalRecord {}
 
 #[cfg(feature = "HealthKit_HKClinicalRecord")]
+/**
+ @class		   HKClinicalRecord
+@abstract     An HKObject subclass representing a health record.
+@discussion   The startDate and endDate properties (inherited from HKSample) are set to the date the sample was
+added to Health. Unlike other HKObject subclasses, UUID is not a stable identifier
+for a given sample. Use a combination of HKSource, FHIRResource.resourceType, and
+FHIRResource.identifier instead.
+*/
 unsafe impl NSSecureCoding for HKClinicalRecord {}
 
 extern_methods!(
+    /**
+     @class		   HKClinicalRecord
+    @abstract     An HKObject subclass representing a health record.
+    @discussion   The startDate and endDate properties (inherited from HKSample) are set to the date the sample was
+    added to Health. Unlike other HKObject subclasses, UUID is not a stable identifier
+    for a given sample. Use a combination of HKSource, FHIRResource.resourceType, and
+    FHIRResource.identifier instead.
+    */
     #[cfg(feature = "HealthKit_HKClinicalRecord")]
     unsafe impl HKClinicalRecord {
         #[cfg(feature = "HealthKit_HKClinicalType")]
@@ -39,10 +79,19 @@ extern_methods!(
         pub unsafe fn clinicalType(&self) -> Id<HKClinicalType>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property     displayName
+        @abstract     The primary display name used in Health.
+        @discussion   The display name is not localized, and is generally expected to be US English.
+        */
         #[method_id(@__retain_semantics Other displayName)]
         pub unsafe fn displayName(&self) -> Id<NSString>;
 
         #[cfg(feature = "HealthKit_HKFHIRResource")]
+        /**
+         @property     FHIRResource
+        @abstract     The FHIR resource (where applicable) backing this sample.
+        */
         #[method_id(@__retain_semantics Other FHIRResource)]
         pub unsafe fn FHIRResource(&self) -> Option<Id<HKFHIRResource>>;
 

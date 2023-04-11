@@ -39,9 +39,15 @@ extern_methods!(
             style: ASAuthorizationAppleIDButtonStyle,
         ) -> Id<Self>;
 
+        /**
+          @abstract Set a custom corner radius to be used by this button.
+        */
         #[method(cornerRadius)]
         pub unsafe fn cornerRadius(&self) -> CGFloat;
 
+        /**
+          @abstract Set a custom corner radius to be used by this button.
+        */
         #[method(setCornerRadius:)]
         pub unsafe fn setCornerRadius(&self, corner_radius: CGFloat);
     }

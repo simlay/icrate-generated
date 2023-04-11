@@ -7,6 +7,9 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      The NSCollectionViewLayout class is provided as an abstract class for subclassing to define custom collection layouts.  Defining a custom layout is an advanced operation intended for applications with complex needs.
+    */
     pub enum NSCollectionElementCategory {
         NSCollectionElementCategoryItem = 0,
         NSCollectionElementCategorySupplementaryView = 1,
@@ -56,15 +59,27 @@ extern_methods!(
         #[method(setAlpha:)]
         pub unsafe fn setAlpha(&self, alpha: CGFloat);
 
+        /**
+          default is 0
+        */
         #[method(zIndex)]
         pub unsafe fn zIndex(&self) -> NSInteger;
 
+        /**
+          default is 0
+        */
         #[method(setZIndex:)]
         pub unsafe fn setZIndex(&self, z_index: NSInteger);
 
+        /**
+          As an optimization, NSCollectionView might not create a view for items whose hidden attribute is YES
+        */
         #[method(isHidden)]
         pub unsafe fn isHidden(&self) -> bool;
 
+        /**
+          As an optimization, NSCollectionView might not create a view for items whose hidden attribute is YES
+        */
         #[method(setHidden:)]
         pub unsafe fn setHidden(&self, hidden: bool);
 
@@ -80,6 +95,9 @@ extern_methods!(
         pub unsafe fn representedElementCategory(&self) -> NSCollectionElementCategory;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          nil when representedElementCategory is NSCollectionElementCategoryItem. NSCollectionViewSupplementaryElementKind when representedElementCategory is NSCollectionElementCategorySupplementaryView or NSCollectionElementCategoryInterItemGap. NSCollectionViewDecorationElementKind when representedElementCategory is NSCollectionElementCategoryDecorationView.
+        */
         #[method_id(@__retain_semantics Other representedElementKind)]
         pub unsafe fn representedElementKind(&self) -> Option<Id<NSString>>;
 
@@ -138,10 +156,16 @@ extern_methods!(
     #[cfg(feature = "AppKit_NSCollectionViewUpdateItem")]
     unsafe impl NSCollectionViewUpdateItem {
         #[cfg(feature = "Foundation_NSIndexPath")]
+        /**
+          nil for NSCollectionUpdateActionInsert
+        */
         #[method_id(@__retain_semantics Other indexPathBeforeUpdate)]
         pub unsafe fn indexPathBeforeUpdate(&self) -> Option<Id<NSIndexPath>>;
 
         #[cfg(feature = "Foundation_NSIndexPath")]
+        /**
+          nil for NSCollectionUpdateActionDelete
+        */
         #[method_id(@__retain_semantics Other indexPathAfterUpdate)]
         pub unsafe fn indexPathAfterUpdate(&self) -> Option<Id<NSIndexPath>>;
 
@@ -167,9 +191,15 @@ unsafe impl NSObjectProtocol for NSCollectionViewLayoutInvalidationContext {}
 extern_methods!(
     #[cfg(feature = "AppKit_NSCollectionViewLayoutInvalidationContext")]
     unsafe impl NSCollectionViewLayoutInvalidationContext {
+        /**
+          set to YES when invalidation occurs because the collection view is sent -reloadData
+        */
         #[method(invalidateEverything)]
         pub unsafe fn invalidateEverything(&self) -> bool;
 
+        /**
+          if YES, the layout should requery section and item counts from the collection view - set to YES when the collection view is sent -reloadData and when items are inserted or deleted
+        */
         #[method(invalidateDataSourceCounts)]
         pub unsafe fn invalidateDataSourceCounts(&self) -> bool;
 
@@ -202,6 +232,9 @@ extern_methods!(
             feature = "Foundation_NSIndexPath",
             feature = "Foundation_NSSet"
         ))]
+        /**
+          keys are element kind strings - values are NSSet<NSIndexPath *>
+        */
         #[method_id(@__retain_semantics Other invalidatedSupplementaryIndexPaths)]
         pub unsafe fn invalidatedSupplementaryIndexPaths(
             &self,
@@ -212,20 +245,35 @@ extern_methods!(
             feature = "Foundation_NSIndexPath",
             feature = "Foundation_NSSet"
         ))]
+        /**
+          keys are element kind strings - values are NSSet<NSIndexPath *>
+        */
         #[method_id(@__retain_semantics Other invalidatedDecorationIndexPaths)]
         pub unsafe fn invalidatedDecorationIndexPaths(
             &self,
         ) -> Option<Id<NSDictionary<NSCollectionViewDecorationElementKind, NSSet<NSIndexPath>>>>;
 
+        /**
+          delta to be applied to the collection view's current contentOffset - default is NSZeroPoint
+        */
         #[method(contentOffsetAdjustment)]
         pub unsafe fn contentOffsetAdjustment(&self) -> NSPoint;
 
+        /**
+          delta to be applied to the collection view's current contentOffset - default is NSZeroPoint
+        */
         #[method(setContentOffsetAdjustment:)]
         pub unsafe fn setContentOffsetAdjustment(&self, content_offset_adjustment: NSPoint);
 
+        /**
+          delta to be applied to the current content size - default is NSZeroSize
+        */
         #[method(contentSizeAdjustment)]
         pub unsafe fn contentSizeAdjustment(&self) -> NSSize;
 
+        /**
+          delta to be applied to the current content size - default is NSZeroSize
+        */
         #[method(setContentSizeAdjustment:)]
         pub unsafe fn setContentSizeAdjustment(&self, content_size_adjustment: NSSize);
     }
@@ -234,6 +282,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSCollectionViewLayout")]
+    /**
+      The NSCollectionViewLayout class is provided as an abstract class for subclassing to define custom collection layouts.  Defining a custom layout is an advanced operation intended for applications with complex needs.
+    */
     pub struct NSCollectionViewLayout;
 
     #[cfg(feature = "AppKit_NSCollectionViewLayout")]
@@ -243,15 +294,27 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSCollectionViewLayout")]
+/**
+  The NSCollectionViewLayout class is provided as an abstract class for subclassing to define custom collection layouts.  Defining a custom layout is an advanced operation intended for applications with complex needs.
+*/
 unsafe impl NSCoding for NSCollectionViewLayout {}
 
 #[cfg(feature = "AppKit_NSCollectionViewLayout")]
+/**
+  The NSCollectionViewLayout class is provided as an abstract class for subclassing to define custom collection layouts.  Defining a custom layout is an advanced operation intended for applications with complex needs.
+*/
 unsafe impl NSObjectProtocol for NSCollectionViewLayout {}
 
 extern_methods!(
+    /**
+      The NSCollectionViewLayout class is provided as an abstract class for subclassing to define custom collection layouts.  Defining a custom layout is an advanced operation intended for applications with complex needs.
+    */
     #[cfg(feature = "AppKit_NSCollectionViewLayout")]
     unsafe impl NSCollectionViewLayout {
         #[cfg(feature = "AppKit_NSCollectionView")]
+        /**
+          Methods in this class are meant to be overridden and will be called by its collection view to gather layout information.  To get the truth on the current state of the collection view, call methods on NSCollectionView rather than these.
+        */
         #[method_id(@__retain_semantics Other collectionView)]
         pub unsafe fn collectionView(&self) -> Option<Id<NSCollectionView>>;
 
@@ -286,9 +349,15 @@ extern_methods!(
     /// NSSubclassingHooks
     #[cfg(feature = "AppKit_NSCollectionViewLayout")]
     unsafe impl NSCollectionViewLayout {
+        /**
+          override this method to provide a custom class to be used when instantiating instances of NSCollectionViewLayoutAttributes
+        */
         #[method(layoutAttributesClass)]
         pub unsafe fn layoutAttributesClass() -> &'static Class;
 
+        /**
+          override this method to provide a custom class to be used for invalidation contexts
+        */
         #[method(invalidationContextClass)]
         pub unsafe fn invalidationContextClass() -> &'static Class;
 
@@ -396,6 +465,9 @@ extern_methods!(
             proposed_content_offset: NSPoint,
         ) -> NSPoint;
 
+        /**
+          Subclasses must implement a collectionViewContentSize getter that returns the width and height of the collection view’s content. These values represent the width and height of all the content, not just the content that is currently visible. The collection view uses this information to configure its own content size to facilitate scrolling.
+        */
         #[method(collectionViewContentSize)]
         pub unsafe fn collectionViewContentSize(&self) -> NSSize;
     }

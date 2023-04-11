@@ -6,6 +6,9 @@ use crate::Speech::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+       Hints on kind of speech recognition being performed
+    */
     pub enum SFSpeechRecognitionTaskHint {
         SFSpeechRecognitionTaskHintUnspecified = 0,
         SFSpeechRecognitionTaskHintDictation = 1,

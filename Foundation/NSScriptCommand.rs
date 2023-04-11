@@ -58,31 +58,53 @@ extern_methods!(
         #[method_id(@__retain_semantics Other commandDescription)]
         pub unsafe fn commandDescription(&self) -> Id<NSScriptCommandDescription>;
 
+        /**
+          The command description is immutable once the command is created.
+        */
         #[method_id(@__retain_semantics Other directParameter)]
         pub unsafe fn directParameter(&self) -> Option<Id<Object>>;
 
+        /**
+          The command description is immutable once the command is created.
+        */
         #[method(setDirectParameter:)]
         pub unsafe fn setDirectParameter(&self, direct_parameter: Option<&Object>);
 
         #[cfg(feature = "Foundation_NSScriptObjectSpecifier")]
+        /**
+          Accessors for the object that corresponds to the keyDirectObject parameter of the Apple event from which this command derives.
+        */
         #[method_id(@__retain_semantics Other receiversSpecifier)]
         pub unsafe fn receiversSpecifier(&self) -> Option<Id<NSScriptObjectSpecifier>>;
 
         #[cfg(feature = "Foundation_NSScriptObjectSpecifier")]
+        /**
+          Accessors for the object that corresponds to the keyDirectObject parameter of the Apple event from which this command derives.
+        */
         #[method(setReceiversSpecifier:)]
         pub unsafe fn setReceiversSpecifier(
             &self,
             receivers_specifier: Option<&NSScriptObjectSpecifier>,
         );
 
+        /**
+          Accessors for the specifier of the object(s) that will be given a chance to handle the command, if the direct parameter of the original event was an object specifier.  For backwards compatibility, -[NSScriptCommand setDirectParameter:] sends a [self setReceiversSpecifier:] message if the direct parameter is an object specifier.
+         Some types of commands may treat this somewhat specially.  For instance, the Set command backs off the innermost component of this specifier and uses the innermost component as the key to be set within that specifiers container specifier.
+        */
         #[method_id(@__retain_semantics Other evaluatedReceivers)]
         pub unsafe fn evaluatedReceivers(&self) -> Option<Id<Object>>;
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+          If the direct parameter of the original event was an object specifier, and that object specifier can be (or already has been) evaluated successfully, return the specified object(s).  Return nil otherwise.
+        */
         #[method_id(@__retain_semantics Other arguments)]
         pub unsafe fn arguments(&self) -> Option<Id<NSDictionary<NSString, Object>>>;
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+          If the direct parameter of the original event was an object specifier, and that object specifier can be (or already has been) evaluated successfully, return the specified object(s).  Return nil otherwise.
+        */
         #[method(setArguments:)]
         pub unsafe fn setArguments(&self, arguments: Option<&NSDictionary<NSString, Object>>);
 
@@ -90,6 +112,9 @@ extern_methods!(
         #[method_id(@__retain_semantics Other evaluatedArguments)]
         pub unsafe fn evaluatedArguments(&self) -> Option<Id<NSDictionary<NSString, Object>>>;
 
+        /**
+          Arguments can be either normal objects or object specifiers.  If they are object specifiers they will be evaluated before being used.
+        */
         #[method(isWellFormed)]
         pub unsafe fn isWellFormed(&self) -> bool;
 
@@ -99,9 +124,15 @@ extern_methods!(
         #[method_id(@__retain_semantics Other executeCommand)]
         pub unsafe fn executeCommand(&self) -> Option<Id<Object>>;
 
+        /**
+          Set the error number, offending object descriptor, type descriptor, or message, respectively, that will be put in the reply to the Apple event from which this command was constructed, when execution of the command is completed, if the sender of the event requested a reply. If -setScriptErrorNumber: is invoked during an invocation of -executeCommand, the invocation of -executeCommand may stop invoking command handling methods in the receiver and return early.
+        */
         #[method(scriptErrorNumber)]
         pub unsafe fn scriptErrorNumber(&self) -> NSInteger;
 
+        /**
+          Set the error number, offending object descriptor, type descriptor, or message, respectively, that will be put in the reply to the Apple event from which this command was constructed, when execution of the command is completed, if the sender of the event requested a reply. If -setScriptErrorNumber: is invoked during an invocation of -executeCommand, the invocation of -executeCommand may stop invoking command handling methods in the receiver and return early.
+        */
         #[method(setScriptErrorNumber:)]
         pub unsafe fn setScriptErrorNumber(&self, script_error_number: NSInteger);
 
@@ -143,6 +174,9 @@ extern_methods!(
         pub unsafe fn currentCommand() -> Option<Id<NSScriptCommand>>;
 
         #[cfg(feature = "Foundation_NSAppleEventDescriptor")]
+        /**
+          If the receiver was constructed by Cocoa Scripting's built-in Apple event handling, the Apple event descriptor from which it was constructed.  The effects of mutating or retaining this descriptor are undefined, though it may be copied.
+        */
         #[method_id(@__retain_semantics Other appleEvent)]
         pub unsafe fn appleEvent(&self) -> Option<Id<NSAppleEventDescriptor>>;
 

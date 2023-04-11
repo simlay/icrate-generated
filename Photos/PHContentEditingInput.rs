@@ -41,10 +41,17 @@ extern_methods!(
         #[method_id(@__retain_semantics Other uniformTypeIdentifier)]
         pub unsafe fn uniformTypeIdentifier(&self) -> Option<Id<NSString>>;
 
+        /**
+          Playback style describes how the content should be presented to the user.  Use this value to choose the type of view and the appropriate APIs on the content editing input to display this content.
+         When editing a live photo with a PHAssetPlaybackStyleLoopingVideo, you should provide an updated video that includes the looping video metadata on the PHContentEditingOutput's renderedContentURL.
+        */
         #[method(playbackStyle)]
         pub unsafe fn playbackStyle(&self) -> PHAssetPlaybackStyle;
 
         #[cfg(feature = "PhotoKit_PHAdjustmentData")]
+        /**
+          Adjustments to be applied onto the provided input image or video.
+        */
         #[method_id(@__retain_semantics Other adjustmentData)]
         pub unsafe fn adjustmentData(&self) -> Option<Id<PHAdjustmentData>>;
 
@@ -56,10 +63,16 @@ extern_methods!(
         #[method_id(@__retain_semantics Other fullSizeImageURL)]
         pub unsafe fn fullSizeImageURL(&self) -> Option<Id<NSURL>>;
 
+        /**
+          EXIF value
+        */
         #[method(fullSizeImageOrientation)]
         pub unsafe fn fullSizeImageOrientation(&self) -> c_int;
 
         #[cfg(feature = "AVFoundation_AVAsset")]
+        /**
+          Input video:
+        */
         #[deprecated]
         #[method_id(@__retain_semantics Other avAsset)]
         pub unsafe fn avAsset(&self) -> Option<Id<AVAsset>>;
@@ -69,6 +82,9 @@ extern_methods!(
         pub unsafe fn audiovisualAsset(&self) -> Option<Id<AVAsset>>;
 
         #[cfg(feature = "PhotoKit_PHLivePhoto")]
+        /**
+          Input Live Photo:
+        */
         #[method_id(@__retain_semantics Other livePhoto)]
         pub unsafe fn livePhoto(&self) -> Option<Id<PHLivePhoto>>;
     }

@@ -6,7 +6,18 @@ use crate::Foundation::*;
 use crate::GameController::*;
 
 extern_protocol!(
+    /**
+     An object conforming to \c GCTouchedStateInput represents the touched state of
+    an element.
+
+    Some buttons feature capacitive touch capabilities, where the user can touch
+    the button without pressing it.  In such cases, a button can be touched without
+    being pressed.
+    */
     pub unsafe trait GCTouchedStateInput: NSObjectProtocol {
+        /**
+         Set this block if you want to be notified when the touched state changes.
+        */
         #[method(touchedDidChangeHandler)]
         unsafe fn touchedDidChangeHandler(
             &self,
@@ -19,6 +30,9 @@ extern_protocol!(
             (),
         >;
 
+        /**
+         Set this block if you want to be notified when the touched state changes.
+        */
         #[method(setTouchedDidChangeHandler:)]
         unsafe fn setTouchedDidChangeHandler(
             &self,
@@ -34,12 +48,35 @@ extern_protocol!(
             >,
         );
 
+        /**
+         Some buttons feature capacitive touch capabilities, where the user can touch
+        the button without pressing it. In such cases, a button will be touched before
+        it is pressed.
+
+        @see touchedDidChangeHandler
+        @see GCPressedStateInput
+        */
         #[method(isTouched)]
         unsafe fn isTouched(&self) -> bool;
 
+        /**
+         The timestamp of the last touched state change.
+
+        This time interval is not relative to any specific point in time.  You can
+        subtract a previous timestamp from the returned timestamp to determine the time
+        (in seconds) between changes to the value.
+        */
         #[method(lastTouchedStateTimestamp)]
         unsafe fn lastTouchedStateTimestamp(&self) -> NSTimeInterval;
 
+        /**
+         The interval (in seconds) between the timestamp of the last touched state
+        change and the current time.
+
+        This should be treated as a lower bound of the event latency.  It may not
+        include (wired or wireless) transmission latency, or latency accrued on
+        the device before the event was transmitted to the host.
+        */
         #[method(lastTouchedStateLatency)]
         unsafe fn lastTouchedStateLatency(&self) -> NSTimeInterval;
     }

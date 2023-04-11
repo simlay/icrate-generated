@@ -31,6 +31,9 @@ extern_methods!(
     #[cfg(feature = "Foundation_NSAttributedString")]
     unsafe impl NSAttributedString {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Override these two APIs when subclassing NSAttributedString
+        */
         #[method_id(@__retain_semantics Other string)]
         pub fn string(&self) -> Id<NSString>;
 
@@ -239,6 +242,10 @@ extern_methods!(
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+      Inline presentation intents.
+     For use with NSInlinePresentationAttributeName.
+    */
     pub enum NSInlinePresentationIntent {
         NSInlinePresentationIntentEmphasized = 1 << 0,
         NSInlinePresentationIntentStronglyEmphasized = 1 << 1,
@@ -348,24 +355,46 @@ extern_methods!(
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
+        /**
+          Whether to allow parsing extensions to Markdown that specify extended attributes. Defaults to NO (only parse CommonMark syntax).
+        */
         #[method(allowsExtendedAttributes)]
         pub unsafe fn allowsExtendedAttributes(&self) -> bool;
 
+        /**
+          Whether to allow parsing extensions to Markdown that specify extended attributes. Defaults to NO (only parse CommonMark syntax).
+        */
         #[method(setAllowsExtendedAttributes:)]
         pub unsafe fn setAllowsExtendedAttributes(&self, allows_extended_attributes: bool);
 
+        /**
+          What subset of Markdown syntax will be interpreted to produce relevant attributes in the final result.
+         Excluded syntax will still be parsed, and the text will be included in the final result. However, it will not have attributes applied to it.
+        */
         #[method(interpretedSyntax)]
         pub unsafe fn interpretedSyntax(&self) -> NSAttributedStringMarkdownInterpretedSyntax;
 
+        /**
+          What subset of Markdown syntax will be interpreted to produce relevant attributes in the final result.
+         Excluded syntax will still be parsed, and the text will be included in the final result. However, it will not have attributes applied to it.
+        */
         #[method(setInterpretedSyntax:)]
         pub unsafe fn setInterpretedSyntax(
             &self,
             interpreted_syntax: NSAttributedStringMarkdownInterpretedSyntax,
         );
 
+        /**
+          The policy to apply if the Markdown source triggers a parsing error.
+         The default is NSAttributedStringMarkdownParsingFailureReturnError.
+        */
         #[method(failurePolicy)]
         pub unsafe fn failurePolicy(&self) -> NSAttributedStringMarkdownParsingFailurePolicy;
 
+        /**
+          The policy to apply if the Markdown source triggers a parsing error.
+         The default is NSAttributedStringMarkdownParsingFailureReturnError.
+        */
         #[method(setFailurePolicy:)]
         pub unsafe fn setFailurePolicy(
             &self,
@@ -373,10 +402,18 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The BCP-47 language code for this document. If not nil, the NSLanguageAttributeName attribute will be applied to any range in the returned string that doesn't otherwise specify a language attribute.
+         The default is nil, which applies no attributes.
+        */
         #[method_id(@__retain_semantics Other languageCode)]
         pub unsafe fn languageCode(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The BCP-47 language code for this document. If not nil, the NSLanguageAttributeName attribute will be applied to any range in the returned string that doesn't otherwise specify a language attribute.
+         The default is nil, which applies no attributes.
+        */
         #[method(setLanguageCode:)]
         pub unsafe fn setLanguageCode(&self, language_code: Option<&NSString>);
 
@@ -440,6 +477,9 @@ extern_methods!(
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+      Formatting API:
+    */
     pub enum NSAttributedStringFormattingOptions {
         NSAttributedStringFormattingInsertArgumentAttributesWithoutMerging = 1 << 0,
         NSAttributedStringFormattingApplyReplacementIndexAttribute = 1 << 1,
@@ -461,6 +501,9 @@ extern_methods!(
 extern_static!(NSReplacementIndexAttributeName: &'static NSAttributedStringKey);
 
 extern_methods!(
+    /**
+      -----
+    */
     /// NSMorphology
     #[cfg(feature = "Foundation_NSAttributedString")]
     unsafe impl NSAttributedString {
@@ -617,32 +660,60 @@ extern_methods!(
             parent: Option<&NSPresentationIntent>,
         ) -> Id<NSPresentationIntent>;
 
+        /**
+          An integer value which uniquely identifies this intent in the document. Identity disambiguates attributes which apply to contiguous text -- for example, two headers in a row with the same level. It can also be used to track the location in an attributed string of a particular part of a document, even after mutation.
+        */
         #[method(identity)]
         pub unsafe fn identity(&self) -> NSInteger;
 
+        /**
+          If the intent is not a list, this value is 0.
+        */
         #[method(ordinal)]
         pub unsafe fn ordinal(&self) -> NSInteger;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSNumber"))]
+        /**
+          If the intent is not a table, this value is `nil`.
+        */
         #[method_id(@__retain_semantics Other columnAlignments)]
         pub unsafe fn columnAlignments(&self) -> Option<Id<NSArray<NSNumber>>>;
 
+        /**
+          If the intent is not a table, this value is 0.
+        */
         #[method(columnCount)]
         pub unsafe fn columnCount(&self) -> NSInteger;
 
+        /**
+          If the intent is not a header, this value is 0.
+        */
         #[method(headerLevel)]
         pub unsafe fn headerLevel(&self) -> NSInteger;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          If the intent is not a code block, this value is `nil`.
+        */
         #[method_id(@__retain_semantics Other languageHint)]
         pub unsafe fn languageHint(&self) -> Option<Id<NSString>>;
 
+        /**
+          The column to which this cell belongs (0-based). If the intent is not a cell, this value is 0.
+        */
         #[method(column)]
         pub unsafe fn column(&self) -> NSInteger;
 
+        /**
+          The row to which this cell belongs (0-based). If the intent is not a row, this value is 0. Header rows are always row 0. If the table has more rows, those start at row 1.
+        */
         #[method(row)]
         pub unsafe fn row(&self) -> NSInteger;
 
+        /**
+          The indentation level of this intent. Each nested list increases the indentation level by one; all elements within the same list (and not then nested into a child list intent) have the same indentation level.
+         Text outside list intents has an indentation level of 0.
+        */
         #[method(indentationLevel)]
         pub unsafe fn indentationLevel(&self) -> NSInteger;
 

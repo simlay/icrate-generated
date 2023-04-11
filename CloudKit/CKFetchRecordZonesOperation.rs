@@ -49,6 +49,11 @@ extern_methods!(
             feature = "CloudKit_CKRecordZoneID",
             feature = "Foundation_NSError"
         ))]
+        /**
+          @abstract Called on success or failure for each record zone.
+
+         @discussion Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(perRecordZoneCompletionBlock)]
         pub unsafe fn perRecordZoneCompletionBlock(
             &self,
@@ -59,6 +64,11 @@ extern_methods!(
             feature = "CloudKit_CKRecordZoneID",
             feature = "Foundation_NSError"
         ))]
+        /**
+          @abstract Called on success or failure for each record zone.
+
+         @discussion Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(setPerRecordZoneCompletionBlock:)]
         pub unsafe fn setPerRecordZoneCompletionBlock(
             &self,
@@ -73,6 +83,14 @@ extern_methods!(
             feature = "Foundation_NSDictionary",
             feature = "Foundation_NSError"
         ))]
+        /**
+          @abstract This block is called when the operation completes.
+
+          @discussion The @code -[NSOperation completionBlock] @endcode will also be called if both are set.
+          If the error is @c CKErrorPartialFailure, the error's userInfo dictionary contains a dictionary of zoneIDs to errors keyed off of @c CKPartialErrorsByItemIDKey.
+          @c recordZonesByZoneID and any @c CKPartialErrorsByItemIDKey errors are repeats of the data sent back in previous @c perRecordZoneCompletionBlock invocations
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations
+        */
         #[method(fetchRecordZonesCompletionBlock)]
         pub unsafe fn fetchRecordZonesCompletionBlock(
             &self,
@@ -90,6 +108,14 @@ extern_methods!(
             feature = "Foundation_NSDictionary",
             feature = "Foundation_NSError"
         ))]
+        /**
+          @abstract This block is called when the operation completes.
+
+          @discussion The @code -[NSOperation completionBlock] @endcode will also be called if both are set.
+          If the error is @c CKErrorPartialFailure, the error's userInfo dictionary contains a dictionary of zoneIDs to errors keyed off of @c CKPartialErrorsByItemIDKey.
+          @c recordZonesByZoneID and any @c CKPartialErrorsByItemIDKey errors are repeats of the data sent back in previous @c perRecordZoneCompletionBlock invocations
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations
+        */
         #[method(setFetchRecordZonesCompletionBlock:)]
         pub unsafe fn setFetchRecordZonesCompletionBlock(
             &self,

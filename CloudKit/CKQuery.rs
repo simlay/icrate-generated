@@ -8,6 +8,25 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CloudKit_CKQuery")]
+    /**
+      @class CKQuery
+
+      @discussion Only AND compound predicates are allowed.
+
+      Key names must begin with either an upper or lower case character ([a-zA-Z]) and may be followed by characters, numbers, or underscores ([0-9a-zA-Z_]). Keypaths may only resolve to the currently evaluated object, so the '.' character is not allowed in key names.
+
+      A limited subset of classes are allowed as predicate arguments:
+      - NSString
+      - NSDate
+      - NSData
+      - NSNumber
+      - NSArray
+      - CKReference
+      - CKRecord
+      - CLLocation
+
+     Any other class as an argument will result in an error when executing the query.
+    */
     pub struct CKQuery;
 
     #[cfg(feature = "CloudKit_CKQuery")]
@@ -17,15 +36,91 @@ extern_class!(
 );
 
 #[cfg(feature = "CloudKit_CKQuery")]
+/**
+  @class CKQuery
+
+  @discussion Only AND compound predicates are allowed.
+
+  Key names must begin with either an upper or lower case character ([a-zA-Z]) and may be followed by characters, numbers, or underscores ([0-9a-zA-Z_]). Keypaths may only resolve to the currently evaluated object, so the '.' character is not allowed in key names.
+
+  A limited subset of classes are allowed as predicate arguments:
+  - NSString
+  - NSDate
+  - NSData
+  - NSNumber
+  - NSArray
+  - CKReference
+  - CKRecord
+  - CLLocation
+
+ Any other class as an argument will result in an error when executing the query.
+*/
 unsafe impl NSCoding for CKQuery {}
 
 #[cfg(feature = "CloudKit_CKQuery")]
+/**
+  @class CKQuery
+
+  @discussion Only AND compound predicates are allowed.
+
+  Key names must begin with either an upper or lower case character ([a-zA-Z]) and may be followed by characters, numbers, or underscores ([0-9a-zA-Z_]). Keypaths may only resolve to the currently evaluated object, so the '.' character is not allowed in key names.
+
+  A limited subset of classes are allowed as predicate arguments:
+  - NSString
+  - NSDate
+  - NSData
+  - NSNumber
+  - NSArray
+  - CKReference
+  - CKRecord
+  - CLLocation
+
+ Any other class as an argument will result in an error when executing the query.
+*/
 unsafe impl NSObjectProtocol for CKQuery {}
 
 #[cfg(feature = "CloudKit_CKQuery")]
+/**
+  @class CKQuery
+
+  @discussion Only AND compound predicates are allowed.
+
+  Key names must begin with either an upper or lower case character ([a-zA-Z]) and may be followed by characters, numbers, or underscores ([0-9a-zA-Z_]). Keypaths may only resolve to the currently evaluated object, so the '.' character is not allowed in key names.
+
+  A limited subset of classes are allowed as predicate arguments:
+  - NSString
+  - NSDate
+  - NSData
+  - NSNumber
+  - NSArray
+  - CKReference
+  - CKRecord
+  - CLLocation
+
+ Any other class as an argument will result in an error when executing the query.
+*/
 unsafe impl NSSecureCoding for CKQuery {}
 
 extern_methods!(
+    /**
+      @class CKQuery
+
+      @discussion Only AND compound predicates are allowed.
+
+      Key names must begin with either an upper or lower case character ([a-zA-Z]) and may be followed by characters, numbers, or underscores ([0-9a-zA-Z_]). Keypaths may only resolve to the currently evaluated object, so the '.' character is not allowed in key names.
+
+      A limited subset of classes are allowed as predicate arguments:
+      - NSString
+      - NSDate
+      - NSData
+      - NSNumber
+      - NSArray
+      - CKReference
+      - CKRecord
+      - CLLocation
+
+     Any other class as an argument will result in an error when executing the query.
+    */
     #[cfg(feature = "CloudKit_CKQuery")]
     unsafe impl CKQuery {
         #[method_id(@__retain_semantics Init init)]

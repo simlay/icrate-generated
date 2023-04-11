@@ -8,6 +8,10 @@ use crate::UniformTypeIdentifiers::*;
 
 extern_protocol!(
     pub unsafe trait NSFileProviderServiceSource {
+        /**
+         The service name that uniquely identifies the service (using reverse domain
+        name notation for you service name is recommended).
+        */
         #[method_id(@__retain_semantics Other serviceName)]
         unsafe fn serviceName(&self) -> Id<NSFileProviderServiceName>;
 
@@ -20,6 +24,12 @@ extern_protocol!(
             &self,
         ) -> Result<Id<NSXPCListenerEndpoint>, Id<NSError>>;
 
+        /**
+         Indicates whether access to the service is restricted.
+
+        A restricted service can only be accessed by processes that can manage the domain the service is attached to. It is only accessible
+        through `-[NSFileProviderManager getServiceWithName:itemIdentifier:completionHandler:]`
+        */
         #[optional]
         #[method(isRestricted)]
         unsafe fn isRestricted(&self) -> bool;
@@ -29,6 +39,13 @@ extern_protocol!(
 );
 
 extern_methods!(
+    /**
+     A file provider can override the method in this category to return service
+    sources that provide custom communication channels to client applications.
+    The service sources must be tied to the item identified by @c itemIdentifier.
+    Client applications can retrieve the list of supported services by calling
+    @c -[NSFileManager getFileProviderServicesForItemAtURL:] for a specific item URL.
+    */
     /// NSFileProviderService
     #[cfg(feature = "FileProvider_NSFileProviderExtension")]
     unsafe impl NSFileProviderExtension {

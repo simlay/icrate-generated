@@ -7,6 +7,11 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNContactVCardSerialization")]
+    /**
+      @abstract    Contact vCard support.
+
+     @discussion  This converts between a contact and its vCard representation.
+    */
     pub struct CNContactVCardSerialization;
 
     #[cfg(feature = "Contacts_CNContactVCardSerialization")]
@@ -16,9 +21,19 @@ extern_class!(
 );
 
 #[cfg(feature = "Contacts_CNContactVCardSerialization")]
+/**
+  @abstract    Contact vCard support.
+
+ @discussion  This converts between a contact and its vCard representation.
+*/
 unsafe impl NSObjectProtocol for CNContactVCardSerialization {}
 
 extern_methods!(
+    /**
+      @abstract    Contact vCard support.
+
+     @discussion  This converts between a contact and its vCard representation.
+    */
     #[cfg(feature = "Contacts_CNContactVCardSerialization")]
     unsafe impl CNContactVCardSerialization {
         #[method_id(@__retain_semantics Other descriptorForRequiredKeys)]

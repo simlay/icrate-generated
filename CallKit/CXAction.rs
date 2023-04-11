@@ -28,9 +28,15 @@ extern_methods!(
     #[cfg(feature = "CallKit_CXAction")]
     unsafe impl CXAction {
         #[cfg(feature = "Foundation_NSUUID")]
+        /**
+          Unique ID
+        */
         #[method_id(@__retain_semantics Other UUID)]
         pub unsafe fn UUID(&self) -> Id<NSUUID>;
 
+        /**
+          Whether all actions are either fulfilled or failed
+        */
         #[method(isComplete)]
         pub unsafe fn isComplete(&self) -> bool;
 

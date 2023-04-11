@@ -7,6 +7,9 @@ use crate::SoundAnalysis::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "SoundAnalysis_SNClassification")]
+    /**
+     @brief The likelihood of a sound belonging to identified class
+    */
     pub struct SNClassification;
 
     #[cfg(feature = "SoundAnalysis_SNClassification")]
@@ -16,15 +19,27 @@ extern_class!(
 );
 
 #[cfg(feature = "SoundAnalysis_SNClassification")]
+/**
+ @brief The likelihood of a sound belonging to identified class
+*/
 unsafe impl NSObjectProtocol for SNClassification {}
 
 extern_methods!(
+    /**
+     @brief The likelihood of a sound belonging to identified class
+    */
     #[cfg(feature = "SoundAnalysis_SNClassification")]
     unsafe impl SNClassification {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @brief The identifier of a classification request. An example classification could be a string like 'laughter' or 'applause'. The string is defined in the model that was used for the classification. Usually these are technical labels that are not localized and not meant to be used directly to be presented to an end user in the UI.
+        */
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Id<NSString>;
 
+        /**
+         @brief The level of confidence normalized to [0, 1], where 1 is most confident
+        */
         #[method(confidence)]
         pub unsafe fn confidence(&self) -> c_double;
 
@@ -39,6 +54,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "SoundAnalysis_SNClassificationResult")]
+    /**
+     @brief A result containing the most likely classification candidates in the time range specified
+    */
     pub struct SNClassificationResult;
 
     #[cfg(feature = "SoundAnalysis_SNClassificationResult")]
@@ -48,18 +66,30 @@ extern_class!(
 );
 
 #[cfg(feature = "SoundAnalysis_SNClassificationResult")]
+/**
+ @brief A result containing the most likely classification candidates in the time range specified
+*/
 unsafe impl NSObjectProtocol for SNClassificationResult {}
 
 #[cfg(feature = "SoundAnalysis_SNClassificationResult")]
+/**
+ @brief A result containing the most likely classification candidates in the time range specified
+*/
 unsafe impl SNResult for SNClassificationResult {}
 
 extern_methods!(
+    /**
+     @brief A result containing the most likely classification candidates in the time range specified
+    */
     #[cfg(feature = "SoundAnalysis_SNClassificationResult")]
     unsafe impl SNClassificationResult {
         #[cfg(all(
             feature = "Foundation_NSArray",
             feature = "SoundAnalysis_SNClassification"
         ))]
+        /**
+         @brief All classification candidates, sorted with highest confidence first.
+        */
         #[method_id(@__retain_semantics Other classifications)]
         pub unsafe fn classifications(&self) -> Id<NSArray<SNClassification>>;
 

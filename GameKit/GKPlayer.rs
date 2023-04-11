@@ -10,6 +10,14 @@ extern_static!(GKPlayerIDNoLongerAvailable: &'static NSString);
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameKit_GKPlayer")]
+    /**
+
+      GKMatchmakerViewController.h
+      Game Center
+
+      Copyright 2010-2022 Apple Inc. All rights reserved.
+
+    */
     pub struct GKPlayer;
 
     #[cfg(feature = "GameKit_GKPlayer")]
@@ -20,27 +28,55 @@ extern_class!(
 );
 
 #[cfg(feature = "GameKit_GKPlayer")]
+/**
+
+  GKMatchmakerViewController.h
+  Game Center
+
+  Copyright 2010-2022 Apple Inc. All rights reserved.
+
+*/
 unsafe impl NSObjectProtocol for GKPlayer {}
 
 extern_methods!(
+    /**
+
+      GKMatchmakerViewController.h
+      Game Center
+
+      Copyright 2010-2022 Apple Inc. All rights reserved.
+
+    */
     #[cfg(feature = "GameKit_GKPlayer")]
     unsafe impl GKPlayer {
         #[method(scopedIDsArePersistent)]
         pub unsafe fn scopedIDsArePersistent(&self) -> bool;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+           This is the player's unique and persistent ID that is scoped to this application.
+        */
         #[method_id(@__retain_semantics Other gamePlayerID)]
         pub unsafe fn gamePlayerID(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+           This is the player's unique and persistent ID that is scoped to the Apple Store Connect Team identifier of this application.
+        */
         #[method_id(@__retain_semantics Other teamPlayerID)]
         pub unsafe fn teamPlayerID(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          This is player's alias to be displayed. The display name may be very long, so be sure to use appropriate string truncation API when drawing.
+        */
         #[method_id(@__retain_semantics Other displayName)]
         pub unsafe fn displayName(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The alias property contains the player's nickname. When you need to display the name to the user, consider using displayName instead. The nickname is unique but not invariant: the player may change their nickname. The nickname may be very long, so be sure to use appropriate string truncation API when drawing.
+        */
         #[method_id(@__retain_semantics Other alias)]
         pub unsafe fn alias(&self) -> Id<NSString>;
 
@@ -52,6 +88,9 @@ extern_methods!(
         #[method_id(@__retain_semantics Other guestIdentifier)]
         pub unsafe fn guestIdentifier(&self) -> Option<Id<NSString>>;
 
+        /**
+          This convenience method checks if you can invite the player to multiplayer game.
+        */
         #[method(isInvitable)]
         pub unsafe fn isInvitable(&self) -> bool;
     }
@@ -59,6 +98,9 @@ extern_methods!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      Available photo sizes.  Actual pixel dimensions will vary on different devices.
+    */
     pub enum GKPhotoSize {
         GKPhotoSizeSmall = 0,
         GKPhotoSizeNormal = 1,
@@ -85,6 +127,9 @@ extern_methods!(
     /// Deprecated
     #[cfg(feature = "GameKit_GKPlayer")]
     unsafe impl GKPlayer {
+        /**
+          True if this player is a friend of the local player
+        */
         #[deprecated = "use -[GKLocalPlayer loadFriendPlayers...]"]
         #[method(isFriend)]
         pub unsafe fn isFriend(&self) -> bool;

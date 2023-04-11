@@ -9,6 +9,13 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKCorrelationQuery")]
+    /**
+     @class         HKCorrelationQuery
+    @abstract      A query to find HKCorrelations
+    @discussion    Correlations are HKSamples that contain a set of correlated samples. HKCorrelationQuery
+    accepts a predicate to filter HKCorrelations and a dictionary of predicates to filter the
+    correlated samples.
+    */
     pub struct HKCorrelationQuery;
 
     #[cfg(feature = "HealthKit_HKCorrelationQuery")]
@@ -19,9 +26,23 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKCorrelationQuery")]
+/**
+ @class         HKCorrelationQuery
+@abstract      A query to find HKCorrelations
+@discussion    Correlations are HKSamples that contain a set of correlated samples. HKCorrelationQuery
+accepts a predicate to filter HKCorrelations and a dictionary of predicates to filter the
+correlated samples.
+*/
 unsafe impl NSObjectProtocol for HKCorrelationQuery {}
 
 extern_methods!(
+    /**
+     @class         HKCorrelationQuery
+    @abstract      A query to find HKCorrelations
+    @discussion    Correlations are HKSamples that contain a set of correlated samples. HKCorrelationQuery
+    accepts a predicate to filter HKCorrelations and a dictionary of predicates to filter the
+    correlated samples.
+    */
     #[cfg(feature = "HealthKit_HKCorrelationQuery")]
     unsafe impl HKCorrelationQuery {
         #[cfg(feature = "HealthKit_HKCorrelationType")]
@@ -33,6 +54,13 @@ extern_methods!(
             feature = "Foundation_NSPredicate",
             feature = "HealthKit_HKSampleType"
         ))]
+        /**
+         @property      samplePredicates
+        @abstract      A dictionary of predicates for the HKCorrelation's objects
+        @discussion    samplePredicates maps HKSampleTypes to NSPredicates. The predicate value will apply
+        to objects of the key type.
+
+        */
         #[method_id(@__retain_semantics Other samplePredicates)]
         pub unsafe fn samplePredicates(
             &self,

@@ -318,6 +318,9 @@ extern_protocol!(
         #[method_id(@__retain_semantics Other accessibilitySelectedChildren)]
         unsafe fn accessibilitySelectedChildren(&self) -> Option<Id<NSArray>>;
 
+        /**
+          The focused layoutItem
+        */
         #[method_id(@__retain_semantics Other accessibilityFocusedUIElement)]
         unsafe fn accessibilityFocusedUIElement(&self) -> Id<Object>;
     }
@@ -355,34 +358,75 @@ extern_protocol!(
 );
 
 extern_protocol!(
+    /**
+      The complete accessibility protocol
+    */
     pub unsafe trait NSAccessibility: NSObjectProtocol {
+        /**
+          Return YES if the UIElement should be exposed
+        */
         #[method(isAccessibilityElement)]
         unsafe fn isAccessibilityElement(&self) -> bool;
 
+        /**
+          Return YES if the UIElement should be exposed
+        */
         #[method(setAccessibilityElement:)]
         unsafe fn setAccessibilityElement(&self, accessibility_element: bool);
 
+        /**
+          The frame of the UIElement in screen coordinates. See NSAccessibilityFrameInView()
+         Invokes when clients request NSAccessibilitySizeAttribute or NSAccessibilityPositionAttribute
+        */
         #[method(accessibilityFrame)]
         unsafe fn accessibilityFrame(&self) -> NSRect;
 
+        /**
+          The frame of the UIElement in screen coordinates. See NSAccessibilityFrameInView()
+         Invokes when clients request NSAccessibilitySizeAttribute or NSAccessibilityPositionAttribute
+        */
         #[method(setAccessibilityFrame:)]
         unsafe fn setAccessibilityFrame(&self, accessibility_frame: NSRect);
 
+        /**
+          Returns YES if the element is focused (generally, accessibilityFocused is equivilent to the
+         UIElement with the focus ring or selection)
+         Invokes when clients request NSAccessibilityFocusedAttribute
+        */
         #[method(isAccessibilityFocused)]
         unsafe fn isAccessibilityFocused(&self) -> bool;
 
+        /**
+          Returns YES if the element is focused (generally, accessibilityFocused is equivilent to the
+         UIElement with the focus ring or selection)
+         Invokes when clients request NSAccessibilityFocusedAttribute
+        */
         #[method(setAccessibilityFocused:)]
         unsafe fn setAccessibilityFocused(&self, accessibility_focused: bool);
 
+        /**
+          Activation point for the UIElement, in screen coordinates. See NSAccessibilityPointInView()
+        */
         #[method(accessibilityActivationPoint)]
         unsafe fn accessibilityActivationPoint(&self) -> NSPoint;
 
+        /**
+          Activation point for the UIElement, in screen coordinates. See NSAccessibilityPointInView()
+        */
         #[method(setAccessibilityActivationPoint:)]
         unsafe fn setAccessibilityActivationPoint(&self, accessibility_activation_point: NSPoint);
 
+        /**
+          UIElement for the containing top level element
+         Invokes when clients request NSAccessibilityTopLevelUIElementAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityTopLevelUIElement)]
         unsafe fn accessibilityTopLevelUIElement(&self) -> Option<Id<Object>>;
 
+        /**
+          UIElement for the containing top level element
+         Invokes when clients request NSAccessibilityTopLevelUIElementAttribute
+        */
         #[method(setAccessibilityTopLevelUIElement:)]
         unsafe fn setAccessibilityTopLevelUIElement(
             &self,
@@ -390,24 +434,48 @@ extern_protocol!(
         );
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          URL of the UIElement
+         Invokes when clients request NSAccessibilityURLAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityURL)]
         unsafe fn accessibilityURL(&self) -> Option<Id<NSURL>>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          URL of the UIElement
+         Invokes when clients request NSAccessibilityURLAttribute
+        */
         #[method(setAccessibilityURL:)]
         unsafe fn setAccessibilityURL(&self, accessibility_url: Option<&NSURL>);
 
+        /**
+          Value of the UIElement
+         Invokes when clients request NSAccessibilityValueAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityValue)]
         unsafe fn accessibilityValue(&self) -> Option<Id<Object>>;
 
+        /**
+          Value of the UIElement
+         Invokes when clients request NSAccessibilityValueAttribute
+        */
         #[method(setAccessibilityValue:)]
         unsafe fn setAccessibilityValue(&self, accessibility_value: Option<&Object>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Human-readable description of value
+         Invokes when clients request NSAccessibilityValueDescriptionAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityValueDescription)]
         unsafe fn accessibilityValueDescription(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Human-readable description of value
+         Invokes when clients request NSAccessibilityValueDescriptionAttribute
+        */
         #[method(setAccessibilityValueDescription:)]
         unsafe fn setAccessibilityValueDescription(
             &self,
@@ -415,19 +483,35 @@ extern_protocol!(
         );
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of child UIElement which are visible
+         Invokes when clients request NSAccessibilityVisibleChildrenAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityVisibleChildren)]
         unsafe fn accessibilityVisibleChildren(&self) -> Option<Id<NSArray>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of child UIElement which are visible
+         Invokes when clients request NSAccessibilityVisibleChildrenAttribute
+        */
         #[method(setAccessibilityVisibleChildren:)]
         unsafe fn setAccessibilityVisibleChildren(
             &self,
             accessibility_visible_children: Option<&NSArray>,
         );
 
+        /**
+          Sub-role, non - localized (e.g. NSAccessibilityCloseButtonSubrole)
+         Invokes when clients request NSAccessibilitySubroleAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilitySubrole)]
         unsafe fn accessibilitySubrole(&self) -> Option<Id<NSAccessibilitySubrole>>;
 
+        /**
+          Sub-role, non - localized (e.g. NSAccessibilityCloseButtonSubrole)
+         Invokes when clients request NSAccessibilitySubroleAttribute
+        */
         #[method(setAccessibilitySubrole:)]
         unsafe fn setAccessibilitySubrole(
             &self,
@@ -435,16 +519,32 @@ extern_protocol!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Visible text on the UIElement
+         Invokes when clients request NSAccessibilityTitleAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityTitle)]
         unsafe fn accessibilityTitle(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Visible text on the UIElement
+         Invokes when clients request NSAccessibilityTitleAttribute
+        */
         #[method(setAccessibilityTitle:)]
         unsafe fn setAccessibilityTitle(&self, accessibility_title: Option<&NSString>);
 
+        /**
+          UIElement for the title
+         Invokes when clients request NSAccessibilityTitleUIElementAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityTitleUIElement)]
         unsafe fn accessibilityTitleUIElement(&self) -> Option<Id<Object>>;
 
+        /**
+          UIElement for the title
+         Invokes when clients request NSAccessibilityTitleUIElementAttribute
+        */
         #[method(setAccessibilityTitleUIElement:)]
         unsafe fn setAccessibilityTitleUIElement(
             &self,
@@ -452,45 +552,85 @@ extern_protocol!(
         );
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Next content UIElement
+         Invokes when clients request NSAccessibilityNextContentsAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityNextContents)]
         unsafe fn accessibilityNextContents(&self) -> Option<Id<NSArray>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Next content UIElement
+         Invokes when clients request NSAccessibilityNextContentsAttribute
+        */
         #[method(setAccessibilityNextContents:)]
         unsafe fn setAccessibilityNextContents(
             &self,
             accessibility_next_contents: Option<&NSArray>,
         );
 
+        /**
+          UIElement orientation
+         Invokes when clients request NSAccessibilityOrientationAttribute
+        */
         #[method(accessibilityOrientation)]
         unsafe fn accessibilityOrientation(&self) -> NSAccessibilityOrientation;
 
+        /**
+          UIElement orientation
+         Invokes when clients request NSAccessibilityOrientationAttribute
+        */
         #[method(setAccessibilityOrientation:)]
         unsafe fn setAccessibilityOrientation(
             &self,
             accessibility_orientation: NSAccessibilityOrientation,
         );
 
+        /**
+          UIElement for overflow
+         Invokes when clients request NSAccessibilityOverflowButtonAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityOverflowButton)]
         unsafe fn accessibilityOverflowButton(&self) -> Option<Id<Object>>;
 
+        /**
+          UIElement for overflow
+         Invokes when clients request NSAccessibilityOverflowButtonAttribute
+        */
         #[method(setAccessibilityOverflowButton:)]
         unsafe fn setAccessibilityOverflowButton(
             &self,
             accessibility_overflow_button: Option<&Object>,
         );
 
+        /**
+          Element containing this UIElement
+         Invokes when clients request NSAccessibilityParentAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityParent)]
         unsafe fn accessibilityParent(&self) -> Option<Id<Object>>;
 
+        /**
+          Element containing this UIElement
+         Invokes when clients request NSAccessibilityParentAttribute
+        */
         #[method(setAccessibilityParent:)]
         unsafe fn setAccessibilityParent(&self, accessibility_parent: Option<&Object>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Placeholder value of a control such as a text field
+         Invokes when clients request NSAccessibilityPlaceholderValueAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityPlaceholderValue)]
         unsafe fn accessibilityPlaceholderValue(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Placeholder value of a control such as a text field
+         Invokes when clients request NSAccessibilityPlaceholderValueAttribute
+        */
         #[method(setAccessibilityPlaceholderValue:)]
         unsafe fn setAccessibilityPlaceholderValue(
             &self,
@@ -498,56 +638,112 @@ extern_protocol!(
         );
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Previous content UIElement.
+         Invokes when clients request NSAccessibilityPreviousContentsAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityPreviousContents)]
         unsafe fn accessibilityPreviousContents(&self) -> Option<Id<NSArray>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Previous content UIElement.
+         Invokes when clients request NSAccessibilityPreviousContentsAttribute
+        */
         #[method(setAccessibilityPreviousContents:)]
         unsafe fn setAccessibilityPreviousContents(
             &self,
             accessibility_previous_contents: Option<&NSArray>,
         );
 
+        /**
+          Role, non - localized (e.g. NSAccessibilityRadioButtonRole)
+         Invokes when clients request NSAccessibilityRoleAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityRole)]
         unsafe fn accessibilityRole(&self) -> Option<Id<NSAccessibilityRole>>;
 
+        /**
+          Role, non - localized (e.g. NSAccessibilityRadioButtonRole)
+         Invokes when clients request NSAccessibilityRoleAttribute
+        */
         #[method(setAccessibilityRole:)]
         unsafe fn setAccessibilityRole(&self, accessibility_role: Option<&NSAccessibilityRole>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Human readable role description (e.g. "radio button");
+         Invokes when clients request NSAccessibilityRoleDescriptionAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityRoleDescription)]
         unsafe fn accessibilityRoleDescription(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Human readable role description (e.g. "radio button");
+         Invokes when clients request NSAccessibilityRoleDescriptionAttribute
+        */
         #[method(setAccessibilityRoleDescription:)]
         unsafe fn setAccessibilityRoleDescription(
             &self,
             accessibility_role_description: Option<&NSString>,
         );
 
+        /**
+          UIElement for search field search button
+         Invokes when clients request NSAccessibilitySearchButtonAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilitySearchButton)]
         unsafe fn accessibilitySearchButton(&self) -> Option<Id<Object>>;
 
+        /**
+          UIElement for search field search button
+         Invokes when clients request NSAccessibilitySearchButtonAttribute
+        */
         #[method(setAccessibilitySearchButton:)]
         unsafe fn setAccessibilitySearchButton(&self, accessibility_search_button: Option<&Object>);
 
+        /**
+          UIElement for search field menu
+         Invokes when clients request NSAccessibilitySearchMenuAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilitySearchMenu)]
         unsafe fn accessibilitySearchMenu(&self) -> Option<Id<Object>>;
 
+        /**
+          UIElement for search field menu
+         Invokes when clients request NSAccessibilitySearchMenuAttribute
+        */
         #[method(setAccessibilitySearchMenu:)]
         unsafe fn setAccessibilitySearchMenu(&self, accessibility_search_menu: Option<&Object>);
 
+        /**
+          Returns YES if the UIElement is selected
+         Invokes when clients request NSAccessibilitySelectedAttribute
+        */
         #[method(isAccessibilitySelected)]
         unsafe fn isAccessibilitySelected(&self) -> bool;
 
+        /**
+          Returns YES if the UIElement is selected
+         Invokes when clients request NSAccessibilitySelectedAttribute
+        */
         #[method(setAccessibilitySelected:)]
         unsafe fn setAccessibilitySelected(&self, accessibility_selected: bool);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of selected child UIElements
+         Invokes when clients request NSAccessibilitySelectedChildrenAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilitySelectedChildren)]
         unsafe fn accessibilitySelectedChildren(&self) -> Option<Id<NSArray>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of selected child UIElements
+         Invokes when clients request NSAccessibilitySelectedChildrenAttribute
+        */
         #[method(setAccessibilitySelectedChildren:)]
         unsafe fn setAccessibilitySelectedChildren(
             &self,
@@ -555,108 +751,220 @@ extern_protocol!(
         );
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of UIElements that this titles
+         Invokes when clients request NSAccessibilityServesAsTitleForUIElementsAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityServesAsTitleForUIElements)]
         unsafe fn accessibilityServesAsTitleForUIElements(&self) -> Option<Id<NSArray>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of UIElements that this titles
+         Invokes when clients request NSAccessibilityServesAsTitleForUIElementsAttribute
+        */
         #[method(setAccessibilityServesAsTitleForUIElements:)]
         unsafe fn setAccessibilityServesAsTitleForUIElements(
             &self,
             accessibility_serves_as_title_for_ui_elements: Option<&NSArray>,
         );
 
+        /**
+          Menu being displayed for the UIElement
+         Invokes when clients request NSAccessibilityShownMenuAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityShownMenu)]
         unsafe fn accessibilityShownMenu(&self) -> Option<Id<Object>>;
 
+        /**
+          Menu being displayed for the UIElement
+         Invokes when clients request NSAccessibilityShownMenuAttribute
+        */
         #[method(setAccessibilityShownMenu:)]
         unsafe fn setAccessibilityShownMenu(&self, accessibility_shown_menu: Option<&Object>);
 
+        /**
+          The UIElement's minimum value
+         Invokes when clients request NSAccessibilityMinValueAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityMinValue)]
         unsafe fn accessibilityMinValue(&self) -> Option<Id<Object>>;
 
+        /**
+          The UIElement's minimum value
+         Invokes when clients request NSAccessibilityMinValueAttribute
+        */
         #[method(setAccessibilityMinValue:)]
         unsafe fn setAccessibilityMinValue(&self, accessibility_min_value: Option<&Object>);
 
+        /**
+          The UIElement's maximum value
+         Invokes when clients request NSAccessibilityMaxValueAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityMaxValue)]
         unsafe fn accessibilityMaxValue(&self) -> Option<Id<Object>>;
 
+        /**
+          The UIElement's maximum value
+         Invokes when clients request NSAccessibilityMaxValueAttribute
+        */
         #[method(setAccessibilityMaxValue:)]
         unsafe fn setAccessibilityMaxValue(&self, accessibility_max_value: Option<&Object>);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Corresponding UIElements
+         Invokes when clients request NSAccessibilityLinkedUIElementsAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityLinkedUIElements)]
         unsafe fn accessibilityLinkedUIElements(&self) -> Option<Id<NSArray>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Corresponding UIElements
+         Invokes when clients request NSAccessibilityLinkedUIElementsAttribute
+        */
         #[method(setAccessibilityLinkedUIElements:)]
         unsafe fn setAccessibilityLinkedUIElements(
             &self,
             accessibility_linked_ui_elements: Option<&NSArray>,
         );
 
+        /**
+          UIElement for the containing window
+         Invokes when clients request NSAccessibilityWindowAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityWindow)]
         unsafe fn accessibilityWindow(&self) -> Option<Id<Object>>;
 
+        /**
+          UIElement for the containing window
+         Invokes when clients request NSAccessibilityWindowAttribute
+        */
         #[method(setAccessibilityWindow:)]
         unsafe fn setAccessibilityWindow(&self, accessibility_window: Option<&Object>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Unique identifier for the UIElement
+         Invokes when clients request NSAccessibilityIdentifierAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityIdentifier)]
         unsafe fn accessibilityIdentifier(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Unique identifier for the UIElement
+         Invokes when clients request NSAccessibilityIdentifierAttribute
+        */
         #[method(setAccessibilityIdentifier:)]
         unsafe fn setAccessibilityIdentifier(&self, accessibility_identifier: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Instance description (e.g. a tool tip)
+         Invokes when clients request NSAccessibilityHelpAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityHelp)]
         unsafe fn accessibilityHelp(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Instance description (e.g. a tool tip)
+         Invokes when clients request NSAccessibilityHelpAttribute
+        */
         #[method(setAccessibilityHelp:)]
         unsafe fn setAccessibilityHelp(&self, accessibility_help: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Filename of the underlying asset
+         Invokes when clients request NSAccessibilityFilenameAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityFilename)]
         unsafe fn accessibilityFilename(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Filename of the underlying asset
+         Invokes when clients request NSAccessibilityFilenameAttribute
+        */
         #[method(setAccessibilityFilename:)]
         unsafe fn setAccessibilityFilename(&self, accessibility_filename: Option<&NSString>);
 
+        /**
+          Returns YES if the UIElement is expanded
+         Invokes when clients request NSAccessibilityExpandedAttribute
+        */
         #[method(isAccessibilityExpanded)]
         unsafe fn isAccessibilityExpanded(&self) -> bool;
 
+        /**
+          Returns YES if the UIElement is expanded
+         Invokes when clients request NSAccessibilityExpandedAttribute
+        */
         #[method(setAccessibilityExpanded:)]
         unsafe fn setAccessibilityExpanded(&self, accessibility_expanded: bool);
 
+        /**
+          Returns YES if the UIElement has been edited
+         Invokes when clients request NSAccessibilityEditedAttribute
+        */
         #[method(isAccessibilityEdited)]
         unsafe fn isAccessibilityEdited(&self) -> bool;
 
+        /**
+          Returns YES if the UIElement has been edited
+         Invokes when clients request NSAccessibilityEditedAttribute
+        */
         #[method(setAccessibilityEdited:)]
         unsafe fn setAccessibilityEdited(&self, accessibility_edited: bool);
 
+        /**
+          Returns YES if the element responds to user events
+         Invokes when clients request NSAccessibilityEnabledAttribute
+        */
         #[method(isAccessibilityEnabled)]
         unsafe fn isAccessibilityEnabled(&self) -> bool;
 
+        /**
+          Returns YES if the element responds to user events
+         Invokes when clients request NSAccessibilityEnabledAttribute
+        */
         #[method(setAccessibilityEnabled:)]
         unsafe fn setAccessibilityEnabled(&self, accessibility_enabled: bool);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of UIElements that represent children of the current UIElement
+         Invokes when clients request NSAccessibilityChildrenAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityChildren)]
         unsafe fn accessibilityChildren(&self) -> Option<Id<NSArray>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of UIElements that represent children of the current UIElement
+         Invokes when clients request NSAccessibilityChildrenAttribute
+        */
         #[method(setAccessibilityChildren:)]
         unsafe fn setAccessibilityChildren(&self, accessibility_children: Option<&NSArray>);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Returns an array of children UIElements ordered for linear navigation.
+         This array should match all UIElements found in accessibilityChildren, but in an order that's more suitable for navigation
+        */
         #[method_id(@__retain_semantics Other accessibilityChildrenInNavigationOrder)]
         unsafe fn accessibilityChildrenInNavigationOrder(
             &self,
         ) -> Option<Id<NSArray<ProtocolObject<dyn NSAccessibilityElementProtocol>>>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Returns an array of children UIElements ordered for linear navigation.
+         This array should match all UIElements found in accessibilityChildren, but in an order that's more suitable for navigation
+        */
         #[method(setAccessibilityChildrenInNavigationOrder:)]
         unsafe fn setAccessibilityChildrenInNavigationOrder(
             &self,
@@ -665,43 +973,91 @@ extern_protocol!(
             >,
         );
 
+        /**
+          UIElement for search field clear button
+         Invokes when clients request NSAccessibilityClearButtonAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityClearButton)]
         unsafe fn accessibilityClearButton(&self) -> Option<Id<Object>>;
 
+        /**
+          UIElement for search field clear button
+         Invokes when clients request NSAccessibilityClearButtonAttribute
+        */
         #[method(setAccessibilityClearButton:)]
         unsafe fn setAccessibilityClearButton(&self, accessibility_clear_button: Option<&Object>);
 
+        /**
+          UIElement for cancel button
+         Invokes when clients request NSAccessibilityCancelButtonAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityCancelButton)]
         unsafe fn accessibilityCancelButton(&self) -> Option<Id<Object>>;
 
+        /**
+          UIElement for cancel button
+         Invokes when clients request NSAccessibilityCancelButtonAttribute
+        */
         #[method(setAccessibilityCancelButton:)]
         unsafe fn setAccessibilityCancelButton(&self, accessibility_cancel_button: Option<&Object>);
 
+        /**
+          Returns YES if the UIElement contains protected content
+         Invokes when clients request NSAccessibilityContainsProtectedContentAttribute
+        */
         #[method(isAccessibilityProtectedContent)]
         unsafe fn isAccessibilityProtectedContent(&self) -> bool;
 
+        /**
+          Returns YES if the UIElement contains protected content
+         Invokes when clients request NSAccessibilityContainsProtectedContentAttribute
+        */
         #[method(setAccessibilityProtectedContent:)]
         unsafe fn setAccessibilityProtectedContent(&self, accessibility_protected_content: bool);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of primary content elements
+         Invokes when clients request NSAccessibilityContentsAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityContents)]
         unsafe fn accessibilityContents(&self) -> Option<Id<NSArray>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of primary content elements
+         Invokes when clients request NSAccessibilityContentsAttribute
+        */
         #[method(setAccessibilityContents:)]
         unsafe fn setAccessibilityContents(&self, accessibility_contents: Option<&NSArray>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Description of UIElement
+         Invokes when clients request NSAccessibilityDescriptionAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityLabel)]
         unsafe fn accessibilityLabel(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Description of UIElement
+         Invokes when clients request NSAccessibilityDescriptionAttribute
+        */
         #[method(setAccessibilityLabel:)]
         unsafe fn setAccessibilityLabel(&self, accessibility_label: Option<&NSString>);
 
+        /**
+          Returns YES if the element is has been triggered to display alternate UIs
+         Invokes when clients request NSAccessibilityAlternateUIVisibleAttribute
+        */
         #[method(isAccessibilityAlternateUIVisible)]
         unsafe fn isAccessibilityAlternateUIVisible(&self) -> bool;
 
+        /**
+          Returns YES if the element is has been triggered to display alternate UIs
+         Invokes when clients request NSAccessibilityAlternateUIVisibleAttribute
+        */
         #[method(setAccessibilityAlternateUIVisible:)]
         unsafe fn setAccessibilityAlternateUIVisible(
             &self,
@@ -709,19 +1065,35 @@ extern_protocol!(
         );
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of elements with which this element shares keyboard focus
+         Invokes when clients request NSAccessibilitySharedFocusElementsAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilitySharedFocusElements)]
         unsafe fn accessibilitySharedFocusElements(&self) -> Option<Id<NSArray>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of elements with which this element shares keyboard focus
+         Invokes when clients request NSAccessibilitySharedFocusElementsAttribute
+        */
         #[method(setAccessibilitySharedFocusElements:)]
         unsafe fn setAccessibilitySharedFocusElements(
             &self,
             accessibility_shared_focus_elements: Option<&NSArray>,
         );
 
+        /**
+          Returns YES if the UIElement is required to have content for successful submission of a form
+         Invokes when clients request NSAccessibilityRequiredAttribute
+        */
         #[method(isAccessibilityRequired)]
         unsafe fn isAccessibilityRequired(&self) -> bool;
 
+        /**
+          Returns YES if the UIElement is required to have content for successful submission of a form
+         Invokes when clients request NSAccessibilityRequiredAttribute
+        */
         #[method(setAccessibilityRequired:)]
         unsafe fn setAccessibilityRequired(&self, accessibility_required: bool);
 
@@ -729,6 +1101,11 @@ extern_protocol!(
             feature = "AppKit_NSAccessibilityCustomRotor",
             feature = "Foundation_NSArray"
         ))]
+        /**
+          @brief Returns an array of custom rotors. Custom rotors are lists of
+         items of a specific category. For example, a "Headings" rotor would
+         return a list of headings a given document.
+        */
         #[method_id(@__retain_semantics Other accessibilityCustomRotors)]
         unsafe fn accessibilityCustomRotors(&self) -> Id<NSArray<NSAccessibilityCustomRotor>>;
 
@@ -736,42 +1113,89 @@ extern_protocol!(
             feature = "AppKit_NSAccessibilityCustomRotor",
             feature = "Foundation_NSArray"
         ))]
+        /**
+          @brief Returns an array of custom rotors. Custom rotors are lists of
+         items of a specific category. For example, a "Headings" rotor would
+         return a list of headings a given document.
+        */
         #[method(setAccessibilityCustomRotors:)]
         unsafe fn setAccessibilityCustomRotors(
             &self,
             accessibility_custom_rotors: &NSArray<NSAccessibilityCustomRotor>,
         );
 
+        /**
+          Returns YES if the element is focused (generally, accessibilityFocused is equivalent to the
+         to the UIElement with the focus ring or selection)
+         Invokes when clients request NSAccessibilityFocusedUIElementAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityApplicationFocusedUIElement)]
         unsafe fn accessibilityApplicationFocusedUIElement(&self) -> Option<Id<Object>>;
 
+        /**
+          Returns YES if the element is focused (generally, accessibilityFocused is equivalent to the
+         to the UIElement with the focus ring or selection)
+         Invokes when clients request NSAccessibilityFocusedUIElementAttribute
+        */
         #[method(setAccessibilityApplicationFocusedUIElement:)]
         unsafe fn setAccessibilityApplicationFocusedUIElement(
             &self,
             accessibility_application_focused_ui_element: Option<&Object>,
         );
 
+        /**
+          UIElement for the main window.
+         Invokes when clients request NSAccessibilityMainWindowAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityMainWindow)]
         unsafe fn accessibilityMainWindow(&self) -> Option<Id<Object>>;
 
+        /**
+          UIElement for the main window.
+         Invokes when clients request NSAccessibilityMainWindowAttribute
+        */
         #[method(setAccessibilityMainWindow:)]
         unsafe fn setAccessibilityMainWindow(&self, accessibility_main_window: Option<&Object>);
 
+        /**
+          Returns YES if the app hidden
+         Invokes when clients request NSAccessibilityHiddenAttribute
+        */
         #[method(isAccessibilityHidden)]
         unsafe fn isAccessibilityHidden(&self) -> bool;
 
+        /**
+          Returns YES if the app hidden
+         Invokes when clients request NSAccessibilityHiddenAttribute
+        */
         #[method(setAccessibilityHidden:)]
         unsafe fn setAccessibilityHidden(&self, accessibility_hidden: bool);
 
+        /**
+          Returns YES if the app is active
+         Invokes when clients request NSAccessibilityFrontmostAttribute
+        */
         #[method(isAccessibilityFrontmost)]
         unsafe fn isAccessibilityFrontmost(&self) -> bool;
 
+        /**
+          Returns YES if the app is active
+         Invokes when clients request NSAccessibilityFrontmostAttribute
+        */
         #[method(setAccessibilityFrontmost:)]
         unsafe fn setAccessibilityFrontmost(&self, accessibility_frontmost: bool);
 
+        /**
+          UIElement for the key window.
+         Invokes when clients request NSAccessibilityFocusedWindowAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityFocusedWindow)]
         unsafe fn accessibilityFocusedWindow(&self) -> Option<Id<Object>>;
 
+        /**
+          UIElement for the key window.
+         Invokes when clients request NSAccessibilityFocusedWindowAttribute
+        */
         #[method(setAccessibilityFocusedWindow:)]
         unsafe fn setAccessibilityFocusedWindow(
             &self,
@@ -779,57 +1203,113 @@ extern_protocol!(
         );
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of UIElements for the windows
+         Invokes when clients request NSAccessibilityWindowsAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityWindows)]
         unsafe fn accessibilityWindows(&self) -> Option<Id<NSArray>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of UIElements for the windows
+         Invokes when clients request NSAccessibilityWindowsAttribute
+        */
         #[method(setAccessibilityWindows:)]
         unsafe fn setAccessibilityWindows(&self, accessibility_windows: Option<&NSArray>);
 
+        /**
+          UIElement for the application extras menu bar.
+         Invokes when clients request NSAccessibilityExtrasMenuBarAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityExtrasMenuBar)]
         unsafe fn accessibilityExtrasMenuBar(&self) -> Option<Id<Object>>;
 
+        /**
+          UIElement for the application extras menu bar.
+         Invokes when clients request NSAccessibilityExtrasMenuBarAttribute
+        */
         #[method(setAccessibilityExtrasMenuBar:)]
         unsafe fn setAccessibilityExtrasMenuBar(
             &self,
             accessibility_extras_menu_bar: Option<&Object>,
         );
 
+        /**
+          UIElement for the menu bar
+         Invokes when clients request NSAccessibilityMenuBarAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityMenuBar)]
         unsafe fn accessibilityMenuBar(&self) -> Option<Id<Object>>;
 
+        /**
+          UIElement for the menu bar
+         Invokes when clients request NSAccessibilityMenuBarAttribute
+        */
         #[method(setAccessibilityMenuBar:)]
         unsafe fn setAccessibilityMenuBar(&self, accessibility_menu_bar: Option<&Object>);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of UIElements for titles
+         Invokes when clients request NSAccessibilityColumnTitlesAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityColumnTitles)]
         unsafe fn accessibilityColumnTitles(&self) -> Option<Id<NSArray>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of UIElements for titles
+         Invokes when clients request NSAccessibilityColumnTitlesAttribute
+        */
         #[method(setAccessibilityColumnTitles:)]
         unsafe fn setAccessibilityColumnTitles(
             &self,
             accessibility_column_titles: Option<&NSArray>,
         );
 
+        /**
+          Returns a BOOL indicating whether the children are ordered row major, or column major.
+         Invokes when clients request NSAccessibilityOrderedByRowAttribute
+        */
         #[method(isAccessibilityOrderedByRow)]
         unsafe fn isAccessibilityOrderedByRow(&self) -> bool;
 
+        /**
+          Returns a BOOL indicating whether the children are ordered row major, or column major.
+         Invokes when clients request NSAccessibilityOrderedByRowAttribute
+        */
         #[method(setAccessibilityOrderedByRow:)]
         unsafe fn setAccessibilityOrderedByRow(&self, accessibility_ordered_by_row: bool);
 
+        /**
+          Horizontal units
+         Invokes when clients request NSAccessibilityHorizontalUnitsAttribute
+        */
         #[method(accessibilityHorizontalUnits)]
         unsafe fn accessibilityHorizontalUnits(&self) -> NSAccessibilityUnits;
 
+        /**
+          Horizontal units
+         Invokes when clients request NSAccessibilityHorizontalUnitsAttribute
+        */
         #[method(setAccessibilityHorizontalUnits:)]
         unsafe fn setAccessibilityHorizontalUnits(
             &self,
             accessibility_horizontal_units: NSAccessibilityUnits,
         );
 
+        /**
+          Vertical units
+         Invokes when clients request NSAccessibilityVerticalUnitsAttribute
+        */
         #[method(accessibilityVerticalUnits)]
         unsafe fn accessibilityVerticalUnits(&self) -> NSAccessibilityUnits;
 
+        /**
+          Vertical units
+         Invokes when clients request NSAccessibilityVerticalUnitsAttribute
+        */
         #[method(setAccessibilityVerticalUnits:)]
         unsafe fn setAccessibilityVerticalUnits(
             &self,
@@ -837,10 +1317,18 @@ extern_protocol!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Human-readable description of the horizontal units
+         Invokes when clients request NSAccessibilityHorizontalUnitDescriptionAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityHorizontalUnitDescription)]
         unsafe fn accessibilityHorizontalUnitDescription(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Human-readable description of the horizontal units
+         Invokes when clients request NSAccessibilityHorizontalUnitDescriptionAttribute
+        */
         #[method(setAccessibilityHorizontalUnitDescription:)]
         unsafe fn setAccessibilityHorizontalUnitDescription(
             &self,
@@ -848,10 +1336,18 @@ extern_protocol!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Human-readable description of the vertical units
+         Invokes when clients request NSAccessibilityVerticalUnitDescriptionAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityVerticalUnitDescription)]
         unsafe fn accessibilityVerticalUnitDescription(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Human-readable description of the vertical units
+         Invokes when clients request NSAccessibilityVerticalUnitDescriptionAttribute
+        */
         #[method(setAccessibilityVerticalUnitDescription:)]
         unsafe fn setAccessibilityVerticalUnitDescription(
             &self,
@@ -871,104 +1367,202 @@ extern_protocol!(
         unsafe fn accessibilityScreenSizeForLayoutSize(&self, size: NSSize) -> NSSize;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          UIElements for handles
+         Invokes when clients request NSAccessibilityHandlesAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityHandles)]
         unsafe fn accessibilityHandles(&self) -> Option<Id<NSArray>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          UIElements for handles
+         Invokes when clients request NSAccessibilityHandlesAttribute
+        */
         #[method(setAccessibilityHandles:)]
         unsafe fn setAccessibilityHandles(&self, accessibility_handles: Option<&NSArray>);
 
+        /**
+          Warning value of a level indicator, typically a number
+         Invokes when clients request NSAccessibilityWarningValueAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityWarningValue)]
         unsafe fn accessibilityWarningValue(&self) -> Option<Id<Object>>;
 
+        /**
+          Warning value of a level indicator, typically a number
+         Invokes when clients request NSAccessibilityWarningValueAttribute
+        */
         #[method(setAccessibilityWarningValue:)]
         unsafe fn setAccessibilityWarningValue(&self, accessibility_warning_value: Option<&Object>);
 
+        /**
+          Critical value of a level indicator, typically a number
+         Invokes when clients request NSAccessibilityCriticalValueAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityCriticalValue)]
         unsafe fn accessibilityCriticalValue(&self) -> Option<Id<Object>>;
 
+        /**
+          Critical value of a level indicator, typically a number
+         Invokes when clients request NSAccessibilityCriticalValueAttribute
+        */
         #[method(setAccessibilityCriticalValue:)]
         unsafe fn setAccessibilityCriticalValue(
             &self,
             accessibility_critical_value: Option<&Object>,
         );
 
+        /**
+          Returns true if sub-rows are visible
+         Invokes when clients request NSAccessibilityDisclosingAttribute
+        */
         #[method(isAccessibilityDisclosed)]
         unsafe fn isAccessibilityDisclosed(&self) -> bool;
 
+        /**
+          Returns true if sub-rows are visible
+         Invokes when clients request NSAccessibilityDisclosingAttribute
+        */
         #[method(setAccessibilityDisclosed:)]
         unsafe fn setAccessibilityDisclosed(&self, accessibility_disclosed: bool);
 
+        /**
+          UIElement for disclosing row
+         Invokes when clients request NSAccessibilityDisclosedByRowAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityDisclosedByRow)]
         unsafe fn accessibilityDisclosedByRow(&self) -> Option<Id<Object>>;
 
+        /**
+          UIElement for disclosing row
+         Invokes when clients request NSAccessibilityDisclosedByRowAttribute
+        */
         #[method(setAccessibilityDisclosedByRow:)]
         unsafe fn setAccessibilityDisclosedByRow(
             &self,
             accessibility_disclosed_by_row: Option<&Object>,
         );
 
+        /**
+          Array of UIElements for disclosed rows of the current ruw (ie, sub-rows)
+         Invokes when clients request NSAccessibilityDisclosedRowsAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityDisclosedRows)]
         unsafe fn accessibilityDisclosedRows(&self) -> Option<Id<Object>>;
 
+        /**
+          Array of UIElements for disclosed rows of the current ruw (ie, sub-rows)
+         Invokes when clients request NSAccessibilityDisclosedRowsAttribute
+        */
         #[method(setAccessibilityDisclosedRows:)]
         unsafe fn setAccessibilityDisclosedRows(
             &self,
             accessibility_disclosed_rows: Option<&Object>,
         );
 
+        /**
+          Indentation level
+         Invokes when clients request NSAccessibilityDisclosureLevelAttribute
+        */
         #[method(accessibilityDisclosureLevel)]
         unsafe fn accessibilityDisclosureLevel(&self) -> NSInteger;
 
+        /**
+          Indentation level
+         Invokes when clients request NSAccessibilityDisclosureLevelAttribute
+        */
         #[method(setAccessibilityDisclosureLevel:)]
         unsafe fn setAccessibilityDisclosureLevel(&self, accessibility_disclosure_level: NSInteger);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Invokes when clients request NSAccessibilityMarkerUIElementsAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityMarkerUIElements)]
         unsafe fn accessibilityMarkerUIElements(&self) -> Option<Id<NSArray>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Invokes when clients request NSAccessibilityMarkerUIElementsAttribute
+        */
         #[method(setAccessibilityMarkerUIElements:)]
         unsafe fn setAccessibilityMarkerUIElements(
             &self,
             accessibility_marker_ui_elements: Option<&NSArray>,
         );
 
+        /**
+          Invokes when clients request NSAccessibilityMarkerValuesAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityMarkerValues)]
         unsafe fn accessibilityMarkerValues(&self) -> Option<Id<Object>>;
 
+        /**
+          Invokes when clients request NSAccessibilityMarkerValuesAttribute
+        */
         #[method(setAccessibilityMarkerValues:)]
         unsafe fn setAccessibilityMarkerValues(&self, accessibility_marker_values: Option<&Object>);
 
+        /**
+          Invokes when clients request NSAccessibilityMarkerGroupUIElementAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityMarkerGroupUIElement)]
         unsafe fn accessibilityMarkerGroupUIElement(&self) -> Option<Id<Object>>;
 
+        /**
+          Invokes when clients request NSAccessibilityMarkerGroupUIElementAttribute
+        */
         #[method(setAccessibilityMarkerGroupUIElement:)]
         unsafe fn setAccessibilityMarkerGroupUIElement(
             &self,
             accessibility_marker_group_ui_element: Option<&Object>,
         );
 
+        /**
+          Ruler units
+         Invokes when clients request NSAccessibilityUnitsAttribute
+        */
         #[method(accessibilityUnits)]
         unsafe fn accessibilityUnits(&self) -> NSAccessibilityUnits;
 
+        /**
+          Ruler units
+         Invokes when clients request NSAccessibilityUnitsAttribute
+        */
         #[method(setAccessibilityUnits:)]
         unsafe fn setAccessibilityUnits(&self, accessibility_units: NSAccessibilityUnits);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Human-readable description of the ruler units
+         Invokes when clients request NSAccessibilityUnitDescriptionAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityUnitDescription)]
         unsafe fn accessibilityUnitDescription(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Human-readable description of the ruler units
+         Invokes when clients request NSAccessibilityUnitDescriptionAttribute
+        */
         #[method(setAccessibilityUnitDescription:)]
         unsafe fn setAccessibilityUnitDescription(
             &self,
             accessibility_unit_description: Option<&NSString>,
         );
 
+        /**
+          Marker type
+         Invokes when clients request NSAccessibilityMarkerTypeAttribute
+        */
         #[method(accessibilityRulerMarkerType)]
         unsafe fn accessibilityRulerMarkerType(&self) -> NSAccessibilityRulerMarkerType;
 
+        /**
+          Marker type
+         Invokes when clients request NSAccessibilityMarkerTypeAttribute
+        */
         #[method(setAccessibilityRulerMarkerType:)]
         unsafe fn setAccessibilityRulerMarkerType(
             &self,
@@ -976,28 +1570,52 @@ extern_protocol!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Human-readable description of the marker type
+         Invokes when clients request NSAccessibilityMarkerTypeDescriptionAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityMarkerTypeDescription)]
         unsafe fn accessibilityMarkerTypeDescription(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Human-readable description of the marker type
+         Invokes when clients request NSAccessibilityMarkerTypeDescriptionAttribute
+        */
         #[method(setAccessibilityMarkerTypeDescription:)]
         unsafe fn setAccessibilityMarkerTypeDescription(
             &self,
             accessibility_marker_type_description: Option<&NSString>,
         );
 
+        /**
+          UIElement for the horizontal scroller
+         Invokes when clients request NSAccessibilityHorizontalScrollBarAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityHorizontalScrollBar)]
         unsafe fn accessibilityHorizontalScrollBar(&self) -> Option<Id<Object>>;
 
+        /**
+          UIElement for the horizontal scroller
+         Invokes when clients request NSAccessibilityHorizontalScrollBarAttribute
+        */
         #[method(setAccessibilityHorizontalScrollBar:)]
         unsafe fn setAccessibilityHorizontalScrollBar(
             &self,
             accessibility_horizontal_scroll_bar: Option<&Object>,
         );
 
+        /**
+          UIElement for the vertical scroller
+         Invokes when clients request NSAccessibilityVerticalScrollBarAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityVerticalScrollBar)]
         unsafe fn accessibilityVerticalScrollBar(&self) -> Option<Id<Object>>;
 
+        /**
+          UIElement for the vertical scroller
+         Invokes when clients request NSAccessibilityVerticalScrollBarAttribute
+        */
         #[method(setAccessibilityVerticalScrollBar:)]
         unsafe fn setAccessibilityVerticalScrollBar(
             &self,
@@ -1005,10 +1623,18 @@ extern_protocol!(
         );
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSNumber"))]
+        /**
+          Array of allowed values
+         Invokes when clients request NSAccessibilityAllowedValuesAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityAllowedValues)]
         unsafe fn accessibilityAllowedValues(&self) -> Option<Id<NSArray<NSNumber>>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSNumber"))]
+        /**
+          Array of allowed values
+         Invokes when clients request NSAccessibilityAllowedValuesAttribute
+        */
         #[method(setAccessibilityAllowedValues:)]
         unsafe fn setAccessibilityAllowedValues(
             &self,
@@ -1016,42 +1642,82 @@ extern_protocol!(
         );
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of label UIElements
+         Invokes when clients request NSAccessibilityLabelUIElementsAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityLabelUIElements)]
         unsafe fn accessibilityLabelUIElements(&self) -> Option<Id<NSArray>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of label UIElements
+         Invokes when clients request NSAccessibilityLabelUIElementsAttribute
+        */
         #[method(setAccessibilityLabelUIElements:)]
         unsafe fn setAccessibilityLabelUIElements(
             &self,
             accessibility_label_ui_elements: Option<&NSArray>,
         );
 
+        /**
+          Value of a label UIElement
+         Invokes when clients request NSAccessibilityLabelValueAttribute
+        */
         #[method(accessibilityLabelValue)]
         unsafe fn accessibilityLabelValue(&self) -> c_float;
 
+        /**
+          Value of a label UIElement
+         Invokes when clients request NSAccessibilityLabelValueAttribute
+        */
         #[method(setAccessibilityLabelValue:)]
         unsafe fn setAccessibilityLabelValue(&self, accessibility_label_value: c_float);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          UIElements for splitters
+         Invokes when clients request NSAccessibilitySplittersAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilitySplitters)]
         unsafe fn accessibilitySplitters(&self) -> Option<Id<NSArray>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          UIElements for splitters
+         Invokes when clients request NSAccessibilitySplittersAttribute
+        */
         #[method(setAccessibilitySplitters:)]
         unsafe fn setAccessibilitySplitters(&self, accessibility_splitters: Option<&NSArray>);
 
+        /**
+          UIElement for the decrement button
+         Invokes when clients request NSAccessibilityDecrementButtonAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityDecrementButton)]
         unsafe fn accessibilityDecrementButton(&self) -> Option<Id<Object>>;
 
+        /**
+          UIElement for the decrement button
+         Invokes when clients request NSAccessibilityDecrementButtonAttribute
+        */
         #[method(setAccessibilityDecrementButton:)]
         unsafe fn setAccessibilityDecrementButton(
             &self,
             accessibility_decrement_button: Option<&Object>,
         );
 
+        /**
+          UIElement for the increment button
+         Invokes when clients request NSAccessibilityIncrementButtonAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityIncrementButton)]
         unsafe fn accessibilityIncrementButton(&self) -> Option<Id<Object>>;
 
+        /**
+          UIElement for the increment button
+         Invokes when clients request NSAccessibilityIncrementButtonAttribute
+        */
         #[method(setAccessibilityIncrementButton:)]
         unsafe fn setAccessibilityIncrementButton(
             &self,
@@ -1059,66 +1725,138 @@ extern_protocol!(
         );
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          UIElements for tabs
+         Invokes when clients request NSAccessibilityTabsAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityTabs)]
         unsafe fn accessibilityTabs(&self) -> Option<Id<NSArray>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          UIElements for tabs
+         Invokes when clients request NSAccessibilityTabsAttribute
+        */
         #[method(setAccessibilityTabs:)]
         unsafe fn setAccessibilityTabs(&self, accessibility_tabs: Option<&NSArray>);
 
+        /**
+          UIElement for header
+         Invokes when clients request NSAccessibilityHeaderAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityHeader)]
         unsafe fn accessibilityHeader(&self) -> Option<Id<Object>>;
 
+        /**
+          UIElement for header
+         Invokes when clients request NSAccessibilityHeaderAttribute
+        */
         #[method(setAccessibilityHeader:)]
         unsafe fn setAccessibilityHeader(&self, accessibility_header: Option<&Object>);
 
+        /**
+          Number of columns
+         Invokes when clients request NSAccessibilityColumnCountAttribute
+        */
         #[method(accessibilityColumnCount)]
         unsafe fn accessibilityColumnCount(&self) -> NSInteger;
 
+        /**
+          Number of columns
+         Invokes when clients request NSAccessibilityColumnCountAttribute
+        */
         #[method(setAccessibilityColumnCount:)]
         unsafe fn setAccessibilityColumnCount(&self, accessibility_column_count: NSInteger);
 
+        /**
+          Number of rows
+         Invokes when clients request NSAccessibilityRowCountAttribute
+        */
         #[method(accessibilityRowCount)]
         unsafe fn accessibilityRowCount(&self) -> NSInteger;
 
+        /**
+          Number of rows
+         Invokes when clients request NSAccessibilityRowCountAttribute
+        */
         #[method(setAccessibilityRowCount:)]
         unsafe fn setAccessibilityRowCount(&self, accessibility_row_count: NSInteger);
 
+        /**
+          Index of the current UIElement (row index for a row, column index for a column)
+         Invokes when clients request NSAccessibilityIndexAttribute
+        */
         #[method(accessibilityIndex)]
         unsafe fn accessibilityIndex(&self) -> NSInteger;
 
+        /**
+          Index of the current UIElement (row index for a row, column index for a column)
+         Invokes when clients request NSAccessibilityIndexAttribute
+        */
         #[method(setAccessibilityIndex:)]
         unsafe fn setAccessibilityIndex(&self, accessibility_index: NSInteger);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of UIElements for columns
+         Invokes when clients request NSAccessibilityColumnsAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityColumns)]
         unsafe fn accessibilityColumns(&self) -> Option<Id<NSArray>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of UIElements for columns
+         Invokes when clients request NSAccessibilityColumnsAttribute
+        */
         #[method(setAccessibilityColumns:)]
         unsafe fn setAccessibilityColumns(&self, accessibility_columns: Option<&NSArray>);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of UIElements for rows
+         Invokes when clients request NSAccessibilityRowsAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityRows)]
         unsafe fn accessibilityRows(&self) -> Option<Id<NSArray>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of UIElements for rows
+         Invokes when clients request NSAccessibilityRowsAttribute
+        */
         #[method(setAccessibilityRows:)]
         unsafe fn setAccessibilityRows(&self, accessibility_rows: Option<&NSArray>);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of UIElements for visible rows
+         Invokes when clients request NSAccessibilityVisibleRowsAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityVisibleRows)]
         unsafe fn accessibilityVisibleRows(&self) -> Option<Id<NSArray>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of UIElements for visible rows
+         Invokes when clients request NSAccessibilityVisibleRowsAttribute
+        */
         #[method(setAccessibilityVisibleRows:)]
         unsafe fn setAccessibilityVisibleRows(&self, accessibility_visible_rows: Option<&NSArray>);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of UIElements for selected rows
+         Invokes when clients request NSAccessibilitySelectedRowsAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilitySelectedRows)]
         unsafe fn accessibilitySelectedRows(&self) -> Option<Id<NSArray>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of UIElements for selected rows
+         Invokes when clients request NSAccessibilitySelectedRowsAttribute
+        */
         #[method(setAccessibilitySelectedRows:)]
         unsafe fn setAccessibilitySelectedRows(
             &self,
@@ -1126,10 +1864,18 @@ extern_protocol!(
         );
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of UIElements for visible columns
+         Invokes when clients request NSAccessibilityVisibleColumnsAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityVisibleColumns)]
         unsafe fn accessibilityVisibleColumns(&self) -> Option<Id<NSArray>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of UIElements for visible columns
+         Invokes when clients request NSAccessibilityVisibleColumnsAttribute
+        */
         #[method(setAccessibilityVisibleColumns:)]
         unsafe fn setAccessibilityVisibleColumns(
             &self,
@@ -1137,19 +1883,35 @@ extern_protocol!(
         );
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of UIElements for selected columns
+         Invokes when clients request NSAccessibilitySelectedColumnsAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilitySelectedColumns)]
         unsafe fn accessibilitySelectedColumns(&self) -> Option<Id<NSArray>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of UIElements for selected columns
+         Invokes when clients request NSAccessibilitySelectedColumnsAttribute
+        */
         #[method(setAccessibilitySelectedColumns:)]
         unsafe fn setAccessibilitySelectedColumns(
             &self,
             accessibility_selected_columns: Option<&NSArray>,
         );
 
+        /**
+          Sort direction
+         Invokes when clients request NSAccessibilitySortDirectionAttribute
+        */
         #[method(accessibilitySortDirection)]
         unsafe fn accessibilitySortDirection(&self) -> NSAccessibilitySortDirection;
 
+        /**
+          Sort direction
+         Invokes when clients request NSAccessibilitySortDirectionAttribute
+        */
         #[method(setAccessibilitySortDirection:)]
         unsafe fn setAccessibilitySortDirection(
             &self,
@@ -1157,10 +1919,18 @@ extern_protocol!(
         );
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of UIElements for row headers
+         Invokes when clients request NSAccessibilityRowHeaderUIElementsAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityRowHeaderUIElements)]
         unsafe fn accessibilityRowHeaderUIElements(&self) -> Option<Id<NSArray>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of UIElements for row headers
+         Invokes when clients request NSAccessibilityRowHeaderUIElementsAttribute
+        */
         #[method(setAccessibilityRowHeaderUIElements:)]
         unsafe fn setAccessibilityRowHeaderUIElements(
             &self,
@@ -1168,10 +1938,18 @@ extern_protocol!(
         );
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of UIElements for selected cells
+         Invokes when clients request NSAccessibilitySelectedCellsAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilitySelectedCells)]
         unsafe fn accessibilitySelectedCells(&self) -> Option<Id<NSArray>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of UIElements for selected cells
+         Invokes when clients request NSAccessibilitySelectedCellsAttribute
+        */
         #[method(setAccessibilitySelectedCells:)]
         unsafe fn setAccessibilitySelectedCells(
             &self,
@@ -1179,10 +1957,18 @@ extern_protocol!(
         );
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of UIElements for visible cells
+         Invokes when clients request NSAccessibilityVisibleCellsAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityVisibleCells)]
         unsafe fn accessibilityVisibleCells(&self) -> Option<Id<NSArray>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of UIElements for visible cells
+         Invokes when clients request NSAccessibilityVisibleCellsAttribute
+        */
         #[method(setAccessibilityVisibleCells:)]
         unsafe fn setAccessibilityVisibleCells(
             &self,
@@ -1190,10 +1976,18 @@ extern_protocol!(
         );
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of UIElements for column headers
+         Invokes when clients request NSAccessibilityColumnHeaderUIElementsAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityColumnHeaderUIElements)]
         unsafe fn accessibilityColumnHeaderUIElements(&self) -> Option<Id<NSArray>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of UIElements for column headers
+         Invokes when clients request NSAccessibilityColumnHeaderUIElementsAttribute
+        */
         #[method(setAccessibilityColumnHeaderUIElements:)]
         unsafe fn setAccessibilityColumnHeaderUIElements(
             &self,
@@ -1207,33 +2001,65 @@ extern_protocol!(
             row: NSInteger,
         ) -> Option<Id<Object>>;
 
+        /**
+          Cell location and row span
+         Invokes when clients request NSAccessibilityRowIndexRangeAttribute
+        */
         #[method(accessibilityRowIndexRange)]
         unsafe fn accessibilityRowIndexRange(&self) -> NSRange;
 
+        /**
+          Cell location and row span
+         Invokes when clients request NSAccessibilityRowIndexRangeAttribute
+        */
         #[method(setAccessibilityRowIndexRange:)]
         unsafe fn setAccessibilityRowIndexRange(&self, accessibility_row_index_range: NSRange);
 
+        /**
+          Cell location and column span
+         Invokes when clients request NSAccessibilityColumnIndexRangeAttribute
+        */
         #[method(accessibilityColumnIndexRange)]
         unsafe fn accessibilityColumnIndexRange(&self) -> NSRange;
 
+        /**
+          Cell location and column span
+         Invokes when clients request NSAccessibilityColumnIndexRangeAttribute
+        */
         #[method(setAccessibilityColumnIndexRange:)]
         unsafe fn setAccessibilityColumnIndexRange(
             &self,
             accessibility_column_index_range: NSRange,
         );
 
+        /**
+          Line number containing caret
+         Invokes when clients request NSAccessibilityInsertionPointLineNumberAttribute
+        */
         #[method(accessibilityInsertionPointLineNumber)]
         unsafe fn accessibilityInsertionPointLineNumber(&self) -> NSInteger;
 
+        /**
+          Line number containing caret
+         Invokes when clients request NSAccessibilityInsertionPointLineNumberAttribute
+        */
         #[method(setAccessibilityInsertionPointLineNumber:)]
         unsafe fn setAccessibilityInsertionPointLineNumber(
             &self,
             accessibility_insertion_point_line_number: NSInteger,
         );
 
+        /**
+          Part of shared text in this view
+         Invokes when clients request NSAccessibilitySharedCharacterRangeAttribute
+        */
         #[method(accessibilitySharedCharacterRange)]
         unsafe fn accessibilitySharedCharacterRange(&self) -> NSRange;
 
+        /**
+          Part of shared text in this view
+         Invokes when clients request NSAccessibilitySharedCharacterRangeAttribute
+        */
         #[method(setAccessibilitySharedCharacterRange:)]
         unsafe fn setAccessibilitySharedCharacterRange(
             &self,
@@ -1241,28 +2067,52 @@ extern_protocol!(
         );
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Text views sharing text
+         Invokes when clients request NSAccessibilitySharedTextUIElementsAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilitySharedTextUIElements)]
         unsafe fn accessibilitySharedTextUIElements(&self) -> Option<Id<NSArray>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Text views sharing text
+         Invokes when clients request NSAccessibilitySharedTextUIElementsAttribute
+        */
         #[method(setAccessibilitySharedTextUIElements:)]
         unsafe fn setAccessibilitySharedTextUIElements(
             &self,
             accessibility_shared_text_ui_elements: Option<&NSArray>,
         );
 
+        /**
+          Range of visible text
+         Invokes when clients request NSAccessibilityVisibleCharacterRangeAttribute
+        */
         #[method(accessibilityVisibleCharacterRange)]
         unsafe fn accessibilityVisibleCharacterRange(&self) -> NSRange;
 
+        /**
+          Range of visible text
+         Invokes when clients request NSAccessibilityVisibleCharacterRangeAttribute
+        */
         #[method(setAccessibilityVisibleCharacterRange:)]
         unsafe fn setAccessibilityVisibleCharacterRange(
             &self,
             accessibility_visible_character_range: NSRange,
         );
 
+        /**
+          Number of characters
+         Invokes when clients request NSAccessibilityNumberOfCharactersAttribute
+        */
         #[method(accessibilityNumberOfCharacters)]
         unsafe fn accessibilityNumberOfCharacters(&self) -> NSInteger;
 
+        /**
+          Number of characters
+         Invokes when clients request NSAccessibilityNumberOfCharactersAttribute
+        */
         #[method(setAccessibilityNumberOfCharacters:)]
         unsafe fn setAccessibilityNumberOfCharacters(
             &self,
@@ -1270,19 +2120,35 @@ extern_protocol!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          String of selected text
+         Invokes when clients request NSAccessibilitySelectedTextAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilitySelectedText)]
         unsafe fn accessibilitySelectedText(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          String of selected text
+         Invokes when clients request NSAccessibilitySelectedTextAttribute
+        */
         #[method(setAccessibilitySelectedText:)]
         unsafe fn setAccessibilitySelectedText(
             &self,
             accessibility_selected_text: Option<&NSString>,
         );
 
+        /**
+          Range of selected text
+         Invokes when clients request NSAccessibilitySelectedTextRangeAttribute
+        */
         #[method(accessibilitySelectedTextRange)]
         unsafe fn accessibilitySelectedTextRange(&self) -> NSRange;
 
+        /**
+          Range of selected text
+         Invokes when clients request NSAccessibilitySelectedTextRangeAttribute
+        */
         #[method(setAccessibilitySelectedTextRange:)]
         unsafe fn setAccessibilitySelectedTextRange(
             &self,
@@ -1290,10 +2156,18 @@ extern_protocol!(
         );
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSValue"))]
+        /**
+          Array of NSValue (rangeValue) ranges of selected text
+         Invokes when clients request NSAccessibilitySelectedTextRangesAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilitySelectedTextRanges)]
         unsafe fn accessibilitySelectedTextRanges(&self) -> Option<Id<NSArray<NSValue>>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSValue"))]
+        /**
+          Array of NSValue (rangeValue) ranges of selected text
+         Invokes when clients request NSAccessibilitySelectedTextRangesAttribute
+        */
         #[method(setAccessibilitySelectedTextRanges:)]
         unsafe fn setAccessibilitySelectedTextRanges(
             &self,
@@ -1333,89 +2207,185 @@ extern_protocol!(
         #[method(accessibilityLineForIndex:)]
         unsafe fn accessibilityLineForIndex(&self, index: NSInteger) -> NSInteger;
 
+        /**
+          UIElement for toolbar box (or nil)
+         Invokes when clients request NSAccessibilityToolbarButtonAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityToolbarButton)]
         unsafe fn accessibilityToolbarButton(&self) -> Option<Id<Object>>;
 
+        /**
+          UIElement for toolbar box (or nil)
+         Invokes when clients request NSAccessibilityToolbarButtonAttribute
+        */
         #[method(setAccessibilityToolbarButton:)]
         unsafe fn setAccessibilityToolbarButton(
             &self,
             accessibility_toolbar_button: Option<&Object>,
         );
 
+        /**
+          Is the window modal
+         Invokes when clients request NSAccessibilityModalAttribute
+        */
         #[method(isAccessibilityModal)]
         unsafe fn isAccessibilityModal(&self) -> bool;
 
+        /**
+          Is the window modal
+         Invokes when clients request NSAccessibilityModalAttribute
+        */
         #[method(setAccessibilityModal:)]
         unsafe fn setAccessibilityModal(&self, accessibility_modal: bool);
 
+        /**
+          UIElement for title's icon (or nil)
+         Invokes when clients request NSAccessibilityProxyAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityProxy)]
         unsafe fn accessibilityProxy(&self) -> Option<Id<Object>>;
 
+        /**
+          UIElement for title's icon (or nil)
+         Invokes when clients request NSAccessibilityProxyAttribute
+        */
         #[method(setAccessibilityProxy:)]
         unsafe fn setAccessibilityProxy(&self, accessibility_proxy: Option<&Object>);
 
+        /**
+          Returns YES if this is it the main window
+         Invokes when clients request NSAccessibilityMainAttribute
+        */
         #[method(isAccessibilityMain)]
         unsafe fn isAccessibilityMain(&self) -> bool;
 
+        /**
+          Returns YES if this is it the main window
+         Invokes when clients request NSAccessibilityMainAttribute
+        */
         #[method(setAccessibilityMain:)]
         unsafe fn setAccessibilityMain(&self, accessibility_main: bool);
 
+        /**
+          UIElement for full screen button
+         Invokes when clients request NSAccessibilityFullScreenButtonAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityFullScreenButton)]
         unsafe fn accessibilityFullScreenButton(&self) -> Option<Id<Object>>;
 
+        /**
+          UIElement for full screen button
+         Invokes when clients request NSAccessibilityFullScreenButtonAttribute
+        */
         #[method(setAccessibilityFullScreenButton:)]
         unsafe fn setAccessibilityFullScreenButton(
             &self,
             accessibility_full_screen_button: Option<&Object>,
         );
 
+        /**
+          UIElement for grow box
+         Invokes when clients request NSAccessibilityGrowAreaAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityGrowArea)]
         unsafe fn accessibilityGrowArea(&self) -> Option<Id<Object>>;
 
+        /**
+          UIElement for grow box
+         Invokes when clients request NSAccessibilityGrowAreaAttribute
+        */
         #[method(setAccessibilityGrowArea:)]
         unsafe fn setAccessibilityGrowArea(&self, accessibility_grow_area: Option<&Object>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          URL for open document
+         Invokes when clients request NSAccessibilityDocumentAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityDocument)]
         unsafe fn accessibilityDocument(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          URL for open document
+         Invokes when clients request NSAccessibilityDocumentAttribute
+        */
         #[method(setAccessibilityDocument:)]
         unsafe fn setAccessibilityDocument(&self, accessibility_document: Option<&NSString>);
 
+        /**
+          UIElement for default button
+         Invokes when clients request NSAccessibilityDefaultButtonAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityDefaultButton)]
         unsafe fn accessibilityDefaultButton(&self) -> Option<Id<Object>>;
 
+        /**
+          UIElement for default button
+         Invokes when clients request NSAccessibilityDefaultButtonAttribute
+        */
         #[method(setAccessibilityDefaultButton:)]
         unsafe fn setAccessibilityDefaultButton(
             &self,
             accessibility_default_button: Option<&Object>,
         );
 
+        /**
+          UIElement for close button
+         Invokes when clients request NSAccessibilityCloseButtonAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityCloseButton)]
         unsafe fn accessibilityCloseButton(&self) -> Option<Id<Object>>;
 
+        /**
+          UIElement for close button
+         Invokes when clients request NSAccessibilityCloseButtonAttribute
+        */
         #[method(setAccessibilityCloseButton:)]
         unsafe fn setAccessibilityCloseButton(&self, accessibility_close_button: Option<&Object>);
 
+        /**
+          UIElement for zoom button
+         Invokes when clients request NSAccessibilityZoomButtonAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityZoomButton)]
         unsafe fn accessibilityZoomButton(&self) -> Option<Id<Object>>;
 
+        /**
+          UIElement for zoom button
+         Invokes when clients request NSAccessibilityZoomButtonAttribute
+        */
         #[method(setAccessibilityZoomButton:)]
         unsafe fn setAccessibilityZoomButton(&self, accessibility_zoom_button: Option<&Object>);
 
+        /**
+          UIElement for minimize button
+         Invokes when clients request NSAccessibilityMinimizeButtonAttribute
+        */
         #[method_id(@__retain_semantics Other accessibilityMinimizeButton)]
         unsafe fn accessibilityMinimizeButton(&self) -> Option<Id<Object>>;
 
+        /**
+          UIElement for minimize button
+         Invokes when clients request NSAccessibilityMinimizeButtonAttribute
+        */
         #[method(setAccessibilityMinimizeButton:)]
         unsafe fn setAccessibilityMinimizeButton(
             &self,
             accessibility_minimize_button: Option<&Object>,
         );
 
+        /**
+          Returns YES if the window minimized
+         Invokes when clients request NSAccessibilityMinimizedAttribute
+        */
         #[method(isAccessibilityMinimized)]
         unsafe fn isAccessibilityMinimized(&self) -> bool;
 
+        /**
+          Returns YES if the window minimized
+         Invokes when clients request NSAccessibilityMinimizedAttribute
+        */
         #[method(setAccessibilityMinimized:)]
         unsafe fn setAccessibilityMinimized(&self, accessibility_minimized: bool);
 

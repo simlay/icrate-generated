@@ -24,9 +24,17 @@ extern_methods!(
         #[method_id(@__retain_semantics Other visibleFunctionTableDescriptor)]
         pub unsafe fn visibleFunctionTableDescriptor() -> Id<MTLVisibleFunctionTableDescriptor>;
 
+        /**
+          @property functionCount
+         @abstract The number of functions in the table.
+        */
         #[method(functionCount)]
         pub unsafe fn functionCount(&self) -> NSUInteger;
 
+        /**
+          @property functionCount
+         @abstract The number of functions in the table.
+        */
         #[method(setFunctionCount:)]
         pub unsafe fn setFunctionCount(&self, function_count: NSUInteger);
     }
@@ -34,6 +42,10 @@ extern_methods!(
 
 extern_protocol!(
     pub unsafe trait MTLVisibleFunctionTable: MTLResource {
+        /**
+         @property gpuResourceID
+        @abstract Handle of the GPU resource suitable for storing in an Argument Buffer
+        */
         #[method(gpuResourceID)]
         unsafe fn gpuResourceID(&self) -> MTLResourceID;
 

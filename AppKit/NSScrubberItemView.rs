@@ -65,6 +65,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSScrubberSelectionView")]
+    /**
+     @class NSScrubberSelectionView
+    @abstract The base view class for all selection decorations used by the @c NSScrubber control.
+    */
     pub struct NSScrubberSelectionView;
 
     #[cfg(feature = "AppKit_NSScrubberSelectionView")]
@@ -75,30 +79,66 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSScrubberSelectionView")]
+/**
+ @class NSScrubberSelectionView
+@abstract The base view class for all selection decorations used by the @c NSScrubber control.
+*/
 unsafe impl NSAccessibility for NSScrubberSelectionView {}
 
 #[cfg(feature = "AppKit_NSScrubberSelectionView")]
+/**
+ @class NSScrubberSelectionView
+@abstract The base view class for all selection decorations used by the @c NSScrubber control.
+*/
 unsafe impl NSAccessibilityElementProtocol for NSScrubberSelectionView {}
 
 #[cfg(feature = "AppKit_NSScrubberSelectionView")]
+/**
+ @class NSScrubberSelectionView
+@abstract The base view class for all selection decorations used by the @c NSScrubber control.
+*/
 unsafe impl NSAnimatablePropertyContainer for NSScrubberSelectionView {}
 
 #[cfg(feature = "AppKit_NSScrubberSelectionView")]
+/**
+ @class NSScrubberSelectionView
+@abstract The base view class for all selection decorations used by the @c NSScrubber control.
+*/
 unsafe impl NSAppearanceCustomization for NSScrubberSelectionView {}
 
 #[cfg(feature = "AppKit_NSScrubberSelectionView")]
+/**
+ @class NSScrubberSelectionView
+@abstract The base view class for all selection decorations used by the @c NSScrubber control.
+*/
 unsafe impl NSCoding for NSScrubberSelectionView {}
 
 #[cfg(feature = "AppKit_NSScrubberSelectionView")]
+/**
+ @class NSScrubberSelectionView
+@abstract The base view class for all selection decorations used by the @c NSScrubber control.
+*/
 unsafe impl NSDraggingDestination for NSScrubberSelectionView {}
 
 #[cfg(feature = "AppKit_NSScrubberSelectionView")]
+/**
+ @class NSScrubberSelectionView
+@abstract The base view class for all selection decorations used by the @c NSScrubber control.
+*/
 unsafe impl NSObjectProtocol for NSScrubberSelectionView {}
 
 #[cfg(feature = "AppKit_NSScrubberSelectionView")]
+/**
+ @class NSScrubberSelectionView
+@abstract The base view class for all selection decorations used by the @c NSScrubber control.
+*/
 unsafe impl NSUserInterfaceItemIdentification for NSScrubberSelectionView {}
 
 extern_methods!(
+    /**
+     @class NSScrubberSelectionView
+    @abstract The base view class for all selection decorations used by the @c NSScrubber control.
+    */
     #[cfg(feature = "AppKit_NSScrubberSelectionView")]
     unsafe impl NSScrubberSelectionView {}
 );
@@ -106,6 +146,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSScrubberItemView")]
+    /**
+     @class NSScrubberItemView
+    @abstract The base view class that is arranged by a @c NSScrubber control.
+    */
     pub struct NSScrubberItemView;
 
     #[cfg(feature = "AppKit_NSScrubberItemView")]
@@ -116,30 +160,66 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSScrubberItemView")]
+/**
+ @class NSScrubberItemView
+@abstract The base view class that is arranged by a @c NSScrubber control.
+*/
 unsafe impl NSAccessibility for NSScrubberItemView {}
 
 #[cfg(feature = "AppKit_NSScrubberItemView")]
+/**
+ @class NSScrubberItemView
+@abstract The base view class that is arranged by a @c NSScrubber control.
+*/
 unsafe impl NSAccessibilityElementProtocol for NSScrubberItemView {}
 
 #[cfg(feature = "AppKit_NSScrubberItemView")]
+/**
+ @class NSScrubberItemView
+@abstract The base view class that is arranged by a @c NSScrubber control.
+*/
 unsafe impl NSAnimatablePropertyContainer for NSScrubberItemView {}
 
 #[cfg(feature = "AppKit_NSScrubberItemView")]
+/**
+ @class NSScrubberItemView
+@abstract The base view class that is arranged by a @c NSScrubber control.
+*/
 unsafe impl NSAppearanceCustomization for NSScrubberItemView {}
 
 #[cfg(feature = "AppKit_NSScrubberItemView")]
+/**
+ @class NSScrubberItemView
+@abstract The base view class that is arranged by a @c NSScrubber control.
+*/
 unsafe impl NSCoding for NSScrubberItemView {}
 
 #[cfg(feature = "AppKit_NSScrubberItemView")]
+/**
+ @class NSScrubberItemView
+@abstract The base view class that is arranged by a @c NSScrubber control.
+*/
 unsafe impl NSDraggingDestination for NSScrubberItemView {}
 
 #[cfg(feature = "AppKit_NSScrubberItemView")]
+/**
+ @class NSScrubberItemView
+@abstract The base view class that is arranged by a @c NSScrubber control.
+*/
 unsafe impl NSObjectProtocol for NSScrubberItemView {}
 
 #[cfg(feature = "AppKit_NSScrubberItemView")]
+/**
+ @class NSScrubberItemView
+@abstract The base view class that is arranged by a @c NSScrubber control.
+*/
 unsafe impl NSUserInterfaceItemIdentification for NSScrubberItemView {}
 
 extern_methods!(
+    /**
+     @class NSScrubberItemView
+    @abstract The base view class that is arranged by a @c NSScrubber control.
+    */
     #[cfg(feature = "AppKit_NSScrubberItemView")]
     unsafe impl NSScrubberItemView {}
 );
@@ -147,6 +227,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSScrubberTextItemView")]
+    /**
+     @class NSScrubberTextItemView
+    @abstract A simple @c NSScrubberItemView for displaying text. The -fittingSize method can be used to measure the smallest size for the view which fits the title without truncating.
+    */
     pub struct NSScrubberTextItemView;
 
     #[cfg(feature = "AppKit_NSScrubberTextItemView")]
@@ -157,30 +241,66 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSScrubberTextItemView")]
+/**
+ @class NSScrubberTextItemView
+@abstract A simple @c NSScrubberItemView for displaying text. The -fittingSize method can be used to measure the smallest size for the view which fits the title without truncating.
+*/
 unsafe impl NSAccessibility for NSScrubberTextItemView {}
 
 #[cfg(feature = "AppKit_NSScrubberTextItemView")]
+/**
+ @class NSScrubberTextItemView
+@abstract A simple @c NSScrubberItemView for displaying text. The -fittingSize method can be used to measure the smallest size for the view which fits the title without truncating.
+*/
 unsafe impl NSAccessibilityElementProtocol for NSScrubberTextItemView {}
 
 #[cfg(feature = "AppKit_NSScrubberTextItemView")]
+/**
+ @class NSScrubberTextItemView
+@abstract A simple @c NSScrubberItemView for displaying text. The -fittingSize method can be used to measure the smallest size for the view which fits the title without truncating.
+*/
 unsafe impl NSAnimatablePropertyContainer for NSScrubberTextItemView {}
 
 #[cfg(feature = "AppKit_NSScrubberTextItemView")]
+/**
+ @class NSScrubberTextItemView
+@abstract A simple @c NSScrubberItemView for displaying text. The -fittingSize method can be used to measure the smallest size for the view which fits the title without truncating.
+*/
 unsafe impl NSAppearanceCustomization for NSScrubberTextItemView {}
 
 #[cfg(feature = "AppKit_NSScrubberTextItemView")]
+/**
+ @class NSScrubberTextItemView
+@abstract A simple @c NSScrubberItemView for displaying text. The -fittingSize method can be used to measure the smallest size for the view which fits the title without truncating.
+*/
 unsafe impl NSCoding for NSScrubberTextItemView {}
 
 #[cfg(feature = "AppKit_NSScrubberTextItemView")]
+/**
+ @class NSScrubberTextItemView
+@abstract A simple @c NSScrubberItemView for displaying text. The -fittingSize method can be used to measure the smallest size for the view which fits the title without truncating.
+*/
 unsafe impl NSDraggingDestination for NSScrubberTextItemView {}
 
 #[cfg(feature = "AppKit_NSScrubberTextItemView")]
+/**
+ @class NSScrubberTextItemView
+@abstract A simple @c NSScrubberItemView for displaying text. The -fittingSize method can be used to measure the smallest size for the view which fits the title without truncating.
+*/
 unsafe impl NSObjectProtocol for NSScrubberTextItemView {}
 
 #[cfg(feature = "AppKit_NSScrubberTextItemView")]
+/**
+ @class NSScrubberTextItemView
+@abstract A simple @c NSScrubberItemView for displaying text. The -fittingSize method can be used to measure the smallest size for the view which fits the title without truncating.
+*/
 unsafe impl NSUserInterfaceItemIdentification for NSScrubberTextItemView {}
 
 extern_methods!(
+    /**
+     @class NSScrubberTextItemView
+    @abstract A simple @c NSScrubberItemView for displaying text. The -fittingSize method can be used to measure the smallest size for the view which fits the title without truncating.
+    */
     #[cfg(feature = "AppKit_NSScrubberTextItemView")]
     unsafe impl NSScrubberTextItemView {
         #[cfg(feature = "AppKit_NSTextField")]
@@ -200,6 +320,11 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSScrubberImageItemView")]
+    /**
+     @class NSScrubberTextItemView
+    @abstract A simple @c NSScrubberItemView for displaying an image.
+    @discussion If the provided image is larger than the view's frame, it is scaled proportionally to fill the entire frame. The cropped portion of the image is determined by the @c imageAlignment property.
+    */
     pub struct NSScrubberImageItemView;
 
     #[cfg(feature = "AppKit_NSScrubberImageItemView")]
@@ -210,30 +335,75 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSScrubberImageItemView")]
+/**
+ @class NSScrubberTextItemView
+@abstract A simple @c NSScrubberItemView for displaying an image.
+@discussion If the provided image is larger than the view's frame, it is scaled proportionally to fill the entire frame. The cropped portion of the image is determined by the @c imageAlignment property.
+*/
 unsafe impl NSAccessibility for NSScrubberImageItemView {}
 
 #[cfg(feature = "AppKit_NSScrubberImageItemView")]
+/**
+ @class NSScrubberTextItemView
+@abstract A simple @c NSScrubberItemView for displaying an image.
+@discussion If the provided image is larger than the view's frame, it is scaled proportionally to fill the entire frame. The cropped portion of the image is determined by the @c imageAlignment property.
+*/
 unsafe impl NSAccessibilityElementProtocol for NSScrubberImageItemView {}
 
 #[cfg(feature = "AppKit_NSScrubberImageItemView")]
+/**
+ @class NSScrubberTextItemView
+@abstract A simple @c NSScrubberItemView for displaying an image.
+@discussion If the provided image is larger than the view's frame, it is scaled proportionally to fill the entire frame. The cropped portion of the image is determined by the @c imageAlignment property.
+*/
 unsafe impl NSAnimatablePropertyContainer for NSScrubberImageItemView {}
 
 #[cfg(feature = "AppKit_NSScrubberImageItemView")]
+/**
+ @class NSScrubberTextItemView
+@abstract A simple @c NSScrubberItemView for displaying an image.
+@discussion If the provided image is larger than the view's frame, it is scaled proportionally to fill the entire frame. The cropped portion of the image is determined by the @c imageAlignment property.
+*/
 unsafe impl NSAppearanceCustomization for NSScrubberImageItemView {}
 
 #[cfg(feature = "AppKit_NSScrubberImageItemView")]
+/**
+ @class NSScrubberTextItemView
+@abstract A simple @c NSScrubberItemView for displaying an image.
+@discussion If the provided image is larger than the view's frame, it is scaled proportionally to fill the entire frame. The cropped portion of the image is determined by the @c imageAlignment property.
+*/
 unsafe impl NSCoding for NSScrubberImageItemView {}
 
 #[cfg(feature = "AppKit_NSScrubberImageItemView")]
+/**
+ @class NSScrubberTextItemView
+@abstract A simple @c NSScrubberItemView for displaying an image.
+@discussion If the provided image is larger than the view's frame, it is scaled proportionally to fill the entire frame. The cropped portion of the image is determined by the @c imageAlignment property.
+*/
 unsafe impl NSDraggingDestination for NSScrubberImageItemView {}
 
 #[cfg(feature = "AppKit_NSScrubberImageItemView")]
+/**
+ @class NSScrubberTextItemView
+@abstract A simple @c NSScrubberItemView for displaying an image.
+@discussion If the provided image is larger than the view's frame, it is scaled proportionally to fill the entire frame. The cropped portion of the image is determined by the @c imageAlignment property.
+*/
 unsafe impl NSObjectProtocol for NSScrubberImageItemView {}
 
 #[cfg(feature = "AppKit_NSScrubberImageItemView")]
+/**
+ @class NSScrubberTextItemView
+@abstract A simple @c NSScrubberItemView for displaying an image.
+@discussion If the provided image is larger than the view's frame, it is scaled proportionally to fill the entire frame. The cropped portion of the image is determined by the @c imageAlignment property.
+*/
 unsafe impl NSUserInterfaceItemIdentification for NSScrubberImageItemView {}
 
 extern_methods!(
+    /**
+     @class NSScrubberTextItemView
+    @abstract A simple @c NSScrubberItemView for displaying an image.
+    @discussion If the provided image is larger than the view's frame, it is scaled proportionally to fill the entire frame. The cropped portion of the image is determined by the @c imageAlignment property.
+    */
     #[cfg(feature = "AppKit_NSScrubberImageItemView")]
     unsafe impl NSScrubberImageItemView {
         #[cfg(feature = "AppKit_NSImageView")]
@@ -267,6 +437,10 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSView`
+    /**
+     @class NSScrubberSelectionView
+    @abstract The base view class for all selection decorations used by the @c NSScrubber control.
+    */
     #[cfg(feature = "AppKit_NSScrubberSelectionView")]
     unsafe impl NSScrubberSelectionView {
         #[method_id(@__retain_semantics Init initWithFrame:)]
@@ -276,6 +450,10 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSView`
+    /**
+     @class NSScrubberItemView
+    @abstract The base view class that is arranged by a @c NSScrubber control.
+    */
     #[cfg(feature = "AppKit_NSScrubberItemView")]
     unsafe impl NSScrubberItemView {
         #[method_id(@__retain_semantics Init initWithFrame:)]
@@ -285,6 +463,10 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSView`
+    /**
+     @class NSScrubberTextItemView
+    @abstract A simple @c NSScrubberItemView for displaying text. The -fittingSize method can be used to measure the smallest size for the view which fits the title without truncating.
+    */
     #[cfg(feature = "AppKit_NSScrubberTextItemView")]
     unsafe impl NSScrubberTextItemView {
         #[method_id(@__retain_semantics Init initWithFrame:)]
@@ -294,6 +476,11 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSView`
+    /**
+     @class NSScrubberTextItemView
+    @abstract A simple @c NSScrubberItemView for displaying an image.
+    @discussion If the provided image is larger than the view's frame, it is scaled proportionally to fill the entire frame. The cropped portion of the image is determined by the @c imageAlignment property.
+    */
     #[cfg(feature = "AppKit_NSScrubberImageItemView")]
     unsafe impl NSScrubberImageItemView {
         #[method_id(@__retain_semantics Init initWithFrame:)]

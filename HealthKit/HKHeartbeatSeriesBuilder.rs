@@ -9,6 +9,14 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKHeartbeatSeriesBuilder")]
+    /**
+     @class              HKHeartbeatSeriesBuilder
+    @abstract           An HKHeartbeatSeriesBuilder is used to generate an HKHeartbeatSeriesSample.
+    @discussion         This class is intended for generating an HKHeartbeatSeriesSample which represents a series of
+    heartbeats. If the discard method is called, collected data will be deleted.
+    Calling finishSeriesWithcompletion: will stop and complete the series. If the builder is deleted,
+    or the client goes away before calling the finish method, data will be lost.
+    */
     pub struct HKHeartbeatSeriesBuilder;
 
     #[cfg(feature = "HealthKit_HKHeartbeatSeriesBuilder")]
@@ -19,11 +27,33 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKHeartbeatSeriesBuilder")]
+/**
+ @class              HKHeartbeatSeriesBuilder
+@abstract           An HKHeartbeatSeriesBuilder is used to generate an HKHeartbeatSeriesSample.
+@discussion         This class is intended for generating an HKHeartbeatSeriesSample which represents a series of
+heartbeats. If the discard method is called, collected data will be deleted.
+Calling finishSeriesWithcompletion: will stop and complete the series. If the builder is deleted,
+or the client goes away before calling the finish method, data will be lost.
+*/
 unsafe impl NSObjectProtocol for HKHeartbeatSeriesBuilder {}
 
 extern_methods!(
+    /**
+     @class              HKHeartbeatSeriesBuilder
+    @abstract           An HKHeartbeatSeriesBuilder is used to generate an HKHeartbeatSeriesSample.
+    @discussion         This class is intended for generating an HKHeartbeatSeriesSample which represents a series of
+    heartbeats. If the discard method is called, collected data will be deleted.
+    Calling finishSeriesWithcompletion: will stop and complete the series. If the builder is deleted,
+    or the client goes away before calling the finish method, data will be lost.
+    */
     #[cfg(feature = "HealthKit_HKHeartbeatSeriesBuilder")]
     unsafe impl HKHeartbeatSeriesBuilder {
+        /**
+         @property           maximumCount
+        @abstract           The maximum number of heartbeats that can be added to an HKHeartbeatSeriesBuilder.
+        @discussion         Any calls to addHeartbeatWithTimeIntervalSinceSeriesStartDate:precededByGap:completion: once
+        maximumCount has been reached will fail and an error will be returned in the completion handler.
+        */
         #[method(maximumCount)]
         pub unsafe fn maximumCount() -> NSUInteger;
 

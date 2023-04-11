@@ -6,6 +6,17 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSPointerArray")]
+    /**
+     NSPointerArray.h
+
+    A PointerArray acts like a traditional array that slides elements on insertion or deletion.
+    Unlike traditional arrays, it holds NULLs, which can be inserted or extracted (and contribute to count).
+    Also unlike traditional arrays, the 'count' of the array may be set directly.
+    Using NSPointerFunctionsWeakMemory object references will turn to NULL on last release.
+
+    The copying and archiving protocols are applicable only when NSPointerArray is configured for Object uses.
+    The fast enumeration protocol (supporting the for..in statement) will yield NULLs if present.  It is defined for all types of pointers although the language syntax doesn't directly support this.
+    */
     pub struct NSPointerArray;
 
     #[cfg(feature = "Foundation_NSPointerArray")]
@@ -15,18 +26,73 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSPointerArray")]
+/**
+ NSPointerArray.h
+
+A PointerArray acts like a traditional array that slides elements on insertion or deletion.
+Unlike traditional arrays, it holds NULLs, which can be inserted or extracted (and contribute to count).
+Also unlike traditional arrays, the 'count' of the array may be set directly.
+Using NSPointerFunctionsWeakMemory object references will turn to NULL on last release.
+
+The copying and archiving protocols are applicable only when NSPointerArray is configured for Object uses.
+The fast enumeration protocol (supporting the for..in statement) will yield NULLs if present.  It is defined for all types of pointers although the language syntax doesn't directly support this.
+*/
 unsafe impl NSCoding for NSPointerArray {}
 
 #[cfg(feature = "Foundation_NSPointerArray")]
+/**
+ NSPointerArray.h
+
+A PointerArray acts like a traditional array that slides elements on insertion or deletion.
+Unlike traditional arrays, it holds NULLs, which can be inserted or extracted (and contribute to count).
+Also unlike traditional arrays, the 'count' of the array may be set directly.
+Using NSPointerFunctionsWeakMemory object references will turn to NULL on last release.
+
+The copying and archiving protocols are applicable only when NSPointerArray is configured for Object uses.
+The fast enumeration protocol (supporting the for..in statement) will yield NULLs if present.  It is defined for all types of pointers although the language syntax doesn't directly support this.
+*/
 unsafe impl NSFastEnumeration for NSPointerArray {}
 
 #[cfg(feature = "Foundation_NSPointerArray")]
+/**
+ NSPointerArray.h
+
+A PointerArray acts like a traditional array that slides elements on insertion or deletion.
+Unlike traditional arrays, it holds NULLs, which can be inserted or extracted (and contribute to count).
+Also unlike traditional arrays, the 'count' of the array may be set directly.
+Using NSPointerFunctionsWeakMemory object references will turn to NULL on last release.
+
+The copying and archiving protocols are applicable only when NSPointerArray is configured for Object uses.
+The fast enumeration protocol (supporting the for..in statement) will yield NULLs if present.  It is defined for all types of pointers although the language syntax doesn't directly support this.
+*/
 unsafe impl NSObjectProtocol for NSPointerArray {}
 
 #[cfg(feature = "Foundation_NSPointerArray")]
+/**
+ NSPointerArray.h
+
+A PointerArray acts like a traditional array that slides elements on insertion or deletion.
+Unlike traditional arrays, it holds NULLs, which can be inserted or extracted (and contribute to count).
+Also unlike traditional arrays, the 'count' of the array may be set directly.
+Using NSPointerFunctionsWeakMemory object references will turn to NULL on last release.
+
+The copying and archiving protocols are applicable only when NSPointerArray is configured for Object uses.
+The fast enumeration protocol (supporting the for..in statement) will yield NULLs if present.  It is defined for all types of pointers although the language syntax doesn't directly support this.
+*/
 unsafe impl NSSecureCoding for NSPointerArray {}
 
 extern_methods!(
+    /**
+     NSPointerArray.h
+
+    A PointerArray acts like a traditional array that slides elements on insertion or deletion.
+    Unlike traditional arrays, it holds NULLs, which can be inserted or extracted (and contribute to count).
+    Also unlike traditional arrays, the 'count' of the array may be set directly.
+    Using NSPointerFunctionsWeakMemory object references will turn to NULL on last release.
+
+    The copying and archiving protocols are applicable only when NSPointerArray is configured for Object uses.
+    The fast enumeration protocol (supporting the for..in statement) will yield NULLs if present.  It is defined for all types of pointers although the language syntax doesn't directly support this.
+    */
     #[cfg(feature = "Foundation_NSPointerArray")]
     unsafe impl NSPointerArray {
         #[method_id(@__retain_semantics Init initWithOptions:)]
@@ -54,6 +120,9 @@ extern_methods!(
         ) -> Id<NSPointerArray>;
 
         #[cfg(feature = "Foundation_NSPointerFunctions")]
+        /**
+          return an NSPointerFunctions object reflecting the functions in use.  This is a new autoreleased object that can be subsequently modified and/or used directly in the creation of other pointer "collections".
+        */
         #[method_id(@__retain_semantics Other pointerFunctions)]
         pub unsafe fn pointerFunctions(&self) -> Id<NSPointerFunctions>;
 
@@ -79,9 +148,17 @@ extern_methods!(
         #[method(compact)]
         pub unsafe fn compact(&self);
 
+        /**
+          Getter: the number of elements in the array, including NULLs
+         Setter: sets desired number of elements, adding NULLs or removing items as necessary.
+        */
         #[method(count)]
         pub unsafe fn count(&self) -> NSUInteger;
 
+        /**
+          Getter: the number of elements in the array, including NULLs
+         Setter: sets desired number of elements, adding NULLs or removing items as necessary.
+        */
         #[method(setCount:)]
         pub unsafe fn setCount(&self, count: NSUInteger);
     }

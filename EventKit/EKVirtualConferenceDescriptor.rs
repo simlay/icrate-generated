@@ -12,6 +12,10 @@ pub type EKVirtualConferenceRoomTypeIdentifier = NSString;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "EventKit_EKVirtualConferenceRoomTypeDescriptor")]
+    /**
+     @class      EKVirtualConferenceRoomTypeDescriptor
+    @abstract   Describes a virtual conference room type.
+    */
     pub struct EKVirtualConferenceRoomTypeDescriptor;
 
     #[cfg(feature = "EventKit_EKVirtualConferenceRoomTypeDescriptor")]
@@ -21,9 +25,17 @@ extern_class!(
 );
 
 #[cfg(feature = "EventKit_EKVirtualConferenceRoomTypeDescriptor")]
+/**
+ @class      EKVirtualConferenceRoomTypeDescriptor
+@abstract   Describes a virtual conference room type.
+*/
 unsafe impl NSObjectProtocol for EKVirtualConferenceRoomTypeDescriptor {}
 
 extern_methods!(
+    /**
+     @class      EKVirtualConferenceRoomTypeDescriptor
+    @abstract   Describes a virtual conference room type.
+    */
     #[cfg(feature = "EventKit_EKVirtualConferenceRoomTypeDescriptor")]
     unsafe impl EKVirtualConferenceRoomTypeDescriptor {
         #[cfg(feature = "Foundation_NSString")]
@@ -52,6 +64,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "EventKit_EKVirtualConferenceURLDescriptor")]
+    /**
+     @class      EKVirtualConferenceURLDescriptor
+    @abstract   Describes a URL that can be used to join a virtual conference.
+    */
     pub struct EKVirtualConferenceURLDescriptor;
 
     #[cfg(feature = "EventKit_EKVirtualConferenceURLDescriptor")]
@@ -61,9 +77,17 @@ extern_class!(
 );
 
 #[cfg(feature = "EventKit_EKVirtualConferenceURLDescriptor")]
+/**
+ @class      EKVirtualConferenceURLDescriptor
+@abstract   Describes a URL that can be used to join a virtual conference.
+*/
 unsafe impl NSObjectProtocol for EKVirtualConferenceURLDescriptor {}
 
 extern_methods!(
+    /**
+     @class      EKVirtualConferenceURLDescriptor
+    @abstract   Describes a URL that can be used to join a virtual conference.
+    */
     #[cfg(feature = "EventKit_EKVirtualConferenceURLDescriptor")]
     unsafe impl EKVirtualConferenceURLDescriptor {
         #[cfg(all(feature = "Foundation_NSString", feature = "Foundation_NSURL"))]
@@ -93,6 +117,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "EventKit_EKVirtualConferenceDescriptor")]
+    /**
+     @class      EKVirtualConferenceDescriptor
+    @abstract   Describes a virtual conference.
+    */
     pub struct EKVirtualConferenceDescriptor;
 
     #[cfg(feature = "EventKit_EKVirtualConferenceDescriptor")]
@@ -102,9 +130,17 @@ extern_class!(
 );
 
 #[cfg(feature = "EventKit_EKVirtualConferenceDescriptor")]
+/**
+ @class      EKVirtualConferenceDescriptor
+@abstract   Describes a virtual conference.
+*/
 unsafe impl NSObjectProtocol for EKVirtualConferenceDescriptor {}
 
 extern_methods!(
+    /**
+     @class      EKVirtualConferenceDescriptor
+    @abstract   Describes a virtual conference.
+    */
     #[cfg(feature = "EventKit_EKVirtualConferenceDescriptor")]
     unsafe impl EKVirtualConferenceDescriptor {
         #[cfg(all(

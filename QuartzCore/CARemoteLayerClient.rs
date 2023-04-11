@@ -24,14 +24,25 @@ extern_methods!(
         #[method(invalidate)]
         pub unsafe fn invalidate(&self);
 
+        /**
+          An integer used by the server to identify the client. The value
+         should be passed back to the server so it can display the client's
+         root layer.
+        */
         #[method(clientId)]
         pub unsafe fn clientId(&self) -> u32;
 
         #[cfg(feature = "CoreAnimation_CALayer")]
+        /**
+          The root layer. Defaults to nil.
+        */
         #[method_id(@__retain_semantics Other layer)]
         pub unsafe fn layer(&self) -> Option<Id<CALayer>>;
 
         #[cfg(feature = "CoreAnimation_CALayer")]
+        /**
+          The root layer. Defaults to nil.
+        */
         #[method(setLayer:)]
         pub unsafe fn setLayer(&self, layer: Option<&CALayer>);
     }

@@ -101,15 +101,27 @@ extern_methods!(
         #[method(setImage:)]
         pub unsafe fn setImage(&self, image: Option<&NSImage>);
 
+        /**
+          The image that appears on the button portion of the expanded control. This property only applicable when `colorWellStyle` is `NSColorWellStyleExpanded`.
+        */
         #[method_id(@__retain_semantics Other pulldownTarget)]
         pub unsafe fn pulldownTarget(&self) -> Option<Id<Object>>;
 
+        /**
+          The image that appears on the button portion of the expanded control. This property only applicable when `colorWellStyle` is `NSColorWellStyleExpanded`.
+        */
         #[method(setPulldownTarget:)]
         pub unsafe fn setPulldownTarget(&self, pulldown_target: Option<&Object>);
 
+        /**
+          The target which `pulldownAction` is sent to. This property only applicable when `colorWellStyle` is `NSColorWellStyleExpanded` or `NSColorWellStyleMinimal`.
+        */
         #[method(pulldownAction)]
         pub unsafe fn pulldownAction(&self) -> Option<Sel>;
 
+        /**
+          The target which `pulldownAction` is sent to. This property only applicable when `colorWellStyle` is `NSColorWellStyleExpanded` or `NSColorWellStyleMinimal`.
+        */
         #[method(setPulldownAction:)]
         pub unsafe fn setPulldownAction(&self, pulldown_action: Option<Sel>);
     }

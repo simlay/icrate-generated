@@ -8,6 +8,9 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSTableCellView")]
+    /**
+      View Based NSTableView: The NSTableCellView is a reusable container view shown for a particular cell in the table. See NSTableView.h for more information.
+    */
     pub struct NSTableCellView;
 
     #[cfg(feature = "AppKit_NSTableCellView")]
@@ -18,43 +21,82 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSTableCellView")]
+/**
+  View Based NSTableView: The NSTableCellView is a reusable container view shown for a particular cell in the table. See NSTableView.h for more information.
+*/
 unsafe impl NSAccessibility for NSTableCellView {}
 
 #[cfg(feature = "AppKit_NSTableCellView")]
+/**
+  View Based NSTableView: The NSTableCellView is a reusable container view shown for a particular cell in the table. See NSTableView.h for more information.
+*/
 unsafe impl NSAccessibilityElementProtocol for NSTableCellView {}
 
 #[cfg(feature = "AppKit_NSTableCellView")]
+/**
+  View Based NSTableView: The NSTableCellView is a reusable container view shown for a particular cell in the table. See NSTableView.h for more information.
+*/
 unsafe impl NSAnimatablePropertyContainer for NSTableCellView {}
 
 #[cfg(feature = "AppKit_NSTableCellView")]
+/**
+  View Based NSTableView: The NSTableCellView is a reusable container view shown for a particular cell in the table. See NSTableView.h for more information.
+*/
 unsafe impl NSAppearanceCustomization for NSTableCellView {}
 
 #[cfg(feature = "AppKit_NSTableCellView")]
+/**
+  View Based NSTableView: The NSTableCellView is a reusable container view shown for a particular cell in the table. See NSTableView.h for more information.
+*/
 unsafe impl NSCoding for NSTableCellView {}
 
 #[cfg(feature = "AppKit_NSTableCellView")]
+/**
+  View Based NSTableView: The NSTableCellView is a reusable container view shown for a particular cell in the table. See NSTableView.h for more information.
+*/
 unsafe impl NSDraggingDestination for NSTableCellView {}
 
 #[cfg(feature = "AppKit_NSTableCellView")]
+/**
+  View Based NSTableView: The NSTableCellView is a reusable container view shown for a particular cell in the table. See NSTableView.h for more information.
+*/
 unsafe impl NSObjectProtocol for NSTableCellView {}
 
 #[cfg(feature = "AppKit_NSTableCellView")]
+/**
+  View Based NSTableView: The NSTableCellView is a reusable container view shown for a particular cell in the table. See NSTableView.h for more information.
+*/
 unsafe impl NSUserInterfaceItemIdentification for NSTableCellView {}
 
 extern_methods!(
+    /**
+      View Based NSTableView: The NSTableCellView is a reusable container view shown for a particular cell in the table. See NSTableView.h for more information.
+    */
     #[cfg(feature = "AppKit_NSTableCellView")]
     unsafe impl NSTableCellView {
+        /**
+          The 'objectValue' is automatically set by the table when using bindings, or the result from the dataSource method -tableView:objectValueForTableColumn:row:. Key Value Observing (KVO) compliant so user interface elements can be bound to the 'objectValue'.
+        */
         #[method_id(@__retain_semantics Other objectValue)]
         pub unsafe fn objectValue(&self) -> Option<Id<Object>>;
 
+        /**
+          The 'objectValue' is automatically set by the table when using bindings, or the result from the dataSource method -tableView:objectValueForTableColumn:row:. Key Value Observing (KVO) compliant so user interface elements can be bound to the 'objectValue'.
+        */
         #[method(setObjectValue:)]
         pub unsafe fn setObjectValue(&self, object_value: Option<&Object>);
 
         #[cfg(feature = "AppKit_NSTextField")]
+        /**
+          The following two properties are provided for the developer to hook up as outlets. These outlets can then be accessed in -tableView:viewForTableColumn:row: and modified. Additional outlets can be added by subclassing NSTableCellView, adding appropriate ivars and properties, and hooking it up in Interface Builder.
+        */
         #[method_id(@__retain_semantics Other textField)]
         pub unsafe fn textField(&self) -> Option<Id<NSTextField>>;
 
         #[cfg(feature = "AppKit_NSTextField")]
+        /**
+          The following two properties are provided for the developer to hook up as outlets. These outlets can then be accessed in -tableView:viewForTableColumn:row: and modified. Additional outlets can be added by subclassing NSTableCellView, adding appropriate ivars and properties, and hooking it up in Interface Builder.
+        */
         #[method(setTextField:)]
         pub unsafe fn setTextField(&self, text_field: Option<&NSTextField>);
 
@@ -66,15 +108,27 @@ extern_methods!(
         #[method(setImageView:)]
         pub unsafe fn setImageView(&self, image_view: Option<&NSImageView>);
 
+        /**
+          The backgroundStyle property is automatically set by the enclosing NSTableRowView to let this view know what its background looks like. For instance, when the -backgroundStyle is NSBackgroundStyleEmphasized, the view should use a contrasting text color. The system label colors (labelColor, secondaryLabelColor, tertiaryLabelColor, and quaternaryLabelColor) automatically adapt when displayed with an emphasized backgroundStyle. Upon setting, the default implementation automatically forwards calls to all subviews that implement -setBackgroundStyle: or are an NSControl (which have NSCells that respond to -setBackgroundStyle:).
+        */
         #[method(backgroundStyle)]
         pub unsafe fn backgroundStyle(&self) -> NSBackgroundStyle;
 
+        /**
+          The backgroundStyle property is automatically set by the enclosing NSTableRowView to let this view know what its background looks like. For instance, when the -backgroundStyle is NSBackgroundStyleEmphasized, the view should use a contrasting text color. The system label colors (labelColor, secondaryLabelColor, tertiaryLabelColor, and quaternaryLabelColor) automatically adapt when displayed with an emphasized backgroundStyle. Upon setting, the default implementation automatically forwards calls to all subviews that implement -setBackgroundStyle: or are an NSControl (which have NSCells that respond to -setBackgroundStyle:).
+        */
         #[method(setBackgroundStyle:)]
         pub unsafe fn setBackgroundStyle(&self, background_style: NSBackgroundStyle);
 
+        /**
+          The rowSizeStyle is set by the NSTableView to its -effectiveRowSizeStyle. The cell view will layout the textField and imageView based on the rowSizeStyle. A value of NSTableViewRowSizeStyleDefault should never be set on the cell view, as it is an appropriate value only for the table. See NSTableView.h for more information.
+        */
         #[method(rowSizeStyle)]
         pub unsafe fn rowSizeStyle(&self) -> NSTableViewRowSizeStyle;
 
+        /**
+          The rowSizeStyle is set by the NSTableView to its -effectiveRowSizeStyle. The cell view will layout the textField and imageView based on the rowSizeStyle. A value of NSTableViewRowSizeStyleDefault should never be set on the cell view, as it is an appropriate value only for the table. See NSTableView.h for more information.
+        */
         #[method(setRowSizeStyle:)]
         pub unsafe fn setRowSizeStyle(&self, row_size_style: NSTableViewRowSizeStyle);
 
@@ -82,6 +136,9 @@ extern_methods!(
             feature = "AppKit_NSDraggingImageComponent",
             feature = "Foundation_NSArray"
         ))]
+        /**
+          Multi-Item Drag Support. The default implementation will return an array of up to two NSDraggingImageComponent instances -- one for the imageView and another for the textField (if not nil). These methods can be subclassed and overridden to provide a custom set of NSDraggingImageComponents to create the drag image from this view.
+        */
         #[method_id(@__retain_semantics Other draggingImageComponents)]
         pub unsafe fn draggingImageComponents(&self) -> Id<NSArray<NSDraggingImageComponent>>;
     }
@@ -89,6 +146,9 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSView`
+    /**
+      View Based NSTableView: The NSTableCellView is a reusable container view shown for a particular cell in the table. See NSTableView.h for more information.
+    */
     #[cfg(feature = "AppKit_NSTableCellView")]
     unsafe impl NSTableCellView {
         #[method_id(@__retain_semantics Init initWithFrame:)]

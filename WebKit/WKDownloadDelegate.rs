@@ -7,6 +7,12 @@ use crate::WebKit::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      @enum WKDownloadRedirectPolicy
+    @abstract The policy to pass back to the decision handler from the download:willPerformHTTPRedirection:newRequest:decisionHandler: method.
+    @constant WKDownloadRedirectPolicyCancel   Cancel the redirect.
+    @constant WKDownloadRedirectPolicyAllow    Allow the redirect.
+    */
     pub enum WKDownloadRedirectPolicy {
         WKDownloadRedirectPolicyCancel = 0,
         WKDownloadRedirectPolicyAllow = 1,

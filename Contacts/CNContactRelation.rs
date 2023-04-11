@@ -7,6 +7,11 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNContactRelation")]
+    /**
+      @abstract An immutable value object representing a related contact.
+
+     @discussion CNContactRelation is thread safe.
+    */
     pub struct CNContactRelation;
 
     #[cfg(feature = "Contacts_CNContactRelation")]
@@ -16,15 +21,35 @@ extern_class!(
 );
 
 #[cfg(feature = "Contacts_CNContactRelation")]
+/**
+  @abstract An immutable value object representing a related contact.
+
+ @discussion CNContactRelation is thread safe.
+*/
 unsafe impl NSCoding for CNContactRelation {}
 
 #[cfg(feature = "Contacts_CNContactRelation")]
+/**
+  @abstract An immutable value object representing a related contact.
+
+ @discussion CNContactRelation is thread safe.
+*/
 unsafe impl NSObjectProtocol for CNContactRelation {}
 
 #[cfg(feature = "Contacts_CNContactRelation")]
+/**
+  @abstract An immutable value object representing a related contact.
+
+ @discussion CNContactRelation is thread safe.
+*/
 unsafe impl NSSecureCoding for CNContactRelation {}
 
 extern_methods!(
+    /**
+      @abstract An immutable value object representing a related contact.
+
+     @discussion CNContactRelation is thread safe.
+    */
     #[cfg(feature = "Contacts_CNContactRelation")]
     unsafe impl CNContactRelation {
         #[cfg(feature = "Foundation_NSString")]

@@ -8,6 +8,18 @@ use crate::GameController::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameController_GCMicroGamepadSnapshot")]
+    /**
+     A GCMicroGamepadSnapshot snapshot is a concrete GCMicroGamepad implementation. It can be used directly in an
+    application to implement controller input replays. It is also returned as the result of polling
+    a controller.
+
+    The current snapshotData is readily available to access as NSData. A developer can serialize this to any
+    destination necessary using the NSData API.
+
+    The data contains some version of a GCMicroGamepadSnapShotData structure.
+
+    @see -[GCMicroGamepad saveSnapshot]
+    */
     #[deprecated = "GCMicroGamepadSnapshot has been deprecated, use [GCController controllerWithMicroGamepad] instead"]
     pub struct GCMicroGamepadSnapshot;
 
@@ -19,9 +31,33 @@ extern_class!(
 );
 
 #[cfg(feature = "GameController_GCMicroGamepadSnapshot")]
+/**
+ A GCMicroGamepadSnapshot snapshot is a concrete GCMicroGamepad implementation. It can be used directly in an
+application to implement controller input replays. It is also returned as the result of polling
+a controller.
+
+The current snapshotData is readily available to access as NSData. A developer can serialize this to any
+destination necessary using the NSData API.
+
+The data contains some version of a GCMicroGamepadSnapShotData structure.
+
+@see -[GCMicroGamepad saveSnapshot]
+*/
 unsafe impl NSObjectProtocol for GCMicroGamepadSnapshot {}
 
 extern_methods!(
+    /**
+     A GCMicroGamepadSnapshot snapshot is a concrete GCMicroGamepad implementation. It can be used directly in an
+    application to implement controller input replays. It is also returned as the result of polling
+    a controller.
+
+    The current snapshotData is readily available to access as NSData. A developer can serialize this to any
+    destination necessary using the NSData API.
+
+    The data contains some version of a GCMicroGamepadSnapShotData structure.
+
+    @see -[GCMicroGamepad saveSnapshot]
+    */
     #[cfg(feature = "GameController_GCMicroGamepadSnapshot")]
     unsafe impl GCMicroGamepadSnapshot {
         #[cfg(feature = "Foundation_NSData")]

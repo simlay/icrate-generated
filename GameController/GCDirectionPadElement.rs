@@ -6,22 +6,49 @@ use crate::Foundation::*;
 use crate::GameController::*;
 
 extern_protocol!(
+    /**
+     An object conforming to \c GCDirectionPadElement represents a four-way
+    directional control with one button on each point.
+
+    A direction pad element contains a common grouping of 2 axis inputs where the
+    input can also be interpreted as 2 sets of mutually exclusive button pairs.
+    Only one button in each pair, {up, down} and {left, right}, can be pressed at
+    any one time.
+    */
     pub unsafe trait GCDirectionPadElement: GCPhysicalInputElement {
+        /**
+          The horizontal/x-component of the dpad input.
+        */
         #[method_id(@__retain_semantics Other xAxis)]
         unsafe fn xAxis(&self) -> Id<ProtocolObject<dyn GCAxisInput>>;
 
+        /**
+          The vertical/y-component of the dpad input.
+        */
         #[method_id(@__retain_semantics Other yAxis)]
         unsafe fn yAxis(&self) -> Id<ProtocolObject<dyn GCAxisInput>>;
 
+        /**
+          The positive y-component of the dpad input.
+        */
         #[method_id(@__retain_semantics Other up)]
         unsafe fn up(&self) -> Id<TodoProtocols>;
 
+        /**
+          The negative y-component of the dpad input.
+        */
         #[method_id(@__retain_semantics Other down)]
         unsafe fn down(&self) -> Id<TodoProtocols>;
 
+        /**
+          The negative x-component of the dpad input.
+        */
         #[method_id(@__retain_semantics Other left)]
         unsafe fn left(&self) -> Id<TodoProtocols>;
 
+        /**
+          The positive x-component of the dpad input.
+        */
         #[method_id(@__retain_semantics Other right)]
         unsafe fn right(&self) -> Id<TodoProtocols>;
     }

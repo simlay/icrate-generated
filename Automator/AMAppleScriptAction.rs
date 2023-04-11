@@ -9,6 +9,9 @@ use crate::OSAKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Automator_AMAppleScriptAction")]
+    /**
+      AMAppleScriptAction
+    */
     pub struct AMAppleScriptAction;
 
     #[cfg(feature = "Automator_AMAppleScriptAction")]
@@ -19,22 +22,40 @@ extern_class!(
 );
 
 #[cfg(feature = "Automator_AMAppleScriptAction")]
+/**
+  AMAppleScriptAction
+*/
 unsafe impl NSCoding for AMAppleScriptAction {}
 
 #[cfg(feature = "Automator_AMAppleScriptAction")]
+/**
+  AMAppleScriptAction
+*/
 unsafe impl NSObjectProtocol for AMAppleScriptAction {}
 
 #[cfg(feature = "Automator_AMAppleScriptAction")]
+/**
+  AMAppleScriptAction
+*/
 unsafe impl NSSecureCoding for AMAppleScriptAction {}
 
 extern_methods!(
+    /**
+      AMAppleScriptAction
+    */
     #[cfg(feature = "Automator_AMAppleScriptAction")]
     unsafe impl AMAppleScriptAction {
         #[cfg(feature = "OSAKit_OSAScript")]
+        /**
+          Accessors
+        */
         #[method_id(@__retain_semantics Other script)]
         pub unsafe fn script(&self) -> Option<Id<OSAScript>>;
 
         #[cfg(feature = "OSAKit_OSAScript")]
+        /**
+          Accessors
+        */
         #[method(setScript:)]
         pub unsafe fn setScript(&self, script: Option<&OSAScript>);
     }
@@ -42,6 +63,9 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `AMAction`
+    /**
+      AMAppleScriptAction
+    */
     #[cfg(feature = "Automator_AMAppleScriptAction")]
     unsafe impl AMAppleScriptAction {
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]

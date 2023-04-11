@@ -36,9 +36,23 @@ extern_methods!(
         #[method_id(@__retain_semantics Other polyline)]
         pub unsafe fn polyline(&self) -> Id<MKPolyline>;
 
+        /**
+          These values define the subregion of the path used to draw the
+         polyline. The values must be in the range [0,1] with zero
+         representing the start of the polyline and one the end. Values in
+         between zero and one are interpolated linearly along the polyline
+         length. strokeStart defaults to 0 and strokeEnd to 1
+        */
         #[method(strokeStart)]
         pub unsafe fn strokeStart(&self) -> CGFloat;
 
+        /**
+          These values define the subregion of the path used to draw the
+         polyline. The values must be in the range [0,1] with zero
+         representing the start of the polyline and one the end. Values in
+         between zero and one are interpolated linearly along the polyline
+         length. strokeStart defaults to 0 and strokeEnd to 1
+        */
         #[method(setStrokeStart:)]
         pub unsafe fn setStrokeStart(&self, stroke_start: CGFloat);
 

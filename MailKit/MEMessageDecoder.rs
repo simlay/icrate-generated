@@ -6,6 +6,9 @@ use crate::Foundation::*;
 use crate::MailKit::*;
 
 extern_protocol!(
+    /**
+      @brief Methods in this protocol can be used by a mail app extension to decode messages.
+    */
     pub unsafe trait MEMessageDecoder: NSObjectProtocol {
         #[cfg(all(feature = "Foundation_NSData", feature = "MailKit_MEDecodedMessage"))]
         #[method_id(@__retain_semantics Other decodedMessageForMessageData:)]

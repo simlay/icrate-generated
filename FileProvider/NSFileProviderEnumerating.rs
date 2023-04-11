@@ -34,6 +34,16 @@ extern_protocol!(
         #[method(finishEnumeratingWithError:)]
         unsafe fn finishEnumeratingWithError(&self, error: &NSError);
 
+        /**
+         Size of the page suggested by the system for better performance.
+
+        The system will set that property to the value it considers is best suited for the current enumeration. The
+        system can enumerate a container in various cases (container presenter in the UI, file opened in an application,
+        materialization of the folder by the system, ...). Each case has its own performance profile.
+
+        By taking into account the suggested size, the enumeration will guarantee the best user experience possible. The
+        system enforces a maximum of 100 times the suggested size.
+        */
         #[optional]
         #[method(suggestedPageSize)]
         unsafe fn suggestedPageSize(&self) -> NSInteger;
@@ -69,6 +79,24 @@ extern_protocol!(
         #[method(finishEnumeratingWithError:)]
         unsafe fn finishEnumeratingWithError(&self, error: &NSError);
 
+        /**
+         Size of the batch suggested by the system for better performance.
+
+        The system will set that property to the value it considers is best suited for the current enumeration. The
+        system can enumerate changes on a container in various cases (container presenter in the UI, file opened in an
+        application, ...). Each case has its own performance profile.
+
+        In case the enumerator has already more than suggestedBatchSize pending changes ready to enumerate, it is suggested
+        it split the list of changes into several batches. If the enumerator does not have suggestedBatchSize ready to
+        enumerator, the enumerator should finish immediately and not wait for more incoming changes to enumerate.
+
+        By taking into account the suggested size, the enumeration will guarantee the best user experience possible. Large
+        batches can cause performance issues. And when the device reboots, enumerations will resume from the latest
+        known sync anchor. Telling the system about the latest sync anchor more frequently will reduce the number
+        of re-enumerations on system reboot.
+
+        The system enforces a maximum of 100 times the suggested size.
+        */
         #[optional]
         #[method(suggestedBatchSize)]
         unsafe fn suggestedBatchSize(&self) -> NSInteger;

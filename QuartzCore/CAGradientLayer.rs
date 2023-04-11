@@ -36,24 +36,66 @@ extern_methods!(
     #[cfg(feature = "CoreAnimation_CAGradientLayer")]
     unsafe impl CAGradientLayer {
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          The array of CGColorRef objects defining the color of each gradient
+         stop. Defaults to nil. Animatable.
+        */
         #[method_id(@__retain_semantics Other colors)]
         pub unsafe fn colors(&self) -> Option<Id<NSArray>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          The array of CGColorRef objects defining the color of each gradient
+         stop. Defaults to nil. Animatable.
+        */
         #[method(setColors:)]
         pub unsafe fn setColors(&self, colors: Option<&NSArray>);
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSNumber"))]
+        /**
+          An optional array of NSNumber objects defining the location of each
+         gradient stop as a value in the range [0,1]. The values must be
+         monotonically increasing. If a nil array is given, the stops are
+         assumed to spread uniformly across the [0,1] range. When rendered,
+         the colors are mapped to the output colorspace before being
+         interpolated. Defaults to nil. Animatable.
+        */
         #[method_id(@__retain_semantics Other locations)]
         pub unsafe fn locations(&self) -> Option<Id<NSArray<NSNumber>>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSNumber"))]
+        /**
+          An optional array of NSNumber objects defining the location of each
+         gradient stop as a value in the range [0,1]. The values must be
+         monotonically increasing. If a nil array is given, the stops are
+         assumed to spread uniformly across the [0,1] range. When rendered,
+         the colors are mapped to the output colorspace before being
+         interpolated. Defaults to nil. Animatable.
+        */
         #[method(setLocations:)]
         pub unsafe fn setLocations(&self, locations: Option<&NSArray<NSNumber>>);
 
+        /**
+          The start and end points of the gradient when drawn into the layer's
+         coordinate space. The start point corresponds to the first gradient
+         stop, the end point to the last gradient stop. Both points are
+         defined in a unit coordinate space that is then mapped to the
+         layer's bounds rectangle when drawn. (I.e. [0,0] is the bottom-left
+         corner of the layer, [1,1] is the top-right corner.) The default values
+         are [.5,0] and [.5,1] respectively. Both are animatable.
+        */
         #[method(startPoint)]
         pub unsafe fn startPoint(&self) -> CGPoint;
 
+        /**
+          The start and end points of the gradient when drawn into the layer's
+         coordinate space. The start point corresponds to the first gradient
+         stop, the end point to the last gradient stop. Both points are
+         defined in a unit coordinate space that is then mapped to the
+         layer's bounds rectangle when drawn. (I.e. [0,0] is the bottom-left
+         corner of the layer, [1,1] is the top-right corner.) The default values
+         are [.5,0] and [.5,1] respectively. Both are animatable.
+        */
         #[method(setStartPoint:)]
         pub unsafe fn setStartPoint(&self, start_point: CGPoint);
 
@@ -63,9 +105,17 @@ extern_methods!(
         #[method(setEndPoint:)]
         pub unsafe fn setEndPoint(&self, end_point: CGPoint);
 
+        /**
+          The kind of gradient that will be drawn. Currently, the only allowed
+         values are `axial' (the default value), `radial', and `conic'.
+        */
         #[method_id(@__retain_semantics Other type)]
         pub unsafe fn r#type(&self) -> Id<CAGradientLayerType>;
 
+        /**
+          The kind of gradient that will be drawn. Currently, the only allowed
+         values are `axial' (the default value), `radial', and `conic'.
+        */
         #[method(setType:)]
         pub unsafe fn setType(&self, r#type: &CAGradientLayerType);
     }

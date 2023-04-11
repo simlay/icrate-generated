@@ -9,6 +9,10 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKQuantity")]
+    /**
+     @class         HKQuantity
+    @abstract      The HKQuantity class provides an encapsulation of a quantity value and the unit of measurement.
+    */
     pub struct HKQuantity;
 
     #[cfg(feature = "HealthKit_HKQuantity")]
@@ -18,15 +22,31 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKQuantity")]
+/**
+ @class         HKQuantity
+@abstract      The HKQuantity class provides an encapsulation of a quantity value and the unit of measurement.
+*/
 unsafe impl NSCoding for HKQuantity {}
 
 #[cfg(feature = "HealthKit_HKQuantity")]
+/**
+ @class         HKQuantity
+@abstract      The HKQuantity class provides an encapsulation of a quantity value and the unit of measurement.
+*/
 unsafe impl NSObjectProtocol for HKQuantity {}
 
 #[cfg(feature = "HealthKit_HKQuantity")]
+/**
+ @class         HKQuantity
+@abstract      The HKQuantity class provides an encapsulation of a quantity value and the unit of measurement.
+*/
 unsafe impl NSSecureCoding for HKQuantity {}
 
 extern_methods!(
+    /**
+     @class         HKQuantity
+    @abstract      The HKQuantity class provides an encapsulation of a quantity value and the unit of measurement.
+    */
     #[cfg(feature = "HealthKit_HKQuantity")]
     unsafe impl HKQuantity {
         #[method_id(@__retain_semantics Init init)]

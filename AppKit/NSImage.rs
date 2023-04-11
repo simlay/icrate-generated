@@ -182,9 +182,15 @@ extern_methods!(
         #[method(setMatchesOnMultipleResolution:)]
         pub unsafe fn setMatchesOnMultipleResolution(&self, matches_on_multiple_resolution: bool);
 
+        /**
+          Available in MacOSX 10.7.4 // Available in MacOSX 10.7.4
+        */
         #[method(matchesOnlyOnBestFittingAxis)]
         pub unsafe fn matchesOnlyOnBestFittingAxis(&self) -> bool;
 
+        /**
+          Available in MacOSX 10.7.4 // Available in MacOSX 10.7.4
+        */
         #[method(setMatchesOnlyOnBestFittingAxis:)]
         pub unsafe fn setMatchesOnlyOnBestFittingAxis(
             &self,
@@ -305,9 +311,27 @@ extern_methods!(
         #[method(setCacheMode:)]
         pub unsafe fn setCacheMode(&self, cache_mode: NSImageCacheMode);
 
+        /**
+          The alignmentRect of an image is metadata that a client may use to help determine layout. The bottom of the rect gives the baseline of the image. The other edges give similar information in other directions.
+
+        A 20x20 image of a phone icon with a glow might specify an alignmentRect of {{2,2},{16,16}} that excludes the glow. NSButtonCell can take advantage of the alignmentRect to place the image in the same visual location as an 16x16 phone icon without the glow. A 5x5 star that should render high when aligned with text might specify a rect of {{0,-7},{5,12}}.
+
+        The alignmentRect of an image has no effect on methods such as drawInRect:fromRect:operation:Fraction: or drawAtPoint:fromRect:operation:fraction:. It is the client's responsibility to take the alignmentRect into account where applicable.
+
+        The default alignmentRect of an image is {{0,0},imageSize}. The rect is adjusted when setSize: is called.
+        */
         #[method(alignmentRect)]
         pub unsafe fn alignmentRect(&self) -> NSRect;
 
+        /**
+          The alignmentRect of an image is metadata that a client may use to help determine layout. The bottom of the rect gives the baseline of the image. The other edges give similar information in other directions.
+
+        A 20x20 image of a phone icon with a glow might specify an alignmentRect of {{2,2},{16,16}} that excludes the glow. NSButtonCell can take advantage of the alignmentRect to place the image in the same visual location as an 16x16 phone icon without the glow. A 5x5 star that should render high when aligned with text might specify a rect of {{0,-7},{5,12}}.
+
+        The alignmentRect of an image has no effect on methods such as drawInRect:fromRect:operation:Fraction: or drawAtPoint:fromRect:operation:fraction:. It is the client's responsibility to take the alignmentRect into account where applicable.
+
+        The default alignmentRect of an image is {{0,0},imageSize}. The rect is adjusted when setSize: is called.
+        */
         #[method(setAlignmentRect:)]
         pub unsafe fn setAlignmentRect(&self, alignment_rect: NSRect);
 
@@ -318,10 +342,16 @@ extern_methods!(
         pub unsafe fn setTemplate(&self, template: bool);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          An accessibility description can be set on an image.  This description will be used automatically by interface elements that display images.  Like all accessibility descriptions, the string should be a short localized string that does not include the name of the interface element.  For instance, "delete" rather than "delete button".
+        */
         #[method_id(@__retain_semantics Other accessibilityDescription)]
         pub unsafe fn accessibilityDescription(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          An accessibility description can be set on an image.  This description will be used automatically by interface elements that display images.  Like all accessibility descriptions, the string should be a short localized string that does not include the name of the interface element.  For instance, "delete" rather than "delete button".
+        */
         #[method(setAccessibilityDescription:)]
         pub unsafe fn setAccessibilityDescription(
             &self,

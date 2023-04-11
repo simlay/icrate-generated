@@ -8,6 +8,9 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSColorSampler")]
+    /**
+      Manages a color sampling interface to allow the user to select a color from their screen.
+    */
     pub struct NSColorSampler;
 
     #[cfg(feature = "AppKit_NSColorSampler")]
@@ -17,9 +20,15 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSColorSampler")]
+/**
+  Manages a color sampling interface to allow the user to select a color from their screen.
+*/
 unsafe impl NSObjectProtocol for NSColorSampler {}
 
 extern_methods!(
+    /**
+      Manages a color sampling interface to allow the user to select a color from their screen.
+    */
     #[cfg(feature = "AppKit_NSColorSampler")]
     unsafe impl NSColorSampler {
         #[cfg(feature = "AppKit_NSColor")]

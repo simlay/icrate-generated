@@ -17,6 +17,10 @@ extern_static!(MTKModelErrorKey: &'static MTKModelError);
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MetalKit_MTKMeshBufferAllocator")]
+    /**
+     @class MTKMeshBufferAllocator
+    @abstract Allocator passed to MDLAsset init method to load vertex and index data directly into Metal buffers.
+    */
     pub struct MTKMeshBufferAllocator;
 
     #[cfg(feature = "MetalKit_MTKMeshBufferAllocator")]
@@ -26,9 +30,17 @@ extern_class!(
 );
 
 #[cfg(feature = "MetalKit_MTKMeshBufferAllocator")]
+/**
+ @class MTKMeshBufferAllocator
+@abstract Allocator passed to MDLAsset init method to load vertex and index data directly into Metal buffers.
+*/
 unsafe impl NSObjectProtocol for MTKMeshBufferAllocator {}
 
 extern_methods!(
+    /**
+     @class MTKMeshBufferAllocator
+    @abstract Allocator passed to MDLAsset init method to load vertex and index data directly into Metal buffers.
+    */
     #[cfg(feature = "MetalKit_MTKMeshBufferAllocator")]
     unsafe impl MTKMeshBufferAllocator {
         #[method_id(@__retain_semantics Init init)]
@@ -40,6 +52,10 @@ extern_methods!(
             device: &ProtocolObject<dyn MTLDevice>,
         ) -> Id<Self>;
 
+        /**
+         @property device
+        @abstract Device used to create buffers.
+        */
         #[method_id(@__retain_semantics Other device)]
         pub unsafe fn device(&self) -> Id<ProtocolObject<dyn MTLDevice>>;
     }
@@ -48,6 +64,11 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MetalKit_MTKMeshBuffer")]
+    /**
+     @class MTKMeshBuffer
+    @abstract Mesh buffer created by MTKMeshBufferAllocator when Model I/O needs to memory for vertex or index data backing.
+    @discussion Memory backing these buffer are Metal buffers.  Model I/O will load index and vertex data from from a model asset directly in to the Metal buffer.
+    */
     pub struct MTKMeshBuffer;
 
     #[cfg(feature = "MetalKit_MTKMeshBuffer")]
@@ -57,24 +78,52 @@ extern_class!(
 );
 
 #[cfg(feature = "MetalKit_MTKMeshBuffer")]
+/**
+ @class MTKMeshBuffer
+@abstract Mesh buffer created by MTKMeshBufferAllocator when Model I/O needs to memory for vertex or index data backing.
+@discussion Memory backing these buffer are Metal buffers.  Model I/O will load index and vertex data from from a model asset directly in to the Metal buffer.
+*/
 unsafe impl NSObjectProtocol for MTKMeshBuffer {}
 
 extern_methods!(
+    /**
+     @class MTKMeshBuffer
+    @abstract Mesh buffer created by MTKMeshBufferAllocator when Model I/O needs to memory for vertex or index data backing.
+    @discussion Memory backing these buffer are Metal buffers.  Model I/O will load index and vertex data from from a model asset directly in to the Metal buffer.
+    */
     #[cfg(feature = "MetalKit_MTKMeshBuffer")]
     unsafe impl MTKMeshBuffer {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
+        /**
+         @method length
+        @abstract Size in bytes of the buffer allocation.
+        */
         #[method(length)]
         pub unsafe fn length(&self) -> NSUInteger;
 
         #[cfg(feature = "MetalKit_MTKMeshBufferAllocator")]
+        /**
+         @property allocator
+        @abstract Allocator object used to create this buffer.
+        @discussion This allcoator is stored so that it can be used by Model I/O for copy and relayout operations (such as when a new vertex descriptor is applied to a vertex buffer).
+        */
         #[method_id(@__retain_semantics Other allocator)]
         pub unsafe fn allocator(&self) -> Id<MTKMeshBufferAllocator>;
 
+        /**
+         @property buffer
+        @abstract Metal Buffer backing vertex/index data.
+        @discussion Many MTKMeshBuffers may reference the same buffer, but each with it's own offset.  (i.e. Many MTKMeshBuffers may be suballocated from a single buffer)
+        */
         #[method_id(@__retain_semantics Other buffer)]
         pub unsafe fn buffer(&self) -> Id<ProtocolObject<dyn MTLBuffer>>;
 
+        /**
+         @property offset
+        @abstract Byte offset of the data within the metal buffer.
+        */
         #[method(offset)]
         pub unsafe fn offset(&self) -> NSUInteger;
     }
@@ -83,6 +132,11 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MetalKit_MTKSubmesh")]
+    /**
+     @class MTKSubmesh
+    @abstract A segment of a mesh and properties to render the segement.
+    @discussion Container for data that can be rendered in a single draw call. 1:1 mapping to MDLSubmesh.  Each submesh contains an index Buffer with which the parents mesh data can be rendered.  Actual vertex data resides in the submesh's parent MTKMesh object.
+    */
     pub struct MTKSubmesh;
 
     #[cfg(feature = "MetalKit_MTKSubmesh")]
@@ -92,36 +146,83 @@ extern_class!(
 );
 
 #[cfg(feature = "MetalKit_MTKSubmesh")]
+/**
+ @class MTKSubmesh
+@abstract A segment of a mesh and properties to render the segement.
+@discussion Container for data that can be rendered in a single draw call. 1:1 mapping to MDLSubmesh.  Each submesh contains an index Buffer with which the parents mesh data can be rendered.  Actual vertex data resides in the submesh's parent MTKMesh object.
+*/
 unsafe impl NSObjectProtocol for MTKSubmesh {}
 
 extern_methods!(
+    /**
+     @class MTKSubmesh
+    @abstract A segment of a mesh and properties to render the segement.
+    @discussion Container for data that can be rendered in a single draw call. 1:1 mapping to MDLSubmesh.  Each submesh contains an index Buffer with which the parents mesh data can be rendered.  Actual vertex data resides in the submesh's parent MTKMesh object.
+    */
     #[cfg(feature = "MetalKit_MTKSubmesh")]
     unsafe impl MTKSubmesh {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
+        /**
+         @property primitiveType
+        @abstract Metal primitive type with which to draw this object.
+        @discussion Value to use for primitiveType parameter in a [MTLRenderCommandEncoder drawIndexedPrimitives] call.
+        */
         #[method(primitiveType)]
         pub unsafe fn primitiveType(&self) -> MTLPrimitiveType;
 
+        /**
+         @property indexType
+        @abstract Metal index type of data in indexBuffer.
+        @discussion Value to use for indexType parameter in a [MTLRenderCommandEncoder drawIndexedPrimitives] call.
+
+        */
         #[method(indexType)]
         pub unsafe fn indexType(&self) -> MTLIndexType;
 
         #[cfg(feature = "MetalKit_MTKMeshBuffer")]
+        /**
+         @property indexBuffer
+        @abstract IndexBuffer (including indexCount) to render the object.
+        @discussion The MTLBuffer to use for indexBuffer parameter in a [MTLRenderCommandEncoder drawIndexedPrimitives] call.
+        */
         #[method_id(@__retain_semantics Other indexBuffer)]
         pub unsafe fn indexBuffer(&self) -> Id<MTKMeshBuffer>;
 
+        /**
+         @property indexCount
+        @abstract Number of indicies in indexBuffer.
+        @discussion Value to use for indexCount parameter in a [MTLRenderCommandEncoder drawIndexedPrimitives] call.
+
+        */
         #[method(indexCount)]
         pub unsafe fn indexCount(&self) -> NSUInteger;
 
         #[cfg(feature = "MetalKit_MTKMesh")]
+        /**
+         @property mesh
+        @abstract Parent MTKMesh object containing vertex data of this object.
+        @discussion The buffer of this parent mesh should be set in the encoder before a drawIndexedPrimitives call is made.
+        */
         #[method_id(@__retain_semantics Other mesh)]
         pub unsafe fn mesh(&self) -> Option<Id<MTKMesh>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property name
+        @abstract Name from the original MDLSubmesh object.
+        @discussion Although not directly used by this object, the application may use this to identify the submesh in the renderer/scene/world.
+        */
         #[method_id(@__retain_semantics Other name)]
         pub unsafe fn name(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property name
+        @abstract Name from the original MDLSubmesh object.
+        @discussion Although not directly used by this object, the application may use this to identify the submesh in the renderer/scene/world.
+        */
         #[method(setName:)]
         pub unsafe fn setName(&self, name: &NSString);
     }
@@ -130,6 +231,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MetalKit_MTKMesh")]
+    /**
+     @class MTKMesh
+    @abstract Container for vertex data of a mesh and submeshes to render it.
+    */
     pub struct MTKMesh;
 
     #[cfg(feature = "MetalKit_MTKMesh")]
@@ -139,9 +244,17 @@ extern_class!(
 );
 
 #[cfg(feature = "MetalKit_MTKMesh")]
+/**
+ @class MTKMesh
+@abstract Container for vertex data of a mesh and submeshes to render it.
+*/
 unsafe impl NSObjectProtocol for MTKMesh {}
 
 extern_methods!(
+    /**
+     @class MTKMesh
+    @abstract Container for vertex data of a mesh and submeshes to render it.
+    */
     #[cfg(feature = "MetalKit_MTKMesh")]
     unsafe impl MTKMesh {
         #[method_id(@__retain_semantics Init init)]
@@ -169,25 +282,53 @@ extern_methods!(
         ) -> Result<Id<NSArray<MTKMesh>>, Id<NSError>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "MetalKit_MTKMeshBuffer"))]
+        /**
+         @property vertexBuffers
+        @abstract Array of buffers in which mesh vertex data resides.
+        @discussion This is filled with mesh buffer objects using the layout described by the vertexDescriptor property.  Elements in this array can be [NSNull null] if the vertexDescriptor does not specify elements for buffer for the given index
+        */
         #[method_id(@__retain_semantics Other vertexBuffers)]
         pub unsafe fn vertexBuffers(&self) -> Id<NSArray<MTKMeshBuffer>>;
 
         #[cfg(feature = "ModelIO_MDLVertexDescriptor")]
+        /**
+         @property vertexDescriptor
+        @abstract Model I/O vertex descriptor specifying the layout of data in vertexBuffers.
+        @discussion This is not directly used by this object, but the application can use this information to determine rendering state or create a Metal vertex descriptor to build a RenderPipelineState object capable of interpreting data in 'vertexBuffers'.  Changing propties in the object will not result in the relayout data in vertex descriptor and thus will make the vertex descriptor no loger describe the layout of vertes data and verticies. (i.e. don't change properties in this vertexDescriptor)
+        */
         #[method_id(@__retain_semantics Other vertexDescriptor)]
         pub unsafe fn vertexDescriptor(&self) -> Id<MDLVertexDescriptor>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "MetalKit_MTKSubmesh"))]
+        /**
+         @property submeshes
+        @abstract Submeshes containing index buffers to rendering mesh vertices.
+        */
         #[method_id(@__retain_semantics Other submeshes)]
         pub unsafe fn submeshes(&self) -> Id<NSArray<MTKSubmesh>>;
 
+        /**
+         @property vertexCount
+        @abstract Number of vertices in the vertexBuffers.
+        */
         #[method(vertexCount)]
         pub unsafe fn vertexCount(&self) -> NSUInteger;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property name
+        @abstract Name of the mesh copies from the originating Model I/O mesh.
+        @discussion Can be used by the app to identify the mesh in its scene/world/renderer etc.
+        */
         #[method_id(@__retain_semantics Other name)]
         pub unsafe fn name(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property name
+        @abstract Name of the mesh copies from the originating Model I/O mesh.
+        @discussion Can be used by the app to identify the mesh in its scene/world/renderer etc.
+        */
         #[method(setName:)]
         pub unsafe fn setName(&self, name: &NSString);
     }

@@ -7,6 +7,11 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNContactFetchRequest")]
+    /**
+      @abstract Specifies the search criteria to fetch contacts.
+
+     @discussion Used with [CNContactStore enumerateContactsWithFetchRequest:error:usingBlock:]. Can combine any of these options to create a contact fetch request.
+    */
     pub struct CNContactFetchRequest;
 
     #[cfg(feature = "Contacts_CNContactFetchRequest")]
@@ -17,15 +22,35 @@ extern_class!(
 );
 
 #[cfg(feature = "Contacts_CNContactFetchRequest")]
+/**
+  @abstract Specifies the search criteria to fetch contacts.
+
+ @discussion Used with [CNContactStore enumerateContactsWithFetchRequest:error:usingBlock:]. Can combine any of these options to create a contact fetch request.
+*/
 unsafe impl NSCoding for CNContactFetchRequest {}
 
 #[cfg(feature = "Contacts_CNContactFetchRequest")]
+/**
+  @abstract Specifies the search criteria to fetch contacts.
+
+ @discussion Used with [CNContactStore enumerateContactsWithFetchRequest:error:usingBlock:]. Can combine any of these options to create a contact fetch request.
+*/
 unsafe impl NSObjectProtocol for CNContactFetchRequest {}
 
 #[cfg(feature = "Contacts_CNContactFetchRequest")]
+/**
+  @abstract Specifies the search criteria to fetch contacts.
+
+ @discussion Used with [CNContactStore enumerateContactsWithFetchRequest:error:usingBlock:]. Can combine any of these options to create a contact fetch request.
+*/
 unsafe impl NSSecureCoding for CNContactFetchRequest {}
 
 extern_methods!(
+    /**
+      @abstract Specifies the search criteria to fetch contacts.
+
+     @discussion Used with [CNContactStore enumerateContactsWithFetchRequest:error:usingBlock:]. Can combine any of these options to create a contact fetch request.
+    */
     #[cfg(feature = "Contacts_CNContactFetchRequest")]
     unsafe impl CNContactFetchRequest {
         #[method_id(@__retain_semantics Init init)]
@@ -42,39 +67,93 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "Foundation_NSPredicate")]
+        /**
+          @abstract The predicate to match contacts against.
+
+         @discussion Use only predicates from CNContact+Predicates.h. Compound predicates are not supported. Set to nil to match all contacts.
+        */
         #[method_id(@__retain_semantics Other predicate)]
         pub unsafe fn predicate(&self) -> Option<Id<NSPredicate>>;
 
         #[cfg(feature = "Foundation_NSPredicate")]
+        /**
+          @abstract The predicate to match contacts against.
+
+         @discussion Use only predicates from CNContact+Predicates.h. Compound predicates are not supported. Set to nil to match all contacts.
+        */
         #[method(setPredicate:)]
         pub unsafe fn setPredicate(&self, predicate: Option<&NSPredicate>);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          @abstract The properties to fetch in the returned contacts.
+
+         @discussion Should only fetch the properties that will be used. Can combine contact keys and contact key descriptors.
+        */
         #[method_id(@__retain_semantics Other keysToFetch)]
         pub unsafe fn keysToFetch(&self) -> Id<NSArray<ProtocolObject<dyn CNKeyDescriptor>>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          @abstract The properties to fetch in the returned contacts.
+
+         @discussion Should only fetch the properties that will be used. Can combine contact keys and contact key descriptors.
+        */
         #[method(setKeysToFetch:)]
         pub unsafe fn setKeysToFetch(
             &self,
             keys_to_fetch: &NSArray<ProtocolObject<dyn CNKeyDescriptor>>,
         );
 
+        /**
+          @abstract To return mutable contacts.
+
+         @discussion If YES returns CNMutableContact objects, otherwise returns CNContact objects. Default is NO.
+        */
         #[method(mutableObjects)]
         pub unsafe fn mutableObjects(&self) -> bool;
 
+        /**
+          @abstract To return mutable contacts.
+
+         @discussion If YES returns CNMutableContact objects, otherwise returns CNContact objects. Default is NO.
+        */
         #[method(setMutableObjects:)]
         pub unsafe fn setMutableObjects(&self, mutable_objects: bool);
 
+        /**
+          @abstract To return linked contacts as unified contacts.
+
+         @discussion If YES returns unified contacts, otherwise returns individual contacts. Default is YES.
+
+         @note A unified contact is the aggregation of properties from a set of linked individual contacts. If an individual contact is not linked then the unified contact is simply that individual contact.
+        */
         #[method(unifyResults)]
         pub unsafe fn unifyResults(&self) -> bool;
 
+        /**
+          @abstract To return linked contacts as unified contacts.
+
+         @discussion If YES returns unified contacts, otherwise returns individual contacts. Default is YES.
+
+         @note A unified contact is the aggregation of properties from a set of linked individual contacts. If an individual contact is not linked then the unified contact is simply that individual contact.
+        */
         #[method(setUnifyResults:)]
         pub unsafe fn setUnifyResults(&self, unify_results: bool);
 
+        /**
+          @abstract To return contacts in a specific sort order.
+
+         @discussion Default is CNContactSortOrderNone.
+        */
         #[method(sortOrder)]
         pub unsafe fn sortOrder(&self) -> CNContactSortOrder;
 
+        /**
+          @abstract To return contacts in a specific sort order.
+
+         @discussion Default is CNContactSortOrderNone.
+        */
         #[method(setSortOrder:)]
         pub unsafe fn setSortOrder(&self, sort_order: CNContactSortOrder);
     }

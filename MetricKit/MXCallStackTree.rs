@@ -7,6 +7,11 @@ use crate::MetricKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MetricKit_MXCallStackTree")]
+    /**
+     @class         MXCallStackTree
+    @abstract      A data class that encapsulates call stack trees vended by MetricKit.
+    @discussion    You should use the JSONRepresentation API to generate human readable call stack trees for symbolication off device.
+    */
     pub struct MXCallStackTree;
 
     #[cfg(feature = "MetricKit_MXCallStackTree")]
@@ -16,15 +21,35 @@ extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXCallStackTree")]
+/**
+ @class         MXCallStackTree
+@abstract      A data class that encapsulates call stack trees vended by MetricKit.
+@discussion    You should use the JSONRepresentation API to generate human readable call stack trees for symbolication off device.
+*/
 unsafe impl NSCoding for MXCallStackTree {}
 
 #[cfg(feature = "MetricKit_MXCallStackTree")]
+/**
+ @class         MXCallStackTree
+@abstract      A data class that encapsulates call stack trees vended by MetricKit.
+@discussion    You should use the JSONRepresentation API to generate human readable call stack trees for symbolication off device.
+*/
 unsafe impl NSObjectProtocol for MXCallStackTree {}
 
 #[cfg(feature = "MetricKit_MXCallStackTree")]
+/**
+ @class         MXCallStackTree
+@abstract      A data class that encapsulates call stack trees vended by MetricKit.
+@discussion    You should use the JSONRepresentation API to generate human readable call stack trees for symbolication off device.
+*/
 unsafe impl NSSecureCoding for MXCallStackTree {}
 
 extern_methods!(
+    /**
+     @class         MXCallStackTree
+    @abstract      A data class that encapsulates call stack trees vended by MetricKit.
+    @discussion    You should use the JSONRepresentation API to generate human readable call stack trees for symbolication off device.
+    */
     #[cfg(feature = "MetricKit_MXCallStackTree")]
     unsafe impl MXCallStackTree {
         #[cfg(feature = "Foundation_NSData")]

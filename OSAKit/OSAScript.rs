@@ -45,6 +45,10 @@ extern_static!(OSAStorageTextType: &'static NSString);
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+      Storage Options
+     ===============
+    */
     pub enum OSAStorageOptions {
         OSANull = 0x00000000,
         OSAPreventGetSource = 0x00000001,
@@ -58,6 +62,10 @@ ns_options!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "OSAKit_OSAScript")]
+    /**
+      OSAScript
+     =========
+    */
     pub struct OSAScript;
 
     #[cfg(feature = "OSAKit_OSAScript")]
@@ -67,9 +75,17 @@ extern_class!(
 );
 
 #[cfg(feature = "OSAKit_OSAScript")]
+/**
+  OSAScript
+ =========
+*/
 unsafe impl NSObjectProtocol for OSAScript {}
 
 extern_methods!(
+    /**
+      OSAScript
+     =========
+    */
     #[cfg(feature = "OSAKit_OSAScript")]
     unsafe impl OSAScript {
         #[cfg(all(
@@ -189,6 +205,9 @@ extern_methods!(
         ) -> Result<Id<Self>, Id<NSError>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Accessors
+        */
         #[method_id(@__retain_semantics Other source)]
         pub unsafe fn source(&self) -> Id<NSString>;
 

@@ -8,6 +8,9 @@ use crate::MediaPlayer::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MediaPlayer_MPMediaQuerySection")]
+    /**
+      An MPMediaQuerySection object represents a single section grouping for a query.
+    */
     pub struct MPMediaQuerySection;
 
     #[cfg(feature = "MediaPlayer_MPMediaQuerySection")]
@@ -17,21 +20,39 @@ extern_class!(
 );
 
 #[cfg(feature = "MediaPlayer_MPMediaQuerySection")]
+/**
+  An MPMediaQuerySection object represents a single section grouping for a query.
+*/
 unsafe impl NSCoding for MPMediaQuerySection {}
 
 #[cfg(feature = "MediaPlayer_MPMediaQuerySection")]
+/**
+  An MPMediaQuerySection object represents a single section grouping for a query.
+*/
 unsafe impl NSObjectProtocol for MPMediaQuerySection {}
 
 #[cfg(feature = "MediaPlayer_MPMediaQuerySection")]
+/**
+  An MPMediaQuerySection object represents a single section grouping for a query.
+*/
 unsafe impl NSSecureCoding for MPMediaQuerySection {}
 
 extern_methods!(
+    /**
+      An MPMediaQuerySection object represents a single section grouping for a query.
+    */
     #[cfg(feature = "MediaPlayer_MPMediaQuerySection")]
     unsafe impl MPMediaQuerySection {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The localized title of the section grouping.
+        */
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Id<NSString>;
 
+        /**
+          The range in the query's corresponding collections or items array represented by this section.
+        */
         #[method(range)]
         pub unsafe fn range(&self) -> NSRange;
     }

@@ -40,28 +40,58 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          A localized name that describes the action.  This is a string that may be displayed to the user.
+        */
         #[method_id(@__retain_semantics Other name)]
         pub unsafe fn name(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          A localized name that describes the action.  This is a string that may be displayed to the user.
+        */
         #[method(setName:)]
         pub unsafe fn setName(&self, name: &NSString);
 
+        /**
+          The block that handles the execution of the action
+        */
         #[method(handler)]
         pub unsafe fn handler(&self) -> *mut Block<(), Bool>;
 
+        /**
+          The block that handles the execution of the action
+        */
         #[method(setHandler:)]
         pub unsafe fn setHandler(&self, handler: Option<&Block<(), Bool>>);
 
+        /**
+          The object that will perform the action via selector
+        */
         #[method_id(@__retain_semantics Other target)]
         pub unsafe fn target(&self) -> Option<Id<NSObject>>;
 
+        /**
+          The object that will perform the action via selector
+        */
         #[method(setTarget:)]
         pub unsafe fn setTarget(&self, target: Option<&NSObject>);
 
+        /**
+         The method that will be called on the target to perform the action.
+        It must conform to one of the following signatures:
+        - (BOOL)myPerformActionMethod;
+        - (BOOL)myPerformActionMethod:(NSAccessibilityCustomAction *)action;
+        */
         #[method(selector)]
         pub unsafe fn selector(&self) -> Option<Sel>;
 
+        /**
+         The method that will be called on the target to perform the action.
+        It must conform to one of the following signatures:
+        - (BOOL)myPerformActionMethod;
+        - (BOOL)myPerformActionMethod:(NSAccessibilityCustomAction *)action;
+        */
         #[method(setSelector:)]
         pub unsafe fn setSelector(&self, selector: Option<Sel>);
     }

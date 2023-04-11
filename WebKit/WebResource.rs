@@ -8,6 +8,11 @@ use crate::WebKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "WebKit_WebResource")]
+    /**
+     @class WebResource
+    @discussion A WebResource represents a fully downloaded URL.
+    It includes the data of the resource as well as the metadata associated with the resource.
+    */
     pub struct WebResource;
 
     #[cfg(feature = "WebKit_WebResource")]
@@ -17,12 +22,27 @@ extern_class!(
 );
 
 #[cfg(feature = "WebKit_WebResource")]
+/**
+ @class WebResource
+@discussion A WebResource represents a fully downloaded URL.
+It includes the data of the resource as well as the metadata associated with the resource.
+*/
 unsafe impl NSCoding for WebResource {}
 
 #[cfg(feature = "WebKit_WebResource")]
+/**
+ @class WebResource
+@discussion A WebResource represents a fully downloaded URL.
+It includes the data of the resource as well as the metadata associated with the resource.
+*/
 unsafe impl NSObjectProtocol for WebResource {}
 
 extern_methods!(
+    /**
+     @class WebResource
+    @discussion A WebResource represents a fully downloaded URL.
+    It includes the data of the resource as well as the metadata associated with the resource.
+    */
     #[cfg(feature = "WebKit_WebResource")]
     unsafe impl WebResource {
         #[cfg(all(
@@ -41,22 +61,42 @@ extern_methods!(
         ) -> Option<Id<Self>>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+         @property data
+        @abstract The data of the resource.
+        */
         #[method_id(@__retain_semantics Other data)]
         pub unsafe fn data(&self) -> Id<NSData>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+         @property URL
+        @abstract The URL of the resource.
+        */
         #[method_id(@__retain_semantics Other URL)]
         pub unsafe fn URL(&self) -> Option<Id<NSURL>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property MIMEType
+        @abstract The MIME type of the resource.
+        */
         #[method_id(@__retain_semantics Other MIMEType)]
         pub unsafe fn MIMEType(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property textEncodingName
+        @abstract The text encoding name of the resource (can be nil).
+        */
         #[method_id(@__retain_semantics Other textEncodingName)]
         pub unsafe fn textEncodingName(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property frameName
+        @abstract The frame name of the resource if the resource represents the contents of an entire HTML frame (can be nil).
+        */
         #[method_id(@__retain_semantics Other frameName)]
         pub unsafe fn frameName(&self) -> Id<NSString>;
     }

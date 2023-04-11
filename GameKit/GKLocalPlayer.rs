@@ -23,21 +23,38 @@ unsafe impl NSObjectProtocol for GKLocalPlayer {}
 extern_methods!(
     #[cfg(feature = "GameKit_GKLocalPlayer")]
     unsafe impl GKLocalPlayer {
+        /**
+          Obtain the primary GKLocalPlayer object.
+        The player is only available for offline play until logged in.
+        A temporary player is created if no account is set up.
+        */
         #[method_id(@__retain_semantics Other local)]
         pub unsafe fn local() -> Id<GKLocalPlayer>;
 
         #[method_id(@__retain_semantics Other localPlayer)]
         pub unsafe fn localPlayer() -> Id<GKLocalPlayer>;
 
+        /**
+          Authentication state
+        */
         #[method(isAuthenticated)]
         pub unsafe fn isAuthenticated(&self) -> bool;
 
+        /**
+          Indicates if a player is under age
+        */
         #[method(isUnderage)]
         pub unsafe fn isUnderage(&self) -> bool;
 
+        /**
+          A Boolean value that declares whether or not multiplayer gaming is restricted on this device.
+        */
         #[method(isMultiplayerGamingRestricted)]
         pub unsafe fn isMultiplayerGamingRestricted(&self) -> bool;
 
+        /**
+          A Boolean value that declares whether personalized communication is restricted on this device. If it is restricted, the player will not be able to read or write personalized messages on game invites, challenges, or enable voice communication in multiplayer games.  Note: this value will always be true when isUnderage is true.
+        */
         #[method(isPersonalizedCommunicationRestricted)]
         pub unsafe fn isPersonalizedCommunicationRestricted(&self) -> bool;
 
@@ -188,6 +205,9 @@ extern_methods!(
         );
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          Array of player identifiers of friends for the local player. Not valid until loadFriendsWithCompletionHandler: has completed.
+        */
         #[deprecated = " This property is obsolete, Use loadFriendPlayersWithCompletionHandler: instead"]
         #[method_id(@__retain_semantics Other friends)]
         pub unsafe fn friends(&self) -> Option<Id<NSArray<NSString>>>;
@@ -258,6 +278,9 @@ extern_methods!(
             authenticate_handler: Option<&Block<(*mut NSViewController, *mut NSError), ()>>,
         );
 
+        /**
+          observable property that becomes true when the friend request view controller is displayed.  It becomes false when it is dismissed
+        */
         #[method(isPresentingFriendRequestViewController)]
         pub unsafe fn isPresentingFriendRequestViewController(&self) -> bool;
 

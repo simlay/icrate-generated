@@ -7,6 +7,9 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      Valid values for the NSPrintOrientation attribute.
+    */
     pub enum NSPaperOrientation {
         NSPaperOrientationPortrait = 0,
         NSPaperOrientationLandscape = 1,
@@ -15,6 +18,9 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      Valid values for the NSPrintHorizontalPagination and NSPrintVerticalPagination attributes.
+    */
     pub enum NSPrintingPaginationMode {
         NSPrintingPaginationModeAutomatic = 0,
         NSPrintingPaginationModeFit = 1,
@@ -120,9 +126,15 @@ unsafe impl NSObjectProtocol for NSPrintInfo {}
 extern_methods!(
     #[cfg(feature = "AppKit_NSPrintInfo")]
     unsafe impl NSPrintInfo {
+        /**
+          Set or get the "shared" instance of NSPrintInfo. The shared print info object is the one that is used automatically by -[NSPageLayout runModal] and +[NSPrintOperation printOperationWithView:].
+        */
         #[method_id(@__retain_semantics Other sharedPrintInfo)]
         pub unsafe fn sharedPrintInfo() -> Id<NSPrintInfo>;
 
+        /**
+          Set or get the "shared" instance of NSPrintInfo. The shared print info object is the one that is used automatically by -[NSPageLayout runModal] and +[NSPrintOperation printOperationWithView:].
+        */
         #[method(setSharedPrintInfo:)]
         pub unsafe fn setSharedPrintInfo(shared_print_info: &NSPrintInfo);
 
@@ -146,9 +158,15 @@ extern_methods!(
             &self,
         ) -> Id<NSMutableDictionary<NSPrintInfoAttributeKey, Object>, Owned>;
 
+        /**
+          Set or get the values of the paper attributes.  Because an NSPrintInfo's paper name, paper size, and orientation attributes must be kept consistent, invocation of any of the setting methods in this group may affect the values returned by subsequent invocations of any of the getting methods in this group.  For example, paper name and paper size must always agree, and the value returned by -paperSize always takes orientation into account.
+        */
         #[method_id(@__retain_semantics Other paperName)]
         pub unsafe fn paperName(&self) -> Option<Id<NSPrinterPaperName>>;
 
+        /**
+          Set or get the values of the paper attributes.  Because an NSPrintInfo's paper name, paper size, and orientation attributes must be kept consistent, invocation of any of the setting methods in this group may affect the values returned by subsequent invocations of any of the getting methods in this group.  For example, paper name and paper size must always agree, and the value returned by -paperSize always takes orientation into account.
+        */
         #[method(setPaperName:)]
         pub unsafe fn setPaperName(&self, paper_name: Option<&NSPrinterPaperName>);
 
@@ -170,9 +188,15 @@ extern_methods!(
         #[method(setScalingFactor:)]
         pub unsafe fn setScalingFactor(&self, scaling_factor: CGFloat);
 
+        /**
+          Set or get the values of the pagination attributes.
+        */
         #[method(leftMargin)]
         pub unsafe fn leftMargin(&self) -> CGFloat;
 
+        /**
+          Set or get the values of the pagination attributes.
+        */
         #[method(setLeftMargin:)]
         pub unsafe fn setLeftMargin(&self, left_margin: CGFloat);
 
@@ -221,35 +245,59 @@ extern_methods!(
         #[method(setVerticalPagination:)]
         pub unsafe fn setVerticalPagination(&self, vertical_pagination: NSPrintingPaginationMode);
 
+        /**
+          Set or get the value of the job disposition attribute.
+        */
         #[method_id(@__retain_semantics Other jobDisposition)]
         pub unsafe fn jobDisposition(&self) -> Id<NSPrintJobDispositionValue>;
 
+        /**
+          Set or get the value of the job disposition attribute.
+        */
         #[method(setJobDisposition:)]
         pub unsafe fn setJobDisposition(&self, job_disposition: &NSPrintJobDispositionValue);
 
         #[cfg(feature = "AppKit_NSPrinter")]
+        /**
+          Set or get the destination printer specified by this object.
+        */
         #[method_id(@__retain_semantics Other printer)]
         pub unsafe fn printer(&self) -> Id<NSPrinter>;
 
         #[cfg(feature = "AppKit_NSPrinter")]
+        /**
+          Set or get the destination printer specified by this object.
+        */
         #[method(setPrinter:)]
         pub unsafe fn setPrinter(&self, printer: &NSPrinter);
 
         #[method(setUpPrintOperationDefaultValues)]
         pub unsafe fn setUpPrintOperationDefaultValues(&self);
 
+        /**
+          Return the imageable area of a page specified by this object, taking into account the current printer, paper, and orientation settings, but not scaling. "Imageable area" is the maximum area that can possibly be marked on by the printer hardware, not the area defined by the current margin settings. The rectangle is in a coordinate space measured by points, with (0, 0) being the lower-left corner of the oriented page and (paperWidth, paperHeight) being the upper-right corner of the oriented page. The imageable bounds may extend past the edges of the page when, for example, a printer driver specifies it so that borderless printing can be done reliably.
+        */
         #[method(imageablePageBounds)]
         pub unsafe fn imageablePageBounds(&self) -> NSRect;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Return the human-readable name of the currently selected paper size, suitable for presentation in user interfaces.  This will typically be different from the name returned by -paperName, which is almost never suitable for presentation to to the user.
+        */
         #[method_id(@__retain_semantics Other localizedPaperName)]
         pub unsafe fn localizedPaperName(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "AppKit_NSPrinter")]
+        /**
+          Return the default printer, if one has been selected by the user, nil otherwise.
+        */
         #[method_id(@__retain_semantics Other defaultPrinter)]
         pub unsafe fn defaultPrinter() -> Option<Id<NSPrinter>>;
 
         #[cfg(feature = "Foundation_NSMutableDictionary")]
+        /**
+          The print info's print settings. You can put values in this dictionary to store them in any preset that the user creates while editing this print info with a print panel. Such values must be property list objects. This class is key-value coding (KVC) and key-value observing (KVO) compliant for "printSettings" so you can often bind controls in print panel accessory views directly to entries in this dictionary. You can also use this dictionary to get values that have been set by other parts of the printing system, like a printer driver's print dialog extension (the same sort of values that are returned by the Carbon Printing Manager's PMPrintSettingsGetValue() function). Other parts of the printing system often use key strings like "com.apple.print.PrintSettings.PMColorSyncProfileID" but dots like those in key strings wouldn't work well with KVC, so those dots are replaced with underscores in keys that appear in this dictionary, as in "com_apple_print_PrintSettings_PMColorSyncProfileID". You should use the same convention when adding entries to this dictionary.
+        */
         #[method_id(@__retain_semantics Other printSettings)]
         pub unsafe fn printSettings(
             &self,
@@ -270,9 +318,15 @@ extern_methods!(
         #[method(updateFromPMPrintSettings)]
         pub unsafe fn updateFromPMPrintSettings(&self);
 
+        /**
+          Set or get whether only the selected content should be printed.
+        */
         #[method(isSelectionOnly)]
         pub unsafe fn isSelectionOnly(&self) -> bool;
 
+        /**
+          Set or get whether only the selected content should be printed.
+        */
         #[method(setSelectionOnly:)]
         pub unsafe fn setSelectionOnly(&self, selection_only: bool);
 

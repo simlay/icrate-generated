@@ -65,6 +65,11 @@ extern_static!(NSGlyphInfoAttributeName: &'static NSAttributedStringKey);
 
 ns_options!(
     #[underlying(NSInteger)]
+    /**
+      Attribute values
+    This defines currently supported values for NSUnderlineStyleAttributeName and NSStrikethroughStyleAttributeName. These values are or'ed together to produce an underline style.
+    Underlines will be drawn with a solid pattern by default, so NSUnderlineStylePatternSolid does not need to be specified.
+    */
     pub enum NSUnderlineStyle {
         NSUnderlineStyleNone = 0x00,
         NSUnderlineStyleSingle = 0x01,
@@ -81,6 +86,9 @@ ns_options!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      NSWritingDirectionFormatType values used by NSWritingDirectionAttributeName. It is or'ed with either NSWritingDirectionLeftToRight or NSWritingDirectionRightToLeft. Can specify the formatting controls defined by Unicode Bidirectional Algorithm.
+    */
     pub enum NSWritingDirectionFormatType {
         NSWritingDirectionEmbedding = 0 << 1,
         NSWritingDirectionOverride = 1 << 1,
@@ -95,6 +103,9 @@ extern_static!(NSTextEffectLetterpressStyle: &'static NSTextEffectStyle);
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      Flag values supported for NSSpellingStateAttributeName as of Mac OS X version 10.5.  Prior to 10.5, any non-zero value caused the spelling indicator to be shown.
+    */
     pub enum NSSpellingState {
         NSSpellingStateSpellingFlag = 1 << 0,
         NSSpellingStateGrammarFlag = 1 << 1,
@@ -102,6 +113,9 @@ ns_enum!(
 );
 
 extern_methods!(
+    /**
+      Attribute fixing
+    */
     /// NSAttributedStringAttributeFixing
     #[cfg(feature = "Foundation_NSMutableAttributedString")]
     unsafe impl NSMutableAttributedString {
@@ -153,6 +167,9 @@ extern_static!(NSTextLayoutSectionRange: &'static NSTextLayoutSectionKey);
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      Supported values for NSTextScalingDocumentAttribute, NSSourceTextScalingDocumentAttribute, NSTargetTextScalingDocumentOption, NSSourceTextScalingDocumentOption
+    */
     pub enum NSTextScalingType {
         NSTextScalingStandard = 0,
         NSTextScalingiOS = 1,
@@ -506,6 +523,9 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      Misc methods
+    */
     /// NSAttributedStringKitAdditions
     #[cfg(feature = "Foundation_NSAttributedString")]
     unsafe impl NSAttributedString {
@@ -589,6 +609,9 @@ extern_methods!(
     #[cfg(feature = "Foundation_NSAttributedString")]
     unsafe impl NSAttributedString {
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          Methods to determine what types can be loaded as NSAttributedStrings.
+        */
         #[method_id(@__retain_semantics Other textTypes)]
         pub unsafe fn textTypes() -> Id<NSArray<NSString>>;
 
@@ -666,6 +689,9 @@ extern_methods!(
     /// NSDeprecatedKitAdditions
     #[cfg(feature = "Foundation_NSAttributedString")]
     unsafe impl NSAttributedString {
+        /**
+          This property is soft deprecated starting with OS X 10.11. It will be officially deprecated in a future release. Use -containsAttachmentsInRange: instead
+        */
         #[method(containsAttachments)]
         pub unsafe fn containsAttachments(&self) -> bool;
 

@@ -44,6 +44,9 @@ extern_static!(NSFilePathErrorKey: &'static NSErrorUserInfoKey);
 extern_class!(
     #[derive(PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSError")]
+    /**
+      Forward declarations
+    */
     pub struct NSError;
 
     #[cfg(feature = "Foundation_NSError")]
@@ -53,15 +56,27 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSError")]
+/**
+  Forward declarations
+*/
 unsafe impl NSCoding for NSError {}
 
 #[cfg(feature = "Foundation_NSError")]
+/**
+  Forward declarations
+*/
 unsafe impl NSObjectProtocol for NSError {}
 
 #[cfg(feature = "Foundation_NSError")]
+/**
+  Forward declarations
+*/
 unsafe impl NSSecureCoding for NSError {}
 
 extern_methods!(
+    /**
+      Forward declarations
+    */
     #[cfg(feature = "Foundation_NSError")]
     unsafe impl NSError {
         #[cfg(feature = "Foundation_NSDictionary")]
@@ -81,6 +96,9 @@ extern_methods!(
             dict: Option<&NSDictionary<NSErrorUserInfoKey, Object>>,
         ) -> Id<Self>;
 
+        /**
+          These define the error. Domains are described by names that are arbitrary strings used to differentiate groups of codes; for custom domain using reverse-DNS naming will help avoid conflicts. Codes are domain-specific.
+        */
         #[method_id(@__retain_semantics Other domain)]
         pub fn domain(&self) -> Id<NSErrorDomain>;
 
@@ -88,33 +106,63 @@ extern_methods!(
         pub fn code(&self) -> NSInteger;
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          Additional info which may be used to describe the error further. Examples of keys that might be included in here are "Line Number", "Failed URL", etc. Embedding other errors in here can also be used as a way to communicate underlying reasons for failures; for instance "File System Error" embedded in the userInfo of an NSError returned from a higher level document object. If the embedded error information is itself NSError, the standard key NSUnderlyingErrorKey can be used.
+        */
         #[method_id(@__retain_semantics Other userInfo)]
         pub fn userInfo(&self) -> Id<NSDictionary<NSErrorUserInfoKey, Object>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The primary user-presentable message for the error, for instance for NSFileReadNoPermissionError: "The file "File Name" couldn't be opened because you don't have permission to view it.". This message should ideally indicate what failed and why it failed. This value either comes from NSLocalizedDescriptionKey, or NSLocalizedFailureErrorKey+NSLocalizedFailureReasonErrorKey, or NSLocalizedFailureErrorKey. The steps this takes to construct the description include:
+        1. Look for NSLocalizedDescriptionKey in userInfo, use value as-is if present.
+        2. Look for NSLocalizedFailureErrorKey in userInfo. If present, use, combining with value for NSLocalizedFailureReasonErrorKey if available.
+        3. Fetch NSLocalizedDescriptionKey from userInfoValueProvider, use value as-is if present.
+        4. Fetch NSLocalizedFailureErrorKey from userInfoValueProvider. If present, use, combining with value for NSLocalizedFailureReasonErrorKey if available.
+        5. Look for NSLocalizedFailureReasonErrorKey in userInfo or from userInfoValueProvider; combine with generic "Operation failed" message.
+        6. Last resort localized but barely-presentable string manufactured from domain and code. The result is never nil.
+        */
         #[method_id(@__retain_semantics Other localizedDescription)]
         pub fn localizedDescription(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Return a complete sentence which describes why the operation failed. For instance, for NSFileReadNoPermissionError: "You don't have permission.". In many cases this will be just the "because" part of the error message (but as a complete sentence, which makes localization easier).  Default implementation of this picks up the value of NSLocalizedFailureReasonErrorKey from the userInfo dictionary. If not present, it consults the userInfoValueProvider for the domain, and if that returns nil, this also returns nil.
+        */
         #[method_id(@__retain_semantics Other localizedFailureReason)]
         pub unsafe fn localizedFailureReason(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Return the string that can be displayed as the "informative" (aka "secondary") message on an alert panel. For instance, for NSFileReadNoPermissionError: "To view or change permissions, select the item in the Finder and choose File > Get Info.". Default implementation of this picks up the value of NSLocalizedRecoverySuggestionErrorKey from the userInfo dictionary. If not present, it consults the userInfoValueProvider for the domain, and if that returns nil, this also returns nil.
+        */
         #[method_id(@__retain_semantics Other localizedRecoverySuggestion)]
         pub unsafe fn localizedRecoverySuggestion(&self) -> Option<Id<NSString>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          Return titles of buttons that are appropriate for displaying in an alert. These should match the string provided as a part of localizedRecoverySuggestion.  The first string would be the title of the right-most and default button, the second one next to it, and so on. If used in an alert the corresponding default return values are NSAlertFirstButtonReturn + n. Default implementation of this picks up the value of NSLocalizedRecoveryOptionsErrorKey from the userInfo dictionary. If not present, it consults the userInfoValueProvider for the domain, and if that returns nil, this also returns nil. nil return usually implies no special suggestion, which would imply a single "OK" button.
+        */
         #[method_id(@__retain_semantics Other localizedRecoveryOptions)]
         pub unsafe fn localizedRecoveryOptions(&self) -> Option<Id<NSArray<NSString>>>;
 
+        /**
+          Return an object that conforms to the NSErrorRecoveryAttempting informal protocol. The recovery attempter must be an object that can correctly interpret an index into the array returned by localizedRecoveryOptions. The default implementation of this picks up the value of NSRecoveryAttempterErrorKey from the userInfo dictionary. If not present, it consults the userInfoValueProvider for the domain. If that returns nil, this also returns nil.
+        */
         #[method_id(@__retain_semantics Other recoveryAttempter)]
         pub unsafe fn recoveryAttempter(&self) -> Option<Id<Object>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Return the help anchor that can be used to create a help button to accompany the error when it's displayed to the user.  This is done automatically by +[NSAlert alertWithError:], which the presentError: variants in NSApplication go through. The default implementation of this picks up the value of the NSHelpAnchorErrorKey from the userInfo dictionary. If not present, it consults the userInfoValueProvider for the domain.  If that returns nil, this also returns nil.
+        */
         #[method_id(@__retain_semantics Other helpAnchor)]
         pub unsafe fn helpAnchor(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Return a list of underlying errors, if any. It includes the values of both NSUnderlyingErrorKey and NSMultipleUnderlyingErrorsKey. If there are no underlying errors, returns an empty array.
+        */
         #[method_id(@__retain_semantics Other underlyingErrors)]
         pub unsafe fn underlyingErrors(&self) -> Id<NSArray<NSError>>;
 

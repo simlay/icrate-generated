@@ -5,6 +5,24 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+     @enum NSURLCacheStoragePolicy
+
+    @discussion The NSURLCacheStoragePolicy enum defines constants that
+    can be used to specify the type of storage that is allowable for an
+    NSCachedURLResponse object that is to be stored in an NSURLCache.
+
+    @constant NSURLCacheStorageAllowed Specifies that storage in an
+    NSURLCache is allowed without restriction.
+
+    @constant NSURLCacheStorageAllowedInMemoryOnly Specifies that
+    storage in an NSURLCache is allowed; however storage should be
+    done in memory only, no disk storage should be done.
+
+    @constant NSURLCacheStorageNotAllowed Specifies that storage in an
+    NSURLCache is not allowed in any fashion, either in memory or on
+    disk.
+    */
     pub enum NSURLCacheStoragePolicy {
         NSURLCacheStorageAllowed = 0,
         NSURLCacheStorageAllowedInMemoryOnly = 1,
@@ -15,6 +33,13 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSCachedURLResponse")]
+    /**
+     @class NSCachedURLResponse
+    NSCachedURLResponse is a class whose objects functions as a wrapper for
+    objects that are stored in the framework's caching system.
+    It is used to maintain characteristics and attributes of a cached
+    object.
+    */
     pub struct NSCachedURLResponse;
 
     #[cfg(feature = "Foundation_NSCachedURLResponse")]
@@ -24,15 +49,43 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSCachedURLResponse")]
+/**
+ @class NSCachedURLResponse
+NSCachedURLResponse is a class whose objects functions as a wrapper for
+objects that are stored in the framework's caching system.
+It is used to maintain characteristics and attributes of a cached
+object.
+*/
 unsafe impl NSCoding for NSCachedURLResponse {}
 
 #[cfg(feature = "Foundation_NSCachedURLResponse")]
+/**
+ @class NSCachedURLResponse
+NSCachedURLResponse is a class whose objects functions as a wrapper for
+objects that are stored in the framework's caching system.
+It is used to maintain characteristics and attributes of a cached
+object.
+*/
 unsafe impl NSObjectProtocol for NSCachedURLResponse {}
 
 #[cfg(feature = "Foundation_NSCachedURLResponse")]
+/**
+ @class NSCachedURLResponse
+NSCachedURLResponse is a class whose objects functions as a wrapper for
+objects that are stored in the framework's caching system.
+It is used to maintain characteristics and attributes of a cached
+object.
+*/
 unsafe impl NSSecureCoding for NSCachedURLResponse {}
 
 extern_methods!(
+    /**
+     @class NSCachedURLResponse
+    NSCachedURLResponse is a class whose objects functions as a wrapper for
+    objects that are stored in the framework's caching system.
+    It is used to maintain characteristics and attributes of a cached
+    object.
+    */
     #[cfg(feature = "Foundation_NSCachedURLResponse")]
     unsafe impl NSCachedURLResponse {
         #[cfg(all(feature = "Foundation_NSData", feature = "Foundation_NSURLResponse"))]
@@ -58,17 +111,33 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "Foundation_NSURLResponse")]
+        /**
+         @abstract Returns the response wrapped by this instance.
+        @result The response wrapped by this instance.
+        */
         #[method_id(@__retain_semantics Other response)]
         pub unsafe fn response(&self) -> Id<NSURLResponse>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+         @abstract Returns the data of the receiver.
+        @result The data of the receiver.
+        */
         #[method_id(@__retain_semantics Other data)]
         pub unsafe fn data(&self) -> Id<NSData>;
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+         @abstract Returns the userInfo dictionary of the receiver.
+        @result The userInfo dictionary of the receiver.
+        */
         #[method_id(@__retain_semantics Other userInfo)]
         pub unsafe fn userInfo(&self) -> Option<Id<NSDictionary>>;
 
+        /**
+         @abstract Returns the NSURLCacheStoragePolicy constant of the receiver.
+        @result The NSURLCacheStoragePolicy constant of the receiver.
+        */
         #[method(storagePolicy)]
         pub unsafe fn storagePolicy(&self) -> NSURLCacheStoragePolicy;
     }
@@ -91,9 +160,59 @@ unsafe impl NSObjectProtocol for NSURLCache {}
 extern_methods!(
     #[cfg(feature = "Foundation_NSURLCache")]
     unsafe impl NSURLCache {
+        /**
+         @property sharedURLCache
+        @abstract Returns the shared NSURLCache instance or
+        sets the NSURLCache instance shared by all clients of
+        the current process. This will be the new object returned when
+        calls to the <tt>sharedURLCache</tt> method are made.
+        @discussion Unless set explicitly through a call to
+        <tt>+setSharedURLCache:</tt>, this method returns an NSURLCache
+        instance created with the following default values:
+        <ul>
+        <li>Memory capacity: 4 megabytes (4 * 1024 * 1024 bytes)
+        <li>Disk capacity: 20 megabytes (20 * 1024 * 1024 bytes)
+        <li>Disk path: <nobr>(user home directory)/Library/Caches/(application bundle id)</nobr>
+        </ul>
+        <p>Users who do not have special caching requirements or
+        constraints should find the default shared cache instance
+        acceptable. If this default shared cache instance is not
+        acceptable, <tt>+setSharedURLCache:</tt> can be called to set a
+        different NSURLCache instance to be returned from this method.
+        Callers should take care to ensure that the setter is called
+        at a time when no other caller has a reference to the previously-set
+        shared URL cache. This is to prevent storing cache data from
+        becoming unexpectedly unretrievable.
+        @result the shared NSURLCache instance.
+        */
         #[method_id(@__retain_semantics Other sharedURLCache)]
         pub unsafe fn sharedURLCache() -> Id<NSURLCache>;
 
+        /**
+         @property sharedURLCache
+        @abstract Returns the shared NSURLCache instance or
+        sets the NSURLCache instance shared by all clients of
+        the current process. This will be the new object returned when
+        calls to the <tt>sharedURLCache</tt> method are made.
+        @discussion Unless set explicitly through a call to
+        <tt>+setSharedURLCache:</tt>, this method returns an NSURLCache
+        instance created with the following default values:
+        <ul>
+        <li>Memory capacity: 4 megabytes (4 * 1024 * 1024 bytes)
+        <li>Disk capacity: 20 megabytes (20 * 1024 * 1024 bytes)
+        <li>Disk path: <nobr>(user home directory)/Library/Caches/(application bundle id)</nobr>
+        </ul>
+        <p>Users who do not have special caching requirements or
+        constraints should find the default shared cache instance
+        acceptable. If this default shared cache instance is not
+        acceptable, <tt>+setSharedURLCache:</tt> can be called to set a
+        different NSURLCache instance to be returned from this method.
+        Callers should take care to ensure that the setter is called
+        at a time when no other caller has a reference to the previously-set
+        shared URL cache. This is to prevent storing cache data from
+        becoming unexpectedly unretrievable.
+        @result the shared NSURLCache instance.
+        */
         #[method(setSharedURLCache:)]
         pub unsafe fn setSharedURLCache(shared_url_cache: &NSURLCache);
 
@@ -148,21 +267,53 @@ extern_methods!(
         #[method(removeCachedResponsesSinceDate:)]
         pub unsafe fn removeCachedResponsesSinceDate(&self, date: &NSDate);
 
+        /**
+         @abstract In-memory capacity of the receiver.
+        @discussion At the time this call is made, the in-memory cache will truncate its contents to the size given, if necessary.
+        @result The in-memory capacity, measured in bytes, for the receiver.
+        */
         #[method(memoryCapacity)]
         pub unsafe fn memoryCapacity(&self) -> NSUInteger;
 
+        /**
+         @abstract In-memory capacity of the receiver.
+        @discussion At the time this call is made, the in-memory cache will truncate its contents to the size given, if necessary.
+        @result The in-memory capacity, measured in bytes, for the receiver.
+        */
         #[method(setMemoryCapacity:)]
         pub unsafe fn setMemoryCapacity(&self, memory_capacity: NSUInteger);
 
+        /**
+         @abstract The on-disk capacity of the receiver.
+        @discussion The on-disk capacity, measured in bytes, for the receiver. On mutation the on-disk cache will truncate its contents to the size given, if necessary.
+        */
         #[method(diskCapacity)]
         pub unsafe fn diskCapacity(&self) -> NSUInteger;
 
+        /**
+         @abstract The on-disk capacity of the receiver.
+        @discussion The on-disk capacity, measured in bytes, for the receiver. On mutation the on-disk cache will truncate its contents to the size given, if necessary.
+        */
         #[method(setDiskCapacity:)]
         pub unsafe fn setDiskCapacity(&self, disk_capacity: NSUInteger);
 
+        /**
+         @abstract Returns the current amount of space consumed by the
+        in-memory cache of the receiver.
+        @discussion This size, measured in bytes, indicates the current
+        usage of the in-memory cache.
+        @result the current usage of the in-memory cache of the receiver.
+        */
         #[method(currentMemoryUsage)]
         pub unsafe fn currentMemoryUsage(&self) -> NSUInteger;
 
+        /**
+         @abstract Returns the current amount of space consumed by the
+        on-disk cache of the receiver.
+        @discussion This size, measured in bytes, indicates the current
+        usage of the on-disk cache.
+        @result the current usage of the on-disk cache of the receiver.
+        */
         #[method(currentDiskUsage)]
         pub unsafe fn currentDiskUsage(&self) -> NSUInteger;
     }

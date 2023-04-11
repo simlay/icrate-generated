@@ -87,33 +87,85 @@ extern_methods!(
         pub unsafe fn setCursor(&self, cursor: Option<&CKQueryCursor>);
 
         #[cfg(feature = "CloudKit_CKRecordZoneID")]
+        /**
+          @abstract Indicates which record zone to query.
+
+          @discussion For query operations constructed using a cursor, this property is ignored and instead will be evaluated in the record zone in which the cursor was originally created.
+          Queries that do not specify a @c zoneID will perform a query across all zones in the database.
+        */
         #[method_id(@__retain_semantics Other zoneID)]
         pub unsafe fn zoneID(&self) -> Option<Id<CKRecordZoneID>>;
 
         #[cfg(feature = "CloudKit_CKRecordZoneID")]
+        /**
+          @abstract Indicates which record zone to query.
+
+          @discussion For query operations constructed using a cursor, this property is ignored and instead will be evaluated in the record zone in which the cursor was originally created.
+          Queries that do not specify a @c zoneID will perform a query across all zones in the database.
+        */
         #[method(setZoneID:)]
         pub unsafe fn setZoneID(&self, zone_id: Option<&CKRecordZoneID>);
 
+        /**
+          @discussion Defaults to @c CKQueryOperationMaximumResults.
+          Queries may return fewer than @c resultsLimit in some scenarios:
+          - There are legitimately fewer than @c resultsLimit number of records matching the query (and visible to the current user).
+          - During the process of querying and fetching the results, some records were deleted, or became un-readable by the current user.
+          When determining if there are more records to fetch, always check for the presence of a cursor in @c queryCompletionBlock.
+        */
         #[method(resultsLimit)]
         pub unsafe fn resultsLimit(&self) -> NSUInteger;
 
+        /**
+          @discussion Defaults to @c CKQueryOperationMaximumResults.
+          Queries may return fewer than @c resultsLimit in some scenarios:
+          - There are legitimately fewer than @c resultsLimit number of records matching the query (and visible to the current user).
+          - During the process of querying and fetching the results, some records were deleted, or became un-readable by the current user.
+          When determining if there are more records to fetch, always check for the presence of a cursor in @c queryCompletionBlock.
+        */
         #[method(setResultsLimit:)]
         pub unsafe fn setResultsLimit(&self, results_limit: NSUInteger);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          @abstract Declares which user-defined keys should be fetched and added to the resulting CKRecords.
+
+          @discussion If nil, declares the entire record should be downloaded. If set to an empty array, declares that no user fields should be downloaded.
+          Defaults to @c nil.
+        */
         #[method_id(@__retain_semantics Other desiredKeys)]
         pub unsafe fn desiredKeys(&self) -> Option<Id<NSArray<CKRecordFieldKey>>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          @abstract Declares which user-defined keys should be fetched and added to the resulting CKRecords.
+
+          @discussion If nil, declares the entire record should be downloaded. If set to an empty array, declares that no user fields should be downloaded.
+          Defaults to @c nil.
+        */
         #[method(setDesiredKeys:)]
         pub unsafe fn setDesiredKeys(&self, desired_keys: Option<&NSArray<CKRecordFieldKey>>);
 
         #[cfg(feature = "CloudKit_CKRecord")]
+        /**
+          @abstract This block will be called once for every record that is returned as a result of the query.
+
+          @discussion The callbacks will happen in the order that the results were sorted in.
+          If the replacement callback @c recordMatchedBlock is set, this callback block is ignored.
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[deprecated = "Use recordMatchedBlock instead, which surfaces per-record errors"]
         #[method(recordFetchedBlock)]
         pub unsafe fn recordFetchedBlock(&self) -> *mut Block<(NonNull<CKRecord>,), ()>;
 
         #[cfg(feature = "CloudKit_CKRecord")]
+        /**
+          @abstract This block will be called once for every record that is returned as a result of the query.
+
+          @discussion The callbacks will happen in the order that the results were sorted in.
+          If the replacement callback @c recordMatchedBlock is set, this callback block is ignored.
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[deprecated = "Use recordMatchedBlock instead, which surfaces per-record errors"]
         #[method(setRecordFetchedBlock:)]
         pub unsafe fn setRecordFetchedBlock(
@@ -126,6 +178,12 @@ extern_methods!(
             feature = "CloudKit_CKRecordID",
             feature = "Foundation_NSError"
         ))]
+        /**
+          @abstract This block will be called once for every record that is returned as a result of the query.
+
+          @discussion The callbacks will happen in the order that the results were sorted in.  If a record fails in post-processing (say, a network failure materializing a @c CKAsset record field), the per-record error will be passed here.
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(recordMatchedBlock)]
         pub unsafe fn recordMatchedBlock(
             &self,
@@ -136,6 +194,12 @@ extern_methods!(
             feature = "CloudKit_CKRecordID",
             feature = "Foundation_NSError"
         ))]
+        /**
+          @abstract This block will be called once for every record that is returned as a result of the query.
+
+          @discussion The callbacks will happen in the order that the results were sorted in.  If a record fails in post-processing (say, a network failure materializing a @c CKAsset record field), the per-record error will be passed here.
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(setRecordMatchedBlock:)]
         pub unsafe fn setRecordMatchedBlock(
             &self,
@@ -145,12 +209,26 @@ extern_methods!(
         );
 
         #[cfg(all(feature = "CloudKit_CKQueryCursor", feature = "Foundation_NSError"))]
+        /**
+          @abstract This block is called when the operation completes.
+
+          @discussion The @code -[NSOperation completionBlock] @endcode will also be called if both are set.
+          If the error is @c CKErrorPartialFailure, the error's userInfo dictionary contains a dictionary of recordIDs to errors keyed off of @c CKPartialErrorsByItemIDKey.  These errors are repeats of those sent back in previous @c recordMatchedBlock invocations
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(queryCompletionBlock)]
         pub unsafe fn queryCompletionBlock(
             &self,
         ) -> *mut Block<(*mut CKQueryCursor, *mut NSError), ()>;
 
         #[cfg(all(feature = "CloudKit_CKQueryCursor", feature = "Foundation_NSError"))]
+        /**
+          @abstract This block is called when the operation completes.
+
+          @discussion The @code -[NSOperation completionBlock] @endcode will also be called if both are set.
+          If the error is @c CKErrorPartialFailure, the error's userInfo dictionary contains a dictionary of recordIDs to errors keyed off of @c CKPartialErrorsByItemIDKey.  These errors are repeats of those sent back in previous @c recordMatchedBlock invocations
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(setQueryCompletionBlock:)]
         pub unsafe fn setQueryCompletionBlock(
             &self,

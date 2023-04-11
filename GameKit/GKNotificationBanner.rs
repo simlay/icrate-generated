@@ -8,6 +8,10 @@ use crate::GameKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameKit_GKNotificationBanner")]
+    /**
+      Asynchronously shows a notification banner like the one used for Game Center’s “Welcome Back” message.
+     If a banner is already being displayed, additional banners will be shown in sequence. Use this to notify the user of game events, high scores, completed achievements, etc.
+    */
     pub struct GKNotificationBanner;
 
     #[cfg(feature = "GameKit_GKNotificationBanner")]
@@ -17,9 +21,17 @@ extern_class!(
 );
 
 #[cfg(feature = "GameKit_GKNotificationBanner")]
+/**
+  Asynchronously shows a notification banner like the one used for Game Center’s “Welcome Back” message.
+ If a banner is already being displayed, additional banners will be shown in sequence. Use this to notify the user of game events, high scores, completed achievements, etc.
+*/
 unsafe impl NSObjectProtocol for GKNotificationBanner {}
 
 extern_methods!(
+    /**
+      Asynchronously shows a notification banner like the one used for Game Center’s “Welcome Back” message.
+     If a banner is already being displayed, additional banners will be shown in sequence. Use this to notify the user of game events, high scores, completed achievements, etc.
+    */
     #[cfg(feature = "GameKit_GKNotificationBanner")]
     unsafe impl GKNotificationBanner {
         #[cfg(feature = "Foundation_NSString")]

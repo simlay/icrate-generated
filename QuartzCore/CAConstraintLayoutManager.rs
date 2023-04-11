@@ -6,6 +6,26 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(c_int)]
+    /**
+      The constraint-based layout manager add a `constraints' layer
+     property, an array of CAConstraint objects. Each object describes
+     one geometry relationship between two layers. Layout is then
+     performed by fetching the constraints of each sublayer and solving
+     the resulting system of constraints for the frame of each sublayer
+     starting from the bounds of the containing layer.
+
+     The relationships between layers are linear equations of the form:
+
+      u = m v + c
+
+     where 'u' and 'v' are scalar values representing geometry attributes
+     of the two layers (e.g. leftmost x position), and 'm' and 'c' are
+     constants.
+
+     Sibling layers are referenced by name, using the `name' property of
+     each layer. The special name "superlayer" should be used to refer to
+     the layer's superlayer.
+    */
     pub enum CAConstraintAttribute {
         kCAConstraintMinX = 0,
         kCAConstraintMidX = 1,
@@ -19,14 +39,23 @@ ns_enum!(
 );
 
 extern_methods!(
+    /**
+      The additions to CALayer for constraint layout.
+    */
     /// CAConstraintLayoutManager
     #[cfg(feature = "CoreAnimation_CALayer")]
     unsafe impl CALayer {
         #[cfg(all(feature = "CoreAnimation_CAConstraint", feature = "Foundation_NSArray"))]
+        /**
+          The layer's array of CAConstraint objects.
+        */
         #[method_id(@__retain_semantics Other constraints)]
         pub unsafe fn constraints(&self) -> Option<Id<NSArray<CAConstraint>>>;
 
         #[cfg(all(feature = "CoreAnimation_CAConstraint", feature = "Foundation_NSArray"))]
+        /**
+          The layer's array of CAConstraint objects.
+        */
         #[method(setConstraints:)]
         pub unsafe fn setConstraints(&self, constraints: Option<&NSArray<CAConstraint>>);
 
@@ -39,6 +68,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreAnimation_CAConstraintLayoutManager")]
+    /**
+      The constraint-based layout manager.
+    */
     pub struct CAConstraintLayoutManager;
 
     #[cfg(feature = "CoreAnimation_CAConstraintLayoutManager")]
@@ -48,12 +80,21 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreAnimation_CAConstraintLayoutManager")]
+/**
+  The constraint-based layout manager.
+*/
 unsafe impl CALayoutManager for CAConstraintLayoutManager {}
 
 #[cfg(feature = "CoreAnimation_CAConstraintLayoutManager")]
+/**
+  The constraint-based layout manager.
+*/
 unsafe impl NSObjectProtocol for CAConstraintLayoutManager {}
 
 extern_methods!(
+    /**
+      The constraint-based layout manager.
+    */
     #[cfg(feature = "CoreAnimation_CAConstraintLayoutManager")]
     unsafe impl CAConstraintLayoutManager {
         #[method_id(@__retain_semantics Other layoutManager)]
@@ -64,6 +105,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreAnimation_CAConstraint")]
+    /**
+      The class representing a single layout constraint.
+    */
     pub struct CAConstraint;
 
     #[cfg(feature = "CoreAnimation_CAConstraint")]
@@ -73,15 +117,27 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreAnimation_CAConstraint")]
+/**
+  The class representing a single layout constraint.
+*/
 unsafe impl NSCoding for CAConstraint {}
 
 #[cfg(feature = "CoreAnimation_CAConstraint")]
+/**
+  The class representing a single layout constraint.
+*/
 unsafe impl NSObjectProtocol for CAConstraint {}
 
 #[cfg(feature = "CoreAnimation_CAConstraint")]
+/**
+  The class representing a single layout constraint.
+*/
 unsafe impl NSSecureCoding for CAConstraint {}
 
 extern_methods!(
+    /**
+      The class representing a single layout constraint.
+    */
     #[cfg(feature = "CoreAnimation_CAConstraint")]
     unsafe impl CAConstraint {
         #[cfg(feature = "Foundation_NSString")]
@@ -122,6 +178,9 @@ extern_methods!(
             c: CGFloat,
         ) -> Id<Self>;
 
+        /**
+          Accessors.
+        */
         #[method(attribute)]
         pub unsafe fn attribute(&self) -> CAConstraintAttribute;
 

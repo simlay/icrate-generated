@@ -83,35 +83,65 @@ extern_methods!(
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
         #[cfg(all(feature = "AppKit_NSTextRange", feature = "Foundation_NSArray"))]
+        /**
+          Represents an array of disjoint logical ranges in the selection. The array must be logically ordered. When editing, all ranges in a text selection constitute a single insertion point.
+        */
         #[method_id(@__retain_semantics Other textRanges)]
         pub unsafe fn textRanges(&self) -> Id<NSArray<NSTextRange>>;
 
+        /**
+          The granularity of the selection. NSTextSelectionGranularityByCharacter by default. Extending operations should modify the selection by the granularity.
+        */
         #[method(granularity)]
         pub unsafe fn granularity(&self) -> NSTextSelectionGranularity;
 
+        /**
+          Either upstream or downstream selection. NSTextSelectionAffinityDownstream by default. For a 0-length selection, it describes the visual location of the text cursor between the head of line containing the selection location (downstream) or tail of the previous line (upstream). For a selection with contents, it describes the logical direction of non-anchored edge of the selection.
+        */
         #[method(affinity)]
         pub unsafe fn affinity(&self) -> NSTextSelectionAffinity;
 
+        /**
+          Transient text selection during drag handling
+        */
         #[method(isTransient)]
         pub unsafe fn isTransient(&self) -> bool;
 
+        /**
+          Represents the anchor position offset from the beginning of a line fragment in the visual order for the initial tap or mouse down. That is from the left for a horizontal line fragment and from the top for a vertical. Navigating between lines uses this point when the current line fragment associated with the selection is shorter than the next line visited. 0.0 by default.
+        */
         #[method(anchorPositionOffset)]
         pub unsafe fn anchorPositionOffset(&self) -> CGFloat;
 
+        /**
+          Represents the anchor position offset from the beginning of a line fragment in the visual order for the initial tap or mouse down. That is from the left for a horizontal line fragment and from the top for a vertical. Navigating between lines uses this point when the current line fragment associated with the selection is shorter than the next line visited. 0.0 by default.
+        */
         #[method(setAnchorPositionOffset:)]
         pub unsafe fn setAnchorPositionOffset(&self, anchor_position_offset: CGFloat);
 
+        /**
+          Indicates whether the selection should be interpreted as logical or visual.
+        */
         #[method(isLogical)]
         pub unsafe fn isLogical(&self) -> bool;
 
+        /**
+          Indicates whether the selection should be interpreted as logical or visual.
+        */
         #[method(setLogical:)]
         pub unsafe fn setLogical(&self, logical: bool);
 
+        /**
+          Specifies the secondary character location when user taps/clicks at a directional boundary. Setting non-nil location has a side effect of making -logical=NO.
+        */
         #[method_id(@__retain_semantics Other secondarySelectionLocation)]
         pub unsafe fn secondarySelectionLocation(
             &self,
         ) -> Option<Id<ProtocolObject<dyn NSTextLocation>>>;
 
+        /**
+          Specifies the secondary character location when user taps/clicks at a directional boundary. Setting non-nil location has a side effect of making -logical=NO.
+        */
         #[method(setSecondarySelectionLocation:)]
         pub unsafe fn setSecondarySelectionLocation(
             &self,
@@ -119,10 +149,16 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          The template attributes used for characters replacing the contents of this selection.
+        */
         #[method_id(@__retain_semantics Other typingAttributes)]
         pub unsafe fn typingAttributes(&self) -> Id<NSDictionary<NSAttributedStringKey, Object>>;
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          The template attributes used for characters replacing the contents of this selection.
+        */
         #[method(setTypingAttributes:)]
         pub unsafe fn setTypingAttributes(
             &self,

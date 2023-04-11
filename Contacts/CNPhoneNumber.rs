@@ -7,6 +7,11 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNPhoneNumber")]
+    /**
+      @abstract An immutable value object representing a phone number.
+
+     @discussion CNPhoneNumber is thread safe.
+    */
     pub struct CNPhoneNumber;
 
     #[cfg(feature = "Contacts_CNPhoneNumber")]
@@ -16,15 +21,35 @@ extern_class!(
 );
 
 #[cfg(feature = "Contacts_CNPhoneNumber")]
+/**
+  @abstract An immutable value object representing a phone number.
+
+ @discussion CNPhoneNumber is thread safe.
+*/
 unsafe impl NSCoding for CNPhoneNumber {}
 
 #[cfg(feature = "Contacts_CNPhoneNumber")]
+/**
+  @abstract An immutable value object representing a phone number.
+
+ @discussion CNPhoneNumber is thread safe.
+*/
 unsafe impl NSObjectProtocol for CNPhoneNumber {}
 
 #[cfg(feature = "Contacts_CNPhoneNumber")]
+/**
+  @abstract An immutable value object representing a phone number.
+
+ @discussion CNPhoneNumber is thread safe.
+*/
 unsafe impl NSSecureCoding for CNPhoneNumber {}
 
 extern_methods!(
+    /**
+      @abstract An immutable value object representing a phone number.
+
+     @discussion CNPhoneNumber is thread safe.
+    */
     #[cfg(feature = "Contacts_CNPhoneNumber")]
     unsafe impl CNPhoneNumber {
         #[cfg(feature = "Foundation_NSString")]

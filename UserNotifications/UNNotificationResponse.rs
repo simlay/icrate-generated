@@ -33,10 +33,19 @@ extern_methods!(
     #[cfg(feature = "UserNotifications_UNNotificationResponse")]
     unsafe impl UNNotificationResponse {
         #[cfg(feature = "UserNotifications_UNNotification")]
+        /**
+          The notification to which the user responded.
+        */
         #[method_id(@__retain_semantics Other notification)]
         pub unsafe fn notification(&self) -> Id<UNNotification>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The action identifier that the user chose:
+         * UNNotificationDismissActionIdentifier if the user dismissed the notification
+         * UNNotificationDefaultActionIdentifier if the user opened the application from the notification
+         * the identifier for a registered UNNotificationAction for other actions
+        */
         #[method_id(@__retain_semantics Other actionIdentifier)]
         pub unsafe fn actionIdentifier(&self) -> Id<NSString>;
 
@@ -70,6 +79,9 @@ extern_methods!(
     #[cfg(feature = "UserNotifications_UNTextInputNotificationResponse")]
     unsafe impl UNTextInputNotificationResponse {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The text entered or chosen by the user.
+        */
         #[method_id(@__retain_semantics Other userText)]
         pub unsafe fn userText(&self) -> Id<NSString>;
     }

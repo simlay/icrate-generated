@@ -80,10 +80,16 @@ extern_methods!(
         pub unsafe fn recordID(&self) -> Id<CKRecordID>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Change tags are updated by the server to a unique value every time a record is modified.  A different change tag necessarily means that the contents of the record are different.
+        */
         #[method_id(@__retain_semantics Other recordChangeTag)]
         pub unsafe fn recordChangeTag(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "CloudKit_CKRecordID")]
+        /**
+          This is a User Record recordID, identifying the user that created this record.
+        */
         #[method_id(@__retain_semantics Other creatorUserRecordID)]
         pub unsafe fn creatorUserRecordID(&self) -> Option<Id<CKRecordID>>;
 
@@ -92,6 +98,9 @@ extern_methods!(
         pub unsafe fn creationDate(&self) -> Option<Id<NSDate>>;
 
         #[cfg(feature = "CloudKit_CKRecordID")]
+        /**
+          This is a User Record recordID, identifying the user that last modified this record.
+        */
         #[method_id(@__retain_semantics Other lastModifiedUserRecordID)]
         pub unsafe fn lastModifiedUserRecordID(&self) -> Option<Id<CKRecordID>>;
 
@@ -142,14 +151,71 @@ extern_methods!(
         pub unsafe fn encodeSystemFieldsWithCoder(&self, coder: &NSCoder);
 
         #[cfg(feature = "CloudKit_CKReference")]
+        /**
+          @discussion The share property on a record can be set by creating a share using @code -[CKShare initWithRootRecord:] @endcode.
+
+          The share property on a record will be removed when the corresponding CKShare is deleted from the server. Send this record in the same batch as the share delete and this record's share property will be updated.
+
+          Sharing is only supported in zones with the @c CKRecordZoneCapabilitySharing capability. The default zone does not support sharing.
+
+          If any records have a parent reference to this record, they are implicitly shared alongside this record.
+
+          Note that records in a parent chain must only exist within one share. If a child record already has a share reference set then you will get a @c CKErrorAlreadyShared error if you try to share any of that record's parents.
+
+          Child records can be shared independently, even if they have a common parent.  For example:
+          Record A has two child records, Record B and Record C.
+              A
+             / \
+            B   C
+
+          These configurations are supported:
+          - Record A part of Share 1, or
+          - Record B part of Share 1, or
+          - Record C part of Share 1, or
+          - Record B part of Share 1, Record C part of Share 2
+
+          These configurations are not supported:
+          Record A part of Share 1, Record B part of Share 2, or
+            -- This is not allowed because Record B would then be in two shares; Share 1 by being Record A's child, and Share 2
+          Record A part of Share 1, Record C part of Share 2, or
+            -- This is not allowed because Record C would then be in two shares; Share 1 by being Record A's child, and Share 2
+          Record A part of Share 1, Record B part of Share 2, Record C part of Share 3
+            -- This is not allowed because both Record B and Record C would then each be in two shares.
+
+          Whenever possible, it is suggested that you construct your parent hierarchies such that you will only need to share the topmost record of that hierarchy.
+        */
         #[method_id(@__retain_semantics Other share)]
         pub unsafe fn share(&self) -> Option<Id<CKReference>>;
 
         #[cfg(feature = "CloudKit_CKReference")]
+        /**
+          @abstract Use a parent reference to teach CloudKit about the hierarchy of your records.
+
+          @discussion When a record is shared, all children of that record are also shared.
+
+          A parent record reference must have @c CKReferenceActionNone set. You can create a separate reference with @c CKReferenceActionDeleteSelf if you would like your hierarchy cleaned up when the parent record is deleted.
+
+          The target of a parent reference must exist at save time - either already on the server, or part of the same @c CKModifyRecordsOperation batch.
+
+          You are encouraged to set up the @c parent relationships as part of normal record saves, even if you're not planning on sharing records at this time.
+          This allows you to share and unshare a hierarchy of records at a later date by only modifying the "top level" record, setting or clearing its @c share reference.
+        */
         #[method_id(@__retain_semantics Other parent)]
         pub unsafe fn parent(&self) -> Option<Id<CKReference>>;
 
         #[cfg(feature = "CloudKit_CKReference")]
+        /**
+          @abstract Use a parent reference to teach CloudKit about the hierarchy of your records.
+
+          @discussion When a record is shared, all children of that record are also shared.
+
+          A parent record reference must have @c CKReferenceActionNone set. You can create a separate reference with @c CKReferenceActionDeleteSelf if you would like your hierarchy cleaned up when the parent record is deleted.
+
+          The target of a parent reference must exist at save time - either already on the server, or part of the same @c CKModifyRecordsOperation batch.
+
+          You are encouraged to set up the @c parent relationships as part of normal record saves, even if you're not planning on sharing records at this time.
+          This allows you to share and unshare a hierarchy of records at a later date by only modifying the "top level" record, setting or clearing its @c share reference.
+        */
         #[method(setParent:)]
         pub unsafe fn setParent(&self, parent: Option<&CKReference>);
 
@@ -235,6 +301,9 @@ extern_methods!(
 unsafe impl CKRecordValue for CLLocation {}
 
 extern_protocol!(
+    /**
+      Formalizes a protocol for getting and setting keys on a CKRecord.  Not intended to be used directly by client code
+    */
     pub unsafe trait CKRecordKeyValueSetting: NSObjectProtocol {
         #[method_id(@__retain_semantics Other objectForKey:)]
         unsafe fn objectForKey(
@@ -278,6 +347,11 @@ extern_methods!(
     /// CKRecordKeyValueSettingConformance
     #[cfg(feature = "CloudKit_CKRecord")]
     unsafe impl CKRecord {
+        /**
+          Any values set here will be locally encrypted before being saved to the server and locally decrypted when fetched from the server. Encryption and decryption is handled by the CloudKit framework.
+         Key material necessary for decryption are available to the owner of the record, as well as any users that can access this record via a CKShare.
+         All CKRecordValue types can be set here except CKAsset and CKReference.
+        */
         #[method_id(@__retain_semantics Other encryptedValues)]
         pub unsafe fn encryptedValues(&self) -> Id<ProtocolObject<dyn CKRecordKeyValueSetting>>;
     }

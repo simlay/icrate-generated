@@ -29,6 +29,9 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "CoreData_NSManagedObjectID")]
+        /**
+          Returns the managed object ID for the cache node.
+        */
         #[method_id(@__retain_semantics Other objectID)]
         pub unsafe fn objectID(&self) -> Id<NSManagedObjectID>;
 
@@ -36,6 +39,9 @@ extern_methods!(
             feature = "Foundation_NSMutableDictionary",
             feature = "Foundation_NSString"
         ))]
+        /**
+          Returns the property cache dictionary for the cache node.  This dictionary is used by -valueForKey: and -setValue:forKey: for property values.  The default implementation will return nil unless the companion -setPropertyCache: method is invoked, or -setValue:forKey: is invoked on the cache node with non-nil property values.
+        */
         #[method_id(@__retain_semantics Other propertyCache)]
         pub unsafe fn propertyCache(
             &self,
@@ -45,6 +51,9 @@ extern_methods!(
             feature = "Foundation_NSMutableDictionary",
             feature = "Foundation_NSString"
         ))]
+        /**
+          Returns the property cache dictionary for the cache node.  This dictionary is used by -valueForKey: and -setValue:forKey: for property values.  The default implementation will return nil unless the companion -setPropertyCache: method is invoked, or -setValue:forKey: is invoked on the cache node with non-nil property values.
+        */
         #[method(setPropertyCache:)]
         pub unsafe fn setPropertyCache(
             &self,

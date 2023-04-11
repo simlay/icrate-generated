@@ -18,6 +18,9 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+       AppKit supports transient, semi-transient, and application-defined behaviors. Please see the class description above for more information.  The default popover behavior is NSPopoverBehaviorApplicationDefined.
+    */
     pub enum NSPopoverBehavior {
         NSPopoverBehaviorApplicationDefined = 0,
         NSPopoverBehaviorTransient = 1,
@@ -38,50 +41,92 @@ extern_methods!(
             coder: &NSCoder,
         ) -> Option<Id<Self>>;
 
+        /**
+           The delegate of the popover. The delegate is not retained.
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(&self) -> Option<Id<ProtocolObject<dyn NSPopoverDelegate>>>;
 
+        /**
+           The delegate of the popover. The delegate is not retained.
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(&self, delegate: Option<&ProtocolObject<dyn NSPopoverDelegate>>);
 
+        /**
+           The behavior of the popover.  The default behavior is NSPopoverBehaviorApplicationDefined. See the declaration of NSPopoverBehavior above for more information about popover behaviors.
+        */
         #[method(behavior)]
         pub unsafe fn behavior(&self) -> NSPopoverBehavior;
 
+        /**
+           The behavior of the popover.  The default behavior is NSPopoverBehaviorApplicationDefined. See the declaration of NSPopoverBehavior above for more information about popover behaviors.
+        */
         #[method(setBehavior:)]
         pub unsafe fn setBehavior(&self, behavior: NSPopoverBehavior);
 
+        /**
+           Should the popover be animated when it shows, closes, or appears to transition to a detachable window.  This property also controls whether the popover animates when the content view or content size changes. AppKit does not guarantee which behaviors will be animated or that this property will be respected; it is regarded as a hint.  The default value is YES.
+        */
         #[method(animates)]
         pub unsafe fn animates(&self) -> bool;
 
+        /**
+           Should the popover be animated when it shows, closes, or appears to transition to a detachable window.  This property also controls whether the popover animates when the content view or content size changes. AppKit does not guarantee which behaviors will be animated or that this property will be respected; it is regarded as a hint.  The default value is YES.
+        */
         #[method(setAnimates:)]
         pub unsafe fn setAnimates(&self, animates: bool);
 
         #[cfg(feature = "AppKit_NSViewController")]
+        /**
+           The view controller that manages the content of the popover.  The default value is nil.  You must set the content view controller of the popover to a non-nil value before the popover is shown.  Changes to the popover's content view controller while the popover is shown will animate (provided animates is YES).
+        */
         #[method_id(@__retain_semantics Other contentViewController)]
         pub unsafe fn contentViewController(&self) -> Option<Id<NSViewController>>;
 
         #[cfg(feature = "AppKit_NSViewController")]
+        /**
+           The view controller that manages the content of the popover.  The default value is nil.  You must set the content view controller of the popover to a non-nil value before the popover is shown.  Changes to the popover's content view controller while the popover is shown will animate (provided animates is YES).
+        */
         #[method(setContentViewController:)]
         pub unsafe fn setContentViewController(
             &self,
             content_view_controller: Option<&NSViewController>,
         );
 
+        /**
+           The content size of the popover.  The popover's content size is set to match the size of the content view when the content view controller is set.  Changes to the content size of the popover will animate while the popover is shown (provided animates is YES).
+        */
         #[method(contentSize)]
         pub unsafe fn contentSize(&self) -> NSSize;
 
+        /**
+           The content size of the popover.  The popover's content size is set to match the size of the content view when the content view controller is set.  Changes to the content size of the popover will animate while the popover is shown (provided animates is YES).
+        */
         #[method(setContentSize:)]
         pub unsafe fn setContentSize(&self, content_size: NSSize);
 
+        /**
+           YES if the popover is being shown, NO otherwise. The popover is considered to be shown from the point when -showRelativeToRect:ofView:preferredEdge: is invoked until the popover is closed in response to an invocation of either -close or -performClose:.
+        */
         #[method(isShown)]
         pub unsafe fn isShown(&self) -> bool;
 
+        /**
+          Returns \c YES if the window is detached to an implicitly created detached window, \c NO otherwise. This method does not apply when the popover is detached to a window returned with \c -detachableWindowForPopover:.
+        */
         #[method(isDetached)]
         pub unsafe fn isDetached(&self) -> bool;
 
+        /**
+           Popovers are positioned relative to a positioning view and are automatically moved when the location or size of the positioning view changes.  Sometimes it is desirable to position popovers relative to a rectangle within the positioning view.  In this case, you must update the positioningRect binding whenever this rectangle changes, or use the positioningRect binding so AppKit can re-position the popover when appropriate.
+        */
         #[method(positioningRect)]
         pub unsafe fn positioningRect(&self) -> NSRect;
 
+        /**
+           Popovers are positioned relative to a positioning view and are automatically moved when the location or size of the positioning view changes.  Sometimes it is desirable to position popovers relative to a rectangle within the positioning view.  In this case, you must update the positioningRect binding whenever this rectangle changes, or use the positioningRect binding so AppKit can re-position the popover when appropriate.
+        */
         #[method(setPositioningRect:)]
         pub unsafe fn setPositioningRect(&self, positioning_rect: NSRect);
 

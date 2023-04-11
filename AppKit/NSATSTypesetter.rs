@@ -23,6 +23,9 @@ unsafe impl NSObjectProtocol for NSATSTypesetter {}
 extern_methods!(
     #[cfg(feature = "AppKit_NSATSTypesetter")]
     unsafe impl NSATSTypesetter {
+        /**
+          Factory methods
+        */
         #[method_id(@__retain_semantics Other sharedTypesetter)]
         pub unsafe fn sharedTypesetter() -> Id<NSATSTypesetter>;
     }
@@ -43,12 +46,23 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      The following interfaces are moved to the abstract NSTypesetter class
+    */
     /// NSPrimitiveInterface
     #[cfg(feature = "AppKit_NSATSTypesetter")]
     unsafe impl NSATSTypesetter {
+        /**
+          Privmitive typesetting methods
+        NSLayoutManager attributes
+        */
         #[method(usesFontLeading)]
         pub unsafe fn usesFontLeading(&self) -> bool;
 
+        /**
+          Privmitive typesetting methods
+        NSLayoutManager attributes
+        */
         #[method(setUsesFontLeading:)]
         pub unsafe fn setUsesFontLeading(&self, uses_font_leading: bool);
 
@@ -64,9 +78,15 @@ extern_methods!(
         #[method(setHyphenationFactor:)]
         pub unsafe fn setHyphenationFactor(&self, hyphenation_factor: c_float);
 
+        /**
+          NSTextContainer attributes
+        */
         #[method(lineFragmentPadding)]
         pub unsafe fn lineFragmentPadding(&self) -> CGFloat;
 
+        /**
+          NSTextContainer attributes
+        */
         #[method(setLineFragmentPadding:)]
         pub unsafe fn setLineFragmentPadding(&self, line_fragment_padding: CGFloat);
 
@@ -83,17 +103,29 @@ extern_methods!(
             max_location: CGFloat,
         ) -> Option<Id<NSTextTab>>;
 
+        /**
+          Controls whether to perform bi-directional processing.  You can disable the layout stage if you know the parapgraph does not need this stage (i.e. the backing-store is in the display order) in -fillAttributesForGlyphsInRange:andParagraphSeparatorRange:.
+        */
         #[method(bidiProcessingEnabled)]
         pub unsafe fn bidiProcessingEnabled(&self) -> bool;
 
+        /**
+          Controls whether to perform bi-directional processing.  You can disable the layout stage if you know the parapgraph does not need this stage (i.e. the backing-store is in the display order) in -fillAttributesForGlyphsInRange:andParagraphSeparatorRange:.
+        */
         #[method(setBidiProcessingEnabled:)]
         pub unsafe fn setBidiProcessingEnabled(&self, bidi_processing_enabled: bool);
 
         #[cfg(feature = "Foundation_NSAttributedString")]
+        /**
+          Note this method does not retain attrString
+        */
         #[method_id(@__retain_semantics Other attributedString)]
         pub unsafe fn attributedString(&self) -> Option<Id<NSAttributedString>>;
 
         #[cfg(feature = "Foundation_NSAttributedString")]
+        /**
+          Note this method does not retain attrString
+        */
         #[method(setAttributedString:)]
         pub unsafe fn setAttributedString(&self, attributed_string: Option<&NSAttributedString>);
 
@@ -138,6 +170,9 @@ extern_methods!(
         ) -> CGFloat;
 
         #[cfg(feature = "AppKit_NSLayoutManager")]
+        /**
+          Friend classes
+        */
         #[method_id(@__retain_semantics Other layoutManager)]
         pub unsafe fn layoutManager(&self) -> Option<Id<NSLayoutManager>>;
 
@@ -160,6 +195,9 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      NSLayoutPhaseInterface declares various subclass override points that are invoked if implemented
+    */
     /// NSLayoutPhaseInterface
     #[cfg(feature = "AppKit_NSATSTypesetter")]
     unsafe impl NSATSTypesetter {
@@ -204,6 +242,9 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      NSGlyphStorageInterface declares all primitives interfacing to the glyph storage (usually NSLayoutManager). By overriding all the methods, you can implement an NSATSTypesetter subclass that interacts with custom glyph storage.
+    */
     /// NSGlyphStorageInterface
     #[cfg(feature = "AppKit_NSATSTypesetter")]
     unsafe impl NSATSTypesetter {

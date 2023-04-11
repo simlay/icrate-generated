@@ -5,6 +5,9 @@ use crate::Foundation::*;
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+      Options for use with -addObserver:forKeyPath:options:context: and -addObserver:toObjectsAtIndexes:forKeyPath:options:context:.
+    */
     pub enum NSKeyValueObservingOptions {
         NSKeyValueObservingOptionNew = 0x01,
         NSKeyValueObservingOptionOld = 0x02,
@@ -15,6 +18,9 @@ ns_options!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      Possible values in the NSKeyValueChangeKindKey entry in change dictionaries. See the comments for -observeValueForKeyPath:ofObject:change:context: for more information.
+    */
     pub enum NSKeyValueChange {
         NSKeyValueChangeSetting = 1,
         NSKeyValueChangeInsertion = 2,
@@ -25,6 +31,9 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      Possible kinds of set mutation for use with -willChangeValueForKey:withSetMutation:usingObjects: and -didChangeValueForKey:withSetMutation:usingObjects:. Their semantics correspond exactly to NSMutableSet's -unionSet:, -minusSet:, -intersectSet:, and -setSet: method, respectively.
+    */
     pub enum NSKeyValueSetMutationKind {
         NSKeyValueUnionSetMutation = 1,
         NSKeyValueMinusSetMutation = 2,

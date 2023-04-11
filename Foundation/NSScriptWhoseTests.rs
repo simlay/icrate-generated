@@ -98,6 +98,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSSpecifierTest")]
+    /**
+      Given a comparison operator selector and an object specifier and either another object specifier or an actual value object this class can perform the test.
+     The specifiers are evaluated normally (using the top-level container stack) before the comparison operator is evaluated.  If _object1 or _object2 is nil, the objectBeingTested is used.
+    */
     pub struct NSSpecifierTest;
 
     #[cfg(feature = "Foundation_NSSpecifierTest")]
@@ -108,12 +112,24 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSSpecifierTest")]
+/**
+  Given a comparison operator selector and an object specifier and either another object specifier or an actual value object this class can perform the test.
+ The specifiers are evaluated normally (using the top-level container stack) before the comparison operator is evaluated.  If _object1 or _object2 is nil, the objectBeingTested is used.
+*/
 unsafe impl NSCoding for NSSpecifierTest {}
 
 #[cfg(feature = "Foundation_NSSpecifierTest")]
+/**
+  Given a comparison operator selector and an object specifier and either another object specifier or an actual value object this class can perform the test.
+ The specifiers are evaluated normally (using the top-level container stack) before the comparison operator is evaluated.  If _object1 or _object2 is nil, the objectBeingTested is used.
+*/
 unsafe impl NSObjectProtocol for NSSpecifierTest {}
 
 extern_methods!(
+    /**
+      Given a comparison operator selector and an object specifier and either another object specifier or an actual value object this class can perform the test.
+     The specifiers are evaluated normally (using the top-level container stack) before the comparison operator is evaluated.  If _object1 or _object2 is nil, the objectBeingTested is used.
+    */
     #[cfg(feature = "Foundation_NSSpecifierTest")]
     unsafe impl NSSpecifierTest {
         #[method_id(@__retain_semantics Init init)]

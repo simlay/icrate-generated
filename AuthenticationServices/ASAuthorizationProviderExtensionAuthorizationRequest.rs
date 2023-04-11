@@ -110,53 +110,93 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          @abstract Request URL with all components.
+        */
         #[method_id(@__retain_semantics Other url)]
         pub unsafe fn url(&self) -> Id<NSURL>;
 
+        /**
+          @abstract Operation to be executed by the extension.
+        */
         #[method_id(@__retain_semantics Other requestedOperation)]
         pub unsafe fn requestedOperation(
             &self,
         ) -> Id<ASAuthorizationProviderAuthorizationOperation>;
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+          @abstract Request HTTP headers.
+        */
         #[method_id(@__retain_semantics Other httpHeaders)]
         pub unsafe fn httpHeaders(&self) -> Id<NSDictionary<NSString, NSString>>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          @abstract Request body.
+        */
         #[method_id(@__retain_semantics Other httpBody)]
         pub unsafe fn httpBody(&self) -> Id<NSData>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract Realm.
+        */
         #[method_id(@__retain_semantics Other realm)]
         pub unsafe fn realm(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          @abstract Extension data from extension configuration provided by MDM stored as a property-list.
+        */
         #[method_id(@__retain_semantics Other extensionData)]
         pub unsafe fn extensionData(&self) -> Id<NSDictionary>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract Identification of the calling application.
+        */
         #[method_id(@__retain_semantics Other callerBundleIdentifier)]
         pub unsafe fn callerBundleIdentifier(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          @abstract Authorization options.
+        */
         #[method_id(@__retain_semantics Other authorizationOptions)]
         pub unsafe fn authorizationOptions(&self) -> Id<NSDictionary>;
 
+        /**
+          @abstract Indicates whether the calling application is managed.
+        */
         #[method(isCallerManaged)]
         pub unsafe fn isCallerManaged(&self) -> bool;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract Team identifier of the calling application.
+        */
         #[method_id(@__retain_semantics Other callerTeamIdentifier)]
         pub unsafe fn callerTeamIdentifier(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract Localized display name of the calling application.
+        */
         #[method_id(@__retain_semantics Other localizedCallerDisplayName)]
         pub unsafe fn localizedCallerDisplayName(&self) -> Id<NSString>;
 
+        /**
+          @abstract Indicates whether the authorization user interface is enabled.
+        @discussion If user interface is not enabled, then the authorization will fail with @see ASAuthorizationErrorNotInteractive if it attempts to display the authorization user interface via @see presentAuthorizationViewControllerWithCompletion.
+        */
         #[method(isUserInterfaceEnabled)]
         pub unsafe fn isUserInterfaceEnabled(&self) -> bool;
 
         #[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionLoginManager")]
+        /**
+          @abstract The login manager to interface with the Platform SSO configuration.
+        */
         #[method_id(@__retain_semantics Other loginManager)]
         pub unsafe fn loginManager(
             &self,

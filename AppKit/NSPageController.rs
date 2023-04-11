@@ -58,26 +58,47 @@ extern_methods!(
             delegate: Option<&ProtocolObject<dyn NSPageControllerDelegate>>,
         );
 
+        /**
+          The viewController associated with the selected arrangedObject. May be nil if delegate is not supplying viewControllers.
+        */
         #[method_id(@__retain_semantics Other selectedViewController)]
         pub unsafe fn selectedViewController(&self) -> Option<Id<NSViewController>>;
 
+        /**
+          The animation style used when transitioning from one page to another. The default value is NSPageControllerTransitionStyleStackHistory
+        */
         #[method(transitionStyle)]
         pub unsafe fn transitionStyle(&self) -> NSPageControllerTransitionStyle;
 
+        /**
+          The animation style used when transitioning from one page to another. The default value is NSPageControllerTransitionStyleStackHistory
+        */
         #[method(setTransitionStyle:)]
         pub unsafe fn setTransitionStyle(&self, transition_style: NSPageControllerTransitionStyle);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of all displayed objects (after sorting and potentially filtering by you). The delegate will be asked for snapshots as they are needed. Alternatively, you may never directly set this array and use the -navigateForwardToRepresentedObject API to create a history as the user navigates. This property is KVO compliant.
+        */
         #[method_id(@__retain_semantics Other arrangedObjects)]
         pub unsafe fn arrangedObjects(&self) -> Id<NSArray>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of all displayed objects (after sorting and potentially filtering by you). The delegate will be asked for snapshots as they are needed. Alternatively, you may never directly set this array and use the -navigateForwardToRepresentedObject API to create a history as the user navigates. This property is KVO compliant.
+        */
         #[method(setArrangedObjects:)]
         pub unsafe fn setArrangedObjects(&self, arranged_objects: &NSArray);
 
+        /**
+          The index into the arrangedObjects that is being displayed. This property is KVO compliant. To animate a transition to a new index, use NSPageController's animator object.
+        */
         #[method(selectedIndex)]
         pub unsafe fn selectedIndex(&self) -> NSInteger;
 
+        /**
+          The index into the arrangedObjects that is being displayed. This property is KVO compliant. To animate a transition to a new index, use NSPageController's animator object.
+        */
         #[method(setSelectedIndex:)]
         pub unsafe fn setSelectedIndex(&self, selected_index: NSInteger);
 

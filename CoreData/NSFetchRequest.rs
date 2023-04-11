@@ -6,6 +6,9 @@ use crate::Foundation::*;
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+      Definition of the possible result types a fetch request can return.
+    */
     pub enum NSFetchRequestResultType {
         NSManagedObjectResultType = 0x00,
         NSManagedObjectIDResultType = 0x01,
@@ -15,6 +18,9 @@ ns_options!(
 );
 
 extern_protocol!(
+    /**
+      Protocol conformance for possible result types a fetch request can return.
+    */
     pub unsafe trait NSFetchRequestResult: NSObjectProtocol {}
 
     unsafe impl ProtocolType for dyn NSFetchRequestResult {}
@@ -162,70 +168,130 @@ extern_methods!(
             affected_stores: Option<&NSArray<NSPersistentStore>>,
         );
 
+        /**
+          Returns/sets the result type of the fetch request (the instance type of objects returned from executing the request.)  Setting the value to NSManagedObjectIDResultType will demote any sort orderings to "best effort" hints if property values are not included in the request.  Defaults to NSManagedObjectResultType.
+        */
         #[method(resultType)]
         pub unsafe fn resultType(&self) -> NSFetchRequestResultType;
 
+        /**
+          Returns/sets the result type of the fetch request (the instance type of objects returned from executing the request.)  Setting the value to NSManagedObjectIDResultType will demote any sort orderings to "best effort" hints if property values are not included in the request.  Defaults to NSManagedObjectResultType.
+        */
         #[method(setResultType:)]
         pub unsafe fn setResultType(&self, result_type: NSFetchRequestResultType);
 
+        /**
+          Returns/sets if the fetch request includes subentities.  If set to NO, the request will fetch objects of exactly the entity type of the request;  if set to YES, the request will include all subentities of the entity for the request.  Defaults to YES.
+        */
         #[method(includesSubentities)]
         pub unsafe fn includesSubentities(&self) -> bool;
 
+        /**
+          Returns/sets if the fetch request includes subentities.  If set to NO, the request will fetch objects of exactly the entity type of the request;  if set to YES, the request will include all subentities of the entity for the request.  Defaults to YES.
+        */
         #[method(setIncludesSubentities:)]
         pub unsafe fn setIncludesSubentities(&self, includes_subentities: bool);
 
+        /**
+          Returns/sets if, when the fetch is executed, property data is obtained from the persistent store.  If the value is set to NO, the request will not obtain property information, but only information to identify each object (used to create NSManagedObjectIDs.)  If managed objects for these IDs are later faulted (as a result attempting to access property values), they will incur subsequent access to the persistent store to obtain their property values.  Defaults to YES.
+        */
         #[method(includesPropertyValues)]
         pub unsafe fn includesPropertyValues(&self) -> bool;
 
+        /**
+          Returns/sets if, when the fetch is executed, property data is obtained from the persistent store.  If the value is set to NO, the request will not obtain property information, but only information to identify each object (used to create NSManagedObjectIDs.)  If managed objects for these IDs are later faulted (as a result attempting to access property values), they will incur subsequent access to the persistent store to obtain their property values.  Defaults to YES.
+        */
         #[method(setIncludesPropertyValues:)]
         pub unsafe fn setIncludesPropertyValues(&self, includes_property_values: bool);
 
+        /**
+          Returns/sets if the objects resulting from a fetch request are faults.  If the value is set to NO, the returned objects are pre-populated with their property values (making them fully-faulted objects, which will immediately return NO if sent the -isFault message.)  If the value is set to YES, the returned objects are not pre-populated (and will receive a -didFireFault message when the properties are accessed the first time.)  This setting is not utilized if the result type of the request is NSManagedObjectIDResultType, as object IDs do not have property values.  Defaults to YES.
+        */
         #[method(returnsObjectsAsFaults)]
         pub unsafe fn returnsObjectsAsFaults(&self) -> bool;
 
+        /**
+          Returns/sets if the objects resulting from a fetch request are faults.  If the value is set to NO, the returned objects are pre-populated with their property values (making them fully-faulted objects, which will immediately return NO if sent the -isFault message.)  If the value is set to YES, the returned objects are not pre-populated (and will receive a -didFireFault message when the properties are accessed the first time.)  This setting is not utilized if the result type of the request is NSManagedObjectIDResultType, as object IDs do not have property values.  Defaults to YES.
+        */
         #[method(setReturnsObjectsAsFaults:)]
         pub unsafe fn setReturnsObjectsAsFaults(&self, returns_objects_as_faults: bool);
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          Returns/sets an array of relationship keypaths to prefetch along with the entity for the request.  The array contains keypath strings in NSKeyValueCoding notation, as you would normally use with valueForKeyPath.  (Prefetching allows Core Data to obtain developer-specified related objects in a single fetch (per entity), rather than incurring subsequent access to the store for each individual record as their faults are tripped.)  Defaults to an empty array (no prefetching.)
+        */
         #[method_id(@__retain_semantics Other relationshipKeyPathsForPrefetching)]
         pub unsafe fn relationshipKeyPathsForPrefetching(&self) -> Option<Id<NSArray<NSString>>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          Returns/sets an array of relationship keypaths to prefetch along with the entity for the request.  The array contains keypath strings in NSKeyValueCoding notation, as you would normally use with valueForKeyPath.  (Prefetching allows Core Data to obtain developer-specified related objects in a single fetch (per entity), rather than incurring subsequent access to the store for each individual record as their faults are tripped.)  Defaults to an empty array (no prefetching.)
+        */
         #[method(setRelationshipKeyPathsForPrefetching:)]
         pub unsafe fn setRelationshipKeyPathsForPrefetching(
             &self,
             relationship_key_paths_for_prefetching: Option<&NSArray<NSString>>,
         );
 
+        /**
+          Results accommodate the currently unsaved changes in the NSManagedObjectContext.  When disabled, the fetch request skips checking unsaved changes and only returns objects that matched the predicate in the persistent store.  Defaults to YES.
+        */
         #[method(includesPendingChanges)]
         pub unsafe fn includesPendingChanges(&self) -> bool;
 
+        /**
+          Results accommodate the currently unsaved changes in the NSManagedObjectContext.  When disabled, the fetch request skips checking unsaved changes and only returns objects that matched the predicate in the persistent store.  Defaults to YES.
+        */
         #[method(setIncludesPendingChanges:)]
         pub unsafe fn setIncludesPendingChanges(&self, includes_pending_changes: bool);
 
+        /**
+          Returns/sets if the fetch request returns only distinct values for the fields specified by propertiesToFetch. This value is only used for NSDictionaryResultType. Defaults to NO.
+        */
         #[method(returnsDistinctResults)]
         pub unsafe fn returnsDistinctResults(&self) -> bool;
 
+        /**
+          Returns/sets if the fetch request returns only distinct values for the fields specified by propertiesToFetch. This value is only used for NSDictionaryResultType. Defaults to NO.
+        */
         #[method(setReturnsDistinctResults:)]
         pub unsafe fn setReturnsDistinctResults(&self, returns_distinct_results: bool);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Specifies a collection of either NSPropertyDescriptions or NSString property names that should be fetched. The collection may represent attributes, to-one relationships, or NSExpressionDescription.  If NSDictionaryResultType is set, the results of the fetch will be dictionaries containing key/value pairs where the key is the name of the specified property description.  If NSManagedObjectResultType is set, then NSExpressionDescription cannot be used, and the results are managed object faults partially pre-populated with the named properties
+        */
         #[method_id(@__retain_semantics Other propertiesToFetch)]
         pub unsafe fn propertiesToFetch(&self) -> Option<Id<NSArray>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Specifies a collection of either NSPropertyDescriptions or NSString property names that should be fetched. The collection may represent attributes, to-one relationships, or NSExpressionDescription.  If NSDictionaryResultType is set, the results of the fetch will be dictionaries containing key/value pairs where the key is the name of the specified property description.  If NSManagedObjectResultType is set, then NSExpressionDescription cannot be used, and the results are managed object faults partially pre-populated with the named properties
+        */
         #[method(setPropertiesToFetch:)]
         pub unsafe fn setPropertiesToFetch(&self, properties_to_fetch: Option<&NSArray>);
 
+        /**
+          Allows you to specify an offset at which rows will begin being returned.  Effectively, the request will skip over 'offset' number of matching entries.  For example, given a fetch which would normally return a, b, c, and d, specifying an offset of 1 will return b, c, and d and an offset of 4  will return an empty array. Offsets are ignored in nested requests such as subqueries.  Default value is 0.
+        */
         #[method(fetchOffset)]
         pub unsafe fn fetchOffset(&self) -> NSUInteger;
 
+        /**
+          Allows you to specify an offset at which rows will begin being returned.  Effectively, the request will skip over 'offset' number of matching entries.  For example, given a fetch which would normally return a, b, c, and d, specifying an offset of 1 will return b, c, and d and an offset of 4  will return an empty array. Offsets are ignored in nested requests such as subqueries.  Default value is 0.
+        */
         #[method(setFetchOffset:)]
         pub unsafe fn setFetchOffset(&self, fetch_offset: NSUInteger);
 
+        /**
+          This breaks the result set into batches.  The entire request will be evaluated, and the identities of all matching objects will be recorded, but no more than batchSize objects' data will be fetched from the persistent store at a time.  The array returned from executing the request will be a subclass that transparently faults batches on demand.  For purposes of thread safety, the returned array proxy is owned by the NSManagedObjectContext the request is executed against, and should be treated as if it were a managed object registered with that context.  A batch size of 0 is treated as infinite, which disables the batch faulting behavior.  The default is 0.
+        */
         #[method(fetchBatchSize)]
         pub unsafe fn fetchBatchSize(&self) -> NSUInteger;
 
+        /**
+          This breaks the result set into batches.  The entire request will be evaluated, and the identities of all matching objects will be recorded, but no more than batchSize objects' data will be fetched from the persistent store at a time.  The array returned from executing the request will be a subclass that transparently faults batches on demand.  For purposes of thread safety, the returned array proxy is owned by the NSManagedObjectContext the request is executed against, and should be treated as if it were a managed object registered with that context.  A batch size of 0 is treated as infinite, which disables the batch faulting behavior.  The default is 0.
+        */
         #[method(setFetchBatchSize:)]
         pub unsafe fn setFetchBatchSize(&self, fetch_batch_size: NSUInteger);
 
@@ -239,18 +305,40 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Specifies the way in which data should be grouped before a select statement is run in an SQL database.
+        Values passed to propertiesToGroupBy must be NSPropertyDescriptions, NSExpressionDescriptions, or keypath strings; keypaths can not contain
+        any to-many steps.
+        If GROUP BY is used, then you must set the resultsType to NSDictionaryResultsType, and the SELECT values must be literals, aggregates,
+        or columns specified in the GROUP BY. Aggregates will operate on the groups specified in the GROUP BY rather than the whole table.
+        */
         #[method_id(@__retain_semantics Other propertiesToGroupBy)]
         pub unsafe fn propertiesToGroupBy(&self) -> Option<Id<NSArray>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Specifies the way in which data should be grouped before a select statement is run in an SQL database.
+        Values passed to propertiesToGroupBy must be NSPropertyDescriptions, NSExpressionDescriptions, or keypath strings; keypaths can not contain
+        any to-many steps.
+        If GROUP BY is used, then you must set the resultsType to NSDictionaryResultsType, and the SELECT values must be literals, aggregates,
+        or columns specified in the GROUP BY. Aggregates will operate on the groups specified in the GROUP BY rather than the whole table.
+        */
         #[method(setPropertiesToGroupBy:)]
         pub unsafe fn setPropertiesToGroupBy(&self, properties_to_group_by: Option<&NSArray>);
 
         #[cfg(feature = "Foundation_NSPredicate")]
+        /**
+          Specifies a predicate that will be used to filter rows being returned by a query containing a GROUP BY. If a having predicate is
+        supplied, it will be run after the GROUP BY.  Specifying a HAVING predicate requires that a GROUP BY also be specified.
+        */
         #[method_id(@__retain_semantics Other havingPredicate)]
         pub unsafe fn havingPredicate(&self) -> Option<Id<NSPredicate>>;
 
         #[cfg(feature = "Foundation_NSPredicate")]
+        /**
+          Specifies a predicate that will be used to filter rows being returned by a query containing a GROUP BY. If a having predicate is
+        supplied, it will be run after the GROUP BY.  Specifying a HAVING predicate requires that a GROUP BY also be specified.
+        */
         #[method(setHavingPredicate:)]
         pub unsafe fn setHavingPredicate(&self, having_predicate: Option<&NSPredicate>);
     }

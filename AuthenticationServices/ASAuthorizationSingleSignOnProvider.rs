@@ -42,6 +42,9 @@ extern_methods!(
         #[method_id(@__retain_semantics Other url)]
         pub unsafe fn url(&self) -> Id<NSURL>;
 
+        /**
+          @abstract Returns YES if the configured provider is capable of performing authorization within a given configuration.
+        */
         #[method(canPerformAuthorization)]
         pub unsafe fn canPerformAuthorization(&self) -> bool;
     }

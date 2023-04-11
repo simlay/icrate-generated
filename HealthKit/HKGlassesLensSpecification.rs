@@ -9,6 +9,10 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKGlassesLensSpecification")]
+    /**
+     @class         HKGlassesLensSpecification
+    @abstract      An object subclass representing lens specification for glasses
+    */
     pub struct HKGlassesLensSpecification;
 
     #[cfg(feature = "HealthKit_HKGlassesLensSpecification")]
@@ -19,30 +23,64 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKGlassesLensSpecification")]
+/**
+ @class         HKGlassesLensSpecification
+@abstract      An object subclass representing lens specification for glasses
+*/
 unsafe impl NSCoding for HKGlassesLensSpecification {}
 
 #[cfg(feature = "HealthKit_HKGlassesLensSpecification")]
+/**
+ @class         HKGlassesLensSpecification
+@abstract      An object subclass representing lens specification for glasses
+*/
 unsafe impl NSObjectProtocol for HKGlassesLensSpecification {}
 
 #[cfg(feature = "HealthKit_HKGlassesLensSpecification")]
+/**
+ @class         HKGlassesLensSpecification
+@abstract      An object subclass representing lens specification for glasses
+*/
 unsafe impl NSSecureCoding for HKGlassesLensSpecification {}
 
 extern_methods!(
+    /**
+     @class         HKGlassesLensSpecification
+    @abstract      An object subclass representing lens specification for glasses
+    */
     #[cfg(feature = "HealthKit_HKGlassesLensSpecification")]
     unsafe impl HKGlassesLensSpecification {
         #[cfg(feature = "HealthKit_HKQuantity")]
+        /**
+         @property      vertexDistance
+        @abstract      The distance between the back of the eyeglass lens and the eye (measured in mm)
+        */
         #[method_id(@__retain_semantics Other vertexDistance)]
         pub unsafe fn vertexDistance(&self) -> Option<Id<HKQuantity>>;
 
         #[cfg(feature = "HealthKit_HKVisionPrism")]
+        /**
+         @property      prism
+        @abstract      The object encapsulating the prism fields
+        */
         #[method_id(@__retain_semantics Other prism)]
         pub unsafe fn prism(&self) -> Option<Id<HKVisionPrism>>;
 
         #[cfg(feature = "HealthKit_HKQuantity")]
+        /**
+         @property      farPupillaryDistance
+        @abstract      The distance from each pupil to the center of the nose (measured in mm) when looking at a far target.
+        Can be described as combined or individual value. For distance prescriptions, the pupillary distance will be a far value.
+        */
         #[method_id(@__retain_semantics Other farPupillaryDistance)]
         pub unsafe fn farPupillaryDistance(&self) -> Option<Id<HKQuantity>>;
 
         #[cfg(feature = "HealthKit_HKQuantity")]
+        /**
+         @property      nearPupillaryDistance
+        @abstract      The distance from each pupil to the center of the nose (measured in mm) when looking at a near target.
+        Can be described as combined or individual value. For near prescriptions, the pupillary distance will be a near value.
+        */
         #[method_id(@__retain_semantics Other nearPupillaryDistance)]
         pub unsafe fn nearPupillaryDistance(&self) -> Option<Id<HKQuantity>>;
 

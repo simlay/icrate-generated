@@ -36,6 +36,9 @@ extern_protocol!(
 extern_class!(
     #[derive(Debug, PartialEq, Hash)]
     #[cfg(feature = "Foundation_NSDecimalNumber")]
+    /**
+         Rounding and Exception behavior
+    */
     pub struct NSDecimalNumber;
 
     #[cfg(feature = "Foundation_NSDecimalNumber")]
@@ -46,15 +49,27 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSDecimalNumber")]
+/**
+     Rounding and Exception behavior
+*/
 unsafe impl NSCoding for NSDecimalNumber {}
 
 #[cfg(feature = "Foundation_NSDecimalNumber")]
+/**
+     Rounding and Exception behavior
+*/
 unsafe impl NSObjectProtocol for NSDecimalNumber {}
 
 #[cfg(feature = "Foundation_NSDecimalNumber")]
+/**
+     Rounding and Exception behavior
+*/
 unsafe impl NSSecureCoding for NSDecimalNumber {}
 
 extern_methods!(
+    /**
+         Rounding and Exception behavior
+    */
     #[cfg(feature = "Foundation_NSDecimalNumber")]
     unsafe impl NSDecimalNumber {
         #[method_id(@__retain_semantics Init initWithMantissa:exponent:isNegative:)]
@@ -215,17 +230,33 @@ extern_methods!(
         #[method(compare:)]
         pub unsafe fn compare(&self, decimal_number: &NSNumber) -> NSComparisonResult;
 
+        /**
+          compare two NSDecimalNumbers
+        */
         #[method_id(@__retain_semantics Other defaultBehavior)]
         pub unsafe fn defaultBehavior() -> Id<ProtocolObject<dyn NSDecimalNumberBehaviors>>;
 
+        /**
+          compare two NSDecimalNumbers
+        */
         #[method(setDefaultBehavior:)]
         pub unsafe fn setDefaultBehavior(
             default_behavior: &ProtocolObject<dyn NSDecimalNumberBehaviors>,
         );
 
+        /**
+          One behavior per thread - The default behavior is
+           rounding mode: NSRoundPlain
+           scale: No defined scale (full precision)
+           ignore exactnessException
+           raise on overflow, underflow and divide by zero.
+        */
         #[method(objCType)]
         pub unsafe fn objCType(&self) -> NonNull<c_char>;
 
+        /**
+          return 'd' for double
+        */
         #[method(doubleValue)]
         pub unsafe fn doubleValue(&self) -> c_double;
     }
@@ -281,6 +312,9 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+         Extensions to other classes
+    */
     /// NSDecimalNumberExtensions
     #[cfg(feature = "Foundation_NSNumber")]
     unsafe impl NSNumber {
@@ -300,6 +334,9 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSValue`
+    /**
+         Rounding and Exception behavior
+    */
     #[cfg(feature = "Foundation_NSDecimalNumber")]
     unsafe impl NSDecimalNumber {
         #[method_id(@__retain_semantics Init initWithBytes:objCType:)]

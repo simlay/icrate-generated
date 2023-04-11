@@ -9,6 +9,10 @@ use crate::PhotoKit::*;
 __inner_extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "PhotoKit_PHFetchResult")]
+    /**
+      Accessing fetched results (fetches objects from the backing store in chunks on demand rather than all at once)
+     Fetched objects will be kept in a cache and purged under memory pressure
+    */
     pub struct PHFetchResult<ObjectType: Message = Object, ObjectTypeOwnership: Ownership = Shared> {
         _inner0: PhantomData<*mut (ObjectType, ObjectTypeOwnership)>,
         notunwindsafe: PhantomData<&'static mut ()>,
@@ -23,18 +27,30 @@ __inner_extern_class!(
 );
 
 #[cfg(feature = "PhotoKit_PHFetchResult")]
+/**
+  Accessing fetched results (fetches objects from the backing store in chunks on demand rather than all at once)
+ Fetched objects will be kept in a cache and purged under memory pressure
+*/
 unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSFastEnumeration
     for PHFetchResult<ObjectType, ObjectTypeOwnership>
 {
 }
 
 #[cfg(feature = "PhotoKit_PHFetchResult")]
+/**
+  Accessing fetched results (fetches objects from the backing store in chunks on demand rather than all at once)
+ Fetched objects will be kept in a cache and purged under memory pressure
+*/
 unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSObjectProtocol
     for PHFetchResult<ObjectType, ObjectTypeOwnership>
 {
 }
 
 extern_methods!(
+    /**
+      Accessing fetched results (fetches objects from the backing store in chunks on demand rather than all at once)
+     Fetched objects will be kept in a cache and purged under memory pressure
+    */
     #[cfg(feature = "PhotoKit_PHFetchResult")]
     unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>
         PHFetchResult<ObjectType, ObjectTypeOwnership>

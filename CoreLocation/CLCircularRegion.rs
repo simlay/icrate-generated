@@ -8,6 +8,12 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreLocation_CLCircularRegion")]
+    /**
+       CLCircularRegion
+
+      Discussion:
+        A circular geographic area.
+    */
     pub struct CLCircularRegion;
 
     #[cfg(feature = "CoreLocation_CLCircularRegion")]
@@ -18,15 +24,39 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreLocation_CLCircularRegion")]
+/**
+   CLCircularRegion
+
+  Discussion:
+    A circular geographic area.
+*/
 unsafe impl NSCoding for CLCircularRegion {}
 
 #[cfg(feature = "CoreLocation_CLCircularRegion")]
+/**
+   CLCircularRegion
+
+  Discussion:
+    A circular geographic area.
+*/
 unsafe impl NSObjectProtocol for CLCircularRegion {}
 
 #[cfg(feature = "CoreLocation_CLCircularRegion")]
+/**
+   CLCircularRegion
+
+  Discussion:
+    A circular geographic area.
+*/
 unsafe impl NSSecureCoding for CLCircularRegion {}
 
 extern_methods!(
+    /**
+       CLCircularRegion
+
+      Discussion:
+        A circular geographic area.
+    */
     #[cfg(feature = "CoreLocation_CLCircularRegion")]
     unsafe impl CLCircularRegion {
         #[cfg(feature = "Foundation_NSString")]
@@ -38,9 +68,21 @@ extern_methods!(
             identifier: &NSString,
         ) -> Id<Self>;
 
+        /**
+           center
+
+          Discussion:
+            Returns the coordinate of the center of the region.
+        */
         #[method(center)]
         pub unsafe fn center(&self) -> CLLocationCoordinate2D;
 
+        /**
+           radius
+
+          Discussion:
+            Returns the radius of the region.
+        */
         #[method(radius)]
         pub unsafe fn radius(&self) -> CLLocationDistance;
 
@@ -51,6 +93,12 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `CLRegion`
+    /**
+       CLCircularRegion
+
+      Discussion:
+        A circular geographic area.
+    */
     #[cfg(feature = "CoreLocation_CLCircularRegion")]
     unsafe impl CLCircularRegion {
         #[cfg(feature = "Foundation_NSString")]

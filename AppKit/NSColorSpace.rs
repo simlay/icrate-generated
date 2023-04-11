@@ -59,9 +59,15 @@ extern_methods!(
             prof: NonNull<c_void>,
         ) -> Option<Id<Self>>;
 
+        /**
+          ColorSyncProfileRef
+        */
         #[method(colorSyncProfile)]
         pub unsafe fn colorSyncProfile(&self) -> *mut c_void;
 
+        /**
+          Does not include alpha
+        */
         #[method(numberOfColorComponents)]
         pub unsafe fn numberOfColorComponents(&self) -> NSInteger;
 
@@ -69,42 +75,72 @@ extern_methods!(
         pub unsafe fn colorSpaceModel(&self) -> NSColorSpaceModel;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Will return nil if no localized name
+        */
         #[method_id(@__retain_semantics Other localizedName)]
         pub unsafe fn localizedName(&self) -> Option<Id<NSString>>;
 
         #[method_id(@__retain_semantics Other sRGBColorSpace)]
         pub unsafe fn sRGBColorSpace() -> Id<NSColorSpace>;
 
+        /**
+          The grayscale color space with gamma 2.2, compatible with sRGB
+        */
         #[method_id(@__retain_semantics Other genericGamma22GrayColorSpace)]
         pub unsafe fn genericGamma22GrayColorSpace() -> Id<NSColorSpace>;
 
+        /**
+          sRGB compatible color space that allows specifying components beyond the range of [0.0, 1.0]
+        */
         #[method_id(@__retain_semantics Other extendedSRGBColorSpace)]
         pub unsafe fn extendedSRGBColorSpace() -> Id<NSColorSpace>;
 
+        /**
+          sRGB compatible gray color space that allows specifying components beyond the range of [0.0, 1.0]
+        */
         #[method_id(@__retain_semantics Other extendedGenericGamma22GrayColorSpace)]
         pub unsafe fn extendedGenericGamma22GrayColorSpace() -> Id<NSColorSpace>;
 
+        /**
+          Standard DCI-P3 primaries, a D65 white point, and the same gamma curve as the sRGB IEC61966-2.1 color space
+        */
         #[method_id(@__retain_semantics Other displayP3ColorSpace)]
         pub unsafe fn displayP3ColorSpace() -> Id<NSColorSpace>;
 
         #[method_id(@__retain_semantics Other adobeRGB1998ColorSpace)]
         pub unsafe fn adobeRGB1998ColorSpace() -> Id<NSColorSpace>;
 
+        /**
+          NSColorSpace corresponding to Cocoa color space name NSCalibratedRGBColorSpace
+        */
         #[method_id(@__retain_semantics Other genericRGBColorSpace)]
         pub unsafe fn genericRGBColorSpace() -> Id<NSColorSpace>;
 
+        /**
+          NSColorSpace corresponding to Cocoa color space name NSCalibratedWhiteColorSpace
+        */
         #[method_id(@__retain_semantics Other genericGrayColorSpace)]
         pub unsafe fn genericGrayColorSpace() -> Id<NSColorSpace>;
 
         #[method_id(@__retain_semantics Other genericCMYKColorSpace)]
         pub unsafe fn genericCMYKColorSpace() -> Id<NSColorSpace>;
 
+        /**
+          NSColorSpace corresponding to Cocoa color space name NSDeviceRGBColorSpace
+        */
         #[method_id(@__retain_semantics Other deviceRGBColorSpace)]
         pub unsafe fn deviceRGBColorSpace() -> Id<NSColorSpace>;
 
+        /**
+          NSColorSpace corresponding to Cocoa color space name NSDeviceWhiteColorSpace
+        */
         #[method_id(@__retain_semantics Other deviceGrayColorSpace)]
         pub unsafe fn deviceGrayColorSpace() -> Id<NSColorSpace>;
 
+        /**
+          NSColorSpace corresponding to Cocoa color space name NSDeviceCMYKColorSpace
+        */
         #[method_id(@__retain_semantics Other deviceCMYKColorSpace)]
         pub unsafe fn deviceCMYKColorSpace() -> Id<NSColorSpace>;
 

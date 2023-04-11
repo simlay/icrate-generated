@@ -9,6 +9,10 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKSourceRevision")]
+    /**
+     @class         HKSourceRevision
+    @abstract      Represents a specific revision of an HKSource.
+    */
     pub struct HKSourceRevision;
 
     #[cfg(feature = "HealthKit_HKSourceRevision")]
@@ -18,29 +22,65 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKSourceRevision")]
+/**
+ @class         HKSourceRevision
+@abstract      Represents a specific revision of an HKSource.
+*/
 unsafe impl NSCoding for HKSourceRevision {}
 
 #[cfg(feature = "HealthKit_HKSourceRevision")]
+/**
+ @class         HKSourceRevision
+@abstract      Represents a specific revision of an HKSource.
+*/
 unsafe impl NSObjectProtocol for HKSourceRevision {}
 
 #[cfg(feature = "HealthKit_HKSourceRevision")]
+/**
+ @class         HKSourceRevision
+@abstract      Represents a specific revision of an HKSource.
+*/
 unsafe impl NSSecureCoding for HKSourceRevision {}
 
 extern_methods!(
+    /**
+     @class         HKSourceRevision
+    @abstract      Represents a specific revision of an HKSource.
+    */
     #[cfg(feature = "HealthKit_HKSourceRevision")]
     unsafe impl HKSourceRevision {
         #[cfg(feature = "HealthKit_HKSource")]
+        /**
+         @property      source
+        @abstract      The HKSource of the receiver.
+        */
         #[method_id(@__retain_semantics Other source)]
         pub unsafe fn source(&self) -> Id<HKSource>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property      version
+        @abstract      The version of the source property.
+        @discussion    This value is taken from the CFBundleVersion of the source. May be nil for older data.
+        */
         #[method_id(@__retain_semantics Other version)]
         pub unsafe fn version(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property      productType
+        @abstract      Represents the product type of the device running HealthKit when the object was created.
+        @discussion    This value may be nil for older data, which indicates an unknown product type.
+        */
         #[method_id(@__retain_semantics Other productType)]
         pub unsafe fn productType(&self) -> Option<Id<NSString>>;
 
+        /**
+         @property      operatingSystemVersion
+        @abstract      Represents the operating system version of the device running HealthKit when the object was created.
+        @discussion    iOS versions after 8.0 but prior to 8.2 are saved as 8.0, and iOS version after 8.2 but prior to 9.0
+        are saved as 8.2.
+        */
         #[method(operatingSystemVersion)]
         pub unsafe fn operatingSystemVersion(&self) -> NSOperatingSystemVersion;
 

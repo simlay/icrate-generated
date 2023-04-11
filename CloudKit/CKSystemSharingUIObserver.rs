@@ -40,6 +40,13 @@ extern_methods!(
             feature = "CloudKit_CKShare",
             feature = "Foundation_NSError"
         ))]
+        /**
+          @abstract Called on success or failure of a @c CKShare save after user modifications via the system sharing UI
+
+          @discussion Following a successful share save by the system sharing UI in the provided @c CKContainer, this callback will be invoked with a nonnull @c recordID, a nonnull @c share, and a nil @c error.
+          Following a save failure due to a per-item error (@c CKErrorServerRecordChanged, for example), this callback will be invoked with a nonnull @c recordID, a nil @c share, and a nonnull @c error
+          Each @c CKSystemSharingUIObserver instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(systemSharingUIDidSaveShareBlock)]
         pub unsafe fn systemSharingUIDidSaveShareBlock(
             &self,
@@ -50,6 +57,13 @@ extern_methods!(
             feature = "CloudKit_CKShare",
             feature = "Foundation_NSError"
         ))]
+        /**
+          @abstract Called on success or failure of a @c CKShare save after user modifications via the system sharing UI
+
+          @discussion Following a successful share save by the system sharing UI in the provided @c CKContainer, this callback will be invoked with a nonnull @c recordID, a nonnull @c share, and a nil @c error.
+          Following a save failure due to a per-item error (@c CKErrorServerRecordChanged, for example), this callback will be invoked with a nonnull @c recordID, a nil @c share, and a nonnull @c error
+          Each @c CKSystemSharingUIObserver instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(setSystemSharingUIDidSaveShareBlock:)]
         pub unsafe fn setSystemSharingUIDidSaveShareBlock(
             &self,
@@ -59,12 +73,22 @@ extern_methods!(
         );
 
         #[cfg(all(feature = "CloudKit_CKRecordID", feature = "Foundation_NSError"))]
+        /**
+          @abstract Called on success or failure of a @c CKShare delete when the user decides to stop sharing via the system sharing UI
+
+          @discussion Each @c CKSystemSharingUIObserver instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(systemSharingUIDidStopSharingBlock)]
         pub unsafe fn systemSharingUIDidStopSharingBlock(
             &self,
         ) -> *mut Block<(NonNull<CKRecordID>, *mut NSError), ()>;
 
         #[cfg(all(feature = "CloudKit_CKRecordID", feature = "Foundation_NSError"))]
+        /**
+          @abstract Called on success or failure of a @c CKShare delete when the user decides to stop sharing via the system sharing UI
+
+          @discussion Each @c CKSystemSharingUIObserver instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(setSystemSharingUIDidStopSharingBlock:)]
         pub unsafe fn setSystemSharingUIDidStopSharingBlock(
             &self,

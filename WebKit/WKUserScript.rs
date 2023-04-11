@@ -7,6 +7,12 @@ use crate::WebKit::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      @enum WKUserScriptInjectionTime
+    @abstract when a user script should be injected into a webpage.
+    @constant WKUserScriptInjectionTimeAtDocumentStart    Inject the script after the document element has been created, but before any other content has been loaded.
+    @constant WKUserScriptInjectionTimeAtDocumentEnd      Inject the script after the document has finished loading, but before any subresources may have finished loading.
+    */
     pub enum WKUserScriptInjectionTime {
         WKUserScriptInjectionTimeAtDocumentStart = 0,
         WKUserScriptInjectionTimeAtDocumentEnd = 1,
@@ -16,6 +22,9 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "WebKit_WKUserScript")]
+    /**
+      A @link WKUserScript @/link object represents a script that can be injected into webpages.
+    */
     pub struct WKUserScript;
 
     #[cfg(feature = "WebKit_WKUserScript")]
@@ -25,18 +34,33 @@ extern_class!(
 );
 
 #[cfg(feature = "WebKit_WKUserScript")]
+/**
+  A @link WKUserScript @/link object represents a script that can be injected into webpages.
+*/
 unsafe impl NSObjectProtocol for WKUserScript {}
 
 extern_methods!(
+    /**
+      A @link WKUserScript @/link object represents a script that can be injected into webpages.
+    */
     #[cfg(feature = "WebKit_WKUserScript")]
     unsafe impl WKUserScript {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract The script source code.
+        */
         #[method_id(@__retain_semantics Other source)]
         pub unsafe fn source(&self) -> Id<NSString>;
 
+        /**
+          @abstract When the script should be injected.
+        */
         #[method(injectionTime)]
         pub unsafe fn injectionTime(&self) -> WKUserScriptInjectionTime;
 
+        /**
+          @abstract Whether the script should be injected into all frames or just the main frame.
+        */
         #[method(isForMainFrameOnly)]
         pub unsafe fn isForMainFrameOnly(&self) -> bool;
 

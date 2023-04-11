@@ -37,6 +37,10 @@ extern_methods!(
         pub unsafe fn title(&self) -> Id<NSString>;
 
         #[cfg(all(feature = "EventKit_EKCalendar", feature = "Foundation_NSSet"))]
+        /**
+         @property    calendars
+        @abstract    This is now deprecated in favor of -[EKSource calendarsForEntityType:]
+        */
         #[method_id(@__retain_semantics Other calendars)]
         pub unsafe fn calendars(&self) -> Id<NSSet<EKCalendar>>;
 
@@ -47,6 +51,10 @@ extern_methods!(
             entity_type: EKEntityType,
         ) -> Id<NSSet<EKCalendar>>;
 
+        /**
+         @property    isDelegate
+        @abstract    Returns YES if this EKSource represents an account delegated by another user.
+        */
         #[method(isDelegate)]
         pub unsafe fn isDelegate(&self) -> bool;
     }

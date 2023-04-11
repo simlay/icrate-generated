@@ -38,6 +38,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNChangeHistoryDropEverythingEvent")]
+    /**
+      Drop all cached information your app has persisted
+    */
     pub struct CNChangeHistoryDropEverythingEvent;
 
     #[cfg(feature = "Contacts_CNChangeHistoryDropEverythingEvent")]
@@ -48,15 +51,27 @@ extern_class!(
 );
 
 #[cfg(feature = "Contacts_CNChangeHistoryDropEverythingEvent")]
+/**
+  Drop all cached information your app has persisted
+*/
 unsafe impl NSCoding for CNChangeHistoryDropEverythingEvent {}
 
 #[cfg(feature = "Contacts_CNChangeHistoryDropEverythingEvent")]
+/**
+  Drop all cached information your app has persisted
+*/
 unsafe impl NSObjectProtocol for CNChangeHistoryDropEverythingEvent {}
 
 #[cfg(feature = "Contacts_CNChangeHistoryDropEverythingEvent")]
+/**
+  Drop all cached information your app has persisted
+*/
 unsafe impl NSSecureCoding for CNChangeHistoryDropEverythingEvent {}
 
 extern_methods!(
+    /**
+      Drop all cached information your app has persisted
+    */
     #[cfg(feature = "Contacts_CNChangeHistoryDropEverythingEvent")]
     unsafe impl CNChangeHistoryDropEverythingEvent {}
 );
@@ -64,6 +79,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNChangeHistoryAddContactEvent")]
+    /**
+      A contact was added
+    */
     pub struct CNChangeHistoryAddContactEvent;
 
     #[cfg(feature = "Contacts_CNChangeHistoryAddContactEvent")]
@@ -74,15 +92,27 @@ extern_class!(
 );
 
 #[cfg(feature = "Contacts_CNChangeHistoryAddContactEvent")]
+/**
+  A contact was added
+*/
 unsafe impl NSCoding for CNChangeHistoryAddContactEvent {}
 
 #[cfg(feature = "Contacts_CNChangeHistoryAddContactEvent")]
+/**
+  A contact was added
+*/
 unsafe impl NSObjectProtocol for CNChangeHistoryAddContactEvent {}
 
 #[cfg(feature = "Contacts_CNChangeHistoryAddContactEvent")]
+/**
+  A contact was added
+*/
 unsafe impl NSSecureCoding for CNChangeHistoryAddContactEvent {}
 
 extern_methods!(
+    /**
+      A contact was added
+    */
     #[cfg(feature = "Contacts_CNChangeHistoryAddContactEvent")]
     unsafe impl CNChangeHistoryAddContactEvent {
         #[cfg(feature = "Contacts_CNContact")]
@@ -98,6 +128,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNChangeHistoryUpdateContactEvent")]
+    /**
+      A contact was updated
+    */
     pub struct CNChangeHistoryUpdateContactEvent;
 
     #[cfg(feature = "Contacts_CNChangeHistoryUpdateContactEvent")]
@@ -108,15 +141,27 @@ extern_class!(
 );
 
 #[cfg(feature = "Contacts_CNChangeHistoryUpdateContactEvent")]
+/**
+  A contact was updated
+*/
 unsafe impl NSCoding for CNChangeHistoryUpdateContactEvent {}
 
 #[cfg(feature = "Contacts_CNChangeHistoryUpdateContactEvent")]
+/**
+  A contact was updated
+*/
 unsafe impl NSObjectProtocol for CNChangeHistoryUpdateContactEvent {}
 
 #[cfg(feature = "Contacts_CNChangeHistoryUpdateContactEvent")]
+/**
+  A contact was updated
+*/
 unsafe impl NSSecureCoding for CNChangeHistoryUpdateContactEvent {}
 
 extern_methods!(
+    /**
+      A contact was updated
+    */
     #[cfg(feature = "Contacts_CNChangeHistoryUpdateContactEvent")]
     unsafe impl CNChangeHistoryUpdateContactEvent {
         #[cfg(feature = "Contacts_CNContact")]
@@ -128,6 +173,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNChangeHistoryDeleteContactEvent")]
+    /**
+      A contact was removed
+    */
     pub struct CNChangeHistoryDeleteContactEvent;
 
     #[cfg(feature = "Contacts_CNChangeHistoryDeleteContactEvent")]
@@ -138,15 +186,27 @@ extern_class!(
 );
 
 #[cfg(feature = "Contacts_CNChangeHistoryDeleteContactEvent")]
+/**
+  A contact was removed
+*/
 unsafe impl NSCoding for CNChangeHistoryDeleteContactEvent {}
 
 #[cfg(feature = "Contacts_CNChangeHistoryDeleteContactEvent")]
+/**
+  A contact was removed
+*/
 unsafe impl NSObjectProtocol for CNChangeHistoryDeleteContactEvent {}
 
 #[cfg(feature = "Contacts_CNChangeHistoryDeleteContactEvent")]
+/**
+  A contact was removed
+*/
 unsafe impl NSSecureCoding for CNChangeHistoryDeleteContactEvent {}
 
 extern_methods!(
+    /**
+      A contact was removed
+    */
     #[cfg(feature = "Contacts_CNChangeHistoryDeleteContactEvent")]
     unsafe impl CNChangeHistoryDeleteContactEvent {
         #[cfg(feature = "Foundation_NSString")]
@@ -158,6 +218,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNChangeHistoryAddGroupEvent")]
+    /**
+      A group was added
+    */
     pub struct CNChangeHistoryAddGroupEvent;
 
     #[cfg(feature = "Contacts_CNChangeHistoryAddGroupEvent")]
@@ -168,15 +231,27 @@ extern_class!(
 );
 
 #[cfg(feature = "Contacts_CNChangeHistoryAddGroupEvent")]
+/**
+  A group was added
+*/
 unsafe impl NSCoding for CNChangeHistoryAddGroupEvent {}
 
 #[cfg(feature = "Contacts_CNChangeHistoryAddGroupEvent")]
+/**
+  A group was added
+*/
 unsafe impl NSObjectProtocol for CNChangeHistoryAddGroupEvent {}
 
 #[cfg(feature = "Contacts_CNChangeHistoryAddGroupEvent")]
+/**
+  A group was added
+*/
 unsafe impl NSSecureCoding for CNChangeHistoryAddGroupEvent {}
 
 extern_methods!(
+    /**
+      A group was added
+    */
     #[cfg(feature = "Contacts_CNChangeHistoryAddGroupEvent")]
     unsafe impl CNChangeHistoryAddGroupEvent {
         #[cfg(feature = "Contacts_CNGroup")]
@@ -192,6 +267,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNChangeHistoryUpdateGroupEvent")]
+    /**
+      A group was updated
+    */
     pub struct CNChangeHistoryUpdateGroupEvent;
 
     #[cfg(feature = "Contacts_CNChangeHistoryUpdateGroupEvent")]
@@ -202,15 +280,27 @@ extern_class!(
 );
 
 #[cfg(feature = "Contacts_CNChangeHistoryUpdateGroupEvent")]
+/**
+  A group was updated
+*/
 unsafe impl NSCoding for CNChangeHistoryUpdateGroupEvent {}
 
 #[cfg(feature = "Contacts_CNChangeHistoryUpdateGroupEvent")]
+/**
+  A group was updated
+*/
 unsafe impl NSObjectProtocol for CNChangeHistoryUpdateGroupEvent {}
 
 #[cfg(feature = "Contacts_CNChangeHistoryUpdateGroupEvent")]
+/**
+  A group was updated
+*/
 unsafe impl NSSecureCoding for CNChangeHistoryUpdateGroupEvent {}
 
 extern_methods!(
+    /**
+      A group was updated
+    */
     #[cfg(feature = "Contacts_CNChangeHistoryUpdateGroupEvent")]
     unsafe impl CNChangeHistoryUpdateGroupEvent {
         #[cfg(feature = "Contacts_CNGroup")]
@@ -222,6 +312,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNChangeHistoryDeleteGroupEvent")]
+    /**
+      A group was deleted
+    */
     pub struct CNChangeHistoryDeleteGroupEvent;
 
     #[cfg(feature = "Contacts_CNChangeHistoryDeleteGroupEvent")]
@@ -232,15 +325,27 @@ extern_class!(
 );
 
 #[cfg(feature = "Contacts_CNChangeHistoryDeleteGroupEvent")]
+/**
+  A group was deleted
+*/
 unsafe impl NSCoding for CNChangeHistoryDeleteGroupEvent {}
 
 #[cfg(feature = "Contacts_CNChangeHistoryDeleteGroupEvent")]
+/**
+  A group was deleted
+*/
 unsafe impl NSObjectProtocol for CNChangeHistoryDeleteGroupEvent {}
 
 #[cfg(feature = "Contacts_CNChangeHistoryDeleteGroupEvent")]
+/**
+  A group was deleted
+*/
 unsafe impl NSSecureCoding for CNChangeHistoryDeleteGroupEvent {}
 
 extern_methods!(
+    /**
+      A group was deleted
+    */
     #[cfg(feature = "Contacts_CNChangeHistoryDeleteGroupEvent")]
     unsafe impl CNChangeHistoryDeleteGroupEvent {
         #[cfg(feature = "Foundation_NSString")]
@@ -252,6 +357,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNChangeHistoryAddMemberToGroupEvent")]
+    /**
+      A contact was added to a group
+    */
     pub struct CNChangeHistoryAddMemberToGroupEvent;
 
     #[cfg(feature = "Contacts_CNChangeHistoryAddMemberToGroupEvent")]
@@ -262,15 +370,27 @@ extern_class!(
 );
 
 #[cfg(feature = "Contacts_CNChangeHistoryAddMemberToGroupEvent")]
+/**
+  A contact was added to a group
+*/
 unsafe impl NSCoding for CNChangeHistoryAddMemberToGroupEvent {}
 
 #[cfg(feature = "Contacts_CNChangeHistoryAddMemberToGroupEvent")]
+/**
+  A contact was added to a group
+*/
 unsafe impl NSObjectProtocol for CNChangeHistoryAddMemberToGroupEvent {}
 
 #[cfg(feature = "Contacts_CNChangeHistoryAddMemberToGroupEvent")]
+/**
+  A contact was added to a group
+*/
 unsafe impl NSSecureCoding for CNChangeHistoryAddMemberToGroupEvent {}
 
 extern_methods!(
+    /**
+      A contact was added to a group
+    */
     #[cfg(feature = "Contacts_CNChangeHistoryAddMemberToGroupEvent")]
     unsafe impl CNChangeHistoryAddMemberToGroupEvent {
         #[cfg(feature = "Contacts_CNContact")]
@@ -286,6 +406,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNChangeHistoryRemoveMemberFromGroupEvent")]
+    /**
+      A contact was removed from a group
+    */
     pub struct CNChangeHistoryRemoveMemberFromGroupEvent;
 
     #[cfg(feature = "Contacts_CNChangeHistoryRemoveMemberFromGroupEvent")]
@@ -296,15 +419,27 @@ extern_class!(
 );
 
 #[cfg(feature = "Contacts_CNChangeHistoryRemoveMemberFromGroupEvent")]
+/**
+  A contact was removed from a group
+*/
 unsafe impl NSCoding for CNChangeHistoryRemoveMemberFromGroupEvent {}
 
 #[cfg(feature = "Contacts_CNChangeHistoryRemoveMemberFromGroupEvent")]
+/**
+  A contact was removed from a group
+*/
 unsafe impl NSObjectProtocol for CNChangeHistoryRemoveMemberFromGroupEvent {}
 
 #[cfg(feature = "Contacts_CNChangeHistoryRemoveMemberFromGroupEvent")]
+/**
+  A contact was removed from a group
+*/
 unsafe impl NSSecureCoding for CNChangeHistoryRemoveMemberFromGroupEvent {}
 
 extern_methods!(
+    /**
+      A contact was removed from a group
+    */
     #[cfg(feature = "Contacts_CNChangeHistoryRemoveMemberFromGroupEvent")]
     unsafe impl CNChangeHistoryRemoveMemberFromGroupEvent {
         #[cfg(feature = "Contacts_CNContact")]
@@ -320,6 +455,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNChangeHistoryAddSubgroupToGroupEvent")]
+    /**
+      A subgroup was added to a group
+    */
     pub struct CNChangeHistoryAddSubgroupToGroupEvent;
 
     #[cfg(feature = "Contacts_CNChangeHistoryAddSubgroupToGroupEvent")]
@@ -330,15 +468,27 @@ extern_class!(
 );
 
 #[cfg(feature = "Contacts_CNChangeHistoryAddSubgroupToGroupEvent")]
+/**
+  A subgroup was added to a group
+*/
 unsafe impl NSCoding for CNChangeHistoryAddSubgroupToGroupEvent {}
 
 #[cfg(feature = "Contacts_CNChangeHistoryAddSubgroupToGroupEvent")]
+/**
+  A subgroup was added to a group
+*/
 unsafe impl NSObjectProtocol for CNChangeHistoryAddSubgroupToGroupEvent {}
 
 #[cfg(feature = "Contacts_CNChangeHistoryAddSubgroupToGroupEvent")]
+/**
+  A subgroup was added to a group
+*/
 unsafe impl NSSecureCoding for CNChangeHistoryAddSubgroupToGroupEvent {}
 
 extern_methods!(
+    /**
+      A subgroup was added to a group
+    */
     #[cfg(feature = "Contacts_CNChangeHistoryAddSubgroupToGroupEvent")]
     unsafe impl CNChangeHistoryAddSubgroupToGroupEvent {
         #[cfg(feature = "Contacts_CNGroup")]
@@ -354,6 +504,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNChangeHistoryRemoveSubgroupFromGroupEvent")]
+    /**
+      A subgroup was removed from a group
+    */
     pub struct CNChangeHistoryRemoveSubgroupFromGroupEvent;
 
     #[cfg(feature = "Contacts_CNChangeHistoryRemoveSubgroupFromGroupEvent")]
@@ -364,15 +517,27 @@ extern_class!(
 );
 
 #[cfg(feature = "Contacts_CNChangeHistoryRemoveSubgroupFromGroupEvent")]
+/**
+  A subgroup was removed from a group
+*/
 unsafe impl NSCoding for CNChangeHistoryRemoveSubgroupFromGroupEvent {}
 
 #[cfg(feature = "Contacts_CNChangeHistoryRemoveSubgroupFromGroupEvent")]
+/**
+  A subgroup was removed from a group
+*/
 unsafe impl NSObjectProtocol for CNChangeHistoryRemoveSubgroupFromGroupEvent {}
 
 #[cfg(feature = "Contacts_CNChangeHistoryRemoveSubgroupFromGroupEvent")]
+/**
+  A subgroup was removed from a group
+*/
 unsafe impl NSSecureCoding for CNChangeHistoryRemoveSubgroupFromGroupEvent {}
 
 extern_methods!(
+    /**
+      A subgroup was removed from a group
+    */
     #[cfg(feature = "Contacts_CNChangeHistoryRemoveSubgroupFromGroupEvent")]
     unsafe impl CNChangeHistoryRemoveSubgroupFromGroupEvent {
         #[cfg(feature = "Contacts_CNGroup")]

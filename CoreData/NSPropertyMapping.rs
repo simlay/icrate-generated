@@ -22,26 +22,44 @@ extern_methods!(
     #[cfg(feature = "CoreData_NSPropertyMapping")]
     unsafe impl NSPropertyMapping {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Returns/sets the name of the property in the destination entity for the mapping.
+        */
         #[method_id(@__retain_semantics Other name)]
         pub unsafe fn name(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Returns/sets the name of the property in the destination entity for the mapping.
+        */
         #[method(setName:)]
         pub unsafe fn setName(&self, name: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSExpression")]
+        /**
+          Returns/sets the value expression for the property mapping.  The expression is used to create the value for the destination property.
+        */
         #[method_id(@__retain_semantics Other valueExpression)]
         pub unsafe fn valueExpression(&self) -> Option<Id<NSExpression>>;
 
         #[cfg(feature = "Foundation_NSExpression")]
+        /**
+          Returns/sets the value expression for the property mapping.  The expression is used to create the value for the destination property.
+        */
         #[method(setValueExpression:)]
         pub unsafe fn setValueExpression(&self, value_expression: Option<&NSExpression>);
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          Returns/sets the user info for the property mapping.
+        */
         #[method_id(@__retain_semantics Other userInfo)]
         pub unsafe fn userInfo(&self) -> Option<Id<NSDictionary>>;
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          Returns/sets the user info for the property mapping.
+        */
         #[method(setUserInfo:)]
         pub unsafe fn setUserInfo(&self, user_info: Option<&NSDictionary>);
     }

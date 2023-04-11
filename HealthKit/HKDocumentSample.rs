@@ -9,6 +9,10 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKDocumentSample")]
+    /**
+     @class         HKDocumentSample
+    @abstract      An abstract class representing a health document.
+    */
     pub struct HKDocumentSample;
 
     #[cfg(feature = "HealthKit_HKDocumentSample")]
@@ -19,15 +23,31 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKDocumentSample")]
+/**
+ @class         HKDocumentSample
+@abstract      An abstract class representing a health document.
+*/
 unsafe impl NSCoding for HKDocumentSample {}
 
 #[cfg(feature = "HealthKit_HKDocumentSample")]
+/**
+ @class         HKDocumentSample
+@abstract      An abstract class representing a health document.
+*/
 unsafe impl NSObjectProtocol for HKDocumentSample {}
 
 #[cfg(feature = "HealthKit_HKDocumentSample")]
+/**
+ @class         HKDocumentSample
+@abstract      An abstract class representing a health document.
+*/
 unsafe impl NSSecureCoding for HKDocumentSample {}
 
 extern_methods!(
+    /**
+     @class         HKDocumentSample
+    @abstract      An abstract class representing a health document.
+    */
     #[cfg(feature = "HealthKit_HKDocumentSample")]
     unsafe impl HKDocumentSample {
         #[cfg(feature = "HealthKit_HKDocumentType")]

@@ -35,14 +35,30 @@ extern_methods!(
         #[method_id(@__retain_semantics Other name)]
         pub unsafe fn name(&self) -> Id<NSAppearanceName>;
 
+        /**
+          Sets the current thread's appearance, which is used for drawing, resolving colors/images, and laying out views.
+         Automatically set by NSView before that view's drawRect:, updateLayer, and layout methods are invoked.
+         At other times its return value is unreliable (depending on if the previous caller restored it to a previous value after setting it).
+         This is not the correct way to determine the 'system' appearance. Use a view's, window's, or the app's effectiveAppearance.
+        */
         #[deprecated = "Use -performAsCurrentDrawingAppearance: to temporarily set the drawing appearance, or +currentDrawingAppearance to access the currently drawing appearance."]
         #[method_id(@__retain_semantics Other currentAppearance)]
         pub unsafe fn currentAppearance() -> Option<Id<NSAppearance>>;
 
+        /**
+          Sets the current thread's appearance, which is used for drawing, resolving colors/images, and laying out views.
+         Automatically set by NSView before that view's drawRect:, updateLayer, and layout methods are invoked.
+         At other times its return value is unreliable (depending on if the previous caller restored it to a previous value after setting it).
+         This is not the correct way to determine the 'system' appearance. Use a view's, window's, or the app's effectiveAppearance.
+        */
         #[deprecated = "Use -performAsCurrentDrawingAppearance: to temporarily set the drawing appearance, or +currentDrawingAppearance to access the currently drawing appearance."]
         #[method(setCurrentAppearance:)]
         pub unsafe fn setCurrentAppearance(current_appearance: Option<&NSAppearance>);
 
+        /**
+          The appearance which has been made active for drawing (usually by locking focus on a view)
+         and is used for color and asset resolution.
+        */
         #[method_id(@__retain_semantics Other currentDrawingAppearance)]
         pub unsafe fn currentDrawingAppearance() -> Id<NSAppearance>;
 
@@ -67,6 +83,9 @@ extern_methods!(
             coder: &NSCoder,
         ) -> Option<Id<Self>>;
 
+        /**
+          Query allowsVibrancy to see if the given appearance actually needs vibrant drawing. You may want to draw differently if the current apperance is vibrant.
+        */
         #[method(allowsVibrancy)]
         pub unsafe fn allowsVibrancy(&self) -> bool;
 
@@ -108,6 +127,9 @@ extern_protocol!(
         unsafe fn setAppearance(&self, appearance: Option<&NSAppearance>);
 
         #[cfg(feature = "AppKit_NSAppearance")]
+        /**
+          This returns the appearance that would be used when drawing the receiver, taking inherited appearances into account.
+        */
         #[method_id(@__retain_semantics Other effectiveAppearance)]
         unsafe fn effectiveAppearance(&self) -> Id<NSAppearance>;
     }

@@ -7,6 +7,9 @@ use crate::GameKit::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      Constants that describe the state of the overall match
+    */
     pub enum GKTurnBasedMatchStatus {
         GKTurnBasedMatchStatusUnknown = 0,
         GKTurnBasedMatchStatusOpen = 1,
@@ -17,6 +20,9 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      Constants that describe the state of individual participants in the match
+    */
     pub enum GKTurnBasedParticipantStatus {
         GKTurnBasedParticipantStatusUnknown = 0,
         GKTurnBasedParticipantStatusInvited = 1,
@@ -29,6 +35,9 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      Constants that describe the game result for a given participant who has reached the done state.  The developer is free to use these constants or add additional ones
+    */
     pub enum GKTurnBasedMatchOutcome {
         GKTurnBasedMatchOutcomeNone = 0,
         GKTurnBasedMatchOutcomeQuit = 1,
@@ -47,6 +56,13 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameKit_GKTurnBasedParticipant")]
+    /**
+      GKTurnBasedMatch represents an ongoing turn-based game among the matched group of participants
+     Existing matches can be shown and new matches created using GKTurnBasedMatchmakerViewController
+     A list of existing matches can be retrieved using +loadMatchesWithCompletionHandler:
+
+     By default turn based events will badge your app.  To opt out of this add GKGameCenterBadgingDisabled  with a boolean value of YES to your info plist
+    */
     pub struct GKTurnBasedParticipant;
 
     #[cfg(feature = "GameKit_GKTurnBasedParticipant")]
@@ -56,9 +72,23 @@ extern_class!(
 );
 
 #[cfg(feature = "GameKit_GKTurnBasedParticipant")]
+/**
+  GKTurnBasedMatch represents an ongoing turn-based game among the matched group of participants
+ Existing matches can be shown and new matches created using GKTurnBasedMatchmakerViewController
+ A list of existing matches can be retrieved using +loadMatchesWithCompletionHandler:
+
+ By default turn based events will badge your app.  To opt out of this add GKGameCenterBadgingDisabled  with a boolean value of YES to your info plist
+*/
 unsafe impl NSObjectProtocol for GKTurnBasedParticipant {}
 
 extern_methods!(
+    /**
+      GKTurnBasedMatch represents an ongoing turn-based game among the matched group of participants
+     Existing matches can be shown and new matches created using GKTurnBasedMatchmakerViewController
+     A list of existing matches can be retrieved using +loadMatchesWithCompletionHandler:
+
+     By default turn based events will badge your app.  To opt out of this add GKGameCenterBadgingDisabled  with a boolean value of YES to your info plist
+    */
     #[cfg(feature = "GameKit_GKTurnBasedParticipant")]
     unsafe impl GKTurnBasedParticipant {
         #[cfg(feature = "GameKit_GKPlayer")]
@@ -89,6 +119,9 @@ extern_methods!(
     #[cfg(feature = "GameKit_GKTurnBasedParticipant")]
     unsafe impl GKTurnBasedParticipant {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          This property is obsolete.
+        */
         #[deprecated = "use player"]
         #[method_id(@__retain_semantics Other playerID)]
         pub unsafe fn playerID(&self) -> Option<Id<NSString>>;
@@ -221,6 +254,9 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "GameKit_GKTurnBasedParticipant"
         ))]
+        /**
+          array of GKTurnBasedParticipant objects
+        */
         #[method_id(@__retain_semantics Other participants)]
         pub unsafe fn participants(&self) -> Option<Id<NSArray<GKTurnBasedParticipant>>>;
 
@@ -228,10 +264,17 @@ extern_methods!(
         pub unsafe fn status(&self) -> GKTurnBasedMatchStatus;
 
         #[cfg(feature = "GameKit_GKTurnBasedParticipant")]
+        /**
+          This indicates the participant who has the current turn.  This is set by passing the next participant into endTurnWithNextParticipant:matchData:completionHandler:
+        */
         #[method_id(@__retain_semantics Other currentParticipant)]
         pub unsafe fn currentParticipant(&self) -> Option<Id<GKTurnBasedParticipant>>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          Developer-defined data representing the current state of the game. This property is nil until loaded by loadMatchDataWithCompletionHandler:
+         The developer can submit updated matchData by passing it into endTurnWithNextParticipant:matchData:completionHandler: or endMatchInTurnWithMatchData:completionHandler:
+        */
         #[method_id(@__retain_semantics Other matchData)]
         pub unsafe fn matchData(&self) -> Option<Id<NSData>>;
 
@@ -244,13 +287,22 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          returns the localizable message in the current locale. Setting this is equivalent to calling [self setLocalizableMessageWithKey:message arguments:nil]
+        */
         #[method_id(@__retain_semantics Other message)]
         pub unsafe fn message(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          returns the localizable message in the current locale. Setting this is equivalent to calling [self setLocalizableMessageWithKey:message arguments:nil]
+        */
         #[method(setMessage:)]
         pub unsafe fn setMessage(&self, message: Option<&NSString>);
 
+        /**
+          Returns the maximum size for the match data.
+        */
         #[method(matchDataMaximumSize)]
         pub unsafe fn matchDataMaximumSize(&self) -> NSUInteger;
 
@@ -258,6 +310,9 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "GameKit_GKTurnBasedExchange"
         ))]
+        /**
+          exchanges that are in progress on this match.  Once an exchange has completed and has been resolved by merging it into the match data by the current turn holder then it will be removed from this list
+        */
         #[method_id(@__retain_semantics Other exchanges)]
         pub unsafe fn exchanges(&self) -> Option<Id<NSArray<GKTurnBasedExchange>>>;
 
@@ -265,6 +320,9 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "GameKit_GKTurnBasedExchange"
         ))]
+        /**
+          returns the exchanges that currently await a reply from the local player
+        */
         #[method_id(@__retain_semantics Other activeExchanges)]
         pub unsafe fn activeExchanges(&self) -> Option<Id<NSArray<GKTurnBasedExchange>>>;
 
@@ -272,12 +330,21 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "GameKit_GKTurnBasedExchange"
         ))]
+        /**
+          returns the exchanges that have been completed and need to be merged by the local participant.  This will be nil unless the local participant is the current turn holder for this match
+        */
         #[method_id(@__retain_semantics Other completedExchanges)]
         pub unsafe fn completedExchanges(&self) -> Option<Id<NSArray<GKTurnBasedExchange>>>;
 
+        /**
+          maximum data allowed for exchange data
+        */
         #[method(exchangeDataMaximumSize)]
         pub unsafe fn exchangeDataMaximumSize(&self) -> NSUInteger;
 
+        /**
+          limit of the number of exchanges that this player can have initiated at a given time
+        */
         #[method(exchangeMaxInitiatedExchangesPerPlayer)]
         pub unsafe fn exchangeMaxInitiatedExchangesPerPlayer(&self) -> NSUInteger;
 
@@ -504,6 +571,9 @@ extern_methods!(
 
 ns_enum!(
     #[underlying(i8)]
+    /**
+      Constants that describe the status of exchanges and their replies
+    */
     pub enum GKTurnBasedExchangeStatus {
         GKTurnBasedExchangeStatusUnknown = 0,
         GKTurnBasedExchangeStatusActive = 1,
@@ -535,10 +605,16 @@ extern_methods!(
     #[cfg(feature = "GameKit_GKTurnBasedExchange")]
     unsafe impl GKTurnBasedExchange {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          persistent identifier used to refer to this exchange.
+        */
         #[method_id(@__retain_semantics Other exchangeID)]
         pub unsafe fn exchangeID(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "GameKit_GKTurnBasedParticipant")]
+        /**
+          participant who sent the exchange
+        */
         #[method_id(@__retain_semantics Other sender)]
         pub unsafe fn sender(&self) -> Option<Id<GKTurnBasedParticipant>>;
 
@@ -546,29 +622,50 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "GameKit_GKTurnBasedParticipant"
         ))]
+        /**
+          participants who are the recipients of the exchange
+        */
         #[method_id(@__retain_semantics Other recipients)]
         pub unsafe fn recipients(&self) -> Option<Id<NSArray<GKTurnBasedParticipant>>>;
 
+        /**
+          status of the exchange
+        */
         #[method(status)]
         pub unsafe fn status(&self) -> GKTurnBasedExchangeStatus;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          localized message for the push notification sent to all recipients of this exchange
+        */
         #[method_id(@__retain_semantics Other message)]
         pub unsafe fn message(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          data to send with the exchange.
+        */
         #[method_id(@__retain_semantics Other data)]
         pub unsafe fn data(&self) -> Option<Id<NSData>>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          send date for the exchange.
+        */
         #[method_id(@__retain_semantics Other sendDate)]
         pub unsafe fn sendDate(&self) -> Option<Id<NSDate>>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          timeout date for the exchange.
+        */
         #[method_id(@__retain_semantics Other timeoutDate)]
         pub unsafe fn timeoutDate(&self) -> Option<Id<NSDate>>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          date when this exchange completed
+        */
         #[method_id(@__retain_semantics Other completionDate)]
         pub unsafe fn completionDate(&self) -> Option<Id<NSDate>>;
 
@@ -576,6 +673,9 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "GameKit_GKTurnBasedExchangeReply"
         ))]
+        /**
+          Array of GKTurnBasedExchangeReply.
+        */
         #[method_id(@__retain_semantics Other replies)]
         pub unsafe fn replies(&self) -> Option<Id<NSArray<GKTurnBasedExchangeReply>>>;
 
@@ -627,18 +727,30 @@ extern_methods!(
     #[cfg(feature = "GameKit_GKTurnBasedExchangeReply")]
     unsafe impl GKTurnBasedExchangeReply {
         #[cfg(feature = "GameKit_GKTurnBasedParticipant")]
+        /**
+          the recipient who this reply is from
+        */
         #[method_id(@__retain_semantics Other recipient)]
         pub unsafe fn recipient(&self) -> Option<Id<GKTurnBasedParticipant>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          localized message for the push notification generated by the reply of this exchange
+        */
         #[method_id(@__retain_semantics Other message)]
         pub unsafe fn message(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          data sent by the replying recipient
+        */
         #[method_id(@__retain_semantics Other data)]
         pub unsafe fn data(&self) -> Option<Id<NSData>>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          send date for the exchange.
+        */
         #[method_id(@__retain_semantics Other replyDate)]
         pub unsafe fn replyDate(&self) -> Option<Id<NSDate>>;
     }
@@ -646,6 +758,9 @@ extern_methods!(
 
 extern_protocol!(
     #[deprecated = "Use registerListener on GKLocalPlayer with an object that implements the GKTurnBasedEventListener protocol"]
+    /**
+      see documentation for GKTurnBasedEventListener for the equivalent methods
+    */
     pub unsafe trait GKTurnBasedEventHandlerDelegate {
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
         #[deprecated]

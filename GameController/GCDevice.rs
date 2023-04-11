@@ -6,16 +6,40 @@ use crate::Foundation::*;
 use crate::GameController::*;
 
 extern_protocol!(
+    /**
+
+      GCControllerProfile.h
+      GameController
+
+      Copyright (c) 2019 Apple Inc. All rights reserved.
+
+    */
     pub unsafe trait GCDevice: NSObjectProtocol {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         A vendor supplied name. May be nil, and is not guaranteed to be unique. This should not be used as a key in a dictionary,
+        but simply as a way to present some basic information about the device in testing or to the user.
+        */
         #[method_id(@__retain_semantics Other vendorName)]
         unsafe fn vendorName(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         The product category the controller belongs to. This is useful for setting appropriate UI elements based on what type of device is connected.
+
+        @see GCProductCategories.h
+        */
         #[method_id(@__retain_semantics Other productCategory)]
         unsafe fn productCategory(&self) -> Id<NSString>;
 
         #[cfg(feature = "GameController_GCPhysicalInputProfile")]
+        /**
+         Gets the physical input profile for the device.
+
+        @note This is equivalent to the controller's gamepad, microGamepad, or extendedGamepad instance.
+        @see GCController.microGamepad
+        @see GCController.extendedGamepad
+        */
         #[deprecated = "Use the physicalInputProfile property on GCController instead.  For GCKeyboard, use the keyboardInput property.  For GCMouse, use the mouseInput property."]
         #[method_id(@__retain_semantics Other physicalInputProfile)]
         unsafe fn physicalInputProfile(&self) -> Id<GCPhysicalInputProfile>;

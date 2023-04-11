@@ -6,6 +6,9 @@ use crate::Foundation::*;
 use crate::MailKit::*;
 
 extern_protocol!(
+    /**
+      @brief A protocol which must be adopted by the class set as extension's `NSExtensionPrincipalClass`.
+    */
     pub unsafe trait MEExtension: NSObjectProtocol {
         #[cfg(feature = "MailKit_MEComposeSession")]
         #[optional]

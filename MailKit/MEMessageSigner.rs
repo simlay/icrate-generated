@@ -8,6 +8,9 @@ use crate::MailKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MailKit_MEMessageSigner")]
+    /**
+      @brief Contains information about a message signer
+    */
     pub struct MEMessageSigner;
 
     #[cfg(feature = "MailKit_MEMessageSigner")]
@@ -17,26 +20,48 @@ extern_class!(
 );
 
 #[cfg(feature = "MailKit_MEMessageSigner")]
+/**
+  @brief Contains information about a message signer
+*/
 unsafe impl NSCoding for MEMessageSigner {}
 
 #[cfg(feature = "MailKit_MEMessageSigner")]
+/**
+  @brief Contains information about a message signer
+*/
 unsafe impl NSObjectProtocol for MEMessageSigner {}
 
 #[cfg(feature = "MailKit_MEMessageSigner")]
+/**
+  @brief Contains information about a message signer
+*/
 unsafe impl NSSecureCoding for MEMessageSigner {}
 
 extern_methods!(
+    /**
+      @brief Contains information about a message signer
+    */
     #[cfg(feature = "MailKit_MEMessageSigner")]
     unsafe impl MEMessageSigner {
         #[cfg(all(feature = "Foundation_NSArray", feature = "MailKit_MEEmailAddress"))]
+        /**
+          @brief Email addresses associated with the signature.
+        */
         #[method_id(@__retain_semantics Other emailAddresses)]
         pub unsafe fn emailAddresses(&self) -> Id<NSArray<MEEmailAddress>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @brief The message signers label. Shown in the message header view. For instance, "John Smith".
+        */
         #[method_id(@__retain_semantics Other label)]
         pub unsafe fn label(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          @brief The context for the message signature. This might include the signing certificate. This will be passed back to the extension for
+         either verifying the signature or if the user wishes to view signature information.
+        */
         #[method_id(@__retain_semantics Other context)]
         pub unsafe fn context(&self) -> Id<NSData>;
 

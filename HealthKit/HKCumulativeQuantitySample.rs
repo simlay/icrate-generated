@@ -9,6 +9,10 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKCumulativeQuantitySample")]
+    /**
+     @class         HKCumulativeQuantitySample
+    @abstract      An HKQuantitySample subclass representing a quantity measurement with cumulative aggregation style.
+    */
     pub struct HKCumulativeQuantitySample;
 
     #[cfg(feature = "HealthKit_HKCumulativeQuantitySample")]
@@ -19,18 +23,38 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKCumulativeQuantitySample")]
+/**
+ @class         HKCumulativeQuantitySample
+@abstract      An HKQuantitySample subclass representing a quantity measurement with cumulative aggregation style.
+*/
 unsafe impl NSCoding for HKCumulativeQuantitySample {}
 
 #[cfg(feature = "HealthKit_HKCumulativeQuantitySample")]
+/**
+ @class         HKCumulativeQuantitySample
+@abstract      An HKQuantitySample subclass representing a quantity measurement with cumulative aggregation style.
+*/
 unsafe impl NSObjectProtocol for HKCumulativeQuantitySample {}
 
 #[cfg(feature = "HealthKit_HKCumulativeQuantitySample")]
+/**
+ @class         HKCumulativeQuantitySample
+@abstract      An HKQuantitySample subclass representing a quantity measurement with cumulative aggregation style.
+*/
 unsafe impl NSSecureCoding for HKCumulativeQuantitySample {}
 
 extern_methods!(
+    /**
+     @class         HKCumulativeQuantitySample
+    @abstract      An HKQuantitySample subclass representing a quantity measurement with cumulative aggregation style.
+    */
     #[cfg(feature = "HealthKit_HKCumulativeQuantitySample")]
     unsafe impl HKCumulativeQuantitySample {
         #[cfg(feature = "HealthKit_HKQuantity")]
+        /**
+         @property      sumQuantity
+        @abstract      The sum of quantities represented by the receiver.
+        */
         #[method_id(@__retain_semantics Other sumQuantity)]
         pub unsafe fn sumQuantity(&self) -> Id<HKQuantity>;
     }
@@ -40,6 +64,10 @@ extern_static!(HKPredicateKeyPathSum: &'static NSString);
 
 extern_methods!(
     /// Methods declared on superclass `HKQuantitySample`
+    /**
+     @class         HKCumulativeQuantitySample
+    @abstract      An HKQuantitySample subclass representing a quantity measurement with cumulative aggregation style.
+    */
     #[cfg(feature = "HealthKit_HKCumulativeQuantitySample")]
     unsafe impl HKCumulativeQuantitySample {
         #[cfg(all(

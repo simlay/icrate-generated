@@ -10,6 +10,10 @@ extern_methods!(
     #[cfg(feature = "WebKit_DOMNode")]
     unsafe impl DOMNode {
         #[cfg(feature = "WebKit_WebArchive")]
+        /**
+         @property webArchive
+        @abstract A WebArchive representing the node and the children of the node.
+        */
         #[method_id(@__retain_semantics Other webArchive)]
         pub unsafe fn webArchive(&self) -> Option<Id<WebArchive>>;
     }
@@ -20,6 +24,10 @@ extern_methods!(
     #[cfg(feature = "WebKit_DOMDocument")]
     unsafe impl DOMDocument {
         #[cfg(feature = "WebKit_WebFrame")]
+        /**
+         @property webFrame
+        @abstract The frame of the DOM document.
+        */
         #[method_id(@__retain_semantics Other webFrame)]
         pub unsafe fn webFrame(&self) -> Option<Id<WebFrame>>;
 
@@ -35,10 +43,18 @@ extern_methods!(
     #[cfg(feature = "WebKit_DOMRange")]
     unsafe impl DOMRange {
         #[cfg(feature = "WebKit_WebArchive")]
+        /**
+         @property webArchive
+        @abstract A WebArchive representing the range.
+        */
         #[method_id(@__retain_semantics Other webArchive)]
         pub unsafe fn webArchive(&self) -> Option<Id<WebArchive>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property markupString
+        @abstract A markup string representing the range.
+        */
         #[method_id(@__retain_semantics Other markupString)]
         pub unsafe fn markupString(&self) -> Id<NSString>;
     }
@@ -49,6 +65,10 @@ extern_methods!(
     #[cfg(feature = "WebKit_DOMHTMLFrameElement")]
     unsafe impl DOMHTMLFrameElement {
         #[cfg(feature = "WebKit_WebFrame")]
+        /**
+         @property contentFrame
+        @abstract The content frame of the element.
+        */
         #[method_id(@__retain_semantics Other contentFrame)]
         pub unsafe fn contentFrame(&self) -> Option<Id<WebFrame>>;
     }
@@ -59,6 +79,10 @@ extern_methods!(
     #[cfg(feature = "WebKit_DOMHTMLIFrameElement")]
     unsafe impl DOMHTMLIFrameElement {
         #[cfg(feature = "WebKit_WebFrame")]
+        /**
+         @property contentFrame
+        @abstract Returns the content frame of the element.
+        */
         #[method_id(@__retain_semantics Other contentFrame)]
         pub unsafe fn contentFrame(&self) -> Option<Id<WebFrame>>;
     }
@@ -69,6 +93,12 @@ extern_methods!(
     #[cfg(feature = "WebKit_DOMHTMLObjectElement")]
     unsafe impl DOMHTMLObjectElement {
         #[cfg(feature = "WebKit_WebFrame")]
+        /**
+         @property contentFrame
+        @abstract The content frame of the element.
+        @discussion Returns non-nil only if the object represents a child frame
+        such as if the data of the object is HTML content.
+        */
         #[method_id(@__retain_semantics Other contentFrame)]
         pub unsafe fn contentFrame(&self) -> Option<Id<WebFrame>>;
     }

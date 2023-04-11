@@ -30,16 +30,28 @@ extern_methods!(
         ) -> Id<CARenderer>;
 
         #[cfg(feature = "CoreAnimation_CALayer")]
+        /**
+          The root layer associated with the renderer.
+        */
         #[method_id(@__retain_semantics Other layer)]
         pub fn layer(&self) -> Option<Id<CALayer>>;
 
         #[cfg(feature = "CoreAnimation_CALayer")]
+        /**
+          The root layer associated with the renderer.
+        */
         #[method(setLayer:)]
         pub fn setLayer(&self, layer: Option<&CALayer>);
 
+        /**
+          The bounds rect of the render target.
+        */
         #[method(bounds)]
         pub fn bounds(&self) -> CGRect;
 
+        /**
+          The bounds rect of the render target.
+        */
         #[method(setBounds:)]
         pub fn setBounds(&self, bounds: CGRect);
 

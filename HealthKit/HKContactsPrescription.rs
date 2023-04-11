@@ -9,6 +9,10 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKContactsPrescription")]
+    /**
+     @class         HKContactsPrescription
+    @abstract      An object representing a contacts prescription
+    */
     pub struct HKContactsPrescription;
 
     #[cfg(feature = "HealthKit_HKContactsPrescription")]
@@ -19,26 +23,54 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKContactsPrescription")]
+/**
+ @class         HKContactsPrescription
+@abstract      An object representing a contacts prescription
+*/
 unsafe impl NSCoding for HKContactsPrescription {}
 
 #[cfg(feature = "HealthKit_HKContactsPrescription")]
+/**
+ @class         HKContactsPrescription
+@abstract      An object representing a contacts prescription
+*/
 unsafe impl NSObjectProtocol for HKContactsPrescription {}
 
 #[cfg(feature = "HealthKit_HKContactsPrescription")]
+/**
+ @class         HKContactsPrescription
+@abstract      An object representing a contacts prescription
+*/
 unsafe impl NSSecureCoding for HKContactsPrescription {}
 
 extern_methods!(
+    /**
+     @class         HKContactsPrescription
+    @abstract      An object representing a contacts prescription
+    */
     #[cfg(feature = "HealthKit_HKContactsPrescription")]
     unsafe impl HKContactsPrescription {
         #[cfg(feature = "HealthKit_HKContactsLensSpecification")]
+        /**
+         @property      rightEye
+        @abstract      The right eye lens specification
+        */
         #[method_id(@__retain_semantics Other rightEye)]
         pub unsafe fn rightEye(&self) -> Option<Id<HKContactsLensSpecification>>;
 
         #[cfg(feature = "HealthKit_HKContactsLensSpecification")]
+        /**
+         @property      leftEye
+        @abstract      The left eye lens specification
+        */
         #[method_id(@__retain_semantics Other leftEye)]
         pub unsafe fn leftEye(&self) -> Option<Id<HKContactsLensSpecification>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property      brand
+        @abstract      The prescribed brand after contact lens fitting
+        */
         #[method_id(@__retain_semantics Other brand)]
         pub unsafe fn brand(&self) -> Id<NSString>;
 
@@ -65,7 +97,17 @@ extern_methods!(
 
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
+    }
+);
 
+extern_methods!(
+    /// Methods declared on superclass `HKVisionPrescription`
+    /**
+     @class         HKContactsPrescription
+    @abstract      An object representing a contacts prescription
+    */
+    #[cfg(feature = "HealthKit_HKContactsPrescription")]
+    unsafe impl HKContactsPrescription {
         #[cfg(all(
             feature = "Foundation_NSDate",
             feature = "Foundation_NSDictionary",

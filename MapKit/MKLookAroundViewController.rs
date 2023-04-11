@@ -90,15 +90,27 @@ extern_methods!(
         #[method(setScene:)]
         pub unsafe fn setScene(&self, scene: Option<&MKLookAroundScene>);
 
+        /**
+          Defaults to YES
+        */
         #[method(isNavigationEnabled)]
         pub unsafe fn isNavigationEnabled(&self) -> bool;
 
+        /**
+          Defaults to YES
+        */
         #[method(setNavigationEnabled:)]
         pub unsafe fn setNavigationEnabled(&self, navigation_enabled: bool);
 
+        /**
+          Defaults to YES
+        */
         #[method(showsRoadLabels)]
         pub unsafe fn showsRoadLabels(&self) -> bool;
 
+        /**
+          Defaults to YES
+        */
         #[method(setShowsRoadLabels:)]
         pub unsafe fn setShowsRoadLabels(&self, shows_road_labels: bool);
 
@@ -113,9 +125,15 @@ extern_methods!(
             point_of_interest_filter: Option<&MKPointOfInterestFilter>,
         );
 
+        /**
+          Defaults to MKLookAroundBadgePositionTopLeading
+        */
         #[method(badgePosition)]
         pub unsafe fn badgePosition(&self) -> MKLookAroundBadgePosition;
 
+        /**
+          Defaults to MKLookAroundBadgePositionTopLeading
+        */
         #[method(setBadgePosition:)]
         pub unsafe fn setBadgePosition(&self, badge_position: MKLookAroundBadgePosition);
     }

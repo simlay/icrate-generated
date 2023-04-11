@@ -54,17 +54,29 @@ extern_methods!(
         #[method(setColor:)]
         pub unsafe fn setColor(&self, color: &NSColor);
 
+        /**
+          Whether or not the picker should allow picking a color with non-1.0 alpha. Defaults to `!NSColor.ignoresAlpha`.
+        */
         #[method(showsAlpha)]
         pub unsafe fn showsAlpha(&self) -> bool;
 
+        /**
+          Whether or not the picker should allow picking a color with non-1.0 alpha. Defaults to `!NSColor.ignoresAlpha`.
+        */
         #[method(setShowsAlpha:)]
         pub unsafe fn setShowsAlpha(&self, shows_alpha: bool);
 
         #[cfg(all(feature = "AppKit_NSColorSpace", feature = "Foundation_NSArray"))]
+        /**
+          Controls the color spaces that the receiver is able to produce. If a color outside of the allowed spaces are displayed or selected, it will first be converted to the first color space in the array. `nil` signifies any color space is allowed. Empty array is an invalid value and will raise an exception if set. Defaults to `nil`.
+        */
         #[method_id(@__retain_semantics Other allowedColorSpaces)]
         pub unsafe fn allowedColorSpaces(&self) -> Option<Id<NSArray<NSColorSpace>>>;
 
         #[cfg(all(feature = "AppKit_NSColorSpace", feature = "Foundation_NSArray"))]
+        /**
+          Controls the color spaces that the receiver is able to produce. If a color outside of the allowed spaces are displayed or selected, it will first be converted to the first color space in the array. `nil` signifies any color space is allowed. Empty array is an invalid value and will raise an exception if set. Defaults to `nil`.
+        */
         #[method(setAllowedColorSpaces:)]
         pub unsafe fn setAllowedColorSpaces(
             &self,
@@ -72,18 +84,30 @@ extern_methods!(
         );
 
         #[cfg(feature = "AppKit_NSColorList")]
+        /**
+          The color list displayed in the list color picker. Defaults to the standard system color list. Setting a custom color list will disable the additional tints/shades that appear on long-press.
+        */
         #[method_id(@__retain_semantics Other colorList)]
         pub unsafe fn colorList(&self) -> Option<Id<NSColorList>>;
 
         #[cfg(feature = "AppKit_NSColorList")]
+        /**
+          The color list displayed in the list color picker. Defaults to the standard system color list. Setting a custom color list will disable the additional tints/shades that appear on long-press.
+        */
         #[method(setColorList:)]
         pub unsafe fn setColorList(&self, color_list: Option<&NSColorList>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The localized string labelling this item during user customization. The default value is the localized string of "Color Picker".
+        */
         #[method_id(@__retain_semantics Other customizationLabel)]
         pub unsafe fn customizationLabel(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The localized string labelling this item during user customization. The default value is the localized string of "Color Picker".
+        */
         #[method(setCustomizationLabel:)]
         pub unsafe fn setCustomizationLabel(&self, customization_label: Option<&NSString>);
 
@@ -99,9 +123,15 @@ extern_methods!(
         #[method(setAction:)]
         pub unsafe fn setAction(&self, action: Option<Sel>);
 
+        /**
+          Enables or disabled the color picker. If it is currently being shown in a popover, it will be dismissed.
+        */
         #[method(isEnabled)]
         pub unsafe fn isEnabled(&self) -> bool;
 
+        /**
+          Enables or disabled the color picker. If it is currently being shown in a popover, it will be dismissed.
+        */
         #[method(setEnabled:)]
         pub unsafe fn setEnabled(&self, enabled: bool);
     }

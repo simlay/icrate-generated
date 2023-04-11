@@ -40,10 +40,22 @@ extern_methods!(
         pub unsafe fn setBadgeValue(&self, badge_value: NSUInteger);
 
         #[cfg(feature = "Foundation_NSError")]
+        /**
+          @abstract This block is called when the operation completes.
+
+          @discussion The @code -[NSOperation completionBlock] @endcode will also be called if both are set.
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(modifyBadgeCompletionBlock)]
         pub unsafe fn modifyBadgeCompletionBlock(&self) -> *mut Block<(*mut NSError,), ()>;
 
         #[cfg(feature = "Foundation_NSError")]
+        /**
+          @abstract This block is called when the operation completes.
+
+          @discussion The @code -[NSOperation completionBlock] @endcode will also be called if both are set.
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(setModifyBadgeCompletionBlock:)]
         pub unsafe fn setModifyBadgeCompletionBlock(
             &self,

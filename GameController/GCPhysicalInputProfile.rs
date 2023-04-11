@@ -8,6 +8,14 @@ use crate::GameController::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameController_GCPhysicalInputProfile")]
+    /**
+     A game controller profile representing physical buttons, thumbsticks, dpads, etc... on a controller.
+
+    All controller profiles provide a base level of information about the controller they belong to.
+
+    A profile maps the hardware notion of a controller into a logical controller. One that a developer can design for
+    and depend on, no matter the underlying hardware.
+    */
     pub struct GCPhysicalInputProfile;
 
     #[cfg(feature = "GameController_GCPhysicalInputProfile")]
@@ -17,21 +25,55 @@ extern_class!(
 );
 
 #[cfg(feature = "GameController_GCPhysicalInputProfile")]
+/**
+ A game controller profile representing physical buttons, thumbsticks, dpads, etc... on a controller.
+
+All controller profiles provide a base level of information about the controller they belong to.
+
+A profile maps the hardware notion of a controller into a logical controller. One that a developer can design for
+and depend on, no matter the underlying hardware.
+*/
 unsafe impl NSObjectProtocol for GCPhysicalInputProfile {}
 
 extern_methods!(
+    /**
+     A game controller profile representing physical buttons, thumbsticks, dpads, etc... on a controller.
+
+    All controller profiles provide a base level of information about the controller they belong to.
+
+    A profile maps the hardware notion of a controller into a logical controller. One that a developer can design for
+    and depend on, no matter the underlying hardware.
+    */
     #[cfg(feature = "GameController_GCPhysicalInputProfile")]
     unsafe impl GCPhysicalInputProfile {
+        /**
+         A profile keeps a reference to the device that this profile is mapping input from
+        */
         #[method_id(@__retain_semantics Other device)]
         pub unsafe fn device(&self) -> Option<Id<ProtocolObject<dyn GCDevice>>>;
 
+        /**
+         The last time elements of this profile were updated.
+        */
         #[method(lastEventTimestamp)]
         pub unsafe fn lastEventTimestamp(&self) -> NSTimeInterval;
 
+        /**
+         Whether the user has remapped their physical input controls for this profile at the system level.
+
+        @discussion On iOS and tvOS, users can remap their game controller inputs in Settings.
+        */
         #[method(hasRemappedElements)]
         pub unsafe fn hasRemappedElements(&self) -> bool;
 
         #[cfg(feature = "GameController_GCControllerElement")]
+        /**
+         Set this block if you want to be notified when a value on a element changed. If multiple elements have changed this block will be called
+        for each element that changed.
+
+        @param profile this profile that is being used to map the raw input data into logical values on controller elements such as the dpad or the buttons.
+        @param element the element that has been modified.
+        */
         #[method(valueDidChangeHandler)]
         pub unsafe fn valueDidChangeHandler(
             &self,
@@ -44,6 +86,13 @@ extern_methods!(
         >;
 
         #[cfg(feature = "GameController_GCControllerElement")]
+        /**
+         Set this block if you want to be notified when a value on a element changed. If multiple elements have changed this block will be called
+        for each element that changed.
+
+        @param profile this profile that is being used to map the raw input data into logical values on controller elements such as the dpad or the buttons.
+        @param element the element that has been modified.
+        */
         #[method(setValueDidChangeHandler:)]
         pub unsafe fn setValueDidChangeHandler(
             &self,
@@ -63,6 +112,13 @@ extern_methods!(
             feature = "Foundation_NSString",
             feature = "GameController_GCControllerElement"
         ))]
+        /**
+         The following properties allow for runtime lookup of any input element on a profile, when provided with a valid alias.
+
+        @example extendedGamepad.elements["Button A"] == extendedGamepad.buttonA // YES
+        @example extendedGamepad.dpads["Left Thumbstick"] == extendedGamepad.leftThumbstick // YES
+        @example extendedGamepad.dpads["Button B"] // returns nil, "Button B" is not a GCControllerDirectionPad
+        */
         #[method_id(@__retain_semantics Other elements)]
         pub unsafe fn elements(&self) -> Id<NSDictionary<NSString, GCControllerElement>>;
 
@@ -102,6 +158,9 @@ extern_methods!(
             feature = "Foundation_NSSet",
             feature = "GameController_GCControllerElement"
         ))]
+        /**
+         The following properties allow for dynamic querying of the input elements available on a profile.
+        */
         #[method_id(@__retain_semantics Other allElements)]
         pub unsafe fn allElements(&self) -> Id<NSSet<GCControllerElement>>;
 

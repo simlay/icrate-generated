@@ -43,32 +43,59 @@ extern_methods!(
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
         #[cfg(feature = "AppKit_NSRulerView")]
+        /**
+          Returns the ruler.
+        */
         #[method_id(@__retain_semantics Other ruler)]
         pub unsafe fn ruler(&self) -> Option<Id<NSRulerView>>;
 
+        /**
+          The location is set by the -init... method and the -setLocation: method.  Location is an x position for horizontal rulers or a y position for vertical rulers.  It is expressed in the client view's coordinate system.
+        */
         #[method(markerLocation)]
         pub unsafe fn markerLocation(&self) -> CGFloat;
 
+        /**
+          The location is set by the -init... method and the -setLocation: method.  Location is an x position for horizontal rulers or a y position for vertical rulers.  It is expressed in the client view's coordinate system.
+        */
         #[method(setMarkerLocation:)]
         pub unsafe fn setMarkerLocation(&self, marker_location: CGFloat);
 
         #[cfg(feature = "AppKit_NSImage")]
+        /**
+          The image is what's drawn in the ruler.
+        */
         #[method_id(@__retain_semantics Other image)]
         pub unsafe fn image(&self) -> Id<NSImage>;
 
         #[cfg(feature = "AppKit_NSImage")]
+        /**
+          The image is what's drawn in the ruler.
+        */
         #[method(setImage:)]
         pub unsafe fn setImage(&self, image: &NSImage);
 
+        /**
+          The image is drawn such that the image origin is on the baseline of the ruler at the object's location.
+        */
         #[method(imageOrigin)]
         pub unsafe fn imageOrigin(&self) -> NSPoint;
 
+        /**
+          The image is drawn such that the image origin is on the baseline of the ruler at the object's location.
+        */
         #[method(setImageOrigin:)]
         pub unsafe fn setImageOrigin(&self, image_origin: NSPoint);
 
+        /**
+          Objects are movable, but not removable by default.  Movable means the ruler object can be dragged by the user.  Removable means it can be deleted by the user.
+        */
         #[method(isMovable)]
         pub unsafe fn isMovable(&self) -> bool;
 
+        /**
+          Objects are movable, but not removable by default.  Movable means the ruler object can be dragged by the user.  Removable means it can be deleted by the user.
+        */
         #[method(setMovable:)]
         pub unsafe fn setMovable(&self, movable: bool);
 
@@ -78,18 +105,33 @@ extern_methods!(
         #[method(setRemovable:)]
         pub unsafe fn setRemovable(&self, removable: bool);
 
+        /**
+          Returns YES if the ruler object is currently being dragged.
+        */
         #[method(isDragging)]
         pub unsafe fn isDragging(&self) -> bool;
 
+        /**
+          The representedObject of an NSRulerMarker is purely for the client's use.  It must be able to copy itself.  A represented object should be some small object.  The text object uses NSStrings for most ruler objects or NSTextTab objects for tab stops.
+        */
         #[method_id(@__retain_semantics Other representedObject)]
         pub unsafe fn representedObject(&self) -> Option<Id<Object>>;
 
+        /**
+          The representedObject of an NSRulerMarker is purely for the client's use.  It must be able to copy itself.  A represented object should be some small object.  The text object uses NSStrings for most ruler objects or NSTextTab objects for tab stops.
+        */
         #[method(setRepresentedObject:)]
         pub unsafe fn setRepresentedObject(&self, represented_object: Option<&Object>);
 
+        /**
+          Returns the rect that would be occupied by the object's image in the ruler's bounds coordinates.  This takes the flippedness of the ruler into account.
+        */
         #[method(imageRectInRuler)]
         pub unsafe fn imageRectInRuler(&self) -> NSRect;
 
+        /**
+          Returns the height or width (depending on the ruler's orientation) required in the ruler to display the object.
+        */
         #[method(thicknessRequiredInRuler)]
         pub unsafe fn thicknessRequiredInRuler(&self) -> CGFloat;
 

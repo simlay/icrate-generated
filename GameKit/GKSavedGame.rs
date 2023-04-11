@@ -8,6 +8,9 @@ use crate::GameKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameKit_GKSavedGame")]
+    /**
+      Class representing a saved game for the local player, or a version of a saved game when in conflict
+    */
     pub struct GKSavedGame;
 
     #[cfg(feature = "GameKit_GKSavedGame")]
@@ -17,9 +20,15 @@ extern_class!(
 );
 
 #[cfg(feature = "GameKit_GKSavedGame")]
+/**
+  Class representing a saved game for the local player, or a version of a saved game when in conflict
+*/
 unsafe impl NSObjectProtocol for GKSavedGame {}
 
 extern_methods!(
+    /**
+      Class representing a saved game for the local player, or a version of a saved game when in conflict
+    */
     #[cfg(feature = "GameKit_GKSavedGame")]
     unsafe impl GKSavedGame {
         #[cfg(feature = "Foundation_NSString")]

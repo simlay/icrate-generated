@@ -9,6 +9,14 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKWorkoutRouteBuilder")]
+    /**
+     @class              HKWorkoutRouteBuilder
+    @abstract           An HKWorkoutRouteBuilder is used to generate an HKWorkoutRoute.
+    @discussion         This class is intended for generating long-running location data collection such as
+    might be associated with a workout. If the discard method is called, collected data will be deleted.
+    Calling finishRouteWithWorkout:metadata: will stop and complete the route. If the builder is deleted,
+    or the client goes away before calling the finish method, data will be lost.
+    */
     pub struct HKWorkoutRouteBuilder;
 
     #[cfg(feature = "HealthKit_HKWorkoutRouteBuilder")]
@@ -19,9 +27,25 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKWorkoutRouteBuilder")]
+/**
+ @class              HKWorkoutRouteBuilder
+@abstract           An HKWorkoutRouteBuilder is used to generate an HKWorkoutRoute.
+@discussion         This class is intended for generating long-running location data collection such as
+might be associated with a workout. If the discard method is called, collected data will be deleted.
+Calling finishRouteWithWorkout:metadata: will stop and complete the route. If the builder is deleted,
+or the client goes away before calling the finish method, data will be lost.
+*/
 unsafe impl NSObjectProtocol for HKWorkoutRouteBuilder {}
 
 extern_methods!(
+    /**
+     @class              HKWorkoutRouteBuilder
+    @abstract           An HKWorkoutRouteBuilder is used to generate an HKWorkoutRoute.
+    @discussion         This class is intended for generating long-running location data collection such as
+    might be associated with a workout. If the discard method is called, collected data will be deleted.
+    Calling finishRouteWithWorkout:metadata: will stop and complete the route. If the builder is deleted,
+    or the client goes away before calling the finish method, data will be lost.
+    */
     #[cfg(feature = "HealthKit_HKWorkoutRouteBuilder")]
     unsafe impl HKWorkoutRouteBuilder {
         #[cfg(all(feature = "HealthKit_HKDevice", feature = "HealthKit_HKHealthStore"))]

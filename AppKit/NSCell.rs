@@ -160,10 +160,16 @@ extern_methods!(
         pub unsafe fn prefersTrackingUntilMouseUp() -> bool;
 
         #[cfg(feature = "AppKit_NSView")]
+        /**
+          Must be an NSControl subclass
+        */
         #[method_id(@__retain_semantics Other controlView)]
         pub unsafe fn controlView(&self) -> Option<Id<NSView>>;
 
         #[cfg(feature = "AppKit_NSView")]
+        /**
+          Must be an NSControl subclass
+        */
         #[method(setControlView:)]
         pub unsafe fn setControlView(&self, control_view: Option<&NSView>);
 
@@ -179,9 +185,15 @@ extern_methods!(
         #[method(setState:)]
         pub unsafe fn setState(&self, state: NSControlStateValue);
 
+        /**
+          Target is weak for zeroing-weak compatible objects in apps linked on 10.10 or later. Otherwise the behavior of this property is 'assign'.
+        */
         #[method_id(@__retain_semantics Other target)]
         pub unsafe fn target(&self) -> Option<Id<Object>>;
 
+        /**
+          Target is weak for zeroing-weak compatible objects in apps linked on 10.10 or later. Otherwise the behavior of this property is 'assign'.
+        */
         #[method(setTarget:)]
         pub unsafe fn setTarget(&self, target: Option<&Object>);
 
@@ -247,9 +259,15 @@ extern_methods!(
         #[method(setBezeled:)]
         pub unsafe fn setBezeled(&self, bezeled: bool);
 
+        /**
+          If YES, sets wraps to NO
+        */
         #[method(isScrollable)]
         pub unsafe fn isScrollable(&self) -> bool;
 
+        /**
+          If YES, sets wraps to NO
+        */
         #[method(setScrollable:)]
         pub unsafe fn setScrollable(&self, scrollable: bool);
 
@@ -265,9 +283,15 @@ extern_methods!(
         #[method(setAlignment:)]
         pub unsafe fn setAlignment(&self, alignment: NSTextAlignment);
 
+        /**
+          If YES, sets scrollable to NO
+        */
         #[method(wraps)]
         pub unsafe fn wraps(&self) -> bool;
 
+        /**
+          If YES, sets scrollable to NO
+        */
         #[method(setWraps:)]
         pub unsafe fn setWraps(&self, wraps: bool);
 
@@ -291,9 +315,15 @@ extern_methods!(
         #[method(setFormatter:)]
         pub unsafe fn setFormatter(&self, formatter: Option<&NSFormatter>);
 
+        /**
+          id <NSCopying>
+        */
         #[method_id(@__retain_semantics Other objectValue)]
         pub unsafe fn objectValue(&self) -> Option<Id<Object>>;
 
+        /**
+          id <NSCopying>
+        */
         #[method(setObjectValue:)]
         pub unsafe fn setObjectValue(&self, object_value: Option<&Object>);
 
@@ -561,15 +591,27 @@ extern_methods!(
         #[method(setAllowsUndo:)]
         pub unsafe fn setAllowsUndo(&self, allows_undo: bool);
 
+        /**
+          Truncates and adds the ellipsis character to the last visible line if the text doesn't fit into the cell bounds. The setting is ignored if -lineBreakMode is neither NSLineBreakByWordWrapping nor NSLineBreakByCharWrapping.
+        */
         #[method(truncatesLastVisibleLine)]
         pub unsafe fn truncatesLastVisibleLine(&self) -> bool;
 
+        /**
+          Truncates and adds the ellipsis character to the last visible line if the text doesn't fit into the cell bounds. The setting is ignored if -lineBreakMode is neither NSLineBreakByWordWrapping nor NSLineBreakByCharWrapping.
+        */
         #[method(setTruncatesLastVisibleLine:)]
         pub unsafe fn setTruncatesLastVisibleLine(&self, truncates_last_visible_line: bool);
 
+        /**
+          Bi-directional User Interface. It specifies the general UI layout flow directions.
+        */
         #[method(userInterfaceLayoutDirection)]
         pub unsafe fn userInterfaceLayoutDirection(&self) -> NSUserInterfaceLayoutDirection;
 
+        /**
+          Bi-directional User Interface. It specifies the general UI layout flow directions.
+        */
         #[method(setUserInterfaceLayoutDirection:)]
         pub unsafe fn setUserInterfaceLayoutDirection(
             &self,
@@ -580,9 +622,15 @@ extern_methods!(
         #[method_id(@__retain_semantics Other fieldEditorForView:)]
         pub unsafe fn fieldEditorForView(&self, control_view: &NSView) -> Option<Id<NSTextView>>;
 
+        /**
+          Tells the text cell to layout/render its content in single-line. If YES, the cell ignores the return value from -wraps, interprets NSLineBreakByWordWrapping and NSLineBreakByCharWrapping from -lineBreakMode as NSLineBreakByClipping, and configures the field editor to ignore key binding commands that insert paragraph/line separators. Also, the field editor bound to a single line cell filters paragraph/line separator insertion from user actions. Cells in the single line mode use the fixed baseline layout. The text baseline position is determined solely by the control size regardless of content font style/size.
+        */
         #[method(usesSingleLineMode)]
         pub unsafe fn usesSingleLineMode(&self) -> bool;
 
+        /**
+          Tells the text cell to layout/render its content in single-line. If YES, the cell ignores the return value from -wraps, interprets NSLineBreakByWordWrapping and NSLineBreakByCharWrapping from -lineBreakMode as NSLineBreakByClipping, and configures the field editor to ignore key binding commands that insert paragraph/line separators. Also, the field editor bound to a single line cell filters paragraph/line separator insertion from user actions. Cells in the single line mode use the fixed baseline layout. The text baseline position is determined solely by the control size regardless of content font style/size.
+        */
         #[method(setUsesSingleLineMode:)]
         pub unsafe fn setUsesSingleLineMode(&self, uses_single_line_mode: bool);
 
@@ -647,6 +695,9 @@ extern_methods!(
             control_view: &NSView,
         ) -> NSRect;
 
+        /**
+          If the receiver returns YES, the field editor initiated by it posts text change notifications (i.e. NSTextDidChangeNotification) while editing marked text; otherwise, they are delayed until the marked text confirmation. The NSCell's implementation returns NO.
+        */
         #[method(wantsNotificationForMarkedText)]
         pub unsafe fn wantsNotificationForMarkedText(&self) -> bool;
     }
@@ -664,15 +715,27 @@ extern_methods!(
         #[method(setAttributedStringValue:)]
         pub unsafe fn setAttributedStringValue(&self, attributed_string_value: &NSAttributedString);
 
+        /**
+          If NO, also clears setImportsGraphics:
+        */
         #[method(allowsEditingTextAttributes)]
         pub unsafe fn allowsEditingTextAttributes(&self) -> bool;
 
+        /**
+          If NO, also clears setImportsGraphics:
+        */
         #[method(setAllowsEditingTextAttributes:)]
         pub unsafe fn setAllowsEditingTextAttributes(&self, allows_editing_text_attributes: bool);
 
+        /**
+          If YES, also sets setAllowsEditingTextAttributes:
+        */
         #[method(importsGraphics)]
         pub unsafe fn importsGraphics(&self) -> bool;
 
+        /**
+          If YES, also sets setAllowsEditingTextAttributes:
+        */
         #[method(setImportsGraphics:)]
         pub unsafe fn setImportsGraphics(&self, imports_graphics: bool);
     }
@@ -688,6 +751,9 @@ extern_methods!(
         #[method(setAllowsMixedState:)]
         pub unsafe fn setAllowsMixedState(&self, allows_mixed_state: bool);
 
+        /**
+          get next state state in cycle
+        */
         #[method(nextState)]
         pub unsafe fn nextState(&self) -> NSInteger;
 
@@ -698,6 +764,9 @@ extern_methods!(
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+      Cell Hit testing support
+    */
     pub enum NSCellHitResult {
         NSCellHitNone = 0,
         NSCellHitContentArea = 1 << 0,
@@ -753,12 +822,23 @@ extern_methods!(
     /// NSCellBackgroundStyle
     #[cfg(feature = "AppKit_NSCell")]
     unsafe impl NSCell {
+        /**
+          Describes the surface the cell is drawn onto in -[NSCell drawWithFrame:inView:]. A control typically sets this before it asks the cell to draw. A cell may draw differently based on background characteristics. For example, a tableview drawing a cell in a selected row might call [cell setBackgroundStyle:NSBackgroundStyleEmphasized]. A text cell might decide to render its text using alternateSelectedControlTextColor as a result.
+        */
         #[method(backgroundStyle)]
         pub unsafe fn backgroundStyle(&self) -> NSBackgroundStyle;
 
+        /**
+          Describes the surface the cell is drawn onto in -[NSCell drawWithFrame:inView:]. A control typically sets this before it asks the cell to draw. A cell may draw differently based on background characteristics. For example, a tableview drawing a cell in a selected row might call [cell setBackgroundStyle:NSBackgroundStyleEmphasized]. A text cell might decide to render its text using alternateSelectedControlTextColor as a result.
+        */
         #[method(setBackgroundStyle:)]
         pub unsafe fn setBackgroundStyle(&self, background_style: NSBackgroundStyle);
 
+        /**
+          Describes the surface drawn onto in -[NSCell drawInteriorWithFrame:inView:]. This is often the same as the backgroundStyle, but a button that draws a bezel would have a different interiorBackgroundStyle.
+
+        This is both an override point and a useful method to call. A button that draws a custom bezel would override this to describe that surface. A cell that has custom interior drawing might query this method to help pick an image that looks good on the cell. Calling this method gives you some independence from changes in framework art style.
+        */
         #[method(interiorBackgroundStyle)]
         pub unsafe fn interiorBackgroundStyle(&self) -> NSBackgroundStyle;
     }

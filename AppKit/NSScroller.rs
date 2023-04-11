@@ -86,6 +86,23 @@ unsafe impl NSUserInterfaceItemIdentification for NSScroller {}
 extern_methods!(
     #[cfg(feature = "AppKit_NSScroller")]
     unsafe impl NSScroller {
+        /**
+          A subclass of NSScroller can override this method to certify that its customizations are compatible with 10.7's new iOS-like "Overlay" scroller style and behaviors.  By default, AppKit assumes that instances of NSScroller subclasses may not be compatible with the way that Overlay scrollers are presented, and falls back to the more compatible 10.6-like scroller metrics and behavior for subclassed scrollers.  The recommended override technique for a subclass "MyCustomScroller" that wants to declare itself compatible with Overlay scroller presentation is:
+
+        @implementation MyCustomScroller
+        ...
+        + (BOOL)isCompatibleWithOverlayScrollers {
+        return self == [MyCustomScroller class];
+        }
+
+        In this way, compatibility will be properly assessed for both "MyCustomScroller", and for potentially unknown subclasses thereof.
+
+        When it opts in in this manner, an NSScroller subclass certifies that:
+        - It performs any appearance customization by overriding the parts-drawing methods -drawKnob and -drawKnobSlotInRect:highlight:, and not by overriding -drawRect: wholesale.  (This is necessary to allow for separate knob and track fade in/out.  AppKit automatically applies the necessary fade alpha to whatever is drawn by -drawKnob and -drawKnobSlotInRect:highlight:.)
+        - It likewise performs any event-handling customization by overriding the parts-based methods -testPart: and -trackKnob:, and not by overriding -mouseDown: wholesale.
+        - It can deal with the fact that scroller arrows no longer exist, and -rectForPart: returns empty rects for them.
+        - It can accommodate the potentially different size and layout metrics used by Overlay scrollers.
+        */
         #[method(isCompatibleWithOverlayScrollers)]
         pub unsafe fn isCompatibleWithOverlayScrollers() -> bool;
 
@@ -95,18 +112,33 @@ extern_methods!(
             scroller_style: NSScrollerStyle,
         ) -> CGFloat;
 
+        /**
+          Returns the style of scrollers that applications should use wherever possible.  This value is determined by the Appearance preference panel's "Show scroll bars" setting for the current user, and -- when the user's preference is set to "Automatically based on input device" -- by the set of built-in and connected pointing devices and the user's scroll capability preference settings for them.  The preferredScrollerStyle will therefore change over time, and applications should be prepared to adapt their user interfaces to the new scroller style if needed.  In most cases, the updating is automatic: When the preferredScrollerStyle changes, AppKit notifies all NSScrollView instances, sending -setScrollerStyle: to each with the new style, which causes each NSScrollView to automatically re-tile (update its layout) to adapt to the new scroller style.  Some NSScrollView instances may refuse the new scroller style setting if they cannot accommodate it for compatibility reasons (presence of accessory views or legacy scroller subclasses prevent use of Overlay scrollers), but most instances will switch to the specified new preferredScrollerStyle.  Clients that wish to be notified of changes to +preferredScrollerStyle's return value can subscribe to NSPreferredScrollerStyleDidChangeNotification (declared below).
+        */
         #[method(preferredScrollerStyle)]
         pub unsafe fn preferredScrollerStyle() -> NSScrollerStyle;
 
+        /**
+          Accessors for scroller's style.  For a scroller that's managed by an NSScrollView, the setter is automatically invoked by the ScrollView with the appropriate setting, according to the user's Appearance preference settings and possibly what pointing device(s) are present.
+        */
         #[method(scrollerStyle)]
         pub unsafe fn scrollerStyle(&self) -> NSScrollerStyle;
 
+        /**
+          Accessors for scroller's style.  For a scroller that's managed by an NSScrollView, the setter is automatically invoked by the ScrollView with the appropriate setting, according to the user's Appearance preference settings and possibly what pointing device(s) are present.
+        */
         #[method(setScrollerStyle:)]
         pub unsafe fn setScrollerStyle(&self, scroller_style: NSScrollerStyle);
 
+        /**
+          Accessors for the scroller's knob style.  The value of this property does not affect Legacy scrollers.  NSScrollerKnobStyleDefault is appropriate for a wide range of content, but in some cases choosing an alternative knob style may enhance visibility of the scroller knob atop some kinds of content.
+        */
         #[method(knobStyle)]
         pub unsafe fn knobStyle(&self) -> NSScrollerKnobStyle;
 
+        /**
+          Accessors for the scroller's knob style.  The value of this property does not affect Legacy scrollers.  NSScrollerKnobStyleDefault is appropriate for a wide range of content, but in some cases choosing an alternative knob style may enhance visibility of the scroller knob atop some kinds of content.
+        */
         #[method(setKnobStyle:)]
         pub unsafe fn setKnobStyle(&self, knob_style: NSScrollerKnobStyle);
 
@@ -153,6 +185,9 @@ extern_static!(NSPreferredScrollerStyleDidChangeNotification: &'static NSNotific
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      Deprecated API
+    */
     #[deprecated = "Scroller arrows are not used anymore."]
     pub enum NSScrollArrowPosition {
         NSScrollerArrowsMaxEnd = 0,

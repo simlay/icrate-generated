@@ -16,6 +16,31 @@ ns_options!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSGradient")]
+    /**
+      An NSGradient defines a transition between colors.  The transition is defined over a range from 0.0 to 1.0 inclusive.  A gradient typically contains a color at location 0.0, and one at location 1.0 with additional colors assigned to locations between 0.0 and 1.0.
+
+    An NSGradient is a drawing primitive that can draw itself as a linear or radial gradient.  The color value at location 0.0 is considered the starting color, the color value at location 1.0 is considered the ending color.  A primitive drawing method is provided for both linear and radial gradients.  Each primitive drawing method provides flexibility in specifying the location of its respective gradient.  These primitive drawing methods perform no clipping before drawing.
+
+    In addition, convenience drawing methods take a rectangle or path, and automatically calculate staring and ending locations and perform clipping to provide a convenient means for drawing gradient fills.  Two of the convenience methods are demonstrated below:
+
+
+    The following code will fill a rectangle with a 45 degree linear gradient, from black to white:
+
+    NSRect rect; // assume this exists
+    NSGradient *gradient = [[NSGradient alloc] initWithStartingColor: [NSColor blackColor] endingColor: [NSColor whiteColor]];
+    [gradient drawInRect: rect angle: 45.0];
+    [gradient release];
+
+    The following code will fill an arbitrary bezier path with a radial gradient, from the center of the path's bounding box, that transitions through three colors, evenly distributed in the gradient from 0.0 to 1.0.
+
+    NSBezierPath *path // assume this exists
+    NSArray *colorArray = [NSArray arrayWithObjects: [NSColor blueColor], [NSColor yellowColor], [NSColor orangeColor], nil];
+    NSGradient *gradient = [[NSGradient alloc] initWithColors: colorArray];
+    [gradient drawInBezierPath: path relativeCenterPosition: NSZeroPoint];
+    [gradient release];
+
+    An NSGradient has a color space.  When initialized, all colors provided are converted to that color space, and interpolation of colors occurs using the components of that color space.  The designated initializer takes a color space argument, all other initializers use the default generic RGB color space.
+    */
     pub struct NSGradient;
 
     #[cfg(feature = "AppKit_NSGradient")]
@@ -25,15 +50,115 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSGradient")]
+/**
+  An NSGradient defines a transition between colors.  The transition is defined over a range from 0.0 to 1.0 inclusive.  A gradient typically contains a color at location 0.0, and one at location 1.0 with additional colors assigned to locations between 0.0 and 1.0.
+
+An NSGradient is a drawing primitive that can draw itself as a linear or radial gradient.  The color value at location 0.0 is considered the starting color, the color value at location 1.0 is considered the ending color.  A primitive drawing method is provided for both linear and radial gradients.  Each primitive drawing method provides flexibility in specifying the location of its respective gradient.  These primitive drawing methods perform no clipping before drawing.
+
+In addition, convenience drawing methods take a rectangle or path, and automatically calculate staring and ending locations and perform clipping to provide a convenient means for drawing gradient fills.  Two of the convenience methods are demonstrated below:
+
+
+The following code will fill a rectangle with a 45 degree linear gradient, from black to white:
+
+NSRect rect; // assume this exists
+NSGradient *gradient = [[NSGradient alloc] initWithStartingColor: [NSColor blackColor] endingColor: [NSColor whiteColor]];
+[gradient drawInRect: rect angle: 45.0];
+[gradient release];
+
+The following code will fill an arbitrary bezier path with a radial gradient, from the center of the path's bounding box, that transitions through three colors, evenly distributed in the gradient from 0.0 to 1.0.
+
+NSBezierPath *path // assume this exists
+NSArray *colorArray = [NSArray arrayWithObjects: [NSColor blueColor], [NSColor yellowColor], [NSColor orangeColor], nil];
+NSGradient *gradient = [[NSGradient alloc] initWithColors: colorArray];
+[gradient drawInBezierPath: path relativeCenterPosition: NSZeroPoint];
+[gradient release];
+
+An NSGradient has a color space.  When initialized, all colors provided are converted to that color space, and interpolation of colors occurs using the components of that color space.  The designated initializer takes a color space argument, all other initializers use the default generic RGB color space.
+*/
 unsafe impl NSCoding for NSGradient {}
 
 #[cfg(feature = "AppKit_NSGradient")]
+/**
+  An NSGradient defines a transition between colors.  The transition is defined over a range from 0.0 to 1.0 inclusive.  A gradient typically contains a color at location 0.0, and one at location 1.0 with additional colors assigned to locations between 0.0 and 1.0.
+
+An NSGradient is a drawing primitive that can draw itself as a linear or radial gradient.  The color value at location 0.0 is considered the starting color, the color value at location 1.0 is considered the ending color.  A primitive drawing method is provided for both linear and radial gradients.  Each primitive drawing method provides flexibility in specifying the location of its respective gradient.  These primitive drawing methods perform no clipping before drawing.
+
+In addition, convenience drawing methods take a rectangle or path, and automatically calculate staring and ending locations and perform clipping to provide a convenient means for drawing gradient fills.  Two of the convenience methods are demonstrated below:
+
+
+The following code will fill a rectangle with a 45 degree linear gradient, from black to white:
+
+NSRect rect; // assume this exists
+NSGradient *gradient = [[NSGradient alloc] initWithStartingColor: [NSColor blackColor] endingColor: [NSColor whiteColor]];
+[gradient drawInRect: rect angle: 45.0];
+[gradient release];
+
+The following code will fill an arbitrary bezier path with a radial gradient, from the center of the path's bounding box, that transitions through three colors, evenly distributed in the gradient from 0.0 to 1.0.
+
+NSBezierPath *path // assume this exists
+NSArray *colorArray = [NSArray arrayWithObjects: [NSColor blueColor], [NSColor yellowColor], [NSColor orangeColor], nil];
+NSGradient *gradient = [[NSGradient alloc] initWithColors: colorArray];
+[gradient drawInBezierPath: path relativeCenterPosition: NSZeroPoint];
+[gradient release];
+
+An NSGradient has a color space.  When initialized, all colors provided are converted to that color space, and interpolation of colors occurs using the components of that color space.  The designated initializer takes a color space argument, all other initializers use the default generic RGB color space.
+*/
 unsafe impl NSObjectProtocol for NSGradient {}
 
 #[cfg(feature = "AppKit_NSGradient")]
+/**
+  An NSGradient defines a transition between colors.  The transition is defined over a range from 0.0 to 1.0 inclusive.  A gradient typically contains a color at location 0.0, and one at location 1.0 with additional colors assigned to locations between 0.0 and 1.0.
+
+An NSGradient is a drawing primitive that can draw itself as a linear or radial gradient.  The color value at location 0.0 is considered the starting color, the color value at location 1.0 is considered the ending color.  A primitive drawing method is provided for both linear and radial gradients.  Each primitive drawing method provides flexibility in specifying the location of its respective gradient.  These primitive drawing methods perform no clipping before drawing.
+
+In addition, convenience drawing methods take a rectangle or path, and automatically calculate staring and ending locations and perform clipping to provide a convenient means for drawing gradient fills.  Two of the convenience methods are demonstrated below:
+
+
+The following code will fill a rectangle with a 45 degree linear gradient, from black to white:
+
+NSRect rect; // assume this exists
+NSGradient *gradient = [[NSGradient alloc] initWithStartingColor: [NSColor blackColor] endingColor: [NSColor whiteColor]];
+[gradient drawInRect: rect angle: 45.0];
+[gradient release];
+
+The following code will fill an arbitrary bezier path with a radial gradient, from the center of the path's bounding box, that transitions through three colors, evenly distributed in the gradient from 0.0 to 1.0.
+
+NSBezierPath *path // assume this exists
+NSArray *colorArray = [NSArray arrayWithObjects: [NSColor blueColor], [NSColor yellowColor], [NSColor orangeColor], nil];
+NSGradient *gradient = [[NSGradient alloc] initWithColors: colorArray];
+[gradient drawInBezierPath: path relativeCenterPosition: NSZeroPoint];
+[gradient release];
+
+An NSGradient has a color space.  When initialized, all colors provided are converted to that color space, and interpolation of colors occurs using the components of that color space.  The designated initializer takes a color space argument, all other initializers use the default generic RGB color space.
+*/
 unsafe impl NSSecureCoding for NSGradient {}
 
 extern_methods!(
+    /**
+      An NSGradient defines a transition between colors.  The transition is defined over a range from 0.0 to 1.0 inclusive.  A gradient typically contains a color at location 0.0, and one at location 1.0 with additional colors assigned to locations between 0.0 and 1.0.
+
+    An NSGradient is a drawing primitive that can draw itself as a linear or radial gradient.  The color value at location 0.0 is considered the starting color, the color value at location 1.0 is considered the ending color.  A primitive drawing method is provided for both linear and radial gradients.  Each primitive drawing method provides flexibility in specifying the location of its respective gradient.  These primitive drawing methods perform no clipping before drawing.
+
+    In addition, convenience drawing methods take a rectangle or path, and automatically calculate staring and ending locations and perform clipping to provide a convenient means for drawing gradient fills.  Two of the convenience methods are demonstrated below:
+
+
+    The following code will fill a rectangle with a 45 degree linear gradient, from black to white:
+
+    NSRect rect; // assume this exists
+    NSGradient *gradient = [[NSGradient alloc] initWithStartingColor: [NSColor blackColor] endingColor: [NSColor whiteColor]];
+    [gradient drawInRect: rect angle: 45.0];
+    [gradient release];
+
+    The following code will fill an arbitrary bezier path with a radial gradient, from the center of the path's bounding box, that transitions through three colors, evenly distributed in the gradient from 0.0 to 1.0.
+
+    NSBezierPath *path // assume this exists
+    NSArray *colorArray = [NSArray arrayWithObjects: [NSColor blueColor], [NSColor yellowColor], [NSColor orangeColor], nil];
+    NSGradient *gradient = [[NSGradient alloc] initWithColors: colorArray];
+    [gradient drawInBezierPath: path relativeCenterPosition: NSZeroPoint];
+    [gradient release];
+
+    An NSGradient has a color space.  When initialized, all colors provided are converted to that color space, and interpolation of colors occurs using the components of that color space.  The designated initializer takes a color space argument, all other initializers use the default generic RGB color space.
+    */
     #[cfg(feature = "AppKit_NSGradient")]
     unsafe impl NSGradient {
         #[cfg(feature = "AppKit_NSColor")]
@@ -109,9 +234,15 @@ extern_methods!(
         );
 
         #[cfg(feature = "AppKit_NSColorSpace")]
+        /**
+          Returns the color space of the gradient
+        */
         #[method_id(@__retain_semantics Other colorSpace)]
         pub unsafe fn colorSpace(&self) -> Id<NSColorSpace>;
 
+        /**
+          The number of color stops in the color gradient
+        */
         #[method(numberOfColorStops)]
         pub unsafe fn numberOfColorStops(&self) -> NSInteger;
 

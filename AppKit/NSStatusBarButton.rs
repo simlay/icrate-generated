@@ -8,6 +8,10 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSStatusBarButton")]
+    /**
+      StatusBarButtons are the visual representation of NSStatusItems, and are primarily displayed on the right side of the menu bar.
+     When a template image is set as the \c image property of the status bar button, it is rendered with the correct menu bar style. This guarantees that the button will look correct in various button states and appearances (such as dark menu bar).
+    */
     pub struct NSStatusBarButton;
 
     #[cfg(feature = "AppKit_NSStatusBarButton")]
@@ -18,44 +22,98 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSStatusBarButton")]
+/**
+  StatusBarButtons are the visual representation of NSStatusItems, and are primarily displayed on the right side of the menu bar.
+ When a template image is set as the \c image property of the status bar button, it is rendered with the correct menu bar style. This guarantees that the button will look correct in various button states and appearances (such as dark menu bar).
+*/
 unsafe impl NSAccessibility for NSStatusBarButton {}
 
 #[cfg(feature = "AppKit_NSStatusBarButton")]
+/**
+  StatusBarButtons are the visual representation of NSStatusItems, and are primarily displayed on the right side of the menu bar.
+ When a template image is set as the \c image property of the status bar button, it is rendered with the correct menu bar style. This guarantees that the button will look correct in various button states and appearances (such as dark menu bar).
+*/
 unsafe impl NSAccessibilityButton for NSStatusBarButton {}
 
 #[cfg(feature = "AppKit_NSStatusBarButton")]
+/**
+  StatusBarButtons are the visual representation of NSStatusItems, and are primarily displayed on the right side of the menu bar.
+ When a template image is set as the \c image property of the status bar button, it is rendered with the correct menu bar style. This guarantees that the button will look correct in various button states and appearances (such as dark menu bar).
+*/
 unsafe impl NSAccessibilityElementProtocol for NSStatusBarButton {}
 
 #[cfg(feature = "AppKit_NSStatusBarButton")]
+/**
+  StatusBarButtons are the visual representation of NSStatusItems, and are primarily displayed on the right side of the menu bar.
+ When a template image is set as the \c image property of the status bar button, it is rendered with the correct menu bar style. This guarantees that the button will look correct in various button states and appearances (such as dark menu bar).
+*/
 unsafe impl NSAnimatablePropertyContainer for NSStatusBarButton {}
 
 #[cfg(feature = "AppKit_NSStatusBarButton")]
+/**
+  StatusBarButtons are the visual representation of NSStatusItems, and are primarily displayed on the right side of the menu bar.
+ When a template image is set as the \c image property of the status bar button, it is rendered with the correct menu bar style. This guarantees that the button will look correct in various button states and appearances (such as dark menu bar).
+*/
 unsafe impl NSAppearanceCustomization for NSStatusBarButton {}
 
 #[cfg(feature = "AppKit_NSStatusBarButton")]
+/**
+  StatusBarButtons are the visual representation of NSStatusItems, and are primarily displayed on the right side of the menu bar.
+ When a template image is set as the \c image property of the status bar button, it is rendered with the correct menu bar style. This guarantees that the button will look correct in various button states and appearances (such as dark menu bar).
+*/
 unsafe impl NSCoding for NSStatusBarButton {}
 
 #[cfg(feature = "AppKit_NSStatusBarButton")]
+/**
+  StatusBarButtons are the visual representation of NSStatusItems, and are primarily displayed on the right side of the menu bar.
+ When a template image is set as the \c image property of the status bar button, it is rendered with the correct menu bar style. This guarantees that the button will look correct in various button states and appearances (such as dark menu bar).
+*/
 unsafe impl NSDraggingDestination for NSStatusBarButton {}
 
 #[cfg(feature = "AppKit_NSStatusBarButton")]
+/**
+  StatusBarButtons are the visual representation of NSStatusItems, and are primarily displayed on the right side of the menu bar.
+ When a template image is set as the \c image property of the status bar button, it is rendered with the correct menu bar style. This guarantees that the button will look correct in various button states and appearances (such as dark menu bar).
+*/
 unsafe impl NSObjectProtocol for NSStatusBarButton {}
 
 #[cfg(feature = "AppKit_NSStatusBarButton")]
+/**
+  StatusBarButtons are the visual representation of NSStatusItems, and are primarily displayed on the right side of the menu bar.
+ When a template image is set as the \c image property of the status bar button, it is rendered with the correct menu bar style. This guarantees that the button will look correct in various button states and appearances (such as dark menu bar).
+*/
 unsafe impl NSUserInterfaceCompression for NSStatusBarButton {}
 
 #[cfg(feature = "AppKit_NSStatusBarButton")]
+/**
+  StatusBarButtons are the visual representation of NSStatusItems, and are primarily displayed on the right side of the menu bar.
+ When a template image is set as the \c image property of the status bar button, it is rendered with the correct menu bar style. This guarantees that the button will look correct in various button states and appearances (such as dark menu bar).
+*/
 unsafe impl NSUserInterfaceItemIdentification for NSStatusBarButton {}
 
 #[cfg(feature = "AppKit_NSStatusBarButton")]
+/**
+  StatusBarButtons are the visual representation of NSStatusItems, and are primarily displayed on the right side of the menu bar.
+ When a template image is set as the \c image property of the status bar button, it is rendered with the correct menu bar style. This guarantees that the button will look correct in various button states and appearances (such as dark menu bar).
+*/
 unsafe impl NSUserInterfaceValidations for NSStatusBarButton {}
 
 extern_methods!(
+    /**
+      StatusBarButtons are the visual representation of NSStatusItems, and are primarily displayed on the right side of the menu bar.
+     When a template image is set as the \c image property of the status bar button, it is rendered with the correct menu bar style. This guarantees that the button will look correct in various button states and appearances (such as dark menu bar).
+    */
     #[cfg(feature = "AppKit_NSStatusBarButton")]
     unsafe impl NSStatusBarButton {
+        /**
+          When YES the status bar icon has a disabled/off appearance while still being functional, such as allowing selection and actions. Defaults to NO.
+        */
         #[method(appearsDisabled)]
         pub unsafe fn appearsDisabled(&self) -> bool;
 
+        /**
+          When YES the status bar icon has a disabled/off appearance while still being functional, such as allowing selection and actions. Defaults to NO.
+        */
         #[method(setAppearsDisabled:)]
         pub unsafe fn setAppearsDisabled(&self, appears_disabled: bool);
     }
@@ -63,6 +121,10 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSButton`
+    /**
+      StatusBarButtons are the visual representation of NSStatusItems, and are primarily displayed on the right side of the menu bar.
+     When a template image is set as the \c image property of the status bar button, it is rendered with the correct menu bar style. This guarantees that the button will look correct in various button states and appearances (such as dark menu bar).
+    */
     #[cfg(feature = "AppKit_NSStatusBarButton")]
     unsafe impl NSStatusBarButton {
         #[cfg(all(feature = "AppKit_NSImage", feature = "Foundation_NSString"))]
@@ -110,6 +172,10 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSControl`
+    /**
+      StatusBarButtons are the visual representation of NSStatusItems, and are primarily displayed on the right side of the menu bar.
+     When a template image is set as the \c image property of the status bar button, it is rendered with the correct menu bar style. This guarantees that the button will look correct in various button states and appearances (such as dark menu bar).
+    */
     #[cfg(feature = "AppKit_NSStatusBarButton")]
     unsafe impl NSStatusBarButton {
         #[method_id(@__retain_semantics Init initWithFrame:)]

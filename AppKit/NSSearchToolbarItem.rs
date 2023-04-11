@@ -8,6 +8,9 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSSearchToolbarItem")]
+    /**
+      NSSearchToolbarItem provides the standard UI behavior for integrating a search field into the toolbar.
+    */
     pub struct NSSearchToolbarItem;
 
     #[cfg(feature = "AppKit_NSSearchToolbarItem")]
@@ -18,39 +21,69 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSSearchToolbarItem")]
+/**
+  NSSearchToolbarItem provides the standard UI behavior for integrating a search field into the toolbar.
+*/
 unsafe impl NSObjectProtocol for NSSearchToolbarItem {}
 
 extern_methods!(
+    /**
+      NSSearchToolbarItem provides the standard UI behavior for integrating a search field into the toolbar.
+    */
     #[cfg(feature = "AppKit_NSSearchToolbarItem")]
     unsafe impl NSSearchToolbarItem {
         #[cfg(feature = "AppKit_NSSearchField")]
+        /**
+          An NSSearchField displayed in the toolbar item. While inside the toolbar item, the field properties and layout constraints are managed by the item. The field should be configured before assigned. The width constraint for the field could be updated after assigned. When set to nil, will reset to a search field with the default configuration.
+        */
         #[method_id(@__retain_semantics Other searchField)]
         pub unsafe fn searchField(&self) -> Id<NSSearchField>;
 
         #[cfg(feature = "AppKit_NSSearchField")]
+        /**
+          An NSSearchField displayed in the toolbar item. While inside the toolbar item, the field properties and layout constraints are managed by the item. The field should be configured before assigned. The width constraint for the field could be updated after assigned. When set to nil, will reset to a search field with the default configuration.
+        */
         #[method(setSearchField:)]
         pub unsafe fn setSearchField(&self, search_field: &NSSearchField);
 
         #[cfg(feature = "AppKit_NSView")]
+        /**
+          The base view property is owned by the toolbar item and not available for customization.
+        */
         #[method_id(@__retain_semantics Other view)]
         pub unsafe fn view(&self) -> Option<Id<NSView>>;
 
         #[cfg(feature = "AppKit_NSView")]
+        /**
+          The base view property is owned by the toolbar item and not available for customization.
+        */
         #[method(setView:)]
         pub unsafe fn setView(&self, view: Option<&NSView>);
 
+        /**
+          When YES, the cancel button in the field resigns the first responder status of the search field as clearing the contents. The default is YES.
+        */
         #[method(resignsFirstResponderWithCancel)]
         pub unsafe fn resignsFirstResponderWithCancel(&self) -> bool;
 
+        /**
+          When YES, the cancel button in the field resigns the first responder status of the search field as clearing the contents. The default is YES.
+        */
         #[method(setResignsFirstResponderWithCancel:)]
         pub unsafe fn setResignsFirstResponderWithCancel(
             &self,
             resigns_first_responder_with_cancel: bool,
         );
 
+        /**
+          The preferred width for the search field. This value is used to configure the search field width whenever it gets the keyboard focus.If specifying custom width constraints to the search field, they should not conflict with this value.
+        */
         #[method(preferredWidthForSearchField)]
         pub unsafe fn preferredWidthForSearchField(&self) -> CGFloat;
 
+        /**
+          The preferred width for the search field. This value is used to configure the search field width whenever it gets the keyboard focus.If specifying custom width constraints to the search field, they should not conflict with this value.
+        */
         #[method(setPreferredWidthForSearchField:)]
         pub unsafe fn setPreferredWidthForSearchField(
             &self,
@@ -67,6 +100,9 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSToolbarItem`
+    /**
+      NSSearchToolbarItem provides the standard UI behavior for integrating a search field into the toolbar.
+    */
     #[cfg(feature = "AppKit_NSSearchToolbarItem")]
     unsafe impl NSSearchToolbarItem {
         #[method_id(@__retain_semantics Init initWithItemIdentifier:)]

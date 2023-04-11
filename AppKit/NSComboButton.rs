@@ -85,38 +85,68 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The title displayed on the control. The default value is an empty string.
+        */
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The title displayed on the control. The default value is an empty string.
+        */
         #[method(setTitle:)]
         pub unsafe fn setTitle(&self, title: &NSString);
 
         #[cfg(feature = "AppKit_NSImage")]
+        /**
+          The image displayed on the control. The default value is `nil`.
+        */
         #[method_id(@__retain_semantics Other image)]
         pub unsafe fn image(&self) -> Option<Id<NSImage>>;
 
         #[cfg(feature = "AppKit_NSImage")]
+        /**
+          The image displayed on the control. The default value is `nil`.
+        */
         #[method(setImage:)]
         pub unsafe fn setImage(&self, image: Option<&NSImage>);
 
+        /**
+          The scaling mode applied to fit the button's image within the content area. The default value is `NSImageScaleProportionallyDown`.
+        */
         #[method(imageScaling)]
         pub unsafe fn imageScaling(&self) -> NSImageScaling;
 
+        /**
+          The scaling mode applied to fit the button's image within the content area. The default value is `NSImageScaleProportionallyDown`.
+        */
         #[method(setImageScaling:)]
         pub unsafe fn setImageScaling(&self, image_scaling: NSImageScaling);
 
         #[cfg(feature = "AppKit_NSMenu")]
+        /**
+          Overrides behavior of NSResponder menu. This menu is shown when interacting with the button (see NSComboButtonStyle). NSComboButton does not have a context menu. Items in this menu specify their own target and action independent of the primary action that is configured on the control.
+        */
         #[method_id(@__retain_semantics Other menu)]
         pub unsafe fn menu(&self) -> Id<NSMenu>;
 
         #[cfg(feature = "AppKit_NSMenu")]
+        /**
+          Overrides behavior of NSResponder menu. This menu is shown when interacting with the button (see NSComboButtonStyle). NSComboButton does not have a context menu. Items in this menu specify their own target and action independent of the primary action that is configured on the control.
+        */
         #[method(setMenu:)]
         pub unsafe fn setMenu(&self, menu: &NSMenu);
 
+        /**
+          Specifies the visual presentation and behavior for NSComboButton's primary action and its menu. The default value is `NSComboButtonStyleSplit`.
+        */
         #[method(style)]
         pub unsafe fn style(&self) -> NSComboButtonStyle;
 
+        /**
+          Specifies the visual presentation and behavior for NSComboButton's primary action and its menu. The default value is `NSComboButtonStyleSplit`.
+        */
         #[method(setStyle:)]
         pub unsafe fn setStyle(&self, style: NSComboButtonStyle);
     }

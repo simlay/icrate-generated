@@ -10,6 +10,9 @@ extern_protocol!(
         #[method(prepareToPlay)]
         unsafe fn prepareToPlay(&self);
 
+        /**
+          Returns YES if prepared for playback.
+        */
         #[method(isPreparedToPlay)]
         unsafe fn isPreparedToPlay(&self) -> bool;
 
@@ -22,15 +25,29 @@ extern_protocol!(
         #[method(stop)]
         unsafe fn stop(&self);
 
+        /**
+          The current playback time of the now playing item in seconds.
+        */
         #[method(currentPlaybackTime)]
         unsafe fn currentPlaybackTime(&self) -> NSTimeInterval;
 
+        /**
+          The current playback time of the now playing item in seconds.
+        */
         #[method(setCurrentPlaybackTime:)]
         unsafe fn setCurrentPlaybackTime(&self, current_playback_time: NSTimeInterval);
 
+        /**
+          The current playback rate of the now playing item. Default is 1.0 (normal speed).
+         Pausing will set the rate to 0.0. Setting the rate to non-zero implies playing.
+        */
         #[method(currentPlaybackRate)]
         unsafe fn currentPlaybackRate(&self) -> c_float;
 
+        /**
+          The current playback rate of the now playing item. Default is 1.0 (normal speed).
+         Pausing will set the rate to 0.0. Setting the rate to non-zero implies playing.
+        */
         #[method(setCurrentPlaybackRate:)]
         unsafe fn setCurrentPlaybackRate(&self, current_playback_rate: c_float);
 

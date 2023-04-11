@@ -86,6 +86,9 @@ extern_methods!(
         #[method(assetCollectionSubtype)]
         pub unsafe fn assetCollectionSubtype(&self) -> PHAssetCollectionSubtype;
 
+        /**
+          These counts are just estimates; the actual count of objects returned from a fetch should be used if you care about accuracy. Returns NSNotFound if a count cannot be quickly returned.
+        */
         #[method(estimatedAssetCount)]
         pub unsafe fn estimatedAssetCount(&self) -> NSUInteger;
 

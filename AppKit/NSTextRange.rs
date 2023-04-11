@@ -6,6 +6,9 @@ use crate::CoreData::*;
 use crate::Foundation::*;
 
 extern_protocol!(
+    /**
+      NSTextLocation represents an abstract location inside document contents. A concrete class conforming to the protocol should be associated with a particular document backing store type. The interpretation of a location in enumeration operations is depending on the logical direction. When enumerating forward, it should start with the item containing the location. The enumeration should start with an item preceding the location for reverse operations.
+    */
     pub unsafe trait NSTextLocation: NSObjectProtocol {
         #[method(compare:)]
         unsafe fn compare(
@@ -20,6 +23,9 @@ extern_protocol!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSTextRange")]
+    /**
+      NSTextRange represents a contiguous range between two locations inside document contents. It consists of the starting location and terminating location. They are the two basic properties, location and endLocation, respectively. The terminating location, endLocation, is directly following the last location in the range. So, a location is contained in a range if (range.location <= location) && (location < range.endLocation).
+    */
     pub struct NSTextRange;
 
     #[cfg(feature = "AppKit_NSTextRange")]
@@ -29,9 +35,15 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSTextRange")]
+/**
+  NSTextRange represents a contiguous range between two locations inside document contents. It consists of the starting location and terminating location. They are the two basic properties, location and endLocation, respectively. The terminating location, endLocation, is directly following the last location in the range. So, a location is contained in a range if (range.location <= location) && (location < range.endLocation).
+*/
 unsafe impl NSObjectProtocol for NSTextRange {}
 
 extern_methods!(
+    /**
+      NSTextRange represents a contiguous range between two locations inside document contents. It consists of the starting location and terminating location. They are the two basic properties, location and endLocation, respectively. The terminating location, endLocation, is directly following the last location in the range. So, a location is contained in a range if (range.location <= location) && (location < range.endLocation).
+    */
     #[cfg(feature = "AppKit_NSTextRange")]
     unsafe impl NSTextRange {
         #[method_id(@__retain_semantics Init initWithLocation:endLocation:)]
@@ -53,9 +65,15 @@ extern_methods!(
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
 
+        /**
+          An empty range when location == endLocation
+        */
         #[method(isEmpty)]
         pub unsafe fn isEmpty(&self) -> bool;
 
+        /**
+          Represented with the inclusive location and the exclusive endLocation
+        */
         #[method_id(@__retain_semantics Other location)]
         pub unsafe fn location(&self) -> Id<ProtocolObject<dyn NSTextLocation>>;
 

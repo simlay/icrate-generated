@@ -45,10 +45,24 @@ extern_methods!(
         pub unsafe fn saveSnapshot(&self) -> Id<GCExtendedGamepadSnapshot>;
 
         #[cfg(feature = "GameController_GCControllerDirectionPad")]
+        /**
+         Required to be analog in the Extended profile. All the elements of this directional input are thus analog.
+        */
         #[method_id(@__retain_semantics Other dpad)]
         pub unsafe fn dpad(&self) -> Id<GCControllerDirectionPad>;
 
         #[cfg(feature = "GameController_GCControllerButtonInput")]
+        /**
+         All face buttons are required to be analog in the Extended profile. These must be arranged
+        in the diamond pattern given below:
+
+        Y
+        / \
+        X   B
+        \
+        A
+
+        */
         #[method_id(@__retain_semantics Other buttonA)]
         pub unsafe fn buttonA(&self) -> Id<GCControllerButtonInput>;
 
@@ -65,34 +79,58 @@ extern_methods!(
         pub unsafe fn buttonY(&self) -> Id<GCControllerButtonInput>;
 
         #[cfg(feature = "GameController_GCControllerButtonInput")]
+        /**
+         Button menu is the primary menu button, and should be used to enter the main menu and pause the game.
+        */
         #[method_id(@__retain_semantics Other buttonMenu)]
         pub unsafe fn buttonMenu(&self) -> Id<GCControllerButtonInput>;
 
         #[cfg(feature = "GameController_GCControllerButtonInput")]
+        /**
+         Button options is the secondary menu button. It should be used to enter a secondary menu, such as graphics and sound configuration, and pause the game.
+        */
         #[method_id(@__retain_semantics Other buttonOptions)]
         pub unsafe fn buttonOptions(&self) -> Option<Id<GCControllerButtonInput>>;
 
         #[cfg(feature = "GameController_GCControllerButtonInput")]
+        /**
+         Button home is a special menu button. If the system does not consume button home events, they will be passed to your application and should be used to enter a secondary menu, and pause the game.
+        */
         #[method_id(@__retain_semantics Other buttonHome)]
         pub unsafe fn buttonHome(&self) -> Option<Id<GCControllerButtonInput>>;
 
         #[cfg(feature = "GameController_GCControllerDirectionPad")]
+        /**
+         A thumbstick is a 2-axis control that is physically required to be analog. All the elements of this directional input are thus analog.
+        */
         #[method_id(@__retain_semantics Other leftThumbstick)]
         pub unsafe fn leftThumbstick(&self) -> Id<GCControllerDirectionPad>;
 
         #[cfg(feature = "GameController_GCControllerDirectionPad")]
+        /**
+         A thumbstick is a 2-axis control that is physically required to be analog. All the elements of this directional input are thus analog.
+        */
         #[method_id(@__retain_semantics Other rightThumbstick)]
         pub unsafe fn rightThumbstick(&self) -> Id<GCControllerDirectionPad>;
 
         #[cfg(feature = "GameController_GCControllerButtonInput")]
+        /**
+         Shoulder buttons are required to be analog inputs.
+        */
         #[method_id(@__retain_semantics Other leftShoulder)]
         pub unsafe fn leftShoulder(&self) -> Id<GCControllerButtonInput>;
 
         #[cfg(feature = "GameController_GCControllerButtonInput")]
+        /**
+         Shoulder buttons are required to be analog inputs.
+        */
         #[method_id(@__retain_semantics Other rightShoulder)]
         pub unsafe fn rightShoulder(&self) -> Id<GCControllerButtonInput>;
 
         #[cfg(feature = "GameController_GCControllerButtonInput")]
+        /**
+         Triggers are required to be analog inputs. Common uses would be acceleration and decelleration in a driving game for example.
+        */
         #[method_id(@__retain_semantics Other leftTrigger)]
         pub unsafe fn leftTrigger(&self) -> Id<GCControllerButtonInput>;
 
@@ -101,6 +139,9 @@ extern_methods!(
         pub unsafe fn rightTrigger(&self) -> Id<GCControllerButtonInput>;
 
         #[cfg(feature = "GameController_GCControllerButtonInput")]
+        /**
+         A thumbstick may also have a clickable component, which is treated as a non-analog button.
+        */
         #[method_id(@__retain_semantics Other leftThumbstickButton)]
         pub unsafe fn leftThumbstickButton(&self) -> Option<Id<GCControllerButtonInput>>;
 

@@ -9,18 +9,33 @@ extern_methods!(
     /// NSWorkspaceAccessibilityDisplay
     #[cfg(feature = "AppKit_NSWorkspace")]
     unsafe impl NSWorkspace {
+        /**
+          Get the current accessibility display option for high-contrast UI. If this is true, UI should be presented with high contrast such as utilizing a less subtle color palette or bolder lines. You may listen for NSWorkspaceAccessibilityDisplayOptionsDidChangeNotification to be notified when this changes.
+        */
         #[method(accessibilityDisplayShouldIncreaseContrast)]
         pub unsafe fn accessibilityDisplayShouldIncreaseContrast(&self) -> bool;
 
+        /**
+          Get the current accessibility display option for differentiate without color. If this is true, UI should not convey information using color alone and instead should use shapes or glyphs to convey information. You may listen for NSWorkspaceAccessibilityDisplayOptionsDidChangeNotification to be notified when this changes.
+        */
         #[method(accessibilityDisplayShouldDifferentiateWithoutColor)]
         pub unsafe fn accessibilityDisplayShouldDifferentiateWithoutColor(&self) -> bool;
 
+        /**
+          Get the current accessibility display option for reduce transparency. If this property's value is true, UI (mainly window) backgrounds should not be semi-transparent; they should be opaque. You may listen for NSWorkspaceAccessibilityDisplayOptionsDidChangeNotification to be notified when this changes.
+        */
         #[method(accessibilityDisplayShouldReduceTransparency)]
         pub unsafe fn accessibilityDisplayShouldReduceTransparency(&self) -> bool;
 
+        /**
+          Get the current accessibility display option for reduce motion. If this property's value is true, UI should avoid large animations, especially those that simulate the third dimension. You may listen for NSWorkspaceAccessibilityDisplayOptionsDidChangeNotification to be notified when this changes.
+        */
         #[method(accessibilityDisplayShouldReduceMotion)]
         pub unsafe fn accessibilityDisplayShouldReduceMotion(&self) -> bool;
 
+        /**
+          Get the current accessibility display option for invert colors. If this property's value is true then the display will be inverted. In these cases it may be needed for UI drawing to be adjusted to in order to display optimally when inverted.  You may listen for NSWorkspaceAccessibilityDisplayOptionsDidChangeNotification to be notified when this changes.
+        */
         #[method(accessibilityDisplayShouldInvertColors)]
         pub unsafe fn accessibilityDisplayShouldInvertColors(&self) -> bool;
     }
@@ -30,9 +45,15 @@ extern_methods!(
     /// NSWorkspaceAccessibility
     #[cfg(feature = "AppKit_NSWorkspace")]
     unsafe impl NSWorkspace {
+        /**
+          Indicates if VoiceOver is currently running. This is observable through KVO.
+        */
         #[method(isVoiceOverEnabled)]
         pub unsafe fn isVoiceOverEnabled(&self) -> bool;
 
+        /**
+          Indicates if Switch Control is currently running. This is observable through KVO.
+        */
         #[method(isSwitchControlEnabled)]
         pub unsafe fn isSwitchControlEnabled(&self) -> bool;
     }

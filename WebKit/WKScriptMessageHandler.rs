@@ -6,6 +6,10 @@ use crate::Foundation::*;
 use crate::WebKit::*;
 
 extern_protocol!(
+    /**
+      A class conforming to the WKScriptMessageHandler protocol provides a
+    method for receiving messages from JavaScript running in a webpage.
+    */
     pub unsafe trait WKScriptMessageHandler: NSObjectProtocol {
         #[cfg(all(
             feature = "WebKit_WKScriptMessage",

@@ -7,6 +7,10 @@ use crate::MetricKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MetricKit_MXCPUMetric")]
+    /**
+     @class         MXCPUMetric
+    @abstract      An MXMetric subclass that encapsulates CPU metrics.
+    */
     pub struct MXCPUMetric;
 
     #[cfg(feature = "MetricKit_MXCPUMetric")]
@@ -17,25 +21,53 @@ extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXCPUMetric")]
+/**
+ @class         MXCPUMetric
+@abstract      An MXMetric subclass that encapsulates CPU metrics.
+*/
 unsafe impl NSCoding for MXCPUMetric {}
 
 #[cfg(feature = "MetricKit_MXCPUMetric")]
+/**
+ @class         MXCPUMetric
+@abstract      An MXMetric subclass that encapsulates CPU metrics.
+*/
 unsafe impl NSObjectProtocol for MXCPUMetric {}
 
 #[cfg(feature = "MetricKit_MXCPUMetric")]
+/**
+ @class         MXCPUMetric
+@abstract      An MXMetric subclass that encapsulates CPU metrics.
+*/
 unsafe impl NSSecureCoding for MXCPUMetric {}
 
 extern_methods!(
+    /**
+     @class         MXCPUMetric
+    @abstract      An MXMetric subclass that encapsulates CPU metrics.
+    */
     #[cfg(feature = "MetricKit_MXCPUMetric")]
     unsafe impl MXCPUMetric {
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"
         ))]
+        /**
+         @property      cumulativeCPUTime
+        @abstract      CPU time aggregated cumulatively.
+        @discussion    The data here represents the total CPU time an application consumed over the date range of the containing payload.
+        @discussion    Dimensioned as NSUnitDuration.
+        */
         #[method_id(@__retain_semantics Other cumulativeCPUTime)]
         pub unsafe fn cumulativeCPUTime(&self) -> Id<NSMeasurement<NSUnitDuration>>;
 
         #[cfg(all(feature = "Foundation_NSMeasurement", feature = "Foundation_NSUnit"))]
+        /**
+         @property      cumulativeCPUInstructions
+        @abstract      CPU instructions retired aggregated cumulatively.
+        @discussion    The data here represents the total number of CPU instructions an application retired over the date range of the containing payload.
+        @discussion    Dimensionless.
+        */
         #[method_id(@__retain_semantics Other cumulativeCPUInstructions)]
         pub unsafe fn cumulativeCPUInstructions(&self) -> Id<NSMeasurement<NSUnit>>;
     }

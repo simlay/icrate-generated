@@ -19,6 +19,11 @@ ns_enum!(
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+      Line break strategy describes a collection of options that can affect where line breaks are placed in a paragraph.
+     This is independent from line break mode, which describes what happens when text is too long to fit within its container.
+     These options won't have any effect when used with line break modes that don't support multiple lines, like clipping or truncating middle.
+    */
     pub enum NSLineBreakStrategy {
         NSLineBreakStrategyNone = 0,
         NSLineBreakStrategyPushOut = 1 << 0,
@@ -70,13 +75,22 @@ extern_methods!(
             options: &NSDictionary<NSTextTabOptionKey, Object>,
         ) -> Id<Self>;
 
+        /**
+          Defines the alignment of tab column contents. NSTextAlignmentNatural and NSTextAlignmentJustified are resolved either NSTextAlignmentLeft or NSTextAlignmentRight based on the user's preferred language.
+        */
         #[method(alignment)]
         pub unsafe fn alignment(&self) -> NSTextAlignment;
 
+        /**
+          Location of the tab stop inside the line fragment rect coordinate system
+        */
         #[method(location)]
         pub unsafe fn location(&self) -> CGFloat;
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          Optional configuration attributes
+        */
         #[method_id(@__retain_semantics Other options)]
         pub unsafe fn options(&self) -> Id<NSDictionary<NSTextTabOptionKey, Object>>;
     }
@@ -85,6 +99,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSParagraphStyle")]
+    /**
+      NSParagraphStyle
+    */
     pub struct NSParagraphStyle;
 
     #[cfg(feature = "AppKit_NSParagraphStyle")]
@@ -94,17 +111,32 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSParagraphStyle")]
+/**
+  NSParagraphStyle
+*/
 unsafe impl NSCoding for NSParagraphStyle {}
 
 #[cfg(feature = "AppKit_NSParagraphStyle")]
+/**
+  NSParagraphStyle
+*/
 unsafe impl NSObjectProtocol for NSParagraphStyle {}
 
 #[cfg(feature = "AppKit_NSParagraphStyle")]
+/**
+  NSParagraphStyle
+*/
 unsafe impl NSSecureCoding for NSParagraphStyle {}
 
 extern_methods!(
+    /**
+      NSParagraphStyle
+    */
     #[cfg(feature = "AppKit_NSParagraphStyle")]
     unsafe impl NSParagraphStyle {
+        /**
+          This class property returns a shared and cached NSParagraphStyle instance with the default style settings, with same value as the result of [[NSParagraphStyle alloc] init].
+        */
         #[method_id(@__retain_semantics Other defaultParagraphStyle)]
         pub unsafe fn defaultParagraphStyle() -> Id<NSParagraphStyle>;
 
@@ -114,27 +146,48 @@ extern_methods!(
             language_name: Option<&NSString>,
         ) -> NSWritingDirection;
 
+        /**
+          "Leading": distance between the bottom of one line fragment and top of next (applied between lines in the same container). This value is included in the line fragment heights in layout manager.
+        */
         #[method(lineSpacing)]
         pub unsafe fn lineSpacing(&self) -> CGFloat;
 
+        /**
+          Distance between the bottom of this paragraph and top of next (or the beginning of its paragraphSpacingBefore, if any).
+        */
         #[method(paragraphSpacing)]
         pub unsafe fn paragraphSpacing(&self) -> CGFloat;
 
         #[method(alignment)]
         pub unsafe fn alignment(&self) -> NSTextAlignment;
 
+        /**
+          Distance from margin to front edge of paragraph
+        */
         #[method(headIndent)]
         pub unsafe fn headIndent(&self) -> CGFloat;
 
+        /**
+          Distance from margin to back edge of paragraph; if negative or 0, from other margin
+        */
         #[method(tailIndent)]
         pub unsafe fn tailIndent(&self) -> CGFloat;
 
+        /**
+          Distance from margin to edge appropriate for text direction
+        */
         #[method(firstLineHeadIndent)]
         pub unsafe fn firstLineHeadIndent(&self) -> CGFloat;
 
+        /**
+          Line height is the distance from bottom of descenders to top of ascenders; basically the line fragment height. Does not include lineSpacing (which is added after this computation).
+        */
         #[method(minimumLineHeight)]
         pub unsafe fn minimumLineHeight(&self) -> CGFloat;
 
+        /**
+          0 implies no maximum.
+        */
         #[method(maximumLineHeight)]
         pub unsafe fn maximumLineHeight(&self) -> CGFloat;
 
@@ -144,42 +197,78 @@ extern_methods!(
         #[method(baseWritingDirection)]
         pub unsafe fn baseWritingDirection(&self) -> NSWritingDirection;
 
+        /**
+          Natural line height is multiplied by this factor (if positive) before being constrained by minimum and maximum line height.
+        */
         #[method(lineHeightMultiple)]
         pub unsafe fn lineHeightMultiple(&self) -> CGFloat;
 
+        /**
+          Distance between the bottom of the previous paragraph (or the end of its paragraphSpacing, if any) and the top of this paragraph.
+        */
         #[method(paragraphSpacingBefore)]
         pub unsafe fn paragraphSpacingBefore(&self) -> CGFloat;
 
+        /**
+          Specifies the threshold for hyphenation.  Valid values lie between 0.0 and 1.0 inclusive.  Hyphenation will be attempted when the ratio of the text width as broken without hyphenation to the width of the line fragment is less than the hyphenation factor.  When this takes on its default value of 0.0, the layout manager's hyphenation factor is used instead.  When both are 0.0, hyphenation is disabled.
+        */
         #[method(hyphenationFactor)]
         pub unsafe fn hyphenationFactor(&self) -> c_float;
 
+        /**
+          A property controlling the hyphenation behavior for the paragraph associated with the paragraph style. The exact hyphenation logic is dynamically determined by the layout context such as language, platform, etc. When YES, it affects the return value from -hyphenationFactor when the property is set to 0.0.
+        */
         #[method(usesDefaultHyphenation)]
         pub unsafe fn usesDefaultHyphenation(&self) -> bool;
 
         #[cfg(all(feature = "AppKit_NSTextTab", feature = "Foundation_NSArray"))]
+        /**
+          An array of NSTextTabs. Contents should be ordered by location. The default value is an array of 12 left-aligned tabs at 28pt interval
+        */
         #[method_id(@__retain_semantics Other tabStops)]
         pub unsafe fn tabStops(&self) -> Id<NSArray<NSTextTab>>;
 
+        /**
+          The default tab interval used for locations beyond the last element in tabStops
+        */
         #[method(defaultTabInterval)]
         pub unsafe fn defaultTabInterval(&self) -> CGFloat;
 
+        /**
+          Tightens inter-character spacing in attempt to fit lines wider than the available space if the line break mode is one of the truncation modes before starting to truncate. YES by default for apps linked against 10.11 and later SDK. The maximum amount of tightening performed is determined by the system based on contexts such as font, line width, etc.
+        */
         #[method(allowsDefaultTighteningForTruncation)]
         pub unsafe fn allowsDefaultTighteningForTruncation(&self) -> bool;
 
+        /**
+          Specifies the threshold for using tightening as an alternative to truncation when -allowsDefaultTighteningForTruncation=NO.  When the line break mode specifies truncation, the text system will attempt to tighten inter-character spacing as an alternative to truncation, provided that the ratio of the text width to the line fragment width does not exceed 1.0 + tighteningFactorForTruncation.  Otherwise the text will be truncated at a location determined by the line break mode.  The default value is 0.0 for apps linked against 10.11 and later SDK. This property is ignored when -allowsDefaultTighteningForTruncation=YES. Explicitly setting this property to 0.0 has a side effect of also setting -allowsDefaultTighteningForTruncation to NO.
+        */
         #[method(tighteningFactorForTruncation)]
         pub unsafe fn tighteningFactorForTruncation(&self) -> c_float;
 
         #[cfg(all(feature = "AppKit_NSTextBlock", feature = "Foundation_NSArray"))]
+        /**
+          Array to specify the text blocks containing the paragraph, nested from outermost to innermost.
+        */
         #[method_id(@__retain_semantics Other textBlocks)]
         pub unsafe fn textBlocks(&self) -> Id<NSArray<NSTextBlock>>;
 
         #[cfg(all(feature = "AppKit_NSTextList", feature = "Foundation_NSArray"))]
+        /**
+          Array to specify the text lists containing the paragraph, nested from outermost to innermost.
+        */
         #[method_id(@__retain_semantics Other textLists)]
         pub unsafe fn textLists(&self) -> Id<NSArray<NSTextList>>;
 
+        /**
+          Specifies whether the paragraph is to be treated as a header for purposes of HTML generation.  Should be set to 0 (the default value) if the paragraph is not a header, or from 1 through 6 if the paragraph is to be treated as a header.
+        */
         #[method(headerLevel)]
         pub unsafe fn headerLevel(&self) -> NSInteger;
 
+        /**
+          Specifies the line break strategies that may be used for laying out the paragraph.  The default value is NSLineBreakStrategyNone.
+        */
         #[method(lineBreakStrategy)]
         pub unsafe fn lineBreakStrategy(&self) -> NSLineBreakStrategy;
     }
@@ -368,6 +457,10 @@ extern_methods!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      Deprecated
+    NSTextTabType and NSTextTab methods using the type are soft deprecated starting with OS X 10.11. It will be officially deprecated in a future release. Use NSTextAlignment-based API instead
+    */
     pub enum NSTextTabType {
         NSLeftTabStopType = 0,
         NSRightTabStopType = 1,
@@ -387,6 +480,9 @@ extern_methods!(
             loc: CGFloat,
         ) -> Id<Self>;
 
+        /**
+          Use -alignment and -options
+        */
         #[method(tabStopType)]
         pub unsafe fn tabStopType(&self) -> NSTextTabType;
     }

@@ -6,6 +6,9 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSPredicate")]
+    /**
+      Predicates wrap some combination of expressions and operators and when evaluated return a BOOL.
+    */
     pub struct NSPredicate;
 
     #[cfg(feature = "Foundation_NSPredicate")]
@@ -15,15 +18,27 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSPredicate")]
+/**
+  Predicates wrap some combination of expressions and operators and when evaluated return a BOOL.
+*/
 unsafe impl NSCoding for NSPredicate {}
 
 #[cfg(feature = "Foundation_NSPredicate")]
+/**
+  Predicates wrap some combination of expressions and operators and when evaluated return a BOOL.
+*/
 unsafe impl NSObjectProtocol for NSPredicate {}
 
 #[cfg(feature = "Foundation_NSPredicate")]
+/**
+  Predicates wrap some combination of expressions and operators and when evaluated return a BOOL.
+*/
 unsafe impl NSSecureCoding for NSPredicate {}
 
 extern_methods!(
+    /**
+      Predicates wrap some combination of expressions and operators and when evaluated return a BOOL.
+    */
     #[cfg(feature = "Foundation_NSPredicate")]
     unsafe impl NSPredicate {
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
@@ -49,6 +64,9 @@ extern_methods!(
         ) -> Id<NSPredicate>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          returns the format string of the predicate
+        */
         #[method_id(@__retain_semantics Other predicateFormat)]
         pub unsafe fn predicateFormat(&self) -> Id<NSString>;
 

@@ -25,6 +25,9 @@ extern_methods!(
     #[cfg(feature = "MapKit_MKLocalSearchResponse")]
     unsafe impl MKLocalSearchResponse {
         #[cfg(all(feature = "Foundation_NSArray", feature = "MapKit_MKMapItem"))]
+        /**
+          An array of MKMapItems sorted by relevance in descending order
+        */
         #[method_id(@__retain_semantics Other mapItems)]
         pub unsafe fn mapItems(&self) -> Id<NSArray<MKMapItem>>;
 

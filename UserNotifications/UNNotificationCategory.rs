@@ -43,6 +43,9 @@ extern_methods!(
     #[cfg(feature = "UserNotifications_UNNotificationCategory")]
     unsafe impl UNNotificationCategory {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The unique identifier for this category. The UNNotificationCategory's actions will be displayed on notifications when the UNNotificationCategory's identifier matches the UNNotificationRequest's categoryIdentifier.
+        */
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Id<NSString>;
 
@@ -50,10 +53,16 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "UserNotifications_UNNotificationAction"
         ))]
+        /**
+          The UNNotificationActions in the order they will be displayed.
+        */
         #[method_id(@__retain_semantics Other actions)]
         pub unsafe fn actions(&self) -> Id<NSArray<UNNotificationAction>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          The intents supported support for notifications of this category. See <Intents/INIntentIdentifiers.h> for possible values.
+        */
         #[method_id(@__retain_semantics Other intentIdentifiers)]
         pub unsafe fn intentIdentifiers(&self) -> Id<NSArray<NSString>>;
 
@@ -61,10 +70,21 @@ extern_methods!(
         pub unsafe fn options(&self) -> UNNotificationCategoryOptions;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The format string that will replace the notification body if previews are hidden.
+        */
         #[method_id(@__retain_semantics Other hiddenPreviewsBodyPlaceholder)]
         pub unsafe fn hiddenPreviewsBodyPlaceholder(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          A format string for a summary description when notifications from this category are grouped together.
+         It should contain descriptive text and format arguments that will be replaced with the information
+         from the notifications that have been grouped together. The arguments are replaced with the number
+         of notifications and the list created by joining the argument in each grouped notification.
+         For example: "%u new messages from %@".
+         The arguments list is optional, "%u new messages" is also accepted.
+        */
         #[method_id(@__retain_semantics Other categorySummaryFormat)]
         pub unsafe fn categorySummaryFormat(&self) -> Id<NSString>;
 

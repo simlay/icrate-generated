@@ -8,6 +8,9 @@ use crate::GameKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameKit_GKAchievementDescription")]
+    /**
+      GKAchievementDescription is a full description of the achievement as defined before app submission in App Store Connect.
+    */
     pub struct GKAchievementDescription;
 
     #[cfg(feature = "GameKit_GKAchievementDescription")]
@@ -17,15 +20,27 @@ extern_class!(
 );
 
 #[cfg(feature = "GameKit_GKAchievementDescription")]
+/**
+  GKAchievementDescription is a full description of the achievement as defined before app submission in App Store Connect.
+*/
 unsafe impl NSCoding for GKAchievementDescription {}
 
 #[cfg(feature = "GameKit_GKAchievementDescription")]
+/**
+  GKAchievementDescription is a full description of the achievement as defined before app submission in App Store Connect.
+*/
 unsafe impl NSObjectProtocol for GKAchievementDescription {}
 
 #[cfg(feature = "GameKit_GKAchievementDescription")]
+/**
+  GKAchievementDescription is a full description of the achievement as defined before app submission in App Store Connect.
+*/
 unsafe impl NSSecureCoding for GKAchievementDescription {}
 
 extern_methods!(
+    /**
+      GKAchievementDescription is a full description of the achievement as defined before app submission in App Store Connect.
+    */
     #[cfg(feature = "GameKit_GKAchievementDescription")]
     unsafe impl GKAchievementDescription {
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSError"))]
@@ -41,27 +56,48 @@ extern_methods!(
         pub unsafe fn identifier(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The group identifier for the achievement, if one exists.
+        */
         #[method_id(@__retain_semantics Other groupIdentifier)]
         pub unsafe fn groupIdentifier(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The title of the achievement.
+        */
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The description for an unachieved achievement.
+        */
         #[method_id(@__retain_semantics Other achievedDescription)]
         pub unsafe fn achievedDescription(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The description for an achieved achievement.
+        */
         #[method_id(@__retain_semantics Other unachievedDescription)]
         pub unsafe fn unachievedDescription(&self) -> Option<Id<NSString>>;
 
+        /**
+          Maximum points available for completing this achievement.
+        */
         #[method(maximumPoints)]
         pub unsafe fn maximumPoints(&self) -> NSInteger;
 
+        /**
+          Whether or not the achievement should be listed or displayed if not yet unhidden by the game.
+        */
         #[method(isHidden)]
         pub unsafe fn isHidden(&self) -> bool;
 
+        /**
+          Whether or not the achievement will be reported by the game when the user earns it again. This allows the achievement to be used for challenges when the recipient has previously earned it.
+        */
         #[method(isReplayable)]
         pub unsafe fn isReplayable(&self) -> bool;
     }
@@ -72,6 +108,9 @@ extern_methods!(
     #[cfg(feature = "GameKit_GKAchievementDescription")]
     unsafe impl GKAchievementDescription {
         #[cfg(feature = "AppKit_NSImage")]
+        /**
+          Image for completed achievement. Not valid until loadImage: has completed. Deprecated -- use loadImageWithCompletionHandler: instead.
+        */
         #[method_id(@__retain_semantics Other image)]
         pub unsafe fn image(&self) -> Option<Id<NSImage>>;
 

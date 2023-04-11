@@ -48,6 +48,9 @@ extern_methods!(
             feature = "CoreData_NSFetchIndexElementDescription",
             feature = "Foundation_NSArray"
         ))]
+        /**
+          Will throw if the new value is invalid (ie includes both rtree and non-rtree elements).
+        */
         #[method_id(@__retain_semantics Other elements)]
         pub unsafe fn elements(&self) -> Id<NSArray<NSFetchIndexElementDescription>>;
 
@@ -55,6 +58,9 @@ extern_methods!(
             feature = "CoreData_NSFetchIndexElementDescription",
             feature = "Foundation_NSArray"
         ))]
+        /**
+          Will throw if the new value is invalid (ie includes both rtree and non-rtree elements).
+        */
         #[method(setElements:)]
         pub unsafe fn setElements(&self, elements: &NSArray<NSFetchIndexElementDescription>);
 
@@ -63,10 +69,16 @@ extern_methods!(
         pub unsafe fn entity(&self) -> Option<Id<NSEntityDescription>>;
 
         #[cfg(feature = "Foundation_NSPredicate")]
+        /**
+          If the index should be a partial index, specifies the predicate selecting rows for indexing
+        */
         #[method_id(@__retain_semantics Other partialIndexPredicate)]
         pub unsafe fn partialIndexPredicate(&self) -> Option<Id<NSPredicate>>;
 
         #[cfg(feature = "Foundation_NSPredicate")]
+        /**
+          If the index should be a partial index, specifies the predicate selecting rows for indexing
+        */
         #[method(setPartialIndexPredicate:)]
         pub unsafe fn setPartialIndexPredicate(
             &self,

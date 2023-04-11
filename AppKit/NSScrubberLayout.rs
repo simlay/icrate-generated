@@ -8,6 +8,11 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSScrubberLayoutAttributes")]
+    /**
+     @class NSScrubberLayoutAttributes
+    @abstract @c NSScrubberLayoutAttributes describes the layout of a single @c NSScrubber item.
+    @discussion @c NSScrubberLayout objects transact in terms of @c NSScrubberLayoutAttributes. @c NSScrubberLayoutAttributes can be subclassed if a layout object wants to include more layout information than the base implementation provides. Subclasses of @c NSScrubberLayoutAttributes must implement @c isEqual:, @c hash, and the @c NSCopying protocol.
+    */
     pub struct NSScrubberLayoutAttributes;
 
     #[cfg(feature = "AppKit_NSScrubberLayoutAttributes")]
@@ -17,9 +22,19 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSScrubberLayoutAttributes")]
+/**
+ @class NSScrubberLayoutAttributes
+@abstract @c NSScrubberLayoutAttributes describes the layout of a single @c NSScrubber item.
+@discussion @c NSScrubberLayout objects transact in terms of @c NSScrubberLayoutAttributes. @c NSScrubberLayoutAttributes can be subclassed if a layout object wants to include more layout information than the base implementation provides. Subclasses of @c NSScrubberLayoutAttributes must implement @c isEqual:, @c hash, and the @c NSCopying protocol.
+*/
 unsafe impl NSObjectProtocol for NSScrubberLayoutAttributes {}
 
 extern_methods!(
+    /**
+     @class NSScrubberLayoutAttributes
+    @abstract @c NSScrubberLayoutAttributes describes the layout of a single @c NSScrubber item.
+    @discussion @c NSScrubberLayout objects transact in terms of @c NSScrubberLayoutAttributes. @c NSScrubberLayoutAttributes can be subclassed if a layout object wants to include more layout information than the base implementation provides. Subclasses of @c NSScrubberLayoutAttributes must implement @c isEqual:, @c hash, and the @c NSCopying protocol.
+    */
     #[cfg(feature = "AppKit_NSScrubberLayoutAttributes")]
     unsafe impl NSScrubberLayoutAttributes {
         #[method(itemIndex)]
@@ -48,6 +63,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSScrubberLayout")]
+    /**
+     @class NSScrubberLayout
+    @abstract @c NSScrubberLayout is an abstract class that describes the layout of items within a @c NSScrubber control.
+    */
     pub struct NSScrubberLayout;
 
     #[cfg(feature = "AppKit_NSScrubberLayout")]
@@ -57,21 +76,42 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSScrubberLayout")]
+/**
+ @class NSScrubberLayout
+@abstract @c NSScrubberLayout is an abstract class that describes the layout of items within a @c NSScrubber control.
+*/
 unsafe impl NSCoding for NSScrubberLayout {}
 
 #[cfg(feature = "AppKit_NSScrubberLayout")]
+/**
+ @class NSScrubberLayout
+@abstract @c NSScrubberLayout is an abstract class that describes the layout of items within a @c NSScrubber control.
+*/
 unsafe impl NSObjectProtocol for NSScrubberLayout {}
 
 extern_methods!(
+    /**
+     @class NSScrubberLayout
+    @abstract @c NSScrubberLayout is an abstract class that describes the layout of items within a @c NSScrubber control.
+    */
     #[cfg(feature = "AppKit_NSScrubberLayout")]
     unsafe impl NSScrubberLayout {
+        /**
+          Specifies a class for describing layout attributes. By default, this is @c NSScrubberLayoutAttributes, but subclasses may override this method to use a custom subclass of @c NSScrubberLayoutAttributes.
+        */
         #[method(layoutAttributesClass)]
         pub unsafe fn layoutAttributesClass() -> &'static Class;
 
         #[cfg(feature = "AppKit_NSScrubber")]
+        /**
+          The NSScrubber control that this layout is assigned to, or @c nil if the receiver is not assigned to a scrubber.
+        */
         #[method_id(@__retain_semantics Other scrubber)]
         pub unsafe fn scrubber(&self) -> Option<Id<NSScrubber>>;
 
+        /**
+          The currently visible rectangle, in the coordinate space of the scrubber content. Returns @c NSZeroRect if the receiver is not assigned to a scrubber.
+        */
         #[method(visibleRect)]
         pub unsafe fn visibleRect(&self) -> NSRect;
 
@@ -88,6 +128,9 @@ extern_methods!(
         #[method(prepareLayout)]
         pub unsafe fn prepareLayout(&self);
 
+        /**
+          Returns the content size for all elements within the scrubber. The base implementation returns @c NSZeroSize.
+        */
         #[method(scrubberContentSize)]
         pub unsafe fn scrubberContentSize(&self) -> NSSize;
 
@@ -108,9 +151,15 @@ extern_methods!(
             rect: NSRect,
         ) -> Id<NSSet<NSScrubberLayoutAttributes>>;
 
+        /**
+          If @c YES, the scrubber will invalidate its layout when the selection changes. The default value is @c NO. Subclasses should return @c YES if the selection index affects the item layout.
+        */
         #[method(shouldInvalidateLayoutForSelectionChange)]
         pub unsafe fn shouldInvalidateLayoutForSelectionChange(&self) -> bool;
 
+        /**
+          If @c YES, the scrubber will invalidate its layout when an item is highlighted. The default value is @c NO. Subclasses should return @c YES if the highlight state affects the item layout.
+        */
         #[method(shouldInvalidateLayoutForHighlightChange)]
         pub unsafe fn shouldInvalidateLayoutForHighlightChange(&self) -> bool;
 
@@ -121,6 +170,9 @@ extern_methods!(
             to_visible_rect: NSRect,
         ) -> bool;
 
+        /**
+          If @c YES, the layout object will automatically have its inputs and outputs mirrored in right-to-left interfaces. The default value is @c YES. Subclasses that wish to handle RTL layout manually should return @c NO.
+        */
         #[method(automaticallyMirrorsInRightToLeftLayout)]
         pub unsafe fn automaticallyMirrorsInRightToLeftLayout(&self) -> bool;
     }
@@ -145,6 +197,11 @@ extern_protocol!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSScrubberFlowLayout")]
+    /**
+     @class NSScrubberFlowLayout
+    @abstract @c NSScrubberFlowLayout is a concrete layout object that arranges items end-to-end in a linear strip. It supports a fixed inter-item spacing and both fixed- and variable-sized items.
+    @discussion If the associated scrubber's @c delegate conforms to @c NSScrubberFlowLayoutDelegate, and it implements the @c scrubber:layout:sizeForItemAtIndex: method, @c NSScrubberFlowLayout will obtain the item size from the delegate. If the delegate does not implement that method, or if the method returns @c NSZeroSize, it will fall back to using the layout's @c itemSize property. By default, NSScrubberFlowLayout does not invalidate its layout on selection change, highlight change, or visible rectangle change.
+    */
     pub struct NSScrubberFlowLayout;
 
     #[cfg(feature = "AppKit_NSScrubberFlowLayout")]
@@ -155,23 +212,50 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSScrubberFlowLayout")]
+/**
+ @class NSScrubberFlowLayout
+@abstract @c NSScrubberFlowLayout is a concrete layout object that arranges items end-to-end in a linear strip. It supports a fixed inter-item spacing and both fixed- and variable-sized items.
+@discussion If the associated scrubber's @c delegate conforms to @c NSScrubberFlowLayoutDelegate, and it implements the @c scrubber:layout:sizeForItemAtIndex: method, @c NSScrubberFlowLayout will obtain the item size from the delegate. If the delegate does not implement that method, or if the method returns @c NSZeroSize, it will fall back to using the layout's @c itemSize property. By default, NSScrubberFlowLayout does not invalidate its layout on selection change, highlight change, or visible rectangle change.
+*/
 unsafe impl NSCoding for NSScrubberFlowLayout {}
 
 #[cfg(feature = "AppKit_NSScrubberFlowLayout")]
+/**
+ @class NSScrubberFlowLayout
+@abstract @c NSScrubberFlowLayout is a concrete layout object that arranges items end-to-end in a linear strip. It supports a fixed inter-item spacing and both fixed- and variable-sized items.
+@discussion If the associated scrubber's @c delegate conforms to @c NSScrubberFlowLayoutDelegate, and it implements the @c scrubber:layout:sizeForItemAtIndex: method, @c NSScrubberFlowLayout will obtain the item size from the delegate. If the delegate does not implement that method, or if the method returns @c NSZeroSize, it will fall back to using the layout's @c itemSize property. By default, NSScrubberFlowLayout does not invalidate its layout on selection change, highlight change, or visible rectangle change.
+*/
 unsafe impl NSObjectProtocol for NSScrubberFlowLayout {}
 
 extern_methods!(
+    /**
+     @class NSScrubberFlowLayout
+    @abstract @c NSScrubberFlowLayout is a concrete layout object that arranges items end-to-end in a linear strip. It supports a fixed inter-item spacing and both fixed- and variable-sized items.
+    @discussion If the associated scrubber's @c delegate conforms to @c NSScrubberFlowLayoutDelegate, and it implements the @c scrubber:layout:sizeForItemAtIndex: method, @c NSScrubberFlowLayout will obtain the item size from the delegate. If the delegate does not implement that method, or if the method returns @c NSZeroSize, it will fall back to using the layout's @c itemSize property. By default, NSScrubberFlowLayout does not invalidate its layout on selection change, highlight change, or visible rectangle change.
+    */
     #[cfg(feature = "AppKit_NSScrubberFlowLayout")]
     unsafe impl NSScrubberFlowLayout {
+        /**
+          The amount of horizontal spacing between items in points. The default value is 0.0.
+        */
         #[method(itemSpacing)]
         pub unsafe fn itemSpacing(&self) -> CGFloat;
 
+        /**
+          The amount of horizontal spacing between items in points. The default value is 0.0.
+        */
         #[method(setItemSpacing:)]
         pub unsafe fn setItemSpacing(&self, item_spacing: CGFloat);
 
+        /**
+          The frame size for each item, if not provided by the scrubber's delegate. The default value is { 50.0, 30.0 }.
+        */
         #[method(itemSize)]
         pub unsafe fn itemSize(&self) -> NSSize;
 
+        /**
+          The frame size for each item, if not provided by the scrubber's delegate. The default value is { 50.0, 30.0 }.
+        */
         #[method(setItemSize:)]
         pub unsafe fn setItemSize(&self, item_size: NSSize);
 
@@ -184,6 +268,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSScrubberProportionalLayout")]
+    /**
+     @class NSScrubberProportionalLayout
+    @abstract @c NSScrubberProportionalLayout is a concrete layout object that sizes each item to some fraction of the scrubber's visible size.
+    */
     pub struct NSScrubberProportionalLayout;
 
     #[cfg(feature = "AppKit_NSScrubberProportionalLayout")]
@@ -194,17 +282,35 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSScrubberProportionalLayout")]
+/**
+ @class NSScrubberProportionalLayout
+@abstract @c NSScrubberProportionalLayout is a concrete layout object that sizes each item to some fraction of the scrubber's visible size.
+*/
 unsafe impl NSCoding for NSScrubberProportionalLayout {}
 
 #[cfg(feature = "AppKit_NSScrubberProportionalLayout")]
+/**
+ @class NSScrubberProportionalLayout
+@abstract @c NSScrubberProportionalLayout is a concrete layout object that sizes each item to some fraction of the scrubber's visible size.
+*/
 unsafe impl NSObjectProtocol for NSScrubberProportionalLayout {}
 
 extern_methods!(
+    /**
+     @class NSScrubberProportionalLayout
+    @abstract @c NSScrubberProportionalLayout is a concrete layout object that sizes each item to some fraction of the scrubber's visible size.
+    */
     #[cfg(feature = "AppKit_NSScrubberProportionalLayout")]
     unsafe impl NSScrubberProportionalLayout {
+        /**
+          The number of items that should fit within the scrubber's viewport at once.
+        */
         #[method(numberOfVisibleItems)]
         pub unsafe fn numberOfVisibleItems(&self) -> NSInteger;
 
+        /**
+          The number of items that should fit within the scrubber's viewport at once.
+        */
         #[method(setNumberOfVisibleItems:)]
         pub unsafe fn setNumberOfVisibleItems(&self, number_of_visible_items: NSInteger);
 

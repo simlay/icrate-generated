@@ -24,6 +24,9 @@ unsafe impl NSObjectProtocol for NSTextInputContext {}
 extern_methods!(
     #[cfg(feature = "AppKit_NSTextInputContext")]
     unsafe impl NSTextInputContext {
+        /**
+          The current activated text input context object. The Cocoa Text Input system communicates primarily with the client of the activated input context via the NSTextInputClient protocol.
+        */
         #[method_id(@__retain_semantics Other currentInputContext)]
         pub unsafe fn currentInputContext() -> Option<Id<NSTextInputContext>>;
 
@@ -36,20 +39,36 @@ extern_methods!(
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
+        /**
+          Properties
+         Returns the owner of this input context. The owner, typically an NSView, retains its NSTextInputContext instance. NSTextInputContext doesn't retain its client.
+        */
         #[method_id(@__retain_semantics Other client)]
         pub unsafe fn client(&self) -> Id<ProtocolObject<dyn NSTextInputClient>>;
 
+        /**
+          Indicates whether the client handles NSGlyphInfoAttributeName or not. The default value is determined by examining the return value sending -validAttributesForMarkedText to client at initialization.
+        */
         #[method(acceptsGlyphInfo)]
         pub unsafe fn acceptsGlyphInfo(&self) -> bool;
 
+        /**
+          Indicates whether the client handles NSGlyphInfoAttributeName or not. The default value is determined by examining the return value sending -validAttributesForMarkedText to client at initialization.
+        */
         #[method(setAcceptsGlyphInfo:)]
         pub unsafe fn setAcceptsGlyphInfo(&self, accepts_glyph_info: bool);
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          Specifies the set of keyboard input source locales allowed when this input context is active. NSAllRomanInputSourcesLocaleIdentifier can be specified as a valid locale.
+        */
         #[method_id(@__retain_semantics Other allowedInputSourceLocales)]
         pub unsafe fn allowedInputSourceLocales(&self) -> Option<Id<NSArray<NSString>>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          Specifies the set of keyboard input source locales allowed when this input context is active. NSAllRomanInputSourcesLocaleIdentifier can be specified as a valid locale.
+        */
         #[method(setAllowedInputSourceLocales:)]
         pub unsafe fn setAllowedInputSourceLocales(
             &self,
@@ -73,15 +92,24 @@ extern_methods!(
         pub unsafe fn invalidateCharacterCoordinates(&self);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          The array of keyboard text input source identifier strings available to the receiver.
+        */
         #[method_id(@__retain_semantics Other keyboardInputSources)]
         pub unsafe fn keyboardInputSources(
             &self,
         ) -> Option<Id<NSArray<NSTextInputSourceIdentifier>>>;
 
+        /**
+          The identifier string for the selected keyboard text input source.
+        */
         #[method_id(@__retain_semantics Other selectedKeyboardInputSource)]
         pub unsafe fn selectedKeyboardInputSource(&self)
             -> Option<Id<NSTextInputSourceIdentifier>>;
 
+        /**
+          The identifier string for the selected keyboard text input source.
+        */
         #[method(setSelectedKeyboardInputSource:)]
         pub unsafe fn setSelectedKeyboardInputSource(
             &self,

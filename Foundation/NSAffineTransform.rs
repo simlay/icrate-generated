@@ -80,9 +80,15 @@ extern_methods!(
         #[method(transformSize:)]
         pub unsafe fn transformSize(&self, a_size: NSSize) -> NSSize;
 
+        /**
+          Transform Struct
+        */
         #[method(transformStruct)]
         pub unsafe fn transformStruct(&self) -> NSAffineTransformStruct;
 
+        /**
+          Transform Struct
+        */
         #[method(setTransformStruct:)]
         pub unsafe fn setTransformStruct(&self, transform_struct: NSAffineTransformStruct);
     }

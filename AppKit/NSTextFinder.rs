@@ -69,9 +69,15 @@ extern_methods!(
         #[method_id(@__retain_semantics Init initWithCoder:)]
         pub unsafe fn initWithCoder(this: Option<Allocated<Self>>, coder: &NSCoder) -> Id<Self>;
 
+        /**
+          A text finder must be associated with an object which implements the NSTextFinderClient protocol for it to function. The client is responsible for providing the string to be searched, the location for the find bar, and methods which control feedback to the user about the search results.
+        */
         #[method_id(@__retain_semantics Other client)]
         pub unsafe fn client(&self) -> Option<Id<ProtocolObject<dyn NSTextFinderClient>>>;
 
+        /**
+          A text finder must be associated with an object which implements the NSTextFinderClient protocol for it to function. The client is responsible for providing the string to be searched, the location for the find bar, and methods which control feedback to the user about the search results.
+        */
         #[method(setClient:)]
         pub unsafe fn setClient(&self, client: Option<&ProtocolObject<dyn NSTextFinderClient>>);
 
@@ -81,11 +87,17 @@ extern_methods!(
         #[method(validateAction:)]
         pub unsafe fn validateAction(&self, op: NSTextFinderAction) -> bool;
 
+        /**
+          This property must be set to support the find bar. When the find bar is requested to be shown, NSTextFinder will call -showFindBarView: on the container, passing the view for the find bar, which it should display somewhere that is easily associated with the content being searched. NSScrollView already implements NSTextFinderBarContainer and is an excellent place to display the find bar, in most circumstances. The container may freely modify the find bar view's width and origin, but not its height. If this property is not set, then the find bar cannot be shown.
+        */
         #[method_id(@__retain_semantics Other findBarContainer)]
         pub unsafe fn findBarContainer(
             &self,
         ) -> Option<Id<ProtocolObject<dyn NSTextFinderBarContainer>>>;
 
+        /**
+          This property must be set to support the find bar. When the find bar is requested to be shown, NSTextFinder will call -showFindBarView: on the container, passing the view for the find bar, which it should display somewhere that is easily associated with the content being searched. NSScrollView already implements NSTextFinderBarContainer and is an excellent place to display the find bar, in most circumstances. The container may freely modify the find bar view's width and origin, but not its height. If this property is not set, then the find bar cannot be shown.
+        */
         #[method(setFindBarContainer:)]
         pub unsafe fn setFindBarContainer(
             &self,
@@ -95,21 +107,39 @@ extern_methods!(
         #[method(cancelFindIndicator)]
         pub unsafe fn cancelFindIndicator(&self);
 
+        /**
+          If your client's document is not scrolled by NSScrollView, then you should set this property to YES when scrolling occurs to cause the find indicator to be updated appropriately.
+        */
         #[method(findIndicatorNeedsUpdate)]
         pub unsafe fn findIndicatorNeedsUpdate(&self) -> bool;
 
+        /**
+          If your client's document is not scrolled by NSScrollView, then you should set this property to YES when scrolling occurs to cause the find indicator to be updated appropriately.
+        */
         #[method(setFindIndicatorNeedsUpdate:)]
         pub unsafe fn setFindIndicatorNeedsUpdate(&self, find_indicator_needs_update: bool);
 
+        /**
+          An NSTextFinder uses this property's value to determine if it should perform regular or incremental searches. If YES, then the find bar will do incremental searches. If it returns NO, then the find bar will behave regularly. The default value is NO.
+        */
         #[method(isIncrementalSearchingEnabled)]
         pub unsafe fn isIncrementalSearchingEnabled(&self) -> bool;
 
+        /**
+          An NSTextFinder uses this property's value to determine if it should perform regular or incremental searches. If YES, then the find bar will do incremental searches. If it returns NO, then the find bar will behave regularly. The default value is NO.
+        */
         #[method(setIncrementalSearchingEnabled:)]
         pub unsafe fn setIncrementalSearchingEnabled(&self, incremental_searching_enabled: bool);
 
+        /**
+          NSTextFinder uses this property's value to determine what kind of incremental search feedback should be presented. If YES, then when an incremental search begins, the findBarContainer's contentView will be dimmed, except for the locations of the incremental matches. If NO, then the incremental matches will not be highlighted automatically, but you can use incrementalMatchRanges to highlight the matches yourself. The default value is YES.
+        */
         #[method(incrementalSearchingShouldDimContentView)]
         pub unsafe fn incrementalSearchingShouldDimContentView(&self) -> bool;
 
+        /**
+          NSTextFinder uses this property's value to determine what kind of incremental search feedback should be presented. If YES, then when an incremental search begins, the findBarContainer's contentView will be dimmed, except for the locations of the incremental matches. If NO, then the incremental matches will not be highlighted automatically, but you can use incrementalMatchRanges to highlight the matches yourself. The default value is YES.
+        */
         #[method(setIncrementalSearchingShouldDimContentView:)]
         pub unsafe fn setIncrementalSearchingShouldDimContentView(
             &self,
@@ -117,6 +147,9 @@ extern_methods!(
         );
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSValue"))]
+        /**
+          This array is updated periodically on the main queue as the incremental search operation on a background queue finds matches. You can use this property when incrementalSearchingShouldDimContentView is NO to know where to draw highlights for incremental matches. This array is KVO compliant and can be observed to know when to update your highlights. When NSKeyValueObservingOptionNew and NSKeyValueObservingOptionOld are used, the KVO change dictionary provides the ranges (and their indexes) that are added or removed so you can invalidate the minimal region needed to bring your highlights into sync with the NSTextFinder's results. If no incremental search is active, or there are no matches found, this array will be empty. If an incremental search is currently in progress, but not yet complete, this will return all the ranges found so far.
+        */
         #[method_id(@__retain_semantics Other incrementalMatchRanges)]
         pub unsafe fn incrementalMatchRanges(&self) -> Id<NSArray<NSValue>>;
 
@@ -130,6 +163,9 @@ extern_methods!(
 
 extern_protocol!(
     pub unsafe trait NSTextFinderClient: NSObjectProtocol {
+        /**
+          NSTextFinder uses the following properties to validate individual actions. If these properties are not implemented, NSTextFinder will act as if they returned YES.
+        */
         #[optional]
         #[method(isSelectable)]
         unsafe fn isSelectable(&self) -> bool;
@@ -143,6 +179,9 @@ extern_protocol!(
         unsafe fn isEditable(&self) -> bool;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          If the client contains a single string, then the client can implement this property to return that string to be searched.
+        */
         #[optional]
         #[method_id(@__retain_semantics Other string)]
         unsafe fn string(&self) -> Id<NSString>;
@@ -161,16 +200,25 @@ extern_protocol!(
         #[method(stringLength)]
         unsafe fn stringLength(&self) -> NSUInteger;
 
+        /**
+          This property is required for the NextMatch, PreviousMatch, Replace, ReplaceAndFind, and SetSearchString actions. The client just needs to return its first selected range, or {index, 0} to indicate the location of the insertion point if there is no selection.
+        */
         #[optional]
         #[method(firstSelectedRange)]
         unsafe fn firstSelectedRange(&self) -> NSRange;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSValue"))]
+        /**
+          This property is required for the ReplaceAllInSelection, SelectAll, and SelectAllInSelection actions. The NSArray should contain NSRanges wrapped by NSValues.
+        */
         #[optional]
         #[method_id(@__retain_semantics Other selectedRanges)]
         unsafe fn selectedRanges(&self) -> Id<NSArray<NSValue>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSValue"))]
+        /**
+          This property is required for the ReplaceAllInSelection, SelectAll, and SelectAllInSelection actions. The NSArray should contain NSRanges wrapped by NSValues.
+        */
         #[optional]
         #[method(setSelectedRanges:)]
         unsafe fn setSelectedRanges(&self, selected_ranges: &NSArray<NSValue>);
@@ -216,6 +264,9 @@ extern_protocol!(
         unsafe fn rectsForCharacterRange(&self, range: NSRange) -> Option<Id<NSArray<NSValue>>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSValue"))]
+        /**
+          NSTextFinder uses this property's value to determine which ranges it should search to show all of the incremental matches that are currently visible. If this property is not implemented, then the incremental matches cannot be shown.
+        */
         #[optional]
         #[method_id(@__retain_semantics Other visibleCharacterRanges)]
         unsafe fn visibleCharacterRanges(&self) -> Id<NSArray<NSValue>>;
@@ -232,16 +283,28 @@ extern_protocol!(
 extern_protocol!(
     pub unsafe trait NSTextFinderBarContainer: NSObjectProtocol {
         #[cfg(feature = "AppKit_NSView")]
+        /**
+          This property is used by NSTextFinder to assign a find bar to a container. The container may freely modify the view's width, but should not modify its height. This property is managed by NSTextFinder. You should not set this property.
+        */
         #[method_id(@__retain_semantics Other findBarView)]
         unsafe fn findBarView(&self) -> Option<Id<NSView>>;
 
         #[cfg(feature = "AppKit_NSView")]
+        /**
+          This property is used by NSTextFinder to assign a find bar to a container. The container may freely modify the view's width, but should not modify its height. This property is managed by NSTextFinder. You should not set this property.
+        */
         #[method(setFindBarView:)]
         unsafe fn setFindBarView(&self, find_bar_view: Option<&NSView>);
 
+        /**
+          This property controls whether the receiver should display its find bar or not. When this property is YES and the findBarView property is set, then the find bar should be displayed by the container. Otherwise, the find bar should not be displayed. The default value should be NO.
+        */
         #[method(isFindBarVisible)]
         unsafe fn isFindBarVisible(&self) -> bool;
 
+        /**
+          This property controls whether the receiver should display its find bar or not. When this property is YES and the findBarView property is set, then the find bar should be displayed by the container. Otherwise, the find bar should not be displayed. The default value should be NO.
+        */
         #[method(setFindBarVisible:)]
         unsafe fn setFindBarVisible(&self, find_bar_visible: bool);
 

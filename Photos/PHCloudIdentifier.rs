@@ -29,6 +29,9 @@ unsafe impl NSSecureCoding for PHCloudIdentifier {}
 extern_methods!(
     #[cfg(feature = "PhotoKit_PHCloudIdentifier")]
     unsafe impl PHCloudIdentifier {
+        /**
+          DEPRECATED: If there is a failure to determine the global identifier for a local identifier, the notFoundIdentifier is provided in that array slot.
+        */
         #[deprecated]
         #[method_id(@__retain_semantics Other notFoundIdentifier)]
         pub unsafe fn notFoundIdentifier() -> Id<PHCloudIdentifier>;
@@ -49,6 +52,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "PhotoKit_PHCloudIdentifierMapping")]
+    /**
+      Contains the cloud identifier result from looking up a local identifier via \c cloudIdentifierMappingsForLocalIdentifiers, or an \c error indicating why the lookup failed
+    */
     pub struct PHCloudIdentifierMapping;
 
     #[cfg(feature = "PhotoKit_PHCloudIdentifierMapping")]
@@ -58,9 +64,15 @@ extern_class!(
 );
 
 #[cfg(feature = "PhotoKit_PHCloudIdentifierMapping")]
+/**
+  Contains the cloud identifier result from looking up a local identifier via \c cloudIdentifierMappingsForLocalIdentifiers, or an \c error indicating why the lookup failed
+*/
 unsafe impl NSObjectProtocol for PHCloudIdentifierMapping {}
 
 extern_methods!(
+    /**
+      Contains the cloud identifier result from looking up a local identifier via \c cloudIdentifierMappingsForLocalIdentifiers, or an \c error indicating why the lookup failed
+    */
     #[cfg(feature = "PhotoKit_PHCloudIdentifierMapping")]
     unsafe impl PHCloudIdentifierMapping {
         #[cfg(feature = "PhotoKit_PHCloudIdentifier")]
@@ -68,6 +80,9 @@ extern_methods!(
         pub unsafe fn cloudIdentifier(&self) -> Option<Id<PHCloudIdentifier>>;
 
         #[cfg(feature = "Foundation_NSError")]
+        /**
+          The cloud identifier of the resource found for this local identifier
+        */
         #[method_id(@__retain_semantics Other error)]
         pub unsafe fn error(&self) -> Option<Id<NSError>>;
     }
@@ -76,6 +91,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "PhotoKit_PHLocalIdentifierMapping")]
+    /**
+      Contains the local identifier result from looking up a cloud identifier via \c localIdentifierMappingsForCloudIdentifiers, or an \c error indicating why the lookup failed
+    */
     pub struct PHLocalIdentifierMapping;
 
     #[cfg(feature = "PhotoKit_PHLocalIdentifierMapping")]
@@ -85,9 +103,15 @@ extern_class!(
 );
 
 #[cfg(feature = "PhotoKit_PHLocalIdentifierMapping")]
+/**
+  Contains the local identifier result from looking up a cloud identifier via \c localIdentifierMappingsForCloudIdentifiers, or an \c error indicating why the lookup failed
+*/
 unsafe impl NSObjectProtocol for PHLocalIdentifierMapping {}
 
 extern_methods!(
+    /**
+      Contains the local identifier result from looking up a cloud identifier via \c localIdentifierMappingsForCloudIdentifiers, or an \c error indicating why the lookup failed
+    */
     #[cfg(feature = "PhotoKit_PHLocalIdentifierMapping")]
     unsafe impl PHLocalIdentifierMapping {
         #[cfg(feature = "Foundation_NSString")]
@@ -95,6 +119,9 @@ extern_methods!(
         pub unsafe fn localIdentifier(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSError")]
+        /**
+          The \c NSString representing the local identifier of the resource found for this cloud identifier, or nil if the match was not found.
+        */
         #[method_id(@__retain_semantics Other error)]
         pub unsafe fn error(&self) -> Option<Id<NSError>>;
     }

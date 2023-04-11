@@ -91,64 +91,118 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "AppKit_NSScrollView")]
+        /**
+          Basic setup
+        */
         #[method_id(@__retain_semantics Other scrollView)]
         pub unsafe fn scrollView(&self) -> Option<Id<NSScrollView>>;
 
         #[cfg(feature = "AppKit_NSScrollView")]
+        /**
+          Basic setup
+        */
         #[method(setScrollView:)]
         pub unsafe fn setScrollView(&self, scroll_view: Option<&NSScrollView>);
 
+        /**
+          A ruler uses its scrollView to finds its document view to see whether it should be flipped.  The set method is generally called only by the scroll view itself.  You should not have to set this.
+        */
         #[method(orientation)]
         pub unsafe fn orientation(&self) -> NSRulerOrientation;
 
+        /**
+          A ruler uses its scrollView to finds its document view to see whether it should be flipped.  The set method is generally called only by the scroll view itself.  You should not have to set this.
+        */
         #[method(setOrientation:)]
         pub unsafe fn setOrientation(&self, orientation: NSRulerOrientation);
 
+        /**
+          Ruler geometry
+        */
         #[method(baselineLocation)]
         pub unsafe fn baselineLocation(&self) -> CGFloat;
 
+        /**
+          Returns the location of the baseline.  The location is a y position for horizontal rulers and an x position for vertical ones.  The value is based on the sizes of the various areas of the ruler, some of which can be set below.
+        */
         #[method(requiredThickness)]
         pub unsafe fn requiredThickness(&self) -> CGFloat;
 
+        /**
+          The required height for a horizontal ruler or the required width for a vertical ruler.  Used by the scrollview when tiling.  The value is based on the sizes of the various areas of the ruler, some of which can be set below.
+        */
         #[method(ruleThickness)]
         pub unsafe fn ruleThickness(&self) -> CGFloat;
 
+        /**
+          The required height for a horizontal ruler or the required width for a vertical ruler.  Used by the scrollview when tiling.  The value is based on the sizes of the various areas of the ruler, some of which can be set below.
+        */
         #[method(setRuleThickness:)]
         pub unsafe fn setRuleThickness(&self, rule_thickness: CGFloat);
 
+        /**
+          The rule size is the height of the area used to draw the ruler hash marks in a horizontal ruler or the width of that area in a vertical ruler.  This value will be interpretted in the coordinate system of the ruler's superview (like the ruler's frame).
+        */
         #[method(reservedThicknessForMarkers)]
         pub unsafe fn reservedThicknessForMarkers(&self) -> CGFloat;
 
+        /**
+          The rule size is the height of the area used to draw the ruler hash marks in a horizontal ruler or the width of that area in a vertical ruler.  This value will be interpretted in the coordinate system of the ruler's superview (like the ruler's frame).
+        */
         #[method(setReservedThicknessForMarkers:)]
         pub unsafe fn setReservedThicknessForMarkers(
             &self,
             reserved_thickness_for_markers: CGFloat,
         );
 
+        /**
+          This indicates to the ruler how much room it should leave for objects which sit above or to the left of the rule (such as tab stops, margins, etc...).  Default is 15.0.  If you expect that no view in your document view will ever put objects on the ruler, you can set this to 0.0.  If objects are ever set on the ruler, and not enough space was reserved for them, the ruler grows itself and retiles the scroll view.
+        */
         #[method(reservedThicknessForAccessoryView)]
         pub unsafe fn reservedThicknessForAccessoryView(&self) -> CGFloat;
 
+        /**
+          This indicates to the ruler how much room it should leave for objects which sit above or to the left of the rule (such as tab stops, margins, etc...).  Default is 15.0.  If you expect that no view in your document view will ever put objects on the ruler, you can set this to 0.0.  If objects are ever set on the ruler, and not enough space was reserved for them, the ruler grows itself and retiles the scroll view.
+        */
         #[method(setReservedThicknessForAccessoryView:)]
         pub unsafe fn setReservedThicknessForAccessoryView(
             &self,
             reserved_thickness_for_accessory_view: CGFloat,
         );
 
+        /**
+          Rule configuration
+        */
         #[method_id(@__retain_semantics Other measurementUnits)]
         pub unsafe fn measurementUnits(&self) -> Id<NSRulerViewUnitName>;
 
+        /**
+          Rule configuration
+        */
         #[method(setMeasurementUnits:)]
         pub unsafe fn setMeasurementUnits(&self, measurement_units: &NSRulerViewUnitName);
 
+        /**
+          The units of the ruler start out with the user's preferred measurement.  They can be changed if desired.  The units set must be registered with the ruler factory.  By default Inches, Centimeters, Picas, and Points are supported.
+        */
         #[method(originOffset)]
         pub unsafe fn originOffset(&self) -> CGFloat;
 
+        /**
+          The units of the ruler start out with the user's preferred measurement.  They can be changed if desired.  The units set must be registered with the ruler factory.  By default Inches, Centimeters, Picas, and Points are supported.
+        */
         #[method(setOriginOffset:)]
         pub unsafe fn setOriginOffset(&self, origin_offset: CGFloat);
 
+        /**
+          Client view setup
+        */
         #[method_id(@__retain_semantics Other clientView)]
         pub unsafe fn clientView(&self) -> Option<Id<NSView>>;
 
+        /**
+          Client view setup
+        */
         #[method(setClientView:)]
         pub unsafe fn setClientView(&self, client_view: Option<&NSView>);
 
@@ -176,9 +230,15 @@ extern_methods!(
             event: &NSEvent,
         ) -> bool;
 
+        /**
+          Given a ruler object and a mouse event (either MouseDown or MouseDragged) this will take over the tracking of the mouse until MouseUp.  While tracking it will snap to the baseline of the ruler when it gets within a certain distance.  At that point it becomes stuck to the baseline (this may happen immediately) and won't come off below (or to the right of) the ruler.  It may still be dragged off the baseline upward (or leftward) if its removable.  It is strongly recommended that any ruler object that acan be added to the ruler should be removable as well and it must be movable.  When the mouse goes up, if the object is currently stuck to the baseline it is added to the ruler (and the client object is notified), if its not stuck on the baseline, it is not added.
+        */
         #[method_id(@__retain_semantics Other accessoryView)]
         pub unsafe fn accessoryView(&self) -> Option<Id<NSView>>;
 
+        /**
+          Given a ruler object and a mouse event (either MouseDown or MouseDragged) this will take over the tracking of the mouse until MouseUp.  While tracking it will snap to the baseline of the ruler when it gets within a certain distance.  At that point it becomes stuck to the baseline (this may happen immediately) and won't come off below (or to the right of) the ruler.  It may still be dragged off the baseline upward (or leftward) if its removable.  It is strongly recommended that any ruler object that acan be added to the ruler should be removable as well and it must be movable.  When the mouse goes up, if the object is currently stuck to the baseline it is added to the ruler (and the client object is notified), if its not stuck on the baseline, it is not added.
+        */
         #[method(setAccessoryView:)]
         pub unsafe fn setAccessoryView(&self, accessory_view: Option<&NSView>);
 
@@ -198,12 +258,18 @@ extern_methods!(
         #[method(drawMarkersInRect:)]
         pub unsafe fn drawMarkersInRect(&self, rect: NSRect);
 
+        /**
+          Key overrides
+        */
         #[method(isFlipped)]
         pub unsafe fn isFlipped(&self) -> bool;
     }
 );
 
 extern_methods!(
+    /**
+      This informal protocol defines the communication between a ruler and its client view during mouse tracking.
+    */
     /// NSRulerMarkerClientViewDelegation
     #[cfg(feature = "AppKit_NSView")]
     unsafe impl NSView {

@@ -8,6 +8,9 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSPathComponentCell")]
+    /**
+      Use the 'stringValue' or 'attributedStringValue' to set the display title for this component cell. Use 'image' and 'setImage:' to control the icon displayed for this component cell.
+    */
     pub struct NSPathComponentCell;
 
     #[cfg(feature = "AppKit_NSPathComponentCell")]
@@ -18,28 +21,52 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSPathComponentCell")]
+/**
+  Use the 'stringValue' or 'attributedStringValue' to set the display title for this component cell. Use 'image' and 'setImage:' to control the icon displayed for this component cell.
+*/
 unsafe impl NSAccessibility for NSPathComponentCell {}
 
 #[cfg(feature = "AppKit_NSPathComponentCell")]
+/**
+  Use the 'stringValue' or 'attributedStringValue' to set the display title for this component cell. Use 'image' and 'setImage:' to control the icon displayed for this component cell.
+*/
 unsafe impl NSAccessibilityElementProtocol for NSPathComponentCell {}
 
 #[cfg(feature = "AppKit_NSPathComponentCell")]
+/**
+  Use the 'stringValue' or 'attributedStringValue' to set the display title for this component cell. Use 'image' and 'setImage:' to control the icon displayed for this component cell.
+*/
 unsafe impl NSCoding for NSPathComponentCell {}
 
 #[cfg(feature = "AppKit_NSPathComponentCell")]
+/**
+  Use the 'stringValue' or 'attributedStringValue' to set the display title for this component cell. Use 'image' and 'setImage:' to control the icon displayed for this component cell.
+*/
 unsafe impl NSObjectProtocol for NSPathComponentCell {}
 
 #[cfg(feature = "AppKit_NSPathComponentCell")]
+/**
+  Use the 'stringValue' or 'attributedStringValue' to set the display title for this component cell. Use 'image' and 'setImage:' to control the icon displayed for this component cell.
+*/
 unsafe impl NSUserInterfaceItemIdentification for NSPathComponentCell {}
 
 extern_methods!(
+    /**
+      Use the 'stringValue' or 'attributedStringValue' to set the display title for this component cell. Use 'image' and 'setImage:' to control the icon displayed for this component cell.
+    */
     #[cfg(feature = "AppKit_NSPathComponentCell")]
     unsafe impl NSPathComponentCell {
         #[cfg(feature = "AppKit_NSImage")]
+        /**
+          See NSPathComponent.h for details on the image & URL properties.
+        */
         #[method_id(@__retain_semantics Other image)]
         pub unsafe fn image(&self) -> Option<Id<NSImage>>;
 
         #[cfg(feature = "AppKit_NSImage")]
+        /**
+          See NSPathComponent.h for details on the image & URL properties.
+        */
         #[method(setImage:)]
         pub unsafe fn setImage(&self, image: Option<&NSImage>);
 
@@ -55,6 +82,9 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSTextFieldCell`
+    /**
+      Use the 'stringValue' or 'attributedStringValue' to set the display title for this component cell. Use 'image' and 'setImage:' to control the icon displayed for this component cell.
+    */
     #[cfg(feature = "AppKit_NSPathComponentCell")]
     unsafe impl NSPathComponentCell {
         #[cfg(feature = "Foundation_NSString")]

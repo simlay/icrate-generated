@@ -16,6 +16,17 @@ ns_options!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSTextStorage")]
+    /**
+      Note for subclassing NSTextStorage: NSTextStorage is a semi-abstract subclass of NSMutableAttributedString. It implements change management (beginEditing/endEditing), verification of attributes, delegate handling, and layout management notification. The one aspect it does not implement is the actual attributed string storage --- this is left up to the subclassers, which need to override the two NSMutableAttributedString primitives in addition to two NSAttributedString primitives:
+
+    - (NSString *)string;
+    - (NSDictionary *)attributesAtIndex:(NSUInteger)location effectiveRange:(NSRangePointer)range;
+
+    - (void)replaceCharactersInRange:(NSRange)range withString:(NSString *)str;
+    - (void)setAttributes:(NSDictionary *)attrs range:(NSRange)range;
+
+    These primitives should perform the change then call edited:range:changeInLength: to get everything else to happen.
+    */
     pub struct NSTextStorage;
 
     #[cfg(feature = "AppKit_NSTextStorage")]
@@ -26,18 +37,65 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSTextStorage")]
+/**
+  Note for subclassing NSTextStorage: NSTextStorage is a semi-abstract subclass of NSMutableAttributedString. It implements change management (beginEditing/endEditing), verification of attributes, delegate handling, and layout management notification. The one aspect it does not implement is the actual attributed string storage --- this is left up to the subclassers, which need to override the two NSMutableAttributedString primitives in addition to two NSAttributedString primitives:
+
+- (NSString *)string;
+- (NSDictionary *)attributesAtIndex:(NSUInteger)location effectiveRange:(NSRangePointer)range;
+
+- (void)replaceCharactersInRange:(NSRange)range withString:(NSString *)str;
+- (void)setAttributes:(NSDictionary *)attrs range:(NSRange)range;
+
+These primitives should perform the change then call edited:range:changeInLength: to get everything else to happen.
+*/
 unsafe impl NSCoding for NSTextStorage {}
 
 #[cfg(feature = "AppKit_NSTextStorage")]
+/**
+  Note for subclassing NSTextStorage: NSTextStorage is a semi-abstract subclass of NSMutableAttributedString. It implements change management (beginEditing/endEditing), verification of attributes, delegate handling, and layout management notification. The one aspect it does not implement is the actual attributed string storage --- this is left up to the subclassers, which need to override the two NSMutableAttributedString primitives in addition to two NSAttributedString primitives:
+
+- (NSString *)string;
+- (NSDictionary *)attributesAtIndex:(NSUInteger)location effectiveRange:(NSRangePointer)range;
+
+- (void)replaceCharactersInRange:(NSRange)range withString:(NSString *)str;
+- (void)setAttributes:(NSDictionary *)attrs range:(NSRange)range;
+
+These primitives should perform the change then call edited:range:changeInLength: to get everything else to happen.
+*/
 unsafe impl NSObjectProtocol for NSTextStorage {}
 
 #[cfg(feature = "AppKit_NSTextStorage")]
+/**
+  Note for subclassing NSTextStorage: NSTextStorage is a semi-abstract subclass of NSMutableAttributedString. It implements change management (beginEditing/endEditing), verification of attributes, delegate handling, and layout management notification. The one aspect it does not implement is the actual attributed string storage --- this is left up to the subclassers, which need to override the two NSMutableAttributedString primitives in addition to two NSAttributedString primitives:
+
+- (NSString *)string;
+- (NSDictionary *)attributesAtIndex:(NSUInteger)location effectiveRange:(NSRangePointer)range;
+
+- (void)replaceCharactersInRange:(NSRange)range withString:(NSString *)str;
+- (void)setAttributes:(NSDictionary *)attrs range:(NSRange)range;
+
+These primitives should perform the change then call edited:range:changeInLength: to get everything else to happen.
+*/
 unsafe impl NSSecureCoding for NSTextStorage {}
 
 extern_methods!(
+    /**
+      Note for subclassing NSTextStorage: NSTextStorage is a semi-abstract subclass of NSMutableAttributedString. It implements change management (beginEditing/endEditing), verification of attributes, delegate handling, and layout management notification. The one aspect it does not implement is the actual attributed string storage --- this is left up to the subclassers, which need to override the two NSMutableAttributedString primitives in addition to two NSAttributedString primitives:
+
+    - (NSString *)string;
+    - (NSDictionary *)attributesAtIndex:(NSUInteger)location effectiveRange:(NSRangePointer)range;
+
+    - (void)replaceCharactersInRange:(NSRange)range withString:(NSString *)str;
+    - (void)setAttributes:(NSDictionary *)attrs range:(NSRange)range;
+
+    These primitives should perform the change then call edited:range:changeInLength: to get everything else to happen.
+    */
     #[cfg(feature = "AppKit_NSTextStorage")]
     unsafe impl NSTextStorage {
         #[cfg(all(feature = "AppKit_NSLayoutManager", feature = "Foundation_NSArray"))]
+        /**
+          NSLayoutManager objects owned by the receiver.
+        */
         #[method_id(@__retain_semantics Other layoutManagers)]
         pub unsafe fn layoutManagers(&self) -> Id<NSArray<NSLayoutManager>>;
 
@@ -49,18 +107,33 @@ extern_methods!(
         #[method(removeLayoutManager:)]
         pub unsafe fn removeLayoutManager(&self, a_layout_manager: &NSLayoutManager);
 
+        /**
+          The NSTextStorageEditActions mask indicating that there are pending changes for attributes, characters, or both.
+        */
         #[method(editedMask)]
         pub unsafe fn editedMask(&self) -> NSTextStorageEditActions;
 
+        /**
+          The range for pending changes. {NSNotFound, 0} when there is no pending changes.
+        */
         #[method(editedRange)]
         pub unsafe fn editedRange(&self) -> NSRange;
 
+        /**
+          The length delta for the pending changes.
+        */
         #[method(changeInLength)]
         pub unsafe fn changeInLength(&self) -> NSInteger;
 
+        /**
+          Delegate
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(&self) -> Option<Id<ProtocolObject<dyn NSTextStorageDelegate>>>;
 
+        /**
+          Delegate
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
@@ -78,6 +151,9 @@ extern_methods!(
         #[method(processEditing)]
         pub unsafe fn processEditing(&self);
 
+        /**
+          Indicates if the receiver fixes invalidated attributes lazily.  The concrete UIKit subclass fixes attributes lazily by default.  The abstract class (hence, all custom subclasses) is not lazy.
+        */
         #[method(fixesAttributesLazily)]
         pub unsafe fn fixesAttributesLazily(&self) -> bool;
 
@@ -87,11 +163,19 @@ extern_methods!(
         #[method(ensureAttributesAreFixedInRange:)]
         pub unsafe fn ensureAttributesAreFixedInRange(&self, range: NSRange);
 
+        /**
+          NSTextStorageObserving
+        An object conforming to NSTextStorageObserving observing and retaining NSTextStorage
+        */
         #[method_id(@__retain_semantics Other textStorageObserver)]
         pub unsafe fn textStorageObserver(
             &self,
         ) -> Option<Id<ProtocolObject<dyn NSTextStorageObserving>>>;
 
+        /**
+          NSTextStorageObserving
+        An object conforming to NSTextStorageObserving observing and retaining NSTextStorage
+        */
         #[method(setTextStorageObserver:)]
         pub unsafe fn setTextStorageObserver(
             &self,
@@ -101,6 +185,9 @@ extern_methods!(
 );
 
 extern_protocol!(
+    /**
+       NSTextStorage delegate methods
+    */
     pub unsafe trait NSTextStorageDelegate: NSObjectProtocol {
         #[cfg(feature = "AppKit_NSTextStorage")]
         #[optional]
@@ -133,12 +220,21 @@ extern_static!(NSTextStorageWillProcessEditingNotification: &'static NSNotificat
 extern_static!(NSTextStorageDidProcessEditingNotification: &'static NSNotificationName);
 
 extern_protocol!(
+    /**
+      NSTextStorageObserving defines the protocol for NSTextStorage controller objects observing changes in the text backing-store.
+    */
     pub unsafe trait NSTextStorageObserving: NSObjectProtocol {
         #[cfg(feature = "AppKit_NSTextStorage")]
+        /**
+          The document object
+        */
         #[method_id(@__retain_semantics Other textStorage)]
         unsafe fn textStorage(&self) -> Option<Id<NSTextStorage>>;
 
         #[cfg(feature = "AppKit_NSTextStorage")]
+        /**
+          The document object
+        */
         #[method(setTextStorage:)]
         unsafe fn setTextStorage(&self, text_storage: Option<&NSTextStorage>);
 
@@ -170,6 +266,17 @@ pub type NSTextStorageEditedOptions = NSUInteger;
 extern_methods!(
     /// Methods declared on superclass `NSAttributedString`
     ///
+    /**
+      Note for subclassing NSTextStorage: NSTextStorage is a semi-abstract subclass of NSMutableAttributedString. It implements change management (beginEditing/endEditing), verification of attributes, delegate handling, and layout management notification. The one aspect it does not implement is the actual attributed string storage --- this is left up to the subclassers, which need to override the two NSMutableAttributedString primitives in addition to two NSAttributedString primitives:
+
+    - (NSString *)string;
+    - (NSDictionary *)attributesAtIndex:(NSUInteger)location effectiveRange:(NSRangePointer)range;
+
+    - (void)replaceCharactersInRange:(NSRange)range withString:(NSString *)str;
+    - (void)setAttributes:(NSDictionary *)attrs range:(NSRange)range;
+
+    These primitives should perform the change then call edited:range:changeInLength: to get everything else to happen.
+    */
     /// NSAttributedStringDocumentFormats
     #[cfg(feature = "AppKit_NSTextStorage")]
     unsafe impl NSTextStorage {
@@ -287,6 +394,17 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `NSAttributedString`
     ///
+    /**
+      Note for subclassing NSTextStorage: NSTextStorage is a semi-abstract subclass of NSMutableAttributedString. It implements change management (beginEditing/endEditing), verification of attributes, delegate handling, and layout management notification. The one aspect it does not implement is the actual attributed string storage --- this is left up to the subclassers, which need to override the two NSMutableAttributedString primitives in addition to two NSAttributedString primitives:
+
+    - (NSString *)string;
+    - (NSDictionary *)attributesAtIndex:(NSUInteger)location effectiveRange:(NSRangePointer)range;
+
+    - (void)replaceCharactersInRange:(NSRange)range withString:(NSString *)str;
+    - (void)setAttributes:(NSDictionary *)attrs range:(NSRange)range;
+
+    These primitives should perform the change then call edited:range:changeInLength: to get everything else to happen.
+    */
     /// NSDeprecatedKitAdditions
     #[cfg(feature = "AppKit_NSTextStorage")]
     unsafe impl NSTextStorage {
@@ -313,6 +431,17 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `NSAttributedString`
     ///
+    /**
+      Note for subclassing NSTextStorage: NSTextStorage is a semi-abstract subclass of NSMutableAttributedString. It implements change management (beginEditing/endEditing), verification of attributes, delegate handling, and layout management notification. The one aspect it does not implement is the actual attributed string storage --- this is left up to the subclassers, which need to override the two NSMutableAttributedString primitives in addition to two NSAttributedString primitives:
+
+    - (NSString *)string;
+    - (NSDictionary *)attributesAtIndex:(NSUInteger)location effectiveRange:(NSRangePointer)range;
+
+    - (void)replaceCharactersInRange:(NSRange)range withString:(NSString *)str;
+    - (void)setAttributes:(NSDictionary *)attrs range:(NSRange)range;
+
+    These primitives should perform the change then call edited:range:changeInLength: to get everything else to happen.
+    */
     /// NSExtendedAttributedString
     #[cfg(feature = "AppKit_NSTextStorage")]
     unsafe impl NSTextStorage {
@@ -339,6 +468,17 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `NSAttributedString`
     ///
+    /**
+      Note for subclassing NSTextStorage: NSTextStorage is a semi-abstract subclass of NSMutableAttributedString. It implements change management (beginEditing/endEditing), verification of attributes, delegate handling, and layout management notification. The one aspect it does not implement is the actual attributed string storage --- this is left up to the subclassers, which need to override the two NSMutableAttributedString primitives in addition to two NSAttributedString primitives:
+
+    - (NSString *)string;
+    - (NSDictionary *)attributesAtIndex:(NSUInteger)location effectiveRange:(NSRangePointer)range;
+
+    - (void)replaceCharactersInRange:(NSRange)range withString:(NSString *)str;
+    - (void)setAttributes:(NSDictionary *)attrs range:(NSRange)range;
+
+    These primitives should perform the change then call edited:range:changeInLength: to get everything else to happen.
+    */
     /// NSAttributedStringCreateFromMarkdown
     #[cfg(feature = "AppKit_NSTextStorage")]
     unsafe impl NSTextStorage {

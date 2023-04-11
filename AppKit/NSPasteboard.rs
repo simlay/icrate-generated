@@ -57,6 +57,9 @@ extern_static!(NSPasteboardNameDrag: &'static NSPasteboardName);
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+      Options for prepareForNewContentsWithOptions:
+    */
     pub enum NSPasteboardContentsOptions {
         NSPasteboardContentsCurrentHostOnly = 1 << 0,
     }
@@ -129,6 +132,9 @@ extern_methods!(
         ) -> Option<Id<NSArray>>;
 
         #[cfg(all(feature = "AppKit_NSPasteboardItem", feature = "Foundation_NSArray"))]
+        /**
+          Returns all pasteboard items.  Returns nil if there is an error retrieving pasteboard items.
+        */
         #[method_id(@__retain_semantics Other pasteboardItems)]
         pub unsafe fn pasteboardItems(&self) -> Option<Id<NSArray<NSPasteboardItem>>>;
 
@@ -171,6 +177,9 @@ extern_methods!(
         ) -> NSInteger;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          These methods provide information about the types available from the entire pasteboard.
+        */
         #[method_id(@__retain_semantics Other types)]
         pub unsafe fn types(&self) -> Option<Id<NSArray<NSPasteboardType>>>;
 
@@ -268,6 +277,9 @@ extern_protocol!(
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+      The NSPasteboardWriting protocol enables instances of a class to be used with the -writeObjects: method of NSPasteboard.  The Cocoa framework classes NSString, NSAttributedString, NSURL, NSColor, NSSound, NSImage, and NSPasteboardItem implement this protocol.  The protocol can also be implemented by custom application classes for use with -writeObjects:
+    */
     pub enum NSPasteboardWritingOptions {
         NSPasteboardWritingPromised = 1 << 9,
     }
@@ -303,6 +315,9 @@ extern_protocol!(
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+       NSPasteboardReadingOptions specify how data is read from the pasteboard.  You can specify only one option from this list.  If you do not specify an option, the default NSPasteboardReadingAsData is used.  The first three options specify how and if pasteboard data should be pre-processed by the pasteboard before being passed to -initWithPasteboardPropertyList:ofType.  The fourth option, NSPasteboardReadingAsKeyedArchive, should be used when the data on the pasteboard is a keyed archive of this class.  Using this option, a keyed unarchiver will be used and -initWithCoder: will be called to initialize the new instance.
+    */
     pub enum NSPasteboardReadingOptions {
         NSPasteboardReadingAsData = 0,
         NSPasteboardReadingAsString = 1 << 0,
@@ -340,6 +355,28 @@ extern_protocol!(
 );
 
 extern_methods!(
+    /**
+      The recommended approach for writing URLs to the pasteboard is as follows:
+
+    NSArray *arrayOfURLs; // assume this exists
+    NSPasteboard *pasteboard = [NSPasteboard generalPasteboard]; // get pasteboard
+    [pasteboard clearContents]; // clear pasteboard to take ownership
+    [pasteboard writeObjects:arrayOfURLs]; // write the URLs
+
+    The recommended approach for reading URLs is as follows:
+
+    NSPasteboard *pasteboard = [NSPasteboard generalPasteboard]; // get pasteboard
+    NSArray *classArray = [NSArray arrayWithObject:[NSURL class]]; // types of objects you are looking for
+    NSArray *arrayOfURLs = [pasteboard readObjectsForClasses:classArray options:nil]; // read objects of those classes
+
+    To read only file URLs, use the NSPasteboardURLReadingFileURLsOnlyKey option in a dictionary provided to -readObjectsForClasses:options:.
+    NSDictionary *options = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:NSPasteboardURLReadingFileURLsOnlyKey];
+
+    To read only URLs with particular content types, use the NSPasteboardURLReadingContentsConformToTypesKey option in a dictionary provided to -readObjectsForClasses:options:.  In the sample below, only URLs whose content types are images will be returned.
+    NSDictionary *options = [NSDictionary dictionaryWithObject:[NSImage imageTypes] forKey:NSPasteboardURLReadingContentsConformToTypesKey];
+
+    To read only file URLs with particular content types, combine the two options.
+    */
     /// NSPasteboardSupport
     #[cfg(feature = "Foundation_NSURL")]
     unsafe impl NSURL {
@@ -354,24 +391,80 @@ extern_methods!(
 );
 
 #[cfg(feature = "Foundation_NSURL")]
+/**
+  The recommended approach for writing URLs to the pasteboard is as follows:
+
+NSArray *arrayOfURLs; // assume this exists
+NSPasteboard *pasteboard = [NSPasteboard generalPasteboard]; // get pasteboard
+[pasteboard clearContents]; // clear pasteboard to take ownership
+[pasteboard writeObjects:arrayOfURLs]; // write the URLs
+
+The recommended approach for reading URLs is as follows:
+
+NSPasteboard *pasteboard = [NSPasteboard generalPasteboard]; // get pasteboard
+NSArray *classArray = [NSArray arrayWithObject:[NSURL class]]; // types of objects you are looking for
+NSArray *arrayOfURLs = [pasteboard readObjectsForClasses:classArray options:nil]; // read objects of those classes
+
+To read only file URLs, use the NSPasteboardURLReadingFileURLsOnlyKey option in a dictionary provided to -readObjectsForClasses:options:.
+NSDictionary *options = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:NSPasteboardURLReadingFileURLsOnlyKey];
+
+To read only URLs with particular content types, use the NSPasteboardURLReadingContentsConformToTypesKey option in a dictionary provided to -readObjectsForClasses:options:.  In the sample below, only URLs whose content types are images will be returned.
+NSDictionary *options = [NSDictionary dictionaryWithObject:[NSImage imageTypes] forKey:NSPasteboardURLReadingContentsConformToTypesKey];
+
+To read only file URLs with particular content types, combine the two options.
+*/
 unsafe impl NSPasteboardReading for NSURL {}
 
 #[cfg(feature = "Foundation_NSURL")]
+/**
+  The recommended approach for writing URLs to the pasteboard is as follows:
+
+NSArray *arrayOfURLs; // assume this exists
+NSPasteboard *pasteboard = [NSPasteboard generalPasteboard]; // get pasteboard
+[pasteboard clearContents]; // clear pasteboard to take ownership
+[pasteboard writeObjects:arrayOfURLs]; // write the URLs
+
+The recommended approach for reading URLs is as follows:
+
+NSPasteboard *pasteboard = [NSPasteboard generalPasteboard]; // get pasteboard
+NSArray *classArray = [NSArray arrayWithObject:[NSURL class]]; // types of objects you are looking for
+NSArray *arrayOfURLs = [pasteboard readObjectsForClasses:classArray options:nil]; // read objects of those classes
+
+To read only file URLs, use the NSPasteboardURLReadingFileURLsOnlyKey option in a dictionary provided to -readObjectsForClasses:options:.
+NSDictionary *options = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:NSPasteboardURLReadingFileURLsOnlyKey];
+
+To read only URLs with particular content types, use the NSPasteboardURLReadingContentsConformToTypesKey option in a dictionary provided to -readObjectsForClasses:options:.  In the sample below, only URLs whose content types are images will be returned.
+NSDictionary *options = [NSDictionary dictionaryWithObject:[NSImage imageTypes] forKey:NSPasteboardURLReadingContentsConformToTypesKey];
+
+To read only file URLs with particular content types, combine the two options.
+*/
 unsafe impl NSPasteboardWriting for NSURL {}
 
 extern_methods!(
+    /**
+      NSString Pasteboard Support
+    */
     /// NSPasteboardSupport
     #[cfg(feature = "Foundation_NSString")]
     unsafe impl NSString {}
 );
 
 #[cfg(feature = "Foundation_NSString")]
+/**
+  NSString Pasteboard Support
+*/
 unsafe impl NSPasteboardReading for NSString {}
 
 #[cfg(feature = "Foundation_NSString")]
+/**
+  NSString Pasteboard Support
+*/
 unsafe impl NSPasteboardWriting for NSString {}
 
 extern_methods!(
+    /**
+      The file contents pboard type allowed you to synthesize a pboard type for a file's contents based on the file's extension.  Using the UTI of a file to represent its contents now replaces this functionality.
+    */
     /// NSFileContents
     #[cfg(feature = "AppKit_NSPasteboard")]
     unsafe impl NSPasteboard {

@@ -25,6 +25,9 @@ extern_methods!(
     #[cfg(feature = "MapKit_MKMapItem")]
     unsafe impl MKMapItem {
         #[cfg(feature = "MapKit_MKPlacemark")]
+        /**
+          If this MKMapItem represents your current location (isCurrentLocation == YES), then placemark will be nil.
+        */
         #[method_id(@__retain_semantics Other placemark)]
         pub unsafe fn placemark(&self) -> Id<MKPlacemark>;
 

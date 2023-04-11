@@ -34,6 +34,11 @@ extern_static!(NSGridViewSizeForContent: CGFloat);
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSGridView")]
+    /**
+     NSGridView is a layout container for aligning views in spreadsheet-like rows & columns, indexed from the top left starting at 0.  Rows and columns are sized to fit their largest content (unless an explicit size has been set), but all cells in a given column will be the same width and all cells in a row will be the same height.
+
+    NSGridPlacement is used to specify the positioning of the contentView within the cell.  The content placement can be configured separately for the X & Y axes to align the content with either edge or to center it.  Placement properties on rows, columns, and cells default to 'inherited' so that the grid-level properties will effect all cells.  Content placement can be overridden for individual rows, columns, or cells by simply changing the appropriate property to a value other than 'inherited'.
+    */
     pub struct NSGridView;
 
     #[cfg(feature = "AppKit_NSGridView")]
@@ -44,30 +49,75 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSGridView")]
+/**
+ NSGridView is a layout container for aligning views in spreadsheet-like rows & columns, indexed from the top left starting at 0.  Rows and columns are sized to fit their largest content (unless an explicit size has been set), but all cells in a given column will be the same width and all cells in a row will be the same height.
+
+NSGridPlacement is used to specify the positioning of the contentView within the cell.  The content placement can be configured separately for the X & Y axes to align the content with either edge or to center it.  Placement properties on rows, columns, and cells default to 'inherited' so that the grid-level properties will effect all cells.  Content placement can be overridden for individual rows, columns, or cells by simply changing the appropriate property to a value other than 'inherited'.
+*/
 unsafe impl NSAccessibility for NSGridView {}
 
 #[cfg(feature = "AppKit_NSGridView")]
+/**
+ NSGridView is a layout container for aligning views in spreadsheet-like rows & columns, indexed from the top left starting at 0.  Rows and columns are sized to fit their largest content (unless an explicit size has been set), but all cells in a given column will be the same width and all cells in a row will be the same height.
+
+NSGridPlacement is used to specify the positioning of the contentView within the cell.  The content placement can be configured separately for the X & Y axes to align the content with either edge or to center it.  Placement properties on rows, columns, and cells default to 'inherited' so that the grid-level properties will effect all cells.  Content placement can be overridden for individual rows, columns, or cells by simply changing the appropriate property to a value other than 'inherited'.
+*/
 unsafe impl NSAccessibilityElementProtocol for NSGridView {}
 
 #[cfg(feature = "AppKit_NSGridView")]
+/**
+ NSGridView is a layout container for aligning views in spreadsheet-like rows & columns, indexed from the top left starting at 0.  Rows and columns are sized to fit their largest content (unless an explicit size has been set), but all cells in a given column will be the same width and all cells in a row will be the same height.
+
+NSGridPlacement is used to specify the positioning of the contentView within the cell.  The content placement can be configured separately for the X & Y axes to align the content with either edge or to center it.  Placement properties on rows, columns, and cells default to 'inherited' so that the grid-level properties will effect all cells.  Content placement can be overridden for individual rows, columns, or cells by simply changing the appropriate property to a value other than 'inherited'.
+*/
 unsafe impl NSAnimatablePropertyContainer for NSGridView {}
 
 #[cfg(feature = "AppKit_NSGridView")]
+/**
+ NSGridView is a layout container for aligning views in spreadsheet-like rows & columns, indexed from the top left starting at 0.  Rows and columns are sized to fit their largest content (unless an explicit size has been set), but all cells in a given column will be the same width and all cells in a row will be the same height.
+
+NSGridPlacement is used to specify the positioning of the contentView within the cell.  The content placement can be configured separately for the X & Y axes to align the content with either edge or to center it.  Placement properties on rows, columns, and cells default to 'inherited' so that the grid-level properties will effect all cells.  Content placement can be overridden for individual rows, columns, or cells by simply changing the appropriate property to a value other than 'inherited'.
+*/
 unsafe impl NSAppearanceCustomization for NSGridView {}
 
 #[cfg(feature = "AppKit_NSGridView")]
+/**
+ NSGridView is a layout container for aligning views in spreadsheet-like rows & columns, indexed from the top left starting at 0.  Rows and columns are sized to fit their largest content (unless an explicit size has been set), but all cells in a given column will be the same width and all cells in a row will be the same height.
+
+NSGridPlacement is used to specify the positioning of the contentView within the cell.  The content placement can be configured separately for the X & Y axes to align the content with either edge or to center it.  Placement properties on rows, columns, and cells default to 'inherited' so that the grid-level properties will effect all cells.  Content placement can be overridden for individual rows, columns, or cells by simply changing the appropriate property to a value other than 'inherited'.
+*/
 unsafe impl NSCoding for NSGridView {}
 
 #[cfg(feature = "AppKit_NSGridView")]
+/**
+ NSGridView is a layout container for aligning views in spreadsheet-like rows & columns, indexed from the top left starting at 0.  Rows and columns are sized to fit their largest content (unless an explicit size has been set), but all cells in a given column will be the same width and all cells in a row will be the same height.
+
+NSGridPlacement is used to specify the positioning of the contentView within the cell.  The content placement can be configured separately for the X & Y axes to align the content with either edge or to center it.  Placement properties on rows, columns, and cells default to 'inherited' so that the grid-level properties will effect all cells.  Content placement can be overridden for individual rows, columns, or cells by simply changing the appropriate property to a value other than 'inherited'.
+*/
 unsafe impl NSDraggingDestination for NSGridView {}
 
 #[cfg(feature = "AppKit_NSGridView")]
+/**
+ NSGridView is a layout container for aligning views in spreadsheet-like rows & columns, indexed from the top left starting at 0.  Rows and columns are sized to fit their largest content (unless an explicit size has been set), but all cells in a given column will be the same width and all cells in a row will be the same height.
+
+NSGridPlacement is used to specify the positioning of the contentView within the cell.  The content placement can be configured separately for the X & Y axes to align the content with either edge or to center it.  Placement properties on rows, columns, and cells default to 'inherited' so that the grid-level properties will effect all cells.  Content placement can be overridden for individual rows, columns, or cells by simply changing the appropriate property to a value other than 'inherited'.
+*/
 unsafe impl NSObjectProtocol for NSGridView {}
 
 #[cfg(feature = "AppKit_NSGridView")]
+/**
+ NSGridView is a layout container for aligning views in spreadsheet-like rows & columns, indexed from the top left starting at 0.  Rows and columns are sized to fit their largest content (unless an explicit size has been set), but all cells in a given column will be the same width and all cells in a row will be the same height.
+
+NSGridPlacement is used to specify the positioning of the contentView within the cell.  The content placement can be configured separately for the X & Y axes to align the content with either edge or to center it.  Placement properties on rows, columns, and cells default to 'inherited' so that the grid-level properties will effect all cells.  Content placement can be overridden for individual rows, columns, or cells by simply changing the appropriate property to a value other than 'inherited'.
+*/
 unsafe impl NSUserInterfaceItemIdentification for NSGridView {}
 
 extern_methods!(
+    /**
+     NSGridView is a layout container for aligning views in spreadsheet-like rows & columns, indexed from the top left starting at 0.  Rows and columns are sized to fit their largest content (unless an explicit size has been set), but all cells in a given column will be the same width and all cells in a row will be the same height.
+
+    NSGridPlacement is used to specify the positioning of the contentView within the cell.  The content placement can be configured separately for the X & Y axes to align the content with either edge or to center it.  Placement properties on rows, columns, and cells default to 'inherited' so that the grid-level properties will effect all cells.  Content placement can be overridden for individual rows, columns, or cells by simply changing the appropriate property to a value other than 'inherited'.
+    */
     #[cfg(feature = "AppKit_NSGridView")]
     unsafe impl NSGridView {
         #[method_id(@__retain_semantics Init initWithFrame:)]
@@ -160,9 +210,15 @@ extern_methods!(
         #[method(removeColumnAtIndex:)]
         pub unsafe fn removeColumnAtIndex(&self, index: NSInteger);
 
+        /**
+          Grid-level layout properties will be used by cells that don't have the properties defined themselves or at the column/row level.  They default to bottom-leading placement, with no alignment.
+        */
         #[method(xPlacement)]
         pub unsafe fn xPlacement(&self) -> NSGridCellPlacement;
 
+        /**
+          Grid-level layout properties will be used by cells that don't have the properties defined themselves or at the column/row level.  They default to bottom-leading placement, with no alignment.
+        */
         #[method(setXPlacement:)]
         pub unsafe fn setXPlacement(&self, x_placement: NSGridCellPlacement);
 
@@ -178,9 +234,15 @@ extern_methods!(
         #[method(setRowAlignment:)]
         pub unsafe fn setRowAlignment(&self, row_alignment: NSGridRowAlignment);
 
+        /**
+          Grid-level property values for row & column spacing are added to the padding properties on rows & columns.  Defaults to 6pt.
+        */
         #[method(rowSpacing)]
         pub unsafe fn rowSpacing(&self) -> CGFloat;
 
+        /**
+          Grid-level property values for row & column spacing are added to the padding properties on rows & columns.  Defaults to 6pt.
+        */
         #[method(setRowSpacing:)]
         pub unsafe fn setRowSpacing(&self, row_spacing: CGFloat);
 
@@ -202,6 +264,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSGridRow")]
+    /**
+      NSGridRow represents a row of cells in the grid view, and allows content placement to be specified on a per-row basis.
+    */
     pub struct NSGridRow;
 
     #[cfg(feature = "AppKit_NSGridRow")]
@@ -211,12 +276,21 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSGridRow")]
+/**
+  NSGridRow represents a row of cells in the grid view, and allows content placement to be specified on a per-row basis.
+*/
 unsafe impl NSCoding for NSGridRow {}
 
 #[cfg(feature = "AppKit_NSGridRow")]
+/**
+  NSGridRow represents a row of cells in the grid view, and allows content placement to be specified on a per-row basis.
+*/
 unsafe impl NSObjectProtocol for NSGridRow {}
 
 extern_methods!(
+    /**
+      NSGridRow represents a row of cells in the grid view, and allows content placement to be specified on a per-row basis.
+    */
     #[cfg(feature = "AppKit_NSGridRow")]
     unsafe impl NSGridRow {
         #[cfg(feature = "AppKit_NSGridView")]
@@ -230,9 +304,15 @@ extern_methods!(
         #[method_id(@__retain_semantics Other cellAtIndex:)]
         pub unsafe fn cellAtIndex(&self, index: NSInteger) -> Id<NSGridCell>;
 
+        /**
+          Row level placement properties will be used by cells whose Y-axis properties are set to 'inherited'.  These also default to 'inherited', falling back to the GridView level properties.
+        */
         #[method(yPlacement)]
         pub unsafe fn yPlacement(&self) -> NSGridCellPlacement;
 
+        /**
+          Row level placement properties will be used by cells whose Y-axis properties are set to 'inherited'.  These also default to 'inherited', falling back to the GridView level properties.
+        */
         #[method(setYPlacement:)]
         pub unsafe fn setYPlacement(&self, y_placement: NSGridCellPlacement);
 
@@ -242,15 +322,27 @@ extern_methods!(
         #[method(setRowAlignment:)]
         pub unsafe fn setRowAlignment(&self, row_alignment: NSGridRowAlignment);
 
+        /**
+          Height of this row, or NSGridViewSizeForContent (the default) to fit content automatically.
+        */
         #[method(height)]
         pub unsafe fn height(&self) -> CGFloat;
 
+        /**
+          Height of this row, or NSGridViewSizeForContent (the default) to fit content automatically.
+        */
         #[method(setHeight:)]
         pub unsafe fn setHeight(&self, height: CGFloat);
 
+        /**
+          Padding is extra space between this row and an adjacent one.  Defaults to 0. Total inter-row-space is firstRow.bottomPadding + grid.rowSpacing + secondRow.topPadding
+        */
         #[method(topPadding)]
         pub unsafe fn topPadding(&self) -> CGFloat;
 
+        /**
+          Padding is extra space between this row and an adjacent one.  Defaults to 0. Total inter-row-space is firstRow.bottomPadding + grid.rowSpacing + secondRow.topPadding
+        */
         #[method(setTopPadding:)]
         pub unsafe fn setTopPadding(&self, top_padding: CGFloat);
 
@@ -260,9 +352,15 @@ extern_methods!(
         #[method(setBottomPadding:)]
         pub unsafe fn setBottomPadding(&self, bottom_padding: CGFloat);
 
+        /**
+          Hidden rows/columns will collapse to 0 size and hide all their contentViews.
+        */
         #[method(isHidden)]
         pub unsafe fn isHidden(&self) -> bool;
 
+        /**
+          Hidden rows/columns will collapse to 0 size and hide all their contentViews.
+        */
         #[method(setHidden:)]
         pub unsafe fn setHidden(&self, hidden: bool);
 
@@ -274,6 +372,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSGridColumn")]
+    /**
+      NSGridColumn represents a column of cells in the grid view, and allows content placement to be specified on a per-column basis.
+    */
     pub struct NSGridColumn;
 
     #[cfg(feature = "AppKit_NSGridColumn")]
@@ -283,12 +384,21 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSGridColumn")]
+/**
+  NSGridColumn represents a column of cells in the grid view, and allows content placement to be specified on a per-column basis.
+*/
 unsafe impl NSCoding for NSGridColumn {}
 
 #[cfg(feature = "AppKit_NSGridColumn")]
+/**
+  NSGridColumn represents a column of cells in the grid view, and allows content placement to be specified on a per-column basis.
+*/
 unsafe impl NSObjectProtocol for NSGridColumn {}
 
 extern_methods!(
+    /**
+      NSGridColumn represents a column of cells in the grid view, and allows content placement to be specified on a per-column basis.
+    */
     #[cfg(feature = "AppKit_NSGridColumn")]
     unsafe impl NSGridColumn {
         #[cfg(feature = "AppKit_NSGridView")]
@@ -302,21 +412,39 @@ extern_methods!(
         #[method_id(@__retain_semantics Other cellAtIndex:)]
         pub unsafe fn cellAtIndex(&self, index: NSInteger) -> Id<NSGridCell>;
 
+        /**
+          Column level placement will be used by cells whose xPlacement is set to 'inherited'.  This also defaults to 'inherited', falling back to the NSGridView property.
+        */
         #[method(xPlacement)]
         pub unsafe fn xPlacement(&self) -> NSGridCellPlacement;
 
+        /**
+          Column level placement will be used by cells whose xPlacement is set to 'inherited'.  This also defaults to 'inherited', falling back to the NSGridView property.
+        */
         #[method(setXPlacement:)]
         pub unsafe fn setXPlacement(&self, x_placement: NSGridCellPlacement);
 
+        /**
+          Width of this column, or NSGridViewSizeForContent (the default) to fit content automatically.
+        */
         #[method(width)]
         pub unsafe fn width(&self) -> CGFloat;
 
+        /**
+          Width of this column, or NSGridViewSizeForContent (the default) to fit content automatically.
+        */
         #[method(setWidth:)]
         pub unsafe fn setWidth(&self, width: CGFloat);
 
+        /**
+          Padding is extra space between this column and an adjacent one.  Defaults to 0.  Total inter-column-space is firstColumn.trailingPadding + grid.columnSpacing + secondColumn.leadingPadding
+        */
         #[method(leadingPadding)]
         pub unsafe fn leadingPadding(&self) -> CGFloat;
 
+        /**
+          Padding is extra space between this column and an adjacent one.  Defaults to 0.  Total inter-column-space is firstColumn.trailingPadding + grid.columnSpacing + secondColumn.leadingPadding
+        */
         #[method(setLeadingPadding:)]
         pub unsafe fn setLeadingPadding(&self, leading_padding: CGFloat);
 
@@ -326,9 +454,15 @@ extern_methods!(
         #[method(setTrailingPadding:)]
         pub unsafe fn setTrailingPadding(&self, trailing_padding: CGFloat);
 
+        /**
+          Hidden rows/columns will collapse to 0 size and hide all their contentViews.
+        */
         #[method(isHidden)]
         pub unsafe fn isHidden(&self) -> bool;
 
+        /**
+          Hidden rows/columns will collapse to 0 size and hide all their contentViews.
+        */
         #[method(setHidden:)]
         pub unsafe fn setHidden(&self, hidden: bool);
 
@@ -340,6 +474,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSGridCell")]
+    /**
+      NSGridCell represents a single cell in the grid.  The cell will maintain the necessary constraints for positioning out whichever contentView is set.
+    */
     pub struct NSGridCell;
 
     #[cfg(feature = "AppKit_NSGridCell")]
@@ -349,23 +486,41 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSGridCell")]
+/**
+  NSGridCell represents a single cell in the grid.  The cell will maintain the necessary constraints for positioning out whichever contentView is set.
+*/
 unsafe impl NSCoding for NSGridCell {}
 
 #[cfg(feature = "AppKit_NSGridCell")]
+/**
+  NSGridCell represents a single cell in the grid.  The cell will maintain the necessary constraints for positioning out whichever contentView is set.
+*/
 unsafe impl NSObjectProtocol for NSGridCell {}
 
 extern_methods!(
+    /**
+      NSGridCell represents a single cell in the grid.  The cell will maintain the necessary constraints for positioning out whichever contentView is set.
+    */
     #[cfg(feature = "AppKit_NSGridCell")]
     unsafe impl NSGridCell {
         #[cfg(feature = "AppKit_NSView")]
+        /**
+          The view whose placement will be managed by this cell.
+        */
         #[method_id(@__retain_semantics Other contentView)]
         pub unsafe fn contentView(&self) -> Option<Id<NSView>>;
 
         #[cfg(feature = "AppKit_NSView")]
+        /**
+          The view whose placement will be managed by this cell.
+        */
         #[method(setContentView:)]
         pub unsafe fn setContentView(&self, content_view: Option<&NSView>);
 
         #[cfg(feature = "AppKit_NSView")]
+        /**
+          This view is used as a marker in NSGridView's "...WithViews:" methods to indicate a cell whose contentView should be nil.
+        */
         #[method_id(@__retain_semantics Other emptyContentView)]
         pub unsafe fn emptyContentView() -> Id<NSView>;
 
@@ -377,9 +532,15 @@ extern_methods!(
         #[method_id(@__retain_semantics Other column)]
         pub unsafe fn column(&self) -> Option<Id<NSGridColumn>>;
 
+        /**
+          These properties control how the content view is placed in the cell.  Placement is configured independently for each axis.  Baseline alignment within a row is handled separately.  Properties set to the default value of 'inherited' will "fall back" to properties defined on the row/column, or to the GridView itself if needed.  Properties set to 'none' will cause the corresponding aspect of content layout to be left unmanaged by the grid view.  Handling of baseline alignment is special: all cells within a row that specify a rowAlignment (i.e., not "None") are considered to be 'aligned'.  The contentViews of such cells will be aligned by the specified baseline for each cell.  This creates the potential for unsatisfiable constraints in combination with the yPlacement properties on the aligned views.  Therefore, the entire baseline-aligned group is placed using the yPlacement of the first cell with a value other than NSGridCellPlaceNone.  The yPlacement properties of the remaining cells are overridden by their rowAlignment.
+        */
         #[method(xPlacement)]
         pub unsafe fn xPlacement(&self) -> NSGridCellPlacement;
 
+        /**
+          These properties control how the content view is placed in the cell.  Placement is configured independently for each axis.  Baseline alignment within a row is handled separately.  Properties set to the default value of 'inherited' will "fall back" to properties defined on the row/column, or to the GridView itself if needed.  Properties set to 'none' will cause the corresponding aspect of content layout to be left unmanaged by the grid view.  Handling of baseline alignment is special: all cells within a row that specify a rowAlignment (i.e., not "None") are considered to be 'aligned'.  The contentViews of such cells will be aligned by the specified baseline for each cell.  This creates the potential for unsatisfiable constraints in combination with the yPlacement properties on the aligned views.  Therefore, the entire baseline-aligned group is placed using the yPlacement of the first cell with a value other than NSGridCellPlaceNone.  The yPlacement properties of the remaining cells are overridden by their rowAlignment.
+        */
         #[method(setXPlacement:)]
         pub unsafe fn setXPlacement(&self, x_placement: NSGridCellPlacement);
 
@@ -396,10 +557,16 @@ extern_methods!(
         pub unsafe fn setRowAlignment(&self, row_alignment: NSGridRowAlignment);
 
         #[cfg(all(feature = "AppKit_NSLayoutConstraint", feature = "Foundation_NSArray"))]
+        /**
+          Set these constraints to provide custom placement for the cell's content view.  NSGridView will activate the constraints when the cell is visible, and deactivate them when it is hidden.  Note that it is usually also necessary to set the xPlacement and/or yPlacement to 'Custom' in order to prevent NSGridView from adding its own placement constraints in one or both axes (which is likely to cause unsatisfiable constraints in combination with the custom ones).
+        */
         #[method_id(@__retain_semantics Other customPlacementConstraints)]
         pub unsafe fn customPlacementConstraints(&self) -> Id<NSArray<NSLayoutConstraint>>;
 
         #[cfg(all(feature = "AppKit_NSLayoutConstraint", feature = "Foundation_NSArray"))]
+        /**
+          Set these constraints to provide custom placement for the cell's content view.  NSGridView will activate the constraints when the cell is visible, and deactivate them when it is hidden.  Note that it is usually also necessary to set the xPlacement and/or yPlacement to 'Custom' in order to prevent NSGridView from adding its own placement constraints in one or both axes (which is likely to cause unsatisfiable constraints in combination with the custom ones).
+        */
         #[method(setCustomPlacementConstraints:)]
         pub unsafe fn setCustomPlacementConstraints(
             &self,

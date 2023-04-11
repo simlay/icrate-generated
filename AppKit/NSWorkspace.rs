@@ -30,10 +30,16 @@ unsafe impl NSObjectProtocol for NSWorkspace {}
 extern_methods!(
     #[cfg(feature = "AppKit_NSWorkspace")]
     unsafe impl NSWorkspace {
+        /**
+          Get the shared instance of NSWorkspace.  This method will create an instance of NSWorkspace if it has not been created yet.  You should not attempt to instantiate instances of NSWorkspace yourself, and you should not attempt to subclass NSWorkspace.
+        */
         #[method_id(@__retain_semantics Other sharedWorkspace)]
         pub unsafe fn sharedWorkspace() -> Id<NSWorkspace>;
 
         #[cfg(feature = "Foundation_NSNotificationCenter")]
+        /**
+          Returns the NSNotificationCenter for this NSWorkspace.  All notifications in this header file must be registered on this notification center.  If you register on other notification centers, you will not receive the notifications.
+        */
         #[method_id(@__retain_semantics Other notificationCenter)]
         pub unsafe fn notificationCenter(&self) -> Id<NSNotificationCenter>;
 
@@ -131,10 +137,16 @@ extern_methods!(
         ) -> bool;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          Get the array of file labels as NSStrings.  The file label index for a particular file is available as a property on the URL.  You may listen for NSWorkspaceDidChangeFileLabelsNotification to be notified when these change.
+        */
         #[method_id(@__retain_semantics Other fileLabels)]
         pub unsafe fn fileLabels(&self) -> Id<NSArray<NSString>>;
 
         #[cfg(all(feature = "AppKit_NSColor", feature = "Foundation_NSArray"))]
+        /**
+          Get the corresponding array of file label colors.  This array has the same number of elements as fileLabels, and the color at a given index corresponds to the label at the same index . You may listen for NSWorkspaceDidChangeFileLabelsNotification to be notified when these change.
+        */
         #[method_id(@__retain_semantics Other fileLabelColors)]
         pub unsafe fn fileLabelColors(&self) -> Id<NSArray<NSColor>>;
 
@@ -251,10 +263,16 @@ extern_methods!(
         );
 
         #[cfg(feature = "AppKit_NSRunningApplication")]
+        /**
+          Gets the frontmost application, which is the application that will receive key events.  This is observable through KVO.
+        */
         #[method_id(@__retain_semantics Other frontmostApplication)]
         pub unsafe fn frontmostApplication(&self) -> Option<Id<NSRunningApplication>>;
 
         #[cfg(feature = "AppKit_NSRunningApplication")]
+        /**
+          Gets the menu bar owning application, which is the application that currently owns and draws the menu bar. This is observable through KVO.
+        */
         #[method_id(@__retain_semantics Other menuBarOwningApplication)]
         pub unsafe fn menuBarOwningApplication(&self) -> Option<Id<NSRunningApplication>>;
     }
@@ -280,54 +298,106 @@ extern_methods!(
         #[method_id(@__retain_semantics Other configuration)]
         pub unsafe fn configuration() -> Id<Self>;
 
+        /**
+          Display user interface elements if needed, including errors and authentication. Defaults to YES.
+        The completion handler will not be invoked until the user dismisses any such UI.
+        Gatekeeper UI is not affected and will always be presented if needed.
+        */
         #[method(promptsUserIfNeeded)]
         pub unsafe fn promptsUserIfNeeded(&self) -> bool;
 
+        /**
+          Display user interface elements if needed, including errors and authentication. Defaults to YES.
+        The completion handler will not be invoked until the user dismisses any such UI.
+        Gatekeeper UI is not affected and will always be presented if needed.
+        */
         #[method(setPromptsUserIfNeeded:)]
         pub unsafe fn setPromptsUserIfNeeded(&self, prompts_user_if_needed: bool);
 
+        /**
+          Add the application instance or documents to the Recent Items menu. Defaults to YES.
+        */
         #[method(addsToRecentItems)]
         pub unsafe fn addsToRecentItems(&self) -> bool;
 
+        /**
+          Add the application instance or documents to the Recent Items menu. Defaults to YES.
+        */
         #[method(setAddsToRecentItems:)]
         pub unsafe fn setAddsToRecentItems(&self, adds_to_recent_items: bool);
 
+        /**
+          Bring the application instance to the foreground. Defaults to YES.
+        */
         #[method(activates)]
         pub unsafe fn activates(&self) -> bool;
 
+        /**
+          Bring the application instance to the foreground. Defaults to YES.
+        */
         #[method(setActivates:)]
         pub unsafe fn setActivates(&self, activates: bool);
 
+        /**
+          Hide the application instance. Defaults to NO.
+        */
         #[method(hides)]
         pub unsafe fn hides(&self) -> bool;
 
+        /**
+          Hide the application instance. Defaults to NO.
+        */
         #[method(setHides:)]
         pub unsafe fn setHides(&self, hides: bool);
 
+        /**
+          Hide other application instances. Defaults to NO.
+        */
         #[method(hidesOthers)]
         pub unsafe fn hidesOthers(&self) -> bool;
 
+        /**
+          Hide other application instances. Defaults to NO.
+        */
         #[method(setHidesOthers:)]
         pub unsafe fn setHidesOthers(&self, hides_others: bool);
 
+        /**
+          Print documents and URLs instead of opening them. Defaults to NO.
+        */
         #[method(isForPrinting)]
         pub unsafe fn isForPrinting(&self) -> bool;
 
+        /**
+          Print documents and URLs instead of opening them. Defaults to NO.
+        */
         #[method(setForPrinting:)]
         pub unsafe fn setForPrinting(&self, for_printing: bool);
 
+        /**
+          Ignore any running instance of the application and launch a new one. Defaults to NO (i.e. prefers to reuse a running instance). When createsNewApplicationInstance is YES, the value of allowsRunningApplicationSubstitution is not consulted.
+        */
         #[method(createsNewApplicationInstance)]
         pub unsafe fn createsNewApplicationInstance(&self) -> bool;
 
+        /**
+          Ignore any running instance of the application and launch a new one. Defaults to NO (i.e. prefers to reuse a running instance). When createsNewApplicationInstance is YES, the value of allowsRunningApplicationSubstitution is not consulted.
+        */
         #[method(setCreatesNewApplicationInstance:)]
         pub unsafe fn setCreatesNewApplicationInstance(
             &self,
             creates_new_application_instance: bool,
         );
 
+        /**
+          If an instance of an application is already running, but the running instance is at a different URL (and is capable of opening the provided URLs), use the running application. Defaults to YES. Set this to NO if you are letting the user select between specific versions of an application or letting them choose a particular installation.
+        */
         #[method(allowsRunningApplicationSubstitution)]
         pub unsafe fn allowsRunningApplicationSubstitution(&self) -> bool;
 
+        /**
+          If an instance of an application is already running, but the running instance is at a different URL (and is capable of opening the provided URLs), use the running application. Defaults to YES. Set this to NO if you are letting the user select between specific versions of an application or letting them choose a particular installation.
+        */
         #[method(setAllowsRunningApplicationSubstitution:)]
         pub unsafe fn setAllowsRunningApplicationSubstitution(
             &self,
@@ -335,32 +405,66 @@ extern_methods!(
         );
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          Command-line arguments to pass to a new application instance. Defaults to @[].
+        Only applies when a new application instance is created.
+        The path to the application instance is always automatically inserted as the first argument.
+        If the calling process is sandboxed, the value of this property is ignored.
+        */
         #[method_id(@__retain_semantics Other arguments)]
         pub unsafe fn arguments(&self) -> Id<NSArray<NSString>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          Command-line arguments to pass to a new application instance. Defaults to @[].
+        Only applies when a new application instance is created.
+        The path to the application instance is always automatically inserted as the first argument.
+        If the calling process is sandboxed, the value of this property is ignored.
+        */
         #[method(setArguments:)]
         pub unsafe fn setArguments(&self, arguments: &NSArray<NSString>);
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+          Environment variables to set in a new application instance. Defaults to @{}.
+        Only applies when a new application instance is created.
+        Additional environment variables may be included by the system.
+        */
         #[method_id(@__retain_semantics Other environment)]
         pub unsafe fn environment(&self) -> Id<NSDictionary<NSString, NSString>>;
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+          Environment variables to set in a new application instance. Defaults to @{}.
+        Only applies when a new application instance is created.
+        Additional environment variables may be included by the system.
+        */
         #[method(setEnvironment:)]
         pub unsafe fn setEnvironment(&self, environment: &NSDictionary<NSString, NSString>);
 
         #[cfg(feature = "Foundation_NSAppleEventDescriptor")]
+        /**
+          The first NSAppleEventDescriptor to send to the new app. If an instance of the app is already running, this is sent to that app. Defaults to nil. When nil, a default apple event will be sent, if required.
+        */
         #[method_id(@__retain_semantics Other appleEvent)]
         pub unsafe fn appleEvent(&self) -> Option<Id<NSAppleEventDescriptor>>;
 
         #[cfg(feature = "Foundation_NSAppleEventDescriptor")]
+        /**
+          The first NSAppleEventDescriptor to send to the new app. If an instance of the app is already running, this is sent to that app. Defaults to nil. When nil, a default apple event will be sent, if required.
+        */
         #[method(setAppleEvent:)]
         pub unsafe fn setAppleEvent(&self, apple_event: Option<&NSAppleEventDescriptor>);
 
+        /**
+          Only open the provided URL if it is a valid universal link with an application configured to open it. If there is no application configured, or the user disabled using it to open the link, then the open will fail with an error. Defaults to NO.
+        */
         #[method(requiresUniversalLinks)]
         pub unsafe fn requiresUniversalLinks(&self) -> bool;
 
+        /**
+          Only open the provided URL if it is a valid universal link with an application configured to open it. If there is no application configured, or the user disabled using it to open the link, then the open will fail with an error. Defaults to NO.
+        */
         #[method(setRequiresUniversalLinks:)]
         pub unsafe fn setRequiresUniversalLinks(&self, requires_universal_links: bool);
     }
@@ -377,6 +481,9 @@ extern_static!(NSWorkspaceDesktopImageAllowClippingKey: &'static NSWorkspaceDesk
 extern_static!(NSWorkspaceDesktopImageFillColorKey: &'static NSWorkspaceDesktopImageOptionKey);
 
 extern_methods!(
+    /**
+      Desktop images
+    */
     /// NSDesktopImages
     #[cfg(feature = "AppKit_NSWorkspace")]
     unsafe impl NSWorkspace {

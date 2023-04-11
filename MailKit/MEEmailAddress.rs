@@ -8,6 +8,9 @@ use crate::MailKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MailKit_MEEmailAddress")]
+    /**
+      @brief Contain information about an email address. This can include both valid and invalid email addresses.
+    */
     pub struct MEEmailAddress;
 
     #[cfg(feature = "MailKit_MEEmailAddress")]
@@ -17,22 +20,41 @@ extern_class!(
 );
 
 #[cfg(feature = "MailKit_MEEmailAddress")]
+/**
+  @brief Contain information about an email address. This can include both valid and invalid email addresses.
+*/
 unsafe impl NSCoding for MEEmailAddress {}
 
 #[cfg(feature = "MailKit_MEEmailAddress")]
+/**
+  @brief Contain information about an email address. This can include both valid and invalid email addresses.
+*/
 unsafe impl NSObjectProtocol for MEEmailAddress {}
 
 #[cfg(feature = "MailKit_MEEmailAddress")]
+/**
+  @brief Contain information about an email address. This can include both valid and invalid email addresses.
+*/
 unsafe impl NSSecureCoding for MEEmailAddress {}
 
 extern_methods!(
+    /**
+      @brief Contain information about an email address. This can include both valid and invalid email addresses.
+    */
     #[cfg(feature = "MailKit_MEEmailAddress")]
     unsafe impl MEEmailAddress {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @brief The raw string for the email address.
+        */
         #[method_id(@__retain_semantics Other rawString)]
         pub unsafe fn rawString(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @brief The simple address string portion of the raw string if it is valid. For example, the  @c addressString
+         of "John Appleseed <j.appleseed@example.com>" will be "j.appleseed@example.com".
+        */
         #[method_id(@__retain_semantics Other addressString)]
         pub unsafe fn addressString(&self) -> Option<Id<NSString>>;
 

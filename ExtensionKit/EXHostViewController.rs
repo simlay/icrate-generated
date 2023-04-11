@@ -35,11 +35,17 @@ unsafe impl NSUserInterfaceItemIdentification for EXHostViewController {}
 extern_methods!(
     #[cfg(feature = "ExtensionKit_EXHostViewController")]
     unsafe impl EXHostViewController {
+        /**
+          The view controller's delegate. The delegate will receive callbacks when the hosting state changes.
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(
             &self,
         ) -> Option<Id<ProtocolObject<dyn EXHostViewControllerDelegate>>>;
 
+        /**
+          The view controller's delegate. The delegate will receive callbacks when the hosting state changes.
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
@@ -62,6 +68,9 @@ extern_methods!(
 );
 
 extern_protocol!(
+    /**
+      The host view controller delegate will receive callbacks when the host view controller's state changes.
+    */
     pub unsafe trait EXHostViewControllerDelegate: NSObjectProtocol {
         #[cfg(feature = "ExtensionKit_EXHostViewController")]
         #[optional]

@@ -7,6 +7,9 @@ use crate::IdentityLookup::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "IdentityLookup_ILClassificationResponse")]
+    /**
+      A response to an ILClassificationRequest.
+    */
     pub struct ILClassificationResponse;
 
     #[cfg(feature = "IdentityLookup_ILClassificationResponse")]
@@ -16,33 +19,73 @@ extern_class!(
 );
 
 #[cfg(feature = "IdentityLookup_ILClassificationResponse")]
+/**
+  A response to an ILClassificationRequest.
+*/
 unsafe impl NSCoding for ILClassificationResponse {}
 
 #[cfg(feature = "IdentityLookup_ILClassificationResponse")]
+/**
+  A response to an ILClassificationRequest.
+*/
 unsafe impl NSObjectProtocol for ILClassificationResponse {}
 
 #[cfg(feature = "IdentityLookup_ILClassificationResponse")]
+/**
+  A response to an ILClassificationRequest.
+*/
 unsafe impl NSSecureCoding for ILClassificationResponse {}
 
 extern_methods!(
+    /**
+      A response to an ILClassificationRequest.
+    */
     #[cfg(feature = "IdentityLookup_ILClassificationResponse")]
     unsafe impl ILClassificationResponse {
         #[method(action)]
         pub unsafe fn action(&self) -> ILClassificationAction;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         The value of this string will be sent when a value for
+        ILClassificationExtensionSMSReportDestination has been set in the extension's Info.plist
+        */
         #[method_id(@__retain_semantics Other userString)]
         pub unsafe fn userString(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         The value of this string will be sent when a value for
+        ILClassificationExtensionSMSReportDestination has been set in the extension's Info.plist
+        */
         #[method(setUserString:)]
         pub unsafe fn setUserString(&self, user_string: Option<&NSString>);
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+         The JSON representation of this dictionary will be sent when a value for
+        ILClassificationExtensionNetworkReportDestination has been set in the extension's Info.plist
+
+        The keys and values in this dictionary must conform to the NSJSONSerialization specifications:
+        - Top level object is an NSDictionary
+        - All objects are NSString, NSNumber, NSArray, NSDictionary, or NSNull
+        - All dictionary keys are NSStrings
+        - NSNumbers are not NaN or infinity
+        */
         #[method_id(@__retain_semantics Other userInfo)]
         pub unsafe fn userInfo(&self) -> Option<Id<NSDictionary<NSString, Object>>>;
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+         The JSON representation of this dictionary will be sent when a value for
+        ILClassificationExtensionNetworkReportDestination has been set in the extension's Info.plist
+
+        The keys and values in this dictionary must conform to the NSJSONSerialization specifications:
+        - Top level object is an NSDictionary
+        - All objects are NSString, NSNumber, NSArray, NSDictionary, or NSNull
+        - All dictionary keys are NSStrings
+        - NSNumbers are not NaN or infinity
+        */
         #[method(setUserInfo:)]
         pub unsafe fn setUserInfo(&self, user_info: Option<&NSDictionary<NSString, Object>>);
 

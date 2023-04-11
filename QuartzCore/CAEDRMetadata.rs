@@ -39,6 +39,14 @@ extern_methods!(
             scale: c_float,
         ) -> Id<CAEDRMetadata>;
 
+        /**
+          Content is scene referred and originally encoded with the ITU-R BT.2100-2
+         Hybrid Log Gamma (HLG) opto-electrical transfer function (OETF). The system
+         will apply the opto-optical transfer function (OOTF) based on peak display
+         brightness and ambient. If rendering to a CAMetalLayer with a linear
+         colorspace (for floating point extended dynamic range layers), the content
+         provider must have already applied the HLG inverse OETF.
+        */
         #[method_id(@__retain_semantics Other HLGMetadata)]
         pub unsafe fn HLGMetadata() -> Id<CAEDRMetadata>;
 

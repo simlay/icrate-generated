@@ -53,6 +53,9 @@ extern_methods!(
 );
 
 extern_protocol!(
+    /**
+      Optional delegate
+    */
     pub unsafe trait GKChallengesViewControllerDelegate {
         #[cfg(feature = "GameKit_GKChallengesViewController")]
         #[method(challengesViewControllerDidFinish:)]

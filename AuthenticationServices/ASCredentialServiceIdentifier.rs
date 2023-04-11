@@ -6,6 +6,12 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      @enum ASCredentialServiceIdentifierType
+    @abstract The type of value represented by the service identifier.
+    @constant ASCredentialServiceIdentifierTypeDomain The service identifier represents a domain name that conforms to RFC 1035.
+    @constant ASCredentialServiceIdentifierTypeURL The service identifier represents a URL that conforms to RFC 1738.
+    */
     pub enum ASCredentialServiceIdentifierType {
         ASCredentialServiceIdentifierTypeDomain = 0,
         ASCredentialServiceIdentifierTypeURL = 1,
@@ -44,9 +50,17 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract Get the identifier.
+        @result The service identifier.
+        */
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Id<NSString>;
 
+        /**
+          @abstract Get the service identifier type.
+        @result The service identifier type.
+        */
         #[method(type)]
         pub unsafe fn r#type(&self) -> ASCredentialServiceIdentifierType;
     }

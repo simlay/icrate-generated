@@ -24,6 +24,9 @@ unsafe impl NSObjectProtocol for PHAsset {}
 extern_methods!(
     #[cfg(feature = "PhotoKit_PHAsset")]
     unsafe impl PHAsset {
+        /**
+          Playback style describes how the asset should be presented to the user (regardless of the backing media for that asset).  Use this value to choose the type of view and the appropriate APIs on the PHImageManager to display this asset
+        */
         #[method(playbackStyle)]
         pub unsafe fn playbackStyle(&self) -> PHAssetPlaybackStyle;
 
@@ -54,12 +57,18 @@ extern_methods!(
         #[method(duration)]
         pub unsafe fn duration(&self) -> NSTimeInterval;
 
+        /**
+          a hidden asset will be excluded from moment collections, but may still be included in other smart or regular album collections
+        */
         #[method(isHidden)]
         pub unsafe fn isHidden(&self) -> bool;
 
         #[method(isFavorite)]
         pub unsafe fn isFavorite(&self) -> bool;
 
+        /**
+          deprecated, will always return NO for now.
+        */
         #[deprecated = "No longer supported"]
         #[method(isSyncFailureHidden)]
         pub unsafe fn isSyncFailureHidden(&self) -> bool;
@@ -81,6 +90,9 @@ extern_methods!(
         pub unsafe fn hasAdjustments(&self) -> bool;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          only applies to adjusted assets
+        */
         #[method_id(@__retain_semantics Other adjustmentFormatIdentifier)]
         pub unsafe fn adjustmentFormatIdentifier(&self) -> Option<Id<NSString>>;
 

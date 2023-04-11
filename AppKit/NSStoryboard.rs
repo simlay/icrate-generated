@@ -28,6 +28,9 @@ unsafe impl NSObjectProtocol for NSStoryboard {}
 extern_methods!(
     #[cfg(feature = "AppKit_NSStoryboard")]
     unsafe impl NSStoryboard {
+        /**
+          The main UI storyboard for the application, specified by the "NSMainStoryboardFile" key in its Info.plist
+        */
         #[method_id(@__retain_semantics Other mainStoryboard)]
         pub unsafe fn mainStoryboard() -> Option<Id<NSStoryboard>>;
 

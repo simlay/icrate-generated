@@ -25,6 +25,13 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      @enum WKDialogResult
+    @abstract Constants returned by showLockdownModeFirstUseMessage to indicate how WebKit should treat first use.
+    @constant WKDialogResultShowDefault Indicates that the client did not display a first use message. WebKit should show the default.
+    @constant WKDialogResultAskAgain Indicates the client handled the message, but wants to be checked if other WKWebViews are used.
+    @constant WKDialogResultHandled Indicates the client handled the message and no further checks are needed.
+    */
     pub enum WKDialogResult {
         WKDialogResultShowDefault = 1,
         WKDialogResultAskAgain = 2,
@@ -33,6 +40,10 @@ ns_enum!(
 );
 
 extern_protocol!(
+    /**
+      A class conforming to the WKUIDelegate protocol provides methods for
+    presenting native UI on behalf of a webpage.
+    */
     pub unsafe trait WKUIDelegate: NSObjectProtocol {
         #[cfg(all(
             feature = "WebKit_WKNavigationAction",

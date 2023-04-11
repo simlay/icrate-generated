@@ -5,6 +5,9 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+     @typedef NSXMLNodeKind
+    */
     pub enum NSXMLNodeKind {
         NSXMLInvalidKind = 0,
         NSXMLDocumentKind = 1,
@@ -25,6 +28,10 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSXMLNode")]
+    /**
+     @class NSXMLNode
+    @abstract The basic unit of an XML document.
+    */
     pub struct NSXMLNode;
 
     #[cfg(feature = "Foundation_NSXMLNode")]
@@ -34,9 +41,17 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSXMLNode")]
+/**
+ @class NSXMLNode
+@abstract The basic unit of an XML document.
+*/
 unsafe impl NSObjectProtocol for NSXMLNode {}
 
 extern_methods!(
+    /**
+     @class NSXMLNode
+    @abstract The basic unit of an XML document.
+    */
     #[cfg(feature = "Foundation_NSXMLNode")]
     unsafe impl NSXMLNode {
         #[method_id(@__retain_semantics Init init)]
@@ -121,28 +136,49 @@ extern_methods!(
         #[method_id(@__retain_semantics Other DTDNodeWithXMLString:)]
         pub unsafe fn DTDNodeWithXMLString(string: &NSString) -> Option<Id<Object>>;
 
+        /**
+         primitive
+        */
         #[method(kind)]
         pub unsafe fn kind(&self) -> NSXMLNodeKind;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         primitive
+        */
         #[method_id(@__retain_semantics Other name)]
         pub unsafe fn name(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         primitive
+        */
         #[method(setName:)]
         pub unsafe fn setName(&self, name: Option<&NSString>);
 
+        /**
+         primitive
+        */
         #[method_id(@__retain_semantics Other objectValue)]
         pub unsafe fn objectValue(&self) -> Option<Id<Object>>;
 
+        /**
+         primitive
+        */
         #[method(setObjectValue:)]
         pub unsafe fn setObjectValue(&self, object_value: Option<&Object>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         primitive
+        */
         #[method_id(@__retain_semantics Other stringValue)]
         pub unsafe fn stringValue(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         primitive
+        */
         #[method(setStringValue:)]
         pub unsafe fn setStringValue(&self, string_value: Option<&NSString>);
 
@@ -150,38 +186,68 @@ extern_methods!(
         #[method(setStringValue:resolvingEntities:)]
         pub unsafe fn setStringValue_resolvingEntities(&self, string: &NSString, resolve: bool);
 
+        /**
+         primitive
+        */
         #[method(index)]
         pub unsafe fn index(&self) -> NSUInteger;
 
+        /**
+         @abstract The depth of the node within the tree. Documents and standalone nodes are level 0.
+        */
         #[method(level)]
         pub unsafe fn level(&self) -> NSUInteger;
 
         #[cfg(feature = "Foundation_NSXMLDocument")]
+        /**
+         @abstract The encompassing document or nil.
+        */
         #[method_id(@__retain_semantics Other rootDocument)]
         pub unsafe fn rootDocument(&self) -> Option<Id<NSXMLDocument>>;
 
+        /**
+         primitive
+        */
         #[method_id(@__retain_semantics Other parent)]
         pub unsafe fn parent(&self) -> Option<Id<NSXMLNode>>;
 
+        /**
+         primitive
+        */
         #[method(childCount)]
         pub unsafe fn childCount(&self) -> NSUInteger;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+         primitive
+        */
         #[method_id(@__retain_semantics Other children)]
         pub unsafe fn children(&self) -> Option<Id<NSArray<NSXMLNode>>>;
 
         #[method_id(@__retain_semantics Other childAtIndex:)]
         pub unsafe fn childAtIndex(&self, index: NSUInteger) -> Option<Id<NSXMLNode>>;
 
+        /**
+         @abstract Returns the previous sibling, or nil if there isn't one.
+        */
         #[method_id(@__retain_semantics Other previousSibling)]
         pub unsafe fn previousSibling(&self) -> Option<Id<NSXMLNode>>;
 
+        /**
+         @abstract Returns the next sibling, or nil if there isn't one.
+        */
         #[method_id(@__retain_semantics Other nextSibling)]
         pub unsafe fn nextSibling(&self) -> Option<Id<NSXMLNode>>;
 
+        /**
+         @abstract Returns the previous node in document order. This can be used to walk the tree backwards.
+        */
         #[method_id(@__retain_semantics Other previousNode)]
         pub unsafe fn previousNode(&self) -> Option<Id<NSXMLNode>>;
 
+        /**
+         @abstract Returns the next node in document order. This can be used to walk the tree forwards.
+        */
         #[method_id(@__retain_semantics Other nextNode)]
         pub unsafe fn nextNode(&self) -> Option<Id<NSXMLNode>>;
 
@@ -189,22 +255,37 @@ extern_methods!(
         pub unsafe fn detach(&self);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract Returns the XPath to this node, for example foo/bar[2]/baz.
+        */
         #[method_id(@__retain_semantics Other XPath)]
         pub unsafe fn XPath(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         primitive
+        */
         #[method_id(@__retain_semantics Other localName)]
         pub unsafe fn localName(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         primitive
+        */
         #[method_id(@__retain_semantics Other prefix)]
         pub unsafe fn prefix(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         primitive
+        */
         #[method_id(@__retain_semantics Other URI)]
         pub unsafe fn URI(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         primitive
+        */
         #[method(setURI:)]
         pub unsafe fn setURI(&self, uri: Option<&NSString>);
 
@@ -221,10 +302,16 @@ extern_methods!(
         pub unsafe fn predefinedNamespaceForPrefix(name: &NSString) -> Option<Id<NSXMLNode>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract Used for debugging. May give more information than XMLString.
+        */
         #[method_id(@__retain_semantics Other description)]
         pub unsafe fn description(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract The representation of this node as it would appear in an XML document.
+        */
         #[method_id(@__retain_semantics Other XMLString)]
         pub unsafe fn XMLString(&self) -> Id<NSString>;
 

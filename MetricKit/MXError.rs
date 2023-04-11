@@ -8,6 +8,18 @@ extern_static!(MXErrorDomain: Option<&'static NSErrorDomain>);
 
 ns_error_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum       MXErrorCode
+    @abstract   Error codes for NSError values stemming from the MetricKit Framework.
+    @discussion These error codes are used as the codes for all NSError instances stemmming from the MetricKit Framework.
+
+    @constant   MXErrorLaunchTaskInvalidID           The passed-in task ID is a null value or exceeds the max 128 character length.
+    @constant   MXErrorLaunchTaskMaxCount            Exceeded the max number of tasks.
+    @constant   MXErrorLaunchTaskPastDeadline        The start call was made too late, see @discussion.
+    @constant   MXErrorLaunchTaskDuplicated          A task with the same ID has already been started.
+    @constant   MXErrorLaunchTaskUnknown             The task hasn't been started or has already been finished.
+    @constant   MXErrorLaunchTaskInternalFailure     Internal failures happened inside of MetricKit.
+    */
     pub enum MXErrorCode {
         MXErrorLaunchTaskInvalidID = 0,
         MXErrorLaunchTaskMaxCount = 1,

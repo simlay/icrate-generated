@@ -9,6 +9,9 @@ use crate::PhotoKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "PhotoKit_PHCollectionListChangeRequest")]
+    /**
+      PHCollectionListChangeRequest can only be created or used within a -[PHPhotoLibrary performChanges:] or -[PHPhotoLibrary performChangesAndWait:] block.
+    */
     pub struct PHCollectionListChangeRequest;
 
     #[cfg(feature = "PhotoKit_PHCollectionListChangeRequest")]
@@ -19,9 +22,15 @@ extern_class!(
 );
 
 #[cfg(feature = "PhotoKit_PHCollectionListChangeRequest")]
+/**
+  PHCollectionListChangeRequest can only be created or used within a -[PHPhotoLibrary performChanges:] or -[PHPhotoLibrary performChangesAndWait:] block.
+*/
 unsafe impl NSObjectProtocol for PHCollectionListChangeRequest {}
 
 extern_methods!(
+    /**
+      PHCollectionListChangeRequest can only be created or used within a -[PHPhotoLibrary performChanges:] or -[PHPhotoLibrary performChangesAndWait:] block.
+    */
     #[cfg(feature = "PhotoKit_PHCollectionListChangeRequest")]
     unsafe impl PHCollectionListChangeRequest {
         #[cfg(feature = "Foundation_NSString")]
@@ -29,6 +38,10 @@ extern_methods!(
         pub unsafe fn creationRequestForCollectionListWithTitle(title: &NSString) -> Id<Self>;
 
         #[cfg(feature = "PhotoKit_PHObjectPlaceholder")]
+        /**
+          This can be used to fetch the newly created collection list after the change block has completed by using -localIdentifier
+         It can also be added directly to collection lists within the current change block
+        */
         #[method_id(@__retain_semantics Other placeholderForCreatedCollectionList)]
         pub unsafe fn placeholderForCreatedCollectionList(&self) -> Id<PHObjectPlaceholder>;
 

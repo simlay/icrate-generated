@@ -92,11 +92,24 @@ extern_methods!(
         pub unsafe fn placeholderURLForURL(url: &NSURL) -> Id<NSURL>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         An identifier unique to this provider.
+
+        When modifying the files stored in the directory returned by
+        documentStorageURL, you should pass this identifier to your file coordinator's
+        setPurposeIdentifier: method.
+        */
         #[deprecated]
         #[method_id(@__retain_semantics Other providerIdentifier)]
         pub unsafe fn providerIdentifier(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+         The root URL for provided documents. This URL is derived by consulting the
+        NSExtensionFileProviderDocumentGroup property on your extension. The document
+        storage URL is the folder "File Provider Storage" in the corresponding
+        container.
+        */
         #[deprecated]
         #[method_id(@__retain_semantics Other documentStorageURL)]
         pub unsafe fn documentStorageURL(&self) -> Id<NSURL>;

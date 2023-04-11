@@ -62,6 +62,9 @@ extern_methods!(
     #[cfg(feature = "Foundation_NSLocale")]
     unsafe impl NSLocale {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          same as NSLocaleIdentifier
+        */
         #[method_id(@__retain_semantics Other localeIdentifier)]
         pub unsafe fn localeIdentifier(&self) -> Id<NSString>;
 
@@ -201,12 +204,21 @@ extern_methods!(
     /// NSLocaleCreation
     #[cfg(feature = "Foundation_NSLocale")]
     unsafe impl NSLocale {
+        /**
+          generally you should use this property
+        */
         #[method_id(@__retain_semantics Other autoupdatingCurrentLocale)]
         pub unsafe fn autoupdatingCurrentLocale() -> Id<NSLocale>;
 
+        /**
+          an object representing the user's current locale
+        */
         #[method_id(@__retain_semantics Other currentLocale)]
         pub unsafe fn currentLocale() -> Id<NSLocale>;
 
+        /**
+          the default generic root locale with little localization
+        */
         #[method_id(@__retain_semantics Other systemLocale)]
         pub unsafe fn systemLocale() -> Id<NSLocale>;
 
@@ -255,6 +267,9 @@ extern_methods!(
         pub unsafe fn commonISOCurrencyCodes() -> Id<NSArray<NSString>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          note that this list does not indicate what language the app is actually running in; the NSBundle.mainBundle object determines that at launch and knows that information
+        */
         #[method_id(@__retain_semantics Other preferredLanguages)]
         pub unsafe fn preferredLanguages() -> Id<NSArray<NSString>>;
 

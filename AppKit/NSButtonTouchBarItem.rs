@@ -97,10 +97,16 @@ extern_methods!(
         pub unsafe fn setEnabled(&self, enabled: bool);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The localized string labelling this item during user customization. The default value is empty string.
+        */
         #[method_id(@__retain_semantics Other customizationLabel)]
         pub unsafe fn customizationLabel(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The localized string labelling this item during user customization. The default value is empty string.
+        */
         #[method(setCustomizationLabel:)]
         pub unsafe fn setCustomizationLabel(&self, customization_label: Option<&NSString>);
     }

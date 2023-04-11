@@ -200,9 +200,15 @@ extern_methods!(
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(&self, delegate: Option<&ProtocolObject<dyn NSComboBoxDelegate>>);
 
+        /**
+          The dataSource will only be used when usesDataSource is YES
+        */
         #[method_id(@__retain_semantics Other dataSource)]
         pub unsafe fn dataSource(&self) -> Option<Id<ProtocolObject<dyn NSComboBoxDataSource>>>;
 
+        /**
+          The dataSource will only be used when usesDataSource is YES
+        */
         #[method(setDataSource:)]
         pub unsafe fn setDataSource(
             &self,

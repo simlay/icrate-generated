@@ -65,10 +65,18 @@ extern_methods!(
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(&self, delegate: Option<&ProtocolObject<dyn MKMapViewDelegate>>);
 
+        /**
+          Changing the map type or region can cause the map to start loading map content.
+         The loading delegate methods will be called as map content is loaded.
+        */
         #[deprecated]
         #[method(mapType)]
         pub unsafe fn mapType(&self) -> MKMapType;
 
+        /**
+          Changing the map type or region can cause the map to start loading map content.
+         The loading delegate methods will be called as map content is loaded.
+        */
         #[deprecated]
         #[method(setMapType:)]
         pub unsafe fn setMapType(&self, map_type: MKMapType);
@@ -84,18 +92,32 @@ extern_methods!(
             preferred_configuration: &MKMapConfiguration,
         );
 
+        /**
+          Region is the coordinate and span of the map.
+         Region may be modified to fit the aspect ratio of the view using regionThatFits:.
+        */
         #[method(region)]
         pub unsafe fn region(&self) -> MKCoordinateRegion;
 
+        /**
+          Region is the coordinate and span of the map.
+         Region may be modified to fit the aspect ratio of the view using regionThatFits:.
+        */
         #[method(setRegion:)]
         pub unsafe fn setRegion(&self, region: MKCoordinateRegion);
 
         #[method(setRegion:animated:)]
         pub unsafe fn setRegion_animated(&self, region: MKCoordinateRegion, animated: bool);
 
+        /**
+          centerCoordinate allows the coordinate of the region to be changed without changing the zoom level.
+        */
         #[method(centerCoordinate)]
         pub unsafe fn centerCoordinate(&self) -> CLLocationCoordinate2D;
 
+        /**
+          centerCoordinate allows the coordinate of the region to be changed without changing the zoom level.
+        */
         #[method(setCenterCoordinate:)]
         pub unsafe fn setCenterCoordinate(&self, center_coordinate: CLLocationCoordinate2D);
 
@@ -109,9 +131,15 @@ extern_methods!(
         #[method(regionThatFits:)]
         pub unsafe fn regionThatFits(&self, region: MKCoordinateRegion) -> MKCoordinateRegion;
 
+        /**
+          Access the visible region of the map in projected coordinates.
+        */
         #[method(visibleMapRect)]
         pub unsafe fn visibleMapRect(&self) -> MKMapRect;
 
+        /**
+          Access the visible region of the map in projected coordinates.
+        */
         #[method(setVisibleMapRect:)]
         pub unsafe fn setVisibleMapRect(&self, visible_map_rect: MKMapRect);
 
@@ -208,9 +236,17 @@ extern_methods!(
             view: Option<&NSView>,
         ) -> MKCoordinateRegion;
 
+        /**
+          Control the types of user interaction available
+         Zoom and scroll are enabled by default.
+        */
         #[method(isZoomEnabled)]
         pub unsafe fn isZoomEnabled(&self) -> bool;
 
+        /**
+          Control the types of user interaction available
+         Zoom and scroll are enabled by default.
+        */
         #[method(setZoomEnabled:)]
         pub unsafe fn setZoomEnabled(&self, zoom_enabled: bool);
 
@@ -220,9 +256,15 @@ extern_methods!(
         #[method(setScrollEnabled:)]
         pub unsafe fn setScrollEnabled(&self, scroll_enabled: bool);
 
+        /**
+          Rotate and pitch are enabled by default on Mac OS X and on iOS 7.0 and later.
+        */
         #[method(isRotateEnabled)]
         pub unsafe fn isRotateEnabled(&self) -> bool;
 
+        /**
+          Rotate and pitch are enabled by default on Mac OS X and on iOS 7.0 and later.
+        */
         #[method(setRotateEnabled:)]
         pub unsafe fn setRotateEnabled(&self, rotate_enabled: bool);
 
@@ -269,37 +311,64 @@ extern_methods!(
             point_of_interest_filter: Option<&MKPointOfInterestFilter>,
         );
 
+        /**
+          Affects MKMapTypeStandard and MKMapTypeHybrid
+        */
         #[deprecated = "Use pointOfInterestFilter"]
         #[method(showsPointsOfInterest)]
         pub unsafe fn showsPointsOfInterest(&self) -> bool;
 
+        /**
+          Affects MKMapTypeStandard and MKMapTypeHybrid
+        */
         #[deprecated = "Use pointOfInterestFilter"]
         #[method(setShowsPointsOfInterest:)]
         pub unsafe fn setShowsPointsOfInterest(&self, shows_points_of_interest: bool);
 
+        /**
+          Affects MKMapTypeStandard
+        */
         #[deprecated = "None"]
         #[method(showsBuildings)]
         pub unsafe fn showsBuildings(&self) -> bool;
 
+        /**
+          Affects MKMapTypeStandard
+        */
         #[deprecated = "None"]
         #[method(setShowsBuildings:)]
         pub unsafe fn setShowsBuildings(&self, shows_buildings: bool);
 
+        /**
+          Affects MKMapTypeStandard and MKMapTypeHybrid
+        */
         #[deprecated]
         #[method(showsTraffic)]
         pub unsafe fn showsTraffic(&self) -> bool;
 
+        /**
+          Affects MKMapTypeStandard and MKMapTypeHybrid
+        */
         #[deprecated]
         #[method(setShowsTraffic:)]
         pub unsafe fn setShowsTraffic(&self, shows_traffic: bool);
 
+        /**
+          Set to YES to add the user location annotation to the map and start updating its location
+        */
         #[method(showsUserLocation)]
         pub unsafe fn showsUserLocation(&self) -> bool;
 
+        /**
+          Set to YES to add the user location annotation to the map and start updating its location
+        */
         #[method(setShowsUserLocation:)]
         pub unsafe fn setShowsUserLocation(&self, shows_user_location: bool);
 
         #[cfg(feature = "MapKit_MKUserLocation")]
+        /**
+          The annotation representing the user's location
+        */
         #[method_id(@__retain_semantics Other userLocation)]
         pub unsafe fn userLocation(&self) -> Id<MKUserLocation>;
 
@@ -312,6 +381,9 @@ extern_methods!(
         #[method(setUserTrackingMode:animated:)]
         pub unsafe fn setUserTrackingMode_animated(&self, mode: MKUserTrackingMode, animated: bool);
 
+        /**
+          Returns YES if the user's location is displayed within the currently visible map region.
+        */
         #[method(isUserLocationVisible)]
         pub unsafe fn isUserLocationVisible(&self) -> bool;
 
@@ -401,6 +473,10 @@ extern_methods!(
             selected_annotations: &NSArray<ProtocolObject<dyn MKAnnotation>>,
         );
 
+        /**
+          annotationVisibleRect is the visible rect where the annotations views are currently displayed.
+         The delegate can use annotationVisibleRect when animating the adding of the annotations views in mapView:didAddAnnotationViews:
+        */
         #[method(annotationVisibleRect)]
         pub unsafe fn annotationVisibleRect(&self) -> CGRect;
 

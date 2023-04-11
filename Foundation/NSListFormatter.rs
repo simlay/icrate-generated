@@ -6,6 +6,9 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSListFormatter")]
+    /**
+      NSListFormatter provides locale-correct formatting of a list of items using the appropriate separator and conjunction. Note that the list formatter is unaware of the context where the joined string will be used, e.g., in the beginning of the sentence or used as a standalone string in the UI, so it will not provide any sort of capitalization customization on the given items, but merely join them as-is. The string joined this way may not be grammatically correct when placed in a sentence, and it should only be used in a standalone manner.
+    */
     pub struct NSListFormatter;
 
     #[cfg(feature = "Foundation_NSListFormatter")]
@@ -16,25 +19,46 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSListFormatter")]
+/**
+  NSListFormatter provides locale-correct formatting of a list of items using the appropriate separator and conjunction. Note that the list formatter is unaware of the context where the joined string will be used, e.g., in the beginning of the sentence or used as a standalone string in the UI, so it will not provide any sort of capitalization customization on the given items, but merely join them as-is. The string joined this way may not be grammatically correct when placed in a sentence, and it should only be used in a standalone manner.
+*/
 unsafe impl NSCoding for NSListFormatter {}
 
 #[cfg(feature = "Foundation_NSListFormatter")]
+/**
+  NSListFormatter provides locale-correct formatting of a list of items using the appropriate separator and conjunction. Note that the list formatter is unaware of the context where the joined string will be used, e.g., in the beginning of the sentence or used as a standalone string in the UI, so it will not provide any sort of capitalization customization on the given items, but merely join them as-is. The string joined this way may not be grammatically correct when placed in a sentence, and it should only be used in a standalone manner.
+*/
 unsafe impl NSObjectProtocol for NSListFormatter {}
 
 extern_methods!(
+    /**
+      NSListFormatter provides locale-correct formatting of a list of items using the appropriate separator and conjunction. Note that the list formatter is unaware of the context where the joined string will be used, e.g., in the beginning of the sentence or used as a standalone string in the UI, so it will not provide any sort of capitalization customization on the given items, but merely join them as-is. The string joined this way may not be grammatically correct when placed in a sentence, and it should only be used in a standalone manner.
+    */
     #[cfg(feature = "Foundation_NSListFormatter")]
     unsafe impl NSListFormatter {
         #[cfg(feature = "Foundation_NSLocale")]
+        /**
+          Specifies the locale to format the items. Defaults to autoupdatingCurrentLocale. Also resets to autoupdatingCurrentLocale on assignment of nil.
+        */
         #[method_id(@__retain_semantics Other locale)]
         pub unsafe fn locale(&self) -> Id<NSLocale>;
 
         #[cfg(feature = "Foundation_NSLocale")]
+        /**
+          Specifies the locale to format the items. Defaults to autoupdatingCurrentLocale. Also resets to autoupdatingCurrentLocale on assignment of nil.
+        */
         #[method(setLocale:)]
         pub unsafe fn setLocale(&self, locale: Option<&NSLocale>);
 
+        /**
+          Specifies how each object should be formatted. If not set, the object is formatted using its instance method in the following order: -descriptionWithLocale:, -localizedDescription, and -description.
+        */
         #[method_id(@__retain_semantics Other itemFormatter)]
         pub unsafe fn itemFormatter(&self) -> Option<Id<NSFormatter>>;
 
+        /**
+          Specifies how each object should be formatted. If not set, the object is formatted using its instance method in the following order: -descriptionWithLocale:, -localizedDescription, and -description.
+        */
         #[method(setItemFormatter:)]
         pub unsafe fn setItemFormatter(&self, item_formatter: Option<&NSFormatter>);
 

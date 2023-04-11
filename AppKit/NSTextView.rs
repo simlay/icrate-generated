@@ -7,6 +7,9 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      Values for NSSelectionGranularity
+    */
     pub enum NSSelectionGranularity {
         NSSelectByCharacter = 0,
         NSSelectByWord = 1,
@@ -16,6 +19,9 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      Values for NSSelectionAffinity
+    */
     pub enum NSSelectionAffinity {
         NSSelectionAffinityUpstream = 0,
         NSSelectionAffinityDownstream = 1,
@@ -130,10 +136,16 @@ extern_methods!(
         pub unsafe fn textViewUsingTextLayoutManager(using_text_layout_manager: bool) -> Id<Self>;
 
         #[cfg(feature = "AppKit_NSTextContainer")]
+        /**
+          The set method should not be called directly, but you might want to override it.  Gets or sets the text container for this view.  Setting the text container marks the view as needing display.  The text container calls the set method from its setTextView: method.
+        */
         #[method_id(@__retain_semantics Other textContainer)]
         pub unsafe fn textContainer(&self) -> Option<Id<NSTextContainer>>;
 
         #[cfg(feature = "AppKit_NSTextContainer")]
+        /**
+          The set method should not be called directly, but you might want to override it.  Gets or sets the text container for this view.  Setting the text container marks the view as needing display.  The text container calls the set method from its setTextView: method.
+        */
         #[method(setTextContainer:)]
         pub unsafe fn setTextContainer(&self, text_container: Option<&NSTextContainer>);
 
@@ -141,12 +153,21 @@ extern_methods!(
         #[method(replaceTextContainer:)]
         pub unsafe fn replaceTextContainer(&self, new_container: &NSTextContainer);
 
+        /**
+          The textContainerInset determines the padding that the view provides around the container.  The container's origin will be inset by this amount from the bounds point {0,0} and padding will be left to the right and below the container of the same amount.  This inset affects the view sizing in response to new layout and is used by the rectangular text containers when they track the view's frame dimensions.
+        */
         #[method(textContainerInset)]
         pub unsafe fn textContainerInset(&self) -> NSSize;
 
+        /**
+          The textContainerInset determines the padding that the view provides around the container.  The container's origin will be inset by this amount from the bounds point {0,0} and padding will be left to the right and below the container of the same amount.  This inset affects the view sizing in response to new layout and is used by the rectangular text containers when they track the view's frame dimensions.
+        */
         #[method(setTextContainerInset:)]
         pub unsafe fn setTextContainerInset(&self, text_container_inset: NSSize);
 
+        /**
+          The container's origin in the view is determined from the current usage of the container, the container inset, and the view size.  textContainerOrigin returns this point.
+        */
         #[method(textContainerOrigin)]
         pub unsafe fn textContainerOrigin(&self) -> NSPoint;
 
@@ -162,10 +183,16 @@ extern_methods!(
         pub unsafe fn textStorage(&self) -> Option<Id<NSTextStorage>>;
 
         #[cfg(feature = "AppKit_NSTextLayoutManager")]
+        /**
+          The text views's text layout manager, if its text container is configured with one; null otherwise.
+        */
         #[method_id(@__retain_semantics Other textLayoutManager)]
         pub unsafe fn textLayoutManager(&self) -> Option<Id<NSTextLayoutManager>>;
 
         #[cfg(feature = "AppKit_NSTextContentStorage")]
+        /**
+          The text view's text layout storage, if its text container is configured with one; null otherwise.
+        */
         #[method_id(@__retain_semantics Other textContentStorage)]
         pub unsafe fn textContentStorage(&self) -> Option<Id<NSTextContentStorage>>;
 
@@ -357,6 +384,10 @@ extern_methods!(
         #[method(characterIndexForInsertionAtPoint:)]
         pub unsafe fn characterIndexForInsertionAtPoint(&self, point: NSPoint) -> NSUInteger;
 
+        /**
+          Ownership policy
+        Returns whether instances of the class operate in the object ownership policy introduced with macOS Sierra and later. When YES, the new object owner policy is used. Under the policy, each text view strongly retains its text storage and its text container weakly references the view. Also, the text views are compatible with __weak storage. The default is YES.
+        */
         #[method(stronglyReferencesTextStorage)]
         pub unsafe fn stronglyReferencesTextStorage() -> bool;
 
@@ -368,9 +399,15 @@ extern_methods!(
             attributed_string: &NSAttributedString,
         ) -> bool;
 
+        /**
+          When YES, enables the adaptive color mapping mode. In this mode under the dark effective appearance, NSTextView maps all colors with NSColorTypeComponentBased by inverting the brightness whenever they are coming in and out of the model object, NSTextStorage. For example, when rendering, interacting with NSColorPanel and NSFontManager, and converting from/to the pasteboard and external formats, the color values are converted between the model and rendering contexts. Note that the color conversion algorithm compresses the brightness range and, therefore, does not retain the round-trip fidelity between the light and dark appearances. It may not be suitable for rich text authoring, so it is a good idea to provide a command or preference for your users to see and edit their docs without this option, or in light mode.
+        */
         #[method(usesAdaptiveColorMappingForDarkAppearance)]
         pub unsafe fn usesAdaptiveColorMappingForDarkAppearance(&self) -> bool;
 
+        /**
+          When YES, enables the adaptive color mapping mode. In this mode under the dark effective appearance, NSTextView maps all colors with NSColorTypeComponentBased by inverting the brightness whenever they are coming in and out of the model object, NSTextStorage. For example, when rendering, interacting with NSColorPanel and NSFontManager, and converting from/to the pasteboard and external formats, the color values are converted between the model and rendering contexts. Note that the color conversion algorithm compresses the brightness range and, therefore, does not retain the round-trip fidelity between the light and dark appearances. It may not be suitable for rich text authoring, so it is a good idea to provide a command or preference for your users to see and edit their docs without this option, or in light mode.
+        */
         #[method(setUsesAdaptiveColorMappingForDarkAppearance:)]
         pub unsafe fn setUsesAdaptiveColorMappingForDarkAppearance(
             &self,
@@ -386,6 +423,9 @@ extern_methods!(
         #[method(complete:)]
         pub unsafe fn complete(&self, sender: Option<&Object>);
 
+        /**
+          Usually returns the partial range from the most recent beginning of a word up to the insertion point.  May be overridden by subclassers to alter the range to be completed.  Returning (NSNotFound, 0) suppresses completion.
+        */
         #[method(rangeForUserCompletion)]
         pub unsafe fn rangeForUserCompletion(&self) -> NSRange;
 
@@ -414,6 +454,9 @@ extern_methods!(
     #[cfg(feature = "AppKit_NSTextView")]
     unsafe impl NSTextView {
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Returns an array of pasteboard types that can be provided from the current selection.  Overriders should copy the result from super and add their own new types.
+        */
         #[method_id(@__retain_semantics Other writablePasteboardTypes)]
         pub unsafe fn writablePasteboardTypes(&self) -> Id<NSArray<NSPasteboardType>>;
 
@@ -434,6 +477,9 @@ extern_methods!(
         ) -> bool;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Returns an array of types that could be read currently in order of preference.  Subclassers should take care to consider the "preferred" part of the semantics of this method.  Figure out where your new type should fit into the preferred order.  The preferred order should usually be from the richest types down to the less rich.  The default array will start with RTFD, RTF, strings, files, images, colors and so on.  The ordering list really starts to lose significance after the first few elements.  If the new format you are supporting is richer than RTFD, put it at the head of the list, otherwise try to find the right place for it, but don't count on the actual contents of the list you get from super either.
+        */
         #[method_id(@__retain_semantics Other readablePasteboardTypes)]
         pub unsafe fn readablePasteboardTypes(&self) -> Id<NSArray<NSPasteboardType>>;
 
@@ -497,6 +543,9 @@ extern_methods!(
         ) -> Option<Id<NSImage>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Must be overridden to support new drag types in addition to adding support for reading and writing the type.  Override it to call super, then make a copy of the result and add your own new types before returning the copy.  You should probably never need to call this except to message super in an override.
+        */
         #[method_id(@__retain_semantics Other acceptableDragTypes)]
         pub unsafe fn acceptableDragTypes(&self) -> Id<NSArray<NSPasteboardType>>;
 
@@ -513,14 +562,23 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      The methods in this category deal with settings that need to be shared by all the NSTextViews of a single NSLayoutManager.  Many of these methods are overrides of NSText or NSResponder methods.
+    */
     /// NSSharing
     #[cfg(feature = "AppKit_NSTextView")]
     unsafe impl NSTextView {
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSValue"))]
+        /**
+          Selected/Marked range
+        */
         #[method_id(@__retain_semantics Other selectedRanges)]
         pub unsafe fn selectedRanges(&self) -> Id<NSArray<NSValue>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSValue"))]
+        /**
+          Selected/Marked range
+        */
         #[method(setSelectedRanges:)]
         pub unsafe fn setSelectedRanges(&self, selected_ranges: &NSArray<NSValue>);
 
@@ -551,12 +609,18 @@ extern_methods!(
         pub unsafe fn setSelectionGranularity(&self, selection_granularity: NSSelectionGranularity);
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          Selected text attributes are applied as temporary attributes to selected text.  Candidates include those attributes that do not affect layout.
+        */
         #[method_id(@__retain_semantics Other selectedTextAttributes)]
         pub unsafe fn selectedTextAttributes(
             &self,
         ) -> Id<NSDictionary<NSAttributedStringKey, Object>>;
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          Selected text attributes are applied as temporary attributes to selected text.  Candidates include those attributes that do not affect layout.
+        */
         #[method(setSelectedTextAttributes:)]
         pub unsafe fn setSelectedTextAttributes(
             &self,
@@ -575,12 +639,18 @@ extern_methods!(
         pub unsafe fn updateInsertionPointStateAndRestartTimer(&self, restart_flag: bool);
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          Marked text attributes are applied as temporary attributes to selected text.  Candidates include those attributes that do not affect layout.
+        */
         #[method_id(@__retain_semantics Other markedTextAttributes)]
         pub unsafe fn markedTextAttributes(
             &self,
         ) -> Option<Id<NSDictionary<NSAttributedStringKey, Object>>>;
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          Marked text attributes are applied as temporary attributes to selected text.  Candidates include those attributes that do not affect layout.
+        */
         #[method(setMarkedTextAttributes:)]
         pub unsafe fn setMarkedTextAttributes(
             &self,
@@ -588,33 +658,57 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          Link text attributes are applied as temporary attributes to any text with a link attribute.  Candidates include those attributes that do not affect layout.  Default attributes are blue color, single underline, and the pointing hand cursor.
+        */
         #[method_id(@__retain_semantics Other linkTextAttributes)]
         pub unsafe fn linkTextAttributes(
             &self,
         ) -> Option<Id<NSDictionary<NSAttributedStringKey, Object>>>;
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          Link text attributes are applied as temporary attributes to any text with a link attribute.  Candidates include those attributes that do not affect layout.  Default attributes are blue color, single underline, and the pointing hand cursor.
+        */
         #[method(setLinkTextAttributes:)]
         pub unsafe fn setLinkTextAttributes(
             &self,
             link_text_attributes: Option<&NSDictionary<NSAttributedStringKey, Object>>,
         );
 
+        /**
+          If set, then text with a link attribute will automatically be treated as if it had an implicit tooltip attribute with the same value as the link attribute.  An explicit tooltip attribute will take precedence over this implicit one.  The textView:willDisplayToolTip:forCharacterAtIndex: delegate method affects these tooltips as it does any other.
+        */
         #[method(displaysLinkToolTips)]
         pub unsafe fn displaysLinkToolTips(&self) -> bool;
 
+        /**
+          If set, then text with a link attribute will automatically be treated as if it had an implicit tooltip attribute with the same value as the link attribute.  An explicit tooltip attribute will take precedence over this implicit one.  The textView:willDisplayToolTip:forCharacterAtIndex: delegate method affects these tooltips as it does any other.
+        */
         #[method(setDisplaysLinkToolTips:)]
         pub unsafe fn setDisplaysLinkToolTips(&self, displays_link_tool_tips: bool);
 
+        /**
+          Glyph info support
+        */
         #[method(acceptsGlyphInfo)]
         pub unsafe fn acceptsGlyphInfo(&self) -> bool;
 
+        /**
+          Glyph info support
+        */
         #[method(setAcceptsGlyphInfo:)]
         pub unsafe fn setAcceptsGlyphInfo(&self, accepts_glyph_info: bool);
 
+        /**
+          Other NSTextView methods
+        */
         #[method(usesRuler)]
         pub unsafe fn usesRuler(&self) -> bool;
 
+        /**
+          Other NSTextView methods
+        */
         #[method(setUsesRuler:)]
         pub unsafe fn setUsesRuler(&self, uses_ruler: bool);
 
@@ -639,9 +733,15 @@ extern_methods!(
         #[method(spellCheckerDocumentTag)]
         pub unsafe fn spellCheckerDocumentTag(&self) -> NSInteger;
 
+        /**
+          If grammar checking is enabled, then it is performed whenever spellchecking is performed, whether continuously or manually.
+        */
         #[method(isGrammarCheckingEnabled)]
         pub unsafe fn isGrammarCheckingEnabled(&self) -> bool;
 
+        /**
+          If grammar checking is enabled, then it is performed whenever spellchecking is performed, whether continuously or manually.
+        */
         #[method(setGrammarCheckingEnabled:)]
         pub unsafe fn setGrammarCheckingEnabled(&self, grammar_checking_enabled: bool);
 
@@ -738,27 +838,45 @@ extern_methods!(
         #[method(isCoalescingUndo)]
         pub unsafe fn isCoalescingUndo(&self) -> bool;
 
+        /**
+          Specifies whether image attachments should permit editing of their images, if the text view is editable and the text attachment cell supports image editing.
+        */
         #[method(allowsImageEditing)]
         pub unsafe fn allowsImageEditing(&self) -> bool;
 
+        /**
+          Specifies whether image attachments should permit editing of their images, if the text view is editable and the text attachment cell supports image editing.
+        */
         #[method(setAllowsImageEditing:)]
         pub unsafe fn setAllowsImageEditing(&self, allows_image_editing: bool);
 
         #[method(showFindIndicatorForRange:)]
         pub unsafe fn showFindIndicatorForRange(&self, char_range: NSRange);
 
+        /**
+          Controls whether to show rollover button for extension service items inside text selection.  It's enabled by default.
+        */
         #[method(usesRolloverButtonForSelection)]
         pub unsafe fn usesRolloverButtonForSelection(&self) -> bool;
 
+        /**
+          Controls whether to show rollover button for extension service items inside text selection.  It's enabled by default.
+        */
         #[method(setUsesRolloverButtonForSelection:)]
         pub unsafe fn setUsesRolloverButtonForSelection(
             &self,
             uses_rollover_button_for_selection: bool,
         );
 
+        /**
+          NSText methods
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(&self) -> Option<Id<ProtocolObject<dyn NSTextViewDelegate>>>;
 
+        /**
+          NSText methods
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(&self, delegate: Option<&ProtocolObject<dyn NSTextViewDelegate>>);
 
@@ -822,10 +940,18 @@ extern_methods!(
         pub unsafe fn setSelectedRange(&self, char_range: NSRange);
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          Input Source support
+         Returns an array of locale identifiers representing keyboard input sources allowed to be enabled when the receiver has the keyboard focus.
+        */
         #[method_id(@__retain_semantics Other allowedInputSourceLocales)]
         pub unsafe fn allowedInputSourceLocales(&self) -> Option<Id<NSArray<NSString>>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          Input Source support
+         Returns an array of locale identifiers representing keyboard input sources allowed to be enabled when the receiver has the keyboard focus.
+        */
         #[method(setAllowedInputSourceLocales:)]
         pub unsafe fn setAllowedInputSourceLocales(
             &self,
@@ -838,9 +964,15 @@ extern_methods!(
     /// NSTextChecking
     #[cfg(feature = "AppKit_NSTextView")]
     unsafe impl NSTextView {
+        /**
+          Smart copy/paste/delete/substitution support
+        */
         #[method(smartInsertDeleteEnabled)]
         pub unsafe fn smartInsertDeleteEnabled(&self) -> bool;
 
+        /**
+          Smart copy/paste/delete/substitution support
+        */
         #[method(setSmartInsertDeleteEnabled:)]
         pub unsafe fn setSmartInsertDeleteEnabled(&self, smart_insert_delete_enabled: bool);
 
@@ -951,9 +1083,15 @@ extern_methods!(
         #[method(toggleAutomaticSpellingCorrection:)]
         pub unsafe fn toggleAutomaticSpellingCorrection(&self, sender: Option<&Object>);
 
+        /**
+          These two are bulk methods for setting and getting many checking type settings at once.  They will call the individual methods as necessary.
+        */
         #[method(enabledTextCheckingTypes)]
         pub unsafe fn enabledTextCheckingTypes(&self) -> NSTextCheckingTypes;
 
+        /**
+          These two are bulk methods for setting and getting many checking type settings at once.  They will call the individual methods as necessary.
+        */
         #[method(setEnabledTextCheckingTypes:)]
         pub unsafe fn setEnabledTextCheckingTypes(
             &self,
@@ -1037,12 +1175,21 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      NSTextView provides support for text formatting and inputting NSTouchBarItems. -[NSTextView makeTouchBar] instantiates an NSTouchBar configured based on settings such as -automaticTextCompletionEnabled and -richText. NSTextView conforms to NSTouchBarDelegate and supplies NSTouchBarItems via -touchBar:makeItemForIdentifier:.
+    */
     /// NSTextView_TouchBar
     #[cfg(feature = "AppKit_NSTextView")]
     unsafe impl NSTextView {
+        /**
+          Enables the automatic completion NSTouchBarItem. YES by default. When YES, NSTextView displays the candidates for the text selection in its NSCandidateListTouchBarItem returned from -candidateListTouchBarItem. Invokes -updateTouchBarItemIdentifiers.
+        */
         #[method(isAutomaticTextCompletionEnabled)]
         pub unsafe fn isAutomaticTextCompletionEnabled(&self) -> bool;
 
+        /**
+          Enables the automatic completion NSTouchBarItem. YES by default. When YES, NSTextView displays the candidates for the text selection in its NSCandidateListTouchBarItem returned from -candidateListTouchBarItem. Invokes -updateTouchBarItemIdentifiers.
+        */
         #[method(setAutomaticTextCompletionEnabled:)]
         pub unsafe fn setAutomaticTextCompletionEnabled(
             &self,
@@ -1052,9 +1199,15 @@ extern_methods!(
         #[method(toggleAutomaticTextCompletion:)]
         pub unsafe fn toggleAutomaticTextCompletion(&self, sender: Option<&Object>);
 
+        /**
+          When Yes, NSTouchBarItemIdentifierCharacterPicker is included in -[NSTouchBar itemIdentifiers] for the receiver's NSTouchBar. Default is YES. Invokes -updateTouchBarItemIdentifiers.
+        */
         #[method(allowsCharacterPickerTouchBarItem)]
         pub unsafe fn allowsCharacterPickerTouchBarItem(&self) -> bool;
 
+        /**
+          When Yes, NSTouchBarItemIdentifierCharacterPicker is included in -[NSTouchBar itemIdentifiers] for the receiver's NSTouchBar. Default is YES. Invokes -updateTouchBarItemIdentifiers.
+        */
         #[method(setAllowsCharacterPickerTouchBarItem:)]
         pub unsafe fn setAllowsCharacterPickerTouchBarItem(
             &self,
@@ -1071,15 +1224,24 @@ extern_methods!(
         pub unsafe fn updateCandidates(&self);
 
         #[cfg(feature = "AppKit_NSCandidateListTouchBarItem")]
+        /**
+          -[NSTextView candidateListTouchBarItem] returns an NSCandidateTouchBarItem instance owned by the receiver. The NSTouchBarItem is instantiated in -[NSTextView touchBar:makeItemForIdentifier:] with NSTouchBarItemIdentifierCandidateList.
+        */
         #[method_id(@__retain_semantics Other candidateListTouchBarItem)]
         pub unsafe fn candidateListTouchBarItem(&self) -> Option<Id<NSCandidateListTouchBarItem>>;
     }
 );
 
 #[cfg(feature = "AppKit_NSTextView")]
+/**
+  NSTextView provides support for text formatting and inputting NSTouchBarItems. -[NSTextView makeTouchBar] instantiates an NSTouchBar configured based on settings such as -automaticTextCompletionEnabled and -richText. NSTextView conforms to NSTouchBarDelegate and supplies NSTouchBarItems via -touchBar:makeItemForIdentifier:.
+*/
 unsafe impl NSCandidateListTouchBarItemDelegate for NSTextView {}
 
 #[cfg(feature = "AppKit_NSTextView")]
+/**
+  NSTextView provides support for text formatting and inputting NSTouchBarItems. -[NSTextView makeTouchBar] instantiates an NSTouchBar configured based on settings such as -automaticTextCompletionEnabled and -richText. NSTextView conforms to NSTouchBarDelegate and supplies NSTouchBarItems via -touchBar:makeItemForIdentifier:.
+*/
 unsafe impl NSTouchBarDelegate for NSTextView {}
 
 extern_methods!(
@@ -1114,6 +1276,9 @@ extern_methods!(
 );
 
 extern_protocol!(
+    /**
+      Note that all delegation messages come from the first textView
+    */
     pub unsafe trait NSTextViewDelegate: NSTextDelegate {
         #[cfg(feature = "AppKit_NSTextView")]
         #[optional]
@@ -1490,6 +1655,9 @@ extern_static!(NSTextViewDidSwitchToNSLayoutManagerNotification: &'static NSNoti
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      Values for NSFindPanelAction
+    */
     pub enum NSFindPanelAction {
         NSFindPanelActionShowFindPanel = 1,
         NSFindPanelActionNext = 2,

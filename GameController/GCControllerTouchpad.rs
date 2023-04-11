@@ -7,6 +7,9 @@ use crate::GameController::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     Represents the current state of a touch event on a touchpad.
+    */
     pub enum GCTouchState {
         GCTouchStateUp = 0,
         GCTouchStateDown = 1,
@@ -28,6 +31,11 @@ pub type GCControllerTouchpadHandler = *mut Block<
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameController_GCControllerTouchpad")]
+    /**
+     A touchpad is a touch-based two axis input with a notion of "touch state". It keeps track of
+    whether the touchpad is actively being touched, and generates events based on a
+    change in touch state.
+    */
     pub struct GCControllerTouchpad;
 
     #[cfg(feature = "GameController_GCControllerTouchpad")]
@@ -38,43 +46,104 @@ extern_class!(
 );
 
 #[cfg(feature = "GameController_GCControllerTouchpad")]
+/**
+ A touchpad is a touch-based two axis input with a notion of "touch state". It keeps track of
+whether the touchpad is actively being touched, and generates events based on a
+change in touch state.
+*/
 unsafe impl NSObjectProtocol for GCControllerTouchpad {}
 
 extern_methods!(
+    /**
+     A touchpad is a touch-based two axis input with a notion of "touch state". It keeps track of
+    whether the touchpad is actively being touched, and generates events based on a
+    change in touch state.
+    */
     #[cfg(feature = "GameController_GCControllerTouchpad")]
     unsafe impl GCControllerTouchpad {
         #[cfg(feature = "GameController_GCControllerButtonInput")]
+        /**
+         Button is the button built into the touch surface.
+
+        */
         #[method_id(@__retain_semantics Other button)]
         pub unsafe fn button(&self) -> Id<GCControllerButtonInput>;
 
+        /**
+         Called when a touch event begins on the touchpad.
+        */
         #[method(touchDown)]
         pub unsafe fn touchDown(&self) -> GCControllerTouchpadHandler;
 
+        /**
+         Called when a touch event begins on the touchpad.
+        */
         #[method(setTouchDown:)]
         pub unsafe fn setTouchDown(&self, touch_down: GCControllerTouchpadHandler);
 
+        /**
+         Called when a touch event continues on the touchpad, but not when it begins or ends.
+        */
         #[method(touchMoved)]
         pub unsafe fn touchMoved(&self) -> GCControllerTouchpadHandler;
 
+        /**
+         Called when a touch event continues on the touchpad, but not when it begins or ends.
+        */
         #[method(setTouchMoved:)]
         pub unsafe fn setTouchMoved(&self, touch_moved: GCControllerTouchpadHandler);
 
+        /**
+         Called when a touch event ends on the touchpad.
+        */
         #[method(touchUp)]
         pub unsafe fn touchUp(&self) -> GCControllerTouchpadHandler;
 
+        /**
+         Called when a touch event ends on the touchpad.
+        */
         #[method(setTouchUp:)]
         pub unsafe fn setTouchUp(&self, touch_up: GCControllerTouchpadHandler);
 
         #[cfg(feature = "GameController_GCControllerDirectionPad")]
+        /**
+         The touch surface is a 2-axis control that represents the position of a touch event on the touchpad.
+
+        The axes will indicate the most recent touch position - a non-zero value does not indicate that the
+        surface is being touched, and a value of (0, 0) does not indicate the surface is not being touched.
+
+        @see touchState - Should be polled in conjunction with touchSurface to determine if values are valid
+        */
         #[method_id(@__retain_semantics Other touchSurface)]
         pub unsafe fn touchSurface(&self) -> Id<GCControllerDirectionPad>;
 
+        /**
+         Indicates the current state of the touch event on the touchpad.
+        */
         #[method(touchState)]
         pub unsafe fn touchState(&self) -> GCTouchState;
 
+        /**
+         The touchpad can use the raw position values of its surface as D-pad values, or it can create a virtual dpad centered around the first contact point with the surface.
+
+        If NO; a smaller sliding window is created around the initial touch point and subsequent movement is relative to that center. Movement outside the window will slide the window with it to re-center it. This is great for surfaces where there is no clear sense of a middle and drift over time is an issue.
+
+        If YES; the absolute values are used and any drift will have to managed manually either through user traning or by a developer using the dpad.
+
+        The default value for this property is YES, meaning the touch surface's raw positional values are reported.
+        */
         #[method(reportsAbsoluteTouchSurfaceValues)]
         pub unsafe fn reportsAbsoluteTouchSurfaceValues(&self) -> bool;
 
+        /**
+         The touchpad can use the raw position values of its surface as D-pad values, or it can create a virtual dpad centered around the first contact point with the surface.
+
+        If NO; a smaller sliding window is created around the initial touch point and subsequent movement is relative to that center. Movement outside the window will slide the window with it to re-center it. This is great for surfaces where there is no clear sense of a middle and drift over time is an issue.
+
+        If YES; the absolute values are used and any drift will have to managed manually either through user traning or by a developer using the dpad.
+
+        The default value for this property is YES, meaning the touch surface's raw positional values are reported.
+        */
         #[method(setReportsAbsoluteTouchSurfaceValues:)]
         pub unsafe fn setReportsAbsoluteTouchSurfaceValues(
             &self,

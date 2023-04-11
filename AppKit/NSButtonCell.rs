@@ -187,9 +187,17 @@ extern_methods!(
         #[method(isOpaque)]
         pub unsafe fn isOpaque(&self) -> bool;
 
+        /**
+          When disabled, the image and text of an NSButtonCell are normally dimmed with gray.
+         Radio buttons and switches use (imageDimsWhenDisabled == NO) so only their text is dimmed.
+        */
         #[method(imageDimsWhenDisabled)]
         pub unsafe fn imageDimsWhenDisabled(&self) -> bool;
 
+        /**
+          When disabled, the image and text of an NSButtonCell are normally dimmed with gray.
+         Radio buttons and switches use (imageDimsWhenDisabled == NO) so only their text is dimmed.
+        */
         #[method(setImageDimsWhenDisabled:)]
         pub unsafe fn setImageDimsWhenDisabled(&self, image_dims_when_disabled: bool);
 
@@ -265,6 +273,9 @@ extern_methods!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      Deprecations
+    */
     #[deprecated]
     pub enum NSGradientType {
         NSGradientNone = 0,
@@ -335,10 +346,16 @@ extern_methods!(
     /// NSDeprecated
     #[cfg(feature = "AppKit_NSButtonCell")]
     unsafe impl NSButtonCell {
+        /**
+          The NSGradientType enumeration and corresponding gradientType property are not used on macOS.
+        */
         #[deprecated = "The gradientType property is unused, and setting it has no effect."]
         #[method(gradientType)]
         pub unsafe fn gradientType(&self) -> NSGradientType;
 
+        /**
+          The NSGradientType enumeration and corresponding gradientType property are not used on macOS.
+        */
         #[deprecated = "The gradientType property is unused, and setting it has no effect."]
         #[method(setGradientType:)]
         pub unsafe fn setGradientType(&self, gradient_type: NSGradientType);
@@ -370,11 +387,17 @@ extern_methods!(
         pub unsafe fn alternateMnemonic(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "AppKit_NSFont")]
+        /**
+          Buttons on macOS do not draw their key equivalents. The methods for specifying the key equivalent font are obsolete.
+        */
         #[deprecated = "The keyEquivalentFont property is no longer used. It always returns the NSButtonCell's font, and setting it has no effect."]
         #[method_id(@__retain_semantics Other keyEquivalentFont)]
         pub unsafe fn keyEquivalentFont(&self) -> Option<Id<NSFont>>;
 
         #[cfg(feature = "AppKit_NSFont")]
+        /**
+          Buttons on macOS do not draw their key equivalents. The methods for specifying the key equivalent font are obsolete.
+        */
         #[deprecated = "The keyEquivalentFont property is no longer used. It always returns the NSButtonCell's font, and setting it has no effect."]
         #[method(setKeyEquivalentFont:)]
         pub unsafe fn setKeyEquivalentFont(&self, key_equivalent_font: Option<&NSFont>);

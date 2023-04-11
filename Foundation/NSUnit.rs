@@ -6,6 +6,9 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSUnitConverter")]
+    /**
+     NSUnitConverter describes how to convert a unit to and from the base unit of its dimension.  Subclass NSUnitConverter to implement new ways of converting a unit.
+    */
     pub struct NSUnitConverter;
 
     #[cfg(feature = "Foundation_NSUnitConverter")]
@@ -15,9 +18,15 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSUnitConverter")]
+/**
+ NSUnitConverter describes how to convert a unit to and from the base unit of its dimension.  Subclass NSUnitConverter to implement new ways of converting a unit.
+*/
 unsafe impl NSObjectProtocol for NSUnitConverter {}
 
 extern_methods!(
+    /**
+     NSUnitConverter describes how to convert a unit to and from the base unit of its dimension.  Subclass NSUnitConverter to implement new ways of converting a unit.
+    */
     #[cfg(feature = "Foundation_NSUnitConverter")]
     unsafe impl NSUnitConverter {
         #[method(baseUnitValueFromValue:)]
@@ -52,6 +61,28 @@ unsafe impl NSSecureCoding for NSUnitConverterLinear {}
 extern_methods!(
     #[cfg(feature = "Foundation_NSUnitConverterLinear")]
     unsafe impl NSUnitConverterLinear {
+        /**
+         For units that require linear conversion, the methods perform calculations in the form of y = ax + b, where
+        - x is the value in terms of the unit on which this method is called
+        - y is the value in terms of the base unit of the dimension
+        - a is the known coefficient used for this unit's conversion
+        - b is the known constant used for this unit's conversion
+
+        baseUnitValueFromValue: performs the conversion in the form of y = ax + b, where x represents the value passed in and y represents the value returned.
+        valueFromBaseUnitValue: performs the inverse conversion in the form of x = (y + (-1 * b))/a, where y represents the value passed in and x represents the value returned.
+
+        An example of this is NSUnitTemperature.  For Celsius, baseUnitValueFromValue: calculates the value in Kelvin using the formula
+        K = 1 * °C + 273.15
+        and valueFromBaseUnitValue: calculates the value in Celsius using the formula
+        C° = (K + (-1 * 273.15))/1
+        where the coefficient is 1 and the constant is 273.15.
+
+        For units that only require conversion by scale factor, the coefficient is the scale factor and the constant is always 0.  baseUnitValueFromValue: calculates the value in meters using the formula
+        valueInMeters = 1000 * valueInKilometers + 0
+        and valueFromBaseUnitValue: calculates the value in kilometers using the formula
+        valueInKilometers = valueInMeters / 1000
+        where the coefficient is 1000 and the constant is 0.  This API provides a convenience initializer initWithCoefficient: that assumes the constant is 0.
+        */
         #[method(coefficient)]
         pub unsafe fn coefficient(&self) -> c_double;
 
@@ -76,6 +107,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSUnit")]
+    /**
+     NSUnit is the base class for all unit types (dimensional and dimensionless).
+    */
     pub struct NSUnit;
 
     #[cfg(feature = "Foundation_NSUnit")]
@@ -85,15 +119,27 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSUnit")]
+/**
+ NSUnit is the base class for all unit types (dimensional and dimensionless).
+*/
 unsafe impl NSCoding for NSUnit {}
 
 #[cfg(feature = "Foundation_NSUnit")]
+/**
+ NSUnit is the base class for all unit types (dimensional and dimensionless).
+*/
 unsafe impl NSObjectProtocol for NSUnit {}
 
 #[cfg(feature = "Foundation_NSUnit")]
+/**
+ NSUnit is the base class for all unit types (dimensional and dimensionless).
+*/
 unsafe impl NSSecureCoding for NSUnit {}
 
 extern_methods!(
+    /**
+     NSUnit is the base class for all unit types (dimensional and dimensionless).
+    */
     #[cfg(feature = "Foundation_NSUnit")]
     unsafe impl NSUnit {
         #[cfg(feature = "Foundation_NSString")]
@@ -180,6 +226,9 @@ unsafe impl NSSecureCoding for NSUnitAcceleration {}
 extern_methods!(
     #[cfg(feature = "Foundation_NSUnitAcceleration")]
     unsafe impl NSUnitAcceleration {
+        /**
+         Base unit - metersPerSecondSquared
+        */
         #[method_id(@__retain_semantics Other metersPerSecondSquared)]
         pub unsafe fn metersPerSecondSquared() -> Id<NSUnitAcceleration>;
 
@@ -212,6 +261,9 @@ unsafe impl NSSecureCoding for NSUnitAngle {}
 extern_methods!(
     #[cfg(feature = "Foundation_NSUnitAngle")]
     unsafe impl NSUnitAngle {
+        /**
+         Base unit - degrees
+        */
         #[method_id(@__retain_semantics Other degrees)]
         pub unsafe fn degrees() -> Id<NSUnitAngle>;
 
@@ -256,6 +308,9 @@ unsafe impl NSSecureCoding for NSUnitArea {}
 extern_methods!(
     #[cfg(feature = "Foundation_NSUnitArea")]
     unsafe impl NSUnitArea {
+        /**
+         Base unit - squareMeters
+        */
         #[method_id(@__retain_semantics Other squareMegameters)]
         pub unsafe fn squareMegameters() -> Id<NSUnitArea>;
 
@@ -324,6 +379,9 @@ unsafe impl NSSecureCoding for NSUnitConcentrationMass {}
 extern_methods!(
     #[cfg(feature = "Foundation_NSUnitConcentrationMass")]
     unsafe impl NSUnitConcentrationMass {
+        /**
+         Base unit - gramsPerLiter
+        */
         #[method_id(@__retain_semantics Other gramsPerLiter)]
         pub unsafe fn gramsPerLiter() -> Id<NSUnitConcentrationMass>;
 
@@ -361,6 +419,9 @@ unsafe impl NSSecureCoding for NSUnitDispersion {}
 extern_methods!(
     #[cfg(feature = "Foundation_NSUnitDispersion")]
     unsafe impl NSUnitDispersion {
+        /**
+         Base unit - partsPerMillion
+        */
         #[method_id(@__retain_semantics Other partsPerMillion)]
         pub unsafe fn partsPerMillion() -> Id<NSUnitDispersion>;
     }
@@ -390,6 +451,9 @@ unsafe impl NSSecureCoding for NSUnitDuration {}
 extern_methods!(
     #[cfg(feature = "Foundation_NSUnitDuration")]
     unsafe impl NSUnitDuration {
+        /**
+         Base unit - seconds
+        */
         #[method_id(@__retain_semantics Other hours)]
         pub unsafe fn hours() -> Id<NSUnitDuration>;
 
@@ -437,6 +501,9 @@ unsafe impl NSSecureCoding for NSUnitElectricCharge {}
 extern_methods!(
     #[cfg(feature = "Foundation_NSUnitElectricCharge")]
     unsafe impl NSUnitElectricCharge {
+        /**
+         Base unit - coulombs
+        */
         #[method_id(@__retain_semantics Other coulombs)]
         pub unsafe fn coulombs() -> Id<NSUnitElectricCharge>;
 
@@ -481,6 +548,9 @@ unsafe impl NSSecureCoding for NSUnitElectricCurrent {}
 extern_methods!(
     #[cfg(feature = "Foundation_NSUnitElectricCurrent")]
     unsafe impl NSUnitElectricCurrent {
+        /**
+         Base unit - amperes
+        */
         #[method_id(@__retain_semantics Other megaamperes)]
         pub unsafe fn megaamperes() -> Id<NSUnitElectricCurrent>;
 
@@ -522,6 +592,9 @@ unsafe impl NSSecureCoding for NSUnitElectricPotentialDifference {}
 extern_methods!(
     #[cfg(feature = "Foundation_NSUnitElectricPotentialDifference")]
     unsafe impl NSUnitElectricPotentialDifference {
+        /**
+         Base unit - volts
+        */
         #[method_id(@__retain_semantics Other megavolts)]
         pub unsafe fn megavolts() -> Id<NSUnitElectricPotentialDifference>;
 
@@ -563,6 +636,9 @@ unsafe impl NSSecureCoding for NSUnitElectricResistance {}
 extern_methods!(
     #[cfg(feature = "Foundation_NSUnitElectricResistance")]
     unsafe impl NSUnitElectricResistance {
+        /**
+         Base unit - ohms
+        */
         #[method_id(@__retain_semantics Other megaohms)]
         pub unsafe fn megaohms() -> Id<NSUnitElectricResistance>;
 
@@ -604,6 +680,9 @@ unsafe impl NSSecureCoding for NSUnitEnergy {}
 extern_methods!(
     #[cfg(feature = "Foundation_NSUnitEnergy")]
     unsafe impl NSUnitEnergy {
+        /**
+         Base unit - joules
+        */
         #[method_id(@__retain_semantics Other kilojoules)]
         pub unsafe fn kilojoules() -> Id<NSUnitEnergy>;
 
@@ -645,6 +724,9 @@ unsafe impl NSSecureCoding for NSUnitFrequency {}
 extern_methods!(
     #[cfg(feature = "Foundation_NSUnitFrequency")]
     unsafe impl NSUnitFrequency {
+        /**
+         Base unit - hertz
+        */
         #[method_id(@__retain_semantics Other terahertz)]
         pub unsafe fn terahertz() -> Id<NSUnitFrequency>;
 
@@ -669,6 +751,9 @@ extern_methods!(
         #[method_id(@__retain_semantics Other nanohertz)]
         pub unsafe fn nanohertz() -> Id<NSUnitFrequency>;
 
+        /**
+          1 FPS ≡ 1 Hertz
+        */
         #[method_id(@__retain_semantics Other framesPerSecond)]
         pub unsafe fn framesPerSecond() -> Id<NSUnitFrequency>;
     }
@@ -698,6 +783,9 @@ unsafe impl NSSecureCoding for NSUnitFuelEfficiency {}
 extern_methods!(
     #[cfg(feature = "Foundation_NSUnitFuelEfficiency")]
     unsafe impl NSUnitFuelEfficiency {
+        /**
+         Base unit - litersPer100Kilometers
+        */
         #[method_id(@__retain_semantics Other litersPer100Kilometers)]
         pub unsafe fn litersPer100Kilometers() -> Id<NSUnitFuelEfficiency>;
 
@@ -712,6 +800,12 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSUnitInformationStorage")]
+    /**
+     A dimension for representing amounts of digital information.
+    Base Unit: Byte
+
+    The values of the below follow IEC 80000-13 definitions and conventions.
+    */
     pub struct NSUnitInformationStorage;
 
     #[cfg(feature = "Foundation_NSUnitInformationStorage")]
@@ -722,26 +816,60 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSUnitInformationStorage")]
+/**
+ A dimension for representing amounts of digital information.
+Base Unit: Byte
+
+The values of the below follow IEC 80000-13 definitions and conventions.
+*/
 unsafe impl NSCoding for NSUnitInformationStorage {}
 
 #[cfg(feature = "Foundation_NSUnitInformationStorage")]
+/**
+ A dimension for representing amounts of digital information.
+Base Unit: Byte
+
+The values of the below follow IEC 80000-13 definitions and conventions.
+*/
 unsafe impl NSObjectProtocol for NSUnitInformationStorage {}
 
 #[cfg(feature = "Foundation_NSUnitInformationStorage")]
+/**
+ A dimension for representing amounts of digital information.
+Base Unit: Byte
+
+The values of the below follow IEC 80000-13 definitions and conventions.
+*/
 unsafe impl NSSecureCoding for NSUnitInformationStorage {}
 
 extern_methods!(
+    /**
+     A dimension for representing amounts of digital information.
+    Base Unit: Byte
+
+    The values of the below follow IEC 80000-13 definitions and conventions.
+    */
     #[cfg(feature = "Foundation_NSUnitInformationStorage")]
     unsafe impl NSUnitInformationStorage {
+        /**
+          Bytes are defined by IEC 80000-13: one byte is 8 bits.
+        */
         #[method_id(@__retain_semantics Other bytes)]
         pub unsafe fn bytes() -> Id<NSUnitInformationStorage>;
 
+        /**
+          One byte is 8 bits; one nibble is 4 bits.
+        */
         #[method_id(@__retain_semantics Other bits)]
         pub unsafe fn bits() -> Id<NSUnitInformationStorage>;
 
         #[method_id(@__retain_semantics Other nibbles)]
         pub unsafe fn nibbles() -> Id<NSUnitInformationStorage>;
 
+        /**
+          SI-prefixed units (i.e. base 10):
+         1 kilobyte = 1000¹ bytes; 1 megabyte = 1000² bytes; etc.
+        */
         #[method_id(@__retain_semantics Other yottabytes)]
         pub unsafe fn yottabytes() -> Id<NSUnitInformationStorage>;
 
@@ -790,6 +918,10 @@ extern_methods!(
         #[method_id(@__retain_semantics Other kilobits)]
         pub unsafe fn kilobits() -> Id<NSUnitInformationStorage>;
 
+        /**
+          IEC-prefixed units (i.e. base 2):
+         1 kibibyte = 1024¹ bytes; 1 mebibyte = 1024² bytes; etc.
+        */
         #[method_id(@__retain_semantics Other yobibytes)]
         pub unsafe fn yobibytes() -> Id<NSUnitInformationStorage>;
 
@@ -864,6 +996,9 @@ unsafe impl NSSecureCoding for NSUnitLength {}
 extern_methods!(
     #[cfg(feature = "Foundation_NSUnitLength")]
     unsafe impl NSUnitLength {
+        /**
+         Base unit - meters
+        */
         #[method_id(@__retain_semantics Other megameters)]
         pub unsafe fn megameters() -> Id<NSUnitLength>;
 
@@ -956,6 +1091,9 @@ unsafe impl NSSecureCoding for NSUnitIlluminance {}
 extern_methods!(
     #[cfg(feature = "Foundation_NSUnitIlluminance")]
     unsafe impl NSUnitIlluminance {
+        /**
+         Base unit - lux
+        */
         #[method_id(@__retain_semantics Other lux)]
         pub unsafe fn lux() -> Id<NSUnitIlluminance>;
     }
@@ -985,6 +1123,9 @@ unsafe impl NSSecureCoding for NSUnitMass {}
 extern_methods!(
     #[cfg(feature = "Foundation_NSUnitMass")]
     unsafe impl NSUnitMass {
+        /**
+         Base unit - kilograms
+        */
         #[method_id(@__retain_semantics Other kilograms)]
         pub unsafe fn kilograms() -> Id<NSUnitMass>;
 
@@ -1059,6 +1200,9 @@ unsafe impl NSSecureCoding for NSUnitPower {}
 extern_methods!(
     #[cfg(feature = "Foundation_NSUnitPower")]
     unsafe impl NSUnitPower {
+        /**
+         Base unit - watts
+        */
         #[method_id(@__retain_semantics Other terawatts)]
         pub unsafe fn terawatts() -> Id<NSUnitPower>;
 
@@ -1118,6 +1262,9 @@ unsafe impl NSSecureCoding for NSUnitPressure {}
 extern_methods!(
     #[cfg(feature = "Foundation_NSUnitPressure")]
     unsafe impl NSUnitPressure {
+        /**
+         Base unit - newtonsPerMetersSquared (equivalent to 1 pascal)
+        */
         #[method_id(@__retain_semantics Other newtonsPerMetersSquared)]
         pub unsafe fn newtonsPerMetersSquared() -> Id<NSUnitPressure>;
 
@@ -1174,6 +1321,9 @@ unsafe impl NSSecureCoding for NSUnitSpeed {}
 extern_methods!(
     #[cfg(feature = "Foundation_NSUnitSpeed")]
     unsafe impl NSUnitSpeed {
+        /**
+         Base unit - metersPerSecond
+        */
         #[method_id(@__retain_semantics Other metersPerSecond)]
         pub unsafe fn metersPerSecond() -> Id<NSUnitSpeed>;
 
@@ -1212,6 +1362,9 @@ unsafe impl NSSecureCoding for NSUnitTemperature {}
 extern_methods!(
     #[cfg(feature = "Foundation_NSUnitTemperature")]
     unsafe impl NSUnitTemperature {
+        /**
+         Base unit - kelvin
+        */
         #[method_id(@__retain_semantics Other kelvin)]
         pub unsafe fn kelvin() -> Id<NSUnitTemperature>;
 
@@ -1247,6 +1400,9 @@ unsafe impl NSSecureCoding for NSUnitVolume {}
 extern_methods!(
     #[cfg(feature = "Foundation_NSUnitVolume")]
     unsafe impl NSUnitVolume {
+        /**
+         Base unit - liters
+        */
         #[method_id(@__retain_semantics Other megaliters)]
         pub unsafe fn megaliters() -> Id<NSUnitVolume>;
 
@@ -1744,6 +1900,12 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSDimension`
+    /**
+     A dimension for representing amounts of digital information.
+    Base Unit: Byte
+
+    The values of the below follow IEC 80000-13 definitions and conventions.
+    */
     #[cfg(feature = "Foundation_NSUnitInformationStorage")]
     unsafe impl NSUnitInformationStorage {
         #[cfg(all(
@@ -1764,6 +1926,12 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSUnit`
+    /**
+     A dimension for representing amounts of digital information.
+    Base Unit: Byte
+
+    The values of the below follow IEC 80000-13 definitions and conventions.
+    */
     #[cfg(feature = "Foundation_NSUnitInformationStorage")]
     unsafe impl NSUnitInformationStorage {
         #[cfg(feature = "Foundation_NSString")]

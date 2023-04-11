@@ -30,10 +30,18 @@ extern_methods!(
     #[cfg(feature = "HealthKit_HKQueryDescriptor")]
     unsafe impl HKQueryDescriptor {
         #[cfg(feature = "HealthKit_HKSampleType")]
+        /**
+         @property      sampleType
+        @abstract      The type of sample to retrieve in an HKQuery.
+        */
         #[method_id(@__retain_semantics Other sampleType)]
         pub unsafe fn sampleType(&self) -> Id<HKSampleType>;
 
         #[cfg(feature = "Foundation_NSPredicate")]
+        /**
+         @property      predicate
+        @abstract      The predicate which samples should match.
+        */
         #[method_id(@__retain_semantics Other predicate)]
         pub unsafe fn predicate(&self) -> Option<Id<NSPredicate>>;
 

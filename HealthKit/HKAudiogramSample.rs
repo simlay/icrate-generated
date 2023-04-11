@@ -9,6 +9,10 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKAudiogramSample")]
+    /**
+     @class     HKAudiogramSample
+    @abstract  A sample object representing the results of a standard hearing test.
+    */
     pub struct HKAudiogramSample;
 
     #[cfg(feature = "HealthKit_HKAudiogramSample")]
@@ -19,21 +23,41 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKAudiogramSample")]
+/**
+ @class     HKAudiogramSample
+@abstract  A sample object representing the results of a standard hearing test.
+*/
 unsafe impl NSCoding for HKAudiogramSample {}
 
 #[cfg(feature = "HealthKit_HKAudiogramSample")]
+/**
+ @class     HKAudiogramSample
+@abstract  A sample object representing the results of a standard hearing test.
+*/
 unsafe impl NSObjectProtocol for HKAudiogramSample {}
 
 #[cfg(feature = "HealthKit_HKAudiogramSample")]
+/**
+ @class     HKAudiogramSample
+@abstract  A sample object representing the results of a standard hearing test.
+*/
 unsafe impl NSSecureCoding for HKAudiogramSample {}
 
 extern_methods!(
+    /**
+     @class     HKAudiogramSample
+    @abstract  A sample object representing the results of a standard hearing test.
+    */
     #[cfg(feature = "HealthKit_HKAudiogramSample")]
     unsafe impl HKAudiogramSample {
         #[cfg(all(
             feature = "Foundation_NSArray",
             feature = "HealthKit_HKAudiogramSensitivityPoint"
         ))]
+        /**
+         @property  sensitivityPoints
+        @abstract  The hearing sensitivity readings associated with a hearing test.
+        */
         #[method_id(@__retain_semantics Other sensitivityPoints)]
         pub unsafe fn sensitivityPoints(&self) -> Id<NSArray<HKAudiogramSensitivityPoint>>;
 
@@ -72,14 +96,26 @@ extern_methods!(
     #[cfg(feature = "HealthKit_HKAudiogramSensitivityPoint")]
     unsafe impl HKAudiogramSensitivityPoint {
         #[cfg(feature = "HealthKit_HKQuantity")]
+        /**
+         @property frequency  Frequency where sensitivity was measured.  The unit of measurement
+        is [HKUnit hertzUnit] or "Hz".
+        */
         #[method_id(@__retain_semantics Other frequency)]
         pub unsafe fn frequency(&self) -> Id<HKQuantity>;
 
         #[cfg(feature = "HealthKit_HKQuantity")]
+        /**
+         @property sensitivity Left ear sensitivity measured in attenuated dB from a baseline of 0 dB.
+        The unit of measurement is [HKUnit decibelHearingLevelUnit] or "dBHL".
+        */
         #[method_id(@__retain_semantics Other leftEarSensitivity)]
         pub unsafe fn leftEarSensitivity(&self) -> Option<Id<HKQuantity>>;
 
         #[cfg(feature = "HealthKit_HKQuantity")]
+        /**
+         @property sensitivity Right ear sensitivity measured in attenuated dB from a baseline of 0 dB.
+        The unit of measurement is [HKUnit decibelHearingLevelUnit] or "dBHL".
+        */
         #[method_id(@__retain_semantics Other rightEarSensitivity)]
         pub unsafe fn rightEarSensitivity(&self) -> Option<Id<HKQuantity>>;
 

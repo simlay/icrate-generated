@@ -6,6 +6,9 @@ use crate::Foundation::*;
 __inner_extern_class!(
     #[derive(PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSArray")]
+    /**
+         Immutable Array
+    */
     pub struct NSArray<ObjectType: Message = Object, ObjectTypeOwnership: Ownership = Shared> {
         _inner0: PhantomData<*mut (ObjectType, ObjectTypeOwnership)>,
         notunwindsafe: PhantomData<&'static mut ()>,
@@ -20,30 +23,45 @@ __inner_extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSArray")]
+/**
+     Immutable Array
+*/
 unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSCoding
     for NSArray<ObjectType, ObjectTypeOwnership>
 {
 }
 
 #[cfg(feature = "Foundation_NSArray")]
+/**
+     Immutable Array
+*/
 unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSFastEnumeration
     for NSArray<ObjectType, ObjectTypeOwnership>
 {
 }
 
 #[cfg(feature = "Foundation_NSArray")]
+/**
+     Immutable Array
+*/
 unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSObjectProtocol
     for NSArray<ObjectType, ObjectTypeOwnership>
 {
 }
 
 #[cfg(feature = "Foundation_NSArray")]
+/**
+     Immutable Array
+*/
 unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSSecureCoding
     for NSArray<ObjectType, ObjectTypeOwnership>
 {
 }
 
 extern_methods!(
+    /**
+         Immutable Array
+    */
     #[cfg(feature = "Foundation_NSArray")]
     unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>
         NSArray<ObjectType, ObjectTypeOwnership>
@@ -444,6 +462,9 @@ extern_methods!(
 __inner_extern_class!(
     #[derive(PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSMutableArray")]
+    /**
+         Mutable Array
+    */
     pub struct NSMutableArray<ObjectType: Message = Object, ObjectTypeOwnership: Ownership = Shared> {
         _inner0: PhantomData<*mut (ObjectType, ObjectTypeOwnership)>,
         notunwindsafe: PhantomData<&'static mut ()>,
@@ -459,30 +480,45 @@ __inner_extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSMutableArray")]
+/**
+     Mutable Array
+*/
 unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSCoding
     for NSMutableArray<ObjectType, ObjectTypeOwnership>
 {
 }
 
 #[cfg(feature = "Foundation_NSMutableArray")]
+/**
+     Mutable Array
+*/
 unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSFastEnumeration
     for NSMutableArray<ObjectType, ObjectTypeOwnership>
 {
 }
 
 #[cfg(feature = "Foundation_NSMutableArray")]
+/**
+     Mutable Array
+*/
 unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSObjectProtocol
     for NSMutableArray<ObjectType, ObjectTypeOwnership>
 {
 }
 
 #[cfg(feature = "Foundation_NSMutableArray")]
+/**
+     Mutable Array
+*/
 unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSSecureCoding
     for NSMutableArray<ObjectType, ObjectTypeOwnership>
 {
 }
 
 extern_methods!(
+    /**
+         Mutable Array
+    */
     #[cfg(feature = "Foundation_NSMutableArray")]
     unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>
         NSMutableArray<ObjectType, ObjectTypeOwnership>
@@ -685,6 +721,9 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSArray`
+    /**
+         Mutable Array
+    */
     #[cfg(feature = "Foundation_NSMutableArray")]
     unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>
         NSMutableArray<ObjectType, ObjectTypeOwnership>
@@ -701,6 +740,9 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `NSArray`
     ///
+    /**
+         Mutable Array
+    */
     /// NSArrayCreation
     #[cfg(feature = "Foundation_NSMutableArray")]
     unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>

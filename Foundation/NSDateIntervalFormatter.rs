@@ -36,46 +36,82 @@ extern_methods!(
     #[cfg(feature = "Foundation_NSDateIntervalFormatter")]
     unsafe impl NSDateIntervalFormatter {
         #[cfg(feature = "Foundation_NSLocale")]
+        /**
+          default is [NSLocale currentLocale]
+        */
         #[method_id(@__retain_semantics Other locale)]
         pub unsafe fn locale(&self) -> Id<NSLocale>;
 
         #[cfg(feature = "Foundation_NSLocale")]
+        /**
+          default is [NSLocale currentLocale]
+        */
         #[method(setLocale:)]
         pub unsafe fn setLocale(&self, locale: Option<&NSLocale>);
 
         #[cfg(feature = "Foundation_NSCalendar")]
+        /**
+          default is the calendar of the locale
+        */
         #[method_id(@__retain_semantics Other calendar)]
         pub unsafe fn calendar(&self) -> Id<NSCalendar>;
 
         #[cfg(feature = "Foundation_NSCalendar")]
+        /**
+          default is the calendar of the locale
+        */
         #[method(setCalendar:)]
         pub unsafe fn setCalendar(&self, calendar: Option<&NSCalendar>);
 
         #[cfg(feature = "Foundation_NSTimeZone")]
+        /**
+          default is [NSTimeZone defaultTimeZone]
+        */
         #[method_id(@__retain_semantics Other timeZone)]
         pub unsafe fn timeZone(&self) -> Id<NSTimeZone>;
 
         #[cfg(feature = "Foundation_NSTimeZone")]
+        /**
+          default is [NSTimeZone defaultTimeZone]
+        */
         #[method(setTimeZone:)]
         pub unsafe fn setTimeZone(&self, time_zone: Option<&NSTimeZone>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          default is an empty string
+        */
         #[method_id(@__retain_semantics Other dateTemplate)]
         pub unsafe fn dateTemplate(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          default is an empty string
+        */
         #[method(setDateTemplate:)]
         pub unsafe fn setDateTemplate(&self, date_template: Option<&NSString>);
 
+        /**
+          default is NSDateIntervalFormatterNoStyle
+        */
         #[method(dateStyle)]
         pub unsafe fn dateStyle(&self) -> NSDateIntervalFormatterStyle;
 
+        /**
+          default is NSDateIntervalFormatterNoStyle
+        */
         #[method(setDateStyle:)]
         pub unsafe fn setDateStyle(&self, date_style: NSDateIntervalFormatterStyle);
 
+        /**
+          default is NSDateIntervalFormatterNoStyle
+        */
         #[method(timeStyle)]
         pub unsafe fn timeStyle(&self) -> NSDateIntervalFormatterStyle;
 
+        /**
+          default is NSDateIntervalFormatterNoStyle
+        */
         #[method(setTimeStyle:)]
         pub unsafe fn setTimeStyle(&self, time_style: NSDateIntervalFormatterStyle);
 

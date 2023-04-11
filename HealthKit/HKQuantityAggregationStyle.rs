@@ -8,6 +8,16 @@ use crate::UniformTypeIdentifiers::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum          HKQuantityAggregationStyle
+    @discussion    Describes how quantities can be aggregated over time.
+
+    @constant      HKQuantityAggregationStyleCumulative                        Samples may be summed over a time interval.
+    @constant      HKQuantityAggregationStyleDiscreteArithmetic                Samples may be averaged over a time interval using the arithmetic mean
+    @constant      HKQuantityAggregationStyleDiscreteTemporallyWeighted        Samples may be averaged over a time interval using a temporally weighted integration function
+    @constant      HKQuantityAggregationStyleDiscreteEquivalentContinuousLevel Samples may be combined over a time interval by computing the equivalent continuous sound level; see IEC 61672-1
+
+    */
     pub enum HKQuantityAggregationStyle {
         HKQuantityAggregationStyleCumulative = 0,
         HKQuantityAggregationStyleDiscreteArithmetic = 1,

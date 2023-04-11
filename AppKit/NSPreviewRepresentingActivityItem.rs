@@ -7,20 +7,38 @@ use crate::Foundation::*;
 
 extern_protocol!(
     pub unsafe trait NSPreviewRepresentableActivityItem: NSObjectProtocol {
+        /**
+          The item to be shared
+        */
         #[method_id(@__retain_semantics Other item)]
         unsafe fn item(&self) -> Id<Object>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          A string representing the name or title of the item to be shared
+        */
         #[optional]
         #[method_id(@__retain_semantics Other title)]
         unsafe fn title(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSItemProvider")]
+        /**
+          Provides an image appropriate to represent the item.
+
+         This image typically is a full-size representation of the content being shared.
+         For instance, if sharing a link to a webpage, this might be the hero image on that webpage.
+        */
         #[optional]
         #[method_id(@__retain_semantics Other imageProvider)]
         unsafe fn imageProvider(&self) -> Option<Id<NSItemProvider>>;
 
         #[cfg(feature = "Foundation_NSItemProvider")]
+        /**
+          Provides an icon appropriate to represent the item.
+
+         This icon typically is a thumbnail-sized representation of the source of the content.
+         For instance, if sharing a link to a webpage, this might be an icon representing the website overall.
+        */
         #[optional]
         #[method_id(@__retain_semantics Other iconProvider)]
         unsafe fn iconProvider(&self) -> Option<Id<NSItemProvider>>;

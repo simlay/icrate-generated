@@ -7,6 +7,11 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNGroup")]
+    /**
+      @abstract An immutable value object representing a group.
+
+     @discussion CNGroup is thread safe.
+    */
     pub struct CNGroup;
 
     #[cfg(feature = "Contacts_CNGroup")]
@@ -16,18 +21,41 @@ extern_class!(
 );
 
 #[cfg(feature = "Contacts_CNGroup")]
+/**
+  @abstract An immutable value object representing a group.
+
+ @discussion CNGroup is thread safe.
+*/
 unsafe impl NSCoding for CNGroup {}
 
 #[cfg(feature = "Contacts_CNGroup")]
+/**
+  @abstract An immutable value object representing a group.
+
+ @discussion CNGroup is thread safe.
+*/
 unsafe impl NSObjectProtocol for CNGroup {}
 
 #[cfg(feature = "Contacts_CNGroup")]
+/**
+  @abstract An immutable value object representing a group.
+
+ @discussion CNGroup is thread safe.
+*/
 unsafe impl NSSecureCoding for CNGroup {}
 
 extern_methods!(
+    /**
+      @abstract An immutable value object representing a group.
+
+     @discussion CNGroup is thread safe.
+    */
     #[cfg(feature = "Contacts_CNGroup")]
     unsafe impl CNGroup {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The identifier is unique among groups on the device. It can be saved and used for fetching groups next application launch.
+        */
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Id<NSString>;
 

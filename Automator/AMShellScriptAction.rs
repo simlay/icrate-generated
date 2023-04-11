@@ -30,14 +30,26 @@ unsafe impl NSSecureCoding for AMShellScriptAction {}
 extern_methods!(
     #[cfg(feature = "Automator_AMShellScriptAction")]
     unsafe impl AMShellScriptAction {
+        /**
+          If you want to automatically have the class remap '\r' to '\n'
+         before passing it to your shell script, override this to return YES (default=NO).
+        */
         #[method(remapLineEndings)]
         pub unsafe fn remapLineEndings(&self) -> bool;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Use this string (default=@"\n") to join multiple fields
+         e.g., use @"\0" for null-terminated strings for use with xargs -0
+        */
         #[method_id(@__retain_semantics Other inputFieldSeparator)]
         pub unsafe fn inputFieldSeparator(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          If non-nil, use this string (default=inputFieldSeparator) to break the text output
+         into multiple fields, which will be return as an NSArray
+        */
         #[method_id(@__retain_semantics Other outputFieldSeparator)]
         pub unsafe fn outputFieldSeparator(&self) -> Id<NSString>;
     }

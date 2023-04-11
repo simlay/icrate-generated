@@ -7,6 +7,9 @@ use crate::Speech::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Speech_SFSpeechRecognitionRequest")]
+    /**
+      A request for a speech recognition from an audio source
+    */
     pub struct SFSpeechRecognitionRequest;
 
     #[cfg(feature = "Speech_SFSpeechRecognitionRequest")]
@@ -16,9 +19,15 @@ extern_class!(
 );
 
 #[cfg(feature = "Speech_SFSpeechRecognitionRequest")]
+/**
+  A request for a speech recognition from an audio source
+*/
 unsafe impl NSObjectProtocol for SFSpeechRecognitionRequest {}
 
 extern_methods!(
+    /**
+      A request for a speech recognition from an audio source
+    */
     #[cfg(feature = "Speech_SFSpeechRecognitionRequest")]
     unsafe impl SFSpeechRecognitionRequest {
         #[method(taskHint)]
@@ -27,39 +36,77 @@ extern_methods!(
         #[method(setTaskHint:)]
         pub unsafe fn setTaskHint(&self, task_hint: SFSpeechRecognitionTaskHint);
 
+        /**
+          If true, partial (non-final) results for each utterance will be reported.
+         Default is true
+        */
         #[method(shouldReportPartialResults)]
         pub unsafe fn shouldReportPartialResults(&self) -> bool;
 
+        /**
+          If true, partial (non-final) results for each utterance will be reported.
+         Default is true
+        */
         #[method(setShouldReportPartialResults:)]
         pub unsafe fn setShouldReportPartialResults(&self, should_report_partial_results: bool);
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          Phrases which should be recognized even if they are not in the system vocabulary
+        */
         #[method_id(@__retain_semantics Other contextualStrings)]
         pub unsafe fn contextualStrings(&self) -> Id<NSArray<NSString>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          Phrases which should be recognized even if they are not in the system vocabulary
+        */
         #[method(setContextualStrings:)]
         pub unsafe fn setContextualStrings(&self, contextual_strings: &NSArray<NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          String which can be used to identify the receiver by the developer
+        */
         #[deprecated = "Not used anymore"]
         #[method_id(@__retain_semantics Other interactionIdentifier)]
         pub unsafe fn interactionIdentifier(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          String which can be used to identify the receiver by the developer
+        */
         #[deprecated = "Not used anymore"]
         #[method(setInteractionIdentifier:)]
         pub unsafe fn setInteractionIdentifier(&self, interaction_identifier: Option<&NSString>);
 
+        /**
+          If true, speech recognition will not send any audio over the Internet
+         This will reduce accuracy but enables certain applications where it is
+         inappropriate to transmit user speech to a remote service.
+         Default is false
+        */
         #[method(requiresOnDeviceRecognition)]
         pub unsafe fn requiresOnDeviceRecognition(&self) -> bool;
 
+        /**
+          If true, speech recognition will not send any audio over the Internet
+         This will reduce accuracy but enables certain applications where it is
+         inappropriate to transmit user speech to a remote service.
+         Default is false
+        */
         #[method(setRequiresOnDeviceRecognition:)]
         pub unsafe fn setRequiresOnDeviceRecognition(&self, requires_on_device_recognition: bool);
 
+        /**
+          If true, punctuations will be automatically included in the recognition results
+        */
         #[method(addsPunctuation)]
         pub unsafe fn addsPunctuation(&self) -> bool;
 
+        /**
+          If true, punctuations will be automatically included in the recognition results
+        */
         #[method(setAddsPunctuation:)]
         pub unsafe fn setAddsPunctuation(&self, adds_punctuation: bool);
     }
@@ -68,6 +115,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Speech_SFSpeechURLRecognitionRequest")]
+    /**
+      A request to recognize speech from a recorded audio file
+    */
     pub struct SFSpeechURLRecognitionRequest;
 
     #[cfg(feature = "Speech_SFSpeechURLRecognitionRequest")]
@@ -78,9 +128,15 @@ extern_class!(
 );
 
 #[cfg(feature = "Speech_SFSpeechURLRecognitionRequest")]
+/**
+  A request to recognize speech from a recorded audio file
+*/
 unsafe impl NSObjectProtocol for SFSpeechURLRecognitionRequest {}
 
 extern_methods!(
+    /**
+      A request to recognize speech from a recorded audio file
+    */
     #[cfg(feature = "Speech_SFSpeechURLRecognitionRequest")]
     unsafe impl SFSpeechURLRecognitionRequest {
         #[method_id(@__retain_semantics Init init)]
@@ -99,6 +155,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Speech_SFSpeechAudioBufferRecognitionRequest")]
+    /**
+      A request to recognize speech from arbitrary audio buffers
+    */
     pub struct SFSpeechAudioBufferRecognitionRequest;
 
     #[cfg(feature = "Speech_SFSpeechAudioBufferRecognitionRequest")]
@@ -109,12 +168,21 @@ extern_class!(
 );
 
 #[cfg(feature = "Speech_SFSpeechAudioBufferRecognitionRequest")]
+/**
+  A request to recognize speech from arbitrary audio buffers
+*/
 unsafe impl NSObjectProtocol for SFSpeechAudioBufferRecognitionRequest {}
 
 extern_methods!(
+    /**
+      A request to recognize speech from arbitrary audio buffers
+    */
     #[cfg(feature = "Speech_SFSpeechAudioBufferRecognitionRequest")]
     unsafe impl SFSpeechAudioBufferRecognitionRequest {
         #[cfg(feature = "AVFAudio_AVAudioFormat")]
+        /**
+          Preferred audio format for optimal speech recognition
+        */
         #[method_id(@__retain_semantics Other nativeAudioFormat)]
         pub unsafe fn nativeAudioFormat(&self) -> Id<AVAudioFormat>;
 

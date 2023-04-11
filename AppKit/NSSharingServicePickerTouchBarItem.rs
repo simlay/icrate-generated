@@ -37,17 +37,29 @@ extern_methods!(
             delegate: Option<&ProtocolObject<dyn NSSharingServicePickerTouchBarItemDelegate>>,
         );
 
+        /**
+          Enables or disabled the sharing button; if the popover is shown, it will first be closed.
+        */
         #[method(isEnabled)]
         pub unsafe fn isEnabled(&self) -> bool;
 
+        /**
+          Enables or disabled the sharing button; if the popover is shown, it will first be closed.
+        */
         #[method(setEnabled:)]
         pub unsafe fn setEnabled(&self, enabled: bool);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Get/set the button title and image. By default, the button title is an empty string, and the button image is a share picker image.
+        */
         #[method_id(@__retain_semantics Other buttonTitle)]
         pub unsafe fn buttonTitle(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Get/set the button title and image. By default, the button title is an empty string, and the button image is a share picker image.
+        */
         #[method(setButtonTitle:)]
         pub unsafe fn setButtonTitle(&self, button_title: &NSString);
 

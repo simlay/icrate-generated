@@ -8,6 +8,30 @@ use crate::WebKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "WebKit_WebScriptObject")]
+    /**
+     @class WebScriptObject
+    @discussion WebScriptObjects are used to wrap script objects passed from
+    script environments to Objective-C. WebScriptObjects cannot be created
+    directly. In normal uses of WebKit, you gain access to the script
+    environment using the "windowScriptObject" method on WebView.
+
+    The following KVC methods are commonly used to access properties of the
+    WebScriptObject:
+
+    - (void)setValue:(id)value forKey:(NSString *)key
+    - (id)valueForKey:(NSString *)key
+
+    As it possible to remove attributes from web script objects, the following
+    additional method augments the basic KVC methods:
+
+    - (void)removeWebScriptKey:(NSString *)name;
+
+    Also, since the sparse array access allowed in script objects doesn't map well
+    to NSArray, the following methods can be used to access index based properties:
+
+    - (id)webScriptValueAtIndex:(unsigned)index;
+    - (void)setWebScriptValueAtIndex:(unsigned)index value:(id)value;
+    */
     #[deprecated]
     pub struct WebScriptObject;
 
@@ -18,9 +42,57 @@ extern_class!(
 );
 
 #[cfg(feature = "WebKit_WebScriptObject")]
+/**
+ @class WebScriptObject
+@discussion WebScriptObjects are used to wrap script objects passed from
+script environments to Objective-C. WebScriptObjects cannot be created
+directly. In normal uses of WebKit, you gain access to the script
+environment using the "windowScriptObject" method on WebView.
+
+The following KVC methods are commonly used to access properties of the
+WebScriptObject:
+
+- (void)setValue:(id)value forKey:(NSString *)key
+- (id)valueForKey:(NSString *)key
+
+As it possible to remove attributes from web script objects, the following
+additional method augments the basic KVC methods:
+
+- (void)removeWebScriptKey:(NSString *)name;
+
+Also, since the sparse array access allowed in script objects doesn't map well
+to NSArray, the following methods can be used to access index based properties:
+
+- (id)webScriptValueAtIndex:(unsigned)index;
+- (void)setWebScriptValueAtIndex:(unsigned)index value:(id)value;
+*/
 unsafe impl NSObjectProtocol for WebScriptObject {}
 
 extern_methods!(
+    /**
+     @class WebScriptObject
+    @discussion WebScriptObjects are used to wrap script objects passed from
+    script environments to Objective-C. WebScriptObjects cannot be created
+    directly. In normal uses of WebKit, you gain access to the script
+    environment using the "windowScriptObject" method on WebView.
+
+    The following KVC methods are commonly used to access properties of the
+    WebScriptObject:
+
+    - (void)setValue:(id)value forKey:(NSString *)key
+    - (id)valueForKey:(NSString *)key
+
+    As it possible to remove attributes from web script objects, the following
+    additional method augments the basic KVC methods:
+
+    - (void)removeWebScriptKey:(NSString *)name;
+
+    Also, since the sparse array access allowed in script objects doesn't map well
+    to NSArray, the following methods can be used to access index based properties:
+
+    - (id)webScriptValueAtIndex:(unsigned)index;
+    - (void)setWebScriptValueAtIndex:(unsigned)index value:(id)value;
+    */
     #[cfg(feature = "WebKit_WebScriptObject")]
     unsafe impl WebScriptObject {
         #[cfg(feature = "Foundation_NSString")]
@@ -66,6 +138,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "WebKit_WebUndefined")]
+    /**
+     @class WebUndefined
+    */
     #[deprecated]
     pub struct WebUndefined;
 
@@ -76,12 +151,21 @@ extern_class!(
 );
 
 #[cfg(feature = "WebKit_WebUndefined")]
+/**
+ @class WebUndefined
+*/
 unsafe impl NSCoding for WebUndefined {}
 
 #[cfg(feature = "WebKit_WebUndefined")]
+/**
+ @class WebUndefined
+*/
 unsafe impl NSObjectProtocol for WebUndefined {}
 
 extern_methods!(
+    /**
+     @class WebUndefined
+    */
     #[cfg(feature = "WebKit_WebUndefined")]
     unsafe impl WebUndefined {
         #[method_id(@__retain_semantics Other undefined)]

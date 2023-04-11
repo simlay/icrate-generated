@@ -6,6 +6,9 @@ use crate::Foundation::*;
 use crate::MediaPlayer::*;
 
 extern_methods!(
+    /**
+      Category for creating language options from AV types
+    */
     /// MPNowPlayingInfoLanguageOptionAdditions
     #[cfg(feature = "AVFoundation_AVMediaSelectionOption")]
     unsafe impl AVMediaSelectionOption {
@@ -18,6 +21,9 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      -----------------------------------------------------------------------------
+    */
     /// MPNowPlayingInfoLanguageOptionAdditions
     #[cfg(feature = "AVFoundation_AVMediaSelectionGroup")]
     unsafe impl AVMediaSelectionGroup {

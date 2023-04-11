@@ -7,6 +7,13 @@ use crate::MetricKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MetricKit_MXSignpostIntervalData")]
+    /**
+     @class         MXSignpostIntervalData
+    @abstract      A class that encapsulates metrics associated with app specific signpost intervals.
+    @discussion    These metrics will be collected and aggregated if the associated signposts were emit using MXSignpost or MXSignpostAnimation APIs
+    @discussion    To limit on-device overhead, the system will automatically limit the number of signposts (emitted using the MetricKit log handle) processed.
+    @discussion    Avoid losing telemetry by limiting usage of signposts (emitted using the MetricKit log handle) to critical sections of code.
+    */
     pub struct MXSignpostIntervalData;
 
     #[cfg(feature = "MetricKit_MXSignpostIntervalData")]
@@ -16,21 +23,53 @@ extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXSignpostIntervalData")]
+/**
+ @class         MXSignpostIntervalData
+@abstract      A class that encapsulates metrics associated with app specific signpost intervals.
+@discussion    These metrics will be collected and aggregated if the associated signposts were emit using MXSignpost or MXSignpostAnimation APIs
+@discussion    To limit on-device overhead, the system will automatically limit the number of signposts (emitted using the MetricKit log handle) processed.
+@discussion    Avoid losing telemetry by limiting usage of signposts (emitted using the MetricKit log handle) to critical sections of code.
+*/
 unsafe impl NSCoding for MXSignpostIntervalData {}
 
 #[cfg(feature = "MetricKit_MXSignpostIntervalData")]
+/**
+ @class         MXSignpostIntervalData
+@abstract      A class that encapsulates metrics associated with app specific signpost intervals.
+@discussion    These metrics will be collected and aggregated if the associated signposts were emit using MXSignpost or MXSignpostAnimation APIs
+@discussion    To limit on-device overhead, the system will automatically limit the number of signposts (emitted using the MetricKit log handle) processed.
+@discussion    Avoid losing telemetry by limiting usage of signposts (emitted using the MetricKit log handle) to critical sections of code.
+*/
 unsafe impl NSObjectProtocol for MXSignpostIntervalData {}
 
 #[cfg(feature = "MetricKit_MXSignpostIntervalData")]
+/**
+ @class         MXSignpostIntervalData
+@abstract      A class that encapsulates metrics associated with app specific signpost intervals.
+@discussion    These metrics will be collected and aggregated if the associated signposts were emit using MXSignpost or MXSignpostAnimation APIs
+@discussion    To limit on-device overhead, the system will automatically limit the number of signposts (emitted using the MetricKit log handle) processed.
+@discussion    Avoid losing telemetry by limiting usage of signposts (emitted using the MetricKit log handle) to critical sections of code.
+*/
 unsafe impl NSSecureCoding for MXSignpostIntervalData {}
 
 extern_methods!(
+    /**
+     @class         MXSignpostIntervalData
+    @abstract      A class that encapsulates metrics associated with app specific signpost intervals.
+    @discussion    These metrics will be collected and aggregated if the associated signposts were emit using MXSignpost or MXSignpostAnimation APIs
+    @discussion    To limit on-device overhead, the system will automatically limit the number of signposts (emitted using the MetricKit log handle) processed.
+    @discussion    Avoid losing telemetry by limiting usage of signposts (emitted using the MetricKit log handle) to critical sections of code.
+    */
     #[cfg(feature = "MetricKit_MXSignpostIntervalData")]
     unsafe impl MXSignpostIntervalData {
         #[cfg(all(
             feature = "Foundation_NSUnitDuration",
             feature = "MetricKit_MXHistogram"
         ))]
+        /**
+         @property      histogrammedSignpostDuration
+        @abstract      A histogram of signpost intervals durations associated with the given signposts with signpostName and signpostCategory.
+        */
         #[method_id(@__retain_semantics Other histogrammedSignpostDuration)]
         pub unsafe fn histogrammedSignpostDuration(&self) -> Id<MXHistogram<NSUnitDuration>>;
 
@@ -38,6 +77,11 @@ extern_methods!(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"
         ))]
+        /**
+         @property      cumulativeCPUTime
+        @abstract      Cumulative CPU time aggregated over the MXSignpost intervals.
+        @discussion    This property is null when signposts with the associated signpostName and signpostCategory contain no interval metric data.
+        */
         #[method_id(@__retain_semantics Other cumulativeCPUTime)]
         pub unsafe fn cumulativeCPUTime(&self) -> Option<Id<NSMeasurement<NSUnitDuration>>>;
 
@@ -45,6 +89,11 @@ extern_methods!(
             feature = "Foundation_NSUnitInformationStorage",
             feature = "MetricKit_MXAverage"
         ))]
+        /**
+         @property      averageMemory
+        @abstract      Average value of memory snapshots taken at beginning and end of MXSignpost intervals
+        @discussion    This property is null when signposts with the associated signpostName and signpostCategory contain no interval metric data.
+        */
         #[method_id(@__retain_semantics Other averageMemory)]
         pub unsafe fn averageMemory(&self) -> Option<Id<MXAverage<NSUnitInformationStorage>>>;
 
@@ -52,12 +101,22 @@ extern_methods!(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitInformationStorage"
         ))]
+        /**
+         @property      cumulativeLogicalWrites
+        @abstract      Cumulative logical writes aggregated over the MXSignpost intervals.
+        @discussion    This property is null when signposts with the associated signpostName and signpostCategory contain no interval metric data.
+        */
         #[method_id(@__retain_semantics Other cumulativeLogicalWrites)]
         pub unsafe fn cumulativeLogicalWrites(
             &self,
         ) -> Option<Id<NSMeasurement<NSUnitInformationStorage>>>;
 
         #[cfg(all(feature = "Foundation_NSMeasurement", feature = "Foundation_NSUnit"))]
+        /**
+         @property      cumulativeHitchTimeRatio
+        @abstract      Cumulative hitch time ratio aggregated over the MXSignpostAnimation intervals.
+        @discussion    This property is null when signposts with the associated signpostName and signpostCategory contain no interval metric data.
+        */
         #[method_id(@__retain_semantics Other cumulativeHitchTimeRatio)]
         pub unsafe fn cumulativeHitchTimeRatio(&self) -> Option<Id<NSMeasurement<NSUnit>>>;
     }
@@ -66,6 +125,11 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MetricKit_MXSignpostMetric")]
+    /**
+     @class         MXSignpostMetric
+    @abstract      An MXMetric subclass that encapsulates signpost metrics.
+    @discussion    Signposts emit using the os_log_t generated by makeLogHandleWithCategory: in MXMetricManger can be flagged for aggregation and reported back in MXMetricPayload.
+    */
     pub struct MXSignpostMetric;
 
     #[cfg(feature = "MetricKit_MXSignpostMetric")]
@@ -76,29 +140,66 @@ extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXSignpostMetric")]
+/**
+ @class         MXSignpostMetric
+@abstract      An MXMetric subclass that encapsulates signpost metrics.
+@discussion    Signposts emit using the os_log_t generated by makeLogHandleWithCategory: in MXMetricManger can be flagged for aggregation and reported back in MXMetricPayload.
+*/
 unsafe impl NSCoding for MXSignpostMetric {}
 
 #[cfg(feature = "MetricKit_MXSignpostMetric")]
+/**
+ @class         MXSignpostMetric
+@abstract      An MXMetric subclass that encapsulates signpost metrics.
+@discussion    Signposts emit using the os_log_t generated by makeLogHandleWithCategory: in MXMetricManger can be flagged for aggregation and reported back in MXMetricPayload.
+*/
 unsafe impl NSObjectProtocol for MXSignpostMetric {}
 
 #[cfg(feature = "MetricKit_MXSignpostMetric")]
+/**
+ @class         MXSignpostMetric
+@abstract      An MXMetric subclass that encapsulates signpost metrics.
+@discussion    Signposts emit using the os_log_t generated by makeLogHandleWithCategory: in MXMetricManger can be flagged for aggregation and reported back in MXMetricPayload.
+*/
 unsafe impl NSSecureCoding for MXSignpostMetric {}
 
 extern_methods!(
+    /**
+     @class         MXSignpostMetric
+    @abstract      An MXMetric subclass that encapsulates signpost metrics.
+    @discussion    Signposts emit using the os_log_t generated by makeLogHandleWithCategory: in MXMetricManger can be flagged for aggregation and reported back in MXMetricPayload.
+    */
     #[cfg(feature = "MetricKit_MXSignpostMetric")]
     unsafe impl MXSignpostMetric {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property      signpostName
+        @abstract      The name associated with this aggregated signpost.
+        */
         #[method_id(@__retain_semantics Other signpostName)]
         pub unsafe fn signpostName(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property      signpostCategory
+        @abstract      The category associated with this aggregated signpost.
+        */
         #[method_id(@__retain_semantics Other signpostCategory)]
         pub unsafe fn signpostCategory(&self) -> Id<NSString>;
 
         #[cfg(feature = "MetricKit_MXSignpostIntervalData")]
+        /**
+         @property      signpostIntervalData
+        @abstract      A class that encapsulates metrics associated with app specific signpost intervals.
+        @discussion    This property is null when signposts with the associated signpostName and signpostCategory contain no intervals.
+        */
         #[method_id(@__retain_semantics Other signpostIntervalData)]
         pub unsafe fn signpostIntervalData(&self) -> Option<Id<MXSignpostIntervalData>>;
 
+        /**
+         @property      totalCount
+        @abstract      The total number of signposts emit with the given signpostName in the aggregation period of the parent payload.
+        */
         #[method(totalCount)]
         pub unsafe fn totalCount(&self) -> NSUInteger;
     }

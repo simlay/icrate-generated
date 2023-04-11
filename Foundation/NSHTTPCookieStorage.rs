@@ -5,6 +5,14 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+     @enum NSHTTPCookieAcceptPolicy
+    @abstract Values for the different cookie accept policies
+    @constant NSHTTPCookieAcceptPolicyAlways Accept all cookies
+    @constant NSHTTPCookieAcceptPolicyNever Reject all cookies
+    @constant NSHTTPCookieAcceptPolicyOnlyFromMainDocumentDomain Accept cookies
+    only from the main document domain
+    */
     pub enum NSHTTPCookieAcceptPolicy {
         NSHTTPCookieAcceptPolicyAlways = 0,
         NSHTTPCookieAcceptPolicyNever = 1,
@@ -15,6 +23,14 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSHTTPCookieStorage")]
+    /**
+     @class NSHTTPCookieStorage
+    @discussion NSHTTPCookieStorage implements a singleton object (shared
+    instance) which manages the shared cookie store.  It has methods
+    to allow clients to set and remove cookies, and get the current
+    set of cookies.  It also has convenience methods to parse and
+    generate cookie-related HTTP header fields.
+    */
     pub struct NSHTTPCookieStorage;
 
     #[cfg(feature = "Foundation_NSHTTPCookieStorage")]
@@ -24,11 +40,34 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSHTTPCookieStorage")]
+/**
+ @class NSHTTPCookieStorage
+@discussion NSHTTPCookieStorage implements a singleton object (shared
+instance) which manages the shared cookie store.  It has methods
+to allow clients to set and remove cookies, and get the current
+set of cookies.  It also has convenience methods to parse and
+generate cookie-related HTTP header fields.
+*/
 unsafe impl NSObjectProtocol for NSHTTPCookieStorage {}
 
 extern_methods!(
+    /**
+     @class NSHTTPCookieStorage
+    @discussion NSHTTPCookieStorage implements a singleton object (shared
+    instance) which manages the shared cookie store.  It has methods
+    to allow clients to set and remove cookies, and get the current
+    set of cookies.  It also has convenience methods to parse and
+    generate cookie-related HTTP header fields.
+    */
     #[cfg(feature = "Foundation_NSHTTPCookieStorage")]
     unsafe impl NSHTTPCookieStorage {
+        /**
+         @property sharedHTTPCookieStorage
+        @abstract Get the shared cookie storage in the default location.
+        @result The shared cookie storage
+        @discussion Starting in OS X 10.11, each app has its own sharedHTTPCookieStorage singleton,
+        which will not be shared with other applications.
+        */
         #[method_id(@__retain_semantics Other sharedHTTPCookieStorage)]
         pub unsafe fn sharedHTTPCookieStorage() -> Id<NSHTTPCookieStorage>;
 
@@ -39,6 +78,10 @@ extern_methods!(
         ) -> Id<NSHTTPCookieStorage>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSHTTPCookie"))]
+        /**
+         @abstract Get all the cookies
+        @result An NSArray of NSHTTPCookies
+        */
         #[method_id(@__retain_semantics Other cookies)]
         pub unsafe fn cookies(&self) -> Option<Id<NSArray<NSHTTPCookie>>>;
 
@@ -75,9 +118,17 @@ extern_methods!(
             main_document_url: Option<&NSURL>,
         );
 
+        /**
+         @abstract The cookie accept policy preference of the
+        receiver.
+        */
         #[method(cookieAcceptPolicy)]
         pub unsafe fn cookieAcceptPolicy(&self) -> NSHTTPCookieAcceptPolicy;
 
+        /**
+         @abstract The cookie accept policy preference of the
+        receiver.
+        */
         #[method(setCookieAcceptPolicy:)]
         pub unsafe fn setCookieAcceptPolicy(&self, cookie_accept_policy: NSHTTPCookieAcceptPolicy);
 

@@ -9,6 +9,10 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKBiologicalSexObject")]
+    /**
+     @class     HKBiologicalSexObject
+    @abstract  A wrapper object for HKBiologicalSex enumeration.
+    */
     pub struct HKBiologicalSexObject;
 
     #[cfg(feature = "HealthKit_HKBiologicalSexObject")]
@@ -18,15 +22,31 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKBiologicalSexObject")]
+/**
+ @class     HKBiologicalSexObject
+@abstract  A wrapper object for HKBiologicalSex enumeration.
+*/
 unsafe impl NSCoding for HKBiologicalSexObject {}
 
 #[cfg(feature = "HealthKit_HKBiologicalSexObject")]
+/**
+ @class     HKBiologicalSexObject
+@abstract  A wrapper object for HKBiologicalSex enumeration.
+*/
 unsafe impl NSObjectProtocol for HKBiologicalSexObject {}
 
 #[cfg(feature = "HealthKit_HKBiologicalSexObject")]
+/**
+ @class     HKBiologicalSexObject
+@abstract  A wrapper object for HKBiologicalSex enumeration.
+*/
 unsafe impl NSSecureCoding for HKBiologicalSexObject {}
 
 extern_methods!(
+    /**
+     @class     HKBiologicalSexObject
+    @abstract  A wrapper object for HKBiologicalSex enumeration.
+    */
     #[cfg(feature = "HealthKit_HKBiologicalSexObject")]
     unsafe impl HKBiologicalSexObject {
         #[method(biologicalSex)]
@@ -37,6 +57,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKBloodTypeObject")]
+    /**
+     @class     HKBloodTypeObject
+    @abstract  A wrapper object for HKBloodType enumeration.
+    */
     pub struct HKBloodTypeObject;
 
     #[cfg(feature = "HealthKit_HKBloodTypeObject")]
@@ -46,15 +70,31 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKBloodTypeObject")]
+/**
+ @class     HKBloodTypeObject
+@abstract  A wrapper object for HKBloodType enumeration.
+*/
 unsafe impl NSCoding for HKBloodTypeObject {}
 
 #[cfg(feature = "HealthKit_HKBloodTypeObject")]
+/**
+ @class     HKBloodTypeObject
+@abstract  A wrapper object for HKBloodType enumeration.
+*/
 unsafe impl NSObjectProtocol for HKBloodTypeObject {}
 
 #[cfg(feature = "HealthKit_HKBloodTypeObject")]
+/**
+ @class     HKBloodTypeObject
+@abstract  A wrapper object for HKBloodType enumeration.
+*/
 unsafe impl NSSecureCoding for HKBloodTypeObject {}
 
 extern_methods!(
+    /**
+     @class     HKBloodTypeObject
+    @abstract  A wrapper object for HKBloodType enumeration.
+    */
     #[cfg(feature = "HealthKit_HKBloodTypeObject")]
     unsafe impl HKBloodTypeObject {
         #[method(bloodType)]
@@ -65,6 +105,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKFitzpatrickSkinTypeObject")]
+    /**
+     @class     HKFitzpatrickSkinTypeObject
+    @abstract  A wrapper object for HKFitzpatrickSkinType enumeration.
+    */
     pub struct HKFitzpatrickSkinTypeObject;
 
     #[cfg(feature = "HealthKit_HKFitzpatrickSkinTypeObject")]
@@ -74,15 +118,31 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKFitzpatrickSkinTypeObject")]
+/**
+ @class     HKFitzpatrickSkinTypeObject
+@abstract  A wrapper object for HKFitzpatrickSkinType enumeration.
+*/
 unsafe impl NSCoding for HKFitzpatrickSkinTypeObject {}
 
 #[cfg(feature = "HealthKit_HKFitzpatrickSkinTypeObject")]
+/**
+ @class     HKFitzpatrickSkinTypeObject
+@abstract  A wrapper object for HKFitzpatrickSkinType enumeration.
+*/
 unsafe impl NSObjectProtocol for HKFitzpatrickSkinTypeObject {}
 
 #[cfg(feature = "HealthKit_HKFitzpatrickSkinTypeObject")]
+/**
+ @class     HKFitzpatrickSkinTypeObject
+@abstract  A wrapper object for HKFitzpatrickSkinType enumeration.
+*/
 unsafe impl NSSecureCoding for HKFitzpatrickSkinTypeObject {}
 
 extern_methods!(
+    /**
+     @class     HKFitzpatrickSkinTypeObject
+    @abstract  A wrapper object for HKFitzpatrickSkinType enumeration.
+    */
     #[cfg(feature = "HealthKit_HKFitzpatrickSkinTypeObject")]
     unsafe impl HKFitzpatrickSkinTypeObject {
         #[method(skinType)]
@@ -93,6 +153,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKWheelchairUseObject")]
+    /**
+     @class     HKWheelchairUseObject
+    @abstract  A wrapper object for HKWheelchairUse enumeration.
+    */
     pub struct HKWheelchairUseObject;
 
     #[cfg(feature = "HealthKit_HKWheelchairUseObject")]
@@ -102,15 +166,31 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKWheelchairUseObject")]
+/**
+ @class     HKWheelchairUseObject
+@abstract  A wrapper object for HKWheelchairUse enumeration.
+*/
 unsafe impl NSCoding for HKWheelchairUseObject {}
 
 #[cfg(feature = "HealthKit_HKWheelchairUseObject")]
+/**
+ @class     HKWheelchairUseObject
+@abstract  A wrapper object for HKWheelchairUse enumeration.
+*/
 unsafe impl NSObjectProtocol for HKWheelchairUseObject {}
 
 #[cfg(feature = "HealthKit_HKWheelchairUseObject")]
+/**
+ @class     HKWheelchairUseObject
+@abstract  A wrapper object for HKWheelchairUse enumeration.
+*/
 unsafe impl NSSecureCoding for HKWheelchairUseObject {}
 
 extern_methods!(
+    /**
+     @class     HKWheelchairUseObject
+    @abstract  A wrapper object for HKWheelchairUse enumeration.
+    */
     #[cfg(feature = "HealthKit_HKWheelchairUseObject")]
     unsafe impl HKWheelchairUseObject {
         #[method(wheelchairUse)]
@@ -121,6 +201,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKActivityMoveModeObject")]
+    /**
+     @class     HKActivityMoveModeObject
+    @abstract  A wrapper object for HKActivityMoveMode enumeration.
+    */
     pub struct HKActivityMoveModeObject;
 
     #[cfg(feature = "HealthKit_HKActivityMoveModeObject")]
@@ -130,15 +214,31 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKActivityMoveModeObject")]
+/**
+ @class     HKActivityMoveModeObject
+@abstract  A wrapper object for HKActivityMoveMode enumeration.
+*/
 unsafe impl NSCoding for HKActivityMoveModeObject {}
 
 #[cfg(feature = "HealthKit_HKActivityMoveModeObject")]
+/**
+ @class     HKActivityMoveModeObject
+@abstract  A wrapper object for HKActivityMoveMode enumeration.
+*/
 unsafe impl NSObjectProtocol for HKActivityMoveModeObject {}
 
 #[cfg(feature = "HealthKit_HKActivityMoveModeObject")]
+/**
+ @class     HKActivityMoveModeObject
+@abstract  A wrapper object for HKActivityMoveMode enumeration.
+*/
 unsafe impl NSSecureCoding for HKActivityMoveModeObject {}
 
 extern_methods!(
+    /**
+     @class     HKActivityMoveModeObject
+    @abstract  A wrapper object for HKActivityMoveMode enumeration.
+    */
     #[cfg(feature = "HealthKit_HKActivityMoveModeObject")]
     unsafe impl HKActivityMoveModeObject {
         #[method(activityMoveMode)]

@@ -6,6 +6,17 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+       @enum EAWiFiUnconfiguredAccessoryBrowserState
+
+      @discussion Represents the current state of a EAWiFiUnconfiguredAccessoryBrowser.
+
+      @constant EAWiFiUnconfiguredAccessoryBrowserStateWiFiUnavailable  Wi-Fi is unavailable due to the user placing the device in Airplane Mode or explicitly turning Wi-Fi off.
+      @constant EAWiFiUnconfiguredAccessoryBrowserStateStopped          The browser is not actively searching for unconfigured accessories.
+      @constant EAWiFiUnconfiguredAccessoryBrowserStateSearching        The browser is actively searching for unconfigured accessory.
+      @constant EAWiFiUnconfiguredAccessoryBrowserStateConfiguring      The browser is actively configuring an accessory.
+
+    */
     pub enum EAWiFiUnconfiguredAccessoryBrowserState {
         EAWiFiUnconfiguredAccessoryBrowserStateWiFiUnavailable = 0,
         EAWiFiUnconfiguredAccessoryBrowserStateStopped = 1,
@@ -16,6 +27,16 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+       @enum EAWiFiUnconfiguredAccessoryConfigurationStatus
+
+      @discussion Represents the state of an EAWiFiUnconfiguredAccessory configuration process.
+
+      @constant EAWiFiUnconfiguredAccessoryConfigurationStatusSuccess                     The configuration of the accessory succeeded.
+      @constant EAWiFiUnconfiguredAccessoryConfigurationStatusUserCancelledConfiguration  The user cancelled the configuration process.
+      @constant EAWiFiUnconfiguredAccessoryConfigurationStatusFailed                      The configuration failed.
+
+    */
     pub enum EAWiFiUnconfiguredAccessoryConfigurationStatus {
         EAWiFiUnconfiguredAccessoryConfigurationStatusSuccess = 0,
         EAWiFiUnconfiguredAccessoryConfigurationStatusUserCancelledConfiguration = 1,
@@ -26,6 +47,15 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "ExternalAccessory_EAWiFiUnconfiguredAccessoryBrowser")]
+    /**
+      @brief Interface for browsing unconfigured accessories
+
+     @discussion This class brokers access to the MFi Wireless Accessory Configuration (WAC) process.
+                 This browser enables the application to scan for unconfigured accessories,
+                 connect them to the user's Wi-Fi infrastructure and configure attributes of
+                 the accessory.
+
+    */
     pub struct EAWiFiUnconfiguredAccessoryBrowser;
 
     #[cfg(feature = "ExternalAccessory_EAWiFiUnconfiguredAccessoryBrowser")]
@@ -35,16 +65,46 @@ extern_class!(
 );
 
 #[cfg(feature = "ExternalAccessory_EAWiFiUnconfiguredAccessoryBrowser")]
+/**
+  @brief Interface for browsing unconfigured accessories
+
+ @discussion This class brokers access to the MFi Wireless Accessory Configuration (WAC) process.
+             This browser enables the application to scan for unconfigured accessories,
+             connect them to the user's Wi-Fi infrastructure and configure attributes of
+             the accessory.
+
+*/
 unsafe impl NSObjectProtocol for EAWiFiUnconfiguredAccessoryBrowser {}
 
 extern_methods!(
+    /**
+      @brief Interface for browsing unconfigured accessories
+
+     @discussion This class brokers access to the MFi Wireless Accessory Configuration (WAC) process.
+                 This browser enables the application to scan for unconfigured accessories,
+                 connect them to the user's Wi-Fi infrastructure and configure attributes of
+                 the accessory.
+
+    */
     #[cfg(feature = "ExternalAccessory_EAWiFiUnconfiguredAccessoryBrowser")]
     unsafe impl EAWiFiUnconfiguredAccessoryBrowser {
+        /**
+           @property delegate
+
+          @discussion The delegate object that will receive the browser events.
+
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(
             &self,
         ) -> Option<Id<ProtocolObject<dyn EAWiFiUnconfiguredAccessoryBrowserDelegate>>>;
 
+        /**
+           @property delegate
+
+          @discussion The delegate object that will receive the browser events.
+
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
@@ -55,6 +115,13 @@ extern_methods!(
             feature = "ExternalAccessory_EAWiFiUnconfiguredAccessory",
             feature = "Foundation_NSSet"
         ))]
+        /**
+          @property unconfiguredAccessories
+
+         @discussion The set of discovered unconfigured accessories described by EAWiFiUnconfiguredAccessory objects.
+                     This snapshot will only include objects matching the filter predicate defined when starting the search.
+
+        */
         #[method_id(@__retain_semantics Other unconfiguredAccessories)]
         pub unsafe fn unconfiguredAccessories(&self) -> Id<NSSet<EAWiFiUnconfiguredAccessory>>;
 
@@ -82,6 +149,14 @@ extern_methods!(
 );
 
 extern_protocol!(
+    /**
+       @protocol EAWiFiUnconfiguredAccessoryBrowserDelegate
+
+      @discussion The delegate of a EAWiFiUnconfiguredAccessoryBrowser object must adopt the
+                  EAWiFiUnconfiguredAccessoryBrowserDelegate protocol. The required
+                  callbacks keep the delegate informed of the state of the search and configuration processes.
+
+    */
     pub unsafe trait EAWiFiUnconfiguredAccessoryBrowserDelegate: NSObjectProtocol {
         #[cfg(feature = "ExternalAccessory_EAWiFiUnconfiguredAccessoryBrowser")]
         #[method(accessoryBrowser:didUpdateState:)]

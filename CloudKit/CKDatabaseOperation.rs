@@ -24,10 +24,22 @@ extern_methods!(
     #[cfg(feature = "CloudKit_CKDatabaseOperation")]
     unsafe impl CKDatabaseOperation {
         #[cfg(feature = "CloudKit_CKDatabase")]
+        /**
+          @abstract The database on which to perform the operation.
+
+         @discussion If no database is set, @code [self.container privateCloudDatabase] @endcode is used.
+         This will also set the container property of the operation's configuration to match the container of the passed-in database.
+        */
         #[method_id(@__retain_semantics Other database)]
         pub unsafe fn database(&self) -> Option<Id<CKDatabase>>;
 
         #[cfg(feature = "CloudKit_CKDatabase")]
+        /**
+          @abstract The database on which to perform the operation.
+
+         @discussion If no database is set, @code [self.container privateCloudDatabase] @endcode is used.
+         This will also set the container property of the operation's configuration to match the container of the passed-in database.
+        */
         #[method(setDatabase:)]
         pub unsafe fn setDatabase(&self, database: Option<&CKDatabase>);
     }

@@ -45,6 +45,13 @@ extern_methods!(
     #[cfg(feature = "GameController_GCDeviceHaptics")]
     unsafe impl GCDeviceHaptics {
         #[cfg(feature = "Foundation_NSSet")]
+        /**
+         The set of supported haptic localities for this device - representing the locations of its haptic actuators.
+
+        @note GCHapticsLocalityDefault and GCHapticsLocalityAll are guaranteed to be supported - and they may be equivalent.
+
+        @see GCHapticsLocality
+        */
         #[method_id(@__retain_semantics Other supportedLocalities)]
         pub unsafe fn supportedLocalities(&self) -> Id<NSSet<GCHapticsLocality>>;
 

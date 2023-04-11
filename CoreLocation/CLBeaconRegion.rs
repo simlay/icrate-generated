@@ -8,6 +8,21 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreLocation_CLBeaconRegion")]
+    /**
+       CLBeaconRegion
+
+      Discussion:
+        A region containing similar beacons.
+
+        Such a region can be defined by UUID, major and minor values.
+        UUID must be specified. If only UUID is specified, the major and
+        minor values will be wildcarded and the region will match any
+        beacons with the same UUID. Similarly if only UUID and major
+        value are specified, the minor value will be wildcarded and the
+        region will match against any beacons with the same UUID and
+        major value.
+
+    */
     pub struct CLBeaconRegion;
 
     #[cfg(feature = "CoreLocation_CLBeaconRegion")]
@@ -18,15 +33,75 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreLocation_CLBeaconRegion")]
+/**
+   CLBeaconRegion
+
+  Discussion:
+    A region containing similar beacons.
+
+    Such a region can be defined by UUID, major and minor values.
+    UUID must be specified. If only UUID is specified, the major and
+    minor values will be wildcarded and the region will match any
+    beacons with the same UUID. Similarly if only UUID and major
+    value are specified, the minor value will be wildcarded and the
+    region will match against any beacons with the same UUID and
+    major value.
+
+*/
 unsafe impl NSCoding for CLBeaconRegion {}
 
 #[cfg(feature = "CoreLocation_CLBeaconRegion")]
+/**
+   CLBeaconRegion
+
+  Discussion:
+    A region containing similar beacons.
+
+    Such a region can be defined by UUID, major and minor values.
+    UUID must be specified. If only UUID is specified, the major and
+    minor values will be wildcarded and the region will match any
+    beacons with the same UUID. Similarly if only UUID and major
+    value are specified, the minor value will be wildcarded and the
+    region will match against any beacons with the same UUID and
+    major value.
+
+*/
 unsafe impl NSObjectProtocol for CLBeaconRegion {}
 
 #[cfg(feature = "CoreLocation_CLBeaconRegion")]
+/**
+   CLBeaconRegion
+
+  Discussion:
+    A region containing similar beacons.
+
+    Such a region can be defined by UUID, major and minor values.
+    UUID must be specified. If only UUID is specified, the major and
+    minor values will be wildcarded and the region will match any
+    beacons with the same UUID. Similarly if only UUID and major
+    value are specified, the minor value will be wildcarded and the
+    region will match against any beacons with the same UUID and
+    major value.
+
+*/
 unsafe impl NSSecureCoding for CLBeaconRegion {}
 
 extern_methods!(
+    /**
+       CLBeaconRegion
+
+      Discussion:
+        A region containing similar beacons.
+
+        Such a region can be defined by UUID, major and minor values.
+        UUID must be specified. If only UUID is specified, the major and
+        minor values will be wildcarded and the region will match any
+        beacons with the same UUID. Similarly if only UUID and major
+        value are specified, the minor value will be wildcarded and the
+        region will match against any beacons with the same UUID and
+        major value.
+
+    */
     #[cfg(feature = "CoreLocation_CLBeaconRegion")]
     unsafe impl CLBeaconRegion {
         #[cfg(all(feature = "Foundation_NSString", feature = "Foundation_NSUUID"))]
@@ -109,10 +184,23 @@ extern_methods!(
         ) -> Id<NSMutableDictionary<NSString, Object>, Owned>;
 
         #[cfg(feature = "CoreLocation_CLBeaconIdentityConstraint")]
+        /**
+           beaconIdentityConstraint
+
+          Discussion:
+            Returns a CLBeaconIdentityConstraint describing the beacons this region monitors.
+        */
         #[method_id(@__retain_semantics Other beaconIdentityConstraint)]
         pub unsafe fn beaconIdentityConstraint(&self) -> Id<CLBeaconIdentityConstraint>;
 
         #[cfg(feature = "Foundation_NSUUID")]
+        /**
+           UUID
+
+          Discussion:
+            UUID associated with the region.
+
+        */
         #[method_id(@__retain_semantics Other UUID)]
         pub unsafe fn UUID(&self) -> Id<NSUUID>;
 
@@ -122,16 +210,44 @@ extern_methods!(
         pub unsafe fn proximityUUID(&self) -> Id<NSUUID>;
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+           major
+
+          Discussion:
+            Most significant value associated with the region. If a major value wasn't specified, this will be nil.
+
+        */
         #[method_id(@__retain_semantics Other major)]
         pub unsafe fn major(&self) -> Option<Id<NSNumber>>;
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+           minor
+
+          Discussion:
+            Least significant value associated with the region. If a minor value wasn't specified, this will be nil.
+
+        */
         #[method_id(@__retain_semantics Other minor)]
         pub unsafe fn minor(&self) -> Option<Id<NSNumber>>;
 
+        /**
+           notifyEntryStateOnDisplay
+
+          Discussion:
+            App will be launched and the delegate will be notified via locationManager:didDetermineState:forRegion:
+            when the device's screen is turned on and the user is in the region. By default, this is NO.
+        */
         #[method(notifyEntryStateOnDisplay)]
         pub unsafe fn notifyEntryStateOnDisplay(&self) -> bool;
 
+        /**
+           notifyEntryStateOnDisplay
+
+          Discussion:
+            App will be launched and the delegate will be notified via locationManager:didDetermineState:forRegion:
+            when the device's screen is turned on and the user is in the region. By default, this is NO.
+        */
         #[method(setNotifyEntryStateOnDisplay:)]
         pub unsafe fn setNotifyEntryStateOnDisplay(&self, notify_entry_state_on_display: bool);
     }
@@ -140,6 +256,13 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreLocation_CLBeacon")]
+    /**
+       CLBeacon
+
+      Discussion:
+        A single beacon within a CLBeaconRegion.
+
+    */
     pub struct CLBeacon;
 
     #[cfg(feature = "CoreLocation_CLBeacon")]
@@ -149,22 +272,64 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreLocation_CLBeacon")]
+/**
+   CLBeacon
+
+  Discussion:
+    A single beacon within a CLBeaconRegion.
+
+*/
 unsafe impl NSCoding for CLBeacon {}
 
 #[cfg(feature = "CoreLocation_CLBeacon")]
+/**
+   CLBeacon
+
+  Discussion:
+    A single beacon within a CLBeaconRegion.
+
+*/
 unsafe impl NSObjectProtocol for CLBeacon {}
 
 #[cfg(feature = "CoreLocation_CLBeacon")]
+/**
+   CLBeacon
+
+  Discussion:
+    A single beacon within a CLBeaconRegion.
+
+*/
 unsafe impl NSSecureCoding for CLBeacon {}
 
 extern_methods!(
+    /**
+       CLBeacon
+
+      Discussion:
+        A single beacon within a CLBeaconRegion.
+
+    */
     #[cfg(feature = "CoreLocation_CLBeacon")]
     unsafe impl CLBeacon {
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+           timestamp
+
+          Discussion:
+            The time when this beacon was observed.
+
+        */
         #[method_id(@__retain_semantics Other timestamp)]
         pub unsafe fn timestamp(&self) -> Id<NSDate>;
 
         #[cfg(feature = "Foundation_NSUUID")]
+        /**
+           UUID
+
+          Discussion:
+            UUID associated with the beacon.
+
+        */
         #[method_id(@__retain_semantics Other UUID)]
         pub unsafe fn UUID(&self) -> Id<NSUUID>;
 
@@ -174,19 +339,57 @@ extern_methods!(
         pub unsafe fn proximityUUID(&self) -> Id<NSUUID>;
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+           major
+
+          Discussion:
+            Most significant value associated with the beacon.
+
+        */
         #[method_id(@__retain_semantics Other major)]
         pub unsafe fn major(&self) -> Id<NSNumber>;
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+           minor
+
+          Discussion:
+            Least significant value associated with the beacon.
+
+        */
         #[method_id(@__retain_semantics Other minor)]
         pub unsafe fn minor(&self) -> Id<NSNumber>;
 
+        /**
+           proximity
+
+          Discussion:
+            Proximity of the beacon from the device.
+
+        */
         #[method(proximity)]
         pub unsafe fn proximity(&self) -> CLProximity;
 
+        /**
+           accuracy
+
+          Discussion:
+            Represents an one sigma horizontal accuracy in meters where the measuring device's location is
+            referenced at the beaconing device. This value is heavily subject to variations in an RF environment.
+            A negative accuracy value indicates the proximity is unknown.
+
+        */
         #[method(accuracy)]
         pub unsafe fn accuracy(&self) -> CLLocationAccuracy;
 
+        /**
+           rssi
+
+          Discussion:
+            Received signal strength in decibels of the specified beacon.
+            This value is an average of the RSSI samples collected since this beacon was last reported.
+
+        */
         #[method(rssi)]
         pub unsafe fn rssi(&self) -> NSInteger;
     }
@@ -194,6 +397,21 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `CLRegion`
+    /**
+       CLBeaconRegion
+
+      Discussion:
+        A region containing similar beacons.
+
+        Such a region can be defined by UUID, major and minor values.
+        UUID must be specified. If only UUID is specified, the major and
+        minor values will be wildcarded and the region will match any
+        beacons with the same UUID. Similarly if only UUID and major
+        value are specified, the minor value will be wildcarded and the
+        region will match against any beacons with the same UUID and
+        major value.
+
+    */
     #[cfg(feature = "CoreLocation_CLBeaconRegion")]
     unsafe impl CLBeaconRegion {
         #[cfg(feature = "Foundation_NSString")]

@@ -130,9 +130,15 @@ unsafe impl NSSecureCoding for NSCalendar {}
 extern_methods!(
     #[cfg(feature = "Foundation_NSCalendar")]
     unsafe impl NSCalendar {
+        /**
+          user's preferred calendar
+        */
         #[method_id(@__retain_semantics Other currentCalendar)]
         pub unsafe fn currentCalendar() -> Id<NSCalendar>;
 
+        /**
+          tracks changes to user's preferred calendar identifier
+        */
         #[method_id(@__retain_semantics Other autoupdatingCurrentCalendar)]
         pub unsafe fn autoupdatingCurrentCalendar() -> Id<NSCalendar>;
 
@@ -182,6 +188,9 @@ extern_methods!(
         pub unsafe fn setMinimumDaysInFirstWeek(&self, minimum_days_in_first_week: NSUInteger);
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          Methods to return component name strings localized to the calendar's locale
+        */
         #[method_id(@__retain_semantics Other eraSymbols)]
         pub unsafe fn eraSymbols(&self) -> Id<NSArray<NSString>>;
 
@@ -713,6 +722,13 @@ extern_methods!(
         #[method(valueForComponent:)]
         pub unsafe fn valueForComponent(&self, unit: NSCalendarUnit) -> NSInteger;
 
+        /**
+         Reports whether or not the combination of properties which have been set in the receiver is a date which exists in the calendar.
+        This method is not appropriate for use on NSDateComponents objects which are specifying relative quantities of calendar components.
+        Except for some trivial cases (e.g., 'seconds' should be 0 - 59 in any calendar), this method is not necessarily cheap.
+        If the time zone property is set in the NSDateComponents object, it is used.
+        The calendar property must be set, or NO is returned.
+        */
         #[method(isValidDate)]
         pub unsafe fn isValidDate(&self) -> bool;
 

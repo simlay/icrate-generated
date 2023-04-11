@@ -27,15 +27,27 @@ unsafe impl NSSecureCoding for SFSpeechRecognitionMetadata {}
 extern_methods!(
     #[cfg(feature = "Speech_SFSpeechRecognitionMetadata")]
     unsafe impl SFSpeechRecognitionMetadata {
+        /**
+          Measures the number of words spoken per minute
+        */
         #[method(speakingRate)]
         pub unsafe fn speakingRate(&self) -> c_double;
 
+        /**
+          Measures average pause between words (in seconds)
+        */
         #[method(averagePauseDuration)]
         pub unsafe fn averagePauseDuration(&self) -> NSTimeInterval;
 
+        /**
+          Timestamp of start of speech in audio
+        */
         #[method(speechStartTimestamp)]
         pub unsafe fn speechStartTimestamp(&self) -> NSTimeInterval;
 
+        /**
+          Duration of speech in audio
+        */
         #[method(speechDuration)]
         pub unsafe fn speechDuration(&self) -> NSTimeInterval;
 

@@ -7,6 +7,16 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNSaveRequest")]
+    /**
+      @abstract Specifies the changes to save.
+
+     @discussion Create a new save request for each save execution on the contact store. Can have many changes batched into one save request. Do not access objects in the save request when it is executing.  A save request only applies the changes to the objects. If there are overlapping changes with multiple, concurrent CNSaveRequests then the last saved change wins.
+
+     If adding an object (contact, group, container) and it is already in the contact store then the executing save request will fail to add that object and will return the error CNErrorCodeInsertedRecordAlreadyExists with CNErrorUserInfoAffectedRecordsKey value as an array containing that object.
+
+     If updating/deleting an object (contact, group, container) and it is not in the contact store then the executing save request will fail to update/delete that object and will return the error CNErrorCodeRecordDoesNotExist with CNErrorUserInfoAffectedRecordsKey value as an array containing that object.
+
+    */
     pub struct CNSaveRequest;
 
     #[cfg(feature = "Contacts_CNSaveRequest")]
@@ -16,9 +26,29 @@ extern_class!(
 );
 
 #[cfg(feature = "Contacts_CNSaveRequest")]
+/**
+  @abstract Specifies the changes to save.
+
+ @discussion Create a new save request for each save execution on the contact store. Can have many changes batched into one save request. Do not access objects in the save request when it is executing.  A save request only applies the changes to the objects. If there are overlapping changes with multiple, concurrent CNSaveRequests then the last saved change wins.
+
+ If adding an object (contact, group, container) and it is already in the contact store then the executing save request will fail to add that object and will return the error CNErrorCodeInsertedRecordAlreadyExists with CNErrorUserInfoAffectedRecordsKey value as an array containing that object.
+
+ If updating/deleting an object (contact, group, container) and it is not in the contact store then the executing save request will fail to update/delete that object and will return the error CNErrorCodeRecordDoesNotExist with CNErrorUserInfoAffectedRecordsKey value as an array containing that object.
+
+*/
 unsafe impl NSObjectProtocol for CNSaveRequest {}
 
 extern_methods!(
+    /**
+      @abstract Specifies the changes to save.
+
+     @discussion Create a new save request for each save execution on the contact store. Can have many changes batched into one save request. Do not access objects in the save request when it is executing.  A save request only applies the changes to the objects. If there are overlapping changes with multiple, concurrent CNSaveRequests then the last saved change wins.
+
+     If adding an object (contact, group, container) and it is already in the contact store then the executing save request will fail to add that object and will return the error CNErrorCodeInsertedRecordAlreadyExists with CNErrorUserInfoAffectedRecordsKey value as an array containing that object.
+
+     If updating/deleting an object (contact, group, container) and it is not in the contact store then the executing save request will fail to update/delete that object and will return the error CNErrorCodeRecordDoesNotExist with CNErrorUserInfoAffectedRecordsKey value as an array containing that object.
+
+    */
     #[cfg(feature = "Contacts_CNSaveRequest")]
     unsafe impl CNSaveRequest {
         #[cfg(all(feature = "Contacts_CNMutableContact", feature = "Foundation_NSString"))]
@@ -70,16 +100,44 @@ extern_methods!(
         pub unsafe fn removeMember_fromGroup(&self, contact: &CNContact, group: &CNGroup);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract    The author of this transaction.
+
+         @discussion  Use this, in conjunction with @c CNChangeHistoryFetchRequest.excludedTransactionAuthors,
+                      to suppress fetching of changes the author already knows about.
+        */
         #[method_id(@__retain_semantics Other transactionAuthor)]
         pub unsafe fn transactionAuthor(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract    The author of this transaction.
+
+         @discussion  Use this, in conjunction with @c CNChangeHistoryFetchRequest.excludedTransactionAuthors,
+                      to suppress fetching of changes the author already knows about.
+        */
         #[method(setTransactionAuthor:)]
         pub unsafe fn setTransactionAuthor(&self, transaction_author: Option<&NSString>);
 
+        /**
+          @abstract    Should the contacts be refetched as part of executing the save request.
+
+         @discussion  Default is `YES` where added and updated contacts are refetched by the executing save request.
+                      Set to `NO` to suppress this refetch behavior and reduce the execution time of the save request.
+
+         @note        If set to `NO` do not use the contacts after the executed save request as they may not be in a current state.
+        */
         #[method(shouldRefetchContacts)]
         pub unsafe fn shouldRefetchContacts(&self) -> bool;
 
+        /**
+          @abstract    Should the contacts be refetched as part of executing the save request.
+
+         @discussion  Default is `YES` where added and updated contacts are refetched by the executing save request.
+                      Set to `NO` to suppress this refetch behavior and reduce the execution time of the save request.
+
+         @note        If set to `NO` do not use the contacts after the executed save request as they may not be in a current state.
+        */
         #[method(setShouldRefetchContacts:)]
         pub unsafe fn setShouldRefetchContacts(&self, should_refetch_contacts: bool);
     }

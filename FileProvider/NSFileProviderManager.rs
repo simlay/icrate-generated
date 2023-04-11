@@ -18,6 +18,27 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "FileProvider_NSFileProviderManager")]
+    /**
+     The file provider manager allows you to communicate with the file provider
+    framework from both the extension and related processes.
+
+    NSFileProviderManager can be used from the following processes:
+    - the extension
+    - the main app containing the extension
+    - sibling extensions to the extension
+    - executables contained in the main app bundle (on macOS only)
+
+    Executables contained in the main app bundle need to have a bundle identifier that is
+    prefixed by the bundle identifier of the main app (note that this is generally required
+    for extensions). They must also have access to the document group defined for the provider
+    (via its `NSExtensionFileProviderDocumentGroup` key).
+
+    The file provider framework will invoke your file provider extension in response
+    to those calls if appropriate.
+
+    The class also provides methods to manage provider domains. Each domain has a
+    corresponding manager.
+    */
     pub struct NSFileProviderManager;
 
     #[cfg(feature = "FileProvider_NSFileProviderManager")]
@@ -27,14 +48,59 @@ extern_class!(
 );
 
 #[cfg(feature = "FileProvider_NSFileProviderManager")]
+/**
+ The file provider manager allows you to communicate with the file provider
+framework from both the extension and related processes.
+
+NSFileProviderManager can be used from the following processes:
+- the extension
+- the main app containing the extension
+- sibling extensions to the extension
+- executables contained in the main app bundle (on macOS only)
+
+Executables contained in the main app bundle need to have a bundle identifier that is
+prefixed by the bundle identifier of the main app (note that this is generally required
+for extensions). They must also have access to the document group defined for the provider
+(via its `NSExtensionFileProviderDocumentGroup` key).
+
+The file provider framework will invoke your file provider extension in response
+to those calls if appropriate.
+
+The class also provides methods to manage provider domains. Each domain has a
+corresponding manager.
+*/
 unsafe impl NSObjectProtocol for NSFileProviderManager {}
 
 extern_methods!(
+    /**
+     The file provider manager allows you to communicate with the file provider
+    framework from both the extension and related processes.
+
+    NSFileProviderManager can be used from the following processes:
+    - the extension
+    - the main app containing the extension
+    - sibling extensions to the extension
+    - executables contained in the main app bundle (on macOS only)
+
+    Executables contained in the main app bundle need to have a bundle identifier that is
+    prefixed by the bundle identifier of the main app (note that this is generally required
+    for extensions). They must also have access to the document group defined for the provider
+    (via its `NSExtensionFileProviderDocumentGroup` key).
+
+    The file provider framework will invoke your file provider extension in response
+    to those calls if appropriate.
+
+    The class also provides methods to manage provider domains. Each domain has a
+    corresponding manager.
+    */
     #[cfg(feature = "FileProvider_NSFileProviderManager")]
     unsafe impl NSFileProviderManager {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
+        /**
+         Return the manager responsible for the default domain.
+        */
         #[method_id(@__retain_semantics Other defaultManager)]
         pub unsafe fn defaultManager() -> Id<NSFileProviderManager>;
 
@@ -85,10 +151,25 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         The purpose identifier of your file provider extension. A coordination using a
+        file coordinator with this purpose identifier set will not trigger your file
+        provider extension. You can use this to e.g. perform speculative work on behalf
+        of the file provider from the main app.
+        */
         #[method_id(@__retain_semantics Other providerIdentifier)]
         pub unsafe fn providerIdentifier(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+         The root URL for provided documents. This URL is derived by consulting the
+        NSExtensionFileProviderDocumentGroup property on your extension. The document
+        storage URL is the folder "File Provider Storage" in the corresponding
+        container.
+
+        If the NSExtensionFileProviderDocumentGroup property is not set, calling this
+        method will result in an error.
+        */
         #[method_id(@__retain_semantics Other documentStorageURL)]
         pub unsafe fn documentStorageURL(&self) -> Id<NSURL>;
 
@@ -190,12 +271,26 @@ extern_static!(NSFileProviderPendingSetDidChange: &'static NSNotificationName);
 extern_protocol!(
     pub unsafe trait NSFileProviderPendingSetEnumerator: NSFileProviderEnumerator {
         #[cfg(feature = "FileProvider_NSFileProviderDomainVersion")]
+        /**
+         The version of the domain when the pending set was last refreshed by the system.
+
+        This property is updated when the enumeration methods are called on the pending set enumerator. The value
+        is initially nil.
+        */
         #[method_id(@__retain_semantics Other domainVersion)]
         unsafe fn domainVersion(&self) -> Option<Id<NSFileProviderDomainVersion>>;
 
+        /**
+         The amount of time in seconds at which the pending set is refreshed on modifications.
+        */
         #[method(refreshInterval)]
         unsafe fn refreshInterval(&self) -> NSTimeInterval;
 
+        /**
+         This property is set to YES when the enumeration of the pending set was capped at or below its maximum size.
+        Under normal conditions, the count of items pending sync will get lower as sync progresses, and this variable
+        will eventually be set to NO when the pending set again includes all items pending sync.
+        */
         #[method(isMaximumSizeReached)]
         unsafe fn isMaximumSizeReached(&self) -> bool;
     }

@@ -5,21 +5,45 @@ use crate::Foundation::*;
 use crate::Metal::*;
 
 extern_protocol!(
+    /**
+      @protocol MTLArgumentEncoder
+     @discussion MTLArgumentEncoder encodes buffer, texture, sampler, and constant data into a buffer.
+    */
     pub unsafe trait MTLArgumentEncoder: NSObjectProtocol {
+        /**
+         @property device
+        @abstract The device this argument encoder was created against.
+        */
         #[method_id(@__retain_semantics Other device)]
         unsafe fn device(&self) -> Id<ProtocolObject<dyn MTLDevice>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property label
+        @abstract A string to help identify this object.
+        */
         #[method_id(@__retain_semantics Other label)]
         unsafe fn label(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property label
+        @abstract A string to help identify this object.
+        */
         #[method(setLabel:)]
         unsafe fn setLabel(&self, label: Option<&NSString>);
 
+        /**
+          @property encodedLength
+         @abstract The number of bytes required to store the encoded resource bindings.
+        */
         #[method(encodedLength)]
         fn encodedLength(&self) -> NSUInteger;
 
+        /**
+          @property alignment
+         @abstract The alignment in bytes required to store the encoded resource bindings.
+        */
         #[method(alignment)]
         fn alignment(&self) -> NSUInteger;
 

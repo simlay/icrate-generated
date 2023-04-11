@@ -8,6 +8,22 @@ use crate::Foundation::*;
 __inner_extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSDiffableDataSourceSnapshot")]
+    /**
+      An NSDiffableDataSourceSnapshot represents the complete state of a UI element (e.g. NSCollectionView)
+
+    Snapshots can be created in two ways:
+    1. From a connected data source: e.g. `[diffableDataSource snapshot]`
+    This will contain the current state of the UI element.
+
+    2. Constructing a new instance: e.g. `[[NSDiffableDataSourceSnapshot<Int,UUID> alloc] init]`
+    This will construct an empty snapshot with no section or item identifiers.
+
+    Notes:
+    1. All identifiers must be unique. Section and Item identifiers do not overlap and may contain values that exist in the other (i.e. it is OK
+    to have a section identifier == 1 and an item identifier == 1)
+
+    2. If you pass duplicate values in an item or section array (e.g. `-appendItemsWithIdentifiers:`), the system will throw an exception.
+    */
     pub struct NSDiffableDataSourceSnapshot<
         SectionIdentifierType: Message = Object,
         ItemIdentifierType: Message = Object,
@@ -38,6 +54,22 @@ __inner_extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSDiffableDataSourceSnapshot")]
+/**
+  An NSDiffableDataSourceSnapshot represents the complete state of a UI element (e.g. NSCollectionView)
+
+Snapshots can be created in two ways:
+1. From a connected data source: e.g. `[diffableDataSource snapshot]`
+This will contain the current state of the UI element.
+
+2. Constructing a new instance: e.g. `[[NSDiffableDataSourceSnapshot<Int,UUID> alloc] init]`
+This will construct an empty snapshot with no section or item identifiers.
+
+Notes:
+1. All identifiers must be unique. Section and Item identifiers do not overlap and may contain values that exist in the other (i.e. it is OK
+to have a section identifier == 1 and an item identifier == 1)
+
+2. If you pass duplicate values in an item or section array (e.g. `-appendItemsWithIdentifiers:`), the system will throw an exception.
+*/
 unsafe impl<
         SectionIdentifierType: Message,
         ItemIdentifierType: Message,
@@ -54,6 +86,22 @@ unsafe impl<
 }
 
 extern_methods!(
+    /**
+      An NSDiffableDataSourceSnapshot represents the complete state of a UI element (e.g. NSCollectionView)
+
+    Snapshots can be created in two ways:
+    1. From a connected data source: e.g. `[diffableDataSource snapshot]`
+    This will contain the current state of the UI element.
+
+    2. Constructing a new instance: e.g. `[[NSDiffableDataSourceSnapshot<Int,UUID> alloc] init]`
+    This will construct an empty snapshot with no section or item identifiers.
+
+    Notes:
+    1. All identifiers must be unique. Section and Item identifiers do not overlap and may contain values that exist in the other (i.e. it is OK
+    to have a section identifier == 1 and an item identifier == 1)
+
+    2. If you pass duplicate values in an item or section array (e.g. `-appendItemsWithIdentifiers:`), the system will throw an exception.
+    */
     #[cfg(feature = "AppKit_NSDiffableDataSourceSnapshot")]
     unsafe impl<
             SectionIdentifierType: Message,
@@ -68,6 +116,9 @@ extern_methods!(
             ItemIdentifierTypeOwnership,
         >
     {
+        /**
+          structure
+        */
         #[method(numberOfItems)]
         pub unsafe fn numberOfItems(&self) -> NSInteger;
 
@@ -231,6 +282,9 @@ pub type NSCollectionViewDiffableDataSourceSupplementaryViewProvider = *mut Bloc
 __inner_extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSCollectionViewDiffableDataSource")]
+    /**
+      NSCollectionViewDiffableDataSource offers an identifier-based interface for providing an NSCollectionView's content.  It automatically performs the inserts, deletes, and moves necessary to transition an NSCollectionView from one model-state snapshot to another.
+    */
     pub struct NSCollectionViewDiffableDataSource<
         SectionIdentifierType: Message = Object,
         ItemIdentifierType: Message = Object,
@@ -261,6 +315,9 @@ __inner_extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSCollectionViewDiffableDataSource")]
+/**
+  NSCollectionViewDiffableDataSource offers an identifier-based interface for providing an NSCollectionView's content.  It automatically performs the inserts, deletes, and moves necessary to transition an NSCollectionView from one model-state snapshot to another.
+*/
 unsafe impl<
         SectionIdentifierType: Message,
         ItemIdentifierType: Message,
@@ -277,6 +334,9 @@ unsafe impl<
 }
 
 #[cfg(feature = "AppKit_NSCollectionViewDiffableDataSource")]
+/**
+  NSCollectionViewDiffableDataSource offers an identifier-based interface for providing an NSCollectionView's content.  It automatically performs the inserts, deletes, and moves necessary to transition an NSCollectionView from one model-state snapshot to another.
+*/
 unsafe impl<
         SectionIdentifierType: Message,
         ItemIdentifierType: Message,
@@ -293,6 +353,9 @@ unsafe impl<
 }
 
 extern_methods!(
+    /**
+      NSCollectionViewDiffableDataSource offers an identifier-based interface for providing an NSCollectionView's content.  It automatically performs the inserts, deletes, and moves necessary to transition an NSCollectionView from one model-state snapshot to another.
+    */
     #[cfg(feature = "AppKit_NSCollectionViewDiffableDataSource")]
     unsafe impl<
             SectionIdentifierType: Message,

@@ -7,6 +7,11 @@ use crate::MetricKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MetricKit_MXCrashDiagnostic")]
+    /**
+     @class         MXCrashDiagnostic
+    @abstract      An MXDiagnostic subclass that encapsulates crash reports.
+    @discussion    See "Analyzing a Crash Report" for more information on crash diagnostics.
+    */
     pub struct MXCrashDiagnostic;
 
     #[cfg(feature = "MetricKit_MXCrashDiagnostic")]
@@ -17,38 +22,88 @@ extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXCrashDiagnostic")]
+/**
+ @class         MXCrashDiagnostic
+@abstract      An MXDiagnostic subclass that encapsulates crash reports.
+@discussion    See "Analyzing a Crash Report" for more information on crash diagnostics.
+*/
 unsafe impl NSCoding for MXCrashDiagnostic {}
 
 #[cfg(feature = "MetricKit_MXCrashDiagnostic")]
+/**
+ @class         MXCrashDiagnostic
+@abstract      An MXDiagnostic subclass that encapsulates crash reports.
+@discussion    See "Analyzing a Crash Report" for more information on crash diagnostics.
+*/
 unsafe impl NSObjectProtocol for MXCrashDiagnostic {}
 
 #[cfg(feature = "MetricKit_MXCrashDiagnostic")]
+/**
+ @class         MXCrashDiagnostic
+@abstract      An MXDiagnostic subclass that encapsulates crash reports.
+@discussion    See "Analyzing a Crash Report" for more information on crash diagnostics.
+*/
 unsafe impl NSSecureCoding for MXCrashDiagnostic {}
 
 extern_methods!(
+    /**
+     @class         MXCrashDiagnostic
+    @abstract      An MXDiagnostic subclass that encapsulates crash reports.
+    @discussion    See "Analyzing a Crash Report" for more information on crash diagnostics.
+    */
     #[cfg(feature = "MetricKit_MXCrashDiagnostic")]
     unsafe impl MXCrashDiagnostic {
         #[cfg(feature = "MetricKit_MXCallStackTree")]
+        /**
+         @property      callStackTree
+        @abstract      The application call stack tree associated with this crash.
+        @discussion    This call stack tree includes those stack frames present at the time of the crash.
+        */
         #[method_id(@__retain_semantics Other callStackTree)]
         pub unsafe fn callStackTree(&self) -> Id<MXCallStackTree>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property      terminationReason
+        @abstract      The termination reason associated with this crash.
+        @discussion    Exit reason information specified when a process is terminated. Key system components, both inside and outside of a process, will terminate the process upon encountering a fatal error (e.g. a bad code signature, a missing dependent library, or accessing privacy sensitive information without the proper entitlement).
+        */
         #[method_id(@__retain_semantics Other terminationReason)]
         pub unsafe fn terminationReason(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property      virtualMemoryRegionInfo
+        @abstract      Details about memory that the app incorrectly accessed in relation to other sections of the app’s virtual memory address space.
+        @discussion    This property is set when a bad memory access crash occurs.
+        */
         #[method_id(@__retain_semantics Other virtualMemoryRegionInfo)]
         pub unsafe fn virtualMemoryRegionInfo(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+         @property      exceptionType
+        @abstract      The name of the Mach exception that terminated the app.
+        @see           sys/exception_types.h
+        */
         #[method_id(@__retain_semantics Other exceptionType)]
         pub unsafe fn exceptionType(&self) -> Option<Id<NSNumber>>;
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+         @property      exceptionCode
+        @abstract      Processor specific information about the exception encoded into one or more 64-bit hexadecimal numbers
+        @see           sys/exception_types.h
+        */
         #[method_id(@__retain_semantics Other exceptionCode)]
         pub unsafe fn exceptionCode(&self) -> Option<Id<NSNumber>>;
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+         @property      signal
+        @abstract      The signal associated with this crash.
+        @see           sys/signal.h
+        */
         #[method_id(@__retain_semantics Other signal)]
         pub unsafe fn signal(&self) -> Option<Id<NSNumber>>;
     }

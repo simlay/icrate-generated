@@ -48,6 +48,11 @@ extern_methods!(
             feature = "AppKit_NSPredicateEditorRowTemplate",
             feature = "Foundation_NSArray"
         ))]
+        /**
+          Setter - Sets the NSPredicateEditorRowTemplates for the NSPredicateEditor.  When created, NSPredicateEditor contains a template representing compound predicates; if you wish to keep it, you should take care to include it in this array.
+
+         Getter - Returns the row templates for this NSPredicateEditor.
+        */
         #[method_id(@__retain_semantics Other rowTemplates)]
         pub unsafe fn rowTemplates(&self) -> Id<NSArray<NSPredicateEditorRowTemplate>>;
 
@@ -55,6 +60,11 @@ extern_methods!(
             feature = "AppKit_NSPredicateEditorRowTemplate",
             feature = "Foundation_NSArray"
         ))]
+        /**
+          Setter - Sets the NSPredicateEditorRowTemplates for the NSPredicateEditor.  When created, NSPredicateEditor contains a template representing compound predicates; if you wish to keep it, you should take care to include it in this array.
+
+         Getter - Returns the row templates for this NSPredicateEditor.
+        */
         #[method(setRowTemplates:)]
         pub unsafe fn setRowTemplates(&self, row_templates: &NSArray<NSPredicateEditorRowTemplate>);
     }

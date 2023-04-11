@@ -18,6 +18,12 @@ ns_error_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AdServices_AAAttribution")]
+    /**
+      @class AAAttribution
+
+     @discussion
+     This class contains a method that generates a token used to obtain the app's attribution from Apple’s Attribution Server.
+    */
     pub struct AAAttribution;
 
     #[cfg(feature = "AdServices_AAAttribution")]
@@ -27,9 +33,21 @@ extern_class!(
 );
 
 #[cfg(feature = "AdServices_AAAttribution")]
+/**
+  @class AAAttribution
+
+ @discussion
+ This class contains a method that generates a token used to obtain the app's attribution from Apple’s Attribution Server.
+*/
 unsafe impl NSObjectProtocol for AAAttribution {}
 
 extern_methods!(
+    /**
+      @class AAAttribution
+
+     @discussion
+     This class contains a method that generates a token used to obtain the app's attribution from Apple’s Attribution Server.
+    */
     #[cfg(feature = "AdServices_AAAttribution")]
     unsafe impl AAAttribution {
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSString"))]

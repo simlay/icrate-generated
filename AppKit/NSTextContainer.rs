@@ -39,10 +39,18 @@ extern_methods!(
         pub unsafe fn initWithCoder(this: Option<Allocated<Self>>, coder: &NSCoder) -> Id<Self>;
 
         #[cfg(feature = "AppKit_NSLayoutManager")]
+        /**
+          Accessor for the NSLayoutManager object owning the receiver.
+         Avoid assigning a layout manager directly through this property.  Adding a text container to a layout manager through -[NSLayoutManager addTextContainer:] will use the property for assigning the new layout manager.
+        */
         #[method_id(@__retain_semantics Other layoutManager)]
         pub unsafe fn layoutManager(&self) -> Option<Id<NSLayoutManager>>;
 
         #[cfg(feature = "AppKit_NSLayoutManager")]
+        /**
+          Accessor for the NSLayoutManager object owning the receiver.
+         Avoid assigning a layout manager directly through this property.  Adding a text container to a layout manager through -[NSLayoutManager addTextContainer:] will use the property for assigning the new layout manager.
+        */
         #[method(setLayoutManager:)]
         pub unsafe fn setLayoutManager(&self, layout_manager: Option<&NSLayoutManager>);
 
@@ -51,38 +59,71 @@ extern_methods!(
         pub unsafe fn replaceLayoutManager(&self, new_layout_manager: &NSLayoutManager);
 
         #[cfg(feature = "AppKit_NSTextLayoutManager")]
+        /**
+          Returns NSTextLayoutManager owning the text container. When non-nil, -layoutManager should be nil.
+        */
         #[method_id(@__retain_semantics Other textLayoutManager)]
         pub unsafe fn textLayoutManager(&self) -> Option<Id<NSTextLayoutManager>>;
 
+        /**
+          Default value: CGSizeZero  Defines the maximum size for the layout area returned from -lineFragmentRectForProposedRect:writingDirection:remainingRect:.  0.0 and less means no limitation.
+        */
         #[method(size)]
         pub unsafe fn size(&self) -> NSSize;
 
+        /**
+          Default value: CGSizeZero  Defines the maximum size for the layout area returned from -lineFragmentRectForProposedRect:writingDirection:remainingRect:.  0.0 and less means no limitation.
+        */
         #[method(setSize:)]
         pub unsafe fn setSize(&self, size: NSSize);
 
         #[cfg(all(feature = "AppKit_NSBezierPath", feature = "Foundation_NSArray"))]
+        /**
+          Default value : empty array  An array of NSBezierPath representing the exclusion paths inside the receiver's bounding rect.
+        */
         #[method_id(@__retain_semantics Other exclusionPaths)]
         pub unsafe fn exclusionPaths(&self) -> Id<NSArray<NSBezierPath>>;
 
         #[cfg(all(feature = "AppKit_NSBezierPath", feature = "Foundation_NSArray"))]
+        /**
+          Default value : empty array  An array of NSBezierPath representing the exclusion paths inside the receiver's bounding rect.
+        */
         #[method(setExclusionPaths:)]
         pub unsafe fn setExclusionPaths(&self, exclusion_paths: &NSArray<NSBezierPath>);
 
+        /**
+          Default value: NSLineBreakByWordWrapping  The line break mode defines the behavior of the last line inside the text container.
+        */
         #[method(lineBreakMode)]
         pub unsafe fn lineBreakMode(&self) -> NSLineBreakMode;
 
+        /**
+          Default value: NSLineBreakByWordWrapping  The line break mode defines the behavior of the last line inside the text container.
+        */
         #[method(setLineBreakMode:)]
         pub unsafe fn setLineBreakMode(&self, line_break_mode: NSLineBreakMode);
 
+        /**
+          Default value: 5.0  The layout padding at the beginning and end of the line fragment rects insetting the layout width available for the contents.  This value is utilized by NSLayoutManager for determining the layout width.
+        */
         #[method(lineFragmentPadding)]
         pub unsafe fn lineFragmentPadding(&self) -> CGFloat;
 
+        /**
+          Default value: 5.0  The layout padding at the beginning and end of the line fragment rects insetting the layout width available for the contents.  This value is utilized by NSLayoutManager for determining the layout width.
+        */
         #[method(setLineFragmentPadding:)]
         pub unsafe fn setLineFragmentPadding(&self, line_fragment_padding: CGFloat);
 
+        /**
+          Default value: 0 (no limit)  The maximum number of lines that can be stored in the receiver.  This value is utilized by NSLayoutManager for determining the maximum number of lines associated with the text container.
+        */
         #[method(maximumNumberOfLines)]
         pub unsafe fn maximumNumberOfLines(&self) -> NSUInteger;
 
+        /**
+          Default value: 0 (no limit)  The maximum number of lines that can be stored in the receiver.  This value is utilized by NSLayoutManager for determining the maximum number of lines associated with the text container.
+        */
         #[method(setMaximumNumberOfLines:)]
         pub unsafe fn setMaximumNumberOfLines(&self, maximum_number_of_lines: NSUInteger);
 
@@ -95,12 +136,21 @@ extern_methods!(
             remaining_rect: *mut NSRect,
         ) -> NSRect;
 
+        /**
+          Returns YES if the receiver is a rectangular shape defined simply by -size. TextKit utilizes this information for enabling various layout optimizations. NSLayoutManager disables non-contiguous layout when this property is NO. The default implementation returns NO when -exclusionPaths has 1 or more items, -maximumNumberOfLines is not 0, or -lineFragmentRectForProposedRect:atIndex:writingDirection:remainingRect: is overridden. It's recommended to override this property when -lineFragmentRectForProposedRect:atIndex:writingDirection:remainingRect: is overridden.
+        */
         #[method(isSimpleRectangularTextContainer)]
         pub unsafe fn isSimpleRectangularTextContainer(&self) -> bool;
 
+        /**
+          Default value: NO  Define whether the text container view bounds changes can affect the text container size.
+        */
         #[method(widthTracksTextView)]
         pub unsafe fn widthTracksTextView(&self) -> bool;
 
+        /**
+          Default value: NO  Define whether the text container view bounds changes can affect the text container size.
+        */
         #[method(setWidthTracksTextView:)]
         pub unsafe fn setWidthTracksTextView(&self, width_tracks_text_view: bool);
 
@@ -122,6 +172,10 @@ extern_methods!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      Deprecated
+    NSLineSweepDirection and NSLineMovementDirection are soft deprecated starting with OS X 10.11. It will be officially deprecated in a future release
+    */
     pub enum NSLineSweepDirection {
         NSLineSweepLeft = 0,
         NSLineSweepRight = 1,
@@ -151,9 +205,15 @@ extern_methods!(
             a_container_size: NSSize,
         ) -> Id<Self>;
 
+        /**
+          Use -size instead
+        */
         #[method(containerSize)]
         pub unsafe fn containerSize(&self) -> NSSize;
 
+        /**
+          Use -size instead
+        */
         #[method(setContainerSize:)]
         pub unsafe fn setContainerSize(&self, container_size: NSSize);
 

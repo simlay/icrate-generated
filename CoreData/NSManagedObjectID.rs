@@ -7,6 +7,9 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreData_NSManagedObjectID")]
+    /**
+      Managed object IDs are opaque identifiers for managed objects.
+    */
     pub struct NSManagedObjectID;
 
     #[cfg(feature = "CoreData_NSManagedObjectID")]
@@ -16,19 +19,34 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreData_NSManagedObjectID")]
+/**
+  Managed object IDs are opaque identifiers for managed objects.
+*/
 unsafe impl NSObjectProtocol for NSManagedObjectID {}
 
 extern_methods!(
+    /**
+      Managed object IDs are opaque identifiers for managed objects.
+    */
     #[cfg(feature = "CoreData_NSManagedObjectID")]
     unsafe impl NSManagedObjectID {
         #[cfg(feature = "CoreData_NSEntityDescription")]
+        /**
+          entity for the object identified by an ID
+        */
         #[method_id(@__retain_semantics Other entity)]
         pub unsafe fn entity(&self) -> Id<NSEntityDescription>;
 
         #[cfg(feature = "CoreData_NSPersistentStore")]
+        /**
+          persistent store that fetched the object identified by an ID
+        */
         #[method_id(@__retain_semantics Other persistentStore)]
         pub unsafe fn persistentStore(&self) -> Option<Id<NSPersistentStore>>;
 
+        /**
+          indicates whether or not this ID will be replaced later, such as after a save operation (temporary IDs are assigned to newly inserted objects and replaced with permanent IDs when an object is written to a persistent store); most IDs return NO
+        */
         #[method(isTemporaryID)]
         pub unsafe fn isTemporaryID(&self) -> bool;
 

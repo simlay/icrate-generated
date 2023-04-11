@@ -48,9 +48,15 @@ extern_methods!(
             stream: &NSInputStream,
         ) -> Id<Self>;
 
+        /**
+          delegate management. The delegate is not retained.
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(&self) -> Option<Id<ProtocolObject<dyn NSXMLParserDelegate>>>;
 
+        /**
+          delegate management. The delegate is not retained.
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
@@ -72,11 +78,17 @@ extern_methods!(
             should_report_namespace_prefixes: bool,
         );
 
+        /**
+         defaults to NSXMLNodeLoadExternalEntitiesNever
+        */
         #[method(externalEntityResolvingPolicy)]
         pub unsafe fn externalEntityResolvingPolicy(
             &self,
         ) -> NSXMLParserExternalEntityResolvingPolicy;
 
+        /**
+         defaults to NSXMLNodeLoadExternalEntitiesNever
+        */
         #[method(setExternalEntityResolvingPolicy:)]
         pub unsafe fn setExternalEntityResolvingPolicy(
             &self,
@@ -101,12 +113,23 @@ extern_methods!(
         pub unsafe fn abortParsing(&self);
 
         #[cfg(feature = "Foundation_NSError")]
+        /**
+          can be called after a parse is over to determine parser state.
+        */
         #[method_id(@__retain_semantics Other parserError)]
         pub unsafe fn parserError(&self) -> Option<Id<NSError>>;
 
+        /**
+         Toggles between disabling external entities entirely, and the current setting of the 'externalEntityResolvingPolicy'.
+        The 'externalEntityResolvingPolicy' property should be used instead of this, unless targeting 10.9/7.0 or earlier
+        */
         #[method(shouldResolveExternalEntities)]
         pub unsafe fn shouldResolveExternalEntities(&self) -> bool;
 
+        /**
+         Toggles between disabling external entities entirely, and the current setting of the 'externalEntityResolvingPolicy'.
+        The 'externalEntityResolvingPolicy' property should be used instead of this, unless targeting 10.9/7.0 or earlier
+        */
         #[method(setShouldResolveExternalEntities:)]
         pub unsafe fn setShouldResolveExternalEntities(
             &self,
@@ -116,6 +139,9 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      Once a parse has begun, the delegate may be interested in certain parser state. These methods will only return meaningful information during parsing, or after an error has occurred.
+    */
     /// NSXMLParserLocatorAdditions
     #[cfg(feature = "Foundation_NSXMLParser")]
     unsafe impl NSXMLParser {
@@ -136,6 +162,9 @@ extern_methods!(
 );
 
 extern_protocol!(
+    /**
+      The parser's delegate is informed of events through the methods in the NSXMLParserDelegateEventAdditions category.
+    */
     pub unsafe trait NSXMLParserDelegate: NSObjectProtocol {
         #[cfg(feature = "Foundation_NSXMLParser")]
         #[optional]
@@ -325,6 +354,9 @@ extern_static!(NSXMLParserErrorDomain: &'static NSErrorDomain);
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      Error reporting
+    */
     pub enum NSXMLParserError {
         NSXMLParserInternalError = 1,
         NSXMLParserOutOfMemoryError = 2,

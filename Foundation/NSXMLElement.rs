@@ -6,6 +6,11 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSXMLElement")]
+    /**
+     @class NSXMLElement
+    @abstract An XML element
+    @discussion Note: Trying to add a document, namespace, attribute, or node with a parent throws an exception. To add a node with a parent first detach or create a copy of it.
+    */
     pub struct NSXMLElement;
 
     #[cfg(feature = "Foundation_NSXMLElement")]
@@ -16,9 +21,19 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSXMLElement")]
+/**
+ @class NSXMLElement
+@abstract An XML element
+@discussion Note: Trying to add a document, namespace, attribute, or node with a parent throws an exception. To add a node with a parent first detach or create a copy of it.
+*/
 unsafe impl NSObjectProtocol for NSXMLElement {}
 
 extern_methods!(
+    /**
+     @class NSXMLElement
+    @abstract An XML element
+    @discussion Note: Trying to add a document, namespace, attribute, or node with a parent throws an exception. To add a node with a parent first detach or create a copy of it.
+    */
     #[cfg(feature = "Foundation_NSXMLElement")]
     unsafe impl NSXMLElement {
         #[cfg(feature = "Foundation_NSString")]
@@ -75,10 +90,16 @@ extern_methods!(
         pub unsafe fn removeAttributeForName(&self, name: &NSString);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+         @abstract Set the attributes. In the case of duplicate names, the first attribute with the name is used.
+        */
         #[method_id(@__retain_semantics Other attributes)]
         pub unsafe fn attributes(&self) -> Option<Id<NSArray<NSXMLNode>>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+         @abstract Set the attributes. In the case of duplicate names, the first attribute with the name is used.
+        */
         #[method(setAttributes:)]
         pub unsafe fn setAttributes(&self, attributes: Option<&NSArray<NSXMLNode>>);
 
@@ -109,10 +130,16 @@ extern_methods!(
         pub unsafe fn removeNamespaceForPrefix(&self, name: &NSString);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+         primitive
+        */
         #[method_id(@__retain_semantics Other namespaces)]
         pub unsafe fn namespaces(&self) -> Option<Id<NSArray<NSXMLNode>>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+         primitive
+        */
         #[method(setNamespaces:)]
         pub unsafe fn setNamespaces(&self, namespaces: Option<&NSArray<NSXMLNode>>);
 
@@ -173,6 +200,11 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSXMLNode`
+    /**
+     @class NSXMLElement
+    @abstract An XML element
+    @discussion Note: Trying to add a document, namespace, attribute, or node with a parent throws an exception. To add a node with a parent first detach or create a copy of it.
+    */
     #[cfg(feature = "Foundation_NSXMLElement")]
     unsafe impl NSXMLElement {
         #[method_id(@__retain_semantics Init initWithKind:)]

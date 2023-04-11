@@ -6,6 +6,10 @@ use crate::Metal::*;
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+     @enum MTLVertexFormat
+    @abstract specifies how the vertex attribute data is laid out in memory.
+    */
     pub enum MTLVertexFormat {
         MTLVertexFormatInvalid = 0,
         MTLVertexFormatUChar2 = 1,
@@ -218,6 +222,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLVertexDescriptor")]
+    /**
+     MTLVertexDescriptor
+    */
     pub struct MTLVertexDescriptor;
 
     #[cfg(feature = "Metal_MTLVertexDescriptor")]
@@ -227,9 +234,15 @@ extern_class!(
 );
 
 #[cfg(feature = "Metal_MTLVertexDescriptor")]
+/**
+ MTLVertexDescriptor
+*/
 unsafe impl NSObjectProtocol for MTLVertexDescriptor {}
 
 extern_methods!(
+    /**
+     MTLVertexDescriptor
+    */
     #[cfg(feature = "Metal_MTLVertexDescriptor")]
     unsafe impl MTLVertexDescriptor {
         #[method_id(@__retain_semantics Other vertexDescriptor)]

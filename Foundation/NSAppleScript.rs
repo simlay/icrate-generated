@@ -50,9 +50,15 @@ extern_methods!(
         ) -> Option<Id<Self>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Return the source code of the script if it is available, nil otherwise.  It is possible for an NSAppleScript that has been instantiated with -initWithContentsOfURL:error: to be a script for which the source code is not available, but is nonetheless executable.
+        */
         #[method_id(@__retain_semantics Other source)]
         pub unsafe fn source(&self) -> Option<Id<NSString>>;
 
+        /**
+          Return yes if the script is already compiled, no otherwise.
+        */
         #[method(isCompiled)]
         pub unsafe fn isCompiled(&self) -> bool;
 

@@ -31,6 +31,9 @@ extern_methods!(
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
+        /**
+          The maximum angle, in degrees, the wheel can be rotated.
+        */
         #[method(maximumDegreesOfRotation)]
         pub unsafe fn maximumDegreesOfRotation(&self) -> c_float;
     }

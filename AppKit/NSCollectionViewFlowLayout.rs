@@ -39,18 +39,30 @@ unsafe impl NSObjectProtocol for NSCollectionViewFlowLayoutInvalidationContext {
 extern_methods!(
     #[cfg(feature = "AppKit_NSCollectionViewFlowLayoutInvalidationContext")]
     unsafe impl NSCollectionViewFlowLayoutInvalidationContext {
+        /**
+          if set to NO, flow layout will not requery the collection view delegate for size information etc.
+        */
         #[method(invalidateFlowLayoutDelegateMetrics)]
         pub unsafe fn invalidateFlowLayoutDelegateMetrics(&self) -> bool;
 
+        /**
+          if set to NO, flow layout will not requery the collection view delegate for size information etc.
+        */
         #[method(setInvalidateFlowLayoutDelegateMetrics:)]
         pub unsafe fn setInvalidateFlowLayoutDelegateMetrics(
             &self,
             invalidate_flow_layout_delegate_metrics: bool,
         );
 
+        /**
+          if set to NO, flow layout will keep all layout information, effectively not invalidating - useful for a subclass which invalidates only a piece of itself
+        */
         #[method(invalidateFlowLayoutAttributes)]
         pub unsafe fn invalidateFlowLayoutAttributes(&self) -> bool;
 
+        /**
+          if set to NO, flow layout will keep all layout information, effectively not invalidating - useful for a subclass which invalidates only a piece of itself
+        */
         #[method(setInvalidateFlowLayoutAttributes:)]
         pub unsafe fn setInvalidateFlowLayoutAttributes(
             &self,
@@ -183,15 +195,27 @@ extern_methods!(
         #[method(setItemSize:)]
         pub unsafe fn setItemSize(&self, item_size: NSSize);
 
+        /**
+          defaults to NSZeroSize - setting a non-zero size enables cells that self-size via -preferredLayoutAttributesFittingAttributes:
+        */
         #[method(estimatedItemSize)]
         pub unsafe fn estimatedItemSize(&self) -> NSSize;
 
+        /**
+          defaults to NSZeroSize - setting a non-zero size enables cells that self-size via -preferredLayoutAttributesFittingAttributes:
+        */
         #[method(setEstimatedItemSize:)]
         pub unsafe fn setEstimatedItemSize(&self, estimated_item_size: NSSize);
 
+        /**
+          default is NSCollectionViewScrollDirectionVertical
+        */
         #[method(scrollDirection)]
         pub unsafe fn scrollDirection(&self) -> NSCollectionViewScrollDirection;
 
+        /**
+          default is NSCollectionViewScrollDirectionVertical
+        */
         #[method(setScrollDirection:)]
         pub unsafe fn setScrollDirection(&self, scroll_direction: NSCollectionViewScrollDirection);
 
@@ -213,9 +237,15 @@ extern_methods!(
         #[method(setSectionInset:)]
         pub unsafe fn setSectionInset(&self, section_inset: NSEdgeInsets);
 
+        /**
+          Set these properties to YES to get headers that pin to the top of the visible area and footers that pin to the bottom while scrolling.  Archived with the layout's other persistent properties.  Enabling this feature may affect the parenting of header and footer views.
+        */
         #[method(sectionHeadersPinToVisibleBounds)]
         pub unsafe fn sectionHeadersPinToVisibleBounds(&self) -> bool;
 
+        /**
+          Set these properties to YES to get headers that pin to the top of the visible area and footers that pin to the bottom while scrolling.  Archived with the layout's other persistent properties.  Enabling this feature may affect the parenting of header and footer views.
+        */
         #[method(setSectionHeadersPinToVisibleBounds:)]
         pub unsafe fn setSectionHeadersPinToVisibleBounds(
             &self,

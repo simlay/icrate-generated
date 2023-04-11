@@ -8,6 +8,15 @@ use crate::WebKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "WebKit_WebDownload")]
+    /**
+     @class WebDownload
+    @discussion A WebDownload works just like an NSURLDownload, with
+    one extra feature: if you do not implement the
+    authentication-related delegate methods, it will automatically
+    prompt for authentication using the standard WebKit authentication
+    panel, as either a sheet or window. It provides no extra methods,
+    but does have one additional delegate method.
+    */
     #[deprecated]
     pub struct WebDownload;
 
@@ -19,15 +28,38 @@ extern_class!(
 );
 
 #[cfg(feature = "WebKit_WebDownload")]
+/**
+ @class WebDownload
+@discussion A WebDownload works just like an NSURLDownload, with
+one extra feature: if you do not implement the
+authentication-related delegate methods, it will automatically
+prompt for authentication using the standard WebKit authentication
+panel, as either a sheet or window. It provides no extra methods,
+but does have one additional delegate method.
+*/
 unsafe impl NSObjectProtocol for WebDownload {}
 
 extern_methods!(
+    /**
+     @class WebDownload
+    @discussion A WebDownload works just like an NSURLDownload, with
+    one extra feature: if you do not implement the
+    authentication-related delegate methods, it will automatically
+    prompt for authentication using the standard WebKit authentication
+    panel, as either a sheet or window. It provides no extra methods,
+    but does have one additional delegate method.
+    */
     #[cfg(feature = "WebKit_WebDownload")]
     unsafe impl WebDownload {}
 );
 
 extern_protocol!(
     #[deprecated]
+    /**
+     @protocol WebDownloadDelegate
+    @discussion The WebDownloadDelegate delegate has one extra method used to choose
+    the right window when automatically prompting with a sheet.
+    */
     pub unsafe trait WebDownloadDelegate: NSURLDownloadDelegate {
         #[cfg(all(feature = "AppKit_NSWindow", feature = "WebKit_WebDownload"))]
         #[optional]
@@ -43,6 +75,15 @@ extern_protocol!(
 
 extern_methods!(
     /// Methods declared on superclass `NSURLDownload`
+    /**
+     @class WebDownload
+    @discussion A WebDownload works just like an NSURLDownload, with
+    one extra feature: if you do not implement the
+    authentication-related delegate methods, it will automatically
+    prompt for authentication using the standard WebKit authentication
+    panel, as either a sheet or window. It provides no extra methods,
+    but does have one additional delegate method.
+    */
     #[cfg(feature = "WebKit_WebDownload")]
     unsafe impl WebDownload {
         #[cfg(feature = "Foundation_NSURLRequest")]

@@ -7,6 +7,9 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      The default alert style is NSAlertStyleWarning.  NSAlertStyleCritical should be reserved for critical alerts and will cause the icon to be badged with a caution icon.
+    */
     pub enum NSAlertStyle {
         NSAlertStyleWarning = 0,
         NSAlertStyleInformational = 1,
@@ -58,10 +61,16 @@ extern_methods!(
         pub unsafe fn setInformativeText(&self, informative_text: &NSString);
 
         #[cfg(feature = "AppKit_NSImage")]
+        /**
+          customize the icon.  By default uses the image named NSApplicationIcon.
+        */
         #[method_id(@__retain_semantics Other icon)]
         pub unsafe fn icon(&self) -> Option<Id<NSImage>>;
 
         #[cfg(feature = "AppKit_NSImage")]
+        /**
+          customize the icon.  By default uses the image named NSApplicationIcon.
+        */
         #[method(setIcon:)]
         pub unsafe fn setIcon(&self, icon: Option<&NSImage>);
 
@@ -70,12 +79,21 @@ extern_methods!(
         pub unsafe fn addButtonWithTitle(&self, title: &NSString) -> Id<NSButton>;
 
         #[cfg(all(feature = "AppKit_NSButton", feature = "Foundation_NSArray"))]
+        /**
+          get the buttons, where the rightmost button is at index 0.
+        */
         #[method_id(@__retain_semantics Other buttons)]
         pub unsafe fn buttons(&self) -> Id<NSArray<NSButton>>;
 
+        /**
+          -setShowsHelp:YES adds a help button to the alert panel. When the help button is pressed, the delegate is first consulted.  If the delegate does not implement alertShowHelp: or returns NO, then -[NSHelpManager openHelpAnchor:inBook:] is called with a nil book and the anchor specified by -setHelpAnchor:, if any.  An exception will be raised if the delegate returns NO and there is no help anchor set.
+        */
         #[method(showsHelp)]
         pub unsafe fn showsHelp(&self) -> bool;
 
+        /**
+          -setShowsHelp:YES adds a help button to the alert panel. When the help button is pressed, the delegate is first consulted.  If the delegate does not implement alertShowHelp: or returns NO, then -[NSHelpManager openHelpAnchor:inBook:] is called with a nil book and the anchor specified by -setHelpAnchor:, if any.  An exception will be raised if the delegate returns NO and there is no help anchor set.
+        */
         #[method(setShowsHelp:)]
         pub unsafe fn setShowsHelp(&self, shows_help: bool);
 
@@ -91,27 +109,50 @@ extern_methods!(
         #[method(setAlertStyle:)]
         pub unsafe fn setAlertStyle(&self, alert_style: NSAlertStyle);
 
+        /**
+          The delegate of the receiver, currently only allows for custom help behavior of the alert.
+        For apps linked against 10.12, this property has zeroing weak memory semantics. When linked against an older SDK this back to having `retain` semantics, matching legacy behavior.
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(&self) -> Option<Id<ProtocolObject<dyn NSAlertDelegate>>>;
 
+        /**
+          The delegate of the receiver, currently only allows for custom help behavior of the alert.
+        For apps linked against 10.12, this property has zeroing weak memory semantics. When linked against an older SDK this back to having `retain` semantics, matching legacy behavior.
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(&self, delegate: Option<&ProtocolObject<dyn NSAlertDelegate>>);
 
+        /**
+          -setShowsSuppressionButton: indicates whether or not the alert should contain a suppression checkbox.  The default is NO.  This checkbox is typically used to give the user an option to not show this alert again.  If shown, the suppression button will have a default localized title similar to @"Do not show this message again" (single-button alert) or @"Don’t ask again" (multi-button alert).  You can customize this title using [[alert suppressionButton] setTitle:].  When the alert is dismissed, you can get the state of the suppression button, using [[alert suppressionButton] state] and store the result in user defaults, for example.  This setting can then be checked before showing the alert again.  By default, the suppression button is positioned below the informative text, and above the accessory view (if any) and the alert buttons, and left-aligned with the informative text.  However do not count on the placement of this button, since it might be moved if the alert panel user interface is changed in the future. If you need a checkbox for purposes other than suppression text, it is recommended you create your own using an accessory view.
+        */
         #[method(showsSuppressionButton)]
         pub unsafe fn showsSuppressionButton(&self) -> bool;
 
+        /**
+          -setShowsSuppressionButton: indicates whether or not the alert should contain a suppression checkbox.  The default is NO.  This checkbox is typically used to give the user an option to not show this alert again.  If shown, the suppression button will have a default localized title similar to @"Do not show this message again" (single-button alert) or @"Don’t ask again" (multi-button alert).  You can customize this title using [[alert suppressionButton] setTitle:].  When the alert is dismissed, you can get the state of the suppression button, using [[alert suppressionButton] state] and store the result in user defaults, for example.  This setting can then be checked before showing the alert again.  By default, the suppression button is positioned below the informative text, and above the accessory view (if any) and the alert buttons, and left-aligned with the informative text.  However do not count on the placement of this button, since it might be moved if the alert panel user interface is changed in the future. If you need a checkbox for purposes other than suppression text, it is recommended you create your own using an accessory view.
+        */
         #[method(setShowsSuppressionButton:)]
         pub unsafe fn setShowsSuppressionButton(&self, shows_suppression_button: bool);
 
         #[cfg(feature = "AppKit_NSButton")]
+        /**
+          -suppressionButton returns a suppression button which may be customized, including the title and the initial state.  You can also use this method to get the state of the button after the alert is dismissed, which may be stored in user defaults and checked before showing the alert again.  In order to show the suppression button in the alert panel, you must call -setShowsSuppressionButton:YES.
+        */
         #[method_id(@__retain_semantics Other suppressionButton)]
         pub unsafe fn suppressionButton(&self) -> Option<Id<NSButton>>;
 
         #[cfg(feature = "AppKit_NSView")]
+        /**
+          -setAccessoryView: sets the accessory view displayed in the alert panel.  By default, the accessory view is positioned below the informative text and the suppression button (if any) and above the alert buttons, left-aligned with the informative text.  If you want to customize the location of the accessory view, you must first call -layout.  See the discussion of -layout for more information.
+        */
         #[method_id(@__retain_semantics Other accessoryView)]
         pub unsafe fn accessoryView(&self) -> Option<Id<NSView>>;
 
         #[cfg(feature = "AppKit_NSView")]
+        /**
+          -setAccessoryView: sets the accessory view displayed in the alert panel.  By default, the accessory view is positioned below the informative text and the suppression button (if any) and above the alert buttons, left-aligned with the informative text.  If you want to customize the location of the accessory view, you must first call -layout.  See the discussion of -layout for more information.
+        */
         #[method(setAccessoryView:)]
         pub unsafe fn setAccessoryView(&self, accessory_view: Option<&NSView>);
 
@@ -130,6 +171,9 @@ extern_methods!(
         );
 
         #[cfg(feature = "AppKit_NSWindow")]
+        /**
+          return the application-modal panel or the document-modal sheet corresponding to this alert.
+        */
         #[method_id(@__retain_semantics Other window)]
         pub unsafe fn window(&self) -> Id<NSWindow>;
     }

@@ -7,6 +7,13 @@ use crate::WebKit::*;
 
 extern_protocol!(
     #[deprecated]
+    /**
+     @category WebFrameLoadDelegate
+    @discussion A WebView's WebFrameLoadDelegate tracks the loading progress of its frames.
+    When a data source of a frame starts to load, the data source is considered "provisional".
+    Once at least one byte is received, the data source is considered "committed". This is done
+    so the contents of the frame will not be lost if the new data source fails to successfully load.
+    */
     pub unsafe trait WebFrameLoadDelegate: NSObjectProtocol {
         #[cfg(all(feature = "WebKit_WebFrame", feature = "WebKit_WebView"))]
         #[optional]

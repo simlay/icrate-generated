@@ -7,6 +7,12 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+       CLError
+
+      Discussion:
+        Error returned as code to NSError from CoreLocation.
+    */
     pub enum CLError {
         kCLErrorLocationUnknown = 0,
         kCLErrorDenied = 1,

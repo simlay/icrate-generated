@@ -9,6 +9,12 @@ extern_static!(CLLocationPushServiceErrorDomain: Option<&'static NSErrorDomain>)
 
 ns_error_enum!(
     #[underlying(NSInteger)]
+    /**
+       CLLocationPushServiceError
+
+      Discussion:
+        Error returned as code to NSError from -[CLLocationManager startMonitoringLocationPushesWithCompletion:].
+    */
     pub enum CLLocationPushServiceError {
         CLLocationPushServiceErrorUnknown = 0,
         CLLocationPushServiceErrorMissingPushExtension = 1,

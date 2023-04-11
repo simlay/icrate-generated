@@ -78,6 +78,9 @@ extern_protocol!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSURLHandle")]
+    /**
+      NSURLHandle has been deprecated; please use NSURLConnection instead.
+    */
     pub struct NSURLHandle;
 
     #[cfg(feature = "Foundation_NSURLHandle")]
@@ -87,9 +90,15 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSURLHandle")]
+/**
+  NSURLHandle has been deprecated; please use NSURLConnection instead.
+*/
 unsafe impl NSObjectProtocol for NSURLHandle {}
 
 extern_methods!(
+    /**
+      NSURLHandle has been deprecated; please use NSURLConnection instead.
+    */
     #[cfg(feature = "Foundation_NSURLHandle")]
     unsafe impl NSURLHandle {
         #[deprecated]

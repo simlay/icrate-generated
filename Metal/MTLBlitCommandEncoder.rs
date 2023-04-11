@@ -6,6 +6,10 @@ use crate::Metal::*;
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+     @enum MTLBlitOption
+    @abstract Controls the blit operation
+    */
     pub enum MTLBlitOption {
         MTLBlitOptionNone = 0,
         MTLBlitOptionDepthFromDepthStencil = 1 << 0,
@@ -15,6 +19,10 @@ ns_options!(
 );
 
 extern_protocol!(
+    /**
+     @protocol MTLBlitCommandEncoder
+    @abstract A command encoder that performs basic copies and blits between buffers and textures.
+    */
     pub unsafe trait MTLBlitCommandEncoder: MTLCommandEncoder {
         #[method(synchronizeResource:)]
         fn synchronizeResource(&self, resource: &ProtocolObject<dyn MTLResource>);

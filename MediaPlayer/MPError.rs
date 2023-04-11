@@ -9,6 +9,9 @@ extern_static!(MPErrorDomain: &'static NSString);
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      error codes for the MPErrorDomain
+    */
     pub enum MPErrorCode {
         MPErrorUnknown = 0,
         MPErrorPermissionDenied = 1,

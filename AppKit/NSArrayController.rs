@@ -35,9 +35,15 @@ extern_methods!(
         #[method(rearrangeObjects)]
         pub unsafe fn rearrangeObjects(&self);
 
+        /**
+          default: NO
+        */
         #[method(automaticallyRearrangesObjects)]
         pub unsafe fn automaticallyRearrangesObjects(&self) -> bool;
 
+        /**
+          default: NO
+        */
         #[method(setAutomaticallyRearrangesObjects:)]
         pub unsafe fn setAutomaticallyRearrangesObjects(
             &self,
@@ -45,6 +51,9 @@ extern_methods!(
         );
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          computes the array of key paths that trigger automatic rearranging from the sort descriptors and filter predicates; subclasses may override this method to customize the default behavior (for example if additional arrangement criteria are used in custom implementations of -rearrangeObjects)
+        */
         #[method_id(@__retain_semantics Other automaticRearrangementKeyPaths)]
         pub unsafe fn automaticRearrangementKeyPaths(&self) -> Option<Id<NSArray<NSString>>>;
 
@@ -73,9 +82,15 @@ extern_methods!(
         #[method(setFilterPredicate:)]
         pub unsafe fn setFilterPredicate(&self, filter_predicate: Option<&NSPredicate>);
 
+        /**
+          default: YES
+        */
         #[method(clearsFilterPredicateOnInsertion)]
         pub unsafe fn clearsFilterPredicateOnInsertion(&self) -> bool;
 
+        /**
+          default: YES
+        */
         #[method(setClearsFilterPredicateOnInsertion:)]
         pub unsafe fn setClearsFilterPredicateOnInsertion(
             &self,
@@ -86,30 +101,57 @@ extern_methods!(
         #[method_id(@__retain_semantics Other arrangeObjects:)]
         pub unsafe fn arrangeObjects(&self, objects: &NSArray) -> Id<NSArray>;
 
+        /**
+          array of all displayed objects (after sorting and potentially filtering)
+        */
         #[method_id(@__retain_semantics Other arrangedObjects)]
         pub unsafe fn arrangedObjects(&self) -> Id<Object>;
 
+        /**
+          default: YES
+        */
         #[method(avoidsEmptySelection)]
         pub unsafe fn avoidsEmptySelection(&self) -> bool;
 
+        /**
+          default: YES
+        */
         #[method(setAvoidsEmptySelection:)]
         pub unsafe fn setAvoidsEmptySelection(&self, avoids_empty_selection: bool);
 
+        /**
+          default: YES
+        */
         #[method(preservesSelection)]
         pub unsafe fn preservesSelection(&self) -> bool;
 
+        /**
+          default: YES
+        */
         #[method(setPreservesSelection:)]
         pub unsafe fn setPreservesSelection(&self, preserves_selection: bool);
 
+        /**
+          default: YES
+        */
         #[method(selectsInsertedObjects)]
         pub unsafe fn selectsInsertedObjects(&self) -> bool;
 
+        /**
+          default: YES
+        */
         #[method(setSelectsInsertedObjects:)]
         pub unsafe fn setSelectsInsertedObjects(&self, selects_inserted_objects: bool);
 
+        /**
+          Indicates whether the controller should indicate all multiple selections through the NSMultipleValuesMarker, whether the selected values are equal or not (by default, the controller will only use the NSMultipleValuesMarker if the selected objects actually have different values) - this may act as a performance enhancement in certain applications.
+        */
         #[method(alwaysUsesMultipleValuesMarker)]
         pub unsafe fn alwaysUsesMultipleValuesMarker(&self) -> bool;
 
+        /**
+          Indicates whether the controller should indicate all multiple selections through the NSMultipleValuesMarker, whether the selected values are equal or not (by default, the controller will only use the NSMultipleValuesMarker if the selected objects actually have different values) - this may act as a performance enhancement in certain applications.
+        */
         #[method(setAlwaysUsesMultipleValuesMarker:)]
         pub unsafe fn setAlwaysUsesMultipleValuesMarker(
             &self,
@@ -163,6 +205,9 @@ extern_methods!(
         #[method(insert:)]
         pub unsafe fn insert(&self, sender: Option<&Object>);
 
+        /**
+          can be used in bindings controlling the enabling of buttons, for example
+        */
         #[method(canInsert)]
         pub unsafe fn canInsert(&self) -> bool;
 

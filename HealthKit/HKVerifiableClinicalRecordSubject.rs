@@ -9,6 +9,10 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKVerifiableClinicalRecordSubject")]
+    /**
+     @class     HKVerifiableClinicalRecordSubject
+    @abstract  An NSObject that represents a verifiable clinical record subject.
+    */
     pub struct HKVerifiableClinicalRecordSubject;
 
     #[cfg(feature = "HealthKit_HKVerifiableClinicalRecordSubject")]
@@ -18,22 +22,46 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKVerifiableClinicalRecordSubject")]
+/**
+ @class     HKVerifiableClinicalRecordSubject
+@abstract  An NSObject that represents a verifiable clinical record subject.
+*/
 unsafe impl NSCoding for HKVerifiableClinicalRecordSubject {}
 
 #[cfg(feature = "HealthKit_HKVerifiableClinicalRecordSubject")]
+/**
+ @class     HKVerifiableClinicalRecordSubject
+@abstract  An NSObject that represents a verifiable clinical record subject.
+*/
 unsafe impl NSObjectProtocol for HKVerifiableClinicalRecordSubject {}
 
 #[cfg(feature = "HealthKit_HKVerifiableClinicalRecordSubject")]
+/**
+ @class     HKVerifiableClinicalRecordSubject
+@abstract  An NSObject that represents a verifiable clinical record subject.
+*/
 unsafe impl NSSecureCoding for HKVerifiableClinicalRecordSubject {}
 
 extern_methods!(
+    /**
+     @class     HKVerifiableClinicalRecordSubject
+    @abstract  An NSObject that represents a verifiable clinical record subject.
+    */
     #[cfg(feature = "HealthKit_HKVerifiableClinicalRecordSubject")]
     unsafe impl HKVerifiableClinicalRecordSubject {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property     fullName
+        @abstract     The subject's full name.
+        */
         #[method_id(@__retain_semantics Other fullName)]
         pub unsafe fn fullName(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSDateComponents")]
+        /**
+         @property     dateOfBirthComponents
+        @abstract     The subject's date of birth components.
+        */
         #[method_id(@__retain_semantics Other dateOfBirthComponents)]
         pub unsafe fn dateOfBirthComponents(&self) -> Option<Id<NSDateComponents>>;
 

@@ -41,12 +41,21 @@ extern_methods!(
         #[method_id(@__retain_semantics Other PDFRepresentation)]
         pub unsafe fn PDFRepresentation(&self) -> Id<NSData>;
 
+        /**
+          for current page
+        */
         #[method(bounds)]
         pub unsafe fn bounds(&self) -> NSRect;
 
+        /**
+          0 based
+        */
         #[method(currentPage)]
         pub unsafe fn currentPage(&self) -> NSInteger;
 
+        /**
+          0 based
+        */
         #[method(setCurrentPage:)]
         pub unsafe fn setCurrentPage(&self, current_page: NSInteger);
 

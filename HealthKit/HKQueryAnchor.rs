@@ -9,6 +9,10 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKQueryAnchor")]
+    /**
+     @class         HKQueryAnchor
+    @discussion    This object encapsulates the state of an HKAnchoredObjectQuery
+    */
     pub struct HKQueryAnchor;
 
     #[cfg(feature = "HealthKit_HKQueryAnchor")]
@@ -18,15 +22,31 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKQueryAnchor")]
+/**
+ @class         HKQueryAnchor
+@discussion    This object encapsulates the state of an HKAnchoredObjectQuery
+*/
 unsafe impl NSCoding for HKQueryAnchor {}
 
 #[cfg(feature = "HealthKit_HKQueryAnchor")]
+/**
+ @class         HKQueryAnchor
+@discussion    This object encapsulates the state of an HKAnchoredObjectQuery
+*/
 unsafe impl NSObjectProtocol for HKQueryAnchor {}
 
 #[cfg(feature = "HealthKit_HKQueryAnchor")]
+/**
+ @class         HKQueryAnchor
+@discussion    This object encapsulates the state of an HKAnchoredObjectQuery
+*/
 unsafe impl NSSecureCoding for HKQueryAnchor {}
 
 extern_methods!(
+    /**
+     @class         HKQueryAnchor
+    @discussion    This object encapsulates the state of an HKAnchoredObjectQuery
+    */
     #[cfg(feature = "HealthKit_HKQueryAnchor")]
     unsafe impl HKQueryAnchor {
         #[method_id(@__retain_semantics Other anchorFromValue:)]

@@ -41,6 +41,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKClinicalType")]
+    /**
+     @class         HKClinicalType
+    @abstract      A type that identifies samples that contain clinical record data.
+    */
     pub struct HKClinicalType;
 
     #[cfg(feature = "HealthKit_HKClinicalType")]
@@ -51,15 +55,31 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKClinicalType")]
+/**
+ @class         HKClinicalType
+@abstract      A type that identifies samples that contain clinical record data.
+*/
 unsafe impl NSCoding for HKClinicalType {}
 
 #[cfg(feature = "HealthKit_HKClinicalType")]
+/**
+ @class         HKClinicalType
+@abstract      A type that identifies samples that contain clinical record data.
+*/
 unsafe impl NSObjectProtocol for HKClinicalType {}
 
 #[cfg(feature = "HealthKit_HKClinicalType")]
+/**
+ @class         HKClinicalType
+@abstract      A type that identifies samples that contain clinical record data.
+*/
 unsafe impl NSSecureCoding for HKClinicalType {}
 
 extern_methods!(
+    /**
+     @class         HKClinicalType
+    @abstract      A type that identifies samples that contain clinical record data.
+    */
     #[cfg(feature = "HealthKit_HKClinicalType")]
     unsafe impl HKClinicalType {}
 );

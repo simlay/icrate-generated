@@ -6,6 +6,9 @@ use crate::CoreData::*;
 use crate::Foundation::*;
 
 extern_protocol!(
+    /**
+      Protocol implemented by validated objects
+    */
     pub unsafe trait NSValidatedUserInterfaceItem {
         #[method(action)]
         unsafe fn action(&self) -> Option<Sel>;
@@ -18,6 +21,9 @@ extern_protocol!(
 );
 
 extern_protocol!(
+    /**
+      Protocol implemented by validator objects
+    */
     pub unsafe trait NSUserInterfaceValidations {
         #[method(validateUserInterfaceItem:)]
         unsafe fn validateUserInterfaceItem(

@@ -21,9 +21,15 @@ unsafe impl NSObjectProtocol for DCDevice {}
 extern_methods!(
     #[cfg(feature = "DeviceCheck_DCDevice")]
     unsafe impl DCDevice {
+        /**
+         The current device.
+        */
         #[method_id(@__retain_semantics Other currentDevice)]
         pub unsafe fn currentDevice() -> Id<DCDevice>;
 
+        /**
+         Check if this API is supported on the current device.
+        */
         #[method(isSupported)]
         pub unsafe fn isSupported(&self) -> bool;
 

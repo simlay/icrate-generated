@@ -31,6 +31,11 @@ unsafe impl NSUserInterfaceValidations for NSDocumentController {}
 extern_methods!(
     #[cfg(feature = "AppKit_NSDocumentController")]
     unsafe impl NSDocumentController {
+        /**
+          Return the application's shared document controller. This method will create an instance of NSDocumentController if there is no shared document controller yet. Because the first instance of NSDocumentController to be allocate and initialized during application launch is used as the shared document controller, you have two options for installing an instance of a custom subclass of NSDocumentController as the shared document controller:
+        1) Instantiate your NSDocumentController subclass in the application's main nib, or
+        2) Allocate and initialize an instance of your subclass in your application delegate's applicationWillFinishLaunching: method.
+        */
         #[method_id(@__retain_semantics Other sharedDocumentController)]
         pub unsafe fn sharedDocumentController() -> Id<NSDocumentController>;
 
@@ -45,14 +50,23 @@ extern_methods!(
         ) -> Option<Id<Self>>;
 
         #[cfg(all(feature = "AppKit_NSDocument", feature = "Foundation_NSArray"))]
+        /**
+          Return an array of all open documents.
+        */
         #[method_id(@__retain_semantics Other documents)]
         pub unsafe fn documents(&self) -> Id<NSArray<NSDocument>>;
 
         #[cfg(feature = "AppKit_NSDocument")]
+        /**
+          Return the active document, or nil if there is no active document. The "active" document is the one corresponding to the key window, or the one corresponding to the main window if the key window has no document.
+        */
         #[method_id(@__retain_semantics Other currentDocument)]
         pub unsafe fn currentDocument(&self) -> Option<Id<NSDocument>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Return the path of the directory containing the active document's file or file package, if there is an active document and it has a file or file package. Return nil otherwise. The default implementation of -URLsFromRunningOpenPanel invokes this to find the current directory to set in the open panel before presenting it.
+        */
         #[method_id(@__retain_semantics Other currentDirectory)]
         pub unsafe fn currentDirectory(&self) -> Option<Id<NSString>>;
 
@@ -186,15 +200,24 @@ extern_methods!(
             type_name: &NSString,
         ) -> Result<Id<NSDocument>, Id<NSError>>;
 
+        /**
+          The time interval in seconds for periodic autosaving. A value of 0 indicates that periodic autosaving should not be done at all. NSDocument will use this number as the minimum amount of time to wait between detecting that a document has unautosaved changes and sending the document an -autosaveDocumentWithDelegate:didAutosaveSelector:contextInfo: message. The default value is 0. You can change it to enable periodic autosaving.
+        */
         #[method(autosavingDelay)]
         pub unsafe fn autosavingDelay(&self) -> NSTimeInterval;
 
+        /**
+          The time interval in seconds for periodic autosaving. A value of 0 indicates that periodic autosaving should not be done at all. NSDocument will use this number as the minimum amount of time to wait between detecting that a document has unautosaved changes and sending the document an -autosaveDocumentWithDelegate:didAutosaveSelector:contextInfo: message. The default value is 0. You can change it to enable periodic autosaving.
+        */
         #[method(setAutosavingDelay:)]
         pub unsafe fn setAutosavingDelay(&self, autosaving_delay: NSTimeInterval);
 
         #[method(saveAllDocuments:)]
         pub unsafe fn saveAllDocuments(&self, sender: Option<&Object>);
 
+        /**
+          Return YES if any open document is modified, NO otherwise. This method is invoked at application quitting time, to determine whether -reviewUnsavedDocumentsWithAlertTitle:cancellable:delegate:didReviewAllSelector:contextInfo: should be invoked.
+        */
         #[method(hasEditedDocuments)]
         pub unsafe fn hasEditedDocuments(&self) -> bool;
 
@@ -231,6 +254,13 @@ extern_methods!(
             display_name_or_nil: Option<&NSString>,
         ) -> Result<Id<NSDocument>, Id<NSError>>;
 
+        /**
+          If YES, allows automatic insertion of a Share menu in the File menu.
+
+        By default, this will be YES if your application has any NSDocument subclasses for which autosavesInPlace is YES. To disable the Share menu entirely, or to enable custom placement or construction of the Share menu, applications can explicitly opt out of automatic share menu insertion by overriding this property to return NO.
+
+        Be aware that even if allowsAutomaticShareMenu is YES, NSDocumentController may choose not to insert the Share menu if it detects that the application already has a Share menu.
+        */
         #[method(allowsAutomaticShareMenu)]
         pub unsafe fn allowsAutomaticShareMenu(&self) -> bool;
 
@@ -257,6 +287,9 @@ extern_methods!(
         #[method_id(@__retain_semantics Other willPresentError:)]
         pub unsafe fn willPresentError(&self, error: &NSError) -> Id<NSError>;
 
+        /**
+          Return the maximum number of items that may be presented in the standard Open Recent menu. A value of 0 indicates that NSDocumentController will not attempt to add an Open Recent menu to your application's File menu, though NSDocumentController will not attempt to remove any Open Recent menu item if there is one already there. The default implementation returns a value that is subject to change and may or may not be derived from a setting made by the user in a System Preferences panel.
+        */
         #[method(maximumRecentDocumentCount)]
         pub unsafe fn maximumRecentDocumentCount(&self) -> NSUInteger;
 
@@ -272,10 +305,16 @@ extern_methods!(
         pub unsafe fn noteNewRecentDocumentURL(&self, url: &NSURL);
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSURL"))]
+        /**
+          Return an array of URLs for the entries currently appearing in the Open Recent menu.
+        */
         #[method_id(@__retain_semantics Other recentDocumentURLs)]
         pub unsafe fn recentDocumentURLs(&self) -> Id<NSArray<NSURL>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Return the name of the document type that should be used when creating new documents. The default implementation of this method returns the first Editor type declared in the application's Info.plist, or returns nil if no Editor type is declared. You can override it to customize the type of document that is created when, for instance, the user chooses New in the File menu.
+        */
         #[method_id(@__retain_semantics Other defaultType)]
         pub unsafe fn defaultType(&self) -> Option<Id<NSString>>;
 
@@ -291,6 +330,9 @@ extern_methods!(
         ) -> Result<Id<NSString>, Id<NSError>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          Return the names of NSDocument subclasses supported by this application. The default implementation of this method returns information derived from the application's Info.plist. You can override it to return the names of document classes that are dynamically loaded from plugins.
+        */
         #[method_id(@__retain_semantics Other documentClassNames)]
         pub unsafe fn documentClassNames(&self) -> Id<NSArray<NSString>>;
 

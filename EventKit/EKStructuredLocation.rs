@@ -49,9 +49,15 @@ extern_methods!(
         #[method(setGeoLocation:)]
         pub unsafe fn setGeoLocation(&self, geo_location: Option<&CLLocation>);
 
+        /**
+          0 = use default, unit is meters
+        */
         #[method(radius)]
         pub unsafe fn radius(&self) -> c_double;
 
+        /**
+          0 = use default, unit is meters
+        */
         #[method(setRadius:)]
         pub unsafe fn setRadius(&self, radius: c_double);
     }

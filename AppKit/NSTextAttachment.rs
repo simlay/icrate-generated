@@ -13,6 +13,9 @@ extern_enum!(
 );
 
 extern_protocol!(
+    /**
+      This protocol defines the interface to attachment objects from NSLayoutManager
+    */
     pub unsafe trait NSTextAttachmentContainer: NSObjectProtocol {
         #[cfg(all(feature = "AppKit_NSImage", feature = "AppKit_NSTextContainer"))]
         #[method_id(@__retain_semantics Other imageForBounds:textContainer:characterIndex:)]
@@ -38,6 +41,9 @@ extern_protocol!(
 );
 
 extern_protocol!(
+    /**
+      This protocol defines the interface to attachment objects from NSTextLayoutManager
+    */
     pub unsafe trait NSTextAttachmentLayout: NSObjectProtocol {
         #[cfg(all(
             feature = "AppKit_NSImage",
@@ -129,10 +135,16 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          These two properties define the contents for the text attachment.  Modifying these properties have a side effect of invalidating -image and -fileWrapper properties. -fileType is an UTI describing the format for -contents.
+        */
         #[method_id(@__retain_semantics Other contents)]
         pub unsafe fn contents(&self) -> Option<Id<NSData>>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          These two properties define the contents for the text attachment.  Modifying these properties have a side effect of invalidating -image and -fileWrapper properties. -fileType is an UTI describing the format for -contents.
+        */
         #[method(setContents:)]
         pub unsafe fn setContents(&self, contents: Option<&NSData>);
 
@@ -145,41 +157,71 @@ extern_methods!(
         pub unsafe fn setFileType(&self, file_type: Option<&NSString>);
 
         #[cfg(feature = "AppKit_NSImage")]
+        /**
+          Image representing the text attachment contents. Modifying this property invalidates -contents, -fileType, and -FileWrapper properties.
+        */
         #[method_id(@__retain_semantics Other image)]
         pub unsafe fn image(&self) -> Option<Id<NSImage>>;
 
         #[cfg(feature = "AppKit_NSImage")]
+        /**
+          Image representing the text attachment contents. Modifying this property invalidates -contents, -fileType, and -FileWrapper properties.
+        */
         #[method(setImage:)]
         pub unsafe fn setImage(&self, image: Option<&NSImage>);
 
+        /**
+          Defines the layout bounds of the receiver's graphical representation in the text coordinate system.  The origin is at the glyph location on the text baseline.  The default value is CGRectZero.
+        */
         #[method(bounds)]
         pub unsafe fn bounds(&self) -> CGRect;
 
+        /**
+          Defines the layout bounds of the receiver's graphical representation in the text coordinate system.  The origin is at the glyph location on the text baseline.  The default value is CGRectZero.
+        */
         #[method(setBounds:)]
         pub unsafe fn setBounds(&self, bounds: CGRect);
 
         #[cfg(feature = "Foundation_NSFileWrapper")]
+        /**
+          Optionally, NSTextAttachment can be associated with a file wrapper. Modifying this property has a side effect of invalidating -image, -contents, and fileType properties.
+        */
         #[method_id(@__retain_semantics Other fileWrapper)]
         pub unsafe fn fileWrapper(&self) -> Option<Id<NSFileWrapper>>;
 
         #[cfg(feature = "Foundation_NSFileWrapper")]
+        /**
+          Optionally, NSTextAttachment can be associated with a file wrapper. Modifying this property has a side effect of invalidating -image, -contents, and fileType properties.
+        */
         #[method(setFileWrapper:)]
         pub unsafe fn setFileWrapper(&self, file_wrapper: Option<&NSFileWrapper>);
 
+        /**
+          The cell which handles user interaction. By default an instance of NSTextAttachmentCell is used.
+        */
         #[method_id(@__retain_semantics Other attachmentCell)]
         pub unsafe fn attachmentCell(
             &self,
         ) -> Option<Id<ProtocolObject<dyn NSTextAttachmentCellProtocol>>>;
 
+        /**
+          The cell which handles user interaction. By default an instance of NSTextAttachmentCell is used.
+        */
         #[method(setAttachmentCell:)]
         pub unsafe fn setAttachmentCell(
             &self,
             attachment_cell: Option<&ProtocolObject<dyn NSTextAttachmentCellProtocol>>,
         );
 
+        /**
+          Layout padding before and after the text attachment bounds. The layout and rendering bounds X origin gets inset by the padding value. This affects the relationship between the text attachment bounds. 0.0 by default
+        */
         #[method(lineLayoutPadding)]
         pub unsafe fn lineLayoutPadding(&self) -> CGFloat;
 
+        /**
+          Layout padding before and after the text attachment bounds. The layout and rendering bounds X origin gets inset by the padding value. This affects the relationship between the text attachment bounds. 0.0 by default
+        */
         #[method(setLineLayoutPadding:)]
         pub unsafe fn setLineLayoutPadding(&self, line_layout_padding: CGFloat);
 
@@ -196,12 +238,21 @@ extern_methods!(
             file_type: &NSString,
         );
 
+        /**
+          When YES, the text attachment tries to use a text attachment view returned by -viewProviderForParentView:location:textContainer:. YES by default
+        */
         #[method(allowsTextAttachmentView)]
         pub unsafe fn allowsTextAttachmentView(&self) -> bool;
 
+        /**
+          When YES, the text attachment tries to use a text attachment view returned by -viewProviderForParentView:location:textContainer:. YES by default
+        */
         #[method(setAllowsTextAttachmentView:)]
         pub unsafe fn setAllowsTextAttachmentView(&self, allows_text_attachment_view: bool);
 
+        /**
+          Returns YES if the text attachment is configured to use text attachment views. By default, it checks -allowsTextAttachmentView, +textAttachmentViewClassForFileType:, and its contents
+        */
         #[method(usesTextAttachmentView)]
         pub unsafe fn usesTextAttachmentView(&self) -> bool;
     }
@@ -268,19 +319,33 @@ extern_methods!(
         pub unsafe fn location(&self) -> Id<ProtocolObject<dyn NSTextLocation>>;
 
         #[cfg(feature = "AppKit_NSView")]
+        /**
+          View instantiation
+         The getter first invokes loadView if the view hasn't been set yet. Subclasses must call super if they override the setter or getter.
+        */
         #[method_id(@__retain_semantics Other view)]
         pub unsafe fn view(&self) -> Option<Id<NSView>>;
 
         #[cfg(feature = "AppKit_NSView")]
+        /**
+          View instantiation
+         The getter first invokes loadView if the view hasn't been set yet. Subclasses must call super if they override the setter or getter.
+        */
         #[method(setView:)]
         pub unsafe fn setView(&self, view: Option<&NSView>);
 
         #[method(loadView)]
         pub unsafe fn loadView(&self);
 
+        /**
+          This property determines the text attachment bounds policy. If YES, -[NSTextAttachment attachmentBoundsForAttributes:location:textContainer:proposedLineFragment:position:] consults the text attachment view provider for determining the bounds instead of using -bounds. NO by default
+        */
         #[method(tracksTextAttachmentViewBounds)]
         pub unsafe fn tracksTextAttachmentViewBounds(&self) -> bool;
 
+        /**
+          This property determines the text attachment bounds policy. If YES, -[NSTextAttachment attachmentBoundsForAttributes:location:textContainer:proposedLineFragment:position:] consults the text attachment view provider for determining the bounds instead of using -bounds. NO by default
+        */
         #[method(setTracksTextAttachmentViewBounds:)]
         pub unsafe fn setTracksTextAttachmentViewBounds(
             &self,

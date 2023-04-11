@@ -13,16 +13,30 @@ extern_protocol!(
         fn endScope(&self);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Scope label
+        @remarks Created capture scopes are listed in Xcode when long-pressing the capture button, performing the capture over the selected scope
+        */
         #[method_id(@__retain_semantics Other label)]
         fn label(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Scope label
+        @remarks Created capture scopes are listed in Xcode when long-pressing the capture button, performing the capture over the selected scope
+        */
         #[method(setLabel:)]
         unsafe fn setLabel(&self, label: Option<&NSString>);
 
+        /**
+          Associated device: this scope will capture Metal commands from the associated device
+        */
         #[method_id(@__retain_semantics Other device)]
         unsafe fn device(&self) -> Id<ProtocolObject<dyn MTLDevice>>;
 
+        /**
+          If set, this scope will only capture Metal commands from the associated command queue. Defaults to nil (all command queues from the associated device are captured).
+        */
         #[method_id(@__retain_semantics Other commandQueue)]
         unsafe fn commandQueue(&self) -> Option<Id<ProtocolObject<dyn MTLCommandQueue>>>;
     }

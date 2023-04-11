@@ -32,10 +32,16 @@ extern_methods!(
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          these methods can only be set before a launch
+        */
         #[method_id(@__retain_semantics Other executableURL)]
         pub unsafe fn executableURL(&self) -> Option<Id<NSURL>>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          these methods can only be set before a launch
+        */
         #[method(setExecutableURL:)]
         pub unsafe fn setExecutableURL(&self, executable_url: Option<&NSURL>);
 
@@ -48,10 +54,16 @@ extern_methods!(
         pub unsafe fn setArguments(&self, arguments: Option<&NSArray<NSString>>);
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+          if not set, use current
+        */
         #[method_id(@__retain_semantics Other environment)]
         pub unsafe fn environment(&self) -> Option<Id<NSDictionary<NSString, NSString>>>;
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+          if not set, use current
+        */
         #[method(setEnvironment:)]
         pub unsafe fn setEnvironment(&self, environment: Option<&NSDictionary<NSString, NSString>>);
 
@@ -63,9 +75,15 @@ extern_methods!(
         #[method(setCurrentDirectoryURL:)]
         pub unsafe fn setCurrentDirectoryURL(&self, current_directory_url: Option<&NSURL>);
 
+        /**
+          standard I/O channels; could be either an NSFileHandle or an NSPipe
+        */
         #[method_id(@__retain_semantics Other standardInput)]
         pub unsafe fn standardInput(&self) -> Option<Id<Object>>;
 
+        /**
+          standard I/O channels; could be either an NSFileHandle or an NSPipe
+        */
         #[method(setStandardInput:)]
         pub unsafe fn setStandardInput(&self, standard_input: Option<&Object>);
 
@@ -97,6 +115,9 @@ extern_methods!(
         #[method(resume)]
         pub unsafe fn resume(&self) -> bool;
 
+        /**
+          status
+        */
         #[method(processIdentifier)]
         pub unsafe fn processIdentifier(&self) -> c_int;
 
@@ -109,18 +130,30 @@ extern_methods!(
         #[method(terminationReason)]
         pub unsafe fn terminationReason(&self) -> NSTaskTerminationReason;
 
+        /**
+         A block to be invoked when the process underlying the NSTask terminates.  Setting the block to nil is valid, and stops the previous block from being invoked, as long as it hasn't started in any way.  The NSTask is passed as the argument to the block so the block does not have to capture, and thus retain, it.  The block is copied when set.  Only one termination handler block can be set at any time.  The execution context in which the block is invoked is undefined.  If the NSTask has already finished, the block is executed immediately/soon (not necessarily on the current thread).  If a terminationHandler is set on an NSTask, the NSTaskDidTerminateNotification notification is not posted for that task.  Also note that -waitUntilExit won't wait until the terminationHandler has been fully executed.  You cannot use this property in a concrete subclass of NSTask which hasn't been updated to include an implementation of the storage and use of it.
+        */
         #[method(terminationHandler)]
         pub unsafe fn terminationHandler(&self) -> *mut Block<(NonNull<NSTask>,), ()>;
 
+        /**
+         A block to be invoked when the process underlying the NSTask terminates.  Setting the block to nil is valid, and stops the previous block from being invoked, as long as it hasn't started in any way.  The NSTask is passed as the argument to the block so the block does not have to capture, and thus retain, it.  The block is copied when set.  Only one termination handler block can be set at any time.  The execution context in which the block is invoked is undefined.  If the NSTask has already finished, the block is executed immediately/soon (not necessarily on the current thread).  If a terminationHandler is set on an NSTask, the NSTaskDidTerminateNotification notification is not posted for that task.  Also note that -waitUntilExit won't wait until the terminationHandler has been fully executed.  You cannot use this property in a concrete subclass of NSTask which hasn't been updated to include an implementation of the storage and use of it.
+        */
         #[method(setTerminationHandler:)]
         pub unsafe fn setTerminationHandler(
             &self,
             termination_handler: Option<&Block<(NonNull<NSTask>,), ()>>,
         );
 
+        /**
+          read-only after the task is launched
+        */
         #[method(qualityOfService)]
         pub unsafe fn qualityOfService(&self) -> NSQualityOfService;
 
+        /**
+          read-only after the task is launched
+        */
         #[method(setQualityOfService:)]
         pub unsafe fn setQualityOfService(&self, quality_of_service: NSQualityOfService);
     }
@@ -164,11 +197,17 @@ extern_methods!(
         pub unsafe fn setLaunchPath(&self, launch_path: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          if not set, use current
+        */
         #[deprecated]
         #[method_id(@__retain_semantics Other currentDirectoryPath)]
         pub unsafe fn currentDirectoryPath(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          if not set, use current
+        */
         #[deprecated]
         #[method(setCurrentDirectoryPath:)]
         pub unsafe fn setCurrentDirectoryPath(&self, current_directory_path: &NSString);

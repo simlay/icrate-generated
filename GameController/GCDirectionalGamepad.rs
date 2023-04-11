@@ -16,6 +16,30 @@ extern_static!(GCInputDirectionalCenterButton: &'static NSString);
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameController_GCDirectionalGamepad")]
+    /**
+     Directional Gamepad profile.
+
+    All controller profiles provide a base level of information about the controller they belong to. A directional gamepad
+    features a subset of the possible inputs on a micro gamepad. It guarantees:
+    - The gamepad does not support motion, meaning
+    - -[GCController motion] is always nil
+    - -[GCDirectionalGamepad allowsRotation] is always NO
+
+    Additionally, the gamepad may have a digital or analog dpad.
+    - -[GCDirectionalGamepad dpad].analog may be YES or NO
+    - If -[GCDirectionalGamepad dpad].analog is NO, then -[GCDirectionalGamepad reportsAbsoluteDpadValues] is always YES
+
+    A profile maps the hardware notion of a controller into a logical controller. One that a developer can design for
+    and depend on, no matter the underlying hardware. If your game supports GCMicroGamepad, but does not need
+    the motion and analog dpad functionality of GCMicroGamepad, be sure to add Directional Gamepad to your project's
+    supported Game Controller capabilities.
+
+    @see GCMicroGamepad
+
+    @note If you want to use the additional functionality of GCDirectionalGamepad, you should set GCSupportsMultipleMicroGamepads to YES and handle microgamepad connections separately.
+
+    @note This profile represents the 2021 2nd generation Siri Remote. Make sure you set GCSupportsMultipleMicroGamepads to YES to properly support the remote.
+    */
     pub struct GCDirectionalGamepad;
 
     #[cfg(feature = "GameController_GCDirectionalGamepad")]
@@ -26,9 +50,57 @@ extern_class!(
 );
 
 #[cfg(feature = "GameController_GCDirectionalGamepad")]
+/**
+ Directional Gamepad profile.
+
+All controller profiles provide a base level of information about the controller they belong to. A directional gamepad
+features a subset of the possible inputs on a micro gamepad. It guarantees:
+- The gamepad does not support motion, meaning
+- -[GCController motion] is always nil
+- -[GCDirectionalGamepad allowsRotation] is always NO
+
+Additionally, the gamepad may have a digital or analog dpad.
+- -[GCDirectionalGamepad dpad].analog may be YES or NO
+- If -[GCDirectionalGamepad dpad].analog is NO, then -[GCDirectionalGamepad reportsAbsoluteDpadValues] is always YES
+
+A profile maps the hardware notion of a controller into a logical controller. One that a developer can design for
+and depend on, no matter the underlying hardware. If your game supports GCMicroGamepad, but does not need
+the motion and analog dpad functionality of GCMicroGamepad, be sure to add Directional Gamepad to your project's
+supported Game Controller capabilities.
+
+@see GCMicroGamepad
+
+@note If you want to use the additional functionality of GCDirectionalGamepad, you should set GCSupportsMultipleMicroGamepads to YES and handle microgamepad connections separately.
+
+@note This profile represents the 2021 2nd generation Siri Remote. Make sure you set GCSupportsMultipleMicroGamepads to YES to properly support the remote.
+*/
 unsafe impl NSObjectProtocol for GCDirectionalGamepad {}
 
 extern_methods!(
+    /**
+     Directional Gamepad profile.
+
+    All controller profiles provide a base level of information about the controller they belong to. A directional gamepad
+    features a subset of the possible inputs on a micro gamepad. It guarantees:
+    - The gamepad does not support motion, meaning
+    - -[GCController motion] is always nil
+    - -[GCDirectionalGamepad allowsRotation] is always NO
+
+    Additionally, the gamepad may have a digital or analog dpad.
+    - -[GCDirectionalGamepad dpad].analog may be YES or NO
+    - If -[GCDirectionalGamepad dpad].analog is NO, then -[GCDirectionalGamepad reportsAbsoluteDpadValues] is always YES
+
+    A profile maps the hardware notion of a controller into a logical controller. One that a developer can design for
+    and depend on, no matter the underlying hardware. If your game supports GCMicroGamepad, but does not need
+    the motion and analog dpad functionality of GCMicroGamepad, be sure to add Directional Gamepad to your project's
+    supported Game Controller capabilities.
+
+    @see GCMicroGamepad
+
+    @note If you want to use the additional functionality of GCDirectionalGamepad, you should set GCSupportsMultipleMicroGamepads to YES and handle microgamepad connections separately.
+
+    @note This profile represents the 2021 2nd generation Siri Remote. Make sure you set GCSupportsMultipleMicroGamepads to YES to properly support the remote.
+    */
     #[cfg(feature = "GameController_GCDirectionalGamepad")]
     unsafe impl GCDirectionalGamepad {}
 );

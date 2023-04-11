@@ -129,54 +129,106 @@ extern_methods!(
         #[method(setImage:)]
         pub unsafe fn setImage(&self, image: Option<&NSImage>);
 
+        /**
+          By default, the center of annotation view is placed over the coordinate of the annotation.
+         centerOffset is the offset in screen points from the center of the annotion view.
+        */
         #[method(centerOffset)]
         pub unsafe fn centerOffset(&self) -> CGPoint;
 
+        /**
+          By default, the center of annotation view is placed over the coordinate of the annotation.
+         centerOffset is the offset in screen points from the center of the annotion view.
+        */
         #[method(setCenterOffset:)]
         pub unsafe fn setCenterOffset(&self, center_offset: CGPoint);
 
+        /**
+          calloutOffset is the offset in screen points from the top-middle of the annotation view, where the anchor of the callout should be shown.
+        */
         #[method(calloutOffset)]
         pub unsafe fn calloutOffset(&self) -> CGPoint;
 
+        /**
+          calloutOffset is the offset in screen points from the top-middle of the annotation view, where the anchor of the callout should be shown.
+        */
         #[method(setCalloutOffset:)]
         pub unsafe fn setCalloutOffset(&self, callout_offset: CGPoint);
 
+        /**
+          leftCalloutOffset is the offset in screen points from the middle-left of the annotation view, where the anchor of the callout should be shown when oriented off the left side of the annotation view
+        */
         #[method(leftCalloutOffset)]
         pub unsafe fn leftCalloutOffset(&self) -> CGPoint;
 
+        /**
+          leftCalloutOffset is the offset in screen points from the middle-left of the annotation view, where the anchor of the callout should be shown when oriented off the left side of the annotation view
+        */
         #[method(setLeftCalloutOffset:)]
         pub unsafe fn setLeftCalloutOffset(&self, left_callout_offset: CGPoint);
 
+        /**
+          rightCalloutOffset is the offset in screen points from the middle-right of the annotation view, where the anchor of the callout should be shown when oriented off the right side of the annotation view
+        */
         #[method(rightCalloutOffset)]
         pub unsafe fn rightCalloutOffset(&self) -> CGPoint;
 
+        /**
+          rightCalloutOffset is the offset in screen points from the middle-right of the annotation view, where the anchor of the callout should be shown when oriented off the right side of the annotation view
+        */
         #[method(setRightCalloutOffset:)]
         pub unsafe fn setRightCalloutOffset(&self, right_callout_offset: CGPoint);
 
+        /**
+          Defaults to YES. If NO, ignores touch events and subclasses may draw differently.
+        */
         #[method(isEnabled)]
         pub unsafe fn isEnabled(&self) -> bool;
 
+        /**
+          Defaults to YES. If NO, ignores touch events and subclasses may draw differently.
+        */
         #[method(setEnabled:)]
         pub unsafe fn setEnabled(&self, enabled: bool);
 
+        /**
+          Defaults to NO. This gets set/cleared automatically when touch enters/exits during tracking and cleared on up.
+        */
         #[method(isHighlighted)]
         pub unsafe fn isHighlighted(&self) -> bool;
 
+        /**
+          Defaults to NO. This gets set/cleared automatically when touch enters/exits during tracking and cleared on up.
+        */
         #[method(setHighlighted:)]
         pub unsafe fn setHighlighted(&self, highlighted: bool);
 
+        /**
+          Defaults to NO. Becomes YES when tapped/clicked on in the map view.
+        */
         #[method(isSelected)]
         pub unsafe fn isSelected(&self) -> bool;
 
+        /**
+          Defaults to NO. Becomes YES when tapped/clicked on in the map view.
+        */
         #[method(setSelected:)]
         pub unsafe fn setSelected(&self, selected: bool);
 
         #[method(setSelected:animated:)]
         pub unsafe fn setSelected_animated(&self, selected: bool, animated: bool);
 
+        /**
+          If YES, a standard callout bubble will be shown when the annotation is selected.
+         The annotation must have a title for the callout to be shown.
+        */
         #[method(canShowCallout)]
         pub unsafe fn canShowCallout(&self) -> bool;
 
+        /**
+          If YES, a standard callout bubble will be shown when the annotation is selected.
+         The annotation must have a title for the callout to be shown.
+        */
         #[method(setCanShowCallout:)]
         pub unsafe fn setCanShowCallout(&self, can_show_callout: bool);
 
@@ -207,15 +259,31 @@ extern_methods!(
             detail_callout_accessory_view: Option<&NSView>,
         );
 
+        /**
+          If YES and the underlying id<MKAnnotation> responds to setCoordinate:,
+         the user will be able to drag this annotation view around the map.
+        */
         #[method(isDraggable)]
         pub unsafe fn isDraggable(&self) -> bool;
 
+        /**
+          If YES and the underlying id<MKAnnotation> responds to setCoordinate:,
+         the user will be able to drag this annotation view around the map.
+        */
         #[method(setDraggable:)]
         pub unsafe fn setDraggable(&self, draggable: bool);
 
+        /**
+          Automatically set to MKAnnotationViewDragStateStarting, Canceling, and Ending when necessary.
+         Implementer is responsible for transitioning to Dragging and None states as appropriate.
+        */
         #[method(dragState)]
         pub unsafe fn dragState(&self) -> MKAnnotationViewDragState;
 
+        /**
+          Automatically set to MKAnnotationViewDragStateStarting, Canceling, and Ending when necessary.
+         Implementer is responsible for transitioning to Dragging and None states as appropriate.
+        */
         #[method(setDragState:)]
         pub unsafe fn setDragState(&self, drag_state: MKAnnotationViewDragState);
 
@@ -227,19 +295,34 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Annotation views with equal non-nil identifiers can cluster together.
+        */
         #[method_id(@__retain_semantics Other clusteringIdentifier)]
         pub unsafe fn clusteringIdentifier(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Annotation views with equal non-nil identifiers can cluster together.
+        */
         #[method(setClusteringIdentifier:)]
         pub unsafe fn setClusteringIdentifier(&self, clustering_identifier: Option<&NSString>);
 
+        /**
+          If non-nil this is the annotation view this view is clustered into.
+        */
         #[method_id(@__retain_semantics Other clusterAnnotationView)]
         pub unsafe fn clusterAnnotationView(&self) -> Option<Id<MKAnnotationView>>;
 
+        /**
+          Default is MKFeatureDisplayPriorityRequired, other values opts into collision occlusion by priority.
+        */
         #[method(displayPriority)]
         pub unsafe fn displayPriority(&self) -> MKFeatureDisplayPriority;
 
+        /**
+          Default is MKFeatureDisplayPriorityRequired, other values opts into collision occlusion by priority.
+        */
         #[method(setDisplayPriority:)]
         pub unsafe fn setDisplayPriority(&self, display_priority: MKFeatureDisplayPriority);
 
@@ -255,9 +338,15 @@ extern_methods!(
         #[method(setSelectedZPriority:)]
         pub unsafe fn setSelectedZPriority(&self, selected_z_priority: MKAnnotationViewZPriority);
 
+        /**
+          Default collision mode is rectangle.
+        */
         #[method(collisionMode)]
         pub unsafe fn collisionMode(&self) -> MKAnnotationViewCollisionMode;
 
+        /**
+          Default collision mode is rectangle.
+        */
         #[method(setCollisionMode:)]
         pub unsafe fn setCollisionMode(&self, collision_mode: MKAnnotationViewCollisionMode);
     }

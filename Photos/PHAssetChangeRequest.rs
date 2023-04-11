@@ -9,6 +9,9 @@ use crate::PhotoKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "PhotoKit_PHAssetChangeRequest")]
+    /**
+      PHAssetChangeRequest can only be created or used within a -[PHPhotoLibrary performChanges:] or -[PHPhotoLibrary performChangesAndWait:] block.
+    */
     pub struct PHAssetChangeRequest;
 
     #[cfg(feature = "PhotoKit_PHAssetChangeRequest")]
@@ -19,9 +22,15 @@ extern_class!(
 );
 
 #[cfg(feature = "PhotoKit_PHAssetChangeRequest")]
+/**
+  PHAssetChangeRequest can only be created or used within a -[PHPhotoLibrary performChanges:] or -[PHPhotoLibrary performChangesAndWait:] block.
+*/
 unsafe impl NSObjectProtocol for PHAssetChangeRequest {}
 
 extern_methods!(
+    /**
+      PHAssetChangeRequest can only be created or used within a -[PHPhotoLibrary performChanges:] or -[PHPhotoLibrary performChangesAndWait:] block.
+    */
     #[cfg(feature = "PhotoKit_PHAssetChangeRequest")]
     unsafe impl PHAssetChangeRequest {
         #[cfg(feature = "AppKit_NSImage")]
@@ -41,6 +50,10 @@ extern_methods!(
         ) -> Option<Id<Self>>;
 
         #[cfg(feature = "PhotoKit_PHObjectPlaceholder")]
+        /**
+          This can be used to fetch the newly created asset after the change block has completed by using -localIdentifier
+         It can also be added directly to collections within the current change block
+        */
         #[method_id(@__retain_semantics Other placeholderForCreatedAsset)]
         pub unsafe fn placeholderForCreatedAsset(&self) -> Option<Id<PHObjectPlaceholder>>;
 
@@ -73,9 +86,15 @@ extern_methods!(
         #[method(setFavorite:)]
         pub unsafe fn setFavorite(&self, favorite: bool);
 
+        /**
+          a hidden asset will be excluded from moment collections, but may still be included in other smart or regular album collections
+        */
         #[method(isHidden)]
         pub unsafe fn isHidden(&self) -> bool;
 
+        /**
+          a hidden asset will be excluded from moment collections, but may still be included in other smart or regular album collections
+        */
         #[method(setHidden:)]
         pub unsafe fn setHidden(&self, hidden: bool);
 
@@ -115,21 +134,33 @@ extern_methods!(
     #[cfg(feature = "PhotoKit_PHContentEditingInputRequestOptions")]
     unsafe impl PHContentEditingInputRequestOptions {
         #[cfg(feature = "PhotoKit_PHAdjustmentData")]
+        /**
+          Block to be provided by the client, used to determine if the given adjustment data can be handled (i.e. can be decoded and rendered).
+        */
         #[method(canHandleAdjustmentData)]
         pub unsafe fn canHandleAdjustmentData(
             &self,
         ) -> NonNull<Block<(NonNull<PHAdjustmentData>,), Bool>>;
 
         #[cfg(feature = "PhotoKit_PHAdjustmentData")]
+        /**
+          Block to be provided by the client, used to determine if the given adjustment data can be handled (i.e. can be decoded and rendered).
+        */
         #[method(setCanHandleAdjustmentData:)]
         pub unsafe fn setCanHandleAdjustmentData(
             &self,
             can_handle_adjustment_data: &Block<(NonNull<PHAdjustmentData>,), Bool>,
         );
 
+        /**
+          Used if data is not available locally and needs to be retrieved from iCloud.
+        */
         #[method(isNetworkAccessAllowed)]
         pub unsafe fn isNetworkAccessAllowed(&self) -> bool;
 
+        /**
+          Used if data is not available locally and needs to be retrieved from iCloud.
+        */
         #[method(setNetworkAccessAllowed:)]
         pub unsafe fn setNetworkAccessAllowed(&self, network_access_allowed: bool);
 

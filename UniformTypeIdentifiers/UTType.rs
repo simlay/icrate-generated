@@ -7,6 +7,20 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "UniformTypeIdentifiers_UTType")]
+    /**
+     \brief A class representing a type in a type hierarchy.
+
+    Types may represent files on disk, abstract data types with no on-disk
+    representation, or even entirely unrelated hierarchical classification
+    systems such as hardware.
+
+    Older API that does not use \c UTType typically uses an untyped \c NSString
+    or \c CFStringRef to refer to a type by its identifier. To get the
+    identifier of a type for use with these APIs, use the \c identifier property
+    of this class.
+
+    \sa https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/understanding_utis
+    */
     pub struct UTType;
 
     #[cfg(feature = "UniformTypeIdentifiers_UTType")]
@@ -16,15 +30,71 @@ extern_class!(
 );
 
 #[cfg(feature = "UniformTypeIdentifiers_UTType")]
+/**
+ \brief A class representing a type in a type hierarchy.
+
+Types may represent files on disk, abstract data types with no on-disk
+representation, or even entirely unrelated hierarchical classification
+systems such as hardware.
+
+Older API that does not use \c UTType typically uses an untyped \c NSString
+or \c CFStringRef to refer to a type by its identifier. To get the
+identifier of a type for use with these APIs, use the \c identifier property
+of this class.
+
+\sa https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/understanding_utis
+*/
 unsafe impl NSCoding for UTType {}
 
 #[cfg(feature = "UniformTypeIdentifiers_UTType")]
+/**
+ \brief A class representing a type in a type hierarchy.
+
+Types may represent files on disk, abstract data types with no on-disk
+representation, or even entirely unrelated hierarchical classification
+systems such as hardware.
+
+Older API that does not use \c UTType typically uses an untyped \c NSString
+or \c CFStringRef to refer to a type by its identifier. To get the
+identifier of a type for use with these APIs, use the \c identifier property
+of this class.
+
+\sa https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/understanding_utis
+*/
 unsafe impl NSObjectProtocol for UTType {}
 
 #[cfg(feature = "UniformTypeIdentifiers_UTType")]
+/**
+ \brief A class representing a type in a type hierarchy.
+
+Types may represent files on disk, abstract data types with no on-disk
+representation, or even entirely unrelated hierarchical classification
+systems such as hardware.
+
+Older API that does not use \c UTType typically uses an untyped \c NSString
+or \c CFStringRef to refer to a type by its identifier. To get the
+identifier of a type for use with these APIs, use the \c identifier property
+of this class.
+
+\sa https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/understanding_utis
+*/
 unsafe impl NSSecureCoding for UTType {}
 
 extern_methods!(
+    /**
+     \brief A class representing a type in a type hierarchy.
+
+    Types may represent files on disk, abstract data types with no on-disk
+    representation, or even entirely unrelated hierarchical classification
+    systems such as hardware.
+
+    Older API that does not use \c UTType typically uses an untyped \c NSString
+    or \c CFStringRef to refer to a type by its identifier. To get the
+    identifier of a type for use with these APIs, use the \c identifier property
+    of this class.
+
+    \sa https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/understanding_utis
+    */
     #[cfg(feature = "UniformTypeIdentifiers_UTType")]
     unsafe impl UTType {
         #[method_id(@__retain_semantics New new)]
@@ -60,35 +130,110 @@ extern_methods!(
         ) -> Option<Id<Self>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         \brief The receiver's identifier.
+
+        A type is \em identified \em by its Uniform Type Identifier (UTI), a
+        reverse-DNS string such as \c "public.jpeg" or \c "com.adobe.pdf". The type
+        itself \em has a UTI, but is not itself the UTI. This terminology is not
+        consistently used across Apple's documentation.
+        */
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         \brief If available, the preferred (first available) tag of class
+        \c UTTagClassFilenameExtension.
+
+        Many uses of types require the generation of a filename (e.g. when saving a
+        file to disk.) If not \c nil, the value of this property is the best
+        available filename extension for the given type. The value of this property
+        is equivalent to, but more efficient than:
+
+        \code
+        type.tags[UTTagClassFilenameExtension].firstObject
+        \endcode
+        */
         #[method_id(@__retain_semantics Other preferredFilenameExtension)]
         pub unsafe fn preferredFilenameExtension(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         \brief If available, the preferred (first available) tag of class
+        \c UTTagClassMIMEType.
+
+        If not \c nil, the value of this property is the best available MIME type
+        for the given type, according to its declaration. The value of this property
+        is equivalent to, but more efficient than:
+
+        \code
+        type.tags[UTTagClassMIMEType].firstObject
+        \endcode
+        */
         #[method_id(@__retain_semantics Other preferredMIMEType)]
         pub unsafe fn preferredMIMEType(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         \brief The localized description of the type.
+
+        If the type does not provide a description, the system may search its
+        supertypes for one. Dynamic types never have localized descriptions even if
+        their supertypes do.
+        */
         #[method_id(@__retain_semantics Other localizedDescription)]
         pub unsafe fn localizedDescription(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+         \brief The type's version.
+
+        Most types do not specify a version.
+        */
         #[method_id(@__retain_semantics Other version)]
         pub unsafe fn version(&self) -> Option<Id<NSNumber>>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+         \brief The reference URL of the type.
+
+        A reference URL is a human-readable document describing a type. Most types
+        do not specify reference URLs.
+
+        \warning This URL is not validated in any way by the system, nor is its
+        scheme or structure guaranteed in any way.
+        */
         #[method_id(@__retain_semantics Other referenceURL)]
         pub unsafe fn referenceURL(&self) -> Option<Id<NSURL>>;
 
+        /**
+         \brief Whether or not the receiver is a dynamically generated type.
+
+        Dynamic types are recognized by the system, but may not be directly declared
+        or claimed by an application. They are used when a file is encountered whose
+        metadata has no corresponding type known to the system.
+
+        A type cannot be both declared \em and dynamic.
+        */
         #[method(isDynamic)]
         pub unsafe fn isDynamic(&self) -> bool;
 
+        /**
+         \brief Whether or not the receiver is a type known to the system.
+
+        A type cannot be both declared \em and dynamic.
+        */
         #[method(isDeclared)]
         pub unsafe fn isDeclared(&self) -> bool;
 
+        /**
+         \brief Whether or not the type is in the public domain.
+
+        Types in the public domain have identifiers starting with \c "public." and
+        are generally defined by a standards body or by convention. They are never
+        dynamic.
+        */
         #[method(isPublicType)]
         pub unsafe fn isPublicType(&self) -> bool;
     }
@@ -108,6 +253,13 @@ extern_methods!(
         pub unsafe fn isSubtypeOfType(&self, r#type: &UTType) -> bool;
 
         #[cfg(feature = "Foundation_NSSet")]
+        /**
+         \brief The set of types to which the receiving type conforms, directly or
+        indirectly.
+
+        If you are just interested in checking if one type conforms to another, it
+        is more efficient to use \c -conformsToType: than this property.
+        */
         #[method_id(@__retain_semantics Other supertypes)]
         pub unsafe fn supertypes(&self) -> Id<NSSet<UTType>>;
     }
@@ -138,6 +290,33 @@ extern_methods!(
             feature = "Foundation_NSDictionary",
             feature = "Foundation_NSString"
         ))]
+        /**
+         \brief The tag specification dictionary of the type.
+
+        The system does not store tag information for non-standard tag classes. It
+        normalizes string values into arrays containing those strings. For instance,
+        a value of:
+
+        \code
+        {
+        "public.mime-type": "x/y",
+        "nonstandard-tag-class": "abc",
+        }
+        \endcode
+
+        Is normalized to:
+
+        \code
+        {
+        "public.mime-type": [ "x/y" ]
+        }
+        \endcode
+
+        If you are simply looking for the preferred filename extension or MIME
+        type of a type, it is more efficient for you to use the
+        \c preferredFilenameExtension and \c preferredMIMEType properties
+        respectively.
+        */
         #[method_id(@__retain_semantics Other tags)]
         pub unsafe fn tags(&self) -> Id<NSDictionary<NSString, NSArray<NSString>>>;
     }

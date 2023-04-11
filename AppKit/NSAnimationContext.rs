@@ -52,9 +52,15 @@ extern_methods!(
         #[method(setCompletionHandler:)]
         pub unsafe fn setCompletionHandler(&self, completion_handler: Option<&Block<(), ()>>);
 
+        /**
+          Determine if animations are enabled or not. Using the -animator proxy will automatically set allowsImplicitAnimation to YES. When YES, other properties can implicitly animate along with the initially changed property. For instance, calling [[view animator] setFrame:frame] will allow subviews to also animate their frame positions. This is only applicable when layer backed on Mac OS 10.8 and later. The default value is NO.
+        */
         #[method(allowsImplicitAnimation)]
         pub unsafe fn allowsImplicitAnimation(&self) -> bool;
 
+        /**
+          Determine if animations are enabled or not. Using the -animator proxy will automatically set allowsImplicitAnimation to YES. When YES, other properties can implicitly animate along with the initially changed property. For instance, calling [[view animator] setFrame:frame] will allow subviews to also animate their frame positions. This is only applicable when layer backed on Mac OS 10.8 and later. The default value is NO.
+        */
         #[method(setAllowsImplicitAnimation:)]
         pub unsafe fn setAllowsImplicitAnimation(&self, allows_implicit_animation: bool);
     }

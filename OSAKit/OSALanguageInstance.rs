@@ -8,6 +8,10 @@ use crate::OSAKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "OSAKit_OSALanguageInstance")]
+    /**
+      OSALanguageInstance
+     ===================
+    */
     pub struct OSALanguageInstance;
 
     #[cfg(feature = "OSAKit_OSALanguageInstance")]
@@ -17,9 +21,17 @@ extern_class!(
 );
 
 #[cfg(feature = "OSAKit_OSALanguageInstance")]
+/**
+  OSALanguageInstance
+ ===================
+*/
 unsafe impl NSObjectProtocol for OSALanguageInstance {}
 
 extern_methods!(
+    /**
+      OSALanguageInstance
+     ===================
+    */
     #[cfg(feature = "OSAKit_OSALanguageInstance")]
     unsafe impl OSALanguageInstance {
         #[cfg(feature = "OSAKit_OSALanguage")]
@@ -34,14 +46,23 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "OSAKit_OSALanguage")]
+        /**
+          Accessors
+        */
         #[method_id(@__retain_semantics Other language)]
         pub unsafe fn language(&self) -> Id<OSALanguage>;
 
         #[cfg(feature = "Foundation_NSAppleEventDescriptor")]
+        /**
+          The default target application for Apple event sending. It also establishes the default target from which terminologies come. It is effectively like having an AppleScript "tell" statement around the entire program. When nil, the default target is the current application.
+        */
         #[method_id(@__retain_semantics Other defaultTarget)]
         pub unsafe fn defaultTarget(&self) -> Option<Id<NSAppleEventDescriptor>>;
 
         #[cfg(feature = "Foundation_NSAppleEventDescriptor")]
+        /**
+          The default target application for Apple event sending. It also establishes the default target from which terminologies come. It is effectively like having an AppleScript "tell" statement around the entire program. When nil, the default target is the current application.
+        */
         #[method(setDefaultTarget:)]
         pub unsafe fn setDefaultTarget(&self, default_target: Option<&NSAppleEventDescriptor>);
 

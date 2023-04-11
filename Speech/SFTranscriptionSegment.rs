@@ -7,6 +7,9 @@ use crate::Speech::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Speech_SFTranscriptionSegment")]
+    /**
+      Substrings of a hypothesized transcription
+    */
     pub struct SFTranscriptionSegment;
 
     #[cfg(feature = "Speech_SFTranscriptionSegment")]
@@ -16,15 +19,27 @@ extern_class!(
 );
 
 #[cfg(feature = "Speech_SFTranscriptionSegment")]
+/**
+  Substrings of a hypothesized transcription
+*/
 unsafe impl NSCoding for SFTranscriptionSegment {}
 
 #[cfg(feature = "Speech_SFTranscriptionSegment")]
+/**
+  Substrings of a hypothesized transcription
+*/
 unsafe impl NSObjectProtocol for SFTranscriptionSegment {}
 
 #[cfg(feature = "Speech_SFTranscriptionSegment")]
+/**
+  Substrings of a hypothesized transcription
+*/
 unsafe impl NSSecureCoding for SFTranscriptionSegment {}
 
 extern_methods!(
+    /**
+      Substrings of a hypothesized transcription
+    */
     #[cfg(feature = "Speech_SFTranscriptionSegment")]
     unsafe impl SFTranscriptionSegment {
         #[cfg(feature = "Foundation_NSString")]
@@ -34,16 +49,25 @@ extern_methods!(
         #[method(substringRange)]
         pub unsafe fn substringRange(&self) -> NSRange;
 
+        /**
+          Relative to start of audio
+        */
         #[method(timestamp)]
         pub unsafe fn timestamp(&self) -> NSTimeInterval;
 
         #[method(duration)]
         pub unsafe fn duration(&self) -> NSTimeInterval;
 
+        /**
+          Confidence in the accuracy of transcription. Scale is 0 (least confident) to 1.0 (most confident)
+        */
         #[method(confidence)]
         pub unsafe fn confidence(&self) -> c_float;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          Other possible interpretations of this segment
+        */
         #[method_id(@__retain_semantics Other alternativeSubstrings)]
         pub unsafe fn alternativeSubstrings(&self) -> Id<NSArray<NSString>>;
 

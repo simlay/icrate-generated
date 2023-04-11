@@ -7,6 +7,12 @@ use crate::MetricKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MetricKit_MXCPUExceptionDiagnostic")]
+    /**
+     @class         MXCPUExceptionDiagnostic
+    @abstract      An MXDiagnostic subclass that encapsulates CPU exception diagnostic reports.
+    @discussion    CPU exceptions occur when your application consumes excessive CPU time in a short period of time.
+    @discussion    CPU exceptions can be both fatal and non-fatal to your application.
+    */
     pub struct MXCPUExceptionDiagnostic;
 
     #[cfg(feature = "MetricKit_MXCPUExceptionDiagnostic")]
@@ -17,18 +23,46 @@ extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXCPUExceptionDiagnostic")]
+/**
+ @class         MXCPUExceptionDiagnostic
+@abstract      An MXDiagnostic subclass that encapsulates CPU exception diagnostic reports.
+@discussion    CPU exceptions occur when your application consumes excessive CPU time in a short period of time.
+@discussion    CPU exceptions can be both fatal and non-fatal to your application.
+*/
 unsafe impl NSCoding for MXCPUExceptionDiagnostic {}
 
 #[cfg(feature = "MetricKit_MXCPUExceptionDiagnostic")]
+/**
+ @class         MXCPUExceptionDiagnostic
+@abstract      An MXDiagnostic subclass that encapsulates CPU exception diagnostic reports.
+@discussion    CPU exceptions occur when your application consumes excessive CPU time in a short period of time.
+@discussion    CPU exceptions can be both fatal and non-fatal to your application.
+*/
 unsafe impl NSObjectProtocol for MXCPUExceptionDiagnostic {}
 
 #[cfg(feature = "MetricKit_MXCPUExceptionDiagnostic")]
+/**
+ @class         MXCPUExceptionDiagnostic
+@abstract      An MXDiagnostic subclass that encapsulates CPU exception diagnostic reports.
+@discussion    CPU exceptions occur when your application consumes excessive CPU time in a short period of time.
+@discussion    CPU exceptions can be both fatal and non-fatal to your application.
+*/
 unsafe impl NSSecureCoding for MXCPUExceptionDiagnostic {}
 
 extern_methods!(
+    /**
+     @class         MXCPUExceptionDiagnostic
+    @abstract      An MXDiagnostic subclass that encapsulates CPU exception diagnostic reports.
+    @discussion    CPU exceptions occur when your application consumes excessive CPU time in a short period of time.
+    @discussion    CPU exceptions can be both fatal and non-fatal to your application.
+    */
     #[cfg(feature = "MetricKit_MXCPUExceptionDiagnostic")]
     unsafe impl MXCPUExceptionDiagnostic {
         #[cfg(feature = "MetricKit_MXCallStackTree")]
+        /**
+         @property      callStackTree
+        @abstract      The application call stack tree associated with the excessive CPU consumption.
+        */
         #[method_id(@__retain_semantics Other callStackTree)]
         pub unsafe fn callStackTree(&self) -> Id<MXCallStackTree>;
 
@@ -36,6 +70,11 @@ extern_methods!(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"
         ))]
+        /**
+         @property      totalCPUTime
+        @abstract      Total CPU time consumed in the scope of this CPU exception.
+        @discussion    Dimensioned as NSUnitDuration.
+        */
         #[method_id(@__retain_semantics Other totalCPUTime)]
         pub unsafe fn totalCPUTime(&self) -> Id<NSMeasurement<NSUnitDuration>>;
 
@@ -43,6 +82,11 @@ extern_methods!(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"
         ))]
+        /**
+         @property      totalSampledTime
+        @abstract      Total time that the application was sampled for during the CPU exception.
+        @discussion    Dimensioned as NSUnitDuration.
+        */
         #[method_id(@__retain_semantics Other totalSampledTime)]
         pub unsafe fn totalSampledTime(&self) -> Id<NSMeasurement<NSUnitDuration>>;
     }

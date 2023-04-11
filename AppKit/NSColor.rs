@@ -9,6 +9,9 @@ extern_static!(NSAppKitVersionNumberWithPatternColorLeakFix: NSAppKitVersion = 6
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      Enum to distinguish types of colors. The color type of a color determines which properties are valid for that color; it's an exception-raising error to use properties that are not valid for a color.
+    */
     pub enum NSColorType {
         NSColorTypeComponentBased = 0,
         NSColorTypePattern = 1,
@@ -200,6 +203,11 @@ extern_methods!(
         #[method_id(@__retain_semantics Other colorWithPatternImage:)]
         pub unsafe fn colorWithPatternImage(image: &NSImage) -> Id<NSColor>;
 
+        /**
+          Return the type of the color, which in turn determines which accessors are valid for this color. It's an exception-raising error to use properties that are not valid for a color; so, before using a given accessor on a color, call colorUsingType: to convert the color to the appropriate type. Or, if wanting to use colorSpace-specific accessors such as redComponent, convert to the desired colorSpace with colorUsingColorSpace:.
+
+        Note that as of macOS 10.13, the new APIs type and colorUsingType: replace colorSpaceName and colorUsingColorSpaceName: as the funnel APIs for determining the type of color.  In code destined to run on 10.13 and newer systems, subclassers are encouraged to implement these two rather than the older colorSpaceName based methods.
+        */
         #[method(type)]
         pub unsafe fn r#type(&self) -> NSColorType;
 
@@ -210,148 +218,292 @@ extern_methods!(
         #[method_id(@__retain_semantics Other colorUsingColorSpace:)]
         pub unsafe fn colorUsingColorSpace(&self, space: &NSColorSpace) -> Option<Id<NSColor>>;
 
+        /**
+          0.0 white
+        */
         #[method_id(@__retain_semantics Other blackColor)]
         pub unsafe fn blackColor() -> Id<NSColor>;
 
+        /**
+          0.333 white
+        */
         #[method_id(@__retain_semantics Other darkGrayColor)]
         pub unsafe fn darkGrayColor() -> Id<NSColor>;
 
+        /**
+          0.667 white
+        */
         #[method_id(@__retain_semantics Other lightGrayColor)]
         pub unsafe fn lightGrayColor() -> Id<NSColor>;
 
+        /**
+          1.0 white
+        */
         #[method_id(@__retain_semantics Other whiteColor)]
         pub unsafe fn whiteColor() -> Id<NSColor>;
 
+        /**
+          0.5 white
+        */
         #[method_id(@__retain_semantics Other grayColor)]
         pub unsafe fn grayColor() -> Id<NSColor>;
 
+        /**
+          1.0, 0.0, 0.0 RGB
+        */
         #[method_id(@__retain_semantics Other redColor)]
         pub unsafe fn redColor() -> Id<NSColor>;
 
+        /**
+          0.0, 1.0, 0.0 RGB
+        */
         #[method_id(@__retain_semantics Other greenColor)]
         pub unsafe fn greenColor() -> Id<NSColor>;
 
+        /**
+          0.0, 0.0, 1.0 RGB
+        */
         #[method_id(@__retain_semantics Other blueColor)]
         pub unsafe fn blueColor() -> Id<NSColor>;
 
+        /**
+          0.0, 1.0, 1.0 RGB
+        */
         #[method_id(@__retain_semantics Other cyanColor)]
         pub unsafe fn cyanColor() -> Id<NSColor>;
 
+        /**
+          1.0, 1.0, 0.0 RGB
+        */
         #[method_id(@__retain_semantics Other yellowColor)]
         pub unsafe fn yellowColor() -> Id<NSColor>;
 
+        /**
+          1.0, 0.0, 1.0 RGB
+        */
         #[method_id(@__retain_semantics Other magentaColor)]
         pub unsafe fn magentaColor() -> Id<NSColor>;
 
+        /**
+          1.0, 0.5, 0.0 RGB
+        */
         #[method_id(@__retain_semantics Other orangeColor)]
         pub unsafe fn orangeColor() -> Id<NSColor>;
 
+        /**
+          0.5, 0.0, 0.5 RGB
+        */
         #[method_id(@__retain_semantics Other purpleColor)]
         pub unsafe fn purpleColor() -> Id<NSColor>;
 
+        /**
+          0.6, 0.4, 0.2 RGB
+        */
         #[method_id(@__retain_semantics Other brownColor)]
         pub unsafe fn brownColor() -> Id<NSColor>;
 
+        /**
+          0.0 white, 0.0 alpha
+        */
         #[method_id(@__retain_semantics Other clearColor)]
         pub unsafe fn clearColor() -> Id<NSColor>;
 
+        /**
+          Foreground color for static text and related elements
+        */
         #[method_id(@__retain_semantics Other labelColor)]
         pub unsafe fn labelColor() -> Id<NSColor>;
 
+        /**
+          Foreground color for secondary static text and related elements
+        */
         #[method_id(@__retain_semantics Other secondaryLabelColor)]
         pub unsafe fn secondaryLabelColor() -> Id<NSColor>;
 
+        /**
+          Foreground color for disabled static text and related elements
+        */
         #[method_id(@__retain_semantics Other tertiaryLabelColor)]
         pub unsafe fn tertiaryLabelColor() -> Id<NSColor>;
 
+        /**
+          Foreground color for large secondary or disabled static text, separators, large glyphs/icons, etc
+        */
         #[method_id(@__retain_semantics Other quaternaryLabelColor)]
         pub unsafe fn quaternaryLabelColor() -> Id<NSColor>;
 
+        /**
+          Foreground color for standard system links
+        */
         #[method_id(@__retain_semantics Other linkColor)]
         pub unsafe fn linkColor() -> Id<NSColor>;
 
+        /**
+          Foreground color for placeholder text in controls or text views
+        */
         #[method_id(@__retain_semantics Other placeholderTextColor)]
         pub unsafe fn placeholderTextColor() -> Id<NSColor>;
 
+        /**
+          Foreground color on window chrome
+        */
         #[method_id(@__retain_semantics Other windowFrameTextColor)]
         pub unsafe fn windowFrameTextColor() -> Id<NSColor>;
 
+        /**
+          Foreground color inside selected menu items. Equivalent to +labelColor in a NSBackgroundStyleEmphasized context.
+        */
         #[method_id(@__retain_semantics Other selectedMenuItemTextColor)]
         pub unsafe fn selectedMenuItemTextColor() -> Id<NSColor>;
 
+        /**
+          Foreground color inside emphasized and selected content: table views rows, collection views, etc. Equivalent to +labelColor in a NSBackgroundStyleEmphasized context.
+        */
         #[method_id(@__retain_semantics Other alternateSelectedControlTextColor)]
         pub unsafe fn alternateSelectedControlTextColor() -> Id<NSColor>;
 
+        /**
+          Foreground color for header cells in Table/OutlineView
+        */
         #[method_id(@__retain_semantics Other headerTextColor)]
         pub unsafe fn headerTextColor() -> Id<NSColor>;
 
+        /**
+          Foreground used for separators between sections of content. Not appropriate for use as split view or window chrome dividers.
+        */
         #[method_id(@__retain_semantics Other separatorColor)]
         pub unsafe fn separatorColor() -> Id<NSColor>;
 
+        /**
+          Grids in controls
+        */
         #[method_id(@__retain_semantics Other gridColor)]
         pub unsafe fn gridColor() -> Id<NSColor>;
 
+        /**
+          Background for windows. This should not be used for drawing, and NSVisualEffectMaterialWindowBackground should be used instead.
+        */
         #[method_id(@__retain_semantics Other windowBackgroundColor)]
         pub unsafe fn windowBackgroundColor() -> Id<NSColor>;
 
+        /**
+          Background areas revealed behind documents. This should not be used for drawing, and NSVisualEffectMaterialUnderPageBackground should be used instead.
+        */
         #[method_id(@__retain_semantics Other underPageBackgroundColor)]
         pub unsafe fn underPageBackgroundColor() -> Id<NSColor>;
 
+        /**
+          Background for content areas: scroll views, table views, collection views. This should not be used for drawing, and NSVisualEffectMaterialContentBackground should be used instead.
+        */
         #[method_id(@__retain_semantics Other controlBackgroundColor)]
         pub unsafe fn controlBackgroundColor() -> Id<NSColor>;
 
+        /**
+          The background color of selected and emphasized (focused) content: table views rows, collection views, etc. Alias for +alternateSelectedControlColor
+        */
         #[method_id(@__retain_semantics Other selectedContentBackgroundColor)]
         pub unsafe fn selectedContentBackgroundColor() -> Id<NSColor>;
 
+        /**
+          The background color of selected and unemphasized content: table views rows, collection views, etc. Alias for +secondarySelectedControlColor
+        */
         #[method_id(@__retain_semantics Other unemphasizedSelectedContentBackgroundColor)]
         pub unsafe fn unemphasizedSelectedContentBackgroundColor() -> Id<NSColor>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          The background colors for alternating content items: such as table view rows, collection view items. Alias for +controlAlternatingRowBackgroundColors
+        */
         #[method_id(@__retain_semantics Other alternatingContentBackgroundColors)]
         pub unsafe fn alternatingContentBackgroundColors() -> Id<NSArray<NSColor>>;
 
+        /**
+          Background color of find indicators: the bubbles that show inline search result hits
+        */
         #[method_id(@__retain_semantics Other findHighlightColor)]
         pub unsafe fn findHighlightColor() -> Id<NSColor>;
 
+        /**
+          Document text
+        */
         #[method_id(@__retain_semantics Other textColor)]
         pub unsafe fn textColor() -> Id<NSColor>;
 
+        /**
+          Document text background
+        */
         #[method_id(@__retain_semantics Other textBackgroundColor)]
         pub unsafe fn textBackgroundColor() -> Id<NSColor>;
 
+        /**
+          Selected document text
+        */
         #[method_id(@__retain_semantics Other selectedTextColor)]
         pub unsafe fn selectedTextColor() -> Id<NSColor>;
 
+        /**
+          Selected document text background
+        */
         #[method_id(@__retain_semantics Other selectedTextBackgroundColor)]
         pub unsafe fn selectedTextBackgroundColor() -> Id<NSColor>;
 
+        /**
+          The background for unemphasized text selection (e.g. when the associated control/view/window is not key)
+        */
         #[method_id(@__retain_semantics Other unemphasizedSelectedTextBackgroundColor)]
         pub unsafe fn unemphasizedSelectedTextBackgroundColor() -> Id<NSColor>;
 
+        /**
+          The foreground for unemphasized text selection (e.g. when the associated control/view/window is not key)
+        */
         #[method_id(@__retain_semantics Other unemphasizedSelectedTextColor)]
         pub unsafe fn unemphasizedSelectedTextColor() -> Id<NSColor>;
 
+        /**
+          Approximate background for the color of control faces (such as buttons).
+        */
         #[method_id(@__retain_semantics Other controlColor)]
         pub unsafe fn controlColor() -> Id<NSColor>;
 
+        /**
+          Text on controls
+        */
         #[method_id(@__retain_semantics Other controlTextColor)]
         pub unsafe fn controlTextColor() -> Id<NSColor>;
 
+        /**
+          Control face for selected controls
+        */
         #[method_id(@__retain_semantics Other selectedControlColor)]
         pub unsafe fn selectedControlColor() -> Id<NSColor>;
 
+        /**
+          Text on selected controls
+        */
         #[method_id(@__retain_semantics Other selectedControlTextColor)]
         pub unsafe fn selectedControlTextColor() -> Id<NSColor>;
 
+        /**
+          Text on disabled controls
+        */
         #[method_id(@__retain_semantics Other disabledControlTextColor)]
         pub unsafe fn disabledControlTextColor() -> Id<NSColor>;
 
+        /**
+          Keyboard focus ring around controls
+        */
         #[method_id(@__retain_semantics Other keyboardFocusIndicatorColor)]
         pub unsafe fn keyboardFocusIndicatorColor() -> Id<NSColor>;
 
+        /**
+          Patterned background color for use in NSScrubber
+        */
         #[method_id(@__retain_semantics Other scrubberTexturedBackgroundColor)]
         pub unsafe fn scrubberTexturedBackgroundColor() -> Id<NSColor>;
 
+        /**
+          Some colors that are used by system elements and applications. Like the above dynamic system colors, these return named colors whose values may vary between different appearances and releases.  Do not make assumptions about the color spaces or actual colors used.
+        */
         #[method_id(@__retain_semantics Other systemRedColor)]
         pub unsafe fn systemRedColor() -> Id<NSColor>;
 
@@ -391,9 +543,15 @@ extern_methods!(
         #[method_id(@__retain_semantics Other systemCyanColor)]
         pub unsafe fn systemCyanColor() -> Id<NSColor>;
 
+        /**
+          A dynamic color that reflects the user's current preferred accent color. This color automatically updates when the accent color preference changes. Do not make assumptions about the color space of this color, which may change across releases.
+        */
         #[method_id(@__retain_semantics Other controlAccentColor)]
         pub unsafe fn controlAccentColor() -> Id<NSColor>;
 
+        /**
+          returns current system control tint
+        */
         #[method(currentControlTint)]
         pub unsafe fn currentControlTint() -> NSControlTint;
 
@@ -401,9 +559,15 @@ extern_methods!(
         #[method_id(@__retain_semantics Other colorForControlTint:)]
         pub unsafe fn colorForControlTint(control_tint: NSControlTint) -> Id<NSColor>;
 
+        /**
+          Highlight color for UI elements (this is abstract and defines the color all highlights tend toward)
+        */
         #[method_id(@__retain_semantics Other highlightColor)]
         pub unsafe fn highlightColor() -> Id<NSColor>;
 
+        /**
+          Shadow color for UI elements (this is abstract and defines the color all shadows tend toward)
+        */
         #[method_id(@__retain_semantics Other shadowColor)]
         pub unsafe fn shadowColor() -> Id<NSColor>;
 
@@ -438,6 +602,9 @@ extern_methods!(
         #[method_id(@__retain_semantics Other colorWithAlphaComponent:)]
         pub unsafe fn colorWithAlphaComponent(&self, alpha: CGFloat) -> Id<NSColor>;
 
+        /**
+          Get the catalog and color name of standard colors from catalogs. Valid only on colors whose type is NSColorTypeCatalog. These colors are special colors which can have different device or appearance specific underlying colors.
+        */
         #[method_id(@__retain_semantics Other catalogNameComponent)]
         pub unsafe fn catalogNameComponent(&self) -> Id<NSColorListName>;
 
@@ -445,6 +612,9 @@ extern_methods!(
         pub unsafe fn colorNameComponent(&self) -> Id<NSColorName>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Return localized versions of the above.
+        */
         #[method_id(@__retain_semantics Other localizedCatalogNameComponent)]
         pub unsafe fn localizedCatalogNameComponent(&self) -> Id<NSString>;
 
@@ -452,12 +622,21 @@ extern_methods!(
         #[method_id(@__retain_semantics Other localizedColorNameComponent)]
         pub unsafe fn localizedColorNameComponent(&self) -> Id<NSString>;
 
+        /**
+          Valid only on component based colors whose colorSpace model is NSColorSpaceModelRGB.
+        */
         #[method(redComponent)]
         pub unsafe fn redComponent(&self) -> CGFloat;
 
+        /**
+          Valid only on component based colors whose colorSpace model is NSColorSpaceModelRGB.
+        */
         #[method(greenComponent)]
         pub unsafe fn greenComponent(&self) -> CGFloat;
 
+        /**
+          Valid only on component based colors whose colorSpace model is NSColorSpaceModelRGB.
+        */
         #[method(blueComponent)]
         pub unsafe fn blueComponent(&self) -> CGFloat;
 
@@ -470,12 +649,21 @@ extern_methods!(
             alpha: *mut CGFloat,
         );
 
+        /**
+          Valid only on component based colors whose colorSpace model is NSColorSpaceModelRGB.
+        */
         #[method(hueComponent)]
         pub unsafe fn hueComponent(&self) -> CGFloat;
 
+        /**
+          Valid only on component based colors whose colorSpace model is NSColorSpaceModelRGB.
+        */
         #[method(saturationComponent)]
         pub unsafe fn saturationComponent(&self) -> CGFloat;
 
+        /**
+          Valid only on component based colors whose colorSpace model is NSColorSpaceModelRGB.
+        */
         #[method(brightnessComponent)]
         pub unsafe fn brightnessComponent(&self) -> CGFloat;
 
@@ -488,21 +676,36 @@ extern_methods!(
             alpha: *mut CGFloat,
         );
 
+        /**
+          Valid only on component based colors whose colorSpace model is NSColorSpaceModelGray.
+        */
         #[method(whiteComponent)]
         pub unsafe fn whiteComponent(&self) -> CGFloat;
 
         #[method(getWhite:alpha:)]
         pub unsafe fn getWhite_alpha(&self, white: *mut CGFloat, alpha: *mut CGFloat);
 
+        /**
+          Valid only on component based colors whose colorSpace model is NSColorSpaceModelCMYK.
+        */
         #[method(cyanComponent)]
         pub unsafe fn cyanComponent(&self) -> CGFloat;
 
+        /**
+          Valid only on component based colors whose colorSpace model is NSColorSpaceModelCMYK.
+        */
         #[method(magentaComponent)]
         pub unsafe fn magentaComponent(&self) -> CGFloat;
 
+        /**
+          Valid only on component based colors whose colorSpace model is NSColorSpaceModelCMYK.
+        */
         #[method(yellowComponent)]
         pub unsafe fn yellowComponent(&self) -> CGFloat;
 
+        /**
+          Valid only on component based colors whose colorSpace model is NSColorSpaceModelCMYK.
+        */
         #[method(blackComponent)]
         pub unsafe fn blackComponent(&self) -> CGFloat;
 
@@ -517,6 +720,9 @@ extern_methods!(
         );
 
         #[cfg(feature = "AppKit_NSColorSpace")]
+        /**
+          In colors with type == NSColorTypeComponentBased, return the colorspace and individual floating point components, including alpha.  Like other colorspace-specific methods these will raise exceptions on other color types.
+        */
         #[method_id(@__retain_semantics Other colorSpace)]
         pub unsafe fn colorSpace(&self) -> Id<NSColorSpace>;
 
@@ -527,9 +733,15 @@ extern_methods!(
         pub unsafe fn getComponents(&self, components: NonNull<CGFloat>);
 
         #[cfg(feature = "AppKit_NSImage")]
+        /**
+          Return the image used for the pattern color. Will raise exception for colors other than type == NSColorTypePattern.
+        */
         #[method_id(@__retain_semantics Other patternImage)]
         pub unsafe fn patternImage(&self) -> Id<NSImage>;
 
+        /**
+          Get the alpha component. Valid on all colors; for colors which do not have alpha components, this will return 1.0 (opaque).
+        */
         #[method(alphaComponent)]
         pub unsafe fn alphaComponent(&self) -> CGFloat;
 
@@ -544,9 +756,19 @@ extern_methods!(
         #[method(drawSwatchInRect:)]
         pub unsafe fn drawSwatchInRect(&self, rect: NSRect);
 
+        /**
+          Global flag for determining whether an application supports alpha.  This flag is consulted when an application imports alpha (through color dragging, for instance). The value of this flag also determines whether the color panel has an opacity slider. This value is YES by default, indicating that the opacity components of imported colors will be set to 1.0. If an application wants alpha, it can either set the "NSIgnoreAlpha" default to NO or call the set method below.
+
+        This method provides a global approach to removing alpha which might not always be appropriate. Applications which need to import alpha sometimes should set this flag to NO and explicitly make colors opaque in cases where it matters to them.
+        */
         #[method(ignoresAlpha)]
         pub unsafe fn ignoresAlpha() -> bool;
 
+        /**
+          Global flag for determining whether an application supports alpha.  This flag is consulted when an application imports alpha (through color dragging, for instance). The value of this flag also determines whether the color panel has an opacity slider. This value is YES by default, indicating that the opacity components of imported colors will be set to 1.0. If an application wants alpha, it can either set the "NSIgnoreAlpha" default to NO or call the set method below.
+
+        This method provides a global approach to removing alpha which might not always be appropriate. Applications which need to import alpha sometimes should set this flag to NO and explicitly make colors opaque in cases where it matters to them.
+        */
         #[method(setIgnoresAlpha:)]
         pub unsafe fn setIgnoresAlpha(ignores_alpha: bool);
     }
@@ -556,59 +778,101 @@ extern_methods!(
     /// NSDeprecated
     #[cfg(feature = "AppKit_NSColor")]
     unsafe impl NSColor {
+        /**
+          Historically used as the inner border highlight color for beveled buttons. No longer used.
+        */
         #[deprecated = "Use a color that matches the semantics being used, such as `separatorColor`"]
         #[method_id(@__retain_semantics Other controlHighlightColor)]
         pub unsafe fn controlHighlightColor() -> Id<NSColor>;
 
+        /**
+          Historically used as the outer border highlight color for beveled buttons. No longer used.
+        */
         #[deprecated = "Use a color that matches the semantics being used, such as `separatorColor`"]
         #[method_id(@__retain_semantics Other controlLightHighlightColor)]
         pub unsafe fn controlLightHighlightColor() -> Id<NSColor>;
 
+        /**
+          Historically used as the inner border shadow color for beveled buttons. No longer used.
+        */
         #[deprecated = "Use a color that matches the semantics being used, such as `separatorColor`"]
         #[method_id(@__retain_semantics Other controlShadowColor)]
         pub unsafe fn controlShadowColor() -> Id<NSColor>;
 
+        /**
+          Historically used as the outer border shadow color for beveled buttons. No longer used.
+        */
         #[deprecated = "Use a color that matches the semantics being used, such as `separatorColor`"]
         #[method_id(@__retain_semantics Other controlDarkShadowColor)]
         pub unsafe fn controlDarkShadowColor() -> Id<NSColor>;
 
+        /**
+          Historically used as the color of scroll bars. No longer used.
+        */
         #[deprecated = "Use NSScroller instead"]
         #[method_id(@__retain_semantics Other scrollBarColor)]
         pub unsafe fn scrollBarColor() -> Id<NSColor>;
 
+        /**
+          Historically used as the color of scroll bar knobs. No longer used.
+        */
         #[deprecated = "Use NSScroller instead"]
         #[method_id(@__retain_semantics Other knobColor)]
         pub unsafe fn knobColor() -> Id<NSColor>;
 
+        /**
+          Historically used as the color of scroll bar knobs being dragged. No longer used.
+        */
         #[deprecated = "Use NSScroller instead"]
         #[method_id(@__retain_semantics Other selectedKnobColor)]
         pub unsafe fn selectedKnobColor() -> Id<NSColor>;
 
+        /**
+          Historically used as the color of the window chrome, which is no longer able to be represented by a color. No longer used.
+        */
         #[deprecated = "Use NSVisualEffectMaterialTitlebar"]
         #[method_id(@__retain_semantics Other windowFrameColor)]
         pub unsafe fn windowFrameColor() -> Id<NSColor>;
 
+        /**
+          Historically used as the color of selected menu items, which is no longer a color but a tinted blur effect. No longer used.
+        */
         #[deprecated = "Use NSVisualEffectMaterialSelection"]
         #[method_id(@__retain_semantics Other selectedMenuItemColor)]
         pub unsafe fn selectedMenuItemColor() -> Id<NSColor>;
 
+        /**
+          Historically used as the color of table headers, which is no longer a color but a tinted blur effect.
+        */
         #[deprecated = "Use NSVisualEffectMaterialHeaderView"]
         #[method_id(@__retain_semantics Other headerColor)]
         pub unsafe fn headerColor() -> Id<NSColor>;
 
+        /**
+          The background color of selected content or text that is unemphasized. Older alias for +unemphasizedSelectedContentBackgroundColor and +unemphasizedSelectedTextBackgroundColor
+        */
         #[deprecated]
         #[method_id(@__retain_semantics Other secondarySelectedControlColor)]
         pub unsafe fn secondarySelectedControlColor() -> Id<NSColor>;
 
+        /**
+          The background color of selected and emphasized (focused) content: table views rows, collection views, etc. Older alias for +selectedContentBackgroundColor
+        */
         #[deprecated]
         #[method_id(@__retain_semantics Other alternateSelectedControlColor)]
         pub unsafe fn alternateSelectedControlColor() -> Id<NSColor>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          The background colors for alternating content items: such as table view rows, collection view items. Older alias for +alternatingContentBackgroundColors
+        */
         #[deprecated]
         #[method_id(@__retain_semantics Other controlAlternatingRowBackgroundColors)]
         pub unsafe fn controlAlternatingRowBackgroundColors() -> Id<NSArray<NSColor>>;
 
+        /**
+          Get the color space name of the color. Note that here "color space name" doesn't refer to the name of an NSColorSpace, but rather an older way to distinguish the color type of different types of colors, as described at the top of this file. Should be implemented by subclassers for code destined to run on 10.12 or earlier. Newer code can choose to implement type instead.
+        */
         #[deprecated = "Use -type and NSColorType instead"]
         #[method_id(@__retain_semantics Other colorSpaceName)]
         pub unsafe fn colorSpaceName(&self) -> Id<NSColorSpaceName>;

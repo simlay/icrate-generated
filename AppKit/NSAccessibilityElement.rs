@@ -8,6 +8,9 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSAccessibilityElement")]
+    /**
+      An NSAccessibilityElement is used to convey information regarding onscreen UI through the  accessibility API for UI that may not already have a single backing object. For example, if a single NSView subclass draws 4 buttons, it would vend 4 NSAccessibilityElements as accessibilityChildren. Note that as long as the UI is around, the vendor of NSAccessibilityElements must maintain ownership of the NSAccessibilityElements.
+    */
     pub struct NSAccessibilityElement;
 
     #[cfg(feature = "AppKit_NSAccessibilityElement")]
@@ -17,12 +20,21 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSAccessibilityElement")]
+/**
+  An NSAccessibilityElement is used to convey information regarding onscreen UI through the  accessibility API for UI that may not already have a single backing object. For example, if a single NSView subclass draws 4 buttons, it would vend 4 NSAccessibilityElements as accessibilityChildren. Note that as long as the UI is around, the vendor of NSAccessibilityElements must maintain ownership of the NSAccessibilityElements.
+*/
 unsafe impl NSAccessibility for NSAccessibilityElement {}
 
 #[cfg(feature = "AppKit_NSAccessibilityElement")]
+/**
+  An NSAccessibilityElement is used to convey information regarding onscreen UI through the  accessibility API for UI that may not already have a single backing object. For example, if a single NSView subclass draws 4 buttons, it would vend 4 NSAccessibilityElements as accessibilityChildren. Note that as long as the UI is around, the vendor of NSAccessibilityElements must maintain ownership of the NSAccessibilityElements.
+*/
 unsafe impl NSObjectProtocol for NSAccessibilityElement {}
 
 extern_methods!(
+    /**
+      An NSAccessibilityElement is used to convey information regarding onscreen UI through the  accessibility API for UI that may not already have a single backing object. For example, if a single NSView subclass draws 4 buttons, it would vend 4 NSAccessibilityElements as accessibilityChildren. Note that as long as the UI is around, the vendor of NSAccessibilityElements must maintain ownership of the NSAccessibilityElements.
+    */
     #[cfg(feature = "AppKit_NSAccessibilityElement")]
     unsafe impl NSAccessibilityElement {
         #[cfg(feature = "Foundation_NSString")]
@@ -37,9 +49,15 @@ extern_methods!(
         #[method(accessibilityAddChildElement:)]
         pub unsafe fn accessibilityAddChildElement(&self, child_element: &NSAccessibilityElement);
 
+        /**
+          Accessibility frame in the cordinate system of the accessibility parent
+        */
         #[method(accessibilityFrameInParentSpace)]
         pub unsafe fn accessibilityFrameInParentSpace(&self) -> NSRect;
 
+        /**
+          Accessibility frame in the cordinate system of the accessibility parent
+        */
         #[method(setAccessibilityFrameInParentSpace:)]
         pub unsafe fn setAccessibilityFrameInParentSpace(
             &self,

@@ -113,6 +113,10 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+     @enum MTLDeviceLocation
+    @abstract Specifies the location of the GPU on macOS
+    */
     pub enum MTLDeviceLocation {
         MTLDeviceLocationBuiltIn = 0,
         MTLDeviceLocationSlot = 1,
@@ -123,6 +127,10 @@ ns_enum!(
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+     @enum MTLPipelineOption
+    @abstract Controls the creation of the pipeline
+    */
     pub enum MTLPipelineOption {
         MTLPipelineOptionNone = 0,
         MTLPipelineOptionArgumentInfo = 1 << 0,
@@ -133,6 +141,10 @@ ns_options!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+     @enum MTLReadWriteTextureTier
+    @abstract MTLReadWriteTextureTier determines support level for read-write texture formats.
+    */
     pub enum MTLReadWriteTextureTier {
         MTLReadWriteTextureTierNone = 0,
         MTLReadWriteTextureTier1 = 1,
@@ -142,6 +154,10 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+     @enum MTLArgumentBuffersTier
+    @abstract MTLArgumentBuffersTier determines support level for argument buffers.
+    */
     pub enum MTLArgumentBuffersTier {
         MTLArgumentBuffersTier1 = 0,
         MTLArgumentBuffersTier2 = 1,
@@ -150,6 +166,10 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+     @enum MTLSparseTextureRegionAlignmentMode
+    @abstract MTLSparseTextureRegionAlignmentMode determines type of alignment used when converting from pixel region to tile region.
+    */
     pub enum MTLSparseTextureRegionAlignmentMode {
         MTLSparseTextureRegionAlignmentModeOutward = 0,
         MTLSparseTextureRegionAlignmentModeInward = 1,
@@ -158,6 +178,10 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum MTLSparsePageSize
+    @abstract Physical size of sparse resource page in KBs.
+    */
     pub enum MTLSparsePageSize {
         MTLSparsePageSize16 = 101,
         MTLSparsePageSize64 = 102,
@@ -167,6 +191,9 @@ ns_enum!(
 
 extern_struct!(
     #[encoding_name("?")]
+    /**
+      @brief Describes the memory requirements for an acceleration structure
+    */
     pub struct MTLAccelerationStructureSizes {
         pub accelerationStructureSize: NSUInteger,
         pub buildScratchBufferSize: NSUInteger,
@@ -176,6 +203,25 @@ extern_struct!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+     @enum MTLCounterSamplingPoint
+    @abstract MTLCounterSamplingPoint determines type of sampling points that are supported on given device.
+
+    @constant MTLCounterSamplingPointAtStageBoundary
+    Counter sampling points at render, compute, and blit command encoder stage boundary are supported.
+
+    @constant MTLCounterSamplingPointAtDrawBoundary
+    Counter sampling at draw boundary is supported, render encoder method sampleCountersInBuffer can be used for sampling.
+
+    @constant MTLCounterSamplingPointAtDispatchBoundary
+    Counter sampling at compute dispatch boundary is supported, compute encoder method sampleCountersInBuffer can be used for sampling.
+
+    @constant MTLCounterSamplingPointAtTileDispatchBoundary
+    Counter sampling at tile shader dispatch boundary is supported.
+
+    @constant MTLCounterSamplingPointAtBlitBoundary
+    Counter sampling at blit boundary is supported, blit encoder method sampleCountersInBuffer can be used for sampling.
+    */
     pub enum MTLCounterSamplingPoint {
         MTLCounterSamplingPointAtStageBoundary = 0,
         MTLCounterSamplingPointAtDrawBoundary = 1,
@@ -187,6 +233,9 @@ ns_enum!(
 
 extern_struct!(
     #[encoding_name("?")]
+    /**
+     @abstract Represent a memory size and alignment in bytes.
+    */
     pub struct MTLSizeAndAlign {
         pub size: NSUInteger,
         pub align: NSUInteger,
@@ -233,6 +282,10 @@ pub type MTLNewComputePipelineStateWithReflectionCompletionHandler = *mut Block<
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLArgumentDescriptor")]
+    /**
+      @class MTLArgumentDescriptor
+     @abstract Represents a member of an argument buffer
+    */
     pub struct MTLArgumentDescriptor;
 
     #[cfg(feature = "Metal_MTLArgumentDescriptor")]
@@ -242,47 +295,109 @@ extern_class!(
 );
 
 #[cfg(feature = "Metal_MTLArgumentDescriptor")]
+/**
+  @class MTLArgumentDescriptor
+ @abstract Represents a member of an argument buffer
+*/
 unsafe impl NSObjectProtocol for MTLArgumentDescriptor {}
 
 extern_methods!(
+    /**
+      @class MTLArgumentDescriptor
+     @abstract Represents a member of an argument buffer
+    */
     #[cfg(feature = "Metal_MTLArgumentDescriptor")]
     unsafe impl MTLArgumentDescriptor {
         #[method_id(@__retain_semantics Other argumentDescriptor)]
         pub fn argumentDescriptor() -> Id<MTLArgumentDescriptor>;
 
+        /**
+          @property dataType
+         @abstract For constants, the data type. Otherwise, MTLDataTypeTexture, MTLDataTypeSampler, or
+         MTLDataTypePointer.
+        */
         #[method(dataType)]
         pub unsafe fn dataType(&self) -> MTLDataType;
 
+        /**
+          @property dataType
+         @abstract For constants, the data type. Otherwise, MTLDataTypeTexture, MTLDataTypeSampler, or
+         MTLDataTypePointer.
+        */
         #[method(setDataType:)]
         pub fn setDataType(&self, data_type: MTLDataType);
 
+        /**
+          @property index
+         @abstract The binding point index of the argument
+        */
         #[method(index)]
         pub unsafe fn index(&self) -> NSUInteger;
 
+        /**
+          @property index
+         @abstract The binding point index of the argument
+        */
         #[method(setIndex:)]
         pub fn setIndex(&self, index: NSUInteger);
 
+        /**
+          @property arrayLength
+         @abstract The length of an array of constants, textures, or samplers, or 0 for non-array arguments
+        */
         #[method(arrayLength)]
         pub unsafe fn arrayLength(&self) -> NSUInteger;
 
+        /**
+          @property arrayLength
+         @abstract The length of an array of constants, textures, or samplers, or 0 for non-array arguments
+        */
         #[method(setArrayLength:)]
         pub unsafe fn setArrayLength(&self, array_length: NSUInteger);
 
+        /**
+          @property access
+         @abstract Access flags for the argument
+        */
         #[method(access)]
         pub unsafe fn access(&self) -> MTLArgumentAccess;
 
+        /**
+          @property access
+         @abstract Access flags for the argument
+        */
         #[method(setAccess:)]
         pub fn setAccess(&self, access: MTLArgumentAccess);
 
+        /**
+          @property textureType
+         @abstract For texture arguments, the texture type
+        */
         #[method(textureType)]
         pub unsafe fn textureType(&self) -> MTLTextureType;
 
+        /**
+          @property textureType
+         @abstract For texture arguments, the texture type
+        */
         #[method(setTextureType:)]
         pub fn setTextureType(&self, texture_type: MTLTextureType);
 
+        /**
+         @property constantBlockAlignment
+        @abstract if set forces the constant block to be aligned to the given alignment
+        @discussion Should only be set on the first constant of the block and is only valid if a corresponding
+        explicit "alignas" is applied to the constant in the metal shader language.
+        */
         #[method(constantBlockAlignment)]
         pub unsafe fn constantBlockAlignment(&self) -> NSUInteger;
 
+        /**
+         @property constantBlockAlignment
+        @abstract if set forces the constant block to be aligned to the given alignment
+        @discussion Should only be set on the first constant of the block and is only valid if a corresponding
+        explicit "alignas" is applied to the constant in the metal shader language.
+        */
         #[method(setConstantBlockAlignment:)]
         pub unsafe fn setConstantBlockAlignment(&self, constant_block_alignment: NSUInteger);
     }
@@ -291,75 +406,199 @@ extern_methods!(
 pub type MTLTimestamp = u64;
 
 extern_protocol!(
+    /**
+     @protocol MTLDevice
+    @abstract MTLDevice represents a processor capable of data parallel computations
+    */
     pub unsafe trait MTLDevice: NSObjectProtocol {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property name
+        @abstract The full name of the vendor device.
+        */
         #[method_id(@__retain_semantics Other name)]
         fn name(&self) -> Id<NSString>;
 
+        /**
+         @property registryID
+        @abstract Returns the IORegistry ID for the Metal device
+        @discussion The registryID value for a Metal device is global to all tasks, and may be used
+        to identify the GPU across task boundaries.
+        */
         #[method(registryID)]
         fn registryID(&self) -> u64;
 
+        /**
+         @property maxThreadsPerThreadgroup
+        @abstract The maximum number of threads along each dimension.
+        */
         #[method(maxThreadsPerThreadgroup)]
         fn maxThreadsPerThreadgroup(&self) -> MTLSize;
 
+        /**
+         @property lowPower
+        @abstract On systems that support automatic graphics switching, this will return YES for the the low power device.
+        */
         #[method(isLowPower)]
         fn isLowPower(&self) -> bool;
 
+        /**
+         @property headless
+        @abstract On systems that include more that one GPU, this will return YES for any device that does not support any displays.  Only available on Mac OS X.
+        */
         #[method(isHeadless)]
         fn isHeadless(&self) -> bool;
 
+        /**
+         @property removable
+        @abstract If this GPU is removable, this property will return YES.
+        @discussion If a GPU is is removed without warning, APIs may fail even with good input, even before a notification can get posted informing
+        the application that the device has been removed.
+        */
         #[method(isRemovable)]
         fn isRemovable(&self) -> bool;
 
+        /**
+         @property hasUnifiedMemory
+        @abstract Returns YES if this GPU shares its memory with the rest of the machine (CPU, etc.)
+        @discussion Some GPU architectures do not have dedicated local memory and instead only use the same memory shared with the rest
+        of the machine.  This property will return YES for GPUs that fall into that category.
+        */
         #[method(hasUnifiedMemory)]
         fn hasUnifiedMemory(&self) -> bool;
 
+        /**
+         @property recommendedMaxWorkingSetSize
+        @abstract Returns an approximation of how much memory this device can use with good performance.
+        @discussion Performance may be improved by keeping the total size of all resources (texture and buffers)
+        and heaps less than this threshold, beyond which the device is likely to be overcommitted and incur a
+        performance penalty.
+        */
         #[method(recommendedMaxWorkingSetSize)]
         fn recommendedMaxWorkingSetSize(&self) -> u64;
 
+        /**
+         @property location
+        @abstract Returns an enum that indicates where the GPU is located relative to the host computer.
+        @discussion The returned value indicates if the GPU is built into the computer, inserted into
+        a slot internal to the computer, or external to the computer. Otherwise it is Unspecified
+        */
         #[method(location)]
         fn location(&self) -> MTLDeviceLocation;
 
+        /**
+         @property locationNumber
+        @abstract Returns a value that further specifies the GPU's location
+        @discussion The returned value indicates which slot or Thunderbolt port the GPU is attached
+        to. For Built-in GPUs, if LowPower this value is 0, otherwise it is 1.  It is possible for multiple GPUs to have
+        the same location and locationNumber; e.g.: A PCI card with multiple GPUs, or an eGPU
+        daisy-chained off of another eGPU attached to a host Thunderbolt port.
+        */
         #[method(locationNumber)]
         fn locationNumber(&self) -> NSUInteger;
 
+        /**
+         @property maxTransferRate
+        @abstract Upper bound of System RAM <=> VRAM transfer rate in bytes/sec
+        @discussion The returned value indicates the theoretical maximum data rate in bytes/second
+        from host memory to the GPU's VRAM. This is derived from the raw data clock rate and as
+        such may not be reachable under real-world conditions. For Built-in GPUs this value is 0.
+        */
         #[method(maxTransferRate)]
         fn maxTransferRate(&self) -> u64;
 
+        /**
+         @property depth24Stencil8PixelFormatSupported
+        @abstract If YES, device supports MTLPixelFormatDepth24Unorm_Stencil8.
+        */
         #[method(isDepth24Stencil8PixelFormatSupported)]
         fn isDepth24Stencil8PixelFormatSupported(&self) -> bool;
 
+        /**
+         @property readWriteTextureSupport
+        @abstract Query support tier for read-write texture formats.
+        @return MTLReadWriteTextureTier enum value.
+        */
         #[method(readWriteTextureSupport)]
         fn readWriteTextureSupport(&self) -> MTLReadWriteTextureTier;
 
+        /**
+         @property argumentBuffersSupport
+        @abstract Query support tier for Argument Buffers.
+        @return MTLArgumentBuffersTier enum value.
+        */
         #[method(argumentBuffersSupport)]
         fn argumentBuffersSupport(&self) -> MTLArgumentBuffersTier;
 
+        /**
+         @property rasterOrderGroupsSupported
+        @abstract Query device for raster order groups support.
+        @return BOOL value. If YES, the device supports raster order groups. If NO, the device does not.
+        */
         #[method(areRasterOrderGroupsSupported)]
         unsafe fn areRasterOrderGroupsSupported(&self) -> bool;
 
+        /**
+         @property supports32BitFloatFiltering
+        @abstract Query device for 32-bit Float texture filtering support. Specifically, R32Float, RG32Float, and RGBA32Float.
+        @return BOOL value. If YES, the device supports filtering 32-bit Float textures. If NO, the device does not.
+        */
         #[method(supports32BitFloatFiltering)]
         fn supports32BitFloatFiltering(&self) -> bool;
 
+        /**
+         @property supports32BitMSAA
+        @abstract Query device for 32-bit MSAA texture support. Specifically, added support for allocating 32-bit Integer format textures (R32Uint, R32Sint, RG32Uint, RG32Sint, RGBA32Uint, and RGBA32Sint) and resolving 32-bit Float format textures (R32Float, RG32Float, and RGBA32Float).
+        @return BOOL value. If YES, the device supports these additional 32-bit MSAA texture capabilities. If NO, the devices does not.
+        */
         #[method(supports32BitMSAA)]
         fn supports32BitMSAA(&self) -> bool;
 
+        /**
+         @property supportsQueryTextureLOD
+        @abstract Query device for whether it supports the `calculate_clampled_lod` and `calculate_unclamped_lod` Metal shading language functionality.
+        @return BOOL value. If YES, the device supports the calculate LOD functionality. If NO, the device does not.
+        */
         #[method(supportsQueryTextureLOD)]
         fn supportsQueryTextureLOD(&self) -> bool;
 
+        /**
+         @property supportsBCTextureCompression
+        @abstract Query device for BC Texture format support
+        @return BOOL value. If YES, the device supports compressed BC Texture formats. If NO, the device does not.
+        */
         #[method(supportsBCTextureCompression)]
         fn supportsBCTextureCompression(&self) -> bool;
 
+        /**
+         @property supportsPullModelInterpolation
+        @abstract Query device for pull model interpolation support which allows a fragment shader to compute multiple interpolations (at center, at centroid, at offset, at sample) of a fragment input.
+        @return BOOL value. If YES, the device supports pull model interpolation. If NO, the device does not.
+        */
         #[method(supportsPullModelInterpolation)]
         fn supportsPullModelInterpolation(&self) -> bool;
 
+        /**
+         @property barycentricsSupported
+        @abstract Query device for Barycentric coordinates support; deprecated, use supportsShaderBarycentricCoordinates
+        @return BOOL value. If YES, the device barycentric coordinates
+        */
         #[deprecated]
         #[method(areBarycentricCoordsSupported)]
         unsafe fn areBarycentricCoordsSupported(&self) -> bool;
 
+        /**
+         @property supportsShaderBarycentricCoordinates
+        @abstract Query device for Barycentric Coordinates support.
+        @return BOOL value. If YES, the device supports barycentric coordinates. If NO, the device does not.
+        */
         #[method(supportsShaderBarycentricCoordinates)]
         fn supportsShaderBarycentricCoordinates(&self) -> bool;
 
+        /**
+         @property currentAllocatedSize
+        @abstract The current size in bytes of all resources allocated by this device
+        */
         #[method(currentAllocatedSize)]
         fn currentAllocatedSize(&self) -> NSUInteger;
 
@@ -613,12 +852,26 @@ extern_protocol!(
             completion_handler: MTLNewRenderPipelineStateWithReflectionCompletionHandler,
         );
 
+        /**
+         @property maxThreadgroupMemoryLength
+        @abstract The maximum threadgroup memory available, in bytes.
+        */
         #[method(maxThreadgroupMemoryLength)]
         fn maxThreadgroupMemoryLength(&self) -> NSUInteger;
 
+        /**
+         @property maxArgumentBufferSamplerCount
+        @abstract The maximum number of unique argument buffer samplers per app.
+        @discussion This limit is only applicable to samplers that have their supportArgumentBuffers property set to true. A MTLSamplerState object is considered unique if the configuration of its originating MTLSamplerDescriptor properties is unique. For example, two samplers with equal minFilter values but different magFilter values are considered unique.
+        */
         #[method(maxArgumentBufferSamplerCount)]
         fn maxArgumentBufferSamplerCount(&self) -> NSUInteger;
 
+        /**
+         @property programmableSaplePositionsSupported
+        @abstract Query device for programmable sample position support.
+        @return BOOL value. If YES, the device supports programmable sample positions. If NO, the device does not.
+        */
         #[method(areProgrammableSamplePositionsSupported)]
         unsafe fn areProgrammableSamplePositionsSupported(&self) -> bool;
 
@@ -674,12 +927,26 @@ extern_protocol!(
             shared_event_handle: &MTLSharedEventHandle,
         ) -> Option<Id<ProtocolObject<dyn MTLSharedEvent>>>;
 
+        /**
+         @property peerGroupID
+        @abstract If a device supports peer to peer transfers with another device (or devices), this property will return
+        a unique 64-bit identifier associated with all devices in the same peer group.
+        */
         #[method(peerGroupID)]
         unsafe fn peerGroupID(&self) -> u64;
 
+        /**
+         @property peerIndex
+        @abstract All Metal devices that are part of the same peer group will have a unique index value within the group in
+        the range from 0 to peerCount - 1.
+        */
         #[method(peerIndex)]
         unsafe fn peerIndex(&self) -> u32;
 
+        /**
+         @property peerCount
+        @abstract For Metal devices that are part of a peer group, this property returns the total number of devices in that group.
+        */
         #[method(peerCount)]
         unsafe fn peerCount(&self) -> u32;
 
@@ -716,6 +983,10 @@ extern_protocol!(
             sample_count: NSUInteger,
         ) -> MTLSize;
 
+        /**
+         @property sparseTileSizeInBytes
+        @abstract Returns the number of bytes required to map one sparse texture tile.
+        */
         #[method(sparseTileSizeInBytes)]
         unsafe fn sparseTileSizeInBytes(&self) -> NSUInteger;
 
@@ -759,6 +1030,10 @@ extern_protocol!(
         fn maxBufferLength(&self) -> NSUInteger;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+         @property counterSets
+        @abstract Returns the set of Counter Sets exposed by the device.
+        */
         #[method_id(@__retain_semantics Other counterSets)]
         unsafe fn counterSets(&self) -> Option<Id<NSArray<ProtocolObject<dyn MTLCounterSet>>>>;
 
@@ -791,9 +1066,19 @@ extern_protocol!(
         #[method(supportsVertexAmplificationCount:)]
         fn supportsVertexAmplificationCount(&self, count: NSUInteger) -> bool;
 
+        /**
+         @property supportsDynamicLibraries
+        @abstract Query device support for creating and using dynamic libraries in a compute pipeline.
+        @return BOOL value. If YES, the device supports creating and using dynamic libraries in a compute pipeline. If NO, the device does not.
+        */
         #[method(supportsDynamicLibraries)]
         fn supportsDynamicLibraries(&self) -> bool;
 
+        /**
+         @property supportsRenderDynamicLibraries
+        @abstract Query device support for creating and using dynamic libraries in render pipeline stages.
+        @return BOOL value. If YES, the device supports creating and using dynamic libraries in render pipeline stages. If NO, the device does not.
+        */
         #[method(supportsRenderDynamicLibraries)]
         unsafe fn supportsRenderDynamicLibraries(&self) -> bool;
 
@@ -821,6 +1106,11 @@ extern_protocol!(
             descriptor: &MTLBinaryArchiveDescriptor,
         ) -> Result<Id<ProtocolObject<dyn MTLBinaryArchive>>, Id<NSError>>;
 
+        /**
+         @property supportsRaytracing
+        @abstract Query device support for using ray tracing from compute pipelines.
+        @return BOOL value. If YES, the device supports ray tracing from compute pipelines. If NO, the device does not.
+        */
         #[method(supportsRaytracing)]
         fn supportsRaytracing(&self) -> bool;
 
@@ -857,15 +1147,35 @@ extern_protocol!(
             descriptor: &MTLAccelerationStructureDescriptor,
         ) -> MTLSizeAndAlign;
 
+        /**
+         @property supportsFunctionPointers
+        @abstract Query device support for using function pointers from compute pipelines.
+        @return BOOL value. If YES, the device supports function pointers from compute pipelines. If NO, the device does not.
+        */
         #[method(supportsFunctionPointers)]
         fn supportsFunctionPointers(&self) -> bool;
 
+        /**
+         @property supportsFunctionPointersFromRender
+        @abstract Query device support for using function pointers from render pipeline stages.
+        @return BOOL value. If YES, the device supports function pointers from render pipeline stages. If NO, the device does not.
+        */
         #[method(supportsFunctionPointersFromRender)]
         unsafe fn supportsFunctionPointersFromRender(&self) -> bool;
 
+        /**
+         @property supportsRaytracingFromRender
+        @abstract Query device support for using ray tracing from render pipeline stages.
+        @return BOOL value. If YES, the device supports ray tracing from render pipeline stages. If NO, the device does not.
+        */
         #[method(supportsRaytracingFromRender)]
         unsafe fn supportsRaytracingFromRender(&self) -> bool;
 
+        /**
+         @property supportsPrimitiveMotionBlur
+        @abstract Query device support for using ray tracing primitive motion blur.
+        @return BOOL value. If YES, the device supports the primitive motion blur api. If NO, the device does not.
+        */
         #[method(supportsPrimitiveMotionBlur)]
         unsafe fn supportsPrimitiveMotionBlur(&self) -> bool;
     }

@@ -10,6 +10,10 @@ use crate::MapKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MapKit_MKGeodesicPolyline")]
+    /**
+     An MKGeodesicPolyline follows the shortest path along the surface of the earth,
+    which may appear as a curved line when drawn on the projected MKMapView.
+    */
     pub struct MKGeodesicPolyline;
 
     #[cfg(feature = "MapKit_MKGeodesicPolyline")]
@@ -20,15 +24,31 @@ extern_class!(
 );
 
 #[cfg(feature = "MapKit_MKGeodesicPolyline")]
+/**
+ An MKGeodesicPolyline follows the shortest path along the surface of the earth,
+which may appear as a curved line when drawn on the projected MKMapView.
+*/
 unsafe impl MKAnnotation for MKGeodesicPolyline {}
 
 #[cfg(feature = "MapKit_MKGeodesicPolyline")]
+/**
+ An MKGeodesicPolyline follows the shortest path along the surface of the earth,
+which may appear as a curved line when drawn on the projected MKMapView.
+*/
 unsafe impl MKOverlay for MKGeodesicPolyline {}
 
 #[cfg(feature = "MapKit_MKGeodesicPolyline")]
+/**
+ An MKGeodesicPolyline follows the shortest path along the surface of the earth,
+which may appear as a curved line when drawn on the projected MKMapView.
+*/
 unsafe impl NSObjectProtocol for MKGeodesicPolyline {}
 
 extern_methods!(
+    /**
+     An MKGeodesicPolyline follows the shortest path along the surface of the earth,
+    which may appear as a curved line when drawn on the projected MKMapView.
+    */
     #[cfg(feature = "MapKit_MKGeodesicPolyline")]
     unsafe impl MKGeodesicPolyline {
         #[method_id(@__retain_semantics Other polylineWithPoints:count:)]

@@ -4,6 +4,9 @@ use crate::common::*;
 use crate::Foundation::*;
 
 extern_protocol!(
+    /**
+      The connection itself and all proxies vended by the connection will conform with this protocol. This allows creation of new proxies from other proxies.
+    */
     pub unsafe trait NSXPCProxyCreating {
         #[method_id(@__retain_semantics Other remoteObjectProxy)]
         unsafe fn remoteObjectProxy(&self) -> Id<Object>;
@@ -29,6 +32,9 @@ extern_protocol!(
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+      Options that may be passed to a connection.
+    */
     pub enum NSXPCConnectionOptions {
         NSXPCConnectionPrivileged = 1 << 12,
     }
@@ -37,6 +43,9 @@ ns_options!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSXPCConnection")]
+    /**
+      This object is the main configuration mechanism for the communication between two processes. Each NSXPCConnection instance has a private serial queue. This queue is used when sending messages to reply handlers, interruption handlers, and invalidation handlers.
+    */
     pub struct NSXPCConnection;
 
     #[cfg(feature = "Foundation_NSXPCConnection")]
@@ -46,12 +55,21 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSXPCConnection")]
+/**
+  This object is the main configuration mechanism for the communication between two processes. Each NSXPCConnection instance has a private serial queue. This queue is used when sending messages to reply handlers, interruption handlers, and invalidation handlers.
+*/
 unsafe impl NSObjectProtocol for NSXPCConnection {}
 
 #[cfg(feature = "Foundation_NSXPCConnection")]
+/**
+  This object is the main configuration mechanism for the communication between two processes. Each NSXPCConnection instance has a private serial queue. This queue is used when sending messages to reply handlers, interruption handlers, and invalidation handlers.
+*/
 unsafe impl NSXPCProxyCreating for NSXPCConnection {}
 
 extern_methods!(
+    /**
+      This object is the main configuration mechanism for the communication between two processes. Each NSXPCConnection instance has a private serial queue. This queue is used when sending messages to reply handlers, interruption handlers, and invalidation handlers.
+    */
     #[cfg(feature = "Foundation_NSXPCConnection")]
     unsafe impl NSXPCConnection {
         #[cfg(feature = "Foundation_NSString")]
@@ -85,30 +103,51 @@ extern_methods!(
         pub unsafe fn endpoint(&self) -> Id<NSXPCListenerEndpoint>;
 
         #[cfg(feature = "Foundation_NSXPCInterface")]
+        /**
+          The interface that describes messages that are allowed to be received by the exported object on this connection. This value is required if a exported object is set.
+        */
         #[method_id(@__retain_semantics Other exportedInterface)]
         pub unsafe fn exportedInterface(&self) -> Option<Id<NSXPCInterface>>;
 
         #[cfg(feature = "Foundation_NSXPCInterface")]
+        /**
+          The interface that describes messages that are allowed to be received by the exported object on this connection. This value is required if a exported object is set.
+        */
         #[method(setExportedInterface:)]
         pub unsafe fn setExportedInterface(&self, exported_interface: Option<&NSXPCInterface>);
 
+        /**
+          Set an exported object for the connection. Messages sent to the remoteObjectProxy from the other side of the connection will be dispatched to this object. Messages delivered to exported objects are serialized and sent on a non-main queue. The receiver is responsible for handling the messages on a different queue or thread if it is required.
+        */
         #[method_id(@__retain_semantics Other exportedObject)]
         pub unsafe fn exportedObject(&self) -> Option<Id<Object>>;
 
+        /**
+          Set an exported object for the connection. Messages sent to the remoteObjectProxy from the other side of the connection will be dispatched to this object. Messages delivered to exported objects are serialized and sent on a non-main queue. The receiver is responsible for handling the messages on a different queue or thread if it is required.
+        */
         #[method(setExportedObject:)]
         pub unsafe fn setExportedObject(&self, exported_object: Option<&Object>);
 
         #[cfg(feature = "Foundation_NSXPCInterface")]
+        /**
+          The interface that describes messages that are allowed to be received by object that has been "imported" to this connection (exported from the other side). This value is required if messages are sent over this connection.
+        */
         #[method_id(@__retain_semantics Other remoteObjectInterface)]
         pub unsafe fn remoteObjectInterface(&self) -> Option<Id<NSXPCInterface>>;
 
         #[cfg(feature = "Foundation_NSXPCInterface")]
+        /**
+          The interface that describes messages that are allowed to be received by object that has been "imported" to this connection (exported from the other side). This value is required if messages are sent over this connection.
+        */
         #[method(setRemoteObjectInterface:)]
         pub unsafe fn setRemoteObjectInterface(
             &self,
             remote_object_interface: Option<&NSXPCInterface>,
         );
 
+        /**
+          Get a proxy for the remote object (that is, the object exported from the other side of this connection). See descriptions in NSXPCProxyCreating for more details.
+        */
         #[method_id(@__retain_semantics Other remoteObjectProxy)]
         pub unsafe fn remoteObjectProxy(&self) -> Id<Object>;
 
@@ -126,15 +165,33 @@ extern_methods!(
             handler: &Block<(NonNull<NSError>,), ()>,
         ) -> Id<Object>;
 
+        /**
+          The interruption handler will be called if the remote process exits or crashes. It may be possible to re-establish the connection by simply sending another message. The handler will be invoked on the same queue as replies and other handlers, but there is no guarantee of ordering between those callbacks and this one.
+         The interruptionHandler property is cleared after the connection becomes invalid. This is to mitigate the impact of a retain cycle created by referencing the NSXPCConnection instance inside this block.
+        */
         #[method(interruptionHandler)]
         pub unsafe fn interruptionHandler(&self) -> *mut Block<(), ()>;
 
+        /**
+          The interruption handler will be called if the remote process exits or crashes. It may be possible to re-establish the connection by simply sending another message. The handler will be invoked on the same queue as replies and other handlers, but there is no guarantee of ordering between those callbacks and this one.
+         The interruptionHandler property is cleared after the connection becomes invalid. This is to mitigate the impact of a retain cycle created by referencing the NSXPCConnection instance inside this block.
+        */
         #[method(setInterruptionHandler:)]
         pub unsafe fn setInterruptionHandler(&self, interruption_handler: Option<&Block<(), ()>>);
 
+        /**
+          The invalidation handler will be called if the connection can not be formed or the connection has terminated and may not be re-established. The invalidation handler will also be called if a connection created with an NSXPCListenerEndpoint is invalidated from the remote side, or if the NSXPCListener used to create that endpoint is invalidated. The handler will be invoked on the same queue as replies and other handlers, but there is no guarantee of ordering between those callbacks and this one.
+         You may not send messages over the connection from within an invalidation handler block.
+         The invalidationHandler property is cleared after the connection becomes invalid. This is to mitigate the impact of a retain cycle created by referencing the NSXPCConnection instance inside this block.
+        */
         #[method(invalidationHandler)]
         pub unsafe fn invalidationHandler(&self) -> *mut Block<(), ()>;
 
+        /**
+          The invalidation handler will be called if the connection can not be formed or the connection has terminated and may not be re-established. The invalidation handler will also be called if a connection created with an NSXPCListenerEndpoint is invalidated from the remote side, or if the NSXPCListener used to create that endpoint is invalidated. The handler will be invoked on the same queue as replies and other handlers, but there is no guarantee of ordering between those callbacks and this one.
+         You may not send messages over the connection from within an invalidation handler block.
+         The invalidationHandler property is cleared after the connection becomes invalid. This is to mitigate the impact of a retain cycle created by referencing the NSXPCConnection instance inside this block.
+        */
         #[method(setInvalidationHandler:)]
         pub unsafe fn setInvalidationHandler(&self, invalidation_handler: Option<&Block<(), ()>>);
 
@@ -165,6 +222,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSXPCListener")]
+    /**
+      Each NSXPCListener instance has a private serial queue. This queue is used when sending the delegate messages.
+    */
     pub struct NSXPCListener;
 
     #[cfg(feature = "Foundation_NSXPCListener")]
@@ -174,9 +234,15 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSXPCListener")]
+/**
+  Each NSXPCListener instance has a private serial queue. This queue is used when sending the delegate messages.
+*/
 unsafe impl NSObjectProtocol for NSXPCListener {}
 
 extern_methods!(
+    /**
+      Each NSXPCListener instance has a private serial queue. This queue is used when sending the delegate messages.
+    */
     #[cfg(feature = "Foundation_NSXPCListener")]
     unsafe impl NSXPCListener {
         #[method_id(@__retain_semantics Other serviceListener)]
@@ -192,9 +258,15 @@ extern_methods!(
             name: &NSString,
         ) -> Id<Self>;
 
+        /**
+          The delegate for the connection listener. If no delegate is set, all new connections will be rejected. See the protocol for more information on how to implement it.
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(&self) -> Option<Id<ProtocolObject<dyn NSXPCListenerDelegate>>>;
 
+        /**
+          The delegate for the connection listener. If no delegate is set, all new connections will be rejected. See the protocol for more information on how to implement it.
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
@@ -202,6 +274,9 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSXPCListenerEndpoint")]
+        /**
+          Get an endpoint object which may be sent over an existing connection. This allows the receiver of the endpoint to create a new connection to this NSXPCListener. The NSXPCListenerEndpoint uniquely names this listener object across connections.
+        */
         #[method_id(@__retain_semantics Other endpoint)]
         pub unsafe fn endpoint(&self) -> Id<NSXPCListenerEndpoint>;
 
@@ -244,6 +319,9 @@ extern_protocol!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSXPCInterface")]
+    /**
+      This object holds all information about the interface of an exported or imported object. This includes: what messages are allowed, what kinds of objects are allowed as arguments, what the signature of any reply blocks are, and any information about additional proxy objects.
+    */
     pub struct NSXPCInterface;
 
     #[cfg(feature = "Foundation_NSXPCInterface")]
@@ -253,17 +331,29 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSXPCInterface")]
+/**
+  This object holds all information about the interface of an exported or imported object. This includes: what messages are allowed, what kinds of objects are allowed as arguments, what the signature of any reply blocks are, and any information about additional proxy objects.
+*/
 unsafe impl NSObjectProtocol for NSXPCInterface {}
 
 extern_methods!(
+    /**
+      This object holds all information about the interface of an exported or imported object. This includes: what messages are allowed, what kinds of objects are allowed as arguments, what the signature of any reply blocks are, and any information about additional proxy objects.
+    */
     #[cfg(feature = "Foundation_NSXPCInterface")]
     unsafe impl NSXPCInterface {
         #[method_id(@__retain_semantics Other interfaceWithProtocol:)]
         pub unsafe fn interfaceWithProtocol(protocol: &Protocol) -> Id<NSXPCInterface>;
 
+        /**
+          The Objective C protocol this NSXPCInterface is based upon.
+        */
         #[method_id(@__retain_semantics Other protocol)]
         pub unsafe fn protocol(&self) -> Id<Protocol>;
 
+        /**
+          The Objective C protocol this NSXPCInterface is based upon.
+        */
         #[method(setProtocol:)]
         pub unsafe fn setProtocol(&self, protocol: &Protocol);
 
@@ -308,6 +398,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSXPCListenerEndpoint")]
+    /**
+      An instance of this class is a reference to an NSXPCListener that may be encoded and sent over a connection. The receiver may use the object to create a new connection to the listener that supplied the NSXPCListenerEndpoint object.
+    */
     pub struct NSXPCListenerEndpoint;
 
     #[cfg(feature = "Foundation_NSXPCListenerEndpoint")]
@@ -317,15 +410,27 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSXPCListenerEndpoint")]
+/**
+  An instance of this class is a reference to an NSXPCListener that may be encoded and sent over a connection. The receiver may use the object to create a new connection to the listener that supplied the NSXPCListenerEndpoint object.
+*/
 unsafe impl NSCoding for NSXPCListenerEndpoint {}
 
 #[cfg(feature = "Foundation_NSXPCListenerEndpoint")]
+/**
+  An instance of this class is a reference to an NSXPCListener that may be encoded and sent over a connection. The receiver may use the object to create a new connection to the listener that supplied the NSXPCListenerEndpoint object.
+*/
 unsafe impl NSObjectProtocol for NSXPCListenerEndpoint {}
 
 #[cfg(feature = "Foundation_NSXPCListenerEndpoint")]
+/**
+  An instance of this class is a reference to an NSXPCListener that may be encoded and sent over a connection. The receiver may use the object to create a new connection to the listener that supplied the NSXPCListenerEndpoint object.
+*/
 unsafe impl NSSecureCoding for NSXPCListenerEndpoint {}
 
 extern_methods!(
+    /**
+      An instance of this class is a reference to an NSXPCListener that may be encoded and sent over a connection. The receiver may use the object to create a new connection to the listener that supplied the NSXPCListenerEndpoint object.
+    */
     #[cfg(feature = "Foundation_NSXPCListenerEndpoint")]
     unsafe impl NSXPCListenerEndpoint {}
 );
@@ -333,6 +438,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSXPCCoder")]
+    /**
+      An NSXPCCoder is used to encode or decode objects sent over an NSXPCConnection. If you want to encode or decode objects differently when sent over an NSXPCConnection, you may use isKindOfClass: to check that the coder is a kind of NSXPCCoder.
+    */
     pub struct NSXPCCoder;
 
     #[cfg(feature = "Foundation_NSXPCCoder")]
@@ -343,9 +451,15 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSXPCCoder")]
+/**
+  An NSXPCCoder is used to encode or decode objects sent over an NSXPCConnection. If you want to encode or decode objects differently when sent over an NSXPCConnection, you may use isKindOfClass: to check that the coder is a kind of NSXPCCoder.
+*/
 unsafe impl NSObjectProtocol for NSXPCCoder {}
 
 extern_methods!(
+    /**
+      An NSXPCCoder is used to encode or decode objects sent over an NSXPCConnection. If you want to encode or decode objects differently when sent over an NSXPCConnection, you may use isKindOfClass: to check that the coder is a kind of NSXPCCoder.
+    */
     #[cfg(feature = "Foundation_NSXPCCoder")]
     unsafe impl NSXPCCoder {
         #[method_id(@__retain_semantics Other userInfo)]
@@ -355,6 +469,9 @@ extern_methods!(
         pub unsafe fn setUserInfo(&self, user_info: Option<&NSObject>);
 
         #[cfg(feature = "Foundation_NSXPCConnection")]
+        /**
+          The current NSXPCConnection that is encoding or decoding.
+        */
         #[method_id(@__retain_semantics Other connection)]
         pub unsafe fn connection(&self) -> Option<Id<NSXPCConnection>>;
     }

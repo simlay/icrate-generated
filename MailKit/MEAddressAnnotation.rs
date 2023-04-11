@@ -8,6 +8,9 @@ use crate::MailKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MailKit_MEAddressAnnotation")]
+    /**
+      @brief An instance of this class can be used to change the visual style of recipeint email address token when user in composing a mail message.
+    */
     pub struct MEAddressAnnotation;
 
     #[cfg(feature = "MailKit_MEAddressAnnotation")]
@@ -17,15 +20,27 @@ extern_class!(
 );
 
 #[cfg(feature = "MailKit_MEAddressAnnotation")]
+/**
+  @brief An instance of this class can be used to change the visual style of recipeint email address token when user in composing a mail message.
+*/
 unsafe impl NSCoding for MEAddressAnnotation {}
 
 #[cfg(feature = "MailKit_MEAddressAnnotation")]
+/**
+  @brief An instance of this class can be used to change the visual style of recipeint email address token when user in composing a mail message.
+*/
 unsafe impl NSObjectProtocol for MEAddressAnnotation {}
 
 #[cfg(feature = "MailKit_MEAddressAnnotation")]
+/**
+  @brief An instance of this class can be used to change the visual style of recipeint email address token when user in composing a mail message.
+*/
 unsafe impl NSSecureCoding for MEAddressAnnotation {}
 
 extern_methods!(
+    /**
+      @brief An instance of this class can be used to change the visual style of recipeint email address token when user in composing a mail message.
+    */
     #[cfg(feature = "MailKit_MEAddressAnnotation")]
     unsafe impl MEAddressAnnotation {
         #[method_id(@__retain_semantics Init init)]

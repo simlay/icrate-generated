@@ -26,9 +26,15 @@ unsafe impl NSObjectProtocol for NSPanGestureRecognizer {}
 extern_methods!(
     #[cfg(feature = "AppKit_NSPanGestureRecognizer")]
     unsafe impl NSPanGestureRecognizer {
+        /**
+          Defaults to 0x1
+        */
         #[method(buttonMask)]
         pub unsafe fn buttonMask(&self) -> NSUInteger;
 
+        /**
+          Defaults to 0x1
+        */
         #[method(setButtonMask:)]
         pub unsafe fn setButtonMask(&self, button_mask: NSUInteger);
 
@@ -44,9 +50,15 @@ extern_methods!(
         #[method(velocityInView:)]
         pub unsafe fn velocityInView(&self, view: Option<&NSView>) -> NSPoint;
 
+        /**
+          Number of touches required to recognize the gesture when used in NSTouchBar
+        */
         #[method(numberOfTouchesRequired)]
         pub unsafe fn numberOfTouchesRequired(&self) -> NSInteger;
 
+        /**
+          Number of touches required to recognize the gesture when used in NSTouchBar
+        */
         #[method(setNumberOfTouchesRequired:)]
         pub unsafe fn setNumberOfTouchesRequired(&self, number_of_touches_required: NSInteger);
     }

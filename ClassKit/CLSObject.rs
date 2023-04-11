@@ -7,6 +7,10 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "ClassKit_CLSObject")]
+    /**
+     @abstract      An object managed by ClassKit.
+    @discussion    See @c CLSContext for more details.
+    */
     pub struct CLSObject;
 
     #[cfg(feature = "ClassKit_CLSObject")]
@@ -16,22 +20,44 @@ extern_class!(
 );
 
 #[cfg(feature = "ClassKit_CLSObject")]
+/**
+ @abstract      An object managed by ClassKit.
+@discussion    See @c CLSContext for more details.
+*/
 unsafe impl NSCoding for CLSObject {}
 
 #[cfg(feature = "ClassKit_CLSObject")]
+/**
+ @abstract      An object managed by ClassKit.
+@discussion    See @c CLSContext for more details.
+*/
 unsafe impl NSObjectProtocol for CLSObject {}
 
 #[cfg(feature = "ClassKit_CLSObject")]
+/**
+ @abstract      An object managed by ClassKit.
+@discussion    See @c CLSContext for more details.
+*/
 unsafe impl NSSecureCoding for CLSObject {}
 
 extern_methods!(
+    /**
+     @abstract      An object managed by ClassKit.
+    @discussion    See @c CLSContext for more details.
+    */
     #[cfg(feature = "ClassKit_CLSObject")]
     unsafe impl CLSObject {
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+         @abstract      The date this object was created.
+        */
         #[method_id(@__retain_semantics Other dateCreated)]
         pub unsafe fn dateCreated(&self) -> Id<NSDate>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+         @abstract      The date this object was last modified.
+        */
         #[method_id(@__retain_semantics Other dateLastModified)]
         pub unsafe fn dateLastModified(&self) -> Id<NSDate>;
 

@@ -7,6 +7,10 @@ use crate::MetricKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MetricKit_MXAnimationMetric")]
+    /**
+     @class         MXAnimationMetric
+    @abstract      An MXMetric subclass that encapsulates app animation metrics.
+    */
     pub struct MXAnimationMetric;
 
     #[cfg(feature = "MetricKit_MXAnimationMetric")]
@@ -17,18 +21,41 @@ extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXAnimationMetric")]
+/**
+ @class         MXAnimationMetric
+@abstract      An MXMetric subclass that encapsulates app animation metrics.
+*/
 unsafe impl NSCoding for MXAnimationMetric {}
 
 #[cfg(feature = "MetricKit_MXAnimationMetric")]
+/**
+ @class         MXAnimationMetric
+@abstract      An MXMetric subclass that encapsulates app animation metrics.
+*/
 unsafe impl NSObjectProtocol for MXAnimationMetric {}
 
 #[cfg(feature = "MetricKit_MXAnimationMetric")]
+/**
+ @class         MXAnimationMetric
+@abstract      An MXMetric subclass that encapsulates app animation metrics.
+*/
 unsafe impl NSSecureCoding for MXAnimationMetric {}
 
 extern_methods!(
+    /**
+     @class         MXAnimationMetric
+    @abstract      An MXMetric subclass that encapsulates app animation metrics.
+    */
     #[cfg(feature = "MetricKit_MXAnimationMetric")]
     unsafe impl MXAnimationMetric {
         #[cfg(all(feature = "Foundation_NSMeasurement", feature = "Foundation_NSUnit"))]
+        /**
+         @property      scrollHitchTimeRatio
+        @abstract      Ratio of time the application spent hitching while scrolling.
+        @discussion    Scroll hitches are user perceptible animation issues that occur during scrolling.
+        @discussion    This metric only applies to UIScrollViews.
+        @discussion    Dimensionless.
+        */
         #[method_id(@__retain_semantics Other scrollHitchTimeRatio)]
         pub unsafe fn scrollHitchTimeRatio(&self) -> Id<NSMeasurement<NSUnit>>;
     }

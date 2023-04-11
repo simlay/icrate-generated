@@ -35,17 +35,29 @@ extern_methods!(
         pub unsafe fn representedObject(&self) -> Option<Id<Object>>;
 
         #[cfg(feature = "Foundation_NSIndexPath")]
+        /**
+          represents the receiver's location in the entire tree
+        */
         #[method_id(@__retain_semantics Other indexPath)]
         pub unsafe fn indexPath(&self) -> Id<NSIndexPath>;
 
+        /**
+          determined by (count of child nodes == 0)
+        */
         #[method(isLeaf)]
         pub unsafe fn isLeaf(&self) -> bool;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          traversal
+        */
         #[method_id(@__retain_semantics Other childNodes)]
         pub unsafe fn childNodes(&self) -> Option<Id<NSArray<NSTreeNode>>>;
 
         #[cfg(feature = "Foundation_NSMutableArray")]
+        /**
+          returns a mutable proxy - parentNode of inserted/removed child nodes is automatically updated
+        */
         #[method_id(@__retain_semantics Other mutableChildNodes)]
         pub unsafe fn mutableChildNodes(&self) -> Id<NSMutableArray<NSTreeNode>, Owned>;
 

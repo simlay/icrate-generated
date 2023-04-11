@@ -6,6 +6,12 @@ use crate::CoreLocation::*;
 use crate::Foundation::*;
 
 extern_protocol!(
+    /**
+       CLLocationManagerDelegate
+
+      Discussion:
+        Delegate for CLLocationManager.
+    */
     pub unsafe trait CLLocationManagerDelegate: NSObjectProtocol {
         #[cfg(all(
             feature = "CoreLocation_CLLocation",

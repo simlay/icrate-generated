@@ -27,56 +27,100 @@ extern_methods!(
     #[cfg(feature = "Foundation_NSPersonNameComponents")]
     unsafe impl NSPersonNameComponents {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Pre-nominal letters denoting title, salutation, or honorific, e.g. Dr., Mr.
+        */
         #[method_id(@__retain_semantics Other namePrefix)]
         pub unsafe fn namePrefix(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Pre-nominal letters denoting title, salutation, or honorific, e.g. Dr., Mr.
+        */
         #[method(setNamePrefix:)]
         pub unsafe fn setNamePrefix(&self, name_prefix: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Name bestowed upon an individual by one's parents, e.g. Johnathan
+        */
         #[method_id(@__retain_semantics Other givenName)]
         pub unsafe fn givenName(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Name bestowed upon an individual by one's parents, e.g. Johnathan
+        */
         #[method(setGivenName:)]
         pub unsafe fn setGivenName(&self, given_name: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Secondary given name chosen to differentiate those with the same first name, e.g. Maple
+        */
         #[method_id(@__retain_semantics Other middleName)]
         pub unsafe fn middleName(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Secondary given name chosen to differentiate those with the same first name, e.g. Maple
+        */
         #[method(setMiddleName:)]
         pub unsafe fn setMiddleName(&self, middle_name: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Name passed from one generation to another to indicate lineage, e.g. Appleseed
+        */
         #[method_id(@__retain_semantics Other familyName)]
         pub unsafe fn familyName(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Name passed from one generation to another to indicate lineage, e.g. Appleseed
+        */
         #[method(setFamilyName:)]
         pub unsafe fn setFamilyName(&self, family_name: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Post-nominal letters denoting degree, accreditation, or other honor, e.g. Esq., Jr., Ph.D.
+        */
         #[method_id(@__retain_semantics Other nameSuffix)]
         pub unsafe fn nameSuffix(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Post-nominal letters denoting degree, accreditation, or other honor, e.g. Esq., Jr., Ph.D.
+        */
         #[method(setNameSuffix:)]
         pub unsafe fn setNameSuffix(&self, name_suffix: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Name substituted for the purposes of familiarity, e.g. "Johnny"
+        */
         #[method_id(@__retain_semantics Other nickname)]
         pub unsafe fn nickname(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Name substituted for the purposes of familiarity, e.g. "Johnny"
+        */
         #[method(setNickname:)]
         pub unsafe fn setNickname(&self, nickname: Option<&NSString>);
 
+        /**
+          Each element of the phoneticRepresentation should correspond to an element of the original PersonNameComponents instance.
+        The phoneticRepresentation of the phoneticRepresentation object itself will be ignored. nil by default, must be instantiated.
+        */
         #[method_id(@__retain_semantics Other phoneticRepresentation)]
         pub unsafe fn phoneticRepresentation(&self) -> Option<Id<NSPersonNameComponents>>;
 
+        /**
+          Each element of the phoneticRepresentation should correspond to an element of the original PersonNameComponents instance.
+        The phoneticRepresentation of the phoneticRepresentation object itself will be ignored. nil by default, must be instantiated.
+        */
         #[method(setPhoneticRepresentation:)]
         pub unsafe fn setPhoneticRepresentation(
             &self,

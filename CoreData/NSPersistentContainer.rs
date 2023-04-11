@@ -7,6 +7,9 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreData_NSPersistentContainer")]
+    /**
+      An instance of NSPersistentContainer includes all objects needed to represent a functioning Core Data stack, and provides convenience methods and properties for common patterns.
+    */
     pub struct NSPersistentContainer;
 
     #[cfg(feature = "CoreData_NSPersistentContainer")]
@@ -16,9 +19,15 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreData_NSPersistentContainer")]
+/**
+  An instance of NSPersistentContainer includes all objects needed to represent a functioning Core Data stack, and provides convenience methods and properties for common patterns.
+*/
 unsafe impl NSObjectProtocol for NSPersistentContainer {}
 
 extern_methods!(
+    /**
+      An instance of NSPersistentContainer includes all objects needed to represent a functioning Core Data stack, and provides convenience methods and properties for common patterns.
+    */
     #[cfg(feature = "CoreData_NSPersistentContainer")]
     unsafe impl NSPersistentContainer {
         #[cfg(feature = "Foundation_NSString")]

@@ -5,6 +5,9 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      These values are arguments to the completion handler block for the scheduler.
+    */
     pub enum NSBackgroundActivityResult {
         NSBackgroundActivityResultFinished = 1,
         NSBackgroundActivityResultDeferred = 2,
@@ -16,6 +19,12 @@ pub type NSBackgroundActivityCompletionHandler = *mut Block<(NSBackgroundActivit
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSBackgroundActivityScheduler")]
+    /**
+     This class provides a Cocoa-level interface to the XPC Activity API (see xpc/activity.h).
+
+    It is used to schedule maintenance or background kinds of tasks. These activities are run by the OS at a time that best accommodates system-wide factors like energy, thermal conditions, and CPU usage. If you have activities that run at an interval measured in 10s of minutes or more, then use this class to schedule those activities.
+
+    */
     pub struct NSBackgroundActivityScheduler;
 
     #[cfg(feature = "Foundation_NSBackgroundActivityScheduler")]
@@ -25,9 +34,21 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSBackgroundActivityScheduler")]
+/**
+ This class provides a Cocoa-level interface to the XPC Activity API (see xpc/activity.h).
+
+It is used to schedule maintenance or background kinds of tasks. These activities are run by the OS at a time that best accommodates system-wide factors like energy, thermal conditions, and CPU usage. If you have activities that run at an interval measured in 10s of minutes or more, then use this class to schedule those activities.
+
+*/
 unsafe impl NSObjectProtocol for NSBackgroundActivityScheduler {}
 
 extern_methods!(
+    /**
+     This class provides a Cocoa-level interface to the XPC Activity API (see xpc/activity.h).
+
+    It is used to schedule maintenance or background kinds of tasks. These activities are run by the OS at a time that best accommodates system-wide factors like energy, thermal conditions, and CPU usage. If you have activities that run at an interval measured in 10s of minutes or more, then use this class to schedule those activities.
+
+    */
     #[cfg(feature = "Foundation_NSBackgroundActivityScheduler")]
     unsafe impl NSBackgroundActivityScheduler {
         #[cfg(feature = "Foundation_NSString")]
@@ -38,30 +59,69 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The identifier this object was initialized with.
+        */
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Id<NSString>;
 
+        /**
+          Default value is NSQualityOfServiceBackground. If you upgrade the quality of service above this level, the system will more aggressively schedule this activity. The default value is the recommended value for most activities.
+        */
         #[method(qualityOfService)]
         pub unsafe fn qualityOfService(&self) -> NSQualityOfService;
 
+        /**
+          Default value is NSQualityOfServiceBackground. If you upgrade the quality of service above this level, the system will more aggressively schedule this activity. The default value is the recommended value for most activities.
+        */
         #[method(setQualityOfService:)]
         pub unsafe fn setQualityOfService(&self, quality_of_service: NSQualityOfService);
 
+        /**
+          The default value is NO.
+        If set to YES, then the activity will be rescheduled after finishing at the specified interval.
+        */
         #[method(repeats)]
         pub unsafe fn repeats(&self) -> bool;
 
+        /**
+          The default value is NO.
+        If set to YES, then the activity will be rescheduled after finishing at the specified interval.
+        */
         #[method(setRepeats:)]
         pub unsafe fn setRepeats(&self, repeats: bool);
 
+        /**
+          If this activity is repeating, then this property describes the average interval of seconds between invocations of this activity.
+        If the activity is not repeating, then this property is the suggested interval of time between scheduling the activity and the invocation of the activity.
+        */
         #[method(interval)]
         pub unsafe fn interval(&self) -> NSTimeInterval;
 
+        /**
+          If this activity is repeating, then this property describes the average interval of seconds between invocations of this activity.
+        If the activity is not repeating, then this property is the suggested interval of time between scheduling the activity and the invocation of the activity.
+        */
         #[method(setInterval:)]
         pub unsafe fn setInterval(&self, interval: NSTimeInterval);
 
+        /**
+          Specifies the number of seconds before or after the nominal fire date when the activity should be invoked. The nominal fire date is calculated by using the interval combined with the previous fire date or the time when the activity is started. These two properties create a window in time during which the activity may be scheduled.
+
+        The system will more aggresively schedule the activity as it nears the end of the grace period after the nominal fire date.
+
+        The default value is 1/2 the interval.
+        */
         #[method(tolerance)]
         pub unsafe fn tolerance(&self) -> NSTimeInterval;
 
+        /**
+          Specifies the number of seconds before or after the nominal fire date when the activity should be invoked. The nominal fire date is calculated by using the interval combined with the previous fire date or the time when the activity is started. These two properties create a window in time during which the activity may be scheduled.
+
+        The system will more aggresively schedule the activity as it nears the end of the grace period after the nominal fire date.
+
+        The default value is 1/2 the interval.
+        */
         #[method(setTolerance:)]
         pub unsafe fn setTolerance(&self, tolerance: NSTimeInterval);
 
@@ -74,6 +134,11 @@ extern_methods!(
         #[method(invalidate)]
         pub unsafe fn invalidate(&self);
 
+        /**
+          You can call this method occasionally during execution of your activity to determine if system conditions have changed such that it is no longer a good time to run this activity.
+
+        If the result of this method is YES, then you should wrap up current state. Once you are done saving your state, invoke the completionHandler block (the argument to your scheduled block) with the NSBackgroundActivityResultDeferred constant. The system will invoke your activity block again at a later, more appropriate time. At that point you can read your state and continue the work.
+        */
         #[method(shouldDefer)]
         pub unsafe fn shouldDefer(&self) -> bool;
     }

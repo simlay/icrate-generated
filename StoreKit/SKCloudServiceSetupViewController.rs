@@ -47,11 +47,17 @@ unsafe impl NSUserInterfaceItemIdentification for SKCloudServiceSetupViewControl
 extern_methods!(
     #[cfg(feature = "StoreKit_SKCloudServiceSetupViewController")]
     unsafe impl SKCloudServiceSetupViewController {
+        /**
+          Optional delegate.
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(
             &self,
         ) -> Option<Id<ProtocolObject<dyn SKCloudServiceSetupViewControllerDelegate>>>;
 
+        /**
+          Optional delegate.
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,

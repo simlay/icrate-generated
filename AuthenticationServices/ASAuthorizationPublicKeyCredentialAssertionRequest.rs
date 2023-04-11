@@ -9,28 +9,46 @@ extern_protocol!(
         NSObjectProtocol + NSSecureCoding
     {
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          @abstract The challenge to use when signing the request.
+        */
         #[method_id(@__retain_semantics Other challenge)]
         unsafe fn challenge(&self) -> Id<NSData>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          @abstract The challenge to use when signing the request.
+        */
         #[method(setChallenge:)]
         unsafe fn setChallenge(&self, challenge: &NSData);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract The Relying Party identifier used to scope this request.
+        */
         #[method_id(@__retain_semantics Other relyingPartyIdentifier)]
         unsafe fn relyingPartyIdentifier(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract The Relying Party identifier used to scope this request.
+        */
         #[method(setRelyingPartyIdentifier:)]
         unsafe fn setRelyingPartyIdentifier(&self, relying_party_identifier: &NSString);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          @abstract A list of credentials to allow for this request. If this list is nonempty, only credentials matching the provided descriptors can be used to sign in.
+        */
         #[method_id(@__retain_semantics Other allowedCredentials)]
         unsafe fn allowedCredentials(
             &self,
         ) -> Id<NSArray<ProtocolObject<dyn ASAuthorizationPublicKeyCredentialDescriptor>>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          @abstract A list of credentials to allow for this request. If this list is nonempty, only credentials matching the provided descriptors can be used to sign in.
+        */
         #[method(setAllowedCredentials:)]
         unsafe fn setAllowedCredentials(
             &self,
@@ -39,11 +57,17 @@ extern_protocol!(
             >,
         );
 
+        /**
+          @abstract A preference for whether the authenticator should attempt to verify that it is being used by its owner, such as through a PIN or biometrics.
+        */
         #[method_id(@__retain_semantics Other userVerificationPreference)]
         unsafe fn userVerificationPreference(
             &self,
         ) -> Id<ASAuthorizationPublicKeyCredentialUserVerificationPreference>;
 
+        /**
+          @abstract A preference for whether the authenticator should attempt to verify that it is being used by its owner, such as through a PIN or biometrics.
+        */
         #[method(setUserVerificationPreference:)]
         unsafe fn setUserVerificationPreference(
             &self,

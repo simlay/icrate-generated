@@ -8,6 +8,11 @@ use crate::GameController::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameController_GCColor")]
+    /**
+     Represents a color used by a GCDeviceLight.
+
+    @see GCDeviceLight
+    */
     pub struct GCColor;
 
     #[cfg(feature = "GameController_GCColor")]
@@ -17,15 +22,35 @@ extern_class!(
 );
 
 #[cfg(feature = "GameController_GCColor")]
+/**
+ Represents a color used by a GCDeviceLight.
+
+@see GCDeviceLight
+*/
 unsafe impl NSCoding for GCColor {}
 
 #[cfg(feature = "GameController_GCColor")]
+/**
+ Represents a color used by a GCDeviceLight.
+
+@see GCDeviceLight
+*/
 unsafe impl NSObjectProtocol for GCColor {}
 
 #[cfg(feature = "GameController_GCColor")]
+/**
+ Represents a color used by a GCDeviceLight.
+
+@see GCDeviceLight
+*/
 unsafe impl NSSecureCoding for GCColor {}
 
 extern_methods!(
+    /**
+     Represents a color used by a GCDeviceLight.
+
+    @see GCDeviceLight
+    */
     #[cfg(feature = "GameController_GCColor")]
     unsafe impl GCColor {
         #[method_id(@__retain_semantics Init init)]

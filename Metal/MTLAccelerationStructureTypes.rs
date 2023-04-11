@@ -13,6 +13,9 @@ extern_struct!(
 
 extern_struct!(
     #[encoding_name("_MTLAxisAlignedBoundingBox")]
+    /**
+      @brief An axis aligned bounding box with a min and max point
+    */
     pub struct MTLAxisAlignedBoundingBox {
         pub min: MTLPackedFloat3,
         pub max: MTLPackedFloat3,

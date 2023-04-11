@@ -50,6 +50,10 @@ extern_protocol!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MediaPlayer_MPMusicPlayerController")]
+    /**
+      MPMusicPlayerController allows playback of MPMediaItems through the Music application.
+     See MPMediaPlayback.h for basic playback control.
+    */
     pub struct MPMusicPlayerController;
 
     #[cfg(feature = "MediaPlayer_MPMusicPlayerController")]
@@ -59,21 +63,42 @@ extern_class!(
 );
 
 #[cfg(feature = "MediaPlayer_MPMusicPlayerController")]
+/**
+  MPMusicPlayerController allows playback of MPMediaItems through the Music application.
+ See MPMediaPlayback.h for basic playback control.
+*/
 unsafe impl MPMediaPlayback for MPMusicPlayerController {}
 
 #[cfg(feature = "MediaPlayer_MPMusicPlayerController")]
+/**
+  MPMusicPlayerController allows playback of MPMediaItems through the Music application.
+ See MPMediaPlayback.h for basic playback control.
+*/
 unsafe impl NSObjectProtocol for MPMusicPlayerController {}
 
 extern_methods!(
+    /**
+      MPMusicPlayerController allows playback of MPMediaItems through the Music application.
+     See MPMediaPlayback.h for basic playback control.
+    */
     #[cfg(feature = "MediaPlayer_MPMusicPlayerController")]
     unsafe impl MPMusicPlayerController {
+        /**
+          Playing items with applicationMusicPlayer does not affect Music's playback state.
+        */
         #[method_id(@__retain_semantics Other applicationMusicPlayer)]
         pub unsafe fn applicationMusicPlayer() -> Id<MPMusicPlayerController>;
 
         #[cfg(feature = "MediaPlayer_MPMusicPlayerApplicationController")]
+        /**
+          Similar to applicationMusicPlayer, but allows direct manipulation of the queue.
+        */
         #[method_id(@__retain_semantics Other applicationQueuePlayer)]
         pub unsafe fn applicationQueuePlayer() -> Id<MPMusicPlayerApplicationController>;
 
+        /**
+          Playing media items with the systemMusicPlayer will replace the user's current Music state.
+        */
         #[method_id(@__retain_semantics Other systemMusicPlayer)]
         pub unsafe fn systemMusicPlayer() -> Id<MPMusicPlayerController>;
 
@@ -83,37 +108,72 @@ extern_methods!(
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
+        /**
+          Returns the current playback state of the music player
+        */
         #[method(playbackState)]
         pub unsafe fn playbackState(&self) -> MPMusicPlaybackState;
 
+        /**
+          Determines how music repeats after playback completes. Defaults to MPMusicRepeatModeDefault.
+        */
         #[method(repeatMode)]
         pub unsafe fn repeatMode(&self) -> MPMusicRepeatMode;
 
+        /**
+          Determines how music repeats after playback completes. Defaults to MPMusicRepeatModeDefault.
+        */
         #[method(setRepeatMode:)]
         pub unsafe fn setRepeatMode(&self, repeat_mode: MPMusicRepeatMode);
 
+        /**
+          Determines how music is shuffled when playing. Defaults to MPMusicShuffleModeDefault.
+        */
         #[method(shuffleMode)]
         pub unsafe fn shuffleMode(&self) -> MPMusicShuffleMode;
 
+        /**
+          Determines how music is shuffled when playing. Defaults to MPMusicShuffleModeDefault.
+        */
         #[method(setShuffleMode:)]
         pub unsafe fn setShuffleMode(&self, shuffle_mode: MPMusicShuffleMode);
 
+        /**
+          The current volume of playing music, in the range of 0.0 to 1.0.
+         This property is deprecated -- use MPVolumeView for volume control instead.
+        */
         #[deprecated = "Use MPVolumeView for volume control."]
         #[method(volume)]
         pub unsafe fn volume(&self) -> c_float;
 
+        /**
+          The current volume of playing music, in the range of 0.0 to 1.0.
+         This property is deprecated -- use MPVolumeView for volume control instead.
+        */
         #[deprecated = "Use MPVolumeView for volume control."]
         #[method(setVolume:)]
         pub unsafe fn setVolume(&self, volume: c_float);
 
         #[cfg(feature = "MediaPlayer_MPMediaItem")]
+        /**
+          Returns the currently playing media item, or nil if none is playing.
+         Setting the nowPlayingItem to an item in the current queue will begin playback at that item.
+        */
         #[method_id(@__retain_semantics Other nowPlayingItem)]
         pub unsafe fn nowPlayingItem(&self) -> Option<Id<MPMediaItem>>;
 
         #[cfg(feature = "MediaPlayer_MPMediaItem")]
+        /**
+          Returns the currently playing media item, or nil if none is playing.
+         Setting the nowPlayingItem to an item in the current queue will begin playback at that item.
+        */
         #[method(setNowPlayingItem:)]
         pub unsafe fn setNowPlayingItem(&self, now_playing_item: Option<&MPMediaItem>);
 
+        /**
+          Returns the index of the now playing item in the current playback queue.
+         May return NSNotFound if the index is not valid (e.g. an empty queue or an infinite playlist).
+        */
         #[method(indexOfNowPlayingItem)]
         pub unsafe fn indexOfNowPlayingItem(&self) -> NSUInteger;
 

@@ -7,6 +7,11 @@ use crate::MetricKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MetricKit_MXMetric")]
+    /**
+     @class         MXMetric
+    @abstract      An abstract class that describes a specific metric vended by MetricKit.
+    @discussion    All supported metrics are subclasses of MXMetric.
+    */
     pub struct MXMetric;
 
     #[cfg(feature = "MetricKit_MXMetric")]
@@ -16,15 +21,35 @@ extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXMetric")]
+/**
+ @class         MXMetric
+@abstract      An abstract class that describes a specific metric vended by MetricKit.
+@discussion    All supported metrics are subclasses of MXMetric.
+*/
 unsafe impl NSCoding for MXMetric {}
 
 #[cfg(feature = "MetricKit_MXMetric")]
+/**
+ @class         MXMetric
+@abstract      An abstract class that describes a specific metric vended by MetricKit.
+@discussion    All supported metrics are subclasses of MXMetric.
+*/
 unsafe impl NSObjectProtocol for MXMetric {}
 
 #[cfg(feature = "MetricKit_MXMetric")]
+/**
+ @class         MXMetric
+@abstract      An abstract class that describes a specific metric vended by MetricKit.
+@discussion    All supported metrics are subclasses of MXMetric.
+*/
 unsafe impl NSSecureCoding for MXMetric {}
 
 extern_methods!(
+    /**
+     @class         MXMetric
+    @abstract      An abstract class that describes a specific metric vended by MetricKit.
+    @discussion    All supported metrics are subclasses of MXMetric.
+    */
     #[cfg(feature = "MetricKit_MXMetric")]
     unsafe impl MXMetric {
         #[cfg(feature = "Foundation_NSData")]

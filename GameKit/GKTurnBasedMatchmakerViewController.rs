@@ -62,9 +62,15 @@ extern_methods!(
         #[method(setShowExistingMatches:)]
         pub unsafe fn setShowExistingMatches(&self, show_existing_matches: bool);
 
+        /**
+          This controls the mode of matchmaking to support in the UI (all, nearby only, automatch only, invite only). Throws an exception if you can not set to the desired mode (due to restrictions)
+        */
         #[method(matchmakingMode)]
         pub unsafe fn matchmakingMode(&self) -> GKMatchmakingMode;
 
+        /**
+          This controls the mode of matchmaking to support in the UI (all, nearby only, automatch only, invite only). Throws an exception if you can not set to the desired mode (due to restrictions)
+        */
         #[method(setMatchmakingMode:)]
         pub unsafe fn setMatchmakingMode(&self, matchmaking_mode: GKMatchmakingMode);
 
@@ -78,6 +84,14 @@ extern_methods!(
 );
 
 extern_protocol!(
+    /**
+
+      GKTurnBasedMatchmakerViewController.h
+      Game Center
+
+      Copyright 2010-2022 Apple Inc. All rights reserved.
+
+    */
     pub unsafe trait GKTurnBasedMatchmakerViewControllerDelegate: NSObjectProtocol {
         #[cfg(feature = "GameKit_GKTurnBasedMatchmakerViewController")]
         #[method(turnBasedMatchmakerViewControllerWasCancelled:)]

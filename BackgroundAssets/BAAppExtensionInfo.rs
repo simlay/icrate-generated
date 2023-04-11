@@ -28,6 +28,13 @@ extern_methods!(
     #[cfg(feature = "BackgroundAssets_BAAppExtensionInfo")]
     unsafe impl BAAppExtensionInfo {
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+          @brief The number of bytes remaining that can be scheduled if the total download size is restricted.
+         @discussion When a download is restricted, your extension can only schedule up to its `BAInitialDownloadAllowance`
+         defined in your app's `Info.plist`. This result tells you the number of bytes remaining that can be scheduled
+         before the application is launched. Once the application is launched, this restriction is removed.
+         @result The result is `nil` if downloads are not restricted. It returns a valid number with the remaining available download size otherwise.
+        */
         #[method_id(@__retain_semantics Other restrictedDownloadSizeRemaining)]
         pub unsafe fn restrictedDownloadSizeRemaining(&self) -> Option<Id<NSNumber>>;
 

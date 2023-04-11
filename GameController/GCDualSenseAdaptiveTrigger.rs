@@ -57,6 +57,14 @@ extern_struct!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameController_GCDualSenseAdaptiveTrigger")]
+    /**
+     DualSense triggers are required to be analog inputs. Common uses would be acceleration and decelleration in a driving game for example.
+
+    GCDualSenseAdaptiveTrigger represents an adaptive trigger on the Sony DualSense controller, allowing you to specify a dynamic resistance force
+    that is applied when pulling the trigger. This can, for example, be used to emulate the feeling of pulling back a bow string, firing a weapon, or pulling a lever.
+
+    @see GCDualSenseGamepad
+    */
     pub struct GCDualSenseAdaptiveTrigger;
 
     #[cfg(feature = "GameController_GCDualSenseAdaptiveTrigger")]
@@ -67,17 +75,49 @@ extern_class!(
 );
 
 #[cfg(feature = "GameController_GCDualSenseAdaptiveTrigger")]
+/**
+ DualSense triggers are required to be analog inputs. Common uses would be acceleration and decelleration in a driving game for example.
+
+GCDualSenseAdaptiveTrigger represents an adaptive trigger on the Sony DualSense controller, allowing you to specify a dynamic resistance force
+that is applied when pulling the trigger. This can, for example, be used to emulate the feeling of pulling back a bow string, firing a weapon, or pulling a lever.
+
+@see GCDualSenseGamepad
+*/
 unsafe impl NSObjectProtocol for GCDualSenseAdaptiveTrigger {}
 
 extern_methods!(
+    /**
+     DualSense triggers are required to be analog inputs. Common uses would be acceleration and decelleration in a driving game for example.
+
+    GCDualSenseAdaptiveTrigger represents an adaptive trigger on the Sony DualSense controller, allowing you to specify a dynamic resistance force
+    that is applied when pulling the trigger. This can, for example, be used to emulate the feeling of pulling back a bow string, firing a weapon, or pulling a lever.
+
+    @see GCDualSenseGamepad
+    */
     #[cfg(feature = "GameController_GCDualSenseAdaptiveTrigger")]
     unsafe impl GCDualSenseAdaptiveTrigger {
+        /**
+         The mode that the adaptive trigger is currently in. This property reflects the physical state of the triggers - and requires a response from the controller.
+        It does not update immediately after calling -[GCDualSenseAdaptiveTrigger setMode...].
+
+        @see GCDualSenseAdaptiveTriggerMode
+        */
         #[method(mode)]
         pub unsafe fn mode(&self) -> GCDualSenseAdaptiveTriggerMode;
 
+        /**
+         The current status of the adaptive trigger - whether it is ready to apply a load, is currently applying a load, or has finished applying a load.
+
+        @see GCDualSenseAdaptiveTriggerStatus
+        */
         #[method(status)]
         pub unsafe fn status(&self) -> GCDualSenseAdaptiveTriggerStatus;
 
+        /**
+         A normalized float from [0-1], with 0 representing the lowest possible trigger arm position and 1 representing the maximum trigger arm position.
+
+        @see GCDualSenseAdaptiveTriggerStatus
+        */
         #[method(armPosition)]
         pub unsafe fn armPosition(&self) -> c_float;
 

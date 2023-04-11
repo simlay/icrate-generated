@@ -47,6 +47,10 @@ extern_static!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKVerifiableClinicalRecord")]
+    /**
+     @class         HKVerifiableClinicalRecord
+    @abstract      An NSObject that represents a verifiable clinical record.
+    */
     pub struct HKVerifiableClinicalRecord;
 
     #[cfg(feature = "HealthKit_HKVerifiableClinicalRecord")]
@@ -57,53 +61,110 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKVerifiableClinicalRecord")]
+/**
+ @class         HKVerifiableClinicalRecord
+@abstract      An NSObject that represents a verifiable clinical record.
+*/
 unsafe impl NSCoding for HKVerifiableClinicalRecord {}
 
 #[cfg(feature = "HealthKit_HKVerifiableClinicalRecord")]
+/**
+ @class         HKVerifiableClinicalRecord
+@abstract      An NSObject that represents a verifiable clinical record.
+*/
 unsafe impl NSObjectProtocol for HKVerifiableClinicalRecord {}
 
 #[cfg(feature = "HealthKit_HKVerifiableClinicalRecord")]
+/**
+ @class         HKVerifiableClinicalRecord
+@abstract      An NSObject that represents a verifiable clinical record.
+*/
 unsafe impl NSSecureCoding for HKVerifiableClinicalRecord {}
 
 extern_methods!(
+    /**
+     @class         HKVerifiableClinicalRecord
+    @abstract      An NSObject that represents a verifiable clinical record.
+    */
     #[cfg(feature = "HealthKit_HKVerifiableClinicalRecord")]
     unsafe impl HKVerifiableClinicalRecord {
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+         @property      recordTypes
+        @abstract      The types present in this record.
+        */
         #[method_id(@__retain_semantics Other recordTypes)]
         pub unsafe fn recordTypes(&self) -> Id<NSArray<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property      issuerIdentifier
+        @abstract      The identifier for the issuer of this record.
+        */
         #[method_id(@__retain_semantics Other issuerIdentifier)]
         pub unsafe fn issuerIdentifier(&self) -> Id<NSString>;
 
         #[cfg(feature = "HealthKit_HKVerifiableClinicalRecordSubject")]
+        /**
+         @property      subject
+        @abstract      The subject of this record.
+        */
         #[method_id(@__retain_semantics Other subject)]
         pub unsafe fn subject(&self) -> Id<HKVerifiableClinicalRecordSubject>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+         @property      issuedDate
+        @abstract      The date this record was issued.
+        */
         #[method_id(@__retain_semantics Other issuedDate)]
         pub unsafe fn issuedDate(&self) -> Id<NSDate>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+         @property      relevantDate
+        @abstract      A date most relevant to this record, like when a vaccine was
+        administered or a test was performed.
+        */
         #[method_id(@__retain_semantics Other relevantDate)]
         pub unsafe fn relevantDate(&self) -> Id<NSDate>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+         @property      expirationDate
+        @abstract      The date this record expires.
+        */
         #[method_id(@__retain_semantics Other expirationDate)]
         pub unsafe fn expirationDate(&self) -> Option<Id<NSDate>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+         @property      itemNames
+        @abstract      A list of display names for each item contained in this record.
+        */
         #[method_id(@__retain_semantics Other itemNames)]
         pub unsafe fn itemNames(&self) -> Id<NSArray<NSString>>;
 
+        /**
+         @property      sourceType
+        @abstract      The type of the source leading to this verifiable record.
+        */
         #[method_id(@__retain_semantics Other sourceType)]
         pub unsafe fn sourceType(&self) -> Option<Id<HKVerifiableClinicalRecordSourceType>>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+         @property      dataRepresentation
+        @abstract      The record's data representation, determined by source type.
+        */
         #[method_id(@__retain_semantics Other dataRepresentation)]
         pub unsafe fn dataRepresentation(&self) -> Id<NSData>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+         @property      JWSRepresentation
+        @abstract      The record's entirety as JSON Web Signature (JWS) data.
+        */
         #[deprecated]
         #[method_id(@__retain_semantics Other JWSRepresentation)]
         pub unsafe fn JWSRepresentation(&self) -> Id<NSData>;

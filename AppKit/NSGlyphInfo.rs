@@ -36,6 +36,9 @@ extern_methods!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      Non-CGGlyph NSGlyphInfo support is now deprecated. The following API will be formally deprecated in a future version of macOS
+    */
     pub enum NSCharacterCollection {
         NSIdentityMappingCharacterCollection = 0,
         NSAdobeCNS1CharacterCollection = 1,

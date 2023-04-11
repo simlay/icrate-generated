@@ -7,9 +7,22 @@ use crate::GameController::*;
 
 extern_protocol!(
     pub unsafe trait GCAxisElement: GCPhysicalInputElement {
+        /**
+         The input reporting the value of the axis as the position between a lower and
+        upper bound, if available.
+        */
         #[method_id(@__retain_semantics Other absoluteInput)]
         unsafe fn absoluteInput(&self) -> Option<Id<ProtocolObject<dyn GCAxisInput>>>;
 
+        /**
+         The input reporting axis values as the change (delta) since the last event.
+
+        Certain kinds of axis elements are only able to report relative values.  The
+        tracking of a computer mouse, for example, has no fixed origin - only the
+        change in position since the last event is reported.  Some freely-rotating
+        dials may also only report a value indicating which direction the dial was
+        turned.
+        */
         #[method_id(@__retain_semantics Other relativeInput)]
         unsafe fn relativeInput(&self) -> Id<ProtocolObject<dyn GCRelativeInput>>;
     }

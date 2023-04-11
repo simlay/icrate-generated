@@ -18,6 +18,13 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSTabViewController")]
+    /**
+      NSTabViewController is a container view controller that displays a single child view controller at a time from its \c childViewControllers.
+     It provides standard tab-style UI for user selection of tabs, or allows custom UI to be easily created by providing targets for bindings.
+     ChildViewControllers’ views are lazily loaded; they are only loaded once their tab is selected and visible.
+     The NSTabViewController is set as the delegate of its managed NSTabView. Any overrides of NSTabViewDelegate methods must call super. Properties of the TabView such as the tabStyle can be directly manipulated, but calling methods that add and remove tabViewItems or changing the delegate is not allowed.
+     NSViewController's methods \c -addChildViewController:, \c -insertViewController:atIndex:, and \c -removeChildViewControllerAtIndex: can all be used as convience methods to add children; default TabViewItems will be appropriately created or destroyed. The default NSTabViewItem created with with +[NSTabViewItem tabViewItemForViewController:].
+    */
     pub struct NSTabViewController;
 
     #[cfg(feature = "AppKit_NSTabViewController")]
@@ -28,55 +35,135 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSTabViewController")]
+/**
+  NSTabViewController is a container view controller that displays a single child view controller at a time from its \c childViewControllers.
+ It provides standard tab-style UI for user selection of tabs, or allows custom UI to be easily created by providing targets for bindings.
+ ChildViewControllers’ views are lazily loaded; they are only loaded once their tab is selected and visible.
+ The NSTabViewController is set as the delegate of its managed NSTabView. Any overrides of NSTabViewDelegate methods must call super. Properties of the TabView such as the tabStyle can be directly manipulated, but calling methods that add and remove tabViewItems or changing the delegate is not allowed.
+ NSViewController's methods \c -addChildViewController:, \c -insertViewController:atIndex:, and \c -removeChildViewControllerAtIndex: can all be used as convience methods to add children; default TabViewItems will be appropriately created or destroyed. The default NSTabViewItem created with with +[NSTabViewItem tabViewItemForViewController:].
+*/
 unsafe impl NSCoding for NSTabViewController {}
 
 #[cfg(feature = "AppKit_NSTabViewController")]
+/**
+  NSTabViewController is a container view controller that displays a single child view controller at a time from its \c childViewControllers.
+ It provides standard tab-style UI for user selection of tabs, or allows custom UI to be easily created by providing targets for bindings.
+ ChildViewControllers’ views are lazily loaded; they are only loaded once their tab is selected and visible.
+ The NSTabViewController is set as the delegate of its managed NSTabView. Any overrides of NSTabViewDelegate methods must call super. Properties of the TabView such as the tabStyle can be directly manipulated, but calling methods that add and remove tabViewItems or changing the delegate is not allowed.
+ NSViewController's methods \c -addChildViewController:, \c -insertViewController:atIndex:, and \c -removeChildViewControllerAtIndex: can all be used as convience methods to add children; default TabViewItems will be appropriately created or destroyed. The default NSTabViewItem created with with +[NSTabViewItem tabViewItemForViewController:].
+*/
 unsafe impl NSEditor for NSTabViewController {}
 
 #[cfg(feature = "AppKit_NSTabViewController")]
+/**
+  NSTabViewController is a container view controller that displays a single child view controller at a time from its \c childViewControllers.
+ It provides standard tab-style UI for user selection of tabs, or allows custom UI to be easily created by providing targets for bindings.
+ ChildViewControllers’ views are lazily loaded; they are only loaded once their tab is selected and visible.
+ The NSTabViewController is set as the delegate of its managed NSTabView. Any overrides of NSTabViewDelegate methods must call super. Properties of the TabView such as the tabStyle can be directly manipulated, but calling methods that add and remove tabViewItems or changing the delegate is not allowed.
+ NSViewController's methods \c -addChildViewController:, \c -insertViewController:atIndex:, and \c -removeChildViewControllerAtIndex: can all be used as convience methods to add children; default TabViewItems will be appropriately created or destroyed. The default NSTabViewItem created with with +[NSTabViewItem tabViewItemForViewController:].
+*/
 unsafe impl NSObjectProtocol for NSTabViewController {}
 
 #[cfg(feature = "AppKit_NSTabViewController")]
+/**
+  NSTabViewController is a container view controller that displays a single child view controller at a time from its \c childViewControllers.
+ It provides standard tab-style UI for user selection of tabs, or allows custom UI to be easily created by providing targets for bindings.
+ ChildViewControllers’ views are lazily loaded; they are only loaded once their tab is selected and visible.
+ The NSTabViewController is set as the delegate of its managed NSTabView. Any overrides of NSTabViewDelegate methods must call super. Properties of the TabView such as the tabStyle can be directly manipulated, but calling methods that add and remove tabViewItems or changing the delegate is not allowed.
+ NSViewController's methods \c -addChildViewController:, \c -insertViewController:atIndex:, and \c -removeChildViewControllerAtIndex: can all be used as convience methods to add children; default TabViewItems will be appropriately created or destroyed. The default NSTabViewItem created with with +[NSTabViewItem tabViewItemForViewController:].
+*/
 unsafe impl NSSeguePerforming for NSTabViewController {}
 
 #[cfg(feature = "AppKit_NSTabViewController")]
+/**
+  NSTabViewController is a container view controller that displays a single child view controller at a time from its \c childViewControllers.
+ It provides standard tab-style UI for user selection of tabs, or allows custom UI to be easily created by providing targets for bindings.
+ ChildViewControllers’ views are lazily loaded; they are only loaded once their tab is selected and visible.
+ The NSTabViewController is set as the delegate of its managed NSTabView. Any overrides of NSTabViewDelegate methods must call super. Properties of the TabView such as the tabStyle can be directly manipulated, but calling methods that add and remove tabViewItems or changing the delegate is not allowed.
+ NSViewController's methods \c -addChildViewController:, \c -insertViewController:atIndex:, and \c -removeChildViewControllerAtIndex: can all be used as convience methods to add children; default TabViewItems will be appropriately created or destroyed. The default NSTabViewItem created with with +[NSTabViewItem tabViewItemForViewController:].
+*/
 unsafe impl NSTabViewDelegate for NSTabViewController {}
 
 #[cfg(feature = "AppKit_NSTabViewController")]
+/**
+  NSTabViewController is a container view controller that displays a single child view controller at a time from its \c childViewControllers.
+ It provides standard tab-style UI for user selection of tabs, or allows custom UI to be easily created by providing targets for bindings.
+ ChildViewControllers’ views are lazily loaded; they are only loaded once their tab is selected and visible.
+ The NSTabViewController is set as the delegate of its managed NSTabView. Any overrides of NSTabViewDelegate methods must call super. Properties of the TabView such as the tabStyle can be directly manipulated, but calling methods that add and remove tabViewItems or changing the delegate is not allowed.
+ NSViewController's methods \c -addChildViewController:, \c -insertViewController:atIndex:, and \c -removeChildViewControllerAtIndex: can all be used as convience methods to add children; default TabViewItems will be appropriately created or destroyed. The default NSTabViewItem created with with +[NSTabViewItem tabViewItemForViewController:].
+*/
 unsafe impl NSToolbarDelegate for NSTabViewController {}
 
 #[cfg(feature = "AppKit_NSTabViewController")]
+/**
+  NSTabViewController is a container view controller that displays a single child view controller at a time from its \c childViewControllers.
+ It provides standard tab-style UI for user selection of tabs, or allows custom UI to be easily created by providing targets for bindings.
+ ChildViewControllers’ views are lazily loaded; they are only loaded once their tab is selected and visible.
+ The NSTabViewController is set as the delegate of its managed NSTabView. Any overrides of NSTabViewDelegate methods must call super. Properties of the TabView such as the tabStyle can be directly manipulated, but calling methods that add and remove tabViewItems or changing the delegate is not allowed.
+ NSViewController's methods \c -addChildViewController:, \c -insertViewController:atIndex:, and \c -removeChildViewControllerAtIndex: can all be used as convience methods to add children; default TabViewItems will be appropriately created or destroyed. The default NSTabViewItem created with with +[NSTabViewItem tabViewItemForViewController:].
+*/
 unsafe impl NSUserInterfaceItemIdentification for NSTabViewController {}
 
 extern_methods!(
+    /**
+      NSTabViewController is a container view controller that displays a single child view controller at a time from its \c childViewControllers.
+     It provides standard tab-style UI for user selection of tabs, or allows custom UI to be easily created by providing targets for bindings.
+     ChildViewControllers’ views are lazily loaded; they are only loaded once their tab is selected and visible.
+     The NSTabViewController is set as the delegate of its managed NSTabView. Any overrides of NSTabViewDelegate methods must call super. Properties of the TabView such as the tabStyle can be directly manipulated, but calling methods that add and remove tabViewItems or changing the delegate is not allowed.
+     NSViewController's methods \c -addChildViewController:, \c -insertViewController:atIndex:, and \c -removeChildViewControllerAtIndex: can all be used as convience methods to add children; default TabViewItems will be appropriately created or destroyed. The default NSTabViewItem created with with +[NSTabViewItem tabViewItemForViewController:].
+    */
     #[cfg(feature = "AppKit_NSTabViewController")]
     unsafe impl NSTabViewController {
+        /**
+          The style that this NSTabViewController displays its UI as. Defaults to \c NSTabViewControllerTabStyleSegmentedControlOnTop.
+        */
         #[method(tabStyle)]
         pub unsafe fn tabStyle(&self) -> NSTabViewControllerTabStyle;
 
+        /**
+          The style that this NSTabViewController displays its UI as. Defaults to \c NSTabViewControllerTabStyleSegmentedControlOnTop.
+        */
         #[method(setTabStyle:)]
         pub unsafe fn setTabStyle(&self, tab_style: NSTabViewControllerTabStyle);
 
         #[cfg(feature = "AppKit_NSTabView")]
+        /**
+          Access to the tab view that the controller is controlling. To provide a custom NSTabView, assign the value anytime before \c self.viewLoaded is \c YES. Querying the value will create it on-demand, if needed. Check \c self.viewLoaded before querying the value to avoid prematurely creating the view. Note that the \c -tabView may not be equal to the \c viewController.view. Properties such as the tabStyle can be directly manipulated, but calling methods that add and remove tabViewItems or changing the delegate is not allowed. The NSTabViewController will be made the delegate of the NSTabView. Internally, the NSTabView is always used to switch between displayed childViewControllers, regardless of the style displayed.
+        */
         #[method_id(@__retain_semantics Other tabView)]
         pub unsafe fn tabView(&self) -> Id<NSTabView>;
 
         #[cfg(feature = "AppKit_NSTabView")]
+        /**
+          Access to the tab view that the controller is controlling. To provide a custom NSTabView, assign the value anytime before \c self.viewLoaded is \c YES. Querying the value will create it on-demand, if needed. Check \c self.viewLoaded before querying the value to avoid prematurely creating the view. Note that the \c -tabView may not be equal to the \c viewController.view. Properties such as the tabStyle can be directly manipulated, but calling methods that add and remove tabViewItems or changing the delegate is not allowed. The NSTabViewController will be made the delegate of the NSTabView. Internally, the NSTabView is always used to switch between displayed childViewControllers, regardless of the style displayed.
+        */
         #[method(setTabView:)]
         pub unsafe fn setTabView(&self, tab_view: &NSTabView);
 
+        /**
+          This defines how NSTabViewController transitions from one view to another. Transitions go through [self transitionFromViewController:toViewController:options:completionHandler:]. The default value is \c NSViewControllerTransitionCrossfade|NSViewControllerTransitionAllowUserInteraction.
+        */
         #[method(transitionOptions)]
         pub unsafe fn transitionOptions(&self) -> NSViewControllerTransitionOptions;
 
+        /**
+          This defines how NSTabViewController transitions from one view to another. Transitions go through [self transitionFromViewController:toViewController:options:completionHandler:]. The default value is \c NSViewControllerTransitionCrossfade|NSViewControllerTransitionAllowUserInteraction.
+        */
         #[method(setTransitionOptions:)]
         pub unsafe fn setTransitionOptions(
             &self,
             transition_options: NSViewControllerTransitionOptions,
         );
 
+        /**
+          If YES and the receiving NSTabViewController has a nil title, \c -title will return its selected child ViewController's title. If NO, it will continue to return nil. The default value is \c YES.
+        */
         #[method(canPropagateSelectedChildViewControllerTitle)]
         pub unsafe fn canPropagateSelectedChildViewControllerTitle(&self) -> bool;
 
+        /**
+          If YES and the receiving NSTabViewController has a nil title, \c -title will return its selected child ViewController's title. If NO, it will continue to return nil. The default value is \c YES.
+        */
         #[method(setCanPropagateSelectedChildViewControllerTitle:)]
         pub unsafe fn setCanPropagateSelectedChildViewControllerTitle(
             &self,
@@ -84,16 +171,28 @@ extern_methods!(
         );
 
         #[cfg(all(feature = "AppKit_NSTabViewItem", feature = "Foundation_NSArray"))]
+        /**
+          The array of tab view items that correspond to the current child view controllers. After a child view controller is added to the receiving TabViewController, a NSTabViewItem with the default values will be created for it. Once the child is removed, its corresponding tabViewItem will be removed from the tabViewItems array.
+        */
         #[method_id(@__retain_semantics Other tabViewItems)]
         pub unsafe fn tabViewItems(&self) -> Id<NSArray<NSTabViewItem>>;
 
         #[cfg(all(feature = "AppKit_NSTabViewItem", feature = "Foundation_NSArray"))]
+        /**
+          The array of tab view items that correspond to the current child view controllers. After a child view controller is added to the receiving TabViewController, a NSTabViewItem with the default values will be created for it. Once the child is removed, its corresponding tabViewItem will be removed from the tabViewItems array.
+        */
         #[method(setTabViewItems:)]
         pub unsafe fn setTabViewItems(&self, tab_view_items: &NSArray<NSTabViewItem>);
 
+        /**
+          Read and write the current selected TabViewItem that is being shown. This value is KVC compliant and can be the target of a binding. For instance, a NSSegmentedControl's selection can be bound to this value with: \code [segmentedControl bind:NSSelectedIndexBinding toObject:tabViewController withKeyPath:@“selectedTabViewItemIndex" options:nil];
+        */
         #[method(selectedTabViewItemIndex)]
         pub unsafe fn selectedTabViewItemIndex(&self) -> NSInteger;
 
+        /**
+          Read and write the current selected TabViewItem that is being shown. This value is KVC compliant and can be the target of a binding. For instance, a NSSegmentedControl's selection can be bound to this value with: \code [segmentedControl bind:NSSelectedIndexBinding toObject:tabViewController withKeyPath:@“selectedTabViewItemIndex" options:nil];
+        */
         #[method(setSelectedTabViewItemIndex:)]
         pub unsafe fn setSelectedTabViewItemIndex(&self, selected_tab_view_item_index: NSInteger);
 
@@ -181,6 +280,13 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSViewController`
+    /**
+      NSTabViewController is a container view controller that displays a single child view controller at a time from its \c childViewControllers.
+     It provides standard tab-style UI for user selection of tabs, or allows custom UI to be easily created by providing targets for bindings.
+     ChildViewControllers’ views are lazily loaded; they are only loaded once their tab is selected and visible.
+     The NSTabViewController is set as the delegate of its managed NSTabView. Any overrides of NSTabViewDelegate methods must call super. Properties of the TabView such as the tabStyle can be directly manipulated, but calling methods that add and remove tabViewItems or changing the delegate is not allowed.
+     NSViewController's methods \c -addChildViewController:, \c -insertViewController:atIndex:, and \c -removeChildViewControllerAtIndex: can all be used as convience methods to add children; default TabViewItems will be appropriately created or destroyed. The default NSTabViewItem created with with +[NSTabViewItem tabViewItemForViewController:].
+    */
     #[cfg(feature = "AppKit_NSTabViewController")]
     unsafe impl NSTabViewController {
         #[cfg(feature = "Foundation_NSBundle")]

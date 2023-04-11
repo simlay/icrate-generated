@@ -17,6 +17,9 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      The destination where you want the GPU trace to be captured to.
+    */
     pub enum MTLCaptureDestination {
         MTLCaptureDestinationDeveloperTools = 1,
         MTLCaptureDestinationGPUTraceDocument = 2,
@@ -40,23 +43,59 @@ unsafe impl NSObjectProtocol for MTLCaptureDescriptor {}
 extern_methods!(
     #[cfg(feature = "Metal_MTLCaptureDescriptor")]
     unsafe impl MTLCaptureDescriptor {
+        /**
+         @brief The object that is captured.
+
+        Must be one of the following:
+
+        MTLDevice captures all command queues of the device.
+
+        MTLCommandQueue captures a single command queue.
+
+        MTLCaptureScope captures between the next begin and end of the scope.
+        */
         #[method_id(@__retain_semantics Other captureObject)]
         pub unsafe fn captureObject(&self) -> Option<Id<Object>>;
 
+        /**
+         @brief The object that is captured.
+
+        Must be one of the following:
+
+        MTLDevice captures all command queues of the device.
+
+        MTLCommandQueue captures a single command queue.
+
+        MTLCaptureScope captures between the next begin and end of the scope.
+        */
         #[method(setCaptureObject:)]
         pub unsafe fn setCaptureObject(&self, capture_object: Option<&Object>);
 
+        /**
+          The destination you want the GPU trace to be captured to.
+        */
         #[method(destination)]
         pub fn destination(&self) -> MTLCaptureDestination;
 
+        /**
+          The destination you want the GPU trace to be captured to.
+        */
         #[method(setDestination:)]
         pub fn setDestination(&self, destination: MTLCaptureDestination);
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          URL the GPU Trace document will be captured to.
+         Must be specified when destiation is MTLCaptureDestinationGPUTraceDocument.
+        */
         #[method_id(@__retain_semantics Other outputURL)]
         pub fn outputURL(&self) -> Option<Id<NSURL>>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          URL the GPU Trace document will be captured to.
+         Must be specified when destiation is MTLCaptureDestinationGPUTraceDocument.
+        */
         #[method(setOutputURL:)]
         pub fn setOutputURL(&self, output_url: Option<&NSURL>);
     }
@@ -125,15 +164,24 @@ extern_methods!(
         #[method(stopCapture)]
         pub fn stopCapture(&self);
 
+        /**
+          Default scope to be captured when a capture is initiated from Xcode’s capture button. When nil, it’ll fall back to presentDrawable:, presentDrawable:atTime:, presentDrawable:afterMinimumDuration: in MTLCommandBuffer or present:, present:atTime:, present:afterMinimumDuration: in MTLDrawable.
+        */
         #[method_id(@__retain_semantics Other defaultCaptureScope)]
         pub fn defaultCaptureScope(&self) -> Option<Id<ProtocolObject<dyn MTLCaptureScope>>>;
 
+        /**
+          Default scope to be captured when a capture is initiated from Xcode’s capture button. When nil, it’ll fall back to presentDrawable:, presentDrawable:atTime:, presentDrawable:afterMinimumDuration: in MTLCommandBuffer or present:, present:atTime:, present:afterMinimumDuration: in MTLDrawable.
+        */
         #[method(setDefaultCaptureScope:)]
         pub fn setDefaultCaptureScope(
             &self,
             default_capture_scope: Option<&ProtocolObject<dyn MTLCaptureScope>>,
         );
 
+        /**
+          Query if a capture is currently in progress
+        */
         #[method(isCapturing)]
         pub fn isCapturing(&self) -> bool;
     }

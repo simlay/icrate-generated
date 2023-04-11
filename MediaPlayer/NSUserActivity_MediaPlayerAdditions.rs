@@ -10,10 +10,16 @@ extern_methods!(
     #[cfg(feature = "Foundation_NSUserActivity")]
     unsafe impl NSUserActivity {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          A unique identifier relative to the app's media content catalog for the displayed media item.
+        */
         #[method_id(@__retain_semantics Other externalMediaContentIdentifier)]
         pub unsafe fn externalMediaContentIdentifier(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          A unique identifier relative to the app's media content catalog for the displayed media item.
+        */
         #[method(setExternalMediaContentIdentifier:)]
         pub unsafe fn setExternalMediaContentIdentifier(
             &self,

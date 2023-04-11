@@ -33,6 +33,9 @@ extern_methods!(
         pub unsafe fn initWithFileURL(this: Option<Allocated<Self>>, file_url: &NSURL) -> Id<Self>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          Local file URL where fetched records are cached and saved records originate from.
+        */
         #[method_id(@__retain_semantics Other fileURL)]
         pub unsafe fn fileURL(&self) -> Option<Id<NSURL>>;
     }

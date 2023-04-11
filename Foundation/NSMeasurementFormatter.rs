@@ -36,31 +36,81 @@ unsafe impl NSSecureCoding for NSMeasurementFormatter {}
 extern_methods!(
     #[cfg(feature = "Foundation_NSMeasurementFormatter")]
     unsafe impl NSMeasurementFormatter {
+        /**
+         This property can be set to ensure that the formatter behaves in a way the developer expects, even if it is not standard according to the preferences of the user's locale. If not specified, unitOptions defaults to localizing according to the preferences of the locale.
+
+        Ex:
+
+        By default, if unitOptions is set to the empty set, the formatter will do the following:
+        - kilocalories may be formatted as "C" instead of "kcal" depending on the locale.
+        - kilometersPerHour may be formatted as "miles per hour" for US and UK locales but "kilometers per hour" for other locales.
+
+        However, if NSMeasurementFormatterUnitOptionsProvidedUnit is set, the formatter will do the following:
+        - kilocalories would be formatted as "kcal" in the language of the locale, even if the locale prefers "C".
+        - kilometersPerHour would be formatted as "kilometers per hour" for US and UK locales even though the preference is for "miles per hour."
+
+        Note that NSMeasurementFormatter will handle converting measurement objects to the preferred units in a particular locale.  For instance, if provided a measurement object in kilometers and the set locale is en_US, the formatter will implicitly convert the measurement object to miles and return the formatted string as the equivalent measurement in miles.
+
+        */
         #[method(unitOptions)]
         pub unsafe fn unitOptions(&self) -> NSMeasurementFormatterUnitOptions;
 
+        /**
+         This property can be set to ensure that the formatter behaves in a way the developer expects, even if it is not standard according to the preferences of the user's locale. If not specified, unitOptions defaults to localizing according to the preferences of the locale.
+
+        Ex:
+
+        By default, if unitOptions is set to the empty set, the formatter will do the following:
+        - kilocalories may be formatted as "C" instead of "kcal" depending on the locale.
+        - kilometersPerHour may be formatted as "miles per hour" for US and UK locales but "kilometers per hour" for other locales.
+
+        However, if NSMeasurementFormatterUnitOptionsProvidedUnit is set, the formatter will do the following:
+        - kilocalories would be formatted as "kcal" in the language of the locale, even if the locale prefers "C".
+        - kilometersPerHour would be formatted as "kilometers per hour" for US and UK locales even though the preference is for "miles per hour."
+
+        Note that NSMeasurementFormatter will handle converting measurement objects to the preferred units in a particular locale.  For instance, if provided a measurement object in kilometers and the set locale is en_US, the formatter will implicitly convert the measurement object to miles and return the formatted string as the equivalent measurement in miles.
+
+        */
         #[method(setUnitOptions:)]
         pub unsafe fn setUnitOptions(&self, unit_options: NSMeasurementFormatterUnitOptions);
 
+        /**
+         If not specified, unitStyle is set to NSFormattingUnitStyleMedium.
+        */
         #[method(unitStyle)]
         pub unsafe fn unitStyle(&self) -> NSFormattingUnitStyle;
 
+        /**
+         If not specified, unitStyle is set to NSFormattingUnitStyleMedium.
+        */
         #[method(setUnitStyle:)]
         pub unsafe fn setUnitStyle(&self, unit_style: NSFormattingUnitStyle);
 
         #[cfg(feature = "Foundation_NSLocale")]
+        /**
+         If not specified, locale is set to the user's current locale.
+        */
         #[method_id(@__retain_semantics Other locale)]
         pub unsafe fn locale(&self) -> Id<NSLocale>;
 
         #[cfg(feature = "Foundation_NSLocale")]
+        /**
+         If not specified, locale is set to the user's current locale.
+        */
         #[method(setLocale:)]
         pub unsafe fn setLocale(&self, locale: Option<&NSLocale>);
 
         #[cfg(feature = "Foundation_NSNumberFormatter")]
+        /**
+         If not specified, the number formatter is set up with NSNumberFormatterDecimalStyle.
+        */
         #[method_id(@__retain_semantics Other numberFormatter)]
         pub unsafe fn numberFormatter(&self) -> Id<NSNumberFormatter>;
 
         #[cfg(feature = "Foundation_NSNumberFormatter")]
+        /**
+         If not specified, the number formatter is set up with NSNumberFormatterDecimalStyle.
+        */
         #[method(setNumberFormatter:)]
         pub unsafe fn setNumberFormatter(&self, number_formatter: Option<&NSNumberFormatter>);
 

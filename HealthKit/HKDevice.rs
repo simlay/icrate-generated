@@ -46,34 +46,77 @@ extern_methods!(
     #[cfg(feature = "HealthKit_HKDevice")]
     unsafe impl HKDevice {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property      name
+        @abstract      The name of the receiver.
+        @discussion    The user-facing name, such as the one displayed in the Bluetooth Settings for a BLE device.
+        */
         #[method_id(@__retain_semantics Other name)]
         pub unsafe fn name(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property      manufacturer
+        @abstract      The manufacturer of the receiver.
+        */
         #[method_id(@__retain_semantics Other manufacturer)]
         pub unsafe fn manufacturer(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property      model
+        @abstract      The model of the receiver.
+        */
         #[method_id(@__retain_semantics Other model)]
         pub unsafe fn model(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property      hardwareVersion
+        @abstract      The hardware revision of the receiver.
+        */
         #[method_id(@__retain_semantics Other hardwareVersion)]
         pub unsafe fn hardwareVersion(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property      firmwareVersion
+        @abstract      The firmware revision of the receiver.
+        */
         #[method_id(@__retain_semantics Other firmwareVersion)]
         pub unsafe fn firmwareVersion(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property      softwareVersion
+        @abstract      The software revision of the receiver.
+        */
         #[method_id(@__retain_semantics Other softwareVersion)]
         pub unsafe fn softwareVersion(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property      localIdentifier
+        @abstract      A unique identifier for the receiver.
+        @discussion    This property is available to clients for a local identifier.
+        For example, Bluetooth peripherals managed by HealthKit use this
+        for the CoreBluetooth UUID which is valid only on the local
+        device and thus distinguish the same Bluetooth peripheral used
+        between multiple devices.
+        */
         #[method_id(@__retain_semantics Other localIdentifier)]
         pub unsafe fn localIdentifier(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property      UDIDeviceIdentifier
+        @abstract      Represents the device identifier portion of a device's FDA UDI (Unique Device Identifier).
+        @discussion    The device identifier can be used to reference the FDA's GUDID (Globally Unique Device
+        Identifier Database). Note that for user privacy concerns this field should not be used to
+        persist the production identifier portion of the device UDI. HealthKit clients should manage
+        the production identifier independently, if needed.
+        See http://www.fda.gov/MedicalDevices/DeviceRegulationandGuidance/UniqueDeviceIdentification/ for more information.
+        */
         #[method_id(@__retain_semantics Other UDIDeviceIdentifier)]
         pub unsafe fn UDIDeviceIdentifier(&self) -> Option<Id<NSString>>;
 

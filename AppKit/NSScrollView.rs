@@ -239,66 +239,120 @@ extern_methods!(
         #[method(scrollWheel:)]
         pub unsafe fn scrollWheel(&self, event: &NSEvent);
 
+        /**
+          An NSScrollView's scrollerStyle determines the style of scrollers that it will use.  AppKit sets this property automatically at runtime, based on the user's "Show scroll bars" setting and (if relevant) the set of connected pointing devices and their configured scroll capabilities, as determined by [NSScroller preferredScrollerStyle].  Setting an NSScrollView's scrollerStyle sets the scrollerStyle of its horizontalScroller and verticalScroller to match the new value.  If the NSScrollView subsequently creates or is assigned a new horizontalScroller or verticalScroller, they will at that time be assigned the same scrollerStyle that was given to the NSScrollView.
+        */
         #[method(scrollerStyle)]
         pub unsafe fn scrollerStyle(&self) -> NSScrollerStyle;
 
+        /**
+          An NSScrollView's scrollerStyle determines the style of scrollers that it will use.  AppKit sets this property automatically at runtime, based on the user's "Show scroll bars" setting and (if relevant) the set of connected pointing devices and their configured scroll capabilities, as determined by [NSScroller preferredScrollerStyle].  Setting an NSScrollView's scrollerStyle sets the scrollerStyle of its horizontalScroller and verticalScroller to match the new value.  If the NSScrollView subsequently creates or is assigned a new horizontalScroller or verticalScroller, they will at that time be assigned the same scrollerStyle that was given to the NSScrollView.
+        */
         #[method(setScrollerStyle:)]
         pub unsafe fn setScrollerStyle(&self, scroller_style: NSScrollerStyle);
 
+        /**
+          Applicable only to ScrolViews that use Overlay scrollers.  Setting an NSScrollView's scrollerKnobStyle sets the knobStyle of its horizontalScroller and verticalScroller to match the new value.  If the NSScrollView subsequently creates or is assigned a new horizontalScroller or verticalScroller, they will at that time be assigned the same knobStyle that was given to the NSScrollView.
+        */
         #[method(scrollerKnobStyle)]
         pub unsafe fn scrollerKnobStyle(&self) -> NSScrollerKnobStyle;
 
+        /**
+          Applicable only to ScrolViews that use Overlay scrollers.  Setting an NSScrollView's scrollerKnobStyle sets the knobStyle of its horizontalScroller and verticalScroller to match the new value.  If the NSScrollView subsequently creates or is assigned a new horizontalScroller or verticalScroller, they will at that time be assigned the same knobStyle that was given to the NSScrollView.
+        */
         #[method(setScrollerKnobStyle:)]
         pub unsafe fn setScrollerKnobStyle(&self, scroller_knob_style: NSScrollerKnobStyle);
 
         #[method(flashScrollers)]
         pub unsafe fn flashScrollers(&self);
 
+        /**
+          NSScrollView can scroll its contents past its bounds to achieve an elastic effect. When set to NSScrollElasticityAutomatic, scrolling the horizontal axis beyond its document bounds only occurs if the document width is greater than the view width or, the vertical scroller is hidden and the horizontal scroller is visible. The default value is NSScrollElasticityAutomatic.
+        */
         #[method(horizontalScrollElasticity)]
         pub unsafe fn horizontalScrollElasticity(&self) -> NSScrollElasticity;
 
+        /**
+          NSScrollView can scroll its contents past its bounds to achieve an elastic effect. When set to NSScrollElasticityAutomatic, scrolling the horizontal axis beyond its document bounds only occurs if the document width is greater than the view width or, the vertical scroller is hidden and the horizontal scroller is visible. The default value is NSScrollElasticityAutomatic.
+        */
         #[method(setHorizontalScrollElasticity:)]
         pub unsafe fn setHorizontalScrollElasticity(
             &self,
             horizontal_scroll_elasticity: NSScrollElasticity,
         );
 
+        /**
+          NSScrollView can scroll its contents past its bounds to achieve an elastic effect. When set to NSScrollElasticityAuto, scrolling the vertical axis beyond its docment bounds occurs if any of the following are true: visible vertical scroller, content height greater than view height, horizontal scroller hidden
+        */
         #[method(verticalScrollElasticity)]
         pub unsafe fn verticalScrollElasticity(&self) -> NSScrollElasticity;
 
+        /**
+          NSScrollView can scroll its contents past its bounds to achieve an elastic effect. When set to NSScrollElasticityAuto, scrolling the vertical axis beyond its docment bounds occurs if any of the following are true: visible vertical scroller, content height greater than view height, horizontal scroller hidden
+        */
         #[method(setVerticalScrollElasticity:)]
         pub unsafe fn setVerticalScrollElasticity(
             &self,
             vertical_scroll_elasticity: NSScrollElasticity,
         );
 
+        /**
+          Some content is scrollable in both the horizontal and vertical axes, but is predominantly scrolled one axis at a time. Other content (such as a drawing canvas) should scroll freely in both axes. Traditionally this is not an issue with scroll wheels since they can only scroll in one direction at a time. With scroll balls and touch surfaces, it becomes more difficult to determine the user's intention. This property helps NSScrollView determine the user's intention by specifying the type of scrolling content. When set to YES, NSScrollView will only scroll in the predominate direction the user is scrolling. The default value is YES for apps build on 10.7; NO otherwise.
+        */
         #[method(usesPredominantAxisScrolling)]
         pub unsafe fn usesPredominantAxisScrolling(&self) -> bool;
 
+        /**
+          Some content is scrollable in both the horizontal and vertical axes, but is predominantly scrolled one axis at a time. Other content (such as a drawing canvas) should scroll freely in both axes. Traditionally this is not an issue with scroll wheels since they can only scroll in one direction at a time. With scroll balls and touch surfaces, it becomes more difficult to determine the user's intention. This property helps NSScrollView determine the user's intention by specifying the type of scrolling content. When set to YES, NSScrollView will only scroll in the predominate direction the user is scrolling. The default value is YES for apps build on 10.7; NO otherwise.
+        */
         #[method(setUsesPredominantAxisScrolling:)]
         pub unsafe fn setUsesPredominantAxisScrolling(&self, uses_predominant_axis_scrolling: bool);
 
+        /**
+          Allow the user to magnify the scrollview. Note: this does not prevent the developer from manually adjusting the magnification value. If magnification exceeds either the maximum or minimum limits for magnification, and allowsMagnification is YES, the scroll view temporarily animates the content magnification just past those limits before returning to them. The default value is NO.
+        */
         #[method(allowsMagnification)]
         pub unsafe fn allowsMagnification(&self) -> bool;
 
+        /**
+          Allow the user to magnify the scrollview. Note: this does not prevent the developer from manually adjusting the magnification value. If magnification exceeds either the maximum or minimum limits for magnification, and allowsMagnification is YES, the scroll view temporarily animates the content magnification just past those limits before returning to them. The default value is NO.
+        */
         #[method(setAllowsMagnification:)]
         pub unsafe fn setAllowsMagnification(&self, allows_magnification: bool);
 
+        /**
+          This value determines how much the content is currently scaled. To animate the magnification, use the object's animator. The default value is 1.0
+        */
         #[method(magnification)]
         pub unsafe fn magnification(&self) -> CGFloat;
 
+        /**
+          This value determines how much the content is currently scaled. To animate the magnification, use the object's animator. The default value is 1.0
+        */
         #[method(setMagnification:)]
         pub unsafe fn setMagnification(&self, magnification: CGFloat);
 
+        /**
+          This value determines how large the content can be magnified. It must be greater than or equal to the minimum magnification. The default value is 4.0.
+        */
         #[method(maxMagnification)]
         pub unsafe fn maxMagnification(&self) -> CGFloat;
 
+        /**
+          This value determines how large the content can be magnified. It must be greater than or equal to the minimum magnification. The default value is 4.0.
+        */
         #[method(setMaxMagnification:)]
         pub unsafe fn setMaxMagnification(&self, max_magnification: CGFloat);
 
+        /**
+          This value determines how small the content can be magnified. The default value is 0.25.
+        */
         #[method(minMagnification)]
         pub unsafe fn minMagnification(&self) -> CGFloat;
 
+        /**
+          This value determines how small the content can be magnified. The default value is 0.25.
+        */
         #[method(setMinMagnification:)]
         pub unsafe fn setMinMagnification(&self, min_magnification: CGFloat);
 
@@ -315,24 +369,42 @@ extern_methods!(
         #[method(addFloatingSubview:forAxis:)]
         pub unsafe fn addFloatingSubview_forAxis(&self, view: &NSView, axis: NSEventGestureAxis);
 
+        /**
+           Automatically sets the scroll view's contentInsets property to account for any overlapping title bar. Defaults to YES.
+        */
         #[method(automaticallyAdjustsContentInsets)]
         pub unsafe fn automaticallyAdjustsContentInsets(&self) -> bool;
 
+        /**
+           Automatically sets the scroll view's contentInsets property to account for any overlapping title bar. Defaults to YES.
+        */
         #[method(setAutomaticallyAdjustsContentInsets:)]
         pub unsafe fn setAutomaticallyAdjustsContentInsets(
             &self,
             automatically_adjusts_content_insets: bool,
         );
 
+        /**
+          The distance that the sub views are inset from the enclosing scroll view during tiling. When contentInset equal to NSEdgeInsetsZero, traditional tiling is performed. That is, the rulers, headers, etc... are tiled with the contentView frame filling the remaining space. When contentInset is not equal to NSEdgeInsetsZero, the rulers, header, etc... are inset as specified. The contentView is is placed underneath these sibling views and is only inset by scroll view border and non-overlay scrollers.
+        */
         #[method(contentInsets)]
         pub unsafe fn contentInsets(&self) -> NSEdgeInsets;
 
+        /**
+          The distance that the sub views are inset from the enclosing scroll view during tiling. When contentInset equal to NSEdgeInsetsZero, traditional tiling is performed. That is, the rulers, headers, etc... are tiled with the contentView frame filling the remaining space. When contentInset is not equal to NSEdgeInsetsZero, the rulers, header, etc... are inset as specified. The contentView is is placed underneath these sibling views and is only inset by scroll view border and non-overlay scrollers.
+        */
         #[method(setContentInsets:)]
         pub unsafe fn setContentInsets(&self, content_insets: NSEdgeInsets);
 
+        /**
+          The distance the scrollers are inset from the edge of the scroll view.
+        */
         #[method(scrollerInsets)]
         pub unsafe fn scrollerInsets(&self) -> NSEdgeInsets;
 
+        /**
+          The distance the scrollers are inset from the edge of the scroll view.
+        */
         #[method(setScrollerInsets:)]
         pub unsafe fn setScrollerInsets(&self, scroller_insets: NSEdgeInsets);
     }

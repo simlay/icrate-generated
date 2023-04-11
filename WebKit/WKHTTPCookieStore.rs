@@ -19,6 +19,9 @@ extern_protocol!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "WebKit_WKHTTPCookieStore")]
+    /**
+     A WKHTTPCookieStore object allows managing the HTTP cookies associated with a particular WKWebsiteDataStore.
+    */
     pub struct WKHTTPCookieStore;
 
     #[cfg(feature = "WebKit_WKHTTPCookieStore")]
@@ -28,9 +31,15 @@ extern_class!(
 );
 
 #[cfg(feature = "WebKit_WKHTTPCookieStore")]
+/**
+ A WKHTTPCookieStore object allows managing the HTTP cookies associated with a particular WKWebsiteDataStore.
+*/
 unsafe impl NSObjectProtocol for WKHTTPCookieStore {}
 
 extern_methods!(
+    /**
+     A WKHTTPCookieStore object allows managing the HTTP cookies associated with a particular WKWebsiteDataStore.
+    */
     #[cfg(feature = "WebKit_WKHTTPCookieStore")]
     unsafe impl WKHTTPCookieStore {
         #[method_id(@__retain_semantics Init init)]

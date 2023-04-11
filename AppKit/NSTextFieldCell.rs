@@ -113,10 +113,16 @@ extern_methods!(
         pub unsafe fn setWantsNotificationForMarkedText(&self, flag: bool);
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          Returns an array of locale identifiers representing keyboard input sources allowed to be enabled when the receiver has the keyboard focus.
+        */
         #[method_id(@__retain_semantics Other allowedInputSourceLocales)]
         pub unsafe fn allowedInputSourceLocales(&self) -> Option<Id<NSArray<NSString>>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          Returns an array of locale identifiers representing keyboard input sources allowed to be enabled when the receiver has the keyboard focus.
+        */
         #[method(setAllowedInputSourceLocales:)]
         pub unsafe fn setAllowedInputSourceLocales(
             &self,

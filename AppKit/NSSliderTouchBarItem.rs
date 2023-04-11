@@ -39,22 +39,42 @@ extern_methods!(
         pub unsafe fn view(&self) -> Id<NSView>;
 
         #[cfg(feature = "AppKit_NSSlider")]
+        /**
+          The slider displayed by the bar item. It is automatically created, but can be set to a custom subclass. doubleValue, minValue, maxValue, etc can all be read and set through the slider.
+        */
         #[method_id(@__retain_semantics Other slider)]
         pub unsafe fn slider(&self) -> Id<NSSlider>;
 
         #[cfg(feature = "AppKit_NSSlider")]
+        /**
+          The slider displayed by the bar item. It is automatically created, but can be set to a custom subclass. doubleValue, minValue, maxValue, etc can all be read and set through the slider.
+        */
         #[method(setSlider:)]
         pub unsafe fn setSlider(&self, slider: &NSSlider);
 
+        /**
+          The double value of the control
+        */
         #[method(doubleValue)]
         pub unsafe fn doubleValue(&self) -> c_double;
 
+        /**
+          The double value of the control
+        */
         #[method(setDoubleValue:)]
         pub unsafe fn setDoubleValue(&self, double_value: c_double);
 
+        /**
+          The width boundaries of the slider track of this item.
+         The system defines the default minimum. The maximum defaults to MAXFLOAT
+        */
         #[method(minimumSliderWidth)]
         pub unsafe fn minimumSliderWidth(&self) -> CGFloat;
 
+        /**
+          The width boundaries of the slider track of this item.
+         The system defines the default minimum. The maximum defaults to MAXFLOAT
+        */
         #[method(setMinimumSliderWidth:)]
         pub unsafe fn setMinimumSliderWidth(&self, minimum_slider_width: CGFloat);
 
@@ -65,18 +85,30 @@ extern_methods!(
         pub unsafe fn setMaximumSliderWidth(&self, maximum_slider_width: CGFloat);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The text label displayed along with the slider. If set to nil, the label will not have space reserved in the item.
+        */
         #[method_id(@__retain_semantics Other label)]
         pub unsafe fn label(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The text label displayed along with the slider. If set to nil, the label will not have space reserved in the item.
+        */
         #[method(setLabel:)]
         pub unsafe fn setLabel(&self, label: Option<&NSString>);
 
         #[cfg(feature = "AppKit_NSSliderAccessory")]
+        /**
+          The accessory that appears on the end of the slider with the minimum value
+        */
         #[method_id(@__retain_semantics Other minimumValueAccessory)]
         pub unsafe fn minimumValueAccessory(&self) -> Option<Id<NSSliderAccessory>>;
 
         #[cfg(feature = "AppKit_NSSliderAccessory")]
+        /**
+          The accessory that appears on the end of the slider with the minimum value
+        */
         #[method(setMinimumValueAccessory:)]
         pub unsafe fn setMinimumValueAccessory(
             &self,
@@ -84,39 +116,69 @@ extern_methods!(
         );
 
         #[cfg(feature = "AppKit_NSSliderAccessory")]
+        /**
+          The accessory that appears on the end of the slider with the maximum value
+        */
         #[method_id(@__retain_semantics Other maximumValueAccessory)]
         pub unsafe fn maximumValueAccessory(&self) -> Option<Id<NSSliderAccessory>>;
 
         #[cfg(feature = "AppKit_NSSliderAccessory")]
+        /**
+          The accessory that appears on the end of the slider with the maximum value
+        */
         #[method(setMaximumValueAccessory:)]
         pub unsafe fn setMaximumValueAccessory(
             &self,
             maximum_value_accessory: Option<&NSSliderAccessory>,
         );
 
+        /**
+          The width of the value accessories. Defaults to `.default`, but can be set to `.wide` or a custom value.
+        */
         #[method(valueAccessoryWidth)]
         pub unsafe fn valueAccessoryWidth(&self) -> NSSliderAccessoryWidth;
 
+        /**
+          The width of the value accessories. Defaults to `.default`, but can be set to `.wide` or a custom value.
+        */
         #[method(setValueAccessoryWidth:)]
         pub unsafe fn setValueAccessoryWidth(&self, value_accessory_width: NSSliderAccessoryWidth);
 
+        /**
+          The target of the item, notified when the slider or accessories receive user interaction.
+        */
         #[method_id(@__retain_semantics Other target)]
         pub unsafe fn target(&self) -> Option<Id<Object>>;
 
+        /**
+          The target of the item, notified when the slider or accessories receive user interaction.
+        */
         #[method(setTarget:)]
         pub unsafe fn setTarget(&self, target: Option<&Object>);
 
+        /**
+          The action of the item, called when the slider or accessories receive user interaction.
+        */
         #[method(action)]
         pub unsafe fn action(&self) -> Option<Sel>;
 
+        /**
+          The action of the item, called when the slider or accessories receive user interaction.
+        */
         #[method(setAction:)]
         pub unsafe fn setAction(&self, action: Option<Sel>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The localized string labelling this item during user customization. The default value is empty string.
+        */
         #[method_id(@__retain_semantics Other customizationLabel)]
         pub unsafe fn customizationLabel(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The localized string labelling this item during user customization. The default value is empty string.
+        */
         #[method(setCustomizationLabel:)]
         pub unsafe fn setCustomizationLabel(&self, customization_label: Option<&NSString>);
     }

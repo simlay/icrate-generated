@@ -8,6 +8,11 @@ use crate::WebKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "WebKit_WebFrame")]
+    /**
+     @class WebFrame
+    @discussion Every web page is represented by at least one WebFrame.  A WebFrame
+    has a WebFrameView and a WebDataSource.
+    */
     #[deprecated]
     pub struct WebFrame;
 
@@ -18,9 +23,19 @@ extern_class!(
 );
 
 #[cfg(feature = "WebKit_WebFrame")]
+/**
+ @class WebFrame
+@discussion Every web page is represented by at least one WebFrame.  A WebFrame
+has a WebFrameView and a WebDataSource.
+*/
 unsafe impl NSObjectProtocol for WebFrame {}
 
 extern_methods!(
+    /**
+     @class WebFrame
+    @discussion Every web page is represented by at least one WebFrame.  A WebFrame
+    has a WebFrameView and a WebDataSource.
+    */
     #[cfg(feature = "WebKit_WebFrame")]
     unsafe impl WebFrame {
         #[cfg(all(
@@ -37,22 +52,45 @@ extern_methods!(
         ) -> Option<Id<Self>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property name
+        @abstract The frame name.
+        */
         #[method_id(@__retain_semantics Other name)]
         pub unsafe fn name(&self) -> Id<NSString>;
 
         #[cfg(feature = "WebKit_WebView")]
+        /**
+         @property webView
+        @abstract The WebView for the document that includes this frame.
+        */
         #[method_id(@__retain_semantics Other webView)]
         pub unsafe fn webView(&self) -> Option<Id<WebView>>;
 
         #[cfg(feature = "WebKit_WebFrameView")]
+        /**
+         @property frameView
+        @abstract The WebFrameView for this frame.
+        */
         #[method_id(@__retain_semantics Other frameView)]
         pub unsafe fn frameView(&self) -> Option<Id<WebFrameView>>;
 
         #[cfg(feature = "WebKit_DOMDocument")]
+        /**
+         @property DOMDocument
+        @abstract The DOM document of the frame.
+        @description Returns nil if the frame does not contain a DOM document such as a standalone image.
+        */
         #[method_id(@__retain_semantics Other DOMDocument)]
         pub unsafe fn DOMDocument(&self) -> Option<Id<DOMDocument>>;
 
         #[cfg(feature = "WebKit_DOMHTMLElement")]
+        /**
+         @property frameElement
+        @abstract The frame element of the frame.
+        @description The class of the result is either DOMHTMLFrameElement, DOMHTMLIFrameElement or DOMHTMLObjectElement.
+        Returns nil if the frame is the main frame since there is no frame element for the frame in this case.
+        */
         #[method_id(@__retain_semantics Other frameElement)]
         pub unsafe fn frameElement(&self) -> Option<Id<DOMHTMLElement>>;
 
@@ -92,10 +130,23 @@ extern_methods!(
         pub unsafe fn loadArchive(&self, archive: Option<&WebArchive>);
 
         #[cfg(feature = "WebKit_WebDataSource")]
+        /**
+         @property dataSource
+        @abstract The datasource for this frame.
+        @discussion Returns the committed data source.  Will return nil if the
+        provisional data source hasn't yet been loaded.
+        */
         #[method_id(@__retain_semantics Other dataSource)]
         pub unsafe fn dataSource(&self) -> Option<Id<WebDataSource>>;
 
         #[cfg(feature = "WebKit_WebDataSource")]
+        /**
+         @property provisionalDataSource
+        @abstract The provisional datasource of this frame.
+        @discussion Will return the provisional data source.  The provisional data source will
+        be nil if no data source has been set on the frame, or the data source
+        has successfully transitioned to the committed data source.
+        */
         #[method_id(@__retain_semantics Other provisionalDataSource)]
         pub unsafe fn provisionalDataSource(&self) -> Option<Id<WebDataSource>>;
 
@@ -112,14 +163,27 @@ extern_methods!(
         #[method_id(@__retain_semantics Other findFrameNamed:)]
         pub unsafe fn findFrameNamed(&self, name: Option<&NSString>) -> Option<Id<WebFrame>>;
 
+        /**
+         @property parentFrame
+        @abstract The frame containing this frame, or nil if this is a top level frame.
+        */
         #[method_id(@__retain_semantics Other parentFrame)]
         pub unsafe fn parentFrame(&self) -> Option<Id<WebFrame>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+         @property childFrames
+        @abstract An array of WebFrame.
+        @discussion The frames in the array are associated with a frame set or iframe.
+        */
         #[method_id(@__retain_semantics Other childFrames)]
         pub unsafe fn childFrames(&self) -> Id<NSArray>;
 
         #[cfg(feature = "WebKit_WebScriptObject")]
+        /**
+         @property windowObject
+        @abstract The WebScriptObject representing the frame's JavaScript window object.
+        */
         #[method_id(@__retain_semantics Other windowObject)]
         pub unsafe fn windowObject(&self) -> Option<Id<WebScriptObject>>;
     }

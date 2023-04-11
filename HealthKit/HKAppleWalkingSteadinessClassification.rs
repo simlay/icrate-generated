@@ -8,6 +8,13 @@ use crate::UniformTypeIdentifiers::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum          HKAppleWalkingSteadinessClassification
+    @abstract      This enumerated type is used to represent the classification for the user's walking steadiness.
+    @constant      HKAppleWalkingSteadinessClassificationOK         Walking steadiness is OK.
+    @constant      HKAppleWalkingSteadinessClassificationLow        Walking steadiness is Low.
+    @constant      HKAppleWalkingSteadinessClassificationVeryLow    Walking steadiness is Very Low.
+    */
     pub enum HKAppleWalkingSteadinessClassification {
         HKAppleWalkingSteadinessClassificationOK = 1,
         HKAppleWalkingSteadinessClassificationLow = 2,

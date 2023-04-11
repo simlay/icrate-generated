@@ -5,6 +5,15 @@ use crate::Foundation::*;
 
 extern_struct!(
     #[encoding_name("?")]
+    /**
+      The fast enumeration protocol NSFastEnumeration is adopted and
+     implemented by objects wishing to make use of a fast and safe
+     enumeration style.  The language "foreach" construct then can
+     be used with such objects.
+
+     The abstract class NSEnumerator itself is taught how to do this
+     for convenience by using -nextObject to return items one at a time.
+    */
     pub struct NSFastEnumerationState {
         pub state: c_ulong,
         pub itemsPtr: *mut *mut Object,

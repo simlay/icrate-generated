@@ -7,6 +7,13 @@ use crate::MetricKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MetricKit_MXMetricManager")]
+    /**
+     @class         MXMetricManager
+    @abstract      An instance of this class can be used to retrieve periodic, aggregated power and performance metrics.
+    @discussion    To receive metrics, clients must acquire a reference to the shared instance of the metric manager and add an eligible MXMetricManagerSubscriber.
+    @discussion    Metrics are not guaranteed to be delivered, but can be expected atleast once per day when conditions permit.
+    @discussion    Subscribers to the metric manager can remove themselves using removeSubscriber:subscriber if they no longer wish to receive metrics.
+    */
     pub struct MXMetricManager;
 
     #[cfg(feature = "MetricKit_MXMetricManager")]
@@ -16,12 +23,30 @@ extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXMetricManager")]
+/**
+ @class         MXMetricManager
+@abstract      An instance of this class can be used to retrieve periodic, aggregated power and performance metrics.
+@discussion    To receive metrics, clients must acquire a reference to the shared instance of the metric manager and add an eligible MXMetricManagerSubscriber.
+@discussion    Metrics are not guaranteed to be delivered, but can be expected atleast once per day when conditions permit.
+@discussion    Subscribers to the metric manager can remove themselves using removeSubscriber:subscriber if they no longer wish to receive metrics.
+*/
 unsafe impl NSObjectProtocol for MXMetricManager {}
 
 extern_methods!(
+    /**
+     @class         MXMetricManager
+    @abstract      An instance of this class can be used to retrieve periodic, aggregated power and performance metrics.
+    @discussion    To receive metrics, clients must acquire a reference to the shared instance of the metric manager and add an eligible MXMetricManagerSubscriber.
+    @discussion    Metrics are not guaranteed to be delivered, but can be expected atleast once per day when conditions permit.
+    @discussion    Subscribers to the metric manager can remove themselves using removeSubscriber:subscriber if they no longer wish to receive metrics.
+    */
     #[cfg(feature = "MetricKit_MXMetricManager")]
     unsafe impl MXMetricManager {
         #[cfg(all(feature = "Foundation_NSArray", feature = "MetricKit_MXMetricPayload"))]
+        /**
+         @property      pastPayloads
+        @abstract      A list of past metric payloads received.
+        */
         #[method_id(@__retain_semantics Other pastPayloads)]
         pub unsafe fn pastPayloads(&self) -> Id<NSArray<MXMetricPayload>>;
 
@@ -29,9 +54,17 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "MetricKit_MXDiagnosticPayload"
         ))]
+        /**
+         @property      pastDiagnosticPayloads
+        @abstract      A list of past diagnostic payloads received.
+        */
         #[method_id(@__retain_semantics Other pastDiagnosticPayloads)]
         pub unsafe fn pastDiagnosticPayloads(&self) -> Id<NSArray<MXDiagnosticPayload>>;
 
+        /**
+         @property      sharedManager
+        @abstract      Singleton instance of MXMetricManager.
+        */
         #[method_id(@__retain_semantics Other sharedManager)]
         pub unsafe fn sharedManager() -> Id<MXMetricManager>;
 
@@ -50,6 +83,12 @@ extern_methods!(
 );
 
 extern_protocol!(
+    /**
+     @protocol      MXMetricManagerSubscriber
+    @abstract      A protocol that allows the conforming object to receive metric payloads from the metric manager.
+    @discussion    In order to receive metric payloads, atleast one object must conform to this protocol and be subscribed   to the metric manager.
+    @discussion    Objects which conform to this protocol can be passed to addSubscriber:subscriber and removeSubscriber:subscriber to manage their subscription state.
+    */
     pub unsafe trait MXMetricManagerSubscriber: NSObjectProtocol {
         #[cfg(all(feature = "Foundation_NSArray", feature = "MetricKit_MXMetricPayload"))]
         #[optional]

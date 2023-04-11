@@ -22,6 +22,9 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MediaPlayer_MPMediaQuery")]
+    /**
+      MPMediaQuery represents a collection of items or playlists determined by a chain of MPMediaPredicate objects.
+    */
     pub struct MPMediaQuery;
 
     #[cfg(feature = "MediaPlayer_MPMediaQuery")]
@@ -31,15 +34,27 @@ extern_class!(
 );
 
 #[cfg(feature = "MediaPlayer_MPMediaQuery")]
+/**
+  MPMediaQuery represents a collection of items or playlists determined by a chain of MPMediaPredicate objects.
+*/
 unsafe impl NSCoding for MPMediaQuery {}
 
 #[cfg(feature = "MediaPlayer_MPMediaQuery")]
+/**
+  MPMediaQuery represents a collection of items or playlists determined by a chain of MPMediaPredicate objects.
+*/
 unsafe impl NSObjectProtocol for MPMediaQuery {}
 
 #[cfg(feature = "MediaPlayer_MPMediaQuery")]
+/**
+  MPMediaQuery represents a collection of items or playlists determined by a chain of MPMediaPredicate objects.
+*/
 unsafe impl NSSecureCoding for MPMediaQuery {}
 
 extern_methods!(
+    /**
+      MPMediaQuery represents a collection of items or playlists determined by a chain of MPMediaPredicate objects.
+    */
     #[cfg(feature = "MediaPlayer_MPMediaQuery")]
     unsafe impl MPMediaQuery {
         #[cfg(all(feature = "Foundation_NSSet", feature = "MediaPlayer_MPMediaPredicate"))]
@@ -69,6 +84,10 @@ extern_methods!(
         pub unsafe fn removeFilterPredicate(&self, predicate: &MPMediaPredicate);
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "MediaPlayer_MPMediaItem"))]
+        /**
+          Returns an array of MPMediaItems matching the query filter predicates.
+         If no items match this method returns an empty array, otherwise returns nil if an error prevents the items from being fetched.
+        */
         #[method_id(@__retain_semantics Other items)]
         pub unsafe fn items(&self) -> Option<Id<NSArray<MPMediaItem>>>;
 
@@ -76,12 +95,21 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "MediaPlayer_MPMediaItemCollection"
         ))]
+        /**
+          Returns an array of MPMediaItemCollections matching the query filter predicates. The collections are grouped by the groupingType.
+        */
         #[method_id(@__retain_semantics Other collections)]
         pub unsafe fn collections(&self) -> Option<Id<NSArray<MPMediaItemCollection>>>;
 
+        /**
+          The property used to group collections, defaults to MPMediaGroupingTitle.
+        */
         #[method(groupingType)]
         pub unsafe fn groupingType(&self) -> MPMediaGrouping;
 
+        /**
+          The property used to group collections, defaults to MPMediaGroupingTitle.
+        */
         #[method(setGroupingType:)]
         pub unsafe fn setGroupingType(&self, grouping_type: MPMediaGrouping);
 
@@ -89,6 +117,10 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "MediaPlayer_MPMediaQuerySection"
         ))]
+        /**
+          Returns an array of MPMediaQuerySection instances representing the section grouping of the query's items or collections.
+         May be nil in cases where no section grouping of the items or collections is appropriate.
+        */
         #[method_id(@__retain_semantics Other itemSections)]
         pub unsafe fn itemSections(&self) -> Option<Id<NSArray<MPMediaQuerySection>>>;
 
@@ -131,6 +163,11 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MediaPlayer_MPMediaPredicate")]
+    /**
+      ------------------------------------------------------------------------
+     MPMediaPredicate is an abstract class that allows filtering media in an MPMediaQuery.
+     See the concrete subclass MPMediaPropertyPredicate for filtering options.
+    */
     pub struct MPMediaPredicate;
 
     #[cfg(feature = "MediaPlayer_MPMediaPredicate")]
@@ -140,21 +177,46 @@ extern_class!(
 );
 
 #[cfg(feature = "MediaPlayer_MPMediaPredicate")]
+/**
+  ------------------------------------------------------------------------
+ MPMediaPredicate is an abstract class that allows filtering media in an MPMediaQuery.
+ See the concrete subclass MPMediaPropertyPredicate for filtering options.
+*/
 unsafe impl NSCoding for MPMediaPredicate {}
 
 #[cfg(feature = "MediaPlayer_MPMediaPredicate")]
+/**
+  ------------------------------------------------------------------------
+ MPMediaPredicate is an abstract class that allows filtering media in an MPMediaQuery.
+ See the concrete subclass MPMediaPropertyPredicate for filtering options.
+*/
 unsafe impl NSObjectProtocol for MPMediaPredicate {}
 
 #[cfg(feature = "MediaPlayer_MPMediaPredicate")]
+/**
+  ------------------------------------------------------------------------
+ MPMediaPredicate is an abstract class that allows filtering media in an MPMediaQuery.
+ See the concrete subclass MPMediaPropertyPredicate for filtering options.
+*/
 unsafe impl NSSecureCoding for MPMediaPredicate {}
 
 extern_methods!(
+    /**
+      ------------------------------------------------------------------------
+     MPMediaPredicate is an abstract class that allows filtering media in an MPMediaQuery.
+     See the concrete subclass MPMediaPropertyPredicate for filtering options.
+    */
     #[cfg(feature = "MediaPlayer_MPMediaPredicate")]
     unsafe impl MPMediaPredicate {}
 );
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      ------------------------------------------------------------------------
+     MPMediaPropertyPredicate allows filtering based on a specific property value of an item or collection.
+     See MPMediaItem.h and MPMediaPlaylist.h for a list of properties.
+    */
     pub enum MPMediaPredicateComparison {
         MPMediaPredicateComparisonEqualTo = 0,
         MPMediaPredicateComparisonContains = 1,
@@ -213,6 +275,10 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      ------------------------------------------------------------------------
+     Convenience methods to determine item properties corresponding to a given grouping type.
+    */
     /// MPMediaQueryAdditions
     #[cfg(feature = "MediaPlayer_MPMediaItem")]
     unsafe impl MPMediaItem {

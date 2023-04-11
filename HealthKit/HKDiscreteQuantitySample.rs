@@ -9,6 +9,11 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKDiscreteQuantitySample")]
+    /**
+     @class         HKDiscreteQuantitySample
+    @abstract      An HKQuantitySample subclass representing a quantity measurement with
+    discrete aggregation style.
+    */
     pub struct HKDiscreteQuantitySample;
 
     #[cfg(feature = "HealthKit_HKDiscreteQuantitySample")]
@@ -19,34 +24,74 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKDiscreteQuantitySample")]
+/**
+ @class         HKDiscreteQuantitySample
+@abstract      An HKQuantitySample subclass representing a quantity measurement with
+discrete aggregation style.
+*/
 unsafe impl NSCoding for HKDiscreteQuantitySample {}
 
 #[cfg(feature = "HealthKit_HKDiscreteQuantitySample")]
+/**
+ @class         HKDiscreteQuantitySample
+@abstract      An HKQuantitySample subclass representing a quantity measurement with
+discrete aggregation style.
+*/
 unsafe impl NSObjectProtocol for HKDiscreteQuantitySample {}
 
 #[cfg(feature = "HealthKit_HKDiscreteQuantitySample")]
+/**
+ @class         HKDiscreteQuantitySample
+@abstract      An HKQuantitySample subclass representing a quantity measurement with
+discrete aggregation style.
+*/
 unsafe impl NSSecureCoding for HKDiscreteQuantitySample {}
 
 extern_methods!(
+    /**
+     @class         HKDiscreteQuantitySample
+    @abstract      An HKQuantitySample subclass representing a quantity measurement with
+    discrete aggregation style.
+    */
     #[cfg(feature = "HealthKit_HKDiscreteQuantitySample")]
     unsafe impl HKDiscreteQuantitySample {
         #[cfg(feature = "HealthKit_HKQuantity")]
+        /**
+         @property      minimumQuantity
+        @abstract      The minimum of the receiver's quantities
+        */
         #[method_id(@__retain_semantics Other minimumQuantity)]
         pub unsafe fn minimumQuantity(&self) -> Id<HKQuantity>;
 
         #[cfg(feature = "HealthKit_HKQuantity")]
+        /**
+         @property      averageQuantity
+        @abstract      The average of the receiver's quantities
+        */
         #[method_id(@__retain_semantics Other averageQuantity)]
         pub unsafe fn averageQuantity(&self) -> Id<HKQuantity>;
 
         #[cfg(feature = "HealthKit_HKQuantity")]
+        /**
+         @property      maximumQuantity
+        @abstract      The maximum of the receiver's quantities
+        */
         #[method_id(@__retain_semantics Other maximumQuantity)]
         pub unsafe fn maximumQuantity(&self) -> Id<HKQuantity>;
 
         #[cfg(feature = "HealthKit_HKQuantity")]
+        /**
+         @property      mostRecentQuantity
+        @abstract      The receiver's quantity with most recent date interval
+        */
         #[method_id(@__retain_semantics Other mostRecentQuantity)]
         pub unsafe fn mostRecentQuantity(&self) -> Id<HKQuantity>;
 
         #[cfg(feature = "Foundation_NSDateInterval")]
+        /**
+         @property      mostRecentQuantityDateInterval
+        @abstract      The date interval for the receiver's most recent quantity
+        */
         #[method_id(@__retain_semantics Other mostRecentQuantityDateInterval)]
         pub unsafe fn mostRecentQuantityDateInterval(&self) -> Id<NSDateInterval>;
     }
@@ -68,6 +113,11 @@ extern_static!(HKPredicateKeyPathMostRecentDuration: &'static NSString);
 
 extern_methods!(
     /// Methods declared on superclass `HKQuantitySample`
+    /**
+     @class         HKDiscreteQuantitySample
+    @abstract      An HKQuantitySample subclass representing a quantity measurement with
+    discrete aggregation style.
+    */
     #[cfg(feature = "HealthKit_HKDiscreteQuantitySample")]
     unsafe impl HKDiscreteQuantitySample {
         #[cfg(all(

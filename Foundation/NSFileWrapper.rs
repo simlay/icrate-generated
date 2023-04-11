@@ -85,6 +85,9 @@ extern_methods!(
             in_coder: &NSCoder,
         ) -> Option<Id<Self>>;
 
+        /**
+          What kind of file wrapper it is. Invocations of -readFromURL:options:error: may change what subsequent invocations of these methods return.
+        */
         #[method(isDirectory)]
         pub unsafe fn isDirectory(&self) -> bool;
 
@@ -95,26 +98,48 @@ extern_methods!(
         pub unsafe fn isSymbolicLink(&self) -> bool;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The file name that is "preferred." When the receiver is added to a parent directory file wrapper the parent will attempt to use this name as the key into its dictionary of children. Usually the preferred file name will actually get used in this situation but it won't be if that key is already in use. The default implementation of this method causes existing parents to remove and re-add the child to accommodate the change. Preferred file names of children are not effectively preserved when you write a file wrapper to disk and then later instantiate another file wrapper by reading. If your application needs to preserve the user-visible names of attachments it has to make its own arrangements for their storage.
+
+        Some instances of NSFileWrapper may be created without a preferredFilename (e.g. -initDirectoryWithFileWrappers: or -initRegularFileWithContents:), meaning preferredFilename may be nil. However, setting nil is never allowed and will result in an exception.
+        */
         #[method_id(@__retain_semantics Other preferredFilename)]
         pub unsafe fn preferredFilename(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The file name that is "preferred." When the receiver is added to a parent directory file wrapper the parent will attempt to use this name as the key into its dictionary of children. Usually the preferred file name will actually get used in this situation but it won't be if that key is already in use. The default implementation of this method causes existing parents to remove and re-add the child to accommodate the change. Preferred file names of children are not effectively preserved when you write a file wrapper to disk and then later instantiate another file wrapper by reading. If your application needs to preserve the user-visible names of attachments it has to make its own arrangements for their storage.
+
+        Some instances of NSFileWrapper may be created without a preferredFilename (e.g. -initDirectoryWithFileWrappers: or -initRegularFileWithContents:), meaning preferredFilename may be nil. However, setting nil is never allowed and will result in an exception.
+        */
         #[method(setPreferredFilename:)]
         pub unsafe fn setPreferredFilename(&self, preferred_filename: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The actual file name. Often it will be the same as the preferred file name but might instead be a name derived from the preferred file name. You can use this method to find out the name of a child that's just been read but you should not use it to find out the name of a child that's about to be written, because the name might be about to change. Send -keyForFileWrapper: to the parent instead.
+        */
         #[method_id(@__retain_semantics Other filename)]
         pub unsafe fn filename(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The actual file name. Often it will be the same as the preferred file name but might instead be a name derived from the preferred file name. You can use this method to find out the name of a child that's just been read but you should not use it to find out the name of a child that's about to be written, because the name might be about to change. Send -keyForFileWrapper: to the parent instead.
+        */
         #[method(setFilename:)]
         pub unsafe fn setFilename(&self, filename: Option<&NSString>);
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+          The file attributes, in a dictionary of the same sort as those returned by -[NSFileManager attributesOfItemAtPath:error:].
+        */
         #[method_id(@__retain_semantics Other fileAttributes)]
         pub unsafe fn fileAttributes(&self) -> Id<NSDictionary<NSString, Object>>;
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+          The file attributes, in a dictionary of the same sort as those returned by -[NSFileManager attributesOfItemAtPath:error:].
+        */
         #[method(setFileAttributes:)]
         pub unsafe fn setFileAttributes(&self, file_attributes: &NSDictionary<NSString, Object>);
 
@@ -140,6 +165,9 @@ extern_methods!(
         ) -> Result<(), Id<NSError>>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          Return an NSData suitable for passing to -initWithSerializedRepresentation:. This method may return nil if the receiver is the result of reading from the file system (use NSFileWrapperReadingImmediately if appropriate to prevent that).
+        */
         #[method_id(@__retain_semantics Other serializedRepresentation)]
         pub unsafe fn serializedRepresentation(&self) -> Option<Id<NSData>>;
 
@@ -159,6 +187,9 @@ extern_methods!(
         pub unsafe fn removeFileWrapper(&self, child: &NSFileWrapper);
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+          Return a dictionary whose values are the receiver's children and whose keys are the unique file name that has been assigned to each one. This method may return nil if the receiver is the result of reading a parent from the file system (use NSFileWrapperReadingImmediately if appropriate to prevent that).
+        */
         #[method_id(@__retain_semantics Other fileWrappers)]
         pub unsafe fn fileWrappers(&self) -> Option<Id<NSDictionary<NSString, NSFileWrapper>>>;
 
@@ -167,10 +198,16 @@ extern_methods!(
         pub unsafe fn keyForFileWrapper(&self, child: &NSFileWrapper) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          Return the receiver's contents. This may return nil if the receiver is the result of reading a parent from the file system (use NSFileWrapperReadingImmediately if appropriate to prevent that).
+        */
         #[method_id(@__retain_semantics Other regularFileContents)]
         pub unsafe fn regularFileContents(&self) -> Option<Id<NSData>>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          Return the destination link of the receiver. This may return nil if the receiver is the result of reading a parent from the file system (use NSFileWrapperReadingImmediately if appropriate to prevent that).
+        */
         #[method_id(@__retain_semantics Other symbolicLinkDestinationURL)]
         pub unsafe fn symbolicLinkDestinationURL(&self) -> Option<Id<NSURL>>;
     }

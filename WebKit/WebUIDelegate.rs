@@ -7,6 +7,12 @@ use crate::WebKit::*;
 
 extern_enum!(
     #[underlying(c_uint)]
+    /**
+     @enum WebMenuItemTag
+    @discussion Each menu item in the default menu items array passed in
+    contextMenuItemsForElement:defaultMenuItems: has its tag set to one of the WebMenuItemTags.
+    When iterating through the default menu items array, use the tag to differentiate between them.
+    */
     #[deprecated]
     pub enum __anonymous__ {
         #[deprecated]
@@ -78,6 +84,15 @@ extern_enum!(
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+     @enum WebDragDestinationAction
+    @abstract Actions that the destination of a drag can perform.
+    @constant WebDragDestinationActionNone No action
+    @constant WebDragDestinationActionDHTML Allows DHTML (such as JavaScript) to handle the drag
+    @constant WebDragDestinationActionEdit Allows editable documents to be edited from the drag
+    @constant WebDragDestinationActionLoad Allows a location change from the drag
+    @constant WebDragDestinationActionAny Allows any of the above to occur
+    */
     #[deprecated]
     pub enum WebDragDestinationAction {
         #[deprecated]
@@ -95,6 +110,16 @@ ns_options!(
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+     @enum WebDragSourceAction
+    @abstract Actions that the source of a drag can perform.
+    @constant WebDragSourceActionNone No action
+    @constant WebDragSourceActionDHTML Allows DHTML (such as JavaScript) to start a drag
+    @constant WebDragSourceActionImage Allows an image drag to occur
+    @constant WebDragSourceActionLink Allows a link drag to occur
+    @constant WebDragSourceActionSelection Allows a selection drag to occur
+    @constant WebDragSourceActionAny Allows any of the above to occur
+    */
     #[deprecated]
     pub enum WebDragSourceAction {
         #[deprecated]
@@ -114,6 +139,11 @@ ns_options!(
 
 extern_protocol!(
     #[deprecated]
+    /**
+     @protocol WebOpenPanelResultListener
+    @discussion This protocol is used to call back with the results of
+    the file open panel requested by runOpenPanelForFileButtonWithResultListener:
+    */
     pub unsafe trait WebOpenPanelResultListener: NSObjectProtocol {
         #[cfg(feature = "Foundation_NSString")]
         #[method(chooseFilename:)]
@@ -132,6 +162,13 @@ extern_protocol!(
 
 extern_protocol!(
     #[deprecated]
+    /**
+     @category WebUIDelegate
+    @discussion A class that implements WebUIDelegate provides
+    window-related methods that may be used by Javascript, plugins and
+    other aspects of web pages. These methods are used to open new
+    windows and control aspects of existing windows.
+    */
     pub unsafe trait WebUIDelegate: NSObjectProtocol {
         #[cfg(all(feature = "Foundation_NSURLRequest", feature = "WebKit_WebView"))]
         #[optional]

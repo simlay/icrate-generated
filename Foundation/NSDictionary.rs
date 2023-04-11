@@ -6,6 +6,9 @@ use crate::Foundation::*;
 __inner_extern_class!(
     #[derive(PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSDictionary")]
+    /**
+         Immutable Dictionary
+    */
     pub struct NSDictionary<
         KeyType: Message = Object,
         ObjectType: Message = Object,
@@ -30,6 +33,9 @@ __inner_extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSDictionary")]
+/**
+     Immutable Dictionary
+*/
 unsafe impl<
         KeyType: Message,
         ObjectType: Message,
@@ -40,6 +46,9 @@ unsafe impl<
 }
 
 #[cfg(feature = "Foundation_NSDictionary")]
+/**
+     Immutable Dictionary
+*/
 unsafe impl<
         KeyType: Message,
         ObjectType: Message,
@@ -51,6 +60,9 @@ unsafe impl<
 }
 
 #[cfg(feature = "Foundation_NSDictionary")]
+/**
+     Immutable Dictionary
+*/
 unsafe impl<
         KeyType: Message,
         ObjectType: Message,
@@ -62,6 +74,9 @@ unsafe impl<
 }
 
 #[cfg(feature = "Foundation_NSDictionary")]
+/**
+     Immutable Dictionary
+*/
 unsafe impl<
         KeyType: Message,
         ObjectType: Message,
@@ -72,6 +87,9 @@ unsafe impl<
 }
 
 extern_methods!(
+    /**
+         Immutable Dictionary
+    */
     #[cfg(feature = "Foundation_NSDictionary")]
     unsafe impl<
             KeyType: Message,
@@ -349,6 +367,9 @@ extern_methods!(
 __inner_extern_class!(
     #[derive(PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSMutableDictionary")]
+    /**
+         Mutable Dictionary
+    */
     pub struct NSMutableDictionary<
         KeyType: Message = Object,
         ObjectType: Message = Object,
@@ -375,6 +396,9 @@ __inner_extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSMutableDictionary")]
+/**
+     Mutable Dictionary
+*/
 unsafe impl<
         KeyType: Message,
         ObjectType: Message,
@@ -385,6 +409,9 @@ unsafe impl<
 }
 
 #[cfg(feature = "Foundation_NSMutableDictionary")]
+/**
+     Mutable Dictionary
+*/
 unsafe impl<
         KeyType: Message,
         ObjectType: Message,
@@ -396,6 +423,9 @@ unsafe impl<
 }
 
 #[cfg(feature = "Foundation_NSMutableDictionary")]
+/**
+     Mutable Dictionary
+*/
 unsafe impl<
         KeyType: Message,
         ObjectType: Message,
@@ -407,6 +437,9 @@ unsafe impl<
 }
 
 #[cfg(feature = "Foundation_NSMutableDictionary")]
+/**
+     Mutable Dictionary
+*/
 unsafe impl<
         KeyType: Message,
         ObjectType: Message,
@@ -418,6 +451,9 @@ unsafe impl<
 }
 
 extern_methods!(
+    /**
+         Mutable Dictionary
+    */
     #[cfg(feature = "Foundation_NSMutableDictionary")]
     unsafe impl<
             KeyType: Message,
@@ -545,6 +581,9 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSDictionary`
+    /**
+         Mutable Dictionary
+    */
     #[cfg(feature = "Foundation_NSMutableDictionary")]
     unsafe impl<
             KeyType: Message,
@@ -566,6 +605,9 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `NSDictionary`
     ///
+    /**
+         Mutable Dictionary
+    */
     /// NSDictionaryCreation
     #[cfg(feature = "Foundation_NSMutableDictionary")]
     unsafe impl<

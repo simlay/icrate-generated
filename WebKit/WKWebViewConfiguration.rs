@@ -7,6 +7,18 @@ use crate::WebKit::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      @enum WKUserInterfaceDirectionPolicy
+    @abstract The policy used to determine the directionality of user interface elements inside a web view.
+    @constant WKUserInterfaceDirectionPolicyContent User interface directionality follows CSS / HTML / XHTML
+    specifications.
+    @constant WKUserInterfaceDirectionPolicySystem User interface directionality follows the view's
+    userInterfaceLayoutDirection property
+    @discussion When WKUserInterfaceDirectionPolicyContent is specified, the directionality of user interface
+    elements is affected by the "dir" attribute or the "direction" CSS property. When
+    WKUserInterfaceDirectionPolicySystem is specified, the directionality of user interface elements is
+    affected by the direction of the view.
+    */
     pub enum WKUserInterfaceDirectionPolicy {
         WKUserInterfaceDirectionPolicyContent = 0,
         WKUserInterfaceDirectionPolicySystem = 1,
@@ -15,6 +27,14 @@ ns_enum!(
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+      @enum WKAudiovisualMediaTypes
+    @abstract The types of audiovisual media which will require a user gesture to begin playing.
+    @constant WKAudiovisualMediaTypeNone No audiovisual media will require a user gesture to begin playing.
+    @constant WKAudiovisualMediaTypeAudio Audiovisual media containing audio will require a user gesture to begin playing.
+    @constant WKAudiovisualMediaTypeVideo Audiovisual media containing video will require a user gesture to begin playing.
+    @constant WKAudiovisualMediaTypeAll All audiovisual media will require a user gesture to begin playing.
+    */
     pub enum WKAudiovisualMediaTypes {
         WKAudiovisualMediaTypeNone = 0,
         WKAudiovisualMediaTypeAudio = 1 << 0,
@@ -26,6 +46,11 @@ ns_options!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "WebKit_WKWebViewConfiguration")]
+    /**
+      A WKWebViewConfiguration object is a collection of properties with
+    which to initialize a web view.
+    @helps Contains properties used to configure a @link WKWebView @/link.
+    */
     pub struct WKWebViewConfiguration;
 
     #[cfg(feature = "WebKit_WKWebViewConfiguration")]
@@ -35,38 +60,84 @@ extern_class!(
 );
 
 #[cfg(feature = "WebKit_WKWebViewConfiguration")]
+/**
+  A WKWebViewConfiguration object is a collection of properties with
+which to initialize a web view.
+@helps Contains properties used to configure a @link WKWebView @/link.
+*/
 unsafe impl NSCoding for WKWebViewConfiguration {}
 
 #[cfg(feature = "WebKit_WKWebViewConfiguration")]
+/**
+  A WKWebViewConfiguration object is a collection of properties with
+which to initialize a web view.
+@helps Contains properties used to configure a @link WKWebView @/link.
+*/
 unsafe impl NSObjectProtocol for WKWebViewConfiguration {}
 
 #[cfg(feature = "WebKit_WKWebViewConfiguration")]
+/**
+  A WKWebViewConfiguration object is a collection of properties with
+which to initialize a web view.
+@helps Contains properties used to configure a @link WKWebView @/link.
+*/
 unsafe impl NSSecureCoding for WKWebViewConfiguration {}
 
 extern_methods!(
+    /**
+      A WKWebViewConfiguration object is a collection of properties with
+    which to initialize a web view.
+    @helps Contains properties used to configure a @link WKWebView @/link.
+    */
     #[cfg(feature = "WebKit_WKWebViewConfiguration")]
     unsafe impl WKWebViewConfiguration {
         #[cfg(feature = "WebKit_WKProcessPool")]
+        /**
+          @abstract The process pool from which to obtain the view's web content
+        process.
+        @discussion When a web view is initialized, a new web content process
+        will be created for it from the specified pool, or an existing process in
+        that pool will be used.
+        */
         #[method_id(@__retain_semantics Other processPool)]
         pub unsafe fn processPool(&self) -> Id<WKProcessPool>;
 
         #[cfg(feature = "WebKit_WKProcessPool")]
+        /**
+          @abstract The process pool from which to obtain the view's web content
+        process.
+        @discussion When a web view is initialized, a new web content process
+        will be created for it from the specified pool, or an existing process in
+        that pool will be used.
+        */
         #[method(setProcessPool:)]
         pub unsafe fn setProcessPool(&self, process_pool: &WKProcessPool);
 
         #[cfg(feature = "WebKit_WKPreferences")]
+        /**
+          @abstract The preference settings to be used by the web view.
+        */
         #[method_id(@__retain_semantics Other preferences)]
         pub unsafe fn preferences(&self) -> Id<WKPreferences>;
 
         #[cfg(feature = "WebKit_WKPreferences")]
+        /**
+          @abstract The preference settings to be used by the web view.
+        */
         #[method(setPreferences:)]
         pub unsafe fn setPreferences(&self, preferences: &WKPreferences);
 
         #[cfg(feature = "WebKit_WKUserContentController")]
+        /**
+          @abstract The user content controller to associate with the web view.
+        */
         #[method_id(@__retain_semantics Other userContentController)]
         pub unsafe fn userContentController(&self) -> Id<WKUserContentController>;
 
         #[cfg(feature = "WebKit_WKUserContentController")]
+        /**
+          @abstract The user content controller to associate with the web view.
+        */
         #[method(setUserContentController:)]
         pub unsafe fn setUserContentController(
             &self,
@@ -74,16 +145,32 @@ extern_methods!(
         );
 
         #[cfg(feature = "WebKit_WKWebsiteDataStore")]
+        /**
+          @abstract The website data store to be used by the web view.
+        */
         #[method_id(@__retain_semantics Other websiteDataStore)]
         pub unsafe fn websiteDataStore(&self) -> Id<WKWebsiteDataStore>;
 
         #[cfg(feature = "WebKit_WKWebsiteDataStore")]
+        /**
+          @abstract The website data store to be used by the web view.
+        */
         #[method(setWebsiteDataStore:)]
         pub unsafe fn setWebsiteDataStore(&self, website_data_store: &WKWebsiteDataStore);
 
+        /**
+          @abstract A Boolean value indicating whether the web view suppresses
+        content rendering until it is fully loaded into memory.
+        @discussion The default value is NO.
+        */
         #[method(suppressesIncrementalRendering)]
         pub unsafe fn suppressesIncrementalRendering(&self) -> bool;
 
+        /**
+          @abstract A Boolean value indicating whether the web view suppresses
+        content rendering until it is fully loaded into memory.
+        @discussion The default value is NO.
+        */
         #[method(setSuppressesIncrementalRendering:)]
         pub unsafe fn setSuppressesIncrementalRendering(
             &self,
@@ -91,28 +178,50 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract The name of the application as used in the user agent string.
+        */
         #[method_id(@__retain_semantics Other applicationNameForUserAgent)]
         pub unsafe fn applicationNameForUserAgent(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract The name of the application as used in the user agent string.
+        */
         #[method(setApplicationNameForUserAgent:)]
         pub unsafe fn setApplicationNameForUserAgent(
             &self,
             application_name_for_user_agent: Option<&NSString>,
         );
 
+        /**
+          @abstract A Boolean value indicating whether AirPlay is allowed.
+        @discussion The default value is YES.
+        */
         #[method(allowsAirPlayForMediaPlayback)]
         pub unsafe fn allowsAirPlayForMediaPlayback(&self) -> bool;
 
+        /**
+          @abstract A Boolean value indicating whether AirPlay is allowed.
+        @discussion The default value is YES.
+        */
         #[method(setAllowsAirPlayForMediaPlayback:)]
         pub unsafe fn setAllowsAirPlayForMediaPlayback(
             &self,
             allows_air_play_for_media_playback: bool,
         );
 
+        /**
+          @abstract A Boolean value indicating whether HTTP requests to servers known to support HTTPS should be automatically upgraded to HTTPS requests.
+        @discussion The default value is YES.
+        */
         #[method(upgradeKnownHostsToHTTPS)]
         pub unsafe fn upgradeKnownHostsToHTTPS(&self) -> bool;
 
+        /**
+          @abstract A Boolean value indicating whether HTTP requests to servers known to support HTTPS should be automatically upgraded to HTTPS requests.
+        @discussion The default value is YES.
+        */
         #[method(setUpgradeKnownHostsToHTTPS:)]
         pub unsafe fn setUpgradeKnownHostsToHTTPS(&self, upgrade_known_hosts_to_https: bool);
 
@@ -126,10 +235,20 @@ extern_methods!(
         );
 
         #[cfg(feature = "WebKit_WKWebpagePreferences")]
+        /**
+          @abstract The set of default webpage preferences to use when loading and rendering content.
+        @discussion These default webpage preferences are additionally passed to the navigation delegate
+        in -webView:decidePolicyForNavigationAction:preferences:decisionHandler:.
+        */
         #[method_id(@__retain_semantics Other defaultWebpagePreferences)]
         pub unsafe fn defaultWebpagePreferences(&self) -> Id<WKWebpagePreferences>;
 
         #[cfg(feature = "WebKit_WKWebpagePreferences")]
+        /**
+          @abstract The set of default webpage preferences to use when loading and rendering content.
+        @discussion These default webpage preferences are additionally passed to the navigation delegate
+        in -webView:decidePolicyForNavigationAction:preferences:decisionHandler:.
+        */
         #[method(setDefaultWebpagePreferences:)]
         pub unsafe fn setDefaultWebpagePreferences(
             &self,
@@ -145,9 +264,19 @@ extern_methods!(
             limits_navigations_to_app_bound_domains: bool,
         );
 
+        /**
+          @abstract The directionality of user interface elements.
+        @discussion Possible values are described in WKUserInterfaceDirectionPolicy.
+        The default value is WKUserInterfaceDirectionPolicyContent.
+        */
         #[method(userInterfaceDirectionPolicy)]
         pub unsafe fn userInterfaceDirectionPolicy(&self) -> WKUserInterfaceDirectionPolicy;
 
+        /**
+          @abstract The directionality of user interface elements.
+        @discussion Possible values are described in WKUserInterfaceDirectionPolicy.
+        The default value is WKUserInterfaceDirectionPolicyContent.
+        */
         #[method(setUserInterfaceDirectionPolicy:)]
         pub unsafe fn setUserInterfaceDirectionPolicy(
             &self,

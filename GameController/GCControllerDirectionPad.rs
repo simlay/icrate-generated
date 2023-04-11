@@ -11,6 +11,10 @@ pub type GCControllerDirectionPadValueChangedHandler =
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameController_GCControllerDirectionPad")]
+    /**
+     A direction pad is a common grouping of 2 axis inputs where the input can also be interpreted as 2 sets of mutually exclusive button pairs.
+    Only one button in each pair, {up, down} and {left, right}, can be pressed at any one time.
+    */
     pub struct GCControllerDirectionPad;
 
     #[cfg(feature = "GameController_GCControllerDirectionPad")]
@@ -21,9 +25,17 @@ extern_class!(
 );
 
 #[cfg(feature = "GameController_GCControllerDirectionPad")]
+/**
+ A direction pad is a common grouping of 2 axis inputs where the input can also be interpreted as 2 sets of mutually exclusive button pairs.
+Only one button in each pair, {up, down} and {left, right}, can be pressed at any one time.
+*/
 unsafe impl NSObjectProtocol for GCControllerDirectionPad {}
 
 extern_methods!(
+    /**
+     A direction pad is a common grouping of 2 axis inputs where the input can also be interpreted as 2 sets of mutually exclusive button pairs.
+    Only one button in each pair, {up, down} and {left, right}, can be pressed at any one time.
+    */
     #[cfg(feature = "GameController_GCControllerDirectionPad")]
     unsafe impl GCControllerDirectionPad {
         #[method(valueChangedHandler)]

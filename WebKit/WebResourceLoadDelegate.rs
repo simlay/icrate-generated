@@ -7,6 +7,17 @@ use crate::WebKit::*;
 
 extern_protocol!(
     #[deprecated]
+    /**
+     @category  WebResourceLoadDelegate
+    @discussion Implementors of this protocol will receive messages indicating
+    that a resource is about to be loaded, data has been received for a resource,
+    an error has been received for a resource, and completion of a resource load.
+    Implementors are also given the opportunity to mutate requests before they are sent.
+    The various progress methods of this protocol all receive an identifier as the
+    parameter.  This identifier can be used to track messages associated with a single
+    resource.  For example, a single resource may generate multiple
+    resource:willSendRequest:redirectResponse:fromDataSource: messages as it's URL is redirected.
+    */
     pub unsafe trait WebResourceLoadDelegate: NSObjectProtocol {
         #[cfg(all(
             feature = "Foundation_NSURLRequest",

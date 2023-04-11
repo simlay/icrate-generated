@@ -8,6 +8,12 @@ use crate::WebKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "WebKit_WKSecurityOrigin")]
+    /**
+      A WKSecurityOrigin object contains information about a security origin.
+    @discussion An instance of this class is a transient, data-only object;
+    it does not uniquely identify a security origin across multiple delegate method
+    calls.
+    */
     pub struct WKSecurityOrigin;
 
     #[cfg(feature = "WebKit_WKSecurityOrigin")]
@@ -17,22 +23,43 @@ extern_class!(
 );
 
 #[cfg(feature = "WebKit_WKSecurityOrigin")]
+/**
+  A WKSecurityOrigin object contains information about a security origin.
+@discussion An instance of this class is a transient, data-only object;
+it does not uniquely identify a security origin across multiple delegate method
+calls.
+*/
 unsafe impl NSObjectProtocol for WKSecurityOrigin {}
 
 extern_methods!(
+    /**
+      A WKSecurityOrigin object contains information about a security origin.
+    @discussion An instance of this class is a transient, data-only object;
+    it does not uniquely identify a security origin across multiple delegate method
+    calls.
+    */
     #[cfg(feature = "WebKit_WKSecurityOrigin")]
     unsafe impl WKSecurityOrigin {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract The security origin's protocol.
+        */
         #[method_id(@__retain_semantics Other protocol)]
         pub unsafe fn protocol(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract The security origin's host.
+        */
         #[method_id(@__retain_semantics Other host)]
         pub unsafe fn host(&self) -> Id<NSString>;
 
+        /**
+          @abstract The security origin's port.
+        */
         #[method(port)]
         pub unsafe fn port(&self) -> NSInteger;
     }

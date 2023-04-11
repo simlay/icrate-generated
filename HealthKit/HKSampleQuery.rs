@@ -26,6 +26,10 @@ unsafe impl NSObjectProtocol for HKSampleQuery {}
 extern_methods!(
     #[cfg(feature = "HealthKit_HKSampleQuery")]
     unsafe impl HKSampleQuery {
+        /**
+         @property      limit
+        @abstract      The maximum number of results the receiver will return upon completion.
+        */
         #[method(limit)]
         pub unsafe fn limit(&self) -> NSUInteger;
 
@@ -33,6 +37,10 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSSortDescriptor"
         ))]
+        /**
+         @property      sortDescriptors
+        @abstract      An array of NSSortDescriptors.
+        */
         #[method_id(@__retain_semantics Other sortDescriptors)]
         pub unsafe fn sortDescriptors(&self) -> Option<Id<NSArray<NSSortDescriptor>>>;
 

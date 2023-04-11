@@ -56,6 +56,12 @@ extern_methods!(
         );
 
         #[cfg(feature = "CloudKit_CKShareParticipant")]
+        /**
+          @abstract Called once for each share participant created from a submitted user identity lookup info.
+
+          @discussion If the replacement callback @c perShareParticipantCompletionBlock is set, this callback block is ignored.
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[deprecated = "Use perShareParticipantCompletionBlock instead, which surfaces per-share-participant errors"]
         #[method(shareParticipantFetchedBlock)]
         pub unsafe fn shareParticipantFetchedBlock(
@@ -63,6 +69,12 @@ extern_methods!(
         ) -> *mut Block<(NonNull<CKShareParticipant>,), ()>;
 
         #[cfg(feature = "CloudKit_CKShareParticipant")]
+        /**
+          @abstract Called once for each share participant created from a submitted user identity lookup info.
+
+          @discussion If the replacement callback @c perShareParticipantCompletionBlock is set, this callback block is ignored.
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[deprecated = "Use perShareParticipantCompletionBlock instead, which surfaces per-share-participant errors"]
         #[method(setShareParticipantFetchedBlock:)]
         pub unsafe fn setShareParticipantFetchedBlock(
@@ -75,6 +87,11 @@ extern_methods!(
             feature = "CloudKit_CKUserIdentityLookupInfo",
             feature = "Foundation_NSError"
         ))]
+        /**
+          @abstract Called once for each lookup info.
+
+          @discussion Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(perShareParticipantCompletionBlock)]
         pub unsafe fn perShareParticipantCompletionBlock(
             &self,
@@ -92,6 +109,11 @@ extern_methods!(
             feature = "CloudKit_CKUserIdentityLookupInfo",
             feature = "Foundation_NSError"
         ))]
+        /**
+          @abstract Called once for each lookup info.
+
+          @discussion Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(setPerShareParticipantCompletionBlock:)]
         pub unsafe fn setPerShareParticipantCompletionBlock(
             &self,
@@ -108,12 +130,26 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSError")]
+        /**
+          @abstract This block is called when the operation completes.
+
+          @discussion The @code -[NSOperation completionBlock] @endcode will also be called if both are set.
+          If the error is @c CKErrorPartialFailure, the error's userInfo dictionary contains a dictionary of lookup infos to errors keyed off of @c CKPartialErrorsByItemIDKey.  These errors are repeats of those sent back in previous @c perShareParticipantCompletionBlock invocations
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(fetchShareParticipantsCompletionBlock)]
         pub unsafe fn fetchShareParticipantsCompletionBlock(
             &self,
         ) -> *mut Block<(*mut NSError,), ()>;
 
         #[cfg(feature = "Foundation_NSError")]
+        /**
+          @abstract This block is called when the operation completes.
+
+          @discussion The @code -[NSOperation completionBlock] @endcode will also be called if both are set.
+          If the error is @c CKErrorPartialFailure, the error's userInfo dictionary contains a dictionary of lookup infos to errors keyed off of @c CKPartialErrorsByItemIDKey.  These errors are repeats of those sent back in previous @c perShareParticipantCompletionBlock invocations
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(setFetchShareParticipantsCompletionBlock:)]
         pub unsafe fn setFetchShareParticipantsCompletionBlock(
             &self,

@@ -22,9 +22,19 @@ unsafe impl NSObjectProtocol for WKPDFConfiguration {}
 extern_methods!(
     #[cfg(feature = "WebKit_WKPDFConfiguration")]
     unsafe impl WKPDFConfiguration {
+        /**
+          @abstract The rect to capture in web page coordinates
+        @discussion If the rect is set to the null rect, the bounds of the currently displayed web page will be used.
+        The initial value is the null rect.
+        */
         #[method(rect)]
         pub unsafe fn rect(&self) -> CGRect;
 
+        /**
+          @abstract The rect to capture in web page coordinates
+        @discussion If the rect is set to the null rect, the bounds of the currently displayed web page will be used.
+        The initial value is the null rect.
+        */
         #[method(setRect:)]
         pub unsafe fn setRect(&self, rect: CGRect);
     }

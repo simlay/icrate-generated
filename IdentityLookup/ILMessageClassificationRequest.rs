@@ -32,6 +32,9 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "IdentityLookup_ILMessageCommunication"
         ))]
+        /**
+          An array of message communications sorted by date received
+        */
         #[method_id(@__retain_semantics Other messageCommunications)]
         pub unsafe fn messageCommunications(&self) -> Id<NSArray<ILMessageCommunication>>;
 

@@ -4,6 +4,12 @@ use crate::common::*;
 use crate::Foundation::*;
 
 extern_protocol!(
+    /**
+     @protocol NSURLProtocolClient
+    @discussion NSURLProtocolClient provides the interface to the URL
+    loading system that is intended for use by NSURLProtocol
+    implementors.
+    */
     pub unsafe trait NSURLProtocolClient: NSObjectProtocol {
         #[cfg(all(
             feature = "Foundation_NSURLProtocol",
@@ -82,6 +88,14 @@ extern_protocol!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSURLProtocol")]
+    /**
+     @class NSURLProtocol
+
+    @abstract NSURLProtocol is an abstract class which provides the
+    basic structure for performing protocol-specific loading of URL
+    data. Concrete subclasses handle the specifics associated with one
+    or more protocols or URL schemes.
+    */
     pub struct NSURLProtocol;
 
     #[cfg(feature = "Foundation_NSURLProtocol")]
@@ -91,9 +105,25 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSURLProtocol")]
+/**
+ @class NSURLProtocol
+
+@abstract NSURLProtocol is an abstract class which provides the
+basic structure for performing protocol-specific loading of URL
+data. Concrete subclasses handle the specifics associated with one
+or more protocols or URL schemes.
+*/
 unsafe impl NSObjectProtocol for NSURLProtocol {}
 
 extern_methods!(
+    /**
+     @class NSURLProtocol
+
+    @abstract NSURLProtocol is an abstract class which provides the
+    basic structure for performing protocol-specific loading of URL
+    data. Concrete subclasses handle the specifics associated with one
+    or more protocols or URL schemes.
+    */
     #[cfg(feature = "Foundation_NSURLProtocol")]
     unsafe impl NSURLProtocol {
         #[cfg(all(
@@ -108,14 +138,26 @@ extern_methods!(
             client: Option<&ProtocolObject<dyn NSURLProtocolClient>>,
         ) -> Id<Self>;
 
+        /**
+         @abstract Returns the NSURLProtocolClient of the receiver.
+        @result The NSURLProtocolClient of the receiver.
+        */
         #[method_id(@__retain_semantics Other client)]
         pub unsafe fn client(&self) -> Option<Id<ProtocolObject<dyn NSURLProtocolClient>>>;
 
         #[cfg(feature = "Foundation_NSURLRequest")]
+        /**
+         @abstract Returns the NSURLRequest of the receiver.
+        @result The NSURLRequest of the receiver.
+        */
         #[method_id(@__retain_semantics Other request)]
         pub unsafe fn request(&self) -> Id<NSURLRequest>;
 
         #[cfg(feature = "Foundation_NSCachedURLResponse")]
+        /**
+         @abstract Returns the NSCachedURLResponse of the receiver.
+        @result The NSCachedURLResponse of the receiver.
+        */
         #[method_id(@__retain_semantics Other cachedResponse)]
         pub unsafe fn cachedResponse(&self) -> Option<Id<NSCachedURLResponse>>;
 

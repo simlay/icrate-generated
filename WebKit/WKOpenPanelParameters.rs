@@ -8,6 +8,9 @@ use crate::WebKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "WebKit_WKOpenPanelParameters")]
+    /**
+      WKOpenPanelParameters contains parameters that a file upload control has specified.
+    */
     pub struct WKOpenPanelParameters;
 
     #[cfg(feature = "WebKit_WKOpenPanelParameters")]
@@ -17,14 +20,26 @@ extern_class!(
 );
 
 #[cfg(feature = "WebKit_WKOpenPanelParameters")]
+/**
+  WKOpenPanelParameters contains parameters that a file upload control has specified.
+*/
 unsafe impl NSObjectProtocol for WKOpenPanelParameters {}
 
 extern_methods!(
+    /**
+      WKOpenPanelParameters contains parameters that a file upload control has specified.
+    */
     #[cfg(feature = "WebKit_WKOpenPanelParameters")]
     unsafe impl WKOpenPanelParameters {
+        /**
+          @abstract Whether the file upload control supports multiple files.
+        */
         #[method(allowsMultipleSelection)]
         pub unsafe fn allowsMultipleSelection(&self) -> bool;
 
+        /**
+          @abstract Whether the file upload control supports selecting directories.
+        */
         #[method(allowsDirectories)]
         pub unsafe fn allowsDirectories(&self) -> bool;
     }

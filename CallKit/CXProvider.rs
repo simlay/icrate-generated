@@ -221,10 +221,16 @@ extern_methods!(
         );
 
         #[cfg(feature = "CallKit_CXProviderConfiguration")]
+        /**
+          The receiver's current configuration.
+        */
         #[method_id(@__retain_semantics Other configuration)]
         pub unsafe fn configuration(&self) -> Id<CXProviderConfiguration>;
 
         #[cfg(feature = "CallKit_CXProviderConfiguration")]
+        /**
+          The receiver's current configuration.
+        */
         #[method(setConfiguration:)]
         pub unsafe fn setConfiguration(&self, configuration: &CXProviderConfiguration);
 
@@ -232,6 +238,9 @@ extern_methods!(
         pub unsafe fn invalidate(&self);
 
         #[cfg(all(feature = "CallKit_CXTransaction", feature = "Foundation_NSArray"))]
+        /**
+          List of all transactions that are incomplete.
+        */
         #[method_id(@__retain_semantics Other pendingTransactions)]
         pub unsafe fn pendingTransactions(&self) -> Id<NSArray<CXTransaction>>;
 

@@ -7,6 +7,14 @@ use crate::WebKit::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      @enum WKNavigationActionPolicy
+    @abstract The policy to pass back to the decision handler from the
+    webView:decidePolicyForNavigationAction:decisionHandler: method.
+    @constant WKNavigationActionPolicyCancel   Cancel the navigation.
+    @constant WKNavigationActionPolicyAllow    Allow the navigation to continue.
+    @constant WKNavigationActionPolicyDownload    Turn the navigation into a download.
+    */
     pub enum WKNavigationActionPolicy {
         WKNavigationActionPolicyCancel = 0,
         WKNavigationActionPolicyAllow = 1,
@@ -16,6 +24,13 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      @enum WKNavigationResponsePolicy
+    @abstract The policy to pass back to the decision handler from the webView:decidePolicyForNavigationResponse:decisionHandler: method.
+    @constant WKNavigationResponsePolicyCancel   Cancel the navigation.
+    @constant WKNavigationResponsePolicyAllow    Allow the navigation to continue.
+    @constant WKNavigationResponsePolicyDownload    Turn the navigation into a download.
+    */
     pub enum WKNavigationResponsePolicy {
         WKNavigationResponsePolicyCancel = 0,
         WKNavigationResponsePolicyAllow = 1,
@@ -24,6 +39,11 @@ ns_enum!(
 );
 
 extern_protocol!(
+    /**
+      A class conforming to the WKNavigationDelegate protocol can provide
+    methods for tracking progress for main frame navigations and for deciding
+    policy for main frame and subframe navigations.
+    */
     pub unsafe trait WKNavigationDelegate: NSObjectProtocol {
         #[cfg(all(feature = "WebKit_WKNavigationAction", feature = "WebKit_WKWebView"))]
         #[optional]

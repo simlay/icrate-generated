@@ -9,6 +9,11 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKHeartbeatSeriesSample")]
+    /**
+     @class         HKHeartbeatSeriesSample
+    @abstract      An HKHeartbeatSeriesSample represents a series of heartbeats.
+    @discussion    To retrieve the underlying series data for an HKHeartbeatSeriesSample, use HKHeartbeatSeriesQuery
+    */
     pub struct HKHeartbeatSeriesSample;
 
     #[cfg(feature = "HealthKit_HKHeartbeatSeriesSample")]
@@ -19,15 +24,35 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKHeartbeatSeriesSample")]
+/**
+ @class         HKHeartbeatSeriesSample
+@abstract      An HKHeartbeatSeriesSample represents a series of heartbeats.
+@discussion    To retrieve the underlying series data for an HKHeartbeatSeriesSample, use HKHeartbeatSeriesQuery
+*/
 unsafe impl NSCoding for HKHeartbeatSeriesSample {}
 
 #[cfg(feature = "HealthKit_HKHeartbeatSeriesSample")]
+/**
+ @class         HKHeartbeatSeriesSample
+@abstract      An HKHeartbeatSeriesSample represents a series of heartbeats.
+@discussion    To retrieve the underlying series data for an HKHeartbeatSeriesSample, use HKHeartbeatSeriesQuery
+*/
 unsafe impl NSObjectProtocol for HKHeartbeatSeriesSample {}
 
 #[cfg(feature = "HealthKit_HKHeartbeatSeriesSample")]
+/**
+ @class         HKHeartbeatSeriesSample
+@abstract      An HKHeartbeatSeriesSample represents a series of heartbeats.
+@discussion    To retrieve the underlying series data for an HKHeartbeatSeriesSample, use HKHeartbeatSeriesQuery
+*/
 unsafe impl NSSecureCoding for HKHeartbeatSeriesSample {}
 
 extern_methods!(
+    /**
+     @class         HKHeartbeatSeriesSample
+    @abstract      An HKHeartbeatSeriesSample represents a series of heartbeats.
+    @discussion    To retrieve the underlying series data for an HKHeartbeatSeriesSample, use HKHeartbeatSeriesQuery
+    */
     #[cfg(feature = "HealthKit_HKHeartbeatSeriesSample")]
     unsafe impl HKHeartbeatSeriesSample {}
 );

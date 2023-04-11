@@ -7,6 +7,9 @@ use crate::GameKit::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      Possible invitee responses
+    */
     pub enum GKInviteRecipientResponse {
         GKInviteRecipientResponseAccepted = 0,
         GKInviteRecipientResponseDeclined = 1,
@@ -37,6 +40,9 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameKit_GKMatchRequest")]
+    /**
+      GKMatchRequest represents the parameters needed to create the match.
+    */
     pub struct GKMatchRequest;
 
     #[cfg(feature = "GameKit_GKMatchRequest")]
@@ -46,72 +52,138 @@ extern_class!(
 );
 
 #[cfg(feature = "GameKit_GKMatchRequest")]
+/**
+  GKMatchRequest represents the parameters needed to create the match.
+*/
 unsafe impl NSObjectProtocol for GKMatchRequest {}
 
 extern_methods!(
+    /**
+      GKMatchRequest represents the parameters needed to create the match.
+    */
     #[cfg(feature = "GameKit_GKMatchRequest")]
     unsafe impl GKMatchRequest {
+        /**
+          Minimum number of players for the match
+        */
         #[method(minPlayers)]
         pub unsafe fn minPlayers(&self) -> NSUInteger;
 
+        /**
+          Minimum number of players for the match
+        */
         #[method(setMinPlayers:)]
         pub unsafe fn setMinPlayers(&self, min_players: NSUInteger);
 
+        /**
+          Maximum number of players for the match
+        */
         #[method(maxPlayers)]
         pub unsafe fn maxPlayers(&self) -> NSUInteger;
 
+        /**
+          Maximum number of players for the match
+        */
         #[method(setMaxPlayers:)]
         pub unsafe fn setMaxPlayers(&self, max_players: NSUInteger);
 
+        /**
+          The player group identifier. Matchmaking will only take place between players in the same group.
+        */
         #[method(playerGroup)]
         pub unsafe fn playerGroup(&self) -> NSUInteger;
 
+        /**
+          The player group identifier. Matchmaking will only take place between players in the same group.
+        */
         #[method(setPlayerGroup:)]
         pub unsafe fn setPlayerGroup(&self, player_group: NSUInteger);
 
+        /**
+          optional mask that specifies the role that the local player would like to play in the game.  If this value is 0, it will be set to 0xFFFFFFFF (the default), and this property will be ignored. If the value is nonzero, then automatching uses the value as a mask that restricts the role the player can play in the group. Automatching with player attributes matches new players into the game so that the bitwise OR of the masks of all the players in the resulting match equals 0xFFFFFFFF.
+        */
         #[method(playerAttributes)]
         pub unsafe fn playerAttributes(&self) -> u32;
 
+        /**
+          optional mask that specifies the role that the local player would like to play in the game.  If this value is 0, it will be set to 0xFFFFFFFF (the default), and this property will be ignored. If the value is nonzero, then automatching uses the value as a mask that restricts the role the player can play in the group. Automatching with player attributes matches new players into the game so that the bitwise OR of the masks of all the players in the resulting match equals 0xFFFFFFFF.
+        */
         #[method(setPlayerAttributes:)]
         pub unsafe fn setPlayerAttributes(&self, player_attributes: u32);
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "GameKit_GKPlayer"))]
+        /**
+          Array of GKPlayers to invite, or nil if none. This array can also include local guest players.
+        */
         #[method_id(@__retain_semantics Other recipients)]
         pub unsafe fn recipients(&self) -> Option<Id<NSArray<GKPlayer>>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "GameKit_GKPlayer"))]
+        /**
+          Array of GKPlayers to invite, or nil if none. This array can also include local guest players.
+        */
         #[method(setRecipients:)]
         pub unsafe fn setRecipients(&self, recipients: Option<&NSArray<GKPlayer>>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Message sent to invited players, may be modified if using GKMatchmakerViewController
+         Will return nil if the player is underage or restricted.
+        */
         #[method_id(@__retain_semantics Other inviteMessage)]
         pub unsafe fn inviteMessage(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Message sent to invited players, may be modified if using GKMatchmakerViewController
+         Will return nil if the player is underage or restricted.
+        */
         #[method(setInviteMessage:)]
         pub unsafe fn setInviteMessage(&self, invite_message: Option<&NSString>);
 
+        /**
+          Default number of players to use during matchmaking. If not set we will default to the number that the player previously set for this game, or maxPlayers.
+        */
         #[method(defaultNumberOfPlayers)]
         pub unsafe fn defaultNumberOfPlayers(&self) -> NSUInteger;
 
+        /**
+          Default number of players to use during matchmaking. If not set we will default to the number that the player previously set for this game, or maxPlayers.
+        */
         #[method(setDefaultNumberOfPlayers:)]
         pub unsafe fn setDefaultNumberOfPlayers(&self, default_number_of_players: NSUInteger);
 
+        /**
+          Whether or not a match will be created only using automatch.  If YES, then a player will not be able to
+         invite anyone (including contacts, friends, and nearby players) to the match, but rely on automatching to
+         find players for the match.  Default is NO.
+        */
         #[deprecated = "Set the matchmakingMode of GKMatchmakerViewController instead."]
         #[method(restrictToAutomatch)]
         pub unsafe fn restrictToAutomatch(&self) -> bool;
 
+        /**
+          Whether or not a match will be created only using automatch.  If YES, then a player will not be able to
+         invite anyone (including contacts, friends, and nearby players) to the match, but rely on automatching to
+         find players for the match.  Default is NO.
+        */
         #[deprecated = "Set the matchmakingMode of GKMatchmakerViewController instead."]
         #[method(setRestrictToAutomatch:)]
         pub unsafe fn setRestrictToAutomatch(&self, restrict_to_automatch: bool);
 
         #[cfg(feature = "GameKit_GKPlayer")]
+        /**
+          An recipientResponseHandler can be set in order to receive responses from programmatically invited players.
+        */
         #[method(recipientResponseHandler)]
         pub unsafe fn recipientResponseHandler(
             &self,
         ) -> *mut Block<(NonNull<GKPlayer>, GKInviteRecipientResponse), ()>;
 
         #[cfg(feature = "GameKit_GKPlayer")]
+        /**
+          An recipientResponseHandler can be set in order to receive responses from programmatically invited players.
+        */
         #[method(setRecipientResponseHandler:)]
         pub unsafe fn setRecipientResponseHandler(
             &self,
@@ -139,11 +211,17 @@ extern_methods!(
         pub unsafe fn maxPlayersAllowedForMatchOfType(match_type: GKMatchType) -> NSUInteger;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          Array of player IDs to invite, or nil if none
+        */
         #[deprecated = "This property is obsolete, use recipients instead"]
         #[method_id(@__retain_semantics Other playersToInvite)]
         pub unsafe fn playersToInvite(&self) -> Option<Id<NSArray<NSString>>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          Array of player IDs to invite, or nil if none
+        */
         #[deprecated = "This property is obsolete, use recipients instead"]
         #[method(setPlayersToInvite:)]
         pub unsafe fn setPlayersToInvite(&self, players_to_invite: Option<&NSArray<NSString>>);
@@ -153,6 +231,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameKit_GKInvite")]
+    /**
+      GKInvite represents an accepted game invite, it is used to create a GKMatchmakerViewController
+    */
     pub struct GKInvite;
 
     #[cfg(feature = "GameKit_GKInvite")]
@@ -162,9 +243,15 @@ extern_class!(
 );
 
 #[cfg(feature = "GameKit_GKInvite")]
+/**
+  GKInvite represents an accepted game invite, it is used to create a GKMatchmakerViewController
+*/
 unsafe impl NSObjectProtocol for GKInvite {}
 
 extern_methods!(
+    /**
+      GKInvite represents an accepted game invite, it is used to create a GKMatchmakerViewController
+    */
     #[cfg(feature = "GameKit_GKInvite")]
     unsafe impl GKInvite {
         #[cfg(feature = "GameKit_GKPlayer")]
@@ -174,13 +261,22 @@ extern_methods!(
         #[method(isHosted)]
         pub unsafe fn isHosted(&self) -> bool;
 
+        /**
+          player group from inviter's match request
+        */
         #[method(playerGroup)]
         pub unsafe fn playerGroup(&self) -> NSUInteger;
 
+        /**
+          player attributes from inviter's match request
+        */
         #[method(playerAttributes)]
         pub unsafe fn playerAttributes(&self) -> u32;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          This property is obsolete.
+        */
         #[deprecated = "This property is obsolete, use sender instead"]
         #[method_id(@__retain_semantics Other inviter)]
         pub unsafe fn inviter(&self) -> Id<NSString>;
@@ -188,6 +284,9 @@ extern_methods!(
 );
 
 extern_protocol!(
+    /**
+      GKInviteEventListener uses the GKLocalPlayerListener mechanism on GKLocalPlayer to listen to the two kinds of invite events that a game must respond to
+    */
     pub unsafe trait GKInviteEventListener {
         #[cfg(all(feature = "GameKit_GKInvite", feature = "GameKit_GKPlayer"))]
         #[optional]
@@ -223,6 +322,9 @@ extern_protocol!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameKit_GKMatchmaker")]
+    /**
+      GKMatchmaker is a singleton object to manage match creation from invites and automatching.
+    */
     pub struct GKMatchmaker;
 
     #[cfg(feature = "GameKit_GKMatchmaker")]
@@ -232,9 +334,15 @@ extern_class!(
 );
 
 #[cfg(feature = "GameKit_GKMatchmaker")]
+/**
+  GKMatchmaker is a singleton object to manage match creation from invites and automatching.
+*/
 unsafe impl NSObjectProtocol for GKMatchmaker {}
 
 extern_methods!(
+    /**
+      GKMatchmaker is a singleton object to manage match creation from invites and automatching.
+    */
     #[cfg(feature = "GameKit_GKMatchmaker")]
     unsafe impl GKMatchmaker {
         #[method_id(@__retain_semantics Other sharedMatchmaker)]
@@ -325,16 +433,6 @@ extern_methods!(
 
         #[method(stopBrowsingForNearbyPlayers)]
         pub unsafe fn stopBrowsingForNearbyPlayers(&self);
-
-        #[cfg(feature = "GameKit_GKPlayer")]
-        #[method(startGroupActivityWithPlayerHandler:)]
-        pub unsafe fn startGroupActivityWithPlayerHandler(
-            &self,
-            handler: &Block<(NonNull<GKPlayer>,), ()>,
-        );
-
-        #[method(stopGroupActivity)]
-        pub unsafe fn stopGroupActivity(&self);
     }
 );
 

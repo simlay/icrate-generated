@@ -21,9 +21,15 @@ unsafe impl NSObjectProtocol for DCAppAttestService {}
 extern_methods!(
     #[cfg(feature = "DeviceCheck_DCAppAttestService")]
     unsafe impl DCAppAttestService {
+        /**
+          The shared service instance
+        */
         #[method_id(@__retain_semantics Other sharedService)]
         pub unsafe fn sharedService() -> Id<DCAppAttestService>;
 
+        /**
+          Check if this API is supported on the current device for this application instance
+        */
         #[method(isSupported)]
         pub unsafe fn isSupported(&self) -> bool;
 

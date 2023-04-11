@@ -8,6 +8,9 @@ use crate::GameController::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameController_GCDeviceLight")]
+    /**
+     A controller light is an abstract representation of the light-emitting capabilities of a GCController instance.
+    */
     pub struct GCDeviceLight;
 
     #[cfg(feature = "GameController_GCDeviceLight")]
@@ -17,9 +20,15 @@ extern_class!(
 );
 
 #[cfg(feature = "GameController_GCDeviceLight")]
+/**
+ A controller light is an abstract representation of the light-emitting capabilities of a GCController instance.
+*/
 unsafe impl NSObjectProtocol for GCDeviceLight {}
 
 extern_methods!(
+    /**
+     A controller light is an abstract representation of the light-emitting capabilities of a GCController instance.
+    */
     #[cfg(feature = "GameController_GCDeviceLight")]
     unsafe impl GCDeviceLight {
         #[cfg(feature = "GameController_GCColor")]

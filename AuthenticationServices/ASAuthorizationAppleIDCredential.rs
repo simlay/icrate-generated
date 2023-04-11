@@ -6,6 +6,12 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      @enum ASUserDetectionStatus
+    @constant ASUserDetectionStatusUnsupported Not supported on current platform, ignore the value
+    @constant ASUserDetectionStatusUnknown We could not determine the value.  New users in the ecosystem will get this value as well, so you should not block these users, but instead treat them as any new user through standard email sign up flows
+    @constant ASUserDetectionStatusLikelyReal A hint that we have high confidence that the user is real.
+    */
     pub enum ASUserDetectionStatus {
         ASUserDetectionStatusUnsupported = 0,
         ASUserDetectionStatusUnknown = 1,
@@ -40,33 +46,59 @@ extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASAuthorizationAppleIDCredential")]
     unsafe impl ASAuthorizationAppleIDCredential {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract An opaque user ID associated with the AppleID used for the sign in. This identifier will be stable across the 'developer team', it can later be used as an input to @see ASAuthorizationRequest to request user contact information.
+
+        The identifier will remain stable as long as the user is connected with the requesting client.  The value may change upon user disconnecting from the identity provider.
+        */
         #[method_id(@__retain_semantics Other user)]
         pub unsafe fn user(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract A copy of the state value that was passed to ASAuthorizationRequest.
+        */
         #[method_id(@__retain_semantics Other state)]
         pub unsafe fn state(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          @abstract This value will contain a list of scopes for which the user provided authorization.  These may contain a subset of the requested scopes on @see ASAuthorizationAppleIDRequest.  The application should query this value to identify which scopes were returned as it maybe different from ones requested.
+        */
         #[method_id(@__retain_semantics Other authorizedScopes)]
         pub unsafe fn authorizedScopes(&self) -> Id<NSArray<ASAuthorizationScope>>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          @abstract A short-lived, one-time valid token that provides proof of authorization to the server component of the app. The authorization code is bound to the specific transaction using the state attribute passed in the authorization request. The server component of the app can validate the code using Apple’s identity service endpoint provided for this purpose.
+        */
         #[method_id(@__retain_semantics Other authorizationCode)]
         pub unsafe fn authorizationCode(&self) -> Option<Id<NSData>>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          @abstract A JSON Web Token (JWT) used to communicate information about the identity of the user in a secure way to the app. The ID token will contain the following information: Issuer Identifier, Subject Identifier, Audience, Expiry Time and Issuance Time signed by Apple's identity service.
+        */
         #[method_id(@__retain_semantics Other identityToken)]
         pub unsafe fn identityToken(&self) -> Option<Id<NSData>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract An optional email shared by the user.  This field is populated with a value that the user authorized.
+        */
         #[method_id(@__retain_semantics Other email)]
         pub unsafe fn email(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSPersonNameComponents")]
+        /**
+          @abstract An optional full name shared by the user.  This field is populated with a value that the user authorized.
+        */
         #[method_id(@__retain_semantics Other fullName)]
         pub unsafe fn fullName(&self) -> Option<Id<NSPersonNameComponents>>;
 
+        /**
+          @abstract Check this property for a hint as to whether the current user is a "real user".  @see ASUserDetectionStatus for guidelines on handling each status
+        */
         #[method(realUserStatus)]
         pub unsafe fn realUserStatus(&self) -> ASUserDetectionStatus;
 

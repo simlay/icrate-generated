@@ -6,6 +6,10 @@ use crate::Metal::*;
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+     @enum MTLTextureType
+    @abstract MTLTextureType describes the dimensionality of each image, and if multiple images are arranged into an array or cube.
+    */
     pub enum MTLTextureType {
         MTLTextureType1D = 0,
         MTLTextureType1DArray = 1,
@@ -76,10 +80,19 @@ unsafe impl NSSecureCoding for MTLSharedTextureHandle {}
 extern_methods!(
     #[cfg(feature = "Metal_MTLSharedTextureHandle")]
     unsafe impl MTLSharedTextureHandle {
+        /**
+         @property device
+        @abstract The device this texture was created against.
+        @discussion This shared texture handle can only be used with this device.
+        */
         #[method_id(@__retain_semantics Other device)]
         pub fn device(&self) -> Id<ProtocolObject<dyn MTLDevice>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property label
+        @abstract A copy of the original texture's label property, if any
+        */
         #[method_id(@__retain_semantics Other label)]
         pub fn label(&self) -> Option<Id<NSString>>;
     }
@@ -87,6 +100,11 @@ extern_methods!(
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+     @enum MTLTextureUsage
+    @abstract MTLTextureUsage declares how the texture will be used over its lifetime (bitwise OR for multiple uses).
+    @discussion This information may be used by the driver to make optimization decisions.
+    */
     pub enum MTLTextureUsage {
         MTLTextureUsageUnknown = 0x0000,
         MTLTextureUsageShaderRead = 0x0001,
@@ -144,168 +162,435 @@ extern_methods!(
             usage: MTLTextureUsage,
         ) -> Id<MTLTextureDescriptor>;
 
+        /**
+         @property type
+        @abstract The overall type of the texture to be created. The default value is MTLTextureType2D.
+        */
         #[method(textureType)]
         pub fn textureType(&self) -> MTLTextureType;
 
+        /**
+         @property type
+        @abstract The overall type of the texture to be created. The default value is MTLTextureType2D.
+        */
         #[method(setTextureType:)]
         pub fn setTextureType(&self, texture_type: MTLTextureType);
 
+        /**
+         @property pixelFormat
+        @abstract The pixel format to use when allocating this texture. This is also the pixel format that will be used to when the caller writes or reads pixels from this texture. The default value is MTLPixelFormatRGBA8Unorm.
+        */
         #[method(pixelFormat)]
         pub fn pixelFormat(&self) -> MTLPixelFormat;
 
+        /**
+         @property pixelFormat
+        @abstract The pixel format to use when allocating this texture. This is also the pixel format that will be used to when the caller writes or reads pixels from this texture. The default value is MTLPixelFormatRGBA8Unorm.
+        */
         #[method(setPixelFormat:)]
         pub fn setPixelFormat(&self, pixel_format: MTLPixelFormat);
 
+        /**
+         @property width
+        @abstract The width of the texture to create. The default value is 1.
+        */
         #[method(width)]
         pub fn width(&self) -> NSUInteger;
 
+        /**
+         @property width
+        @abstract The width of the texture to create. The default value is 1.
+        */
         #[method(setWidth:)]
         pub unsafe fn setWidth(&self, width: NSUInteger);
 
+        /**
+         @property height
+        @abstract The height of the texture to create. The default value is 1.
+        @discussion height If allocating a 1D texture, height must be 1.
+        */
         #[method(height)]
         pub fn height(&self) -> NSUInteger;
 
+        /**
+         @property height
+        @abstract The height of the texture to create. The default value is 1.
+        @discussion height If allocating a 1D texture, height must be 1.
+        */
         #[method(setHeight:)]
         pub unsafe fn setHeight(&self, height: NSUInteger);
 
+        /**
+         @property depth
+        @abstract The depth of the texture to create. The default value is 1.
+        @discussion depth When allocating any texture types other than 3D, depth must be 1.
+        */
         #[method(depth)]
         pub fn depth(&self) -> NSUInteger;
 
+        /**
+         @property depth
+        @abstract The depth of the texture to create. The default value is 1.
+        @discussion depth When allocating any texture types other than 3D, depth must be 1.
+        */
         #[method(setDepth:)]
         pub unsafe fn setDepth(&self, depth: NSUInteger);
 
+        /**
+         @property mipmapLevelCount
+        @abstract The number of mipmap levels to allocate. The default value is 1.
+        @discussion When creating Buffer and Multisample textures, mipmapLevelCount must be 1.
+        */
         #[method(mipmapLevelCount)]
         pub fn mipmapLevelCount(&self) -> NSUInteger;
 
+        /**
+         @property mipmapLevelCount
+        @abstract The number of mipmap levels to allocate. The default value is 1.
+        @discussion When creating Buffer and Multisample textures, mipmapLevelCount must be 1.
+        */
         #[method(setMipmapLevelCount:)]
         pub unsafe fn setMipmapLevelCount(&self, mipmap_level_count: NSUInteger);
 
+        /**
+         @property sampleCount
+        @abstract The number of samples in the texture to create. The default value is 1.
+        @discussion When creating Buffer textures sampleCount must be 1. Implementations may round sample counts up to the next supported value.
+        */
         #[method(sampleCount)]
         pub fn sampleCount(&self) -> NSUInteger;
 
+        /**
+         @property sampleCount
+        @abstract The number of samples in the texture to create. The default value is 1.
+        @discussion When creating Buffer textures sampleCount must be 1. Implementations may round sample counts up to the next supported value.
+        */
         #[method(setSampleCount:)]
         pub unsafe fn setSampleCount(&self, sample_count: NSUInteger);
 
+        /**
+         @property arrayLength
+        @abstract The number of array elements to allocate. The default value is 1.
+        @discussion When allocating any non-Array texture type, arrayLength has to be 1. Otherwise it must be set to something greater than 1 and less than 2048.
+        */
         #[method(arrayLength)]
         pub fn arrayLength(&self) -> NSUInteger;
 
+        /**
+         @property arrayLength
+        @abstract The number of array elements to allocate. The default value is 1.
+        @discussion When allocating any non-Array texture type, arrayLength has to be 1. Otherwise it must be set to something greater than 1 and less than 2048.
+        */
         #[method(setArrayLength:)]
         pub unsafe fn setArrayLength(&self, array_length: NSUInteger);
 
+        /**
+         @property resourceOptions
+        @abstract Options to control memory allocation parameters, etc.
+        @discussion Contains a packed set of the storageMode, cpuCacheMode and hazardTrackingMode properties.
+        */
         #[method(resourceOptions)]
         pub fn resourceOptions(&self) -> MTLResourceOptions;
 
+        /**
+         @property resourceOptions
+        @abstract Options to control memory allocation parameters, etc.
+        @discussion Contains a packed set of the storageMode, cpuCacheMode and hazardTrackingMode properties.
+        */
         #[method(setResourceOptions:)]
         pub fn setResourceOptions(&self, resource_options: MTLResourceOptions);
 
+        /**
+         @property cpuCacheMode
+        @abstract Options to specify CPU cache mode of texture resource.
+        */
         #[method(cpuCacheMode)]
         pub fn cpuCacheMode(&self) -> MTLCPUCacheMode;
 
+        /**
+         @property cpuCacheMode
+        @abstract Options to specify CPU cache mode of texture resource.
+        */
         #[method(setCpuCacheMode:)]
         pub fn setCpuCacheMode(&self, cpu_cache_mode: MTLCPUCacheMode);
 
+        /**
+         @property storageMode
+        @abstract To specify storage mode of texture resource.
+        */
         #[method(storageMode)]
         pub fn storageMode(&self) -> MTLStorageMode;
 
+        /**
+         @property storageMode
+        @abstract To specify storage mode of texture resource.
+        */
         #[method(setStorageMode:)]
         pub fn setStorageMode(&self, storage_mode: MTLStorageMode);
 
+        /**
+         @property hazardTrackingMode
+        @abstract Set hazard tracking mode for the texture. The default value is MTLHazardTrackingModeDefault.
+        @discussion
+        For resources created from the device, MTLHazardTrackingModeDefault is treated as MTLHazardTrackingModeTracked.
+        For resources created on a heap, MTLHazardTrackingModeDefault is treated as the hazardTrackingMode of the heap itself.
+        In either case, it is possible to opt-out of hazard tracking by setting MTLHazardTrackingModeUntracked.
+        It is not possible to opt-in to hazard tracking on a heap that itself is not hazard tracked.
+        For optimal performance, perform hazard tracking manually through MTLFence or MTLEvent instead.
+        */
         #[method(hazardTrackingMode)]
         pub fn hazardTrackingMode(&self) -> MTLHazardTrackingMode;
 
+        /**
+         @property hazardTrackingMode
+        @abstract Set hazard tracking mode for the texture. The default value is MTLHazardTrackingModeDefault.
+        @discussion
+        For resources created from the device, MTLHazardTrackingModeDefault is treated as MTLHazardTrackingModeTracked.
+        For resources created on a heap, MTLHazardTrackingModeDefault is treated as the hazardTrackingMode of the heap itself.
+        In either case, it is possible to opt-out of hazard tracking by setting MTLHazardTrackingModeUntracked.
+        It is not possible to opt-in to hazard tracking on a heap that itself is not hazard tracked.
+        For optimal performance, perform hazard tracking manually through MTLFence or MTLEvent instead.
+        */
         #[method(setHazardTrackingMode:)]
         pub fn setHazardTrackingMode(&self, hazard_tracking_mode: MTLHazardTrackingMode);
 
+        /**
+         @property usage
+        @abstract Description of texture usage
+        */
         #[method(usage)]
         pub fn usage(&self) -> MTLTextureUsage;
 
+        /**
+         @property usage
+        @abstract Description of texture usage
+        */
         #[method(setUsage:)]
         pub fn setUsage(&self, usage: MTLTextureUsage);
 
+        /**
+         @property allowGPUOptimizedContents
+        @abstract Allow GPU-optimization for the contents of this texture. The default value is true.
+        @discussion Useful for opting-out of GPU-optimization when implicit optimization (e.g. RT writes) is regressing CPU-read-back performance. See the documentation for optimizeContentsForGPUAccess: and optimizeContentsForCPUAccess: APIs.
+        */
         #[method(allowGPUOptimizedContents)]
         pub fn allowGPUOptimizedContents(&self) -> bool;
 
+        /**
+         @property allowGPUOptimizedContents
+        @abstract Allow GPU-optimization for the contents of this texture. The default value is true.
+        @discussion Useful for opting-out of GPU-optimization when implicit optimization (e.g. RT writes) is regressing CPU-read-back performance. See the documentation for optimizeContentsForGPUAccess: and optimizeContentsForCPUAccess: APIs.
+        */
         #[method(setAllowGPUOptimizedContents:)]
         pub fn setAllowGPUOptimizedContents(&self, allow_gpu_optimized_contents: bool);
 
+        /**
+         @property compressionType
+        @abstract Controls how the texture contents will be compressed when written to by the GPU. Compression can be used to reduce the bandwidth usage and storage requirements of a texture.
+        @discussion The default compression type is lossless, meaning that no loss of precision will occur when the texture content is modified.
+        Losslessly compressed textures may benefit from reduced bandwidth usage when regions of correlated color values are written, but do not benefit from reduced storage requirements.
+        Enabling lossy compression for textures that can tolerate some precision loss will guarantee both reduced bandwidth usage and reduced storage requirements.
+        The amount of precision loss depends on the color values stored; regions with correlated color values can be represented with limited to no precision loss, whereas regions with unrelated color values suffer more precision loss.
+        Enabling lossy compression requires both storageMode == MTLStorageModePrivate, allowGPUOptimizedContents == YES, and cannot be combined with either MTLTextureUsagePixelFormatView, MTLTextureUsageShaderWrite, MTLTextureType1D(Array) or MTLTextureTypeTextureBuffer.
+        Moreover, not all MTLPixelFormat are supported with lossy compression, verify that the MTLDevice's GPU family supports the lossy compression feature for the pixelFormat requested.
+        Set allowGPUOptimizedContents to NO to opt out of both lossless and lossy compression; such textures do not benefit from either reduced bandwidth usage or reduced storage requirements, but have predictable CPU readback performance.
+        */
         #[method(compressionType)]
         pub unsafe fn compressionType(&self) -> MTLTextureCompressionType;
 
+        /**
+         @property compressionType
+        @abstract Controls how the texture contents will be compressed when written to by the GPU. Compression can be used to reduce the bandwidth usage and storage requirements of a texture.
+        @discussion The default compression type is lossless, meaning that no loss of precision will occur when the texture content is modified.
+        Losslessly compressed textures may benefit from reduced bandwidth usage when regions of correlated color values are written, but do not benefit from reduced storage requirements.
+        Enabling lossy compression for textures that can tolerate some precision loss will guarantee both reduced bandwidth usage and reduced storage requirements.
+        The amount of precision loss depends on the color values stored; regions with correlated color values can be represented with limited to no precision loss, whereas regions with unrelated color values suffer more precision loss.
+        Enabling lossy compression requires both storageMode == MTLStorageModePrivate, allowGPUOptimizedContents == YES, and cannot be combined with either MTLTextureUsagePixelFormatView, MTLTextureUsageShaderWrite, MTLTextureType1D(Array) or MTLTextureTypeTextureBuffer.
+        Moreover, not all MTLPixelFormat are supported with lossy compression, verify that the MTLDevice's GPU family supports the lossy compression feature for the pixelFormat requested.
+        Set allowGPUOptimizedContents to NO to opt out of both lossless and lossy compression; such textures do not benefit from either reduced bandwidth usage or reduced storage requirements, but have predictable CPU readback performance.
+        */
         #[method(setCompressionType:)]
         pub unsafe fn setCompressionType(&self, compression_type: MTLTextureCompressionType);
 
+        /**
+         @property swizzle
+        @abstract Channel swizzle to use when reading or sampling from the texture, the default value is MTLTextureSwizzleChannelsDefault.
+        */
         #[method(swizzle)]
         pub fn swizzle(&self) -> MTLTextureSwizzleChannels;
 
+        /**
+         @property swizzle
+        @abstract Channel swizzle to use when reading or sampling from the texture, the default value is MTLTextureSwizzleChannelsDefault.
+        */
         #[method(setSwizzle:)]
         pub fn setSwizzle(&self, swizzle: MTLTextureSwizzleChannels);
     }
 );
 
 extern_protocol!(
+    /**
+     @protocol MTLTexture
+    @abstract MTLTexture represents a collection of 1D, 2D, or 3D images.
+    @discussion
+    Each image in a texture is a 1D, 2D, 2DMultisample, or 3D image. The texture contains one or more images arranged in a mipmap stack. If there are multiple mipmap stacks, each one is referred to as a slice of the texture. 1D, 2D, 2DMultisample, and 3D textures have a single slice. In 1DArray and 2DArray textures, every slice is an array element. A Cube texture always has 6 slices, one for each face. In a CubeArray texture, each set of six slices is one element in the array.
+
+    Most APIs that operate on individual images in a texture address those images via a tuple of a Slice, and Mipmap Level within that slice.
+    */
     pub unsafe trait MTLTexture: MTLResource {
+        /**
+         @property rootResource
+        @abstract The resource this texture was created from. It may be a texture or a buffer. If this texture is not reusing storage of another MTLResource, then nil is returned.
+        */
         #[deprecated = "Use parentTexture or buffer instead"]
         #[method_id(@__retain_semantics Other rootResource)]
         fn rootResource(&self) -> Option<Id<ProtocolObject<dyn MTLResource>>>;
 
+        /**
+         @property parentTexture
+        @abstract The texture this texture view was created from, or nil if this is not a texture view or it was not created from a texture.
+        */
         #[method_id(@__retain_semantics Other parentTexture)]
         fn parentTexture(&self) -> Option<Id<ProtocolObject<dyn MTLTexture>>>;
 
+        /**
+         @property parentRelativeLevel
+        @abstract The base level of the texture this texture view was created from, or 0 if this is not a texture view.
+        */
         #[method(parentRelativeLevel)]
         fn parentRelativeLevel(&self) -> NSUInteger;
 
+        /**
+         @property parentRelativeSlice
+        @abstract The base slice of the texture this texture view was created from, or 0 if this is not a texture view.
+        */
         #[method(parentRelativeSlice)]
         fn parentRelativeSlice(&self) -> NSUInteger;
 
+        /**
+         @property buffer
+        @abstract The buffer this texture view was created from, or nil if this is not a texture view or it was not created from a buffer.
+        */
         #[method_id(@__retain_semantics Other buffer)]
         fn buffer(&self) -> Option<Id<ProtocolObject<dyn MTLBuffer>>>;
 
+        /**
+         @property bufferOffset
+        @abstract The offset of the buffer this texture view was created from, or 0 if this is not a texture view.
+        */
         #[method(bufferOffset)]
         fn bufferOffset(&self) -> NSUInteger;
 
+        /**
+         @property bufferBytesPerRow
+        @abstract The bytesPerRow of the buffer this texture view was created from, or 0 if this is not a texture view.
+        */
         #[method(bufferBytesPerRow)]
         fn bufferBytesPerRow(&self) -> NSUInteger;
 
+        /**
+         @property iosurfacePlane
+        @abstract If this texture was created from an IOSurface, this returns the plane of the IOSurface from which the texture was created. iosurfacePlane is 0 if this texture was not created from an IOSurface.
+        */
         #[method(iosurfacePlane)]
         fn iosurfacePlane(&self) -> NSUInteger;
 
+        /**
+         @property type
+        @abstract The type of this texture.
+        */
         #[method(textureType)]
         fn textureType(&self) -> MTLTextureType;
 
+        /**
+         @property pixelFormat
+        @abstract The MTLPixelFormat that is used to interpret this texture's contents.
+        */
         #[method(pixelFormat)]
         fn pixelFormat(&self) -> MTLPixelFormat;
 
+        /**
+         @property width
+        @abstract The width of the MTLTexture instance in pixels.
+        */
         #[method(width)]
         fn width(&self) -> NSUInteger;
 
+        /**
+         @property height
+        @abstract The height of the MTLTexture instance in pixels.
+        @discussion. height is 1 if the texture is 1D.
+        */
         #[method(height)]
         fn height(&self) -> NSUInteger;
 
+        /**
+         @property depth
+        @abstract The depth of this MTLTexture instance in pixels.
+        @discussion If this MTLTexture is not a 3D texture, the depth is 1
+        */
         #[method(depth)]
         fn depth(&self) -> NSUInteger;
 
+        /**
+         @property mipmapLevelCount
+        @abstract The number of mipmap levels in each slice of this MTLTexture.
+        */
         #[method(mipmapLevelCount)]
         fn mipmapLevelCount(&self) -> NSUInteger;
 
+        /**
+         @property sampleCount
+        @abstract The number of samples in each pixel of this MTLTexture.
+        @discussion If this texture is any type other than 2DMultisample, samples is 1.
+        */
         #[method(sampleCount)]
         fn sampleCount(&self) -> NSUInteger;
 
+        /**
+         @property arrayLength
+        @abstract The number of array elements in this MTLTexture.
+        @discussion For non-Array texture types, arrayLength is 1.
+        */
         #[method(arrayLength)]
         fn arrayLength(&self) -> NSUInteger;
 
+        /**
+         @property usage
+        @abstract Description of texture usage.
+        */
         #[method(usage)]
         fn usage(&self) -> MTLTextureUsage;
 
+        /**
+         @property shareable
+        @abstract If YES, this texture can be shared with other processes.
+        @discussion Texture can be shared across process addres space boundaries through use of sharedTextureHandle and XPC.
+        */
         #[method(isShareable)]
         fn isShareable(&self) -> bool;
 
+        /**
+         @property framebufferOnly
+        @abstract If YES, this texture can only be used with a MTLAttachmentDescriptor, and cannot be used as a texture argument for MTLRenderCommandEncoder, MTLBlitCommandEncoder, or MTLComputeCommandEncoder. Furthermore, when this property's value is YES, readPixels/writePixels may not be used with this texture.
+        @discussion Textures obtained from CAMetalDrawables may have this property set to YES, depending on the value of frameBufferOnly passed to their parent CAMetalLayer. Textures created directly by the application will not have any restrictions.
+        */
         #[method(isFramebufferOnly)]
         fn isFramebufferOnly(&self) -> bool;
 
+        /**
+         @property firstMipmapInTail
+        @abstract For sparse textures this property returns index of first mipmap that is packed in tail.
+        Mapping this mipmap level will map all subsequent mipmap levels.
+        */
         #[optional]
         #[method(firstMipmapInTail)]
         fn firstMipmapInTail(&self) -> NSUInteger;
 
+        /**
+         @property tailSizeInBytes
+        @abstract Amount of memory in bytes required to map sparse texture tail.
+        */
         #[optional]
         #[method(tailSizeInBytes)]
         fn tailSizeInBytes(&self) -> NSUInteger;
@@ -314,12 +599,26 @@ extern_protocol!(
         #[method(isSparse)]
         fn isSparse(&self) -> bool;
 
+        /**
+         @property allowGPUOptimizedContents
+        @abstract Allow GPU-optimization for the contents texture. The default value is true.
+        @discussion Useful for opting-out of GPU-optimization when implicit optimization (e.g. RT writes) is regressing CPU-read-back performance. See the documentation for optimizeContentsForGPUAccess: and optimizeContentsForCPUAccess: APIs.
+        */
         #[method(allowGPUOptimizedContents)]
         fn allowGPUOptimizedContents(&self) -> bool;
 
+        /**
+         @property compressionType
+        @abstract Returns the compression type of the texture
+        @discussion See the compressionType property on MTLTextureDescriptor
+        */
         #[method(compressionType)]
         unsafe fn compressionType(&self) -> MTLTextureCompressionType;
 
+        /**
+         @property gpuResourceID
+        @abstract Handle of the GPU resource suitable for storing in an Argument Buffer
+        */
         #[method(gpuResourceID)]
         unsafe fn gpuResourceID(&self) -> MTLResourceID;
 
@@ -382,6 +681,10 @@ extern_protocol!(
         #[method_id(@__retain_semantics New newSharedTextureHandle)]
         fn newSharedTextureHandle(&self) -> Option<Id<MTLSharedTextureHandle>>;
 
+        /**
+         @property remoteStorageTexture
+        @abstract For Metal texture objects that are remote views, this returns the texture associated with the storage on the originating device.
+        */
         #[method_id(@__retain_semantics Other remoteStorageTexture)]
         fn remoteStorageTexture(&self) -> Option<Id<ProtocolObject<dyn MTLTexture>>>;
 
@@ -391,6 +694,10 @@ extern_protocol!(
             device: &ProtocolObject<dyn MTLDevice>,
         ) -> Option<Id<ProtocolObject<dyn MTLTexture>>>;
 
+        /**
+         @property swizzle
+        @abstract The channel swizzle used when reading or sampling from this texture
+        */
         #[method(swizzle)]
         fn swizzle(&self) -> MTLTextureSwizzleChannels;
 

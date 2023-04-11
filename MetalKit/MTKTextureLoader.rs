@@ -64,6 +64,10 @@ pub type MTKTextureLoaderArrayCallback = *mut Block<
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MetalKit_MTKTextureLoader")]
+    /**
+     @class MTKTextureLoader
+    @abstract Load Metal textures from files with the device specified at initialization
+    */
     pub struct MTKTextureLoader;
 
     #[cfg(feature = "MetalKit_MTKTextureLoader")]
@@ -73,11 +77,23 @@ extern_class!(
 );
 
 #[cfg(feature = "MetalKit_MTKTextureLoader")]
+/**
+ @class MTKTextureLoader
+@abstract Load Metal textures from files with the device specified at initialization
+*/
 unsafe impl NSObjectProtocol for MTKTextureLoader {}
 
 extern_methods!(
+    /**
+     @class MTKTextureLoader
+    @abstract Load Metal textures from files with the device specified at initialization
+    */
     #[cfg(feature = "MetalKit_MTKTextureLoader")]
     unsafe impl MTKTextureLoader {
+        /**
+         @property device
+        @abstract Metal device with which to create Metal textures
+        */
         #[method_id(@__retain_semantics Other device)]
         pub unsafe fn device(&self) -> Id<ProtocolObject<dyn MTLDevice>>;
 

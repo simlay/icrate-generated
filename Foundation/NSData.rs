@@ -5,6 +5,9 @@ use crate::Foundation::*;
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+         Read/Write Options
+    */
     pub enum NSDataReadingOptions {
         NSDataReadingMappedIfSafe = 1 << 0,
         NSDataReadingUncached = 1 << 1,
@@ -35,6 +38,9 @@ ns_options!(
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+         Data Search Options
+    */
     pub enum NSDataSearchOptions {
         NSDataSearchBackwards = 1 << 0,
         NSDataSearchAnchored = 1 << 1,
@@ -43,6 +49,9 @@ ns_options!(
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+             Base 64 Options
+    */
     pub enum NSDataBase64EncodingOptions {
         NSDataBase64Encoding64CharacterLineLength = 1 << 0,
         NSDataBase64Encoding76CharacterLineLength = 1 << 1,
@@ -61,6 +70,9 @@ ns_options!(
 extern_class!(
     #[derive(PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSData")]
+    /**
+         Immutable Data
+    */
     pub struct NSData;
 
     #[cfg(feature = "Foundation_NSData")]
@@ -70,15 +82,27 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSData")]
+/**
+     Immutable Data
+*/
 unsafe impl NSCoding for NSData {}
 
 #[cfg(feature = "Foundation_NSData")]
+/**
+     Immutable Data
+*/
 unsafe impl NSObjectProtocol for NSData {}
 
 #[cfg(feature = "Foundation_NSData")]
+/**
+     Immutable Data
+*/
 unsafe impl NSSecureCoding for NSData {}
 
 extern_methods!(
+    /**
+         Immutable Data
+    */
     #[cfg(feature = "Foundation_NSData")]
     unsafe impl NSData {
         #[method(length)]
@@ -299,6 +323,9 @@ extern_methods!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      Various algorithms provided for compression APIs. See NSData and NSMutableData.
+    */
     pub enum NSDataCompressionAlgorithm {
         NSDataCompressionAlgorithmLZFSE = 0,
         NSDataCompressionAlgorithmLZ4 = 1,
@@ -366,6 +393,9 @@ extern_methods!(
 extern_class!(
     #[derive(PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSMutableData")]
+    /**
+         Mutable Data
+    */
     pub struct NSMutableData;
 
     #[cfg(feature = "Foundation_NSMutableData")]
@@ -376,15 +406,27 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSMutableData")]
+/**
+     Mutable Data
+*/
 unsafe impl NSCoding for NSMutableData {}
 
 #[cfg(feature = "Foundation_NSMutableData")]
+/**
+     Mutable Data
+*/
 unsafe impl NSObjectProtocol for NSMutableData {}
 
 #[cfg(feature = "Foundation_NSMutableData")]
+/**
+     Mutable Data
+*/
 unsafe impl NSSecureCoding for NSMutableData {}
 
 extern_methods!(
+    /**
+         Mutable Data
+    */
     #[cfg(feature = "Foundation_NSMutableData")]
     unsafe impl NSMutableData {
         #[method(setLength:)]
@@ -473,6 +515,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSPurgeableData")]
+    /**
+             Purgeable Data
+    */
     pub struct NSPurgeableData;
 
     #[cfg(feature = "Foundation_NSPurgeableData")]
@@ -483,18 +528,33 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSPurgeableData")]
+/**
+         Purgeable Data
+*/
 unsafe impl NSCoding for NSPurgeableData {}
 
 #[cfg(feature = "Foundation_NSPurgeableData")]
+/**
+         Purgeable Data
+*/
 unsafe impl NSDiscardableContent for NSPurgeableData {}
 
 #[cfg(feature = "Foundation_NSPurgeableData")]
+/**
+         Purgeable Data
+*/
 unsafe impl NSObjectProtocol for NSPurgeableData {}
 
 #[cfg(feature = "Foundation_NSPurgeableData")]
+/**
+         Purgeable Data
+*/
 unsafe impl NSSecureCoding for NSPurgeableData {}
 
 extern_methods!(
+    /**
+             Purgeable Data
+    */
     #[cfg(feature = "Foundation_NSPurgeableData")]
     unsafe impl NSPurgeableData {}
 );
@@ -502,6 +562,9 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `NSData`
     ///
+    /**
+         Mutable Data
+    */
     /// NSDataCreation
     #[cfg(feature = "Foundation_NSMutableData")]
     unsafe impl NSMutableData {
@@ -621,6 +684,9 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `NSData`
     ///
+    /**
+         Mutable Data
+    */
     /// NSDataBase64Encoding
     #[cfg(feature = "Foundation_NSMutableData")]
     unsafe impl NSMutableData {
@@ -644,6 +710,9 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `NSData`
     ///
+    /**
+         Mutable Data
+    */
     /// NSDeprecated
     #[cfg(feature = "Foundation_NSMutableData")]
     unsafe impl NSMutableData {
@@ -668,6 +737,9 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `NSMutableData`
     ///
+    /**
+             Purgeable Data
+    */
     /// NSMutableDataCreation
     #[cfg(feature = "Foundation_NSPurgeableData")]
     unsafe impl NSPurgeableData {
@@ -694,6 +766,9 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `NSData`
     ///
+    /**
+             Purgeable Data
+    */
     /// NSDataCreation
     #[cfg(feature = "Foundation_NSPurgeableData")]
     unsafe impl NSPurgeableData {
@@ -809,6 +884,9 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `NSData`
     ///
+    /**
+             Purgeable Data
+    */
     /// NSDataBase64Encoding
     #[cfg(feature = "Foundation_NSPurgeableData")]
     unsafe impl NSPurgeableData {
@@ -832,6 +910,9 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `NSData`
     ///
+    /**
+             Purgeable Data
+    */
     /// NSDeprecated
     #[cfg(feature = "Foundation_NSPurgeableData")]
     unsafe impl NSPurgeableData {

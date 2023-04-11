@@ -52,6 +52,9 @@ extern_methods!(
             feature = "AuthenticationServices_ASAuthorizationPublicKeyCredentialParameters",
             feature = "Foundation_NSArray"
         ))]
+        /**
+          @abstract A list of parameters for the new credential which are supported by the Relying Party. The authenticator should choose from these parameters when creating the credential.
+        */
         #[method_id(@__retain_semantics Other credentialParameters)]
         pub unsafe fn credentialParameters(
             &self,
@@ -61,6 +64,9 @@ extern_methods!(
             feature = "AuthenticationServices_ASAuthorizationPublicKeyCredentialParameters",
             feature = "Foundation_NSArray"
         ))]
+        /**
+          @abstract A list of parameters for the new credential which are supported by the Relying Party. The authenticator should choose from these parameters when creating the credential.
+        */
         #[method(setCredentialParameters:)]
         pub unsafe fn setCredentialParameters(
             &self,
@@ -71,6 +77,9 @@ extern_methods!(
             feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor",
             feature = "Foundation_NSArray"
         ))]
+        /**
+          @abstract A list of descriptors indicating credentials which must not already exist on the authenticator. If a credential already exists on the authenticator which matches one or more of these descriptors, a new credential will not be created and authentication will fail.
+        */
         #[method_id(@__retain_semantics Other excludedCredentials)]
         pub unsafe fn excludedCredentials(
             &self,
@@ -80,17 +89,26 @@ extern_methods!(
             feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor",
             feature = "Foundation_NSArray"
         ))]
+        /**
+          @abstract A list of descriptors indicating credentials which must not already exist on the authenticator. If a credential already exists on the authenticator which matches one or more of these descriptors, a new credential will not be created and authentication will fail.
+        */
         #[method(setExcludedCredentials:)]
         pub unsafe fn setExcludedCredentials(
             &self,
             excluded_credentials: &NSArray<ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor>,
         );
 
+        /**
+          @abstract A preference whether the authenticator should store the private key of the newly created credential.
+        */
         #[method_id(@__retain_semantics Other residentKeyPreference)]
         pub unsafe fn residentKeyPreference(
             &self,
         ) -> Id<ASAuthorizationPublicKeyCredentialResidentKeyPreference>;
 
+        /**
+          @abstract A preference whether the authenticator should store the private key of the newly created credential.
+        */
         #[method(setResidentKeyPreference:)]
         pub unsafe fn setResidentKeyPreference(
             &self,

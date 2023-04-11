@@ -6,6 +6,14 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum       CLSProgressReportingCapabilityKind
+    @constant   CLSProgressReportingCapabilityKindDuration     Reports time spent. By default all CLSContexts have this capability. See CLSActivity for more information.
+    @constant   CLSProgressReportingCapabilityKindPercent      Reports progress percentage. See CLSActivity for more information.
+    @constant   CLSProgressReportingCapabilityKindBinary       Reports a binary value like true/false, pass/fail, yes/no or correct/incorrect. See CLSBinaryItem for more information.
+    @constant   CLSProgressReportingCapabilityKindQuantity     Reports a discrete value. See CLSQuantityItem for more information.
+    @constant   CLSProgressReportingCapabilityKindScore        Reports a score. See CLSScoreItem for more information.
+    */
     pub enum CLSProgressReportingCapabilityKind {
         CLSProgressReportingCapabilityKindDuration = 0,
         CLSProgressReportingCapabilityKindPercent = 1,
@@ -18,6 +26,9 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "ClassKit_CLSProgressReportingCapability")]
+    /**
+     @abstract   This class specifies progress reporting capability of a ClassKit client app
+    */
     pub struct CLSProgressReportingCapability;
 
     #[cfg(feature = "ClassKit_CLSProgressReportingCapability")]
@@ -28,21 +39,39 @@ extern_class!(
 );
 
 #[cfg(feature = "ClassKit_CLSProgressReportingCapability")]
+/**
+ @abstract   This class specifies progress reporting capability of a ClassKit client app
+*/
 unsafe impl NSCoding for CLSProgressReportingCapability {}
 
 #[cfg(feature = "ClassKit_CLSProgressReportingCapability")]
+/**
+ @abstract   This class specifies progress reporting capability of a ClassKit client app
+*/
 unsafe impl NSObjectProtocol for CLSProgressReportingCapability {}
 
 #[cfg(feature = "ClassKit_CLSProgressReportingCapability")]
+/**
+ @abstract   This class specifies progress reporting capability of a ClassKit client app
+*/
 unsafe impl NSSecureCoding for CLSProgressReportingCapability {}
 
 extern_methods!(
+    /**
+     @abstract   This class specifies progress reporting capability of a ClassKit client app
+    */
     #[cfg(feature = "ClassKit_CLSProgressReportingCapability")]
     unsafe impl CLSProgressReportingCapability {
+        /**
+         @abstract      Returns the kind of progress reporting capability
+        */
         #[method(kind)]
         pub unsafe fn kind(&self) -> CLSProgressReportingCapabilityKind;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract      Returns progress reporting details
+        */
         #[method_id(@__retain_semantics Other details)]
         pub unsafe fn details(&self) -> Option<Id<NSString>>;
 

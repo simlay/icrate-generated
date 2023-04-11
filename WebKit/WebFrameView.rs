@@ -8,6 +8,9 @@ use crate::WebKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "WebKit_WebFrameView")]
+    /**
+     @class WebFrameView
+    */
     #[deprecated]
     pub struct WebFrameView;
 
@@ -19,45 +22,93 @@ extern_class!(
 );
 
 #[cfg(feature = "WebKit_WebFrameView")]
+/**
+ @class WebFrameView
+*/
 unsafe impl NSAccessibility for WebFrameView {}
 
 #[cfg(feature = "WebKit_WebFrameView")]
+/**
+ @class WebFrameView
+*/
 unsafe impl NSAccessibilityElementProtocol for WebFrameView {}
 
 #[cfg(feature = "WebKit_WebFrameView")]
+/**
+ @class WebFrameView
+*/
 unsafe impl NSAnimatablePropertyContainer for WebFrameView {}
 
 #[cfg(feature = "WebKit_WebFrameView")]
+/**
+ @class WebFrameView
+*/
 unsafe impl NSAppearanceCustomization for WebFrameView {}
 
 #[cfg(feature = "WebKit_WebFrameView")]
+/**
+ @class WebFrameView
+*/
 unsafe impl NSCoding for WebFrameView {}
 
 #[cfg(feature = "WebKit_WebFrameView")]
+/**
+ @class WebFrameView
+*/
 unsafe impl NSDraggingDestination for WebFrameView {}
 
 #[cfg(feature = "WebKit_WebFrameView")]
+/**
+ @class WebFrameView
+*/
 unsafe impl NSObjectProtocol for WebFrameView {}
 
 #[cfg(feature = "WebKit_WebFrameView")]
+/**
+ @class WebFrameView
+*/
 unsafe impl NSUserInterfaceItemIdentification for WebFrameView {}
 
 extern_methods!(
+    /**
+     @class WebFrameView
+    */
     #[cfg(feature = "WebKit_WebFrameView")]
     unsafe impl WebFrameView {
         #[cfg(feature = "WebKit_WebFrame")]
+        /**
+         @property webFrame
+        @abstract The WebFrame associated with this WebFrameView
+        */
         #[method_id(@__retain_semantics Other webFrame)]
         pub unsafe fn webFrame(&self) -> Option<Id<WebFrame>>;
 
+        /**
+         @property documentView
+        @abstract The WebFrameView's document subview
+        @discussion The subview that renders the WebFrameView's contents
+        */
         #[method_id(@__retain_semantics Other documentView)]
         pub unsafe fn documentView(&self) -> Option<Id<NSView>>;
 
+        /**
+         @property allowsScrolling
+        @abstract Whether the WebFrameView allows its document to be scrolled
+        */
         #[method(allowsScrolling)]
         pub unsafe fn allowsScrolling(&self) -> bool;
 
+        /**
+         @property allowsScrolling
+        @abstract Whether the WebFrameView allows its document to be scrolled
+        */
         #[method(setAllowsScrolling:)]
         pub unsafe fn setAllowsScrolling(&self, allows_scrolling: bool);
 
+        /**
+         @property canPrintHeadersAndFooters
+        @abstract Whether this frame can print headers and footers
+        */
         #[method(canPrintHeadersAndFooters)]
         pub unsafe fn canPrintHeadersAndFooters(&self) -> bool;
 
@@ -68,6 +119,13 @@ extern_methods!(
             print_info: Option<&NSPrintInfo>,
         ) -> Option<Id<NSPrintOperation>>;
 
+        /**
+         @property documentViewShouldHandlePrint
+        @abstract Called by the host application before it initializes and runs a print operation.
+        @discussion If NO is returned, the host application will abort its print operation and call -printDocumentView on the
+        WebFrameView.  The document view is then expected to run its own print operation.  If YES is returned, the host
+        application's print operation will continue as normal.
+        */
         #[method(documentViewShouldHandlePrint)]
         pub unsafe fn documentViewShouldHandlePrint(&self) -> bool;
 
@@ -78,6 +136,9 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSView`
+    /**
+     @class WebFrameView
+    */
     #[cfg(feature = "WebKit_WebFrameView")]
     unsafe impl WebFrameView {
         #[method_id(@__retain_semantics Init initWithFrame:)]

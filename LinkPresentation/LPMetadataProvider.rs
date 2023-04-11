@@ -8,6 +8,17 @@ use crate::LinkPresentation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "LinkPresentation_LPMetadataProvider")]
+    /**
+     An LPMetadataProvider object retrieves metadata for a given URL.
+
+    An instance of LPMetadataProvider can only be asked to retrieve metadata once;
+    a new instance should be created for each request.
+
+    A client must have the com.apple.security.network.client entitlement
+    in order to be able to use LPMetadataProvider for remote URLs.
+
+    @see `LPLinkMetadata`
+    */
     pub struct LPMetadataProvider;
 
     #[cfg(feature = "LinkPresentation_LPMetadataProvider")]
@@ -17,9 +28,31 @@ extern_class!(
 );
 
 #[cfg(feature = "LinkPresentation_LPMetadataProvider")]
+/**
+ An LPMetadataProvider object retrieves metadata for a given URL.
+
+An instance of LPMetadataProvider can only be asked to retrieve metadata once;
+a new instance should be created for each request.
+
+A client must have the com.apple.security.network.client entitlement
+in order to be able to use LPMetadataProvider for remote URLs.
+
+@see `LPLinkMetadata`
+*/
 unsafe impl NSObjectProtocol for LPMetadataProvider {}
 
 extern_methods!(
+    /**
+     An LPMetadataProvider object retrieves metadata for a given URL.
+
+    An instance of LPMetadataProvider can only be asked to retrieve metadata once;
+    a new instance should be created for each request.
+
+    A client must have the com.apple.security.network.client entitlement
+    in order to be able to use LPMetadataProvider for remote URLs.
+
+    @see `LPLinkMetadata`
+    */
     #[cfg(feature = "LinkPresentation_LPMetadataProvider")]
     unsafe impl LPMetadataProvider {
         #[cfg(all(
@@ -49,15 +82,49 @@ extern_methods!(
         #[method(cancel)]
         pub unsafe fn cancel(&self);
 
+        /**
+         A boolean value indicating whether LPMetadataProvider should download secondary
+        resources specified by the metadata, like the icon, image, or video. If
+        shouldFetchSubresources is set to `NO`, the returned LPLinkMetadata object will
+        consist only of metadata retrieved from the main resource.
+
+        The default value is `YES`.
+        */
         #[method(shouldFetchSubresources)]
         pub unsafe fn shouldFetchSubresources(&self) -> bool;
 
+        /**
+         A boolean value indicating whether LPMetadataProvider should download secondary
+        resources specified by the metadata, like the icon, image, or video. If
+        shouldFetchSubresources is set to `NO`, the returned LPLinkMetadata object will
+        consist only of metadata retrieved from the main resource.
+
+        The default value is `YES`.
+        */
         #[method(setShouldFetchSubresources:)]
         pub unsafe fn setShouldFetchSubresources(&self, should_fetch_subresources: bool);
 
+        /**
+         The time interval after which the request will automatically fail if it has not
+        already completed.
+
+        If the timeout is reached, no metadata is returned; the completion handler will
+        be invoked with the error code `LPErrorMetadataFetchTimedOut`.
+
+        The default timeout is 30 seconds.
+        */
         #[method(timeout)]
         pub unsafe fn timeout(&self) -> NSTimeInterval;
 
+        /**
+         The time interval after which the request will automatically fail if it has not
+        already completed.
+
+        If the timeout is reached, no metadata is returned; the completion handler will
+        be invoked with the error code `LPErrorMetadataFetchTimedOut`.
+
+        The default timeout is 30 seconds.
+        */
         #[method(setTimeout:)]
         pub unsafe fn setTimeout(&self, timeout: NSTimeInterval);
     }

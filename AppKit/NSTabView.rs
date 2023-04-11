@@ -9,6 +9,9 @@ extern_static!(NSAppKitVersionNumberWithDirectionalTabs: NSAppKitVersion = 631.0
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      Use tabPosition and tabViewBorderType instead
+    */
     pub enum NSTabViewType {
         NSTopTabsBezelBorder = 0,
         NSLeftTabsBezelBorder = 1,
@@ -105,20 +108,35 @@ extern_methods!(
         pub unsafe fn selectPreviousTabViewItem(&self, sender: Option<&Object>);
 
         #[cfg(feature = "AppKit_NSTabViewItem")]
+        /**
+          return nil if none are selected
+        */
         #[method_id(@__retain_semantics Other selectedTabViewItem)]
         pub unsafe fn selectedTabViewItem(&self) -> Option<Id<NSTabViewItem>>;
 
         #[cfg(feature = "AppKit_NSFont")]
+        /**
+          returns font used for all tab labels.
+        */
         #[method_id(@__retain_semantics Other font)]
         pub unsafe fn font(&self) -> Id<NSFont>;
 
         #[cfg(feature = "AppKit_NSFont")]
+        /**
+          returns font used for all tab labels.
+        */
         #[method(setFont:)]
         pub unsafe fn setFont(&self, font: &NSFont);
 
+        /**
+          Use tabPosition and tabViewBorderType instead. Setting this will also set the tabPosition and tabViewBorderType. Setting tabPosition or tabViewBorderType will affect tabViewType
+        */
         #[method(tabViewType)]
         pub unsafe fn tabViewType(&self) -> NSTabViewType;
 
+        /**
+          Use tabPosition and tabViewBorderType instead. Setting this will also set the tabPosition and tabViewBorderType. Setting tabPosition or tabViewBorderType will affect tabViewType
+        */
         #[method(setTabViewType:)]
         pub unsafe fn setTabViewType(&self, tab_view_type: NSTabViewType);
 
@@ -128,9 +146,15 @@ extern_methods!(
         #[method(setTabPosition:)]
         pub unsafe fn setTabPosition(&self, tab_position: NSTabPosition);
 
+        /**
+          This will only be respected if NSTabPosition is NSTabPositionNone.
+        */
         #[method(tabViewBorderType)]
         pub unsafe fn tabViewBorderType(&self) -> NSTabViewBorderType;
 
+        /**
+          This will only be respected if NSTabPosition is NSTabPositionNone.
+        */
         #[method(setTabViewBorderType:)]
         pub unsafe fn setTabViewBorderType(&self, tab_view_border_type: NSTabViewBorderType);
 
@@ -148,12 +172,21 @@ extern_methods!(
         #[method(setAllowsTruncatedLabels:)]
         pub unsafe fn setAllowsTruncatedLabels(&self, allows_truncated_labels: bool);
 
+        /**
+          returns the minimum size of the tab view
+        */
         #[method(minimumSize)]
         pub unsafe fn minimumSize(&self) -> NSSize;
 
+        /**
+          only relevant for borderless tab view type
+        */
         #[method(drawsBackground)]
         pub unsafe fn drawsBackground(&self) -> bool;
 
+        /**
+          only relevant for borderless tab view type
+        */
         #[method(setDrawsBackground:)]
         pub unsafe fn setDrawsBackground(&self, draws_background: bool);
 
@@ -179,9 +212,15 @@ extern_methods!(
         #[method(removeTabViewItem:)]
         pub unsafe fn removeTabViewItem(&self, tab_view_item: &NSTabViewItem);
 
+        /**
+          Delegate
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(&self) -> Option<Id<ProtocolObject<dyn NSTabViewDelegate>>>;
 
+        /**
+          Delegate
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(&self, delegate: Option<&ProtocolObject<dyn NSTabViewDelegate>>);
 
@@ -189,9 +228,15 @@ extern_methods!(
         #[method_id(@__retain_semantics Other tabViewItemAtPoint:)]
         pub unsafe fn tabViewItemAtPoint(&self, point: NSPoint) -> Option<Id<NSTabViewItem>>;
 
+        /**
+          Return the rect available for a "page".
+        */
         #[method(contentRect)]
         pub unsafe fn contentRect(&self) -> NSRect;
 
+        /**
+          Query
+        */
         #[method(numberOfTabViewItems)]
         pub unsafe fn numberOfTabViewItems(&self) -> NSInteger;
 
@@ -217,6 +262,11 @@ extern_methods!(
 );
 
 extern_protocol!(
+    /**
+     ================================================================================
+        NSTabViewDelegate protocol
+    ================================================================================
+    */
     pub unsafe trait NSTabViewDelegate: NSObjectProtocol {
         #[cfg(all(feature = "AppKit_NSTabView", feature = "AppKit_NSTabViewItem"))]
         #[optional]

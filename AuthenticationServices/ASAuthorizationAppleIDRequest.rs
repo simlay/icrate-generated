@@ -29,10 +29,20 @@ extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASAuthorizationAppleIDRequest")]
     unsafe impl ASAuthorizationAppleIDRequest {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract If you have been previously vended a 'user' value through ASAuthorization response, you may set it here to provide additional context to identity provider.
+
+        @see ASAuthorizationAppleIDCredential doc for the description of this property in context of response.
+        */
         #[method_id(@__retain_semantics Other user)]
         pub unsafe fn user(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract If you have been previously vended a 'user' value through ASAuthorization response, you may set it here to provide additional context to identity provider.
+
+        @see ASAuthorizationAppleIDCredential doc for the description of this property in context of response.
+        */
         #[method(setUser:)]
         pub unsafe fn setUser(&self, user: Option<&NSString>);
     }

@@ -136,6 +136,12 @@ extern_struct!(
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+     @abstract Generic render stage enum
+    @brief Can also be used for points at which a fence may be waited on or signaled.
+    @constant MTLRenderStageVertex   All vertex work prior to rasterization has completed.
+    @constant MTLRenderStageFragment All rendering work has completed.
+    */
     pub enum MTLRenderStages {
         MTLRenderStageVertex = 1 << 0,
         MTLRenderStageFragment = 1 << 1,
@@ -146,6 +152,10 @@ ns_options!(
 );
 
 extern_protocol!(
+    /**
+     @protocol MTLRenderCommandEncoder
+    @discussion MTLRenderCommandEncoder is a container for graphics rendering state and the code to translate the state into a command format that the device can execute.
+    */
     pub unsafe trait MTLRenderCommandEncoder: MTLCommandEncoder {
         #[method(setRenderPipelineState:)]
         fn setRenderPipelineState(
@@ -805,9 +815,17 @@ extern_protocol!(
             indirect_buffer_offset: NSUInteger,
         );
 
+        /**
+         @property tileWidth:
+        @abstract The width of the tile for this render pass.
+        */
         #[method(tileWidth)]
         unsafe fn tileWidth(&self) -> NSUInteger;
 
+        /**
+         @property tileHeight:
+        @abstract The height of the tile for this render pass.
+        */
         #[method(tileHeight)]
         unsafe fn tileHeight(&self) -> NSUInteger;
 

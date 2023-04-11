@@ -30,6 +30,9 @@ extern_methods!(
         #[method(endUndoGrouping)]
         pub unsafe fn endUndoGrouping(&self);
 
+        /**
+          These nest.
+        */
         #[method(groupingLevel)]
         pub unsafe fn groupingLevel(&self) -> NSInteger;
 
@@ -42,23 +45,41 @@ extern_methods!(
         #[method(isUndoRegistrationEnabled)]
         pub unsafe fn isUndoRegistrationEnabled(&self) -> bool;
 
+        /**
+          Groups By Event
+        */
         #[method(groupsByEvent)]
         pub unsafe fn groupsByEvent(&self) -> bool;
 
+        /**
+          Groups By Event
+        */
         #[method(setGroupsByEvent:)]
         pub unsafe fn setGroupsByEvent(&self, groups_by_event: bool);
 
+        /**
+          Undo levels
+        */
         #[method(levelsOfUndo)]
         pub unsafe fn levelsOfUndo(&self) -> NSUInteger;
 
+        /**
+          Undo levels
+        */
         #[method(setLevelsOfUndo:)]
         pub unsafe fn setLevelsOfUndo(&self, levels_of_undo: NSUInteger);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Run Loop Modes
+        */
         #[method_id(@__retain_semantics Other runLoopModes)]
         pub unsafe fn runLoopModes(&self) -> Id<NSArray<NSRunLoopMode>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Run Loop Modes
+        */
         #[method(setRunLoopModes:)]
         pub unsafe fn setRunLoopModes(&self, run_loop_modes: &NSArray<NSRunLoopMode>);
 
@@ -71,12 +92,19 @@ extern_methods!(
         #[method(undoNestedGroup)]
         pub unsafe fn undoNestedGroup(&self);
 
+        /**
+          Undoes a nested grouping without first trying to close a top level
+         undo group.
+        */
         #[method(canUndo)]
         pub unsafe fn canUndo(&self) -> bool;
 
         #[method(canRedo)]
         pub unsafe fn canRedo(&self) -> bool;
 
+        /**
+          returns whether or not the UndoManager has anything to undo or redo
+        */
         #[method(isUndoing)]
         pub unsafe fn isUndoing(&self) -> bool;
 
@@ -117,6 +145,9 @@ extern_methods!(
         pub unsafe fn redoActionIsDiscardable(&self) -> bool;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Undo/Redo action name
+        */
         #[method_id(@__retain_semantics Other undoActionName)]
         pub unsafe fn undoActionName(&self) -> Id<NSString>;
 
@@ -129,6 +160,9 @@ extern_methods!(
         pub unsafe fn setActionName(&self, action_name: &NSString);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Undo/Redo menu item title
+        */
         #[method_id(@__retain_semantics Other undoMenuItemTitle)]
         pub unsafe fn undoMenuItemTitle(&self) -> Id<NSString>;
 

@@ -78,27 +78,53 @@ extern_methods!(
         #[method(setCanChooseFiles:)]
         pub unsafe fn setCanChooseFiles(&self, can_choose_files: bool);
 
+        /**
+          Controls how the receiver responds to ubiquitous documents with conflicting versions. If YES, then when the user attempts to open one or more documents with conflicts, the receiver will first display conflict resolution UI, requiring the user to resolve those conflicts before the documents can be opened. If NO, then the receiver does nothing in response to conflicts, allowing your application to handle them. The default value is YES, except for applications linked against the 10.9 SDK or earlier that have adopted iCloud by specifying a ubiquitous container identifier entitlement.
+
+        To provide the ideal user experience, you should set this property to NO and do conflict detection and resolution (using NSURLUbiquitousItemHasUnresolvedConflictsKey and NSFileVersion) in the context of your application, instead of relying on the open panel to do it.
+        */
         #[method(canResolveUbiquitousConflicts)]
         pub unsafe fn canResolveUbiquitousConflicts(&self) -> bool;
 
+        /**
+          Controls how the receiver responds to ubiquitous documents with conflicting versions. If YES, then when the user attempts to open one or more documents with conflicts, the receiver will first display conflict resolution UI, requiring the user to resolve those conflicts before the documents can be opened. If NO, then the receiver does nothing in response to conflicts, allowing your application to handle them. The default value is YES, except for applications linked against the 10.9 SDK or earlier that have adopted iCloud by specifying a ubiquitous container identifier entitlement.
+
+        To provide the ideal user experience, you should set this property to NO and do conflict detection and resolution (using NSURLUbiquitousItemHasUnresolvedConflictsKey and NSFileVersion) in the context of your application, instead of relying on the open panel to do it.
+        */
         #[method(setCanResolveUbiquitousConflicts:)]
         pub unsafe fn setCanResolveUbiquitousConflicts(
             &self,
             can_resolve_ubiquitous_conflicts: bool,
         );
 
+        /**
+          Controls how the receiver responds to ubiquitous documents that aren't yet fully downloaded locally. If YES, then the receiver will disallow opening non-local ubiquitous files. Also, if the user attempts to select a non-local file, the receiver will trigger or reprioritize downloading for that file so that it can be opened as soon as possible. If NO, then the receiver will allow the user to select and open non-local files, giving your application responsibility for downloading and reporting progress. The default value is YES, except for applications linked against the 10.9 SDK or earlier that have adopted iCloud by specifying a ubiquitous container identifier entitlement.
+
+        To provide the ideal user experience, you should set this property to NO and download the file's contents (with NSFileCoordinator) and show downloading progress (with NSProgress or NSMetadataQuery) in the context of your application, instead of relying on the open panel to do it.
+        */
         #[method(canDownloadUbiquitousContents)]
         pub unsafe fn canDownloadUbiquitousContents(&self) -> bool;
 
+        /**
+          Controls how the receiver responds to ubiquitous documents that aren't yet fully downloaded locally. If YES, then the receiver will disallow opening non-local ubiquitous files. Also, if the user attempts to select a non-local file, the receiver will trigger or reprioritize downloading for that file so that it can be opened as soon as possible. If NO, then the receiver will allow the user to select and open non-local files, giving your application responsibility for downloading and reporting progress. The default value is YES, except for applications linked against the 10.9 SDK or earlier that have adopted iCloud by specifying a ubiquitous container identifier entitlement.
+
+        To provide the ideal user experience, you should set this property to NO and download the file's contents (with NSFileCoordinator) and show downloading progress (with NSProgress or NSMetadataQuery) in the context of your application, instead of relying on the open panel to do it.
+        */
         #[method(setCanDownloadUbiquitousContents:)]
         pub unsafe fn setCanDownloadUbiquitousContents(
             &self,
             can_download_ubiquitous_contents: bool,
         );
 
+        /**
+          Gets and sets the disclosure state of an accessory view in an NSOpenPanel. If hiding / disclosing an accessory view is not applicable this property will behave like a read only property.
+        */
         #[method(isAccessoryViewDisclosed)]
         pub unsafe fn isAccessoryViewDisclosed(&self) -> bool;
 
+        /**
+          Gets and sets the disclosure state of an accessory view in an NSOpenPanel. If hiding / disclosing an accessory view is not applicable this property will behave like a read only property.
+        */
         #[method(setAccessoryViewDisclosed:)]
         pub unsafe fn setAccessoryViewDisclosed(&self, accessory_view_disclosed: bool);
     }

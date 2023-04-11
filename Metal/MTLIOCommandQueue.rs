@@ -6,6 +6,9 @@ use crate::Metal::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      Used in MTLIOCommandQueueDescriptor to set the MTLIOQueue priority at creation time.
+    */
     pub enum MTLIOPriority {
         MTLIOPriorityHigh = 0,
         MTLIOPriorityNormal = 1,
@@ -15,6 +18,9 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      Used in MTLIOCommandQueueDescriptor to set the MTLIOQueue type at creation time.
+    */
     pub enum MTLIOCommandQueueType {
         MTLIOCommandQueueTypeConcurrent = 0,
         MTLIOCommandQueueTypeSerial = 1,
@@ -25,6 +31,9 @@ extern_static!(MTLIOErrorDomain: &'static NSErrorDomain);
 
 ns_error_enum!(
     #[underlying(NSInteger)]
+    /**
+      Used by MTLIOFileHandle creation functions to indicate an error.
+    */
     pub enum MTLIOError {
         MTLIOErrorURLInvalid = 1,
         MTLIOErrorInternal = 2,
@@ -32,6 +41,11 @@ ns_error_enum!(
 );
 
 extern_protocol!(
+    /**
+     @protocol MTLIOCommandQueue
+    @abstract Represents a queue that schedules command buffers containing command that
+    read from handle objects and write to MTLResource objects.
+    */
     pub unsafe trait MTLIOCommandQueue: NSObjectProtocol {
         #[method(enqueueBarrier)]
         unsafe fn enqueueBarrier(&self);
@@ -45,10 +59,18 @@ extern_protocol!(
         ) -> Id<ProtocolObject<dyn MTLIOCommandBuffer>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property label
+        @abstract An optional label for this handle.
+        */
         #[method_id(@__retain_semantics Other label)]
         unsafe fn label(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property label
+        @abstract An optional label for this handle.
+        */
         #[method(setLabel:)]
         unsafe fn setLabel(&self, label: Option<&NSString>);
     }
@@ -57,6 +79,12 @@ extern_protocol!(
 );
 
 extern_protocol!(
+    /**
+     @protocol MTLIOScratchBuffer
+    @abstract An extendible protocol that can be used to wrap the buffers vended by
+    a custom allocator. The underlying buffer is used as scratch space for IO commands
+    that need it.
+    */
     pub unsafe trait MTLIOScratchBuffer: NSObjectProtocol {
         #[method_id(@__retain_semantics Other buffer)]
         unsafe fn buffer(&self) -> Id<ProtocolObject<dyn MTLBuffer>>;
@@ -66,6 +94,15 @@ extern_protocol!(
 );
 
 extern_protocol!(
+    /**
+     @protocol MTLIOScratchBufferAllocator
+    @abstract An extendible protocol that can implement a custom allocator passed
+    to the queue descriptor.
+    @discussion If provided, the queue will call newScratchBufferWithMinimumSize
+    when it needs scratch storage for IO commands. When the commands that use the memory
+    complete they return the storage by dealloc'ing the MTLIOScratchBuffer objects (where
+    the application can optionally pool the memory for use by future commands.
+    */
     pub unsafe trait MTLIOScratchBufferAllocator: NSObjectProtocol {
         #[method_id(@__retain_semantics New newScratchBufferWithMinimumSize:)]
         unsafe fn newScratchBufferWithMinimumSize(
@@ -80,6 +117,10 @@ extern_protocol!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLIOCommandQueueDescriptor")]
+    /**
+     @interface MTLIOCommandQueueDescriptor
+    @abstract Represents a descriptor to create a MTLIOCommandQueue.
+    */
     pub struct MTLIOCommandQueueDescriptor;
 
     #[cfg(feature = "Metal_MTLIOCommandQueueDescriptor")]
@@ -89,40 +130,96 @@ extern_class!(
 );
 
 #[cfg(feature = "Metal_MTLIOCommandQueueDescriptor")]
+/**
+ @interface MTLIOCommandQueueDescriptor
+@abstract Represents a descriptor to create a MTLIOCommandQueue.
+*/
 unsafe impl NSObjectProtocol for MTLIOCommandQueueDescriptor {}
 
 extern_methods!(
+    /**
+     @interface MTLIOCommandQueueDescriptor
+    @abstract Represents a descriptor to create a MTLIOCommandQueue.
+    */
     #[cfg(feature = "Metal_MTLIOCommandQueueDescriptor")]
     unsafe impl MTLIOCommandQueueDescriptor {
+        /**
+         @property maxCommandBufferCount
+        @abstract The maximum number of commandBuffers that can be in flight at a given time for the queue.
+        */
         #[method(maxCommandBufferCount)]
         pub unsafe fn maxCommandBufferCount(&self) -> NSUInteger;
 
+        /**
+         @property maxCommandBufferCount
+        @abstract The maximum number of commandBuffers that can be in flight at a given time for the queue.
+        */
         #[method(setMaxCommandBufferCount:)]
         pub unsafe fn setMaxCommandBufferCount(&self, max_command_buffer_count: NSUInteger);
 
+        /**
+         @property priority
+        @abstract The priority of the commands executed by this queue.
+        */
         #[method(priority)]
         pub unsafe fn priority(&self) -> MTLIOPriority;
 
+        /**
+         @property priority
+        @abstract The priority of the commands executed by this queue.
+        */
         #[method(setPriority:)]
         pub unsafe fn setPriority(&self, priority: MTLIOPriority);
 
+        /**
+         @property type
+        @abstract The type (serial or concurrent) of the queue.
+        */
         #[method(type)]
         pub unsafe fn r#type(&self) -> MTLIOCommandQueueType;
 
+        /**
+         @property type
+        @abstract The type (serial or concurrent) of the queue.
+        */
         #[method(setType:)]
         pub unsafe fn setType(&self, r#type: MTLIOCommandQueueType);
 
+        /**
+         @property maxCommandsInFlight
+        @abstract The maximum number of IO commands that can be in flight at a given time for the queue.
+        @discussion A zero value defaults to the system dependent maximum value, a smaller number can be
+        provided to bound the utilization of the storage device.
+        */
         #[method(maxCommandsInFlight)]
         pub unsafe fn maxCommandsInFlight(&self) -> NSUInteger;
 
+        /**
+         @property maxCommandsInFlight
+        @abstract The maximum number of IO commands that can be in flight at a given time for the queue.
+        @discussion A zero value defaults to the system dependent maximum value, a smaller number can be
+        provided to bound the utilization of the storage device.
+        */
         #[method(setMaxCommandsInFlight:)]
         pub unsafe fn setMaxCommandsInFlight(&self, max_commands_in_flight: NSUInteger);
 
+        /**
+         @property scratchBufferAllocator
+        @abstract An optional property that allows setting a custom allocator for scratch buffers by the queue.
+        @discussion An application can manage scratch buffers manually by implemeting a class  conforming
+        to the MTLIOScratchBufferAllocator protocol and creating an instance that is passed in here.
+        */
         #[method_id(@__retain_semantics Other scratchBufferAllocator)]
         pub unsafe fn scratchBufferAllocator(
             &self,
         ) -> Option<Id<ProtocolObject<dyn MTLIOScratchBufferAllocator>>>;
 
+        /**
+         @property scratchBufferAllocator
+        @abstract An optional property that allows setting a custom allocator for scratch buffers by the queue.
+        @discussion An application can manage scratch buffers manually by implemeting a class  conforming
+        to the MTLIOScratchBufferAllocator protocol and creating an instance that is passed in here.
+        */
         #[method(setScratchBufferAllocator:)]
         pub unsafe fn setScratchBufferAllocator(
             &self,
@@ -132,12 +229,25 @@ extern_methods!(
 );
 
 extern_protocol!(
+    /**
+     @protocol MTLIOFileHandle
+    @abstract Represents a  file (raw or compressed) that can be used as a source
+    for load commands encoded in a MTLIOCommandBuffer.
+    */
     pub unsafe trait MTLIOFileHandle: NSObjectProtocol {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property label
+        @abstract An optional label for this handle.
+        */
         #[method_id(@__retain_semantics Other label)]
         unsafe fn label(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property label
+        @abstract An optional label for this handle.
+        */
         #[method(setLabel:)]
         unsafe fn setLabel(&self, label: Option<&NSString>);
     }

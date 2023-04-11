@@ -9,6 +9,14 @@ use crate::LocalAuthenticationEmbeddedUI::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "LocalAuthenticationEmbeddedUI_LAAuthenticationView")]
+    /**
+      @brief Compact authentication view providing authentication similar to @c LAContext
+     evaluatePolicy API.
+     @discussion This view is non-textual, it displays only a compact icon hinting
+     users to use Touch ID or Watch to authenticate. The reason for the
+     authentication must be apparent from the surrounding UI to avoid confusion and
+     security risks.
+    */
     pub struct LAAuthenticationView;
 
     #[cfg(feature = "LocalAuthenticationEmbeddedUI_LAAuthenticationView")]
@@ -19,30 +27,102 @@ extern_class!(
 );
 
 #[cfg(feature = "LocalAuthenticationEmbeddedUI_LAAuthenticationView")]
+/**
+  @brief Compact authentication view providing authentication similar to @c LAContext
+ evaluatePolicy API.
+ @discussion This view is non-textual, it displays only a compact icon hinting
+ users to use Touch ID or Watch to authenticate. The reason for the
+ authentication must be apparent from the surrounding UI to avoid confusion and
+ security risks.
+*/
 unsafe impl NSAccessibility for LAAuthenticationView {}
 
 #[cfg(feature = "LocalAuthenticationEmbeddedUI_LAAuthenticationView")]
+/**
+  @brief Compact authentication view providing authentication similar to @c LAContext
+ evaluatePolicy API.
+ @discussion This view is non-textual, it displays only a compact icon hinting
+ users to use Touch ID or Watch to authenticate. The reason for the
+ authentication must be apparent from the surrounding UI to avoid confusion and
+ security risks.
+*/
 unsafe impl NSAccessibilityElementProtocol for LAAuthenticationView {}
 
 #[cfg(feature = "LocalAuthenticationEmbeddedUI_LAAuthenticationView")]
+/**
+  @brief Compact authentication view providing authentication similar to @c LAContext
+ evaluatePolicy API.
+ @discussion This view is non-textual, it displays only a compact icon hinting
+ users to use Touch ID or Watch to authenticate. The reason for the
+ authentication must be apparent from the surrounding UI to avoid confusion and
+ security risks.
+*/
 unsafe impl NSAnimatablePropertyContainer for LAAuthenticationView {}
 
 #[cfg(feature = "LocalAuthenticationEmbeddedUI_LAAuthenticationView")]
+/**
+  @brief Compact authentication view providing authentication similar to @c LAContext
+ evaluatePolicy API.
+ @discussion This view is non-textual, it displays only a compact icon hinting
+ users to use Touch ID or Watch to authenticate. The reason for the
+ authentication must be apparent from the surrounding UI to avoid confusion and
+ security risks.
+*/
 unsafe impl NSAppearanceCustomization for LAAuthenticationView {}
 
 #[cfg(feature = "LocalAuthenticationEmbeddedUI_LAAuthenticationView")]
+/**
+  @brief Compact authentication view providing authentication similar to @c LAContext
+ evaluatePolicy API.
+ @discussion This view is non-textual, it displays only a compact icon hinting
+ users to use Touch ID or Watch to authenticate. The reason for the
+ authentication must be apparent from the surrounding UI to avoid confusion and
+ security risks.
+*/
 unsafe impl NSCoding for LAAuthenticationView {}
 
 #[cfg(feature = "LocalAuthenticationEmbeddedUI_LAAuthenticationView")]
+/**
+  @brief Compact authentication view providing authentication similar to @c LAContext
+ evaluatePolicy API.
+ @discussion This view is non-textual, it displays only a compact icon hinting
+ users to use Touch ID or Watch to authenticate. The reason for the
+ authentication must be apparent from the surrounding UI to avoid confusion and
+ security risks.
+*/
 unsafe impl NSDraggingDestination for LAAuthenticationView {}
 
 #[cfg(feature = "LocalAuthenticationEmbeddedUI_LAAuthenticationView")]
+/**
+  @brief Compact authentication view providing authentication similar to @c LAContext
+ evaluatePolicy API.
+ @discussion This view is non-textual, it displays only a compact icon hinting
+ users to use Touch ID or Watch to authenticate. The reason for the
+ authentication must be apparent from the surrounding UI to avoid confusion and
+ security risks.
+*/
 unsafe impl NSObjectProtocol for LAAuthenticationView {}
 
 #[cfg(feature = "LocalAuthenticationEmbeddedUI_LAAuthenticationView")]
+/**
+  @brief Compact authentication view providing authentication similar to @c LAContext
+ evaluatePolicy API.
+ @discussion This view is non-textual, it displays only a compact icon hinting
+ users to use Touch ID or Watch to authenticate. The reason for the
+ authentication must be apparent from the surrounding UI to avoid confusion and
+ security risks.
+*/
 unsafe impl NSUserInterfaceItemIdentification for LAAuthenticationView {}
 
 extern_methods!(
+    /**
+      @brief Compact authentication view providing authentication similar to @c LAContext
+     evaluatePolicy API.
+     @discussion This view is non-textual, it displays only a compact icon hinting
+     users to use Touch ID or Watch to authenticate. The reason for the
+     authentication must be apparent from the surrounding UI to avoid confusion and
+     security risks.
+    */
     #[cfg(feature = "LocalAuthenticationEmbeddedUI_LAAuthenticationView")]
     unsafe impl LAAuthenticationView {
         #[method_id(@__retain_semantics Init initWithFrame:)]
@@ -68,9 +148,15 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "LocalAuthentication_LAContext")]
+        /**
+          @brief @c LAContext instance passed to the initializer.
+        */
         #[method_id(@__retain_semantics Other context)]
         pub unsafe fn context(&self) -> Id<LAContext>;
 
+        /**
+          @brief @c NSControlSize instance passed to the initializer.
+        */
         #[method(controlSize)]
         pub unsafe fn controlSize(&self) -> NSControlSize;
     }

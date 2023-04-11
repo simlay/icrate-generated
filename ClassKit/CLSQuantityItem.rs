@@ -7,6 +7,9 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "ClassKit_CLSQuantityItem")]
+    /**
+     @abstract      CLSQuantityItem represents user generated quantity information.
+    */
     pub struct CLSQuantityItem;
 
     #[cfg(feature = "ClassKit_CLSQuantityItem")]
@@ -17,20 +20,38 @@ extern_class!(
 );
 
 #[cfg(feature = "ClassKit_CLSQuantityItem")]
+/**
+ @abstract      CLSQuantityItem represents user generated quantity information.
+*/
 unsafe impl NSCoding for CLSQuantityItem {}
 
 #[cfg(feature = "ClassKit_CLSQuantityItem")]
+/**
+ @abstract      CLSQuantityItem represents user generated quantity information.
+*/
 unsafe impl NSObjectProtocol for CLSQuantityItem {}
 
 #[cfg(feature = "ClassKit_CLSQuantityItem")]
+/**
+ @abstract      CLSQuantityItem represents user generated quantity information.
+*/
 unsafe impl NSSecureCoding for CLSQuantityItem {}
 
 extern_methods!(
+    /**
+     @abstract      CLSQuantityItem represents user generated quantity information.
+    */
     #[cfg(feature = "ClassKit_CLSQuantityItem")]
     unsafe impl CLSQuantityItem {
+        /**
+         @abstract      Quantity awarded.
+        */
         #[method(quantity)]
         pub unsafe fn quantity(&self) -> c_double;
 
+        /**
+         @abstract      Quantity awarded.
+        */
         #[method(setQuantity:)]
         pub unsafe fn setQuantity(&self, quantity: c_double);
 

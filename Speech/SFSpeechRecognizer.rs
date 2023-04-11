@@ -60,9 +60,15 @@ extern_methods!(
         #[method_id(@__retain_semantics Other locale)]
         pub unsafe fn locale(&self) -> Id<NSLocale>;
 
+        /**
+          True if this recognition can handle requests with requiresOnDeviceRecognition set to true
+        */
         #[method(supportsOnDeviceRecognition)]
         pub unsafe fn supportsOnDeviceRecognition(&self) -> bool;
 
+        /**
+          True if this recognition can handle requests with requiresOnDeviceRecognition set to true
+        */
         #[method(setSupportsOnDeviceRecognition:)]
         pub unsafe fn setSupportsOnDeviceRecognition(&self, supports_on_device_recognition: bool);
 
@@ -76,9 +82,15 @@ extern_methods!(
             delegate: Option<&ProtocolObject<dyn SFSpeechRecognizerDelegate>>,
         );
 
+        /**
+          Default task for requests, overrides SFSpeechRecognitionTaskHintUnspecified for requests
+        */
         #[method(defaultTaskHint)]
         pub unsafe fn defaultTaskHint(&self) -> SFSpeechRecognitionTaskHint;
 
+        /**
+          Default task for requests, overrides SFSpeechRecognitionTaskHintUnspecified for requests
+        */
         #[method(setDefaultTaskHint:)]
         pub unsafe fn setDefaultTaskHint(&self, default_task_hint: SFSpeechRecognitionTaskHint);
 
@@ -107,10 +119,18 @@ extern_methods!(
         ) -> Id<SFSpeechRecognitionTask>;
 
         #[cfg(feature = "Foundation_NSOperationQueue")]
+        /**
+          Queue used the recognizer for recognition task handlers and delegate messages
+         Defaults to the main queue
+        */
         #[method_id(@__retain_semantics Other queue)]
         pub unsafe fn queue(&self) -> Id<NSOperationQueue>;
 
         #[cfg(feature = "Foundation_NSOperationQueue")]
+        /**
+          Queue used the recognizer for recognition task handlers and delegate messages
+         Defaults to the main queue
+        */
         #[method(setQueue:)]
         pub unsafe fn setQueue(&self, queue: &NSOperationQueue);
     }

@@ -9,6 +9,11 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKElectrocardiogramVoltageMeasurement")]
+    /**
+     @class         HKElectrocardiogramVoltageMeasurement
+    @abstract      An HKElectrocardiogramVoltageMeasurement contains voltage quantities for all leads at a single instance of measurement.
+    @discussion    Each HKElectrocardiogramVoltageMeasurement object corresponds to the voltage quantities across all leads for a given instance in time.
+    */
     pub struct HKElectrocardiogramVoltageMeasurement;
 
     #[cfg(feature = "HealthKit_HKElectrocardiogramVoltageMeasurement")]
@@ -18,11 +23,24 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKElectrocardiogramVoltageMeasurement")]
+/**
+ @class         HKElectrocardiogramVoltageMeasurement
+@abstract      An HKElectrocardiogramVoltageMeasurement contains voltage quantities for all leads at a single instance of measurement.
+@discussion    Each HKElectrocardiogramVoltageMeasurement object corresponds to the voltage quantities across all leads for a given instance in time.
+*/
 unsafe impl NSObjectProtocol for HKElectrocardiogramVoltageMeasurement {}
 
 extern_methods!(
+    /**
+     @class         HKElectrocardiogramVoltageMeasurement
+    @abstract      An HKElectrocardiogramVoltageMeasurement contains voltage quantities for all leads at a single instance of measurement.
+    @discussion    Each HKElectrocardiogramVoltageMeasurement object corresponds to the voltage quantities across all leads for a given instance in time.
+    */
     #[cfg(feature = "HealthKit_HKElectrocardiogramVoltageMeasurement")]
     unsafe impl HKElectrocardiogramVoltageMeasurement {
+        /**
+         The time interval between this voltage measurement and the start of the sample.
+        */
         #[method(timeSinceSampleStart)]
         pub unsafe fn timeSinceSampleStart(&self) -> NSTimeInterval;
 

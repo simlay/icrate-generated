@@ -8,6 +8,9 @@ use crate::StoreKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "StoreKit_SKRequest")]
+    /**
+      Base class used to fetch data from the store.  Should not be used directly.
+    */
     pub struct SKRequest;
 
     #[cfg(feature = "StoreKit_SKRequest")]
@@ -17,9 +20,15 @@ extern_class!(
 );
 
 #[cfg(feature = "StoreKit_SKRequest")]
+/**
+  Base class used to fetch data from the store.  Should not be used directly.
+*/
 unsafe impl NSObjectProtocol for SKRequest {}
 
 extern_methods!(
+    /**
+      Base class used to fetch data from the store.  Should not be used directly.
+    */
     #[cfg(feature = "StoreKit_SKRequest")]
     unsafe impl SKRequest {
         #[method_id(@__retain_semantics Other delegate)]

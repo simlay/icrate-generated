@@ -30,6 +30,10 @@ extern_methods!(
     #[cfg(feature = "HealthKit_HKObject")]
     unsafe impl HKObject {
         #[cfg(feature = "Foundation_NSUUID")]
+        /**
+         @property      UUID
+        @abstract      A unique identifier of the receiver in the HealthKit database.
+        */
         #[method_id(@__retain_semantics Other UUID)]
         pub unsafe fn UUID(&self) -> Id<NSUUID>;
 
@@ -39,14 +43,28 @@ extern_methods!(
         pub unsafe fn source(&self) -> Id<HKSource>;
 
         #[cfg(feature = "HealthKit_HKSourceRevision")]
+        /**
+         @property      sourceRevision
+        @abstract      Represents the revision of the source responsible for saving the receiver.
+        */
         #[method_id(@__retain_semantics Other sourceRevision)]
         pub unsafe fn sourceRevision(&self) -> Id<HKSourceRevision>;
 
         #[cfg(feature = "HealthKit_HKDevice")]
+        /**
+         @property      device
+        @abstract      Represents the device that generated the data of the receiver.
+        */
         #[method_id(@__retain_semantics Other device)]
         pub unsafe fn device(&self) -> Option<Id<HKDevice>>;
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+         @property      metadata
+        @abstract      Extra information describing properties of the receiver.
+        @discussion    Keys must be NSString and values must be either NSString, NSNumber, NSDate, or
+        HKQuantity. See HKMetadata.h for potential metadata keys and values.
+        */
         #[method_id(@__retain_semantics Other metadata)]
         pub unsafe fn metadata(&self) -> Option<Id<NSDictionary<NSString, Object>>>;
 

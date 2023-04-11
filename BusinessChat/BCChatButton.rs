@@ -7,11 +7,11 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
-    #[deprecated]
+    /**
+     BCChatButtonStyle is used to define the visual style of the button.
+    */
     pub enum BCChatButtonStyle {
-        #[deprecated]
         BCChatButtonStyleLight = 0,
-        #[deprecated]
         BCChatButtonStyleDark = 1,
     }
 );
@@ -19,7 +19,6 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "BusinessChat_BCChatButton")]
-    #[deprecated]
     pub struct BCChatButton;
 
     #[cfg(feature = "BusinessChat_BCChatButton")]
@@ -56,7 +55,6 @@ unsafe impl NSUserInterfaceItemIdentification for BCChatButton {}
 extern_methods!(
     #[cfg(feature = "BusinessChat_BCChatButton")]
     unsafe impl BCChatButton {
-        #[deprecated]
         #[method_id(@__retain_semantics Init initWithStyle:)]
         pub unsafe fn initWithStyle(
             this: Option<Allocated<Self>>,
@@ -64,7 +62,6 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "Foundation_NSCoder")]
-        #[deprecated]
         #[method_id(@__retain_semantics Init initWithCoder:)]
         pub unsafe fn initWithCoder(
             this: Option<Allocated<Self>>,

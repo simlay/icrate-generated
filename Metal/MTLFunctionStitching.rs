@@ -5,6 +5,10 @@ use crate::Foundation::*;
 use crate::Metal::*;
 
 extern_protocol!(
+    /**
+     @protocol MTLFunctionStitchingAttribute
+    @abstract An attribute to be applied to the produced stitched function.
+    */
     pub unsafe trait MTLFunctionStitchingAttribute: NSObjectProtocol {}
 
     unsafe impl ProtocolType for dyn MTLFunctionStitchingAttribute {}
@@ -13,6 +17,10 @@ extern_protocol!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLFunctionStitchingAttributeAlwaysInline")]
+    /**
+     @interface MTLFunctionStitchingAttributeAlwaysInline
+    @abstract Applies the `__attribute__((always_inline))` attribute to the produced stitched function.
+    */
     pub struct MTLFunctionStitchingAttributeAlwaysInline;
 
     #[cfg(feature = "Metal_MTLFunctionStitchingAttributeAlwaysInline")]
@@ -22,17 +30,33 @@ extern_class!(
 );
 
 #[cfg(feature = "Metal_MTLFunctionStitchingAttributeAlwaysInline")]
+/**
+ @interface MTLFunctionStitchingAttributeAlwaysInline
+@abstract Applies the `__attribute__((always_inline))` attribute to the produced stitched function.
+*/
 unsafe impl MTLFunctionStitchingAttribute for MTLFunctionStitchingAttributeAlwaysInline {}
 
 #[cfg(feature = "Metal_MTLFunctionStitchingAttributeAlwaysInline")]
+/**
+ @interface MTLFunctionStitchingAttributeAlwaysInline
+@abstract Applies the `__attribute__((always_inline))` attribute to the produced stitched function.
+*/
 unsafe impl NSObjectProtocol for MTLFunctionStitchingAttributeAlwaysInline {}
 
 extern_methods!(
+    /**
+     @interface MTLFunctionStitchingAttributeAlwaysInline
+    @abstract Applies the `__attribute__((always_inline))` attribute to the produced stitched function.
+    */
     #[cfg(feature = "Metal_MTLFunctionStitchingAttributeAlwaysInline")]
     unsafe impl MTLFunctionStitchingAttributeAlwaysInline {}
 );
 
 extern_protocol!(
+    /**
+     @protocol MTLFunctionStitchingNode
+    @abstract A node used in a graph for stitching.
+    */
     pub unsafe trait MTLFunctionStitchingNode: NSObjectProtocol {}
 
     unsafe impl ProtocolType for dyn MTLFunctionStitchingNode {}
@@ -41,6 +65,10 @@ extern_protocol!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLFunctionStitchingInputNode")]
+    /**
+     @interface MTLFunctionStitchingInputNode
+    @abstract An indexed input node of the produced stitched function.
+    */
     pub struct MTLFunctionStitchingInputNode;
 
     #[cfg(feature = "Metal_MTLFunctionStitchingInputNode")]
@@ -50,12 +78,24 @@ extern_class!(
 );
 
 #[cfg(feature = "Metal_MTLFunctionStitchingInputNode")]
+/**
+ @interface MTLFunctionStitchingInputNode
+@abstract An indexed input node of the produced stitched function.
+*/
 unsafe impl MTLFunctionStitchingNode for MTLFunctionStitchingInputNode {}
 
 #[cfg(feature = "Metal_MTLFunctionStitchingInputNode")]
+/**
+ @interface MTLFunctionStitchingInputNode
+@abstract An indexed input node of the produced stitched function.
+*/
 unsafe impl NSObjectProtocol for MTLFunctionStitchingInputNode {}
 
 extern_methods!(
+    /**
+     @interface MTLFunctionStitchingInputNode
+    @abstract An indexed input node of the produced stitched function.
+    */
     #[cfg(feature = "Metal_MTLFunctionStitchingInputNode")]
     unsafe impl MTLFunctionStitchingInputNode {
         #[method(argumentIndex)]
@@ -75,6 +115,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLFunctionStitchingFunctionNode")]
+    /**
+     @interface MTLFunctionStitchingFunctionNode
+    @abstract A function node that calls the specified function with arguments and ordering determined by data and control dependencies.
+    */
     pub struct MTLFunctionStitchingFunctionNode;
 
     #[cfg(feature = "Metal_MTLFunctionStitchingFunctionNode")]
@@ -84,12 +128,24 @@ extern_class!(
 );
 
 #[cfg(feature = "Metal_MTLFunctionStitchingFunctionNode")]
+/**
+ @interface MTLFunctionStitchingFunctionNode
+@abstract A function node that calls the specified function with arguments and ordering determined by data and control dependencies.
+*/
 unsafe impl MTLFunctionStitchingNode for MTLFunctionStitchingFunctionNode {}
 
 #[cfg(feature = "Metal_MTLFunctionStitchingFunctionNode")]
+/**
+ @interface MTLFunctionStitchingFunctionNode
+@abstract A function node that calls the specified function with arguments and ordering determined by data and control dependencies.
+*/
 unsafe impl NSObjectProtocol for MTLFunctionStitchingFunctionNode {}
 
 extern_methods!(
+    /**
+     @interface MTLFunctionStitchingFunctionNode
+    @abstract A function node that calls the specified function with arguments and ordering determined by data and control dependencies.
+    */
     #[cfg(feature = "Metal_MTLFunctionStitchingFunctionNode")]
     unsafe impl MTLFunctionStitchingFunctionNode {
         #[cfg(feature = "Foundation_NSString")]
@@ -137,6 +193,11 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLFunctionStitchingGraph")]
+    /**
+     @interface MTLFunctionStitchingGraph
+    @abstract A function graph that describes a directed acyclic graph.
+    @discussion The return value of the output node will be used as the return value for the final stitched graph.
+    */
     pub struct MTLFunctionStitchingGraph;
 
     #[cfg(feature = "Metal_MTLFunctionStitchingGraph")]
@@ -146,9 +207,19 @@ extern_class!(
 );
 
 #[cfg(feature = "Metal_MTLFunctionStitchingGraph")]
+/**
+ @interface MTLFunctionStitchingGraph
+@abstract A function graph that describes a directed acyclic graph.
+@discussion The return value of the output node will be used as the return value for the final stitched graph.
+*/
 unsafe impl NSObjectProtocol for MTLFunctionStitchingGraph {}
 
 extern_methods!(
+    /**
+     @interface MTLFunctionStitchingGraph
+    @abstract A function graph that describes a directed acyclic graph.
+    @discussion The return value of the output node will be used as the return value for the final stitched graph.
+    */
     #[cfg(feature = "Metal_MTLFunctionStitchingGraph")]
     unsafe impl MTLFunctionStitchingGraph {
         #[cfg(feature = "Foundation_NSString")]
@@ -213,6 +284,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLStitchedLibraryDescriptor")]
+    /**
+     @interface MTLStitchedLibraryDescriptor
+    @abstract A container for the graphs and functions needed to create the stitched functions described by the graphs.
+    */
     pub struct MTLStitchedLibraryDescriptor;
 
     #[cfg(feature = "Metal_MTLStitchedLibraryDescriptor")]
@@ -222,9 +297,17 @@ extern_class!(
 );
 
 #[cfg(feature = "Metal_MTLStitchedLibraryDescriptor")]
+/**
+ @interface MTLStitchedLibraryDescriptor
+@abstract A container for the graphs and functions needed to create the stitched functions described by the graphs.
+*/
 unsafe impl NSObjectProtocol for MTLStitchedLibraryDescriptor {}
 
 extern_methods!(
+    /**
+     @interface MTLStitchedLibraryDescriptor
+    @abstract A container for the graphs and functions needed to create the stitched functions described by the graphs.
+    */
     #[cfg(feature = "Metal_MTLStitchedLibraryDescriptor")]
     unsafe impl MTLStitchedLibraryDescriptor {
         #[cfg(all(

@@ -33,9 +33,21 @@ extern_methods!(
         #[method_id(@__retain_semantics Other circle)]
         pub unsafe fn circle(&self) -> Id<MKCircle>;
 
+        /**
+          These values define the subregion of the path used to draw the
+         stroke. The values must be in the range [0,1] with zero
+         representing North, and positive values increasing in the clockwise direction.
+         strokeStart defaults to 0 and strokeEnd to 1
+        */
         #[method(strokeStart)]
         pub unsafe fn strokeStart(&self) -> CGFloat;
 
+        /**
+          These values define the subregion of the path used to draw the
+         stroke. The values must be in the range [0,1] with zero
+         representing North, and positive values increasing in the clockwise direction.
+         strokeStart defaults to 0 and strokeEnd to 1
+        */
         #[method(setStrokeStart:)]
         pub unsafe fn setStrokeStart(&self, stroke_start: CGFloat);
 

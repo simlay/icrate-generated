@@ -17,6 +17,15 @@ ns_options!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSMediaLibraryBrowserController")]
+    /**
+     class:
+
+    NSMediaLibraryBrowserController configures and displays a Media Library Browser Panel.
+
+    discussion:
+
+    NSMediaLibraryBrowserController is not an NSPanel!  It has NSPanel like methods to remotely control the Media Library Browser.  Clients have no direct programmatic access to the panel displaying the Media Library Browser.
+    */
     pub struct NSMediaLibraryBrowserController;
 
     #[cfg(feature = "AppKit_NSMediaLibraryBrowserController")]
@@ -26,9 +35,27 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSMediaLibraryBrowserController")]
+/**
+ class:
+
+NSMediaLibraryBrowserController configures and displays a Media Library Browser Panel.
+
+discussion:
+
+NSMediaLibraryBrowserController is not an NSPanel!  It has NSPanel like methods to remotely control the Media Library Browser.  Clients have no direct programmatic access to the panel displaying the Media Library Browser.
+*/
 unsafe impl NSObjectProtocol for NSMediaLibraryBrowserController {}
 
 extern_methods!(
+    /**
+     class:
+
+    NSMediaLibraryBrowserController configures and displays a Media Library Browser Panel.
+
+    discussion:
+
+    NSMediaLibraryBrowserController is not an NSPanel!  It has NSPanel like methods to remotely control the Media Library Browser.  Clients have no direct programmatic access to the panel displaying the Media Library Browser.
+    */
     #[cfg(feature = "AppKit_NSMediaLibraryBrowserController")]
     unsafe impl NSMediaLibraryBrowserController {
         #[method(isVisible)]

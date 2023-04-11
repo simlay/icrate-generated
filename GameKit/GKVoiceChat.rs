@@ -19,6 +19,9 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameKit_GKVoiceChat")]
+    /**
+      GKVoiceChat represents an instance of a named voice communications channel
+    */
     pub struct GKVoiceChat;
 
     #[cfg(feature = "GameKit_GKVoiceChat")]
@@ -28,9 +31,15 @@ extern_class!(
 );
 
 #[cfg(feature = "GameKit_GKVoiceChat")]
+/**
+  GKVoiceChat represents an instance of a named voice communications channel
+*/
 unsafe impl NSObjectProtocol for GKVoiceChat {}
 
 extern_methods!(
+    /**
+      GKVoiceChat represents an instance of a named voice communications channel
+    */
     #[cfg(feature = "GameKit_GKVoiceChat")]
     unsafe impl GKVoiceChat {
         #[method(start)]
@@ -60,22 +69,40 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          name the chat was created with
+        */
         #[method_id(@__retain_semantics Other name)]
         pub unsafe fn name(&self) -> Id<NSString>;
 
+        /**
+          make this session active and route the microphone
+        */
         #[method(isActive)]
         pub unsafe fn isActive(&self) -> bool;
 
+        /**
+          make this session active and route the microphone
+        */
         #[method(setActive:)]
         pub unsafe fn setActive(&self, active: bool);
 
+        /**
+          default 1.0 (max is 1.0, min is 0.0)
+        */
         #[method(volume)]
         pub unsafe fn volume(&self) -> c_float;
 
+        /**
+          default 1.0 (max is 1.0, min is 0.0)
+        */
         #[method(setVolume:)]
         pub unsafe fn setVolume(&self, volume: c_float);
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "GameKit_GKPlayer"))]
+        /**
+          array of GKPlayer
+        */
         #[method_id(@__retain_semantics Other players)]
         pub unsafe fn players(&self) -> Id<NSArray<GKPlayer>>;
 
@@ -110,6 +137,9 @@ extern_methods!(
     #[cfg(feature = "GameKit_GKVoiceChat")]
     unsafe impl GKVoiceChat {
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          This property is obsolete.
+        */
         #[deprecated = "use players"]
         #[method_id(@__retain_semantics Other playerIDs)]
         pub unsafe fn playerIDs(&self) -> Option<Id<NSArray<NSString>>>;

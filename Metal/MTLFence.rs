@@ -10,10 +10,18 @@ extern_protocol!(
         fn device(&self) -> Id<ProtocolObject<dyn MTLDevice>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property label
+        @abstract A string to help identify this object.
+        */
         #[method_id(@__retain_semantics Other label)]
         fn label(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property label
+        @abstract A string to help identify this object.
+        */
         #[method(setLabel:)]
         fn setLabel(&self, label: Option<&NSString>);
     }

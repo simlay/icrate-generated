@@ -8,10 +8,18 @@ extern_methods!(
     /// CLSDeepLinks
     #[cfg(feature = "Foundation_NSUserActivity")]
     unsafe impl NSUserActivity {
+        /**
+         @abstract      Returns whether the user activity is a ClassKit deep link.
+        */
         #[method(isClassKitDeepLink)]
         pub unsafe fn isClassKitDeepLink(&self) -> bool;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+         @abstract      Returns the context identifier path you should deep link to.
+        @discussion    For example for the context identifier path @c @["swift-programming-book", @c "chapter1"],
+        your app should direct the user to @em chapter1 in @em swift-programming-book.
+        */
         #[method_id(@__retain_semantics Other contextIdentifierPath)]
         pub unsafe fn contextIdentifierPath(&self) -> Option<Id<NSArray<NSString>>>;
     }

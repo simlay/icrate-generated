@@ -7,6 +7,10 @@ use crate::SoundAnalysis::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "SoundAnalysis_SNClassifySoundRequest")]
+    /**
+     @brief Configure an analyzer to perform sound classification using the provided MLModel.
+    @discussion When a new classification result is produced, the results observer will be called with an SNClassificationResult. Audio buffers provided to SNAudioStreamAnalyzer may vary in size, and the analyzer will reblock the audio data to the block size expected by the MLModel. By default, analysis will occur on the first audio channel in the audio stream, and the analyzer will apply sample rate conversion if the provided audio does not match the sample rate required by the MLModel.
+    */
     pub struct SNClassifySoundRequest;
 
     #[cfg(feature = "SoundAnalysis_SNClassifySoundRequest")]
@@ -16,25 +20,53 @@ extern_class!(
 );
 
 #[cfg(feature = "SoundAnalysis_SNClassifySoundRequest")]
+/**
+ @brief Configure an analyzer to perform sound classification using the provided MLModel.
+@discussion When a new classification result is produced, the results observer will be called with an SNClassificationResult. Audio buffers provided to SNAudioStreamAnalyzer may vary in size, and the analyzer will reblock the audio data to the block size expected by the MLModel. By default, analysis will occur on the first audio channel in the audio stream, and the analyzer will apply sample rate conversion if the provided audio does not match the sample rate required by the MLModel.
+*/
 unsafe impl NSObjectProtocol for SNClassifySoundRequest {}
 
 #[cfg(feature = "SoundAnalysis_SNClassifySoundRequest")]
+/**
+ @brief Configure an analyzer to perform sound classification using the provided MLModel.
+@discussion When a new classification result is produced, the results observer will be called with an SNClassificationResult. Audio buffers provided to SNAudioStreamAnalyzer may vary in size, and the analyzer will reblock the audio data to the block size expected by the MLModel. By default, analysis will occur on the first audio channel in the audio stream, and the analyzer will apply sample rate conversion if the provided audio does not match the sample rate required by the MLModel.
+*/
 unsafe impl SNRequest for SNClassifySoundRequest {}
 
 extern_methods!(
+    /**
+     @brief Configure an analyzer to perform sound classification using the provided MLModel.
+    @discussion When a new classification result is produced, the results observer will be called with an SNClassificationResult. Audio buffers provided to SNAudioStreamAnalyzer may vary in size, and the analyzer will reblock the audio data to the block size expected by the MLModel. By default, analysis will occur on the first audio channel in the audio stream, and the analyzer will apply sample rate conversion if the provided audio does not match the sample rate required by the MLModel.
+    */
     #[cfg(feature = "SoundAnalysis_SNClassifySoundRequest")]
     unsafe impl SNClassifySoundRequest {
+        /**
+         @brief The overlap factor of the windows of audio data provided to the classifier, if the model operates on fixed audio block sizes.
+        @discussion When performing audio analysis on fixed audio block sizes, it is common for the analysis windows to overlap by some factor. Without overlapping the analysis windows (when the overlap factor is 0.0), a sound might be split across two analysis windows, which could negatively affect classification performance. Overlapping the analysis windows by 50% ensures each sound will fall near the center of at least one analysis window. The supported range is [0.0, 1.0), and the default value is 0.5. Increasing the overlap factor increases computational complexity, so values greater than 0.5 should be used with care.
+        */
         #[method(overlapFactor)]
         pub unsafe fn overlapFactor(&self) -> c_double;
 
+        /**
+         @brief The overlap factor of the windows of audio data provided to the classifier, if the model operates on fixed audio block sizes.
+        @discussion When performing audio analysis on fixed audio block sizes, it is common for the analysis windows to overlap by some factor. Without overlapping the analysis windows (when the overlap factor is 0.0), a sound might be split across two analysis windows, which could negatively affect classification performance. Overlapping the analysis windows by 50% ensures each sound will fall near the center of at least one analysis window. The supported range is [0.0, 1.0), and the default value is 0.5. Increasing the overlap factor increases computational complexity, so values greater than 0.5 should be used with care.
+        */
         #[method(setOverlapFactor:)]
         pub unsafe fn setOverlapFactor(&self, overlap_factor: c_double);
 
         #[cfg(feature = "SoundAnalysis_SNTimeDurationConstraint")]
+        /**
+         @brief The constraints governing permitted analysis window durations.
+        @discussion The analysis window duration is controlled using the `windowDuration` property. If an analysis window duration is selected which does not meet the necessary constraints, it will automatically be adjusted to meet these constraints (see `windowDuration` for more information regarding how this adjustment will be applied).
+        */
         #[method_id(@__retain_semantics Other windowDurationConstraint)]
         pub unsafe fn windowDurationConstraint(&self) -> Id<SNTimeDurationConstraint>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+         @brief Lists all labels that can be produced by this request.
+        @return An array of strings containing all sound identifiers which can be produced by this request.
+        */
         #[method_id(@__retain_semantics Other knownClassifications)]
         pub unsafe fn knownClassifications(&self) -> Id<NSArray<NSString>>;
 

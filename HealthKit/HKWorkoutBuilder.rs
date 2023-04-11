@@ -9,6 +9,13 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKWorkoutBuilder")]
+    /**
+     @class         HKWorkoutBuilder
+    @discussion    An HKWorkoutBuilder is used to incrementally create new workouts in the HealthKit database. Samples,
+    events, and metadata may be added to a builder either during a live workout session or to create a
+    workout that occurred in the past. Calling finishWorkoutWithCompletion: will create a new workout
+    with samples, events, and metadata that have been provided.
+    */
     pub struct HKWorkoutBuilder;
 
     #[cfg(feature = "HealthKit_HKWorkoutBuilder")]
@@ -18,35 +25,75 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKWorkoutBuilder")]
+/**
+ @class         HKWorkoutBuilder
+@discussion    An HKWorkoutBuilder is used to incrementally create new workouts in the HealthKit database. Samples,
+events, and metadata may be added to a builder either during a live workout session or to create a
+workout that occurred in the past. Calling finishWorkoutWithCompletion: will create a new workout
+with samples, events, and metadata that have been provided.
+*/
 unsafe impl NSObjectProtocol for HKWorkoutBuilder {}
 
 extern_methods!(
+    /**
+     @class         HKWorkoutBuilder
+    @discussion    An HKWorkoutBuilder is used to incrementally create new workouts in the HealthKit database. Samples,
+    events, and metadata may be added to a builder either during a live workout session or to create a
+    workout that occurred in the past. Calling finishWorkoutWithCompletion: will create a new workout
+    with samples, events, and metadata that have been provided.
+    */
     #[cfg(feature = "HealthKit_HKWorkoutBuilder")]
     unsafe impl HKWorkoutBuilder {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
         #[cfg(feature = "HealthKit_HKDevice")]
+        /**
+         @property      device
+        @abstract      The HKDevice to be associated with the workout.
+        */
         #[method_id(@__retain_semantics Other device)]
         pub unsafe fn device(&self) -> Option<Id<HKDevice>>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+         @property      startDate
+        @abstract      The start date for the workout, as provided by beginCollectionWithStartDate:completion:
+        */
         #[method_id(@__retain_semantics Other startDate)]
         pub unsafe fn startDate(&self) -> Option<Id<NSDate>>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+         @property      endDate
+        @abstract      The end date for the workout, as provided by endCollectionWithEndDate:completion:
+        */
         #[method_id(@__retain_semantics Other endDate)]
         pub unsafe fn endDate(&self) -> Option<Id<NSDate>>;
 
         #[cfg(feature = "HealthKit_HKWorkoutConfiguration")]
+        /**
+         @property      workoutConfiguration
+        @abstract      The configuration for the workout being built.
+        */
         #[method_id(@__retain_semantics Other workoutConfiguration)]
         pub unsafe fn workoutConfiguration(&self) -> Id<HKWorkoutConfiguration>;
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+         @property      metadata
+        @abstract      The metadata that will be used when the workout is finished.
+        */
         #[method_id(@__retain_semantics Other metadata)]
         pub unsafe fn metadata(&self) -> Id<NSDictionary<NSString, Object>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "HealthKit_HKWorkoutEvent"))]
+        /**
+         @property      workoutEvents
+        @abstract      Workout events that have been added to the builder.
+        @discussion    New events that are added using addWorkoutEvents:completion: will be appended to this array once the
+        completion is called.
+        */
         #[method_id(@__retain_semantics Other workoutEvents)]
         pub unsafe fn workoutEvents(&self) -> Id<NSArray<HKWorkoutEvent>>;
 
@@ -54,6 +101,12 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "HealthKit_HKWorkoutActivity"
         ))]
+        /**
+         @property      workoutActivities
+        @abstract      Workout activities that have been added to the builder.
+        @discussion    New activities that are added using addWorkoutActivity:completion: will be appended to this array once the
+        completion is called.
+        */
         #[method_id(@__retain_semantics Other workoutActivities)]
         pub unsafe fn workoutActivities(&self) -> Id<NSArray<HKWorkoutActivity>>;
 
@@ -62,6 +115,12 @@ extern_methods!(
             feature = "HealthKit_HKQuantityType",
             feature = "HealthKit_HKStatistics"
         ))]
+        /**
+         @property      allStatistics
+        @abstract      A dictionary of statistics per quantity type added to the builder
+        @discussion    This dictionary will contain HKStatistics objects containing the statistics by quantity
+        sample type for all of the samples that have been added to the builder.
+        */
         #[method_id(@__retain_semantics Other allStatistics)]
         pub unsafe fn allStatistics(&self) -> Id<NSDictionary<HKQuantityType, HKStatistics>>;
 

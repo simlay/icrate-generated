@@ -8,6 +8,11 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CloudKit_CKFetchWebAuthTokenOperation")]
+    /**
+      @class CKFetchWebAuthTokenOperation
+
+      @abstract This operation will fetch a web auth token given an API token obtained from the CloudKit Dashboard for your container
+    */
     pub struct CKFetchWebAuthTokenOperation;
 
     #[cfg(feature = "CloudKit_CKFetchWebAuthTokenOperation")]
@@ -18,9 +23,19 @@ extern_class!(
 );
 
 #[cfg(feature = "CloudKit_CKFetchWebAuthTokenOperation")]
+/**
+  @class CKFetchWebAuthTokenOperation
+
+  @abstract This operation will fetch a web auth token given an API token obtained from the CloudKit Dashboard for your container
+*/
 unsafe impl NSObjectProtocol for CKFetchWebAuthTokenOperation {}
 
 extern_methods!(
+    /**
+      @class CKFetchWebAuthTokenOperation
+
+      @abstract This operation will fetch a web auth token given an API token obtained from the CloudKit Dashboard for your container
+    */
     #[cfg(feature = "CloudKit_CKFetchWebAuthTokenOperation")]
     unsafe impl CKFetchWebAuthTokenOperation {
         #[method_id(@__retain_semantics Init init)]
@@ -34,20 +49,38 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          APIToken is expected to be set before you begin this operation.
+        */
         #[method_id(@__retain_semantics Other APIToken)]
         pub unsafe fn APIToken(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          APIToken is expected to be set before you begin this operation.
+        */
         #[method(setAPIToken:)]
         pub unsafe fn setAPIToken(&self, api_token: Option<&NSString>);
 
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSString"))]
+        /**
+          @abstract This block is called when the operation completes.
+
+          @discussion The @code -[NSOperation completionBlock] @endcode will also be called if both are set.
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(fetchWebAuthTokenCompletionBlock)]
         pub unsafe fn fetchWebAuthTokenCompletionBlock(
             &self,
         ) -> *mut Block<(*mut NSString, *mut NSError), ()>;
 
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSString"))]
+        /**
+          @abstract This block is called when the operation completes.
+
+          @discussion The @code -[NSOperation completionBlock] @endcode will also be called if both are set.
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(setFetchWebAuthTokenCompletionBlock:)]
         pub unsafe fn setFetchWebAuthTokenCompletionBlock(
             &self,

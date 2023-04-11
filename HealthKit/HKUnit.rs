@@ -30,6 +30,9 @@ extern_methods!(
     #[cfg(feature = "HealthKit_HKUnit")]
     unsafe impl HKUnit {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Returns a unique string representation for the unit that could be used with +unitFromString:
+        */
         #[method_id(@__retain_semantics Other unitString)]
         pub unsafe fn unitString(&self) -> Id<NSString>;
 
@@ -90,6 +93,9 @@ ns_enum!(
 );
 
 extern_methods!(
+    /**
+      Mass Units
+    */
     /// Mass
     #[cfg(feature = "HealthKit_HKUnit")]
     unsafe impl HKUnit {
@@ -120,6 +126,9 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      Length Units
+    */
     /// Length
     #[cfg(feature = "HealthKit_HKUnit")]
     unsafe impl HKUnit {
@@ -144,6 +153,9 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      Volume Units
+    */
     /// Volume
     #[cfg(feature = "HealthKit_HKUnit")]
     unsafe impl HKUnit {
@@ -174,6 +186,9 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      Pressure Units
+    */
     /// Pressure
     #[cfg(feature = "HealthKit_HKUnit")]
     unsafe impl HKUnit {
@@ -201,6 +216,9 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      Time Units
+    */
     /// Time
     #[cfg(feature = "HealthKit_HKUnit")]
     unsafe impl HKUnit {
@@ -222,6 +240,9 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      Energy Units
+    */
     /// Energy
     #[cfg(feature = "HealthKit_HKUnit")]
     unsafe impl HKUnit {
@@ -247,6 +268,9 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      Temperature Units
+    */
     /// Temperature
     #[cfg(feature = "HealthKit_HKUnit")]
     unsafe impl HKUnit {
@@ -262,6 +286,9 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      Electrical Conductance Units
+    */
     /// Conductance
     #[cfg(feature = "HealthKit_HKUnit")]
     unsafe impl HKUnit {
@@ -274,6 +301,9 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      Pharmacology Units
+    */
     /// Pharmacology
     #[cfg(feature = "HealthKit_HKUnit")]
     unsafe impl HKUnit {
@@ -283,6 +313,9 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      Scalar Units
+    */
     /// Scalar
     #[cfg(feature = "HealthKit_HKUnit")]
     unsafe impl HKUnit {
@@ -295,6 +328,9 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      Hearing Sensitivity
+    */
     /// HearingSensitivity
     #[cfg(feature = "HealthKit_HKUnit")]
     unsafe impl HKUnit {
@@ -322,6 +358,9 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      Frequency Units
+    */
     /// Frequency
     #[cfg(feature = "HealthKit_HKUnit")]
     unsafe impl HKUnit {
@@ -334,6 +373,9 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      Electrical Potential Difference Units
+    */
     /// ElectricPotentialDifference
     #[cfg(feature = "HealthKit_HKUnit")]
     unsafe impl HKUnit {
@@ -346,6 +388,9 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      Power Units
+    */
     /// Power
     #[cfg(feature = "HealthKit_HKUnit")]
     unsafe impl HKUnit {
@@ -358,6 +403,9 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      Optical Power
+    */
     /// OpticalPower
     #[cfg(feature = "HealthKit_HKUnit")]
     unsafe impl HKUnit {
@@ -370,6 +418,9 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      Angle Units
+    */
     /// Angle
     #[cfg(feature = "HealthKit_HKUnit")]
     unsafe impl HKUnit {

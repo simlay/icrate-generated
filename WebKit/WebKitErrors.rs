@@ -15,6 +15,13 @@ extern_static!(WebKitErrorPlugInPageURLStringKey: Option<&'static NSString>);
 
 extern_enum!(
     #[underlying(c_uint)]
+    /**
+     @enum
+    @abstract Policy errors
+    @constant WebKitErrorCannotShowMIMEType
+    @constant WebKitErrorCannotShowURL
+    @constant WebKitErrorFrameLoadInterruptedByPolicyChange
+    */
     #[deprecated]
     pub enum __anonymous__ {
         #[deprecated]
@@ -28,6 +35,14 @@ extern_enum!(
 
 extern_enum!(
     #[underlying(c_uint)]
+    /**
+     @enum
+    @abstract Plug-in and java errors
+    @constant WebKitErrorCannotFindPlugIn
+    @constant WebKitErrorCannotLoadPlugIn
+    @constant WebKitErrorJavaUnavailable
+    @constant WebKitErrorBlockedPlugInVersion
+    */
     #[deprecated]
     pub enum __anonymous__ {
         #[deprecated]

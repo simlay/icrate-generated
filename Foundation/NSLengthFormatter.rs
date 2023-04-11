@@ -39,22 +39,40 @@ extern_methods!(
     #[cfg(feature = "Foundation_NSLengthFormatter")]
     unsafe impl NSLengthFormatter {
         #[cfg(feature = "Foundation_NSNumberFormatter")]
+        /**
+          default is NSNumberFormatter with NSNumberFormatterDecimalStyle
+        */
         #[method_id(@__retain_semantics Other numberFormatter)]
         pub unsafe fn numberFormatter(&self) -> Id<NSNumberFormatter>;
 
         #[cfg(feature = "Foundation_NSNumberFormatter")]
+        /**
+          default is NSNumberFormatter with NSNumberFormatterDecimalStyle
+        */
         #[method(setNumberFormatter:)]
         pub unsafe fn setNumberFormatter(&self, number_formatter: Option<&NSNumberFormatter>);
 
+        /**
+          default is NSFormattingUnitStyleMedium
+        */
         #[method(unitStyle)]
         pub unsafe fn unitStyle(&self) -> NSFormattingUnitStyle;
 
+        /**
+          default is NSFormattingUnitStyleMedium
+        */
         #[method(setUnitStyle:)]
         pub unsafe fn setUnitStyle(&self, unit_style: NSFormattingUnitStyle);
 
+        /**
+          default is NO; if it is set to YES, the number argument for -stringFromMeters: and -unitStringFromMeters: is considered as a person's height
+        */
         #[method(isForPersonHeightUse)]
         pub unsafe fn isForPersonHeightUse(&self) -> bool;
 
+        /**
+          default is NO; if it is set to YES, the number argument for -stringFromMeters: and -unitStringFromMeters: is considered as a person's height
+        */
         #[method(setForPersonHeightUse:)]
         pub unsafe fn setForPersonHeightUse(&self, for_person_height_use: bool);
 

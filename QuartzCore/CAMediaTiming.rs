@@ -10,51 +10,121 @@ typed_enum!(
 
 extern_protocol!(
     pub unsafe trait CAMediaTiming {
+        /**
+          The begin time of the object, in relation to its parent object, if
+         applicable. Defaults to 0.
+        */
         #[method(beginTime)]
         unsafe fn beginTime(&self) -> CFTimeInterval;
 
+        /**
+          The begin time of the object, in relation to its parent object, if
+         applicable. Defaults to 0.
+        */
         #[method(setBeginTime:)]
         unsafe fn setBeginTime(&self, begin_time: CFTimeInterval);
 
+        /**
+          The basic duration of the object. Defaults to 0.
+        */
         #[method(duration)]
         unsafe fn duration(&self) -> CFTimeInterval;
 
+        /**
+          The basic duration of the object. Defaults to 0.
+        */
         #[method(setDuration:)]
         unsafe fn setDuration(&self, duration: CFTimeInterval);
 
+        /**
+          The rate of the layer. Used to scale parent time to local time, e.g.
+         if rate is 2, local time progresses twice as fast as parent time.
+         Defaults to 1.
+        */
         #[method(speed)]
         unsafe fn speed(&self) -> c_float;
 
+        /**
+          The rate of the layer. Used to scale parent time to local time, e.g.
+         if rate is 2, local time progresses twice as fast as parent time.
+         Defaults to 1.
+        */
         #[method(setSpeed:)]
         unsafe fn setSpeed(&self, speed: c_float);
 
+        /**
+          Additional offset in active local time. i.e. to convert from parent
+         time tp to active local time t: t = (tp - begin) * speed + offset.
+         One use of this is to "pause" a layer by setting `speed' to zero and
+         `offset' to a suitable value. Defaults to 0.
+        */
         #[method(timeOffset)]
         unsafe fn timeOffset(&self) -> CFTimeInterval;
 
+        /**
+          Additional offset in active local time. i.e. to convert from parent
+         time tp to active local time t: t = (tp - begin) * speed + offset.
+         One use of this is to "pause" a layer by setting `speed' to zero and
+         `offset' to a suitable value. Defaults to 0.
+        */
         #[method(setTimeOffset:)]
         unsafe fn setTimeOffset(&self, time_offset: CFTimeInterval);
 
+        /**
+          The repeat count of the object. May be fractional. Defaults to 0.
+        */
         #[method(repeatCount)]
         unsafe fn repeatCount(&self) -> c_float;
 
+        /**
+          The repeat count of the object. May be fractional. Defaults to 0.
+        */
         #[method(setRepeatCount:)]
         unsafe fn setRepeatCount(&self, repeat_count: c_float);
 
+        /**
+          The repeat duration of the object. Defaults to 0.
+        */
         #[method(repeatDuration)]
         unsafe fn repeatDuration(&self) -> CFTimeInterval;
 
+        /**
+          The repeat duration of the object. Defaults to 0.
+        */
         #[method(setRepeatDuration:)]
         unsafe fn setRepeatDuration(&self, repeat_duration: CFTimeInterval);
 
+        /**
+          When true, the object plays backwards after playing forwards. Defaults
+         to NO.
+        */
         #[method(autoreverses)]
         unsafe fn autoreverses(&self) -> bool;
 
+        /**
+          When true, the object plays backwards after playing forwards. Defaults
+         to NO.
+        */
         #[method(setAutoreverses:)]
         unsafe fn setAutoreverses(&self, autoreverses: bool);
 
+        /**
+          Defines how the timed object behaves outside its active duration.
+         Local time may be clamped to either end of the active duration, or
+         the element may be removed from the presentation. The legal values
+         are `backwards', `forwards', `both' and `removed'. Defaults to
+         `removed'.
+        */
         #[method_id(@__retain_semantics Other fillMode)]
         unsafe fn fillMode(&self) -> Id<CAMediaTimingFillMode>;
 
+        /**
+          Defines how the timed object behaves outside its active duration.
+         Local time may be clamped to either end of the active duration, or
+         the element may be removed from the presentation. The legal values
+         are `backwards', `forwards', `both' and `removed'. Defaults to
+         `removed'.
+        */
         #[method(setFillMode:)]
         unsafe fn setFillMode(&self, fill_mode: &CAMediaTimingFillMode);
     }

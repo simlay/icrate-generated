@@ -33,18 +33,30 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(all(feature = "CoreData_NSManagedObject", feature = "Foundation_NSSet"))]
+        /**
+          Objects that were inserted into the calling context.
+        */
         #[method_id(@__retain_semantics Other insertedObjects)]
         pub unsafe fn insertedObjects(&self) -> Option<Id<NSSet<NSManagedObject>>>;
 
         #[cfg(all(feature = "CoreData_NSManagedObject", feature = "Foundation_NSSet"))]
+        /**
+          Objects that were modified in the calling context.
+        */
         #[method_id(@__retain_semantics Other updatedObjects)]
         pub unsafe fn updatedObjects(&self) -> Option<Id<NSSet<NSManagedObject>>>;
 
         #[cfg(all(feature = "CoreData_NSManagedObject", feature = "Foundation_NSSet"))]
+        /**
+          Objects that were deleted from the calling context.
+        */
         #[method_id(@__retain_semantics Other deletedObjects)]
         pub unsafe fn deletedObjects(&self) -> Option<Id<NSSet<NSManagedObject>>>;
 
         #[cfg(all(feature = "CoreData_NSManagedObject", feature = "Foundation_NSSet"))]
+        /**
+          Objects that were flagged for optimistic locking on the calling context via detectConflictsForObject:.
+        */
         #[method_id(@__retain_semantics Other lockedObjects)]
         pub unsafe fn lockedObjects(&self) -> Option<Id<NSSet<NSManagedObject>>>;
     }

@@ -4,6 +4,15 @@ use crate::common::*;
 use crate::Foundation::*;
 
 extern_protocol!(
+    /**
+     @protocol NSURLAuthenticationChallengeSender
+    @discussion This protocol represents the sender of an
+    authentication challenge. It has methods to provide a credential,
+    to continue without any credential, getting whatever failure
+    result would happen in that case, cancel a challenge, perform the default
+    action as defined by the system, or reject the currently supplied protection-space
+    in the challenge.
+    */
     pub unsafe trait NSURLAuthenticationChallengeSender: NSObjectProtocol {
         #[cfg(all(
             feature = "Foundation_NSURLAuthenticationChallenge",
@@ -50,6 +59,12 @@ extern_protocol!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSURLAuthenticationChallenge")]
+    /**
+     @class NSURLAuthenticationChallenge
+    @discussion This class represents an authentication challenge. It
+    provides all the information about the challenge, and has a method
+    to indicate when it's done.
+    */
     pub struct NSURLAuthenticationChallenge;
 
     #[cfg(feature = "Foundation_NSURLAuthenticationChallenge")]
@@ -59,15 +74,39 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSURLAuthenticationChallenge")]
+/**
+ @class NSURLAuthenticationChallenge
+@discussion This class represents an authentication challenge. It
+provides all the information about the challenge, and has a method
+to indicate when it's done.
+*/
 unsafe impl NSCoding for NSURLAuthenticationChallenge {}
 
 #[cfg(feature = "Foundation_NSURLAuthenticationChallenge")]
+/**
+ @class NSURLAuthenticationChallenge
+@discussion This class represents an authentication challenge. It
+provides all the information about the challenge, and has a method
+to indicate when it's done.
+*/
 unsafe impl NSObjectProtocol for NSURLAuthenticationChallenge {}
 
 #[cfg(feature = "Foundation_NSURLAuthenticationChallenge")]
+/**
+ @class NSURLAuthenticationChallenge
+@discussion This class represents an authentication challenge. It
+provides all the information about the challenge, and has a method
+to indicate when it's done.
+*/
 unsafe impl NSSecureCoding for NSURLAuthenticationChallenge {}
 
 extern_methods!(
+    /**
+     @class NSURLAuthenticationChallenge
+    @discussion This class represents an authentication challenge. It
+    provides all the information about the challenge, and has a method
+    to indicate when it's done.
+    */
     #[cfg(feature = "Foundation_NSURLAuthenticationChallenge")]
     unsafe impl NSURLAuthenticationChallenge {
         #[cfg(all(
@@ -95,24 +134,63 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "Foundation_NSURLProtectionSpace")]
+        /**
+         @abstract Get a description of the protection space that requires authentication
+        @result The protection space that needs authentication
+        */
         #[method_id(@__retain_semantics Other protectionSpace)]
         pub unsafe fn protectionSpace(&self) -> Id<NSURLProtectionSpace>;
 
         #[cfg(feature = "Foundation_NSURLCredential")]
+        /**
+         @abstract Get the proposed credential for this challenge
+        @result The proposed credential
+        @discussion proposedCredential may be nil, if there is no default
+        credential to use for this challenge (either stored or in the
+        URL). If the credential is not nil and returns YES for
+        hasPassword, this means the NSURLConnection thinks the credential
+        is ready to use as-is. If it returns NO for hasPassword, then the
+        credential is not ready to use as-is, but provides a default
+        username the client could use when prompting.
+        */
         #[method_id(@__retain_semantics Other proposedCredential)]
         pub unsafe fn proposedCredential(&self) -> Option<Id<NSURLCredential>>;
 
+        /**
+         @abstract Get count of previous failed authentication attempts
+        @result The count of previous failures
+        */
         #[method(previousFailureCount)]
         pub unsafe fn previousFailureCount(&self) -> NSInteger;
 
         #[cfg(feature = "Foundation_NSURLResponse")]
+        /**
+         @abstract Get the response representing authentication failure.
+        @result The failure response or nil
+        @discussion If there was a previous authentication failure, and
+        this protocol uses responses to indicate authentication failure,
+        then this method will return the response. Otherwise it will
+        return nil.
+        */
         #[method_id(@__retain_semantics Other failureResponse)]
         pub unsafe fn failureResponse(&self) -> Option<Id<NSURLResponse>>;
 
         #[cfg(feature = "Foundation_NSError")]
+        /**
+         @abstract Get the error representing authentication failure.
+        @discussion If there was a previous authentication failure, and
+        this protocol uses errors to indicate authentication failure,
+        then this method will return the error. Otherwise it will
+        return nil.
+        */
         #[method_id(@__retain_semantics Other error)]
         pub unsafe fn error(&self) -> Option<Id<NSError>>;
 
+        /**
+         @abstract Get the sender of this challenge
+        @result The sender of the challenge
+        @discussion The sender is the object you should reply to when done processing the challenge.
+        */
         #[method_id(@__retain_semantics Other sender)]
         pub unsafe fn sender(
             &self,

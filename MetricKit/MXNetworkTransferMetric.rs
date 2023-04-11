@@ -7,6 +7,10 @@ use crate::MetricKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MetricKit_MXNetworkTransferMetric")]
+    /**
+     @class         MXNetworkTransferMetric
+    @abstract      An MXMetric subclass that encapsulates network transfer metrics
+    */
     pub struct MXNetworkTransferMetric;
 
     #[cfg(feature = "MetricKit_MXNetworkTransferMetric")]
@@ -17,21 +21,42 @@ extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXNetworkTransferMetric")]
+/**
+ @class         MXNetworkTransferMetric
+@abstract      An MXMetric subclass that encapsulates network transfer metrics
+*/
 unsafe impl NSCoding for MXNetworkTransferMetric {}
 
 #[cfg(feature = "MetricKit_MXNetworkTransferMetric")]
+/**
+ @class         MXNetworkTransferMetric
+@abstract      An MXMetric subclass that encapsulates network transfer metrics
+*/
 unsafe impl NSObjectProtocol for MXNetworkTransferMetric {}
 
 #[cfg(feature = "MetricKit_MXNetworkTransferMetric")]
+/**
+ @class         MXNetworkTransferMetric
+@abstract      An MXMetric subclass that encapsulates network transfer metrics
+*/
 unsafe impl NSSecureCoding for MXNetworkTransferMetric {}
 
 extern_methods!(
+    /**
+     @class         MXNetworkTransferMetric
+    @abstract      An MXMetric subclass that encapsulates network transfer metrics
+    */
     #[cfg(feature = "MetricKit_MXNetworkTransferMetric")]
     unsafe impl MXNetworkTransferMetric {
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitInformationStorage"
         ))]
+        /**
+         @property      cumulativeWifiUpload
+        @abstract      Cumulative amount of data uploaded over WiFi.
+        @discussion    Dimensioned as NSUnitInformationStorage.
+        */
         #[method_id(@__retain_semantics Other cumulativeWifiUpload)]
         pub unsafe fn cumulativeWifiUpload(&self) -> Id<NSMeasurement<NSUnitInformationStorage>>;
 
@@ -39,6 +64,11 @@ extern_methods!(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitInformationStorage"
         ))]
+        /**
+         @property      cumulativeWifiDownload
+        @abstract      Cumulative amount of data downloaded over WiFi.
+        @discussion    Dimensioned as NSUnitInformationStorage.
+        */
         #[method_id(@__retain_semantics Other cumulativeWifiDownload)]
         pub unsafe fn cumulativeWifiDownload(&self) -> Id<NSMeasurement<NSUnitInformationStorage>>;
 
@@ -46,6 +76,12 @@ extern_methods!(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitInformationStorage"
         ))]
+        /**
+         @property      cumulativeCellularUpload
+        @abstract      Cumulative amount of data uploaded over cellular networks.
+        @discussion    This data is radio access technology agnostic.
+        @discussion    Dimensioned as NSUnitInformationStorage.
+        */
         #[method_id(@__retain_semantics Other cumulativeCellularUpload)]
         pub unsafe fn cumulativeCellularUpload(
             &self,
@@ -55,6 +91,12 @@ extern_methods!(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitInformationStorage"
         ))]
+        /**
+         @property      cumulativeCellularDownload
+        @abstract      Cumulative amount of data downloaded over cellular networks.
+        @discussion    This data is radio access technology agnostic.
+        @discussion    Dimensioned as NSUnitInformationStorage.
+        */
         #[method_id(@__retain_semantics Other cumulativeCellularDownload)]
         pub unsafe fn cumulativeCellularDownload(
             &self,

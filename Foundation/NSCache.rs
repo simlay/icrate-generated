@@ -80,15 +80,27 @@ extern_methods!(
         #[method(removeAllObjects)]
         pub unsafe fn removeAllObjects(&self);
 
+        /**
+          limits are imprecise/not strict
+        */
         #[method(totalCostLimit)]
         pub unsafe fn totalCostLimit(&self) -> NSUInteger;
 
+        /**
+          limits are imprecise/not strict
+        */
         #[method(setTotalCostLimit:)]
         pub unsafe fn setTotalCostLimit(&self, total_cost_limit: NSUInteger);
 
+        /**
+          limits are imprecise/not strict
+        */
         #[method(countLimit)]
         pub unsafe fn countLimit(&self) -> NSUInteger;
 
+        /**
+          limits are imprecise/not strict
+        */
         #[method(setCountLimit:)]
         pub unsafe fn setCountLimit(&self, count_limit: NSUInteger);
 

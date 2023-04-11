@@ -103,6 +103,43 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum MTLBindingsType
+    @abstract The type of a resource binding.
+
+    @constant MTLBindingTypeBuffer
+    This binding represents a buffer.
+
+    @constant MTLBindingTypeThreadgroupMemory
+    This binding represents threadgroup memory.
+
+    @constant MTLBindingTypeTexture
+    This binding represents a texture.
+
+    @constant MTLBindingTypeSampler
+    This binding represents a sampler.
+
+    @constant MTLBindingTypeImageblockData
+    This binding represents an image block data.
+
+    @constant MTLBindingTypeImageblock
+    This binding represents an image block.
+
+    @constant MTLBindingTypeVisibleFunctionTable
+    This binding represents a visible function table object.
+
+    @constant MTLBindingTypePrimitiveAccelerationStructure
+    This binding represents a primitive acceleration structure object.
+
+    @constant MTLBindingTypeInstanceAccelerationStructure
+    This binding represents an instance acceleration structure object.
+
+    @constant MTLBinidngTypeIntersectionFunctionTable
+    This binding represents an intersection function table object.
+
+    @constant MTLBindingTypeObjectPayload
+    This binding represents an object payload.
+    */
     pub enum MTLBindingType {
         MTLBindingTypeBuffer = 0,
         MTLBindingTypeThreadgroupMemory = 1,
@@ -120,6 +157,22 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+     @enum MTLArgumentType
+    @abstract The type for an input to a MTLRenderPipelineState or a MTLComputePipelineState
+
+    @constant MTLArgumentTypeBuffer
+    This input is a MTLBuffer
+
+    @constant MTLArgumentTypeThreadgroupMemory
+    This input is a pointer to the threadgroup memory.
+
+    @constant MTLArgumentTypeTexture
+    This input is a MTLTexture.
+
+    @constant MTLArgumentTypeSampler
+    This input is a sampler.
+    */
     #[deprecated]
     pub enum MTLArgumentType {
         #[deprecated]
@@ -141,6 +194,9 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+     @enum MTLArgumentAccess
+    */
     pub enum MTLArgumentAccess {
         MTLArgumentAccessReadOnly = 0,
         MTLArgumentAccessReadWrite = 1,
@@ -311,15 +367,24 @@ unsafe impl NSObjectProtocol for MTLPointerType {}
 extern_methods!(
     #[cfg(feature = "Metal_MTLPointerType")]
     unsafe impl MTLPointerType {
+        /**
+          MTLDataTypeFloat, MTLDataTypeFloat4, MTLDataTypeStruct, ...
+        */
         #[method(elementType)]
         pub unsafe fn elementType(&self) -> MTLDataType;
 
         #[method(access)]
         pub unsafe fn access(&self) -> MTLArgumentAccess;
 
+        /**
+          min alignment for the element data
+        */
         #[method(alignment)]
         pub unsafe fn alignment(&self) -> NSUInteger;
 
+        /**
+          sizeof(T) for T *argName
+        */
         #[method(dataSize)]
         pub unsafe fn dataSize(&self) -> NSUInteger;
 
@@ -354,15 +419,27 @@ unsafe impl NSObjectProtocol for MTLTextureReferenceType {}
 extern_methods!(
     #[cfg(feature = "Metal_MTLTextureReferenceType")]
     unsafe impl MTLTextureReferenceType {
+        /**
+          half, float, int, or uint.
+        */
         #[method(textureDataType)]
         pub unsafe fn textureDataType(&self) -> MTLDataType;
 
+        /**
+          texture1D, texture2D...
+        */
         #[method(textureType)]
         pub unsafe fn textureType(&self) -> MTLTextureType;
 
+        /**
+          read, write, read-write
+        */
         #[method(access)]
         pub unsafe fn access(&self) -> MTLArgumentAccess;
 
+        /**
+          true for depth textures
+        */
         #[method(isDepthTexture)]
         pub unsafe fn isDepthTexture(&self) -> bool;
     }
@@ -371,6 +448,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLArgument")]
+    /**
+     MTLArgument
+    */
     #[deprecated]
     pub struct MTLArgument;
 
@@ -381,9 +461,15 @@ extern_class!(
 );
 
 #[cfg(feature = "Metal_MTLArgument")]
+/**
+ MTLArgument
+*/
 unsafe impl NSObjectProtocol for MTLArgument {}
 
 extern_methods!(
+    /**
+     MTLArgument
+    */
     #[cfg(feature = "Metal_MTLArgument")]
     unsafe impl MTLArgument {
         #[cfg(feature = "Foundation_NSString")]
@@ -402,12 +488,21 @@ extern_methods!(
         #[method(isActive)]
         pub fn isActive(&self) -> bool;
 
+        /**
+          min alignment of starting offset in the buffer
+        */
         #[method(bufferAlignment)]
         pub fn bufferAlignment(&self) -> NSUInteger;
 
+        /**
+          sizeof(T) for T *argName
+        */
         #[method(bufferDataSize)]
         pub fn bufferDataSize(&self) -> NSUInteger;
 
+        /**
+          MTLDataTypeFloat, MTLDataTypeFloat4, MTLDataTypeStruct, ...
+        */
         #[method(bufferDataType)]
         pub fn bufferDataType(&self) -> MTLDataType;
 
@@ -419,18 +514,33 @@ extern_methods!(
         #[method_id(@__retain_semantics Other bufferPointerType)]
         pub unsafe fn bufferPointerType(&self) -> Option<Id<MTLPointerType>>;
 
+        /**
+          for threadgroup memory arguments
+        */
         #[method(threadgroupMemoryAlignment)]
         pub fn threadgroupMemoryAlignment(&self) -> NSUInteger;
 
+        /**
+          sizeof(T) for T *argName
+        */
         #[method(threadgroupMemoryDataSize)]
         pub fn threadgroupMemoryDataSize(&self) -> NSUInteger;
 
+        /**
+          texture1D, texture2D...
+        */
         #[method(textureType)]
         pub fn textureType(&self) -> MTLTextureType;
 
+        /**
+          half, float, int, or uint.
+        */
         #[method(textureDataType)]
         pub fn textureDataType(&self) -> MTLDataType;
 
+        /**
+          true for depth textures
+        */
         #[method(isDepthTexture)]
         pub unsafe fn isDepthTexture(&self) -> bool;
 
@@ -466,12 +576,21 @@ extern_protocol!(
 
 extern_protocol!(
     pub unsafe trait MTLBufferBinding: MTLBinding {
+        /**
+          min alignment of starting offset in the buffer
+        */
         #[method(bufferAlignment)]
         unsafe fn bufferAlignment(&self) -> NSUInteger;
 
+        /**
+          sizeof(T) for T *argName
+        */
         #[method(bufferDataSize)]
         unsafe fn bufferDataSize(&self) -> NSUInteger;
 
+        /**
+          MTLDataTypeFloat, MTLDataTypeFloat4, MTLDataTypeStruct, ...
+        */
         #[method(bufferDataType)]
         unsafe fn bufferDataType(&self) -> MTLDataType;
 
@@ -492,6 +611,9 @@ extern_protocol!(
         #[method(threadgroupMemoryAlignment)]
         unsafe fn threadgroupMemoryAlignment(&self) -> NSUInteger;
 
+        /**
+          sizeof(T) for T *argName
+        */
         #[method(threadgroupMemoryDataSize)]
         unsafe fn threadgroupMemoryDataSize(&self) -> NSUInteger;
     }
@@ -501,12 +623,21 @@ extern_protocol!(
 
 extern_protocol!(
     pub unsafe trait MTLTextureBinding: MTLBinding {
+        /**
+          texture1D, texture2D...
+        */
         #[method(textureType)]
         unsafe fn textureType(&self) -> MTLTextureType;
 
+        /**
+          half, float, int, or uint.
+        */
         #[method(textureDataType)]
         unsafe fn textureDataType(&self) -> MTLDataType;
 
+        /**
+          true for depth textures
+        */
         #[method(isDepthTexture)]
         unsafe fn isDepthTexture(&self) -> bool;
 
@@ -519,9 +650,15 @@ extern_protocol!(
 
 extern_protocol!(
     pub unsafe trait MTLObjectPayloadBinding: MTLBinding {
+        /**
+          min alignment of starting offset in the buffer
+        */
         #[method(objectPayloadAlignment)]
         unsafe fn objectPayloadAlignment(&self) -> NSUInteger;
 
+        /**
+          sizeof(T) for T *argName
+        */
         #[method(objectPayloadDataSize)]
         unsafe fn objectPayloadDataSize(&self) -> NSUInteger;
     }

@@ -9,6 +9,9 @@ use crate::PhotoKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "PhotoKit_PHAssetCollectionChangeRequest")]
+    /**
+      PHAssetCollectionChangeRequest can only be created or used within a -[PHPhotoLibrary performChanges:] or -[PHPhotoLibrary performChangesAndWait:] block.
+    */
     pub struct PHAssetCollectionChangeRequest;
 
     #[cfg(feature = "PhotoKit_PHAssetCollectionChangeRequest")]
@@ -19,9 +22,15 @@ extern_class!(
 );
 
 #[cfg(feature = "PhotoKit_PHAssetCollectionChangeRequest")]
+/**
+  PHAssetCollectionChangeRequest can only be created or used within a -[PHPhotoLibrary performChanges:] or -[PHPhotoLibrary performChangesAndWait:] block.
+*/
 unsafe impl NSObjectProtocol for PHAssetCollectionChangeRequest {}
 
 extern_methods!(
+    /**
+      PHAssetCollectionChangeRequest can only be created or used within a -[PHPhotoLibrary performChanges:] or -[PHPhotoLibrary performChangesAndWait:] block.
+    */
     #[cfg(feature = "PhotoKit_PHAssetCollectionChangeRequest")]
     unsafe impl PHAssetCollectionChangeRequest {
         #[cfg(feature = "Foundation_NSString")]
@@ -29,6 +38,10 @@ extern_methods!(
         pub unsafe fn creationRequestForAssetCollectionWithTitle(title: &NSString) -> Id<Self>;
 
         #[cfg(feature = "PhotoKit_PHObjectPlaceholder")]
+        /**
+          This can be used to fetch the newly created asset collection after the change block has completed by using -localIdentifier
+         It can also be added directly to collection lists within the current change block
+        */
         #[method_id(@__retain_semantics Other placeholderForCreatedAssetCollection)]
         pub unsafe fn placeholderForCreatedAssetCollection(&self) -> Id<PHObjectPlaceholder>;
 

@@ -121,6 +121,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSMorphologyCustomPronoun")]
+    /**
+      Per-language attribute support:
+    */
     pub struct NSMorphologyCustomPronoun;
 
     #[cfg(feature = "Foundation_NSMorphologyCustomPronoun")]
@@ -130,15 +133,27 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSMorphologyCustomPronoun")]
+/**
+  Per-language attribute support:
+*/
 unsafe impl NSCoding for NSMorphologyCustomPronoun {}
 
 #[cfg(feature = "Foundation_NSMorphologyCustomPronoun")]
+/**
+  Per-language attribute support:
+*/
 unsafe impl NSObjectProtocol for NSMorphologyCustomPronoun {}
 
 #[cfg(feature = "Foundation_NSMorphologyCustomPronoun")]
+/**
+  Per-language attribute support:
+*/
 unsafe impl NSSecureCoding for NSMorphologyCustomPronoun {}
 
 extern_methods!(
+    /**
+      Per-language attribute support:
+    */
     #[cfg(feature = "Foundation_NSMorphologyCustomPronoun")]
     unsafe impl NSMorphologyCustomPronoun {
         #[cfg(feature = "Foundation_NSString")]
@@ -195,9 +210,15 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      User settings access:
+    */
     /// NSMorphologyUserSettings
     #[cfg(feature = "Foundation_NSMorphology")]
     unsafe impl NSMorphology {
+        /**
+          Equivalent to the above.
+        */
         #[method(isUnspecified)]
         pub unsafe fn isUnspecified(&self) -> bool;
 

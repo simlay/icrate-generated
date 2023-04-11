@@ -10,6 +10,10 @@ use crate::MapKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "EventKit_EKCalendar")]
+    /**
+     @class       EKCalendar
+    @abstract    The EKCalendar class represents a calendar for events.
+    */
     pub struct EKCalendar;
 
     #[cfg(feature = "EventKit_EKCalendar")]
@@ -20,9 +24,17 @@ extern_class!(
 );
 
 #[cfg(feature = "EventKit_EKCalendar")]
+/**
+ @class       EKCalendar
+@abstract    The EKCalendar class represents a calendar for events.
+*/
 unsafe impl NSObjectProtocol for EKCalendar {}
 
 extern_methods!(
+    /**
+     @class       EKCalendar
+    @abstract    The EKCalendar class represents a calendar for events.
+    */
     #[cfg(feature = "EventKit_EKCalendar")]
     unsafe impl EKCalendar {
         #[cfg(feature = "EventKit_EKEventStore")]
@@ -37,48 +49,119 @@ extern_methods!(
         ) -> Id<EKCalendar>;
 
         #[cfg(feature = "EventKit_EKSource")]
+        /**
+         @property   source
+        @abstract   The source representing the 'account' this calendar belongs to.
+        This is only settable when initially creating a calendar and then
+        effectively read-only after that. That is, you can create a calendar,
+        but you cannot move it to another source.
+        @discussion This will be nil for new calendars until you set it.
+        */
         #[method_id(@__retain_semantics Other source)]
         pub unsafe fn source(&self) -> Option<Id<EKSource>>;
 
         #[cfg(feature = "EventKit_EKSource")]
+        /**
+         @property   source
+        @abstract   The source representing the 'account' this calendar belongs to.
+        This is only settable when initially creating a calendar and then
+        effectively read-only after that. That is, you can create a calendar,
+        but you cannot move it to another source.
+        @discussion This will be nil for new calendars until you set it.
+        */
         #[method(setSource:)]
         pub unsafe fn setSource(&self, source: Option<&EKSource>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property   calendarIdentifier
+        @abstract   A unique identifier for the calendar. It is not sync-proof in that a full
+        sync will lose this identifier, so you should always have a back up plan for dealing
+        with a calendar that is no longer fetchable by this property, e.g. by title, type, color, etc.
+        Use [EKEventStore calendarWithIdentifier:] to look up the calendar by this value.
+        */
         #[method_id(@__retain_semantics Other calendarIdentifier)]
         pub unsafe fn calendarIdentifier(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property   title
+        @abstract   The title of the calendar.
+        */
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property   title
+        @abstract   The title of the calendar.
+        */
         #[method(setTitle:)]
         pub unsafe fn setTitle(&self, title: &NSString);
 
+        /**
+         @property   type
+        @abstract   The type of the calendar as a EKCalendarType. This is actually based on
+        what source the calendar is in, as well as whether it is a subscribed calendar.
+        @discussion CalDAV subscribed calendars have type EKCalendarTypeCalDAV with isSubscribed = YES.
+        */
         #[method(type)]
         pub unsafe fn r#type(&self) -> EKCalendarType;
 
+        /**
+         @property   allowsContentModifications
+        @abstract   Represents whether you can this add, remove, or modify items in this calendar.
+        */
         #[method(allowsContentModifications)]
         pub unsafe fn allowsContentModifications(&self) -> bool;
 
+        /**
+         @property   subscribed
+        @abstract   YES if this calendar is a subscribed calendar.
+        */
         #[method(isSubscribed)]
         pub unsafe fn isSubscribed(&self) -> bool;
 
+        /**
+         @property   immutable
+        @abstract   If this is set to YES, it means you cannot modify any attributes of
+        the calendar or delete it. It does NOT imply that you cannot add events
+        or reminders to the calendar.
+        */
         #[method(isImmutable)]
         pub unsafe fn isImmutable(&self) -> bool;
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+         @property   color
+        @abstract   Returns the calendar color as a NSColor.
+        @discussion This will be nil for new calendars until you set it.
+        */
         #[method_id(@__retain_semantics Other color)]
         pub unsafe fn color(&self) -> Id<NSColor>;
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+         @property   color
+        @abstract   Returns the calendar color as a NSColor.
+        @discussion This will be nil for new calendars until you set it.
+        */
         #[method(setColor:)]
         pub unsafe fn setColor(&self, color: Option<&NSColor>);
 
+        /**
+         @property   supportedEventAvailabilities
+        @discussion Returns a bitfield of supported event availabilities, or EKCalendarEventAvailabilityNone
+        if this calendar does not support setting availability on an event.
+        */
         #[method(supportedEventAvailabilities)]
         pub unsafe fn supportedEventAvailabilities(&self) -> EKCalendarEventAvailabilityMask;
 
+        /**
+         @property   allowedEntityTypes
+        @discussion Returns the entity types this calendar can contain. While our API only allows creation
+        of single-entity calendars, other servers might allow mixed-entity calendars.
+        */
         #[method(allowedEntityTypes)]
         pub unsafe fn allowedEntityTypes(&self) -> EKEntityMask;
     }

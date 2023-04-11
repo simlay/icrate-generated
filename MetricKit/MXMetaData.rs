@@ -7,6 +7,10 @@ use crate::MetricKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MetricKit_MXMetaData")]
+    /**
+     @class         MXMetaData
+    @abstract      A class that contains miscellaneous metadata about an associated payload.
+    */
     pub struct MXMetaData;
 
     #[cfg(feature = "MetricKit_MXMetaData")]
@@ -16,34 +20,70 @@ extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXMetaData")]
+/**
+ @class         MXMetaData
+@abstract      A class that contains miscellaneous metadata about an associated payload.
+*/
 unsafe impl NSCoding for MXMetaData {}
 
 #[cfg(feature = "MetricKit_MXMetaData")]
+/**
+ @class         MXMetaData
+@abstract      A class that contains miscellaneous metadata about an associated payload.
+*/
 unsafe impl NSObjectProtocol for MXMetaData {}
 
 #[cfg(feature = "MetricKit_MXMetaData")]
+/**
+ @class         MXMetaData
+@abstract      A class that contains miscellaneous metadata about an associated payload.
+*/
 unsafe impl NSSecureCoding for MXMetaData {}
 
 extern_methods!(
+    /**
+     @class         MXMetaData
+    @abstract      A class that contains miscellaneous metadata about an associated payload.
+    */
     #[cfg(feature = "MetricKit_MXMetaData")]
     unsafe impl MXMetaData {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property      regionFormat
+        @abstract      An NSString designating the region format associated with the application.
+        */
         #[method_id(@__retain_semantics Other regionFormat)]
         pub unsafe fn regionFormat(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property      osVersion
+        @abstract      An NSString designating the OS version associated with the device.
+        */
         #[method_id(@__retain_semantics Other osVersion)]
         pub unsafe fn osVersion(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property      deviceType
+        @abstract      An NSString designating the device type associated with this device.
+        */
         #[method_id(@__retain_semantics Other deviceType)]
         pub unsafe fn deviceType(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property      applicationBuildVersion
+        @abstract      An NSString designating the app build version.
+        */
         #[method_id(@__retain_semantics Other applicationBuildVersion)]
         pub unsafe fn applicationBuildVersion(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property      platformArchitecture
+        @abstract      An NSString designating the current architecture.
+        */
         #[method_id(@__retain_semantics Other platformArchitecture)]
         pub unsafe fn platformArchitecture(&self) -> Id<NSString>;
 

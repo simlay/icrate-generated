@@ -7,6 +7,11 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Accessibility_AXBrailleMap")]
+    /**
+      An AXBrailleMap object represents a connected two-dimensional braille display.
+    A display is comprised of a grid of pins that can be raised and lowered.
+    This is useful for representing graphics, images, and other visual data to VoiceOver users.
+    */
     pub struct AXBrailleMap;
 
     #[cfg(feature = "Accessibility_AXBrailleMap")]
@@ -16,17 +21,40 @@ extern_class!(
 );
 
 #[cfg(feature = "Accessibility_AXBrailleMap")]
+/**
+  An AXBrailleMap object represents a connected two-dimensional braille display.
+A display is comprised of a grid of pins that can be raised and lowered.
+This is useful for representing graphics, images, and other visual data to VoiceOver users.
+*/
 unsafe impl NSCoding for AXBrailleMap {}
 
 #[cfg(feature = "Accessibility_AXBrailleMap")]
+/**
+  An AXBrailleMap object represents a connected two-dimensional braille display.
+A display is comprised of a grid of pins that can be raised and lowered.
+This is useful for representing graphics, images, and other visual data to VoiceOver users.
+*/
 unsafe impl NSObjectProtocol for AXBrailleMap {}
 
 #[cfg(feature = "Accessibility_AXBrailleMap")]
+/**
+  An AXBrailleMap object represents a connected two-dimensional braille display.
+A display is comprised of a grid of pins that can be raised and lowered.
+This is useful for representing graphics, images, and other visual data to VoiceOver users.
+*/
 unsafe impl NSSecureCoding for AXBrailleMap {}
 
 extern_methods!(
+    /**
+      An AXBrailleMap object represents a connected two-dimensional braille display.
+    A display is comprised of a grid of pins that can be raised and lowered.
+    This is useful for representing graphics, images, and other visual data to VoiceOver users.
+    */
     #[cfg(feature = "Accessibility_AXBrailleMap")]
     unsafe impl AXBrailleMap {
+        /**
+          Indicates the number of dots in each dimension. This size may change if the user zooms in the content.
+        */
         #[method(dimensions)]
         pub unsafe fn dimensions(&self) -> CGSize;
 
@@ -45,11 +73,24 @@ extern_methods!(
 );
 
 extern_protocol!(
+    /**
+      Implement one of the following methods in order to provide data for a braille map to be rendered.
+    */
     pub unsafe trait AXBrailleMapRenderer: NSObjectProtocol {
+        /**
+          If the element displays a region that should be rendered into the braille map automatically,
+         specify it here (relative to the bounds of the object). VoiceOver will snapshot that region of the element
+         and convert to a braille map internally.
+        */
         #[optional]
         #[method(accessibilityBrailleMapRenderRegion)]
         unsafe fn accessibilityBrailleMapRenderRegion(&self) -> CGRect;
 
+        /**
+          If the element displays a region that should be rendered into the braille map automatically,
+         specify it here (relative to the bounds of the object). VoiceOver will snapshot that region of the element
+         and convert to a braille map internally.
+        */
         #[optional]
         #[method(setAccessibilityBrailleMapRenderRegion:)]
         unsafe fn setAccessibilityBrailleMapRenderRegion(
@@ -58,6 +99,9 @@ extern_protocol!(
         );
 
         #[cfg(feature = "Accessibility_AXBrailleMap")]
+        /**
+          This handler is called to ask the element to update the values of the braille map on-demand.
+        */
         #[optional]
         #[method(accessibilityBrailleMapRenderer)]
         unsafe fn accessibilityBrailleMapRenderer(
@@ -65,6 +109,9 @@ extern_protocol!(
         ) -> NonNull<Block<(NonNull<AXBrailleMap>,), ()>>;
 
         #[cfg(feature = "Accessibility_AXBrailleMap")]
+        /**
+          This handler is called to ask the element to update the values of the braille map on-demand.
+        */
         #[optional]
         #[method(setAccessibilityBrailleMapRenderer:)]
         unsafe fn setAccessibilityBrailleMapRenderer(

@@ -11,6 +11,9 @@ extern_static!(NSLocalNotificationCenterType: &'static NSDistributedNotification
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      Distributes notifications to all tasks on the sender's machine.
+    */
     pub enum NSNotificationSuspensionBehavior {
         NSNotificationSuspensionBehaviorDrop = 1,
         NSNotificationSuspensionBehaviorCoalesce = 2,
@@ -94,9 +97,15 @@ extern_methods!(
             options: NSDistributedNotificationOptions,
         );
 
+        /**
+          Called with suspended = YES, enables the variety of suspension behaviors enumerated above.  Called with suspended = NO disables them (immediate delivery of notifications is resumed).
+        */
         #[method(suspended)]
         pub unsafe fn suspended(&self) -> bool;
 
+        /**
+          Called with suspended = YES, enables the variety of suspension behaviors enumerated above.  Called with suspended = NO disables them (immediate delivery of notifications is resumed).
+        */
         #[method(setSuspended:)]
         pub unsafe fn setSuspended(&self, suspended: bool);
 

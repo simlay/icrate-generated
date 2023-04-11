@@ -22,55 +22,102 @@ extern_methods!(
     #[cfg(feature = "CallKit_CXProviderConfiguration")]
     unsafe impl CXProviderConfiguration {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Localized name of the provider
+        */
         #[deprecated = "No longer supported"]
         #[method_id(@__retain_semantics Other localizedName)]
         pub unsafe fn localizedName(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Name of resource in app's bundle to play as ringtone for incoming call
+        */
         #[method_id(@__retain_semantics Other ringtoneSound)]
         pub unsafe fn ringtoneSound(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Name of resource in app's bundle to play as ringtone for incoming call
+        */
         #[method(setRingtoneSound:)]
         pub unsafe fn setRingtoneSound(&self, ringtone_sound: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          Image should be a square with side length of 40 points
+        */
         #[method_id(@__retain_semantics Other iconTemplateImageData)]
         pub unsafe fn iconTemplateImageData(&self) -> Option<Id<NSData>>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          Image should be a square with side length of 40 points
+        */
         #[method(setIconTemplateImageData:)]
         pub unsafe fn setIconTemplateImageData(&self, icon_template_image_data: Option<&NSData>);
 
+        /**
+          Default 2
+        */
         #[method(maximumCallGroups)]
         pub unsafe fn maximumCallGroups(&self) -> NSUInteger;
 
+        /**
+          Default 2
+        */
         #[method(setMaximumCallGroups:)]
         pub unsafe fn setMaximumCallGroups(&self, maximum_call_groups: NSUInteger);
 
+        /**
+          Default 5
+        */
         #[method(maximumCallsPerCallGroup)]
         pub unsafe fn maximumCallsPerCallGroup(&self) -> NSUInteger;
 
+        /**
+          Default 5
+        */
         #[method(setMaximumCallsPerCallGroup:)]
         pub unsafe fn setMaximumCallsPerCallGroup(&self, maximum_calls_per_call_group: NSUInteger);
 
+        /**
+          Whether this provider's calls should be included in the system's Recents list at the end of each call.
+         Default: YES
+        */
         #[method(includesCallsInRecents)]
         pub unsafe fn includesCallsInRecents(&self) -> bool;
 
+        /**
+          Whether this provider's calls should be included in the system's Recents list at the end of each call.
+         Default: YES
+        */
         #[method(setIncludesCallsInRecents:)]
         pub unsafe fn setIncludesCallsInRecents(&self, includes_calls_in_recents: bool);
 
+        /**
+          Default NO
+        */
         #[method(supportsVideo)]
         pub unsafe fn supportsVideo(&self) -> bool;
 
+        /**
+          Default NO
+        */
         #[method(setSupportsVideo:)]
         pub unsafe fn setSupportsVideo(&self, supports_video: bool);
 
         #[cfg(all(feature = "Foundation_NSNumber", feature = "Foundation_NSSet"))]
+        /**
+          Numbers are of type CXHandleType
+        */
         #[method_id(@__retain_semantics Other supportedHandleTypes)]
         pub unsafe fn supportedHandleTypes(&self) -> Id<NSSet<NSNumber>>;
 
         #[cfg(all(feature = "Foundation_NSNumber", feature = "Foundation_NSSet"))]
+        /**
+          Numbers are of type CXHandleType
+        */
         #[method(setSupportedHandleTypes:)]
         pub unsafe fn setSupportedHandleTypes(&self, supported_handle_types: &NSSet<NSNumber>);
 

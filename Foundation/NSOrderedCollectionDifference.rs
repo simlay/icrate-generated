@@ -5,6 +5,9 @@ use crate::Foundation::*;
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+      Options supported by methods that produce difference objects.
+    */
     pub enum NSOrderedCollectionDifferenceCalculationOptions {
         NSOrderedCollectionDifferenceCalculationOmitInsertedObjects = 1 << 0,
         NSOrderedCollectionDifferenceCalculationOmitRemovedObjects = 1 << 1,

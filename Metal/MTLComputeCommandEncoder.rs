@@ -20,7 +20,15 @@ extern_struct!(
 );
 
 extern_protocol!(
+    /**
+     @protocol MTLComputeCommandEncoder
+    @abstract A command encoder that writes data parallel compute commands.
+    */
     pub unsafe trait MTLComputeCommandEncoder: MTLCommandEncoder {
+        /**
+         @property dispatchType
+        @abstract The dispatch type of the compute command encoder.
+        */
         #[method(dispatchType)]
         unsafe fn dispatchType(&self) -> MTLDispatchType;
 

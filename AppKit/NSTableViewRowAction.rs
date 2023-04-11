@@ -16,6 +16,9 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSTableViewRowAction")]
+    /**
+      An array of this class should be returned from the NSTableView delegate method tableView:rowActionsForRow:edge:.
+    */
     pub struct NSTableViewRowAction;
 
     #[cfg(feature = "AppKit_NSTableViewRowAction")]
@@ -25,9 +28,15 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSTableViewRowAction")]
+/**
+  An array of this class should be returned from the NSTableView delegate method tableView:rowActionsForRow:edge:.
+*/
 unsafe impl NSObjectProtocol for NSTableViewRowAction {}
 
 extern_methods!(
+    /**
+      An array of this class should be returned from the NSTableView delegate method tableView:rowActionsForRow:edge:.
+    */
     #[cfg(feature = "AppKit_NSTableViewRowAction")]
     unsafe impl NSTableViewRowAction {
         #[cfg(feature = "Foundation_NSString")]
@@ -50,18 +59,30 @@ extern_methods!(
         pub unsafe fn setTitle(&self, title: &NSString);
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+          The default background color is dependent on style. Generally this is red for destructive actions, and blue for others.
+        */
         #[method_id(@__retain_semantics Other backgroundColor)]
         pub unsafe fn backgroundColor(&self) -> Id<NSColor>;
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+          The default background color is dependent on style. Generally this is red for destructive actions, and blue for others.
+        */
         #[method(setBackgroundColor:)]
         pub unsafe fn setBackgroundColor(&self, background_color: Option<&NSColor>);
 
         #[cfg(feature = "AppKit_NSImage")]
+        /**
+          Prefer using an image over text for the row action button
+        */
         #[method_id(@__retain_semantics Other image)]
         pub unsafe fn image(&self) -> Option<Id<NSImage>>;
 
         #[cfg(feature = "AppKit_NSImage")]
+        /**
+          Prefer using an image over text for the row action button
+        */
         #[method(setImage:)]
         pub unsafe fn setImage(&self, image: Option<&NSImage>);
     }

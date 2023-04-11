@@ -7,6 +7,10 @@ use crate::MetricKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MetricKit_MXAppLaunchMetric")]
+    /**
+     @class         MXAppLaunchMetric
+    @abstract      An MXMetric subclass that encapsulates app launch metrics.
+    */
     pub struct MXAppLaunchMetric;
 
     #[cfg(feature = "MetricKit_MXAppLaunchMetric")]
@@ -17,21 +21,43 @@ extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXAppLaunchMetric")]
+/**
+ @class         MXAppLaunchMetric
+@abstract      An MXMetric subclass that encapsulates app launch metrics.
+*/
 unsafe impl NSCoding for MXAppLaunchMetric {}
 
 #[cfg(feature = "MetricKit_MXAppLaunchMetric")]
+/**
+ @class         MXAppLaunchMetric
+@abstract      An MXMetric subclass that encapsulates app launch metrics.
+*/
 unsafe impl NSObjectProtocol for MXAppLaunchMetric {}
 
 #[cfg(feature = "MetricKit_MXAppLaunchMetric")]
+/**
+ @class         MXAppLaunchMetric
+@abstract      An MXMetric subclass that encapsulates app launch metrics.
+*/
 unsafe impl NSSecureCoding for MXAppLaunchMetric {}
 
 extern_methods!(
+    /**
+     @class         MXAppLaunchMetric
+    @abstract      An MXMetric subclass that encapsulates app launch metrics.
+    */
     #[cfg(feature = "MetricKit_MXAppLaunchMetric")]
     unsafe impl MXAppLaunchMetric {
         #[cfg(all(
             feature = "Foundation_NSUnitDuration",
             feature = "MetricKit_MXHistogram"
         ))]
+        /**
+         @property      histogrammedTimeToFirstDraw
+        @abstract      Histogrammed application time-to-first-draw data.
+        @discussion    Dimensioned as NSUnitDuration.
+        @discussion    This represents the time when the first CA commit is finished.
+        */
         #[method_id(@__retain_semantics Other histogrammedTimeToFirstDraw)]
         pub unsafe fn histogrammedTimeToFirstDraw(&self) -> Id<MXHistogram<NSUnitDuration>>;
 
@@ -39,6 +65,11 @@ extern_methods!(
             feature = "Foundation_NSUnitDuration",
             feature = "MetricKit_MXHistogram"
         ))]
+        /**
+         @property      histogrammedApplicationResumeTime
+        @abstract      Histogrammed application resume time data.
+        @discussion    Dimensioned as NSUnitDuration.
+        */
         #[method_id(@__retain_semantics Other histogrammedApplicationResumeTime)]
         pub unsafe fn histogrammedApplicationResumeTime(&self) -> Id<MXHistogram<NSUnitDuration>>;
 
@@ -46,6 +77,13 @@ extern_methods!(
             feature = "Foundation_NSUnitDuration",
             feature = "MetricKit_MXHistogram"
         ))]
+        /**
+         @property      histogrammedOptimizedTimeToFirstDraw
+        @abstract      Histogrammed optimized application time-to-first-draw data.
+        @discussion    Dimensioned as NSUnitDuration.
+        @discussion    This represents the time when the first CA commit is finished where the application launch has been optimized by the system.
+        @discussion    In iOS 15, the system will opportunistically start applications that are not running in the background to reduce the amount of time a user may have to wait before an application is usable. These launches can occur after a system reboot and periodically as system conditions allow.
+        */
         #[method_id(@__retain_semantics Other histogrammedOptimizedTimeToFirstDraw)]
         pub unsafe fn histogrammedOptimizedTimeToFirstDraw(
             &self,
@@ -55,6 +93,12 @@ extern_methods!(
             feature = "Foundation_NSUnitDuration",
             feature = "MetricKit_MXHistogram"
         ))]
+        /**
+         @property      histogrammedExtendedLaunch
+        @abstract      Histogrammed extended launch data.
+        @discussion    Dimensioned as NSUnitDuration.
+        @discussion    This represents the time when the app has drawn the first frame and finishes all extended launch tasks that assigned by the developer.
+        */
         #[method_id(@__retain_semantics Other histogrammedExtendedLaunch)]
         pub unsafe fn histogrammedExtendedLaunch(&self) -> Id<MXHistogram<NSUnitDuration>>;
     }

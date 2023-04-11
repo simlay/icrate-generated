@@ -9,6 +9,10 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKSample")]
+    /**
+     @class         HKSample
+    @abstract      An abstract class representing measurements taken over a period of time.
+    */
     pub struct HKSample;
 
     #[cfg(feature = "HealthKit_HKSample")]
@@ -19,15 +23,31 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKSample")]
+/**
+ @class         HKSample
+@abstract      An abstract class representing measurements taken over a period of time.
+*/
 unsafe impl NSCoding for HKSample {}
 
 #[cfg(feature = "HealthKit_HKSample")]
+/**
+ @class         HKSample
+@abstract      An abstract class representing measurements taken over a period of time.
+*/
 unsafe impl NSObjectProtocol for HKSample {}
 
 #[cfg(feature = "HealthKit_HKSample")]
+/**
+ @class         HKSample
+@abstract      An abstract class representing measurements taken over a period of time.
+*/
 unsafe impl NSSecureCoding for HKSample {}
 
 extern_methods!(
+    /**
+     @class         HKSample
+    @abstract      An abstract class representing measurements taken over a period of time.
+    */
     #[cfg(feature = "HealthKit_HKSample")]
     unsafe impl HKSample {
         #[cfg(feature = "HealthKit_HKSampleType")]
@@ -42,6 +62,11 @@ extern_methods!(
         #[method_id(@__retain_semantics Other endDate)]
         pub unsafe fn endDate(&self) -> Id<NSDate>;
 
+        /**
+         @property      hasUndeterminedDuration
+        @abstract      Indicates whether a sample has an undetermined duration.
+        @discussion    Computed based on the endDate of a sample.
+        */
         #[method(hasUndeterminedDuration)]
         pub unsafe fn hasUndeterminedDuration(&self) -> bool;
     }

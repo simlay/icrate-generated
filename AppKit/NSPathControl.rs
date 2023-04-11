@@ -8,6 +8,26 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSPathControl")]
+    /**
+     NSPathControl
+
+    This control maintains a collection of NSPathControlItems that represent a particular path to be displayed to the user. The path shown can be set by calling -setURL:. Doing so will remove all displayed NSPathControlItems and automatically fill it up with items set to have the appropriate icons, display titles, and NSURL values for the particular path component they represent. One can manually fill up the control by setting the array or directly modifying existing item objects.
+
+    Both an action and doubleAction can be set for the control. To find out what path item was clicked upon in the action, you can access the 'clickedPathItem'. When the style is set to NSPathStylePopUp, the action is still sent, and the 'clickedPathItem' for the represented menu item is correctly set. The 'clickedPathItem' is only valid when the action is being sent. It will also be valid when the keyboard is used to invoke the action.
+
+    To accept drag and drop, the NSPathControl automatically calls registerForDraggedTypes: with NSFilenamesPboardType and NSURLPboardType.
+
+    When the URL value in the NSPathControl changes from an automatic drag and drop operation, or from the user selecting a new path via the open panel, the action is sent, but the clickedPathItem will be nil.
+
+    The NSPathControl supports several path display styles. The NSPathStyleStandard has a light blue background with arrows indicating the path. The NSPathStylePopUp will look and work like an NSPopUpButton to display the full path, or select a new path, if the control is editable.
+
+    If the control isEditable (the default is YES), one can drag and drop into the control to change the value. You can constrain what can be dropped using UTIs (Uniform Type Identifier) in the allowedTypes, or the appropriate delegate methods on NSPathControl.
+
+    If the control isSelectable (the default is YES), the control's contents can automatically be dragged out. The proper UTI and filename and URL will be placed on the pasteboard. You can further control or limit this by using the appropriate delegate methods on NSPathControl.
+
+    If the control isEditable and has the pathStyle set to NSPathStylePopUp, an additional choice in the pop up menu will allow selecting another location. By default, an NSOpenPanel will be configured based on the allowedTypes. The NSOpenPanel that is used can be customized with a delegate method.
+
+    */
     pub struct NSPathControl;
 
     #[cfg(feature = "AppKit_NSPathControl")]
@@ -18,30 +38,210 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSPathControl")]
+/**
+ NSPathControl
+
+This control maintains a collection of NSPathControlItems that represent a particular path to be displayed to the user. The path shown can be set by calling -setURL:. Doing so will remove all displayed NSPathControlItems and automatically fill it up with items set to have the appropriate icons, display titles, and NSURL values for the particular path component they represent. One can manually fill up the control by setting the array or directly modifying existing item objects.
+
+Both an action and doubleAction can be set for the control. To find out what path item was clicked upon in the action, you can access the 'clickedPathItem'. When the style is set to NSPathStylePopUp, the action is still sent, and the 'clickedPathItem' for the represented menu item is correctly set. The 'clickedPathItem' is only valid when the action is being sent. It will also be valid when the keyboard is used to invoke the action.
+
+To accept drag and drop, the NSPathControl automatically calls registerForDraggedTypes: with NSFilenamesPboardType and NSURLPboardType.
+
+When the URL value in the NSPathControl changes from an automatic drag and drop operation, or from the user selecting a new path via the open panel, the action is sent, but the clickedPathItem will be nil.
+
+The NSPathControl supports several path display styles. The NSPathStyleStandard has a light blue background with arrows indicating the path. The NSPathStylePopUp will look and work like an NSPopUpButton to display the full path, or select a new path, if the control is editable.
+
+If the control isEditable (the default is YES), one can drag and drop into the control to change the value. You can constrain what can be dropped using UTIs (Uniform Type Identifier) in the allowedTypes, or the appropriate delegate methods on NSPathControl.
+
+If the control isSelectable (the default is YES), the control's contents can automatically be dragged out. The proper UTI and filename and URL will be placed on the pasteboard. You can further control or limit this by using the appropriate delegate methods on NSPathControl.
+
+If the control isEditable and has the pathStyle set to NSPathStylePopUp, an additional choice in the pop up menu will allow selecting another location. By default, an NSOpenPanel will be configured based on the allowedTypes. The NSOpenPanel that is used can be customized with a delegate method.
+
+*/
 unsafe impl NSAccessibility for NSPathControl {}
 
 #[cfg(feature = "AppKit_NSPathControl")]
+/**
+ NSPathControl
+
+This control maintains a collection of NSPathControlItems that represent a particular path to be displayed to the user. The path shown can be set by calling -setURL:. Doing so will remove all displayed NSPathControlItems and automatically fill it up with items set to have the appropriate icons, display titles, and NSURL values for the particular path component they represent. One can manually fill up the control by setting the array or directly modifying existing item objects.
+
+Both an action and doubleAction can be set for the control. To find out what path item was clicked upon in the action, you can access the 'clickedPathItem'. When the style is set to NSPathStylePopUp, the action is still sent, and the 'clickedPathItem' for the represented menu item is correctly set. The 'clickedPathItem' is only valid when the action is being sent. It will also be valid when the keyboard is used to invoke the action.
+
+To accept drag and drop, the NSPathControl automatically calls registerForDraggedTypes: with NSFilenamesPboardType and NSURLPboardType.
+
+When the URL value in the NSPathControl changes from an automatic drag and drop operation, or from the user selecting a new path via the open panel, the action is sent, but the clickedPathItem will be nil.
+
+The NSPathControl supports several path display styles. The NSPathStyleStandard has a light blue background with arrows indicating the path. The NSPathStylePopUp will look and work like an NSPopUpButton to display the full path, or select a new path, if the control is editable.
+
+If the control isEditable (the default is YES), one can drag and drop into the control to change the value. You can constrain what can be dropped using UTIs (Uniform Type Identifier) in the allowedTypes, or the appropriate delegate methods on NSPathControl.
+
+If the control isSelectable (the default is YES), the control's contents can automatically be dragged out. The proper UTI and filename and URL will be placed on the pasteboard. You can further control or limit this by using the appropriate delegate methods on NSPathControl.
+
+If the control isEditable and has the pathStyle set to NSPathStylePopUp, an additional choice in the pop up menu will allow selecting another location. By default, an NSOpenPanel will be configured based on the allowedTypes. The NSOpenPanel that is used can be customized with a delegate method.
+
+*/
 unsafe impl NSAccessibilityElementProtocol for NSPathControl {}
 
 #[cfg(feature = "AppKit_NSPathControl")]
+/**
+ NSPathControl
+
+This control maintains a collection of NSPathControlItems that represent a particular path to be displayed to the user. The path shown can be set by calling -setURL:. Doing so will remove all displayed NSPathControlItems and automatically fill it up with items set to have the appropriate icons, display titles, and NSURL values for the particular path component they represent. One can manually fill up the control by setting the array or directly modifying existing item objects.
+
+Both an action and doubleAction can be set for the control. To find out what path item was clicked upon in the action, you can access the 'clickedPathItem'. When the style is set to NSPathStylePopUp, the action is still sent, and the 'clickedPathItem' for the represented menu item is correctly set. The 'clickedPathItem' is only valid when the action is being sent. It will also be valid when the keyboard is used to invoke the action.
+
+To accept drag and drop, the NSPathControl automatically calls registerForDraggedTypes: with NSFilenamesPboardType and NSURLPboardType.
+
+When the URL value in the NSPathControl changes from an automatic drag and drop operation, or from the user selecting a new path via the open panel, the action is sent, but the clickedPathItem will be nil.
+
+The NSPathControl supports several path display styles. The NSPathStyleStandard has a light blue background with arrows indicating the path. The NSPathStylePopUp will look and work like an NSPopUpButton to display the full path, or select a new path, if the control is editable.
+
+If the control isEditable (the default is YES), one can drag and drop into the control to change the value. You can constrain what can be dropped using UTIs (Uniform Type Identifier) in the allowedTypes, or the appropriate delegate methods on NSPathControl.
+
+If the control isSelectable (the default is YES), the control's contents can automatically be dragged out. The proper UTI and filename and URL will be placed on the pasteboard. You can further control or limit this by using the appropriate delegate methods on NSPathControl.
+
+If the control isEditable and has the pathStyle set to NSPathStylePopUp, an additional choice in the pop up menu will allow selecting another location. By default, an NSOpenPanel will be configured based on the allowedTypes. The NSOpenPanel that is used can be customized with a delegate method.
+
+*/
 unsafe impl NSAnimatablePropertyContainer for NSPathControl {}
 
 #[cfg(feature = "AppKit_NSPathControl")]
+/**
+ NSPathControl
+
+This control maintains a collection of NSPathControlItems that represent a particular path to be displayed to the user. The path shown can be set by calling -setURL:. Doing so will remove all displayed NSPathControlItems and automatically fill it up with items set to have the appropriate icons, display titles, and NSURL values for the particular path component they represent. One can manually fill up the control by setting the array or directly modifying existing item objects.
+
+Both an action and doubleAction can be set for the control. To find out what path item was clicked upon in the action, you can access the 'clickedPathItem'. When the style is set to NSPathStylePopUp, the action is still sent, and the 'clickedPathItem' for the represented menu item is correctly set. The 'clickedPathItem' is only valid when the action is being sent. It will also be valid when the keyboard is used to invoke the action.
+
+To accept drag and drop, the NSPathControl automatically calls registerForDraggedTypes: with NSFilenamesPboardType and NSURLPboardType.
+
+When the URL value in the NSPathControl changes from an automatic drag and drop operation, or from the user selecting a new path via the open panel, the action is sent, but the clickedPathItem will be nil.
+
+The NSPathControl supports several path display styles. The NSPathStyleStandard has a light blue background with arrows indicating the path. The NSPathStylePopUp will look and work like an NSPopUpButton to display the full path, or select a new path, if the control is editable.
+
+If the control isEditable (the default is YES), one can drag and drop into the control to change the value. You can constrain what can be dropped using UTIs (Uniform Type Identifier) in the allowedTypes, or the appropriate delegate methods on NSPathControl.
+
+If the control isSelectable (the default is YES), the control's contents can automatically be dragged out. The proper UTI and filename and URL will be placed on the pasteboard. You can further control or limit this by using the appropriate delegate methods on NSPathControl.
+
+If the control isEditable and has the pathStyle set to NSPathStylePopUp, an additional choice in the pop up menu will allow selecting another location. By default, an NSOpenPanel will be configured based on the allowedTypes. The NSOpenPanel that is used can be customized with a delegate method.
+
+*/
 unsafe impl NSAppearanceCustomization for NSPathControl {}
 
 #[cfg(feature = "AppKit_NSPathControl")]
+/**
+ NSPathControl
+
+This control maintains a collection of NSPathControlItems that represent a particular path to be displayed to the user. The path shown can be set by calling -setURL:. Doing so will remove all displayed NSPathControlItems and automatically fill it up with items set to have the appropriate icons, display titles, and NSURL values for the particular path component they represent. One can manually fill up the control by setting the array or directly modifying existing item objects.
+
+Both an action and doubleAction can be set for the control. To find out what path item was clicked upon in the action, you can access the 'clickedPathItem'. When the style is set to NSPathStylePopUp, the action is still sent, and the 'clickedPathItem' for the represented menu item is correctly set. The 'clickedPathItem' is only valid when the action is being sent. It will also be valid when the keyboard is used to invoke the action.
+
+To accept drag and drop, the NSPathControl automatically calls registerForDraggedTypes: with NSFilenamesPboardType and NSURLPboardType.
+
+When the URL value in the NSPathControl changes from an automatic drag and drop operation, or from the user selecting a new path via the open panel, the action is sent, but the clickedPathItem will be nil.
+
+The NSPathControl supports several path display styles. The NSPathStyleStandard has a light blue background with arrows indicating the path. The NSPathStylePopUp will look and work like an NSPopUpButton to display the full path, or select a new path, if the control is editable.
+
+If the control isEditable (the default is YES), one can drag and drop into the control to change the value. You can constrain what can be dropped using UTIs (Uniform Type Identifier) in the allowedTypes, or the appropriate delegate methods on NSPathControl.
+
+If the control isSelectable (the default is YES), the control's contents can automatically be dragged out. The proper UTI and filename and URL will be placed on the pasteboard. You can further control or limit this by using the appropriate delegate methods on NSPathControl.
+
+If the control isEditable and has the pathStyle set to NSPathStylePopUp, an additional choice in the pop up menu will allow selecting another location. By default, an NSOpenPanel will be configured based on the allowedTypes. The NSOpenPanel that is used can be customized with a delegate method.
+
+*/
 unsafe impl NSCoding for NSPathControl {}
 
 #[cfg(feature = "AppKit_NSPathControl")]
+/**
+ NSPathControl
+
+This control maintains a collection of NSPathControlItems that represent a particular path to be displayed to the user. The path shown can be set by calling -setURL:. Doing so will remove all displayed NSPathControlItems and automatically fill it up with items set to have the appropriate icons, display titles, and NSURL values for the particular path component they represent. One can manually fill up the control by setting the array or directly modifying existing item objects.
+
+Both an action and doubleAction can be set for the control. To find out what path item was clicked upon in the action, you can access the 'clickedPathItem'. When the style is set to NSPathStylePopUp, the action is still sent, and the 'clickedPathItem' for the represented menu item is correctly set. The 'clickedPathItem' is only valid when the action is being sent. It will also be valid when the keyboard is used to invoke the action.
+
+To accept drag and drop, the NSPathControl automatically calls registerForDraggedTypes: with NSFilenamesPboardType and NSURLPboardType.
+
+When the URL value in the NSPathControl changes from an automatic drag and drop operation, or from the user selecting a new path via the open panel, the action is sent, but the clickedPathItem will be nil.
+
+The NSPathControl supports several path display styles. The NSPathStyleStandard has a light blue background with arrows indicating the path. The NSPathStylePopUp will look and work like an NSPopUpButton to display the full path, or select a new path, if the control is editable.
+
+If the control isEditable (the default is YES), one can drag and drop into the control to change the value. You can constrain what can be dropped using UTIs (Uniform Type Identifier) in the allowedTypes, or the appropriate delegate methods on NSPathControl.
+
+If the control isSelectable (the default is YES), the control's contents can automatically be dragged out. The proper UTI and filename and URL will be placed on the pasteboard. You can further control or limit this by using the appropriate delegate methods on NSPathControl.
+
+If the control isEditable and has the pathStyle set to NSPathStylePopUp, an additional choice in the pop up menu will allow selecting another location. By default, an NSOpenPanel will be configured based on the allowedTypes. The NSOpenPanel that is used can be customized with a delegate method.
+
+*/
 unsafe impl NSDraggingDestination for NSPathControl {}
 
 #[cfg(feature = "AppKit_NSPathControl")]
+/**
+ NSPathControl
+
+This control maintains a collection of NSPathControlItems that represent a particular path to be displayed to the user. The path shown can be set by calling -setURL:. Doing so will remove all displayed NSPathControlItems and automatically fill it up with items set to have the appropriate icons, display titles, and NSURL values for the particular path component they represent. One can manually fill up the control by setting the array or directly modifying existing item objects.
+
+Both an action and doubleAction can be set for the control. To find out what path item was clicked upon in the action, you can access the 'clickedPathItem'. When the style is set to NSPathStylePopUp, the action is still sent, and the 'clickedPathItem' for the represented menu item is correctly set. The 'clickedPathItem' is only valid when the action is being sent. It will also be valid when the keyboard is used to invoke the action.
+
+To accept drag and drop, the NSPathControl automatically calls registerForDraggedTypes: with NSFilenamesPboardType and NSURLPboardType.
+
+When the URL value in the NSPathControl changes from an automatic drag and drop operation, or from the user selecting a new path via the open panel, the action is sent, but the clickedPathItem will be nil.
+
+The NSPathControl supports several path display styles. The NSPathStyleStandard has a light blue background with arrows indicating the path. The NSPathStylePopUp will look and work like an NSPopUpButton to display the full path, or select a new path, if the control is editable.
+
+If the control isEditable (the default is YES), one can drag and drop into the control to change the value. You can constrain what can be dropped using UTIs (Uniform Type Identifier) in the allowedTypes, or the appropriate delegate methods on NSPathControl.
+
+If the control isSelectable (the default is YES), the control's contents can automatically be dragged out. The proper UTI and filename and URL will be placed on the pasteboard. You can further control or limit this by using the appropriate delegate methods on NSPathControl.
+
+If the control isEditable and has the pathStyle set to NSPathStylePopUp, an additional choice in the pop up menu will allow selecting another location. By default, an NSOpenPanel will be configured based on the allowedTypes. The NSOpenPanel that is used can be customized with a delegate method.
+
+*/
 unsafe impl NSObjectProtocol for NSPathControl {}
 
 #[cfg(feature = "AppKit_NSPathControl")]
+/**
+ NSPathControl
+
+This control maintains a collection of NSPathControlItems that represent a particular path to be displayed to the user. The path shown can be set by calling -setURL:. Doing so will remove all displayed NSPathControlItems and automatically fill it up with items set to have the appropriate icons, display titles, and NSURL values for the particular path component they represent. One can manually fill up the control by setting the array or directly modifying existing item objects.
+
+Both an action and doubleAction can be set for the control. To find out what path item was clicked upon in the action, you can access the 'clickedPathItem'. When the style is set to NSPathStylePopUp, the action is still sent, and the 'clickedPathItem' for the represented menu item is correctly set. The 'clickedPathItem' is only valid when the action is being sent. It will also be valid when the keyboard is used to invoke the action.
+
+To accept drag and drop, the NSPathControl automatically calls registerForDraggedTypes: with NSFilenamesPboardType and NSURLPboardType.
+
+When the URL value in the NSPathControl changes from an automatic drag and drop operation, or from the user selecting a new path via the open panel, the action is sent, but the clickedPathItem will be nil.
+
+The NSPathControl supports several path display styles. The NSPathStyleStandard has a light blue background with arrows indicating the path. The NSPathStylePopUp will look and work like an NSPopUpButton to display the full path, or select a new path, if the control is editable.
+
+If the control isEditable (the default is YES), one can drag and drop into the control to change the value. You can constrain what can be dropped using UTIs (Uniform Type Identifier) in the allowedTypes, or the appropriate delegate methods on NSPathControl.
+
+If the control isSelectable (the default is YES), the control's contents can automatically be dragged out. The proper UTI and filename and URL will be placed on the pasteboard. You can further control or limit this by using the appropriate delegate methods on NSPathControl.
+
+If the control isEditable and has the pathStyle set to NSPathStylePopUp, an additional choice in the pop up menu will allow selecting another location. By default, an NSOpenPanel will be configured based on the allowedTypes. The NSOpenPanel that is used can be customized with a delegate method.
+
+*/
 unsafe impl NSUserInterfaceItemIdentification for NSPathControl {}
 
 extern_methods!(
+    /**
+     NSPathControl
+
+    This control maintains a collection of NSPathControlItems that represent a particular path to be displayed to the user. The path shown can be set by calling -setURL:. Doing so will remove all displayed NSPathControlItems and automatically fill it up with items set to have the appropriate icons, display titles, and NSURL values for the particular path component they represent. One can manually fill up the control by setting the array or directly modifying existing item objects.
+
+    Both an action and doubleAction can be set for the control. To find out what path item was clicked upon in the action, you can access the 'clickedPathItem'. When the style is set to NSPathStylePopUp, the action is still sent, and the 'clickedPathItem' for the represented menu item is correctly set. The 'clickedPathItem' is only valid when the action is being sent. It will also be valid when the keyboard is used to invoke the action.
+
+    To accept drag and drop, the NSPathControl automatically calls registerForDraggedTypes: with NSFilenamesPboardType and NSURLPboardType.
+
+    When the URL value in the NSPathControl changes from an automatic drag and drop operation, or from the user selecting a new path via the open panel, the action is sent, but the clickedPathItem will be nil.
+
+    The NSPathControl supports several path display styles. The NSPathStyleStandard has a light blue background with arrows indicating the path. The NSPathStylePopUp will look and work like an NSPopUpButton to display the full path, or select a new path, if the control is editable.
+
+    If the control isEditable (the default is YES), one can drag and drop into the control to change the value. You can constrain what can be dropped using UTIs (Uniform Type Identifier) in the allowedTypes, or the appropriate delegate methods on NSPathControl.
+
+    If the control isSelectable (the default is YES), the control's contents can automatically be dragged out. The proper UTI and filename and URL will be placed on the pasteboard. You can further control or limit this by using the appropriate delegate methods on NSPathControl.
+
+    If the control isEditable and has the pathStyle set to NSPathStylePopUp, an additional choice in the pop up menu will allow selecting another location. By default, an NSOpenPanel will be configured based on the allowedTypes. The NSOpenPanel that is used can be customized with a delegate method.
+
+    */
     #[cfg(feature = "AppKit_NSPathControl")]
     unsafe impl NSPathControl {
         #[method(isEditable)]
@@ -51,18 +251,30 @@ extern_methods!(
         pub unsafe fn setEditable(&self, editable: bool);
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          Specifies the allowed types when the control isEditable. The allowedTypes can contain a file extension (without the period that begins the extension) or UTI (Uniform Type Identifier). To allow folders, include the UTI 'public.folder'. To allow all types, use 'nil'. If allowedTypes is an empty array, nothing will be allowed. The default value is 'nil', allowing all types.
+        */
         #[method_id(@__retain_semantics Other allowedTypes)]
         pub unsafe fn allowedTypes(&self) -> Option<Id<NSArray<NSString>>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          Specifies the allowed types when the control isEditable. The allowedTypes can contain a file extension (without the period that begins the extension) or UTI (Uniform Type Identifier). To allow folders, include the UTI 'public.folder'. To allow all types, use 'nil'. If allowedTypes is an empty array, nothing will be allowed. The default value is 'nil', allowing all types.
+        */
         #[method(setAllowedTypes:)]
         pub unsafe fn setAllowedTypes(&self, allowed_types: Option<&NSArray<NSString>>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          If there are no components in the path, the placeholder is drawn instead (if non-nil).  We first try to draw the placeholderAttributedString. If it's nil, then the placeholderString will be drawn with correct default attributes.
+        */
         #[method_id(@__retain_semantics Other placeholderString)]
         pub unsafe fn placeholderString(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          If there are no components in the path, the placeholder is drawn instead (if non-nil).  We first try to draw the placeholderAttributedString. If it's nil, then the placeholderString will be drawn with correct default attributes.
+        */
         #[method(setPlaceholderString:)]
         pub unsafe fn setPlaceholderString(&self, placeholder_string: Option<&NSString>);
 
@@ -78,48 +290,89 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          Gets and sets the path value displayed. When setting, an array of NSPathControlItems will automatically be set based on the path in the 'url'. If the 'url' is a file URL (returns YES from isFileURL), the images will automatically be filled up with file icons, if the path exists.  The URL value itself is stored in the objectValue of the control.
+        */
         #[method_id(@__retain_semantics Other URL)]
         pub unsafe fn URL(&self) -> Option<Id<NSURL>>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          Gets and sets the path value displayed. When setting, an array of NSPathControlItems will automatically be set based on the path in the 'url'. If the 'url' is a file URL (returns YES from isFileURL), the images will automatically be filled up with file icons, if the path exists.  The URL value itself is stored in the objectValue of the control.
+        */
         #[method(setURL:)]
         pub unsafe fn setURL(&self, url: Option<&NSURL>);
 
+        /**
+          The selector that will be called when the user double clicks on a NSPathControlItem.
+        */
         #[method(doubleAction)]
         pub unsafe fn doubleAction(&self) -> Option<Sel>;
 
+        /**
+          The selector that will be called when the user double clicks on a NSPathControlItem.
+        */
         #[method(setDoubleAction:)]
         pub unsafe fn setDoubleAction(&self, double_action: Option<Sel>);
 
+        /**
+          The style/mode of the NSPathControl. Defaults to NSPathStyleStandard.
+        */
         #[method(pathStyle)]
         pub unsafe fn pathStyle(&self) -> NSPathStyle;
 
+        /**
+          The style/mode of the NSPathControl. Defaults to NSPathStyleStandard.
+        */
         #[method(setPathStyle:)]
         pub unsafe fn setPathStyle(&self, path_style: NSPathStyle);
 
         #[cfg(feature = "AppKit_NSPathControlItem")]
+        /**
+          The clicked NSPathControlItem, or nil, if no item has been clicked. The clickedPathItem is generally only valid while the action or doubleAction is being sent.
+        */
         #[method_id(@__retain_semantics Other clickedPathItem)]
         pub unsafe fn clickedPathItem(&self) -> Option<Id<NSPathControlItem>>;
 
         #[cfg(all(feature = "AppKit_NSPathControlItem", feature = "Foundation_NSArray"))]
+        /**
+          The array of NSPathControlItems currently being displayed.
+        Each item must be an NSPathControlItem.  Do not subclass NSPathControlItem. You cannot set this value to nil, but should instead set it to an empty array.
+        */
         #[method_id(@__retain_semantics Other pathItems)]
         pub unsafe fn pathItems(&self) -> Id<NSArray<NSPathControlItem>>;
 
         #[cfg(all(feature = "AppKit_NSPathControlItem", feature = "Foundation_NSArray"))]
+        /**
+          The array of NSPathControlItems currently being displayed.
+        Each item must be an NSPathControlItem.  Do not subclass NSPathControlItem. You cannot set this value to nil, but should instead set it to an empty array.
+        */
         #[method(setPathItems:)]
         pub unsafe fn setPathItems(&self, path_items: &NSArray<NSPathControlItem>);
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+          The background color to be drawn.  By default, it will be set to a light blue color for NSPathStyleStandard, and nil for everything else. You can use [NSColor clearColor] to make the background transparent.
+        */
         #[method_id(@__retain_semantics Other backgroundColor)]
         pub unsafe fn backgroundColor(&self) -> Option<Id<NSColor>>;
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+          The background color to be drawn.  By default, it will be set to a light blue color for NSPathStyleStandard, and nil for everything else. You can use [NSColor clearColor] to make the background transparent.
+        */
         #[method(setBackgroundColor:)]
         pub unsafe fn setBackgroundColor(&self, background_color: Option<&NSColor>);
 
+        /**
+          The delegate for this control. The delegate is weakly referenced for zeroing-weak compatible objects in apps linked on 10.10 or later. Otherwise the behavior of this property is 'assign'.
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(&self) -> Option<Id<ProtocolObject<dyn NSPathControlDelegate>>>;
 
+        /**
+          The delegate for this control. The delegate is weakly referenced for zeroing-weak compatible objects in apps linked on 10.10 or later. Otherwise the behavior of this property is 'assign'.
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
@@ -134,10 +387,16 @@ extern_methods!(
         );
 
         #[cfg(feature = "AppKit_NSMenu")]
+        /**
+          The menu used when the syle is NSPathStylePopUp.
+        */
         #[method_id(@__retain_semantics Other menu)]
         pub unsafe fn menu(&self) -> Option<Id<NSMenu>>;
 
         #[cfg(feature = "AppKit_NSMenu")]
+        /**
+          The menu used when the syle is NSPathStylePopUp.
+        */
         #[method(setMenu:)]
         pub unsafe fn setMenu(&self, menu: Option<&NSMenu>);
     }
@@ -232,6 +491,26 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSControl`
+    /**
+     NSPathControl
+
+    This control maintains a collection of NSPathControlItems that represent a particular path to be displayed to the user. The path shown can be set by calling -setURL:. Doing so will remove all displayed NSPathControlItems and automatically fill it up with items set to have the appropriate icons, display titles, and NSURL values for the particular path component they represent. One can manually fill up the control by setting the array or directly modifying existing item objects.
+
+    Both an action and doubleAction can be set for the control. To find out what path item was clicked upon in the action, you can access the 'clickedPathItem'. When the style is set to NSPathStylePopUp, the action is still sent, and the 'clickedPathItem' for the represented menu item is correctly set. The 'clickedPathItem' is only valid when the action is being sent. It will also be valid when the keyboard is used to invoke the action.
+
+    To accept drag and drop, the NSPathControl automatically calls registerForDraggedTypes: with NSFilenamesPboardType and NSURLPboardType.
+
+    When the URL value in the NSPathControl changes from an automatic drag and drop operation, or from the user selecting a new path via the open panel, the action is sent, but the clickedPathItem will be nil.
+
+    The NSPathControl supports several path display styles. The NSPathStyleStandard has a light blue background with arrows indicating the path. The NSPathStylePopUp will look and work like an NSPopUpButton to display the full path, or select a new path, if the control is editable.
+
+    If the control isEditable (the default is YES), one can drag and drop into the control to change the value. You can constrain what can be dropped using UTIs (Uniform Type Identifier) in the allowedTypes, or the appropriate delegate methods on NSPathControl.
+
+    If the control isSelectable (the default is YES), the control's contents can automatically be dragged out. The proper UTI and filename and URL will be placed on the pasteboard. You can further control or limit this by using the appropriate delegate methods on NSPathControl.
+
+    If the control isEditable and has the pathStyle set to NSPathStylePopUp, an additional choice in the pop up menu will allow selecting another location. By default, an NSOpenPanel will be configured based on the allowedTypes. The NSOpenPanel that is used can be customized with a delegate method.
+
+    */
     #[cfg(feature = "AppKit_NSPathControl")]
     unsafe impl NSPathControl {
         #[method_id(@__retain_semantics Init initWithFrame:)]

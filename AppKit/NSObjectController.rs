@@ -51,25 +51,43 @@ extern_methods!(
         #[method(setContent:)]
         pub unsafe fn setContent(&self, content: Option<&Object>);
 
+        /**
+          an object representing all objects to be affected by editing as a singleton, returning special marker objects like NSMultipleSelectionMarker if necessary - in the concrete case of NSObjectController, returns an object that is used to access the content object
+        */
         #[method_id(@__retain_semantics Other selection)]
         pub unsafe fn selection(&self) -> Id<Object>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          array of all objects to be affected by editing (if controller supports a selection mechanisms, the selected objects, otherwise all content objects) - in the concrete case of NSObjectController, returns an array with the content object
+        */
         #[method_id(@__retain_semantics Other selectedObjects)]
         pub unsafe fn selectedObjects(&self) -> Id<NSArray>;
 
+        /**
+          if YES, controllers will automatically invoke prepareContent when loaded from a nib file
+        */
         #[method(automaticallyPreparesContent)]
         pub unsafe fn automaticallyPreparesContent(&self) -> bool;
 
+        /**
+          if YES, controllers will automatically invoke prepareContent when loaded from a nib file
+        */
         #[method(setAutomaticallyPreparesContent:)]
         pub unsafe fn setAutomaticallyPreparesContent(&self, automatically_prepares_content: bool);
 
         #[method(prepareContent)]
         pub unsafe fn prepareContent(&self);
 
+        /**
+          sets the object class used when creating new objects
+        */
         #[method(objectClass)]
         pub unsafe fn objectClass(&self) -> Option<&'static Class>;
 
+        /**
+          sets the object class used when creating new objects
+        */
         #[method(setObjectClass:)]
         pub unsafe fn setObjectClass(&self, object_class: Option<&Class>);
 
@@ -82,21 +100,33 @@ extern_methods!(
         #[method(removeObject:)]
         pub unsafe fn removeObject(&self, object: &Object);
 
+        /**
+          determines whether controller allows adding and removing objects
+        */
         #[method(isEditable)]
         pub unsafe fn isEditable(&self) -> bool;
 
+        /**
+          determines whether controller allows adding and removing objects
+        */
         #[method(setEditable:)]
         pub unsafe fn setEditable(&self, editable: bool);
 
         #[method(add:)]
         pub unsafe fn add(&self, sender: Option<&Object>);
 
+        /**
+          can be used in bindings controlling the enabling of buttons, for example
+        */
         #[method(canAdd)]
         pub unsafe fn canAdd(&self) -> bool;
 
         #[method(remove:)]
         pub unsafe fn remove(&self, sender: Option<&Object>);
 
+        /**
+          can be used in bindings controlling the enabling of buttons, for example
+        */
         #[method(canRemove)]
         pub unsafe fn canRemove(&self) -> bool;
 
@@ -150,9 +180,15 @@ extern_methods!(
         #[method(fetch:)]
         pub unsafe fn fetch(&self, sender: Option<&Object>);
 
+        /**
+          defaults to NO.
+        */
         #[method(usesLazyFetching)]
         pub unsafe fn usesLazyFetching(&self) -> bool;
 
+        /**
+          defaults to NO.
+        */
         #[method(setUsesLazyFetching:)]
         pub unsafe fn setUsesLazyFetching(&self, uses_lazy_fetching: bool);
 

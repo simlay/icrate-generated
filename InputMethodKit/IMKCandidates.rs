@@ -7,6 +7,13 @@ use crate::InputMethodKit::*;
 
 extern_enum!(
     #[underlying(c_uint)]
+    /**
+     @enum		IMKCandidatePanelType
+    @abstract   Lists the basic candidate panel types that are supplied by the InputMethodKit.
+    @constant	kIMKSingleColumnScrollingCandidatePanel creates a window with a 1 column X 9 row grid.  If there are more than 9 rows this will display a scroll bar.
+    @constant  kIMKScrollingGridCandidatePanel a grid with 5 columns is used to display.  If necessary, a scroll bar will be displayed.
+    @constant	kIMKSingleRowSteppingCandidatePanel a 9 column x 1 row grid is displayed.  If there are more than 9 candidates, a stepper controller will be displayed.
+    */
     pub enum __anonymous__ {
         kIMKSingleColumnScrollingCandidatePanel = 1,
         kIMKScrollingGridCandidatePanel = 2,
@@ -29,6 +36,15 @@ pub type IMKStyleType = NSUInteger;
 
 extern_enum!(
     #[underlying(c_uint)]
+    /**
+     @enum		IMKCandidatesLocationHint
+    @abstract   Provides a hint where to place the candidates display.
+    @discussion The IMKCandidatePanelType will use the hint to place the candidate display, being sure that the display is always fully visible.
+    @constant   kIMKLocateCandidatesAboveHint	Place the candidates above the start of the current text selection.
+    @constant	kIMKLocateCandidatesBelowHint	Place the candidates below the start of the current text selection.
+    @constant	kIMKLocateCandidatesLeftHint	Place the candidates to the left of the current text selection.
+    @constant	kIMKLocateCandidatesRightHint	Place the candidates to the right of the current text selection.
+    */
     pub enum __anonymous__ {
         kIMKLocateCandidatesAboveHint = 1,
         kIMKLocateCandidatesBelowHint = 2,

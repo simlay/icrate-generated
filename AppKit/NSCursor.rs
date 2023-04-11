@@ -25,9 +25,23 @@ unsafe impl NSObjectProtocol for NSCursor {}
 extern_methods!(
     #[cfg(feature = "AppKit_NSCursor")]
     unsafe impl NSCursor {
+        /**
+          Returns the application’s current cursor. This is not necessarily the cursor that is currently being displayed on the system. If you need the currently displayed cursor, use `NSCursor.currentSystemCursor`.
+        */
         #[method_id(@__retain_semantics Other currentCursor)]
         pub unsafe fn currentCursor() -> Id<NSCursor>;
 
+        /**
+          Returns an `NSCursor` whose image and hot spot match those of the cursor that is currently being displayed on the system, regardless of which application set that cursor.
+
+        For example, this allows an inactive application to examine the image and hot spot of a cursor set by the active application.
+
+        In the case that the current system cursor is hidden, this property is an `NSCursor` whose image matches the cursor you would see if it were visible.
+
+        Only the cursor image and hot spot are replicated in the returned `NSCursor`. Other properties (such as `isSetOnMouseExited` and `isSetOnMouseEntered`) will not necessarily be accurate. The returned instance **cannot** be used for pointer (`==`) or object (`-isEqual:`) equality operations, since a new instance is created lazily on each access of this property.
+
+        This property is `nil` if the currently displayed cursor couldn’t be fetched.
+        */
         #[method_id(@__retain_semantics Other currentSystemCursor)]
         pub unsafe fn currentSystemCursor() -> Option<Id<NSCursor>>;
 

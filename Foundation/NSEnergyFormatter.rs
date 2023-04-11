@@ -35,22 +35,40 @@ extern_methods!(
     #[cfg(feature = "Foundation_NSEnergyFormatter")]
     unsafe impl NSEnergyFormatter {
         #[cfg(feature = "Foundation_NSNumberFormatter")]
+        /**
+          default is NSNumberFormatter with NSNumberFormatterDecimalStyle
+        */
         #[method_id(@__retain_semantics Other numberFormatter)]
         pub unsafe fn numberFormatter(&self) -> Id<NSNumberFormatter>;
 
         #[cfg(feature = "Foundation_NSNumberFormatter")]
+        /**
+          default is NSNumberFormatter with NSNumberFormatterDecimalStyle
+        */
         #[method(setNumberFormatter:)]
         pub unsafe fn setNumberFormatter(&self, number_formatter: Option<&NSNumberFormatter>);
 
+        /**
+          default is NSFormattingUnitStyleMedium
+        */
         #[method(unitStyle)]
         pub unsafe fn unitStyle(&self) -> NSFormattingUnitStyle;
 
+        /**
+          default is NSFormattingUnitStyleMedium
+        */
         #[method(setUnitStyle:)]
         pub unsafe fn setUnitStyle(&self, unit_style: NSFormattingUnitStyle);
 
+        /**
+          default is NO; if it is set to YES, NSEnergyFormatterUnitKilocalorie may be “C” instead of “kcal"
+        */
         #[method(isForFoodEnergyUse)]
         pub unsafe fn isForFoodEnergyUse(&self) -> bool;
 
+        /**
+          default is NO; if it is set to YES, NSEnergyFormatterUnitKilocalorie may be “C” instead of “kcal"
+        */
         #[method(setForFoodEnergyUse:)]
         pub unsafe fn setForFoodEnergyUse(&self, for_food_energy_use: bool);
 

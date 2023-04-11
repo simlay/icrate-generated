@@ -7,6 +7,9 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      In drag and drop, used to specify a dropOperation.  For example, given a table with N rows (numbered with row 0 at the top visually), a row of N-1 and operation of NSTableViewDropOn would specify a drop on the last row.  To specify a drop below the last row, one would use a row of N and NSTableViewDropAbove for the operation.
+    */
     pub enum NSTableViewDropOperation {
         NSTableViewDropOn = 0,
         NSTableViewDropAbove = 1,
@@ -27,6 +30,9 @@ ns_enum!(
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+      Grid styles for the gridStyleMask.
+    */
     pub enum NSTableViewGridLineStyle {
         NSTableViewGridNone = 0,
         NSTableViewSolidVerticalGridLineMask = 1 << 0,
@@ -79,6 +85,9 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      NSTableRowActionEdge is used in the delegate method: tableView:rowActionsForRow:edge:
+    */
     pub enum NSTableRowActionEdge {
         NSTableRowActionEdgeLeading = 0,
         NSTableRowActionEdgeTrailing = 1,
@@ -89,6 +98,9 @@ pub type NSTableViewAutosaveName = NSString;
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+      NSTableView Animation Options
+    */
     pub enum NSTableViewAnimationOptions {
         NSTableViewAnimationEffectNone = 0x0,
         NSTableViewAnimationEffectFade = 0x1,
@@ -167,18 +179,30 @@ extern_methods!(
             coder: &NSCoder,
         ) -> Option<Id<Self>>;
 
+        /**
+          Get and set the dataSource. The dataSource can implement methods in the protocol NSTableViewDataSource. Some methods are required, unless bindings are used, in which case they are optional. The dataSource is a weak reference (non retained) in non garbage collected applications. Under garbage collected apps, it is a strong reference. The default value is 'nil'.
+        */
         #[method_id(@__retain_semantics Other dataSource)]
         pub unsafe fn dataSource(&self) -> Option<Id<ProtocolObject<dyn NSTableViewDataSource>>>;
 
+        /**
+          Get and set the dataSource. The dataSource can implement methods in the protocol NSTableViewDataSource. Some methods are required, unless bindings are used, in which case they are optional. The dataSource is a weak reference (non retained) in non garbage collected applications. Under garbage collected apps, it is a strong reference. The default value is 'nil'.
+        */
         #[method(setDataSource:)]
         pub unsafe fn setDataSource(
             &self,
             data_source: Option<&ProtocolObject<dyn NSTableViewDataSource>>,
         );
 
+        /**
+          Get and set the delegate. The delegate can implement methods in the protocol NSTableViewDelegate. All delegate methods are optional. The delegate is a weak reference (non retained) in non garbage collected applications. Under garbage collected apps, it is a strong reference. The default value is 'nil'.
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(&self) -> Option<Id<ProtocolObject<dyn NSTableViewDelegate>>>;
 
+        /**
+          Get and set the delegate. The delegate can implement methods in the protocol NSTableViewDelegate. All delegate methods are optional. The delegate is a weak reference (non retained) in non garbage collected applications. Under garbage collected apps, it is a strong reference. The default value is 'nil'.
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
@@ -186,55 +210,105 @@ extern_methods!(
         );
 
         #[cfg(feature = "AppKit_NSTableHeaderView")]
+        /**
+          Get and set the headerView. Calling -setHeaderView:nil will remove the headerView. Calling -setHeaderView: may have the side effect of tiling the enclosingScrollView to accommodate the size change. The default value is a new NSTableHeaderView instance.
+        */
         #[method_id(@__retain_semantics Other headerView)]
         pub unsafe fn headerView(&self) -> Option<Id<NSTableHeaderView>>;
 
         #[cfg(feature = "AppKit_NSTableHeaderView")]
+        /**
+          Get and set the headerView. Calling -setHeaderView:nil will remove the headerView. Calling -setHeaderView: may have the side effect of tiling the enclosingScrollView to accommodate the size change. The default value is a new NSTableHeaderView instance.
+        */
         #[method(setHeaderView:)]
         pub unsafe fn setHeaderView(&self, header_view: Option<&NSTableHeaderView>);
 
+        /**
+          Get and set the cornerView. The cornerView is the view that appears directly to the right of the headerView above the vertical NSScroller. The scroller must be present for the cornerView to be shown. Calling -setCornerView: may have the side effect of tiling the enclosingScrollView to accommodate the size change. The default value is an internal class that properly fills in the corner.
+        */
         #[method_id(@__retain_semantics Other cornerView)]
         pub unsafe fn cornerView(&self) -> Option<Id<NSView>>;
 
+        /**
+          Get and set the cornerView. The cornerView is the view that appears directly to the right of the headerView above the vertical NSScroller. The scroller must be present for the cornerView to be shown. Calling -setCornerView: may have the side effect of tiling the enclosingScrollView to accommodate the size change. The default value is an internal class that properly fills in the corner.
+        */
         #[method(setCornerView:)]
         pub unsafe fn setCornerView(&self, corner_view: Option<&NSView>);
 
+        /**
+          Get and set the allowsColumnReordering. Controls whether or not columns can be drag-reordered. The default value is YES.
+        */
         #[method(allowsColumnReordering)]
         pub unsafe fn allowsColumnReordering(&self) -> bool;
 
+        /**
+          Get and set the allowsColumnReordering. Controls whether or not columns can be drag-reordered. The default value is YES.
+        */
         #[method(setAllowsColumnReordering:)]
         pub unsafe fn setAllowsColumnReordering(&self, allows_column_reordering: bool);
 
+        /**
+          Get and set the allowsColumnResizing. Controls whether the user can attempt to resize columns by dragging between headers. If flag is YES the user can resize columns; if flag is NO the user can't. Columns can only be resized if a column allows user resizing. See -[NSTableColumn setResizingMask:] for more details. You can always change columns programmatically regardless of this setting. The default value is YES.
+        */
         #[method(allowsColumnResizing)]
         pub unsafe fn allowsColumnResizing(&self) -> bool;
 
+        /**
+          Get and set the allowsColumnResizing. Controls whether the user can attempt to resize columns by dragging between headers. If flag is YES the user can resize columns; if flag is NO the user can't. Columns can only be resized if a column allows user resizing. See -[NSTableColumn setResizingMask:] for more details. You can always change columns programmatically regardless of this setting. The default value is YES.
+        */
         #[method(setAllowsColumnResizing:)]
         pub unsafe fn setAllowsColumnResizing(&self, allows_column_resizing: bool);
 
+        /**
+          Get and set the columnAutoresizingStyle. This controls resizing in response to a tableView frame size change, usually done by dragging a window larger that has an auto-resized tableView inside it. The default value is NSTableViewLastColumnOnlyAutoresizingStyle.
+        Compatability Note: This method replaces -setAutoresizesAllColumnsToFit: on 10.4 and higher.
+        */
         #[method(columnAutoresizingStyle)]
         pub unsafe fn columnAutoresizingStyle(&self) -> NSTableViewColumnAutoresizingStyle;
 
+        /**
+          Get and set the columnAutoresizingStyle. This controls resizing in response to a tableView frame size change, usually done by dragging a window larger that has an auto-resized tableView inside it. The default value is NSTableViewLastColumnOnlyAutoresizingStyle.
+        Compatability Note: This method replaces -setAutoresizesAllColumnsToFit: on 10.4 and higher.
+        */
         #[method(setColumnAutoresizingStyle:)]
         pub unsafe fn setColumnAutoresizingStyle(
             &self,
             column_autoresizing_style: NSTableViewColumnAutoresizingStyle,
         );
 
+        /**
+          Get and set the gridStyleMask. Values can be bitwise or'ed together, however, only one horizontal style can be used at a time. The default value is NSTableViewGridNone.
+        */
         #[method(gridStyleMask)]
         pub unsafe fn gridStyleMask(&self) -> NSTableViewGridLineStyle;
 
+        /**
+          Get and set the gridStyleMask. Values can be bitwise or'ed together, however, only one horizontal style can be used at a time. The default value is NSTableViewGridNone.
+        */
         #[method(setGridStyleMask:)]
         pub unsafe fn setGridStyleMask(&self, grid_style_mask: NSTableViewGridLineStyle);
 
+        /**
+          Get and set the intercellSpacing. This is the spacing that appears between cells. The default value is NSMakeSize(3, 2).
+        */
         #[method(intercellSpacing)]
         pub unsafe fn intercellSpacing(&self) -> NSSize;
 
+        /**
+          Get and set the intercellSpacing. This is the spacing that appears between cells. The default value is NSMakeSize(3, 2).
+        */
         #[method(setIntercellSpacing:)]
         pub unsafe fn setIntercellSpacing(&self, intercell_spacing: NSSize);
 
+        /**
+          Get and set the use of alternatingRowBackgroundColors. This configures the table to use either the standard alternating row colors, or a solid color for its background. The default value is NO.
+        */
         #[method(usesAlternatingRowBackgroundColors)]
         pub unsafe fn usesAlternatingRowBackgroundColors(&self) -> bool;
 
+        /**
+          Get and set the use of alternatingRowBackgroundColors. This configures the table to use either the standard alternating row colors, or a solid color for its background. The default value is NO.
+        */
         #[method(setUsesAlternatingRowBackgroundColors:)]
         pub unsafe fn setUsesAlternatingRowBackgroundColors(
             &self,
@@ -242,33 +316,60 @@ extern_methods!(
         );
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+          Get and set the backgroundColor. On Mac OS 10.5 and higher, the alpha portion of 'color' is properly used when drawing the backgroundColor. To have a transparent tableView, set the backgroundColor to [NSColor clearColor], and set the enclosing NSScrollView to not draw its background with: [[tableView enclosingScrollView] setDrawsBackground:NO]. NSTableView uses NSCompositeSourceOver when drawing the background color. The default value is [NSColor controlBackgroundColor].
+        */
         #[method_id(@__retain_semantics Other backgroundColor)]
         pub unsafe fn backgroundColor(&self) -> Id<NSColor>;
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+          Get and set the backgroundColor. On Mac OS 10.5 and higher, the alpha portion of 'color' is properly used when drawing the backgroundColor. To have a transparent tableView, set the backgroundColor to [NSColor clearColor], and set the enclosing NSScrollView to not draw its background with: [[tableView enclosingScrollView] setDrawsBackground:NO]. NSTableView uses NSCompositeSourceOver when drawing the background color. The default value is [NSColor controlBackgroundColor].
+        */
         #[method(setBackgroundColor:)]
         pub unsafe fn setBackgroundColor(&self, background_color: &NSColor);
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+          Get and set the gridColor. This value is only used when the gridStyleMask is not equal to NSTableViewGridNone. The default value is [NSColor gridColor].
+        */
         #[method_id(@__retain_semantics Other gridColor)]
         pub unsafe fn gridColor(&self) -> Id<NSColor>;
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+          Get and set the gridColor. This value is only used when the gridStyleMask is not equal to NSTableViewGridNone. The default value is [NSColor gridColor].
+        */
         #[method(setGridColor:)]
         pub unsafe fn setGridColor(&self, grid_color: &NSColor);
 
+        /**
+          Get and set the rowSizeStyle. The default value is NSTableViewRowSizeStyleCustom, which allows the table to behave as it traditionally has. If the value is not NSTableViewRowSizeStyleCustom, then all three sizes must be properly supported by the view or cell. Changing the rowSizeStyle will automatically update the rowHeight if NSTableViewRowSizeStyleCustom is not used, and the rowHeight should not be changed. It is a recommendation that the variable row height delegate method should generally NOT be implemented when using a non-custom style, and instead the standard provided row heights should be used.
+        */
         #[method(rowSizeStyle)]
         pub unsafe fn rowSizeStyle(&self) -> NSTableViewRowSizeStyle;
 
+        /**
+          Get and set the rowSizeStyle. The default value is NSTableViewRowSizeStyleCustom, which allows the table to behave as it traditionally has. If the value is not NSTableViewRowSizeStyleCustom, then all three sizes must be properly supported by the view or cell. Changing the rowSizeStyle will automatically update the rowHeight if NSTableViewRowSizeStyleCustom is not used, and the rowHeight should not be changed. It is a recommendation that the variable row height delegate method should generally NOT be implemented when using a non-custom style, and instead the standard provided row heights should be used.
+        */
         #[method(setRowSizeStyle:)]
         pub unsafe fn setRowSizeStyle(&self, row_size_style: NSTableViewRowSizeStyle);
 
+        /**
+          Returns the effective row size style for the table. If the rowSizeStyle is NSTableViewRowSizeStyleDefault, then this method returns the default size for this particular table.
+        */
         #[method(effectiveRowSizeStyle)]
         pub unsafe fn effectiveRowSizeStyle(&self) -> NSTableViewRowSizeStyle;
 
+        /**
+          Get and set the rowHeight. The value must be greater than 0. Calling -setRowHeight: with a non-pixel aligning (fractional) value will be forced to a pixel aligning (integral) value. For variable row height tableViews (ones that have the delegate implement -tableView:heightOfRow:), -rowHeight will be used to draw alternating rows past the last row in the tableView. The actual -rectOfRow: is equal to the -rowHeight plus the intercellSpacing.height. The default value is 17.0 for applications linked on 10.5 and higher (the height acceptable for [NSFont systemFontSize]). The default value is 16.0 for 10.4 and lower. Group rows will follow the system defined height.
+        */
         #[method(rowHeight)]
         pub unsafe fn rowHeight(&self) -> CGFloat;
 
+        /**
+          Get and set the rowHeight. The value must be greater than 0. Calling -setRowHeight: with a non-pixel aligning (fractional) value will be forced to a pixel aligning (integral) value. For variable row height tableViews (ones that have the delegate implement -tableView:heightOfRow:), -rowHeight will be used to draw alternating rows past the last row in the tableView. The actual -rectOfRow: is equal to the -rowHeight plus the intercellSpacing.height. The default value is 17.0 for applications linked on 10.5 and higher (the height acceptable for [NSFont systemFontSize]). The default value is 16.0 for 10.4 and lower. Group rows will follow the system defined height.
+        */
         #[method(setRowHeight:)]
         pub unsafe fn setRowHeight(&self, row_height: CGFloat);
 
@@ -277,12 +378,21 @@ extern_methods!(
         pub unsafe fn noteHeightOfRowsWithIndexesChanged(&self, index_set: &NSIndexSet);
 
         #[cfg(all(feature = "AppKit_NSTableColumn", feature = "Foundation_NSArray"))]
+        /**
+          Returns a reference to the array of NSTableColumn instances in the NSTableView. Includes columns that are -isHidden. It is recommended to make a copy of the array if you are going to manipulate the NSTableView by using -addTableColumn:, -removeTableColumn: or -moveColumn:toColumn:.
+        */
         #[method_id(@__retain_semantics Other tableColumns)]
         pub unsafe fn tableColumns(&self) -> Id<NSArray<NSTableColumn>>;
 
+        /**
+          Simply a cover method to return the number of NSTableColumn instances in the NSTableView. Includes columns that are -isHidden.
+        */
         #[method(numberOfColumns)]
         pub unsafe fn numberOfColumns(&self) -> NSInteger;
 
+        /**
+          Returns the numberOfRows. It may call to the dataSource to acquire the count. numberOfRows will return 0 if there are no visible columns.
+        */
         #[method(numberOfRows)]
         pub unsafe fn numberOfRows(&self) -> NSInteger;
 
@@ -339,6 +449,10 @@ extern_methods!(
             column_indexes: &NSIndexSet,
         );
 
+        /**
+         Cell Based TableView: Returns the column and row that is being edited. editedRow will be -1 if there is no editing session happening. editedColumn will be -1 if there is no editing session, or the currently edited row is a "full width" row.
+        View Based TableView: Not applicable. Subviews are responsible for editing.
+        */
         #[method(editedColumn)]
         pub unsafe fn editedColumn(&self) -> NSInteger;
 
@@ -361,6 +475,10 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSSortDescriptor"
         ))]
+        /**
+          Sorting Support
+        The array of sort descriptors is archived.  Sort descriptors will persist along with other column information if an -autosaveName is set. Calling -setSortDescriptors: may have the side effect of calling -tableView:sortDescriptorsDidChange: on the -dataSource
+        */
         #[method_id(@__retain_semantics Other sortDescriptors)]
         pub unsafe fn sortDescriptors(&self) -> Id<NSArray<NSSortDescriptor>>;
 
@@ -368,6 +486,10 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSSortDescriptor"
         ))]
+        /**
+          Sorting Support
+        The array of sort descriptors is archived.  Sort descriptors will persist along with other column information if an -autosaveName is set. Calling -setSortDescriptors: may have the side effect of calling -tableView:sortDescriptorsDidChange: on the -dataSource
+        */
         #[method(setSortDescriptors:)]
         pub unsafe fn setSortDescriptors(&self, sort_descriptors: &NSArray<NSSortDescriptor>);
 
@@ -387,19 +509,31 @@ extern_methods!(
         ) -> Option<Id<NSImage>>;
 
         #[cfg(feature = "AppKit_NSTableColumn")]
+        /**
+          Support for highlightable column header, for use with row selection.
+        */
         #[method_id(@__retain_semantics Other highlightedTableColumn)]
         pub unsafe fn highlightedTableColumn(&self) -> Option<Id<NSTableColumn>>;
 
         #[cfg(feature = "AppKit_NSTableColumn")]
+        /**
+          Support for highlightable column header, for use with row selection.
+        */
         #[method(setHighlightedTableColumn:)]
         pub unsafe fn setHighlightedTableColumn(
             &self,
             highlighted_table_column: Option<&NSTableColumn>,
         );
 
+        /**
+          Get and set verticalMotionCanBeginDrag. If -verticalMotionCanBeginDrag is YES, then click + a vertical drag of the mouse will drag the clicked item(s). If NO, it will do a "drag select". The default value is YES.
+        */
         #[method(verticalMotionCanBeginDrag)]
         pub unsafe fn verticalMotionCanBeginDrag(&self) -> bool;
 
+        /**
+          Get and set verticalMotionCanBeginDrag. If -verticalMotionCanBeginDrag is YES, then click + a vertical drag of the mouse will drag the clicked item(s). If NO, it will do a "drag select". The default value is YES.
+        */
         #[method(setVerticalMotionCanBeginDrag:)]
         pub unsafe fn setVerticalMotionCanBeginDrag(&self, vertical_motion_can_begin_drag: bool);
 
@@ -441,21 +575,39 @@ extern_methods!(
             drop_operation: NSTableViewDropOperation,
         );
 
+        /**
+          Get and set allowsMultipleSelection. If -allowsMultipleSelection is YES, multiple items can be selected in various ways (modifier-clicking items, shift-arrow selection extending, etc). The default value is NO.
+        */
         #[method(allowsMultipleSelection)]
         pub unsafe fn allowsMultipleSelection(&self) -> bool;
 
+        /**
+          Get and set allowsMultipleSelection. If -allowsMultipleSelection is YES, multiple items can be selected in various ways (modifier-clicking items, shift-arrow selection extending, etc). The default value is NO.
+        */
         #[method(setAllowsMultipleSelection:)]
         pub unsafe fn setAllowsMultipleSelection(&self, allows_multiple_selection: bool);
 
+        /**
+          Get and set allowsEmptySelection. If -allowsEmptySelection is YES, all rows can be deselected by the user. Otherwise, it is enforced that one row must be left selected at any given time. The default value is YES.
+        */
         #[method(allowsEmptySelection)]
         pub unsafe fn allowsEmptySelection(&self) -> bool;
 
+        /**
+          Get and set allowsEmptySelection. If -allowsEmptySelection is YES, all rows can be deselected by the user. Otherwise, it is enforced that one row must be left selected at any given time. The default value is YES.
+        */
         #[method(setAllowsEmptySelection:)]
         pub unsafe fn setAllowsEmptySelection(&self, allows_empty_selection: bool);
 
+        /**
+          Get and set allowsColumnSelection. If -allowsColumnSelection is YES, clicking on column headers can select that column (which is reflected in -selectedColumnIndexes). The default value is NO.
+        */
         #[method(allowsColumnSelection)]
         pub unsafe fn allowsColumnSelection(&self) -> bool;
 
+        /**
+          Get and set allowsColumnSelection. If -allowsColumnSelection is YES, clicking on column headers can select that column (which is reflected in -selectedColumnIndexes). The default value is NO.
+        */
         #[method(setAllowsColumnSelection:)]
         pub unsafe fn setAllowsColumnSelection(&self, allows_column_selection: bool);
 
@@ -513,35 +665,62 @@ extern_methods!(
         #[method(numberOfSelectedRows)]
         pub unsafe fn numberOfSelectedRows(&self) -> NSInteger;
 
+        /**
+          Allow type selection in this tableView. The default value is YES.
+        */
         #[method(allowsTypeSelect)]
         pub unsafe fn allowsTypeSelect(&self) -> bool;
 
+        /**
+          Allow type selection in this tableView. The default value is YES.
+        */
         #[method(setAllowsTypeSelect:)]
         pub unsafe fn setAllowsTypeSelect(&self, allows_type_select: bool);
 
+        /**
+          The table view style. Defaults to NSTableViewStyleAutomatic
+        */
         #[method(style)]
         pub unsafe fn style(&self) -> NSTableViewStyle;
 
+        /**
+          The table view style. Defaults to NSTableViewStyleAutomatic
+        */
         #[method(setStyle:)]
         pub unsafe fn setStyle(&self, style: NSTableViewStyle);
 
+        /**
+          The effective style when style is NSTableViewStyleAutomatic. Otherwise, it returns the same value as style.
+        */
         #[method(effectiveStyle)]
         pub unsafe fn effectiveStyle(&self) -> NSTableViewStyle;
 
+        /**
+          Gets and sets the current selection highlight style. The default value is NSTableViewSelectionHighlightStyleRegular.
+        */
         #[method(selectionHighlightStyle)]
         pub unsafe fn selectionHighlightStyle(&self) -> NSTableViewSelectionHighlightStyle;
 
+        /**
+          Gets and sets the current selection highlight style. The default value is NSTableViewSelectionHighlightStyleRegular.
+        */
         #[method(setSelectionHighlightStyle:)]
         pub unsafe fn setSelectionHighlightStyle(
             &self,
             selection_highlight_style: NSTableViewSelectionHighlightStyle,
         );
 
+        /**
+          Gets and sets the dragging destination feedback style. The default value is NSTableViewDraggingDestinationFeedbackStyleRegular for all tables. However, changing the -selectionHighlightStyle to NSTableViewSelectionHighlightStyleSourceList will automatically change the -draggingDestinationFeedbackStyle to NSTableViewDraggingDestinationFeedbackStyleSourceList.
+        */
         #[method(draggingDestinationFeedbackStyle)]
         pub unsafe fn draggingDestinationFeedbackStyle(
             &self,
         ) -> NSTableViewDraggingDestinationFeedbackStyle;
 
+        /**
+          Gets and sets the dragging destination feedback style. The default value is NSTableViewDraggingDestinationFeedbackStyleRegular for all tables. However, changing the -selectionHighlightStyle to NSTableViewSelectionHighlightStyleSourceList will automatically change the -draggingDestinationFeedbackStyle to NSTableViewDraggingDestinationFeedbackStyleSourceList.
+        */
         #[method(setDraggingDestinationFeedbackStyle:)]
         pub unsafe fn setDraggingDestinationFeedbackStyle(
             &self,
@@ -570,15 +749,27 @@ extern_methods!(
         #[method(frameOfCellAtColumn:row:)]
         pub unsafe fn frameOfCellAtColumn_row(&self, column: NSInteger, row: NSInteger) -> NSRect;
 
+        /**
+          On Mac OS 13.0 and higher, changing the autosaveName property from one value to another will automatically persist autosave data for the old value before changing to the new value. Setting autosaveName to nil removes the persistence data for the previously set autosaveName.
+        */
         #[method_id(@__retain_semantics Other autosaveName)]
         pub unsafe fn autosaveName(&self) -> Option<Id<NSTableViewAutosaveName>>;
 
+        /**
+          On Mac OS 13.0 and higher, changing the autosaveName property from one value to another will automatically persist autosave data for the old value before changing to the new value. Setting autosaveName to nil removes the persistence data for the previously set autosaveName.
+        */
         #[method(setAutosaveName:)]
         pub unsafe fn setAutosaveName(&self, autosave_name: Option<&NSTableViewAutosaveName>);
 
+        /**
+          On Mac OS 10.4 and higher, the NSTableColumn width and location is saved. On Mac OS 10.5 and higher, the NSTableColumn 'isHidden' state is also saved. The 'autosaveName' must be set for 'autosaveTableColumns' to take effect.
+        */
         #[method(autosaveTableColumns)]
         pub unsafe fn autosaveTableColumns(&self) -> bool;
 
+        /**
+          On Mac OS 10.4 and higher, the NSTableColumn width and location is saved. On Mac OS 10.5 and higher, the NSTableColumn 'isHidden' state is also saved. The 'autosaveName' must be set for 'autosaveTableColumns' to take effect.
+        */
         #[method(setAutosaveTableColumns:)]
         pub unsafe fn setAutosaveTableColumns(&self, autosave_table_columns: bool);
 
@@ -640,15 +831,27 @@ extern_methods!(
             handler: &Block<(NonNull<NSTableRowView>, NSInteger), ()>,
         );
 
+        /**
+          View Based TableView: Group rows can optionally appear floating. Group rows are rows that the delegate responds YES to tableView:isGroupRow:. NSOutlineView will only float expandable group rows that are expanded. The default value is YES. This property is encoded and decoded in the nib.
+        */
         #[method(floatsGroupRows)]
         pub unsafe fn floatsGroupRows(&self) -> bool;
 
+        /**
+          View Based TableView: Group rows can optionally appear floating. Group rows are rows that the delegate responds YES to tableView:isGroupRow:. NSOutlineView will only float expandable group rows that are expanded. The default value is YES. This property is encoded and decoded in the nib.
+        */
         #[method(setFloatsGroupRows:)]
         pub unsafe fn setFloatsGroupRows(&self, floats_group_rows: bool);
 
+        /**
+          View Based TableView: rowActionsVisible can be queried to determine if the "row actions" (see: tableView:rowActionsForRow:edge:) are visible or not. Set rowActionsVisible=NO to hide the row actions. Setting rowActionsVisible=YES is currently not supported and will throw an exception. This property is not encoded in the nib.
+        */
         #[method(rowActionsVisible)]
         pub unsafe fn rowActionsVisible(&self) -> bool;
 
+        /**
+          View Based TableView: rowActionsVisible can be queried to determine if the "row actions" (see: tableView:rowActionsForRow:edge:) are visible or not. Set rowActionsVisible=NO to hide the row actions. Setting rowActionsVisible=YES is currently not supported and will throw an exception. This property is not encoded in the nib.
+        */
         #[method(setRowActionsVisible:)]
         pub unsafe fn setRowActionsVisible(&self, row_actions_visible: bool);
 
@@ -694,6 +897,9 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSIndexSet")]
+        /**
+          Returns the indexes that are currently hidden. Indexes are hidden by calling hideRowsAtIndexes:. Sometimes during drag and drop operations certain indexes will be automatically hidden.
+        */
         #[method_id(@__retain_semantics Other hiddenRowIndexes)]
         pub unsafe fn hiddenRowIndexes(&self) -> Id<NSIndexSet>;
 
@@ -706,6 +912,9 @@ extern_methods!(
         );
 
         #[cfg(all(feature = "AppKit_NSNib", feature = "Foundation_NSDictionary"))]
+        /**
+          View Based TableView: Returns a dictionary of all registered nibs. The keys are the identifier, and the value is the NSNib that is registered.
+        */
         #[method_id(@__retain_semantics Other registeredNibsByIdentifier)]
         pub unsafe fn registeredNibsByIdentifier(
             &self,
@@ -719,24 +928,42 @@ extern_methods!(
         #[method(didRemoveRowView:forRow:)]
         pub unsafe fn didRemoveRowView_forRow(&self, row_view: &NSTableRowView, row: NSInteger);
 
+        /**
+          View Based TableView: The table view keeps all views added to the table around while usesStaticContents=YES. Views can be removed by calling removeRowsAtIndexes:withAnimation:. The datasource does not need to implement numberOfRowsInTableView: when usesStaticContents=YES. Static views are encoded and decoded with the table view. Views can also dynamically be inserted into the table view by using insertRowIndexes:withAnimation:, however, this requires an implementation of tableView:viewForTableColumn:row: to provide the newly inserted view, which is then kept around statically.
+        */
         #[method(usesStaticContents)]
         pub unsafe fn usesStaticContents(&self) -> bool;
 
+        /**
+          View Based TableView: The table view keeps all views added to the table around while usesStaticContents=YES. Views can be removed by calling removeRowsAtIndexes:withAnimation:. The datasource does not need to implement numberOfRowsInTableView: when usesStaticContents=YES. Static views are encoded and decoded with the table view. Views can also dynamically be inserted into the table view by using insertRowIndexes:withAnimation:, however, this requires an implementation of tableView:viewForTableColumn:row: to provide the newly inserted view, which is then kept around statically.
+        */
         #[method(setUsesStaticContents:)]
         pub unsafe fn setUsesStaticContents(&self, uses_static_contents: bool);
 
+        /**
+          Get and set the user interface layout direction. When set to NSUserInterfaceLayoutDirectionRightToLeft, the Table View will flip the visual order of the table columns, while the logical order remains as it was. For applications linked against 10.11 or earlier, NSTableView will ignore this property and always render in left-to-right.
+        */
         #[method(userInterfaceLayoutDirection)]
         pub unsafe fn userInterfaceLayoutDirection(&self) -> NSUserInterfaceLayoutDirection;
 
+        /**
+          Get and set the user interface layout direction. When set to NSUserInterfaceLayoutDirectionRightToLeft, the Table View will flip the visual order of the table columns, while the logical order remains as it was. For applications linked against 10.11 or earlier, NSTableView will ignore this property and always render in left-to-right.
+        */
         #[method(setUserInterfaceLayoutDirection:)]
         pub unsafe fn setUserInterfaceLayoutDirection(
             &self,
             user_interface_layout_direction: NSUserInterfaceLayoutDirection,
         );
 
+        /**
+          View Based TableViews: When set to YES, the table will utilize autolayout for the row heights. Set the rowHeight property to provide an estimated row height for views that are not yet loaded. This is not required, but it is recommended in order to provide a proper estimate for the scroll bars. The delegate method -tableView:heightOfRow: can still be used to provide a more specific estimated row height. Note that a rowView's height is set to the rowHeight plus intercellSpacing.height, so an estimated rowHeight should have the intercellSpacing.height subtracted from it. The default value is NO. This value is encoded.
+        */
         #[method(usesAutomaticRowHeights)]
         pub unsafe fn usesAutomaticRowHeights(&self) -> bool;
 
+        /**
+          View Based TableViews: When set to YES, the table will utilize autolayout for the row heights. Set the rowHeight property to provide an estimated row height for views that are not yet loaded. This is not required, but it is recommended in order to provide a proper estimate for the scroll bars. The delegate method -tableView:heightOfRow: can still be used to provide a more specific estimated row height. Note that a rowView's height is set to the rowHeight plus intercellSpacing.height, so an estimated rowHeight should have the intercellSpacing.height subtracted from it. The default value is NO. This value is encoded.
+        */
         #[method(setUsesAutomaticRowHeights:)]
         pub unsafe fn setUsesAutomaticRowHeights(&self, uses_automatic_row_heights: bool);
     }
@@ -1185,6 +1412,9 @@ extern_protocol!(
 );
 
 extern_methods!(
+    /**
+      Deprecated methods
+    */
     /// NSDeprecated
     #[cfg(feature = "AppKit_NSTableView")]
     unsafe impl NSTableView {

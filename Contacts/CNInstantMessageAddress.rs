@@ -7,6 +7,11 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNInstantMessageAddress")]
+    /**
+      @abstract An immutable value object representing an instant message address.
+
+     @discussion CNInstantMessageAddress is thread safe.
+    */
     pub struct CNInstantMessageAddress;
 
     #[cfg(feature = "Contacts_CNInstantMessageAddress")]
@@ -16,15 +21,35 @@ extern_class!(
 );
 
 #[cfg(feature = "Contacts_CNInstantMessageAddress")]
+/**
+  @abstract An immutable value object representing an instant message address.
+
+ @discussion CNInstantMessageAddress is thread safe.
+*/
 unsafe impl NSCoding for CNInstantMessageAddress {}
 
 #[cfg(feature = "Contacts_CNInstantMessageAddress")]
+/**
+  @abstract An immutable value object representing an instant message address.
+
+ @discussion CNInstantMessageAddress is thread safe.
+*/
 unsafe impl NSObjectProtocol for CNInstantMessageAddress {}
 
 #[cfg(feature = "Contacts_CNInstantMessageAddress")]
+/**
+  @abstract An immutable value object representing an instant message address.
+
+ @discussion CNInstantMessageAddress is thread safe.
+*/
 unsafe impl NSSecureCoding for CNInstantMessageAddress {}
 
 extern_methods!(
+    /**
+      @abstract An immutable value object representing an instant message address.
+
+     @discussion CNInstantMessageAddress is thread safe.
+    */
     #[cfg(feature = "Contacts_CNInstantMessageAddress")]
     unsafe impl CNInstantMessageAddress {
         #[cfg(feature = "Foundation_NSString")]

@@ -31,23 +31,41 @@ extern_methods!(
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
+        /**
+          offset in user space of the shadow from the original drawing, in default user space units, where positive values are up and to the right
+        */
         #[method(shadowOffset)]
         pub unsafe fn shadowOffset(&self) -> NSSize;
 
+        /**
+          offset in user space of the shadow from the original drawing, in default user space units, where positive values are up and to the right
+        */
         #[method(setShadowOffset:)]
         pub unsafe fn setShadowOffset(&self, shadow_offset: NSSize);
 
+        /**
+          blur radius of the shadow in default user space units
+        */
         #[method(shadowBlurRadius)]
         pub unsafe fn shadowBlurRadius(&self) -> CGFloat;
 
+        /**
+          blur radius of the shadow in default user space units
+        */
         #[method(setShadowBlurRadius:)]
         pub unsafe fn setShadowBlurRadius(&self, shadow_blur_radius: CGFloat);
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+          color used for the shadow (default is black with an alpha value of 1/3)
+        */
         #[method_id(@__retain_semantics Other shadowColor)]
         pub unsafe fn shadowColor(&self) -> Option<Id<NSColor>>;
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+          color used for the shadow (default is black with an alpha value of 1/3)
+        */
         #[method(setShadowColor:)]
         pub unsafe fn setShadowColor(&self, shadow_color: Option<&NSColor>);
 

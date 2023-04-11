@@ -330,6 +330,9 @@ extern_static!(
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+      Working with Bookmarks and alias (bookmark) files
+    */
     pub enum NSURLBookmarkCreationOptions {
         #[deprecated = "Not supported"]
         NSURLBookmarkCreationPreferFileIDResolution = 1 << 8,
@@ -356,6 +359,9 @@ pub type NSURLBookmarkFileCreationOptions = NSUInteger;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSURL")]
+    /**
+      NSURLHandle has been deprecated; please use NSURLConnection instead.
+    */
     pub struct NSURL;
 
     #[cfg(feature = "Foundation_NSURL")]
@@ -365,15 +371,27 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSURL")]
+/**
+  NSURLHandle has been deprecated; please use NSURLConnection instead.
+*/
 unsafe impl NSCoding for NSURL {}
 
 #[cfg(feature = "Foundation_NSURL")]
+/**
+  NSURLHandle has been deprecated; please use NSURLConnection instead.
+*/
 unsafe impl NSObjectProtocol for NSURL {}
 
 #[cfg(feature = "Foundation_NSURL")]
+/**
+  NSURLHandle has been deprecated; please use NSURLConnection instead.
+*/
 unsafe impl NSSecureCoding for NSURL {}
 
 extern_methods!(
+    /**
+      NSURLHandle has been deprecated; please use NSURLConnection instead.
+    */
     #[cfg(feature = "Foundation_NSURL")]
     unsafe impl NSURL {
         #[cfg(feature = "Foundation_NSString")]
@@ -513,6 +531,9 @@ extern_methods!(
         ) -> Id<NSURL>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          Returns the data representation of the URL's relativeString. If the URL was initialized with -initWithData:relativeToURL:, the data representation returned are the same bytes as those used at initialization; otherwise, the data representation returned are the bytes of the relativeString encoded with NSUTF8StringEncoding.
+        */
         #[method_id(@__retain_semantics Other dataRepresentation)]
         pub unsafe fn dataRepresentation(&self) -> Id<NSData>;
 
@@ -521,16 +542,28 @@ extern_methods!(
         pub unsafe fn absoluteString(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The relative portion of a URL.  If baseURL is nil, or if the receiver is itself absolute, this is the same as absoluteString
+        */
         #[method_id(@__retain_semantics Other relativeString)]
         pub unsafe fn relativeString(&self) -> Id<NSString>;
 
+        /**
+          may be nil.
+        */
         #[method_id(@__retain_semantics Other baseURL)]
         pub unsafe fn baseURL(&self) -> Option<Id<NSURL>>;
 
+        /**
+          if the receiver is itself absolute, this will return self.
+        */
         #[method_id(@__retain_semantics Other absoluteURL)]
         pub unsafe fn absoluteURL(&self) -> Option<Id<NSURL>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Any URL is composed of these two basic pieces.  The full URL would be the concatenation of [myURL scheme], ':', [myURL resourceSpecifier]
+        */
         #[method_id(@__retain_semantics Other scheme)]
         pub unsafe fn scheme(&self) -> Option<Id<NSString>>;
 
@@ -539,6 +572,9 @@ extern_methods!(
         pub unsafe fn resourceSpecifier(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          If the URL conforms to rfc 1808 (the most common form of URL), the following accessors will return the various components; otherwise they return nil.  The litmus test for conformance is as recommended in RFC 1808 - whether the first two characters of resourceSpecifier is @"//".  In all cases, they return the component's value after resolving the receiver against its base URL.
+        */
         #[method_id(@__retain_semantics Other host)]
         pub unsafe fn host(&self) -> Option<Id<NSString>>;
 
@@ -572,9 +608,15 @@ extern_methods!(
         pub unsafe fn query(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The same as path if baseURL is nil
+        */
         #[method_id(@__retain_semantics Other relativePath)]
         pub unsafe fn relativePath(&self) -> Option<Id<NSString>>;
 
+        /**
+          Determines if a given URL string's path represents a directory (i.e. the path component in the URL string ends with a '/' character). This does not check the resource the URL refers to.
+        */
         #[method(hasDirectoryPath)]
         pub unsafe fn hasDirectoryPath(&self) -> bool;
 
@@ -585,9 +627,15 @@ extern_methods!(
             max_buffer_length: NSUInteger,
         ) -> bool;
 
+        /**
+          Returns the URL's path in file system representation. File system representation is a null-terminated C string with canonical UTF-8 encoding. The returned C string will be automatically freed just as a returned object would be released; your code should copy the representation or use getFileSystemRepresentation:maxLength: if it needs to store the representation outside of the autorelease context in which the representation is created.
+        */
         #[method(fileSystemRepresentation)]
         pub unsafe fn fileSystemRepresentation(&self) -> NonNull<c_char>;
 
+        /**
+          Whether the scheme is file:; if [myURL isFileURL] is YES, then [myURL path] is suitable for input into NSFileManager or NSPathUtilities.
+        */
         #[method(isFileURL)]
         pub unsafe fn isFileURL(&self) -> bool;
 
@@ -604,6 +652,9 @@ extern_methods!(
         #[method_id(@__retain_semantics Other fileReferenceURL)]
         pub unsafe fn fileReferenceURL(&self) -> Option<Id<NSURL>>;
 
+        /**
+          Returns a file path URL that refers to the same resource as a specified URL. File path URLs use a file system style path. An error will occur if the url parameter is not a file URL. A file reference URL's resource must exist and be reachable to be converted to a file path URL. Symbol is present in iOS 4, but performs no operation.
+        */
         #[method_id(@__retain_semantics Other filePathURL)]
         pub unsafe fn filePathURL(&self) -> Option<Id<NSURL>>;
 
@@ -770,6 +821,9 @@ unsafe impl NSItemProviderWriting for NSURL {}
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSURLQueryItem")]
+    /**
+      NSURLQueryItem encapsulates a single query name-value pair. The name and value strings of a query name-value pair are not percent encoded. For use with the NSURLComponents queryItems property.
+    */
     pub struct NSURLQueryItem;
 
     #[cfg(feature = "Foundation_NSURLQueryItem")]
@@ -779,15 +833,27 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSURLQueryItem")]
+/**
+  NSURLQueryItem encapsulates a single query name-value pair. The name and value strings of a query name-value pair are not percent encoded. For use with the NSURLComponents queryItems property.
+*/
 unsafe impl NSCoding for NSURLQueryItem {}
 
 #[cfg(feature = "Foundation_NSURLQueryItem")]
+/**
+  NSURLQueryItem encapsulates a single query name-value pair. The name and value strings of a query name-value pair are not percent encoded. For use with the NSURLComponents queryItems property.
+*/
 unsafe impl NSObjectProtocol for NSURLQueryItem {}
 
 #[cfg(feature = "Foundation_NSURLQueryItem")]
+/**
+  NSURLQueryItem encapsulates a single query name-value pair. The name and value strings of a query name-value pair are not percent encoded. For use with the NSURLComponents queryItems property.
+*/
 unsafe impl NSSecureCoding for NSURLQueryItem {}
 
 extern_methods!(
+    /**
+      NSURLQueryItem encapsulates a single query name-value pair. The name and value strings of a query name-value pair are not percent encoded. For use with the NSURLComponents queryItems property.
+    */
     #[cfg(feature = "Foundation_NSURLQueryItem")]
     unsafe impl NSURLQueryItem {
         #[cfg(feature = "Foundation_NSString")]
@@ -862,6 +928,9 @@ extern_methods!(
         pub unsafe fn componentsWithString(url_string: &NSString) -> Option<Id<Self>>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          Returns a URL created from the NSURLComponents. If the NSURLComponents has an authority component (user, password, host or port) and a path component, then the path must either begin with "/" or be an empty string. If the NSURLComponents does not have an authority component (user, password, host or port) and has a path component, the path component must not start with "//". If those requirements are not met, nil is returned.
+        */
         #[method_id(@__retain_semantics Other URL)]
         pub unsafe fn URL(&self) -> Option<Id<NSURL>>;
 
@@ -870,14 +939,23 @@ extern_methods!(
         pub unsafe fn URLRelativeToURL(&self, base_url: Option<&NSURL>) -> Option<Id<NSURL>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Returns a URL string created from the NSURLComponents. If the NSURLComponents has an authority component (user, password, host or port) and a path component, then the path must either begin with "/" or be an empty string. If the NSURLComponents does not have an authority component (user, password, host or port) and has a path component, the path component must not start with "//". If those requirements are not met, nil is returned.
+        */
         #[method_id(@__retain_semantics Other string)]
         pub unsafe fn string(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Attempting to set the scheme with an invalid scheme string will cause an exception.
+        */
         #[method_id(@__retain_semantics Other scheme)]
         pub unsafe fn scheme(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Attempting to set the scheme with an invalid scheme string will cause an exception.
+        */
         #[method(setScheme:)]
         pub unsafe fn setScheme(&self, scheme: Option<&NSString>);
 
@@ -906,10 +984,16 @@ extern_methods!(
         pub unsafe fn setHost(&self, host: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+          Attempting to set a negative port number will cause an exception.
+        */
         #[method_id(@__retain_semantics Other port)]
         pub unsafe fn port(&self) -> Option<Id<NSNumber>>;
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+          Attempting to set a negative port number will cause an exception.
+        */
         #[method(setPort:)]
         pub unsafe fn setPort(&self, port: Option<&NSNumber>);
 
@@ -938,10 +1022,16 @@ extern_methods!(
         pub unsafe fn setFragment(&self, fragment: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Getting these properties retains any percent encoding these components may have. Setting these properties assumes the component string is already correctly percent encoded. Attempting to set an incorrectly percent encoded string will cause an exception. Although ';' is a legal path character, it is recommended that it be percent-encoded for best compatibility with NSURL (-stringByAddingPercentEncodingWithAllowedCharacters: will percent-encode any ';' characters if you pass the URLPathAllowedCharacterSet).
+        */
         #[method_id(@__retain_semantics Other percentEncodedUser)]
         pub unsafe fn percentEncodedUser(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Getting these properties retains any percent encoding these components may have. Setting these properties assumes the component string is already correctly percent encoded. Attempting to set an incorrectly percent encoded string will cause an exception. Although ';' is a legal path character, it is recommended that it be percent-encoded for best compatibility with NSURL (-stringByAddingPercentEncodingWithAllowedCharacters: will percent-encode any ';' characters if you pass the URLPathAllowedCharacterSet).
+        */
         #[method(setPercentEncodedUser:)]
         pub unsafe fn setPercentEncodedUser(&self, percent_encoded_user: Option<&NSString>);
 
@@ -995,6 +1085,9 @@ extern_methods!(
         #[method(setEncodedHost:)]
         pub unsafe fn setEncodedHost(&self, encoded_host: Option<&NSString>);
 
+        /**
+          These properties return the character range of a component in the URL string returned by -[NSURLComponents string]. If the component does not exist in the NSURLComponents object, {NSNotFound, 0} is returned. Note: Zero length components are legal. For example, the URL string "scheme://:@/?#" has a zero length user, password, host, query and fragment; the URL strings "scheme:" and "" both have a zero length path.
+        */
         #[method(rangeOfScheme)]
         pub unsafe fn rangeOfScheme(&self) -> NSRange;
 
@@ -1020,18 +1113,54 @@ extern_methods!(
         pub unsafe fn rangeOfFragment(&self) -> NSRange;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSURLQueryItem"))]
+        /**
+          The query component as an array of NSURLQueryItems for this NSURLComponents.
+
+         Each NSURLQueryItem represents a single key-value pair,
+
+         Note that a name may appear more than once in a single query string, so the name values are not guaranteed to be unique. If the NSURLComponents has an empty query component, returns an empty array. If the NSURLComponents has no query component, returns nil.
+
+         The queryItems getter returns an array of NSURLQueryItems in the order in which they appear in the original query string. Any percent-encoding in a NSURLQueryItem name or value is removed.
+
+         The queryItems setter combines an array containing any number of NSURLQueryItems, each of which represents a single key-value pair, into a query string and sets the NSURLComponents query property. If the NSURLQueryItems name or value strings contain any characters not allowed in a URL's query component, those characters are percent-encoded. In addition, any '&' and '=' characters in a NSURLQueryItem name are percent-encoded. Passing an empty array sets the query component of the NSURLComponents to an empty string. Passing nil removes the query component of the NSURLComponents.
+
+         - note: If a NSURLQueryItem name-value pair is empty (i.e. the query string starts with '&', ends with '&', or has "&&" within it), you get a NSURLQueryItem with a zero-length name and a nil value. If a NSURLQueryItem name-value pair has nothing before the equals sign, you get a zero-length name. If a NSURLQueryItem name-value pair has nothing after the equals sign, you get a zero-length value. If a NSURLQueryItem name-value pair has no equals sign, the NSURLQueryItem name-value pair string is the name and you get a nil value.
+        */
         #[method_id(@__retain_semantics Other queryItems)]
         pub unsafe fn queryItems(&self) -> Option<Id<NSArray<NSURLQueryItem>>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSURLQueryItem"))]
+        /**
+          The query component as an array of NSURLQueryItems for this NSURLComponents.
+
+         Each NSURLQueryItem represents a single key-value pair,
+
+         Note that a name may appear more than once in a single query string, so the name values are not guaranteed to be unique. If the NSURLComponents has an empty query component, returns an empty array. If the NSURLComponents has no query component, returns nil.
+
+         The queryItems getter returns an array of NSURLQueryItems in the order in which they appear in the original query string. Any percent-encoding in a NSURLQueryItem name or value is removed.
+
+         The queryItems setter combines an array containing any number of NSURLQueryItems, each of which represents a single key-value pair, into a query string and sets the NSURLComponents query property. If the NSURLQueryItems name or value strings contain any characters not allowed in a URL's query component, those characters are percent-encoded. In addition, any '&' and '=' characters in a NSURLQueryItem name are percent-encoded. Passing an empty array sets the query component of the NSURLComponents to an empty string. Passing nil removes the query component of the NSURLComponents.
+
+         - note: If a NSURLQueryItem name-value pair is empty (i.e. the query string starts with '&', ends with '&', or has "&&" within it), you get a NSURLQueryItem with a zero-length name and a nil value. If a NSURLQueryItem name-value pair has nothing before the equals sign, you get a zero-length name. If a NSURLQueryItem name-value pair has nothing after the equals sign, you get a zero-length value. If a NSURLQueryItem name-value pair has no equals sign, the NSURLQueryItem name-value pair string is the name and you get a nil value.
+        */
         #[method(setQueryItems:)]
         pub unsafe fn setQueryItems(&self, query_items: Option<&NSArray<NSURLQueryItem>>);
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSURLQueryItem"))]
+        /**
+          The percentEncodedQueryItems getter returns an array of NSURLQueryItems in the order in which they appear in the original query string. Any percent-encoding in a NSURLQueryItem name or value is retained.
+
+         The percentEncodedQueryItems setter combines an array containing any number of NSURLQueryItems, each of which represents a single key-value pair, into a query string and sets the NSURLComponents query property. This property assumes the NSURLQueryItem names and values are already correctly percent-encoded, and that the NSURLQueryItem names do not contain the query item delimiter characters '&' and '='. Attempting to set an incorrectly percent-encoded NSURLQueryItem or a NSURLQueryItem name with the query item delimiter characters '&' and '=' will cause an exception.
+        */
         #[method_id(@__retain_semantics Other percentEncodedQueryItems)]
         pub unsafe fn percentEncodedQueryItems(&self) -> Option<Id<NSArray<NSURLQueryItem>>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSURLQueryItem"))]
+        /**
+          The percentEncodedQueryItems getter returns an array of NSURLQueryItems in the order in which they appear in the original query string. Any percent-encoding in a NSURLQueryItem name or value is retained.
+
+         The percentEncodedQueryItems setter combines an array containing any number of NSURLQueryItems, each of which represents a single key-value pair, into a query string and sets the NSURLComponents query property. This property assumes the NSURLQueryItem names and values are already correctly percent-encoded, and that the NSURLQueryItem names do not contain the query item delimiter characters '&' and '='. Attempting to set an incorrectly percent-encoded NSURLQueryItem or a NSURLQueryItem name with the query item delimiter characters '&' and '=' will cause an exception.
+        */
         #[method(setPercentEncodedQueryItems:)]
         pub unsafe fn setPercentEncodedQueryItems(
             &self,
@@ -1044,21 +1173,39 @@ extern_methods!(
     /// NSURLUtilities
     #[cfg(feature = "Foundation_NSCharacterSet")]
     unsafe impl NSCharacterSet {
+        /**
+          Returns a character set containing the characters allowed in a URL's user subcomponent.
+        */
         #[method_id(@__retain_semantics Other URLUserAllowedCharacterSet)]
         pub unsafe fn URLUserAllowedCharacterSet() -> Id<NSCharacterSet>;
 
+        /**
+          Returns a character set containing the characters allowed in a URL's password subcomponent.
+        */
         #[method_id(@__retain_semantics Other URLPasswordAllowedCharacterSet)]
         pub unsafe fn URLPasswordAllowedCharacterSet() -> Id<NSCharacterSet>;
 
+        /**
+          Returns a character set containing the characters allowed in a URL's host subcomponent.
+        */
         #[method_id(@__retain_semantics Other URLHostAllowedCharacterSet)]
         pub unsafe fn URLHostAllowedCharacterSet() -> Id<NSCharacterSet>;
 
+        /**
+          Returns a character set containing the characters allowed in a URL's path component. ';' is a legal path character, but it is recommended that it be percent-encoded for best compatibility with NSURL (-stringByAddingPercentEncodingWithAllowedCharacters: will percent-encode any ';' characters if you pass the URLPathAllowedCharacterSet).
+        */
         #[method_id(@__retain_semantics Other URLPathAllowedCharacterSet)]
         pub unsafe fn URLPathAllowedCharacterSet() -> Id<NSCharacterSet>;
 
+        /**
+          Returns a character set containing the characters allowed in a URL's query component.
+        */
         #[method_id(@__retain_semantics Other URLQueryAllowedCharacterSet)]
         pub unsafe fn URLQueryAllowedCharacterSet() -> Id<NSCharacterSet>;
 
+        /**
+          Returns a character set containing the characters allowed in a URL's fragment component.
+        */
         #[method_id(@__retain_semantics Other URLFragmentAllowedCharacterSet)]
         pub unsafe fn URLFragmentAllowedCharacterSet() -> Id<NSCharacterSet>;
     }
@@ -1075,6 +1222,9 @@ extern_methods!(
             allowed_characters: &NSCharacterSet,
         ) -> Option<Id<NSString>>;
 
+        /**
+          Returns a new string made from the receiver by replacing all percent encoded sequences with the matching UTF-8 characters.
+        */
         #[method_id(@__retain_semantics Other stringByRemovingPercentEncoding)]
         pub unsafe fn stringByRemovingPercentEncoding(&self) -> Option<Id<NSString>>;
 
@@ -1144,6 +1294,9 @@ extern_methods!(
         #[method_id(@__retain_semantics Other URLByDeletingPathExtension)]
         pub unsafe fn URLByDeletingPathExtension(&self) -> Option<Id<NSURL>>;
 
+        /**
+          The following methods work only on `file:` scheme URLs; for non-`file:` scheme URLs, these methods return the URL unchanged.
+        */
         #[method_id(@__retain_semantics Other URLByStandardizingPath)]
         pub unsafe fn URLByStandardizingPath(&self) -> Option<Id<NSURL>>;
 
@@ -1155,6 +1308,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSFileSecurity")]
+    /**
+      NSFileSecurity encapsulates a file system object's security information. NSFileSecurity and CFFileSecurity are toll-free bridged. Use the CFFileSecurity API for access to the low-level file security properties encapsulated by NSFileSecurity.
+    */
     pub struct NSFileSecurity;
 
     #[cfg(feature = "Foundation_NSFileSecurity")]
@@ -1164,15 +1320,27 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSFileSecurity")]
+/**
+  NSFileSecurity encapsulates a file system object's security information. NSFileSecurity and CFFileSecurity are toll-free bridged. Use the CFFileSecurity API for access to the low-level file security properties encapsulated by NSFileSecurity.
+*/
 unsafe impl NSCoding for NSFileSecurity {}
 
 #[cfg(feature = "Foundation_NSFileSecurity")]
+/**
+  NSFileSecurity encapsulates a file system object's security information. NSFileSecurity and CFFileSecurity are toll-free bridged. Use the CFFileSecurity API for access to the low-level file security properties encapsulated by NSFileSecurity.
+*/
 unsafe impl NSObjectProtocol for NSFileSecurity {}
 
 #[cfg(feature = "Foundation_NSFileSecurity")]
+/**
+  NSFileSecurity encapsulates a file system object's security information. NSFileSecurity and CFFileSecurity are toll-free bridged. Use the CFFileSecurity API for access to the low-level file security properties encapsulated by NSFileSecurity.
+*/
 unsafe impl NSSecureCoding for NSFileSecurity {}
 
 extern_methods!(
+    /**
+      NSFileSecurity encapsulates a file system object's security information. NSFileSecurity and CFFileSecurity are toll-free bridged. Use the CFFileSecurity API for access to the low-level file security properties encapsulated by NSFileSecurity.
+    */
     #[cfg(feature = "Foundation_NSFileSecurity")]
     unsafe impl NSFileSecurity {
         #[cfg(feature = "Foundation_NSCoder")]

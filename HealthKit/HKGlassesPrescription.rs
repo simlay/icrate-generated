@@ -9,6 +9,10 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKGlassesPrescription")]
+    /**
+     @class         HKGlassesPrescription
+    @abstract      An object subclass representing a glasses prescription
+    */
     pub struct HKGlassesPrescription;
 
     #[cfg(feature = "HealthKit_HKGlassesPrescription")]
@@ -19,22 +23,46 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKGlassesPrescription")]
+/**
+ @class         HKGlassesPrescription
+@abstract      An object subclass representing a glasses prescription
+*/
 unsafe impl NSCoding for HKGlassesPrescription {}
 
 #[cfg(feature = "HealthKit_HKGlassesPrescription")]
+/**
+ @class         HKGlassesPrescription
+@abstract      An object subclass representing a glasses prescription
+*/
 unsafe impl NSObjectProtocol for HKGlassesPrescription {}
 
 #[cfg(feature = "HealthKit_HKGlassesPrescription")]
+/**
+ @class         HKGlassesPrescription
+@abstract      An object subclass representing a glasses prescription
+*/
 unsafe impl NSSecureCoding for HKGlassesPrescription {}
 
 extern_methods!(
+    /**
+     @class         HKGlassesPrescription
+    @abstract      An object subclass representing a glasses prescription
+    */
     #[cfg(feature = "HealthKit_HKGlassesPrescription")]
     unsafe impl HKGlassesPrescription {
         #[cfg(feature = "HealthKit_HKGlassesLensSpecification")]
+        /**
+         @property      rightEye
+        @abstract      The right eye lens specification
+        */
         #[method_id(@__retain_semantics Other rightEye)]
         pub unsafe fn rightEye(&self) -> Option<Id<HKGlassesLensSpecification>>;
 
         #[cfg(feature = "HealthKit_HKGlassesLensSpecification")]
+        /**
+         @property      leftEye
+        @abstract      The left eye lens specification
+        */
         #[method_id(@__retain_semantics Other leftEye)]
         pub unsafe fn leftEye(&self) -> Option<Id<HKGlassesLensSpecification>>;
 
@@ -60,7 +88,17 @@ extern_methods!(
 
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
+    }
+);
 
+extern_methods!(
+    /// Methods declared on superclass `HKVisionPrescription`
+    /**
+     @class         HKGlassesPrescription
+    @abstract      An object subclass representing a glasses prescription
+    */
+    #[cfg(feature = "HealthKit_HKGlassesPrescription")]
+    unsafe impl HKGlassesPrescription {
         #[cfg(all(
             feature = "Foundation_NSDate",
             feature = "Foundation_NSDictionary",

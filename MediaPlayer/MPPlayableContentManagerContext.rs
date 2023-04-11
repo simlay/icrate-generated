@@ -8,6 +8,11 @@ use crate::MediaPlayer::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MediaPlayer_MPPlayableContentManagerContext")]
+    /**
+      MPPlayableContentManagerContext represents the current state of
+     the playable content endpoint. A context is retrievable from an instance
+     of MPPlayableContentManager.
+    */
     #[deprecated = "Use CarPlay framework"]
     pub struct MPPlayableContentManagerContext;
 
@@ -18,17 +23,37 @@ extern_class!(
 );
 
 #[cfg(feature = "MediaPlayer_MPPlayableContentManagerContext")]
+/**
+  MPPlayableContentManagerContext represents the current state of
+ the playable content endpoint. A context is retrievable from an instance
+ of MPPlayableContentManager.
+*/
 unsafe impl NSObjectProtocol for MPPlayableContentManagerContext {}
 
 extern_methods!(
+    /**
+      MPPlayableContentManagerContext represents the current state of
+     the playable content endpoint. A context is retrievable from an instance
+     of MPPlayableContentManager.
+    */
     #[cfg(feature = "MediaPlayer_MPPlayableContentManagerContext")]
     unsafe impl MPPlayableContentManagerContext {
+        /**
+          The number of items the content server will display when content limiting is enforced.
+         Returns NSIntegerMax if the content server will never limit the number of items.
+        */
         #[method(enforcedContentItemsCount)]
         pub unsafe fn enforcedContentItemsCount(&self) -> NSInteger;
 
+        /**
+          The depth of the navigation hierarchy the content server will allow. Exceeding this limit will result in a crash.
+        */
         #[method(enforcedContentTreeDepth)]
         pub unsafe fn enforcedContentTreeDepth(&self) -> NSInteger;
 
+        /**
+          Represents whether content limits are being enforced by the content server or not.
+        */
         #[method(contentLimitsEnforced)]
         pub unsafe fn contentLimitsEnforced(&self) -> bool;
 
@@ -36,6 +61,9 @@ extern_methods!(
         #[method(contentLimitsEnabled)]
         pub unsafe fn contentLimitsEnabled(&self) -> bool;
 
+        /**
+          Represents whether the content server is available or not.
+        */
         #[method(endpointAvailable)]
         pub unsafe fn endpointAvailable(&self) -> bool;
     }

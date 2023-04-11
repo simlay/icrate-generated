@@ -8,6 +8,9 @@ pub type NSUserActivityPersistentIdentifier = NSString;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSUserActivity")]
+    /**
+      NSUserActivity encapsulates the state of a user activity in an application on a particular device, in a way that allows the same activity to be continued on another device in a corresponding application from the same developer. Examples of user user activities include editing a document, viewing a web page, or watching a video.
+    */
     pub struct NSUserActivity;
 
     #[cfg(feature = "Foundation_NSUserActivity")]
@@ -17,9 +20,15 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSUserActivity")]
+/**
+  NSUserActivity encapsulates the state of a user activity in an application on a particular device, in a way that allows the same activity to be continued on another device in a corresponding application from the same developer. Examples of user user activities include editing a document, viewing a web page, or watching a video.
+*/
 unsafe impl NSObjectProtocol for NSUserActivity {}
 
 extern_methods!(
+    /**
+      NSUserActivity encapsulates the state of a user activity in an application on a particular device, in a way that allows the same activity to be continued on another device in a corresponding application from the same developer. Examples of user user activities include editing a document, viewing a web page, or watching a video.
+    */
     #[cfg(feature = "Foundation_NSUserActivity")]
     unsafe impl NSUserActivity {
         #[cfg(feature = "Foundation_NSString")]
@@ -34,22 +43,37 @@ extern_methods!(
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The activityType the user activity was created with.
+        */
         #[method_id(@__retain_semantics Other activityType)]
         pub unsafe fn activityType(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          An optional, user-visible title for this activity, such as a document name or web page title.
+        */
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          An optional, user-visible title for this activity, such as a document name or web page title.
+        */
         #[method(setTitle:)]
         pub unsafe fn setTitle(&self, title: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          The userInfo dictionary contains application-specific state needed to continue an activity on another device. Each key and value must be of the following types: NSArray, NSData, NSDate, NSDictionary, NSNull, NSNumber, NSSet, NSString, NSURL, or NSUUID. File scheme URLs which refer to iCloud documents may be translated to valid file URLs on a receiving device.
+        */
         #[method_id(@__retain_semantics Other userInfo)]
         pub unsafe fn userInfo(&self) -> Option<Id<NSDictionary>>;
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          The userInfo dictionary contains application-specific state needed to continue an activity on another device. Each key and value must be of the following types: NSArray, NSData, NSDate, NSDictionary, NSNull, NSNumber, NSSet, NSString, NSURL, or NSUUID. File scheme URLs which refer to iCloud documents may be translated to valid file URLs on a receiving device.
+        */
         #[method(setUserInfo:)]
         pub unsafe fn setUserInfo(&self, user_info: Option<&NSDictionary>);
 
@@ -58,63 +82,111 @@ extern_methods!(
         pub unsafe fn addUserInfoEntriesFromDictionary(&self, other_dictionary: &NSDictionary);
 
         #[cfg(all(feature = "Foundation_NSSet", feature = "Foundation_NSString"))]
+        /**
+          The keys from the userInfo property which represent the minimal information about this user activity that should be stored for later restoration.  A nil value means all keys in .userInfo are required.
+        */
         #[method_id(@__retain_semantics Other requiredUserInfoKeys)]
         pub unsafe fn requiredUserInfoKeys(&self) -> Option<Id<NSSet<NSString>>>;
 
         #[cfg(all(feature = "Foundation_NSSet", feature = "Foundation_NSString"))]
+        /**
+          The keys from the userInfo property which represent the minimal information about this user activity that should be stored for later restoration.  A nil value means all keys in .userInfo are required.
+        */
         #[method(setRequiredUserInfoKeys:)]
         pub unsafe fn setRequiredUserInfoKeys(
             &self,
             required_user_info_keys: Option<&NSSet<NSString>>,
         );
 
+        /**
+          If set to YES, then the delegate for this user activity will receive a userActivityWillSave: callback before being sent for continuation on another device.
+        */
         #[method(needsSave)]
         pub unsafe fn needsSave(&self) -> bool;
 
+        /**
+          If set to YES, then the delegate for this user activity will receive a userActivityWillSave: callback before being sent for continuation on another device.
+        */
         #[method(setNeedsSave:)]
         pub unsafe fn setNeedsSave(&self, needs_save: bool);
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          When no suitable application is installed on a resuming device and the webpageURL is set, the user activity will instead be continued in a web browser by loading this resource.
+        */
         #[method_id(@__retain_semantics Other webpageURL)]
         pub unsafe fn webpageURL(&self) -> Option<Id<NSURL>>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          When no suitable application is installed on a resuming device and the webpageURL is set, the user activity will instead be continued in a web browser by loading this resource.
+        */
         #[method(setWebpageURL:)]
         pub unsafe fn setWebpageURL(&self, webpage_url: Option<&NSURL>);
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          The URL of the webpage that referred (linked to) webpageURL.
+        */
         #[method_id(@__retain_semantics Other referrerURL)]
         pub unsafe fn referrerURL(&self) -> Option<Id<NSURL>>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          The URL of the webpage that referred (linked to) webpageURL.
+        */
         #[method(setReferrerURL:)]
         pub unsafe fn setReferrerURL(&self, referrer_url: Option<&NSURL>);
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          If non-nil, then an absolute date after which this activity is no longer eligible to be indexed or handed off.
+        */
         #[method_id(@__retain_semantics Other expirationDate)]
         pub unsafe fn expirationDate(&self) -> Option<Id<NSDate>>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          If non-nil, then an absolute date after which this activity is no longer eligible to be indexed or handed off.
+        */
         #[method(setExpirationDate:)]
         pub unsafe fn setExpirationDate(&self, expiration_date: Option<&NSDate>);
 
         #[cfg(all(feature = "Foundation_NSSet", feature = "Foundation_NSString"))]
+        /**
+          A set of NSString* keywords, representing words or phrases in the current user's language that might help the user to find this activity in the application history.
+        */
         #[method_id(@__retain_semantics Other keywords)]
         pub unsafe fn keywords(&self) -> Id<NSSet<NSString>>;
 
         #[cfg(all(feature = "Foundation_NSSet", feature = "Foundation_NSString"))]
+        /**
+          A set of NSString* keywords, representing words or phrases in the current user's language that might help the user to find this activity in the application history.
+        */
         #[method(setKeywords:)]
         pub unsafe fn setKeywords(&self, keywords: &NSSet<NSString>);
 
+        /**
+          When used for continuation, the user activity can allow the continuing side to connect back for more information using streams. This value is set to NO by default. It can be dynamically set to YES to selectively support continuation streams based on the state of the user activity.
+        */
         #[method(supportsContinuationStreams)]
         pub unsafe fn supportsContinuationStreams(&self) -> bool;
 
+        /**
+          When used for continuation, the user activity can allow the continuing side to connect back for more information using streams. This value is set to NO by default. It can be dynamically set to YES to selectively support continuation streams based on the state of the user activity.
+        */
         #[method(setSupportsContinuationStreams:)]
         pub unsafe fn setSupportsContinuationStreams(&self, supports_continuation_streams: bool);
 
+        /**
+          The user activity delegate is informed when the activity is being saved or continued (see NSUserActivityDelegate, below)
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(&self) -> Option<Id<ProtocolObject<dyn NSUserActivityDelegate>>>;
 
+        /**
+          The user activity delegate is informed when the activity is being saved or continued (see NSUserActivityDelegate, below)
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
@@ -122,10 +194,18 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+           A string that identifies the content of this NSUserActivity, for matching against existing documents when re-opening to see if they are the same.
+        Setting this property is optional and does not automatically set .needsSave to YES.
+        */
         #[method_id(@__retain_semantics Other targetContentIdentifier)]
         pub unsafe fn targetContentIdentifier(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+           A string that identifies the content of this NSUserActivity, for matching against existing documents when re-opening to see if they are the same.
+        Setting this property is optional and does not automatically set .needsSave to YES.
+        */
         #[method(setTargetContentIdentifier:)]
         pub unsafe fn setTargetContentIdentifier(
             &self,
@@ -152,21 +232,39 @@ extern_methods!(
             completion_handler: &Block<(*mut NSInputStream, *mut NSOutputStream, *mut NSError), ()>,
         );
 
+        /**
+          Set to YES if this user activity should be eligible to be handed off to another device
+        */
         #[method(isEligibleForHandoff)]
         pub unsafe fn isEligibleForHandoff(&self) -> bool;
 
+        /**
+          Set to YES if this user activity should be eligible to be handed off to another device
+        */
         #[method(setEligibleForHandoff:)]
         pub unsafe fn setEligibleForHandoff(&self, eligible_for_handoff: bool);
 
+        /**
+          Set to YES if this user activity should be indexed by App History
+        */
         #[method(isEligibleForSearch)]
         pub unsafe fn isEligibleForSearch(&self) -> bool;
 
+        /**
+          Set to YES if this user activity should be indexed by App History
+        */
         #[method(setEligibleForSearch:)]
         pub unsafe fn setEligibleForSearch(&self, eligible_for_search: bool);
 
+        /**
+          Set to YES if this user activity should be eligible for indexing for any user of this application, on any device, or NO if the activity contains private or sensitive information or which would not be useful to other users if indexed.  The activity must also have requiredUserActivityKeys or a webpageURL
+        */
         #[method(isEligibleForPublicIndexing)]
         pub unsafe fn isEligibleForPublicIndexing(&self) -> bool;
 
+        /**
+          Set to YES if this user activity should be eligible for indexing for any user of this application, on any device, or NO if the activity contains private or sensitive information or which would not be useful to other users if indexed.  The activity must also have requiredUserActivityKeys or a webpageURL
+        */
         #[method(setEligibleForPublicIndexing:)]
         pub unsafe fn setEligibleForPublicIndexing(&self, eligible_for_public_indexing: bool);
 
@@ -201,6 +299,9 @@ extern_methods!(
 extern_static!(NSUserActivityTypeBrowsingWeb: &'static NSString);
 
 extern_protocol!(
+    /**
+      The user activity delegate is responsible for updating the state of an activity and is also notified when an activity has been continued on another device.
+    */
     pub unsafe trait NSUserActivityDelegate: NSObjectProtocol {
         #[cfg(feature = "Foundation_NSUserActivity")]
         #[optional]

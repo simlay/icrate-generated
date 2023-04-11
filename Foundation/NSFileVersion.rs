@@ -20,6 +20,9 @@ ns_options!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSFileVersion")]
+    /**
+      Instances of NSFileVersion for the same version of the same file are equal, and instances of NSFileVersion for different versions of the same file are not equal, but the equality of NSFileVersions for different files is undefined. Repeated invocations of the methods that return NSFileVersions do not necessarily return the exact same instance of NSFileVersion.
+    */
     pub struct NSFileVersion;
 
     #[cfg(feature = "Foundation_NSFileVersion")]
@@ -29,9 +32,15 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSFileVersion")]
+/**
+  Instances of NSFileVersion for the same version of the same file are equal, and instances of NSFileVersion for different versions of the same file are not equal, but the equality of NSFileVersions for different files is undefined. Repeated invocations of the methods that return NSFileVersions do not necessarily return the exact same instance of NSFileVersion.
+*/
 unsafe impl NSObjectProtocol for NSFileVersion {}
 
 extern_methods!(
+    /**
+      Instances of NSFileVersion for the same version of the same file are equal, and instances of NSFileVersion for different versions of the same file are not equal, but the equality of NSFileVersions for different files is undefined. Repeated invocations of the methods that return NSFileVersions do not necessarily return the exact same instance of NSFileVersion.
+    */
     #[cfg(feature = "Foundation_NSFileVersion")]
     unsafe impl NSFileVersion {
         #[cfg(feature = "Foundation_NSURL")]
@@ -79,46 +88,109 @@ extern_methods!(
         pub unsafe fn temporaryDirectoryURLForNewVersionOfItemAtURL(url: &NSURL) -> Id<NSURL>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          The location of the receiver's storage, or possibly nil if the receiver's storage has been deleted. The storage is read-only. The URL will have an arcane path. You must not derive user-presentable text from it.
+        */
         #[method_id(@__retain_semantics Other URL)]
         pub unsafe fn URL(&self) -> Id<NSURL>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The user-presentable name of the version, or possibly nil if the receiver's storage has been deleted. This will be different from the user-presentable name of the versioned file if, for example, the file has been renamed since the version was added.
+        */
         #[method_id(@__retain_semantics Other localizedName)]
         pub unsafe fn localizedName(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The user-presentable name of the computer on which the version was saved, or possibly nil if the receiver's storage has been deleted, or nil if no computer name was recorded. The computer name is guaranteed to have been recorded only if the version is a conflict version. This will be different from that computer's current name if the computer's name has been changed since the version was retrieved from that computer.
+        */
         #[method_id(@__retain_semantics Other localizedNameOfSavingComputer)]
         pub unsafe fn localizedNameOfSavingComputer(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSPersonNameComponents")]
+        /**
+          The name components of the user who created this version of the file. Is nil if the file is not shared or if the current user is the originator.
+        */
         #[method_id(@__retain_semantics Other originatorNameComponents)]
         pub unsafe fn originatorNameComponents(&self) -> Option<Id<NSPersonNameComponents>>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          The modification date of the version, or possibly nil if the receiver's storage has been deleted.
+        */
         #[method_id(@__retain_semantics Other modificationDate)]
         pub unsafe fn modificationDate(&self) -> Option<Id<NSDate>>;
 
+        /**
+          An object that can be encoded and, after subsequent decoding, passed to -versionOfItemAtURL:forPersistentIdentifier: to create a new instance of NSFileVersion that is equal to the receiver.
+        */
         #[method_id(@__retain_semantics Other persistentIdentifier)]
         pub unsafe fn persistentIdentifier(&self) -> Id<ProtocolObject<dyn NSCoding>>;
 
+        /**
+          Whether the version was created as a result of the discovery of a conflict between two writers of the versioned file.
+        */
         #[method(isConflict)]
         pub unsafe fn isConflict(&self) -> bool;
 
+        /**
+          If the version is a conflict version, whether the conflict has been resolved. If the version is not a conflict version, simply YES.
+
+        The operating system's reaction to your setting this to YES is complicated and subject to change in future releases. One result however is that the version won't appear in arrays returned by +unresolvedConflictVersionsOfItemAtURL: anymore, unless setting fails.
+
+        Once you have indicated that a conflict has been resolved you cannot make it unresolved again. Setting this to NO causes an exception to be thrown.
+        */
         #[method(isResolved)]
         pub unsafe fn isResolved(&self) -> bool;
 
+        /**
+          If the version is a conflict version, whether the conflict has been resolved. If the version is not a conflict version, simply YES.
+
+        The operating system's reaction to your setting this to YES is complicated and subject to change in future releases. One result however is that the version won't appear in arrays returned by +unresolvedConflictVersionsOfItemAtURL: anymore, unless setting fails.
+
+        Once you have indicated that a conflict has been resolved you cannot make it unresolved again. Setting this to NO causes an exception to be thrown.
+        */
         #[method(setResolved:)]
         pub unsafe fn setResolved(&self, resolved: bool);
 
+        /**
+          Whether the system is allowed to automatically delete the receiver's storage in the future, at an unpredictable time.
+
+        Setting this to YES can fail so you must not depend on discarding for correct operation.
+
+        Once you have indicated that a version is discardable you cannot make it undiscardable again. Setting this to NO causes an exception to be thrown.
+
+        You cannot make the versioned file itself discardable. Setting the value of this property always throws an exception when sent to the result of invoking +currentVersionOfItemAtURL:.
+
+        Versions can be discardable only on Mac OS X.
+        */
         #[method(isDiscardable)]
         pub unsafe fn isDiscardable(&self) -> bool;
 
+        /**
+          Whether the system is allowed to automatically delete the receiver's storage in the future, at an unpredictable time.
+
+        Setting this to YES can fail so you must not depend on discarding for correct operation.
+
+        Once you have indicated that a version is discardable you cannot make it undiscardable again. Setting this to NO causes an exception to be thrown.
+
+        You cannot make the versioned file itself discardable. Setting the value of this property always throws an exception when sent to the result of invoking +currentVersionOfItemAtURL:.
+
+        Versions can be discardable only on Mac OS X.
+        */
         #[method(setDiscardable:)]
         pub unsafe fn setDiscardable(&self, discardable: bool);
 
+        /**
+          Whether the version has local contents. Versions that are returned by +getNonlocalVersionsOfItemAtURL:completionHandler: do not initially have local contents. You can only access their contents, either directly via the URL or by invoking -replaceItemAtURL:options:error:, from within a coordinated read on the NSFileVersion's URL.
+        */
         #[method(hasLocalContents)]
         pub unsafe fn hasLocalContents(&self) -> bool;
 
+        /**
+          Whether the version has a thumbnail image available. Thumbnails for versions from +getNonlocalVersionsOfItemAtURL:completionHandler: may not immediately be available. As soon as it becomes available, this property will change from NO to YES. You can use KVO to be notified of this change. If a thumbnail is available, you can access it using NSURLThumbnailKey or NSURLThumbnailDictionaryKey.
+        */
         #[method(hasThumbnail)]
         pub unsafe fn hasThumbnail(&self) -> bool;
 

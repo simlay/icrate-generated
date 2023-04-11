@@ -5,12 +5,21 @@ use crate::AuthenticationServices::*;
 use crate::Foundation::*;
 
 extern_protocol!(
+    /**
+      @abstract The base protocol for all PublicKeyCredential credential types.
+    */
     pub unsafe trait ASPublicKeyCredential: ASAuthorizationCredential {
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          @abstract A byte sequence containing the serialized clientDataJSON blob returned by the authenticator.
+        */
         #[method_id(@__retain_semantics Other rawClientDataJSON)]
         unsafe fn rawClientDataJSON(&self) -> Id<NSData>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          @abstract An identifier that uniquely identifies this credential.
+        */
         #[method_id(@__retain_semantics Other credentialID)]
         unsafe fn credentialID(&self) -> Id<NSData>;
     }

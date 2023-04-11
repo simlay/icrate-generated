@@ -33,6 +33,12 @@ extern_methods!(
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
         #[cfg(feature = "Foundation_NSSet")]
+        /**
+         Get the collection of racing wheels currently attached to the system.
+
+        @see GCRacingWheelDidConnectNotification
+        @see GCRacingWheelDidDisconnectNotification
+        */
         #[method_id(@__retain_semantics Other connectedRacingWheels)]
         pub unsafe fn connectedRacingWheels() -> Id<NSSet<GCRacingWheel>>;
 
@@ -43,13 +49,27 @@ extern_methods!(
         #[method(relinquishDevice)]
         pub unsafe fn relinquishDevice(&self);
 
+        /**
+         Checks if the racing wheel has been acquired by the application.
+
+        This property is observable.
+        */
         #[method(isAcquired)]
         pub unsafe fn isAcquired(&self) -> bool;
 
         #[cfg(feature = "GameController_GCRacingWheelInput")]
+        /**
+          Get the physical input profile for the racing wheel.
+        */
         #[method_id(@__retain_semantics Other wheelInput)]
         pub unsafe fn wheelInput(&self) -> Id<GCRacingWheelInput>;
 
+        /**
+         A GCRacingWheel may represent a real device managed by the operating system,
+        or a snapshot created by the developer.
+
+        @see capture
+        */
         #[method(isSnapshot)]
         pub unsafe fn isSnapshot(&self) -> bool;
 

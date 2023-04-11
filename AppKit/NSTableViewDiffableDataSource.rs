@@ -178,9 +178,15 @@ extern_methods!(
             section_header_view_provider: NSTableViewDiffableDataSourceSectionHeaderViewProvider,
         );
 
+        /**
+          Default value is NSTableViewAnimationEffectFade. Change takes effect on the next update.
+        */
         #[method(defaultRowAnimation)]
         pub unsafe fn defaultRowAnimation(&self) -> NSTableViewAnimationOptions;
 
+        /**
+          Default value is NSTableViewAnimationEffectFade. Change takes effect on the next update.
+        */
         #[method(setDefaultRowAnimation:)]
         pub unsafe fn setDefaultRowAnimation(
             &self,

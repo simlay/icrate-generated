@@ -20,10 +20,32 @@ extern_methods!(
     #[cfg(feature = "AppKit_NSResponder")]
     unsafe impl NSResponder {
         #[cfg(feature = "Foundation_NSUserActivity")]
+        /**
+         Setting an NSUserActivity will cause it to become managed by AppKit/UIKIt. NSUserActivities managed by AppKit/UIKIt will be saved automatically at an appropriate time. You will have an opportunity to add state representing the user’s activity via the below updateUserActivityState: override. It is recommended that you override the updateUserActivityState: method to lazily write any state to the userInfo.
+
+        On OS X, NSUserActivities managed by NSResponder will automatically becomeCurrent based on the main window and the responder chain.
+
+        To unassociate an object from the user activity, you can set this to nil. If no objects are associated with an NSUserActivity managed by AppKit/UIKit, it will be removed.
+
+        This property can be used from any thread.
+
+        This property is KVO observable.
+        */
         #[method_id(@__retain_semantics Other userActivity)]
         pub unsafe fn userActivity(&self) -> Option<Id<NSUserActivity>>;
 
         #[cfg(feature = "Foundation_NSUserActivity")]
+        /**
+         Setting an NSUserActivity will cause it to become managed by AppKit/UIKIt. NSUserActivities managed by AppKit/UIKIt will be saved automatically at an appropriate time. You will have an opportunity to add state representing the user’s activity via the below updateUserActivityState: override. It is recommended that you override the updateUserActivityState: method to lazily write any state to the userInfo.
+
+        On OS X, NSUserActivities managed by NSResponder will automatically becomeCurrent based on the main window and the responder chain.
+
+        To unassociate an object from the user activity, you can set this to nil. If no objects are associated with an NSUserActivity managed by AppKit/UIKit, it will be removed.
+
+        This property can be used from any thread.
+
+        This property is KVO observable.
+        */
         #[method(setUserActivity:)]
         pub unsafe fn setUserActivity(&self, user_activity: Option<&NSUserActivity>);
 
@@ -41,10 +63,24 @@ extern_methods!(
     #[cfg(feature = "AppKit_NSDocument")]
     unsafe impl NSDocument {
         #[cfg(feature = "Foundation_NSUserActivity")]
+        /**
+         This works just like the above responder methods for the most part.
+
+        On OS X, NSUserActivities managed by NSDocument will automatically become current when any of the document window controller's window's become main. You will need to invoke [[document userActivity] becomeCurrent] at an appropriate time if there aren't any.
+
+        If there is a CFBundleDocumentTypes entry for the document's type with a NSUbiquitousDocumentUserActivityType key, AppKit/UIKIt will automatically create an NSUserActivity with the given activityType when the document is ubiquitous. When it is non-ubiquitous, the userActivity will be nil. Note that userActivity is KVO observable, in case the userActivity is being shared with other objects that need to be kept in sync as the document moves into and out of iCloud.
+        */
         #[method_id(@__retain_semantics Other userActivity)]
         pub unsafe fn userActivity(&self) -> Option<Id<NSUserActivity>>;
 
         #[cfg(feature = "Foundation_NSUserActivity")]
+        /**
+         This works just like the above responder methods for the most part.
+
+        On OS X, NSUserActivities managed by NSDocument will automatically become current when any of the document window controller's window's become main. You will need to invoke [[document userActivity] becomeCurrent] at an appropriate time if there aren't any.
+
+        If there is a CFBundleDocumentTypes entry for the document's type with a NSUbiquitousDocumentUserActivityType key, AppKit/UIKIt will automatically create an NSUserActivity with the given activityType when the document is ubiquitous. When it is non-ubiquitous, the userActivity will be nil. Note that userActivity is KVO observable, in case the userActivity is being shared with other objects that need to be kept in sync as the document moves into and out of iCloud.
+        */
         #[method(setUserActivity:)]
         pub unsafe fn setUserActivity(&self, user_activity: Option<&NSUserActivity>);
 

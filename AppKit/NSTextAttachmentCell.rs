@@ -6,6 +6,9 @@ use crate::CoreData::*;
 use crate::Foundation::*;
 
 extern_protocol!(
+    /**
+      These are the only methods required of cells in text attachments... The default NSCell class implements most of these; the NSTextAttachmentCell class is a subclass which implements all and provides some additional functionality.
+    */
     pub unsafe trait NSTextAttachmentCellProtocol: NSObjectProtocol {
         #[cfg(feature = "AppKit_NSView")]
         #[method(drawWithFrame:inView:)]
@@ -104,6 +107,9 @@ extern_protocol!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSTextAttachmentCell")]
+    /**
+      Simple class to provide basic attachment cell functionality. By default this class causes NSTextView to send out delegate messages when the attachment is clicked on or dragged.
+    */
     pub struct NSTextAttachmentCell;
 
     #[cfg(feature = "AppKit_NSTextAttachmentCell")]
@@ -114,30 +120,54 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSTextAttachmentCell")]
+/**
+  Simple class to provide basic attachment cell functionality. By default this class causes NSTextView to send out delegate messages when the attachment is clicked on or dragged.
+*/
 unsafe impl NSAccessibility for NSTextAttachmentCell {}
 
 #[cfg(feature = "AppKit_NSTextAttachmentCell")]
+/**
+  Simple class to provide basic attachment cell functionality. By default this class causes NSTextView to send out delegate messages when the attachment is clicked on or dragged.
+*/
 unsafe impl NSAccessibilityElementProtocol for NSTextAttachmentCell {}
 
 #[cfg(feature = "AppKit_NSTextAttachmentCell")]
+/**
+  Simple class to provide basic attachment cell functionality. By default this class causes NSTextView to send out delegate messages when the attachment is clicked on or dragged.
+*/
 unsafe impl NSCoding for NSTextAttachmentCell {}
 
 #[cfg(feature = "AppKit_NSTextAttachmentCell")]
+/**
+  Simple class to provide basic attachment cell functionality. By default this class causes NSTextView to send out delegate messages when the attachment is clicked on or dragged.
+*/
 unsafe impl NSObjectProtocol for NSTextAttachmentCell {}
 
 #[cfg(feature = "AppKit_NSTextAttachmentCell")]
+/**
+  Simple class to provide basic attachment cell functionality. By default this class causes NSTextView to send out delegate messages when the attachment is clicked on or dragged.
+*/
 unsafe impl NSTextAttachmentCellProtocol for NSTextAttachmentCell {}
 
 #[cfg(feature = "AppKit_NSTextAttachmentCell")]
+/**
+  Simple class to provide basic attachment cell functionality. By default this class causes NSTextView to send out delegate messages when the attachment is clicked on or dragged.
+*/
 unsafe impl NSUserInterfaceItemIdentification for NSTextAttachmentCell {}
 
 extern_methods!(
+    /**
+      Simple class to provide basic attachment cell functionality. By default this class causes NSTextView to send out delegate messages when the attachment is clicked on or dragged.
+    */
     #[cfg(feature = "AppKit_NSTextAttachmentCell")]
     unsafe impl NSTextAttachmentCell {}
 );
 
 extern_methods!(
     /// Methods declared on superclass `NSCell`
+    /**
+      Simple class to provide basic attachment cell functionality. By default this class causes NSTextView to send out delegate messages when the attachment is clicked on or dragged.
+    */
     #[cfg(feature = "AppKit_NSTextAttachmentCell")]
     unsafe impl NSTextAttachmentCell {
         #[cfg(feature = "Foundation_NSString")]

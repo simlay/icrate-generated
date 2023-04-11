@@ -29,10 +29,16 @@ extern_methods!(
     #[cfg(feature = "UserNotifications_UNNotification")]
     unsafe impl UNNotification {
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          The date displayed on the notification.
+        */
         #[method_id(@__retain_semantics Other date)]
         pub unsafe fn date(&self) -> Id<NSDate>;
 
         #[cfg(feature = "UserNotifications_UNNotificationRequest")]
+        /**
+          The notification request that caused the notification to be delivered.
+        */
         #[method_id(@__retain_semantics Other request)]
         pub unsafe fn request(&self) -> Id<UNNotificationRequest>;
 

@@ -8,6 +8,10 @@ use crate::WebKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "WebKit_WKBackForwardList")]
+    /**
+      @abstract A WKBackForwardList object is a list of webpages previously
+    visited in a web view that can be reached by going back or forward.
+    */
     pub struct WKBackForwardList;
 
     #[cfg(feature = "WebKit_WKBackForwardList")]
@@ -17,20 +21,39 @@ extern_class!(
 );
 
 #[cfg(feature = "WebKit_WKBackForwardList")]
+/**
+  @abstract A WKBackForwardList object is a list of webpages previously
+visited in a web view that can be reached by going back or forward.
+*/
 unsafe impl NSObjectProtocol for WKBackForwardList {}
 
 extern_methods!(
+    /**
+      @abstract A WKBackForwardList object is a list of webpages previously
+    visited in a web view that can be reached by going back or forward.
+    */
     #[cfg(feature = "WebKit_WKBackForwardList")]
     unsafe impl WKBackForwardList {
         #[cfg(feature = "WebKit_WKBackForwardListItem")]
+        /**
+          @abstract The current item.
+        */
         #[method_id(@__retain_semantics Other currentItem)]
         pub unsafe fn currentItem(&self) -> Option<Id<WKBackForwardListItem>>;
 
         #[cfg(feature = "WebKit_WKBackForwardListItem")]
+        /**
+          @abstract The item immediately preceding the current item, or nil
+        if there isn't one.
+        */
         #[method_id(@__retain_semantics Other backItem)]
         pub unsafe fn backItem(&self) -> Option<Id<WKBackForwardListItem>>;
 
         #[cfg(feature = "WebKit_WKBackForwardListItem")]
+        /**
+          @abstract The item immediately following the current item, or nil
+        if there isn't one.
+        */
         #[method_id(@__retain_semantics Other forwardItem)]
         pub unsafe fn forwardItem(&self) -> Option<Id<WKBackForwardListItem>>;
 
@@ -42,6 +65,11 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "WebKit_WKBackForwardListItem"
         ))]
+        /**
+          @abstract The portion of the list preceding the current item.
+        @discussion The items are in the order in which they were originally
+        visited.
+        */
         #[method_id(@__retain_semantics Other backList)]
         pub unsafe fn backList(&self) -> Id<NSArray<WKBackForwardListItem>>;
 
@@ -49,6 +77,11 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "WebKit_WKBackForwardListItem"
         ))]
+        /**
+          @abstract The portion of the list following the current item.
+        @discussion The items are in the order in which they were originally
+        visited.
+        */
         #[method_id(@__retain_semantics Other forwardList)]
         pub unsafe fn forwardList(&self) -> Id<NSArray<WKBackForwardListItem>>;
     }

@@ -60,16 +60,30 @@ extern_methods!(
         pub unsafe fn initWithCoder(this: Option<Allocated<Self>>, coder: &NSCoder) -> Id<Self>;
 
         #[cfg(feature = "AppKit_NSMenu")]
+        /**
+          Overrides behavior of NSCell.  This is the menu for the popup, not a context menu.  PopUpButtonCells do not have context menus.
+        */
         #[method_id(@__retain_semantics Other menu)]
         pub unsafe fn menu(&self) -> Option<Id<NSMenu>>;
 
         #[cfg(feature = "AppKit_NSMenu")]
+        /**
+          Overrides behavior of NSCell.  This is the menu for the popup, not a context menu.  PopUpButtonCells do not have context menus.
+        */
         #[method(setMenu:)]
         pub unsafe fn setMenu(&self, menu: Option<&NSMenu>);
 
+        /**
+          Behavior settings
+         If usesItemFromMenu is true, then pull down popup buttons always show the first item in the menu.  That menu item is hidden via [menuItem setHidden:YES]; if you wish to make it visible you can unhide it with setHidden:NO
+        */
         #[method(pullsDown)]
         pub unsafe fn pullsDown(&self) -> bool;
 
+        /**
+          Behavior settings
+         If usesItemFromMenu is true, then pull down popup buttons always show the first item in the menu.  That menu item is hidden via [menuItem setHidden:YES]; if you wish to make it visible you can unhide it with setHidden:NO
+        */
         #[method(setPullsDown:)]
         pub unsafe fn setPullsDown(&self, pulls_down: bool);
 
@@ -85,15 +99,27 @@ extern_methods!(
         #[method(setPreferredEdge:)]
         pub unsafe fn setPreferredEdge(&self, preferred_edge: NSRectEdge);
 
+        /**
+          The preferred edge is used for pull down menus and for popups under severe screen position restrictions.  It indicates what edge of the cell the menu should pop out from.
+        */
         #[method(usesItemFromMenu)]
         pub unsafe fn usesItemFromMenu(&self) -> bool;
 
+        /**
+          The preferred edge is used for pull down menus and for popups under severe screen position restrictions.  It indicates what edge of the cell the menu should pop out from.
+        */
         #[method(setUsesItemFromMenu:)]
         pub unsafe fn setUsesItemFromMenu(&self, uses_item_from_menu: bool);
 
+        /**
+          If YES (the default) the popup button will display an item from the menu.  This will be the selected item for a popup or the first item for a pull-down.  If this is NO, then the menu item set with -setMenuItem: is always displayed.  This can be useful for a popup button that is an icon button that pops up a menu full of textual items, for example.
+        */
         #[method(altersStateOfSelectedItem)]
         pub unsafe fn altersStateOfSelectedItem(&self) -> bool;
 
+        /**
+          If YES (the default) the popup button will display an item from the menu.  This will be the selected item for a popup or the first item for a pull-down.  If this is NO, then the menu item set with -setMenuItem: is always displayed.  This can be useful for a popup button that is an icon button that pops up a menu full of textual items, for example.
+        */
         #[method(setAltersStateOfSelectedItem:)]
         pub unsafe fn setAltersStateOfSelectedItem(&self, alters_state_of_selected_item: bool);
 
@@ -120,6 +146,9 @@ extern_methods!(
         pub unsafe fn removeAllItems(&self);
 
         #[cfg(all(feature = "AppKit_NSMenuItem", feature = "Foundation_NSArray"))]
+        /**
+          Accessing the items
+        */
         #[method_id(@__retain_semantics Other itemArray)]
         pub unsafe fn itemArray(&self) -> Id<NSArray<NSMenuItem>>;
 
@@ -210,9 +239,15 @@ extern_methods!(
         #[method(performClickWithFrame:inView:)]
         pub unsafe fn performClickWithFrame_inView(&self, frame: NSRect, control_view: &NSView);
 
+        /**
+          Arrow position for bezel style and borderless popups.
+        */
         #[method(arrowPosition)]
         pub unsafe fn arrowPosition(&self) -> NSPopUpArrowPosition;
 
+        /**
+          Arrow position for bezel style and borderless popups.
+        */
         #[method(setArrowPosition:)]
         pub unsafe fn setArrowPosition(&self, arrow_position: NSPopUpArrowPosition);
     }

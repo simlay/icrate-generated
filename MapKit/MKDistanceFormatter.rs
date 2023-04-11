@@ -56,10 +56,16 @@ extern_methods!(
         pub unsafe fn distanceFromString(&self, distance: &NSString) -> CLLocationDistance;
 
         #[cfg(feature = "Foundation_NSLocale")]
+        /**
+          defaults to current locale
+        */
         #[method_id(@__retain_semantics Other locale)]
         pub unsafe fn locale(&self) -> Id<NSLocale>;
 
         #[cfg(feature = "Foundation_NSLocale")]
+        /**
+          defaults to current locale
+        */
         #[method(setLocale:)]
         pub unsafe fn setLocale(&self, locale: Option<&NSLocale>);
 

@@ -75,6 +75,10 @@ extern_methods!(
             allowed_participant_access_options: CKSharingParticipantAccessOption,
         );
 
+        /**
+         Standard allowed options are most permissive i.e. @c allowedParticipantPermissionOptions = @c CKSharingParticipantPermissionOptionAny
+        and @c allowedParticipantAccessOptions = @c CKSharingParticipantAccessOptionAny
+        */
         #[method_id(@__retain_semantics Other standardOptions)]
         pub unsafe fn standardOptions() -> Id<CKAllowedSharingOptions>;
     }

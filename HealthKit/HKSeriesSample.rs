@@ -9,6 +9,10 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKSeriesSample")]
+    /**
+     @class         HKSeriesSample
+    @abstract      This class represents a type of HKSample that references a series of data.
+    */
     pub struct HKSeriesSample;
 
     #[cfg(feature = "HealthKit_HKSeriesSample")]
@@ -19,17 +23,38 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKSeriesSample")]
+/**
+ @class         HKSeriesSample
+@abstract      This class represents a type of HKSample that references a series of data.
+*/
 unsafe impl NSCoding for HKSeriesSample {}
 
 #[cfg(feature = "HealthKit_HKSeriesSample")]
+/**
+ @class         HKSeriesSample
+@abstract      This class represents a type of HKSample that references a series of data.
+*/
 unsafe impl NSObjectProtocol for HKSeriesSample {}
 
 #[cfg(feature = "HealthKit_HKSeriesSample")]
+/**
+ @class         HKSeriesSample
+@abstract      This class represents a type of HKSample that references a series of data.
+*/
 unsafe impl NSSecureCoding for HKSeriesSample {}
 
 extern_methods!(
+    /**
+     @class         HKSeriesSample
+    @abstract      This class represents a type of HKSample that references a series of data.
+    */
     #[cfg(feature = "HealthKit_HKSeriesSample")]
     unsafe impl HKSeriesSample {
+        /**
+         @property      count
+        @abstract      The number of individual series datum represented by the receiver and accessible
+        through the appropriate HKQuery series subclass.
+        */
         #[method(count)]
         pub unsafe fn count(&self) -> NSUInteger;
     }

@@ -6,6 +6,9 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSArchiver")]
+    /**
+             Archiving: Writing
+    */
     #[deprecated = "Use NSKeyedArchiver instead"]
     pub struct NSArchiver;
 
@@ -17,9 +20,15 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSArchiver")]
+/**
+         Archiving: Writing
+*/
 unsafe impl NSObjectProtocol for NSArchiver {}
 
 extern_methods!(
+    /**
+             Archiving: Writing
+    */
     #[cfg(feature = "Foundation_NSArchiver")]
     unsafe impl NSArchiver {
         #[cfg(feature = "Foundation_NSMutableData")]
@@ -70,6 +79,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSUnarchiver")]
+    /**
+             Archiving: Reading
+    */
     #[deprecated = "Use NSKeyedUnarchiver instead"]
     pub struct NSUnarchiver;
 
@@ -81,9 +93,15 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSUnarchiver")]
+/**
+         Archiving: Reading
+*/
 unsafe impl NSObjectProtocol for NSUnarchiver {}
 
 extern_methods!(
+    /**
+             Archiving: Reading
+    */
     #[cfg(feature = "Foundation_NSUnarchiver")]
     unsafe impl NSUnarchiver {
         #[cfg(feature = "Foundation_NSData")]

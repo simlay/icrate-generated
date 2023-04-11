@@ -25,6 +25,9 @@ extern_methods!(
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
+        /**
+          @abstract Whether or not a match was found during the find operation
+        */
         #[method(matchFound)]
         pub unsafe fn matchFound(&self) -> bool;
     }

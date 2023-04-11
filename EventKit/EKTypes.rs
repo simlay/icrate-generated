@@ -9,6 +9,18 @@ use crate::MapKit::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum       EKAuthorizationStatus
+    @abstract   This enumerated type is used to indicate the currently granted authorization status for a specific
+    entity type.
+    @constant   EKAuthorizationStatusNotDetermined  The user has not yet made a choice regarding whether this application
+    may access the service.
+    @constant   EKAuthorizationStatusRestricted     This application is not authorized to access the service.
+    The user cannot change this application’s status, possibly due to
+    active restrictions such as parental controls being in place.
+    @constant   EKAuthorizationStatusDenied         The user explicitly denied access to the service for this application.
+    @constant   EKAuthorizationStatusAuthorized     This application is authorized to access the service.
+    */
     pub enum EKAuthorizationStatus {
         EKAuthorizationStatusNotDetermined = 0,
         EKAuthorizationStatusRestricted = 1,
@@ -46,6 +58,13 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum       EKRecurrenceFrequency
+    @abstract   The frequency of a recurrence
+    @discussion EKRecurrenceFrequency designates the unit of time used to describe the recurrence.
+    It has four possible values, which correspond to recurrence rules that are defined
+    in terms of days, weeks, months, and years.
+    */
     pub enum EKRecurrenceFrequency {
         EKRecurrenceFrequencyDaily = 0,
         EKRecurrenceFrequencyWeekly = 1,
@@ -56,6 +75,10 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum       EKParticipantType
+    @abstract   Value representing the type of attendee.
+    */
     pub enum EKParticipantType {
         EKParticipantTypeUnknown = 0,
         EKParticipantTypePerson = 1,
@@ -67,6 +90,10 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum       EKParticipantRole
+    @abstract   Value representing the role of a meeting participant.
+    */
     pub enum EKParticipantRole {
         EKParticipantRoleUnknown = 0,
         EKParticipantRoleRequired = 1,
@@ -78,6 +105,32 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum       EKParticipantScheduleStatus
+    @abstract   Value representing the status of a meeting invite.
+
+    @constant   EKParticipantScheduleStatusNone                     Default value. Indicates that no
+    invitation has been sent yet.
+    @constant   EKParticipantScheduleStatusPending                  The invitation is in the process of being
+    sent.
+    @constant   EKParticipantScheduleStatusSent                     The invitation has been sent, but we have
+    no way of determing if it was successfully
+    delivered.
+    @constant   EKParticipantScheduleStatusDelivered                The invitation has been sent and
+    successfully delivered.
+    @constant   EKParticipantScheduleStatusRecipientNotRecognized   The invitation wasn't delivered because we
+    source doesn't recognize the recipient.
+    @constant   EKParticipantScheduleStatusNoPrivileges             The invitation wasn't delivered because of
+    insufficient privileges.
+    @constant   EKParticipantScheduleStatusDeliveryFailed           The invitation wasn't delivered most
+    likely due to a temporary failure.
+    @constant   EKParticipantScheduleStatusCannotDeliver            The invitation wasn't delivered because
+    we're unsure how to deliver it. This is a
+    permanent failure.
+    @constant   EKParticipantScheduleStatusRecipientNotAllowed      The invitation wasn't delivered because
+    scheduling with the participant isn't
+    allowed. This is a permanent failure.
+    */
     pub enum EKParticipantScheduleStatus {
         EKParticipantScheduleStatusNone = 0,
         EKParticipantScheduleStatusPending = 1,
@@ -93,6 +146,10 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum       EKParticipantStatus
+    @abstract   Value representing the status of a meeting participant.
+    */
     pub enum EKParticipantStatus {
         EKParticipantStatusUnknown = 0,
         EKParticipantStatusPending = 1,
@@ -107,6 +164,16 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum       EKCalendarType
+    @abstract   An enum representing the type of a calendar.
+
+    @constant   EKCalendarTypeLocal        This calendar is sync'd from either Mobile Me or tethered.
+    @constant   EKCalendarTypeCalDAV       This calendar is from a CalDAV server.
+    @constant   EKCalendarTypeExchange     This calendar comes from an Exchange server.
+    @constant   EKCalendarTypeSubscription This is a locally subscribed calendar.
+    @constant   EKCalendarTypeBirthday     This is the built-in birthday calendar.
+    */
     pub enum EKCalendarType {
         EKCalendarTypeLocal = 0,
         EKCalendarTypeCalDAV = 1,
@@ -118,6 +185,9 @@ ns_enum!(
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+      Event availability support (free/busy)
+    */
     pub enum EKCalendarEventAvailabilityMask {
         EKCalendarEventAvailabilityNone = 0,
         EKCalendarEventAvailabilityBusy = 1 << 0,
@@ -141,6 +211,10 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+     @enum       EKEntityType
+    @abstract   A value which specifies an entity type of event or reminder.
+    */
     pub enum EKEntityType {
         EKEntityTypeEvent = 0,
         EKEntityTypeReminder = 1,
@@ -149,6 +223,10 @@ ns_enum!(
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+     @enum       EKEntityMask
+    @abstract   A bitmask based on EKEntityType that can be used to specify multiple entities at once.
+    */
     pub enum EKEntityMask {
         EKEntityMaskEvent = 1 << EKEntityTypeEvent,
         EKEntityMaskReminder = 1 << EKEntityTypeReminder,
@@ -157,6 +235,14 @@ ns_options!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum       EKAlarmProximity
+    @abstract   A value indicating whether an alarm is triggered by entering or exiting a geofence.
+
+    @constant   EKAlarmProximityNone       The alarm has no proximity trigger.
+    @constant   EKAlarmProximityEnter      The alarm is set to fire when entering a region (geofence).
+    @constant   EKAlarmProximityLeave      The alarm is set to fire when leaving a region (geofence).
+    */
     pub enum EKAlarmProximity {
         EKAlarmProximityNone = 0,
         EKAlarmProximityEnter = 1,
@@ -166,6 +252,15 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum       EKAlarmType
+    @abstract   A value which specifies the action that occurs when the alarm is triggered.
+
+    @constant   EKAlarmTypeDisplay          The alarm displays a message.
+    @constant   EKAlarmTypeAudio            The alarm plays a sound.
+    @constant   EKAlarmTypeProcedure        The alarm opens a URL.
+    @constant   EKAlarmTypeEmail            The alarm sends an email.
+    */
     pub enum EKAlarmType {
         EKAlarmTypeDisplay = 0,
         EKAlarmTypeAudio = 1,
@@ -176,6 +271,19 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+     @enum       EKReminderPriority
+    @abstract   A priority for a reminder.
+    @discussion RFC 5545 allows priority to be specified with an integer in the range of 0-9,
+    with 0 representing an undefined priority, 1 the highest priority, and 9 the lowest priority.
+    Clients are encouraged to use these values when setting a reminders's priority,
+    but is is possible to specify any integer value from 0 to 9.
+
+    @constant   EKReminderPriorityNone          The reminder has no priority set.
+    @constant   EKReminderPriorityHigh          The reminder is high priority.
+    @constant   EKReminderPriorityMedium        The reminder is medium priority.
+    @constant   EKReminderPriorityLow           The reminder is low priority.
+    */
     pub enum EKReminderPriority {
         EKReminderPriorityNone = 0,
         EKReminderPriorityHigh = 1,

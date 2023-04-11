@@ -8,6 +8,9 @@ use crate::MailKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MailKit_MEDecodedMessage")]
+    /**
+      @brief Contains information about a decoded message
+    */
     pub struct MEDecodedMessage;
 
     #[cfg(feature = "MailKit_MEDecodedMessage")]
@@ -17,30 +20,56 @@ extern_class!(
 );
 
 #[cfg(feature = "MailKit_MEDecodedMessage")]
+/**
+  @brief Contains information about a decoded message
+*/
 unsafe impl NSCoding for MEDecodedMessage {}
 
 #[cfg(feature = "MailKit_MEDecodedMessage")]
+/**
+  @brief Contains information about a decoded message
+*/
 unsafe impl NSObjectProtocol for MEDecodedMessage {}
 
 #[cfg(feature = "MailKit_MEDecodedMessage")]
+/**
+  @brief Contains information about a decoded message
+*/
 unsafe impl NSSecureCoding for MEDecodedMessage {}
 
 extern_methods!(
+    /**
+      @brief Contains information about a decoded message
+    */
     #[cfg(feature = "MailKit_MEDecodedMessage")]
     unsafe impl MEDecodedMessage {
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          @brief The decoded MIME data for the message
+         The decoded data should not be encrypted or contain any signatures that were decoded. The @c rawData here should only contain MIME parts that a standard email parser can decode without needing to decrypt. All information on the encryption and signature status should be defined in @c securityInformation.
+         If the message is unable to be decrypted this should be left nil and an error message will be displayed to the user.
+        */
         #[method_id(@__retain_semantics Other rawData)]
         pub unsafe fn rawData(&self) -> Option<Id<NSData>>;
 
         #[cfg(feature = "MailKit_MEMessageSecurityInformation")]
+        /**
+          @brief The security information for whether or not the message was signed, encrypted, or had an errors in decoding.
+        */
         #[method_id(@__retain_semantics Other securityInformation)]
         pub unsafe fn securityInformation(&self) -> Id<MEMessageSecurityInformation>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          @brief The context for the decoded message. This will be passed back to the extension when Mail loads the extension's custom view controller for the message.
+        */
         #[method_id(@__retain_semantics Other context)]
         pub unsafe fn context(&self) -> Option<Id<NSData>>;
 
         #[cfg(feature = "MailKit_MEDecodedMessageBanner")]
+        /**
+          @brief Suggestion information used to populate a suggestion banner at the top of the message view. Clicking on the action associated with the suggestion banner will present the extension's view controller for the provided message context.
+        */
         #[method_id(@__retain_semantics Other banner)]
         pub unsafe fn banner(&self) -> Option<Id<MEDecodedMessageBanner>>;
 

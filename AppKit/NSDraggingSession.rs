@@ -22,34 +22,61 @@ unsafe impl NSObjectProtocol for NSDraggingSession {}
 extern_methods!(
     #[cfg(feature = "AppKit_NSDraggingSession")]
     unsafe impl NSDraggingSession {
+        /**
+          Controls the dragging formation when the drag is over the source. The default value is NSDraggingFormationNone.
+        */
         #[method(draggingFormation)]
         pub unsafe fn draggingFormation(&self) -> NSDraggingFormation;
 
+        /**
+          Controls the dragging formation when the drag is over the source. The default value is NSDraggingFormationNone.
+        */
         #[method(setDraggingFormation:)]
         pub unsafe fn setDraggingFormation(&self, dragging_formation: NSDraggingFormation);
 
+        /**
+          Controls whether the dragging image animates back to its starting point on a cancelled or failed drag. -draggingSession:endedAtPoint:operation: is a good time to change this value depending on the result of the drag operation. The default value is YES.
+        */
         #[method(animatesToStartingPositionsOnCancelOrFail)]
         pub unsafe fn animatesToStartingPositionsOnCancelOrFail(&self) -> bool;
 
+        /**
+          Controls whether the dragging image animates back to its starting point on a cancelled or failed drag. -draggingSession:endedAtPoint:operation: is a good time to change this value depending on the result of the drag operation. The default value is YES.
+        */
         #[method(setAnimatesToStartingPositionsOnCancelOrFail:)]
         pub unsafe fn setAnimatesToStartingPositionsOnCancelOrFail(
             &self,
             animates_to_starting_positions_on_cancel_or_fail: bool,
         );
 
+        /**
+          The index of the draggingItem under the cursor. The default is the NSDraggingItem closest to the location in the event that was passed to -beginDraggingSessionWithItems:event:source:
+        */
         #[method(draggingLeaderIndex)]
         pub unsafe fn draggingLeaderIndex(&self) -> NSInteger;
 
+        /**
+          The index of the draggingItem under the cursor. The default is the NSDraggingItem closest to the location in the event that was passed to -beginDraggingSessionWithItems:event:source:
+        */
         #[method(setDraggingLeaderIndex:)]
         pub unsafe fn setDraggingLeaderIndex(&self, dragging_leader_index: NSInteger);
 
         #[cfg(feature = "AppKit_NSPasteboard")]
+        /**
+          Returns the pasteboard object that holds the data being dragged.
+        */
         #[method_id(@__retain_semantics Other draggingPasteboard)]
         pub unsafe fn draggingPasteboard(&self) -> Id<NSPasteboard>;
 
+        /**
+          Returns a number that uniquely identifies the dragging session.
+        */
         #[method(draggingSequenceNumber)]
         pub unsafe fn draggingSequenceNumber(&self) -> NSInteger;
 
+        /**
+          The current location (cursor) of the drag in screen coordinates.
+        */
         #[method(draggingLocation)]
         pub unsafe fn draggingLocation(&self) -> NSPoint;
 

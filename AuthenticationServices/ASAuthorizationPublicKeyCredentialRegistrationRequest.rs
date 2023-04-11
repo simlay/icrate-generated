@@ -9,57 +9,96 @@ extern_protocol!(
         NSObjectProtocol + NSSecureCoding
     {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract The Relying Party identifier used to scope this request.
+        */
         #[method_id(@__retain_semantics Other relyingPartyIdentifier)]
         unsafe fn relyingPartyIdentifier(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          @abstract An arbitrary byte sequence which will be stored alongside the credential and will be returned with the credential when authenticating with it in the future. May be used by a relying party to identify the user account this credential is associated with.
+        */
         #[method_id(@__retain_semantics Other userID)]
         unsafe fn userID(&self) -> Id<NSData>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          @abstract An arbitrary byte sequence which will be stored alongside the credential and will be returned with the credential when authenticating with it in the future. May be used by a relying party to identify the user account this credential is associated with.
+        */
         #[method(setUserID:)]
         unsafe fn setUserID(&self, user_id: &NSData);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract A human readable name to associate with a credential, which a user should be able to use to identify the credential.
+        */
         #[method_id(@__retain_semantics Other name)]
         unsafe fn name(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract A human readable name to associate with a credential, which a user should be able to use to identify the credential.
+        */
         #[method(setName:)]
         unsafe fn setName(&self, name: &NSString);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract A high level human readable name to associate with a credential, which should only be used for display.
+        */
         #[method_id(@__retain_semantics Other displayName)]
         unsafe fn displayName(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract A high level human readable name to associate with a credential, which should only be used for display.
+        */
         #[method(setDisplayName:)]
         unsafe fn setDisplayName(&self, display_name: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          @abstract The challenge which can be used to verify the authenticator's attestation, if attestation is requested.
+        */
         #[method_id(@__retain_semantics Other challenge)]
         unsafe fn challenge(&self) -> Id<NSData>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          @abstract The challenge which can be used to verify the authenticator's attestation, if attestation is requested.
+        */
         #[method(setChallenge:)]
         unsafe fn setChallenge(&self, challenge: &NSData);
 
+        /**
+          @abstract A preference for whether the authenticator should attempt to verify that it is being used by its owner, such as through a PIN or biometrics.
+        */
         #[method_id(@__retain_semantics Other userVerificationPreference)]
         unsafe fn userVerificationPreference(
             &self,
         ) -> Id<ASAuthorizationPublicKeyCredentialUserVerificationPreference>;
 
+        /**
+          @abstract A preference for whether the authenticator should attempt to verify that it is being used by its owner, such as through a PIN or biometrics.
+        */
         #[method(setUserVerificationPreference:)]
         unsafe fn setUserVerificationPreference(
             &self,
             user_verification_preference: &ASAuthorizationPublicKeyCredentialUserVerificationPreference,
         );
 
+        /**
+          @abstract A preference for the type of attestation that the authenticator should attempt to perform.
+        */
         #[method_id(@__retain_semantics Other attestationPreference)]
         unsafe fn attestationPreference(
             &self,
         ) -> Id<ASAuthorizationPublicKeyCredentialAttestationKind>;
 
+        /**
+          @abstract A preference for the type of attestation that the authenticator should attempt to perform.
+        */
         #[method(setAttestationPreference:)]
         unsafe fn setAttestationPreference(
             &self,

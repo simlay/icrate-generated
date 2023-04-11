@@ -20,16 +20,28 @@ extern_protocol!(
 extern_protocol!(
     pub unsafe trait MTLFunctionLogDebugLocation: NSObjectProtocol {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          faulting function
+        */
         #[method_id(@__retain_semantics Other functionName)]
         unsafe fn functionName(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          source location
+        */
         #[method_id(@__retain_semantics Other URL)]
         unsafe fn URL(&self) -> Option<Id<NSURL>>;
 
+        /**
+          line number
+        */
         #[method(line)]
         unsafe fn line(&self) -> NSUInteger;
 
+        /**
+          column in line
+        */
         #[method(column)]
         unsafe fn column(&self) -> NSUInteger;
     }

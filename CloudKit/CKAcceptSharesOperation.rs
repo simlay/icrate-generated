@@ -46,6 +46,12 @@ extern_methods!(
             feature = "CloudKit_CKShareMetadata",
             feature = "Foundation_NSError"
         ))]
+        /**
+          @abstract Called once for each share metadata that the server processed
+
+          @discussion If error is nil then the share was successfully accepted.
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(perShareCompletionBlock)]
         pub unsafe fn perShareCompletionBlock(
             &self,
@@ -56,6 +62,12 @@ extern_methods!(
             feature = "CloudKit_CKShareMetadata",
             feature = "Foundation_NSError"
         ))]
+        /**
+          @abstract Called once for each share metadata that the server processed
+
+          @discussion If error is nil then the share was successfully accepted.
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(setPerShareCompletionBlock:)]
         pub unsafe fn setPerShareCompletionBlock(
             &self,
@@ -65,10 +77,24 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSError")]
+        /**
+          @abstract This block is called when the operation completes.
+
+          @discussion The @code -[NSOperation completionBlock] @endcode will also be called if both are set.
+          If the error is @c CKErrorPartialFailure, the error's userInfo dictionary contains a dictionary of shareURLs to errors keyed off of @c CKPartialErrorsByItemIDKey.  These errors are repeats of those sent back in previous @c perShareCompletionBlock invocations
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(acceptSharesCompletionBlock)]
         pub unsafe fn acceptSharesCompletionBlock(&self) -> *mut Block<(*mut NSError,), ()>;
 
         #[cfg(feature = "Foundation_NSError")]
+        /**
+          @abstract This block is called when the operation completes.
+
+          @discussion The @code -[NSOperation completionBlock] @endcode will also be called if both are set.
+          If the error is @c CKErrorPartialFailure, the error's userInfo dictionary contains a dictionary of shareURLs to errors keyed off of @c CKPartialErrorsByItemIDKey.  These errors are repeats of those sent back in previous @c perShareCompletionBlock invocations
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(setAcceptSharesCompletionBlock:)]
         pub unsafe fn setAcceptSharesCompletionBlock(
             &self,

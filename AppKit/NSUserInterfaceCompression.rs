@@ -53,6 +53,9 @@ extern_methods!(
         pub unsafe fn intersectsOptions(&self, options: &NSUserInterfaceCompressionOptions)
             -> bool;
 
+        /**
+         Returns YES if the option is equivalent to the empty set option.
+        */
         #[method(isEmpty)]
         pub unsafe fn isEmpty(&self) -> bool;
 
@@ -68,24 +71,43 @@ extern_methods!(
             options: &NSUserInterfaceCompressionOptions,
         ) -> Id<NSUserInterfaceCompressionOptions>;
 
+        /**
+         Option specifying views should hide their images if applicable.
+        */
         #[method_id(@__retain_semantics Other hideImagesOption)]
         pub unsafe fn hideImagesOption() -> Id<NSUserInterfaceCompressionOptions>;
 
+        /**
+         Option specifying views should hide their text if applicable.
+        */
         #[method_id(@__retain_semantics Other hideTextOption)]
         pub unsafe fn hideTextOption() -> Id<NSUserInterfaceCompressionOptions>;
 
+        /**
+         Option specifying views should reduce their internal metrics when possible to reduce padding around contents.
+        */
         #[method_id(@__retain_semantics Other reduceMetricsOption)]
         pub unsafe fn reduceMetricsOption() -> Id<NSUserInterfaceCompressionOptions>;
 
+        /**
+         Option specifying views will no longer maintain equal widths. This is handled by the system and no action is required by the views.
+        */
         #[method_id(@__retain_semantics Other breakEqualWidthsOption)]
         pub unsafe fn breakEqualWidthsOption() -> Id<NSUserInterfaceCompressionOptions>;
 
+        /**
+         Option which is the composite of all standard options provided by AppKit.
+        */
         #[method_id(@__retain_semantics Other standardOptions)]
         pub unsafe fn standardOptions() -> Id<NSUserInterfaceCompressionOptions>;
     }
 );
 
 extern_protocol!(
+    /**
+     NSButton, NSSegmentedControl, and NSSliderTouchBarItem's view currently conform to this protocol.
+    This protocol is currently only applicable to views in the Touch Bar.
+    */
     pub unsafe trait NSUserInterfaceCompression {
         #[cfg(all(
             feature = "AppKit_NSUserInterfaceCompressionOptions",
@@ -108,6 +130,10 @@ extern_protocol!(
         ) -> NSSize;
 
         #[cfg(feature = "AppKit_NSUserInterfaceCompressionOptions")]
+        /**
+         Returns the NSCompressibleUserInterfaceOptions currently applied to the view.
+        Only options that have been applied and are actively being respected are included.
+        */
         #[method_id(@__retain_semantics Other activeCompressionOptions)]
         unsafe fn activeCompressionOptions(&self) -> Id<NSUserInterfaceCompressionOptions>;
     }

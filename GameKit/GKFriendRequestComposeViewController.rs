@@ -83,6 +83,9 @@ extern_methods!(
 
 extern_protocol!(
     #[deprecated]
+    /**
+      Optional delegate
+    */
     pub unsafe trait GKFriendRequestComposeViewControllerDelegate {
         #[cfg(feature = "GameKit_GKFriendRequestComposeViewController")]
         #[deprecated]

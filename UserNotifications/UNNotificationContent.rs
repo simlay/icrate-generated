@@ -6,6 +6,9 @@ use crate::Foundation::*;
 use crate::UserNotifications::*;
 
 extern_protocol!(
+    /**
+      Other system framework objects can conform to UNNotificationContentProviding to provide context relevant to the notification. Only objects that conform to UNNotificationContentProviding in the Apple SDK are allowed. The conformance will be ignored by other objects conforming to UNNotificationContentProviding. Do not conform objects to UNNotificationContentProviding.
+    */
     pub unsafe trait UNNotificationContentProviding: NSObjectProtocol {}
 
     unsafe impl ProtocolType for dyn UNNotificationContentProviding {}
@@ -48,61 +51,109 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "UserNotifications_UNNotificationAttachment"
         ))]
+        /**
+          Optional array of attachments.
+        */
         #[method_id(@__retain_semantics Other attachments)]
         pub unsafe fn attachments(&self) -> Id<NSArray<UNNotificationAttachment>>;
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+          The application badge number.
+        */
         #[method_id(@__retain_semantics Other badge)]
         pub unsafe fn badge(&self) -> Option<Id<NSNumber>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The body of the notification.
+        */
         #[method_id(@__retain_semantics Other body)]
         pub unsafe fn body(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The identifier for a registered UNNotificationCategory that will be used to determine the appropriate actions to display for the notification.
+        */
         #[method_id(@__retain_semantics Other categoryIdentifier)]
         pub unsafe fn categoryIdentifier(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The launch image that will be used when the app is opened from the notification.
+        */
         #[method_id(@__retain_semantics Other launchImageName)]
         pub unsafe fn launchImageName(&self) -> Id<NSString>;
 
         #[cfg(feature = "UserNotifications_UNNotificationSound")]
+        /**
+          The sound that will be played for the notification.
+        */
         #[method_id(@__retain_semantics Other sound)]
         pub unsafe fn sound(&self) -> Option<Id<UNNotificationSound>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The subtitle of the notification.
+        */
         #[method_id(@__retain_semantics Other subtitle)]
         pub unsafe fn subtitle(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The unique identifier for the thread or conversation related to this notification request. It will be used to visually group notifications together.
+        */
         #[method_id(@__retain_semantics Other threadIdentifier)]
         pub unsafe fn threadIdentifier(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The title of the notification.
+        */
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          Apps can set the userInfo for locally scheduled notification requests. The contents of the push payload will be set as the userInfo for remote notifications.
+        */
         #[method_id(@__retain_semantics Other userInfo)]
         pub unsafe fn userInfo(&self) -> Id<NSDictionary>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The argument to be inserted in the summary for this notification.
+        */
         #[deprecated = "summaryArgument is ignored"]
         #[method_id(@__retain_semantics Other summaryArgument)]
         pub unsafe fn summaryArgument(&self) -> Id<NSString>;
 
+        /**
+          A number that indicates how many items in the summary are represented in the summary.
+         For example if a podcast app sends one notification for 3 new episodes in a show,
+         the argument should be the name of the show and the count should be 3.
+         Default is 1 and cannot be 0.
+        */
         #[deprecated = "summaryArgumentCount is ignored"]
         #[method(summaryArgumentCount)]
         pub unsafe fn summaryArgumentCount(&self) -> NSUInteger;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          default nil
+        */
         #[method_id(@__retain_semantics Other targetContentIdentifier)]
         pub unsafe fn targetContentIdentifier(&self) -> Option<Id<NSString>>;
 
+        /**
+          The interruption level determines the degree of interruption associated with the notification
+        */
         #[method(interruptionLevel)]
         pub unsafe fn interruptionLevel(&self) -> UNNotificationInterruptionLevel;
 
+        /**
+          Relevance score determines the sorting for the notification across app notifications. The expected range is between 0.0f and 1.0f.
+        */
         #[method(relevanceScore)]
         pub unsafe fn relevanceScore(&self) -> c_double;
 
@@ -147,6 +198,9 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "UserNotifications_UNNotificationAttachment"
         ))]
+        /**
+          Optional array of attachments.
+        */
         #[method_id(@__retain_semantics Other attachments)]
         pub unsafe fn attachments(&self) -> Id<NSArray<UNNotificationAttachment>>;
 
@@ -154,130 +208,229 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "UserNotifications_UNNotificationAttachment"
         ))]
+        /**
+          Optional array of attachments.
+        */
         #[method(setAttachments:)]
         pub unsafe fn setAttachments(&self, attachments: &NSArray<UNNotificationAttachment>);
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+          The application badge number. nil means no change. 0 to hide.
+        */
         #[method_id(@__retain_semantics Other badge)]
         pub unsafe fn badge(&self) -> Option<Id<NSNumber>>;
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+          The application badge number. nil means no change. 0 to hide.
+        */
         #[method(setBadge:)]
         pub unsafe fn setBadge(&self, badge: Option<&NSNumber>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The body of the notification. Use -[NSString localizedUserNotificationStringForKey:arguments:] to provide a string that will be localized at the time that the notification is presented.
+        */
         #[method_id(@__retain_semantics Other body)]
         pub unsafe fn body(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The body of the notification. Use -[NSString localizedUserNotificationStringForKey:arguments:] to provide a string that will be localized at the time that the notification is presented.
+        */
         #[method(setBody:)]
         pub unsafe fn setBody(&self, body: &NSString);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The identifier for a registered UNNotificationCategory that will be used to determine the appropriate actions to display for the notification.
+        */
         #[method_id(@__retain_semantics Other categoryIdentifier)]
         pub unsafe fn categoryIdentifier(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The identifier for a registered UNNotificationCategory that will be used to determine the appropriate actions to display for the notification.
+        */
         #[method(setCategoryIdentifier:)]
         pub unsafe fn setCategoryIdentifier(&self, category_identifier: &NSString);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The launch image that will be used when the app is opened from the notification.
+        */
         #[method_id(@__retain_semantics Other launchImageName)]
         pub unsafe fn launchImageName(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The launch image that will be used when the app is opened from the notification.
+        */
         #[method(setLaunchImageName:)]
         pub unsafe fn setLaunchImageName(&self, launch_image_name: &NSString);
 
         #[cfg(feature = "UserNotifications_UNNotificationSound")]
+        /**
+          The sound that will be played for the notification.
+        */
         #[method_id(@__retain_semantics Other sound)]
         pub unsafe fn sound(&self) -> Option<Id<UNNotificationSound>>;
 
         #[cfg(feature = "UserNotifications_UNNotificationSound")]
+        /**
+          The sound that will be played for the notification.
+        */
         #[method(setSound:)]
         pub unsafe fn setSound(&self, sound: Option<&UNNotificationSound>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The subtitle of the notification. Use -[NSString localizedUserNotificationStringForKey:arguments:] to provide a string that will be localized at the time that the notification is presented.
+        */
         #[method_id(@__retain_semantics Other subtitle)]
         pub unsafe fn subtitle(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The subtitle of the notification. Use -[NSString localizedUserNotificationStringForKey:arguments:] to provide a string that will be localized at the time that the notification is presented.
+        */
         #[method(setSubtitle:)]
         pub unsafe fn setSubtitle(&self, subtitle: &NSString);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The unique identifier for the thread or conversation related to this notification request. It will be used to visually group notifications together.
+        */
         #[method_id(@__retain_semantics Other threadIdentifier)]
         pub unsafe fn threadIdentifier(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The unique identifier for the thread or conversation related to this notification request. It will be used to visually group notifications together.
+        */
         #[method(setThreadIdentifier:)]
         pub unsafe fn setThreadIdentifier(&self, thread_identifier: &NSString);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The title of the notification. Use -[NSString localizedUserNotificationStringForKey:arguments:] to provide a string that will be localized at the time that the notification is presented.
+        */
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The title of the notification. Use -[NSString localizedUserNotificationStringForKey:arguments:] to provide a string that will be localized at the time that the notification is presented.
+        */
         #[method(setTitle:)]
         pub unsafe fn setTitle(&self, title: &NSString);
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          Apps can set the userInfo for locally scheduled notification requests. The contents of the push payload will be set as the userInfo for remote notifications.
+        */
         #[method_id(@__retain_semantics Other userInfo)]
         pub unsafe fn userInfo(&self) -> Id<NSDictionary>;
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          Apps can set the userInfo for locally scheduled notification requests. The contents of the push payload will be set as the userInfo for remote notifications.
+        */
         #[method(setUserInfo:)]
         pub unsafe fn setUserInfo(&self, user_info: &NSDictionary);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The argument to be inserted in the summary for this notification.
+        */
         #[deprecated = "summaryArgument is ignored"]
         #[method_id(@__retain_semantics Other summaryArgument)]
         pub unsafe fn summaryArgument(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The argument to be inserted in the summary for this notification.
+        */
         #[deprecated = "summaryArgument is ignored"]
         #[method(setSummaryArgument:)]
         pub unsafe fn setSummaryArgument(&self, summary_argument: &NSString);
 
+        /**
+          A number that indicates how many items in the summary are represented in the summary.
+         For example if a podcast app sends one notification for 3 new episodes in a show,
+         the argument should be the name of the show and the count should be 3.
+         Default is 1 and cannot be 0.
+        */
         #[deprecated = "summaryArgumentCount is ignored"]
         #[method(summaryArgumentCount)]
         pub unsafe fn summaryArgumentCount(&self) -> NSUInteger;
 
+        /**
+          A number that indicates how many items in the summary are represented in the summary.
+         For example if a podcast app sends one notification for 3 new episodes in a show,
+         the argument should be the name of the show and the count should be 3.
+         Default is 1 and cannot be 0.
+        */
         #[deprecated = "summaryArgumentCount is ignored"]
         #[method(setSummaryArgumentCount:)]
         pub unsafe fn setSummaryArgumentCount(&self, summary_argument_count: NSUInteger);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          default nil
+        */
         #[method_id(@__retain_semantics Other targetContentIdentifier)]
         pub unsafe fn targetContentIdentifier(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          default nil
+        */
         #[method(setTargetContentIdentifier:)]
         pub unsafe fn setTargetContentIdentifier(
             &self,
             target_content_identifier: Option<&NSString>,
         );
 
+        /**
+          The interruption level determines the degree of interruption associated with the notification
+        */
         #[method(interruptionLevel)]
         pub unsafe fn interruptionLevel(&self) -> UNNotificationInterruptionLevel;
 
+        /**
+          The interruption level determines the degree of interruption associated with the notification
+        */
         #[method(setInterruptionLevel:)]
         pub unsafe fn setInterruptionLevel(
             &self,
             interruption_level: UNNotificationInterruptionLevel,
         );
 
+        /**
+          Relevance score determines the sorting for the notification across app notifications. The expected range is between 0.0f and 1.0f.
+        */
         #[method(relevanceScore)]
         pub unsafe fn relevanceScore(&self) -> c_double;
 
+        /**
+          Relevance score determines the sorting for the notification across app notifications. The expected range is between 0.0f and 1.0f.
+        */
         #[method(setRelevanceScore:)]
         pub unsafe fn setRelevanceScore(&self, relevance_score: c_double);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          default nil
+        */
         #[method_id(@__retain_semantics Other filterCriteria)]
         pub unsafe fn filterCriteria(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          default nil
+        */
         #[method(setFilterCriteria:)]
         pub unsafe fn setFilterCriteria(&self, filter_criteria: Option<&NSString>);
     }

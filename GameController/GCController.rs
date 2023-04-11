@@ -17,6 +17,11 @@ extern_static!(GCControllerUserCustomizationsDidChangeNotification: &'static NSS
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     This is the player index that a connected controller will have if it has never been assigned a player index on the current system.
+    Controllers retain the player index they have been assigned between game sessions, so if you wish to unset the player index of a
+    controller set it back to this value.
+    */
     pub enum GCControllerPlayerIndex {
         GCControllerPlayerIndexUnset = -1,
         GCControllerPlayerIndex1 = 0,
@@ -29,6 +34,17 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameController_GCController")]
+    /**
+     Controllers are available to an application that links to GameController.framework. There are 2 ways to access controllers
+    paired to the system, adopt both to ensure the best user experience:
+
+    1: Querying for the the current array or controllers using [GCController controllers].
+    2: Registering for Connection/Disconnection notifications from NSNotificationCenter.
+
+    Only controllers that support one of the allowed profiles, such as GCExtendedGamepad, will be enumerated. Check for the profile
+    supported before using a controller in your application. Ignore a controller that doesn't support a profile that suits
+    your application, as the user will expect their controller to either be fully supported or not supported at all.
+    */
     pub struct GCController;
 
     #[cfg(feature = "GameController_GCController")]
@@ -38,18 +54,77 @@ extern_class!(
 );
 
 #[cfg(feature = "GameController_GCController")]
+/**
+ Controllers are available to an application that links to GameController.framework. There are 2 ways to access controllers
+paired to the system, adopt both to ensure the best user experience:
+
+1: Querying for the the current array or controllers using [GCController controllers].
+2: Registering for Connection/Disconnection notifications from NSNotificationCenter.
+
+Only controllers that support one of the allowed profiles, such as GCExtendedGamepad, will be enumerated. Check for the profile
+supported before using a controller in your application. Ignore a controller that doesn't support a profile that suits
+your application, as the user will expect their controller to either be fully supported or not supported at all.
+*/
 unsafe impl GCDevice for GCController {}
 
 #[cfg(feature = "GameController_GCController")]
+/**
+ Controllers are available to an application that links to GameController.framework. There are 2 ways to access controllers
+paired to the system, adopt both to ensure the best user experience:
+
+1: Querying for the the current array or controllers using [GCController controllers].
+2: Registering for Connection/Disconnection notifications from NSNotificationCenter.
+
+Only controllers that support one of the allowed profiles, such as GCExtendedGamepad, will be enumerated. Check for the profile
+supported before using a controller in your application. Ignore a controller that doesn't support a profile that suits
+your application, as the user will expect their controller to either be fully supported or not supported at all.
+*/
 unsafe impl NSObjectProtocol for GCController {}
 
 extern_methods!(
+    /**
+     Controllers are available to an application that links to GameController.framework. There are 2 ways to access controllers
+    paired to the system, adopt both to ensure the best user experience:
+
+    1: Querying for the the current array or controllers using [GCController controllers].
+    2: Registering for Connection/Disconnection notifications from NSNotificationCenter.
+
+    Only controllers that support one of the allowed profiles, such as GCExtendedGamepad, will be enumerated. Check for the profile
+    supported before using a controller in your application. Ignore a controller that doesn't support a profile that suits
+    your application, as the user will expect their controller to either be fully supported or not supported at all.
+    */
     #[cfg(feature = "GameController_GCController")]
     unsafe impl GCController {
+        /**
+         Set this block to be notified when a user intends to suspend or resume the current game state. A controller will have a button
+        dedicated to suspending and resuming play and invoking context sensitive actions. During event handling the system will
+        notify the application using this block such that the application can handle the suspension and resumption from the given controller.
+
+        Use this to implement your canonical transition to a pause menu for example if that is your application's desired handling
+        of suspension in play. You may pause and resume based on game state as well so the event is only called each time the
+        pause/resume button is pressed.
+
+        @note This handler has been deprecated in favor of the Menu button found on GCMicroGamepad and GCExtendedGamepad.
+        @see microGamepad
+        @see extendedGamepad
+        */
         #[deprecated = "controllerPausedHandler has been deprecated. Use the Menu button found on the controller's profile, if it exists."]
         #[method(controllerPausedHandler)]
         pub unsafe fn controllerPausedHandler(&self) -> *mut Block<(NonNull<GCController>,), ()>;
 
+        /**
+         Set this block to be notified when a user intends to suspend or resume the current game state. A controller will have a button
+        dedicated to suspending and resuming play and invoking context sensitive actions. During event handling the system will
+        notify the application using this block such that the application can handle the suspension and resumption from the given controller.
+
+        Use this to implement your canonical transition to a pause menu for example if that is your application's desired handling
+        of suspension in play. You may pause and resume based on game state as well so the event is only called each time the
+        pause/resume button is pressed.
+
+        @note This handler has been deprecated in favor of the Menu button found on GCMicroGamepad and GCExtendedGamepad.
+        @see microGamepad
+        @see extendedGamepad
+        */
         #[deprecated = "controllerPausedHandler has been deprecated. Use the Menu button found on the controller's profile, if it exists."]
         #[method(setControllerPausedHandler:)]
         pub unsafe fn setControllerPausedHandler(
@@ -57,36 +132,125 @@ extern_methods!(
             controller_paused_handler: Option<&Block<(NonNull<GCController>,), ()>>,
         );
 
+        /**
+         The most recently used game controller. If a user actuates a game controller input, that controller will become the current one.
+
+        @note This is useful for single player games where you only care about whether an input is pressed, and not where it came from. You
+        will still need to register for changes to GCController.current so that your UI can remain up-to-date with the current controller.
+        */
         #[method_id(@__retain_semantics Other current)]
         pub unsafe fn current() -> Option<Id<GCController>>;
 
+        /**
+         Whether the current application should monitor and respond to game controller events when it is not the frontmost application.
+
+        @example If shouldMonitorBackgroundEvents is NO, and the application is not the frontmost application, any inputs from a game controller will
+        not be forwarded to the application. Once the application becomes the frontmost application, game controller events will be forwarded.
+
+        @note Starting with macOS Big Sur 11.3, shouldMonitorBackgroundEvents will be NO by default. For applications built prior to macOS Big Sur 11.3,
+        (or running on devices with an earlier version of macOS), shouldMonitorBackgroundEvents will be YES by default. On iOS and tvOS, this property is ignored.
+        */
         #[method(shouldMonitorBackgroundEvents)]
         pub unsafe fn shouldMonitorBackgroundEvents() -> bool;
 
+        /**
+         Whether the current application should monitor and respond to game controller events when it is not the frontmost application.
+
+        @example If shouldMonitorBackgroundEvents is NO, and the application is not the frontmost application, any inputs from a game controller will
+        not be forwarded to the application. Once the application becomes the frontmost application, game controller events will be forwarded.
+
+        @note Starting with macOS Big Sur 11.3, shouldMonitorBackgroundEvents will be NO by default. For applications built prior to macOS Big Sur 11.3,
+        (or running on devices with an earlier version of macOS), shouldMonitorBackgroundEvents will be YES by default. On iOS and tvOS, this property is ignored.
+        */
         #[method(setShouldMonitorBackgroundEvents:)]
         pub unsafe fn setShouldMonitorBackgroundEvents(should_monitor_background_events: bool);
 
+        /**
+         A controller may be form fitting or otherwise closely attached to the device. This closeness to other inputs on the device
+        may suggest that interaction with the device may use other inputs easily. This is presented to developers to allow them to
+        make informed decisions about UI and interactions to choose for their game in this situation.
+        */
         #[method(isAttachedToDevice)]
         pub unsafe fn isAttachedToDevice(&self) -> bool;
 
+        /**
+         A controller may represent a real device managed by the operating system, or a virtual snapshot created by the developer.
+        If a controller is directly created by the developer, it is considered to be a snapshot, allowing direct writes to any
+        GCControllerElement of its profiles. If the controller is not snapshot, the system will reject any write requests to GCControllerElement.
+
+        @see controllerWithMicroGamepad
+        @see controllerWithExtendedGamepad
+        @see capture
+        */
         #[method(isSnapshot)]
         pub unsafe fn isSnapshot(&self) -> bool;
 
+        /**
+         A player index for the controller, defaults to GCControllerPlayerIndexUnset.
+
+        This can be set both for the application to keep track of controllers and as a signal to make a controller display a player
+        index on a set of LEDs or some other mechanism.
+
+        A controller is not guaranteed to have a visual display of the playerIndex, playerIndex does not persist for a controller
+        with regards to a system.
+
+        Negative values less than GCControllerPlayerIndexUnset will just map back to GCControllerPlayerIndexUnset when read back.
+        */
         #[method(playerIndex)]
         pub unsafe fn playerIndex(&self) -> GCControllerPlayerIndex;
 
+        /**
+         A player index for the controller, defaults to GCControllerPlayerIndexUnset.
+
+        This can be set both for the application to keep track of controllers and as a signal to make a controller display a player
+        index on a set of LEDs or some other mechanism.
+
+        A controller is not guaranteed to have a visual display of the playerIndex, playerIndex does not persist for a controller
+        with regards to a system.
+
+        Negative values less than GCControllerPlayerIndexUnset will just map back to GCControllerPlayerIndexUnset when read back.
+        */
         #[method(setPlayerIndex:)]
         pub unsafe fn setPlayerIndex(&self, player_index: GCControllerPlayerIndex);
 
         #[cfg(feature = "GameController_GCDeviceBattery")]
+        /**
+         Gets the battery information if controller supports one
+
+        This property is useful when you try to notify your user to change or charge controller before it runs out of battery life
+        or simply display the current battery level and status.
+        */
         #[method_id(@__retain_semantics Other battery)]
         pub unsafe fn battery(&self) -> Option<Id<GCDeviceBattery>>;
 
         #[cfg(feature = "GameController_GCPhysicalInputProfile")]
+        /**
+         Gets the physical input profile for the controller.
+
+        @note This is equivalent to the controller's microGamepad, or extendedGamepad instance.
+        @see microGamepad
+        @see extendedGamepad
+        */
         #[method_id(@__retain_semantics Other physicalInputProfile)]
         pub unsafe fn physicalInputProfile(&self) -> Id<GCPhysicalInputProfile>;
 
         #[cfg(feature = "GameController_GCGamepad")]
+        /**
+         Gets the profile for the controller that suits current application.
+
+        There are several supported profiles, with an additional optional profile for motion as well.
+        Each controller may be able to map its inputs into all profiles or just one kind of profile. Query for the controller
+        profile that suits your game, the simplest kind will be supported by the broadest variety
+        of controllers. A controller supporting the Extended Gamepad profile for example supports the Gamepad profile and more.
+        As such it can always be used just in the Gamepad profile if that suits the game.
+
+        A physical controller that supports a profile must support it completely. That means that all buttons and axis inputs must
+        be valid inputs that a developer can utilize.
+
+        If a controller does not support the given profile the returned value will be nil. Use this to filter controllers if the
+        application requires a specific kind of profile.
+        @see motion
+        */
         #[deprecated]
         #[method_id(@__retain_semantics Other gamepad)]
         pub unsafe fn gamepad(&self) -> Option<Id<GCGamepad>>;
@@ -100,14 +264,33 @@ extern_methods!(
         pub unsafe fn extendedGamepad(&self) -> Option<Id<GCExtendedGamepad>>;
 
         #[cfg(feature = "GameController_GCMotion")]
+        /**
+         Gets the motion input profile. This profile is optional and may be available if the controller is attached to a device that supports motion.
+        If this is nil the controller does not support motion input and only the gamepad & extendedGamepad profiles are available.
+        @see gamepad
+        @see extendedGamepad
+        */
         #[method_id(@__retain_semantics Other motion)]
         pub unsafe fn motion(&self) -> Option<Id<GCMotion>>;
 
         #[cfg(feature = "GameController_GCDeviceLight")]
+        /**
+         Gets the light for the controller, if one exists.
+
+        A controller's light can be used to signal information to the player, such as using different light colors based on the player
+        index. It can also be used to react to in-game events and enhance user immersion.
+        */
         #[method_id(@__retain_semantics Other light)]
         pub unsafe fn light(&self) -> Option<Id<GCDeviceLight>>;
 
         #[cfg(feature = "GameController_GCDeviceHaptics")]
+        /**
+         Gets the haptics for the controller, if one exists.
+
+        Use this property to create CHHapticEngine instances according to your needs.
+
+        @note Haptics are a drain on the controller's battery, and can be distracting when used excessively.
+        */
         #[method_id(@__retain_semantics Other haptics)]
         pub unsafe fn haptics(&self) -> Option<Id<GCDeviceHaptics>>;
 

@@ -7,6 +7,9 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreData_NSPropertyDescription")]
+    /**
+      Properties describe values within a managed object. There are different types of properties, each of them represented by a subclass which encapsulates the specific property behavior.
+    */
     pub struct NSPropertyDescription;
 
     #[cfg(feature = "CoreData_NSPropertyDescription")]
@@ -16,12 +19,21 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreData_NSPropertyDescription")]
+/**
+  Properties describe values within a managed object. There are different types of properties, each of them represented by a subclass which encapsulates the specific property behavior.
+*/
 unsafe impl NSCoding for NSPropertyDescription {}
 
 #[cfg(feature = "CoreData_NSPropertyDescription")]
+/**
+  Properties describe values within a managed object. There are different types of properties, each of them represented by a subclass which encapsulates the specific property behavior.
+*/
 unsafe impl NSObjectProtocol for NSPropertyDescription {}
 
 extern_methods!(
+    /**
+      Properties describe values within a managed object. There are different types of properties, each of them represented by a subclass which encapsulates the specific property behavior.
+    */
     #[cfg(feature = "CoreData_NSPropertyDescription")]
     unsafe impl NSPropertyDescription {
         #[cfg(feature = "CoreData_NSEntityDescription")]
@@ -36,19 +48,34 @@ extern_methods!(
         #[method(setName:)]
         pub unsafe fn setName(&self, name: &NSString);
 
+        /**
+          The optional flag specifies whether a property's value can be nil or not (before an object can be persisted).
+        */
         #[method(isOptional)]
         pub unsafe fn isOptional(&self) -> bool;
 
+        /**
+          The optional flag specifies whether a property's value can be nil or not (before an object can be persisted).
+        */
         #[method(setOptional:)]
         pub unsafe fn setOptional(&self, optional: bool);
 
+        /**
+          The transient flag specifies whether a property's value is persisted or ignored when an object is persisted - transient properties are still managed for undo/redo, validation, etc.
+        */
         #[method(isTransient)]
         pub unsafe fn isTransient(&self) -> bool;
 
+        /**
+          The transient flag specifies whether a property's value is persisted or ignored when an object is persisted - transient properties are still managed for undo/redo, validation, etc.
+        */
         #[method(setTransient:)]
         pub unsafe fn setTransient(&self, transient: bool);
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSPredicate"))]
+        /**
+          Instead of individual methods to set/get parameters like length, min and max values, formats, etc., there is a list of predicates evaluated against the managed objects and corresponding error messages (which can be localized).
+        */
         #[method_id(@__retain_semantics Other validationPredicates)]
         pub unsafe fn validationPredicates(&self) -> Id<NSArray<NSPredicate>>;
 
@@ -76,36 +103,63 @@ extern_methods!(
         #[method(setUserInfo:)]
         pub unsafe fn setUserInfo(&self, user_info: Option<&NSDictionary>);
 
+        /**
+          Returns a boolean value indicating if the property is important for searching.  NSPersistentStores can optionally utilize this information upon store creation for operations like defining indexes.
+        */
         #[deprecated = "Use NSEntityDescription.indexes instead"]
         #[method(isIndexed)]
         pub unsafe fn isIndexed(&self) -> bool;
 
+        /**
+          Returns a boolean value indicating if the property is important for searching.  NSPersistentStores can optionally utilize this information upon store creation for operations like defining indexes.
+        */
         #[deprecated = "Use NSEntityDescription.indexes instead"]
         #[method(setIndexed:)]
         pub unsafe fn setIndexed(&self, indexed: bool);
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          Returns the version hash for the property.  The version hash is used to uniquely identify a property based on its configuration.  The version hash uses only values which affect the persistence of data and the user-defined versionHashModifier value.  (The values which affect persistence are the name of the property, the flags for isOptional, isTransient, and isReadOnly).  This value is stored as part of the version information in the metadata for stores, as well as a definition of a property involved in an NSPropertyMapping.
+        */
         #[method_id(@__retain_semantics Other versionHash)]
         pub unsafe fn versionHash(&self) -> Id<NSData>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Returns/sets the version hash modifier for the property.  This value is included in the version hash for the property, allowing developers to mark/denote a property as being a different "version" than another, even if all of the values which affects persistence are equal.  (Such a difference is important in cases where the design of a property is unchanged, but the format or content of data has changed.)
+        */
         #[method_id(@__retain_semantics Other versionHashModifier)]
         pub unsafe fn versionHashModifier(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Returns/sets the version hash modifier for the property.  This value is included in the version hash for the property, allowing developers to mark/denote a property as being a different "version" than another, even if all of the values which affects persistence are equal.  (Such a difference is important in cases where the design of a property is unchanged, but the format or content of data has changed.)
+        */
         #[method(setVersionHashModifier:)]
         pub unsafe fn setVersionHashModifier(&self, version_hash_modifier: Option<&NSString>);
 
+        /**
+          Returns a boolean value indicating if the property should be indexed by Spotlight.
+        */
         #[method(isIndexedBySpotlight)]
         pub unsafe fn isIndexedBySpotlight(&self) -> bool;
 
+        /**
+          Returns a boolean value indicating if the property should be indexed by Spotlight.
+        */
         #[method(setIndexedBySpotlight:)]
         pub unsafe fn setIndexedBySpotlight(&self, indexed_by_spotlight: bool);
 
+        /**
+          Returns a boolean value indicating if the property data should be written out to the external record file.
+        */
         #[deprecated = "Spotlight integration is deprecated. Use CoreSpotlight integration instead."]
         #[method(isStoredInExternalRecord)]
         pub unsafe fn isStoredInExternalRecord(&self) -> bool;
 
+        /**
+          Returns a boolean value indicating if the property data should be written out to the external record file.
+        */
         #[deprecated = "Spotlight integration is deprecated. Use CoreSpotlight integration instead."]
         #[method(setStoredInExternalRecord:)]
         pub unsafe fn setStoredInExternalRecord(&self, stored_in_external_record: bool);

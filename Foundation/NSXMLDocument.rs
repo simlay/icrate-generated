@@ -5,6 +5,14 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+     @typedef NSXMLDocumentContentKind
+    @abstract Define what type of document this is.
+    @constant NSXMLDocumentXMLKind The default document type
+    @constant NSXMLDocumentXHTMLKind Set if NSXMLDocumentTidyHTML is set and HTML is detected
+    @constant NSXMLDocumentHTMLKind Outputs empty tags without a close tag, eg <br>
+    @constant NSXMLDocumentTextKind Output the string value of the document
+    */
     pub enum NSXMLDocumentContentKind {
         NSXMLDocumentXMLKind = 0,
         NSXMLDocumentXHTMLKind = 1,
@@ -16,6 +24,11 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSXMLDocument")]
+    /**
+     @class NSXMLDocument
+    @abstract An XML Document
+    @discussion Note: if the application of a method would result in more than one element in the children array, an exception is thrown. Trying to add a document, namespace, attribute, or node with a parent also throws an exception. To add a node with a parent first detach or create a copy of it.
+    */
     pub struct NSXMLDocument;
 
     #[cfg(feature = "Foundation_NSXMLDocument")]
@@ -26,9 +39,19 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSXMLDocument")]
+/**
+ @class NSXMLDocument
+@abstract An XML Document
+@discussion Note: if the application of a method would result in more than one element in the children array, an exception is thrown. Trying to add a document, namespace, attribute, or node with a parent also throws an exception. To add a node with a parent first detach or create a copy of it.
+*/
 unsafe impl NSObjectProtocol for NSXMLDocument {}
 
 extern_methods!(
+    /**
+     @class NSXMLDocument
+    @abstract An XML Document
+    @discussion Note: if the application of a method would result in more than one element in the children array, an exception is thrown. Trying to add a document, namespace, attribute, or node with a parent also throws an exception. To add a node with a parent first detach or create a copy of it.
+    */
     #[cfg(feature = "Foundation_NSXMLDocument")]
     unsafe impl NSXMLDocument {
         #[method_id(@__retain_semantics Init init)]
@@ -69,30 +92,54 @@ extern_methods!(
         pub unsafe fn replacementClassForClass(cls: &Class) -> &'static Class;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         primitive
+        */
         #[method_id(@__retain_semantics Other characterEncoding)]
         pub unsafe fn characterEncoding(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         primitive
+        */
         #[method(setCharacterEncoding:)]
         pub unsafe fn setCharacterEncoding(&self, character_encoding: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         primitive
+        */
         #[method_id(@__retain_semantics Other version)]
         pub unsafe fn version(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         primitive
+        */
         #[method(setVersion:)]
         pub unsafe fn setVersion(&self, version: Option<&NSString>);
 
+        /**
+         primitive
+        */
         #[method(isStandalone)]
         pub unsafe fn isStandalone(&self) -> bool;
 
+        /**
+         primitive
+        */
         #[method(setStandalone:)]
         pub unsafe fn setStandalone(&self, standalone: bool);
 
+        /**
+         primitive
+        */
         #[method(documentContentKind)]
         pub unsafe fn documentContentKind(&self) -> NSXMLDocumentContentKind;
 
+        /**
+         primitive
+        */
         #[method(setDocumentContentKind:)]
         pub unsafe fn setDocumentContentKind(
             &self,
@@ -100,18 +147,30 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         primitive
+        */
         #[method_id(@__retain_semantics Other MIMEType)]
         pub unsafe fn MIMEType(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         primitive
+        */
         #[method(setMIMEType:)]
         pub unsafe fn setMIMEType(&self, mime_type: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSXMLDTD")]
+        /**
+         primitive
+        */
         #[method_id(@__retain_semantics Other DTD)]
         pub unsafe fn DTD(&self) -> Option<Id<NSXMLDTD>>;
 
         #[cfg(feature = "Foundation_NSXMLDTD")]
+        /**
+         primitive
+        */
         #[method(setDTD:)]
         pub unsafe fn setDTD(&self, dtd: Option<&NSXMLDTD>);
 
@@ -148,6 +207,9 @@ extern_methods!(
         pub unsafe fn replaceChildAtIndex_withNode(&self, index: NSUInteger, node: &NSXMLNode);
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+         @abstract Invokes XMLDataWithOptions with NSXMLNodeOptionsNone.
+        */
         #[method_id(@__retain_semantics Other XMLData)]
         pub unsafe fn XMLData(&self) -> Id<NSData>;
 
@@ -201,6 +263,11 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSXMLNode`
+    /**
+     @class NSXMLDocument
+    @abstract An XML Document
+    @discussion Note: if the application of a method would result in more than one element in the children array, an exception is thrown. Trying to add a document, namespace, attribute, or node with a parent also throws an exception. To add a node with a parent first detach or create a copy of it.
+    */
     #[cfg(feature = "Foundation_NSXMLDocument")]
     unsafe impl NSXMLDocument {
         #[method_id(@__retain_semantics Init initWithKind:)]

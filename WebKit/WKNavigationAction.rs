@@ -7,6 +7,16 @@ use crate::WebKit::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      @enum WKNavigationType
+    @abstract The type of action triggering a navigation.
+    @constant WKNavigationTypeLinkActivated    A link with an href attribute was activated by the user.
+    @constant WKNavigationTypeFormSubmitted    A form was submitted.
+    @constant WKNavigationTypeBackForward      An item from the back-forward list was requested.
+    @constant WKNavigationTypeReload           The webpage was reloaded.
+    @constant WKNavigationTypeFormResubmitted  A form was resubmitted (for example by going back, going forward, or reloading).
+    @constant WKNavigationTypeOther            Navigation is taking place for some other reason.
+    */
     pub enum WKNavigationType {
         WKNavigationTypeLinkActivated = 0,
         WKNavigationTypeFormSubmitted = 1,
@@ -20,6 +30,9 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "WebKit_WKNavigationAction")]
+    /**
+     A WKNavigationAction object contains information about an action that may cause a navigation, used for making policy decisions.
+    */
     pub struct WKNavigationAction;
 
     #[cfg(feature = "WebKit_WKNavigationAction")]
@@ -29,28 +42,53 @@ extern_class!(
 );
 
 #[cfg(feature = "WebKit_WKNavigationAction")]
+/**
+ A WKNavigationAction object contains information about an action that may cause a navigation, used for making policy decisions.
+*/
 unsafe impl NSObjectProtocol for WKNavigationAction {}
 
 extern_methods!(
+    /**
+     A WKNavigationAction object contains information about an action that may cause a navigation, used for making policy decisions.
+    */
     #[cfg(feature = "WebKit_WKNavigationAction")]
     unsafe impl WKNavigationAction {
         #[cfg(feature = "WebKit_WKFrameInfo")]
+        /**
+          @abstract The target frame, or nil if this is a new window navigation.
+        */
         #[method_id(@__retain_semantics Other targetFrame)]
         pub unsafe fn targetFrame(&self) -> Option<Id<WKFrameInfo>>;
 
+        /**
+          @abstract The type of action that triggered the navigation.
+        @discussion The value is one of the constants of the enumerated type WKNavigationType.
+        */
         #[method(navigationType)]
         pub unsafe fn navigationType(&self) -> WKNavigationType;
 
         #[cfg(feature = "Foundation_NSURLRequest")]
+        /**
+          @abstract The navigation's request.
+        */
         #[method_id(@__retain_semantics Other request)]
         pub unsafe fn request(&self) -> Id<NSURLRequest>;
 
+        /**
+          @abstract A value indicating whether the web content used a download attribute to indicate that this should be downloaded.
+        */
         #[method(shouldPerformDownload)]
         pub unsafe fn shouldPerformDownload(&self) -> bool;
 
+        /**
+          @abstract The modifier keys that were in effect when the navigation was requested.
+        */
         #[method(modifierFlags)]
         pub unsafe fn modifierFlags(&self) -> NSEventModifierFlags;
 
+        /**
+          @abstract The number of the mouse button causing the navigation to be requested.
+        */
         #[method(buttonNumber)]
         pub unsafe fn buttonNumber(&self) -> NSInteger;
     }

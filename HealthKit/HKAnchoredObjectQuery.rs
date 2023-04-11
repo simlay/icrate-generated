@@ -31,6 +31,12 @@ extern_methods!(
             feature = "HealthKit_HKQueryAnchor",
             feature = "HealthKit_HKSample"
         ))]
+        /**
+         @property      updateHandler
+        @abstract      An optional handler to be called when samples matching the given predicate are added or deleted.
+        @discussion    This property may not be modified once the query has been executed.  It may only be set if the query has
+        no limit.
+        */
         #[method(updateHandler)]
         pub unsafe fn updateHandler(
             &self,
@@ -52,6 +58,12 @@ extern_methods!(
             feature = "HealthKit_HKQueryAnchor",
             feature = "HealthKit_HKSample"
         ))]
+        /**
+         @property      updateHandler
+        @abstract      An optional handler to be called when samples matching the given predicate are added or deleted.
+        @discussion    This property may not be modified once the query has been executed.  It may only be set if the query has
+        no limit.
+        */
         #[method(setUpdateHandler:)]
         pub unsafe fn setUpdateHandler(
             &self,

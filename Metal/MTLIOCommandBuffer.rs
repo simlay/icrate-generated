@@ -6,6 +6,9 @@ use crate::Metal::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      Used by MTLIOCommandBuffer to indicate completion status.
+    */
     pub enum MTLIOStatus {
         MTLIOStatusPending = 0,
         MTLIOStatusCancelled = 1,
@@ -18,6 +21,10 @@ pub type MTLIOCommandBufferHandler =
     *mut Block<(NonNull<ProtocolObject<dyn MTLIOCommandBuffer>>,), ()>;
 
 extern_protocol!(
+    /**
+     @protocol MTLIOCommandBuffer
+    @abstract represents a list of IO commands for a queue to execute
+    */
     pub unsafe trait MTLIOCommandBuffer: NSObjectProtocol {
         #[method(addCompletedHandler:)]
         unsafe fn addCompletedHandler(&self, block: MTLIOCommandBufferHandler);
@@ -91,17 +98,33 @@ extern_protocol!(
         unsafe fn signalEvent_value(&self, event: &ProtocolObject<dyn MTLSharedEvent>, value: u64);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property label
+        @abstract An optional label for this handle.
+        */
         #[method_id(@__retain_semantics Other label)]
         unsafe fn label(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property label
+        @abstract An optional label for this handle.
+        */
         #[method(setLabel:)]
         unsafe fn setLabel(&self, label: Option<&NSString>);
 
+        /**
+         @property status
+        @abstract status reports the completion status of the MTLIOCommandBuffer, pending, cancelled, error or complete.
+        */
         #[method(status)]
         unsafe fn status(&self) -> MTLIOStatus;
 
         #[cfg(feature = "Foundation_NSError")]
+        /**
+         @property error
+        @abstract If an error occurred during execution, the NSError may contain more details about the problem.
+        */
         #[method_id(@__retain_semantics Other error)]
         unsafe fn error(&self) -> Option<Id<NSError>>;
     }

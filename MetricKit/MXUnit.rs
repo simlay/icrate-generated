@@ -7,6 +7,10 @@ use crate::MetricKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MetricKit_MXUnitSignalBars")]
+    /**
+     @class         MXUnitSignalBars
+    @abstract      An NSUnit subclass representing the number of signal bars for signal strength.
+    */
     pub struct MXUnitSignalBars;
 
     #[cfg(feature = "MetricKit_MXUnitSignalBars")]
@@ -17,17 +21,36 @@ extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXUnitSignalBars")]
+/**
+ @class         MXUnitSignalBars
+@abstract      An NSUnit subclass representing the number of signal bars for signal strength.
+*/
 unsafe impl NSCoding for MXUnitSignalBars {}
 
 #[cfg(feature = "MetricKit_MXUnitSignalBars")]
+/**
+ @class         MXUnitSignalBars
+@abstract      An NSUnit subclass representing the number of signal bars for signal strength.
+*/
 unsafe impl NSObjectProtocol for MXUnitSignalBars {}
 
 #[cfg(feature = "MetricKit_MXUnitSignalBars")]
+/**
+ @class         MXUnitSignalBars
+@abstract      An NSUnit subclass representing the number of signal bars for signal strength.
+*/
 unsafe impl NSSecureCoding for MXUnitSignalBars {}
 
 extern_methods!(
+    /**
+     @class         MXUnitSignalBars
+    @abstract      An NSUnit subclass representing the number of signal bars for signal strength.
+    */
     #[cfg(feature = "MetricKit_MXUnitSignalBars")]
     unsafe impl MXUnitSignalBars {
+        /**
+         Base unit - bars
+        */
         #[method_id(@__retain_semantics Other bars)]
         pub unsafe fn bars() -> Id<MXUnitSignalBars>;
     }
@@ -36,6 +59,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MetricKit_MXUnitAveragePixelLuminance")]
+    /**
+     @class         MXUnitAveragePixelLuminance
+    @abstract      An NSUnit subclass representing the linear space Display APL.
+    */
     pub struct MXUnitAveragePixelLuminance;
 
     #[cfg(feature = "MetricKit_MXUnitAveragePixelLuminance")]
@@ -46,17 +73,36 @@ extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXUnitAveragePixelLuminance")]
+/**
+ @class         MXUnitAveragePixelLuminance
+@abstract      An NSUnit subclass representing the linear space Display APL.
+*/
 unsafe impl NSCoding for MXUnitAveragePixelLuminance {}
 
 #[cfg(feature = "MetricKit_MXUnitAveragePixelLuminance")]
+/**
+ @class         MXUnitAveragePixelLuminance
+@abstract      An NSUnit subclass representing the linear space Display APL.
+*/
 unsafe impl NSObjectProtocol for MXUnitAveragePixelLuminance {}
 
 #[cfg(feature = "MetricKit_MXUnitAveragePixelLuminance")]
+/**
+ @class         MXUnitAveragePixelLuminance
+@abstract      An NSUnit subclass representing the linear space Display APL.
+*/
 unsafe impl NSSecureCoding for MXUnitAveragePixelLuminance {}
 
 extern_methods!(
+    /**
+     @class         MXUnitAveragePixelLuminance
+    @abstract      An NSUnit subclass representing the linear space Display APL.
+    */
     #[cfg(feature = "MetricKit_MXUnitAveragePixelLuminance")]
     unsafe impl MXUnitAveragePixelLuminance {
+        /**
+         Base unit - apl
+        */
         #[method_id(@__retain_semantics Other apl)]
         pub unsafe fn apl() -> Id<MXUnitAveragePixelLuminance>;
     }
@@ -64,6 +110,10 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSDimension`
+    /**
+     @class         MXUnitSignalBars
+    @abstract      An NSUnit subclass representing the number of signal bars for signal strength.
+    */
     #[cfg(feature = "MetricKit_MXUnitSignalBars")]
     unsafe impl MXUnitSignalBars {
         #[cfg(all(
@@ -84,6 +134,10 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSUnit`
+    /**
+     @class         MXUnitSignalBars
+    @abstract      An NSUnit subclass representing the number of signal bars for signal strength.
+    */
     #[cfg(feature = "MetricKit_MXUnitSignalBars")]
     unsafe impl MXUnitSignalBars {
         #[cfg(feature = "Foundation_NSString")]
@@ -94,6 +148,10 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSDimension`
+    /**
+     @class         MXUnitAveragePixelLuminance
+    @abstract      An NSUnit subclass representing the linear space Display APL.
+    */
     #[cfg(feature = "MetricKit_MXUnitAveragePixelLuminance")]
     unsafe impl MXUnitAveragePixelLuminance {
         #[cfg(all(
@@ -114,6 +172,10 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSUnit`
+    /**
+     @class         MXUnitAveragePixelLuminance
+    @abstract      An NSUnit subclass representing the linear space Display APL.
+    */
     #[cfg(feature = "MetricKit_MXUnitAveragePixelLuminance")]
     unsafe impl MXUnitAveragePixelLuminance {
         #[cfg(feature = "Foundation_NSString")]

@@ -7,6 +7,9 @@ use crate::IdentityLookup::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "IdentityLookup_ILMessageFilterQueryRequest")]
+    /**
+      A request to query a MessageFilter extension about how to interpret a received message.
+    */
     pub struct ILMessageFilterQueryRequest;
 
     #[cfg(feature = "IdentityLookup_ILMessageFilterQueryRequest")]
@@ -16,26 +19,47 @@ extern_class!(
 );
 
 #[cfg(feature = "IdentityLookup_ILMessageFilterQueryRequest")]
+/**
+  A request to query a MessageFilter extension about how to interpret a received message.
+*/
 unsafe impl NSCoding for ILMessageFilterQueryRequest {}
 
 #[cfg(feature = "IdentityLookup_ILMessageFilterQueryRequest")]
+/**
+  A request to query a MessageFilter extension about how to interpret a received message.
+*/
 unsafe impl NSObjectProtocol for ILMessageFilterQueryRequest {}
 
 #[cfg(feature = "IdentityLookup_ILMessageFilterQueryRequest")]
+/**
+  A request to query a MessageFilter extension about how to interpret a received message.
+*/
 unsafe impl NSSecureCoding for ILMessageFilterQueryRequest {}
 
 extern_methods!(
+    /**
+      A request to query a MessageFilter extension about how to interpret a received message.
+    */
     #[cfg(feature = "IdentityLookup_ILMessageFilterQueryRequest")]
     unsafe impl ILMessageFilterQueryRequest {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The sender of the message the receiver relates to.
+        */
         #[method_id(@__retain_semantics Other sender)]
         pub unsafe fn sender(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The body of the message the receiver relates to.
+        */
         #[method_id(@__retain_semantics Other messageBody)]
         pub unsafe fn messageBody(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The ISO Country Code of the receiving phone number, in format specified by the ISO 3166-2 standard
+        */
         #[method_id(@__retain_semantics Other receiverISOCountryCode)]
         pub unsafe fn receiverISOCountryCode(&self) -> Option<Id<NSString>>;
 

@@ -10,6 +10,17 @@ use crate::MapKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "EventKit_EKRecurrenceRule")]
+    /**
+     @class      EKRecurrenceRule
+    @abstract   Represents how an event repeats.
+    @discussion This class describes the recurrence pattern for a repeating event. The recurrence rules that
+    can be expressed are not restricted to the recurrence patterns that can be set in Calendar's UI.
+
+    It is currently not possible to directly modify a EKRecurrenceRule or any of its properties.
+    This functionality is achieved by creating a new EKRecurrenceRule, and setting an event to use the new rule.
+    When a new recurrence rule is set on an EKEvent, that change is not saved until the client
+    has passed the modified event to EKEventStore's saveEvent: method.
+    */
     pub struct EKRecurrenceRule;
 
     #[cfg(feature = "EventKit_EKRecurrenceRule")]
@@ -20,9 +31,31 @@ extern_class!(
 );
 
 #[cfg(feature = "EventKit_EKRecurrenceRule")]
+/**
+ @class      EKRecurrenceRule
+@abstract   Represents how an event repeats.
+@discussion This class describes the recurrence pattern for a repeating event. The recurrence rules that
+can be expressed are not restricted to the recurrence patterns that can be set in Calendar's UI.
+
+It is currently not possible to directly modify a EKRecurrenceRule or any of its properties.
+This functionality is achieved by creating a new EKRecurrenceRule, and setting an event to use the new rule.
+When a new recurrence rule is set on an EKEvent, that change is not saved until the client
+has passed the modified event to EKEventStore's saveEvent: method.
+*/
 unsafe impl NSObjectProtocol for EKRecurrenceRule {}
 
 extern_methods!(
+    /**
+     @class      EKRecurrenceRule
+    @abstract   Represents how an event repeats.
+    @discussion This class describes the recurrence pattern for a repeating event. The recurrence rules that
+    can be expressed are not restricted to the recurrence patterns that can be set in Calendar's UI.
+
+    It is currently not possible to directly modify a EKRecurrenceRule or any of its properties.
+    This functionality is achieved by creating a new EKRecurrenceRule, and setting an event to use the new rule.
+    When a new recurrence rule is set on an EKEvent, that change is not saved until the client
+    has passed the modified event to EKEventStore's saveEvent: method.
+    */
     #[cfg(feature = "EventKit_EKRecurrenceRule")]
     unsafe impl EKRecurrenceRule {
         #[cfg(feature = "EventKit_EKRecurrenceEnd")]
@@ -55,23 +88,59 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property       calendarIdentifier;
+        @discussion     Calendar used by this recurrence rule.
+        */
         #[method_id(@__retain_semantics Other calendarIdentifier)]
         pub unsafe fn calendarIdentifier(&self) -> Id<NSString>;
 
         #[cfg(feature = "EventKit_EKRecurrenceEnd")]
+        /**
+         @property       recurrenceEnd
+        @discussion     This property defines when the the repeating event is scheduled to end. The end date can be specified by a number of
+        occurrences, or with an end date.
+        */
         #[method_id(@__retain_semantics Other recurrenceEnd)]
         pub unsafe fn recurrenceEnd(&self) -> Option<Id<EKRecurrenceEnd>>;
 
         #[cfg(feature = "EventKit_EKRecurrenceEnd")]
+        /**
+         @property       recurrenceEnd
+        @discussion     This property defines when the the repeating event is scheduled to end. The end date can be specified by a number of
+        occurrences, or with an end date.
+        */
         #[method(setRecurrenceEnd:)]
         pub unsafe fn setRecurrenceEnd(&self, recurrence_end: Option<&EKRecurrenceEnd>);
 
+        /**
+         @property       frequency
+        @discussion     This property designates the unit of time used to describe the recurrence pattern.
+        */
         #[method(frequency)]
         pub unsafe fn frequency(&self) -> EKRecurrenceFrequency;
 
+        /**
+         @property       interval
+        @discussion     The interval of a EKRecurrenceRule is an integer value which specifies how often the recurrence rule repeats
+        over the unit of time described by the EKRecurrenceFrequency. For example, if the EKRecurrenceFrequency is
+        EKRecurrenceWeekly, then an interval of 1 means the pattern is repeated every week. A value of 2
+        indicates it is repeated every other week, 3 means every third week, and so on. The value must be a
+        positive integer; 0 is not a valid value, and nil will be returned if the client attempts to initialize a
+        rule with a negative or zero interval.
+        */
         #[method(interval)]
         pub unsafe fn interval(&self) -> NSInteger;
 
+        /**
+         @property       firstDayOfTheWeek
+        @discussion     Recurrence patterns can specify which day of the week should be treated as the first day. Possible values for this
+        property are integers 0 and 1-7, which correspond to days of the week with Sunday = 1. Zero indicates that the
+        property is not set for this recurrence. The first day of the week only affects the way the recurrence is expanded
+        for weekly recurrence patterns with an interval greater than 1. For those types of recurrence patterns, the
+        Calendar framework will set firstDayOfTheWeek to be 2 (Monday). In all other cases, this property will be set
+        to zero. The iCalendar spec stipulates that the default value is Monday if this property is not set.
+        */
         #[method(firstDayOfTheWeek)]
         pub unsafe fn firstDayOfTheWeek(&self) -> NSInteger;
 
@@ -79,26 +148,68 @@ extern_methods!(
             feature = "EventKit_EKRecurrenceDayOfWeek",
             feature = "Foundation_NSArray"
         ))]
+        /**
+         @property       daysOfTheWeek
+        @discussion     This property is valid for rules whose EKRecurrenceFrequency is EKRecurrenceFrequencyWeekly, EKRecurrenceFrequencyMonthly, or
+        EKRecurrenceFrequencyYearly. This property can be accessed as an array containing one or more EKRecurrenceDayOfWeek objects
+        corresponding to the days of the week the event recurs. For all other EKRecurrenceRules, this property is nil.
+        This property corresponds to BYDAY in the iCalendar specification.
+        */
         #[method_id(@__retain_semantics Other daysOfTheWeek)]
         pub unsafe fn daysOfTheWeek(&self) -> Option<Id<NSArray<EKRecurrenceDayOfWeek>>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSNumber"))]
+        /**
+         @property       daysOfTheMonth
+        @discussion     This property is valid for rules whose EKRecurrenceFrequency is EKRecurrenceFrequencyMonthly, and that were initialized
+        with one or more specific days of the month (not with a day of the week and week of the month). This property can be
+        accessed as an array containing one or more NSNumbers corresponding to the days of the month the event recurs.
+        For all other EKRecurrenceRules, this property is nil. This property corresponds to BYMONTHDAY in the iCalendar
+        specification.
+        */
         #[method_id(@__retain_semantics Other daysOfTheMonth)]
         pub unsafe fn daysOfTheMonth(&self) -> Option<Id<NSArray<NSNumber>>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSNumber"))]
+        /**
+         @property       daysOfTheYear
+        @discussion     This property is valid for rules whose EKRecurrenceFrequency is EKRecurrenceFrequencyYearly. This property can be accessed
+        as an array containing one or more NSNumbers corresponding to the days of the year the event recurs. For all other
+        EKRecurrenceRules, this property is nil. This property corresponds to BYYEARDAY in the iCalendar specification. It should
+        contain values between 1 to 366 or -366 to -1.
+        */
         #[method_id(@__retain_semantics Other daysOfTheYear)]
         pub unsafe fn daysOfTheYear(&self) -> Option<Id<NSArray<NSNumber>>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSNumber"))]
+        /**
+         @property       weeksOfTheYear
+        @discussion     This property is valid for rules whose EKRecurrenceFrequency is EKRecurrenceFrequencyYearly. This property can be accessed
+        as an array containing one or more NSNumbers corresponding to the weeks of the year the event recurs. For all other
+        EKRecurrenceRules, this property is nil. This property corresponds to BYWEEK in the iCalendar specification. It should
+        contain integers from 1 to 53 or -1 to -53.
+        */
         #[method_id(@__retain_semantics Other weeksOfTheYear)]
         pub unsafe fn weeksOfTheYear(&self) -> Option<Id<NSArray<NSNumber>>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSNumber"))]
+        /**
+         @property       monthsOfTheYear
+        @discussion     This property is valid for rules whose EKRecurrenceFrequency is EKRecurrenceFrequencyYearly. This property can be accessed
+        as an array containing one or more NSNumbers corresponding to the months of the year the event recurs. For all other
+        EKRecurrenceRules, this property is nil. This property corresponds to BYMONTH in the iCalendar specification.
+        */
         #[method_id(@__retain_semantics Other monthsOfTheYear)]
         pub unsafe fn monthsOfTheYear(&self) -> Option<Id<NSArray<NSNumber>>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSNumber"))]
+        /**
+         @property       setPositions
+        @discussion     This property is valid for rules which have a valid daysOfTheWeek, daysOfTheMonth, weeksOfTheYear, or monthsOfTheYear property.
+        It allows you to specify a set of ordinal numbers to help choose which objects out of the set of selected events should be
+        included. For example, setting the daysOfTheWeek to Monday-Friday and including a value of -1 in the array would indicate
+        the last weekday in the recurrence range (month, year, etc). This value corresponds to the iCalendar BYSETPOS property.
+        */
         #[method_id(@__retain_semantics Other setPositions)]
         pub unsafe fn setPositions(&self) -> Option<Id<NSArray<NSNumber>>>;
     }

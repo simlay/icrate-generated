@@ -7,6 +7,9 @@ use crate::IdentityLookup::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "IdentityLookup_ILMessageFilterExtensionContext")]
+    /**
+      Represents a MessageFilter extension request's context.
+    */
     pub struct ILMessageFilterExtensionContext;
 
     #[cfg(feature = "IdentityLookup_ILMessageFilterExtensionContext")]
@@ -17,9 +20,15 @@ extern_class!(
 );
 
 #[cfg(feature = "IdentityLookup_ILMessageFilterExtensionContext")]
+/**
+  Represents a MessageFilter extension request's context.
+*/
 unsafe impl NSObjectProtocol for ILMessageFilterExtensionContext {}
 
 extern_methods!(
+    /**
+      Represents a MessageFilter extension request's context.
+    */
     #[cfg(feature = "IdentityLookup_ILMessageFilterExtensionContext")]
     unsafe impl ILMessageFilterExtensionContext {
         #[cfg(all(

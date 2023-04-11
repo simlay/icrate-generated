@@ -33,6 +33,12 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameKit_GKLeaderboard")]
+    /**
+      GKLeaderboard represents a single instance of a leaderboard for the current game.
+     Leaderboards can be of the following types:
+          1. Classic - Traditional, non-expiring leaderboards
+          2. Recurring - Periodic timed leaderboards that follow a recurrence rule defined in App Store Connect.
+    */
     pub struct GKLeaderboard;
 
     #[cfg(feature = "GameKit_GKLeaderboard")]
@@ -42,34 +48,67 @@ extern_class!(
 );
 
 #[cfg(feature = "GameKit_GKLeaderboard")]
+/**
+  GKLeaderboard represents a single instance of a leaderboard for the current game.
+ Leaderboards can be of the following types:
+      1. Classic - Traditional, non-expiring leaderboards
+      2. Recurring - Periodic timed leaderboards that follow a recurrence rule defined in App Store Connect.
+*/
 unsafe impl NSObjectProtocol for GKLeaderboard {}
 
 extern_methods!(
+    /**
+      GKLeaderboard represents a single instance of a leaderboard for the current game.
+     Leaderboards can be of the following types:
+          1. Classic - Traditional, non-expiring leaderboards
+          2. Recurring - Periodic timed leaderboards that follow a recurrence rule defined in App Store Connect.
+    */
     #[cfg(feature = "GameKit_GKLeaderboard")]
     unsafe impl GKLeaderboard {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Localized title
+        */
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          set when leaderboards have been designated a game group; set when loadLeaderboardsWithCompletionHandler has been called for leaderboards that support game groups
+        */
         #[method_id(@__retain_semantics Other groupIdentifier)]
         pub unsafe fn groupIdentifier(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Leaderboard ID defined in App Store Connect that this instance is associated with
+        */
         #[method_id(@__retain_semantics Other baseLeaderboardID)]
         pub unsafe fn baseLeaderboardID(&self) -> Id<NSString>;
 
+        /**
+          Type of leaderboard
+        */
         #[method(type)]
         pub unsafe fn r#type(&self) -> GKLeaderboardType;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          Date and time this instance started accepting score submissions (only applicable to recurring leaderboards)
+        */
         #[method_id(@__retain_semantics Other startDate)]
         pub unsafe fn startDate(&self) -> Option<Id<NSDate>>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          Date and time the next instance will start accepting score submissions (only applicable to recurring leaderboards)
+        */
         #[method_id(@__retain_semantics Other nextStartDate)]
         pub unsafe fn nextStartDate(&self) -> Option<Id<NSDate>>;
 
+        /**
+          Duration from startDate during which this leaderboard instance accepts score submissions (only applicable to recurring leaderboards)
+        */
         #[method(duration)]
         pub unsafe fn duration(&self) -> NSTimeInterval;
 
@@ -166,11 +205,17 @@ extern_methods!(
     #[cfg(feature = "GameKit_GKLeaderboard")]
     unsafe impl GKLeaderboard {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Deprecated. Use identifier instead.
+        */
         #[deprecated = "Use identifier instead"]
         #[method_id(@__retain_semantics Other category)]
         pub unsafe fn category(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Deprecated. Use identifier instead.
+        */
         #[deprecated = "Use identifier instead"]
         #[method(setCategory:)]
         pub unsafe fn setCategory(&self, category: Option<&NSString>);
@@ -212,46 +257,76 @@ extern_methods!(
         #[method(setTimeScope:)]
         pub unsafe fn setTimeScope(&self, time_scope: GKLeaderboardTimeScope);
 
+        /**
+          Filter on friends. Does not apply to leaderboard initialized with players.
+        */
         #[deprecated = "Use loadEntriesForPlayerScope:timeScope:range:completionHandler: instead."]
         #[method(playerScope)]
         pub unsafe fn playerScope(&self) -> GKLeaderboardPlayerScope;
 
+        /**
+          Filter on friends. Does not apply to leaderboard initialized with players.
+        */
         #[deprecated = "Use loadEntriesForPlayerScope:timeScope:range:completionHandler: instead."]
         #[method(setPlayerScope:)]
         pub unsafe fn setPlayerScope(&self, player_scope: GKLeaderboardPlayerScope);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          leaderboardID. If nil, fetch the aggregate leaderboard.
+        */
         #[deprecated = "Use loadEntriesForPlayerScope:timeScope:range:completionHandler: instead."]
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          leaderboardID. If nil, fetch the aggregate leaderboard.
+        */
         #[deprecated = "Use loadEntriesForPlayerScope:timeScope:range:completionHandler: instead."]
         #[method(setIdentifier:)]
         pub unsafe fn setIdentifier(&self, identifier: Option<&NSString>);
 
+        /**
+          Leaderboards start at index 1 and the length should be less than 100. Does not apply to leaderboards initialized with players.  Exception will be thrown if developer tries to set an invalid range.
+        */
         #[deprecated = "Use loadEntriesForPlayerScope:timeScope:range:completionHandler: instead."]
         #[method(range)]
         pub unsafe fn range(&self) -> NSRange;
 
+        /**
+          Leaderboards start at index 1 and the length should be less than 100. Does not apply to leaderboards initialized with players.  Exception will be thrown if developer tries to set an invalid range.
+        */
         #[deprecated = "Use loadEntriesForPlayerScope:timeScope:range:completionHandler: instead."]
         #[method(setRange:)]
         pub unsafe fn setRange(&self, range: NSRange);
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "GameKit_GKScore"))]
+        /**
+          Scores are not valid until loadScores: has completed.
+        */
         #[deprecated = "Use loadEntriesForPlayerScope:timeScope:range:completionHandler: to obtain scores."]
         #[method_id(@__retain_semantics Other scores)]
         pub unsafe fn scores(&self) -> Option<Id<NSArray<GKScore>>>;
 
+        /**
+          The maxRange which represents the size of the leaderboard is not valid until loadScores: has completed.
+        */
         #[deprecated = "Use loadEntriesForPlayerScope:timeScope:range:completionHandler: method to obtain the size of the leaderboard."]
         #[method(maxRange)]
         pub unsafe fn maxRange(&self) -> NSUInteger;
 
         #[cfg(feature = "GameKit_GKScore")]
+        /**
+          The local player's score
+        */
         #[deprecated = "Use loadEntriesForPlayerScope:timeScope:range:completionHandler: method to obtain scores."]
         #[method_id(@__retain_semantics Other localPlayerScore)]
         pub unsafe fn localPlayerScore(&self) -> Option<Id<GKScore>>;
 
+        /**
+          This property is true if the leaderboard is currently loading
+        */
         #[deprecated = "Use loadEntriesForPlayerScope:timeScope:range:completionHandler: method to obtain scores."]
         #[method(isLoading)]
         pub unsafe fn isLoading(&self) -> bool;

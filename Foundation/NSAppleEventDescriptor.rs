@@ -104,6 +104,9 @@ extern_methods!(
         #[method_id(@__retain_semantics Other data)]
         pub unsafe fn data(&self) -> Id<NSData>;
 
+        /**
+          Return the contents of a descriptor, after coercing the descriptor's contents to typeBoolean, typeEnumerated, typeSInt32, typeIEEE64BitFloatingPoint, or typeType, respectively.
+        */
         #[method(booleanValue)]
         pub unsafe fn booleanValue(&self) -> Boolean;
 
@@ -120,6 +123,9 @@ extern_methods!(
         pub unsafe fn typeCodeValue(&self) -> OSType;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Return the contents of a descriptor, after coercing the descriptor's contents to a string, date, or file URL, respectively.
+        */
         #[method_id(@__retain_semantics Other stringValue)]
         pub unsafe fn stringValue(&self) -> Option<Id<NSString>>;
 
@@ -131,9 +137,15 @@ extern_methods!(
         #[method_id(@__retain_semantics Other fileURLValue)]
         pub unsafe fn fileURLValue(&self) -> Option<Id<NSURL>>;
 
+        /**
+          Return whether or not a descriptor is a record-like descriptor.  Record-like descriptors function as records, but may have a descriptorType other than typeAERecord, such as typeObjectSpecifier.
+        */
         #[method(isRecordDescriptor)]
         pub unsafe fn isRecordDescriptor(&self) -> bool;
 
+        /**
+          Return the number of items inside a list or record descriptor.
+        */
         #[method(numberOfItems)]
         pub unsafe fn numberOfItems(&self) -> NSInteger;
 

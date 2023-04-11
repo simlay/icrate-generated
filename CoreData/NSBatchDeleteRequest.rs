@@ -7,6 +7,15 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreData_NSBatchDeleteRequest")]
+    /**
+       Used to request that Core Data do a batch deletion of objects without faulting in
+      objects to be deleted.
+      May not be supported by all store types.
+      WARNING:
+      It is up to the developer creating the request to ensure that changes made by the request to
+      the underlying store do not violate any validation rules specified in the model beyond basic
+      delete rules (for example, minimum relationship counts).
+    */
     pub struct NSBatchDeleteRequest;
 
     #[cfg(feature = "CoreData_NSBatchDeleteRequest")]
@@ -17,9 +26,27 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreData_NSBatchDeleteRequest")]
+/**
+   Used to request that Core Data do a batch deletion of objects without faulting in
+  objects to be deleted.
+  May not be supported by all store types.
+  WARNING:
+  It is up to the developer creating the request to ensure that changes made by the request to
+  the underlying store do not violate any validation rules specified in the model beyond basic
+  delete rules (for example, minimum relationship counts).
+*/
 unsafe impl NSObjectProtocol for NSBatchDeleteRequest {}
 
 extern_methods!(
+    /**
+       Used to request that Core Data do a batch deletion of objects without faulting in
+      objects to be deleted.
+      May not be supported by all store types.
+      WARNING:
+      It is up to the developer creating the request to ensure that changes made by the request to
+      the underlying store do not violate any validation rules specified in the model beyond basic
+      delete rules (for example, minimum relationship counts).
+    */
     #[cfg(feature = "CoreData_NSBatchDeleteRequest")]
     unsafe impl NSBatchDeleteRequest {
         #[method_id(@__retain_semantics Init init)]
@@ -39,9 +66,15 @@ extern_methods!(
             objects: &NSArray<NSManagedObjectID>,
         ) -> Id<Self>;
 
+        /**
+          The type of result that should be returned from this request. Defaults to NSBatchDeleteResultTypeStatusOnly
+        */
         #[method(resultType)]
         pub unsafe fn resultType(&self) -> NSBatchDeleteRequestResultType;
 
+        /**
+          The type of result that should be returned from this request. Defaults to NSBatchDeleteResultTypeStatusOnly
+        */
         #[method(setResultType:)]
         pub unsafe fn setResultType(&self, result_type: NSBatchDeleteRequestResultType);
 

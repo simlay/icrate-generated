@@ -11,6 +11,13 @@ typed_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreAnimation_CAMediaTimingFunction")]
+    /**
+      Represents one segment of a function describing a timing curve. The
+     function maps an input time normalized to the range [0,1] to an
+     output time also in the range [0,1]. E.g. these functions are used
+     to define the pacing of an animation over its duration (or over the
+     duration of one keyframe).
+    */
     pub struct CAMediaTimingFunction;
 
     #[cfg(feature = "CoreAnimation_CAMediaTimingFunction")]
@@ -20,15 +27,43 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreAnimation_CAMediaTimingFunction")]
+/**
+  Represents one segment of a function describing a timing curve. The
+ function maps an input time normalized to the range [0,1] to an
+ output time also in the range [0,1]. E.g. these functions are used
+ to define the pacing of an animation over its duration (or over the
+ duration of one keyframe).
+*/
 unsafe impl NSCoding for CAMediaTimingFunction {}
 
 #[cfg(feature = "CoreAnimation_CAMediaTimingFunction")]
+/**
+  Represents one segment of a function describing a timing curve. The
+ function maps an input time normalized to the range [0,1] to an
+ output time also in the range [0,1]. E.g. these functions are used
+ to define the pacing of an animation over its duration (or over the
+ duration of one keyframe).
+*/
 unsafe impl NSObjectProtocol for CAMediaTimingFunction {}
 
 #[cfg(feature = "CoreAnimation_CAMediaTimingFunction")]
+/**
+  Represents one segment of a function describing a timing curve. The
+ function maps an input time normalized to the range [0,1] to an
+ output time also in the range [0,1]. E.g. these functions are used
+ to define the pacing of an animation over its duration (or over the
+ duration of one keyframe).
+*/
 unsafe impl NSSecureCoding for CAMediaTimingFunction {}
 
 extern_methods!(
+    /**
+      Represents one segment of a function describing a timing curve. The
+     function maps an input time normalized to the range [0,1] to an
+     output time also in the range [0,1]. E.g. these functions are used
+     to define the pacing of an animation over its duration (or over the
+     duration of one keyframe).
+    */
     #[cfg(feature = "CoreAnimation_CAMediaTimingFunction")]
     unsafe impl CAMediaTimingFunction {
         #[method_id(@__retain_semantics Other functionWithName:)]

@@ -9,6 +9,10 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKLensSpecification")]
+    /**
+     @class         HKLensSpecification
+    @abstract      An object subclass representing common lens specification
+    */
     pub struct HKLensSpecification;
 
     #[cfg(feature = "HealthKit_HKLensSpecification")]
@@ -18,24 +22,48 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKLensSpecification")]
+/**
+ @class         HKLensSpecification
+@abstract      An object subclass representing common lens specification
+*/
 unsafe impl NSObjectProtocol for HKLensSpecification {}
 
 extern_methods!(
+    /**
+     @class         HKLensSpecification
+    @abstract      An object subclass representing common lens specification
+    */
     #[cfg(feature = "HealthKit_HKLensSpecification")]
     unsafe impl HKLensSpecification {
         #[cfg(feature = "HealthKit_HKQuantity")]
+        /**
+         @property      sphere
+        @abstract      The lens power to correct nearsightedness or farsightedness. (-) means nearsighted while (+) farsighted.
+        */
         #[method_id(@__retain_semantics Other sphere)]
         pub unsafe fn sphere(&self) -> Id<HKQuantity>;
 
         #[cfg(feature = "HealthKit_HKQuantity")]
+        /**
+         @property      cylinder
+        @abstract      The lens power required to correct astigmatism. Can be positive or negative.
+        */
         #[method_id(@__retain_semantics Other cylinder)]
         pub unsafe fn cylinder(&self) -> Option<Id<HKQuantity>>;
 
         #[cfg(feature = "HealthKit_HKQuantity")]
+        /**
+         @property      axis
+        @abstract      The angle along which cylindrical power should be positioned to correct astigmatism
+        */
         #[method_id(@__retain_semantics Other axis)]
         pub unsafe fn axis(&self) -> Option<Id<HKQuantity>>;
 
         #[cfg(feature = "HealthKit_HKQuantity")]
+        /**
+         @property      addPower
+        @abstract      The power adjustment applied to a multifocal lens to correct presbyopia
+        */
         #[method_id(@__retain_semantics Other addPower)]
         pub unsafe fn addPower(&self) -> Option<Id<HKQuantity>>;
 

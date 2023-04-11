@@ -9,10 +9,17 @@ use crate::MapKit::*;
 
 extern_protocol!(
     pub unsafe trait MKAnnotation: NSObjectProtocol {
+        /**
+          Center latitude and longitude of the annotation view.
+         The implementation of this property must be KVO compliant.
+        */
         #[method(coordinate)]
         unsafe fn coordinate(&self) -> CLLocationCoordinate2D;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Title and subtitle for use by selection UI.
+        */
         #[optional]
         #[method_id(@__retain_semantics Other title)]
         unsafe fn title(&self) -> Option<Id<NSString>>;

@@ -8,6 +8,13 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreLocation_CLPlacemark")]
+    /**
+       CLPlacemark
+
+      Discussion:
+        Represents placemark data for a geographic location. Placemark data can be
+        information such as the country, state, city, and street address.
+    */
     pub struct CLPlacemark;
 
     #[cfg(feature = "CoreLocation_CLPlacemark")]
@@ -17,15 +24,43 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreLocation_CLPlacemark")]
+/**
+   CLPlacemark
+
+  Discussion:
+    Represents placemark data for a geographic location. Placemark data can be
+    information such as the country, state, city, and street address.
+*/
 unsafe impl NSCoding for CLPlacemark {}
 
 #[cfg(feature = "CoreLocation_CLPlacemark")]
+/**
+   CLPlacemark
+
+  Discussion:
+    Represents placemark data for a geographic location. Placemark data can be
+    information such as the country, state, city, and street address.
+*/
 unsafe impl NSObjectProtocol for CLPlacemark {}
 
 #[cfg(feature = "CoreLocation_CLPlacemark")]
+/**
+   CLPlacemark
+
+  Discussion:
+    Represents placemark data for a geographic location. Placemark data can be
+    information such as the country, state, city, and street address.
+*/
 unsafe impl NSSecureCoding for CLPlacemark {}
 
 extern_methods!(
+    /**
+       CLPlacemark
+
+      Discussion:
+        Represents placemark data for a geographic location. Placemark data can be
+        information such as the country, state, city, and street address.
+    */
     #[cfg(feature = "CoreLocation_CLPlacemark")]
     unsafe impl CLPlacemark {
         #[method_id(@__retain_semantics Init init)]
@@ -41,71 +76,135 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "CoreLocation_CLLocation")]
+        /**
+           location
+
+          Discussion:
+            Returns the geographic location associated with the placemark.
+        */
         #[method_id(@__retain_semantics Other location)]
         pub unsafe fn location(&self) -> Option<Id<CLLocation>>;
 
         #[cfg(feature = "CoreLocation_CLRegion")]
+        /**
+           region
+
+          Discussion:
+            Returns the geographic region associated with the placemark.
+        */
         #[method_id(@__retain_semantics Other region)]
         pub unsafe fn region(&self) -> Option<Id<CLRegion>>;
 
         #[cfg(feature = "Foundation_NSTimeZone")]
+        /**
+           timeZone
+
+          Discussion:
+                Returns the time zone associated with the placemark.
+        */
         #[method_id(@__retain_semantics Other timeZone)]
         pub unsafe fn timeZone(&self) -> Option<Id<NSTimeZone>>;
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+           addressDictionary
+
+          Discussion:
+            This dictionary can be formatted as an address using ABCreateStringWithAddressDictionary,
+            defined in the AddressBookUI framework.
+        */
         #[deprecated = "Use @properties"]
         #[method_id(@__retain_semantics Other addressDictionary)]
         pub unsafe fn addressDictionary(&self) -> Option<Id<NSDictionary>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          eg. Apple Inc.
+        */
         #[method_id(@__retain_semantics Other name)]
         pub unsafe fn name(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          street name, eg. Infinite Loop
+        */
         #[method_id(@__retain_semantics Other thoroughfare)]
         pub unsafe fn thoroughfare(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          eg. 1
+        */
         #[method_id(@__retain_semantics Other subThoroughfare)]
         pub unsafe fn subThoroughfare(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          city, eg. Cupertino
+        */
         #[method_id(@__retain_semantics Other locality)]
         pub unsafe fn locality(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          neighborhood, common name, eg. Mission District
+        */
         #[method_id(@__retain_semantics Other subLocality)]
         pub unsafe fn subLocality(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          state, eg. CA
+        */
         #[method_id(@__retain_semantics Other administrativeArea)]
         pub unsafe fn administrativeArea(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          county, eg. Santa Clara
+        */
         #[method_id(@__retain_semantics Other subAdministrativeArea)]
         pub unsafe fn subAdministrativeArea(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          zip code, eg. 95014
+        */
         #[method_id(@__retain_semantics Other postalCode)]
         pub unsafe fn postalCode(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          eg. US
+        */
         #[method_id(@__retain_semantics Other ISOcountryCode)]
         pub unsafe fn ISOcountryCode(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          eg. United States
+        */
         #[method_id(@__retain_semantics Other country)]
         pub unsafe fn country(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          eg. Lake Tahoe
+        */
         #[method_id(@__retain_semantics Other inlandWater)]
         pub unsafe fn inlandWater(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          eg. Pacific Ocean
+        */
         #[method_id(@__retain_semantics Other ocean)]
         pub unsafe fn ocean(&self) -> Option<Id<NSString>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          eg. Golden Gate Park
+        */
         #[method_id(@__retain_semantics Other areasOfInterest)]
         pub unsafe fn areasOfInterest(&self) -> Option<Id<NSArray<NSString>>>;
     }

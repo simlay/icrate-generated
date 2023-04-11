@@ -7,6 +7,10 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreData_NSQueryGenerationToken")]
+    /**
+      Class used to track database generations for generational querying.
+     See NSManagedObjectContext for details on how it is used.
+    */
     pub struct NSQueryGenerationToken;
 
     #[cfg(feature = "CoreData_NSQueryGenerationToken")]
@@ -16,17 +20,36 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreData_NSQueryGenerationToken")]
+/**
+  Class used to track database generations for generational querying.
+ See NSManagedObjectContext for details on how it is used.
+*/
 unsafe impl NSCoding for NSQueryGenerationToken {}
 
 #[cfg(feature = "CoreData_NSQueryGenerationToken")]
+/**
+  Class used to track database generations for generational querying.
+ See NSManagedObjectContext for details on how it is used.
+*/
 unsafe impl NSObjectProtocol for NSQueryGenerationToken {}
 
 #[cfg(feature = "CoreData_NSQueryGenerationToken")]
+/**
+  Class used to track database generations for generational querying.
+ See NSManagedObjectContext for details on how it is used.
+*/
 unsafe impl NSSecureCoding for NSQueryGenerationToken {}
 
 extern_methods!(
+    /**
+      Class used to track database generations for generational querying.
+     See NSManagedObjectContext for details on how it is used.
+    */
     #[cfg(feature = "CoreData_NSQueryGenerationToken")]
     unsafe impl NSQueryGenerationToken {
+        /**
+          Used to inform a context that it should use the current generation
+        */
         #[method_id(@__retain_semantics Other currentQueryGenerationToken)]
         pub unsafe fn currentQueryGenerationToken() -> Id<NSQueryGenerationToken>;
     }

@@ -49,6 +49,11 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSScriptObjectSpecifier")]
+    /**
+      This class represents a specifier to a set of objects.  It can be evaluated to return the objects it specifiers.  This abstract superclass is subclassed for each type of specifier.
+     A specifier always accesses a specific property of an object or array of objects.  The object accessed is called the container (or container).  When object specifiers are nested the container[s] are described by the container specifier.  When an object specifier has no container specifier, the container objects must be supplied explicitly.
+     Object specifiers can be nested.  The child retains its container specifier.
+    */
     pub struct NSScriptObjectSpecifier;
 
     #[cfg(feature = "Foundation_NSScriptObjectSpecifier")]
@@ -58,12 +63,27 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSScriptObjectSpecifier")]
+/**
+  This class represents a specifier to a set of objects.  It can be evaluated to return the objects it specifiers.  This abstract superclass is subclassed for each type of specifier.
+ A specifier always accesses a specific property of an object or array of objects.  The object accessed is called the container (or container).  When object specifiers are nested the container[s] are described by the container specifier.  When an object specifier has no container specifier, the container objects must be supplied explicitly.
+ Object specifiers can be nested.  The child retains its container specifier.
+*/
 unsafe impl NSCoding for NSScriptObjectSpecifier {}
 
 #[cfg(feature = "Foundation_NSScriptObjectSpecifier")]
+/**
+  This class represents a specifier to a set of objects.  It can be evaluated to return the objects it specifiers.  This abstract superclass is subclassed for each type of specifier.
+ A specifier always accesses a specific property of an object or array of objects.  The object accessed is called the container (or container).  When object specifiers are nested the container[s] are described by the container specifier.  When an object specifier has no container specifier, the container objects must be supplied explicitly.
+ Object specifiers can be nested.  The child retains its container specifier.
+*/
 unsafe impl NSObjectProtocol for NSScriptObjectSpecifier {}
 
 extern_methods!(
+    /**
+      This class represents a specifier to a set of objects.  It can be evaluated to return the objects it specifiers.  This abstract superclass is subclassed for each type of specifier.
+     A specifier always accesses a specific property of an object or array of objects.  The object accessed is called the container (or container).  When object specifiers are nested the container[s] are described by the container specifier.  When an object specifier has no container specifier, the container objects must be supplied explicitly.
+     Object specifiers can be nested.  The child retains its container specifier.
+    */
     #[cfg(feature = "Foundation_NSScriptObjectSpecifier")]
     unsafe impl NSScriptObjectSpecifier {
         #[cfg(feature = "Foundation_NSAppleEventDescriptor")]
@@ -105,27 +125,45 @@ extern_methods!(
         #[method(setChildSpecifier:)]
         pub unsafe fn setChildSpecifier(&self, child_specifier: Option<&NSScriptObjectSpecifier>);
 
+        /**
+          You generally should not call the set method.  It is called automatically by setContainerSpecifier:.
+        */
         #[method_id(@__retain_semantics Other containerSpecifier)]
         pub unsafe fn containerSpecifier(&self) -> Option<Id<NSScriptObjectSpecifier>>;
 
+        /**
+          You generally should not call the set method.  It is called automatically by setContainerSpecifier:.
+        */
         #[method(setContainerSpecifier:)]
         pub unsafe fn setContainerSpecifier(
             &self,
             container_specifier: Option<&NSScriptObjectSpecifier>,
         );
 
+        /**
+          setContainerSpecifier: calls [child setChildSpecifier:self] as well.
+        */
         #[method(containerIsObjectBeingTested)]
         pub unsafe fn containerIsObjectBeingTested(&self) -> bool;
 
+        /**
+          setContainerSpecifier: calls [child setChildSpecifier:self] as well.
+        */
         #[method(setContainerIsObjectBeingTested:)]
         pub unsafe fn setContainerIsObjectBeingTested(
             &self,
             container_is_object_being_tested: bool,
         );
 
+        /**
+          If our containerSpecifier is nil, this flag determines whether the top-level container is the default top-level object or the object currently being tested by an NSWhoseSpecifier.
+        */
         #[method(containerIsRangeContainerObject)]
         pub unsafe fn containerIsRangeContainerObject(&self) -> bool;
 
+        /**
+          If our containerSpecifier is nil, this flag determines whether the top-level container is the default top-level object or the object currently being tested by an NSWhoseSpecifier.
+        */
         #[method(setContainerIsRangeContainerObject:)]
         pub unsafe fn setContainerIsRangeContainerObject(
             &self,
@@ -133,18 +171,32 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          If our containerSpecifier is nil, this flag determines whether the top-level container is the default top-level object or the object that is the container for the current range specifier being evaluated.
+         One or neither of -containerIsObjectBeingTested and -containerIsRangeContainerObject should be set to YES.  Setting both of these to YES makes no sense.
+        */
         #[method_id(@__retain_semantics Other key)]
         pub unsafe fn key(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          If our containerSpecifier is nil, this flag determines whether the top-level container is the default top-level object or the object that is the container for the current range specifier being evaluated.
+         One or neither of -containerIsObjectBeingTested and -containerIsRangeContainerObject should be set to YES.  Setting both of these to YES makes no sense.
+        */
         #[method(setKey:)]
         pub unsafe fn setKey(&self, key: &NSString);
 
         #[cfg(feature = "Foundation_NSScriptClassDescription")]
+        /**
+          The name of the key in the container object to be accessed by this specifier.
+        */
         #[method_id(@__retain_semantics Other containerClassDescription)]
         pub unsafe fn containerClassDescription(&self) -> Option<Id<NSScriptClassDescription>>;
 
         #[cfg(feature = "Foundation_NSScriptClassDescription")]
+        /**
+          The name of the key in the container object to be accessed by this specifier.
+        */
         #[method(setContainerClassDescription:)]
         pub unsafe fn setContainerClassDescription(
             &self,
@@ -181,6 +233,9 @@ extern_methods!(
         pub unsafe fn evaluationErrorSpecifier(&self) -> Option<Id<NSScriptObjectSpecifier>>;
 
         #[cfg(feature = "Foundation_NSAppleEventDescriptor")]
+        /**
+          Return an Apple event descriptor that represents the receiver. If the receiver was created with +objectSpecifierWithDescriptor: that passed-in descriptor is returned. Otherwise a new one is created and returned (autoreleased, of course).
+        */
         #[method_id(@__retain_semantics Other descriptor)]
         pub unsafe fn descriptor(&self) -> Option<Id<NSAppleEventDescriptor>>;
     }
@@ -189,6 +244,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSIndexSpecifier")]
+    /**
+      An Index specifiers return the object at the specified index for the specifier's property.  A negative index counts from the end of the array.
+    */
     pub struct NSIndexSpecifier;
 
     #[cfg(feature = "Foundation_NSIndexSpecifier")]
@@ -199,12 +257,21 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSIndexSpecifier")]
+/**
+  An Index specifiers return the object at the specified index for the specifier's property.  A negative index counts from the end of the array.
+*/
 unsafe impl NSCoding for NSIndexSpecifier {}
 
 #[cfg(feature = "Foundation_NSIndexSpecifier")]
+/**
+  An Index specifiers return the object at the specified index for the specifier's property.  A negative index counts from the end of the array.
+*/
 unsafe impl NSObjectProtocol for NSIndexSpecifier {}
 
 extern_methods!(
+    /**
+      An Index specifiers return the object at the specified index for the specifier's property.  A negative index counts from the end of the array.
+    */
     #[cfg(feature = "Foundation_NSIndexSpecifier")]
     unsafe impl NSIndexSpecifier {
         #[cfg(all(
@@ -231,6 +298,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSMiddleSpecifier")]
+    /**
+      A Middle specifier returns the middle object from the objects for the specifier's property.  If there are an even number of objects it returns the object before the midpoint.
+    */
     pub struct NSMiddleSpecifier;
 
     #[cfg(feature = "Foundation_NSMiddleSpecifier")]
@@ -241,12 +311,21 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSMiddleSpecifier")]
+/**
+  A Middle specifier returns the middle object from the objects for the specifier's property.  If there are an even number of objects it returns the object before the midpoint.
+*/
 unsafe impl NSCoding for NSMiddleSpecifier {}
 
 #[cfg(feature = "Foundation_NSMiddleSpecifier")]
+/**
+  A Middle specifier returns the middle object from the objects for the specifier's property.  If there are an even number of objects it returns the object before the midpoint.
+*/
 unsafe impl NSObjectProtocol for NSMiddleSpecifier {}
 
 extern_methods!(
+    /**
+      A Middle specifier returns the middle object from the objects for the specifier's property.  If there are an even number of objects it returns the object before the midpoint.
+    */
     #[cfg(feature = "Foundation_NSMiddleSpecifier")]
     unsafe impl NSMiddleSpecifier {}
 );
@@ -254,6 +333,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSNameSpecifier")]
+    /**
+      A Name specifier returns the object with the specified name.
+    */
     pub struct NSNameSpecifier;
 
     #[cfg(feature = "Foundation_NSNameSpecifier")]
@@ -264,12 +346,21 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSNameSpecifier")]
+/**
+  A Name specifier returns the object with the specified name.
+*/
 unsafe impl NSCoding for NSNameSpecifier {}
 
 #[cfg(feature = "Foundation_NSNameSpecifier")]
+/**
+  A Name specifier returns the object with the specified name.
+*/
 unsafe impl NSObjectProtocol for NSNameSpecifier {}
 
 extern_methods!(
+    /**
+      A Name specifier returns the object with the specified name.
+    */
     #[cfg(feature = "Foundation_NSNameSpecifier")]
     unsafe impl NSNameSpecifier {
         #[cfg(feature = "Foundation_NSCoder")]
@@ -327,6 +418,9 @@ extern_methods!(
             specifier: &NSScriptObjectSpecifier,
         ) -> Id<Self>;
 
+        /**
+          Return the position or object specifier that was specified at initialization time.
+        */
         #[method(position)]
         pub unsafe fn position(&self) -> NSInsertionPosition;
 
@@ -344,16 +438,28 @@ extern_methods!(
         #[method(evaluate)]
         pub unsafe fn evaluate(&self);
 
+        /**
+          Return the container into which insertion should be done, if evaluation has been successful, or nil otherwise.  If this object has never been evaluated, evaluation is attempted.
+        */
         #[method_id(@__retain_semantics Other insertionContainer)]
         pub unsafe fn insertionContainer(&self) -> Option<Id<Object>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Return the key for the to-many relationship for which insertion should be done, if evaluation has been successful, or nil otherwise.  If this object has never been evaluated, evaluation is attempted.
+        */
         #[method_id(@__retain_semantics Other insertionKey)]
         pub unsafe fn insertionKey(&self) -> Option<Id<NSString>>;
 
+        /**
+          Return an index into the set of keyed to-many relationship objects before which insertion should be done in the insertion container, if evaluation has been successful, or -1 otherwise.  If this object has never been evaluated, evaluation is attempted.
+        */
         #[method(insertionIndex)]
         pub unsafe fn insertionIndex(&self) -> NSInteger;
 
+        /**
+          Return YES if evaluation has been successful and the object to be inserted should actually replace the keyed, indexed object in the insertion container, instead of being inserted before it, or NO otherwise.  If this object has never been evaluated, evaluation is attempted.
+        */
         #[method(insertionReplaces)]
         pub unsafe fn insertionReplaces(&self) -> bool;
     }
@@ -362,6 +468,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSPropertySpecifier")]
+    /**
+      This returns all the objects for the specifier's property.  This is used for accessing singular properties as well as for the "Every" specifier type for plural properties.
+    */
     pub struct NSPropertySpecifier;
 
     #[cfg(feature = "Foundation_NSPropertySpecifier")]
@@ -372,12 +481,21 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSPropertySpecifier")]
+/**
+  This returns all the objects for the specifier's property.  This is used for accessing singular properties as well as for the "Every" specifier type for plural properties.
+*/
 unsafe impl NSCoding for NSPropertySpecifier {}
 
 #[cfg(feature = "Foundation_NSPropertySpecifier")]
+/**
+  This returns all the objects for the specifier's property.  This is used for accessing singular properties as well as for the "Every" specifier type for plural properties.
+*/
 unsafe impl NSObjectProtocol for NSPropertySpecifier {}
 
 extern_methods!(
+    /**
+      This returns all the objects for the specifier's property.  This is used for accessing singular properties as well as for the "Every" specifier type for plural properties.
+    */
     #[cfg(feature = "Foundation_NSPropertySpecifier")]
     unsafe impl NSPropertySpecifier {}
 );
@@ -385,6 +503,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSRandomSpecifier")]
+    /**
+      A Random specifier returns an object chosen at random from the objects for the specifier's property.
+    */
     pub struct NSRandomSpecifier;
 
     #[cfg(feature = "Foundation_NSRandomSpecifier")]
@@ -395,12 +516,21 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSRandomSpecifier")]
+/**
+  A Random specifier returns an object chosen at random from the objects for the specifier's property.
+*/
 unsafe impl NSCoding for NSRandomSpecifier {}
 
 #[cfg(feature = "Foundation_NSRandomSpecifier")]
+/**
+  A Random specifier returns an object chosen at random from the objects for the specifier's property.
+*/
 unsafe impl NSObjectProtocol for NSRandomSpecifier {}
 
 extern_methods!(
+    /**
+      A Random specifier returns an object chosen at random from the objects for the specifier's property.
+    */
     #[cfg(feature = "Foundation_NSRandomSpecifier")]
     unsafe impl NSRandomSpecifier {}
 );
@@ -408,6 +538,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSRangeSpecifier")]
+    /**
+      A Range specifier returns a contiguous subset of the objects for the specifier's property.
+    */
     pub struct NSRangeSpecifier;
 
     #[cfg(feature = "Foundation_NSRangeSpecifier")]
@@ -418,12 +551,21 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSRangeSpecifier")]
+/**
+  A Range specifier returns a contiguous subset of the objects for the specifier's property.
+*/
 unsafe impl NSCoding for NSRangeSpecifier {}
 
 #[cfg(feature = "Foundation_NSRangeSpecifier")]
+/**
+  A Range specifier returns a contiguous subset of the objects for the specifier's property.
+*/
 unsafe impl NSObjectProtocol for NSRangeSpecifier {}
 
 extern_methods!(
+    /**
+      A Range specifier returns a contiguous subset of the objects for the specifier's property.
+    */
     #[cfg(feature = "Foundation_NSRangeSpecifier")]
     unsafe impl NSRangeSpecifier {
         #[cfg(feature = "Foundation_NSCoder")]
@@ -520,6 +662,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSUniqueIDSpecifier")]
+    /**
+      A Unique ID specifier returns the object with the specified ID.
+    */
     pub struct NSUniqueIDSpecifier;
 
     #[cfg(feature = "Foundation_NSUniqueIDSpecifier")]
@@ -530,12 +675,21 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSUniqueIDSpecifier")]
+/**
+  A Unique ID specifier returns the object with the specified ID.
+*/
 unsafe impl NSCoding for NSUniqueIDSpecifier {}
 
 #[cfg(feature = "Foundation_NSUniqueIDSpecifier")]
+/**
+  A Unique ID specifier returns the object with the specified ID.
+*/
 unsafe impl NSObjectProtocol for NSUniqueIDSpecifier {}
 
 extern_methods!(
+    /**
+      A Unique ID specifier returns the object with the specified ID.
+    */
     #[cfg(feature = "Foundation_NSUniqueIDSpecifier")]
     unsafe impl NSUniqueIDSpecifier {
         #[cfg(feature = "Foundation_NSCoder")]
@@ -569,6 +723,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSWhoseSpecifier")]
+    /**
+      The "subelement" stuff is to support stuff like "the first word whose..."
+    */
     pub struct NSWhoseSpecifier;
 
     #[cfg(feature = "Foundation_NSWhoseSpecifier")]
@@ -579,12 +736,21 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSWhoseSpecifier")]
+/**
+  The "subelement" stuff is to support stuff like "the first word whose..."
+*/
 unsafe impl NSCoding for NSWhoseSpecifier {}
 
 #[cfg(feature = "Foundation_NSWhoseSpecifier")]
+/**
+  The "subelement" stuff is to support stuff like "the first word whose..."
+*/
 unsafe impl NSObjectProtocol for NSWhoseSpecifier {}
 
 extern_methods!(
+    /**
+      The "subelement" stuff is to support stuff like "the first word whose..."
+    */
     #[cfg(feature = "Foundation_NSWhoseSpecifier")]
     unsafe impl NSWhoseSpecifier {
         #[cfg(feature = "Foundation_NSCoder")]
@@ -631,9 +797,15 @@ extern_methods!(
         #[method(setStartSubelementIndex:)]
         pub unsafe fn setStartSubelementIndex(&self, start_subelement_index: NSInteger);
 
+        /**
+          Only used if the startSubelementIdentifier == NSIndexSubelement
+        */
         #[method(endSubelementIdentifier)]
         pub unsafe fn endSubelementIdentifier(&self) -> NSWhoseSubelementIdentifier;
 
+        /**
+          Only used if the startSubelementIdentifier == NSIndexSubelement
+        */
         #[method(setEndSubelementIdentifier:)]
         pub unsafe fn setEndSubelementIdentifier(
             &self,
@@ -650,6 +822,9 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSScriptObjectSpecifier`
+    /**
+      An Index specifiers return the object at the specified index for the specifier's property.  A negative index counts from the end of the array.
+    */
     #[cfg(feature = "Foundation_NSIndexSpecifier")]
     unsafe impl NSIndexSpecifier {
         #[cfg(feature = "Foundation_NSString")]
@@ -676,6 +851,9 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSScriptObjectSpecifier`
+    /**
+      A Middle specifier returns the middle object from the objects for the specifier's property.  If there are an even number of objects it returns the object before the midpoint.
+    */
     #[cfg(feature = "Foundation_NSMiddleSpecifier")]
     unsafe impl NSMiddleSpecifier {
         #[cfg(feature = "Foundation_NSString")]
@@ -702,6 +880,9 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSScriptObjectSpecifier`
+    /**
+      A Name specifier returns the object with the specified name.
+    */
     #[cfg(feature = "Foundation_NSNameSpecifier")]
     unsafe impl NSNameSpecifier {
         #[cfg(feature = "Foundation_NSString")]
@@ -728,6 +909,9 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSScriptObjectSpecifier`
+    /**
+      This returns all the objects for the specifier's property.  This is used for accessing singular properties as well as for the "Every" specifier type for plural properties.
+    */
     #[cfg(feature = "Foundation_NSPropertySpecifier")]
     unsafe impl NSPropertySpecifier {
         #[cfg(feature = "Foundation_NSString")]
@@ -754,6 +938,9 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSScriptObjectSpecifier`
+    /**
+      A Random specifier returns an object chosen at random from the objects for the specifier's property.
+    */
     #[cfg(feature = "Foundation_NSRandomSpecifier")]
     unsafe impl NSRandomSpecifier {
         #[cfg(feature = "Foundation_NSString")]
@@ -780,6 +967,9 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSScriptObjectSpecifier`
+    /**
+      A Range specifier returns a contiguous subset of the objects for the specifier's property.
+    */
     #[cfg(feature = "Foundation_NSRangeSpecifier")]
     unsafe impl NSRangeSpecifier {
         #[cfg(feature = "Foundation_NSString")]
@@ -832,6 +1022,9 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSScriptObjectSpecifier`
+    /**
+      A Unique ID specifier returns the object with the specified ID.
+    */
     #[cfg(feature = "Foundation_NSUniqueIDSpecifier")]
     unsafe impl NSUniqueIDSpecifier {
         #[cfg(feature = "Foundation_NSString")]
@@ -858,6 +1051,9 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSScriptObjectSpecifier`
+    /**
+      The "subelement" stuff is to support stuff like "the first word whose..."
+    */
     #[cfg(feature = "Foundation_NSWhoseSpecifier")]
     unsafe impl NSWhoseSpecifier {
         #[cfg(feature = "Foundation_NSString")]

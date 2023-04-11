@@ -54,18 +54,33 @@ extern_methods!(
         pub unsafe fn sessionMode(&self) -> GKSessionMode;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          session's peerID
+        */
         #[method_id(@__retain_semantics Other peerID)]
         pub unsafe fn peerID(&self) -> Option<Id<NSString>>;
 
+        /**
+          Toggle availability on the network based on session mode and search criteria.  Delegate will get a callback -session:didReceiveConnectionRequestFromPeer: when a peer attempts a connection.
+        */
         #[method(isAvailable)]
         pub unsafe fn isAvailable(&self) -> bool;
 
+        /**
+          Toggle availability on the network based on session mode and search criteria.  Delegate will get a callback -session:didReceiveConnectionRequestFromPeer: when a peer attempts a connection.
+        */
         #[method(setAvailable:)]
         pub unsafe fn setAvailable(&self, available: bool);
 
+        /**
+          default is 20 seconds
+        */
         #[method(disconnectTimeout)]
         pub unsafe fn disconnectTimeout(&self) -> NSTimeInterval;
 
+        /**
+          default is 20 seconds
+        */
         #[method(setDisconnectTimeout:)]
         pub unsafe fn setDisconnectTimeout(&self, disconnect_timeout: NSTimeInterval);
 

@@ -10,6 +10,11 @@ use crate::MapKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "EventKit_EKVirtualConferenceProvider")]
+    /**
+     @class      EKVirtualConferenceProvider
+    @abstract   Provides virtual conferences to Calendar.
+    @discussion Subclass this class in your extension and override the below two methods.
+    */
     pub struct EKVirtualConferenceProvider;
 
     #[cfg(feature = "EventKit_EKVirtualConferenceProvider")]
@@ -19,12 +24,27 @@ extern_class!(
 );
 
 #[cfg(feature = "EventKit_EKVirtualConferenceProvider")]
+/**
+ @class      EKVirtualConferenceProvider
+@abstract   Provides virtual conferences to Calendar.
+@discussion Subclass this class in your extension and override the below two methods.
+*/
 unsafe impl NSExtensionRequestHandling for EKVirtualConferenceProvider {}
 
 #[cfg(feature = "EventKit_EKVirtualConferenceProvider")]
+/**
+ @class      EKVirtualConferenceProvider
+@abstract   Provides virtual conferences to Calendar.
+@discussion Subclass this class in your extension and override the below two methods.
+*/
 unsafe impl NSObjectProtocol for EKVirtualConferenceProvider {}
 
 extern_methods!(
+    /**
+     @class      EKVirtualConferenceProvider
+    @abstract   Provides virtual conferences to Calendar.
+    @discussion Subclass this class in your extension and override the below two methods.
+    */
     #[cfg(feature = "EventKit_EKVirtualConferenceProvider")]
     unsafe impl EKVirtualConferenceProvider {
         #[cfg(all(

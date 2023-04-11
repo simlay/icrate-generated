@@ -64,10 +64,16 @@ extern_methods!(
     #[cfg(feature = "MapKit_MKGeoJSONFeature")]
     unsafe impl MKGeoJSONFeature {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          If set, will be either a string or a number, depending on the original source data
+        */
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          Serialized JSON
+        */
         #[method_id(@__retain_semantics Other properties)]
         pub unsafe fn properties(&self) -> Option<Id<NSData>>;
 

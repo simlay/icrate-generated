@@ -7,6 +7,9 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      Values for NSTextBlockValueType
+    */
     pub enum NSTextBlockValueType {
         NSTextBlockAbsoluteValueType = 0,
         NSTextBlockPercentageValueType = 1,
@@ -15,6 +18,9 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      Values for NSTextBlockDimension
+    */
     pub enum NSTextBlockDimension {
         NSTextBlockWidth = 0,
         NSTextBlockMinimumWidth = 1,
@@ -27,6 +33,9 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      Values for NSTextBlockLayer
+    */
     pub enum NSTextBlockLayer {
         NSTextBlockPadding = -1,
         NSTextBlockBorder = 0,
@@ -36,6 +45,9 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      Values for NSTextBlockVerticalAlignment
+    */
     pub enum NSTextBlockVerticalAlignment {
         NSTextBlockTopAlignment = 0,
         NSTextBlockMiddleAlignment = 1,
@@ -46,6 +58,9 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      Values for NSTextTableLayoutAlgorithm
+    */
     pub enum NSTextTableLayoutAlgorithm {
         NSTextTableAutomaticLayoutAlgorithm = 0,
         NSTextTableFixedLayoutAlgorithm = 1,
@@ -55,6 +70,9 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSTextBlock")]
+    /**
+      NSTextBlock is the basic object for text block layout, and the superclass of the other classes.
+    */
     pub struct NSTextBlock;
 
     #[cfg(feature = "AppKit_NSTextBlock")]
@@ -64,15 +82,27 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSTextBlock")]
+/**
+  NSTextBlock is the basic object for text block layout, and the superclass of the other classes.
+*/
 unsafe impl NSCoding for NSTextBlock {}
 
 #[cfg(feature = "AppKit_NSTextBlock")]
+/**
+  NSTextBlock is the basic object for text block layout, and the superclass of the other classes.
+*/
 unsafe impl NSObjectProtocol for NSTextBlock {}
 
 #[cfg(feature = "AppKit_NSTextBlock")]
+/**
+  NSTextBlock is the basic object for text block layout, and the superclass of the other classes.
+*/
 unsafe impl NSSecureCoding for NSTextBlock {}
 
 extern_methods!(
+    /**
+      NSTextBlock is the basic object for text block layout, and the superclass of the other classes.
+    */
     #[cfg(feature = "AppKit_NSTextBlock")]
     unsafe impl NSTextBlock {
         #[method_id(@__retain_semantics Init init)]
@@ -135,17 +165,29 @@ extern_methods!(
             edge: NSRectEdge,
         ) -> NSTextBlockValueType;
 
+        /**
+          Alignment
+        */
         #[method(verticalAlignment)]
         pub unsafe fn verticalAlignment(&self) -> NSTextBlockVerticalAlignment;
 
+        /**
+          Alignment
+        */
         #[method(setVerticalAlignment:)]
         pub unsafe fn setVerticalAlignment(&self, vertical_alignment: NSTextBlockVerticalAlignment);
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+          Colors
+        */
         #[method_id(@__retain_semantics Other backgroundColor)]
         pub unsafe fn backgroundColor(&self) -> Option<Id<NSColor>>;
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+          Colors
+        */
         #[method(setBackgroundColor:)]
         pub unsafe fn setBackgroundColor(&self, background_color: Option<&NSColor>);
 
@@ -196,6 +238,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSTextTableBlock")]
+    /**
+      NSTextTableBlock is a subclass of NSTextBlock used for a block that appears as a cell in a text table.
+    */
     pub struct NSTextTableBlock;
 
     #[cfg(feature = "AppKit_NSTextTableBlock")]
@@ -206,15 +251,27 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSTextTableBlock")]
+/**
+  NSTextTableBlock is a subclass of NSTextBlock used for a block that appears as a cell in a text table.
+*/
 unsafe impl NSCoding for NSTextTableBlock {}
 
 #[cfg(feature = "AppKit_NSTextTableBlock")]
+/**
+  NSTextTableBlock is a subclass of NSTextBlock used for a block that appears as a cell in a text table.
+*/
 unsafe impl NSObjectProtocol for NSTextTableBlock {}
 
 #[cfg(feature = "AppKit_NSTextTableBlock")]
+/**
+  NSTextTableBlock is a subclass of NSTextBlock used for a block that appears as a cell in a text table.
+*/
 unsafe impl NSSecureCoding for NSTextTableBlock {}
 
 extern_methods!(
+    /**
+      NSTextTableBlock is a subclass of NSTextBlock used for a block that appears as a cell in a text table.
+    */
     #[cfg(feature = "AppKit_NSTextTableBlock")]
     unsafe impl NSTextTableBlock {
         #[cfg(feature = "AppKit_NSTextTable")]
@@ -229,6 +286,9 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "AppKit_NSTextTable")]
+        /**
+          These methods determine the block's role in its enclosing table.
+        */
         #[method_id(@__retain_semantics Other table)]
         pub unsafe fn table(&self) -> Id<NSTextTable>;
 
@@ -249,6 +309,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSTextTable")]
+    /**
+      NSTextTable represents a table as a whole.
+    */
     pub struct NSTextTable;
 
     #[cfg(feature = "AppKit_NSTextTable")]
@@ -259,20 +322,38 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSTextTable")]
+/**
+  NSTextTable represents a table as a whole.
+*/
 unsafe impl NSCoding for NSTextTable {}
 
 #[cfg(feature = "AppKit_NSTextTable")]
+/**
+  NSTextTable represents a table as a whole.
+*/
 unsafe impl NSObjectProtocol for NSTextTable {}
 
 #[cfg(feature = "AppKit_NSTextTable")]
+/**
+  NSTextTable represents a table as a whole.
+*/
 unsafe impl NSSecureCoding for NSTextTable {}
 
 extern_methods!(
+    /**
+      NSTextTable represents a table as a whole.
+    */
     #[cfg(feature = "AppKit_NSTextTable")]
     unsafe impl NSTextTable {
+        /**
+          These methods control the basic parameters of the table.
+        */
         #[method(numberOfColumns)]
         pub unsafe fn numberOfColumns(&self) -> NSUInteger;
 
+        /**
+          These methods control the basic parameters of the table.
+        */
         #[method(setNumberOfColumns:)]
         pub unsafe fn setNumberOfColumns(&self, number_of_columns: NSUInteger);
 

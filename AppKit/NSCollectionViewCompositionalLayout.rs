@@ -7,6 +7,9 @@ use crate::Foundation::*;
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+      Edge specification that should be interpreted according to the user interface layout direction.
+    */
     pub enum NSDirectionalRectEdge {
         NSDirectionalRectEdgeNone = 0,
         NSDirectionalRectEdgeTop = 1 << 0,
@@ -21,6 +24,9 @@ ns_options!(
 );
 
 extern_struct!(
+    /**
+      Specifies edge insets that should be interpreted according to the user interface layout direction.  Specify positive values to inset, negative values to outset.
+    */
     pub struct NSDirectionalEdgeInsets {
         pub top: CGFloat,
         pub leading: CGFloat,
@@ -33,6 +39,9 @@ extern_static!(NSDirectionalEdgeInsetsZero: NSDirectionalEdgeInsets);
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      Alignment specification that should be interpreted according to the user interface layout direction.
+    */
     pub enum NSRectAlignment {
         NSRectAlignmentNone = 0,
         NSRectAlignmentTop = 1,
@@ -60,6 +69,9 @@ inline_fn!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSCollectionViewCompositionalLayoutConfiguration")]
+    /**
+      End temporary declarations
+    */
     pub struct NSCollectionViewCompositionalLayoutConfiguration;
 
     #[cfg(feature = "AppKit_NSCollectionViewCompositionalLayoutConfiguration")]
@@ -69,9 +81,15 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSCollectionViewCompositionalLayoutConfiguration")]
+/**
+  End temporary declarations
+*/
 unsafe impl NSObjectProtocol for NSCollectionViewCompositionalLayoutConfiguration {}
 
 extern_methods!(
+    /**
+      End temporary declarations
+    */
     #[cfg(feature = "AppKit_NSCollectionViewCompositionalLayoutConfiguration")]
     unsafe impl NSCollectionViewCompositionalLayoutConfiguration {
         #[method(scrollDirection)]
@@ -175,10 +193,18 @@ extern_methods!(
         pub unsafe fn new() -> Id<Self>;
 
         #[cfg(feature = "AppKit_NSCollectionViewCompositionalLayoutConfiguration")]
+        /**
+          Setting this property will invalidate the layout immediately to affect any changes
+            Note: any changes made to properites directly will have no effect.
+        */
         #[method_id(@__retain_semantics Other configuration)]
         pub unsafe fn configuration(&self) -> Id<NSCollectionViewCompositionalLayoutConfiguration>;
 
         #[cfg(feature = "AppKit_NSCollectionViewCompositionalLayoutConfiguration")]
+        /**
+          Setting this property will invalidate the layout immediately to affect any changes
+            Note: any changes made to properites directly will have no effect.
+        */
         #[method(setConfiguration:)]
         pub unsafe fn setConfiguration(
             &self,
@@ -247,11 +273,17 @@ extern_methods!(
         #[method(setInterGroupSpacing:)]
         pub unsafe fn setInterGroupSpacing(&self, inter_group_spacing: CGFloat);
 
+        /**
+          default is .none
+        */
         #[method(orthogonalScrollingBehavior)]
         pub unsafe fn orthogonalScrollingBehavior(
             &self,
         ) -> NSCollectionLayoutSectionOrthogonalScrollingBehavior;
 
+        /**
+          default is .none
+        */
         #[method(setOrthogonalScrollingBehavior:)]
         pub unsafe fn setOrthogonalScrollingBehavior(
             &self,
@@ -262,6 +294,9 @@ extern_methods!(
             feature = "AppKit_NSCollectionLayoutBoundarySupplementaryItem",
             feature = "Foundation_NSArray"
         ))]
+        /**
+          Supplementaries associated with the boundary edges of the section
+        */
         #[method_id(@__retain_semantics Other boundarySupplementaryItems)]
         pub unsafe fn boundarySupplementaryItems(
             &self,
@@ -271,26 +306,41 @@ extern_methods!(
             feature = "AppKit_NSCollectionLayoutBoundarySupplementaryItem",
             feature = "Foundation_NSArray"
         ))]
+        /**
+          Supplementaries associated with the boundary edges of the section
+        */
         #[method(setBoundarySupplementaryItems:)]
         pub unsafe fn setBoundarySupplementaryItems(
             &self,
             boundary_supplementary_items: &NSArray<NSCollectionLayoutBoundarySupplementaryItem>,
         );
 
+        /**
+          by default, section supplementaries will follow any section-specific contentInsets
+        */
         #[method(supplementariesFollowContentInsets)]
         pub unsafe fn supplementariesFollowContentInsets(&self) -> bool;
 
+        /**
+          by default, section supplementaries will follow any section-specific contentInsets
+        */
         #[method(setSupplementariesFollowContentInsets:)]
         pub unsafe fn setSupplementariesFollowContentInsets(
             &self,
             supplementaries_follow_content_insets: bool,
         );
 
+        /**
+          Called for each layout pass to allow modification of item properties right before they are displayed.
+        */
         #[method(visibleItemsInvalidationHandler)]
         pub unsafe fn visibleItemsInvalidationHandler(
             &self,
         ) -> NSCollectionLayoutSectionVisibleItemsInvalidationHandler;
 
+        /**
+          Called for each layout pass to allow modification of item properties right before they are displayed.
+        */
         #[method(setVisibleItemsInvalidationHandler:)]
         pub unsafe fn setVisibleItemsInvalidationHandler(
             &self,
@@ -301,6 +351,9 @@ extern_methods!(
             feature = "AppKit_NSCollectionLayoutDecorationItem",
             feature = "Foundation_NSArray"
         ))]
+        /**
+          decoration views anchored to the section's geometry (e.g. background decoration view)
+        */
         #[method_id(@__retain_semantics Other decorationItems)]
         pub unsafe fn decorationItems(&self) -> Id<NSArray<NSCollectionLayoutDecorationItem>>;
 
@@ -308,6 +361,9 @@ extern_methods!(
             feature = "AppKit_NSCollectionLayoutDecorationItem",
             feature = "Foundation_NSArray"
         ))]
+        /**
+          decoration views anchored to the section's geometry (e.g. background decoration view)
+        */
         #[method(setDecorationItems:)]
         pub unsafe fn setDecorationItems(
             &self,
@@ -354,17 +410,99 @@ extern_methods!(
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
 
+        /**
+                                +---------------------+
+           +-------------+<----|Specified layout size|
+           |             |     +---------------------+
+           |  +-------+  |     +--------------------------+
+           |  |~~~~~~~|  |     |Final size (after         |
+           |  |~~~~~~~|<-+-----|contentInsets are applied)|
+           |  +-------+  |     +--------------------------+
+           |             |
+           +-------------+
+
+          Use contentInsets on an item to adjust the final size of the item after layout is computed.
+            useful for grid style layouts to apply even spacing around each the edges of each item.
+
+          Note: contentInsets are ignored for items with .estimated dimension(s)
+        */
         #[method(contentInsets)]
         pub unsafe fn contentInsets(&self) -> NSDirectionalEdgeInsets;
 
+        /**
+                                +---------------------+
+           +-------------+<----|Specified layout size|
+           |             |     +---------------------+
+           |  +-------+  |     +--------------------------+
+           |  |~~~~~~~|  |     |Final size (after         |
+           |  |~~~~~~~|<-+-----|contentInsets are applied)|
+           |  +-------+  |     +--------------------------+
+           |             |
+           +-------------+
+
+          Use contentInsets on an item to adjust the final size of the item after layout is computed.
+            useful for grid style layouts to apply even spacing around each the edges of each item.
+
+          Note: contentInsets are ignored for items with .estimated dimension(s)
+        */
         #[method(setContentInsets:)]
         pub unsafe fn setContentInsets(&self, content_insets: NSDirectionalEdgeInsets);
 
         #[cfg(feature = "AppKit_NSCollectionLayoutEdgeSpacing")]
+        /**
+                              +--------+
+                             |  Top   |
+                             +--------+
+                                  |
+                                  |
+                          +-------+--------------------------+
+                          |       v                          |
+                          |    +------+                      |
+           +--------+     |    |~~~~~~|        +--------+    |
+           |Leading |-----+->  |~~~~~~| <------|Trailing|    |
+           +--------+     |    |~~~~~~|        +--------+    |
+                          |    +------+                      |
+                          |        ^                         |
+                          +--------+-------------------------+
+                                   |
+                                   |
+                              +--------+
+                              | Bottom |
+                              +--------+
+
+          Specifies additional space required surrounding and item when laying out.
+          Flexible spacing can be used to apportion remaining space after items are layed out to
+            evenly align items among available layout space.
+        */
         #[method_id(@__retain_semantics Other edgeSpacing)]
         pub unsafe fn edgeSpacing(&self) -> Option<Id<NSCollectionLayoutEdgeSpacing>>;
 
         #[cfg(feature = "AppKit_NSCollectionLayoutEdgeSpacing")]
+        /**
+                              +--------+
+                             |  Top   |
+                             +--------+
+                                  |
+                                  |
+                          +-------+--------------------------+
+                          |       v                          |
+                          |    +------+                      |
+           +--------+     |    |~~~~~~|        +--------+    |
+           |Leading |-----+->  |~~~~~~| <------|Trailing|    |
+           +--------+     |    |~~~~~~|        +--------+    |
+                          |    +------+                      |
+                          |        ^                         |
+                          +--------+-------------------------+
+                                   |
+                                   |
+                              +--------+
+                              | Bottom |
+                              +--------+
+
+          Specifies additional space required surrounding and item when laying out.
+          Flexible spacing can be used to apportion remaining space after items are layed out to
+            evenly align items among available layout space.
+        */
         #[method(setEdgeSpacing:)]
         pub unsafe fn setEdgeSpacing(&self, edge_spacing: Option<&NSCollectionLayoutEdgeSpacing>);
 
@@ -495,6 +633,9 @@ extern_methods!(
             feature = "AppKit_NSCollectionLayoutSupplementaryItem",
             feature = "Foundation_NSArray"
         ))]
+        /**
+          Supplementary items are "anchored" to the group's geometry.
+        */
         #[method_id(@__retain_semantics Other supplementaryItems)]
         pub unsafe fn supplementaryItems(&self)
             -> Id<NSArray<NSCollectionLayoutSupplementaryItem>>;
@@ -503,6 +644,9 @@ extern_methods!(
             feature = "AppKit_NSCollectionLayoutSupplementaryItem",
             feature = "Foundation_NSArray"
         ))]
+        /**
+          Supplementary items are "anchored" to the group's geometry.
+        */
         #[method(setSupplementaryItems:)]
         pub unsafe fn setSupplementaryItems(
             &self,
@@ -510,10 +654,16 @@ extern_methods!(
         );
 
         #[cfg(feature = "AppKit_NSCollectionLayoutSpacing")]
+        /**
+          Supplies additional spacing between items along the layout axis of the group
+        */
         #[method_id(@__retain_semantics Other interItemSpacing)]
         pub unsafe fn interItemSpacing(&self) -> Option<Id<NSCollectionLayoutSpacing>>;
 
         #[cfg(feature = "AppKit_NSCollectionLayoutSpacing")]
+        /**
+          Supplies additional spacing between items along the layout axis of the group
+        */
         #[method(setInterItemSpacing:)]
         pub unsafe fn setInterItemSpacing(
             &self,
@@ -828,15 +978,31 @@ extern_methods!(
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
 
+        /**
+          Default is YES. This will automatically extend the content area of the host geometry (e.g. section)
+           For .estimated sized supplementary items, this allows automatic adjustment of the layout. (e.g. dynamic text)
+        */
         #[method(extendsBoundary)]
         pub unsafe fn extendsBoundary(&self) -> bool;
 
+        /**
+          Default is YES. This will automatically extend the content area of the host geometry (e.g. section)
+           For .estimated sized supplementary items, this allows automatic adjustment of the layout. (e.g. dynamic text)
+        */
         #[method(setExtendsBoundary:)]
         pub unsafe fn setExtendsBoundary(&self, extends_boundary: bool);
 
+        /**
+          Default is NO. Specify YES to keep the supplementary visible while any portion of the host geometry (e.g. section) is visible.
+           Occlusion disambiguation between other supplementaries will be managed automatically (e.g. section header + footer both pinned)
+        */
         #[method(pinToVisibleBounds)]
         pub unsafe fn pinToVisibleBounds(&self) -> bool;
 
+        /**
+          Default is NO. Specify YES to keep the supplementary visible while any portion of the host geometry (e.g. section) is visible.
+           Occlusion disambiguation between other supplementaries will be managed automatically (e.g. section header + footer both pinned)
+        */
         #[method(setPinToVisibleBounds:)]
         pub unsafe fn setPinToVisibleBounds(&self, pin_to_visible_bounds: bool);
 
@@ -876,9 +1042,15 @@ extern_methods!(
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
 
+        /**
+          default is 0; all other section items will be automatically be promoted to zIndex=1
+        */
         #[method(zIndex)]
         pub unsafe fn zIndex(&self) -> NSInteger;
 
+        /**
+          default is 0; all other section items will be automatically be promoted to zIndex=1
+        */
         #[method(setZIndex:)]
         pub unsafe fn setZIndex(&self, z_index: NSInteger);
 
@@ -942,15 +1114,27 @@ extern_methods!(
 
 extern_protocol!(
     pub unsafe trait NSCollectionLayoutContainer: NSObjectProtocol {
+        /**
+          resolved size of container (before any insets are applied)
+        */
         #[method(contentSize)]
         unsafe fn contentSize(&self) -> NSSize;
 
+        /**
+          after insets are applied
+        */
         #[method(effectiveContentSize)]
         unsafe fn effectiveContentSize(&self) -> NSSize;
 
+        /**
+          values < 1.0 are interpreted as fractional values (e.g. leading:0.15 == 15% width)
+        */
         #[method(contentInsets)]
         unsafe fn contentInsets(&self) -> NSDirectionalEdgeInsets;
 
+        /**
+          resolved value after resolving any unit values
+        */
         #[method(effectiveContentInsets)]
         unsafe fn effectiveContentInsets(&self) -> NSDirectionalEdgeInsets;
     }

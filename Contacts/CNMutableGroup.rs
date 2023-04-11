@@ -7,6 +7,11 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNMutableGroup")]
+    /**
+      @abstract A mutable value object representing a group.
+
+     @discussion CNMutableGroup is not thread safe.
+    */
     pub struct CNMutableGroup;
 
     #[cfg(feature = "Contacts_CNMutableGroup")]
@@ -17,15 +22,35 @@ extern_class!(
 );
 
 #[cfg(feature = "Contacts_CNMutableGroup")]
+/**
+  @abstract A mutable value object representing a group.
+
+ @discussion CNMutableGroup is not thread safe.
+*/
 unsafe impl NSCoding for CNMutableGroup {}
 
 #[cfg(feature = "Contacts_CNMutableGroup")]
+/**
+  @abstract A mutable value object representing a group.
+
+ @discussion CNMutableGroup is not thread safe.
+*/
 unsafe impl NSObjectProtocol for CNMutableGroup {}
 
 #[cfg(feature = "Contacts_CNMutableGroup")]
+/**
+  @abstract A mutable value object representing a group.
+
+ @discussion CNMutableGroup is not thread safe.
+*/
 unsafe impl NSSecureCoding for CNMutableGroup {}
 
 extern_methods!(
+    /**
+      @abstract A mutable value object representing a group.
+
+     @discussion CNMutableGroup is not thread safe.
+    */
     #[cfg(feature = "Contacts_CNMutableGroup")]
     unsafe impl CNMutableGroup {
         #[cfg(feature = "Foundation_NSString")]

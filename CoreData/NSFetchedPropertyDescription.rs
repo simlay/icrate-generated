@@ -7,6 +7,9 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreData_NSFetchedPropertyDescription")]
+    /**
+      Fetched properties allow to specify related objects through a "weakly" resolved property, so there is no actual join necessary.
+    */
     pub struct NSFetchedPropertyDescription;
 
     #[cfg(feature = "CoreData_NSFetchedPropertyDescription")]
@@ -17,19 +20,34 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreData_NSFetchedPropertyDescription")]
+/**
+  Fetched properties allow to specify related objects through a "weakly" resolved property, so there is no actual join necessary.
+*/
 unsafe impl NSCoding for NSFetchedPropertyDescription {}
 
 #[cfg(feature = "CoreData_NSFetchedPropertyDescription")]
+/**
+  Fetched properties allow to specify related objects through a "weakly" resolved property, so there is no actual join necessary.
+*/
 unsafe impl NSObjectProtocol for NSFetchedPropertyDescription {}
 
 extern_methods!(
+    /**
+      Fetched properties allow to specify related objects through a "weakly" resolved property, so there is no actual join necessary.
+    */
     #[cfg(feature = "CoreData_NSFetchedPropertyDescription")]
     unsafe impl NSFetchedPropertyDescription {
         #[cfg(feature = "CoreData_NSFetchRequest")]
+        /**
+          As part of the predicate for a fetched property, you can use the two variables $FETCH_SOURCE (which is the managed object fetching the property) and $FETCHED_PROPERTY (which is the NSFetchedPropertyDescription instance).
+        */
         #[method_id(@__retain_semantics Other fetchRequest)]
         pub unsafe fn fetchRequest(&self) -> Option<Id<NSFetchRequest>>;
 
         #[cfg(feature = "CoreData_NSFetchRequest")]
+        /**
+          As part of the predicate for a fetched property, you can use the two variables $FETCH_SOURCE (which is the managed object fetching the property) and $FETCHED_PROPERTY (which is the NSFetchedPropertyDescription instance).
+        */
         #[method(setFetchRequest:)]
         pub unsafe fn setFetchRequest(&self, fetch_request: Option<&NSFetchRequest>);
     }

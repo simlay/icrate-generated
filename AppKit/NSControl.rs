@@ -54,9 +54,15 @@ extern_methods!(
             coder: &NSCoder,
         ) -> Option<Id<Self>>;
 
+        /**
+          Target is weak for zeroing-weak compatible objects in apps linked on 10.10 or later. Otherwise the behavior of this property is 'assign’.
+        */
         #[method_id(@__retain_semantics Other target)]
         pub unsafe fn target(&self) -> Option<Id<Object>>;
 
+        /**
+          Target is weak for zeroing-weak compatible objects in apps linked on 10.10 or later. Otherwise the behavior of this property is 'assign’.
+        */
         #[method(setTarget:)]
         pub unsafe fn setTarget(&self, target: Option<&Object>);
 
@@ -116,9 +122,15 @@ extern_methods!(
         #[method(setFormatter:)]
         pub unsafe fn setFormatter(&self, formatter: Option<&NSFormatter>);
 
+        /**
+          id<NSCopying>
+        */
         #[method_id(@__retain_semantics Other objectValue)]
         pub unsafe fn objectValue(&self) -> Option<Id<Object>>;
 
+        /**
+          id<NSCopying>
+        */
         #[method(setObjectValue:)]
         pub unsafe fn setObjectValue(&self, object_value: Option<&Object>);
 
@@ -200,10 +212,16 @@ extern_methods!(
         pub unsafe fn performClick(&self, sender: Option<&Object>);
 
         #[cfg(feature = "AppKit_NSFont")]
+        /**
+          The following methods apply only to controls with apparent textual content of some sort (buttons with labels, textfields, etc.).
+        */
         #[method_id(@__retain_semantics Other font)]
         pub unsafe fn font(&self) -> Option<Id<NSFont>>;
 
         #[cfg(feature = "AppKit_NSFont")]
+        /**
+          The following methods apply only to controls with apparent textual content of some sort (buttons with labels, textfields, etc.).
+        */
         #[method(setFont:)]
         pub unsafe fn setFont(&self, font: Option<&NSFont>);
 
@@ -231,9 +249,17 @@ extern_methods!(
         #[method(setBaseWritingDirection:)]
         pub unsafe fn setBaseWritingDirection(&self, base_writing_direction: NSWritingDirection);
 
+        /**
+          Gets and sets the ability for expansion tool tips to be shown or not. Expansion tooltips are automatically shown when the cell can not show the full content. This is controlled by the NSCell API expansionFrameWithFrame:inView: and is drawn by drawWithExpansionFrame:inView:. The default value is NO.
+        This value is encoded along with the control. In general, it is recommended to turn this on for NSTextFields in a View Based NSTableView.
+        */
         #[method(allowsExpansionToolTips)]
         pub unsafe fn allowsExpansionToolTips(&self) -> bool;
 
+        /**
+          Gets and sets the ability for expansion tool tips to be shown or not. Expansion tooltips are automatically shown when the cell can not show the full content. This is controlled by the NSCell API expansionFrameWithFrame:inView: and is drawn by drawWithExpansionFrame:inView:. The default value is NO.
+        This value is encoded along with the control. In general, it is recommended to turn this on for NSTextFields in a View Based NSTableView.
+        */
         #[method(setAllowsExpansionToolTips:)]
         pub unsafe fn setAllowsExpansionToolTips(&self, allows_expansion_tool_tips: bool);
 
@@ -246,6 +272,9 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      The following category applies only to controls with editable text, like NSTextField.
+    */
     /// NSControlEditableTextMethods
     #[cfg(feature = "AppKit_NSControl")]
     unsafe impl NSControl {

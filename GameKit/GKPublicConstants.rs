@@ -7,6 +7,9 @@ use crate::GameKit::*;
 
 ns_enum!(
     #[underlying(c_int)]
+    /**
+      Delivery options for GKSession's -(BOOL)sendData... methods.
+    */
     #[deprecated]
     pub enum GKSendDataMode {
         #[deprecated]
@@ -18,6 +21,9 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(c_int)]
+    /**
+      Specifies how GKSession behaves when it is made available.
+    */
     #[deprecated]
     pub enum GKSessionMode {
         #[deprecated]
@@ -31,6 +37,9 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(c_int)]
+    /**
+      Specifies the type of peers to return in method -peersWithConnectionState:
+    */
     #[deprecated]
     pub enum GKPeerConnectionState {
         #[deprecated]

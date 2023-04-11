@@ -9,6 +9,10 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKAttachment")]
+    /**
+     @class         HKAttachment
+    @discussion    An HKAttachment represents a file attachment stored in the HealthKit database.
+    */
     pub struct HKAttachment;
 
     #[cfg(feature = "HealthKit_HKAttachment")]
@@ -18,37 +22,78 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKAttachment")]
+/**
+ @class         HKAttachment
+@discussion    An HKAttachment represents a file attachment stored in the HealthKit database.
+*/
 unsafe impl NSCoding for HKAttachment {}
 
 #[cfg(feature = "HealthKit_HKAttachment")]
+/**
+ @class         HKAttachment
+@discussion    An HKAttachment represents a file attachment stored in the HealthKit database.
+*/
 unsafe impl NSObjectProtocol for HKAttachment {}
 
 #[cfg(feature = "HealthKit_HKAttachment")]
+/**
+ @class         HKAttachment
+@discussion    An HKAttachment represents a file attachment stored in the HealthKit database.
+*/
 unsafe impl NSSecureCoding for HKAttachment {}
 
 extern_methods!(
+    /**
+     @class         HKAttachment
+    @discussion    An HKAttachment represents a file attachment stored in the HealthKit database.
+    */
     #[cfg(feature = "HealthKit_HKAttachment")]
     unsafe impl HKAttachment {
         #[cfg(feature = "Foundation_NSUUID")]
+        /**
+         @property      identifier
+        @abstract      A unique identifier of the receiver in the HealthKit database.
+        */
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Id<NSUUID>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property      name
+        @abstract      Represents the name of the file.
+        */
         #[method_id(@__retain_semantics Other name)]
         pub unsafe fn name(&self) -> Id<NSString>;
 
         #[cfg(feature = "UniformTypeIdentifiers_UTType")]
+        /**
+         @property      contentType
+        @abstract      The Uniform Type of the file.
+        */
         #[method_id(@__retain_semantics Other contentType)]
         pub unsafe fn contentType(&self) -> Id<UTType>;
 
+        /**
+         @property      size
+        @abstract      The size in bytes of the file.
+        */
         #[method(size)]
         pub unsafe fn size(&self) -> NSInteger;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+         @property      creationDate
+        @abstract      The date the receiver was created.
+        */
         #[method_id(@__retain_semantics Other creationDate)]
         pub unsafe fn creationDate(&self) -> Id<NSDate>;
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+         @property      metadata
+        @abstract      Extra information describing the attachment.
+        @discussion    Keys must be NSString and values must be either NSString, NSNumber, or NSDate.
+        */
         #[method_id(@__retain_semantics Other metadata)]
         pub unsafe fn metadata(&self) -> Option<Id<NSDictionary<NSString, Object>>>;
 

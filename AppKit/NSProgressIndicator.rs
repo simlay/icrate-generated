@@ -103,9 +103,15 @@ extern_methods!(
         #[method(setMaxValue:)]
         pub unsafe fn setMaxValue(&self, max_value: c_double);
 
+        /**
+          YES if the NSProgressIndicator uses a thread instead of a timer (defaults to NO).
+        */
         #[method(usesThreadedAnimation)]
         pub unsafe fn usesThreadedAnimation(&self) -> bool;
 
+        /**
+          YES if the NSProgressIndicator uses a thread instead of a timer (defaults to NO).
+        */
         #[method(setUsesThreadedAnimation:)]
         pub unsafe fn setUsesThreadedAnimation(&self, uses_threaded_animation: bool);
 
@@ -134,6 +140,9 @@ extern_methods!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      These constants do not accurately represent the geometry of NSProgressIndicator.  Use `controlSize` and `sizeToFit` instead.
+    */
     #[deprecated = "These constants do not accurately represent the geometry of NSProgressIndicator.  Use `controlSize` and `sizeToFit` instead."]
     pub enum NSProgressIndicatorThickness {
         #[deprecated = "These constants do not accurately represent the geometry of NSProgressIndicator.  Use `controlSize` and `sizeToFit` instead."]

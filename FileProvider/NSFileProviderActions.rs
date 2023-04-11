@@ -11,6 +11,9 @@ typed_extensible_enum!(
 );
 
 extern_methods!(
+    /**
+     This category encapsulates common user-driven actions on FileProvider's items.
+    */
     /// NSFileProviderActions
     #[cfg(feature = "FileProvider_NSFileProviderExtension")]
     unsafe impl NSFileProviderExtension {

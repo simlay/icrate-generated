@@ -8,6 +8,9 @@ use crate::WebKit::*;
 extern_protocol!(
     pub unsafe trait WKURLSchemeTask: NSObjectProtocol {
         #[cfg(feature = "Foundation_NSURLRequest")]
+        /**
+          @abstract The request to load for this task.
+        */
         #[method_id(@__retain_semantics Other request)]
         unsafe fn request(&self) -> Id<NSURLRequest>;
 

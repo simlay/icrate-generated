@@ -70,15 +70,24 @@ extern_methods!(
         pub unsafe fn loadMetadata(&self) -> Result<(), Id<NSError>>;
 
         #[cfg(feature = "CoreData_NSPersistentStoreCoordinator")]
+        /**
+          the bridge between the control & access layers.
+        */
         #[method_id(@__retain_semantics Other persistentStoreCoordinator)]
         pub unsafe fn persistentStoreCoordinator(&self)
             -> Option<Id<NSPersistentStoreCoordinator>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Which configuration does this store contain
+        */
         #[method_id(@__retain_semantics Other configurationName)]
         pub unsafe fn configurationName(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          the options the store was initialized with
+        */
         #[method_id(@__retain_semantics Other options)]
         pub unsafe fn options(&self) -> Option<Id<NSDictionary>>;
 
@@ -99,20 +108,35 @@ extern_methods!(
         pub unsafe fn setIdentifier(&self, identifier: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          stores always know their type
+        */
         #[method_id(@__retain_semantics Other type)]
         pub unsafe fn r#type(&self) -> Id<NSString>;
 
+        /**
+          Do we know a priori the store is read only?
+        */
         #[method(isReadOnly)]
         pub unsafe fn isReadOnly(&self) -> bool;
 
+        /**
+          Do we know a priori the store is read only?
+        */
         #[method(setReadOnly:)]
         pub unsafe fn setReadOnly(&self, read_only: bool);
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+          includes store type and UUID
+        */
         #[method_id(@__retain_semantics Other metadata)]
         pub unsafe fn metadata(&self) -> Option<Id<NSDictionary<NSString, Object>>>;
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+          includes store type and UUID
+        */
         #[method(setMetadata:)]
         pub unsafe fn setMetadata(&self, metadata: Option<&NSDictionary<NSString, Object>>);
 
@@ -131,6 +155,10 @@ extern_methods!(
         );
 
         #[cfg(feature = "CoreData_NSCoreDataCoreSpotlightDelegate")]
+        /**
+          Return the Core Spotlight exporter if one exists for this store. The exporter
+        can be set as part of the store options when it is added to the coordinator.
+        */
         #[method_id(@__retain_semantics Other coreSpotlightExporter)]
         pub unsafe fn coreSpotlightExporter(&self) -> Id<NSCoreDataCoreSpotlightDelegate>;
     }

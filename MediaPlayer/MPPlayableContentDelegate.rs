@@ -7,6 +7,14 @@ use crate::MediaPlayer::*;
 
 extern_protocol!(
     #[deprecated = "Use CarPlay framework"]
+    /**
+      The MPPlayableContentDelegate is a protocol that allows for external media
+     players to send playback commands to an application. For instance,
+     the user could browse the application's media content (provided by the
+     MPPlayableContentDataSource) and selects a content item to play. If the media
+     player decides that it wants to play the item, it will ask the application's
+     content delegate to initiate playback.
+    */
     pub unsafe trait MPPlayableContentDelegate: NSObjectProtocol {
         #[cfg(all(
             feature = "Foundation_NSError",

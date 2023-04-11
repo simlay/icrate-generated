@@ -29,9 +29,15 @@ unsafe impl NSObjectProtocol for ASAuthorization {}
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASAuthorization")]
     unsafe impl ASAuthorization {
+        /**
+          @abstract Provider which was used to generate this authorization response.
+        */
         #[method_id(@__retain_semantics Other provider)]
         pub unsafe fn provider(&self) -> Id<ProtocolObject<dyn ASAuthorizationProvider>>;
 
+        /**
+          @abstract The credential that was returned by the authorization provider. Authorization provider type should be used to determine how to introspect the credential.
+        */
         #[method_id(@__retain_semantics Other credential)]
         pub unsafe fn credential(&self) -> Id<ProtocolObject<dyn ASAuthorizationCredential>>;
 

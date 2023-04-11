@@ -8,6 +8,12 @@ use crate::WebKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "WebKit_WKUserContentController")]
+    /**
+      A WKUserContentController object provides a way for JavaScript to post
+    messages to a web view.
+    The user content controller associated with a web view is specified by its
+    web view configuration.
+    */
     pub struct WKUserContentController;
 
     #[cfg(feature = "WebKit_WKUserContentController")]
@@ -17,18 +23,46 @@ extern_class!(
 );
 
 #[cfg(feature = "WebKit_WKUserContentController")]
+/**
+  A WKUserContentController object provides a way for JavaScript to post
+messages to a web view.
+The user content controller associated with a web view is specified by its
+web view configuration.
+*/
 unsafe impl NSCoding for WKUserContentController {}
 
 #[cfg(feature = "WebKit_WKUserContentController")]
+/**
+  A WKUserContentController object provides a way for JavaScript to post
+messages to a web view.
+The user content controller associated with a web view is specified by its
+web view configuration.
+*/
 unsafe impl NSObjectProtocol for WKUserContentController {}
 
 #[cfg(feature = "WebKit_WKUserContentController")]
+/**
+  A WKUserContentController object provides a way for JavaScript to post
+messages to a web view.
+The user content controller associated with a web view is specified by its
+web view configuration.
+*/
 unsafe impl NSSecureCoding for WKUserContentController {}
 
 extern_methods!(
+    /**
+      A WKUserContentController object provides a way for JavaScript to post
+    messages to a web view.
+    The user content controller associated with a web view is specified by its
+    web view configuration.
+    */
     #[cfg(feature = "WebKit_WKUserContentController")]
     unsafe impl WKUserContentController {
         #[cfg(all(feature = "Foundation_NSArray", feature = "WebKit_WKUserScript"))]
+        /**
+          @abstract The user scripts associated with this user content
+        controller.
+        */
         #[method_id(@__retain_semantics Other userScripts)]
         pub unsafe fn userScripts(&self) -> Id<NSArray<WKUserScript>>;
 

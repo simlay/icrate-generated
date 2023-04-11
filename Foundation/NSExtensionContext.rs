@@ -6,6 +6,9 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSExtensionContext")]
+    /**
+      Class representing the extension request's context
+    */
     pub struct NSExtensionContext;
 
     #[cfg(feature = "Foundation_NSExtensionContext")]
@@ -15,12 +18,21 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSExtensionContext")]
+/**
+  Class representing the extension request's context
+*/
 unsafe impl NSObjectProtocol for NSExtensionContext {}
 
 extern_methods!(
+    /**
+      Class representing the extension request's context
+    */
     #[cfg(feature = "Foundation_NSExtensionContext")]
     unsafe impl NSExtensionContext {
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          The list of input NSExtensionItems associated with the context. If the context has no input items, this array will be empty.
+        */
         #[method_id(@__retain_semantics Other inputItems)]
         pub unsafe fn inputItems(&self) -> Id<NSArray>;
 

@@ -6,6 +6,9 @@ use crate::SoundAnalysis::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @brief Enumerates possible types for `SNTimeDurationConstraint`.
+    */
     pub enum SNTimeDurationConstraintType {
         SNTimeDurationConstraintTypeEnumerated = 1,
         SNTimeDurationConstraintTypeRange = 2,
@@ -15,6 +18,10 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "SoundAnalysis_SNTimeDurationConstraint")]
+    /**
+     @brief Constrains CMTime durations to a subset of legal values.
+    @discussion `SNTimeDurationConstraint` is a union type, which, based on the value of its `type` property, may assume one of several forms. Instance properties may be used to extract information from an object, but certain properties are only valid to exercise under certain circumstances. Before accessing a particular property, refer to its documentation to understand what `type` value is required in order for that property to be valid.
+    */
     pub struct SNTimeDurationConstraint;
 
     #[cfg(feature = "SoundAnalysis_SNTimeDurationConstraint")]
@@ -24,15 +31,32 @@ extern_class!(
 );
 
 #[cfg(feature = "SoundAnalysis_SNTimeDurationConstraint")]
+/**
+ @brief Constrains CMTime durations to a subset of legal values.
+@discussion `SNTimeDurationConstraint` is a union type, which, based on the value of its `type` property, may assume one of several forms. Instance properties may be used to extract information from an object, but certain properties are only valid to exercise under certain circumstances. Before accessing a particular property, refer to its documentation to understand what `type` value is required in order for that property to be valid.
+*/
 unsafe impl NSObjectProtocol for SNTimeDurationConstraint {}
 
 extern_methods!(
+    /**
+     @brief Constrains CMTime durations to a subset of legal values.
+    @discussion `SNTimeDurationConstraint` is a union type, which, based on the value of its `type` property, may assume one of several forms. Instance properties may be used to extract information from an object, but certain properties are only valid to exercise under certain circumstances. Before accessing a particular property, refer to its documentation to understand what `type` value is required in order for that property to be valid.
+    */
     #[cfg(feature = "SoundAnalysis_SNTimeDurationConstraint")]
     unsafe impl SNTimeDurationConstraint {
+        /**
+         @brief The time constraint type.
+        @discussion The value of this property dictates whether or not other properties associated with this class can be validly accessed. Please refer to the documentation of other individual properties to understand their relationship to this one. This property is always valid to access.
+        */
         #[method(type)]
         pub unsafe fn r#type(&self) -> SNTimeDurationConstraintType;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSValue"))]
+        /**
+         @brief If the constraint type is enumerated, then the set of discrete allowable time durations.
+        @return If the constraint type is enumerated, an array of CMTime structures (boxed in NSValue instances) representing the set of allowable time durations. The durations will always be provided sorted in order of ascending time. If the constraint type is not enumerated, an empty array will be returned.
+        @discussion The `type` property should be queried before this property is accessed. This property will only yield meaningful values if the constraint type is considered to be 'enumerated'. The constraint type is considered to be 'enumerated' if the `type` property is equal to `SNTimeDurationConstraintTypeEnumerated`.
+        */
         #[method_id(@__retain_semantics Other enumeratedDurations)]
         pub unsafe fn enumeratedDurations(&self) -> Id<NSArray<NSValue>>;
 

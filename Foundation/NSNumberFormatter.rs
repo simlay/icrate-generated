@@ -72,9 +72,15 @@ unsafe impl NSObjectProtocol for NSNumberFormatter {}
 extern_methods!(
     #[cfg(feature = "Foundation_NSNumberFormatter")]
     unsafe impl NSNumberFormatter {
+        /**
+          default is NSFormattingContextUnknown
+        */
         #[method(formattingContext)]
         pub unsafe fn formattingContext(&self) -> NSFormattingContext;
 
+        /**
+          default is NSFormattingContextUnknown
+        */
         #[method(setFormattingContext:)]
         pub unsafe fn setFormattingContext(&self, formatting_context: NSFormattingContext);
 

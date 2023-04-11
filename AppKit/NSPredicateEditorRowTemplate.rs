@@ -30,6 +30,9 @@ extern_methods!(
         pub unsafe fn matchForPredicate(&self, predicate: &NSPredicate) -> c_double;
 
         #[cfg(all(feature = "AppKit_NSView", feature = "Foundation_NSArray"))]
+        /**
+          returns the list of views that are placed in the row.  NSPopUpButtons are treated specially in that the items of multiple templates are merged together; other views are added as-is.  Developers can override this to return views in addition to or instead of the default views.
+        */
         #[method_id(@__retain_semantics Other templateViews)]
         pub unsafe fn templateViews(&self) -> Id<NSArray<NSView>>;
 
@@ -89,6 +92,9 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSExpression"))]
+        /**
+          returns the various values set in the initializers, or zero/nil if they do not apply
+        */
         #[method_id(@__retain_semantics Other leftExpressions)]
         pub unsafe fn leftExpressions(&self) -> Option<Id<NSArray<NSExpression>>>;
 

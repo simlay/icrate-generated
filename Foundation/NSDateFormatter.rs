@@ -44,9 +44,15 @@ unsafe impl NSObjectProtocol for NSDateFormatter {}
 extern_methods!(
     #[cfg(feature = "Foundation_NSDateFormatter")]
     unsafe impl NSDateFormatter {
+        /**
+          default is NSFormattingContextUnknown
+        */
         #[method(formattingContext)]
         pub unsafe fn formattingContext(&self) -> NSFormattingContext;
 
+        /**
+          default is NSFormattingContextUnknown
+        */
         #[method(setFormattingContext:)]
         pub unsafe fn setFormattingContext(&self, formatting_context: NSFormattingContext);
 
@@ -83,9 +89,15 @@ extern_methods!(
             locale: Option<&NSLocale>,
         ) -> Option<Id<NSString>>;
 
+        /**
+          Attributes of an NSDateFormatter
+        */
         #[method(defaultFormatterBehavior)]
         pub unsafe fn defaultFormatterBehavior() -> NSDateFormatterBehavior;
 
+        /**
+          Attributes of an NSDateFormatter
+        */
         #[method(setDefaultFormatterBehavior:)]
         pub unsafe fn setDefaultFormatterBehavior(
             default_formatter_behavior: NSDateFormatterBehavior,

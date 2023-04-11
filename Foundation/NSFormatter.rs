@@ -17,6 +17,11 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      There are 3 widths: long, medium, and short.
+     For example, for English, when formatting "3 pounds"
+     Long is "3 pounds"; medium is "3 lb"; short is "3#";
+    */
     pub enum NSFormattingUnitStyle {
         NSFormattingUnitStyleShort = 1,
         NSFormattingUnitStyleMedium = 2,

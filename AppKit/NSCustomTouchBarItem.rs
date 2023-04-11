@@ -27,26 +27,52 @@ extern_methods!(
     #[cfg(feature = "AppKit_NSCustomTouchBarItem")]
     unsafe impl NSCustomTouchBarItem {
         #[cfg(feature = "AppKit_NSView")]
+        /**
+         A view to be displayed in the NSTouchBar in the location corresponding to this item.
+        By default, the getter for this property will return this item's view controller's view. If this property is set explicitly, the view controller will be set to nil.
+        This property is archived.
+        */
         #[method_id(@__retain_semantics Other view)]
         pub unsafe fn view(&self) -> Id<NSView>;
 
         #[cfg(feature = "AppKit_NSView")]
+        /**
+         A view to be displayed in the NSTouchBar in the location corresponding to this item.
+        By default, the getter for this property will return this item's view controller's view. If this property is set explicitly, the view controller will be set to nil.
+        This property is archived.
+        */
         #[method(setView:)]
         pub unsafe fn setView(&self, view: &NSView);
 
         #[cfg(feature = "AppKit_NSViewController")]
+        /**
+         A view controller whose view is to be displayed in the NSTouchBar in the location corresponding to this item.
+        By default, this property is nil. When set, this item's view property will automatically return the view associated with this view controller.
+        This property is archived.
+        */
         #[method_id(@__retain_semantics Other viewController)]
         pub unsafe fn viewController(&self) -> Option<Id<NSViewController>>;
 
         #[cfg(feature = "AppKit_NSViewController")]
+        /**
+         A view controller whose view is to be displayed in the NSTouchBar in the location corresponding to this item.
+        By default, this property is nil. When set, this item's view property will automatically return the view associated with this view controller.
+        This property is archived.
+        */
         #[method(setViewController:)]
         pub unsafe fn setViewController(&self, view_controller: Option<&NSViewController>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         The localized string labelling this item during user customization. The default value is the empty string. This property is archived.
+        */
         #[method_id(@__retain_semantics Other customizationLabel)]
         pub unsafe fn customizationLabel(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         The localized string labelling this item during user customization. The default value is the empty string. This property is archived.
+        */
         #[method(setCustomizationLabel:)]
         pub unsafe fn setCustomizationLabel(&self, customization_label: Option<&NSString>);
     }

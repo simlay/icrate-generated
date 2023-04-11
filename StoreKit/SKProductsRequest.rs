@@ -25,6 +25,9 @@ extern_protocol!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "StoreKit_SKProductsRequest")]
+    /**
+      request information about products for your application
+    */
     pub struct SKProductsRequest;
 
     #[cfg(feature = "StoreKit_SKProductsRequest")]
@@ -35,9 +38,15 @@ extern_class!(
 );
 
 #[cfg(feature = "StoreKit_SKProductsRequest")]
+/**
+  request information about products for your application
+*/
 unsafe impl NSObjectProtocol for SKProductsRequest {}
 
 extern_methods!(
+    /**
+      request information about products for your application
+    */
     #[cfg(feature = "StoreKit_SKProductsRequest")]
     unsafe impl SKProductsRequest {
         #[cfg(all(feature = "Foundation_NSSet", feature = "Foundation_NSString"))]
@@ -76,10 +85,16 @@ extern_methods!(
     #[cfg(feature = "StoreKit_SKProductsResponse")]
     unsafe impl SKProductsResponse {
         #[cfg(all(feature = "Foundation_NSArray", feature = "StoreKit_SKProduct"))]
+        /**
+          Array of SKProduct instances.
+        */
         #[method_id(@__retain_semantics Other products)]
         pub unsafe fn products(&self) -> Id<NSArray<SKProduct>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          Array of invalid product identifiers.
+        */
         #[method_id(@__retain_semantics Other invalidProductIdentifiers)]
         pub unsafe fn invalidProductIdentifiers(&self) -> Id<NSArray<NSString>>;
     }

@@ -8,6 +8,11 @@ use crate::UniformTypeIdentifiers::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum          HKWorkoutSessionLocationType
+    @abstract      This enumerated type is used to represent the location type of a workout session.
+    @discussion    This value represents whether a workout is performed indoors or outdoors.
+    */
     pub enum HKWorkoutSessionLocationType {
         HKWorkoutSessionLocationTypeUnknown = 1,
         HKWorkoutSessionLocationTypeIndoor = 2,
@@ -18,6 +23,10 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKWorkoutConfiguration")]
+    /**
+     @class         HKWorkoutConfiguration
+    @abstract      An HKWorkoutConfiguration is an object that can be used to describe the workout activity.
+    */
     pub struct HKWorkoutConfiguration;
 
     #[cfg(feature = "HealthKit_HKWorkoutConfiguration")]
@@ -27,32 +36,72 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKWorkoutConfiguration")]
+/**
+ @class         HKWorkoutConfiguration
+@abstract      An HKWorkoutConfiguration is an object that can be used to describe the workout activity.
+*/
 unsafe impl NSCoding for HKWorkoutConfiguration {}
 
 #[cfg(feature = "HealthKit_HKWorkoutConfiguration")]
+/**
+ @class         HKWorkoutConfiguration
+@abstract      An HKWorkoutConfiguration is an object that can be used to describe the workout activity.
+*/
 unsafe impl NSObjectProtocol for HKWorkoutConfiguration {}
 
 #[cfg(feature = "HealthKit_HKWorkoutConfiguration")]
+/**
+ @class         HKWorkoutConfiguration
+@abstract      An HKWorkoutConfiguration is an object that can be used to describe the workout activity.
+*/
 unsafe impl NSSecureCoding for HKWorkoutConfiguration {}
 
 extern_methods!(
+    /**
+     @class         HKWorkoutConfiguration
+    @abstract      An HKWorkoutConfiguration is an object that can be used to describe the workout activity.
+    */
     #[cfg(feature = "HealthKit_HKWorkoutConfiguration")]
     unsafe impl HKWorkoutConfiguration {
+        /**
+         @property      activityType
+        @abstract      Indicates the type of workout for the configuration.
+        */
         #[method(activityType)]
         pub unsafe fn activityType(&self) -> HKWorkoutActivityType;
 
+        /**
+         @property      activityType
+        @abstract      Indicates the type of workout for the configuration.
+        */
         #[method(setActivityType:)]
         pub unsafe fn setActivityType(&self, activity_type: HKWorkoutActivityType);
 
+        /**
+         @property      locationType
+        @abstract      Indicates the type of location (indoors vs. outdoors) for the configuration.
+        */
         #[method(locationType)]
         pub unsafe fn locationType(&self) -> HKWorkoutSessionLocationType;
 
+        /**
+         @property      locationType
+        @abstract      Indicates the type of location (indoors vs. outdoors) for the configuration.
+        */
         #[method(setLocationType:)]
         pub unsafe fn setLocationType(&self, location_type: HKWorkoutSessionLocationType);
 
+        /**
+         @property      swimmingLocationType
+        @abstract      Indicates the type of swimming location (pool vs. open water) where the workout will take place.
+        */
         #[method(swimmingLocationType)]
         pub unsafe fn swimmingLocationType(&self) -> HKWorkoutSwimmingLocationType;
 
+        /**
+         @property      swimmingLocationType
+        @abstract      Indicates the type of swimming location (pool vs. open water) where the workout will take place.
+        */
         #[method(setSwimmingLocationType:)]
         pub unsafe fn setSwimmingLocationType(
             &self,
@@ -60,10 +109,22 @@ extern_methods!(
         );
 
         #[cfg(feature = "HealthKit_HKQuantity")]
+        /**
+         @property      lapLength
+        @abstract      Indicates the length of the pool, when the workout location type is pool.
+        @discussion    This metric represents the length of the pool where the workout takes place. It should be a quantity with
+        a unit representing length.
+        */
         #[method_id(@__retain_semantics Other lapLength)]
         pub unsafe fn lapLength(&self) -> Option<Id<HKQuantity>>;
 
         #[cfg(feature = "HealthKit_HKQuantity")]
+        /**
+         @property      lapLength
+        @abstract      Indicates the length of the pool, when the workout location type is pool.
+        @discussion    This metric represents the length of the pool where the workout takes place. It should be a quantity with
+        a unit representing length.
+        */
         #[method(setLapLength:)]
         pub unsafe fn setLapLength(&self, lap_length: Option<&HKQuantity>);
     }

@@ -52,6 +52,9 @@ extern_static!(NSSharingServiceNameCloudSharing: &'static NSSharingServiceName);
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSSharingService")]
+    /**
+     NSSharingService can be used to share items to different kinds of local and remote services. Items are objects which respond to the NSPasteboardWriting protocol, like NSURL, NSImage or NSString. If an NSURL is a file URL (point to a video for example), then the content of the file will be shared. If the URL is remote, then the URL itself will be shared.
+    */
     pub struct NSSharingService;
 
     #[cfg(feature = "AppKit_NSSharingService")]
@@ -61,9 +64,15 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSSharingService")]
+/**
+ NSSharingService can be used to share items to different kinds of local and remote services. Items are objects which respond to the NSPasteboardWriting protocol, like NSURL, NSImage or NSString. If an NSURL is a file URL (point to a video for example), then the content of the file will be shared. If the URL is remote, then the URL itself will be shared.
+*/
 unsafe impl NSObjectProtocol for NSSharingService {}
 
 extern_methods!(
+    /**
+     NSSharingService can be used to share items to different kinds of local and remote services. Items are objects which respond to the NSPasteboardWriting protocol, like NSURL, NSImage or NSString. If an NSURL is a file URL (point to a video for example), then the content of the file will be shared. If the URL is remote, then the URL itself will be shared.
+    */
     #[cfg(feature = "AppKit_NSSharingService")]
     unsafe impl NSSharingService {
         #[method_id(@__retain_semantics Other delegate)]
@@ -88,18 +97,30 @@ extern_methods!(
         pub unsafe fn alternateImage(&self) -> Option<Id<NSImage>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         Title of the service in the Share menu. Can be modified.
+        */
         #[method_id(@__retain_semantics Other menuItemTitle)]
         pub unsafe fn menuItemTitle(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         Title of the service in the Share menu. Can be modified.
+        */
         #[method(setMenuItemTitle:)]
         pub unsafe fn setMenuItemTitle(&self, menu_item_title: &NSString);
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          NSArray of NSString objects representing handles (example: email adresses)
+        */
         #[method_id(@__retain_semantics Other recipients)]
         pub unsafe fn recipients(&self) -> Option<Id<NSArray<NSString>>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          NSArray of NSString objects representing handles (example: email adresses)
+        */
         #[method(setRecipients:)]
         pub unsafe fn setRecipients(&self, recipients: Option<&NSArray<NSString>>);
 
@@ -112,18 +133,30 @@ extern_methods!(
         pub unsafe fn setSubject(&self, subject: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Message body as string
+        */
         #[method_id(@__retain_semantics Other messageBody)]
         pub unsafe fn messageBody(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          URL to access the post on Facebook, Twitter, Sina Weibo, etc. (also known as permalink)
+        */
         #[method_id(@__retain_semantics Other permanentLink)]
         pub unsafe fn permanentLink(&self) -> Option<Id<NSURL>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Account name used for sending on Twitter or Sina Weibo
+        */
         #[method_id(@__retain_semantics Other accountName)]
         pub unsafe fn accountName(&self) -> Option<Id<NSString>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSURL"))]
+        /**
+          NSArray of NSURL objects representing the files that were shared
+        */
         #[method_id(@__retain_semantics Other attachmentFileURLs)]
         pub unsafe fn attachmentFileURLs(&self) -> Option<Id<NSArray<NSURL>>>;
 
@@ -162,6 +195,11 @@ extern_methods!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     Use the sharing scope to specify the nature of the things you are sharing.
+
+    The sharing scope can be modified from the default value of NSSharingContentScopeItem by setting a different value in the out parameter in sharingService:sourceWindowForShareItems:sharingContentScope:.
+    */
     pub enum NSSharingContentScope {
         NSSharingContentScopeItem = 0,
         NSSharingContentScopePartial = 1,
@@ -347,6 +385,9 @@ extern_methods!(
         pub unsafe fn close(&self);
 
         #[cfg(feature = "AppKit_NSMenuItem")]
+        /**
+          Returns a menu item suitable to display the picker for the given items.
+        */
         #[method_id(@__retain_semantics Other standardShareMenuItem)]
         pub unsafe fn standardShareMenuItem(&self) -> Id<NSMenuItem>;
     }

@@ -6,6 +6,9 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      @abstract The formatting styles for contact names.
+    */
     pub enum CNContactFormatterStyle {
         CNContactFormatterStyleFullName = 0,
         CNContactFormatterStylePhoneticFullName = 1,
@@ -14,6 +17,9 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      @abstract The formatting order of the contact name components.
+    */
     pub enum CNContactDisplayNameOrder {
         CNContactDisplayNameOrderUserDefault = 0,
         CNContactDisplayNameOrderGivenNameFirst = 1,
@@ -24,6 +30,11 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNContactFormatter")]
+    /**
+      @abstract Formats a contact name.
+
+     @discussion This formatter handles international ordering and delimiting of the contact name components. This includes applying the user defaults when appropriate.
+    */
     pub struct CNContactFormatter;
 
     #[cfg(feature = "Contacts_CNContactFormatter")]
@@ -34,15 +45,35 @@ extern_class!(
 );
 
 #[cfg(feature = "Contacts_CNContactFormatter")]
+/**
+  @abstract Formats a contact name.
+
+ @discussion This formatter handles international ordering and delimiting of the contact name components. This includes applying the user defaults when appropriate.
+*/
 unsafe impl NSCoding for CNContactFormatter {}
 
 #[cfg(feature = "Contacts_CNContactFormatter")]
+/**
+  @abstract Formats a contact name.
+
+ @discussion This formatter handles international ordering and delimiting of the contact name components. This includes applying the user defaults when appropriate.
+*/
 unsafe impl NSObjectProtocol for CNContactFormatter {}
 
 #[cfg(feature = "Contacts_CNContactFormatter")]
+/**
+  @abstract Formats a contact name.
+
+ @discussion This formatter handles international ordering and delimiting of the contact name components. This includes applying the user defaults when appropriate.
+*/
 unsafe impl NSSecureCoding for CNContactFormatter {}
 
 extern_methods!(
+    /**
+      @abstract Formats a contact name.
+
+     @discussion This formatter handles international ordering and delimiting of the contact name components. This includes applying the user defaults when appropriate.
+    */
     #[cfg(feature = "Contacts_CNContactFormatter")]
     unsafe impl CNContactFormatter {
         #[method_id(@__retain_semantics Other descriptorForRequiredKeysForStyle:)]
@@ -50,10 +81,24 @@ extern_methods!(
             style: CNContactFormatterStyle,
         ) -> Id<ProtocolObject<dyn CNKeyDescriptor>>;
 
+        /**
+          @abstract The contact key descriptor required for the name order.
+
+         @discussion Use to fetch all contact keys required for +nameOrderForContact:. Can combine key descriptors for different formatter styles in the fetch.
+
+         @return The contact key descriptor for the name order.
+        */
         #[method_id(@__retain_semantics Other descriptorForRequiredKeysForNameOrder)]
         pub unsafe fn descriptorForRequiredKeysForNameOrder(
         ) -> Id<ProtocolObject<dyn CNKeyDescriptor>>;
 
+        /**
+          @abstract The contact key descriptor required for the name delimiter.
+
+         @discussion Use to fetch all contact keys required for +delimiterForContact:. Can combine key descriptors for different formatter styles in the fetch.
+
+         @return The contact key descriptor for the name delimiter.
+        */
         #[method_id(@__retain_semantics Other descriptorForRequiredKeysForDelimiter)]
         pub unsafe fn descriptorForRequiredKeysForDelimiter(
         ) -> Id<ProtocolObject<dyn CNKeyDescriptor>>;
@@ -85,9 +130,19 @@ extern_methods!(
         #[method_id(@__retain_semantics Other delimiterForContact:)]
         pub unsafe fn delimiterForContact(contact: &CNContact) -> Id<NSString>;
 
+        /**
+          @abstract The style for a contact formatter instance.
+
+         @discussion The default value is CNContactFormatterStyleFullName.
+        */
         #[method(style)]
         pub unsafe fn style(&self) -> CNContactFormatterStyle;
 
+        /**
+          @abstract The style for a contact formatter instance.
+
+         @discussion The default value is CNContactFormatterStyleFullName.
+        */
         #[method(setStyle:)]
         pub unsafe fn setStyle(&self, style: CNContactFormatterStyle);
 

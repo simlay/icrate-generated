@@ -5,6 +5,9 @@ use crate::Foundation::*;
 
 extern_enum!(
     #[underlying(c_uint)]
+    /**
+      Method for determining executable architectures.
+    */
     pub enum __anonymous__ {
         NSBundleExecutableArchitectureI386 = 0x00000007,
         NSBundleExecutableArchitecturePPC = 0x00000012,
@@ -17,6 +20,10 @@ extern_enum!(
 extern_class!(
     #[derive(PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSBundle")]
+    /**
+      Because NSBundle caches allocated instances, subclasses should be prepared
+    to receive an already initialized object back from [super initWithPath:]
+    */
     pub struct NSBundle;
 
     #[cfg(feature = "Foundation_NSBundle")]
@@ -26,11 +33,22 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSBundle")]
+/**
+  Because NSBundle caches allocated instances, subclasses should be prepared
+to receive an already initialized object back from [super initWithPath:]
+*/
 unsafe impl NSObjectProtocol for NSBundle {}
 
 extern_methods!(
+    /**
+      Because NSBundle caches allocated instances, subclasses should be prepared
+    to receive an already initialized object back from [super initWithPath:]
+    */
     #[cfg(feature = "Foundation_NSBundle")]
     unsafe impl NSBundle {
+        /**
+          Methods for creating or retrieving bundle instances.
+        */
         #[method_id(@__retain_semantics Other mainBundle)]
         pub fn mainBundle() -> Id<NSBundle>;
 
@@ -86,6 +104,9 @@ extern_methods!(
         pub unsafe fn loadAndReturnError(&self) -> Result<(), Id<NSError>>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          Methods for locating various components of a bundle.
+        */
         #[method_id(@__retain_semantics Other bundleURL)]
         pub unsafe fn bundleURL(&self) -> Id<NSURL>;
 
@@ -301,6 +322,9 @@ extern_methods!(
         ) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Methods for obtaining various information about a bundle.
+        */
         #[method_id(@__retain_semantics Other bundleIdentifier)]
         pub unsafe fn bundleIdentifier(&self) -> Option<Id<NSString>>;
 
@@ -324,10 +348,16 @@ extern_methods!(
         pub unsafe fn principalClass(&self) -> Option<&'static Class>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          a subset of this bundle's localizations, re-ordered into the preferred order for this process's current execution environment; the main bundle's preferred localizations indicate the language (of text) the user is most likely seeing in the UI
+        */
         #[method_id(@__retain_semantics Other preferredLocalizations)]
         pub unsafe fn preferredLocalizations(&self) -> Id<NSArray<NSString>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          list of language names this bundle appears to be localized to
+        */
         #[method_id(@__retain_semantics Other localizations)]
         pub unsafe fn localizations(&self) -> Id<NSArray<NSString>>;
 
@@ -370,6 +400,15 @@ extern_static!(NSLoadedClasses: &'static NSString);
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSBundleResourceRequest")]
+    /**
+     The NSBundleResourceRequest class is used to interact with the on demand resource loading system.
+
+    The purpose of the system is to allow an application to download certain resources on demand, when they are required. This also means that the system can purge a resource from disk when it is no longer required, which will save disk space. This class describes which resources are required, makes the request and reports progress, allows the app to specify how long during its execution that they are required.
+
+    Resources are downloaded into the application container, and are made available via the standard NSBundle resource lookup API.
+
+    The request object itself is lightweight. You may create as many as you need, for example to request the same set of tags in different components of your application.
+    */
     pub struct NSBundleResourceRequest;
 
     #[cfg(feature = "Foundation_NSBundleResourceRequest")]
@@ -379,12 +418,39 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSBundleResourceRequest")]
+/**
+ The NSBundleResourceRequest class is used to interact with the on demand resource loading system.
+
+The purpose of the system is to allow an application to download certain resources on demand, when they are required. This also means that the system can purge a resource from disk when it is no longer required, which will save disk space. This class describes which resources are required, makes the request and reports progress, allows the app to specify how long during its execution that they are required.
+
+Resources are downloaded into the application container, and are made available via the standard NSBundle resource lookup API.
+
+The request object itself is lightweight. You may create as many as you need, for example to request the same set of tags in different components of your application.
+*/
 unsafe impl NSObjectProtocol for NSBundleResourceRequest {}
 
 #[cfg(feature = "Foundation_NSBundleResourceRequest")]
+/**
+ The NSBundleResourceRequest class is used to interact with the on demand resource loading system.
+
+The purpose of the system is to allow an application to download certain resources on demand, when they are required. This also means that the system can purge a resource from disk when it is no longer required, which will save disk space. This class describes which resources are required, makes the request and reports progress, allows the app to specify how long during its execution that they are required.
+
+Resources are downloaded into the application container, and are made available via the standard NSBundle resource lookup API.
+
+The request object itself is lightweight. You may create as many as you need, for example to request the same set of tags in different components of your application.
+*/
 unsafe impl NSProgressReporting for NSBundleResourceRequest {}
 
 extern_methods!(
+    /**
+     The NSBundleResourceRequest class is used to interact with the on demand resource loading system.
+
+    The purpose of the system is to allow an application to download certain resources on demand, when they are required. This also means that the system can purge a resource from disk when it is no longer required, which will save disk space. This class describes which resources are required, makes the request and reports progress, allows the app to specify how long during its execution that they are required.
+
+    Resources are downloaded into the application container, and are made available via the standard NSBundle resource lookup API.
+
+    The request object itself is lightweight. You may create as many as you need, for example to request the same set of tags in different components of your application.
+    */
     #[cfg(feature = "Foundation_NSBundleResourceRequest")]
     unsafe impl NSBundleResourceRequest {
         #[method_id(@__retain_semantics Init init)]
@@ -409,17 +475,33 @@ extern_methods!(
             bundle: &NSBundle,
         ) -> Id<Self>;
 
+        /**
+         Provides a hint to the resource loading system as to the loading priority of this request. Values are limited to between 0 and 1, with 1 being the highest priority. The default priority is 0.5.
+
+        The exact meaning of the value is up to your application. The system will prefer to act on requests that have a higher priority (from the same application). You may change the priority at any time, even after a request has started. The system will make a best attempt to take the new priority into account.
+        */
         #[method(loadingPriority)]
         pub unsafe fn loadingPriority(&self) -> c_double;
 
+        /**
+         Provides a hint to the resource loading system as to the loading priority of this request. Values are limited to between 0 and 1, with 1 being the highest priority. The default priority is 0.5.
+
+        The exact meaning of the value is up to your application. The system will prefer to act on requests that have a higher priority (from the same application). You may change the priority at any time, even after a request has started. The system will make a best attempt to take the new priority into account.
+        */
         #[method(setLoadingPriority:)]
         pub unsafe fn setLoadingPriority(&self, loading_priority: c_double);
 
         #[cfg(all(feature = "Foundation_NSSet", feature = "Foundation_NSString"))]
+        /**
+         The tags this request will load.
+        */
         #[method_id(@__retain_semantics Other tags)]
         pub unsafe fn tags(&self) -> Id<NSSet<NSString>>;
 
         #[cfg(feature = "Foundation_NSBundle")]
+        /**
+         The bundle object that will hold the requested resources. After the -beginAccessingResourcesWithCompletionHandler: callback is invoked, you may use the standard bundle lookup APIs on this bundle object to find your resources.
+        */
         #[method_id(@__retain_semantics Other bundle)]
         pub unsafe fn bundle(&self) -> Id<NSBundle>;
 
@@ -440,6 +522,9 @@ extern_methods!(
         pub unsafe fn endAccessingResources(&self);
 
         #[cfg(feature = "Foundation_NSProgress")]
+        /**
+         Progress for the request. The progress object will be valid at initialization and begin updating after the -beginAccessingResourcesWithCompletionHandler: method is called.
+        */
         #[method_id(@__retain_semantics Other progress)]
         pub unsafe fn progress(&self) -> Id<NSProgress>;
     }

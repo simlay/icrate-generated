@@ -5,6 +5,9 @@ use crate::Foundation::*;
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+      Flags(s) that can be passed to the factory to indicate that a operator operating on strings should do so in a case insensitive fashion.
+    */
     pub enum NSComparisonPredicateOptions {
         NSCaseInsensitivePredicateOption = 0x01,
         NSDiacriticInsensitivePredicateOption = 0x02,
@@ -14,6 +17,9 @@ ns_options!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      Describes how the operator is modified: can be direct, ALL, or ANY
+    */
     pub enum NSComparisonPredicateModifier {
         NSDirectPredicateModifier = 0,
         NSAllPredicateModifier = 1,
@@ -23,6 +29,9 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      Type basic set of operators defined. Most are obvious; NSCustomSelectorPredicateOperatorType allows a developer to create an operator which uses the custom selector specified in the constructor to do the evaluation.
+    */
     pub enum NSPredicateOperatorType {
         NSLessThanPredicateOperatorType = 0,
         NSLessThanOrEqualToPredicateOperatorType = 1,
@@ -44,6 +53,9 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSComparisonPredicate")]
+    /**
+      Comparison predicates are predicates which do some form of comparison between the results of two expressions and return a BOOL. They take an operator, a left expression, and a right expression, and return the result of invoking the operator with the results of evaluating the expressions.
+    */
     pub struct NSComparisonPredicate;
 
     #[cfg(feature = "Foundation_NSComparisonPredicate")]
@@ -54,15 +66,27 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSComparisonPredicate")]
+/**
+  Comparison predicates are predicates which do some form of comparison between the results of two expressions and return a BOOL. They take an operator, a left expression, and a right expression, and return the result of invoking the operator with the results of evaluating the expressions.
+*/
 unsafe impl NSCoding for NSComparisonPredicate {}
 
 #[cfg(feature = "Foundation_NSComparisonPredicate")]
+/**
+  Comparison predicates are predicates which do some form of comparison between the results of two expressions and return a BOOL. They take an operator, a left expression, and a right expression, and return the result of invoking the operator with the results of evaluating the expressions.
+*/
 unsafe impl NSObjectProtocol for NSComparisonPredicate {}
 
 #[cfg(feature = "Foundation_NSComparisonPredicate")]
+/**
+  Comparison predicates are predicates which do some form of comparison between the results of two expressions and return a BOOL. They take an operator, a left expression, and a right expression, and return the result of invoking the operator with the results of evaluating the expressions.
+*/
 unsafe impl NSSecureCoding for NSComparisonPredicate {}
 
 extern_methods!(
+    /**
+      Comparison predicates are predicates which do some form of comparison between the results of two expressions and return a BOOL. They take an operator, a left expression, and a right expression, and return the result of invoking the operator with the results of evaluating the expressions.
+    */
     #[cfg(feature = "Foundation_NSComparisonPredicate")]
     unsafe impl NSComparisonPredicate {
         #[cfg(feature = "Foundation_NSExpression")]

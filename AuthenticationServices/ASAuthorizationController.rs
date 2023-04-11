@@ -86,25 +86,42 @@ extern_methods!(
             feature = "AuthenticationServices_ASAuthorizationRequest",
             feature = "Foundation_NSArray"
         ))]
+        /**
+          @abstract Authorization requests that are being serviced by this controller
+        */
         #[method_id(@__retain_semantics Other authorizationRequests)]
         pub unsafe fn authorizationRequests(&self) -> Id<NSArray<ASAuthorizationRequest>>;
 
+        /**
+          @abstract This delegate will be invoked upon completion of the authorization indicating success or failure.
+        Delegate is required to receive the results of authorization.
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(
             &self,
         ) -> Option<Id<ProtocolObject<dyn ASAuthorizationControllerDelegate>>>;
 
+        /**
+          @abstract This delegate will be invoked upon completion of the authorization indicating success or failure.
+        Delegate is required to receive the results of authorization.
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
             delegate: Option<&ProtocolObject<dyn ASAuthorizationControllerDelegate>>,
         );
 
+        /**
+          @abstract This delegate will be invoked upon needing a presentation context to display authorization UI.
+        */
         #[method_id(@__retain_semantics Other presentationContextProvider)]
         pub unsafe fn presentationContextProvider(
             &self,
         ) -> Option<Id<ProtocolObject<dyn ASAuthorizationControllerPresentationContextProviding>>>;
 
+        /**
+          @abstract This delegate will be invoked upon needing a presentation context to display authorization UI.
+        */
         #[method(setPresentationContextProvider:)]
         pub unsafe fn setPresentationContextProvider(
             &self,
@@ -114,11 +131,25 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          @abstract A list of custom authorization methods that may be displayed in the authorization UI.
+
+        If the user selects one of these methods, instead of attempting to secure an authorization for the requests, the
+        controller will call authorizationController:didCompleteWithCustomMethod: with the selected method, allowing
+        the client to perform the requested authorization.
+        */
         #[method_id(@__retain_semantics Other customAuthorizationMethods)]
         pub unsafe fn customAuthorizationMethods(&self)
             -> Id<NSArray<ASAuthorizationCustomMethod>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          @abstract A list of custom authorization methods that may be displayed in the authorization UI.
+
+        If the user selects one of these methods, instead of attempting to secure an authorization for the requests, the
+        controller will call authorizationController:didCompleteWithCustomMethod: with the selected method, allowing
+        the client to perform the requested authorization.
+        */
         #[method(setCustomAuthorizationMethods:)]
         pub unsafe fn setCustomAuthorizationMethods(
             &self,

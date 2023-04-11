@@ -6,6 +6,18 @@ use crate::Metal::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum MTLHeapType
+    @abstract Describes the mode of operation for an MTLHeap.
+    @constant MTLHeapTypeAutomatic
+    In this mode, resources are placed in the heap automatically.
+    Automatically placed resources have optimal GPU-specific layout, and may perform better than MTLHeapTypePlacement.
+    This heap type is recommended when the heap primarily contains temporary write-often resources.
+    @constant MTLHeapTypePlacement
+    In this mode, the app places resources in the heap.
+    Manually placed resources allow the app to control memory usage and heap fragmentation directly.
+    This heap type is recommended when the heap primarily contains persistent write-rarely resources.
+    */
     pub enum MTLHeapType {
         MTLHeapTypeAutomatic = 0,
         MTLHeapTypePlacement = 1,
@@ -16,6 +28,9 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLHeapDescriptor")]
+    /**
+     @class MTLHeapDescriptor
+    */
     pub struct MTLHeapDescriptor;
 
     #[cfg(feature = "Metal_MTLHeapDescriptor")]
@@ -25,86 +40,225 @@ extern_class!(
 );
 
 #[cfg(feature = "Metal_MTLHeapDescriptor")]
+/**
+ @class MTLHeapDescriptor
+*/
 unsafe impl NSObjectProtocol for MTLHeapDescriptor {}
 
 extern_methods!(
+    /**
+     @class MTLHeapDescriptor
+    */
     #[cfg(feature = "Metal_MTLHeapDescriptor")]
     unsafe impl MTLHeapDescriptor {
+        /**
+         @property size
+        @abstract Requested size of the heap's backing memory.
+        @discussion The size may be rounded up to GPU page granularity.
+        */
         #[method(size)]
         pub fn size(&self) -> NSUInteger;
 
+        /**
+         @property size
+        @abstract Requested size of the heap's backing memory.
+        @discussion The size may be rounded up to GPU page granularity.
+        */
         #[method(setSize:)]
         pub fn setSize(&self, size: NSUInteger);
 
+        /**
+         @property storageMode
+        @abstract Storage mode for the heap. Default is MTLStorageModePrivate.
+        @discussion All resources created from this heap share the same storage mode.
+        MTLStorageModeManaged and MTLStorageModeMemoryless are disallowed.
+        */
         #[method(storageMode)]
         pub fn storageMode(&self) -> MTLStorageMode;
 
+        /**
+         @property storageMode
+        @abstract Storage mode for the heap. Default is MTLStorageModePrivate.
+        @discussion All resources created from this heap share the same storage mode.
+        MTLStorageModeManaged and MTLStorageModeMemoryless are disallowed.
+        */
         #[method(setStorageMode:)]
         pub fn setStorageMode(&self, storage_mode: MTLStorageMode);
 
+        /**
+         @property cpuCacheMode
+        @abstract CPU cache mode for the heap. Default is MTLCPUCacheModeDefaultCache.
+        @discussion All resources created from this heap share the same cache mode.
+        CPU cache mode is ignored for MTLStorageModePrivate.
+        */
         #[method(cpuCacheMode)]
         pub fn cpuCacheMode(&self) -> MTLCPUCacheMode;
 
+        /**
+         @property cpuCacheMode
+        @abstract CPU cache mode for the heap. Default is MTLCPUCacheModeDefaultCache.
+        @discussion All resources created from this heap share the same cache mode.
+        CPU cache mode is ignored for MTLStorageModePrivate.
+        */
         #[method(setCpuCacheMode:)]
         pub fn setCpuCacheMode(&self, cpu_cache_mode: MTLCPUCacheMode);
 
+        /**
+         @property sparsePageSize
+        @abstract The sparse page size to use for resources created from the heap.
+        */
         #[method(sparsePageSize)]
         pub unsafe fn sparsePageSize(&self) -> MTLSparsePageSize;
 
+        /**
+         @property sparsePageSize
+        @abstract The sparse page size to use for resources created from the heap.
+        */
         #[method(setSparsePageSize:)]
         pub unsafe fn setSparsePageSize(&self, sparse_page_size: MTLSparsePageSize);
 
+        /**
+         @property hazardTrackingMode
+        @abstract Set hazard tracking mode for the heap. The default value is MTLHazardTrackingModeDefault.
+        @discussion For heaps, MTLHazardTrackingModeDefault is treated as MTLHazardTrackingModeUntracked.
+        Setting hazardTrackingMode to MTLHazardTrackingModeTracked causes hazard tracking to be enabled heap.
+        When a resource on a hazard tracked heap is modified, reads and writes from all resources suballocated on that heap will be delayed until the modification is complete.
+        Similarly, modifying heap resources will be delayed until all in-flight reads and writes from all resources suballocated on that heap have completed.
+        For optimal performance, perform hazard tracking manually through MTLFence or MTLEvent instead.
+        All resources created from this heap shared the same hazard tracking mode.
+        */
         #[method(hazardTrackingMode)]
         pub fn hazardTrackingMode(&self) -> MTLHazardTrackingMode;
 
+        /**
+         @property hazardTrackingMode
+        @abstract Set hazard tracking mode for the heap. The default value is MTLHazardTrackingModeDefault.
+        @discussion For heaps, MTLHazardTrackingModeDefault is treated as MTLHazardTrackingModeUntracked.
+        Setting hazardTrackingMode to MTLHazardTrackingModeTracked causes hazard tracking to be enabled heap.
+        When a resource on a hazard tracked heap is modified, reads and writes from all resources suballocated on that heap will be delayed until the modification is complete.
+        Similarly, modifying heap resources will be delayed until all in-flight reads and writes from all resources suballocated on that heap have completed.
+        For optimal performance, perform hazard tracking manually through MTLFence or MTLEvent instead.
+        All resources created from this heap shared the same hazard tracking mode.
+        */
         #[method(setHazardTrackingMode:)]
         pub fn setHazardTrackingMode(&self, hazard_tracking_mode: MTLHazardTrackingMode);
 
+        /**
+         @property resourceOptions
+        @abstract A packed tuple of the storageMode, cpuCacheMode and hazardTrackingMode properties.
+        @discussion Modifications to this property are reflected in the other properties and vice versa.
+        */
         #[method(resourceOptions)]
         pub fn resourceOptions(&self) -> MTLResourceOptions;
 
+        /**
+         @property resourceOptions
+        @abstract A packed tuple of the storageMode, cpuCacheMode and hazardTrackingMode properties.
+        @discussion Modifications to this property are reflected in the other properties and vice versa.
+        */
         #[method(setResourceOptions:)]
         pub fn setResourceOptions(&self, resource_options: MTLResourceOptions);
 
+        /**
+         @property type
+        @abstract The type of the heap. The default value is MTLHeapTypeAutomatic.
+        @discussion This constrains the resource creation functions that are available.
+        */
         #[method(type)]
         pub unsafe fn r#type(&self) -> MTLHeapType;
 
+        /**
+         @property type
+        @abstract The type of the heap. The default value is MTLHeapTypeAutomatic.
+        @discussion This constrains the resource creation functions that are available.
+        */
         #[method(setType:)]
         pub fn setType(&self, r#type: MTLHeapType);
     }
 );
 
 extern_protocol!(
+    /**
+     @protocol MTLHeap
+    */
     pub unsafe trait MTLHeap: NSObjectProtocol {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property label
+        @abstract A string to help identify this heap.
+        */
         #[method_id(@__retain_semantics Other label)]
         fn label(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property label
+        @abstract A string to help identify this heap.
+        */
         #[method(setLabel:)]
         fn setLabel(&self, label: Option<&NSString>);
 
+        /**
+         @property device
+        @abstract The device this heap was created against. This heap can only be used with this device.
+        */
         #[method_id(@__retain_semantics Other device)]
         fn device(&self) -> Id<ProtocolObject<dyn MTLDevice>>;
 
+        /**
+         @property storageMode
+        @abstract Current heap storage mode, default is MTLStorageModePrivate.
+        @discussion All resources created from this heap share the same storage mode.
+        */
         #[method(storageMode)]
         fn storageMode(&self) -> MTLStorageMode;
 
+        /**
+         @property cpuCacheMode
+        @abstract CPU cache mode for the heap. Default is MTLCPUCacheModeDefaultCache.
+        @discussion All resources created from this heap share the same cache mode.
+        */
         #[method(cpuCacheMode)]
         fn cpuCacheMode(&self) -> MTLCPUCacheMode;
 
+        /**
+         @property hazardTrackingMode
+        @abstract Whether or not the heap is hazard tracked.
+        @discussion
+        When a resource on a hazard tracked heap is modified, reads and writes from any other resource on that heap will be delayed until the modification is complete.
+        Similarly, modifying heap resources will be delayed until all in-flight reads and writes from resources suballocated on that heap have completed.
+        For optimal performance, perform hazard tracking manually through MTLFence or MTLEvent instead.
+        Resources on the heap may opt-out of hazard tracking individually when the heap is hazard tracked,
+        however resources cannot opt-in to hazard tracking when the heap is not hazard tracked.
+        */
         #[method(hazardTrackingMode)]
         fn hazardTrackingMode(&self) -> MTLHazardTrackingMode;
 
+        /**
+         @property resourceOptions
+        @abstract A packed tuple of the storageMode, cpuCacheMode and hazardTrackingMode properties.
+        */
         #[method(resourceOptions)]
         fn resourceOptions(&self) -> MTLResourceOptions;
 
+        /**
+         @property size
+        @abstract Heap size in bytes, specified at creation time and rounded up to device specific alignment.
+        */
         #[method(size)]
         fn size(&self) -> NSUInteger;
 
+        /**
+         @property usedSize
+        @abstract The size in bytes, of all resources allocated from the heap.
+        */
         #[method(usedSize)]
         fn usedSize(&self) -> NSUInteger;
 
+        /**
+         @property currentAllocatedSize
+        @abstract The size in bytes of the current heap allocation.
+        */
         #[method(currentAllocatedSize)]
         fn currentAllocatedSize(&self) -> NSUInteger;
 
@@ -128,6 +282,11 @@ extern_protocol!(
         #[method(setPurgeableState:)]
         fn setPurgeableState(&self, state: MTLPurgeableState) -> MTLPurgeableState;
 
+        /**
+         @property type
+        @abstract The type of the heap. The default value is MTLHeapTypeAutomatic.
+        @discussion This constrains the resource creation functions that are available on the heap.
+        */
         #[method(type)]
         unsafe fn r#type(&self) -> MTLHeapType;
 

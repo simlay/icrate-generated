@@ -42,23 +42,41 @@ unsafe impl NSObjectProtocol for NSPersonNameComponentsFormatter {}
 extern_methods!(
     #[cfg(feature = "Foundation_NSPersonNameComponentsFormatter")]
     unsafe impl NSPersonNameComponentsFormatter {
+        /**
+          Specify the formatting style for the formatted string on an instance. ShortStyle will fall back to user preferences and language-specific defaults
+        */
         #[method(style)]
         pub unsafe fn style(&self) -> NSPersonNameComponentsFormatterStyle;
 
+        /**
+          Specify the formatting style for the formatted string on an instance. ShortStyle will fall back to user preferences and language-specific defaults
+        */
         #[method(setStyle:)]
         pub unsafe fn setStyle(&self, style: NSPersonNameComponentsFormatterStyle);
 
+        /**
+          Specify that the formatter should only format the components object's phoneticRepresentation
+        */
         #[method(isPhonetic)]
         pub unsafe fn isPhonetic(&self) -> bool;
 
+        /**
+          Specify that the formatter should only format the components object's phoneticRepresentation
+        */
         #[method(setPhonetic:)]
         pub unsafe fn setPhonetic(&self, phonetic: bool);
 
         #[cfg(feature = "Foundation_NSLocale")]
+        /**
+          Specifies the locale to format names. Defaults to autoupdatingCurrentLocale. Also resets to autoupdatingCurrentLocale on assignment of nil.
+        */
         #[method_id(@__retain_semantics Other locale)]
         pub unsafe fn locale(&self) -> Id<NSLocale>;
 
         #[cfg(feature = "Foundation_NSLocale")]
+        /**
+          Specifies the locale to format names. Defaults to autoupdatingCurrentLocale. Also resets to autoupdatingCurrentLocale on assignment of nil.
+        */
         #[method(setLocale:)]
         pub unsafe fn setLocale(&self, locale: Option<&NSLocale>);
 

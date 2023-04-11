@@ -6,6 +6,9 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      @typedef Download state
+    */
     pub enum BADownloadState {
         BADownloadStateFailed = -1,
         BADownloadStateCreated = 0,
@@ -27,6 +30,12 @@ extern_static!(BADownloaderPriorityMax: BADownloaderPriority);
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      @abstract The content request type used in the BADownloaderExtension.
+     @constant BAContentRequestInstall  Content is being requested because the application was installed.
+     @constant BAContentRequestUpdate Content is being requested because the application was updated.
+     @constant BAContentRequestPeriodic Content is being requested because the system is asking for updated content for your application.
+    */
     pub enum BAContentRequest {
         BAContentRequestInstall = 1,
         BAContentRequestUpdate = 2,

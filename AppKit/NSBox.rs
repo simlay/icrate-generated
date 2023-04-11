@@ -115,49 +115,88 @@ extern_methods!(
         #[method(setFrameFromContentFrame:)]
         pub unsafe fn setFrameFromContentFrame(&self, content_frame: NSRect);
 
+        /**
+          Get and set the content view for the box. Note that subviews added to the NSBox will be really added as subviews of the contentView.
+        */
         #[method_id(@__retain_semantics Other contentView)]
         pub unsafe fn contentView(&self) -> Option<Id<NSView>>;
 
+        /**
+          Get and set the content view for the box. Note that subviews added to the NSBox will be really added as subviews of the contentView.
+        */
         #[method(setContentView:)]
         pub unsafe fn setContentView(&self, content_view: Option<&NSView>);
 
+        /**
+          Transparent boxes do not draw anything.  Subview drawing is unaffected.  The 'transparent' property corresponds to the binding 'NSTransparentBinding'.
+        */
         #[method(isTransparent)]
         pub unsafe fn isTransparent(&self) -> bool;
 
+        /**
+          Transparent boxes do not draw anything.  Subview drawing is unaffected.  The 'transparent' property corresponds to the binding 'NSTransparentBinding'.
+        */
         #[method(setTransparent:)]
         pub unsafe fn setTransparent(&self, transparent: bool);
 
+        /**
+          For boxType == NSBoxCustom: Get and set the border width of the box. The default value is 1.0.
+        */
         #[method(borderWidth)]
         pub unsafe fn borderWidth(&self) -> CGFloat;
 
+        /**
+          For boxType == NSBoxCustom: Get and set the border width of the box. The default value is 1.0.
+        */
         #[method(setBorderWidth:)]
         pub unsafe fn setBorderWidth(&self, border_width: CGFloat);
 
+        /**
+          For boxType == NSBoxCustom: Get and set the corner radius of the box. The default value is 0.0 (no corner radius).
+        */
         #[method(cornerRadius)]
         pub unsafe fn cornerRadius(&self) -> CGFloat;
 
+        /**
+          For boxType == NSBoxCustom: Get and set the corner radius of the box. The default value is 0.0 (no corner radius).
+        */
         #[method(setCornerRadius:)]
         pub unsafe fn setCornerRadius(&self, corner_radius: CGFloat);
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+          For boxType == NSBoxCustom: Get and set the border color the box. The default value is +[NSColor secondaryLabelColor], and may vary release-to-release.
+        */
         #[method_id(@__retain_semantics Other borderColor)]
         pub unsafe fn borderColor(&self) -> Id<NSColor>;
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+          For boxType == NSBoxCustom: Get and set the border color the box. The default value is +[NSColor secondaryLabelColor], and may vary release-to-release.
+        */
         #[method(setBorderColor:)]
         pub unsafe fn setBorderColor(&self, border_color: &NSColor);
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+          For boxType == NSBoxCustom: Get and set the fill (background) color the box. The default value is NSColor.clearColor.
+        */
         #[method_id(@__retain_semantics Other fillColor)]
         pub unsafe fn fillColor(&self) -> Id<NSColor>;
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+          For boxType == NSBoxCustom: Get and set the fill (background) color the box. The default value is NSColor.clearColor.
+        */
         #[method(setFillColor:)]
         pub unsafe fn setFillColor(&self, fill_color: &NSColor);
     }
 );
 
 extern_methods!(
+    /**
+      Deprecated Interfaces
+    */
     /// NSDeprecated
     #[cfg(feature = "AppKit_NSBox")]
     unsafe impl NSBox {

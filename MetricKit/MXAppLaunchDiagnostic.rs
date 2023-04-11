@@ -7,6 +7,10 @@ use crate::MetricKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MetricKit_MXAppLaunchDiagnostic")]
+    /**
+     @class         MXAppLaunchDiagnostic
+    @abstract      An MXDiagnostic subclass that encapsulates app launch diagnostic reports.
+    */
     pub struct MXAppLaunchDiagnostic;
 
     #[cfg(feature = "MetricKit_MXAppLaunchDiagnostic")]
@@ -17,18 +21,38 @@ extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXAppLaunchDiagnostic")]
+/**
+ @class         MXAppLaunchDiagnostic
+@abstract      An MXDiagnostic subclass that encapsulates app launch diagnostic reports.
+*/
 unsafe impl NSCoding for MXAppLaunchDiagnostic {}
 
 #[cfg(feature = "MetricKit_MXAppLaunchDiagnostic")]
+/**
+ @class         MXAppLaunchDiagnostic
+@abstract      An MXDiagnostic subclass that encapsulates app launch diagnostic reports.
+*/
 unsafe impl NSObjectProtocol for MXAppLaunchDiagnostic {}
 
 #[cfg(feature = "MetricKit_MXAppLaunchDiagnostic")]
+/**
+ @class         MXAppLaunchDiagnostic
+@abstract      An MXDiagnostic subclass that encapsulates app launch diagnostic reports.
+*/
 unsafe impl NSSecureCoding for MXAppLaunchDiagnostic {}
 
 extern_methods!(
+    /**
+     @class         MXAppLaunchDiagnostic
+    @abstract      An MXDiagnostic subclass that encapsulates app launch diagnostic reports.
+    */
     #[cfg(feature = "MetricKit_MXAppLaunchDiagnostic")]
     unsafe impl MXAppLaunchDiagnostic {
         #[cfg(feature = "MetricKit_MXCallStackTree")]
+        /**
+         @property      callStackTree
+        @abstract      The application call stack tree associated with the app launch.
+        */
         #[method_id(@__retain_semantics Other callStackTree)]
         pub unsafe fn callStackTree(&self) -> Id<MXCallStackTree>;
 
@@ -36,6 +60,11 @@ extern_methods!(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"
         ))]
+        /**
+         @property      launchDuration
+        @abstract      Total app launch duration.
+        @discussion    Dimensioned as NSUnitDuration.
+        */
         #[method_id(@__retain_semantics Other launchDuration)]
         pub unsafe fn launchDuration(&self) -> Id<NSMeasurement<NSUnitDuration>>;
     }

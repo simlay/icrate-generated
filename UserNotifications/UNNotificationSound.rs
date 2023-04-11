@@ -32,12 +32,21 @@ unsafe impl NSSecureCoding for UNNotificationSound {}
 extern_methods!(
     #[cfg(feature = "UserNotifications_UNNotificationSound")]
     unsafe impl UNNotificationSound {
+        /**
+          The default sound used for notifications.
+        */
         #[method_id(@__retain_semantics Other defaultSound)]
         pub unsafe fn defaultSound() -> Id<UNNotificationSound>;
 
+        /**
+          The default sound used for incoming call notifications. Plays the ringtone and haptics specified in Settings for a 30 second duration. The parent UNNotificationContent object must be created in the notification service extension via -[UNNotificationContent contentByUpdatingWithProvider:error:] where the provider is an INStartCallIntent with a destinationType of INCallDestinationTypeNormal. Please use CallKit instead of UserNotifications for this use case when available.
+        */
         #[method_id(@__retain_semantics Other defaultRingtoneSound)]
         pub unsafe fn defaultRingtoneSound() -> Id<UNNotificationSound>;
 
+        /**
+          The default sound used for critical alerts. Critical alerts will bypass the mute switch and Do Not Disturb.
+        */
         #[method_id(@__retain_semantics Other defaultCriticalSound)]
         pub unsafe fn defaultCriticalSound() -> Id<UNNotificationSound>;
 

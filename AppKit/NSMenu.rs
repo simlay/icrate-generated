@@ -46,10 +46,16 @@ extern_methods!(
         pub unsafe fn initWithCoder(this: Option<Allocated<Self>>, coder: &NSCoder) -> Id<Self>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Set and get the menu's title.  The titles of the submenus of the application's main menu items appear in the menu bar.
+        */
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Set and get the menu's title.  The titles of the submenus of the application's main menu items appear in the menu bar.
+        */
         #[method(setTitle:)]
         pub unsafe fn setTitle(&self, title: &NSString);
 
@@ -89,9 +95,17 @@ extern_methods!(
         #[method(menuBarVisible)]
         pub unsafe fn menuBarVisible() -> bool;
 
+        /**
+          Getter: Returns the menu containing the item that has the receiver as a submenu, or nil if this menu is not the submenu of an item in a menu.
+        Setter: If a menu item has the receiver as a submenu, then this method will be called when the menu containing that item changes.  You should never call this, but you may override it to take some action when the supermenu changes.
+        */
         #[method_id(@__retain_semantics Other supermenu)]
         pub unsafe fn supermenu(&self) -> Option<Id<NSMenu>>;
 
+        /**
+          Getter: Returns the menu containing the item that has the receiver as a submenu, or nil if this menu is not the submenu of an item in a menu.
+        Setter: If a menu item has the receiver as a submenu, then this method will be called when the menu containing that item changes.  You should never call this, but you may override it to take some action when the supermenu changes.
+        */
         #[method(setSupermenu:)]
         pub unsafe fn setSupermenu(&self, supermenu: Option<&NSMenu>);
 
@@ -137,13 +151,22 @@ extern_methods!(
         pub unsafe fn removeAllItems(&self);
 
         #[cfg(all(feature = "AppKit_NSMenuItem", feature = "Foundation_NSArray"))]
+        /**
+          Returns an array containing the receiver's menu items. This property is settable in macOS 10.14 and later.
+        */
         #[method_id(@__retain_semantics Other itemArray)]
         pub unsafe fn itemArray(&self) -> Id<NSArray<NSMenuItem>>;
 
         #[cfg(all(feature = "AppKit_NSMenuItem", feature = "Foundation_NSArray"))]
+        /**
+          Returns an array containing the receiver's menu items. This property is settable in macOS 10.14 and later.
+        */
         #[method(setItemArray:)]
         pub unsafe fn setItemArray(&self, item_array: &NSArray<NSMenuItem>);
 
+        /**
+          Returns the number of menu items in the menu.
+        */
         #[method(numberOfItems)]
         pub unsafe fn numberOfItems(&self) -> NSInteger;
 
@@ -184,9 +207,15 @@ extern_methods!(
         #[method_id(@__retain_semantics Other itemWithTag:)]
         pub unsafe fn itemWithTag(&self, tag: NSInteger) -> Option<Id<NSMenuItem>>;
 
+        /**
+          Set and get whether the menu autoenables items.  If a menu autoenables items, then calls to -[NSMenuItem setEnabled:] are ignored, and the enabled state is computed via the NSMenuValidation informal protocol below.  Autoenabling is on by default.
+        */
         #[method(autoenablesItems)]
         pub unsafe fn autoenablesItems(&self) -> bool;
 
+        /**
+          Set and get whether the menu autoenables items.  If a menu autoenables items, then calls to -[NSMenuItem setEnabled:] are ignored, and the enabled state is computed via the NSMenuValidation informal protocol below.  Autoenabling is on by default.
+        */
         #[method(setAutoenablesItems:)]
         pub unsafe fn setAutoenablesItems(&self, autoenables_items: bool);
 
@@ -204,12 +233,21 @@ extern_methods!(
         #[method(performActionForItemAtIndex:)]
         pub unsafe fn performActionForItemAtIndex(&self, index: NSInteger);
 
+        /**
+          Set and get the delegate for the menu. The delegate is weakly referenced for zeroing-weak compatible objects on 10.9 and later. Otherwise the behavior of this property is 'assign'. See the NSMenuDelegate protocol for methods that the delegate may implement.
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(&self) -> Option<Id<ProtocolObject<dyn NSMenuDelegate>>>;
 
+        /**
+          Set and get the delegate for the menu. The delegate is weakly referenced for zeroing-weak compatible objects on 10.9 and later. Otherwise the behavior of this property is 'assign'. See the NSMenuDelegate protocol for methods that the delegate may implement.
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(&self, delegate: Option<&ProtocolObject<dyn NSMenuDelegate>>);
 
+        /**
+          If called on the main menu, returns the height of the menu bar in pixels.  If called on any other menu, returns 0.
+        */
         #[method(menuBarHeight)]
         pub unsafe fn menuBarHeight(&self) -> CGFloat;
 
@@ -220,41 +258,77 @@ extern_methods!(
         pub unsafe fn cancelTrackingWithoutAnimation(&self);
 
         #[cfg(feature = "AppKit_NSMenuItem")]
+        /**
+          Returns the highlighted item in the menu, or nil if no item in the menu is highlighted
+        */
         #[method_id(@__retain_semantics Other highlightedItem)]
         pub unsafe fn highlightedItem(&self) -> Option<Id<NSMenuItem>>;
 
+        /**
+          Set the minimum width of the menu, in screen coordinates. The menu will prefer to not draw smaller than its minimum width, but may draw larger if it needs more space. The default value is 0.
+        */
         #[method(minimumWidth)]
         pub unsafe fn minimumWidth(&self) -> CGFloat;
 
+        /**
+          Set the minimum width of the menu, in screen coordinates. The menu will prefer to not draw smaller than its minimum width, but may draw larger if it needs more space. The default value is 0.
+        */
         #[method(setMinimumWidth:)]
         pub unsafe fn setMinimumWidth(&self, minimum_width: CGFloat);
 
+        /**
+          Returns the size of the menu, in screen coordinates.  The menu may draw at a smaller size when shown, depending on its positioning and display configuration.
+        */
         #[method(size)]
         pub unsafe fn size(&self) -> NSSize;
 
         #[cfg(feature = "AppKit_NSFont")]
+        /**
+          Sets the font for the menu.  This also affects the font of all submenus that do not have their own font.
+        */
         #[method_id(@__retain_semantics Other font)]
         pub unsafe fn font(&self) -> Option<Id<NSFont>>;
 
         #[cfg(feature = "AppKit_NSFont")]
+        /**
+          Sets the font for the menu.  This also affects the font of all submenus that do not have their own font.
+        */
         #[method(setFont:)]
         pub unsafe fn setFont(&self, font: Option<&NSFont>);
 
+        /**
+          Determines whether contextual menu plugins may be appended to the menu, if used as a context menu. The default is YES.
+        */
         #[method(allowsContextMenuPlugIns)]
         pub unsafe fn allowsContextMenuPlugIns(&self) -> bool;
 
+        /**
+          Determines whether contextual menu plugins may be appended to the menu, if used as a context menu. The default is YES.
+        */
         #[method(setAllowsContextMenuPlugIns:)]
         pub unsafe fn setAllowsContextMenuPlugIns(&self, allows_context_menu_plug_ins: bool);
 
+        /**
+          Determines whether the menu contains a column for the state image.  The default is YES.
+        */
         #[method(showsStateColumn)]
         pub unsafe fn showsStateColumn(&self) -> bool;
 
+        /**
+          Determines whether the menu contains a column for the state image.  The default is YES.
+        */
         #[method(setShowsStateColumn:)]
         pub unsafe fn setShowsStateColumn(&self, shows_state_column: bool);
 
+        /**
+          Determines the layout direction for menu items in the menu. If no layout direction is explicitly set, the menu will default to the value of [NSApp userInterfaceLayoutDirection].
+        */
         #[method(userInterfaceLayoutDirection)]
         pub unsafe fn userInterfaceLayoutDirection(&self) -> NSUserInterfaceLayoutDirection;
 
+        /**
+          Determines the layout direction for menu items in the menu. If no layout direction is explicitly set, the menu will default to the value of [NSApp userInterfaceLayoutDirection].
+        */
         #[method(setUserInterfaceLayoutDirection:)]
         pub unsafe fn setUserInterfaceLayoutDirection(
             &self,
@@ -335,6 +409,9 @@ extern_protocol!(
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+      The NSMenuProperties type is a bitmask used for specifying a set of menu or menu item properties, used in the following method.
+    */
     pub enum NSMenuProperties {
         NSMenuPropertyItemTitle = 1 << 0,
         NSMenuPropertyItemAttributedTitle = 1 << 1,
@@ -346,6 +423,11 @@ ns_options!(
 );
 
 extern_methods!(
+    /**
+      The following method may be called from delegate callbacks to determine which properties need to be updated and which may be skipped.  It is intended to allow more efficient updating of the menu in certain circumstances.  For example, if the NSMenuPropertyItemImage bit is zero, your delegate does not need to update the images of the menu items, because the images are not needed (for example, during key equivalent matching).  Calling this is optional: it is always acceptable to fully update the menu.
+
+    This may be called from the menu delegate method -menuNeedsUpdate:.  Calling this at other times will raise an exception.
+    */
     /// NSMenuPropertiesToUpdate
     #[cfg(feature = "AppKit_NSMenu")]
     unsafe impl NSMenu {
@@ -369,6 +451,9 @@ extern_static!(NSMenuDidBeginTrackingNotification: &'static NSNotificationName);
 extern_static!(NSMenuDidEndTrackingNotification: &'static NSNotificationName);
 
 extern_methods!(
+    /**
+      The remainder of this file contains deprecated methods
+    */
     /// NSDeprecated
     #[cfg(feature = "AppKit_NSMenu")]
     unsafe impl NSMenu {
@@ -420,10 +505,16 @@ extern_methods!(
         #[method(locationForSubmenu:)]
         pub unsafe fn locationForSubmenu(&self, submenu: Option<&NSMenu>) -> NSPoint;
 
+        /**
+          In OS X 10.6 and later, the following methods no longer do anything useful.
+        */
         #[deprecated]
         #[method(menuChangedMessagesEnabled)]
         pub unsafe fn menuChangedMessagesEnabled(&self) -> bool;
 
+        /**
+          In OS X 10.6 and later, the following methods no longer do anything useful.
+        */
         #[deprecated]
         #[method(setMenuChangedMessagesEnabled:)]
         pub unsafe fn setMenuChangedMessagesEnabled(&self, menu_changed_messages_enabled: bool);

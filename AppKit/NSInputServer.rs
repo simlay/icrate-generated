@@ -6,6 +6,9 @@ use crate::CoreData::*;
 use crate::Foundation::*;
 
 extern_protocol!(
+    /**
+      These methods must be implemented by the delegate.
+    */
     pub unsafe trait NSInputServiceProvider {
         #[deprecated]
         #[method(insertText:client:)]
@@ -84,6 +87,9 @@ extern_protocol!(
 );
 
 extern_protocol!(
+    /**
+      These methods are sent to input servers that return YES to wantsToHandleMouseEvents.  point is in screen coordinate.
+    */
     pub unsafe trait NSInputServerMouseTracker {
         #[deprecated]
         #[method(mouseDownOnCharacterIndex:atCoordinate:withModifier:client:)]

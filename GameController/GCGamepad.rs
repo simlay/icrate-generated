@@ -45,10 +45,24 @@ extern_methods!(
         pub unsafe fn saveSnapshot(&self) -> Id<GCGamepadSnapshot>;
 
         #[cfg(feature = "GameController_GCControllerDirectionPad")]
+        /**
+         Required to be analog in the Standard profile. All the elements of this directional input are thus analog.
+        */
         #[method_id(@__retain_semantics Other dpad)]
         pub unsafe fn dpad(&self) -> Id<GCControllerDirectionPad>;
 
         #[cfg(feature = "GameController_GCControllerButtonInput")]
+        /**
+         All face buttons are required to be analog in the Standard profile. These must be arranged
+        in the diamond pattern given below:
+
+        Y
+        / \
+        X   B
+        \
+        A
+
+        */
         #[method_id(@__retain_semantics Other buttonA)]
         pub unsafe fn buttonA(&self) -> Id<GCControllerButtonInput>;
 
@@ -65,10 +79,16 @@ extern_methods!(
         pub unsafe fn buttonY(&self) -> Id<GCControllerButtonInput>;
 
         #[cfg(feature = "GameController_GCControllerButtonInput")]
+        /**
+         Shoulder buttons are required to be analog inputs.
+        */
         #[method_id(@__retain_semantics Other leftShoulder)]
         pub unsafe fn leftShoulder(&self) -> Id<GCControllerButtonInput>;
 
         #[cfg(feature = "GameController_GCControllerButtonInput")]
+        /**
+         Shoulder buttons are required to be analog inputs.
+        */
         #[method_id(@__retain_semantics Other rightShoulder)]
         pub unsafe fn rightShoulder(&self) -> Id<GCControllerButtonInput>;
     }

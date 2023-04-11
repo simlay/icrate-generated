@@ -65,6 +65,11 @@ extern_methods!(
             feature = "CloudKit_CKRecordZoneID",
             feature = "Foundation_NSError"
         ))]
+        /**
+          @abstract Called on success or failure of a record zone save
+
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(perRecordZoneSaveBlock)]
         pub unsafe fn perRecordZoneSaveBlock(
             &self,
@@ -75,6 +80,11 @@ extern_methods!(
             feature = "CloudKit_CKRecordZoneID",
             feature = "Foundation_NSError"
         ))]
+        /**
+          @abstract Called on success or failure of a record zone save
+
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(setPerRecordZoneSaveBlock:)]
         pub unsafe fn setPerRecordZoneSaveBlock(
             &self,
@@ -84,12 +94,22 @@ extern_methods!(
         );
 
         #[cfg(all(feature = "CloudKit_CKRecordZoneID", feature = "Foundation_NSError"))]
+        /**
+          @abstract Called on success or failure of a record zone deletion
+
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(perRecordZoneDeleteBlock)]
         pub unsafe fn perRecordZoneDeleteBlock(
             &self,
         ) -> *mut Block<(NonNull<CKRecordZoneID>, *mut NSError), ()>;
 
         #[cfg(all(feature = "CloudKit_CKRecordZoneID", feature = "Foundation_NSError"))]
+        /**
+          @abstract Called on success or failure of a record zone deletion
+
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(setPerRecordZoneDeleteBlock:)]
         pub unsafe fn setPerRecordZoneDeleteBlock(
             &self,
@@ -104,6 +124,14 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSError"
         ))]
+        /**
+          @abstract This block is called when the operation completes.
+
+          @discussion The @code -[NSOperation completionBlock] @endcode will also be called if both are set.
+          If the error is @c CKErrorPartialFailure, the error's userInfo dictionary contains a dictionary of recordZoneIDs to errors keyed off of @c CKPartialErrorsByItemIDKey.
+          @c savedRecordZones, @c deletedRecordZoneIDs and any @c CKPartialErrorsByItemIDKey errors are repeats of the data sent back in previous @c perRecordZoneSaveBlock and @c perRecordZoneDeleteBlock invocations
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(modifyRecordZonesCompletionBlock)]
         pub unsafe fn modifyRecordZonesCompletionBlock(
             &self,
@@ -122,6 +150,14 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSError"
         ))]
+        /**
+          @abstract This block is called when the operation completes.
+
+          @discussion The @code -[NSOperation completionBlock] @endcode will also be called if both are set.
+          If the error is @c CKErrorPartialFailure, the error's userInfo dictionary contains a dictionary of recordZoneIDs to errors keyed off of @c CKPartialErrorsByItemIDKey.
+          @c savedRecordZones, @c deletedRecordZoneIDs and any @c CKPartialErrorsByItemIDKey errors are repeats of the data sent back in previous @c perRecordZoneSaveBlock and @c perRecordZoneDeleteBlock invocations
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(setModifyRecordZonesCompletionBlock:)]
         pub unsafe fn setModifyRecordZonesCompletionBlock(
             &self,

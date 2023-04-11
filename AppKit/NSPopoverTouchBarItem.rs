@@ -27,26 +27,44 @@ extern_methods!(
     #[cfg(feature = "AppKit_NSPopoverTouchBarItem")]
     unsafe impl NSPopoverTouchBarItem {
         #[cfg(feature = "AppKit_NSTouchBar")]
+        /**
+         The NSTouchBar displayed when this item is "popped." By default this is an empty bar that cannot be customized. This property is archived.
+        */
         #[method_id(@__retain_semantics Other popoverTouchBar)]
         pub unsafe fn popoverTouchBar(&self) -> Id<NSTouchBar>;
 
         #[cfg(feature = "AppKit_NSTouchBar")]
+        /**
+         The NSTouchBar displayed when this item is "popped." By default this is an empty bar that cannot be customized. This property is archived.
+        */
         #[method(setPopoverTouchBar:)]
         pub unsafe fn setPopoverTouchBar(&self, popover_touch_bar: &NSTouchBar);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         The localized string labelling this item during user customization. The default value is the empty string. This property is archived.
+        */
         #[method_id(@__retain_semantics Other customizationLabel)]
         pub unsafe fn customizationLabel(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         The localized string labelling this item during user customization. The default value is the empty string. This property is archived.
+        */
         #[method(setCustomizationLabel:)]
         pub unsafe fn setCustomizationLabel(&self, customization_label: Option<&NSString>);
 
         #[cfg(feature = "AppKit_NSView")]
+        /**
+         The view displayed when the item is in its hosted NSTouchBar. By default, this is an NSButton whose target is this popover item, whose action is showPopover:, and whose image and title are bound to this item's collapsedRepresentationImage and collapsedRepresentationLabel respectively. This property is archived.
+        */
         #[method_id(@__retain_semantics Other collapsedRepresentation)]
         pub unsafe fn collapsedRepresentation(&self) -> Id<NSView>;
 
         #[cfg(feature = "AppKit_NSView")]
+        /**
+         The view displayed when the item is in its hosted NSTouchBar. By default, this is an NSButton whose target is this popover item, whose action is showPopover:, and whose image and title are bound to this item's collapsedRepresentationImage and collapsedRepresentationLabel respectively. This property is archived.
+        */
         #[method(setCollapsedRepresentation:)]
         pub unsafe fn setCollapsedRepresentation(&self, collapsed_representation: &NSView);
 
@@ -62,10 +80,16 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         The localized string displayed by the button used by default for the default collapsed representation. If the collapsedRepresentation button has been replaced by a different view, this property may not have any effect. This property is archived.
+        */
         #[method_id(@__retain_semantics Other collapsedRepresentationLabel)]
         pub unsafe fn collapsedRepresentationLabel(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         The localized string displayed by the button used by default for the default collapsed representation. If the collapsedRepresentation button has been replaced by a different view, this property may not have any effect. This property is archived.
+        */
         #[method(setCollapsedRepresentationLabel:)]
         pub unsafe fn setCollapsedRepresentationLabel(
             &self,
@@ -73,16 +97,32 @@ extern_methods!(
         );
 
         #[cfg(feature = "AppKit_NSTouchBar")]
+        /**
+         An NSTouchBar to be used exclusively for press-and-hold popovers. This NSTouchBar can be the same as the one used for "popoverTouchBar" property, but does not have to be. When non-nil this NSTouchBar will be displayed while the user holds their finger down on the collapsed representation and released when the user raises their finger. This tracking behavior is automatic, but popovers with custom collapsed representations will still need to send -showPopover: to start tracking.
+
+        This property is archived.
+        */
         #[method_id(@__retain_semantics Other pressAndHoldTouchBar)]
         pub unsafe fn pressAndHoldTouchBar(&self) -> Option<Id<NSTouchBar>>;
 
         #[cfg(feature = "AppKit_NSTouchBar")]
+        /**
+         An NSTouchBar to be used exclusively for press-and-hold popovers. This NSTouchBar can be the same as the one used for "popoverTouchBar" property, but does not have to be. When non-nil this NSTouchBar will be displayed while the user holds their finger down on the collapsed representation and released when the user raises their finger. This tracking behavior is automatic, but popovers with custom collapsed representations will still need to send -showPopover: to start tracking.
+
+        This property is archived.
+        */
         #[method(setPressAndHoldTouchBar:)]
         pub unsafe fn setPressAndHoldTouchBar(&self, press_and_hold_touch_bar: Option<&NSTouchBar>);
 
+        /**
+         When YES, automatically displays a close button in the popover. When NO it is the responsibility of the client to dismiss the popover.
+        */
         #[method(showsCloseButton)]
         pub unsafe fn showsCloseButton(&self) -> bool;
 
+        /**
+         When YES, automatically displays a close button in the popover. When NO it is the responsibility of the client to dismiss the popover.
+        */
         #[method(setShowsCloseButton:)]
         pub unsafe fn setShowsCloseButton(&self, shows_close_button: bool);
 

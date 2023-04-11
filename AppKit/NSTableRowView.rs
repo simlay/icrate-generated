@@ -50,36 +50,66 @@ unsafe impl NSUserInterfaceItemIdentification for NSTableRowView {}
 extern_methods!(
     #[cfg(feature = "AppKit_NSTableRowView")]
     unsafe impl NSTableRowView {
+        /**
+          The tableView sets the selectionHighlightStyle based on its current value.
+        */
         #[method(selectionHighlightStyle)]
         pub unsafe fn selectionHighlightStyle(&self) -> NSTableViewSelectionHighlightStyle;
 
+        /**
+          The tableView sets the selectionHighlightStyle based on its current value.
+        */
         #[method(setSelectionHighlightStyle:)]
         pub unsafe fn setSelectionHighlightStyle(
             &self,
             selection_highlight_style: NSTableViewSelectionHighlightStyle,
         );
 
+        /**
+          When emphasized is YES, the view should draw with the (typically) blue [NSColor alternateSelectedControlColor]. When NO, it should use the (typically) gray [NSColor secondarySelectedControlColor].
+        */
         #[method(isEmphasized)]
         pub unsafe fn isEmphasized(&self) -> bool;
 
+        /**
+          When emphasized is YES, the view should draw with the (typically) blue [NSColor alternateSelectedControlColor]. When NO, it should use the (typically) gray [NSColor secondarySelectedControlColor].
+        */
         #[method(setEmphasized:)]
         pub unsafe fn setEmphasized(&self, emphasized: bool);
 
+        /**
+          When groupRowStyle is set to YES, this row is a group row and will draw appropriately.
+        */
         #[method(isGroupRowStyle)]
         pub unsafe fn isGroupRowStyle(&self) -> bool;
 
+        /**
+          When groupRowStyle is set to YES, this row is a group row and will draw appropriately.
+        */
         #[method(setGroupRowStyle:)]
         pub unsafe fn setGroupRowStyle(&self, group_row_style: bool);
 
+        /**
+          Selection state. The selection will be drawn when selected and the selectionHighlightStyle is not NSTableViewSelectionHighlightStyleNone.
+        */
         #[method(isSelected)]
         pub unsafe fn isSelected(&self) -> bool;
 
+        /**
+          Selection state. The selection will be drawn when selected and the selectionHighlightStyle is not NSTableViewSelectionHighlightStyleNone.
+        */
         #[method(setSelected:)]
         pub unsafe fn setSelected(&self, selected: bool);
 
+        /**
+          Next and previous row selection state. Allows subclassers to draw selection differently based on the previous next row being selected. State is automatically updated by NSTableView, however, the changing of the state does not invalidate the row view. If a row view depends on this state, it should override the particular setter and call [self setNeedsDisplay:YES] before or after calling super.
+        */
         #[method(isPreviousRowSelected)]
         pub unsafe fn isPreviousRowSelected(&self) -> bool;
 
+        /**
+          Next and previous row selection state. Allows subclassers to draw selection differently based on the previous next row being selected. State is automatically updated by NSTableView, however, the changing of the state does not invalidate the row view. If a row view depends on this state, it should override the particular setter and call [self setNeedsDisplay:YES] before or after calling super.
+        */
         #[method(setPreviousRowSelected:)]
         pub unsafe fn setPreviousRowSelected(&self, previous_row_selected: bool);
 
@@ -89,15 +119,27 @@ extern_methods!(
         #[method(setNextRowSelected:)]
         pub unsafe fn setNextRowSelected(&self, next_row_selected: bool);
 
+        /**
+          Floating is a temporary attribute that is set when a particular group row is actually floating above other rows. The state may change dynamically based on the position of the group row. Drawing may be different for rows that are currently 'floating'. The TableView's delegate must implement tableView:isGroupRow: (or outlineView:isGroupItem:) to enable floating group rows.
+        */
         #[method(isFloating)]
         pub unsafe fn isFloating(&self) -> bool;
 
+        /**
+          Floating is a temporary attribute that is set when a particular group row is actually floating above other rows. The state may change dynamically based on the position of the group row. Drawing may be different for rows that are currently 'floating'. The TableView's delegate must implement tableView:isGroupRow: (or outlineView:isGroupItem:) to enable floating group rows.
+        */
         #[method(setFloating:)]
         pub unsafe fn setFloating(&self, floating: bool);
 
+        /**
+          Drag and drop state. When targetForDropOperation is set to YES, the NSTableRowView will draw a drop on indicator based on the current draggingDestinationFeedbackStyle. The indentationForDropOperation is set appropriately by NSOutlineView if the drop target row should be indented. Otherwise it is 0. On Mac OS 10.0.2, the indentation is always 0, and the feedback style is now drawn similar to selection.
+        */
         #[method(isTargetForDropOperation)]
         pub unsafe fn isTargetForDropOperation(&self) -> bool;
 
+        /**
+          Drag and drop state. When targetForDropOperation is set to YES, the NSTableRowView will draw a drop on indicator based on the current draggingDestinationFeedbackStyle. The indentationForDropOperation is set appropriately by NSOutlineView if the drop target row should be indented. Otherwise it is 0. On Mac OS 10.0.2, the indentation is always 0, and the feedback style is now drawn similar to selection.
+        */
         #[method(setTargetForDropOperation:)]
         pub unsafe fn setTargetForDropOperation(&self, target_for_drop_operation: bool);
 
@@ -121,14 +163,23 @@ extern_methods!(
             indentation_for_drop_operation: CGFloat,
         );
 
+        /**
+          The interiorBackgroundStyle can be used as an indication of how the subviews should draw. This value is dynamically computed based on the set of properties set for the NSTableRowView. Subclassers can override this value when they draw differently based on the currently displayed properties. This method can also be called to determine what color a subview should use, or alternatively, NSControls can have the -backgroundStyle set on their cell to this value.
+        */
         #[method(interiorBackgroundStyle)]
         pub unsafe fn interiorBackgroundStyle(&self) -> NSBackgroundStyle;
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+          The backgroundColor property defaults to the Table View's backgroundColor, unless usesAlternatingRowBackgroundColors is set to YES. In that case, the colors alternate, and are automatically updated as required by insertions and deletions. The value can be customized in the delegate method -tableView:didAddRowView:forRow:. The property is animatable.
+        */
         #[method_id(@__retain_semantics Other backgroundColor)]
         pub unsafe fn backgroundColor(&self) -> Id<NSColor>;
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+          The backgroundColor property defaults to the Table View's backgroundColor, unless usesAlternatingRowBackgroundColors is set to YES. In that case, the colors alternate, and are automatically updated as required by insertions and deletions. The value can be customized in the delegate method -tableView:didAddRowView:forRow:. The property is animatable.
+        */
         #[method(setBackgroundColor:)]
         pub unsafe fn setBackgroundColor(&self, background_color: &NSColor);
 
@@ -147,6 +198,9 @@ extern_methods!(
         #[method_id(@__retain_semantics Other viewAtColumn:)]
         pub unsafe fn viewAtColumn(&self, column: NSInteger) -> Option<Id<Object>>;
 
+        /**
+          Provides access to the number of columns represented by views in this NSTableRowView. This may not be equal to the number of columns in the enclosing NSTableView, if this row view is a group style and has a single view that spans the entire width of the row.
+        */
         #[method(numberOfColumns)]
         pub unsafe fn numberOfColumns(&self) -> NSInteger;
     }

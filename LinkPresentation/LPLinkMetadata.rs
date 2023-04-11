@@ -8,6 +8,9 @@ use crate::LinkPresentation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "LinkPresentation_LPLinkMetadata")]
+    /**
+     An LPLinkMetadata object contains metadata about a URL.
+    */
     pub struct LPLinkMetadata;
 
     #[cfg(feature = "LinkPresentation_LPLinkMetadata")]
@@ -17,70 +20,138 @@ extern_class!(
 );
 
 #[cfg(feature = "LinkPresentation_LPLinkMetadata")]
+/**
+ An LPLinkMetadata object contains metadata about a URL.
+*/
 unsafe impl NSCoding for LPLinkMetadata {}
 
 #[cfg(feature = "LinkPresentation_LPLinkMetadata")]
+/**
+ An LPLinkMetadata object contains metadata about a URL.
+*/
 unsafe impl NSObjectProtocol for LPLinkMetadata {}
 
 #[cfg(feature = "LinkPresentation_LPLinkMetadata")]
+/**
+ An LPLinkMetadata object contains metadata about a URL.
+*/
 unsafe impl NSSecureCoding for LPLinkMetadata {}
 
 extern_methods!(
+    /**
+     An LPLinkMetadata object contains metadata about a URL.
+    */
     #[cfg(feature = "LinkPresentation_LPLinkMetadata")]
     unsafe impl LPLinkMetadata {
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          The original URL that metadata was requested from.
+        */
         #[method_id(@__retain_semantics Other originalURL)]
         pub unsafe fn originalURL(&self) -> Option<Id<NSURL>>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          The original URL that metadata was requested from.
+        */
         #[method(setOriginalURL:)]
         pub unsafe fn setOriginalURL(&self, original_url: Option<&NSURL>);
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+         The URL that metadata was retrieved from.
+        This takes server-side redirects into account.
+        */
         #[method_id(@__retain_semantics Other URL)]
         pub unsafe fn URL(&self) -> Option<Id<NSURL>>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+         The URL that metadata was retrieved from.
+        This takes server-side redirects into account.
+        */
         #[method(setURL:)]
         pub unsafe fn setURL(&self, url: Option<&NSURL>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         A title for the URL.
+        */
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         A title for the URL.
+        */
         #[method(setTitle:)]
         pub unsafe fn setTitle(&self, title: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSItemProvider")]
+        /**
+         An item provider which will return data corresponding to a representative
+        icon for the URL.
+        */
         #[method_id(@__retain_semantics Other iconProvider)]
         pub unsafe fn iconProvider(&self) -> Option<Id<NSItemProvider>>;
 
         #[cfg(feature = "Foundation_NSItemProvider")]
+        /**
+         An item provider which will return data corresponding to a representative
+        icon for the URL.
+        */
         #[method(setIconProvider:)]
         pub unsafe fn setIconProvider(&self, icon_provider: Option<&NSItemProvider>);
 
         #[cfg(feature = "Foundation_NSItemProvider")]
+        /**
+         An item provider which will return data corresponding to a representative
+        image for the URL.
+        */
         #[method_id(@__retain_semantics Other imageProvider)]
         pub unsafe fn imageProvider(&self) -> Option<Id<NSItemProvider>>;
 
         #[cfg(feature = "Foundation_NSItemProvider")]
+        /**
+         An item provider which will return data corresponding to a representative
+        image for the URL.
+        */
         #[method(setImageProvider:)]
         pub unsafe fn setImageProvider(&self, image_provider: Option<&NSItemProvider>);
 
         #[cfg(feature = "Foundation_NSItemProvider")]
+        /**
+         An item provider which will return data corresponding to a representative
+        video for the URL that AVFoundation can play.
+        */
         #[method_id(@__retain_semantics Other videoProvider)]
         pub unsafe fn videoProvider(&self) -> Option<Id<NSItemProvider>>;
 
         #[cfg(feature = "Foundation_NSItemProvider")]
+        /**
+         An item provider which will return data corresponding to a representative
+        video for the URL that AVFoundation can play.
+        */
         #[method(setVideoProvider:)]
         pub unsafe fn setVideoProvider(&self, video_provider: Option<&NSItemProvider>);
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+         A remote URL corresponding to a representative video for the URL.
+
+        This may point to to a remote video file that AVFoundation can stream,
+        or to a YouTube video URL.
+        */
         #[method_id(@__retain_semantics Other remoteVideoURL)]
         pub unsafe fn remoteVideoURL(&self) -> Option<Id<NSURL>>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+         A remote URL corresponding to a representative video for the URL.
+
+        This may point to to a remote video file that AVFoundation can stream,
+        or to a YouTube video URL.
+        */
         #[method(setRemoteVideoURL:)]
         pub unsafe fn setRemoteVideoURL(&self, remote_video_url: Option<&NSURL>);
     }

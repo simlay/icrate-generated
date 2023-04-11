@@ -80,6 +80,9 @@ extern_static!(NSObservedKeyPathKey: &'static NSBindingInfoKey);
 extern_static!(NSOptionsKey: &'static NSBindingInfoKey);
 
 extern_protocol!(
+    /**
+      methods implemented by controllers, CoreData's managed object contexts, and user interface elements
+    */
     pub unsafe trait NSEditor: NSObjectProtocol {
         #[method(discardEditing)]
         unsafe fn discardEditing(&self);
@@ -104,6 +107,9 @@ extern_protocol!(
 );
 
 extern_protocol!(
+    /**
+      methods implemented by controllers, CoreData's managed object contexts (and potentially documents)
+    */
     pub unsafe trait NSEditorRegistration: NSObjectProtocol {
         #[optional]
         #[method(objectDidBeginEditing:)]
@@ -328,13 +334,22 @@ extern_static!(NSValueTransformerNameBindingOption: &'static NSBindingOption);
 extern_static!(NSValueTransformerBindingOption: &'static NSBindingOption);
 
 extern_methods!(
+    /**
+      NSManagedObjectContext implements the NSEditor and NSEditorRegistration protocols for use with NSControllers and NSDocument
+    */
     /// NSEditorAndEditorRegistrationConformance
     #[cfg(feature = "CoreData_NSManagedObjectContext")]
     unsafe impl NSManagedObjectContext {}
 );
 
 #[cfg(feature = "CoreData_NSManagedObjectContext")]
+/**
+  NSManagedObjectContext implements the NSEditor and NSEditorRegistration protocols for use with NSControllers and NSDocument
+*/
 unsafe impl NSEditor for NSManagedObjectContext {}
 
 #[cfg(feature = "CoreData_NSManagedObjectContext")]
+/**
+  NSManagedObjectContext implements the NSEditor and NSEditorRegistration protocols for use with NSControllers and NSDocument
+*/
 unsafe impl NSEditorRegistration for NSManagedObjectContext {}

@@ -8,6 +8,10 @@ use crate::GameController::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameController_GCGearShifterElement")]
+    /**
+     A \c GCGearShifterElement object represents an attached gear shifter.  Both
+    pattern and sequential gear shifters are supported.
+    */
     pub struct GCGearShifterElement;
 
     #[cfg(feature = "GameController_GCGearShifterElement")]
@@ -17,17 +21,40 @@ extern_class!(
 );
 
 #[cfg(feature = "GameController_GCGearShifterElement")]
+/**
+ A \c GCGearShifterElement object represents an attached gear shifter.  Both
+pattern and sequential gear shifters are supported.
+*/
 unsafe impl GCPhysicalInputElement for GCGearShifterElement {}
 
 #[cfg(feature = "GameController_GCGearShifterElement")]
+/**
+ A \c GCGearShifterElement object represents an attached gear shifter.  Both
+pattern and sequential gear shifters are supported.
+*/
 unsafe impl NSObjectProtocol for GCGearShifterElement {}
 
 extern_methods!(
+    /**
+     A \c GCGearShifterElement object represents an attached gear shifter.  Both
+    pattern and sequential gear shifters are supported.
+    */
     #[cfg(feature = "GameController_GCGearShifterElement")]
     unsafe impl GCGearShifterElement {
+        /**
+         Get the input reporting the position of the pattern gear shifter.  If this
+        property is \c nil, the gear shifter is not a pattern gear shifter.
+
+        In the returned input, a position of \c -1 corresponds to the "reverse gear".
+        A position of \c 0 corresponds to the neutral gear.
+        */
         #[method_id(@__retain_semantics Other patternInput)]
         pub unsafe fn patternInput(&self) -> Option<Id<ProtocolObject<dyn GCSwitchPositionInput>>>;
 
+        /**
+         Get the input reporting changes to the sequential gear shifter.  If this
+        property is \c nil, the gear shifter is not a sequential gear shifter.
+        */
         #[method_id(@__retain_semantics Other sequentialInput)]
         pub unsafe fn sequentialInput(&self) -> Option<Id<ProtocolObject<dyn GCRelativeInput>>>;
     }

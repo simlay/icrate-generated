@@ -7,6 +7,10 @@ use crate::Metal::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLRasterizationRateSampleArray")]
+    /**
+     @interface MTLRasterizationRateSampleArray
+    @abstract A helper object for convient access to samples stored in an array.
+    */
     pub struct MTLRasterizationRateSampleArray;
 
     #[cfg(feature = "Metal_MTLRasterizationRateSampleArray")]
@@ -16,9 +20,17 @@ extern_class!(
 );
 
 #[cfg(feature = "Metal_MTLRasterizationRateSampleArray")]
+/**
+ @interface MTLRasterizationRateSampleArray
+@abstract A helper object for convient access to samples stored in an array.
+*/
 unsafe impl NSObjectProtocol for MTLRasterizationRateSampleArray {}
 
 extern_methods!(
+    /**
+     @interface MTLRasterizationRateSampleArray
+    @abstract A helper object for convient access to samples stored in an array.
+    */
     #[cfg(feature = "Metal_MTLRasterizationRateSampleArray")]
     unsafe impl MTLRasterizationRateSampleArray {
         #[cfg(feature = "Foundation_NSNumber")]
@@ -34,6 +46,17 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLRasterizationRateLayerDescriptor")]
+    /**
+     @interface MTLRasterizationRateLayerDescriptor
+    @abstract Describes the minimum rasterization rate screen space using two piecewise linear functions.
+    @discussion The two piecewise linear function (PLF) describe the desired rasterization quality on the horizontal and vertical axis separately.
+    Each quality sample in the PLF is stored in an array as single precision floating point value between 0 (lowest quality) and 1 (highest quality).
+    The first sample in the array describes the quality at the top (vertical) or left (horizontal) edge of screen space.
+    The last sample in the array describes the quality at the bottom (vertical) or right (horizontal) edge of screen space.
+    All other samples are spaced equidistant in screen space.
+    MTLRasterizationRateLayerDescriptor instances will be stored inside a MTLRasterizationRateMapDescriptor which in turn is compiled by MTLDevice into a MTLRasterizationRateMap.
+    Because MTLDevice may not support the requested granularity, the provided samples may be rounded up (towards higher quality) during compilation.
+    */
     pub struct MTLRasterizationRateLayerDescriptor;
 
     #[cfg(feature = "Metal_MTLRasterizationRateLayerDescriptor")]
@@ -43,9 +66,31 @@ extern_class!(
 );
 
 #[cfg(feature = "Metal_MTLRasterizationRateLayerDescriptor")]
+/**
+ @interface MTLRasterizationRateLayerDescriptor
+@abstract Describes the minimum rasterization rate screen space using two piecewise linear functions.
+@discussion The two piecewise linear function (PLF) describe the desired rasterization quality on the horizontal and vertical axis separately.
+Each quality sample in the PLF is stored in an array as single precision floating point value between 0 (lowest quality) and 1 (highest quality).
+The first sample in the array describes the quality at the top (vertical) or left (horizontal) edge of screen space.
+The last sample in the array describes the quality at the bottom (vertical) or right (horizontal) edge of screen space.
+All other samples are spaced equidistant in screen space.
+MTLRasterizationRateLayerDescriptor instances will be stored inside a MTLRasterizationRateMapDescriptor which in turn is compiled by MTLDevice into a MTLRasterizationRateMap.
+Because MTLDevice may not support the requested granularity, the provided samples may be rounded up (towards higher quality) during compilation.
+*/
 unsafe impl NSObjectProtocol for MTLRasterizationRateLayerDescriptor {}
 
 extern_methods!(
+    /**
+     @interface MTLRasterizationRateLayerDescriptor
+    @abstract Describes the minimum rasterization rate screen space using two piecewise linear functions.
+    @discussion The two piecewise linear function (PLF) describe the desired rasterization quality on the horizontal and vertical axis separately.
+    Each quality sample in the PLF is stored in an array as single precision floating point value between 0 (lowest quality) and 1 (highest quality).
+    The first sample in the array describes the quality at the top (vertical) or left (horizontal) edge of screen space.
+    The last sample in the array describes the quality at the bottom (vertical) or right (horizontal) edge of screen space.
+    All other samples are spaced equidistant in screen space.
+    MTLRasterizationRateLayerDescriptor instances will be stored inside a MTLRasterizationRateMapDescriptor which in turn is compiled by MTLDevice into a MTLRasterizationRateMap.
+    Because MTLDevice may not support the requested granularity, the provided samples may be rounded up (towards higher quality) during compilation.
+    */
     #[cfg(feature = "Metal_MTLRasterizationRateLayerDescriptor")]
     unsafe impl MTLRasterizationRateLayerDescriptor {
         #[method_id(@__retain_semantics Init init)]
@@ -65,20 +110,46 @@ extern_methods!(
             vertical: NonNull<c_float>,
         ) -> Id<Self>;
 
+        /**
+         @property maxSampleCount
+        @return The maximum number of quality samples that this descriptor can use to describe its function, for the horizontal and vertical axis, this is the sampleCount that the descriptor was initialized with. The depth component of the returned MTLSize is always 0.
+        */
         #[method(maxSampleCount)]
         pub unsafe fn maxSampleCount(&self) -> MTLSize;
 
+        /**
+         @property horizontalSampleStorage
+        @abstract Provide direct access to the quality samples stored in the descriptor.
+        @return Pointer to the (mutable) storage array for samples on the horizontal axis.
+        @discussion The returned pointer points to the first element of an array of sampleCount.width elements.
+        */
         #[method(horizontalSampleStorage)]
         pub unsafe fn horizontalSampleStorage(&self) -> NonNull<c_float>;
 
+        /**
+         @property verticalSampleStorage
+        @abstract Provide direct access to the quality samples stored in the descriptor.
+        @return Pointer to the (mutable) storage array for samples on the vertical axis.
+        @discussion The returned pointer points to the first element of an array of sampleCount.height elements.
+        */
         #[method(verticalSampleStorage)]
         pub unsafe fn verticalSampleStorage(&self) -> NonNull<c_float>;
 
         #[cfg(feature = "Metal_MTLRasterizationRateSampleArray")]
+        /**
+         @property horizontal
+        @abstract Provide convenient bounds-checked access to the quality samples stored in the descriptor.
+        @return Returns a syntactic sugar helper to get or set sample values on the horizontal axis.
+        */
         #[method_id(@__retain_semantics Other horizontal)]
         pub unsafe fn horizontal(&self) -> Id<MTLRasterizationRateSampleArray>;
 
         #[cfg(feature = "Metal_MTLRasterizationRateSampleArray")]
+        /**
+         @property vertical
+        @abstract Provide convenient bounds-checked access to the quality samples stored in the descriptor.
+        @return Returns a syntactic sugar helper to get or set sample values on the vertical axis.
+        */
         #[method_id(@__retain_semantics Other vertical)]
         pub unsafe fn vertical(&self) -> Id<MTLRasterizationRateSampleArray>;
     }
@@ -92,6 +163,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLRasterizationRateLayerArray")]
+    /**
+     @interface MTLRasterizationRateLayerArray
+    @abstract Mutable array of MTLRasterizationRateLayerDescriptor
+    */
     pub struct MTLRasterizationRateLayerArray;
 
     #[cfg(feature = "Metal_MTLRasterizationRateLayerArray")]
@@ -101,9 +176,17 @@ extern_class!(
 );
 
 #[cfg(feature = "Metal_MTLRasterizationRateLayerArray")]
+/**
+ @interface MTLRasterizationRateLayerArray
+@abstract Mutable array of MTLRasterizationRateLayerDescriptor
+*/
 unsafe impl NSObjectProtocol for MTLRasterizationRateLayerArray {}
 
 extern_methods!(
+    /**
+     @interface MTLRasterizationRateLayerArray
+    @abstract Mutable array of MTLRasterizationRateLayerDescriptor
+    */
     #[cfg(feature = "Metal_MTLRasterizationRateLayerArray")]
     unsafe impl MTLRasterizationRateLayerArray {
         #[cfg(feature = "Metal_MTLRasterizationRateLayerDescriptor")]
@@ -126,6 +209,11 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLRasterizationRateMapDescriptor")]
+    /**
+     @interface MTLRasterizationRateMapDescriptor
+    @abstract Describes a MTLRasterizationRateMap containing an arbitrary number of MTLRasterizationRateLayerDescriptor instances.
+    @discussion An MTLRasterizationRateMapDescriptor is compiled into an MTLRasterizationRateMap using MTLDevice.
+    */
     pub struct MTLRasterizationRateMapDescriptor;
 
     #[cfg(feature = "Metal_MTLRasterizationRateMapDescriptor")]
@@ -135,9 +223,19 @@ extern_class!(
 );
 
 #[cfg(feature = "Metal_MTLRasterizationRateMapDescriptor")]
+/**
+ @interface MTLRasterizationRateMapDescriptor
+@abstract Describes a MTLRasterizationRateMap containing an arbitrary number of MTLRasterizationRateLayerDescriptor instances.
+@discussion An MTLRasterizationRateMapDescriptor is compiled into an MTLRasterizationRateMap using MTLDevice.
+*/
 unsafe impl NSObjectProtocol for MTLRasterizationRateMapDescriptor {}
 
 extern_methods!(
+    /**
+     @interface MTLRasterizationRateMapDescriptor
+    @abstract Describes a MTLRasterizationRateMap containing an arbitrary number of MTLRasterizationRateLayerDescriptor instances.
+    @discussion An MTLRasterizationRateMapDescriptor is compiled into an MTLRasterizationRateMap using MTLDevice.
+    */
     #[cfg(feature = "Metal_MTLRasterizationRateMapDescriptor")]
     unsafe impl MTLRasterizationRateMapDescriptor {
         #[method_id(@__retain_semantics Other rasterizationRateMapDescriptorWithScreenSize:)]
@@ -176,46 +274,121 @@ extern_methods!(
         );
 
         #[cfg(feature = "Metal_MTLRasterizationRateLayerArray")]
+        /**
+         @property layers
+        @return A modifiable array of layers
+        @discussion Accesses the layers currently stored in the descriptor.
+        Syntactic sugar around "layerAtIndex:" and "setLayer:atIndex:"
+        */
         #[method_id(@__retain_semantics Other layers)]
         pub unsafe fn layers(&self) -> Id<MTLRasterizationRateLayerArray>;
 
+        /**
+         @property screenSize
+        @return The dimensions, in screen space pixels, of the region where variable rasterization is applied.
+        @discussion The region always has its origin at [0, 0].
+        The depth component of MTLSize is ignored.
+        */
         #[method(screenSize)]
         pub unsafe fn screenSize(&self) -> MTLSize;
 
+        /**
+         @property screenSize
+        @return The dimensions, in screen space pixels, of the region where variable rasterization is applied.
+        @discussion The region always has its origin at [0, 0].
+        The depth component of MTLSize is ignored.
+        */
         #[method(setScreenSize:)]
         pub unsafe fn setScreenSize(&self, screen_size: MTLSize);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property label
+        @abstract A string to help identify this object.
+        @discussion The default value is nil.
+        */
         #[method_id(@__retain_semantics Other label)]
         pub unsafe fn label(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property label
+        @abstract A string to help identify this object.
+        @discussion The default value is nil.
+        */
         #[method(setLabel:)]
         pub unsafe fn setLabel(&self, label: Option<&NSString>);
 
+        /**
+         @property layerCount
+        @return The number of subsequent non-nil layer instances stored in the descriptor, starting at index 0.
+        @discussion This property is modified by setting new layer instances using setLayer:atIndex: or assigning to layers[X]
+        */
         #[method(layerCount)]
         pub unsafe fn layerCount(&self) -> NSUInteger;
     }
 );
 
 extern_protocol!(
+    /**
+     @protocol MTLRasterizationRateMap
+    @abstract Compiled read-only object that determines how variable rasterization rate is applied when rendering.
+    @discussion A variable rasterization rate map is compiled by MTLDevice from a MTLRasterizationRateMapDescriptor containing one or more MTLRasterizationRateLayerDescriptor.
+    During compilation, the quality samples provided in the MTLRasterizationRateLayerDescriptor may be rounded up to the nearest supported value or granularity, depending on hardware support.
+    However, the compilation will never round values down, so the actual rasterization will always happen at a quality level matching or exceeding the provided quality samples.
+    During rasterization using the MTLRasterizationRateMap the screen space rendering is stored in a smaller area of the framebuffer, such that lower quality regions will not occupy as many texels as higher quality regions.
+    The quality will never exceed 1:1 in any region of screen space.
+    Because a smaller area of the framebuffer is populated, less fragment shader invocations are required to render content, and less bandwidth is consumed to store the shaded values.
+    Use a rasterization rate map to reduce rendering quality in less-important or less-sampled regions of the framebuffer, such as the periphery of a VR/AR display or a far-away cascade of a shadow map.
+    */
     pub unsafe trait MTLRasterizationRateMap: NSObjectProtocol {
+        /**
+         @property device
+        @return The device on which the rasterization rate map was created
+        */
         #[method_id(@__retain_semantics Other device)]
         unsafe fn device(&self) -> Id<ProtocolObject<dyn MTLDevice>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property label
+        @abstract A string to help identify this object.
+        */
         #[method_id(@__retain_semantics Other label)]
         unsafe fn label(&self) -> Option<Id<NSString>>;
 
+        /**
+         @property screenSize
+        @return The dimensions, in screen space pixels, of the region where variable rasterization is applied.
+        @discussion The region always has its origin at [0, 0].
+        The depth component of the returned MTLSize is always 0.
+        */
         #[method(screenSize)]
         unsafe fn screenSize(&self) -> MTLSize;
 
+        /**
+         @property physicalGranularity
+        @return The granularity, in physical pixels, at which variable rasterization rate varies.
+        @discussion Rendering algorithms that use binning or tiling in screen space may want to determine the screen space bin size using this value.
+        The depth component of the returned MTLSize is always 0.
+        */
         #[method(physicalGranularity)]
         unsafe fn physicalGranularity(&self) -> MTLSize;
 
+        /**
+         @property layerCount
+        @return The number of different configured layers in the rasterization map.
+        @discussion Different render-target layers may target different variable rasterization configurations.
+        The rasterization rate layer for a primitive is selected on the [[render_target_layer_index]].
+        */
         #[method(layerCount)]
         unsafe fn layerCount(&self) -> NSUInteger;
 
+        /**
+         @property parameterBufferSizeAndAlign
+        @abstract Returns the size and alignment requirements of the parameter buffer for this rate map.
+        @discussion The parameter data can be copied into a buffer with this size and alignment using copyParameterDataToBuffer:offset:
+        */
         #[method(parameterBufferSizeAndAlign)]
         unsafe fn parameterBufferSizeAndAlign(&self) -> MTLSizeAndAlign;
 

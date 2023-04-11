@@ -7,6 +7,9 @@ use crate::LocalAuthentication::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "LocalAuthentication_LARightStore")]
+    /**
+      @brief Persistent storage for @c LARight instances.
+    */
     pub struct LARightStore;
 
     #[cfg(feature = "LocalAuthentication_LARightStore")]
@@ -16,11 +19,20 @@ extern_class!(
 );
 
 #[cfg(feature = "LocalAuthentication_LARightStore")]
+/**
+  @brief Persistent storage for @c LARight instances.
+*/
 unsafe impl NSObjectProtocol for LARightStore {}
 
 extern_methods!(
+    /**
+      @brief Persistent storage for @c LARight instances.
+    */
     #[cfg(feature = "LocalAuthentication_LARightStore")]
     unsafe impl LARightStore {
+        /**
+          @brief Shared instance of @c LARightStore.
+        */
         #[method_id(@__retain_semantics Other sharedStore)]
         pub unsafe fn sharedStore() -> Id<LARightStore>;
 

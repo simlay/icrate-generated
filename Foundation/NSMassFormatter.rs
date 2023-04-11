@@ -36,22 +36,40 @@ extern_methods!(
     #[cfg(feature = "Foundation_NSMassFormatter")]
     unsafe impl NSMassFormatter {
         #[cfg(feature = "Foundation_NSNumberFormatter")]
+        /**
+          default is NSNumberFormatter with NSNumberFormatterDecimalStyle
+        */
         #[method_id(@__retain_semantics Other numberFormatter)]
         pub unsafe fn numberFormatter(&self) -> Id<NSNumberFormatter>;
 
         #[cfg(feature = "Foundation_NSNumberFormatter")]
+        /**
+          default is NSNumberFormatter with NSNumberFormatterDecimalStyle
+        */
         #[method(setNumberFormatter:)]
         pub unsafe fn setNumberFormatter(&self, number_formatter: Option<&NSNumberFormatter>);
 
+        /**
+          default is NSFormattingUnitStyleMedium
+        */
         #[method(unitStyle)]
         pub unsafe fn unitStyle(&self) -> NSFormattingUnitStyle;
 
+        /**
+          default is NSFormattingUnitStyleMedium
+        */
         #[method(setUnitStyle:)]
         pub unsafe fn setUnitStyle(&self, unit_style: NSFormattingUnitStyle);
 
+        /**
+          default is NO; if it is set to YES, the number argument for -stringFromKilograms: and -unitStringFromKilograms: is considered as a person’s mass
+        */
         #[method(isForPersonMassUse)]
         pub unsafe fn isForPersonMassUse(&self) -> bool;
 
+        /**
+          default is NO; if it is set to YES, the number argument for -stringFromKilograms: and -unitStringFromKilograms: is considered as a person’s mass
+        */
         #[method(setForPersonMassUse:)]
         pub unsafe fn setForPersonMassUse(&self, for_person_mass_use: bool);
 

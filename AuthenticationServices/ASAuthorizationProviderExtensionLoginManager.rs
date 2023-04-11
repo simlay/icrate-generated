@@ -36,35 +36,59 @@ extern_methods!(
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
 
+        /**
+          @abstract Returns YES if the current device completed registration.
+        */
         #[method(isDeviceRegistered)]
         pub unsafe fn isDeviceRegistered(&self) -> bool;
 
+        /**
+          @abstract Returns YES if current user completed registration.
+        */
         #[method(isUserRegistered)]
         pub unsafe fn isUserRegistered(&self) -> bool;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract Returns the device registration token from the MDM profile.
+        */
         #[method_id(@__retain_semantics Other registrationToken)]
         pub unsafe fn registrationToken(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract The user name to use when authenticating with the identity provider.
+        */
         #[method_id(@__retain_semantics Other loginUserName)]
         pub unsafe fn loginUserName(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract The user name to use when authenticating with the identity provider.
+        */
         #[method(setLoginUserName:)]
         pub unsafe fn setLoginUserName(&self, login_user_name: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          @abstract Retrieves or sets the current SSO tokens response for the current user and extension.
+        */
         #[method_id(@__retain_semantics Other ssoTokens)]
         pub unsafe fn ssoTokens(&self) -> Option<Id<NSDictionary>>;
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          @abstract Retrieves or sets the current SSO tokens response for the current user and extension.
+        */
         #[method(setSsoTokens:)]
         pub unsafe fn setSsoTokens(&self, sso_tokens: Option<&NSDictionary>);
 
         #[cfg(
             feature = "AuthenticationServices_ASAuthorizationProviderExtensionLoginConfiguration"
         )]
+        /**
+          @abstract Retrieves or sets the current login configuration for the extension.
+        */
         #[method_id(@__retain_semantics Other loginConfiguration)]
         pub unsafe fn loginConfiguration(
             &self,

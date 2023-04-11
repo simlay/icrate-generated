@@ -8,6 +8,10 @@ use crate::WebKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "WebKit_WKScriptMessage")]
+    /**
+      A WKScriptMessage object contains information about a message sent from
+    a webpage.
+    */
     pub struct WKScriptMessage;
 
     #[cfg(feature = "WebKit_WKScriptMessage")]
@@ -17,27 +21,52 @@ extern_class!(
 );
 
 #[cfg(feature = "WebKit_WKScriptMessage")]
+/**
+  A WKScriptMessage object contains information about a message sent from
+a webpage.
+*/
 unsafe impl NSObjectProtocol for WKScriptMessage {}
 
 extern_methods!(
+    /**
+      A WKScriptMessage object contains information about a message sent from
+    a webpage.
+    */
     #[cfg(feature = "WebKit_WKScriptMessage")]
     unsafe impl WKScriptMessage {
+        /**
+          @abstract The body of the message.
+        @discussion Allowed types are NSNumber, NSString, NSDate, NSArray,
+        NSDictionary, and NSNull.
+        */
         #[method_id(@__retain_semantics Other body)]
         pub unsafe fn body(&self) -> Id<Object>;
 
         #[cfg(feature = "WebKit_WKWebView")]
+        /**
+          @abstract The web view sending the message.
+        */
         #[method_id(@__retain_semantics Other webView)]
         pub unsafe fn webView(&self) -> Option<Id<WKWebView>>;
 
         #[cfg(feature = "WebKit_WKFrameInfo")]
+        /**
+          @abstract The frame sending the message.
+        */
         #[method_id(@__retain_semantics Other frameInfo)]
         pub unsafe fn frameInfo(&self) -> Id<WKFrameInfo>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract The name of the message handler to which the message is sent.
+        */
         #[method_id(@__retain_semantics Other name)]
         pub unsafe fn name(&self) -> Id<NSString>;
 
         #[cfg(feature = "WebKit_WKContentWorld")]
+        /**
+          @abstract The content world from which the message was sent.
+        */
         #[method_id(@__retain_semantics Other world)]
         pub unsafe fn world(&self) -> Id<WKContentWorld>;
     }

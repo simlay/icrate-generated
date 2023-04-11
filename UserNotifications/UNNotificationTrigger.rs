@@ -39,6 +39,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "UserNotifications_UNPushNotificationTrigger")]
+    /**
+      UNPushNotificationTrigger can be sent from a server using Apple Push Notification Service.
+    */
     pub struct UNPushNotificationTrigger;
 
     #[cfg(feature = "UserNotifications_UNPushNotificationTrigger")]
@@ -49,15 +52,27 @@ extern_class!(
 );
 
 #[cfg(feature = "UserNotifications_UNPushNotificationTrigger")]
+/**
+  UNPushNotificationTrigger can be sent from a server using Apple Push Notification Service.
+*/
 unsafe impl NSCoding for UNPushNotificationTrigger {}
 
 #[cfg(feature = "UserNotifications_UNPushNotificationTrigger")]
+/**
+  UNPushNotificationTrigger can be sent from a server using Apple Push Notification Service.
+*/
 unsafe impl NSObjectProtocol for UNPushNotificationTrigger {}
 
 #[cfg(feature = "UserNotifications_UNPushNotificationTrigger")]
+/**
+  UNPushNotificationTrigger can be sent from a server using Apple Push Notification Service.
+*/
 unsafe impl NSSecureCoding for UNPushNotificationTrigger {}
 
 extern_methods!(
+    /**
+      UNPushNotificationTrigger can be sent from a server using Apple Push Notification Service.
+    */
     #[cfg(feature = "UserNotifications_UNPushNotificationTrigger")]
     unsafe impl UNPushNotificationTrigger {}
 );
@@ -65,6 +80,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "UserNotifications_UNTimeIntervalNotificationTrigger")]
+    /**
+      UNTimeIntervalNotificationTrigger can be scheduled on the device to notify after the time interval, and optionally repeat.
+    */
     pub struct UNTimeIntervalNotificationTrigger;
 
     #[cfg(feature = "UserNotifications_UNTimeIntervalNotificationTrigger")]
@@ -75,15 +93,27 @@ extern_class!(
 );
 
 #[cfg(feature = "UserNotifications_UNTimeIntervalNotificationTrigger")]
+/**
+  UNTimeIntervalNotificationTrigger can be scheduled on the device to notify after the time interval, and optionally repeat.
+*/
 unsafe impl NSCoding for UNTimeIntervalNotificationTrigger {}
 
 #[cfg(feature = "UserNotifications_UNTimeIntervalNotificationTrigger")]
+/**
+  UNTimeIntervalNotificationTrigger can be scheduled on the device to notify after the time interval, and optionally repeat.
+*/
 unsafe impl NSObjectProtocol for UNTimeIntervalNotificationTrigger {}
 
 #[cfg(feature = "UserNotifications_UNTimeIntervalNotificationTrigger")]
+/**
+  UNTimeIntervalNotificationTrigger can be scheduled on the device to notify after the time interval, and optionally repeat.
+*/
 unsafe impl NSSecureCoding for UNTimeIntervalNotificationTrigger {}
 
 extern_methods!(
+    /**
+      UNTimeIntervalNotificationTrigger can be scheduled on the device to notify after the time interval, and optionally repeat.
+    */
     #[cfg(feature = "UserNotifications_UNTimeIntervalNotificationTrigger")]
     unsafe impl UNTimeIntervalNotificationTrigger {
         #[method(timeInterval)]
@@ -104,6 +134,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "UserNotifications_UNCalendarNotificationTrigger")]
+    /**
+      UNCalendarNotificationTrigger can be scheduled on the device to notify based on date and time values, and optionally repeat. For example, if a notification should be delivered at the next 8:00 AM then set the 'hour' property of dateComponents to 8. If the notification should be delivered every day at 8:00 AM then set repeats to YES.
+    */
     pub struct UNCalendarNotificationTrigger;
 
     #[cfg(feature = "UserNotifications_UNCalendarNotificationTrigger")]
@@ -114,15 +147,27 @@ extern_class!(
 );
 
 #[cfg(feature = "UserNotifications_UNCalendarNotificationTrigger")]
+/**
+  UNCalendarNotificationTrigger can be scheduled on the device to notify based on date and time values, and optionally repeat. For example, if a notification should be delivered at the next 8:00 AM then set the 'hour' property of dateComponents to 8. If the notification should be delivered every day at 8:00 AM then set repeats to YES.
+*/
 unsafe impl NSCoding for UNCalendarNotificationTrigger {}
 
 #[cfg(feature = "UserNotifications_UNCalendarNotificationTrigger")]
+/**
+  UNCalendarNotificationTrigger can be scheduled on the device to notify based on date and time values, and optionally repeat. For example, if a notification should be delivered at the next 8:00 AM then set the 'hour' property of dateComponents to 8. If the notification should be delivered every day at 8:00 AM then set repeats to YES.
+*/
 unsafe impl NSObjectProtocol for UNCalendarNotificationTrigger {}
 
 #[cfg(feature = "UserNotifications_UNCalendarNotificationTrigger")]
+/**
+  UNCalendarNotificationTrigger can be scheduled on the device to notify based on date and time values, and optionally repeat. For example, if a notification should be delivered at the next 8:00 AM then set the 'hour' property of dateComponents to 8. If the notification should be delivered every day at 8:00 AM then set repeats to YES.
+*/
 unsafe impl NSSecureCoding for UNCalendarNotificationTrigger {}
 
 extern_methods!(
+    /**
+      UNCalendarNotificationTrigger can be scheduled on the device to notify based on date and time values, and optionally repeat. For example, if a notification should be delivered at the next 8:00 AM then set the 'hour' property of dateComponents to 8. If the notification should be delivered every day at 8:00 AM then set repeats to YES.
+    */
     #[cfg(feature = "UserNotifications_UNCalendarNotificationTrigger")]
     unsafe impl UNCalendarNotificationTrigger {
         #[cfg(feature = "Foundation_NSDateComponents")]
@@ -145,6 +190,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "UserNotifications_UNLocationNotificationTrigger")]
+    /**
+      UNLocationNotificationTrigger can be scheduled on the device to notify when the user enters or leaves a geographic region. The identifier on CLRegion must be unique. Scheduling multiple UNNotificationRequests with different regions containing the same identifier will result in undefined behavior. The number of UNLocationNotificationTriggers that may be scheduled by an application at any one time is limited by the system. Applications must have "when-in-use" authorization through CoreLocation. See the CoreLocation documentation for more information.
+    */
     pub struct UNLocationNotificationTrigger;
 
     #[cfg(feature = "UserNotifications_UNLocationNotificationTrigger")]
@@ -155,15 +203,27 @@ extern_class!(
 );
 
 #[cfg(feature = "UserNotifications_UNLocationNotificationTrigger")]
+/**
+  UNLocationNotificationTrigger can be scheduled on the device to notify when the user enters or leaves a geographic region. The identifier on CLRegion must be unique. Scheduling multiple UNNotificationRequests with different regions containing the same identifier will result in undefined behavior. The number of UNLocationNotificationTriggers that may be scheduled by an application at any one time is limited by the system. Applications must have "when-in-use" authorization through CoreLocation. See the CoreLocation documentation for more information.
+*/
 unsafe impl NSCoding for UNLocationNotificationTrigger {}
 
 #[cfg(feature = "UserNotifications_UNLocationNotificationTrigger")]
+/**
+  UNLocationNotificationTrigger can be scheduled on the device to notify when the user enters or leaves a geographic region. The identifier on CLRegion must be unique. Scheduling multiple UNNotificationRequests with different regions containing the same identifier will result in undefined behavior. The number of UNLocationNotificationTriggers that may be scheduled by an application at any one time is limited by the system. Applications must have "when-in-use" authorization through CoreLocation. See the CoreLocation documentation for more information.
+*/
 unsafe impl NSObjectProtocol for UNLocationNotificationTrigger {}
 
 #[cfg(feature = "UserNotifications_UNLocationNotificationTrigger")]
+/**
+  UNLocationNotificationTrigger can be scheduled on the device to notify when the user enters or leaves a geographic region. The identifier on CLRegion must be unique. Scheduling multiple UNNotificationRequests with different regions containing the same identifier will result in undefined behavior. The number of UNLocationNotificationTriggers that may be scheduled by an application at any one time is limited by the system. Applications must have "when-in-use" authorization through CoreLocation. See the CoreLocation documentation for more information.
+*/
 unsafe impl NSSecureCoding for UNLocationNotificationTrigger {}
 
 extern_methods!(
+    /**
+      UNLocationNotificationTrigger can be scheduled on the device to notify when the user enters or leaves a geographic region. The identifier on CLRegion must be unique. Scheduling multiple UNNotificationRequests with different regions containing the same identifier will result in undefined behavior. The number of UNLocationNotificationTriggers that may be scheduled by an application at any one time is limited by the system. Applications must have "when-in-use" authorization through CoreLocation. See the CoreLocation documentation for more information.
+    */
     #[cfg(feature = "UserNotifications_UNLocationNotificationTrigger")]
     unsafe impl UNLocationNotificationTrigger {
         #[cfg(feature = "CoreLocation_CLRegion")]

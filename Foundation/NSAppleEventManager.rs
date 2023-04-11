@@ -32,10 +32,16 @@ extern_methods!(
         pub unsafe fn sharedAppleEventManager() -> Id<NSAppleEventManager>;
 
         #[cfg(feature = "Foundation_NSAppleEventDescriptor")]
+        /**
+          If an Apple event is being handled on the current thread (i.e., a handler that was registered with -setEventHandler:andSelector:forEventClass:andEventID: is being messaged at this instant or -setCurrentAppleEventAndReplyEventWithSuspensionID: has just been invoked), return the descriptor for the event.  Return nil otherwise.  The effects of mutating or retaining the returned descriptor are undefined, though it may be copied.
+        */
         #[method_id(@__retain_semantics Other currentAppleEvent)]
         pub unsafe fn currentAppleEvent(&self) -> Option<Id<NSAppleEventDescriptor>>;
 
         #[cfg(feature = "Foundation_NSAppleEventDescriptor")]
+        /**
+          If an Apple event is being handled on the current thread (i.e., -currentAppleEvent would not return nil), return the corresponding reply event descriptor.  Return nil otherwise.  This descriptor, including any mutatations, will be returned to the sender of the current event when all handling of the event has been completed, if the sender has requested a reply.  The effects of retaining the descriptor are undefined; it may be copied, but mutations of the copy will not be returned to the sender of the current event.
+        */
         #[method_id(@__retain_semantics Other currentReplyAppleEvent)]
         pub unsafe fn currentReplyAppleEvent(&self) -> Option<Id<NSAppleEventDescriptor>>;
 

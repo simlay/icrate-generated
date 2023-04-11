@@ -53,45 +53,87 @@ unsafe impl NSObjectProtocol for PHImageRequestOptions {}
 extern_methods!(
     #[cfg(feature = "PhotoKit_PHImageRequestOptions")]
     unsafe impl PHImageRequestOptions {
+        /**
+          version
+        */
         #[method(version)]
         pub unsafe fn version(&self) -> PHImageRequestOptionsVersion;
 
+        /**
+          version
+        */
         #[method(setVersion:)]
         pub unsafe fn setVersion(&self, version: PHImageRequestOptionsVersion);
 
+        /**
+          delivery mode. Defaults to PHImageRequestOptionsDeliveryModeOpportunistic
+        */
         #[method(deliveryMode)]
         pub unsafe fn deliveryMode(&self) -> PHImageRequestOptionsDeliveryMode;
 
+        /**
+          delivery mode. Defaults to PHImageRequestOptionsDeliveryModeOpportunistic
+        */
         #[method(setDeliveryMode:)]
         pub unsafe fn setDeliveryMode(&self, delivery_mode: PHImageRequestOptionsDeliveryMode);
 
+        /**
+          resize mode. Does not apply when size is PHImageManagerMaximumSize. Defaults to PHImageRequestOptionsResizeModeFast
+        */
         #[method(resizeMode)]
         pub unsafe fn resizeMode(&self) -> PHImageRequestOptionsResizeMode;
 
+        /**
+          resize mode. Does not apply when size is PHImageManagerMaximumSize. Defaults to PHImageRequestOptionsResizeModeFast
+        */
         #[method(setResizeMode:)]
         pub unsafe fn setResizeMode(&self, resize_mode: PHImageRequestOptionsResizeMode);
 
+        /**
+          specify crop rectangle in unit coordinates of the original image, such as a face. Defaults to CGRectZero (not applicable)
+        */
         #[method(normalizedCropRect)]
         pub unsafe fn normalizedCropRect(&self) -> CGRect;
 
+        /**
+          specify crop rectangle in unit coordinates of the original image, such as a face. Defaults to CGRectZero (not applicable)
+        */
         #[method(setNormalizedCropRect:)]
         pub unsafe fn setNormalizedCropRect(&self, normalized_crop_rect: CGRect);
 
+        /**
+          if necessary will download the image from iCloud (client can monitor or cancel using progressHandler). Defaults to NO (see start/stopCachingImagesForAssets)
+        */
         #[method(isNetworkAccessAllowed)]
         pub unsafe fn isNetworkAccessAllowed(&self) -> bool;
 
+        /**
+          if necessary will download the image from iCloud (client can monitor or cancel using progressHandler). Defaults to NO (see start/stopCachingImagesForAssets)
+        */
         #[method(setNetworkAccessAllowed:)]
         pub unsafe fn setNetworkAccessAllowed(&self, network_access_allowed: bool);
 
+        /**
+          return only a single result, blocking until available (or failure). Defaults to NO
+        */
         #[method(isSynchronous)]
         pub unsafe fn isSynchronous(&self) -> bool;
 
+        /**
+          return only a single result, blocking until available (or failure). Defaults to NO
+        */
         #[method(setSynchronous:)]
         pub unsafe fn setSynchronous(&self, synchronous: bool);
 
+        /**
+          provide caller a way to be told how much progress has been made prior to delivering the data when it comes from iCloud. Defaults to nil, shall be set by caller
+        */
         #[method(progressHandler)]
         pub unsafe fn progressHandler(&self) -> PHAssetImageProgressHandler;
 
+        /**
+          provide caller a way to be told how much progress has been made prior to delivering the data when it comes from iCloud. Defaults to nil, shall be set by caller
+        */
         #[method(setProgressHandler:)]
         pub unsafe fn setProgressHandler(&self, progress_handler: PHAssetImageProgressHandler);
     }
@@ -114,9 +156,15 @@ unsafe impl NSObjectProtocol for PHLivePhotoRequestOptions {}
 extern_methods!(
     #[cfg(feature = "PhotoKit_PHLivePhotoRequestOptions")]
     unsafe impl PHLivePhotoRequestOptions {
+        /**
+          version
+        */
         #[method(version)]
         pub unsafe fn version(&self) -> PHImageRequestOptionsVersion;
 
+        /**
+          version
+        */
         #[method(setVersion:)]
         pub unsafe fn setVersion(&self, version: PHImageRequestOptionsVersion);
 
@@ -223,6 +271,9 @@ extern_static!(PHImageErrorKey: &'static NSString);
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "PhotoKit_PHImageManager")]
+    /**
+      Note that all sizes are in pixels
+    */
     pub struct PHImageManager;
 
     #[cfg(feature = "PhotoKit_PHImageManager")]
@@ -232,9 +283,15 @@ extern_class!(
 );
 
 #[cfg(feature = "PhotoKit_PHImageManager")]
+/**
+  Note that all sizes are in pixels
+*/
 unsafe impl NSObjectProtocol for PHImageManager {}
 
 extern_methods!(
+    /**
+      Note that all sizes are in pixels
+    */
     #[cfg(feature = "PhotoKit_PHImageManager")]
     unsafe impl PHImageManager {
         #[method_id(@__retain_semantics Other defaultManager)]
@@ -340,9 +397,15 @@ unsafe impl NSObjectProtocol for PHCachingImageManager {}
 extern_methods!(
     #[cfg(feature = "PhotoKit_PHCachingImageManager")]
     unsafe impl PHCachingImageManager {
+        /**
+          Defaults to YES
+        */
         #[method(allowsCachingHighQualityImages)]
         pub unsafe fn allowsCachingHighQualityImages(&self) -> bool;
 
+        /**
+          Defaults to YES
+        */
         #[method(setAllowsCachingHighQualityImages:)]
         pub unsafe fn setAllowsCachingHighQualityImages(
             &self,

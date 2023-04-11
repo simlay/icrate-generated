@@ -17,6 +17,10 @@ pub type NSAttributedStringCompletionHandler = *mut Block<
 >;
 
 extern_methods!(
+    /**
+     @discussion Extension of @link //apple_ref/occ/NSAttributedString NSAttributedString @/link to
+    create attributed strings from HTML content using WebKit.
+    */
     /// NSAttributedStringWebKitAdditions
     #[cfg(feature = "Foundation_NSAttributedString")]
     unsafe impl NSAttributedString {

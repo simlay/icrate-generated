@@ -5,6 +5,9 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     Describes the action an NSCoder should take when it encounters decode failures (e.g. corrupt data) for non-TopLevel decodes.
+    */
     pub enum NSDecodingFailurePolicy {
         NSDecodingFailurePolicyRaiseException = 0,
         NSDecodingFailurePolicySetErrorAndReturn = 1,
@@ -226,6 +229,9 @@ extern_methods!(
         #[method(decodeIntegerForKey:)]
         pub unsafe fn decodeIntegerForKey(&self, key: &NSString) -> NSInteger;
 
+        /**
+          Returns YES if this coder requires secure coding. Secure coders check a list of allowed classes before decoding objects, and all objects must implement NSSecureCoding.
+        */
         #[method(requiresSecureCoding)]
         pub unsafe fn requiresSecureCoding(&self) -> bool;
 
@@ -312,6 +318,9 @@ extern_methods!(
         pub unsafe fn decodePropertyListForKey(&self, key: &NSString) -> Option<Id<Object>>;
 
         #[cfg(feature = "Foundation_NSSet")]
+        /**
+          Get the current set of allowed classes.
+        */
         #[method_id(@__retain_semantics Other allowedClasses)]
         pub unsafe fn allowedClasses(&self) -> Option<Id<NSSet<TodoClass>>>;
 
@@ -319,10 +328,26 @@ extern_methods!(
         #[method(failWithError:)]
         pub unsafe fn failWithError(&self, error: &NSError);
 
+        /**
+         @abstract Defines the behavior this NSCoder should take on decode failure (i.e. corrupt archive, invalid data, etc.).
+        @discussion
+        The default result of this property is NSDecodingFailurePolicyRaiseException, subclasses can change this to an alternative policy.
+        */
         #[method(decodingFailurePolicy)]
         pub unsafe fn decodingFailurePolicy(&self) -> NSDecodingFailurePolicy;
 
         #[cfg(feature = "Foundation_NSError")]
+        /**
+         @abstract The current error (if there is one) for the current TopLevel decode.
+        @discussion
+        The meaning of this property changes based on the result of the decodingFailurePolicy property:
+        For NSDecodingFailurePolicyRaiseException, this property will always be nil.
+        For NSDecodingFailurePolicySetErrorAndReturn, this property can be non-nil, and if so, indicates that there was a failure while decoding the archive (specifically its the very first error encountered).
+
+        While .error is non-nil, all attempts to decode data from this coder will return a nil/zero-equivalent value.
+
+        This error is consumed by a TopLevel decode API (which resets this coder back to a being able to potentially decode data).
+        */
         #[method_id(@__retain_semantics Other error)]
         pub unsafe fn error(&self) -> Option<Id<NSError>>;
     }
@@ -335,6 +360,10 @@ extern_fn!(
 );
 
 extern_methods!(
+    /**
+      Given an NSCoder, returns an object previously written with
+    NXWriteNSObject(). The returned object is autoreleased.
+    */
     /// NSTypedstreamCompatibility
     #[cfg(feature = "Foundation_NSCoder")]
     unsafe impl NSCoder {

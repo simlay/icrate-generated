@@ -8,6 +8,13 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CloudKit_CKFetchShareMetadataOperation")]
+    /**
+      @class CKFetchShareMetadataOperation
+
+      @abstract Fetch the @c CKShareMetadata for a share URL.
+
+      @discussion Since you can't know what container this share is in before you fetch its metadata, you may run this operation in any container you have access to
+    */
     pub struct CKFetchShareMetadataOperation;
 
     #[cfg(feature = "CloudKit_CKFetchShareMetadataOperation")]
@@ -18,9 +25,23 @@ extern_class!(
 );
 
 #[cfg(feature = "CloudKit_CKFetchShareMetadataOperation")]
+/**
+  @class CKFetchShareMetadataOperation
+
+  @abstract Fetch the @c CKShareMetadata for a share URL.
+
+  @discussion Since you can't know what container this share is in before you fetch its metadata, you may run this operation in any container you have access to
+*/
 unsafe impl NSObjectProtocol for CKFetchShareMetadataOperation {}
 
 extern_methods!(
+    /**
+      @class CKFetchShareMetadataOperation
+
+      @abstract Fetch the @c CKShareMetadata for a share URL.
+
+      @discussion Since you can't know what container this share is in before you fetch its metadata, you may run this operation in any container you have access to
+    */
     #[cfg(feature = "CloudKit_CKFetchShareMetadataOperation")]
     unsafe impl CKFetchShareMetadataOperation {
         #[method_id(@__retain_semantics Init init)]
@@ -41,17 +62,43 @@ extern_methods!(
         #[method(setShareURLs:)]
         pub unsafe fn setShareURLs(&self, share_ur_ls: Option<&NSArray<NSURL>>);
 
+        /**
+          @abstract If set to YES, the resulting @c CKShareMetadata will have a @c rootRecord object filled out.
+
+          @discussion Defaults to @c NO.
+          The resulting @c CKShareMetadata will have a @c rootRecordID property regardless of the value of this property.
+        */
         #[method(shouldFetchRootRecord)]
         pub unsafe fn shouldFetchRootRecord(&self) -> bool;
 
+        /**
+          @abstract If set to YES, the resulting @c CKShareMetadata will have a @c rootRecord object filled out.
+
+          @discussion Defaults to @c NO.
+          The resulting @c CKShareMetadata will have a @c rootRecordID property regardless of the value of this property.
+        */
         #[method(setShouldFetchRootRecord:)]
         pub unsafe fn setShouldFetchRootRecord(&self, should_fetch_root_record: bool);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          @abstract Declares which user-defined keys should be fetched and added to the resulting @c rootRecord.
+
+          @discussion Only consulted if @c shouldFetchRootRecord is @c YES.
+          If nil, declares the entire root record should be downloaded. If set to an empty array, declares that no user fields should be downloaded.
+          Defaults to @c nil.
+        */
         #[method_id(@__retain_semantics Other rootRecordDesiredKeys)]
         pub unsafe fn rootRecordDesiredKeys(&self) -> Option<Id<NSArray<CKRecordFieldKey>>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          @abstract Declares which user-defined keys should be fetched and added to the resulting @c rootRecord.
+
+          @discussion Only consulted if @c shouldFetchRootRecord is @c YES.
+          If nil, declares the entire root record should be downloaded. If set to an empty array, declares that no user fields should be downloaded.
+          Defaults to @c nil.
+        */
         #[method(setRootRecordDesiredKeys:)]
         pub unsafe fn setRootRecordDesiredKeys(
             &self,
@@ -63,6 +110,11 @@ extern_methods!(
             feature = "Foundation_NSError",
             feature = "Foundation_NSURL"
         ))]
+        /**
+          @abstract Called once for each share URL that the server processed
+
+          @discussion Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(perShareMetadataBlock)]
         pub unsafe fn perShareMetadataBlock(
             &self,
@@ -73,6 +125,11 @@ extern_methods!(
             feature = "Foundation_NSError",
             feature = "Foundation_NSURL"
         ))]
+        /**
+          @abstract Called once for each share URL that the server processed
+
+          @discussion Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(setPerShareMetadataBlock:)]
         pub unsafe fn setPerShareMetadataBlock(
             &self,
@@ -82,10 +139,24 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSError")]
+        /**
+          @abstract This block is called when the operation completes.
+
+          @discussion The @code -[NSOperation completionBlock] @endcode will also be called if both are set.
+          If the error is @c CKErrorPartialFailure, the error's userInfo dictionary contains a dictionary of shareURLs to errors keyed off of @c CKPartialErrorsByItemIDKey.  These errors are repeats of those sent back in previous @c perShareMetadataBlock invocations
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(fetchShareMetadataCompletionBlock)]
         pub unsafe fn fetchShareMetadataCompletionBlock(&self) -> *mut Block<(*mut NSError,), ()>;
 
         #[cfg(feature = "Foundation_NSError")]
+        /**
+          @abstract This block is called when the operation completes.
+
+          @discussion The @code -[NSOperation completionBlock] @endcode will also be called if both are set.
+          If the error is @c CKErrorPartialFailure, the error's userInfo dictionary contains a dictionary of shareURLs to errors keyed off of @c CKPartialErrorsByItemIDKey.  These errors are repeats of those sent back in previous @c perShareMetadataBlock invocations
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(setFetchShareMetadataCompletionBlock:)]
         pub unsafe fn setFetchShareMetadataCompletionBlock(
             &self,

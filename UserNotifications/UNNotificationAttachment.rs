@@ -29,14 +29,23 @@ extern_methods!(
     #[cfg(feature = "UserNotifications_UNNotificationAttachment")]
     unsafe impl UNNotificationAttachment {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The identifier of this attachment
+        */
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          The URL to the attachment's data. If you have obtained this attachment from UNUserNotificationCenter then the URL will be security-scoped.
+        */
         #[method_id(@__retain_semantics Other URL)]
         pub unsafe fn URL(&self) -> Id<NSURL>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The UTI of the attachment.
+        */
         #[method_id(@__retain_semantics Other type)]
         pub unsafe fn r#type(&self) -> Id<NSString>;
 

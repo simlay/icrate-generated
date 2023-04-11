@@ -50,6 +50,15 @@ extern_methods!(
             delegate: Option<&ProtocolObject<dyn CXCallDirectoryExtensionContextDelegate>>,
         );
 
+        /**
+         Whether the request should provide incremental data.
+
+        If this is called at the beginning of the request (before any entries have been added or removed) and the result is YES,
+        then the request must only provide an "incremental" set of entries, i.e. only add or remove entries relative to the last time data
+        was loaded for the extension. Otherwise, if this method is not called OR is called and returns NO, then the request must provide
+        a "complete" set of entries, adding the full list of entries from scratch (and removing none), regardless of whether data has ever been
+        successfully loaded in the past.
+        */
         #[method(isIncremental)]
         pub unsafe fn isIncremental(&self) -> bool;
 

@@ -12,6 +12,10 @@ extern_static!(MPMediaEntityPropertyPersistentID: &'static NSString);
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MediaPlayer_MPMediaEntity")]
+    /**
+      An MPMediaEntity represents an abstract member of an MPMediaLibrary.
+     Concrete subclasses are MPMediaItem and MPMediaItemCollection.
+    */
     pub struct MPMediaEntity;
 
     #[cfg(feature = "MediaPlayer_MPMediaEntity")]
@@ -21,15 +25,31 @@ extern_class!(
 );
 
 #[cfg(feature = "MediaPlayer_MPMediaEntity")]
+/**
+  An MPMediaEntity represents an abstract member of an MPMediaLibrary.
+ Concrete subclasses are MPMediaItem and MPMediaItemCollection.
+*/
 unsafe impl NSCoding for MPMediaEntity {}
 
 #[cfg(feature = "MediaPlayer_MPMediaEntity")]
+/**
+  An MPMediaEntity represents an abstract member of an MPMediaLibrary.
+ Concrete subclasses are MPMediaItem and MPMediaItemCollection.
+*/
 unsafe impl NSObjectProtocol for MPMediaEntity {}
 
 #[cfg(feature = "MediaPlayer_MPMediaEntity")]
+/**
+  An MPMediaEntity represents an abstract member of an MPMediaLibrary.
+ Concrete subclasses are MPMediaItem and MPMediaItemCollection.
+*/
 unsafe impl NSSecureCoding for MPMediaEntity {}
 
 extern_methods!(
+    /**
+      An MPMediaEntity represents an abstract member of an MPMediaLibrary.
+     Concrete subclasses are MPMediaItem and MPMediaItemCollection.
+    */
     #[cfg(feature = "MediaPlayer_MPMediaEntity")]
     unsafe impl MPMediaEntity {
         #[cfg(feature = "Foundation_NSString")]

@@ -64,43 +64,76 @@ extern_methods!(
             owner: &Object,
         ) -> Id<Self>;
 
+        /**
+          If -initWithWindowNibPath:owner: was used to initialize the instance, this gives the last path component with its extension stripped off.  If -initWithWindowNibName:[owner:] was used this just gives that name.
+        */
         #[method_id(@__retain_semantics Other windowNibName)]
         pub unsafe fn windowNibName(&self) -> Option<Id<NSNibName>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The full path of the nib.  If -initWithWindowNibPath:owner: was used to initialize the instance, the path is just returned.  If -initWithWindowNibName:[owner:] was used this locates the nib in the file's owner's class' bundle or in the app's mainBundle and returns the full path (or nil if it cannot be located).  Subclasses can override this to augment the search behavior, but probably ought to call super first.
+        */
         #[method_id(@__retain_semantics Other windowNibPath)]
         pub unsafe fn windowNibPath(&self) -> Option<Id<NSString>>;
 
+        /**
+          The file's owner for this window controller's nib file.  Usually this is either the controller itself or the controller's document, but, in general, it is specified by the -init... methods. The owner is weakly referenced.
+        */
         #[method_id(@__retain_semantics Other owner)]
         pub unsafe fn owner(&self) -> Option<Id<Object>>;
 
+        /**
+          This allows setting and accessing the autosave name for the controller's window.  If the controller has a window frame autosave name, it will automatically make sure its window gets it set appropriately whenever it gets its window set.
+        */
         #[method_id(@__retain_semantics Other windowFrameAutosaveName)]
         pub unsafe fn windowFrameAutosaveName(&self) -> Id<NSWindowFrameAutosaveName>;
 
+        /**
+          This allows setting and accessing the autosave name for the controller's window.  If the controller has a window frame autosave name, it will automatically make sure its window gets it set appropriately whenever it gets its window set.
+        */
         #[method(setWindowFrameAutosaveName:)]
         pub unsafe fn setWindowFrameAutosaveName(
             &self,
             window_frame_autosave_name: &NSWindowFrameAutosaveName,
         );
 
+        /**
+          If this is set to YES then new windows will be cascaded based on the original frame of the window.
+        */
         #[method(shouldCascadeWindows)]
         pub unsafe fn shouldCascadeWindows(&self) -> bool;
 
+        /**
+          If this is set to YES then new windows will be cascaded based on the original frame of the window.
+        */
         #[method(setShouldCascadeWindows:)]
         pub unsafe fn setShouldCascadeWindows(&self, should_cascade_windows: bool);
 
+        /**
+          __kindof NSDocument *
+        */
         #[method_id(@__retain_semantics Other document)]
         pub unsafe fn document(&self) -> Option<Id<Object>>;
 
+        /**
+          __kindof NSDocument *
+        */
         #[method(setDocument:)]
         pub unsafe fn setDocument(&self, document: Option<&Object>);
 
         #[method(setDocumentEdited:)]
         pub unsafe fn setDocumentEdited(&self, dirty_flag: bool);
 
+        /**
+          This indicates whether closing this controller should cause the associated document to close even if the document has other open window controllers.  Normally a document will close automatically only when its last window controller closes.  See the -close method below for more info.
+        */
         #[method(shouldCloseDocument)]
         pub unsafe fn shouldCloseDocument(&self) -> bool;
 
+        /**
+          This indicates whether closing this controller should cause the associated document to close even if the document has other open window controllers.  Normally a document will close automatically only when its last window controller closes.  See the -close method below for more info.
+        */
         #[method(setShouldCloseDocument:)]
         pub unsafe fn setShouldCloseDocument(&self, should_close_document: bool);
 
@@ -115,10 +148,16 @@ extern_methods!(
         ) -> Id<NSString>;
 
         #[cfg(feature = "AppKit_NSViewController")]
+        /**
+          The view controller for the window's contentView. Tracks the window property of the same name.
+        */
         #[method_id(@__retain_semantics Other contentViewController)]
         pub unsafe fn contentViewController(&self) -> Option<Id<NSViewController>>;
 
         #[cfg(feature = "AppKit_NSViewController")]
+        /**
+          The view controller for the window's contentView. Tracks the window property of the same name.
+        */
         #[method(setContentViewController:)]
         pub unsafe fn setContentViewController(
             &self,
@@ -126,13 +165,26 @@ extern_methods!(
         );
 
         #[cfg(feature = "AppKit_NSWindow")]
+        /**
+          The window getter will load the nib file (if there is one and it has not yet been loaded) and then return the window.  If it has to load the window, it will first call -windowWillLoad, then -loadWindow, then -windowDidLoad.  To affect nib loading or do something before or after it happens, you should always override those other methods.
+
+        The window setter is used internally from -initWithWindow: or when a controller's nib file is loaded (as the "window" outlet gets connected).  You can also call it yourself if you want to create the window for a window controller lazily, but you aren't loading it from a nib.  This can also be used to set the window to nil for cases where your subclass might not want to keep the window it loaded from a nib, but rather only wants the contents of the window.  Setting the window to nil, after the nib has been loaded, does not reset the -isWindowLoaded state.  A window controller will only load its nib file once.  This method makes sure the window does not release when closed, and it sets the controller's -windowFrameAutosaveName onto the window and updates the window's dirty state to match the controller's document (if any).  It also calls -setWindowController: on the window.  You can override this if you need to know when the window gets set, but call super.
+        */
         #[method_id(@__retain_semantics Other window)]
         pub unsafe fn window(&self) -> Option<Id<NSWindow>>;
 
         #[cfg(feature = "AppKit_NSWindow")]
+        /**
+          The window getter will load the nib file (if there is one and it has not yet been loaded) and then return the window.  If it has to load the window, it will first call -windowWillLoad, then -loadWindow, then -windowDidLoad.  To affect nib loading or do something before or after it happens, you should always override those other methods.
+
+        The window setter is used internally from -initWithWindow: or when a controller's nib file is loaded (as the "window" outlet gets connected).  You can also call it yourself if you want to create the window for a window controller lazily, but you aren't loading it from a nib.  This can also be used to set the window to nil for cases where your subclass might not want to keep the window it loaded from a nib, but rather only wants the contents of the window.  Setting the window to nil, after the nib has been loaded, does not reset the -isWindowLoaded state.  A window controller will only load its nib file once.  This method makes sure the window does not release when closed, and it sets the controller's -windowFrameAutosaveName onto the window and updates the window's dirty state to match the controller's document (if any).  It also calls -setWindowController: on the window.  You can override this if you need to know when the window gets set, but call super.
+        */
         #[method(setWindow:)]
         pub unsafe fn setWindow(&self, window: Option<&NSWindow>);
 
+        /**
+          Returns YES if the receiver has loaded its -windowNibName, has itself been loaded from a nib, OR has no -windowNibName.  In other words, if there is no nib to load, this always returns YES.
+        */
         #[method(isWindowLoaded)]
         pub unsafe fn isWindowLoaded(&self) -> bool;
 
@@ -154,10 +206,16 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+     These methods are used to support using Storyboards with your app.
+    */
     /// NSWindowControllerStoryboardingMethods
     #[cfg(feature = "AppKit_NSWindowController")]
     unsafe impl NSWindowController {
         #[cfg(feature = "AppKit_NSStoryboard")]
+        /**
+          The Storyboard the WindowController was loaded from. Returns nil if the WindowController was not loaded from a Storyboard.
+        */
         #[method_id(@__retain_semantics Other storyboard)]
         pub unsafe fn storyboard(&self) -> Option<Id<NSStoryboard>>;
     }

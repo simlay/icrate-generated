@@ -29,14 +29,23 @@ extern_methods!(
     #[cfg(feature = "UserNotifications_UNNotificationRequest")]
     unsafe impl UNNotificationRequest {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The unique identifier for this notification request. It can be used to replace or remove a pending notification request or a delivered notification.
+        */
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Id<NSString>;
 
         #[cfg(feature = "UserNotifications_UNNotificationContent")]
+        /**
+          The content that will be shown on the notification.
+        */
         #[method_id(@__retain_semantics Other content)]
         pub unsafe fn content(&self) -> Id<UNNotificationContent>;
 
         #[cfg(feature = "UserNotifications_UNNotificationTrigger")]
+        /**
+          The trigger that will or did cause the notification to be delivered. A nil trigger means deliver immediately.
+        */
         #[method_id(@__retain_semantics Other trigger)]
         pub unsafe fn trigger(&self) -> Option<Id<UNNotificationTrigger>>;
 

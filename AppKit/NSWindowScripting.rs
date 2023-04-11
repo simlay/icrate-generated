@@ -9,6 +9,9 @@ extern_methods!(
     /// NSScripting
     #[cfg(feature = "AppKit_NSWindow")]
     unsafe impl NSWindow {
+        /**
+          Key value coding (KVC) compliant get-accessors for the same-named attributes declared in Cocoa's definition of the Standard Suite.  The -isMiniaturized, -isVisible, and -isZoomed methods, declared in NSWindow.h, also serve as KVC accessors.
+        */
         #[method(hasCloseBox)]
         pub unsafe fn hasCloseBox(&self) -> bool;
 

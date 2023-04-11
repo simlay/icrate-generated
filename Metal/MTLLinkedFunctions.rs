@@ -7,6 +7,11 @@ use crate::Metal::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLLinkedFunctions")]
+    /**
+     @class MTLLinkedFunctions
+    @abstract A class to set functions to be linked.
+    @discussion All functions set on this object must have unique names.
+    */
     pub struct MTLLinkedFunctions;
 
     #[cfg(feature = "Metal_MTLLinkedFunctions")]
@@ -16,27 +21,53 @@ extern_class!(
 );
 
 #[cfg(feature = "Metal_MTLLinkedFunctions")]
+/**
+ @class MTLLinkedFunctions
+@abstract A class to set functions to be linked.
+@discussion All functions set on this object must have unique names.
+*/
 unsafe impl NSObjectProtocol for MTLLinkedFunctions {}
 
 extern_methods!(
+    /**
+     @class MTLLinkedFunctions
+    @abstract A class to set functions to be linked.
+    @discussion All functions set on this object must have unique names.
+    */
     #[cfg(feature = "Metal_MTLLinkedFunctions")]
     unsafe impl MTLLinkedFunctions {
         #[method_id(@__retain_semantics Other linkedFunctions)]
         pub fn linkedFunctions() -> Id<MTLLinkedFunctions>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          @property functions
+         @abstract The array of functions to be AIR linked.
+        */
         #[method_id(@__retain_semantics Other functions)]
         pub fn functions(&self) -> Option<Id<NSArray<ProtocolObject<dyn MTLFunction>>>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          @property functions
+         @abstract The array of functions to be AIR linked.
+        */
         #[method(setFunctions:)]
         pub fn setFunctions(&self, functions: Option<&NSArray<ProtocolObject<dyn MTLFunction>>>);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          @property binaryFunctions
+         @abstract The array of functions compiled to binary to be linked.
+        */
         #[method_id(@__retain_semantics Other binaryFunctions)]
         pub fn binaryFunctions(&self) -> Option<Id<NSArray<ProtocolObject<dyn MTLFunction>>>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          @property binaryFunctions
+         @abstract The array of functions compiled to binary to be linked.
+        */
         #[method(setBinaryFunctions:)]
         pub fn setBinaryFunctions(
             &self,
@@ -48,6 +79,10 @@ extern_methods!(
             feature = "Foundation_NSDictionary",
             feature = "Foundation_NSString"
         ))]
+        /**
+          @property groups
+         @abstract Groups of functions, grouped to match callsites in the shader code.
+        */
         #[method_id(@__retain_semantics Other groups)]
         pub fn groups(
             &self,
@@ -58,6 +93,10 @@ extern_methods!(
             feature = "Foundation_NSDictionary",
             feature = "Foundation_NSString"
         ))]
+        /**
+          @property groups
+         @abstract Groups of functions, grouped to match callsites in the shader code.
+        */
         #[method(setGroups:)]
         pub fn setGroups(
             &self,
@@ -65,10 +104,22 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+         @property privateFunctions
+        @abstract The array of functions to be AIR linked.
+        @discussion These functions are not exported by the pipeline state as MTLFunctionHandle objects.
+        Function pointer support is not required to link private functions.
+        */
         #[method_id(@__retain_semantics Other privateFunctions)]
         pub fn privateFunctions(&self) -> Option<Id<NSArray<ProtocolObject<dyn MTLFunction>>>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+         @property privateFunctions
+        @abstract The array of functions to be AIR linked.
+        @discussion These functions are not exported by the pipeline state as MTLFunctionHandle objects.
+        Function pointer support is not required to link private functions.
+        */
         #[method(setPrivateFunctions:)]
         pub fn setPrivateFunctions(
             &self,

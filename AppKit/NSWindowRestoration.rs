@@ -6,6 +6,9 @@ use crate::CoreData::*;
 use crate::Foundation::*;
 
 extern_protocol!(
+    /**
+      NSWindowRestoration is the mechanism by which Cocoa apps can persist their user interface state, such as window frames, and integrate with the machinery of the rest of the system.
+    */
     pub unsafe trait NSWindowRestoration: NSObjectProtocol {
         #[cfg(all(
             feature = "AppKit_NSWindow",
@@ -24,12 +27,18 @@ extern_protocol!(
 );
 
 extern_methods!(
+    /**
+      NSDocumentController implements the NSWindowRestoration protocol.  It is set as the restoration class for document windows.  You may subclass it and override the restoreWindowWithIdentifier:state:completionHandler: method to control how documents are restored.
+    */
     /// NSWindowRestoration
     #[cfg(feature = "AppKit_NSDocumentController")]
     unsafe impl NSDocumentController {}
 );
 
 #[cfg(feature = "AppKit_NSDocumentController")]
+/**
+  NSDocumentController implements the NSWindowRestoration protocol.  It is set as the restoration class for document windows.  You may subclass it and override the restoreWindowWithIdentifier:state:completionHandler: method to control how documents are restored.
+*/
 unsafe impl NSWindowRestoration for NSDocumentController {}
 
 extern_methods!(
@@ -57,15 +66,27 @@ extern_methods!(
     /// NSUserInterfaceRestoration
     #[cfg(feature = "AppKit_NSWindow")]
     unsafe impl NSWindow {
+        /**
+          Determines whether the window should be restored on relaunch.  By default, windows with NSTitledWindowMask set in the styleMask are restorable, and windows without it set are not.
+        */
         #[method(isRestorable)]
         pub unsafe fn isRestorable(&self) -> bool;
 
+        /**
+          Determines whether the window should be restored on relaunch.  By default, windows with NSTitledWindowMask set in the styleMask are restorable, and windows without it set are not.
+        */
         #[method(setRestorable:)]
         pub unsafe fn setRestorable(&self, restorable: bool);
 
+        /**
+          Set and get the class that is responsible for restoring the window.  The default implementation of -[NSWindowController setDocument:] will set the restoration class of the window to the shared NSDocumentController's class.
+        */
         #[method_id(@__retain_semantics Other restorationClass)]
         pub unsafe fn restorationClass(&self) -> Option<Id<TodoClass>>;
 
+        /**
+          Set and get the class that is responsible for restoring the window.  The default implementation of -[NSWindowController setDocument:] will set the restoration class of the window to the shared NSDocumentController's class.
+        */
         #[method(setRestorationClass:)]
         pub unsafe fn setRestorationClass(&self, restoration_class: Option<&TodoClass>);
 
@@ -104,6 +125,9 @@ extern_methods!(
         pub unsafe fn invalidateRestorableState(&self);
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          Returns a set of key paths, representing paths of properties that should be persistent.  The frameworks will observe these key paths via KVO and automatically persist their values as part of the persistent state, and restore them on relaunch.  The values of the key paths should implement keyed archiving.  The base implementation returns an empty array.
+        */
         #[method_id(@__retain_semantics Other restorableStateKeyPaths)]
         pub unsafe fn restorableStateKeyPaths() -> Id<NSArray<NSString>>;
 

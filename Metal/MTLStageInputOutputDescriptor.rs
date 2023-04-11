@@ -6,6 +6,9 @@ use crate::Metal::*;
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+     MTLAttributeFormat
+    */
     pub enum MTLAttributeFormat {
         MTLAttributeFormatInvalid = 0,
         MTLAttributeFormatUChar2 = 1,
@@ -230,6 +233,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLStageInputOutputDescriptor")]
+    /**
+     MTLStageInputOutputDescriptor
+    */
     pub struct MTLStageInputOutputDescriptor;
 
     #[cfg(feature = "Metal_MTLStageInputOutputDescriptor")]
@@ -239,9 +245,15 @@ extern_class!(
 );
 
 #[cfg(feature = "Metal_MTLStageInputOutputDescriptor")]
+/**
+ MTLStageInputOutputDescriptor
+*/
 unsafe impl NSObjectProtocol for MTLStageInputOutputDescriptor {}
 
 extern_methods!(
+    /**
+     MTLStageInputOutputDescriptor
+    */
     #[cfg(feature = "Metal_MTLStageInputOutputDescriptor")]
     unsafe impl MTLStageInputOutputDescriptor {
         #[method_id(@__retain_semantics Other stageInputOutputDescriptor)]
@@ -255,9 +267,15 @@ extern_methods!(
         #[method_id(@__retain_semantics Other attributes)]
         pub fn attributes(&self) -> Id<MTLAttributeDescriptorArray>;
 
+        /**
+          only used for compute with MTLStepFunction...Indexed
+        */
         #[method(indexType)]
         pub fn indexType(&self) -> MTLIndexType;
 
+        /**
+          only used for compute with MTLStepFunction...Indexed
+        */
         #[method(setIndexType:)]
         pub unsafe fn setIndexType(&self, index_type: MTLIndexType);
 

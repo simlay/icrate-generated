@@ -5,12 +5,18 @@ use crate::Foundation::*;
 use crate::SoundAnalysis::*;
 
 extern_protocol!(
+    /**
+     @brief The base protocol to which analysis results conform
+    */
     pub unsafe trait SNResult: NSObjectProtocol {}
 
     unsafe impl ProtocolType for dyn SNResult {}
 );
 
 extern_protocol!(
+    /**
+     @brief The interface through which clients receive the results of an analysis request
+    */
     pub unsafe trait SNResultsObserving: NSObjectProtocol {
         #[method(request:didProduceResult:)]
         unsafe fn request_didProduceResult(

@@ -6,16 +6,30 @@ use crate::Foundation::*;
 use crate::GameController::*;
 
 extern_protocol!(
+    /**
+     The \c GCPhysicalInputElement protocol is a base protocol for specific types
+    of elements that represent controls on a device.
+    */
     pub unsafe trait GCPhysicalInputElement: NSObjectProtocol {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         The element's SF Symbols name.
+        */
         #[method_id(@__retain_semantics Other sfSymbolsName)]
         unsafe fn sfSymbolsName(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         The element's localized name.
+        */
         #[method_id(@__retain_semantics Other localizedName)]
         unsafe fn localizedName(&self) -> Option<Id<NSString>>;
 
         #[cfg(all(feature = "Foundation_NSSet", feature = "Foundation_NSString"))]
+        /**
+         The set of aliases that can be used to access this element with keyed subscript
+        notation.
+        */
         #[method_id(@__retain_semantics Other aliases)]
         unsafe fn aliases(&self) -> Id<NSSet<NSString>>;
     }
@@ -26,6 +40,10 @@ extern_protocol!(
 __inner_extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameController_GCPhysicalInputElementCollection")]
+    /**
+     An instance of \c GCPhysicalInputElementCollection contains the collection of
+    input elements found in a device's physical input profile.
+    */
     pub struct GCPhysicalInputElementCollection<
         Key: Message = Object,
         Element: Message = Object,
@@ -47,6 +65,10 @@ __inner_extern_class!(
 );
 
 #[cfg(feature = "GameController_GCPhysicalInputElementCollection")]
+/**
+ An instance of \c GCPhysicalInputElementCollection contains the collection of
+input elements found in a device's physical input profile.
+*/
 unsafe impl<Key: Message, Element: Message, KeyOwnership: Ownership, ElementOwnership: Ownership>
     NSFastEnumeration
     for GCPhysicalInputElementCollection<Key, Element, KeyOwnership, ElementOwnership>
@@ -54,6 +76,10 @@ unsafe impl<Key: Message, Element: Message, KeyOwnership: Ownership, ElementOwne
 }
 
 #[cfg(feature = "GameController_GCPhysicalInputElementCollection")]
+/**
+ An instance of \c GCPhysicalInputElementCollection contains the collection of
+input elements found in a device's physical input profile.
+*/
 unsafe impl<Key: Message, Element: Message, KeyOwnership: Ownership, ElementOwnership: Ownership>
     NSObjectProtocol
     for GCPhysicalInputElementCollection<Key, Element, KeyOwnership, ElementOwnership>
@@ -61,6 +87,10 @@ unsafe impl<Key: Message, Element: Message, KeyOwnership: Ownership, ElementOwne
 }
 
 extern_methods!(
+    /**
+     An instance of \c GCPhysicalInputElementCollection contains the collection of
+    input elements found in a device's physical input profile.
+    */
     #[cfg(feature = "GameController_GCPhysicalInputElementCollection")]
     unsafe impl<Key: Message, Element: Message, KeyOwnership: Ownership, ElementOwnership: Ownership>
         GCPhysicalInputElementCollection<Key, Element, KeyOwnership, ElementOwnership>
@@ -71,6 +101,9 @@ extern_methods!(
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
+        /**
+          The number of elements in the collection.
+        */
         #[method(count)]
         pub unsafe fn count(&self) -> NSUInteger;
 

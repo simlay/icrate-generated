@@ -7,6 +7,9 @@ use crate::MediaPlayer::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      -----------------------------------------------------------------------------
+    */
     pub enum MPMediaLibraryAuthorizationStatus {
         MPMediaLibraryAuthorizationStatusNotDetermined = 0,
         MPMediaLibraryAuthorizationStatusDenied = 1,
@@ -42,6 +45,9 @@ extern_methods!(
         pub unsafe fn defaultMediaLibrary() -> Id<MPMediaLibrary>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          Returns the date at which the media library was last modified.
+        */
         #[method_id(@__retain_semantics Other lastModifiedDate)]
         pub unsafe fn lastModifiedDate(&self) -> Id<NSDate>;
 

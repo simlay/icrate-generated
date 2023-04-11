@@ -51,10 +51,16 @@ extern_methods!(
         ) -> Option<Id<Self>>;
 
         #[cfg(all(feature = "CoreData_NSEntityMapping", feature = "Foundation_NSArray"))]
+        /**
+          Returns/sets the collection of entity mappings for the model.  The order of the mappings dictates the order in which they will be processed during migration.
+        */
         #[method_id(@__retain_semantics Other entityMappings)]
         pub unsafe fn entityMappings(&self) -> Option<Id<NSArray<NSEntityMapping>>>;
 
         #[cfg(all(feature = "CoreData_NSEntityMapping", feature = "Foundation_NSArray"))]
+        /**
+          Returns/sets the collection of entity mappings for the model.  The order of the mappings dictates the order in which they will be processed during migration.
+        */
         #[method(setEntityMappings:)]
         pub unsafe fn setEntityMappings(&self, entity_mappings: Option<&NSArray<NSEntityMapping>>);
 
@@ -63,6 +69,9 @@ extern_methods!(
             feature = "Foundation_NSDictionary",
             feature = "Foundation_NSString"
         ))]
+        /**
+          Returns a dictionary of the entity mappings for the model, keyed by their respective name.  (This API is provided for quick access to a mapping by name, rather than iterating the ordered entityMapping array.)
+        */
         #[method_id(@__retain_semantics Other entityMappingsByName)]
         pub unsafe fn entityMappingsByName(&self) -> Id<NSDictionary<NSString, NSEntityMapping>>;
     }

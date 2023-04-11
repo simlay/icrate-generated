@@ -8,6 +8,9 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSStringDrawingContext")]
+    /**
+      When attributes=nil, the methods declared here uses the default behavior for each attribute described in <AppKit/NSAttributedString.h>. When stringDrawingContext=nil, it's equivalent of passing the default instance initialized with [[NSStringDrawingContext alloc] init].
+    */
     pub struct NSStringDrawingContext;
 
     #[cfg(feature = "AppKit_NSStringDrawingContext")]
@@ -17,20 +20,38 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSStringDrawingContext")]
+/**
+  When attributes=nil, the methods declared here uses the default behavior for each attribute described in <AppKit/NSAttributedString.h>. When stringDrawingContext=nil, it's equivalent of passing the default instance initialized with [[NSStringDrawingContext alloc] init].
+*/
 unsafe impl NSObjectProtocol for NSStringDrawingContext {}
 
 extern_methods!(
+    /**
+      When attributes=nil, the methods declared here uses the default behavior for each attribute described in <AppKit/NSAttributedString.h>. When stringDrawingContext=nil, it's equivalent of passing the default instance initialized with [[NSStringDrawingContext alloc] init].
+    */
     #[cfg(feature = "AppKit_NSStringDrawingContext")]
     unsafe impl NSStringDrawingContext {
+        /**
+          Minimum scale factor for drawWithRect:options:context: and boundingRectWithSize:options:context: methods. If this property is set, the extended string drawing methods will attempt to draw the attributed string in the given bounds by proportionally scaling the font(s) in the attributed string
+        */
         #[method(minimumScaleFactor)]
         pub unsafe fn minimumScaleFactor(&self) -> CGFloat;
 
+        /**
+          Minimum scale factor for drawWithRect:options:context: and boundingRectWithSize:options:context: methods. If this property is set, the extended string drawing methods will attempt to draw the attributed string in the given bounds by proportionally scaling the font(s) in the attributed string
+        */
         #[method(setMinimumScaleFactor:)]
         pub unsafe fn setMinimumScaleFactor(&self, minimum_scale_factor: CGFloat);
 
+        /**
+          actual scale factor used by the last drawing call where minimum scale factor was specified
+        */
         #[method(actualScaleFactor)]
         pub unsafe fn actualScaleFactor(&self) -> CGFloat;
 
+        /**
+          bounds of the string drawn by the previous invocation of drawWithRect:options:context:
+        */
         #[method(totalBounds)]
         pub unsafe fn totalBounds(&self) -> NSRect;
     }
@@ -95,6 +116,10 @@ ns_options!(
 );
 
 extern_methods!(
+    /**
+      NOTE: All of the following methods will default to drawing on a baseline, limiting drawing to a single line.
+     To correctly draw and size multi-line text, pass NSStringDrawingUsesLineFragmentOrigin in the options parameter.
+    */
     /// NSExtendedStringDrawing
     #[cfg(feature = "Foundation_NSString")]
     unsafe impl NSString {
@@ -151,6 +176,10 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      Deprecated
+    Following NSStringDrawing methods are soft deprecated starting with OS X 10.11. It will be officially deprecated in a future release. Use corresponding API with NSStringDrawingContext instead
+    */
     /// NSStringDrawingDeprecated
     #[cfg(feature = "Foundation_NSString")]
     unsafe impl NSString {

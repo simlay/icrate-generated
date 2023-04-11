@@ -8,6 +8,9 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSTextElement")]
+    /**
+      NSTextElement is an abstract base class for representing the smallest text layout unit typically paragraphs, tables, or attachments. A text element is associated with an NSTextContentManager.
+    */
     pub struct NSTextElement;
 
     #[cfg(feature = "AppKit_NSTextElement")]
@@ -17,9 +20,15 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSTextElement")]
+/**
+  NSTextElement is an abstract base class for representing the smallest text layout unit typically paragraphs, tables, or attachments. A text element is associated with an NSTextContentManager.
+*/
 unsafe impl NSObjectProtocol for NSTextElement {}
 
 extern_methods!(
+    /**
+      NSTextElement is an abstract base class for representing the smallest text layout unit typically paragraphs, tables, or attachments. A text element is associated with an NSTextContentManager.
+    */
     #[cfg(feature = "AppKit_NSTextElement")]
     unsafe impl NSTextElement {
         #[cfg(feature = "AppKit_NSTextContentManager")]
@@ -30,10 +39,16 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "AppKit_NSTextContentManager")]
+        /**
+          Returns the owner NSTextContentManager. A text element can migrate between text content managers.
+        */
         #[method_id(@__retain_semantics Other textContentManager)]
         pub unsafe fn textContentManager(&self) -> Option<Id<NSTextContentManager>>;
 
         #[cfg(feature = "AppKit_NSTextContentManager")]
+        /**
+          Returns the owner NSTextContentManager. A text element can migrate between text content managers.
+        */
         #[method(setTextContentManager:)]
         pub unsafe fn setTextContentManager(
             &self,
@@ -41,20 +56,36 @@ extern_methods!(
         );
 
         #[cfg(feature = "AppKit_NSTextRange")]
+        /**
+          Represents the range of the element inside the document.
+        */
         #[method_id(@__retain_semantics Other elementRange)]
         pub unsafe fn elementRange(&self) -> Option<Id<NSTextRange>>;
 
         #[cfg(feature = "AppKit_NSTextRange")]
+        /**
+          Represents the range of the element inside the document.
+        */
         #[method(setElementRange:)]
         pub unsafe fn setElementRange(&self, element_range: Option<&NSTextRange>);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          A concrete NSTextElement subclass can be structured in a tree. An element can have zero or more child elements. This section provides interface for supporting such a configuration.
+         Returns an array of children. The array can contain zero or more elements.
+        */
         #[method_id(@__retain_semantics Other childElements)]
         pub unsafe fn childElements(&self) -> Id<NSArray<NSTextElement>>;
 
+        /**
+          Returns the parent element if the receiver is a child.
+        */
         #[method_id(@__retain_semantics Other parentElement)]
         pub unsafe fn parentElement(&self) -> Option<Id<NSTextElement>>;
 
+        /**
+          Returns YES if it is an element represented in text layout. It is enumerated by NSTextContentManager.
+        */
         #[method(isRepresentedElement)]
         pub unsafe fn isRepresentedElement(&self) -> bool;
     }
@@ -63,6 +94,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSTextParagraph")]
+    /**
+      NSTextParagraph represents a single paragraph backed by NSAttributedString as the contents.
+    */
     pub struct NSTextParagraph;
 
     #[cfg(feature = "AppKit_NSTextParagraph")]
@@ -73,9 +107,15 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSTextParagraph")]
+/**
+  NSTextParagraph represents a single paragraph backed by NSAttributedString as the contents.
+*/
 unsafe impl NSObjectProtocol for NSTextParagraph {}
 
 extern_methods!(
+    /**
+      NSTextParagraph represents a single paragraph backed by NSAttributedString as the contents.
+    */
     #[cfg(feature = "AppKit_NSTextParagraph")]
     unsafe impl NSTextParagraph {
         #[cfg(feature = "Foundation_NSAttributedString")]
@@ -90,6 +130,9 @@ extern_methods!(
         pub unsafe fn attributedString(&self) -> Id<NSAttributedString>;
 
         #[cfg(feature = "AppKit_NSTextRange")]
+        /**
+          The paragraph ranges are derived from elementRange and attributedString.
+        */
         #[method_id(@__retain_semantics Other paragraphContentRange)]
         pub unsafe fn paragraphContentRange(&self) -> Option<Id<NSTextRange>>;
 
@@ -101,6 +144,9 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSTextElement`
+    /**
+      NSTextParagraph represents a single paragraph backed by NSAttributedString as the contents.
+    */
     #[cfg(feature = "AppKit_NSTextParagraph")]
     unsafe impl NSTextParagraph {
         #[cfg(feature = "AppKit_NSTextContentManager")]

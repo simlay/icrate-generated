@@ -55,6 +55,9 @@ extern_methods!(
         #[method(setTableView:)]
         pub unsafe fn setTableView(&self, table_view: Option<&NSTableView>);
 
+        /**
+          Returns -1 if there is no column being dragged
+        */
         #[method(draggedColumn)]
         pub unsafe fn draggedColumn(&self) -> NSInteger;
 

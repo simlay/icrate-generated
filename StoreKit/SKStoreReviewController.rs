@@ -8,6 +8,9 @@ use crate::StoreKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "StoreKit_SKStoreReviewController")]
+    /**
+      Controller class to request a review from the current user
+    */
     pub struct SKStoreReviewController;
 
     #[cfg(feature = "StoreKit_SKStoreReviewController")]
@@ -17,9 +20,15 @@ extern_class!(
 );
 
 #[cfg(feature = "StoreKit_SKStoreReviewController")]
+/**
+  Controller class to request a review from the current user
+*/
 unsafe impl NSObjectProtocol for SKStoreReviewController {}
 
 extern_methods!(
+    /**
+      Controller class to request a review from the current user
+    */
     #[cfg(feature = "StoreKit_SKStoreReviewController")]
     unsafe impl SKStoreReviewController {
         #[deprecated]

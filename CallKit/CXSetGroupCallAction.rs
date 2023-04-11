@@ -51,10 +51,22 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "Foundation_NSUUID")]
+        /**
+          The UUID of another call to group with.
+
+         - If the call for this action's UUID is already in a group, it should leave that group if necessary.
+         - If nil, leave any group the call is currently in.
+        */
         #[method_id(@__retain_semantics Other callUUIDToGroupWith)]
         pub unsafe fn callUUIDToGroupWith(&self) -> Option<Id<NSUUID>>;
 
         #[cfg(feature = "Foundation_NSUUID")]
+        /**
+          The UUID of another call to group with.
+
+         - If the call for this action's UUID is already in a group, it should leave that group if necessary.
+         - If nil, leave any group the call is currently in.
+        */
         #[method(setCallUUIDToGroupWith:)]
         pub unsafe fn setCallUUIDToGroupWith(&self, call_uuid_to_group_with: Option<&NSUUID>);
     }

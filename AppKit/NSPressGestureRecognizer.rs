@@ -26,21 +26,39 @@ unsafe impl NSObjectProtocol for NSPressGestureRecognizer {}
 extern_methods!(
     #[cfg(feature = "AppKit_NSPressGestureRecognizer")]
     unsafe impl NSPressGestureRecognizer {
+        /**
+          Defaults to 0x1
+        */
         #[method(buttonMask)]
         pub unsafe fn buttonMask(&self) -> NSUInteger;
 
+        /**
+          Defaults to 0x1
+        */
         #[method(setButtonMask:)]
         pub unsafe fn setButtonMask(&self, button_mask: NSUInteger);
 
+        /**
+          Defaults to the user double-click interval
+        */
         #[method(minimumPressDuration)]
         pub unsafe fn minimumPressDuration(&self) -> NSTimeInterval;
 
+        /**
+          Defaults to the user double-click interval
+        */
         #[method(setMinimumPressDuration:)]
         pub unsafe fn setMinimumPressDuration(&self, minimum_press_duration: NSTimeInterval);
 
+        /**
+          in screen points. Defaults to double-click distance
+        */
         #[method(allowableMovement)]
         pub unsafe fn allowableMovement(&self) -> CGFloat;
 
+        /**
+          in screen points. Defaults to double-click distance
+        */
         #[method(setAllowableMovement:)]
         pub unsafe fn setAllowableMovement(&self, allowable_movement: CGFloat);
 

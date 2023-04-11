@@ -8,6 +8,17 @@ use crate::GameController::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameController_GCExtendedGamepadSnapshot")]
+    /**
+     A GCExtendedGamepadSnapshot snapshot is a concrete GCExtendedGamepad implementation. It can be used directly in an
+    application to implement controller input replays. It is also returned as the result of polling a controller.
+
+    The current snapshotData is readily available to access as NSData. A developer can serialize this to any
+    destination necessary using the NSData API.
+
+    The data contains some version of a GCExtendedGamepadSnapShotData structure.
+
+    @see -[GCExtendedGamepad saveSnapshot]
+    */
     #[deprecated = "GCExtendedGamepadSnapshot has been deprecated, use [GCController controllerWithExtendedGamepad] instead"]
     pub struct GCExtendedGamepadSnapshot;
 
@@ -19,9 +30,31 @@ extern_class!(
 );
 
 #[cfg(feature = "GameController_GCExtendedGamepadSnapshot")]
+/**
+ A GCExtendedGamepadSnapshot snapshot is a concrete GCExtendedGamepad implementation. It can be used directly in an
+application to implement controller input replays. It is also returned as the result of polling a controller.
+
+The current snapshotData is readily available to access as NSData. A developer can serialize this to any
+destination necessary using the NSData API.
+
+The data contains some version of a GCExtendedGamepadSnapShotData structure.
+
+@see -[GCExtendedGamepad saveSnapshot]
+*/
 unsafe impl NSObjectProtocol for GCExtendedGamepadSnapshot {}
 
 extern_methods!(
+    /**
+     A GCExtendedGamepadSnapshot snapshot is a concrete GCExtendedGamepad implementation. It can be used directly in an
+    application to implement controller input replays. It is also returned as the result of polling a controller.
+
+    The current snapshotData is readily available to access as NSData. A developer can serialize this to any
+    destination necessary using the NSData API.
+
+    The data contains some version of a GCExtendedGamepadSnapShotData structure.
+
+    @see -[GCExtendedGamepad saveSnapshot]
+    */
     #[cfg(feature = "GameController_GCExtendedGamepadSnapshot")]
     unsafe impl GCExtendedGamepadSnapshot {
         #[cfg(feature = "Foundation_NSData")]

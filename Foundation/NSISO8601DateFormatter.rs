@@ -48,10 +48,16 @@ extern_methods!(
     #[cfg(feature = "Foundation_NSISO8601DateFormatter")]
     unsafe impl NSISO8601DateFormatter {
         #[cfg(feature = "Foundation_NSTimeZone")]
+        /**
+          The default time zone is GMT.
+        */
         #[method_id(@__retain_semantics Other timeZone)]
         pub unsafe fn timeZone(&self) -> Id<NSTimeZone>;
 
         #[cfg(feature = "Foundation_NSTimeZone")]
+        /**
+          The default time zone is GMT.
+        */
         #[method(setTimeZone:)]
         pub unsafe fn setTimeZone(&self, time_zone: Option<&NSTimeZone>);
 

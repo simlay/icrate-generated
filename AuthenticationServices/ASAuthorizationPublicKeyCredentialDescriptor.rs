@@ -9,10 +9,16 @@ extern_protocol!(
         NSObjectProtocol + NSSecureCoding
     {
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          @abstract An identifier that uniquely identifies a specific credential.
+        */
         #[method_id(@__retain_semantics Other credentialID)]
         unsafe fn credentialID(&self) -> Id<NSData>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          @abstract An identifier that uniquely identifies a specific credential.
+        */
         #[method(setCredentialID:)]
         unsafe fn setCredentialID(&self, credential_id: &NSData);
     }

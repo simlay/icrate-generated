@@ -8,6 +8,9 @@ use crate::GameKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameKit_GKAchievementViewController")]
+    /**
+      View controller that provides the standard user interface for achievements. Present modally from the top view controller.
+    */
     #[deprecated = "Use GKGameCenterViewController instead"]
     pub struct GKAchievementViewController;
 
@@ -19,24 +22,45 @@ extern_class!(
 );
 
 #[cfg(feature = "GameKit_GKAchievementViewController")]
+/**
+  View controller that provides the standard user interface for achievements. Present modally from the top view controller.
+*/
 unsafe impl GKViewController for GKAchievementViewController {}
 
 #[cfg(feature = "GameKit_GKAchievementViewController")]
+/**
+  View controller that provides the standard user interface for achievements. Present modally from the top view controller.
+*/
 unsafe impl NSCoding for GKAchievementViewController {}
 
 #[cfg(feature = "GameKit_GKAchievementViewController")]
+/**
+  View controller that provides the standard user interface for achievements. Present modally from the top view controller.
+*/
 unsafe impl NSEditor for GKAchievementViewController {}
 
 #[cfg(feature = "GameKit_GKAchievementViewController")]
+/**
+  View controller that provides the standard user interface for achievements. Present modally from the top view controller.
+*/
 unsafe impl NSObjectProtocol for GKAchievementViewController {}
 
 #[cfg(feature = "GameKit_GKAchievementViewController")]
+/**
+  View controller that provides the standard user interface for achievements. Present modally from the top view controller.
+*/
 unsafe impl NSSeguePerforming for GKAchievementViewController {}
 
 #[cfg(feature = "GameKit_GKAchievementViewController")]
+/**
+  View controller that provides the standard user interface for achievements. Present modally from the top view controller.
+*/
 unsafe impl NSUserInterfaceItemIdentification for GKAchievementViewController {}
 
 extern_methods!(
+    /**
+      View controller that provides the standard user interface for achievements. Present modally from the top view controller.
+    */
     #[cfg(feature = "GameKit_GKAchievementViewController")]
     unsafe impl GKAchievementViewController {
         #[method_id(@__retain_semantics Other achievementDelegate)]
@@ -54,6 +78,9 @@ extern_methods!(
 
 extern_protocol!(
     #[deprecated = "Use GKGameCenterViewController instead"]
+    /**
+      Optional delegate
+    */
     pub unsafe trait GKAchievementViewControllerDelegate: NSObjectProtocol {
         #[cfg(feature = "GameKit_GKAchievementViewController")]
         #[method(achievementViewControllerDidFinish:)]
@@ -68,6 +95,9 @@ extern_protocol!(
 
 extern_methods!(
     /// Methods declared on superclass `GKGameCenterViewController`
+    /**
+      View controller that provides the standard user interface for achievements. Present modally from the top view controller.
+    */
     #[cfg(feature = "GameKit_GKAchievementViewController")]
     unsafe impl GKAchievementViewController {
         #[method_id(@__retain_semantics Init initWithState:)]
@@ -104,6 +134,9 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSViewController`
+    /**
+      View controller that provides the standard user interface for achievements. Present modally from the top view controller.
+    */
     #[cfg(feature = "GameKit_GKAchievementViewController")]
     unsafe impl GKAchievementViewController {
         #[cfg(feature = "Foundation_NSBundle")]

@@ -53,6 +53,9 @@ unsafe impl NSObjectProtocol for NSHapticFeedbackManager {}
 extern_methods!(
     #[cfg(feature = "AppKit_NSHapticFeedbackManager")]
     unsafe impl NSHapticFeedbackManager {
+        /**
+          The most appropriate feedback performer for the current input device, accessibility settings and user preferences. Note: This device may change during the life of your application. Always request the defaultPerformer when you need perform feedback.
+        */
         #[method_id(@__retain_semantics Other defaultPerformer)]
         pub unsafe fn defaultPerformer() -> Id<ProtocolObject<dyn NSHapticFeedbackPerformer>>;
     }

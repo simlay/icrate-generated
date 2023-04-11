@@ -74,6 +74,10 @@ extern_fn!(
 
 extern_enum!(
     #[underlying(c_int)]
+    /**
+     These constants are used by deprecated NSRunAlertPanel() and NSGetAlertPanel() functions.
+    Modern NSAlert API uses NSAlertFirstButtonReturn, etc.
+    */
     pub enum __anonymous__ {
         #[deprecated = "Use NSAlertFirstButtonReturn with an NSAlert presentation instead"]
         NSAlertDefaultReturn = 1,

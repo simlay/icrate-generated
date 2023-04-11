@@ -8,6 +8,9 @@ use crate::MailKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MailKit_MEComposeSession")]
+    /**
+      @brief An instance of this class is associated with the lifecycle of a single mail compose window. This object associates the actions performed by the user in a mail compose window to a unique session. An instance of this class is passed to the methods in @c MEComposeSessionHandler.
+    */
     pub struct MEComposeSession;
 
     #[cfg(feature = "MailKit_MEComposeSession")]
@@ -17,15 +20,27 @@ extern_class!(
 );
 
 #[cfg(feature = "MailKit_MEComposeSession")]
+/**
+  @brief An instance of this class is associated with the lifecycle of a single mail compose window. This object associates the actions performed by the user in a mail compose window to a unique session. An instance of this class is passed to the methods in @c MEComposeSessionHandler.
+*/
 unsafe impl NSCoding for MEComposeSession {}
 
 #[cfg(feature = "MailKit_MEComposeSession")]
+/**
+  @brief An instance of this class is associated with the lifecycle of a single mail compose window. This object associates the actions performed by the user in a mail compose window to a unique session. An instance of this class is passed to the methods in @c MEComposeSessionHandler.
+*/
 unsafe impl NSObjectProtocol for MEComposeSession {}
 
 #[cfg(feature = "MailKit_MEComposeSession")]
+/**
+  @brief An instance of this class is associated with the lifecycle of a single mail compose window. This object associates the actions performed by the user in a mail compose window to a unique session. An instance of this class is passed to the methods in @c MEComposeSessionHandler.
+*/
 unsafe impl NSSecureCoding for MEComposeSession {}
 
 extern_methods!(
+    /**
+      @brief An instance of this class is associated with the lifecycle of a single mail compose window. This object associates the actions performed by the user in a mail compose window to a unique session. An instance of this class is passed to the methods in @c MEComposeSessionHandler.
+    */
     #[cfg(feature = "MailKit_MEComposeSession")]
     unsafe impl MEComposeSession {
         #[method_id(@__retain_semantics New new)]
@@ -35,14 +50,23 @@ extern_methods!(
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
         #[cfg(feature = "Foundation_NSUUID")]
+        /**
+          @brief A unique identifier for the session.
+        */
         #[method_id(@__retain_semantics Other sessionID)]
         pub unsafe fn sessionID(&self) -> Id<NSUUID>;
 
         #[cfg(feature = "MailKit_MEMessage")]
+        /**
+          @brief An instance of @c MEMessage that represents properties of the mail message that author is composing in this @c MEComposeSession
+        */
         #[method_id(@__retain_semantics Other mailMessage)]
         pub unsafe fn mailMessage(&self) -> Id<MEMessage>;
 
         #[cfg(feature = "MailKit_MEComposeContext")]
+        /**
+          @brief An instance of @c MEComposeContext that provides additional information about the compose session.
+        */
         #[method_id(@__retain_semantics Other composeContext)]
         pub unsafe fn composeContext(&self) -> Id<MEComposeContext>;
 
@@ -63,6 +87,9 @@ ns_error_enum!(
 );
 
 extern_protocol!(
+    /**
+      @brief Methods in this protocol can be used by a mail app extension to keep track of new messages composed by the user and to make changes to the recipeint email address tokens.
+    */
     pub unsafe trait MEComposeSessionHandler: NSObjectProtocol {
         #[cfg(feature = "MailKit_MEComposeSession")]
         #[method(mailComposeSessionDidBegin:)]

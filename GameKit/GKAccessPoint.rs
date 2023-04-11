@@ -35,33 +35,60 @@ extern_methods!(
         #[method_id(@__retain_semantics Other shared)]
         pub unsafe fn shared() -> Id<GKAccessPoint>;
 
+        /**
+          set this true to enable access point in your app.  Setting this will cause the access point to appear after the notification banner is presented.  If it already was presented it will appear immediately
+        */
         #[method(isActive)]
         pub unsafe fn isActive(&self) -> bool;
 
+        /**
+          set this true to enable access point in your app.  Setting this will cause the access point to appear after the notification banner is presented.  If it already was presented it will appear immediately
+        */
         #[method(setActive:)]
         pub unsafe fn setActive(&self, active: bool);
 
+        /**
+          set this on tvOS to put the accessPoint into focused mode
+        */
         #[method(isFocused)]
         pub unsafe fn isFocused(&self) -> bool;
 
+        /**
+          set this on tvOS to put the accessPoint into focused mode
+        */
         #[method(setFocused:)]
         pub unsafe fn setFocused(&self, focused: bool);
 
         #[method(isVisible)]
         pub unsafe fn isVisible(&self) -> bool;
 
+        /**
+          observable property that indicates when the access point is visible.
+        */
         #[method(isPresentingGameCenter)]
         pub unsafe fn isPresentingGameCenter(&self) -> bool;
 
+        /**
+          Set this property to true if you wish to show the highlights for most recent acheivement, current rank on default leaderboard, etc
+        */
         #[method(showHighlights)]
         pub unsafe fn showHighlights(&self) -> bool;
 
+        /**
+          Set this property to true if you wish to show the highlights for most recent acheivement, current rank on default leaderboard, etc
+        */
         #[method(setShowHighlights:)]
         pub unsafe fn setShowHighlights(&self, show_highlights: bool);
 
+        /**
+          These properties control the placement of the widget
+        */
         #[method(location)]
         pub unsafe fn location(&self) -> GKAccessPointLocation;
 
+        /**
+          These properties control the placement of the widget
+        */
         #[method(setLocation:)]
         pub unsafe fn setLocation(&self, location: GKAccessPointLocation);
 

@@ -75,11 +75,17 @@ unsafe impl NSObjectProtocol for ASAccountAuthenticationModificationController {
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationController")]
     unsafe impl ASAccountAuthenticationModificationController {
+        /**
+          @abstract This delegate will be notified upon completion of the upgrade to report success or failure.
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(
             &self,
         ) -> Option<Id<ProtocolObject<dyn ASAccountAuthenticationModificationControllerDelegate>>>;
 
+        /**
+          @abstract This delegate will be notified upon completion of the upgrade to report success or failure.
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
@@ -88,6 +94,9 @@ extern_methods!(
             >,
         );
 
+        /**
+          @abstract This will be used to provide a presentation context to display authorization UI.
+        */
         #[method_id(@__retain_semantics Other presentationContextProvider)]
         pub unsafe fn presentationContextProvider(
             &self,
@@ -99,6 +108,9 @@ extern_methods!(
             >,
         >;
 
+        /**
+          @abstract This will be used to provide a presentation context to display authorization UI.
+        */
         #[method(setPresentationContextProvider:)]
         pub unsafe fn setPresentationContextProvider(
             &self,

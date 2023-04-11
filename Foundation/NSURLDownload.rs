@@ -6,6 +6,12 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSURLDownload")]
+    /**
+     @class NSURLDownload
+    @discussion A NSURLDownload loads a request and saves the downloaded data to a file. The progress of the download
+    is reported via the NSURLDownloadDelegate protocol. Note: The word "download" is used to refer to the process
+    of loading data off a network, decoding the data if necessary and saving the data to a file.
+    */
     pub struct NSURLDownload;
 
     #[cfg(feature = "Foundation_NSURLDownload")]
@@ -15,9 +21,21 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSURLDownload")]
+/**
+ @class NSURLDownload
+@discussion A NSURLDownload loads a request and saves the downloaded data to a file. The progress of the download
+is reported via the NSURLDownloadDelegate protocol. Note: The word "download" is used to refer to the process
+of loading data off a network, decoding the data if necessary and saving the data to a file.
+*/
 unsafe impl NSObjectProtocol for NSURLDownload {}
 
 extern_methods!(
+    /**
+     @class NSURLDownload
+    @discussion A NSURLDownload loads a request and saves the downloaded data to a file. The progress of the download
+    is reported via the NSURLDownloadDelegate protocol. Note: The word "download" is used to refer to the process
+    of loading data off a network, decoding the data if necessary and saving the data to a file.
+    */
     #[cfg(feature = "Foundation_NSURLDownload")]
     unsafe impl NSURLDownload {
         #[cfg(feature = "Foundation_NSString")]
@@ -51,22 +69,52 @@ extern_methods!(
         pub unsafe fn setDestination_allowOverwrite(&self, path: &NSString, allow_overwrite: bool);
 
         #[cfg(feature = "Foundation_NSURLRequest")]
+        /**
+         @abstract Returns the request of the download.
+        @result The request of the download.
+        */
         #[method_id(@__retain_semantics Other request)]
         pub unsafe fn request(&self) -> Id<NSURLRequest>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+         @abstract Returns the resume data of a download that is incomplete.
+        @result The resume data.
+        @description resumeData returns the resume data of a download that is incomplete. This data represents the necessary
+        state information that NSURLDownload needs to resume a download. The resume data can later be used when initializing
+        a download with initWithResumeData:delegate:path:. Non-nil is returned if resuming the download seems possible.
+        Non-nil is returned if the download was cancelled or ended in error after some but not all data has been received.
+        The protocol of the download as well as the server must support resuming for non-nil to be returned.
+        In order to later resume a download, be sure to call setDeletesFileUponFailure: with NO.
+        */
         #[method_id(@__retain_semantics Other resumeData)]
         pub unsafe fn resumeData(&self) -> Option<Id<NSData>>;
 
+        /**
+         @abstract Sets whether or not the downloaded file should be deleted upon failure.
+        1    @description To allow the download to be resumed in case the download ends prematurely,
+        deletesFileUponFailure must be set to NO as soon as possible to prevent the downloaded file
+        from being deleted. deletesFileUponFailure is YES by default.
+        */
         #[method(deletesFileUponFailure)]
         pub unsafe fn deletesFileUponFailure(&self) -> bool;
 
+        /**
+         @abstract Sets whether or not the downloaded file should be deleted upon failure.
+        1    @description To allow the download to be resumed in case the download ends prematurely,
+        deletesFileUponFailure must be set to NO as soon as possible to prevent the downloaded file
+        from being deleted. deletesFileUponFailure is YES by default.
+        */
         #[method(setDeletesFileUponFailure:)]
         pub unsafe fn setDeletesFileUponFailure(&self, deletes_file_upon_failure: bool);
     }
 );
 
 extern_protocol!(
+    /**
+     @protocol NSURLDownloadDelegate
+    @discussion The NSURLDownloadDelegate delegate is used to report the progress of the download.
+    */
     pub unsafe trait NSURLDownloadDelegate: NSObjectProtocol {
         #[cfg(feature = "Foundation_NSURLDownload")]
         #[optional]

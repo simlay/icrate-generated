@@ -7,6 +7,10 @@ use crate::MetricKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MetricKit_MXDisplayMetric")]
+    /**
+     @class         MXDisplayMetric
+    @abstract      An MXMetric subclass that encapsulates display metrics.
+    */
     pub struct MXDisplayMetric;
 
     #[cfg(feature = "MetricKit_MXDisplayMetric")]
@@ -17,21 +21,44 @@ extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXDisplayMetric")]
+/**
+ @class         MXDisplayMetric
+@abstract      An MXMetric subclass that encapsulates display metrics.
+*/
 unsafe impl NSCoding for MXDisplayMetric {}
 
 #[cfg(feature = "MetricKit_MXDisplayMetric")]
+/**
+ @class         MXDisplayMetric
+@abstract      An MXMetric subclass that encapsulates display metrics.
+*/
 unsafe impl NSObjectProtocol for MXDisplayMetric {}
 
 #[cfg(feature = "MetricKit_MXDisplayMetric")]
+/**
+ @class         MXDisplayMetric
+@abstract      An MXMetric subclass that encapsulates display metrics.
+*/
 unsafe impl NSSecureCoding for MXDisplayMetric {}
 
 extern_methods!(
+    /**
+     @class         MXDisplayMetric
+    @abstract      An MXMetric subclass that encapsulates display metrics.
+    */
     #[cfg(feature = "MetricKit_MXDisplayMetric")]
     unsafe impl MXDisplayMetric {
         #[cfg(all(
             feature = "MetricKit_MXAverage",
             feature = "MetricKit_MXUnitAveragePixelLuminance"
         ))]
+        /**
+         @property      averagePixelLuminance
+        @abstract      Average Pixel Luminance for the application.
+        @discussion    APL data ranges from 0-100, in increments of 1.
+        @discussion    This value is null when the device does not support APL.
+        @discussion    Dimensioned as MXUnitAveragePixelLuminance.
+        */
         #[method_id(@__retain_semantics Other averagePixelLuminance)]
         pub unsafe fn averagePixelLuminance(
             &self,

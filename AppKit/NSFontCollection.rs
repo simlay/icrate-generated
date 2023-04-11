@@ -7,6 +7,9 @@ use crate::Foundation::*;
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+     Named collection visibility
+    */
     pub enum NSFontCollectionVisibility {
         NSFontCollectionVisibilityProcess = 1 << 0,
         NSFontCollectionVisibilityUser = 1 << 1,
@@ -35,6 +38,9 @@ typed_extensible_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSFontCollection")]
+    /**
+     NSFontCollection - immutable font list
+    */
     pub struct NSFontCollection;
 
     #[cfg(feature = "AppKit_NSFontCollection")]
@@ -44,12 +50,21 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSFontCollection")]
+/**
+ NSFontCollection - immutable font list
+*/
 unsafe impl NSCoding for NSFontCollection {}
 
 #[cfg(feature = "AppKit_NSFontCollection")]
+/**
+ NSFontCollection - immutable font list
+*/
 unsafe impl NSObjectProtocol for NSFontCollection {}
 
 extern_methods!(
+    /**
+     NSFontCollection - immutable font list
+    */
     #[cfg(feature = "AppKit_NSFontCollection")]
     unsafe impl NSFontCollection {
         #[cfg(all(feature = "AppKit_NSFontDescriptor", feature = "Foundation_NSArray"))]
@@ -58,6 +73,9 @@ extern_methods!(
             query_descriptors: &NSArray<NSFontDescriptor>,
         ) -> Id<NSFontCollection>;
 
+        /**
+          Return a font collection matching all registered fonts
+        */
         #[method_id(@__retain_semantics Other fontCollectionWithAllAvailableDescriptors)]
         pub unsafe fn fontCollectionWithAllAvailableDescriptors() -> Id<NSFontCollection>;
 
@@ -89,6 +107,9 @@ extern_methods!(
         ) -> Result<(), Id<NSError>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Named collections visible to this process (array of NSString)
+        */
         #[method_id(@__retain_semantics Other allFontCollectionNames)]
         pub unsafe fn allFontCollectionNames() -> Id<NSArray<NSFontCollectionName>>;
 
@@ -104,14 +125,25 @@ extern_methods!(
         ) -> Option<Id<NSFontCollection>>;
 
         #[cfg(all(feature = "AppKit_NSFontDescriptor", feature = "Foundation_NSArray"))]
+        /**
+          The list of NSFontDescriptors to match. The matching descriptors are produced by matching this list of descriptors.
+        */
         #[method_id(@__retain_semantics Other queryDescriptors)]
         pub unsafe fn queryDescriptors(&self) -> Option<Id<NSArray<NSFontDescriptor>>>;
 
         #[cfg(all(feature = "AppKit_NSFontDescriptor", feature = "Foundation_NSArray"))]
+        /**
+          A separate list of query descriptors. The matching results from this list are excluded from matchingDescriptors.
+        */
         #[method_id(@__retain_semantics Other exclusionDescriptors)]
         pub unsafe fn exclusionDescriptors(&self) -> Option<Id<NSArray<NSFontDescriptor>>>;
 
         #[cfg(all(feature = "AppKit_NSFontDescriptor", feature = "Foundation_NSArray"))]
+        /**
+          Returns a list of descriptors matching the logical descriptors.
+         These are determined at runtime as (matching queryDescriptors - matching exclusionDescriptors).
+         options may be nil or a dictionary containing any combination of {NSFontCollectionIncludeDisabledFontsOption, NSFontCollectionRemoveDuplicatesOption, NSFontCollectionDisallowAutoActivationOption}.
+        */
         #[method_id(@__retain_semantics Other matchingDescriptors)]
         pub unsafe fn matchingDescriptors(&self) -> Option<Id<NSArray<NSFontDescriptor>>>;
 
@@ -157,6 +189,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSMutableFontCollection")]
+    /**
+     NSMutableFontCollection - mutable font list
+    */
     pub struct NSMutableFontCollection;
 
     #[cfg(feature = "AppKit_NSMutableFontCollection")]
@@ -167,12 +202,21 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSMutableFontCollection")]
+/**
+ NSMutableFontCollection - mutable font list
+*/
 unsafe impl NSCoding for NSMutableFontCollection {}
 
 #[cfg(feature = "AppKit_NSMutableFontCollection")]
+/**
+ NSMutableFontCollection - mutable font list
+*/
 unsafe impl NSObjectProtocol for NSMutableFontCollection {}
 
 extern_methods!(
+    /**
+     NSMutableFontCollection - mutable font list
+    */
     #[cfg(feature = "AppKit_NSMutableFontCollection")]
     unsafe impl NSMutableFontCollection {
         #[cfg(all(feature = "AppKit_NSFontDescriptor", feature = "Foundation_NSArray"))]
@@ -181,6 +225,9 @@ extern_methods!(
             query_descriptors: &NSArray<NSFontDescriptor>,
         ) -> Id<NSMutableFontCollection>;
 
+        /**
+          Return a font collection matching all registered fonts
+        */
         #[method_id(@__retain_semantics Other fontCollectionWithAllAvailableDescriptors)]
         pub unsafe fn fontCollectionWithAllAvailableDescriptors() -> Id<NSMutableFontCollection>;
 

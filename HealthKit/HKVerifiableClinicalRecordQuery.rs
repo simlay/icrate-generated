@@ -25,10 +25,18 @@ extern_methods!(
     #[cfg(feature = "HealthKit_HKVerifiableClinicalRecordQuery")]
     unsafe impl HKVerifiableClinicalRecordQuery {
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+         @property      recordTypes
+        @abstract      The record types that need to be present on desired records.
+        */
         #[method_id(@__retain_semantics Other recordTypes)]
         pub unsafe fn recordTypes(&self) -> Id<NSArray<NSString>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+         @property      sourceTypes
+        @abstract      The source type(s) of the records.
+        */
         #[method_id(@__retain_semantics Other sourceTypes)]
         pub unsafe fn sourceTypes(&self) -> Id<NSArray<HKVerifiableClinicalRecordSourceType>>;
 

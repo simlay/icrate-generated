@@ -23,10 +23,16 @@ extern_methods!(
     #[cfg(feature = "StoreKit_SKAdImpression")]
     unsafe impl SKAdImpression {
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+          The App Store item identifier for the source app.
+        */
         #[method_id(@__retain_semantics Other sourceAppStoreItemIdentifier)]
         pub unsafe fn sourceAppStoreItemIdentifier(&self) -> Id<NSNumber>;
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+          The App Store item identifier for the source app.
+        */
         #[method(setSourceAppStoreItemIdentifier:)]
         pub unsafe fn setSourceAppStoreItemIdentifier(
             &self,
@@ -34,10 +40,16 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+          The App Store item identifier for the app being advertised.
+        */
         #[method_id(@__retain_semantics Other advertisedAppStoreItemIdentifier)]
         pub unsafe fn advertisedAppStoreItemIdentifier(&self) -> Id<NSNumber>;
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+          The App Store item identifier for the app being advertised.
+        */
         #[method(setAdvertisedAppStoreItemIdentifier:)]
         pub unsafe fn setAdvertisedAppStoreItemIdentifier(
             &self,
@@ -45,82 +57,142 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The identifier for the ad network.
+        */
         #[method_id(@__retain_semantics Other adNetworkIdentifier)]
         pub unsafe fn adNetworkIdentifier(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The identifier for the ad network.
+        */
         #[method(setAdNetworkIdentifier:)]
         pub unsafe fn setAdNetworkIdentifier(&self, ad_network_identifier: &NSString);
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+          The ad campaign identifier.
+        */
         #[method_id(@__retain_semantics Other adCampaignIdentifier)]
         pub unsafe fn adCampaignIdentifier(&self) -> Id<NSNumber>;
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+          The ad campaign identifier.
+        */
         #[method(setAdCampaignIdentifier:)]
         pub unsafe fn setAdCampaignIdentifier(&self, ad_campaign_identifier: &NSNumber);
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+          The source identifier
+        */
         #[method_id(@__retain_semantics Other sourceIdentifier)]
         pub unsafe fn sourceIdentifier(&self) -> Id<NSNumber>;
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+          The source identifier
+        */
         #[method(setSourceIdentifier:)]
         pub unsafe fn setSourceIdentifier(&self, source_identifier: &NSNumber);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The nonce used to generate the signature.
+        */
         #[method_id(@__retain_semantics Other adImpressionIdentifier)]
         pub unsafe fn adImpressionIdentifier(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The nonce used to generate the signature.
+        */
         #[method(setAdImpressionIdentifier:)]
         pub unsafe fn setAdImpressionIdentifier(&self, ad_impression_identifier: &NSString);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The type of ad being presented.
+        */
         #[method_id(@__retain_semantics Other adType)]
         pub unsafe fn adType(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The type of ad being presented.
+        */
         #[method(setAdType:)]
         pub unsafe fn setAdType(&self, ad_type: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The description of the ad.
+        */
         #[method_id(@__retain_semantics Other adDescription)]
         pub unsafe fn adDescription(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The description of the ad.
+        */
         #[method(setAdDescription:)]
         pub unsafe fn setAdDescription(&self, ad_description: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Name of entity that purchased the ad being presented.
+        */
         #[method_id(@__retain_semantics Other adPurchaserName)]
         pub unsafe fn adPurchaserName(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Name of entity that purchased the ad being presented.
+        */
         #[method(setAdPurchaserName:)]
         pub unsafe fn setAdPurchaserName(&self, ad_purchaser_name: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+          The timestamp of the start and end call.
+        */
         #[method_id(@__retain_semantics Other timestamp)]
         pub unsafe fn timestamp(&self) -> Id<NSNumber>;
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+          The timestamp of the start and end call.
+        */
         #[method(setTimestamp:)]
         pub unsafe fn setTimestamp(&self, timestamp: &NSNumber);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The signature of the impression.
+        */
         #[method_id(@__retain_semantics Other signature)]
         pub unsafe fn signature(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The signature of the impression.
+        */
         #[method(setSignature:)]
         pub unsafe fn setSignature(&self, signature: &NSString);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The version of SKAdNetwork being used.
+        */
         #[method_id(@__retain_semantics Other version)]
         pub unsafe fn version(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The version of SKAdNetwork being used.
+        */
         #[method(setVersion:)]
         pub unsafe fn setVersion(&self, version: &NSString);
     }

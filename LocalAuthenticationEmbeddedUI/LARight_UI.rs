@@ -7,6 +7,9 @@ use crate::LocalAuthentication::*;
 use crate::LocalAuthenticationEmbeddedUI::*;
 
 extern_methods!(
+    /**
+      @brief Groups methods that control aspects of the UI used for authorizing a right
+    */
     /// UI
     #[cfg(feature = "LocalAuthentication_LARight")]
     unsafe impl LARight {

@@ -7,6 +7,10 @@ use crate::MetricKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MetricKit_MXCellularConditionMetric")]
+    /**
+     @class         MXCellConditionMetric
+    @abstract      An MXMetric subclass that encapsulates cellular condition metrics.
+    */
     pub struct MXCellularConditionMetric;
 
     #[cfg(feature = "MetricKit_MXCellularConditionMetric")]
@@ -17,21 +21,44 @@ extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXCellularConditionMetric")]
+/**
+ @class         MXCellConditionMetric
+@abstract      An MXMetric subclass that encapsulates cellular condition metrics.
+*/
 unsafe impl NSCoding for MXCellularConditionMetric {}
 
 #[cfg(feature = "MetricKit_MXCellularConditionMetric")]
+/**
+ @class         MXCellConditionMetric
+@abstract      An MXMetric subclass that encapsulates cellular condition metrics.
+*/
 unsafe impl NSObjectProtocol for MXCellularConditionMetric {}
 
 #[cfg(feature = "MetricKit_MXCellularConditionMetric")]
+/**
+ @class         MXCellConditionMetric
+@abstract      An MXMetric subclass that encapsulates cellular condition metrics.
+*/
 unsafe impl NSSecureCoding for MXCellularConditionMetric {}
 
 extern_methods!(
+    /**
+     @class         MXCellConditionMetric
+    @abstract      An MXMetric subclass that encapsulates cellular condition metrics.
+    */
     #[cfg(feature = "MetricKit_MXCellularConditionMetric")]
     unsafe impl MXCellularConditionMetric {
         #[cfg(all(
             feature = "MetricKit_MXHistogram",
             feature = "MetricKit_MXUnitSignalBars"
         ))]
+        /**
+         @property      cellularConditionTime
+        @abstract      Application run time bucketized by cellular condition.
+        @discussion    This data represents the percentage of time an application spent running in different cellular conditions.
+        @discussion    In the event that no data for any buckets is available, the histogram data will be empty.
+        @discussion    Dimensioned as MXUnitSignalBars.
+        */
         #[method_id(@__retain_semantics Other histogrammedCellularConditionTime)]
         pub unsafe fn histogrammedCellularConditionTime(&self)
             -> Id<MXHistogram<MXUnitSignalBars>>;

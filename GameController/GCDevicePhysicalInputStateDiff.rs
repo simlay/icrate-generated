@@ -15,6 +15,12 @@ ns_enum!(
 );
 
 extern_protocol!(
+    /**
+     An object conforming to the \c GCDevicePhysicalInputStateDiff protocol
+    contains the input state differences between the current and previous
+    \c GCDevicePhysicalInputState objects returned from the \c -nextInputState
+    method of \c GCDevicePhysicalInput.
+    */
     pub unsafe trait GCDevicePhysicalInputStateDiff: NSObjectProtocol {
         #[method(changeForElement:)]
         unsafe fn changeForElement(

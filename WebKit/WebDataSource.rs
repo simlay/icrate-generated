@@ -8,6 +8,13 @@ use crate::WebKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "WebKit_WebDataSource")]
+    /**
+     @class WebDataSource
+    @discussion A WebDataSource represents the data associated with a web page.
+    A datasource has a WebDocumentRepresentation which holds an appropriate
+    representation of the data.  WebDataSources manage a hierarchy of WebFrames.
+    WebDataSources are typically related to a view by their containing WebFrame.
+    */
     #[deprecated]
     pub struct WebDataSource;
 
@@ -18,9 +25,23 @@ extern_class!(
 );
 
 #[cfg(feature = "WebKit_WebDataSource")]
+/**
+ @class WebDataSource
+@discussion A WebDataSource represents the data associated with a web page.
+A datasource has a WebDocumentRepresentation which holds an appropriate
+representation of the data.  WebDataSources manage a hierarchy of WebFrames.
+WebDataSources are typically related to a view by their containing WebFrame.
+*/
 unsafe impl NSObjectProtocol for WebDataSource {}
 
 extern_methods!(
+    /**
+     @class WebDataSource
+    @discussion A WebDataSource represents the data associated with a web page.
+    A datasource has a WebDocumentRepresentation which holds an appropriate
+    representation of the data.  WebDataSources manage a hierarchy of WebFrames.
+    WebDataSources are typically related to a view by their containing WebFrame.
+    */
     #[cfg(feature = "WebKit_WebDataSource")]
     unsafe impl WebDataSource {
         #[cfg(feature = "Foundation_NSURLRequest")]
@@ -31,54 +52,124 @@ extern_methods!(
         ) -> Option<Id<Self>>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+         @property data
+        @abstract Returns the raw data associated with the datasource.  Returns nil
+        if the datasource hasn't loaded any data.
+        @discussion The data will be incomplete until the datasource has completely loaded.
+        */
         #[method_id(@__retain_semantics Other data)]
         pub unsafe fn data(&self) -> Id<NSData>;
 
+        /**
+         @property representation
+        @abstract The representation associated with this datasource.
+        Returns nil if the datasource hasn't created its representation.
+        @discussion A representation holds a type specific representation
+        of the datasource's data.  The representation class is determined by mapping
+        a MIME type to a class.  The representation is created once the MIME type
+        of the datasource content has been determined.
+        */
         #[method_id(@__retain_semantics Other representation)]
         pub unsafe fn representation(
             &self,
         ) -> Option<Id<ProtocolObject<dyn WebDocumentRepresentation>>>;
 
         #[cfg(feature = "WebKit_WebFrame")]
+        /**
+         @property webFrame
+        @abstract The frame that represents this data source.
+        */
         #[method_id(@__retain_semantics Other webFrame)]
         pub unsafe fn webFrame(&self) -> Option<Id<WebFrame>>;
 
         #[cfg(feature = "Foundation_NSURLRequest")]
+        /**
+         @property initialRequest
+        @abstract A reference to the original request that created the
+        datasource.  This request will be unmodified by WebKit.
+        */
         #[method_id(@__retain_semantics Other initialRequest)]
         pub unsafe fn initialRequest(&self) -> Option<Id<NSURLRequest>>;
 
         #[cfg(feature = "Foundation_NSMutableURLRequest")]
+        /**
+         @property request
+        @abstract The request that was used to create this datasource.
+        */
         #[method_id(@__retain_semantics Other request)]
         pub unsafe fn request(&self) -> Option<Id<NSMutableURLRequest, Owned>>;
 
         #[cfg(feature = "Foundation_NSURLResponse")]
+        /**
+         @property response
+        @abstract The NSURLResponse for the data source.
+        */
         #[method_id(@__retain_semantics Other response)]
         pub unsafe fn response(&self) -> Option<Id<NSURLResponse>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property textEncodingName
+        @abstract Returns either the override encoding, as set on the WebView for this
+        dataSource or the encoding from the response.
+        */
         #[method_id(@__retain_semantics Other textEncodingName)]
         pub unsafe fn textEncodingName(&self) -> Id<NSString>;
 
+        /**
+         @property isLoading
+        @abstract Returns YES if there are any pending loads.
+        */
         #[method(isLoading)]
         pub unsafe fn isLoading(&self) -> bool;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property pageTitle
+        @abstract The page title or nil.
+        */
         #[method_id(@__retain_semantics Other pageTitle)]
         pub unsafe fn pageTitle(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+         @property unreachableURL
+        @abstract The unreachableURL for which this dataSource is showing alternate content, or nil.
+        @discussion This will be non-nil only for dataSources created by calls to the
+        WebFrame method loadAlternateHTMLString:baseURL:forUnreachableURL:.
+        */
         #[method_id(@__retain_semantics Other unreachableURL)]
         pub unsafe fn unreachableURL(&self) -> Option<Id<NSURL>>;
 
         #[cfg(feature = "WebKit_WebArchive")]
+        /**
+         @property webArchive
+        @abstract A WebArchive representing the data source, its subresources and child frames.
+        @description This method constructs a WebArchive using the original downloaded data.
+        In the case of HTML, if the current state of the document is preferred, webArchive should be
+        called on the DOM document instead.
+        */
         #[method_id(@__retain_semantics Other webArchive)]
         pub unsafe fn webArchive(&self) -> Option<Id<WebArchive>>;
 
         #[cfg(feature = "WebKit_WebResource")]
+        /**
+         @property mainResource
+        @abstract A WebResource representing the data source.
+        @description This method constructs a WebResource using the original downloaded data.
+        This method can be used to construct a WebArchive in case the archive returned by
+        WebDataSource's webArchive isn't sufficient.
+        */
         #[method_id(@__retain_semantics Other mainResource)]
         pub unsafe fn mainResource(&self) -> Option<Id<WebResource>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+         @property subresources
+        @abstract All the subresources associated with the data source.
+        @description The returned array only contains subresources that have fully downloaded.
+        */
         #[method_id(@__retain_semantics Other subresources)]
         pub unsafe fn subresources(&self) -> Id<NSArray>;
 

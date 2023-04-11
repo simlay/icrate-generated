@@ -33,42 +33,78 @@ extern_methods!(
     #[cfg(feature = "AppKit_NSStatusItem")]
     unsafe impl NSStatusItem {
         #[cfg(feature = "AppKit_NSStatusBar")]
+        /**
+           The status bar that the receiver is displayed in.
+        */
         #[method_id(@__retain_semantics Other statusBar)]
         pub unsafe fn statusBar(&self) -> Option<Id<NSStatusBar>>;
 
+        /**
+           The amount of space in the status bar that should be allocated to the receiver. \c NSVariableStatusItemLength will adjust the length to the size of the status item's contents and \c NSSquareStatusItemLength will keep the length the same as the status bar's height.
+        */
         #[method(length)]
         pub unsafe fn length(&self) -> CGFloat;
 
+        /**
+           The amount of space in the status bar that should be allocated to the receiver. \c NSVariableStatusItemLength will adjust the length to the size of the status item's contents and \c NSSquareStatusItemLength will keep the length the same as the status bar's height.
+        */
         #[method(setLength:)]
         pub unsafe fn setLength(&self, length: CGFloat);
 
         #[cfg(feature = "AppKit_NSMenu")]
+        /**
+           The drop down menu that is displayed when the status item is pressed or clicked.
+        */
         #[method_id(@__retain_semantics Other menu)]
         pub unsafe fn menu(&self) -> Option<Id<NSMenu>>;
 
         #[cfg(feature = "AppKit_NSMenu")]
+        /**
+           The drop down menu that is displayed when the status item is pressed or clicked.
+        */
         #[method(setMenu:)]
         pub unsafe fn setMenu(&self, menu: Option<&NSMenu>);
 
         #[cfg(feature = "AppKit_NSStatusBarButton")]
+        /**
+           The button that is displayed in the status bar. This is created automatically on the creation of the StatusItem. Behavior customization for the button, such as image, target/action, tooltip, can be set with this property.
+        */
         #[method_id(@__retain_semantics Other button)]
         pub unsafe fn button(&self) -> Option<Id<NSStatusBarButton>>;
 
+        /**
+           Specifies the behavior of the status item.
+        */
         #[method(behavior)]
         pub unsafe fn behavior(&self) -> NSStatusItemBehavior;
 
+        /**
+           Specifies the behavior of the status item.
+        */
         #[method(setBehavior:)]
         pub unsafe fn setBehavior(&self, behavior: NSStatusItemBehavior);
 
+        /**
+           Specifies if the status item is currently visible in the status bar, even if it is obscured by the application menu. Defaults to YES. Persisted based on the -autosaveName. This is observable through KVO.
+        */
         #[method(isVisible)]
         pub unsafe fn isVisible(&self) -> bool;
 
+        /**
+           Specifies if the status item is currently visible in the status bar, even if it is obscured by the application menu. Defaults to YES. Persisted based on the -autosaveName. This is observable through KVO.
+        */
         #[method(setVisible:)]
         pub unsafe fn setVisible(&self, visible: bool);
 
+        /**
+           Specifies a unique name for persisting visibility information. If none is specified, one is automatically chosen. Apps with multiple status bar items should set an autosave after creation. Setting to nil resets the automatically chosen name and clears saved information.
+        */
         #[method_id(@__retain_semantics Other autosaveName)]
         pub unsafe fn autosaveName(&self) -> Id<NSStatusItemAutosaveName>;
 
+        /**
+           Specifies a unique name for persisting visibility information. If none is specified, one is automatically chosen. Apps with multiple status bar items should set an autosave after creation. Setting to nil resets the automatically chosen name and clears saved information.
+        */
         #[method(setAutosaveName:)]
         pub unsafe fn setAutosaveName(&self, autosave_name: Option<&NSStatusItemAutosaveName>);
     }
@@ -78,10 +114,16 @@ extern_methods!(
     /// NSStatusItemDeprecated
     #[cfg(feature = "AppKit_NSStatusItem")]
     unsafe impl NSStatusItem {
+        /**
+          These methods simply forward their calls onto the button property.
+        */
         #[deprecated = "Use the receiver's button.action instead"]
         #[method(action)]
         pub unsafe fn action(&self) -> Option<Sel>;
 
+        /**
+          These methods simply forward their calls onto the button property.
+        */
         #[deprecated = "Use the receiver's button.action instead"]
         #[method(setAction:)]
         pub unsafe fn setAction(&self, action: Option<Sel>);
@@ -173,11 +215,19 @@ extern_methods!(
         pub unsafe fn sendActionOn(&self, mask: NSEventMask) -> NSInteger;
 
         #[cfg(feature = "AppKit_NSView")]
+        /**
+         Custom views should not be set on a status item.
+        The button property with a template image will allow proper styling of the status item in various states and contexts and should be used instead.
+        */
         #[deprecated = "Use the standard button property instead"]
         #[method_id(@__retain_semantics Other view)]
         pub unsafe fn view(&self) -> Option<Id<NSView>>;
 
         #[cfg(feature = "AppKit_NSView")]
+        /**
+         Custom views should not be set on a status item.
+        The button property with a template image will allow proper styling of the status item in various states and contexts and should be used instead.
+        */
         #[deprecated = "Use the standard button property instead"]
         #[method(setView:)]
         pub unsafe fn setView(&self, view: Option<&NSView>);

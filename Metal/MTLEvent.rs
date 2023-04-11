@@ -6,14 +6,26 @@ use crate::Metal::*;
 
 extern_protocol!(
     pub unsafe trait MTLEvent: NSObjectProtocol {
+        /**
+         @property device
+        @abstract The device this event can be used with. Will be nil when the event is shared across devices (i.e. MTLSharedEvent).
+        */
         #[method_id(@__retain_semantics Other device)]
         fn device(&self) -> Option<Id<ProtocolObject<dyn MTLDevice>>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property label
+        @abstract A string to help identify this object.
+        */
         #[method_id(@__retain_semantics Other label)]
         fn label(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property label
+        @abstract A string to help identify this object.
+        */
         #[method(setLabel:)]
         fn setLabel(&self, label: Option<&NSString>);
     }
@@ -24,6 +36,10 @@ extern_protocol!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLSharedEventListener")]
+    /**
+     @class MTLSharedEventListener
+    @abstract This class provides a simple interface for handling the dispatching of MTLSharedEvent notifications from Metal.
+    */
     pub struct MTLSharedEventListener;
 
     #[cfg(feature = "Metal_MTLSharedEventListener")]
@@ -33,9 +49,17 @@ extern_class!(
 );
 
 #[cfg(feature = "Metal_MTLSharedEventListener")]
+/**
+ @class MTLSharedEventListener
+@abstract This class provides a simple interface for handling the dispatching of MTLSharedEvent notifications from Metal.
+*/
 unsafe impl NSObjectProtocol for MTLSharedEventListener {}
 
 extern_methods!(
+    /**
+     @class MTLSharedEventListener
+    @abstract This class provides a simple interface for handling the dispatching of MTLSharedEvent notifications from Metal.
+    */
     #[cfg(feature = "Metal_MTLSharedEventListener")]
     unsafe impl MTLSharedEventListener {
         #[method_id(@__retain_semantics Init init)]
@@ -61,9 +85,15 @@ extern_protocol!(
         #[method_id(@__retain_semantics New newSharedEventHandle)]
         unsafe fn newSharedEventHandle(&self) -> Id<MTLSharedEventHandle>;
 
+        /**
+          Read or set signaled value
+        */
         #[method(signaledValue)]
         unsafe fn signaledValue(&self) -> u64;
 
+        /**
+          Read or set signaled value
+        */
         #[method(setSignaledValue:)]
         unsafe fn setSignaledValue(&self, signaled_value: u64);
     }
@@ -74,6 +104,10 @@ extern_protocol!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLSharedEventHandle")]
+    /**
+      MTLSharedEventHandle objects may be passed between processes via XPC connections and then used to recreate
+     a MTLSharedEvent via an existing MTLDevice.
+    */
     pub struct MTLSharedEventHandle;
 
     #[cfg(feature = "Metal_MTLSharedEventHandle")]
@@ -83,15 +117,31 @@ extern_class!(
 );
 
 #[cfg(feature = "Metal_MTLSharedEventHandle")]
+/**
+  MTLSharedEventHandle objects may be passed between processes via XPC connections and then used to recreate
+ a MTLSharedEvent via an existing MTLDevice.
+*/
 unsafe impl NSCoding for MTLSharedEventHandle {}
 
 #[cfg(feature = "Metal_MTLSharedEventHandle")]
+/**
+  MTLSharedEventHandle objects may be passed between processes via XPC connections and then used to recreate
+ a MTLSharedEvent via an existing MTLDevice.
+*/
 unsafe impl NSObjectProtocol for MTLSharedEventHandle {}
 
 #[cfg(feature = "Metal_MTLSharedEventHandle")]
+/**
+  MTLSharedEventHandle objects may be passed between processes via XPC connections and then used to recreate
+ a MTLSharedEvent via an existing MTLDevice.
+*/
 unsafe impl NSSecureCoding for MTLSharedEventHandle {}
 
 extern_methods!(
+    /**
+      MTLSharedEventHandle objects may be passed between processes via XPC connections and then used to recreate
+     a MTLSharedEvent via an existing MTLDevice.
+    */
     #[cfg(feature = "Metal_MTLSharedEventHandle")]
     unsafe impl MTLSharedEventHandle {
         #[cfg(feature = "Foundation_NSString")]

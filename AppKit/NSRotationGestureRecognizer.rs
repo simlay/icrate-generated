@@ -26,9 +26,15 @@ unsafe impl NSObjectProtocol for NSRotationGestureRecognizer {}
 extern_methods!(
     #[cfg(feature = "AppKit_NSRotationGestureRecognizer")]
     unsafe impl NSRotationGestureRecognizer {
+        /**
+          in radians
+        */
         #[method(rotation)]
         pub unsafe fn rotation(&self) -> CGFloat;
 
+        /**
+          in radians
+        */
         #[method(setRotation:)]
         pub unsafe fn setRotation(&self, rotation: CGFloat);
 

@@ -7,6 +7,11 @@ use crate::MetricKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MetricKit_MXAppRunTimeMetric")]
+    /**
+     @class         MXAppRunTimeMetric
+    @abstract      An MXMetric subclass that encapsulates app runtime metrics.
+    @discussion    Runtime metrics describe application time spent running in different modes, such as audio, location, etc.
+    */
     pub struct MXAppRunTimeMetric;
 
     #[cfg(feature = "MetricKit_MXAppRunTimeMetric")]
@@ -17,21 +22,47 @@ extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXAppRunTimeMetric")]
+/**
+ @class         MXAppRunTimeMetric
+@abstract      An MXMetric subclass that encapsulates app runtime metrics.
+@discussion    Runtime metrics describe application time spent running in different modes, such as audio, location, etc.
+*/
 unsafe impl NSCoding for MXAppRunTimeMetric {}
 
 #[cfg(feature = "MetricKit_MXAppRunTimeMetric")]
+/**
+ @class         MXAppRunTimeMetric
+@abstract      An MXMetric subclass that encapsulates app runtime metrics.
+@discussion    Runtime metrics describe application time spent running in different modes, such as audio, location, etc.
+*/
 unsafe impl NSObjectProtocol for MXAppRunTimeMetric {}
 
 #[cfg(feature = "MetricKit_MXAppRunTimeMetric")]
+/**
+ @class         MXAppRunTimeMetric
+@abstract      An MXMetric subclass that encapsulates app runtime metrics.
+@discussion    Runtime metrics describe application time spent running in different modes, such as audio, location, etc.
+*/
 unsafe impl NSSecureCoding for MXAppRunTimeMetric {}
 
 extern_methods!(
+    /**
+     @class         MXAppRunTimeMetric
+    @abstract      An MXMetric subclass that encapsulates app runtime metrics.
+    @discussion    Runtime metrics describe application time spent running in different modes, such as audio, location, etc.
+    */
     #[cfg(feature = "MetricKit_MXAppRunTimeMetric")]
     unsafe impl MXAppRunTimeMetric {
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"
         ))]
+        /**
+         @property      cumulativeForegroundTime
+        @abstract      Cumulative application foreground time.
+        @discussion    Time spent on screen and visible to the user.
+        @discussion    Dimensioned as NSUnitDuration.
+        */
         #[method_id(@__retain_semantics Other cumulativeForegroundTime)]
         pub unsafe fn cumulativeForegroundTime(&self) -> Id<NSMeasurement<NSUnitDuration>>;
 
@@ -39,6 +70,12 @@ extern_methods!(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"
         ))]
+        /**
+         @property      cumulativeBackgroundTime
+        @abstract      Cumulative application background time.
+        @discussion    Time spent off screen and in the background, invisible to the user.
+        @discussion    Dimensioned as NSUnitDuration.
+        */
         #[method_id(@__retain_semantics Other cumulativeBackgroundTime)]
         pub unsafe fn cumulativeBackgroundTime(&self) -> Id<NSMeasurement<NSUnitDuration>>;
 
@@ -46,6 +83,11 @@ extern_methods!(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"
         ))]
+        /**
+         @property      cumulativeBackgroundAudioTime
+        @abstract      Cumulative time the application spent running in the background to play audio
+        @discussion    Dimensioned as NSUnitDuration.
+        */
         #[method_id(@__retain_semantics Other cumulativeBackgroundAudioTime)]
         pub unsafe fn cumulativeBackgroundAudioTime(&self) -> Id<NSMeasurement<NSUnitDuration>>;
 
@@ -53,6 +95,11 @@ extern_methods!(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"
         ))]
+        /**
+         @property      cumulativeBackgroundLocationTime
+        @abstract      Cumulative time the application spent running in the background to acquire or process location.
+        @discussion    Dimensioned as NSUnitDuration.
+        */
         #[method_id(@__retain_semantics Other cumulativeBackgroundLocationTime)]
         pub unsafe fn cumulativeBackgroundLocationTime(&self) -> Id<NSMeasurement<NSUnitDuration>>;
     }

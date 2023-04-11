@@ -7,6 +7,9 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(u32)]
+    /**
+      Option names for NSOpenGLSetOption() and NSOpenGLGetOption()
+    */
     #[deprecated = "OpenGL API deprecated; please use Metal and MetalKit.  (Define GL_SILENCE_DEPRECATION to silence these warnings.)"]
     pub enum NSOpenGLGlobalOption {
         #[deprecated = "OpenGL API deprecated; please use Metal and MetalKit.  (Define GL_SILENCE_DEPRECATION to silence these warnings.)"]
@@ -24,6 +27,10 @@ ns_enum!(
 
 extern_enum!(
     #[underlying(c_uint)]
+    /**
+      Attribute names for [NSOpenGLPixelFormat initWithAttributes]
+     and [NSOpenGLPixelFormat getValues:forAttribute:forVirtualScreen].
+    */
     pub enum __anonymous__ {
         #[deprecated = "OpenGL API deprecated; please use Metal and MetalKit.  (Define GL_SILENCE_DEPRECATION to silence these warnings.)"]
         NSOpenGLPFAAllRenderers = 1,
@@ -110,6 +117,9 @@ pub type NSOpenGLPixelFormatAttribute = u32;
 
 extern_enum!(
     #[underlying(c_uint)]
+    /**
+      NSOpenGLPFAOpenGLProfile values
+    */
     pub enum __anonymous__ {
         #[deprecated = "OpenGL API deprecated; please use Metal and MetalKit.  (Define GL_SILENCE_DEPRECATION to silence these warnings.)"]
         NSOpenGLProfileVersionLegacy = 0x1000,
@@ -122,6 +132,9 @@ extern_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      Parameter names for NSOpenGLContext -setValues:forParameter: and -getValues:forParameter:
+    */
     #[deprecated = "OpenGL API deprecated; please use Metal and MetalKit.  (Define GL_SILENCE_DEPRECATION to silence these warnings.)"]
     pub enum NSOpenGLContextParameter {
         #[deprecated = "OpenGL API deprecated; please use Metal and MetalKit.  (Define GL_SILENCE_DEPRECATION to silence these warnings.)"]

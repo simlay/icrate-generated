@@ -40,12 +40,21 @@ extern_methods!(
             destination_controller: &Object,
         ) -> Id<Self>;
 
+        /**
+          NSStoryboardSegue instances have optional identifiers that can be assigned in Interface Builder. These identifiers can be used in overrides of -[NSViewController prepareForSegue:sender:] to differentiate segues.
+        */
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Option<Id<NSStoryboardSegueIdentifier>>;
 
+        /**
+          Subclasses of NSStoryboardSegue can use this property to access the source view or window controller that is being segued away from.
+        */
         #[method_id(@__retain_semantics Other sourceController)]
         pub unsafe fn sourceController(&self) -> Id<Object>;
 
+        /**
+          Subclasses of NSStoryboardSegue can use this property to access the destination view or window controller that's being segued to. This property is also essential for overrides of -[NSViewController prepareForSegue:sender:], which is passed to the source view controller. This property allows the receiver of -[NSViewController prepareForSegue:sender:] to access and pass configuration data to the destination controller.
+        */
         #[method_id(@__retain_semantics Other destinationController)]
         pub unsafe fn destinationController(&self) -> Id<Object>;
 

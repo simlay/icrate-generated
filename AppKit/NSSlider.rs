@@ -82,10 +82,16 @@ extern_methods!(
         pub unsafe fn setVertical(&self, vertical: bool);
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+          The color of the filled portion of the track, in appearances that support it
+        */
         #[method_id(@__retain_semantics Other trackFillColor)]
         pub unsafe fn trackFillColor(&self) -> Option<Id<NSColor>>;
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+          The color of the filled portion of the track, in appearances that support it
+        */
         #[method(setTrackFillColor:)]
         pub unsafe fn setTrackFillColor(&self, track_fill_color: Option<&NSColor>);
     }
@@ -101,21 +107,47 @@ extern_methods!(
     /// NSTickMarkSupport
     #[cfg(feature = "AppKit_NSSlider")]
     unsafe impl NSSlider {
+        /**
+          For setting and retrieving the number of tick marks on a slider.
+           0 indicates no tick marks are present, which is the default
+        */
         #[method(numberOfTickMarks)]
         pub unsafe fn numberOfTickMarks(&self) -> NSInteger;
 
+        /**
+          For setting and retrieving the number of tick marks on a slider.
+           0 indicates no tick marks are present, which is the default
+        */
         #[method(setNumberOfTickMarks:)]
         pub unsafe fn setNumberOfTickMarks(&self, number_of_tick_marks: NSInteger);
 
+        /**
+          For setting and retrieving the position tick marks will be displayed in.
+           This has no effect if numberOfTickMarks is 0.
+        */
         #[method(tickMarkPosition)]
         pub unsafe fn tickMarkPosition(&self) -> NSTickMarkPosition;
 
+        /**
+          For setting and retrieving the position tick marks will be displayed in.
+           This has no effect if numberOfTickMarks is 0.
+        */
         #[method(setTickMarkPosition:)]
         pub unsafe fn setTickMarkPosition(&self, tick_mark_position: NSTickMarkPosition);
 
+        /**
+          For setting and retrieving whether values on the slider can be anything
+           the slider normally allows, or only values that correspond to a tick mark.
+           This has no effect if numberOfTickMarks is 0.
+        */
         #[method(allowsTickMarkValuesOnly)]
         pub unsafe fn allowsTickMarkValuesOnly(&self) -> bool;
 
+        /**
+          For setting and retrieving whether values on the slider can be anything
+           the slider normally allows, or only values that correspond to a tick mark.
+           This has no effect if numberOfTickMarks is 0.
+        */
         #[method(setAllowsTickMarkValuesOnly:)]
         pub unsafe fn setAllowsTickMarkValuesOnly(&self, allows_tick_mark_values_only: bool);
 

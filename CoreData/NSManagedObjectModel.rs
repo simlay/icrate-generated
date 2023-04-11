@@ -7,6 +7,9 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreData_NSManagedObjectModel")]
+    /**
+      Models describe object graphs to be managed. Models (and their entities/properties/fetch request templates) are editable until they are used by a persistent store coordinator, allowing developers to create/modify them dynamically. However, once a model is being used, it MUST NOT be changed. When the persistent store coordinator first fetches data using a model, it will become uneditable. Any attempt to mutate a model or any of its subobjects after that point will cause an exception to be thrown. If you need to modify a model that is in use, create a copy, modify the copy, and then discard the objects with the old model.
+    */
     pub struct NSManagedObjectModel;
 
     #[cfg(feature = "CoreData_NSManagedObjectModel")]
@@ -16,15 +19,27 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreData_NSManagedObjectModel")]
+/**
+  Models describe object graphs to be managed. Models (and their entities/properties/fetch request templates) are editable until they are used by a persistent store coordinator, allowing developers to create/modify them dynamically. However, once a model is being used, it MUST NOT be changed. When the persistent store coordinator first fetches data using a model, it will become uneditable. Any attempt to mutate a model or any of its subobjects after that point will cause an exception to be thrown. If you need to modify a model that is in use, create a copy, modify the copy, and then discard the objects with the old model.
+*/
 unsafe impl NSCoding for NSManagedObjectModel {}
 
 #[cfg(feature = "CoreData_NSManagedObjectModel")]
+/**
+  Models describe object graphs to be managed. Models (and their entities/properties/fetch request templates) are editable until they are used by a persistent store coordinator, allowing developers to create/modify them dynamically. However, once a model is being used, it MUST NOT be changed. When the persistent store coordinator first fetches data using a model, it will become uneditable. Any attempt to mutate a model or any of its subobjects after that point will cause an exception to be thrown. If you need to modify a model that is in use, create a copy, modify the copy, and then discard the objects with the old model.
+*/
 unsafe impl NSFastEnumeration for NSManagedObjectModel {}
 
 #[cfg(feature = "CoreData_NSManagedObjectModel")]
+/**
+  Models describe object graphs to be managed. Models (and their entities/properties/fetch request templates) are editable until they are used by a persistent store coordinator, allowing developers to create/modify them dynamically. However, once a model is being used, it MUST NOT be changed. When the persistent store coordinator first fetches data using a model, it will become uneditable. Any attempt to mutate a model or any of its subobjects after that point will cause an exception to be thrown. If you need to modify a model that is in use, create a copy, modify the copy, and then discard the objects with the old model.
+*/
 unsafe impl NSObjectProtocol for NSManagedObjectModel {}
 
 extern_methods!(
+    /**
+      Models describe object graphs to be managed. Models (and their entities/properties/fetch request templates) are editable until they are used by a persistent store coordinator, allowing developers to create/modify them dynamically. However, once a model is being used, it MUST NOT be changed. When the persistent store coordinator first fetches data using a model, it will become uneditable. Any attempt to mutate a model or any of its subobjects after that point will cause an exception to be thrown. If you need to modify a model that is in use, create a copy, modify the copy, and then discard the objects with the old model.
+    */
     #[cfg(feature = "CoreData_NSManagedObjectModel")]
     unsafe impl NSManagedObjectModel {
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSBundle"))]
@@ -72,6 +87,9 @@ extern_methods!(
         pub unsafe fn setEntities(&self, entities: &NSArray<NSEntityDescription>);
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          returns all available configuration names
+        */
         #[method_id(@__retain_semantics Other configurations)]
         pub unsafe fn configurations(&self) -> Id<NSArray<NSString>>;
 
@@ -126,11 +144,41 @@ extern_methods!(
         ) -> Option<Id<NSFetchRequest>>;
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+         NSDictionary containing localized string values for entities, properties, and error strings related to this model. The key and value pattern follows:
+        key = "Entity/NonLocalizedEntityName"
+        value = "LocalizedEntityName"
+
+        // for properties of the same non-localized name in differenct entities, which should have different localized names
+        key = "Property/NonLocalizedPropertyName/Entity/EntityName"
+        value = "LocalizedPropertyName"
+
+        key = "Property/NonLocalizedPropertyName"
+        value = "LocalizedPropertyName"
+
+        key = "ErrorString/NonLocalizedErrorString"
+        value = "LocalizedErrorString"
+        */
         #[method_id(@__retain_semantics Other localizationDictionary)]
         pub unsafe fn localizationDictionary(&self)
             -> Option<Id<NSDictionary<NSString, NSString>>>;
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+         NSDictionary containing localized string values for entities, properties, and error strings related to this model. The key and value pattern follows:
+        key = "Entity/NonLocalizedEntityName"
+        value = "LocalizedEntityName"
+
+        // for properties of the same non-localized name in differenct entities, which should have different localized names
+        key = "Property/NonLocalizedPropertyName/Entity/EntityName"
+        value = "LocalizedPropertyName"
+
+        key = "Property/NonLocalizedPropertyName"
+        value = "LocalizedPropertyName"
+
+        key = "ErrorString/NonLocalizedErrorString"
+        value = "LocalizedErrorString"
+        */
         #[method(setLocalizationDictionary:)]
         pub unsafe fn setLocalizationDictionary(
             &self,
@@ -165,16 +213,25 @@ extern_methods!(
             feature = "Foundation_NSDictionary",
             feature = "Foundation_NSString"
         ))]
+        /**
+          Returns the dictionary of fetch request templates, keyed by name, for the model.  If the template contains a predicate with substitution variables, you should instead use fetchRequestFromTemplateWithName:substitutionVariables: to create a new fetch request.
+        */
         #[method_id(@__retain_semantics Other fetchRequestTemplatesByName)]
         pub unsafe fn fetchRequestTemplatesByName(
             &self,
         ) -> Id<NSDictionary<NSString, NSFetchRequest>>;
 
         #[cfg(feature = "Foundation_NSSet")]
+        /**
+          Returns the collection of developer-defined version identifiers for the model.  For models created in Xcode, this value is set by the developer in the model inspector. Merged models return the combined  collection of identifiers. This value is meant to be used as a debugging hint to help developers determine the models that were combined to create a merged model. The framework does not give models a default identifier, nor does it depend this value at runtime.
+        */
         #[method_id(@__retain_semantics Other versionIdentifiers)]
         pub unsafe fn versionIdentifiers(&self) -> Id<NSSet>;
 
         #[cfg(feature = "Foundation_NSSet")]
+        /**
+          Returns the collection of developer-defined version identifiers for the model.  For models created in Xcode, this value is set by the developer in the model inspector. Merged models return the combined  collection of identifiers. This value is meant to be used as a debugging hint to help developers determine the models that were combined to create a merged model. The framework does not give models a default identifier, nor does it depend this value at runtime.
+        */
         #[method(setVersionIdentifiers:)]
         pub unsafe fn setVersionIdentifiers(&self, version_identifiers: &NSSet);
 
@@ -191,6 +248,9 @@ extern_methods!(
             feature = "Foundation_NSDictionary",
             feature = "Foundation_NSString"
         ))]
+        /**
+          Returns a dictionary of the version hashes for the entities in the model, keyed by entity name.  (The dictionary of version hash information is used by Core Data to determine schema compatibility.)
+        */
         #[method_id(@__retain_semantics Other entityVersionHashesByName)]
         pub unsafe fn entityVersionHashesByName(&self) -> Id<NSDictionary<NSString, NSData>>;
     }

@@ -84,12 +84,21 @@ extern_methods!(
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
 
+        /**
+          @brief Gets the singleton downloader object.
+        */
         #[method_id(@__retain_semantics Other sharedManager)]
         pub unsafe fn sharedManager() -> Id<BADownloadManager>;
 
+        /**
+          @brief A object confroming to BADownloadManagerDelegate to get notified when actions occur.
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(&self) -> Option<Id<ProtocolObject<dyn BADownloadManagerDelegate>>>;
 
+        /**
+          @brief A object confroming to BADownloadManagerDelegate to get notified when actions occur.
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,

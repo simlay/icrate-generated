@@ -8,6 +8,9 @@ use crate::WebKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "WebKit_WKWindowFeatures")]
+    /**
+      WKWindowFeatures specifies optional attributes for the containing window when a new WKWebView is requested.
+    */
     pub struct WKWindowFeatures;
 
     #[cfg(feature = "WebKit_WKWindowFeatures")]
@@ -17,40 +20,70 @@ extern_class!(
 );
 
 #[cfg(feature = "WebKit_WKWindowFeatures")]
+/**
+  WKWindowFeatures specifies optional attributes for the containing window when a new WKWebView is requested.
+*/
 unsafe impl NSObjectProtocol for WKWindowFeatures {}
 
 extern_methods!(
+    /**
+      WKWindowFeatures specifies optional attributes for the containing window when a new WKWebView is requested.
+    */
     #[cfg(feature = "WebKit_WKWindowFeatures")]
     unsafe impl WKWindowFeatures {
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+          @abstract BOOL. Whether the menu bar should be visible. nil if menu bar visibility was not specified.
+        */
         #[method_id(@__retain_semantics Other menuBarVisibility)]
         pub unsafe fn menuBarVisibility(&self) -> Option<Id<NSNumber>>;
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+          @abstract BOOL. Whether the status bar should be visible. nil if status bar visibility was not specified.
+        */
         #[method_id(@__retain_semantics Other statusBarVisibility)]
         pub unsafe fn statusBarVisibility(&self) -> Option<Id<NSNumber>>;
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+          @abstract BOOL. Whether toolbars should be visible. nil if toolbar visibility was not specified.
+        */
         #[method_id(@__retain_semantics Other toolbarsVisibility)]
         pub unsafe fn toolbarsVisibility(&self) -> Option<Id<NSNumber>>;
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+          @abstract BOOL. Whether the containing window should be resizable. nil if resizability was not specified.
+        */
         #[method_id(@__retain_semantics Other allowsResizing)]
         pub unsafe fn allowsResizing(&self) -> Option<Id<NSNumber>>;
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+          @abstract CGFloat. The x coordinate of the containing window. nil if the x coordinate was not specified.
+        */
         #[method_id(@__retain_semantics Other x)]
         pub unsafe fn x(&self) -> Option<Id<NSNumber>>;
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+          @abstract CGFloat. The y coordinate of the containing window. nil if the y coordinate was not specified.
+        */
         #[method_id(@__retain_semantics Other y)]
         pub unsafe fn y(&self) -> Option<Id<NSNumber>>;
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+          @abstract CGFloat. The width coordinate of the containing window. nil if the width was not specified.
+        */
         #[method_id(@__retain_semantics Other width)]
         pub unsafe fn width(&self) -> Option<Id<NSNumber>>;
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+          @abstract CGFloat. The height coordinate of the containing window. nil if the height was not specified.
+        */
         #[method_id(@__retain_semantics Other height)]
         pub unsafe fn height(&self) -> Option<Id<NSNumber>>;
     }

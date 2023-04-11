@@ -31,6 +31,9 @@ extern_methods!(
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
+        /**
+          The client, typically an NSView, retains its controller instance; the controller doesn't retain its client.
+        */
         #[method_id(@__retain_semantics Other client)]
         pub unsafe fn client(&self) -> Id<ProtocolObject<dyn NSTextCheckingClient>>;
 
@@ -95,9 +98,15 @@ extern_methods!(
             effective_range: NSRangePointer,
         ) -> Option<Id<NSMenu>>;
 
+        /**
+          The controller will automatically generate a spellchecker document tag for the client. With this property the client can obtain the tag to use as needed, or set its own choice of tag.
+        */
         #[method(spellCheckerDocumentTag)]
         pub unsafe fn spellCheckerDocumentTag(&self) -> NSInteger;
 
+        /**
+          The controller will automatically generate a spellchecker document tag for the client. With this property the client can obtain the tag to use as needed, or set its own choice of tag.
+        */
         #[method(setSpellCheckerDocumentTag:)]
         pub unsafe fn setSpellCheckerDocumentTag(&self, spell_checker_document_tag: NSInteger);
     }

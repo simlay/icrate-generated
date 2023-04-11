@@ -9,6 +9,15 @@ use crate::MapKit::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum           EKSpan
+    @abstract       Values for controlling what occurrences to affect in a recurring event.
+    @discussion     This enumerated type is used to indicate the scope of a change being made to a repeating event. EKSpanThisEvent
+    indicates the changes should apply only to this event, EKSpanFutureEvents indicates the changes should apply to
+    this event and all future events in the pattern.
+    @constant       EKSpanThisEvent        Affect this event only.
+    @constant       EKSpanFutureEvents     Affect this event and all after it.
+    */
     pub enum EKSpan {
         EKSpanThisEvent = 0,
         EKSpanFutureEvents = 1,
@@ -22,6 +31,16 @@ pub type EKEventStoreRequestAccessCompletionHandler = *mut Block<(Bool, *mut NSE
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "EventKit_EKEventStore")]
+    /**
+     @class       EKEventStore
+    @abstract    The EKEventStore class provides an interface for accessing and manipulating calendar events and reminders.
+    @discussion  The EKEventStore class is the main point of contact for accessing Calendar data. You must
+    create a EKEventStore object in order to retrieve/add/delete events or reminders from the Calendar database.
+
+    Events, Reminders, and Calendar objects retrieved from an event store cannot be used with any other event
+    store. It is generally best to hold onto a long-lived instance of an event store, most
+    likely as a singleton instance in your application.
+    */
     pub struct EKEventStore;
 
     #[cfg(feature = "EventKit_EKEventStore")]
@@ -31,9 +50,29 @@ extern_class!(
 );
 
 #[cfg(feature = "EventKit_EKEventStore")]
+/**
+ @class       EKEventStore
+@abstract    The EKEventStore class provides an interface for accessing and manipulating calendar events and reminders.
+@discussion  The EKEventStore class is the main point of contact for accessing Calendar data. You must
+create a EKEventStore object in order to retrieve/add/delete events or reminders from the Calendar database.
+
+Events, Reminders, and Calendar objects retrieved from an event store cannot be used with any other event
+store. It is generally best to hold onto a long-lived instance of an event store, most
+likely as a singleton instance in your application.
+*/
 unsafe impl NSObjectProtocol for EKEventStore {}
 
 extern_methods!(
+    /**
+     @class       EKEventStore
+    @abstract    The EKEventStore class provides an interface for accessing and manipulating calendar events and reminders.
+    @discussion  The EKEventStore class is the main point of contact for accessing Calendar data. You must
+    create a EKEventStore object in order to retrieve/add/delete events or reminders from the Calendar database.
+
+    Events, Reminders, and Calendar objects retrieved from an event store cannot be used with any other event
+    store. It is generally best to hold onto a long-lived instance of an event store, most
+    likely as a singleton instance in your application.
+    */
     #[cfg(feature = "EventKit_EKEventStore")]
     unsafe impl EKEventStore {
         #[method(authorizationStatusForEntityType:)]
@@ -66,14 +105,26 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property   eventStoreIdentifier
+        @abstract   Returns a unique identifier string representing this calendar store.
+        */
         #[method_id(@__retain_semantics Other eventStoreIdentifier)]
         pub unsafe fn eventStoreIdentifier(&self) -> Id<NSString>;
 
         #[cfg(all(feature = "EventKit_EKSource", feature = "Foundation_NSArray"))]
+        /**
+         @property   delegateSources
+        @abstract   Returns an unordered array of sources for all available delegates.
+        */
         #[method_id(@__retain_semantics Other delegateSources)]
         pub unsafe fn delegateSources(&self) -> Id<NSArray<EKSource>>;
 
         #[cfg(all(feature = "EventKit_EKSource", feature = "Foundation_NSArray"))]
+        /**
+         @property   sources
+        @abstract   Returns an unordered array of sources.
+        */
         #[method_id(@__retain_semantics Other sources)]
         pub unsafe fn sources(&self) -> Id<NSArray<EKSource>>;
 
@@ -82,6 +133,12 @@ extern_methods!(
         pub unsafe fn sourceWithIdentifier(&self, identifier: &NSString) -> Option<Id<EKSource>>;
 
         #[cfg(all(feature = "EventKit_EKCalendar", feature = "Foundation_NSArray"))]
+        /**
+         @method     calendars
+        @abstract   While this returns an array, the calendars are unordered. This call is deprecated
+        and only returns calendars that support events. If you want reminder calendars
+        you should use calendarsForEntityType:
+        */
         #[method_id(@__retain_semantics Other calendars)]
         pub unsafe fn calendars(&self) -> Id<NSArray<EKCalendar>>;
 
@@ -93,6 +150,11 @@ extern_methods!(
         ) -> Id<NSArray<EKCalendar>>;
 
         #[cfg(feature = "EventKit_EKCalendar")]
+        /**
+         @property   defaultCalendarForNewEvents
+        @abstract   Returns the calendar that events should be added to by default.
+        @discussion This may be nil if there is no default calendar for new events.
+        */
         #[method_id(@__retain_semantics Other defaultCalendarForNewEvents)]
         pub unsafe fn defaultCalendarForNewEvents(&self) -> Option<Id<EKCalendar>>;
 

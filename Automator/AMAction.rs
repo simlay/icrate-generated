@@ -56,10 +56,16 @@ extern_methods!(
         pub unsafe fn ignoresInput(&self) -> bool;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The selected[Input, Output]Type must be a UTI in the action's Info.plist.  Set these to nil to restore default behavior.
+        */
         #[method_id(@__retain_semantics Other selectedInputType)]
         pub unsafe fn selectedInputType(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The selected[Input, Output]Type must be a UTI in the action's Info.plist.  Set these to nil to restore default behavior.
+        */
         #[method(setSelectedInputType:)]
         pub unsafe fn setSelectedInputType(&self, selected_input_type: Option<&NSString>);
 
@@ -71,9 +77,15 @@ extern_methods!(
         #[method(setSelectedOutputType:)]
         pub unsafe fn setSelectedOutputType(&self, selected_output_type: Option<&NSString>);
 
+        /**
+          Values from 0 to 1 are used to show or determinate progress
+        */
         #[method(progressValue)]
         pub unsafe fn progressValue(&self) -> CGFloat;
 
+        /**
+          Values from 0 to 1 are used to show or determinate progress
+        */
         #[method(setProgressValue:)]
         pub unsafe fn setProgressValue(&self, progress_value: CGFloat);
 

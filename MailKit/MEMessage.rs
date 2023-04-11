@@ -26,6 +26,9 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MailKit_MEMessage")]
+    /**
+      @brief Contains information about a mail message on which actions can be performed.
+    */
     pub struct MEMessage;
 
     #[cfg(feature = "MailKit_MEMessage")]
@@ -35,56 +38,101 @@ extern_class!(
 );
 
 #[cfg(feature = "MailKit_MEMessage")]
+/**
+  @brief Contains information about a mail message on which actions can be performed.
+*/
 unsafe impl NSCoding for MEMessage {}
 
 #[cfg(feature = "MailKit_MEMessage")]
+/**
+  @brief Contains information about a mail message on which actions can be performed.
+*/
 unsafe impl NSObjectProtocol for MEMessage {}
 
 #[cfg(feature = "MailKit_MEMessage")]
+/**
+  @brief Contains information about a mail message on which actions can be performed.
+*/
 unsafe impl NSSecureCoding for MEMessage {}
 
 extern_methods!(
+    /**
+      @brief Contains information about a mail message on which actions can be performed.
+    */
     #[cfg(feature = "MailKit_MEMessage")]
     unsafe impl MEMessage {
+        /**
+          @brief The state of the mail message.
+        */
         #[method(state)]
         pub unsafe fn state(&self) -> MEMessageState;
 
+        /**
+          @brief The encryption state of the mail message.
+        */
         #[method(encryptionState)]
         pub unsafe fn encryptionState(&self) -> MEMessageEncryptionState;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @brief The subject of the mail message.
+        */
         #[method_id(@__retain_semantics Other subject)]
         pub unsafe fn subject(&self) -> Id<NSString>;
 
         #[cfg(feature = "MailKit_MEEmailAddress")]
+        /**
+          @brief Message sender's email address.
+        */
         #[method_id(@__retain_semantics Other fromAddress)]
         pub unsafe fn fromAddress(&self) -> Id<MEEmailAddress>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "MailKit_MEEmailAddress"))]
+        /**
+          @brief Recipient email addresses in the "To" address field of the message.
+        */
         #[method_id(@__retain_semantics Other toAddresses)]
         pub unsafe fn toAddresses(&self) -> Id<NSArray<MEEmailAddress>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "MailKit_MEEmailAddress"))]
+        /**
+          @brief Recipient email addresses in the "Cc" address field of the message.
+        */
         #[method_id(@__retain_semantics Other ccAddresses)]
         pub unsafe fn ccAddresses(&self) -> Id<NSArray<MEEmailAddress>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "MailKit_MEEmailAddress"))]
+        /**
+          @brief Recipient email addresses in the "Bcc" address field of the message.
+        */
         #[method_id(@__retain_semantics Other bccAddresses)]
         pub unsafe fn bccAddresses(&self) -> Id<NSArray<MEEmailAddress>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "MailKit_MEEmailAddress"))]
+        /**
+          @brief Recipient email addresses in the "Reply-To" field of the message.
+        */
         #[method_id(@__retain_semantics Other replyToAddresses)]
         pub unsafe fn replyToAddresses(&self) -> Id<NSArray<MEEmailAddress>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "MailKit_MEEmailAddress"))]
+        /**
+          @brief An array containing all recipients of the message.
+        */
         #[method_id(@__retain_semantics Other allRecipientAddresses)]
         pub unsafe fn allRecipientAddresses(&self) -> Id<NSArray<MEEmailAddress>>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          @brief The date the mail message was sent. Optionally set by the by the sender.
+        */
         #[method_id(@__retain_semantics Other dateSent)]
         pub unsafe fn dateSent(&self) -> Option<Id<NSDate>>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          @brief The date the mail message was received. Only present if the message has been received.
+        */
         #[method_id(@__retain_semantics Other dateReceived)]
         pub unsafe fn dateReceived(&self) -> Option<Id<NSDate>>;
 
@@ -93,10 +141,16 @@ extern_methods!(
             feature = "Foundation_NSDictionary",
             feature = "Foundation_NSString"
         ))]
+        /**
+          @brief The headers for the message. Might only be a subset if the full body has not been downloaded.
+        */
         #[method_id(@__retain_semantics Other headers)]
         pub unsafe fn headers(&self) -> Option<Id<NSDictionary<NSString, NSArray<NSString>>>>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          @brief The full raw RFC822 message data if it has been downloaded and the extension has permissions to access.
+        */
         #[method_id(@__retain_semantics Other rawData)]
         pub unsafe fn rawData(&self) -> Option<Id<NSData>>;
 

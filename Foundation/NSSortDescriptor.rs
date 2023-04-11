@@ -105,6 +105,9 @@ extern_methods!(
             object2: &Object,
         ) -> NSComparisonResult;
 
+        /**
+          primitive - override this method to return a sort descriptor instance with reversed sort order
+        */
         #[method_id(@__retain_semantics Other reversedSortDescriptor)]
         pub unsafe fn reversedSortDescriptor(&self) -> Id<Object>;
     }

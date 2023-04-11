@@ -105,10 +105,16 @@ extern_methods!(
         #[method_id(@__retain_semantics Other completedString:)]
         pub unsafe fn completedString(&self, string: &NSString) -> Option<Id<NSString>>;
 
+        /**
+          These two methods can only be used when usesDataSource is YES
+        */
         #[method_id(@__retain_semantics Other dataSource)]
         pub unsafe fn dataSource(&self)
             -> Option<Id<ProtocolObject<dyn NSComboBoxCellDataSource>>>;
 
+        /**
+          These two methods can only be used when usesDataSource is YES
+        */
         #[method(setDataSource:)]
         pub unsafe fn setDataSource(
             &self,

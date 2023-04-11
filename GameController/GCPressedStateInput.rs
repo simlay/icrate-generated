@@ -6,7 +6,14 @@ use crate::Foundation::*;
 use crate::GameController::*;
 
 extern_protocol!(
+    /**
+     An object conforming to \c GCPressedStateInput represents the pressed state of
+    an element, typically a button.
+    */
     pub unsafe trait GCPressedStateInput: NSObjectProtocol {
+        /**
+         Set this block if you want to be notified when the pressed state changes.
+        */
         #[method(pressedDidChangeHandler)]
         unsafe fn pressedDidChangeHandler(
             &self,
@@ -19,6 +26,9 @@ extern_protocol!(
             (),
         >;
 
+        /**
+         Set this block if you want to be notified when the pressed state changes.
+        */
         #[method(setPressedDidChangeHandler:)]
         unsafe fn setPressedDidChangeHandler(
             &self,
@@ -34,12 +44,41 @@ extern_protocol!(
             >,
         );
 
+        /**
+         Buttons are mostly used in a digital sense, thus we have a recommended method
+        for checking for pressed state instead of interpreting the value.
+
+        As a general guideline a button is pressed if the value exceeds 0. However
+        there may be hysteresis applied to counter noisy input values, thus incidental
+        values around the threshold value may not trigger a change in pressed state.
+
+        Other buttons may support two-stage actuation, where the button reports a
+        value between 0 and 1 but is only considered pressed when its value is greater
+        than some threshold other than 0.
+
+        @see pressedDidChangeHandler
+        */
         #[method(isPressed)]
         unsafe fn isPressed(&self) -> bool;
 
+        /**
+         The timestamp of the last pressed state change.
+
+        This time interval is not relative to any specific point in time.  You can
+        subtract a previous timestamp from the current timestamp to determine the time
+        (in seconds) between changes to the value.
+        */
         #[method(lastPressedStateTimestamp)]
         unsafe fn lastPressedStateTimestamp(&self) -> NSTimeInterval;
 
+        /**
+         The interval (in seconds) between the timestamp of the last pressed state
+        change and the current time.
+
+        This should be treated as a lower bound of the event latency.  It may not
+        include (wired or wireless) transmission latency, or latency accrued on
+        the device before the event was transmitted to the host.
+        */
         #[method(lastPressedStateLatency)]
         unsafe fn lastPressedStateLatency(&self) -> NSTimeInterval;
     }

@@ -4,16 +4,36 @@ use crate::common::*;
 use crate::Foundation::*;
 
 extern_protocol!(
+    /**
+      A protocol to be implemented by objects that present the contents of files or directories to the user for viewing or editing. The objects can take an active role in operations that access those files or directories, even operations performed by other processes in the system. For an NSFilePresenter to be aware of such file access it must be "coordinated" file access. The NSFileCoordinator class that is used to do coordinated file access is declared in <Foundation/NSFileCoordinator.h>. Starting in version 10.7 many components of Mac OS X use NSFileCoordinator, including AppKit, Finder, and various applications. NSDocument conforms to the NSFilePresenter protocol and has useful implementations of all of its methods. You are unlikely to have to implement NSFilePresenter yourself in an NSDocument-based application.
+
+    See the comments for -[NSFileCoordinator initWithFilePresenter:] for information about how an NSFilePresenter can avoid receiving messages about its own reading and writing.
+
+    You can consider "item" in method names in this header file to be an abbreviation of "fileOrDirectory." As always, a directory might actually be a file package.
+    */
     pub unsafe trait NSFilePresenter: NSObjectProtocol {
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          The NSURL that locates the file or directory that the receiver is presenting to the user. Implementations of this method must be prepared to be invoked by Cocoa in any queue, at any time, including from within invocations of NSFileCoordinator methods. A nil value is valid and means that the presented item does not exist yet. An NSFilePresenter with a nil presentedItemURL will be asked for its presentedItemURL again when coordinated file access on behalf of that NSFilePresenter completes, in case the presented item was just created.
+
+        For example, NSDocument has a -presentedItemURL method that usually returns [self fileURL]. In a shoebox application that stores the user's data in files somewhere on the user's computer you can implement this method to specify the directory that contains those files.
+        */
         #[method_id(@__retain_semantics Other presentedItemURL)]
         unsafe fn presentedItemURL(&self) -> Option<Id<NSURL>>;
 
         #[cfg(feature = "Foundation_NSOperationQueue")]
+        /**
+          The operation queue in which all of the other NSFilePresenter messages except -presentedItemURL will be sent to the receiver. Implementations of this method must be prepared to be invoked by Cocoa in any queue, at any time, including from within invocations of NSFileCoordinator methods. A nil value is not valid.
+
+        For example, NSDocument has a -presentedItemOperationQueue method that returns a private queue. In very simple cases you can return [NSOperationQueue mainQueue], but doing so is often an invitation to deadlocks.
+        */
         #[method_id(@__retain_semantics Other presentedItemOperationQueue)]
         unsafe fn presentedItemOperationQueue(&self) -> Id<NSOperationQueue>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          Support for App Sandbox on OS X. Some applications, given a user-selected file, require access to additional files or directories with related names. For example, a movie player might have to automatically load subtitles for a movie that the user opened. By convention, the subtitle file has the same name as the movie, but a different file extension. If the movie player is sandboxed, its use of NSOpenPanel will grant it access to the user-selected movie (the primary item). However, access to the subtitle file (the secondary item) will not be granted by NSOpenPanel. To get access to a secondary item, a process can register an NSFilePresenter for it and unregister the NSFilePresenter once the application is finished accessing it. Each NSFilePresenter of a secondary item must return an NSURL to the primary item on request. You make that happen by providing an implementation of -primaryPresentedItemURL that returns an NSURL for the primary item.
+        */
         #[optional]
         #[method_id(@__retain_semantics Other primaryPresentedItemURL)]
         unsafe fn primaryPresentedItemURL(&self) -> Option<Id<NSURL>>;
@@ -60,6 +80,13 @@ extern_protocol!(
         );
 
         #[cfg(feature = "Foundation_NSSet")]
+        /**
+          The set of ubiquity attributes, which the receiver wishes to be notified about when they change for presentedItemURL. Valid attributes include only NSURLIsUbiquitousItemKey and any other attributes whose names start with "NSURLUbiquitousItem" or "NSURLUbiquitousSharedItem". The default set, in case this property is not implemented, includes of all such attributes.
+
+        This property will normally be checked only at the time addFilePresenter: is called. However, if presentedItemURL is nil at that time, it will instead be checked only at the end of a coordinated write where presentedItemURL became non-nil. The value of this property should not change depending on whether presentedItemURL is currently ubiquitous or is located a ubiquity container.
+
+        For example, NSDocument implements this property to always return NSURLIsUbiquitousItemKey, NSURLUbiquitousItemIsSharedKey, and various other properties starting with "NSURLUbiquitousSharedItem". It needsto be notified about changes to these properties in order to implement support for ubiquitous and shared documents.
+        */
         #[optional]
         #[method_id(@__retain_semantics Other observedPresentedItemUbiquityAttributes)]
         unsafe fn observedPresentedItemUbiquityAttributes(&self) -> Id<NSSet<NSURLResourceKey>>;

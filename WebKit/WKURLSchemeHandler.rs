@@ -6,6 +6,10 @@ use crate::Foundation::*;
 use crate::WebKit::*;
 
 extern_protocol!(
+    /**
+      A class conforming to the WKURLSchemeHandler protocol provides methods for
+    loading resources with URL schemes that WebKit doesn't know how to handle itself.
+    */
     pub unsafe trait WKURLSchemeHandler: NSObjectProtocol {
         #[cfg(feature = "WebKit_WKWebView")]
         #[method(webView:startURLSchemeTask:)]

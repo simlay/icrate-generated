@@ -8,6 +8,67 @@ extern_static!(NSURLSessionTransferSizeUnknown: i64);
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSURLSession")]
+    /**
+     NSURLSession is a replacement API for NSURLConnection.  It provides
+    options that affect the policy of, and various aspects of the
+    mechanism by which NSURLRequest objects are retrieved from the
+    network.
+
+    An NSURLSession may be bound to a delegate object.  The delegate is
+    invoked for certain events during the lifetime of a session, such as
+    server authentication or determining whether a resource to be loaded
+    should be converted into a download.
+
+    NSURLSession instances are thread-safe.
+
+    The default NSURLSession uses a system provided delegate and is
+    appropriate to use in place of existing code that uses
+    +[NSURLConnection sendAsynchronousRequest:queue:completionHandler:]
+
+    An NSURLSession creates NSURLSessionTask objects which represent the
+    action of a resource being loaded.  These are analogous to
+    NSURLConnection objects but provide for more control and a unified
+    delegate model.
+
+    NSURLSessionTask objects are always created in a suspended state and
+    must be sent the -resume message before they will execute.
+
+    Subclasses of NSURLSessionTask are used to syntactically
+    differentiate between data and file downloads.
+
+    An NSURLSessionDataTask receives the resource as a series of calls to
+    the URLSession:dataTask:didReceiveData: delegate method.  This is type of
+    task most commonly associated with retrieving objects for immediate parsing
+    by the consumer.
+
+    An NSURLSessionUploadTask differs from an NSURLSessionDataTask
+    in how its instance is constructed.  Upload tasks are explicitly created
+    by referencing a file or data object to upload, or by utilizing the
+    -URLSession:task:needNewBodyStream: delegate message to supply an upload
+    body.
+
+    An NSURLSessionDownloadTask will directly write the response data to
+    a temporary file.  When completed, the delegate is sent
+    URLSession:downloadTask:didFinishDownloadingToURL: and given an opportunity
+    to move this file to a permanent location in its sandboxed container, or to
+    otherwise read the file. If canceled, an NSURLSessionDownloadTask can
+    produce a data blob that can be used to resume a download at a later
+    time.
+
+    Beginning with iOS 9 and Mac OS X 10.11, NSURLSessionStream is
+    available as a task type.  This allows for direct TCP/IP connection
+    to a given host and port with optional secure handshaking and
+    navigation of proxies.  Data tasks may also be upgraded to a
+    NSURLSessionStream task via the HTTP Upgrade: header and appropriate
+    use of the pipelining option of NSURLSessionConfiguration.  See RFC
+    2817 and RFC 6455 for information about the Upgrade: header, and
+    comments below on turning data tasks into stream tasks.
+
+    An NSURLSessionWebSocketTask is a task that allows clients to connect to servers supporting
+    WebSocket. The task will perform the HTTP handshake to upgrade the connection
+    and once the WebSocket handshake is successful, the client can read and write
+    messages that will be framed using the WebSocket protocol by the framework.
+    */
     pub struct NSURLSession;
 
     #[cfg(feature = "Foundation_NSURLSession")]
@@ -17,11 +78,137 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSURLSession")]
+/**
+ NSURLSession is a replacement API for NSURLConnection.  It provides
+options that affect the policy of, and various aspects of the
+mechanism by which NSURLRequest objects are retrieved from the
+network.
+
+An NSURLSession may be bound to a delegate object.  The delegate is
+invoked for certain events during the lifetime of a session, such as
+server authentication or determining whether a resource to be loaded
+should be converted into a download.
+
+NSURLSession instances are thread-safe.
+
+The default NSURLSession uses a system provided delegate and is
+appropriate to use in place of existing code that uses
++[NSURLConnection sendAsynchronousRequest:queue:completionHandler:]
+
+An NSURLSession creates NSURLSessionTask objects which represent the
+action of a resource being loaded.  These are analogous to
+NSURLConnection objects but provide for more control and a unified
+delegate model.
+
+NSURLSessionTask objects are always created in a suspended state and
+must be sent the -resume message before they will execute.
+
+Subclasses of NSURLSessionTask are used to syntactically
+differentiate between data and file downloads.
+
+An NSURLSessionDataTask receives the resource as a series of calls to
+the URLSession:dataTask:didReceiveData: delegate method.  This is type of
+task most commonly associated with retrieving objects for immediate parsing
+by the consumer.
+
+An NSURLSessionUploadTask differs from an NSURLSessionDataTask
+in how its instance is constructed.  Upload tasks are explicitly created
+by referencing a file or data object to upload, or by utilizing the
+-URLSession:task:needNewBodyStream: delegate message to supply an upload
+body.
+
+An NSURLSessionDownloadTask will directly write the response data to
+a temporary file.  When completed, the delegate is sent
+URLSession:downloadTask:didFinishDownloadingToURL: and given an opportunity
+to move this file to a permanent location in its sandboxed container, or to
+otherwise read the file. If canceled, an NSURLSessionDownloadTask can
+produce a data blob that can be used to resume a download at a later
+time.
+
+Beginning with iOS 9 and Mac OS X 10.11, NSURLSessionStream is
+available as a task type.  This allows for direct TCP/IP connection
+to a given host and port with optional secure handshaking and
+navigation of proxies.  Data tasks may also be upgraded to a
+NSURLSessionStream task via the HTTP Upgrade: header and appropriate
+use of the pipelining option of NSURLSessionConfiguration.  See RFC
+2817 and RFC 6455 for information about the Upgrade: header, and
+comments below on turning data tasks into stream tasks.
+
+An NSURLSessionWebSocketTask is a task that allows clients to connect to servers supporting
+WebSocket. The task will perform the HTTP handshake to upgrade the connection
+and once the WebSocket handshake is successful, the client can read and write
+messages that will be framed using the WebSocket protocol by the framework.
+*/
 unsafe impl NSObjectProtocol for NSURLSession {}
 
 extern_methods!(
+    /**
+     NSURLSession is a replacement API for NSURLConnection.  It provides
+    options that affect the policy of, and various aspects of the
+    mechanism by which NSURLRequest objects are retrieved from the
+    network.
+
+    An NSURLSession may be bound to a delegate object.  The delegate is
+    invoked for certain events during the lifetime of a session, such as
+    server authentication or determining whether a resource to be loaded
+    should be converted into a download.
+
+    NSURLSession instances are thread-safe.
+
+    The default NSURLSession uses a system provided delegate and is
+    appropriate to use in place of existing code that uses
+    +[NSURLConnection sendAsynchronousRequest:queue:completionHandler:]
+
+    An NSURLSession creates NSURLSessionTask objects which represent the
+    action of a resource being loaded.  These are analogous to
+    NSURLConnection objects but provide for more control and a unified
+    delegate model.
+
+    NSURLSessionTask objects are always created in a suspended state and
+    must be sent the -resume message before they will execute.
+
+    Subclasses of NSURLSessionTask are used to syntactically
+    differentiate between data and file downloads.
+
+    An NSURLSessionDataTask receives the resource as a series of calls to
+    the URLSession:dataTask:didReceiveData: delegate method.  This is type of
+    task most commonly associated with retrieving objects for immediate parsing
+    by the consumer.
+
+    An NSURLSessionUploadTask differs from an NSURLSessionDataTask
+    in how its instance is constructed.  Upload tasks are explicitly created
+    by referencing a file or data object to upload, or by utilizing the
+    -URLSession:task:needNewBodyStream: delegate message to supply an upload
+    body.
+
+    An NSURLSessionDownloadTask will directly write the response data to
+    a temporary file.  When completed, the delegate is sent
+    URLSession:downloadTask:didFinishDownloadingToURL: and given an opportunity
+    to move this file to a permanent location in its sandboxed container, or to
+    otherwise read the file. If canceled, an NSURLSessionDownloadTask can
+    produce a data blob that can be used to resume a download at a later
+    time.
+
+    Beginning with iOS 9 and Mac OS X 10.11, NSURLSessionStream is
+    available as a task type.  This allows for direct TCP/IP connection
+    to a given host and port with optional secure handshaking and
+    navigation of proxies.  Data tasks may also be upgraded to a
+    NSURLSessionStream task via the HTTP Upgrade: header and appropriate
+    use of the pipelining option of NSURLSessionConfiguration.  See RFC
+    2817 and RFC 6455 for information about the Upgrade: header, and
+    comments below on turning data tasks into stream tasks.
+
+    An NSURLSessionWebSocketTask is a task that allows clients to connect to servers supporting
+    WebSocket. The task will perform the HTTP handshake to upgrade the connection
+    and once the WebSocket handshake is successful, the client can read and write
+    messages that will be framed using the WebSocket protocol by the framework.
+    */
     #[cfg(feature = "Foundation_NSURLSession")]
     unsafe impl NSURLSession {
+        /**
+          The shared session uses the currently set global NSURLCache,
+         NSHTTPCookieStorage and NSURLCredentialStorage objects.
+        */
         #[method_id(@__retain_semantics Other sharedSession)]
         pub unsafe fn sharedSession() -> Id<NSURLSession>;
 
@@ -54,10 +241,18 @@ extern_methods!(
         pub unsafe fn configuration(&self) -> Id<NSURLSessionConfiguration>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The sessionDescription property is available for the developer to
+         provide a descriptive label for the session.
+        */
         #[method_id(@__retain_semantics Other sessionDescription)]
         pub unsafe fn sessionDescription(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The sessionDescription property is available for the developer to
+         provide a descriptive label for the session.
+        */
         #[method(setSessionDescription:)]
         pub unsafe fn setSessionDescription(&self, session_description: Option<&NSString>);
 
@@ -243,6 +438,15 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      NSURLSession convenience routines deliver results to
+     a completion handler block.  These convenience routines
+     are not available to NSURLSessions that are configured
+     as background sessions.
+
+     Task objects are always created in a suspended state and
+     must be sent the -resume message before they will execute.
+    */
     /// NSURLSessionAsynchronousConvenience
     #[cfg(feature = "Foundation_NSURLSession")]
     unsafe impl NSURLSession {
@@ -361,6 +565,10 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSURLSessionTask")]
+    /**
+      NSURLSessionTask - a cancelable object that refers to the lifetime
+     of processing a given request.
+    */
     pub struct NSURLSessionTask;
 
     #[cfg(feature = "Foundation_NSURLSessionTask")]
@@ -370,32 +578,74 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSURLSessionTask")]
+/**
+  NSURLSessionTask - a cancelable object that refers to the lifetime
+ of processing a given request.
+*/
 unsafe impl NSObjectProtocol for NSURLSessionTask {}
 
 #[cfg(feature = "Foundation_NSURLSessionTask")]
+/**
+  NSURLSessionTask - a cancelable object that refers to the lifetime
+ of processing a given request.
+*/
 unsafe impl NSProgressReporting for NSURLSessionTask {}
 
 extern_methods!(
+    /**
+      NSURLSessionTask - a cancelable object that refers to the lifetime
+     of processing a given request.
+    */
     #[cfg(feature = "Foundation_NSURLSessionTask")]
     unsafe impl NSURLSessionTask {
+        /**
+          an identifier for this task, assigned by and unique to the owning session
+        */
         #[method(taskIdentifier)]
         pub unsafe fn taskIdentifier(&self) -> NSUInteger;
 
         #[cfg(feature = "Foundation_NSURLRequest")]
+        /**
+          may be nil if this is a stream task
+        */
         #[method_id(@__retain_semantics Other originalRequest)]
         pub unsafe fn originalRequest(&self) -> Option<Id<NSURLRequest>>;
 
         #[cfg(feature = "Foundation_NSURLRequest")]
+        /**
+          may differ from originalRequest due to http server redirection
+        */
         #[method_id(@__retain_semantics Other currentRequest)]
         pub unsafe fn currentRequest(&self) -> Option<Id<NSURLRequest>>;
 
         #[cfg(feature = "Foundation_NSURLResponse")]
+        /**
+          may be nil if no response has been received
+        */
         #[method_id(@__retain_semantics Other response)]
         pub unsafe fn response(&self) -> Option<Id<NSURLResponse>>;
 
+        /**
+          Sets a task-specific delegate. Methods not implemented on this delegate will
+         still be forwarded to the session delegate.
+
+         Cannot be modified after task resumes. Not supported on background session.
+
+         Delegate is strongly referenced until the task completes, after which it is
+         reset to `nil`.
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(&self) -> Option<Id<ProtocolObject<dyn NSURLSessionTaskDelegate>>>;
 
+        /**
+          Sets a task-specific delegate. Methods not implemented on this delegate will
+         still be forwarded to the session delegate.
+
+         Cannot be modified after task resumes. Not supported on background session.
+
+         Delegate is strongly referenced until the task completes, after which it is
+         reset to `nil`.
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
@@ -403,20 +653,48 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSProgress")]
+        /**
+          NSProgress object which represents the task progress.
+         It can be used for task progress tracking.
+        */
         #[method_id(@__retain_semantics Other progress)]
         pub unsafe fn progress(&self) -> Id<NSProgress>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          Start the network load for this task no earlier than the specified date. If
+         not specified, no start delay is used.
+
+         Only applies to tasks created from background NSURLSession instances; has no
+         effect for tasks created from other session types.
+        */
         #[method_id(@__retain_semantics Other earliestBeginDate)]
         pub unsafe fn earliestBeginDate(&self) -> Option<Id<NSDate>>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          Start the network load for this task no earlier than the specified date. If
+         not specified, no start delay is used.
+
+         Only applies to tasks created from background NSURLSession instances; has no
+         effect for tasks created from other session types.
+        */
         #[method(setEarliestBeginDate:)]
         pub unsafe fn setEarliestBeginDate(&self, earliest_begin_date: Option<&NSDate>);
 
+        /**
+          The number of bytes that the client expects (a best-guess upper-bound) will
+         be sent and received by this task. These values are used by system scheduling
+         policy. If unspecified, NSURLSessionTransferSizeUnknown is used.
+        */
         #[method(countOfBytesClientExpectsToSend)]
         pub unsafe fn countOfBytesClientExpectsToSend(&self) -> i64;
 
+        /**
+          The number of bytes that the client expects (a best-guess upper-bound) will
+         be sent and received by this task. These values are used by system scheduling
+         policy. If unspecified, NSURLSessionTransferSizeUnknown is used.
+        */
         #[method(setCountOfBytesClientExpectsToSend:)]
         pub unsafe fn setCountOfBytesClientExpectsToSend(
             &self,
@@ -432,33 +710,60 @@ extern_methods!(
             count_of_bytes_client_expects_to_receive: i64,
         );
 
+        /**
+          number of body bytes already sent
+        */
         #[method(countOfBytesSent)]
         pub unsafe fn countOfBytesSent(&self) -> i64;
 
+        /**
+          number of body bytes already received
+        */
         #[method(countOfBytesReceived)]
         pub unsafe fn countOfBytesReceived(&self) -> i64;
 
+        /**
+          number of body bytes we expect to send, derived from the Content-Length of the HTTP request
+        */
         #[method(countOfBytesExpectedToSend)]
         pub unsafe fn countOfBytesExpectedToSend(&self) -> i64;
 
+        /**
+          number of byte bytes we expect to receive, usually derived from the Content-Length header of an HTTP response.
+        */
         #[method(countOfBytesExpectedToReceive)]
         pub unsafe fn countOfBytesExpectedToReceive(&self) -> i64;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The taskDescription property is available for the developer to
+         provide a descriptive label for the task.
+        */
         #[method_id(@__retain_semantics Other taskDescription)]
         pub unsafe fn taskDescription(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The taskDescription property is available for the developer to
+         provide a descriptive label for the task.
+        */
         #[method(setTaskDescription:)]
         pub unsafe fn setTaskDescription(&self, task_description: Option<&NSString>);
 
         #[method(cancel)]
         pub unsafe fn cancel(&self);
 
+        /**
+          The current state of the task within the session.
+        */
         #[method(state)]
         pub unsafe fn state(&self) -> NSURLSessionTaskState;
 
         #[cfg(feature = "Foundation_NSError")]
+        /**
+          The error, if any, delivered via -URLSession:task:didCompleteWithError:
+         This property will be nil in the event that no error occurred.
+        */
         #[method_id(@__retain_semantics Other error)]
         pub unsafe fn error(&self) -> Option<Id<NSError>>;
 
@@ -468,15 +773,65 @@ extern_methods!(
         #[method(resume)]
         pub unsafe fn resume(&self);
 
+        /**
+          Sets a scaling factor for the priority of the task. The scaling factor is a
+         value between 0.0 and 1.0 (inclusive), where 0.0 is considered the lowest
+         priority and 1.0 is considered the highest.
+
+         The priority is a hint and not a hard requirement of task performance. The
+         priority of a task may be changed using this API at any time, but not all
+         protocols support this; in these cases, the last priority that took effect
+         will be used.
+
+         If no priority is specified, the task will operate with the default priority
+         as defined by the constant NSURLSessionTaskPriorityDefault. Two additional
+         priority levels are provided: NSURLSessionTaskPriorityLow and
+         NSURLSessionTaskPriorityHigh, but use is not restricted to these.
+        */
         #[method(priority)]
         pub unsafe fn priority(&self) -> c_float;
 
+        /**
+          Sets a scaling factor for the priority of the task. The scaling factor is a
+         value between 0.0 and 1.0 (inclusive), where 0.0 is considered the lowest
+         priority and 1.0 is considered the highest.
+
+         The priority is a hint and not a hard requirement of task performance. The
+         priority of a task may be changed using this API at any time, but not all
+         protocols support this; in these cases, the last priority that took effect
+         will be used.
+
+         If no priority is specified, the task will operate with the default priority
+         as defined by the constant NSURLSessionTaskPriorityDefault. Two additional
+         priority levels are provided: NSURLSessionTaskPriorityLow and
+         NSURLSessionTaskPriorityHigh, but use is not restricted to these.
+        */
         #[method(setPriority:)]
         pub unsafe fn setPriority(&self, priority: c_float);
 
+        /**
+          Provides a hint indicating if incremental delivery of a partial response body
+         would be useful for the application, or if it cannot process the response
+         until it is complete. Indicating that incremental delivery is not desired may
+         improve task performance. For example, if a response cannot be decoded until
+         the entire content is received, set this property to false.
+
+         Defaults to true unless this task is created with completion-handler based
+         convenience methods, or if it is a download task.
+        */
         #[method(prefersIncrementalDelivery)]
         pub unsafe fn prefersIncrementalDelivery(&self) -> bool;
 
+        /**
+          Provides a hint indicating if incremental delivery of a partial response body
+         would be useful for the application, or if it cannot process the response
+         until it is complete. Indicating that incremental delivery is not desired may
+         improve task performance. For example, if a response cannot be decoded until
+         the entire content is received, set this property to false.
+
+         Defaults to true unless this task is created with completion-handler based
+         convenience methods, or if it is a download task.
+        */
         #[method(setPrefersIncrementalDelivery:)]
         pub unsafe fn setPrefersIncrementalDelivery(&self, prefers_incremental_delivery: bool);
 
@@ -499,6 +854,11 @@ extern_static!(NSURLSessionTaskPriorityHigh: c_float);
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSURLSessionDataTask")]
+    /**
+      An NSURLSessionDataTask does not provide any additional
+     functionality over an NSURLSessionTask and its presence is merely
+     to provide lexical differentiation from download and upload tasks.
+    */
     pub struct NSURLSessionDataTask;
 
     #[cfg(feature = "Foundation_NSURLSessionDataTask")]
@@ -509,12 +869,27 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSURLSessionDataTask")]
+/**
+  An NSURLSessionDataTask does not provide any additional
+ functionality over an NSURLSessionTask and its presence is merely
+ to provide lexical differentiation from download and upload tasks.
+*/
 unsafe impl NSObjectProtocol for NSURLSessionDataTask {}
 
 #[cfg(feature = "Foundation_NSURLSessionDataTask")]
+/**
+  An NSURLSessionDataTask does not provide any additional
+ functionality over an NSURLSessionTask and its presence is merely
+ to provide lexical differentiation from download and upload tasks.
+*/
 unsafe impl NSProgressReporting for NSURLSessionDataTask {}
 
 extern_methods!(
+    /**
+      An NSURLSessionDataTask does not provide any additional
+     functionality over an NSURLSessionTask and its presence is merely
+     to provide lexical differentiation from download and upload tasks.
+    */
     #[cfg(feature = "Foundation_NSURLSessionDataTask")]
     unsafe impl NSURLSessionDataTask {
         #[deprecated = "Please use -[NSURLSession dataTaskWithRequest:] or other NSURLSession methods to create instances"]
@@ -530,6 +905,12 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSURLSessionUploadTask")]
+    /**
+      An NSURLSessionUploadTask does not currently provide any additional
+     functionality over an NSURLSessionDataTask.  All delegate messages
+     that may be sent referencing an NSURLSessionDataTask equally apply
+     to NSURLSessionUploadTasks.
+    */
     pub struct NSURLSessionUploadTask;
 
     #[cfg(feature = "Foundation_NSURLSessionUploadTask")]
@@ -540,12 +921,30 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSURLSessionUploadTask")]
+/**
+  An NSURLSessionUploadTask does not currently provide any additional
+ functionality over an NSURLSessionDataTask.  All delegate messages
+ that may be sent referencing an NSURLSessionDataTask equally apply
+ to NSURLSessionUploadTasks.
+*/
 unsafe impl NSObjectProtocol for NSURLSessionUploadTask {}
 
 #[cfg(feature = "Foundation_NSURLSessionUploadTask")]
+/**
+  An NSURLSessionUploadTask does not currently provide any additional
+ functionality over an NSURLSessionDataTask.  All delegate messages
+ that may be sent referencing an NSURLSessionDataTask equally apply
+ to NSURLSessionUploadTasks.
+*/
 unsafe impl NSProgressReporting for NSURLSessionUploadTask {}
 
 extern_methods!(
+    /**
+      An NSURLSessionUploadTask does not currently provide any additional
+     functionality over an NSURLSessionDataTask.  All delegate messages
+     that may be sent referencing an NSURLSessionDataTask equally apply
+     to NSURLSessionUploadTasks.
+    */
     #[cfg(feature = "Foundation_NSURLSessionUploadTask")]
     unsafe impl NSURLSessionUploadTask {
         #[deprecated = "Please use -[NSURLSession uploadTaskWithStreamedRequest:] or other NSURLSession methods to create instances"]
@@ -561,6 +960,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSURLSessionDownloadTask")]
+    /**
+      NSURLSessionDownloadTask is a task that represents a download to
+     local storage.
+    */
     pub struct NSURLSessionDownloadTask;
 
     #[cfg(feature = "Foundation_NSURLSessionDownloadTask")]
@@ -571,12 +974,24 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSURLSessionDownloadTask")]
+/**
+  NSURLSessionDownloadTask is a task that represents a download to
+ local storage.
+*/
 unsafe impl NSObjectProtocol for NSURLSessionDownloadTask {}
 
 #[cfg(feature = "Foundation_NSURLSessionDownloadTask")]
+/**
+  NSURLSessionDownloadTask is a task that represents a download to
+ local storage.
+*/
 unsafe impl NSProgressReporting for NSURLSessionDownloadTask {}
 
 extern_methods!(
+    /**
+      NSURLSessionDownloadTask is a task that represents a download to
+     local storage.
+    */
     #[cfg(feature = "Foundation_NSURLSessionDownloadTask")]
     unsafe impl NSURLSessionDownloadTask {
         #[cfg(feature = "Foundation_NSData")]
@@ -599,6 +1014,28 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSURLSessionStreamTask")]
+    /**
+      An NSURLSessionStreamTask provides an interface to perform reads
+     and writes to a TCP/IP stream created via NSURLSession.  This task
+     may be explicitly created from an NSURLSession, or created as a
+     result of the appropriate disposition response to a
+     -URLSession:dataTask:didReceiveResponse: delegate message.
+
+     NSURLSessionStreamTask can be used to perform asynchronous reads
+     and writes.  Reads and writes are enqueued and executed serially,
+     with the completion handler being invoked on the sessions delegate
+     queue.  If an error occurs, or the task is canceled, all
+     outstanding read and write calls will have their completion
+     handlers invoked with an appropriate error.
+
+     It is also possible to create NSInputStream and NSOutputStream
+     instances from an NSURLSessionTask by sending
+     -captureStreams to the task.  All outstanding reads and writes are
+     completed before the streams are created.  Once the streams are
+     delivered to the session delegate, the task is considered complete
+     and will receive no more messages.  These streams are
+     disassociated from the underlying session.
+    */
     pub struct NSURLSessionStreamTask;
 
     #[cfg(feature = "Foundation_NSURLSessionStreamTask")]
@@ -609,12 +1046,78 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSURLSessionStreamTask")]
+/**
+  An NSURLSessionStreamTask provides an interface to perform reads
+ and writes to a TCP/IP stream created via NSURLSession.  This task
+ may be explicitly created from an NSURLSession, or created as a
+ result of the appropriate disposition response to a
+ -URLSession:dataTask:didReceiveResponse: delegate message.
+
+ NSURLSessionStreamTask can be used to perform asynchronous reads
+ and writes.  Reads and writes are enqueued and executed serially,
+ with the completion handler being invoked on the sessions delegate
+ queue.  If an error occurs, or the task is canceled, all
+ outstanding read and write calls will have their completion
+ handlers invoked with an appropriate error.
+
+ It is also possible to create NSInputStream and NSOutputStream
+ instances from an NSURLSessionTask by sending
+ -captureStreams to the task.  All outstanding reads and writes are
+ completed before the streams are created.  Once the streams are
+ delivered to the session delegate, the task is considered complete
+ and will receive no more messages.  These streams are
+ disassociated from the underlying session.
+*/
 unsafe impl NSObjectProtocol for NSURLSessionStreamTask {}
 
 #[cfg(feature = "Foundation_NSURLSessionStreamTask")]
+/**
+  An NSURLSessionStreamTask provides an interface to perform reads
+ and writes to a TCP/IP stream created via NSURLSession.  This task
+ may be explicitly created from an NSURLSession, or created as a
+ result of the appropriate disposition response to a
+ -URLSession:dataTask:didReceiveResponse: delegate message.
+
+ NSURLSessionStreamTask can be used to perform asynchronous reads
+ and writes.  Reads and writes are enqueued and executed serially,
+ with the completion handler being invoked on the sessions delegate
+ queue.  If an error occurs, or the task is canceled, all
+ outstanding read and write calls will have their completion
+ handlers invoked with an appropriate error.
+
+ It is also possible to create NSInputStream and NSOutputStream
+ instances from an NSURLSessionTask by sending
+ -captureStreams to the task.  All outstanding reads and writes are
+ completed before the streams are created.  Once the streams are
+ delivered to the session delegate, the task is considered complete
+ and will receive no more messages.  These streams are
+ disassociated from the underlying session.
+*/
 unsafe impl NSProgressReporting for NSURLSessionStreamTask {}
 
 extern_methods!(
+    /**
+      An NSURLSessionStreamTask provides an interface to perform reads
+     and writes to a TCP/IP stream created via NSURLSession.  This task
+     may be explicitly created from an NSURLSession, or created as a
+     result of the appropriate disposition response to a
+     -URLSession:dataTask:didReceiveResponse: delegate message.
+
+     NSURLSessionStreamTask can be used to perform asynchronous reads
+     and writes.  Reads and writes are enqueued and executed serially,
+     with the completion handler being invoked on the sessions delegate
+     queue.  If an error occurs, or the task is canceled, all
+     outstanding read and write calls will have their completion
+     handlers invoked with an appropriate error.
+
+     It is also possible to create NSInputStream and NSOutputStream
+     instances from an NSURLSessionTask by sending
+     -captureStreams to the task.  All outstanding reads and writes are
+     completed before the streams are created.  Once the streams are
+     delivered to the session delegate, the task is considered complete
+     and will receive no more messages.  These streams are
+     disassociated from the underlying session.
+    */
     #[cfg(feature = "Foundation_NSURLSessionStreamTask")]
     unsafe impl NSURLSessionStreamTask {
         #[cfg(all(feature = "Foundation_NSData", feature = "Foundation_NSError"))]
@@ -673,6 +1176,11 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSURLSessionWebSocketMessage")]
+    /**
+      The client can create a WebSocket message object that will be passed to the send calls
+     and will be delivered from the receive calls. The message can be initialized with data or string.
+     If initialized with data, the string property will be nil and vice versa.
+    */
     pub struct NSURLSessionWebSocketMessage;
 
     #[cfg(feature = "Foundation_NSURLSessionWebSocketMessage")]
@@ -682,9 +1190,19 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSURLSessionWebSocketMessage")]
+/**
+  The client can create a WebSocket message object that will be passed to the send calls
+ and will be delivered from the receive calls. The message can be initialized with data or string.
+ If initialized with data, the string property will be nil and vice versa.
+*/
 unsafe impl NSObjectProtocol for NSURLSessionWebSocketMessage {}
 
 extern_methods!(
+    /**
+      The client can create a WebSocket message object that will be passed to the send calls
+     and will be delivered from the receive calls. The message can be initialized with data or string.
+     If initialized with data, the string property will be nil and vice versa.
+    */
     #[cfg(feature = "Foundation_NSURLSessionWebSocketMessage")]
     unsafe impl NSURLSessionWebSocketMessage {
         #[cfg(feature = "Foundation_NSData")]
@@ -716,6 +1234,9 @@ extern_methods!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      The WebSocket close codes follow the close codes given in the RFC
+    */
     pub enum NSURLSessionWebSocketCloseCode {
         NSURLSessionWebSocketCloseCodeInvalid = 0,
         NSURLSessionWebSocketCloseCodeNormalClosure = 1000,
@@ -736,6 +1257,16 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSURLSessionWebSocketTask")]
+    /**
+      A WebSocket task can be created with a ws or wss url. A client can also provide
+     a list of protocols it wishes to advertise during the WebSocket handshake phase.
+     Once the handshake is successfully completed the client will be notified through an optional delegate.
+     All reads and writes enqueued before the completion of the handshake will be queued up and
+     executed once the handshake succeeds. Before the handshake completes, the client can be called to handle
+     redirection or authentication using the same delegates as NSURLSessionTask. WebSocket task will also provide
+     support for cookies and will store cookies to the cookie storage on the session and will attach cookies to
+     outgoing HTTP handshake requests.
+    */
     pub struct NSURLSessionWebSocketTask;
 
     #[cfg(feature = "Foundation_NSURLSessionWebSocketTask")]
@@ -746,12 +1277,42 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSURLSessionWebSocketTask")]
+/**
+  A WebSocket task can be created with a ws or wss url. A client can also provide
+ a list of protocols it wishes to advertise during the WebSocket handshake phase.
+ Once the handshake is successfully completed the client will be notified through an optional delegate.
+ All reads and writes enqueued before the completion of the handshake will be queued up and
+ executed once the handshake succeeds. Before the handshake completes, the client can be called to handle
+ redirection or authentication using the same delegates as NSURLSessionTask. WebSocket task will also provide
+ support for cookies and will store cookies to the cookie storage on the session and will attach cookies to
+ outgoing HTTP handshake requests.
+*/
 unsafe impl NSObjectProtocol for NSURLSessionWebSocketTask {}
 
 #[cfg(feature = "Foundation_NSURLSessionWebSocketTask")]
+/**
+  A WebSocket task can be created with a ws or wss url. A client can also provide
+ a list of protocols it wishes to advertise during the WebSocket handshake phase.
+ Once the handshake is successfully completed the client will be notified through an optional delegate.
+ All reads and writes enqueued before the completion of the handshake will be queued up and
+ executed once the handshake succeeds. Before the handshake completes, the client can be called to handle
+ redirection or authentication using the same delegates as NSURLSessionTask. WebSocket task will also provide
+ support for cookies and will store cookies to the cookie storage on the session and will attach cookies to
+ outgoing HTTP handshake requests.
+*/
 unsafe impl NSProgressReporting for NSURLSessionWebSocketTask {}
 
 extern_methods!(
+    /**
+      A WebSocket task can be created with a ws or wss url. A client can also provide
+     a list of protocols it wishes to advertise during the WebSocket handshake phase.
+     Once the handshake is successfully completed the client will be notified through an optional delegate.
+     All reads and writes enqueued before the completion of the handshake will be queued up and
+     executed once the handshake succeeds. Before the handshake completes, the client can be called to handle
+     redirection or authentication using the same delegates as NSURLSessionTask. WebSocket task will also provide
+     support for cookies and will store cookies to the cookie storage on the session and will attach cookies to
+     outgoing HTTP handshake requests.
+    */
     #[cfg(feature = "Foundation_NSURLSessionWebSocketTask")]
     unsafe impl NSURLSessionWebSocketTask {
         #[cfg(all(
@@ -790,16 +1351,28 @@ extern_methods!(
             reason: Option<&NSData>,
         );
 
+        /**
+          The maximum number of bytes to be buffered before erroring out. This includes the sum of all bytes from continuation frames. Receive calls will error out if this value is reached
+        */
         #[method(maximumMessageSize)]
         pub unsafe fn maximumMessageSize(&self) -> NSInteger;
 
+        /**
+          The maximum number of bytes to be buffered before erroring out. This includes the sum of all bytes from continuation frames. Receive calls will error out if this value is reached
+        */
         #[method(setMaximumMessageSize:)]
         pub unsafe fn setMaximumMessageSize(&self, maximum_message_size: NSInteger);
 
+        /**
+          A task can be queried for it's close code at any point. When the task is not closed, it will be set to NSURLSessionWebSocketCloseCodeInvalid
+        */
         #[method(closeCode)]
         pub unsafe fn closeCode(&self) -> NSURLSessionWebSocketCloseCode;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          A task can be queried for it's close reason at any point. A nil value indicates no closeReason or that the task is still running
+        */
         #[method_id(@__retain_semantics Other closeReason)]
         pub unsafe fn closeReason(&self) -> Option<Id<NSData>>;
 
@@ -813,6 +1386,30 @@ extern_methods!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum NSURLSessionMultipathServiceType
+
+    @discussion The NSURLSessionMultipathServiceType enum defines constants that
+    can be used to specify the multipath service type to associate an NSURLSession.  The
+    multipath service type determines whether multipath TCP should be attempted and the conditions
+    for creating and switching between subflows.  Using these service types requires the appropriate entitlement.  Any connection attempt will fail if the process does not have the required entitlement.
+    A primary interface is a generally less expensive interface in terms of both cost and power (such as WiFi or ethernet).  A secondary interface is more expensive (such as 3G or LTE).
+
+    @constant NSURLSessionMultipathServiceTypeNone Specifies that multipath tcp should not be used.  Connections will use a single flow.
+    This is the default value.  No entitlement is required to set this value.
+
+    @constant NSURLSessionMultipathServiceTypeHandover Specifies that a secondary subflow should only be used
+    when the primary subflow is not performing adequately.   Requires the com.apple.developer.networking.multipath entitlement.
+
+    @constant NSURLSessionMultipathServiceTypeInteractive Specifies that a secondary subflow should be used if the
+    primary subflow is not performing adequately (packet loss, high round trip times, bandwidth issues).  The secondary
+    subflow will be created more aggressively than with NSURLSessionMultipathServiceTypeHandover.  Requires the com.apple.developer.networking.multipath entitlement.
+
+    @constant NSURLSessionMultipathServiceTypeAggregate Specifies that multiple subflows across multiple interfaces should be
+    used for better bandwidth.  This mode is only available for experimentation on devices configured for development use.
+    It can be enabled in the Developer section of the Settings app.
+
+    */
     pub enum NSURLSessionMultipathServiceType {
         NSURLSessionMultipathServiceTypeNone = 0,
         NSURLSessionMultipathServiceTypeHandover = 1,
@@ -824,6 +1421,20 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSURLSessionConfiguration")]
+    /**
+      Configuration options for an NSURLSession.  When a session is
+     created, a copy of the configuration object is made - you cannot
+     modify the configuration of a session after it has been created.
+
+     The shared session uses the global singleton credential, cache
+     and cookie storage objects.
+
+     An ephemeral session has no persistent disk storage for cookies,
+     cache or credentials.
+
+     A background session can be used to perform networking operations
+     on behalf of a suspended application, within certain constraints.
+    */
     pub struct NSURLSessionConfiguration;
 
     #[cfg(feature = "Foundation_NSURLSessionConfiguration")]
@@ -833,9 +1444,37 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSURLSessionConfiguration")]
+/**
+  Configuration options for an NSURLSession.  When a session is
+ created, a copy of the configuration object is made - you cannot
+ modify the configuration of a session after it has been created.
+
+ The shared session uses the global singleton credential, cache
+ and cookie storage objects.
+
+ An ephemeral session has no persistent disk storage for cookies,
+ cache or credentials.
+
+ A background session can be used to perform networking operations
+ on behalf of a suspended application, within certain constraints.
+*/
 unsafe impl NSObjectProtocol for NSURLSessionConfiguration {}
 
 extern_methods!(
+    /**
+      Configuration options for an NSURLSession.  When a session is
+     created, a copy of the configuration object is made - you cannot
+     modify the configuration of a session after it has been created.
+
+     The shared session uses the global singleton credential, cache
+     and cookie storage objects.
+
+     An ephemeral session has no persistent disk storage for cookies,
+     cache or credentials.
+
+     A background session can be used to perform networking operations
+     on behalf of a suspended application, within certain constraints.
+    */
     #[cfg(feature = "Foundation_NSURLSessionConfiguration")]
     unsafe impl NSURLSessionConfiguration {
         #[method_id(@__retain_semantics Other defaultSessionConfiguration)]
@@ -851,124 +1490,257 @@ extern_methods!(
         ) -> Id<NSURLSessionConfiguration>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          identifier for the background session configuration
+        */
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Option<Id<NSString>>;
 
+        /**
+          default cache policy for requests
+        */
         #[method(requestCachePolicy)]
         pub unsafe fn requestCachePolicy(&self) -> NSURLRequestCachePolicy;
 
+        /**
+          default cache policy for requests
+        */
         #[method(setRequestCachePolicy:)]
         pub unsafe fn setRequestCachePolicy(&self, request_cache_policy: NSURLRequestCachePolicy);
 
+        /**
+          default timeout for requests.  This will cause a timeout if no data is transmitted for the given timeout value, and is reset whenever data is transmitted.
+        */
         #[method(timeoutIntervalForRequest)]
         pub unsafe fn timeoutIntervalForRequest(&self) -> NSTimeInterval;
 
+        /**
+          default timeout for requests.  This will cause a timeout if no data is transmitted for the given timeout value, and is reset whenever data is transmitted.
+        */
         #[method(setTimeoutIntervalForRequest:)]
         pub unsafe fn setTimeoutIntervalForRequest(
             &self,
             timeout_interval_for_request: NSTimeInterval,
         );
 
+        /**
+          default timeout for requests.  This will cause a timeout if a resource is not able to be retrieved within a given timeout.
+        */
         #[method(timeoutIntervalForResource)]
         pub unsafe fn timeoutIntervalForResource(&self) -> NSTimeInterval;
 
+        /**
+          default timeout for requests.  This will cause a timeout if a resource is not able to be retrieved within a given timeout.
+        */
         #[method(setTimeoutIntervalForResource:)]
         pub unsafe fn setTimeoutIntervalForResource(
             &self,
             timeout_interval_for_resource: NSTimeInterval,
         );
 
+        /**
+          type of service for requests.
+        */
         #[method(networkServiceType)]
         pub unsafe fn networkServiceType(&self) -> NSURLRequestNetworkServiceType;
 
+        /**
+          type of service for requests.
+        */
         #[method(setNetworkServiceType:)]
         pub unsafe fn setNetworkServiceType(
             &self,
             network_service_type: NSURLRequestNetworkServiceType,
         );
 
+        /**
+          allow request to route over cellular.
+        */
         #[method(allowsCellularAccess)]
         pub unsafe fn allowsCellularAccess(&self) -> bool;
 
+        /**
+          allow request to route over cellular.
+        */
         #[method(setAllowsCellularAccess:)]
         pub unsafe fn setAllowsCellularAccess(&self, allows_cellular_access: bool);
 
+        /**
+          allow request to route over expensive networks.  Defaults to YES.
+        */
         #[method(allowsExpensiveNetworkAccess)]
         pub unsafe fn allowsExpensiveNetworkAccess(&self) -> bool;
 
+        /**
+          allow request to route over expensive networks.  Defaults to YES.
+        */
         #[method(setAllowsExpensiveNetworkAccess:)]
         pub unsafe fn setAllowsExpensiveNetworkAccess(&self, allows_expensive_network_access: bool);
 
+        /**
+          allow request to route over networks in constrained mode. Defaults to YES.
+        */
         #[method(allowsConstrainedNetworkAccess)]
         pub unsafe fn allowsConstrainedNetworkAccess(&self) -> bool;
 
+        /**
+          allow request to route over networks in constrained mode. Defaults to YES.
+        */
         #[method(setAllowsConstrainedNetworkAccess:)]
         pub unsafe fn setAllowsConstrainedNetworkAccess(
             &self,
             allows_constrained_network_access: bool,
         );
 
+        /**
+          requires requests from the session to be made with DNSSEC validation enabled. Defaults to NO.
+        */
         #[method(requiresDNSSECValidation)]
         pub unsafe fn requiresDNSSECValidation(&self) -> bool;
 
+        /**
+          requires requests from the session to be made with DNSSEC validation enabled. Defaults to NO.
+        */
         #[method(setRequiresDNSSECValidation:)]
         pub unsafe fn setRequiresDNSSECValidation(&self, requires_dnssec_validation: bool);
 
+        /**
+          Causes tasks to wait for network connectivity to become available, rather
+         than immediately failing with an error (such as NSURLErrorNotConnectedToInternet)
+         when it is not. When waiting for connectivity, the timeoutIntervalForRequest
+         property does not apply, but the timeoutIntervalForResource property does.
+
+         Unsatisfactory connectivity (that requires waiting) includes cases where the
+         device has limited or insufficient connectivity for a task (e.g., only has a
+         cellular connection but the allowsCellularAccess property is NO, or requires
+         a VPN connection in order to reach the desired host).
+
+         Default value is NO. Ignored by background sessions, as background sessions
+         always wait for connectivity.
+        */
         #[method(waitsForConnectivity)]
         pub unsafe fn waitsForConnectivity(&self) -> bool;
 
+        /**
+          Causes tasks to wait for network connectivity to become available, rather
+         than immediately failing with an error (such as NSURLErrorNotConnectedToInternet)
+         when it is not. When waiting for connectivity, the timeoutIntervalForRequest
+         property does not apply, but the timeoutIntervalForResource property does.
+
+         Unsatisfactory connectivity (that requires waiting) includes cases where the
+         device has limited or insufficient connectivity for a task (e.g., only has a
+         cellular connection but the allowsCellularAccess property is NO, or requires
+         a VPN connection in order to reach the desired host).
+
+         Default value is NO. Ignored by background sessions, as background sessions
+         always wait for connectivity.
+        */
         #[method(setWaitsForConnectivity:)]
         pub unsafe fn setWaitsForConnectivity(&self, waits_for_connectivity: bool);
 
+        /**
+          allows background tasks to be scheduled at the discretion of the system for optimal performance.
+        */
         #[method(isDiscretionary)]
         pub unsafe fn isDiscretionary(&self) -> bool;
 
+        /**
+          allows background tasks to be scheduled at the discretion of the system for optimal performance.
+        */
         #[method(setDiscretionary:)]
         pub unsafe fn setDiscretionary(&self, discretionary: bool);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The identifier of the shared data container into which files in background sessions should be downloaded.
+         App extensions wishing to use background sessions *must* set this property to a valid container identifier, or
+         all transfers in that session will fail with NSURLErrorBackgroundSessionRequiresSharedContainer.
+        */
         #[method_id(@__retain_semantics Other sharedContainerIdentifier)]
         pub unsafe fn sharedContainerIdentifier(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The identifier of the shared data container into which files in background sessions should be downloaded.
+         App extensions wishing to use background sessions *must* set this property to a valid container identifier, or
+         all transfers in that session will fail with NSURLErrorBackgroundSessionRequiresSharedContainer.
+        */
         #[method(setSharedContainerIdentifier:)]
         pub unsafe fn setSharedContainerIdentifier(
             &self,
             shared_container_identifier: Option<&NSString>,
         );
 
+        /**
+          Allows the app to be resumed or launched in the background when tasks in background sessions complete
+         or when auth is required. This only applies to configurations created with +backgroundSessionConfigurationWithIdentifier:
+         and the default value is YES.
+
+         NOTE: macOS apps based on AppKit do not support background launch.
+        */
         #[method(sessionSendsLaunchEvents)]
         pub unsafe fn sessionSendsLaunchEvents(&self) -> bool;
 
+        /**
+          Allows the app to be resumed or launched in the background when tasks in background sessions complete
+         or when auth is required. This only applies to configurations created with +backgroundSessionConfigurationWithIdentifier:
+         and the default value is YES.
+
+         NOTE: macOS apps based on AppKit do not support background launch.
+        */
         #[method(setSessionSendsLaunchEvents:)]
         pub unsafe fn setSessionSendsLaunchEvents(&self, session_sends_launch_events: bool);
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          The proxy dictionary, as described by <CFNetwork/CFHTTPStream.h>
+        */
         #[method_id(@__retain_semantics Other connectionProxyDictionary)]
         pub unsafe fn connectionProxyDictionary(&self) -> Option<Id<NSDictionary>>;
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          The proxy dictionary, as described by <CFNetwork/CFHTTPStream.h>
+        */
         #[method(setConnectionProxyDictionary:)]
         pub unsafe fn setConnectionProxyDictionary(
             &self,
             connection_proxy_dictionary: Option<&NSDictionary>,
         );
 
+        /**
+          Allow the use of HTTP pipelining
+        */
         #[method(HTTPShouldUsePipelining)]
         pub unsafe fn HTTPShouldUsePipelining(&self) -> bool;
 
+        /**
+          Allow the use of HTTP pipelining
+        */
         #[method(setHTTPShouldUsePipelining:)]
         pub unsafe fn setHTTPShouldUsePipelining(&self, http_should_use_pipelining: bool);
 
+        /**
+          Allow the session to set cookies on requests
+        */
         #[method(HTTPShouldSetCookies)]
         pub unsafe fn HTTPShouldSetCookies(&self) -> bool;
 
+        /**
+          Allow the session to set cookies on requests
+        */
         #[method(setHTTPShouldSetCookies:)]
         pub unsafe fn setHTTPShouldSetCookies(&self, http_should_set_cookies: bool);
 
+        /**
+          Policy for accepting cookies.  This overrides the policy otherwise specified by the cookie storage.
+        */
         #[method(HTTPCookieAcceptPolicy)]
         pub unsafe fn HTTPCookieAcceptPolicy(&self) -> NSHTTPCookieAcceptPolicy;
 
+        /**
+          Policy for accepting cookies.  This overrides the policy otherwise specified by the cookie storage.
+        */
         #[method(setHTTPCookieAcceptPolicy:)]
         pub unsafe fn setHTTPCookieAcceptPolicy(
             &self,
@@ -976,19 +1748,33 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          Specifies additional headers which will be set on outgoing requests.
+        Note that these headers are added to the request only if not already present.
+        */
         #[method_id(@__retain_semantics Other HTTPAdditionalHeaders)]
         pub unsafe fn HTTPAdditionalHeaders(&self) -> Option<Id<NSDictionary>>;
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          Specifies additional headers which will be set on outgoing requests.
+        Note that these headers are added to the request only if not already present.
+        */
         #[method(setHTTPAdditionalHeaders:)]
         pub unsafe fn setHTTPAdditionalHeaders(
             &self,
             http_additional_headers: Option<&NSDictionary>,
         );
 
+        /**
+          The maximum number of simultaneous persistent connections per host
+        */
         #[method(HTTPMaximumConnectionsPerHost)]
         pub unsafe fn HTTPMaximumConnectionsPerHost(&self) -> NSInteger;
 
+        /**
+          The maximum number of simultaneous persistent connections per host
+        */
         #[method(setHTTPMaximumConnectionsPerHost:)]
         pub unsafe fn setHTTPMaximumConnectionsPerHost(
             &self,
@@ -996,10 +1782,16 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSHTTPCookieStorage")]
+        /**
+          The cookie storage object to use, or nil to indicate that no cookies should be handled
+        */
         #[method_id(@__retain_semantics Other HTTPCookieStorage)]
         pub unsafe fn HTTPCookieStorage(&self) -> Option<Id<NSHTTPCookieStorage>>;
 
         #[cfg(feature = "Foundation_NSHTTPCookieStorage")]
+        /**
+          The cookie storage object to use, or nil to indicate that no cookies should be handled
+        */
         #[method(setHTTPCookieStorage:)]
         pub unsafe fn setHTTPCookieStorage(
             &self,
@@ -1007,10 +1799,16 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSURLCredentialStorage")]
+        /**
+          The credential storage object, or nil to indicate that no credential storage is to be used
+        */
         #[method_id(@__retain_semantics Other URLCredentialStorage)]
         pub unsafe fn URLCredentialStorage(&self) -> Option<Id<NSURLCredentialStorage>>;
 
         #[cfg(feature = "Foundation_NSURLCredentialStorage")]
+        /**
+          The credential storage object, or nil to indicate that no credential storage is to be used
+        */
         #[method(setURLCredentialStorage:)]
         pub unsafe fn setURLCredentialStorage(
             &self,
@@ -1018,16 +1816,30 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSURLCache")]
+        /**
+          The URL resource cache, or nil to indicate that no caching is to be performed
+        */
         #[method_id(@__retain_semantics Other URLCache)]
         pub unsafe fn URLCache(&self) -> Option<Id<NSURLCache>>;
 
         #[cfg(feature = "Foundation_NSURLCache")]
+        /**
+          The URL resource cache, or nil to indicate that no caching is to be performed
+        */
         #[method(setURLCache:)]
         pub unsafe fn setURLCache(&self, url_cache: Option<&NSURLCache>);
 
+        /**
+          Enable extended background idle mode for any tcp sockets created.    Enabling this mode asks the system to keep the socket open
+          and delay reclaiming it when the process moves to the background (see https://developer.apple.com/library/ios/technotes/tn2277/_index.html)
+        */
         #[method(shouldUseExtendedBackgroundIdleMode)]
         pub unsafe fn shouldUseExtendedBackgroundIdleMode(&self) -> bool;
 
+        /**
+          Enable extended background idle mode for any tcp sockets created.    Enabling this mode asks the system to keep the socket open
+          and delay reclaiming it when the process moves to the background (see https://developer.apple.com/library/ios/technotes/tn2277/_index.html)
+        */
         #[method(setShouldUseExtendedBackgroundIdleMode:)]
         pub unsafe fn setShouldUseExtendedBackgroundIdleMode(
             &self,
@@ -1035,16 +1847,42 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          An optional array of Class objects which subclass NSURLProtocol.
+        The Class will be sent +canInitWithRequest: when determining if
+        an instance of the class can be used for a given URL scheme.
+        You should not use +[NSURLProtocol registerClass:], as that
+        method will register your class with the default session rather
+        than with an instance of NSURLSession.
+        Custom NSURLProtocol subclasses are not available to background
+        sessions.
+        */
         #[method_id(@__retain_semantics Other protocolClasses)]
         pub unsafe fn protocolClasses(&self) -> Option<Id<NSArray<TodoClass>>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          An optional array of Class objects which subclass NSURLProtocol.
+        The Class will be sent +canInitWithRequest: when determining if
+        an instance of the class can be used for a given URL scheme.
+        You should not use +[NSURLProtocol registerClass:], as that
+        method will register your class with the default session rather
+        than with an instance of NSURLSession.
+        Custom NSURLProtocol subclasses are not available to background
+        sessions.
+        */
         #[method(setProtocolClasses:)]
         pub unsafe fn setProtocolClasses(&self, protocol_classes: Option<&NSArray<TodoClass>>);
 
+        /**
+          multipath service type to use for connections.  The default is NSURLSessionMultipathServiceTypeNone
+        */
         #[method(multipathServiceType)]
         pub unsafe fn multipathServiceType(&self) -> NSURLSessionMultipathServiceType;
 
+        /**
+          multipath service type to use for connections.  The default is NSURLSessionMultipathServiceTypeNone
+        */
         #[method(setMultipathServiceType:)]
         pub unsafe fn setMultipathServiceType(
             &self,
@@ -1063,6 +1901,9 @@ extern_methods!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      Disposition options for various delegate messages
+    */
     pub enum NSURLSessionDelayedRequestDisposition {
         NSURLSessionDelayedRequestContinueLoading = 0,
         NSURLSessionDelayedRequestUseNewRequest = 1,
@@ -1091,6 +1932,9 @@ ns_enum!(
 );
 
 extern_protocol!(
+    /**
+      Messages related to the URL session as a whole
+    */
     pub unsafe trait NSURLSessionDelegate: NSObjectProtocol {
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSURLSession"))]
         #[optional]
@@ -1128,6 +1972,9 @@ extern_protocol!(
 );
 
 extern_protocol!(
+    /**
+      Messages related to the operation of a specific task.
+    */
     pub unsafe trait NSURLSessionTaskDelegate: NSURLSessionDelegate {
         #[cfg(all(
             feature = "Foundation_NSURLSession",
@@ -1265,6 +2112,10 @@ extern_protocol!(
 );
 
 extern_protocol!(
+    /**
+      Messages related to the operation of a task that delivers data
+     directly to the delegate.
+    */
     pub unsafe trait NSURLSessionDataDelegate: NSURLSessionTaskDelegate {
         #[cfg(all(
             feature = "Foundation_NSURLResponse",
@@ -1343,6 +2194,10 @@ extern_protocol!(
 );
 
 extern_protocol!(
+    /**
+      Messages related to the operation of a task that writes data to a
+     file and notifies the delegate upon completion.
+    */
     pub unsafe trait NSURLSessionDownloadDelegate: NSURLSessionTaskDelegate {
         #[cfg(all(
             feature = "Foundation_NSURL",
@@ -1500,6 +2355,9 @@ extern_methods!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      The resource fetch type.
+    */
     pub enum NSURLSessionTaskMetricsResourceFetchType {
         NSURLSessionTaskMetricsResourceFetchTypeUnknown = 0,
         NSURLSessionTaskMetricsResourceFetchTypeNetworkLoad = 1,
@@ -1510,6 +2368,9 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      DNS protocol used for domain resolution.
+    */
     pub enum NSURLSessionTaskMetricsDomainResolutionProtocol {
         NSURLSessionTaskMetricsDomainResolutionProtocolUnknown = 0,
         NSURLSessionTaskMetricsDomainResolutionProtocolUDP = 1,
@@ -1522,6 +2383,9 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSURLSessionTaskTransactionMetrics")]
+    /**
+      This class defines the performance metrics collected for a request/response transaction during the task execution.
+    */
     pub struct NSURLSessionTaskTransactionMetrics;
 
     #[cfg(feature = "Foundation_NSURLSessionTaskTransactionMetrics")]
@@ -1531,130 +2395,298 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSURLSessionTaskTransactionMetrics")]
+/**
+  This class defines the performance metrics collected for a request/response transaction during the task execution.
+*/
 unsafe impl NSObjectProtocol for NSURLSessionTaskTransactionMetrics {}
 
 extern_methods!(
+    /**
+      This class defines the performance metrics collected for a request/response transaction during the task execution.
+    */
     #[cfg(feature = "Foundation_NSURLSessionTaskTransactionMetrics")]
     unsafe impl NSURLSessionTaskTransactionMetrics {
         #[cfg(feature = "Foundation_NSURLRequest")]
+        /**
+          Represents the transaction request.
+        */
         #[method_id(@__retain_semantics Other request)]
         pub unsafe fn request(&self) -> Id<NSURLRequest>;
 
         #[cfg(feature = "Foundation_NSURLResponse")]
+        /**
+          Represents the transaction response. Can be nil if error occurred and no response was generated.
+        */
         #[method_id(@__retain_semantics Other response)]
         pub unsafe fn response(&self) -> Option<Id<NSURLResponse>>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          fetchStartDate returns the time when the user agent started fetching the resource, whether or not the resource was retrieved from the server or local resources.
+
+         The following metrics will be set to nil, if a persistent connection was used or the resource was retrieved from local resources:
+
+           domainLookupStartDate
+           domainLookupEndDate
+           connectStartDate
+           connectEndDate
+           secureConnectionStartDate
+           secureConnectionEndDate
+        */
         #[method_id(@__retain_semantics Other fetchStartDate)]
         pub unsafe fn fetchStartDate(&self) -> Option<Id<NSDate>>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          domainLookupStartDate returns the time immediately before the user agent started the name lookup for the resource.
+        */
         #[method_id(@__retain_semantics Other domainLookupStartDate)]
         pub unsafe fn domainLookupStartDate(&self) -> Option<Id<NSDate>>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          domainLookupEndDate returns the time after the name lookup was completed.
+        */
         #[method_id(@__retain_semantics Other domainLookupEndDate)]
         pub unsafe fn domainLookupEndDate(&self) -> Option<Id<NSDate>>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          connectStartDate is the time immediately before the user agent started establishing the connection to the server.
+
+         For example, this would correspond to the time immediately before the user agent started trying to establish the TCP connection.
+        */
         #[method_id(@__retain_semantics Other connectStartDate)]
         pub unsafe fn connectStartDate(&self) -> Option<Id<NSDate>>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          If an encrypted connection was used, secureConnectionStartDate is the time immediately before the user agent started the security handshake to secure the current connection.
+
+         For example, this would correspond to the time immediately before the user agent started the TLS handshake.
+
+         If an encrypted connection was not used, this attribute is set to nil.
+        */
         #[method_id(@__retain_semantics Other secureConnectionStartDate)]
         pub unsafe fn secureConnectionStartDate(&self) -> Option<Id<NSDate>>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          If an encrypted connection was used, secureConnectionEndDate is the time immediately after the security handshake completed.
+
+         If an encrypted connection was not used, this attribute is set to nil.
+        */
         #[method_id(@__retain_semantics Other secureConnectionEndDate)]
         pub unsafe fn secureConnectionEndDate(&self) -> Option<Id<NSDate>>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          connectEndDate is the time immediately after the user agent finished establishing the connection to the server, including completion of security-related and other handshakes.
+        */
         #[method_id(@__retain_semantics Other connectEndDate)]
         pub unsafe fn connectEndDate(&self) -> Option<Id<NSDate>>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          requestStartDate is the time immediately before the user agent started requesting the source, regardless of whether the resource was retrieved from the server or local resources.
+
+         For example, this would correspond to the time immediately before the user agent sent an HTTP GET request.
+        */
         #[method_id(@__retain_semantics Other requestStartDate)]
         pub unsafe fn requestStartDate(&self) -> Option<Id<NSDate>>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          requestEndDate is the time immediately after the user agent finished requesting the source, regardless of whether the resource was retrieved from the server or local resources.
+
+         For example, this would correspond to the time immediately after the user agent finished sending the last byte of the request.
+        */
         #[method_id(@__retain_semantics Other requestEndDate)]
         pub unsafe fn requestEndDate(&self) -> Option<Id<NSDate>>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          responseStartDate is the time immediately after the user agent received the first byte of the response from the server or from local resources.
+
+         For example, this would correspond to the time immediately after the user agent received the first byte of an HTTP response.
+        */
         #[method_id(@__retain_semantics Other responseStartDate)]
         pub unsafe fn responseStartDate(&self) -> Option<Id<NSDate>>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          responseEndDate is the time immediately after the user agent received the last byte of the resource.
+        */
         #[method_id(@__retain_semantics Other responseEndDate)]
         pub unsafe fn responseEndDate(&self) -> Option<Id<NSDate>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The network protocol used to fetch the resource, as identified by the ALPN Protocol ID Identification Sequence [RFC7301].
+         E.g., h3, h2, http/1.1.
+
+         When a proxy is configured AND a tunnel connection is established, then this attribute returns the value for the tunneled protocol.
+
+         For example:
+         If no proxy were used, and HTTP/2 was negotiated, then h2 would be returned.
+         If HTTP/1.1 were used to the proxy, and the tunneled connection was HTTP/2, then h2 would be returned.
+         If HTTP/1.1 were used to the proxy, and there were no tunnel, then http/1.1 would be returned.
+
+        */
         #[method_id(@__retain_semantics Other networkProtocolName)]
         pub unsafe fn networkProtocolName(&self) -> Option<Id<NSString>>;
 
+        /**
+          This property is set to YES if a proxy connection was used to fetch the resource.
+        */
         #[method(isProxyConnection)]
         pub unsafe fn isProxyConnection(&self) -> bool;
 
+        /**
+          This property is set to YES if a persistent connection was used to fetch the resource.
+        */
         #[method(isReusedConnection)]
         pub unsafe fn isReusedConnection(&self) -> bool;
 
+        /**
+          Indicates whether the resource was loaded, pushed or retrieved from the local cache.
+        */
         #[method(resourceFetchType)]
         pub unsafe fn resourceFetchType(&self) -> NSURLSessionTaskMetricsResourceFetchType;
 
+        /**
+          countOfRequestHeaderBytesSent is the number of bytes transferred for request header.
+        */
         #[method(countOfRequestHeaderBytesSent)]
         pub unsafe fn countOfRequestHeaderBytesSent(&self) -> i64;
 
+        /**
+          countOfRequestBodyBytesSent is the number of bytes transferred for request body.
+         It includes protocol-specific framing, transfer encoding, and content encoding.
+        */
         #[method(countOfRequestBodyBytesSent)]
         pub unsafe fn countOfRequestBodyBytesSent(&self) -> i64;
 
+        /**
+          countOfRequestBodyBytesBeforeEncoding is the size of upload body data, file, or stream.
+        */
         #[method(countOfRequestBodyBytesBeforeEncoding)]
         pub unsafe fn countOfRequestBodyBytesBeforeEncoding(&self) -> i64;
 
+        /**
+          countOfResponseHeaderBytesReceived is the number of bytes transferred for response header.
+        */
         #[method(countOfResponseHeaderBytesReceived)]
         pub unsafe fn countOfResponseHeaderBytesReceived(&self) -> i64;
 
+        /**
+          countOfResponseBodyBytesReceived is the number of bytes transferred for response header.
+         It includes protocol-specific framing, transfer encoding, and content encoding.
+        */
         #[method(countOfResponseBodyBytesReceived)]
         pub unsafe fn countOfResponseBodyBytesReceived(&self) -> i64;
 
+        /**
+          countOfResponseBodyBytesAfterDecoding is the size of data delivered to your delegate or completion handler.
+        */
         #[method(countOfResponseBodyBytesAfterDecoding)]
         pub unsafe fn countOfResponseBodyBytesAfterDecoding(&self) -> i64;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          localAddress is the IP address string of the local interface for the connection.
+
+         For multipath protocols, this is the local address of the initial flow.
+
+         If a connection was not used, this attribute is set to nil.
+        */
         #[method_id(@__retain_semantics Other localAddress)]
         pub unsafe fn localAddress(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+          localPort is the port number of the local interface for the connection.
+
+         For multipath protocols, this is the local port of the initial flow.
+
+         If a connection was not used, this attribute is set to nil.
+        */
         #[method_id(@__retain_semantics Other localPort)]
         pub unsafe fn localPort(&self) -> Option<Id<NSNumber>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          remoteAddress is the IP address string of the remote interface for the connection.
+
+         For multipath protocols, this is the remote address of the initial flow.
+
+         If a connection was not used, this attribute is set to nil.
+        */
         #[method_id(@__retain_semantics Other remoteAddress)]
         pub unsafe fn remoteAddress(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+          remotePort is the port number of the remote interface for the connection.
+
+         For multipath protocols, this is the remote port of the initial flow.
+
+         If a connection was not used, this attribute is set to nil.
+        */
         #[method_id(@__retain_semantics Other remotePort)]
         pub unsafe fn remotePort(&self) -> Option<Id<NSNumber>>;
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+          negotiatedTLSProtocolVersion is the TLS protocol version negotiated for the connection.
+         It is a 2-byte sequence in host byte order.
+
+         Please refer to tls_protocol_version_t enum in Security/SecProtocolTypes.h
+
+         If an encrypted connection was not used, this attribute is set to nil.
+        */
         #[method_id(@__retain_semantics Other negotiatedTLSProtocolVersion)]
         pub unsafe fn negotiatedTLSProtocolVersion(&self) -> Option<Id<NSNumber>>;
 
         #[cfg(feature = "Foundation_NSNumber")]
+        /**
+          negotiatedTLSCipherSuite is the TLS cipher suite negotiated for the connection.
+         It is a 2-byte sequence in host byte order.
+
+         Please refer to tls_ciphersuite_t enum in Security/SecProtocolTypes.h
+
+         If an encrypted connection was not used, this attribute is set to nil.
+        */
         #[method_id(@__retain_semantics Other negotiatedTLSCipherSuite)]
         pub unsafe fn negotiatedTLSCipherSuite(&self) -> Option<Id<NSNumber>>;
 
+        /**
+          Whether the connection is established over a cellular interface.
+        */
         #[method(isCellular)]
         pub unsafe fn isCellular(&self) -> bool;
 
+        /**
+          Whether the connection is established over an expensive interface.
+        */
         #[method(isExpensive)]
         pub unsafe fn isExpensive(&self) -> bool;
 
+        /**
+          Whether the connection is established over a constrained interface.
+        */
         #[method(isConstrained)]
         pub unsafe fn isConstrained(&self) -> bool;
 
+        /**
+          Whether a multipath protocol is successfully negotiated for the connection.
+        */
         #[method(isMultipath)]
         pub unsafe fn isMultipath(&self) -> bool;
 
+        /**
+          DNS protocol used for domain resolution.
+        */
         #[method(domainResolutionProtocol)]
         pub unsafe fn domainResolutionProtocol(
             &self,
@@ -1691,13 +2723,24 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSURLSessionTaskTransactionMetrics"
         ))]
+        /**
+          transactionMetrics array contains the metrics collected for every request/response transaction created during the task execution.
+        */
         #[method_id(@__retain_semantics Other transactionMetrics)]
         pub unsafe fn transactionMetrics(&self) -> Id<NSArray<NSURLSessionTaskTransactionMetrics>>;
 
         #[cfg(feature = "Foundation_NSDateInterval")]
+        /**
+          Interval from the task creation time to the task completion time.
+         Task creation time is the time when the task was instantiated.
+         Task completion time is the time when the task is about to change its internal state to completed.
+        */
         #[method_id(@__retain_semantics Other taskInterval)]
         pub unsafe fn taskInterval(&self) -> Id<NSDateInterval>;
 
+        /**
+          redirectCount is the number of redirects that were recorded.
+        */
         #[method(redirectCount)]
         pub unsafe fn redirectCount(&self) -> NSUInteger;
 

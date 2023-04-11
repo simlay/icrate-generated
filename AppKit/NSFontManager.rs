@@ -7,6 +7,13 @@ use crate::Foundation::*;
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+      Font Traits
+
+     This list should be kept small since the more traits that are assigned
+     to a given font, the harder it will be to map it to some other family.
+     Some traits are mutually exclusive such as NSExpanded and NSCondensed.
+    */
     pub enum NSFontTraitMask {
         NSItalicFontMask = 0x00000001,
         NSBoldFontMask = 0x00000002,
@@ -32,6 +39,9 @@ ns_options!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      And these "actions" are really tag values in Font Menu cells which send any of the action messages listed above.  Normally, they're pre-defined in the font panel.
+    */
     pub enum NSFontAction {
         NSNoFontChangeAction = 0,
         NSViaPanelFontAction = 1,
@@ -115,6 +125,9 @@ extern_methods!(
         pub unsafe fn weightOfFont(&self, font_obj: &NSFont) -> NSInteger;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          Three methods for supporting app font management.  The fonts and names used/returned by these functions are the same as those used by the NSFontPanel.  The third method below takes as input a name as returned by "availableFontFamilies" and returns an NSArray of NSArrays.  The elements of the "inner" arrays are: (0) the font's name, (1) non-family part of the name as used by NSFontPanel, (2) an NSNumber indicating the weight, and (3) an NSNumber indicating the traits.
+        */
         #[method_id(@__retain_semantics Other availableFonts)]
         pub unsafe fn availableFonts(&self) -> Id<NSArray<NSString>>;
 
@@ -272,6 +285,9 @@ extern_methods!(
             collection: &NSString,
         );
 
+        /**
+          Returns the current font action used by -convertFont:. This method is intended to be invoked to query the font conversion action while the action message (usually -changeFont:) is being invoked.
+        */
         #[method(currentFontAction)]
         pub unsafe fn currentFontAction(&self) -> NSFontAction;
 

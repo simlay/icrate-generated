@@ -7,6 +7,9 @@ use crate::GameKit::*;
 
 extern_protocol!(
     #[deprecated = "You should instead implement the GKChallengeListener protocol and register a listener with GKLocalPlayer."]
+    /**
+      GKChallengeEventHandler's delegate must implement the following protocol to be notified of challenge-related events. All of these methods are called on the main thread.
+    */
     pub unsafe trait GKChallengeEventHandlerDelegate: NSObjectProtocol {
         #[cfg(feature = "GameKit_GKChallenge")]
         #[optional]
@@ -59,6 +62,9 @@ extern_protocol!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameKit_GKChallengeEventHandler")]
+    /**
+      A singleton object responsible for dispatching challenge-related events to its delegate
+    */
     #[deprecated = "You should instead implement the GKChallengeListener protocol and register a listener with GKLocalPlayer."]
     pub struct GKChallengeEventHandler;
 
@@ -69,9 +75,15 @@ extern_class!(
 );
 
 #[cfg(feature = "GameKit_GKChallengeEventHandler")]
+/**
+  A singleton object responsible for dispatching challenge-related events to its delegate
+*/
 unsafe impl NSObjectProtocol for GKChallengeEventHandler {}
 
 extern_methods!(
+    /**
+      A singleton object responsible for dispatching challenge-related events to its delegate
+    */
     #[cfg(feature = "GameKit_GKChallengeEventHandler")]
     unsafe impl GKChallengeEventHandler {
         #[deprecated]

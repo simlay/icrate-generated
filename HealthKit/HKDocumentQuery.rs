@@ -9,6 +9,11 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKDocumentQuery")]
+    /**
+     @class         HKDocumentQuery
+    @abstract      A concrete subclass of HKQuery that provides an interface to retrieve documents from the Health store.
+
+    */
     pub struct HKDocumentQuery;
 
     #[cfg(feature = "HealthKit_HKDocumentQuery")]
@@ -19,11 +24,25 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKDocumentQuery")]
+/**
+ @class         HKDocumentQuery
+@abstract      A concrete subclass of HKQuery that provides an interface to retrieve documents from the Health store.
+
+*/
 unsafe impl NSObjectProtocol for HKDocumentQuery {}
 
 extern_methods!(
+    /**
+     @class         HKDocumentQuery
+    @abstract      A concrete subclass of HKQuery that provides an interface to retrieve documents from the Health store.
+
+    */
     #[cfg(feature = "HealthKit_HKDocumentQuery")]
     unsafe impl HKDocumentQuery {
+        /**
+         @property      limit
+        @abstract      The maximum number of documents the receiver will return upon completion.
+        */
         #[method(limit)]
         pub unsafe fn limit(&self) -> NSUInteger;
 
@@ -31,9 +50,18 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSSortDescriptor"
         ))]
+        /**
+         @property      sortDescriptors
+        @abstract      An array of NSSortDescriptors.
+        */
         #[method_id(@__retain_semantics Other sortDescriptors)]
         pub unsafe fn sortDescriptors(&self) -> Option<Id<NSArray<NSSortDescriptor>>>;
 
+        /**
+         @property      includeDocumentData
+        @abstract      The XML content for documents may be large.  This property can be used to control whether the query
+        returns the XML content for each record.
+        */
         #[method(includeDocumentData)]
         pub unsafe fn includeDocumentData(&self) -> bool;
 

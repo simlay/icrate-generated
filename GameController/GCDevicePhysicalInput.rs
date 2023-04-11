@@ -6,10 +6,34 @@ use crate::Foundation::*;
 use crate::GameController::*;
 
 extern_protocol!(
+    /**
+     An objecting conforming to \c GCDevicePhysicalInput provides properties and
+    methods for accessing common physical elements - buttons, thumbsticks, dpads,
+    etc - of a device.
+    */
     pub unsafe trait GCDevicePhysicalInput: GCDevicePhysicalInputState {
+        /**
+         The device that this profile is mapping input from.
+        */
         #[method_id(@__retain_semantics Other device)]
         unsafe fn device(&self) -> Option<Id<ProtocolObject<dyn GCDevice>>>;
 
+        /**
+         Set this block to be notified when a value on a element changed.  If multiple
+        elements change this block will be called for each element that changed.
+
+        The block is called on the \c handlerQueue configured on the \c device.
+
+        @note
+        IMPORTANT: It is possible for the value(s) of \c element to change (again)
+        between when your handler is scheduled for execution and when it actually
+        executes.  This may cause your application to "miss" changes to the element.
+        If your application needs to track every element state change - as opposed to
+        just the latest element state - use the methods under "Buffered Input".
+
+        @param element
+        The element that has been modified.
+        */
         #[method(elementValueDidChangeHandler)]
         unsafe fn elementValueDidChangeHandler(
             &self,
@@ -21,6 +45,22 @@ extern_protocol!(
             (),
         >;
 
+        /**
+         Set this block to be notified when a value on a element changed.  If multiple
+        elements change this block will be called for each element that changed.
+
+        The block is called on the \c handlerQueue configured on the \c device.
+
+        @note
+        IMPORTANT: It is possible for the value(s) of \c element to change (again)
+        between when your handler is scheduled for execution and when it actually
+        executes.  This may cause your application to "miss" changes to the element.
+        If your application needs to track every element state change - as opposed to
+        just the latest element state - use the methods under "Buffered Input".
+
+        @param element
+        The element that has been modified.
+        */
         #[method(setElementValueDidChangeHandler:)]
         unsafe fn setElementValueDidChangeHandler(
             &self,
@@ -38,11 +78,77 @@ extern_protocol!(
         #[method_id(@__retain_semantics Other capture)]
         unsafe fn capture(&self) -> Id<ProtocolObject<dyn GCDevicePhysicalInputState>>;
 
+        /**
+         Set this block to be notified when a new input state is available.  Your
+        handler should repeatedly call \c -nextInputState until it returns \c nil to
+        drain the pending input states from the queue.
+
+        physicalInput.inputStateQueueDepth = 20;
+        physicalInput.inputStateAvailableHandler = ^(__kindof id<GCDevicePhysicalInput> physicalInput) {
+        id<GCDevicePhysicalInputState, GCDevicePhysicalInputStateDiff> nextInputState;
+        while ((nextInputState = [physicalInput nextInputState])) {
+
+        // You can grab the individual states of all elements that your app
+        // is interested in.
+        id<GCButtonElement> buttonA = nextInputState.buttons[GCInputButtonA];
+        BOOL buttonAPressed = buttonA.pressedInput.pressed;
+        if (buttonAPressed) {
+        // Handle button A pressed
+        }
+
+        // Your code can first query whether an element's input value changed
+        // from the prior input state.
+        GCDevicePhysicalInputElementChange buttonAChange = [nextInputState changeForElement:buttonA];
+        if (buttonAChange == GCDevicePhysicalInputElementChanged) {
+        // Handle button A input changed
+        }
+
+        // Or, your code can request an enumerator of elements with input
+        // values that changed from the prior input state
+        for (id<GCPhysicalInputElement> changedElement in nextInputState.changedElements) {
+
+        }
+        }
+        };
+        */
         #[method(inputStateAvailableHandler)]
         unsafe fn inputStateAvailableHandler(
             &self,
         ) -> *mut Block<(NonNull<ProtocolObject<dyn GCDevicePhysicalInput>>,), ()>;
 
+        /**
+         Set this block to be notified when a new input state is available.  Your
+        handler should repeatedly call \c -nextInputState until it returns \c nil to
+        drain the pending input states from the queue.
+
+        physicalInput.inputStateQueueDepth = 20;
+        physicalInput.inputStateAvailableHandler = ^(__kindof id<GCDevicePhysicalInput> physicalInput) {
+        id<GCDevicePhysicalInputState, GCDevicePhysicalInputStateDiff> nextInputState;
+        while ((nextInputState = [physicalInput nextInputState])) {
+
+        // You can grab the individual states of all elements that your app
+        // is interested in.
+        id<GCButtonElement> buttonA = nextInputState.buttons[GCInputButtonA];
+        BOOL buttonAPressed = buttonA.pressedInput.pressed;
+        if (buttonAPressed) {
+        // Handle button A pressed
+        }
+
+        // Your code can first query whether an element's input value changed
+        // from the prior input state.
+        GCDevicePhysicalInputElementChange buttonAChange = [nextInputState changeForElement:buttonA];
+        if (buttonAChange == GCDevicePhysicalInputElementChanged) {
+        // Handle button A input changed
+        }
+
+        // Or, your code can request an enumerator of elements with input
+        // values that changed from the prior input state
+        for (id<GCPhysicalInputElement> changedElement in nextInputState.changedElements) {
+
+        }
+        }
+        };
+        */
         #[method(setInputStateAvailableHandler:)]
         unsafe fn setInputStateAvailableHandler(
             &self,
@@ -51,9 +157,29 @@ extern_protocol!(
             >,
         );
 
+        /**
+         The maximum number of input states to buffer.  If your application does not
+        drain the pending input states in the queue before this limit is reached, older
+        input states will be discarded - resulting in your application "missing" input
+        state changes.
+
+        The default value is \c one (no buffering).  Smaller values are ignored.  A
+        value of \c 20 should be more than enough to ensure no input state changes
+        are missed.
+        */
         #[method(inputStateQueueDepth)]
         unsafe fn inputStateQueueDepth(&self) -> NSInteger;
 
+        /**
+         The maximum number of input states to buffer.  If your application does not
+        drain the pending input states in the queue before this limit is reached, older
+        input states will be discarded - resulting in your application "missing" input
+        state changes.
+
+        The default value is \c one (no buffering).  Smaller values are ignored.  A
+        value of \c 20 should be more than enough to ensure no input state changes
+        are missed.
+        */
         #[method(setInputStateQueueDepth:)]
         unsafe fn setInputStateQueueDepth(&self, input_state_queue_depth: NSInteger);
 

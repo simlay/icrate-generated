@@ -85,18 +85,38 @@ extern_methods!(
         pub unsafe fn setSearchScopes(&self, search_scopes: &NSArray);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          scopes is an NSArray of NSURL objects (file URLs only) and/or string
+         paths and/or the special string constants below, which specifies the
+         locations to which the search is limited; an empty array means no
+         limits, which is the default state.
+        */
         #[method_id(@__retain_semantics Other searchItems)]
         pub unsafe fn searchItems(&self) -> Option<Id<NSArray>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          scopes is an NSArray of NSURL objects (file URLs only) and/or string
+         paths and/or the special string constants below, which specifies the
+         locations to which the search is limited; an empty array means no
+         limits, which is the default state.
+        */
         #[method(setSearchItems:)]
         pub unsafe fn setSearchItems(&self, search_items: Option<&NSArray>);
 
         #[cfg(feature = "Foundation_NSOperationQueue")]
+        /**
+          items can be a mixture of NSMetadataItem, NSURL objects (file URLs only)
+         and/or string paths; the getter returns the same mixture as was set
+        */
         #[method_id(@__retain_semantics Other operationQueue)]
         pub unsafe fn operationQueue(&self) -> Option<Id<NSOperationQueue>>;
 
         #[cfg(feature = "Foundation_NSOperationQueue")]
+        /**
+          items can be a mixture of NSMetadataItem, NSURL objects (file URLs only)
+         and/or string paths; the getter returns the same mixture as was set
+        */
         #[method(setOperationQueue:)]
         pub unsafe fn setOperationQueue(&self, operation_queue: Option<&NSOperationQueue>);
 
@@ -121,6 +141,9 @@ extern_methods!(
         #[method(enableUpdates)]
         pub unsafe fn enableUpdates(&self);
 
+        /**
+          Results are NSMetadataItems, or whatever the delegate replaces that with
+        */
         #[method(resultCount)]
         pub unsafe fn resultCount(&self) -> NSUInteger;
 
@@ -141,6 +164,9 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          this is for K-V Bindings, and causes side-effects on the query
+        */
         #[method_id(@__retain_semantics Other results)]
         pub unsafe fn results(&self) -> Id<NSArray>;
 
@@ -153,6 +179,9 @@ extern_methods!(
             feature = "Foundation_NSMetadataQueryAttributeValueTuple",
             feature = "Foundation_NSString"
         ))]
+        /**
+          values are arrays of NSMetadataQueryAttributeValueTuple
+        */
         #[method_id(@__retain_semantics Other valueLists)]
         pub unsafe fn valueLists(
             &self,
@@ -162,6 +191,9 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSMetadataQueryResultGroup"
         ))]
+        /**
+          array of NSMetadataQueryResultGroups, for first grouping attribute
+        */
         #[method_id(@__retain_semantics Other groupedResults)]
         pub unsafe fn groupedResults(&self) -> Id<NSArray<NSMetadataQueryResultGroup>>;
 
@@ -334,6 +366,9 @@ extern_methods!(
         pub unsafe fn value(&self) -> Id<Object>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          nil if this is a leaf
+        */
         #[method_id(@__retain_semantics Other subgroups)]
         pub unsafe fn subgroups(&self) -> Option<Id<NSArray<NSMetadataQueryResultGroup>>>;
 
@@ -344,6 +379,9 @@ extern_methods!(
         pub unsafe fn resultAtIndex(&self, idx: NSUInteger) -> Id<Object>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          this is for K-V Bindings, and causes side-effects on the query
+        */
         #[method_id(@__retain_semantics Other results)]
         pub unsafe fn results(&self) -> Id<NSArray>;
     }

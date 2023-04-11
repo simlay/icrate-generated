@@ -7,6 +7,12 @@ use crate::MetricKit::*;
 __inner_extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MetricKit_MXHistogramBucket")]
+    /**
+     @class         MXHistogramBucket
+    @abstract      A class that represents a bucket within an MXHistogram
+    @discussion    Histogram buckets are sorted in ascending order.
+    @discussion    Histogram bucket start and end values are exclusive.
+    */
     pub struct MXHistogramBucket<UnitType: Message = Object, UnitTypeOwnership: Ownership = Shared> {
         _inner0: PhantomData<*mut (UnitType, UnitTypeOwnership)>,
         notunwindsafe: PhantomData<&'static mut ()>,
@@ -21,36 +27,72 @@ __inner_extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXHistogramBucket")]
+/**
+ @class         MXHistogramBucket
+@abstract      A class that represents a bucket within an MXHistogram
+@discussion    Histogram buckets are sorted in ascending order.
+@discussion    Histogram bucket start and end values are exclusive.
+*/
 unsafe impl<UnitType: Message, UnitTypeOwnership: Ownership> NSCoding
     for MXHistogramBucket<UnitType, UnitTypeOwnership>
 {
 }
 
 #[cfg(feature = "MetricKit_MXHistogramBucket")]
+/**
+ @class         MXHistogramBucket
+@abstract      A class that represents a bucket within an MXHistogram
+@discussion    Histogram buckets are sorted in ascending order.
+@discussion    Histogram bucket start and end values are exclusive.
+*/
 unsafe impl<UnitType: Message, UnitTypeOwnership: Ownership> NSObjectProtocol
     for MXHistogramBucket<UnitType, UnitTypeOwnership>
 {
 }
 
 #[cfg(feature = "MetricKit_MXHistogramBucket")]
+/**
+ @class         MXHistogramBucket
+@abstract      A class that represents a bucket within an MXHistogram
+@discussion    Histogram buckets are sorted in ascending order.
+@discussion    Histogram bucket start and end values are exclusive.
+*/
 unsafe impl<UnitType: Message, UnitTypeOwnership: Ownership> NSSecureCoding
     for MXHistogramBucket<UnitType, UnitTypeOwnership>
 {
 }
 
 extern_methods!(
+    /**
+     @class         MXHistogramBucket
+    @abstract      A class that represents a bucket within an MXHistogram
+    @discussion    Histogram buckets are sorted in ascending order.
+    @discussion    Histogram bucket start and end values are exclusive.
+    */
     #[cfg(feature = "MetricKit_MXHistogramBucket")]
     unsafe impl<UnitType: Message, UnitTypeOwnership: Ownership>
         MXHistogramBucket<UnitType, UnitTypeOwnership>
     {
         #[cfg(feature = "Foundation_NSMeasurement")]
+        /**
+         @property      bucketStart
+        @abstract      An NSMeasurement representing the start of a histogram bucket.
+        */
         #[method_id(@__retain_semantics Other bucketStart)]
         pub unsafe fn bucketStart(&self) -> Id<NSMeasurement<UnitType>>;
 
         #[cfg(feature = "Foundation_NSMeasurement")]
+        /**
+         @property      bucketEnd
+        @abstract      An NSMeasurement representing the end of a histogram bucket.
+        */
         #[method_id(@__retain_semantics Other bucketEnd)]
         pub unsafe fn bucketEnd(&self) -> Id<NSMeasurement<UnitType>>;
 
+        /**
+         @property      bucketCount
+        @abstract      An NSUInteger representing the number of samples in this histogram bucket.
+        */
         #[method(bucketCount)]
         pub unsafe fn bucketCount(&self) -> NSUInteger;
     }
@@ -59,6 +101,10 @@ extern_methods!(
 __inner_extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MetricKit_MXHistogram")]
+    /**
+     @class         MXHistogram
+    @abstract      A class representing bucketized histogram data.
+    */
     pub struct MXHistogram<UnitType: Message = Object, UnitTypeOwnership: Ownership = Shared> {
         _inner0: PhantomData<*mut (UnitType, UnitTypeOwnership)>,
         notunwindsafe: PhantomData<&'static mut ()>,
@@ -73,28 +119,49 @@ __inner_extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXHistogram")]
+/**
+ @class         MXHistogram
+@abstract      A class representing bucketized histogram data.
+*/
 unsafe impl<UnitType: Message, UnitTypeOwnership: Ownership> NSCoding
     for MXHistogram<UnitType, UnitTypeOwnership>
 {
 }
 
 #[cfg(feature = "MetricKit_MXHistogram")]
+/**
+ @class         MXHistogram
+@abstract      A class representing bucketized histogram data.
+*/
 unsafe impl<UnitType: Message, UnitTypeOwnership: Ownership> NSObjectProtocol
     for MXHistogram<UnitType, UnitTypeOwnership>
 {
 }
 
 #[cfg(feature = "MetricKit_MXHistogram")]
+/**
+ @class         MXHistogram
+@abstract      A class representing bucketized histogram data.
+*/
 unsafe impl<UnitType: Message, UnitTypeOwnership: Ownership> NSSecureCoding
     for MXHistogram<UnitType, UnitTypeOwnership>
 {
 }
 
 extern_methods!(
+    /**
+     @class         MXHistogram
+    @abstract      A class representing bucketized histogram data.
+    */
     #[cfg(feature = "MetricKit_MXHistogram")]
     unsafe impl<UnitType: Message, UnitTypeOwnership: Ownership>
         MXHistogram<UnitType, UnitTypeOwnership>
     {
+        /**
+         @property      totalBucketCount
+        @abstract      The number of buckets contained within this histogram.
+        @discussion    This value can never be negative.
+        */
         #[method(totalBucketCount)]
         pub unsafe fn totalBucketCount(&self) -> NSUInteger;
 
@@ -102,6 +169,10 @@ extern_methods!(
             feature = "Foundation_NSEnumerator",
             feature = "MetricKit_MXHistogramBucket"
         ))]
+        /**
+         @property      bucketEnumerator
+        @abstract      An NSEnumerator that can be used to enumerate the buckets of this histogram.
+        */
         #[method_id(@__retain_semantics Other bucketEnumerator)]
         pub unsafe fn bucketEnumerator(&self) -> Id<NSEnumerator<MXHistogramBucket<UnitType>>>;
     }

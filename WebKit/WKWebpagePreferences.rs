@@ -7,6 +7,17 @@ use crate::WebKit::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      @enum WKContentMode
+    @abstract A content mode represents the type of content to load, as well as
+    additional layout and rendering adaptations that are applied as a result of
+    loading the content
+    @constant WKContentModeRecommended  The recommended content mode for the current platform
+    @constant WKContentModeMobile       Represents content targeting mobile browsers
+    @constant WKContentModeDesktop      Represents content targeting desktop browsers
+    @discussion WKContentModeRecommended behaves like WKContentModeMobile on iPhone and iPad mini
+    and WKContentModeDesktop on other iPad models as well as Mac.
+    */
     pub enum WKContentMode {
         WKContentModeRecommended = 0,
         WKContentModeMobile = 1,
@@ -17,6 +28,11 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "WebKit_WKWebpagePreferences")]
+    /**
+      A WKWebpagePreferences object is a collection of properties that
+    determine the preferences to use when loading and rendering a page.
+    @discussion Contains properties used to determine webpage preferences.
+    */
     pub struct WKWebpagePreferences;
 
     #[cfg(feature = "WebKit_WKWebpagePreferences")]
@@ -26,26 +42,86 @@ extern_class!(
 );
 
 #[cfg(feature = "WebKit_WKWebpagePreferences")]
+/**
+  A WKWebpagePreferences object is a collection of properties that
+determine the preferences to use when loading and rendering a page.
+@discussion Contains properties used to determine webpage preferences.
+*/
 unsafe impl NSObjectProtocol for WKWebpagePreferences {}
 
 extern_methods!(
+    /**
+      A WKWebpagePreferences object is a collection of properties that
+    determine the preferences to use when loading and rendering a page.
+    @discussion Contains properties used to determine webpage preferences.
+    */
     #[cfg(feature = "WebKit_WKWebpagePreferences")]
     unsafe impl WKWebpagePreferences {
+        /**
+          @abstract A WKContentMode indicating the content mode to prefer
+        when loading and rendering a webpage.
+        @discussion The default value is WKContentModeRecommended. The stated
+        preference is ignored on subframe navigation
+        */
         #[method(preferredContentMode)]
         pub unsafe fn preferredContentMode(&self) -> WKContentMode;
 
+        /**
+          @abstract A WKContentMode indicating the content mode to prefer
+        when loading and rendering a webpage.
+        @discussion The default value is WKContentModeRecommended. The stated
+        preference is ignored on subframe navigation
+        */
         #[method(setPreferredContentMode:)]
         pub unsafe fn setPreferredContentMode(&self, preferred_content_mode: WKContentMode);
 
+        /**
+          @abstract A Boolean value indicating whether JavaScript from web content is enabled
+        @discussion If this value is set to NO then JavaScript referenced by the web content will not execute.
+        This includes JavaScript found in inline <script> elements, referenced by external JavaScript resources,
+        "javascript:" URLs, and all other forms.
+
+        Even if this value is set to NO your application can still execute JavaScript using:
+        - [WKWebView evaluteJavaScript:completionHandler:]
+        - [WKWebView evaluteJavaScript:inContentWorld:completionHandler:]
+        - [WKWebView callAsyncJavaScript:arguments:inContentWorld:completionHandler:]
+        - WKUserScripts
+
+        The default value is YES.
+        */
         #[method(allowsContentJavaScript)]
         pub unsafe fn allowsContentJavaScript(&self) -> bool;
 
+        /**
+          @abstract A Boolean value indicating whether JavaScript from web content is enabled
+        @discussion If this value is set to NO then JavaScript referenced by the web content will not execute.
+        This includes JavaScript found in inline <script> elements, referenced by external JavaScript resources,
+        "javascript:" URLs, and all other forms.
+
+        Even if this value is set to NO your application can still execute JavaScript using:
+        - [WKWebView evaluteJavaScript:completionHandler:]
+        - [WKWebView evaluteJavaScript:inContentWorld:completionHandler:]
+        - [WKWebView callAsyncJavaScript:arguments:inContentWorld:completionHandler:]
+        - WKUserScripts
+
+        The default value is YES.
+        */
         #[method(setAllowsContentJavaScript:)]
         pub unsafe fn setAllowsContentJavaScript(&self, allows_content_java_script: bool);
 
+        /**
+          @abstract A boolean indicating whether lockdown mode is enabled.
+        @discussion This mode trades off performance and compatibility in favor of security.
+        The default value depends on the system setting.
+        */
         #[method(isLockdownModeEnabled)]
         pub unsafe fn isLockdownModeEnabled(&self) -> bool;
 
+        /**
+          @abstract A boolean indicating whether lockdown mode is enabled.
+        @discussion This mode trades off performance and compatibility in favor of security.
+        The default value depends on the system setting.
+        */
         #[method(setLockdownModeEnabled:)]
         pub unsafe fn setLockdownModeEnabled(&self, lockdown_mode_enabled: bool);
     }

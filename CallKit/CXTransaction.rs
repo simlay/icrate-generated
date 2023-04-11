@@ -28,13 +28,22 @@ extern_methods!(
     #[cfg(feature = "CallKit_CXTransaction")]
     unsafe impl CXTransaction {
         #[cfg(feature = "Foundation_NSUUID")]
+        /**
+          Unique ID
+        */
         #[method_id(@__retain_semantics Other UUID)]
         pub unsafe fn UUID(&self) -> Id<NSUUID>;
 
+        /**
+          Whether all actions have been completed
+        */
         #[method(isComplete)]
         pub unsafe fn isComplete(&self) -> bool;
 
         #[cfg(all(feature = "CallKit_CXAction", feature = "Foundation_NSArray"))]
+        /**
+          The list of actions contained by the receiver
+        */
         #[method_id(@__retain_semantics Other actions)]
         pub unsafe fn actions(&self) -> Id<NSArray<CXAction>>;
 

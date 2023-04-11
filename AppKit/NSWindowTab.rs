@@ -8,6 +8,9 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSWindowTab")]
+    /**
+      This class encapsulates all the state and properties for a window when it exists in a tabbed window environment. See [NSWindow allowsAutomaticWindowTabbing] and [NSWindow tabbingIdentifier]. These properties can be set at anytime, but will only take effect when the window is shown in a tab.
+    */
     pub struct NSWindowTab;
 
     #[cfg(feature = "AppKit_NSWindowTab")]
@@ -17,40 +20,70 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSWindowTab")]
+/**
+  This class encapsulates all the state and properties for a window when it exists in a tabbed window environment. See [NSWindow allowsAutomaticWindowTabbing] and [NSWindow tabbingIdentifier]. These properties can be set at anytime, but will only take effect when the window is shown in a tab.
+*/
 unsafe impl NSObjectProtocol for NSWindowTab {}
 
 extern_methods!(
+    /**
+      This class encapsulates all the state and properties for a window when it exists in a tabbed window environment. See [NSWindow allowsAutomaticWindowTabbing] and [NSWindow tabbingIdentifier]. These properties can be set at anytime, but will only take effect when the window is shown in a tab.
+    */
     #[cfg(feature = "AppKit_NSWindowTab")]
     unsafe impl NSWindowTab {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The tab title for this window when in a tab. By default it follows the window.title. You can override this by explicitly setting it to something custom. Setting it to nil will make it follow the window.title again.
+        */
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The tab title for this window when in a tab. By default it follows the window.title. You can override this by explicitly setting it to something custom. Setting it to nil will make it follow the window.title again.
+        */
         #[method(setTitle:)]
         pub unsafe fn setTitle(&self, title: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSAttributedString")]
+        /**
+          The attributed string tab title for this window when in a tab. This value is only used when non-nil; otherwise the title is used. The attributedTitle will use the provided attributes that are explicitly given. Attributes not given, such as the font type, color and size, will default to the correct values for the window tab.
+        */
         #[method_id(@__retain_semantics Other attributedTitle)]
         pub unsafe fn attributedTitle(&self) -> Option<Id<NSAttributedString>>;
 
         #[cfg(feature = "Foundation_NSAttributedString")]
+        /**
+          The attributed string tab title for this window when in a tab. This value is only used when non-nil; otherwise the title is used. The attributedTitle will use the provided attributes that are explicitly given. Attributes not given, such as the font type, color and size, will default to the correct values for the window tab.
+        */
         #[method(setAttributedTitle:)]
         pub unsafe fn setAttributedTitle(&self, attributed_title: Option<&NSAttributedString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The tool tip for this window when in a tab. By default, it is self.title but can be set to something custom. Setting it back to nil will make it follow self.title again.
+        */
         #[method_id(@__retain_semantics Other toolTip)]
         pub unsafe fn toolTip(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The tool tip for this window when in a tab. By default, it is self.title but can be set to something custom. Setting it back to nil will make it follow self.title again.
+        */
         #[method(setToolTip:)]
         pub unsafe fn setToolTip(&self, tool_tip: Option<&NSString>);
 
         #[cfg(feature = "AppKit_NSView")]
+        /**
+          Get and set the accessory view for this window when it is in a tabbed window. translatesAutoresizingMaskIntoConstraints will automatically be set to NO on the view. Constraints can be created and activated to specify the view's width and height values. A constraint will automatically be added to y-center the view, and to right align the view.
+        */
         #[method_id(@__retain_semantics Other accessoryView)]
         pub unsafe fn accessoryView(&self) -> Option<Id<NSView>>;
 
         #[cfg(feature = "AppKit_NSView")]
+        /**
+          Get and set the accessory view for this window when it is in a tabbed window. translatesAutoresizingMaskIntoConstraints will automatically be set to NO on the view. Constraints can be created and activated to specify the view's width and height values. A constraint will automatically be added to y-center the view, and to right align the view.
+        */
         #[method(setAccessoryView:)]
         pub unsafe fn setAccessoryView(&self, accessory_view: Option<&NSView>);
     }

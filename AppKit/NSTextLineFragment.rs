@@ -8,6 +8,9 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSTextLineFragment")]
+    /**
+      NSTextLineFragment represents a single textual layout and rendering unit inside NSTextLayoutFragment.
+    */
     pub struct NSTextLineFragment;
 
     #[cfg(feature = "AppKit_NSTextLineFragment")]
@@ -17,15 +20,27 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSTextLineFragment")]
+/**
+  NSTextLineFragment represents a single textual layout and rendering unit inside NSTextLayoutFragment.
+*/
 unsafe impl NSCoding for NSTextLineFragment {}
 
 #[cfg(feature = "AppKit_NSTextLineFragment")]
+/**
+  NSTextLineFragment represents a single textual layout and rendering unit inside NSTextLayoutFragment.
+*/
 unsafe impl NSObjectProtocol for NSTextLineFragment {}
 
 #[cfg(feature = "AppKit_NSTextLineFragment")]
+/**
+  NSTextLineFragment represents a single textual layout and rendering unit inside NSTextLayoutFragment.
+*/
 unsafe impl NSSecureCoding for NSTextLineFragment {}
 
 extern_methods!(
+    /**
+      NSTextLineFragment represents a single textual layout and rendering unit inside NSTextLayoutFragment.
+    */
     #[cfg(feature = "AppKit_NSTextLineFragment")]
     unsafe impl NSTextLineFragment {
         #[cfg(feature = "Foundation_NSAttributedString")]
@@ -56,15 +71,27 @@ extern_methods!(
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
         #[cfg(feature = "Foundation_NSAttributedString")]
+        /**
+          The source attributed string
+        */
         #[method_id(@__retain_semantics Other attributedString)]
         pub unsafe fn attributedString(&self) -> Id<NSAttributedString>;
 
+        /**
+          The string range for the source attributed string corresponding to this line fragment
+        */
         #[method(characterRange)]
         pub unsafe fn characterRange(&self) -> NSRange;
 
+        /**
+          The typographic bounds specifying the dimensions of the line fragment for laying out line fragments to each other. The origin value is offset from the beginning of the line fragment group belonging to the parent layout fragment.
+        */
         #[method(typographicBounds)]
         pub unsafe fn typographicBounds(&self) -> CGRect;
 
+        /**
+          Rendering origin for the left most glyph in the line fragment coordinate system
+        */
         #[method(glyphOrigin)]
         pub unsafe fn glyphOrigin(&self) -> CGPoint;
 

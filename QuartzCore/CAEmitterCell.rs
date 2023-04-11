@@ -42,28 +42,58 @@ extern_methods!(
         pub unsafe fn shouldArchiveValueForKey(&self, key: &NSString) -> bool;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The name of the cell. Used to construct key paths. Defaults to nil.
+        */
         #[method_id(@__retain_semantics Other name)]
         pub unsafe fn name(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The name of the cell. Used to construct key paths. Defaults to nil.
+        */
         #[method(setName:)]
         pub unsafe fn setName(&self, name: Option<&NSString>);
 
+        /**
+          Controls whether or not cells from this emitter are rendered.
+        */
         #[method(isEnabled)]
         pub unsafe fn isEnabled(&self) -> bool;
 
+        /**
+          Controls whether or not cells from this emitter are rendered.
+        */
         #[method(setEnabled:)]
         pub unsafe fn setEnabled(&self, enabled: bool);
 
+        /**
+          The number of emitted objects created every second. Default value is
+         zero. Animatable.
+        */
         #[method(birthRate)]
         pub unsafe fn birthRate(&self) -> c_float;
 
+        /**
+          The number of emitted objects created every second. Default value is
+         zero. Animatable.
+        */
         #[method(setBirthRate:)]
         pub unsafe fn setBirthRate(&self, birth_rate: c_float);
 
+        /**
+          The lifetime of each emitted object in seconds, specified as a mean
+         value and a range about the mean. Both values default to zero.
+         Animatable.
+        */
         #[method(lifetime)]
         pub unsafe fn lifetime(&self) -> c_float;
 
+        /**
+          The lifetime of each emitted object in seconds, specified as a mean
+         value and a range about the mean. Both values default to zero.
+         Animatable.
+        */
         #[method(setLifetime:)]
         pub unsafe fn setLifetime(&self, lifetime: c_float);
 
@@ -73,9 +103,29 @@ extern_methods!(
         #[method(setLifetimeRange:)]
         pub unsafe fn setLifetimeRange(&self, lifetime_range: c_float);
 
+        /**
+          The orientation of the emission angle in radians, relative to the
+         natural orientation angle of the emission shape. Note that latitude
+         here is what is typically called colatitude, the zenith or phi, the
+         angle from the z-axis. Similarly longitude is the angle in the
+         xy-plane from the x-axis, often referred to as the azimuth or
+         theta. Both values default to zero, which translates to no change
+         relative to the emission shape's direction. Both values are
+         animatable.
+        */
         #[method(emissionLatitude)]
         pub unsafe fn emissionLatitude(&self) -> CGFloat;
 
+        /**
+          The orientation of the emission angle in radians, relative to the
+         natural orientation angle of the emission shape. Note that latitude
+         here is what is typically called colatitude, the zenith or phi, the
+         angle from the z-axis. Similarly longitude is the angle in the
+         xy-plane from the x-axis, often referred to as the azimuth or
+         theta. Both values default to zero, which translates to no change
+         relative to the emission shape's direction. Both values are
+         animatable.
+        */
         #[method(setEmissionLatitude:)]
         pub unsafe fn setEmissionLatitude(&self, emission_latitude: CGFloat);
 
@@ -85,15 +135,33 @@ extern_methods!(
         #[method(setEmissionLongitude:)]
         pub unsafe fn setEmissionLongitude(&self, emission_longitude: CGFloat);
 
+        /**
+          An angle (in radians) defining a cone around the emission angle.
+         Emitted objects are uniformly distributed across this cone. Defaults
+         to zero.  Animatable.
+        */
         #[method(emissionRange)]
         pub unsafe fn emissionRange(&self) -> CGFloat;
 
+        /**
+          An angle (in radians) defining a cone around the emission angle.
+         Emitted objects are uniformly distributed across this cone. Defaults
+         to zero.  Animatable.
+        */
         #[method(setEmissionRange:)]
         pub unsafe fn setEmissionRange(&self, emission_range: CGFloat);
 
+        /**
+          The initial mean velocity of each emitted object, and its range. Both
+         values default to zero. Animatable.
+        */
         #[method(velocity)]
         pub unsafe fn velocity(&self) -> CGFloat;
 
+        /**
+          The initial mean velocity of each emitted object, and its range. Both
+         values default to zero. Animatable.
+        */
         #[method(setVelocity:)]
         pub unsafe fn setVelocity(&self, velocity: CGFloat);
 
@@ -103,9 +171,17 @@ extern_methods!(
         #[method(setVelocityRange:)]
         pub unsafe fn setVelocityRange(&self, velocity_range: CGFloat);
 
+        /**
+          The acceleration vector applied to emitted objects. Defaults to
+         (0, 0, 0). Animatable.
+        */
         #[method(xAcceleration)]
         pub unsafe fn xAcceleration(&self) -> CGFloat;
 
+        /**
+          The acceleration vector applied to emitted objects. Defaults to
+         (0, 0, 0). Animatable.
+        */
         #[method(setXAcceleration:)]
         pub unsafe fn setXAcceleration(&self, x_acceleration: CGFloat);
 
@@ -121,9 +197,19 @@ extern_methods!(
         #[method(setZAcceleration:)]
         pub unsafe fn setZAcceleration(&self, z_acceleration: CGFloat);
 
+        /**
+          The scale factor applied to each emitted object, defined as mean and
+         range about the mean. Scale defaults to one, range to zero.
+         Animatable.
+        */
         #[method(scale)]
         pub unsafe fn scale(&self) -> CGFloat;
 
+        /**
+          The scale factor applied to each emitted object, defined as mean and
+         range about the mean. Scale defaults to one, range to zero.
+         Animatable.
+        */
         #[method(setScale:)]
         pub unsafe fn setScale(&self, scale: CGFloat);
 
@@ -139,9 +225,17 @@ extern_methods!(
         #[method(setScaleSpeed:)]
         pub unsafe fn setScaleSpeed(&self, scale_speed: CGFloat);
 
+        /**
+          The rotation speed applied to each emitted object, defined as mean
+         and range about the mean. Defaults to zero. Animatable.
+        */
         #[method(spin)]
         pub unsafe fn spin(&self) -> CGFloat;
 
+        /**
+          The rotation speed applied to each emitted object, defined as mean
+         and range about the mean. Defaults to zero. Animatable.
+        */
         #[method(setSpin:)]
         pub unsafe fn setSpin(&self, spin: CGFloat);
 
@@ -175,9 +269,19 @@ extern_methods!(
         #[method(setAlphaRange:)]
         pub unsafe fn setAlphaRange(&self, alpha_range: c_float);
 
+        /**
+          The speed at which color components of emitted objects change over
+         their lifetime, defined as the rate of change per second. Defaults
+         to (0, 0, 0, 0). Animatable.
+        */
         #[method(redSpeed)]
         pub unsafe fn redSpeed(&self) -> c_float;
 
+        /**
+          The speed at which color components of emitted objects change over
+         their lifetime, defined as the rate of change per second. Defaults
+         to (0, 0, 0, 0). Animatable.
+        */
         #[method(setRedSpeed:)]
         pub unsafe fn setRedSpeed(&self, red_speed: c_float);
 
@@ -199,29 +303,63 @@ extern_methods!(
         #[method(setAlphaSpeed:)]
         pub unsafe fn setAlphaSpeed(&self, alpha_speed: c_float);
 
+        /**
+          The cell contents, typically a CGImageRef. Defaults to nil.
+         Animatable.
+        */
         #[method_id(@__retain_semantics Other contents)]
         pub unsafe fn contents(&self) -> Option<Id<Object>>;
 
+        /**
+          The cell contents, typically a CGImageRef. Defaults to nil.
+         Animatable.
+        */
         #[method(setContents:)]
         pub unsafe fn setContents(&self, contents: Option<&Object>);
 
+        /**
+          The sub-rectangle of the contents image that will be drawn. See
+         CALayer.h for more details. Defaults to the unit rectangle [0 0 1 1].
+         Animatable.
+        */
         #[method(contentsRect)]
         pub unsafe fn contentsRect(&self) -> CGRect;
 
+        /**
+          The sub-rectangle of the contents image that will be drawn. See
+         CALayer.h for more details. Defaults to the unit rectangle [0 0 1 1].
+         Animatable.
+        */
         #[method(setContentsRect:)]
         pub unsafe fn setContentsRect(&self, contents_rect: CGRect);
 
+        /**
+          Defines the scale factor applied to the contents of the cell. See
+         CALayer.h for more details.
+        */
         #[method(contentsScale)]
         pub unsafe fn contentsScale(&self) -> CGFloat;
 
+        /**
+          Defines the scale factor applied to the contents of the cell. See
+         CALayer.h for more details.
+        */
         #[method(setContentsScale:)]
         pub unsafe fn setContentsScale(&self, contents_scale: CGFloat);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The filter parameters used when rendering the `contents' image. See
+         CALayer.h for more details.
+        */
         #[method_id(@__retain_semantics Other minificationFilter)]
         pub unsafe fn minificationFilter(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The filter parameters used when rendering the `contents' image. See
+         CALayer.h for more details.
+        */
         #[method(setMinificationFilter:)]
         pub unsafe fn setMinificationFilter(&self, minification_filter: &NSString);
 
@@ -240,18 +378,38 @@ extern_methods!(
         pub unsafe fn setMinificationFilterBias(&self, minification_filter_bias: c_float);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          An array containing the sub-cells of this cell, or nil (the default
+         value). When non-nil each particle emitted by the cell will act as
+         an emitter for each of the cell's sub-cells. The emission point is
+         the current particle position and the emission angle is relative to
+         the current direction of the particle. Animatable.
+        */
         #[method_id(@__retain_semantics Other emitterCells)]
         pub unsafe fn emitterCells(&self) -> Option<Id<NSArray<CAEmitterCell>>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          An array containing the sub-cells of this cell, or nil (the default
+         value). When non-nil each particle emitted by the cell will act as
+         an emitter for each of the cell's sub-cells. The emission point is
+         the current particle position and the emission angle is relative to
+         the current direction of the particle. Animatable.
+        */
         #[method(setEmitterCells:)]
         pub unsafe fn setEmitterCells(&self, emitter_cells: Option<&NSArray<CAEmitterCell>>);
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          Inherited attributes similar to in layers.
+        */
         #[method_id(@__retain_semantics Other style)]
         pub unsafe fn style(&self) -> Option<Id<NSDictionary>>;
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          Inherited attributes similar to in layers.
+        */
         #[method(setStyle:)]
         pub unsafe fn setStyle(&self, style: Option<&NSDictionary>);
     }

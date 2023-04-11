@@ -54,23 +54,41 @@ extern_methods!(
     /// MKRequestOptions
     #[cfg(feature = "MapKit_MKDirectionsRequest")]
     unsafe impl MKDirectionsRequest {
+        /**
+          Default is MKDirectionsTransportTypeAny
+        */
         #[method(transportType)]
         pub unsafe fn transportType(&self) -> MKDirectionsTransportType;
 
+        /**
+          Default is MKDirectionsTransportTypeAny
+        */
         #[method(setTransportType:)]
         pub unsafe fn setTransportType(&self, transport_type: MKDirectionsTransportType);
 
+        /**
+          if YES and there is more than one reasonable way to route from source to destination, allow the route server to return multiple routes. Default is NO.
+        */
         #[method(requestsAlternateRoutes)]
         pub unsafe fn requestsAlternateRoutes(&self) -> bool;
 
+        /**
+          if YES and there is more than one reasonable way to route from source to destination, allow the route server to return multiple routes. Default is NO.
+        */
         #[method(setRequestsAlternateRoutes:)]
         pub unsafe fn setRequestsAlternateRoutes(&self, requests_alternate_routes: bool);
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          Set either departure or arrival date to hint to the route server when the trip will take place.
+        */
         #[method_id(@__retain_semantics Other departureDate)]
         pub unsafe fn departureDate(&self) -> Option<Id<NSDate>>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          Set either departure or arrival date to hint to the route server when the trip will take place.
+        */
         #[method(setDepartureDate:)]
         pub unsafe fn setDepartureDate(&self, departure_date: Option<&NSDate>);
 
@@ -82,15 +100,27 @@ extern_methods!(
         #[method(setArrivalDate:)]
         pub unsafe fn setArrivalDate(&self, arrival_date: Option<&NSDate>);
 
+        /**
+          Default is MKDirectionsRoutePreferenceAny
+        */
         #[method(tollPreference)]
         pub unsafe fn tollPreference(&self) -> MKDirectionsRoutePreference;
 
+        /**
+          Default is MKDirectionsRoutePreferenceAny
+        */
         #[method(setTollPreference:)]
         pub unsafe fn setTollPreference(&self, toll_preference: MKDirectionsRoutePreference);
 
+        /**
+          Default is MKDirectionsRoutePreferenceAny
+        */
         #[method(highwayPreference)]
         pub unsafe fn highwayPreference(&self) -> MKDirectionsRoutePreference;
 
+        /**
+          Default is MKDirectionsRoutePreferenceAny
+        */
         #[method(setHighwayPreference:)]
         pub unsafe fn setHighwayPreference(&self, highway_preference: MKDirectionsRoutePreference);
     }

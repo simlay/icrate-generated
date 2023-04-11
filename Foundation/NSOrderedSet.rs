@@ -6,6 +6,9 @@ use crate::Foundation::*;
 __inner_extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSOrderedSet")]
+    /**
+            Immutable Ordered Set
+    */
     pub struct NSOrderedSet<ObjectType: Message = Object, ObjectTypeOwnership: Ownership = Shared> {
         _inner0: PhantomData<*mut (ObjectType, ObjectTypeOwnership)>,
         notunwindsafe: PhantomData<&'static mut ()>,
@@ -20,30 +23,45 @@ __inner_extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSOrderedSet")]
+/**
+        Immutable Ordered Set
+*/
 unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSCoding
     for NSOrderedSet<ObjectType, ObjectTypeOwnership>
 {
 }
 
 #[cfg(feature = "Foundation_NSOrderedSet")]
+/**
+        Immutable Ordered Set
+*/
 unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSFastEnumeration
     for NSOrderedSet<ObjectType, ObjectTypeOwnership>
 {
 }
 
 #[cfg(feature = "Foundation_NSOrderedSet")]
+/**
+        Immutable Ordered Set
+*/
 unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSObjectProtocol
     for NSOrderedSet<ObjectType, ObjectTypeOwnership>
 {
 }
 
 #[cfg(feature = "Foundation_NSOrderedSet")]
+/**
+        Immutable Ordered Set
+*/
 unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSSecureCoding
     for NSOrderedSet<ObjectType, ObjectTypeOwnership>
 {
 }
 
 extern_methods!(
+    /**
+            Immutable Ordered Set
+    */
     #[cfg(feature = "Foundation_NSOrderedSet")]
     unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>
         NSOrderedSet<ObjectType, ObjectTypeOwnership>
@@ -133,6 +151,14 @@ extern_methods!(
         pub unsafe fn reversedOrderedSet(&self) -> Id<NSOrderedSet<ObjectType>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          These two methods return a facade object for the receiving ordered set,
+         which acts like an immutable array or set (respectively).  Note that
+         while you cannot mutate the ordered set through these facades, mutations
+         to the original ordered set will "show through" the facade and it will
+         appear to change spontaneously, since a copy of the ordered set is not
+         being made.
+        */
         #[method_id(@__retain_semantics Other array)]
         pub unsafe fn array(&self) -> Id<NSArray<ObjectType>>;
 
@@ -408,6 +434,9 @@ extern_methods!(
 __inner_extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSMutableOrderedSet")]
+    /**
+            Mutable Ordered Set
+    */
     pub struct NSMutableOrderedSet<
         ObjectType: Message = Object,
         ObjectTypeOwnership: Ownership = Shared,
@@ -426,30 +455,45 @@ __inner_extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSMutableOrderedSet")]
+/**
+        Mutable Ordered Set
+*/
 unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSCoding
     for NSMutableOrderedSet<ObjectType, ObjectTypeOwnership>
 {
 }
 
 #[cfg(feature = "Foundation_NSMutableOrderedSet")]
+/**
+        Mutable Ordered Set
+*/
 unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSFastEnumeration
     for NSMutableOrderedSet<ObjectType, ObjectTypeOwnership>
 {
 }
 
 #[cfg(feature = "Foundation_NSMutableOrderedSet")]
+/**
+        Mutable Ordered Set
+*/
 unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSObjectProtocol
     for NSMutableOrderedSet<ObjectType, ObjectTypeOwnership>
 {
 }
 
 #[cfg(feature = "Foundation_NSMutableOrderedSet")]
+/**
+        Mutable Ordered Set
+*/
 unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSSecureCoding
     for NSMutableOrderedSet<ObjectType, ObjectTypeOwnership>
 {
 }
 
 extern_methods!(
+    /**
+            Mutable Ordered Set
+    */
     #[cfg(feature = "Foundation_NSMutableOrderedSet")]
     unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>
         NSMutableOrderedSet<ObjectType, ObjectTypeOwnership>
@@ -627,6 +671,9 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSOrderedSet`
+    /**
+            Mutable Ordered Set
+    */
     #[cfg(feature = "Foundation_NSMutableOrderedSet")]
     unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>
         NSMutableOrderedSet<ObjectType, ObjectTypeOwnership>
@@ -643,6 +690,9 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `NSOrderedSet`
     ///
+    /**
+            Mutable Ordered Set
+    */
     /// NSOrderedSetCreation
     #[cfg(feature = "Foundation_NSMutableOrderedSet")]
     unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>

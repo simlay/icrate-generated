@@ -9,6 +9,15 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKCorrelation")]
+    /**
+     @class         HKCorrelation
+    @abstract      An HKCorrelation is a collection of correlated objects.
+    @discussion    When multiple readings are taken together, it may be beneficial to correlate them so that they can be
+    displayed together and share common metadata about how they were created.
+
+    For example, systolic and diastolic blood pressure readings are typically presented together so these
+    readings should be saved with a correlation of type blood pressure.
+    */
     pub struct HKCorrelation;
 
     #[cfg(feature = "HealthKit_HKCorrelation")]
@@ -19,15 +28,51 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKCorrelation")]
+/**
+ @class         HKCorrelation
+@abstract      An HKCorrelation is a collection of correlated objects.
+@discussion    When multiple readings are taken together, it may be beneficial to correlate them so that they can be
+displayed together and share common metadata about how they were created.
+
+For example, systolic and diastolic blood pressure readings are typically presented together so these
+readings should be saved with a correlation of type blood pressure.
+*/
 unsafe impl NSCoding for HKCorrelation {}
 
 #[cfg(feature = "HealthKit_HKCorrelation")]
+/**
+ @class         HKCorrelation
+@abstract      An HKCorrelation is a collection of correlated objects.
+@discussion    When multiple readings are taken together, it may be beneficial to correlate them so that they can be
+displayed together and share common metadata about how they were created.
+
+For example, systolic and diastolic blood pressure readings are typically presented together so these
+readings should be saved with a correlation of type blood pressure.
+*/
 unsafe impl NSObjectProtocol for HKCorrelation {}
 
 #[cfg(feature = "HealthKit_HKCorrelation")]
+/**
+ @class         HKCorrelation
+@abstract      An HKCorrelation is a collection of correlated objects.
+@discussion    When multiple readings are taken together, it may be beneficial to correlate them so that they can be
+displayed together and share common metadata about how they were created.
+
+For example, systolic and diastolic blood pressure readings are typically presented together so these
+readings should be saved with a correlation of type blood pressure.
+*/
 unsafe impl NSSecureCoding for HKCorrelation {}
 
 extern_methods!(
+    /**
+     @class         HKCorrelation
+    @abstract      An HKCorrelation is a collection of correlated objects.
+    @discussion    When multiple readings are taken together, it may be beneficial to correlate them so that they can be
+    displayed together and share common metadata about how they were created.
+
+    For example, systolic and diastolic blood pressure readings are typically presented together so these
+    readings should be saved with a correlation of type blood pressure.
+    */
     #[cfg(feature = "HealthKit_HKCorrelation")]
     unsafe impl HKCorrelation {
         #[cfg(feature = "HealthKit_HKCorrelationType")]
@@ -35,6 +80,10 @@ extern_methods!(
         pub unsafe fn correlationType(&self) -> Id<HKCorrelationType>;
 
         #[cfg(feature = "Foundation_NSSet")]
+        /**
+         @property  objects
+        @abstract  A set of HKSamples containing all of the objects that were saved with the receiver.
+        */
         #[method_id(@__retain_semantics Other objects)]
         pub unsafe fn objects(&self) -> Id<NSSet<HKSample>>;
 

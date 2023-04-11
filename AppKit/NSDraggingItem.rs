@@ -44,21 +44,39 @@ extern_methods!(
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
+        /**
+          key must be unique for each component in an NSDraggingItem. You can create your own named components, but the following names have special meaning. NSDraggingImageComponentIconKey is an image of the item being dragged. NSDraggingImageComponentLabelKey represents a textual label associate with the item, for example, a file name.
+        */
         #[method_id(@__retain_semantics Other key)]
         pub unsafe fn key(&self) -> Id<NSDraggingImageComponentKey>;
 
+        /**
+          key must be unique for each component in an NSDraggingItem. You can create your own named components, but the following names have special meaning. NSDraggingImageComponentIconKey is an image of the item being dragged. NSDraggingImageComponentLabelKey represents a textual label associate with the item, for example, a file name.
+        */
         #[method(setKey:)]
         pub unsafe fn setKey(&self, key: &NSDraggingImageComponentKey);
 
+        /**
+          An object providing the image contents of the component, typically you set an NSImage, but may be anything CALayer accepts.
+        */
         #[method_id(@__retain_semantics Other contents)]
         pub unsafe fn contents(&self) -> Option<Id<Object>>;
 
+        /**
+          An object providing the image contents of the component, typically you set an NSImage, but may be anything CALayer accepts.
+        */
         #[method(setContents:)]
         pub unsafe fn setContents(&self, contents: Option<&Object>);
 
+        /**
+          The coordinate space is the bounds of the parent NSDraggingItem. That is, {{0,0}, {draggingFrame.size.width, draggingFrame.size.height}} Note: NSDraggingItem does not clip its components.
+        */
         #[method(frame)]
         pub unsafe fn frame(&self) -> NSRect;
 
+        /**
+          The coordinate space is the bounds of the parent NSDraggingItem. That is, {{0,0}, {draggingFrame.size.width, draggingFrame.size.height}} Note: NSDraggingItem does not clip its components.
+        */
         #[method(setFrame:)]
         pub unsafe fn setFrame(&self, frame: NSRect);
     }
@@ -90,12 +108,21 @@ extern_methods!(
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
+        /**
+          When you create an NSDraggingItem, item is the pasteboardWriter passed to initWithPasteboardWriter. However, when enumerating dragging items in an NSDraggingSession or NSDraggingInfo object, item is not the original pasteboardWriter. It is an instance of one of the classes provided to the enumeration method.
+        */
         #[method_id(@__retain_semantics Other item)]
         pub unsafe fn item(&self) -> Id<Object>;
 
+        /**
+          The dragging frame that provides the spatial relationship between NSDraggingItems in the NSDraggingFormationNone. Note: The exact coordinate space of this rect depends on where it is used. See NSDraggingSession and NSDraggingInfo.
+        */
         #[method(draggingFrame)]
         pub unsafe fn draggingFrame(&self) -> NSRect;
 
+        /**
+          The dragging frame that provides the spatial relationship between NSDraggingItems in the NSDraggingFormationNone. Note: The exact coordinate space of this rect depends on where it is used. See NSDraggingSession and NSDraggingInfo.
+        */
         #[method(setDraggingFrame:)]
         pub unsafe fn setDraggingFrame(&self, dragging_frame: NSRect);
 
@@ -103,6 +130,9 @@ extern_methods!(
             feature = "AppKit_NSDraggingImageComponent",
             feature = "Foundation_NSArray"
         ))]
+        /**
+          The dragging image is the composite of an array of NSDraggingImageComponents. The dragging image components may not be set directly. Instead, provide a block to generate the components and the block will be called if necessary. The block may be set to nil, meaning that this drag item has no image. Generally, only dragging destinations do this, and only if there is at least one valid item in the drop, and this is not it. The components are composited in painting order. That is, each component in the array is painted on top of the previous components in the array.
+        */
         #[method(imageComponentsProvider)]
         pub unsafe fn imageComponentsProvider(
             &self,
@@ -112,6 +142,9 @@ extern_methods!(
             feature = "AppKit_NSDraggingImageComponent",
             feature = "Foundation_NSArray"
         ))]
+        /**
+          The dragging image is the composite of an array of NSDraggingImageComponents. The dragging image components may not be set directly. Instead, provide a block to generate the components and the block will be called if necessary. The block may be set to nil, meaning that this drag item has no image. Generally, only dragging destinations do this, and only if there is at least one valid item in the drop, and this is not it. The components are composited in painting order. That is, each component in the array is painted on top of the previous components in the array.
+        */
         #[method(setImageComponentsProvider:)]
         pub unsafe fn setImageComponentsProvider(
             &self,
@@ -127,6 +160,9 @@ extern_methods!(
             feature = "AppKit_NSDraggingImageComponent",
             feature = "Foundation_NSArray"
         ))]
+        /**
+          An array of NSDraggingImageComponents that are used to create the drag image. Note: the array contains copies of the components. Changes made to these copies are not reflected in the drag. If needed, the imageComponentsProvider block is called to generate the image components.
+        */
         #[method_id(@__retain_semantics Other imageComponents)]
         pub unsafe fn imageComponents(&self) -> Option<Id<NSArray<NSDraggingImageComponent>>>;
     }

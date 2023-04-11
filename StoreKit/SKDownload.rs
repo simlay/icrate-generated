@@ -44,6 +44,9 @@ unsafe impl NSObjectProtocol for SKDownload {}
 extern_methods!(
     #[cfg(feature = "StoreKit_SKDownload")]
     unsafe impl SKDownload {
+        /**
+          State of the download
+        */
         #[deprecated = "Hosted content is no longer supported"]
         #[method(state)]
         pub unsafe fn state(&self) -> SKDownloadState;
@@ -57,39 +60,63 @@ extern_methods!(
         #[method_id(@__retain_semantics Other contentLength)]
         pub unsafe fn contentLength(&self) -> Id<NSNumber>;
 
+        /**
+          Total size of the content, in bytes
+        */
         #[deprecated = "Hosted content is no longer supported"]
         #[method(expectedContentLength)]
         pub unsafe fn expectedContentLength(&self) -> c_longlong;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Identifier for this content
+        */
         #[deprecated = "Hosted content is no longer supported"]
         #[method_id(@__retain_semantics Other contentIdentifier)]
         pub unsafe fn contentIdentifier(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          Location of the content data, if state is SKDownloadStateFinished
+        */
         #[deprecated = "Hosted content is no longer supported"]
         #[method_id(@__retain_semantics Other contentURL)]
         pub unsafe fn contentURL(&self) -> Option<Id<NSURL>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Content version
+        */
         #[deprecated = "Hosted content is no longer supported"]
         #[method_id(@__retain_semantics Other contentVersion)]
         pub unsafe fn contentVersion(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSError")]
+        /**
+          Failure error, if state is SKDownloadStateFailed
+        */
         #[deprecated = "Hosted content is no longer supported"]
         #[method_id(@__retain_semantics Other error)]
         pub unsafe fn error(&self) -> Option<Id<NSError>>;
 
+        /**
+          Overall progress for the download [0..1]
+        */
         #[deprecated = "Hosted content is no longer supported"]
         #[method(progress)]
         pub unsafe fn progress(&self) -> c_float;
 
+        /**
+          Estimated time remaining to complete the download, in seconds.  Value is SKDownloadTimeRemainingUnknown if estimate is unknownxx.
+        */
         #[deprecated = "Hosted content is no longer supported"]
         #[method(timeRemaining)]
         pub unsafe fn timeRemaining(&self) -> NSTimeInterval;
 
         #[cfg(feature = "StoreKit_SKPaymentTransaction")]
+        /**
+          Transaction for this download
+        */
         #[deprecated = "Hosted content is no longer supported"]
         #[method_id(@__retain_semantics Other transaction)]
         pub unsafe fn transaction(&self) -> Id<SKPaymentTransaction>;

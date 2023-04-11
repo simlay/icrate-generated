@@ -26,15 +26,27 @@ unsafe impl NSObjectProtocol for NSClickGestureRecognizer {}
 extern_methods!(
     #[cfg(feature = "AppKit_NSClickGestureRecognizer")]
     unsafe impl NSClickGestureRecognizer {
+        /**
+          Defaults to 0x1
+        */
         #[method(buttonMask)]
         pub unsafe fn buttonMask(&self) -> NSUInteger;
 
+        /**
+          Defaults to 0x1
+        */
         #[method(setButtonMask:)]
         pub unsafe fn setButtonMask(&self, button_mask: NSUInteger);
 
+        /**
+          Defaults to 1
+        */
         #[method(numberOfClicksRequired)]
         pub unsafe fn numberOfClicksRequired(&self) -> NSInteger;
 
+        /**
+          Defaults to 1
+        */
         #[method(setNumberOfClicksRequired:)]
         pub unsafe fn setNumberOfClicksRequired(&self, number_of_clicks_required: NSInteger);
 

@@ -65,32 +65,56 @@ extern_methods!(
             coder: &NSCoder,
         ) -> Option<Id<Self>>;
 
+        /**
+          Return the name of the nib to be loaded to instantiate the view. The default implementation returns whatever value was passed to the initializer.
+        */
         #[method_id(@__retain_semantics Other nibName)]
         pub unsafe fn nibName(&self) -> Option<Id<NSNibName>>;
 
         #[cfg(feature = "Foundation_NSBundle")]
+        /**
+          Return the bundle that the nib will be loaded from. The default implementation returns whatever value was passed to the initializer.
+        */
         #[method_id(@__retain_semantics Other nibBundle)]
         pub unsafe fn nibBundle(&self) -> Option<Id<NSBundle>>;
 
+        /**
+          The object whose value is being presented in the view. The default implementation of -setRepresentedObject: doesn't copy the passed-in object, it retains it. (In another words, "representedObject" is a to-one relationship, not an attribute.) This class is key-value coding and key-value observing compliant for "representedObject" so when you use it as the file's owner of a view's nib you can bind controls to the file's owner using key paths that start with "representedObject."
+        */
         #[method_id(@__retain_semantics Other representedObject)]
         pub unsafe fn representedObject(&self) -> Option<Id<Object>>;
 
+        /**
+          The object whose value is being presented in the view. The default implementation of -setRepresentedObject: doesn't copy the passed-in object, it retains it. (In another words, "representedObject" is a to-one relationship, not an attribute.) This class is key-value coding and key-value observing compliant for "representedObject" so when you use it as the file's owner of a view's nib you can bind controls to the file's owner using key paths that start with "representedObject."
+        */
         #[method(setRepresentedObject:)]
         pub unsafe fn setRepresentedObject(&self, represented_object: Option<&Object>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The localized title of the view. This class doesn't actually do anything with the value of this property other than hold onto it, and be KVC and KVO compliant for "title." The default implementation of -setTitle: copies the passed-in object ("title" is an attribute). This property is here because so many anticipated uses of this class will involve letting the user choose among multiple named views using a pulldown menu or something like that.
+        */
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The localized title of the view. This class doesn't actually do anything with the value of this property other than hold onto it, and be KVC and KVO compliant for "title." The default implementation of -setTitle: copies the passed-in object ("title" is an attribute). This property is here because so many anticipated uses of this class will involve letting the user choose among multiple named views using a pulldown menu or something like that.
+        */
         #[method(setTitle:)]
         pub unsafe fn setTitle(&self, title: Option<&NSString>);
 
         #[cfg(feature = "AppKit_NSView")]
+        /**
+          The default implementation of the getter first invokes [self loadView] if the view hasn't been set yet. After -loadView is called, -viewDidLoad will be called. The setter can be used to assign a view that's created in a different manner than what -view's default implementation would do.
+        */
         #[method_id(@__retain_semantics Other view)]
         pub unsafe fn view(&self) -> Id<NSView>;
 
         #[cfg(feature = "AppKit_NSView")]
+        /**
+          The default implementation of the getter first invokes [self loadView] if the view hasn't been set yet. After -loadView is called, -viewDidLoad will be called. The setter can be used to assign a view that's created in a different manner than what -view's default implementation would do.
+        */
         #[method(setView:)]
         pub unsafe fn setView(&self, view: &NSView);
 
@@ -114,6 +138,9 @@ extern_methods!(
         #[method(viewDidLoad)]
         pub unsafe fn viewDidLoad(&self);
 
+        /**
+          Returns whether the view has been loaded or not.
+        */
         #[method(isViewLoaded)]
         pub unsafe fn isViewLoaded(&self) -> bool;
 
@@ -129,9 +156,15 @@ extern_methods!(
         #[method(viewDidDisappear)]
         pub unsafe fn viewDidDisappear(&self);
 
+        /**
+          Expresses the view's desired size.  May be consulted by a parent ViewController when performing layout.
+        */
         #[method(preferredContentSize)]
         pub unsafe fn preferredContentSize(&self) -> NSSize;
 
+        /**
+          Expresses the view's desired size.  May be consulted by a parent ViewController when performing layout.
+        */
         #[method(setPreferredContentSize:)]
         pub unsafe fn setPreferredContentSize(&self, preferred_content_size: NSSize);
 
@@ -164,9 +197,15 @@ extern_methods!(
         pub unsafe fn dismissController(&self, sender: Option<&Object>);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          The view controllers that were presented by this view controller. In other words, 'self' displayed each of the items in the array. This is a one-to-many relationship.
+        */
         #[method_id(@__retain_semantics Other presentedViewControllers)]
         pub unsafe fn presentedViewControllers(&self) -> Option<Id<NSArray<NSViewController>>>;
 
+        /**
+          The view controller that presented this view controller (or its farthest ancestor). In other words, 'presentingViewController' is the one that displayed 'self' to screen.
+        */
         #[method_id(@__retain_semantics Other presentingViewController)]
         pub unsafe fn presentingViewController(&self) -> Option<Id<NSViewController>>;
     }
@@ -208,14 +247,23 @@ extern_methods!(
     /// NSViewControllerContainer
     #[cfg(feature = "AppKit_NSViewController")]
     unsafe impl NSViewController {
+        /**
+          Returns the ancestor of this view controller. Can return nil if this is the contentViewController, or there is no parent for the given view controller.
+        */
         #[method_id(@__retain_semantics Other parentViewController)]
         pub unsafe fn parentViewController(&self) -> Option<Id<NSViewController>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          An array of children view controllers. Assignment of the array filters all additions and removals through the insert and remove API below.
+        */
         #[method_id(@__retain_semantics Other childViewControllers)]
         pub unsafe fn childViewControllers(&self) -> Id<NSArray<NSViewController>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          An array of children view controllers. Assignment of the array filters all additions and removals through the insert and remove API below.
+        */
         #[method(setChildViewControllers:)]
         pub unsafe fn setChildViewControllers(
             &self,
@@ -250,6 +298,9 @@ extern_methods!(
 );
 
 extern_protocol!(
+    /**
+      A presentation animator is responsible for both presenting and dismissing a view controller's view. It can be presented in any way the animator wishes. Normally you do not need to implement this protocol, unless you want to have a custom presentation.
+    */
     pub unsafe trait NSViewControllerPresentationAnimator: NSObjectProtocol {
         #[cfg(feature = "AppKit_NSViewController")]
         #[method(animatePresentationOfViewController:fromViewController:)]
@@ -272,10 +323,16 @@ extern_protocol!(
 );
 
 extern_methods!(
+    /**
+      These methods are used to support using Storyboards with your app.
+    */
     /// NSViewControllerStoryboardingMethods
     #[cfg(feature = "AppKit_NSViewController")]
     unsafe impl NSViewController {
         #[cfg(feature = "AppKit_NSStoryboard")]
+        /**
+          The Storyboard the ViewController was loaded from. Returns nil if the ViewController was not loaded from a Storyboard.
+        */
         #[method_id(@__retain_semantics Other storyboard)]
         pub unsafe fn storyboard(&self) -> Option<Id<NSStoryboard>>;
     }
@@ -286,26 +343,47 @@ extern_methods!(
     #[cfg(feature = "AppKit_NSViewController")]
     unsafe impl NSViewController {
         #[cfg(feature = "Foundation_NSExtensionContext")]
+        /**
+          Returns the extension context. Also acts as a convenience method for a view controller to check if it participating in an extension request.
+        */
         #[method_id(@__retain_semantics Other extensionContext)]
         pub unsafe fn extensionContext(&self) -> Option<Id<NSExtensionContext>>;
 
         #[cfg(feature = "AppKit_NSView")]
+        /**
+          For services that vend UI.  Identifies the view (if any) in the service’s UI that displays the source image.  Defaults to nil.  When your service loads its UI (or in your service UI's xib file), you can set this to point to an image view, or some containing border view, that’s a descendant of the ViewController’s view.  Doing so helps the system to position and animate the service’s UI with respect to the source item representation.  If your service UI doesn't display the source item at its original screen position and size, leave this set to nil.
+        */
         #[method_id(@__retain_semantics Other sourceItemView)]
         pub unsafe fn sourceItemView(&self) -> Option<Id<NSView>>;
 
         #[cfg(feature = "AppKit_NSView")]
+        /**
+          For services that vend UI.  Identifies the view (if any) in the service’s UI that displays the source image.  Defaults to nil.  When your service loads its UI (or in your service UI's xib file), you can set this to point to an image view, or some containing border view, that’s a descendant of the ViewController’s view.  Doing so helps the system to position and animate the service’s UI with respect to the source item representation.  If your service UI doesn't display the source item at its original screen position and size, leave this set to nil.
+        */
         #[method(setSourceItemView:)]
         pub unsafe fn setSourceItemView(&self, source_item_view: Option<&NSView>);
 
+        /**
+          For services that vend UI.  Set this to position the service UI's lower-left corner in screen space.  (Use the `preferredContentSize` property to specify the service UI's desired size, in screen units.)
+        */
         #[method(preferredScreenOrigin)]
         pub unsafe fn preferredScreenOrigin(&self) -> NSPoint;
 
+        /**
+          For services that vend UI.  Set this to position the service UI's lower-left corner in screen space.  (Use the `preferredContentSize` property to specify the service UI's desired size, in screen units.)
+        */
         #[method(setPreferredScreenOrigin:)]
         pub unsafe fn setPreferredScreenOrigin(&self, preferred_screen_origin: NSPoint);
 
+        /**
+          For services that vend UI.  Expresses the smallest allowable size for the service’s root view, in screen units.  A service should return the minimum dimensions its root view can accommodate, based on the items the service has been sent.  This defaults to a small but non-empty size.
+        */
         #[method(preferredMinimumSize)]
         pub unsafe fn preferredMinimumSize(&self) -> NSSize;
 
+        /**
+          For services that vend UI.  Expresses the largest allowable size for the service’s root view, in screen units.  A service should return the maximum dimensions that are potentially useful for its root view, based on the items the service has been sent.  This defaults to a large or infinite size.
+        */
         #[method(preferredMaximumSize)]
         pub unsafe fn preferredMaximumSize(&self) -> NSSize;
     }

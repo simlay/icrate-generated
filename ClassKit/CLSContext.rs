@@ -51,6 +51,14 @@ extern_static!(CLSContextTopicHealthAndFitness: &'static CLSContextTopic);
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "ClassKit_CLSContext")]
+    /**
+     @abstract      Contexts represent activities, documents, and areas within your app.
+    @discussion    Contexts have two major components.
+
+    (1) Child contexts, used to model your app hierarchy.
+    (2) Activity, holds user generated data that pertains to this context.
+
+    */
     pub struct CLSContext;
 
     #[cfg(feature = "ClassKit_CLSContext")]
@@ -61,15 +69,47 @@ extern_class!(
 );
 
 #[cfg(feature = "ClassKit_CLSContext")]
+/**
+ @abstract      Contexts represent activities, documents, and areas within your app.
+@discussion    Contexts have two major components.
+
+(1) Child contexts, used to model your app hierarchy.
+(2) Activity, holds user generated data that pertains to this context.
+
+*/
 unsafe impl NSCoding for CLSContext {}
 
 #[cfg(feature = "ClassKit_CLSContext")]
+/**
+ @abstract      Contexts represent activities, documents, and areas within your app.
+@discussion    Contexts have two major components.
+
+(1) Child contexts, used to model your app hierarchy.
+(2) Activity, holds user generated data that pertains to this context.
+
+*/
 unsafe impl NSObjectProtocol for CLSContext {}
 
 #[cfg(feature = "ClassKit_CLSContext")]
+/**
+ @abstract      Contexts represent activities, documents, and areas within your app.
+@discussion    Contexts have two major components.
+
+(1) Child contexts, used to model your app hierarchy.
+(2) Activity, holds user generated data that pertains to this context.
+
+*/
 unsafe impl NSSecureCoding for CLSContext {}
 
 extern_methods!(
+    /**
+     @abstract      Contexts represent activities, documents, and areas within your app.
+    @discussion    Contexts have two major components.
+
+    (1) Child contexts, used to model your app hierarchy.
+    (2) Activity, holds user generated data that pertains to this context.
+
+    */
     #[cfg(feature = "ClassKit_CLSContext")]
     unsafe impl CLSContext {
         #[method_id(@__retain_semantics New new)]
@@ -79,67 +119,155 @@ extern_methods!(
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+         @abstract      Context identifier path of this context.
+        @discussion    The identifier path starts with the main app context object and finishes with the identifier of this context. This is the identifier path that one would use in @code -[CLSDataStore contextsMatchingIdintifierPath:completion:] @endcode to find `this' context.
+        */
         #[method_id(@__retain_semantics Other identifierPath)]
         pub unsafe fn identifierPath(&self) -> Id<NSArray<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract      App-assigned identifier. This identifier should work across users and devices and be unique with regards to its siblings within its parent.
+        @discussion    The identifier could be used to embed information later used for deep linking. For example: @em hydrogen-element, or @em chapter-1.
+        */
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+         @abstract      Alternative deep link URL using universal links.
+        @discussion    If your app supports universal links, you can supply them here to link the content this context represents.
+        */
         #[method_id(@__retain_semantics Other universalLinkURL)]
         pub unsafe fn universalLinkURL(&self) -> Option<Id<NSURL>>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+         @abstract      Alternative deep link URL using universal links.
+        @discussion    If your app supports universal links, you can supply them here to link the content this context represents.
+        */
         #[method(setUniversalLinkURL:)]
         pub unsafe fn setUniversalLinkURL(&self, universal_link_url: Option<&NSURL>);
 
+        /**
+         @abstract      Type of this context
+        @discussion    The type that best describes this context.
+        */
         #[method(type)]
         pub unsafe fn r#type(&self) -> CLSContextType;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract      An optional user-visible name for the context if its type is CLSContextTypeCustom.
+        @discussion    This property is relevant only if the type is CLSContextTypeCustom. This string should be localized. If this property is not set for a context of type CLSContextTypeCustom, Schoolwork app will use a default localized string ‘Custom’ as the name of the activity representing this context.
+        */
         #[method_id(@__retain_semantics Other customTypeName)]
         pub unsafe fn customTypeName(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract      An optional user-visible name for the context if its type is CLSContextTypeCustom.
+        @discussion    This property is relevant only if the type is CLSContextTypeCustom. This string should be localized. If this property is not set for a context of type CLSContextTypeCustom, Schoolwork app will use a default localized string ‘Custom’ as the name of the activity representing this context.
+        */
         #[method(setCustomTypeName:)]
         pub unsafe fn setCustomTypeName(&self, custom_type_name: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract      Title of this context.
+        @discussion    For example: @em Level 1 @em.
+        */
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract      Title of this context.
+        @discussion    For example: @em Level 1 @em.
+        */
         #[method(setTitle:)]
         pub unsafe fn setTitle(&self, title: &NSString);
 
+        /**
+         @abstract      The displayOrder is by default sorted ascending.
+        @discussion    Set the displayOrder if you want your contexts to be displayed in a particular order. The sort key is used as a way to sort sibling contexts in a particular order.
+        */
         #[method(displayOrder)]
         pub unsafe fn displayOrder(&self) -> NSInteger;
 
+        /**
+         @abstract      The displayOrder is by default sorted ascending.
+        @discussion    Set the displayOrder if you want your contexts to be displayed in a particular order. The sort key is used as a way to sort sibling contexts in a particular order.
+        */
         #[method(setDisplayOrder:)]
         pub unsafe fn setDisplayOrder(&self, display_order: NSInteger);
 
+        /**
+         @abstract      Topic associated with this context.
+        @discussion    See above for valid, predefined topics.
+        */
         #[method_id(@__retain_semantics Other topic)]
         pub unsafe fn topic(&self) -> Option<Id<CLSContextTopic>>;
 
+        /**
+         @abstract      Topic associated with this context.
+        @discussion    See above for valid, predefined topics.
+        */
         #[method(setTopic:)]
         pub unsafe fn setTopic(&self, topic: Option<&CLSContextTopic>);
 
+        /**
+         @abstract      This property is true if the context can be assigned as an activity.
+        @discussion    The default value of this property is true. This should be set to false for a context that is used as a container for other contexts, but by itself, is not an assignable activity.
+        */
         #[method(isAssignable)]
         pub unsafe fn isAssignable(&self) -> bool;
 
+        /**
+         @abstract      This property is true if the context can be assigned as an activity.
+        @discussion    The default value of this property is true. This should be set to false for a context that is used as a container for other contexts, but by itself, is not an assignable activity.
+        */
         #[method(setAssignable:)]
         pub unsafe fn setAssignable(&self, assignable: bool);
 
+        /**
+         @abstract      Suggested age range of students, expressed in years, for whom this context is suitable. This information is intended to help teachers to choose age-appropriate activities for their students.
+        @discussion    The default value is [0, NSIntegerMax - 1]. This is @em NSRange(0...Int.max-1) in @em Swift or @em NSMakeRange(0,NSIntegerMax) in @em Objective-C. Set the lower bound to 0 to specify no minimum age limit and set the upper bound to NSIntegerMax - 1 to specify no maximum age limit.
+        @example       An age range of 4 to 6 years is expressed by @em NSRange(4...6) in @em Swift or by @em NSMakeRange(4,3) in @Objective-C.
+        @example       An age range of up 10 years is expressed by @em NSRange(0...10) in @em Swift or by @em NSMakeRange(0,11) in @Objective-C.
+        @example       An age range of 18 years or above is expressed by @em NSRange(18...Int.max-1) in @em Swift or by @em NSMakeRange(18,NSIntegerMax-18) in @Objective-C.
+        */
         #[method(suggestedAge)]
         pub unsafe fn suggestedAge(&self) -> NSRange;
 
+        /**
+         @abstract      Suggested age range of students, expressed in years, for whom this context is suitable. This information is intended to help teachers to choose age-appropriate activities for their students.
+        @discussion    The default value is [0, NSIntegerMax - 1]. This is @em NSRange(0...Int.max-1) in @em Swift or @em NSMakeRange(0,NSIntegerMax) in @em Objective-C. Set the lower bound to 0 to specify no minimum age limit and set the upper bound to NSIntegerMax - 1 to specify no maximum age limit.
+        @example       An age range of 4 to 6 years is expressed by @em NSRange(4...6) in @em Swift or by @em NSMakeRange(4,3) in @Objective-C.
+        @example       An age range of up 10 years is expressed by @em NSRange(0...10) in @em Swift or by @em NSMakeRange(0,11) in @Objective-C.
+        @example       An age range of 18 years or above is expressed by @em NSRange(18...Int.max-1) in @em Swift or by @em NSMakeRange(18,NSIntegerMax-18) in @Objective-C.
+        */
         #[method(setSuggestedAge:)]
         pub unsafe fn setSuggestedAge(&self, suggested_age: NSRange);
 
+        /**
+         @abstract      Suggested time range, expressed in minutes, to complete the activity. This information will help teachers as they choose activities for their students.
+        @discussion    The default value is [0, NSIntegerMax - 1]. This is @em NSRange(0...Int.max-1) in @em Swift or @em NSMakeRange(0,NSIntegerMax) in @em Objective-C. Set the lower bound value to 0 to specify no minimum time limit and set the upper bound to NSIntegerMax - 1 to specify no maximum time limit.
+        @example       An time range of 10 to 15 minutes is expressed by @em NSRange(10...15) in @em Swift or by @em NSMakeRange(10,6) in @Objective-C.
+        @example       An time range of up to 10 minutes is expressed by @em NSRange(0...10) in @em Swift or by @em NSMakeRange(0,11) in @Objective-C.
+        @example       An time range of at least 20 minutes is expressed by @em NSRange(20...Int.max-1) in @em Swift or by @em NSMakeRange(20,NSIntegerMax-20) in @Objective-C.
+        */
         #[method(suggestedCompletionTime)]
         pub unsafe fn suggestedCompletionTime(&self) -> NSRange;
 
+        /**
+         @abstract      Suggested time range, expressed in minutes, to complete the activity. This information will help teachers as they choose activities for their students.
+        @discussion    The default value is [0, NSIntegerMax - 1]. This is @em NSRange(0...Int.max-1) in @em Swift or @em NSMakeRange(0,NSIntegerMax) in @em Objective-C. Set the lower bound value to 0 to specify no minimum time limit and set the upper bound to NSIntegerMax - 1 to specify no maximum time limit.
+        @example       An time range of 10 to 15 minutes is expressed by @em NSRange(10...15) in @em Swift or by @em NSMakeRange(10,6) in @Objective-C.
+        @example       An time range of up to 10 minutes is expressed by @em NSRange(0...10) in @em Swift or by @em NSMakeRange(0,11) in @Objective-C.
+        @example       An time range of at least 20 minutes is expressed by @em NSRange(20...Int.max-1) in @em Swift or by @em NSMakeRange(20,NSIntegerMax-20) in @Objective-C.
+        */
         #[method(setSuggestedCompletionTime:)]
         pub unsafe fn setSuggestedCompletionTime(&self, suggested_completion_time: NSRange);
 
@@ -147,16 +275,28 @@ extern_methods!(
             feature = "ClassKit_CLSProgressReportingCapability",
             feature = "Foundation_NSSet"
         ))]
+        /**
+         @abstract      Specifies progress reporting capablities of the app for this context.
+        @discussion    This information is intended to help teachers as they choose activities for their students. By default a CLSContext will have one CLSProgressReportingCapability instance of kind CLSProgressReportingCapabilityKindDuration. More progress reporting capabilities can be specified via '-addProgressReportingCapabilities:' to customize this set.
+        */
         #[method_id(@__retain_semantics Other progressReportingCapabilities)]
         pub unsafe fn progressReportingCapabilities(
             &self,
         ) -> Id<NSSet<CLSProgressReportingCapability>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract      An optional user-visible summary describing the context limited to 4000 characters in length.
+        @discussion    This may be used to provide information about the types of activities available under a given context or the context itself. This string should be localized.
+        */
         #[method_id(@__retain_semantics Other summary)]
         pub unsafe fn summary(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract      An optional user-visible summary describing the context limited to 4000 characters in length.
+        @discussion    This may be used to provide information about the types of activities available under a given context or the context itself. This string should be localized.
+        */
         #[method(setSummary:)]
         pub unsafe fn setSummary(&self, summary: Option<&NSString>);
 
@@ -169,6 +309,9 @@ extern_methods!(
             title: &NSString,
         ) -> Id<Self>;
 
+        /**
+         @discussion    Returns true if self is the active context.
+        */
         #[method(isActive)]
         pub unsafe fn isActive(&self) -> bool;
 
@@ -200,6 +343,9 @@ extern_methods!(
     /// Hierarchy
     #[cfg(feature = "ClassKit_CLSContext")]
     unsafe impl CLSContext {
+        /**
+         @abstract      Returns the parent of this context.
+        */
         #[method_id(@__retain_semantics Other parent)]
         pub unsafe fn parent(&self) -> Option<Id<CLSContext>>;
 
@@ -222,6 +368,10 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+         @abstract      Child contexts that can be navigated to from this context.
+        @discussion    Returns all the child contexts added via @code -[CLSContext addNavigationChildContext:] @endcode
+        */
         #[method_id(@__retain_semantics Other navigationChildContexts)]
         pub unsafe fn navigationChildContexts(&self) -> Id<NSArray<CLSContext>>;
 

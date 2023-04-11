@@ -9,6 +9,9 @@ extern_static!(SKErrorDomain: &'static NSString);
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      error codes for the SKErrorDomain
+    */
     pub enum SKErrorCode {
         SKErrorUnknown = 0,
         SKErrorClientInvalid = 1,

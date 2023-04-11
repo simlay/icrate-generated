@@ -51,10 +51,16 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "CallKit_CXHandle")]
+        /**
+          Handle for the party to call
+        */
         #[method_id(@__retain_semantics Other handle)]
         pub unsafe fn handle(&self) -> Id<CXHandle>;
 
         #[cfg(feature = "CallKit_CXHandle")]
+        /**
+          Handle for the party to call
+        */
         #[method(setHandle:)]
         pub unsafe fn setHandle(&self, handle: &CXHandle);
 

@@ -25,6 +25,9 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameKit_GKMatch")]
+    /**
+      GKMatch represents an active networking sessions between players. It handles network communications and can report player connection status. All matches are created by a GKMatchmaker.
+    */
     pub struct GKMatch;
 
     #[cfg(feature = "GameKit_GKMatch")]
@@ -34,18 +37,30 @@ extern_class!(
 );
 
 #[cfg(feature = "GameKit_GKMatch")]
+/**
+  GKMatch represents an active networking sessions between players. It handles network communications and can report player connection status. All matches are created by a GKMatchmaker.
+*/
 unsafe impl NSObjectProtocol for GKMatch {}
 
 extern_methods!(
+    /**
+      GKMatch represents an active networking sessions between players. It handles network communications and can report player connection status. All matches are created by a GKMatchmaker.
+    */
     #[cfg(feature = "GameKit_GKMatch")]
     unsafe impl GKMatch {
         #[cfg(all(feature = "Foundation_NSArray", feature = "GameKit_GKPlayer"))]
         #[method_id(@__retain_semantics Other players)]
         pub unsafe fn players(&self) -> Id<NSArray<GKPlayer>>;
 
+        /**
+          all the GKPlayers in the match
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(&self) -> Option<Id<ProtocolObject<dyn GKMatchDelegate>>>;
 
+        /**
+          all the GKPlayers in the match
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(&self, delegate: Option<&ProtocolObject<dyn GKMatchDelegate>>);
 
@@ -220,6 +235,9 @@ extern_methods!(
         ) -> Result<(), Id<NSError>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          NSStrings of player identifiers in the match
+        */
         #[deprecated = "This is never invoked and its implementation does nothing, use players instead."]
         #[method_id(@__retain_semantics Other playerIDs)]
         pub unsafe fn playerIDs(&self) -> Option<Id<NSArray<NSString>>>;

@@ -7,6 +7,9 @@ use crate::MediaPlayer::*;
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+      A playlist may have any number of MPMediaPlaylistAttributes associated.
+    */
     pub enum MPMediaPlaylistAttribute {
         MPMediaPlaylistAttributeNone = 0,
         MPMediaPlaylistAttributeOnTheGo = 1 << 0,
@@ -32,6 +35,10 @@ extern_static!(MPMediaPlaylistPropertyAuthorDisplayName: &'static NSString);
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MediaPlayer_MPMediaPlaylist")]
+    /**
+      An MPMediaPlaylist is a collection of related MPMediaItems in an MPMediaLibrary.
+     Playlists have a unique identifier which persists across application launches.
+    */
     pub struct MPMediaPlaylist;
 
     #[cfg(feature = "MediaPlayer_MPMediaPlaylist")]
@@ -42,15 +49,31 @@ extern_class!(
 );
 
 #[cfg(feature = "MediaPlayer_MPMediaPlaylist")]
+/**
+  An MPMediaPlaylist is a collection of related MPMediaItems in an MPMediaLibrary.
+ Playlists have a unique identifier which persists across application launches.
+*/
 unsafe impl NSCoding for MPMediaPlaylist {}
 
 #[cfg(feature = "MediaPlayer_MPMediaPlaylist")]
+/**
+  An MPMediaPlaylist is a collection of related MPMediaItems in an MPMediaLibrary.
+ Playlists have a unique identifier which persists across application launches.
+*/
 unsafe impl NSObjectProtocol for MPMediaPlaylist {}
 
 #[cfg(feature = "MediaPlayer_MPMediaPlaylist")]
+/**
+  An MPMediaPlaylist is a collection of related MPMediaItems in an MPMediaLibrary.
+ Playlists have a unique identifier which persists across application launches.
+*/
 unsafe impl NSSecureCoding for MPMediaPlaylist {}
 
 extern_methods!(
+    /**
+      An MPMediaPlaylist is a collection of related MPMediaItems in an MPMediaLibrary.
+     Playlists have a unique identifier which persists across application launches.
+    */
     #[cfg(feature = "MediaPlayer_MPMediaPlaylist")]
     unsafe impl MPMediaPlaylist {
         #[method(persistentID)]
@@ -129,14 +152,23 @@ extern_methods!(
         pub unsafe fn initWithName(this: Option<Allocated<Self>>, name: &NSString) -> Id<Self>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The display name of the playlist.
+        */
         #[method_id(@__retain_semantics Other name)]
         pub unsafe fn name(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Defaults to the requesting app's display name.
+        */
         #[method_id(@__retain_semantics Other authorDisplayName)]
         pub unsafe fn authorDisplayName(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Defaults to the requesting app's display name.
+        */
         #[method(setAuthorDisplayName:)]
         pub unsafe fn setAuthorDisplayName(&self, author_display_name: Option<&NSString>);
 
@@ -152,6 +184,10 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `MPMediaItemCollection`
+    /**
+      An MPMediaPlaylist is a collection of related MPMediaItems in an MPMediaLibrary.
+     Playlists have a unique identifier which persists across application launches.
+    */
     #[cfg(feature = "MediaPlayer_MPMediaPlaylist")]
     unsafe impl MPMediaPlaylist {
         #[cfg(all(feature = "Foundation_NSArray", feature = "MediaPlayer_MPMediaItem"))]

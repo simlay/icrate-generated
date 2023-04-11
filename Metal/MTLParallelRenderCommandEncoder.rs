@@ -5,6 +5,10 @@ use crate::Foundation::*;
 use crate::Metal::*;
 
 extern_protocol!(
+    /**
+     @protocol MTLParallelRenderCommandEncoder
+    @discussion The MTLParallelRenderCommandEncoder protocol is designed to allow a single render to texture operation to be efficiently (and safely) broken up across multiple threads.
+    */
     pub unsafe trait MTLParallelRenderCommandEncoder: MTLCommandEncoder {
         #[method_id(@__retain_semantics Other renderCommandEncoder)]
         fn renderCommandEncoder(&self) -> Option<Id<ProtocolObject<dyn MTLRenderCommandEncoder>>>;

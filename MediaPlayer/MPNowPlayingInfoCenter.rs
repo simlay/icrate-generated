@@ -7,6 +7,32 @@ use crate::MediaPlayer::*;
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      -----------------------------------------------------------------------------
+     MPNowPlayingInfoCenter provides an interface for setting the current now
+     playing information for the application. This information will be displayed
+     wherever now playing information typically appears, such as the lock screen
+     and app switcher. The now playing info dictionary contains a group of
+     metadata properties for a now playing item. The list of property constants
+     is available in <MediaPlayer/MPMediaItem.h>. The properties which are
+     currently supported include:
+
+     MPMediaItemPropertyAlbumTitle
+     MPMediaItemPropertyAlbumTrackCount
+     MPMediaItemPropertyAlbumTrackNumber
+     MPMediaItemPropertyArtist
+     MPMediaItemPropertyArtwork
+     MPMediaItemPropertyComposer
+     MPMediaItemPropertyDiscCount
+     MPMediaItemPropertyDiscNumber
+     MPMediaItemPropertyGenre
+     MPMediaItemPropertyPersistentID
+     MPMediaItemPropertyPlaybackDuration
+     MPMediaItemPropertyTitle
+
+     In addition, metadata properties specific to the current playback session
+     may also be specified -- see "Additional metadata properties" below.
+    */
     pub enum MPNowPlayingInfoMediaType {
         MPNowPlayingInfoMediaTypeNone = 0,
         MPNowPlayingInfoMediaTypeAudio = 1,
@@ -52,19 +78,41 @@ extern_methods!(
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+          The current now playing info for the center.
+         Setting the info to nil will clear it.
+        */
         #[method_id(@__retain_semantics Other nowPlayingInfo)]
         pub unsafe fn nowPlayingInfo(&self) -> Option<Id<NSDictionary<NSString, Object>>>;
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+          The current now playing info for the center.
+         Setting the info to nil will clear it.
+        */
         #[method(setNowPlayingInfo:)]
         pub unsafe fn setNowPlayingInfo(
             &self,
             now_playing_info: Option<&NSDictionary<NSString, Object>>,
         );
 
+        /**
+          The current playback state of the app.
+         This only applies on macOS, where playback state cannot be determined by
+         the application's audio session. This property must be set every time
+         the app begins or halts playback, otherwise remote control functionality may
+         not work as expected.
+        */
         #[method(playbackState)]
         pub unsafe fn playbackState(&self) -> MPNowPlayingPlaybackState;
 
+        /**
+          The current playback state of the app.
+         This only applies on macOS, where playback state cannot be determined by
+         the application's audio session. This property must be set every time
+         the app begins or halts playback, otherwise remote control functionality may
+         not work as expected.
+        */
         #[method(setPlaybackState:)]
         pub unsafe fn setPlaybackState(&self, playback_state: MPNowPlayingPlaybackState);
     }

@@ -23,10 +23,16 @@ extern_methods!(
     #[cfg(feature = "StoreKit_SKStorefront")]
     unsafe impl SKStorefront {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The three letter country code for the current storefront
+        */
         #[method_id(@__retain_semantics Other countryCode)]
         pub unsafe fn countryCode(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The App Store storefront identifier
+        */
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Id<NSString>;
     }

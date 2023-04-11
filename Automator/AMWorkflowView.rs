@@ -52,10 +52,16 @@ extern_methods!(
         pub unsafe fn setEditable(&self, editable: bool);
 
         #[cfg(feature = "Automator_AMWorkflowController")]
+        /**
+          This property was labeled "strong" in 10.12, even though it was really implemented as "assign". In 10.13 and above, this is now labeled and correctly implemented as "weak".
+        */
         #[method_id(@__retain_semantics Other workflowController)]
         pub unsafe fn workflowController(&self) -> Option<Id<AMWorkflowController>>;
 
         #[cfg(feature = "Automator_AMWorkflowController")]
+        /**
+          This property was labeled "strong" in 10.12, even though it was really implemented as "assign". In 10.13 and above, this is now labeled and correctly implemented as "weak".
+        */
         #[method(setWorkflowController:)]
         pub unsafe fn setWorkflowController(
             &self,

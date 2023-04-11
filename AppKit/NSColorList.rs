@@ -33,6 +33,9 @@ extern_methods!(
     #[cfg(feature = "AppKit_NSColorList")]
     unsafe impl NSColorList {
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Returns all color lists in the user's color list path, including those added at runtime. Creating a named color list and saving with writeToFile:nil will add it to this list; removeFile will remove it from this list. (That is what happens as the user creates and destroys color lists in the color panel.)
+        */
         #[method_id(@__retain_semantics Other availableColorLists)]
         pub unsafe fn availableColorLists() -> Id<NSArray<NSColorList>>;
 
@@ -53,6 +56,9 @@ extern_methods!(
             path: Option<&NSString>,
         ) -> Option<Id<Self>>;
 
+        /**
+          Name of the color list
+        */
         #[method_id(@__retain_semantics Other name)]
         pub unsafe fn name(&self) -> Option<Id<NSColorListName>>;
 
@@ -77,9 +83,15 @@ extern_methods!(
         pub unsafe fn colorWithKey(&self, key: &NSColorName) -> Option<Id<NSColor>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Use this array to get count of colors and enumerate them according to the ordering specified when inserting.
+        */
         #[method_id(@__retain_semantics Other allKeys)]
         pub unsafe fn allKeys(&self) -> Id<NSArray<NSColorName>>;
 
+        /**
+          Depends on the source of the colorlist file
+        */
         #[method(isEditable)]
         pub unsafe fn isEditable(&self) -> bool;
 

@@ -93,6 +93,9 @@ extern_static!(NSOtherMouseDragged: NSEventType = NSEventTypeOtherMouseDragged);
 
 ns_options!(
     #[underlying(c_ulonglong)]
+    /**
+      For APIs introduced in Mac OS X 10.6 and later, this type is used with NS*Mask constants to indicate the events of interest.
+    */
     pub enum NSEventMask {
         NSEventMaskLeftMouseDown = 1 << NSEventTypeLeftMouseDown,
         NSEventMaskLeftMouseUp = 1 << NSEventTypeLeftMouseUp,
@@ -185,6 +188,9 @@ inline_fn!(
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+      Device-independent bits found in event modifier flags
+    */
     pub enum NSEventModifierFlags {
         NSEventModifierFlagCapsLock = 1 << 16,
         NSEventModifierFlagShift = 1 << 17,
@@ -221,6 +227,9 @@ extern_static!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      pointer types for NSEventTypeTabletProximity events or mouse events with subtype NSEventSubtypeTabletProximity
+    */
     pub enum NSPointingDeviceType {
         NSPointingDeviceTypeUnknown = 0,
         NSPointingDeviceTypePen = 1,
@@ -239,6 +248,9 @@ extern_static!(NSEraserPointingDevice: NSPointingDeviceType = NSPointingDeviceTy
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+      button masks for NSEventTypeTabletPoint events or mouse events with subtype NSEventSubtypeTabletPoint
+    */
     pub enum NSEventButtonMask {
         NSEventButtonMaskPenTip = 1,
         NSEventButtonMaskPenLowerSide = 2,
@@ -326,6 +338,10 @@ extern_static!(NSTouchEventSubtype: NSEventSubtype = NSEventSubtypeTouch);
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      NSPressureBehavior - The pressure gesture behavior that describes how a pressure gesture behaves and progresses
+     In general, pressure gestures begin when stage reaches 1 and end when stage reaches 0. This corresponds to the simultaneously generated mouse down/up events.
+    */
     pub enum NSPressureBehavior {
         NSPressureBehaviorUnknown = -1,
         NSPressureBehaviorPrimaryDefault = 0,
@@ -357,6 +373,9 @@ unsafe impl NSObjectProtocol for NSEvent {}
 extern_methods!(
     #[cfg(feature = "AppKit_NSEvent")]
     unsafe impl NSEvent {
+        /**
+          these messages are valid for all events
+        */
         #[method(type)]
         pub unsafe fn r#type(&self) -> NSEventType;
 
@@ -378,46 +397,82 @@ extern_methods!(
         #[method_id(@__retain_semantics Other context)]
         pub unsafe fn context(&self) -> Option<Id<NSGraphicsContext>>;
 
+        /**
+          these messages are valid for all mouse down/up/drag events
+        */
         #[method(clickCount)]
         pub unsafe fn clickCount(&self) -> NSInteger;
 
+        /**
+          for NSOtherMouse events, but will return valid constants for NSLeftMouse and NSRightMouse
+        */
         #[method(buttonNumber)]
         pub unsafe fn buttonNumber(&self) -> NSInteger;
 
+        /**
+          these messages are valid for all mouse down/up/drag and enter/exit events
+        */
         #[method(eventNumber)]
         pub unsafe fn eventNumber(&self) -> NSInteger;
 
+        /**
+          -pressure is valid for all mouse down/up/drag events, and is also valid for NSEventTypeTabletPoint events on 10.4 or later and NSEventTypePressure on 10.10.3 or later
+        */
         #[method(pressure)]
         pub unsafe fn pressure(&self) -> c_float;
 
+        /**
+          -locationInWindow is valid for all mouse-related events
+        */
         #[method(locationInWindow)]
         pub unsafe fn locationInWindow(&self) -> NSPoint;
 
+        /**
+          these messages are valid for scroll wheel events and mouse move/drag events.  As of 10.5.2, deltaX and deltaY are also valid for swipe events.  A non-0 deltaX will represent a horizontal swipe, -1 for swipe right and 1 for swipe left.  A non-0 deltaY will represent a vertical swipe, -1 for swipe down and 1 for swipe up. As of 10.7, the preferred methods for scroll wheel events are scrollingDeltaX and scrollingDeltaY defined below.
+        */
         #[method(deltaX)]
         pub unsafe fn deltaX(&self) -> CGFloat;
 
         #[method(deltaY)]
         pub unsafe fn deltaY(&self) -> CGFloat;
 
+        /**
+          0 for most scroll wheel and mouse events
+        */
         #[method(deltaZ)]
         pub unsafe fn deltaZ(&self) -> CGFloat;
 
+        /**
+          This message is valid for NSEventTypeScrollWheel events. A generic scroll wheel issues rather coarse scroll deltas. Some Apple mice and trackpads provide much more precise delta. This method determines the resolution of the scrollDeltaX and scrollDeltaY values.
+        */
         #[method(hasPreciseScrollingDeltas)]
         pub unsafe fn hasPreciseScrollingDeltas(&self) -> bool;
 
+        /**
+          The following two message are the preferred API for accessing NSEventTypeScrollWheel deltas. When -hasPreciseScrollingDeltas reutrns NO, multiply the returned value by line or row height. When -hasPreciseScrollingDeltas returns YES, scroll by the returned value (in points).
+        */
         #[method(scrollingDeltaX)]
         pub unsafe fn scrollingDeltaX(&self) -> CGFloat;
 
         #[method(scrollingDeltaY)]
         pub unsafe fn scrollingDeltaY(&self) -> CGFloat;
 
+        /**
+          This message is valid for NSEventTypeScrollWheel events. With the Magic Mouse and some trackpads, the user can flick thier finger resulting in a stream of scroll events that dissipate over time. The location of these scroll wheel events changes as the user moves the cursor. AppKit latches these scroll wheel events to the view that is under the cursor when the flick occurs. A custom view can use this method to recognize these momentum scroll events and further route the event to the appropriate sub component.
+        */
         #[method(momentumPhase)]
         pub unsafe fn momentumPhase(&self) -> NSEventPhase;
 
+        /**
+          valid for NSEventScrollWheel events. The user may choose to change the scrolling behavior such that it feels like they are moving the content instead of the scroll bar. To accomplish this, deltaX/Y and scrollingDeltaX/Y are automatically inverted for NSEventScrollWheel events according to the user's preferences. However, for some uses, the behavior should not respect the user preference. This method allows you to determine when the event has been inverted and compensate by multiplying -1 if needed.
+        */
         #[method(isDirectionInvertedFromDevice)]
         pub unsafe fn isDirectionInvertedFromDevice(&self) -> bool;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          these messages are valid for keyup and keydown events
+        */
         #[method_id(@__retain_semantics Other characters)]
         pub unsafe fn characters(&self) -> Option<Id<NSString>>;
 
@@ -432,12 +487,21 @@ extern_methods!(
             modifiers: NSEventModifierFlags,
         ) -> Option<Id<NSString>>;
 
+        /**
+          the chars that would have been generated, regardless of modifier keys (except shift)
+        */
         #[method(isARepeat)]
         pub unsafe fn isARepeat(&self) -> bool;
 
+        /**
+          device-independent key number
+        */
         #[method(keyCode)]
         pub unsafe fn keyCode(&self) -> c_ushort;
 
+        /**
+          these messages are valid for enter and exit events
+        */
         #[method(trackingNumber)]
         pub unsafe fn trackingNumber(&self) -> NSInteger;
 
@@ -445,87 +509,168 @@ extern_methods!(
         pub unsafe fn userData(&self) -> *mut c_void;
 
         #[cfg(feature = "AppKit_NSTrackingArea")]
+        /**
+          -trackingArea returns the NSTrackingArea that generated this event.  It is possible for there to be no trackingArea associated with the event in some cases where the event corresponds to a trackingRect installed with -[NSView addTrackingRect:owner:userData:assumeInside:], in which case nil is returned.
+        */
         #[method_id(@__retain_semantics Other trackingArea)]
         pub unsafe fn trackingArea(&self) -> Option<Id<NSTrackingArea>>;
 
+        /**
+          this message is valid for kit, system, and app-defined events
+         this message is also valid for mouse events on 10.4 or later
+        */
         #[method(subtype)]
         pub unsafe fn subtype(&self) -> NSEventSubtype;
 
+        /**
+          these messages are valid for kit, system, and app-defined events
+        */
         #[method(data1)]
         pub unsafe fn data1(&self) -> NSInteger;
 
         #[method(data2)]
         pub unsafe fn data2(&self) -> NSInteger;
 
+        /**
+          EventRef
+        */
         #[method(eventRef)]
         pub unsafe fn eventRef(&self) -> *mut c_void;
 
         #[method_id(@__retain_semantics Other eventWithEventRef:)]
         pub unsafe fn eventWithEventRef(event_ref: NonNull<c_void>) -> Option<Id<NSEvent>>;
 
+        /**
+          Enable or disable coalescing of mouse movement events, including mouse moved, mouse dragged, and tablet events.  Coalescing is enabled by default.
+        */
         #[method(isMouseCoalescingEnabled)]
         pub unsafe fn isMouseCoalescingEnabled() -> bool;
 
+        /**
+          Enable or disable coalescing of mouse movement events, including mouse moved, mouse dragged, and tablet events.  Coalescing is enabled by default.
+        */
         #[method(setMouseCoalescingEnabled:)]
         pub unsafe fn setMouseCoalescingEnabled(mouse_coalescing_enabled: bool);
 
+        /**
+          change in magnification.   This value should be added to the current scaling of an item to get the new scale factor.
+        */
         #[method(magnification)]
         pub unsafe fn magnification(&self) -> CGFloat;
 
+        /**
+          this message is valid for mouse events with subtype NSEventSubtypeTabletPoint or NSEventSubtypeTabletProximity, and for NSEventTypeTabletPoint and NSEventTypeTabletProximity events
+        */
         #[method(deviceID)]
         pub unsafe fn deviceID(&self) -> NSUInteger;
 
+        /**
+          In degrees.  For NSEventTypeTabletPoint, this is rotation of the pen.  For NSEventTypeRotate, it is rotation on the track pad.
+        */
         #[method(rotation)]
         pub unsafe fn rotation(&self) -> c_float;
 
+        /**
+          these messages are valid for mouse events with subtype NSEventSubtypeTabletPoint, and for NSEventTypeTabletPoint events
+         absolute x coordinate in tablet space at full tablet resolution
+        */
         #[method(absoluteX)]
         pub unsafe fn absoluteX(&self) -> NSInteger;
 
+        /**
+          absolute y coordinate in tablet space at full tablet resolution
+        */
         #[method(absoluteY)]
         pub unsafe fn absoluteY(&self) -> NSInteger;
 
+        /**
+          absolute z coordinate in tablet space at full tablet resolution
+        */
         #[method(absoluteZ)]
         pub unsafe fn absoluteZ(&self) -> NSInteger;
 
+        /**
+          mask indicating which buttons are pressed.
+        */
         #[method(buttonMask)]
         pub unsafe fn buttonMask(&self) -> NSEventButtonMask;
 
+        /**
+          range is -1 to 1 for both axes
+        */
         #[method(tilt)]
         pub unsafe fn tilt(&self) -> NSPoint;
 
+        /**
+          tangential pressure on the device; range is -1 to 1
+        */
         #[method(tangentialPressure)]
         pub unsafe fn tangentialPressure(&self) -> c_float;
 
+        /**
+          NSArray of 3 vendor defined shorts
+        */
         #[method_id(@__retain_semantics Other vendorDefined)]
         pub unsafe fn vendorDefined(&self) -> Id<Object>;
 
+        /**
+          these messages are valid for mouse events with subtype NSEventSubtypeTabletProximity, and  for NSEventTypeTabletProximity events
+         vendor defined, typically USB vendor ID
+        */
         #[method(vendorID)]
         pub unsafe fn vendorID(&self) -> NSUInteger;
 
+        /**
+          vendor defined tablet ID
+        */
         #[method(tabletID)]
         pub unsafe fn tabletID(&self) -> NSUInteger;
 
+        /**
+          index of the device on the tablet.  Usually 0, except for tablets that support multiple concurrent devices
+        */
         #[method(pointingDeviceID)]
         pub unsafe fn pointingDeviceID(&self) -> NSUInteger;
 
+        /**
+          system assigned unique tablet ID
+        */
         #[method(systemTabletID)]
         pub unsafe fn systemTabletID(&self) -> NSUInteger;
 
+        /**
+          vendor defined pointing device type
+        */
         #[method(vendorPointingDeviceType)]
         pub unsafe fn vendorPointingDeviceType(&self) -> NSUInteger;
 
+        /**
+          vendor defined serial number of pointing device
+        */
         #[method(pointingDeviceSerialNumber)]
         pub unsafe fn pointingDeviceSerialNumber(&self) -> NSUInteger;
 
+        /**
+          vendor defined unique ID
+        */
         #[method(uniqueID)]
         pub unsafe fn uniqueID(&self) -> c_ulonglong;
 
+        /**
+          mask representing capabilities of device
+        */
         #[method(capabilityMask)]
         pub unsafe fn capabilityMask(&self) -> NSUInteger;
 
+        /**
+          mask representing capabilities of device
+        */
         #[method(pointingDeviceType)]
         pub unsafe fn pointingDeviceType(&self) -> NSPointingDeviceType;
 
+        /**
+          YES - entering; NO - leaving
+        */
         #[method(isEnteringProximity)]
         pub unsafe fn isEnteringProximity(&self) -> bool;
 
@@ -557,21 +702,40 @@ extern_methods!(
         #[method_id(@__retain_semantics Other coalescedTouchesForTouch:)]
         pub unsafe fn coalescedTouchesForTouch(&self, touch: &NSTouch) -> Id<NSArray<NSTouch>>;
 
+        /**
+          The phase of a gesture scroll event. A gesture phrase are all the events that begin with a NSEventPhaseBegan and end with either a NSEventPhaseEnded or NSEventPhaseCancelled. All the gesture events are sent to the view under the cursor when the NSEventPhaseBegan occurred.  A gesture scroll event starts with a NSEventPhaseBegan phase and ends with a NSPhaseEnded. Legacy scroll wheel events (say from a Mighty Mouse) and momentum scroll wheel events have a phase of NSEventPhaseNone.
+        Valid for NSEventTypeScrollWheel
+        */
         #[method(phase)]
         pub unsafe fn phase(&self) -> NSEventPhase;
 
+        /**
+          This message is valid for NSEventTypePressure events. Pressure gesture events go through multiple stages.
+        */
         #[method(stage)]
         pub unsafe fn stage(&self) -> NSInteger;
 
+        /**
+          This message is valid for NSEventTypePressure events. Positive stageTransition describes approaching the next stage of the pressure gesture. Negative stageTransition describes approaching release of the current stage.
+        */
         #[method(stageTransition)]
         pub unsafe fn stageTransition(&self) -> CGFloat;
 
+        /**
+          This message is valid for Mouse events. The event mask describing the various events that you may also get during this event sequence. Useful for determining if the input device issuing this mouse event can also simultaneously issue NSEventTypePressure events.
+        */
         #[method(associatedEventsMask)]
         pub unsafe fn associatedEventsMask(&self) -> NSEventMask;
 
+        /**
+          this message is valid for NSEventTypePressure events
+        */
         #[method(pressureBehavior)]
         pub unsafe fn pressureBehavior(&self) -> NSPressureBehavior;
 
+        /**
+          Returns the user's preference about using gesture scrolls as a way to track fluid swipes. This value is determined by the Mouse / Trackpad preference panel for the current user. Generally, NSScrollView will check this for you. However, if your app is not using an NSScrollView, or your NSResponder can receive scrollWheel messages without first being sent to an NSScrollView, then you should check this preference before calling -trackSwipeEventWithOptions:dampenAmountThresholdMin:max:usingHandler:
+        */
         #[method(isSwipeTrackingFromScrollEventsEnabled)]
         pub unsafe fn isSwipeTrackingFromScrollEventsEnabled() -> bool;
 
@@ -650,21 +814,39 @@ extern_methods!(
             d2: NSInteger,
         ) -> Option<Id<NSEvent>>;
 
+        /**
+          global mouse coordinates
+        */
         #[method(mouseLocation)]
         pub unsafe fn mouseLocation() -> NSPoint;
 
+        /**
+          modifier keys currently down.  This returns the state of devices combined with synthesized events at the moment, independent of which events have been delivered via the event stream.
+        */
         #[method(modifierFlags)]
         pub unsafe fn modifierFlags_class() -> NSEventModifierFlags;
 
+        /**
+          mouse buttons currently down.  Returns indices of the mouse buttons currently down.  1 << 0 corresponds to leftMouse, 1 << 1 to rightMouse, and 1 << n, n >= 2 to other mouse buttons.  This returns the state of devices combined with synthesized events at the moment, independent of which events have been delivered via the event stream, so this method is not suitable for tracking.
+        */
         #[method(pressedMouseButtons)]
         pub unsafe fn pressedMouseButtons() -> NSUInteger;
 
+        /**
+          the time in which a second click must occur in order to be considered a doubleClick.  This is a system value so overrides will have no effect.
+        */
         #[method(doubleClickInterval)]
         pub unsafe fn doubleClickInterval() -> NSTimeInterval;
 
+        /**
+          the time for which a key must be held down in order to generate the first key repeat event.  This is a system value so overrides will have no effect.
+        */
         #[method(keyRepeatDelay)]
         pub unsafe fn keyRepeatDelay() -> NSTimeInterval;
 
+        /**
+          the time between subsequent key repeat events.  This is a system value so overrides will have no effect.
+        */
         #[method(keyRepeatInterval)]
         pub unsafe fn keyRepeatInterval() -> NSTimeInterval;
 
@@ -687,6 +869,9 @@ extern_methods!(
 
 extern_enum!(
     #[underlying(c_uint)]
+    /**
+      Unicodes we reserve for function keys on the keyboard,  OpenStep reserves the range 0xF700-0xF8FF for this purpose.  The availability of various keys will be system dependent.
+    */
     pub enum __anonymous__ {
         NSUpArrowFunctionKey = 0xF700,
         NSDownArrowFunctionKey = 0xF701,

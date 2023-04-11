@@ -56,15 +56,27 @@ extern_methods!(
         #[method(setThreadPriority:)]
         pub unsafe fn setThreadPriority_class(p: c_double) -> bool;
 
+        /**
+          To be deprecated; use qualityOfService below
+        */
         #[method(threadPriority)]
         pub unsafe fn threadPriority(&self) -> c_double;
 
+        /**
+          To be deprecated; use qualityOfService below
+        */
         #[method(setThreadPriority:)]
         pub unsafe fn setThreadPriority(&self, thread_priority: c_double);
 
+        /**
+          read-only after the thread is started
+        */
         #[method(qualityOfService)]
         pub unsafe fn qualityOfService(&self) -> NSQualityOfService;
 
+        /**
+          read-only after the thread is started
+        */
         #[method(setQualityOfService:)]
         pub unsafe fn setQualityOfService(&self, quality_of_service: NSQualityOfService);
 
@@ -93,6 +105,9 @@ extern_methods!(
         #[method(isMainThread)]
         pub fn isMainThread(&self) -> bool;
 
+        /**
+          reports whether current thread is main
+        */
         #[method(isMainThread)]
         pub fn isMainThread_class() -> bool;
 

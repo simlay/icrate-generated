@@ -7,6 +7,9 @@ use crate::LocalAuthentication::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "LocalAuthentication_LAPublicKey")]
+    /**
+      @brief The public part of an asymmetric key pair
+    */
     pub struct LAPublicKey;
 
     #[cfg(feature = "LocalAuthentication_LAPublicKey")]
@@ -16,9 +19,15 @@ extern_class!(
 );
 
 #[cfg(feature = "LocalAuthentication_LAPublicKey")]
+/**
+  @brief The public part of an asymmetric key pair
+*/
 unsafe impl NSObjectProtocol for LAPublicKey {}
 
 extern_methods!(
+    /**
+      @brief The public part of an asymmetric key pair
+    */
     #[cfg(feature = "LocalAuthentication_LAPublicKey")]
     unsafe impl LAPublicKey {
         #[cfg(all(feature = "Foundation_NSData", feature = "Foundation_NSError"))]

@@ -23,6 +23,9 @@ extern_methods!(
     #[cfg(feature = "MediaPlayer_MPRemoteCommandCenter")]
     unsafe impl MPRemoteCommandCenter {
         #[cfg(feature = "MediaPlayer_MPRemoteCommand")]
+        /**
+          Playback Commands
+        */
         #[method_id(@__retain_semantics Other pauseCommand)]
         pub unsafe fn pauseCommand(&self) -> Id<MPRemoteCommand>;
 
@@ -59,6 +62,9 @@ extern_methods!(
         pub unsafe fn changeShuffleModeCommand(&self) -> Id<MPChangeShuffleModeCommand>;
 
         #[cfg(feature = "MediaPlayer_MPRemoteCommand")]
+        /**
+          Previous/Next Track Commands
+        */
         #[method_id(@__retain_semantics Other nextTrackCommand)]
         pub unsafe fn nextTrackCommand(&self) -> Id<MPRemoteCommand>;
 
@@ -67,6 +73,9 @@ extern_methods!(
         pub unsafe fn previousTrackCommand(&self) -> Id<MPRemoteCommand>;
 
         #[cfg(feature = "MediaPlayer_MPSkipIntervalCommand")]
+        /**
+          Skip Interval Commands
+        */
         #[method_id(@__retain_semantics Other skipForwardCommand)]
         pub unsafe fn skipForwardCommand(&self) -> Id<MPSkipIntervalCommand>;
 
@@ -75,6 +84,9 @@ extern_methods!(
         pub unsafe fn skipBackwardCommand(&self) -> Id<MPSkipIntervalCommand>;
 
         #[cfg(feature = "MediaPlayer_MPRemoteCommand")]
+        /**
+          Seek Commands
+        */
         #[method_id(@__retain_semantics Other seekForwardCommand)]
         pub unsafe fn seekForwardCommand(&self) -> Id<MPRemoteCommand>;
 
@@ -87,10 +99,19 @@ extern_methods!(
         pub unsafe fn changePlaybackPositionCommand(&self) -> Id<MPChangePlaybackPositionCommand>;
 
         #[cfg(feature = "MediaPlayer_MPRatingCommand")]
+        /**
+          Rating Command
+        */
         #[method_id(@__retain_semantics Other ratingCommand)]
         pub unsafe fn ratingCommand(&self) -> Id<MPRatingCommand>;
 
         #[cfg(feature = "MediaPlayer_MPFeedbackCommand")]
+        /**
+          Feedback Commands
+         These are generalized to three distinct actions. Your application can provide
+         additional context about these actions with the localizedTitle property in
+         MPFeedbackCommand.
+        */
         #[method_id(@__retain_semantics Other likeCommand)]
         pub unsafe fn likeCommand(&self) -> Id<MPFeedbackCommand>;
 

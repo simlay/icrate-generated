@@ -55,27 +55,49 @@ extern_methods!(
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
+        /**
+         The identifier of this item. Apart from spaces, item identifiers should be globally unique.
+        */
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Id<NSTouchBarItemIdentifier>;
 
+        /**
+         If there are more items in the NSTouchBar than can be displayed, some will be hidden. Items with high visibility priority will be hidden after items with low visibility priority.
+        */
         #[method(visibilityPriority)]
         pub unsafe fn visibilityPriority(&self) -> NSTouchBarItemPriority;
 
+        /**
+         If there are more items in the NSTouchBar than can be displayed, some will be hidden. Items with high visibility priority will be hidden after items with low visibility priority.
+        */
         #[method(setVisibilityPriority:)]
         pub unsafe fn setVisibilityPriority(&self, visibility_priority: NSTouchBarItemPriority);
 
         #[cfg(feature = "AppKit_NSView")]
+        /**
+         Intended for subclassing. By default, this method returns this item's view controller's view.
+        */
         #[method_id(@__retain_semantics Other view)]
         pub unsafe fn view(&self) -> Option<Id<NSView>>;
 
         #[cfg(feature = "AppKit_NSViewController")]
+        /**
+         Intended for subclassing. By default, this method returns nil.
+        */
         #[method_id(@__retain_semantics Other viewController)]
         pub unsafe fn viewController(&self) -> Option<Id<NSViewController>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         The user visible string identifying this item during customization. By default this method returns the empty string.
+        */
         #[method_id(@__retain_semantics Other customizationLabel)]
         pub unsafe fn customizationLabel(&self) -> Id<NSString>;
 
+        /**
+         When YES, this item is attached to a visible NSTouchBar, and is being displayed. Note that some types of items are never considered visible, for example spaces, other items proxys, and groups.
+        This property is key value observable.
+        */
         #[method(isVisible)]
         pub unsafe fn isVisible(&self) -> bool;
     }

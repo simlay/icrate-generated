@@ -10,6 +10,27 @@ use crate::MapKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "EventKit_EKRecurrenceDayOfWeek")]
+    /**
+     @class      EKRecurrenceDayOfWeek
+    @abstract   Class which represents a day of the week this recurrence will occur.
+    @discussion EKRecurrenceDayOfWeek specifies either a simple day of the week, or the nth instance
+    of a particular day of the week, such as the third Tuesday of every month. The week
+    number is only valid when used with monthly or yearly recurrences, since it would
+    be otherwise meaningless.
+
+    Valid values for dayOfTheWeek are integers 1-7, which correspond to days of the week
+    with Sunday = 1. Valid values for weekNumber portion are (+/-)1-53, where a negative
+    value indicates a value from the end of the range. For example, in a yearly event -1
+    means last week of the year. -1 in a Monthly recurrence indicates the last week of
+    the month.
+
+    The value 0 also indicates the weekNumber is irrelevant (every Sunday, etc.).
+
+    Day-of-week weekNumber values that are out of bounds for the recurrence type will
+    result in an exception when trying to initialize the recurrence. In particular,
+    weekNumber must be zero when passing EKRecurrenceDayOfWeek objects to initialize a weekly
+    recurrence.
+    */
     pub struct EKRecurrenceDayOfWeek;
 
     #[cfg(feature = "EventKit_EKRecurrenceDayOfWeek")]
@@ -19,15 +40,99 @@ extern_class!(
 );
 
 #[cfg(feature = "EventKit_EKRecurrenceDayOfWeek")]
+/**
+ @class      EKRecurrenceDayOfWeek
+@abstract   Class which represents a day of the week this recurrence will occur.
+@discussion EKRecurrenceDayOfWeek specifies either a simple day of the week, or the nth instance
+of a particular day of the week, such as the third Tuesday of every month. The week
+number is only valid when used with monthly or yearly recurrences, since it would
+be otherwise meaningless.
+
+Valid values for dayOfTheWeek are integers 1-7, which correspond to days of the week
+with Sunday = 1. Valid values for weekNumber portion are (+/-)1-53, where a negative
+value indicates a value from the end of the range. For example, in a yearly event -1
+means last week of the year. -1 in a Monthly recurrence indicates the last week of
+the month.
+
+The value 0 also indicates the weekNumber is irrelevant (every Sunday, etc.).
+
+Day-of-week weekNumber values that are out of bounds for the recurrence type will
+result in an exception when trying to initialize the recurrence. In particular,
+weekNumber must be zero when passing EKRecurrenceDayOfWeek objects to initialize a weekly
+recurrence.
+*/
 unsafe impl NSCoding for EKRecurrenceDayOfWeek {}
 
 #[cfg(feature = "EventKit_EKRecurrenceDayOfWeek")]
+/**
+ @class      EKRecurrenceDayOfWeek
+@abstract   Class which represents a day of the week this recurrence will occur.
+@discussion EKRecurrenceDayOfWeek specifies either a simple day of the week, or the nth instance
+of a particular day of the week, such as the third Tuesday of every month. The week
+number is only valid when used with monthly or yearly recurrences, since it would
+be otherwise meaningless.
+
+Valid values for dayOfTheWeek are integers 1-7, which correspond to days of the week
+with Sunday = 1. Valid values for weekNumber portion are (+/-)1-53, where a negative
+value indicates a value from the end of the range. For example, in a yearly event -1
+means last week of the year. -1 in a Monthly recurrence indicates the last week of
+the month.
+
+The value 0 also indicates the weekNumber is irrelevant (every Sunday, etc.).
+
+Day-of-week weekNumber values that are out of bounds for the recurrence type will
+result in an exception when trying to initialize the recurrence. In particular,
+weekNumber must be zero when passing EKRecurrenceDayOfWeek objects to initialize a weekly
+recurrence.
+*/
 unsafe impl NSObjectProtocol for EKRecurrenceDayOfWeek {}
 
 #[cfg(feature = "EventKit_EKRecurrenceDayOfWeek")]
+/**
+ @class      EKRecurrenceDayOfWeek
+@abstract   Class which represents a day of the week this recurrence will occur.
+@discussion EKRecurrenceDayOfWeek specifies either a simple day of the week, or the nth instance
+of a particular day of the week, such as the third Tuesday of every month. The week
+number is only valid when used with monthly or yearly recurrences, since it would
+be otherwise meaningless.
+
+Valid values for dayOfTheWeek are integers 1-7, which correspond to days of the week
+with Sunday = 1. Valid values for weekNumber portion are (+/-)1-53, where a negative
+value indicates a value from the end of the range. For example, in a yearly event -1
+means last week of the year. -1 in a Monthly recurrence indicates the last week of
+the month.
+
+The value 0 also indicates the weekNumber is irrelevant (every Sunday, etc.).
+
+Day-of-week weekNumber values that are out of bounds for the recurrence type will
+result in an exception when trying to initialize the recurrence. In particular,
+weekNumber must be zero when passing EKRecurrenceDayOfWeek objects to initialize a weekly
+recurrence.
+*/
 unsafe impl NSSecureCoding for EKRecurrenceDayOfWeek {}
 
 extern_methods!(
+    /**
+     @class      EKRecurrenceDayOfWeek
+    @abstract   Class which represents a day of the week this recurrence will occur.
+    @discussion EKRecurrenceDayOfWeek specifies either a simple day of the week, or the nth instance
+    of a particular day of the week, such as the third Tuesday of every month. The week
+    number is only valid when used with monthly or yearly recurrences, since it would
+    be otherwise meaningless.
+
+    Valid values for dayOfTheWeek are integers 1-7, which correspond to days of the week
+    with Sunday = 1. Valid values for weekNumber portion are (+/-)1-53, where a negative
+    value indicates a value from the end of the range. For example, in a yearly event -1
+    means last week of the year. -1 in a Monthly recurrence indicates the last week of
+    the month.
+
+    The value 0 also indicates the weekNumber is irrelevant (every Sunday, etc.).
+
+    Day-of-week weekNumber values that are out of bounds for the recurrence type will
+    result in an exception when trying to initialize the recurrence. In particular,
+    weekNumber must be zero when passing EKRecurrenceDayOfWeek objects to initialize a weekly
+    recurrence.
+    */
     #[cfg(feature = "EventKit_EKRecurrenceDayOfWeek")]
     unsafe impl EKRecurrenceDayOfWeek {
         #[method_id(@__retain_semantics Other dayOfWeek:)]
@@ -46,9 +151,17 @@ extern_methods!(
             week_number: NSInteger,
         ) -> Id<Self>;
 
+        /**
+         @property   dayOfTheWeek
+        @abstract   The day of the week.
+        */
         #[method(dayOfTheWeek)]
         pub unsafe fn dayOfTheWeek(&self) -> EKWeekday;
 
+        /**
+         @property   weekNumber
+        @abstract   The week number.
+        */
         #[method(weekNumber)]
         pub unsafe fn weekNumber(&self) -> NSInteger;
     }

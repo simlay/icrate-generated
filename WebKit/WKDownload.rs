@@ -26,16 +26,30 @@ extern_methods!(
     #[cfg(feature = "WebKit_WKDownload")]
     unsafe impl WKDownload {
         #[cfg(feature = "Foundation_NSURLRequest")]
+        /**
+          @abstract The request used to initiate this download.
+        @discussion If the original request redirected to a different URL, originalRequest
+        will be unchanged after the download follows the redirect.
+        */
         #[method_id(@__retain_semantics Other originalRequest)]
         pub unsafe fn originalRequest(&self) -> Option<Id<NSURLRequest>>;
 
         #[cfg(feature = "WebKit_WKWebView")]
+        /**
+          @abstract The web view that originated this download.
+        */
         #[method_id(@__retain_semantics Other webView)]
         pub unsafe fn webView(&self) -> Option<Id<WKWebView>>;
 
+        /**
+          @abstract The delegate that receives progress updates for this download.
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(&self) -> Option<Id<ProtocolObject<dyn WKDownloadDelegate>>>;
 
+        /**
+          @abstract The delegate that receives progress updates for this download.
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(&self, delegate: Option<&ProtocolObject<dyn WKDownloadDelegate>>);
 

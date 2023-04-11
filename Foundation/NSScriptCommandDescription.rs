@@ -43,6 +43,9 @@ extern_methods!(
         ) -> Option<Id<Self>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Return the suite name or command name provided at initialization time.
+        */
         #[method_id(@__retain_semantics Other suiteName)]
         pub unsafe fn suiteName(&self) -> Id<NSString>;
 
@@ -50,6 +53,9 @@ extern_methods!(
         #[method_id(@__retain_semantics Other commandName)]
         pub unsafe fn commandName(&self) -> Id<NSString>;
 
+        /**
+          Return the four character codes that identify the command in Apple events.
+        */
         #[method(appleEventClassCode)]
         pub unsafe fn appleEventClassCode(&self) -> FourCharCode;
 
@@ -57,17 +63,29 @@ extern_methods!(
         pub unsafe fn appleEventCode(&self) -> FourCharCode;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Return the Objective-C class name for instances of the described command.
+        */
         #[method_id(@__retain_semantics Other commandClassName)]
         pub unsafe fn commandClassName(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Return the declared type name for the result of execution of the described command, or nil if the described command is not declared to return a result.
+        */
         #[method_id(@__retain_semantics Other returnType)]
         pub unsafe fn returnType(&self) -> Option<Id<NSString>>;
 
+        /**
+          Return the four character code that identifies in Apple events the declared type of the result of execution of the described command.
+        */
         #[method(appleEventCodeForReturnType)]
         pub unsafe fn appleEventCodeForReturnType(&self) -> FourCharCode;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          Return the strings valid for use as keys into argument dictionaries in instances of the described command.
+        */
         #[method_id(@__retain_semantics Other argumentNames)]
         pub unsafe fn argumentNames(&self) -> Id<NSArray<NSString>>;
 

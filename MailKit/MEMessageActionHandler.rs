@@ -6,6 +6,9 @@ use crate::Foundation::*;
 use crate::MailKit::*;
 
 extern_protocol!(
+    /**
+      @brief Methods in this protocol can be used by a mail app extension to perform actions on messages as they are downloaded.
+    */
     pub unsafe trait MEMessageActionHandler: NSObjectProtocol {
         #[cfg(all(
             feature = "MailKit_MEMessage",
@@ -19,6 +22,11 @@ extern_protocol!(
         );
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          @brief Provide additional headers that the extension requires to perform an action. Mail will fetch these additional headers before invoking @c -[MEMessageActionHandler @c decideActionForMessage:completionHandler:].
+         For example, extensions can return the headers that were set in @c -[MEComposeSessionHandler @c additionalHeadersForSession:]
+         @return An array of header keys. Mail will normalize the headers to lower case before fetching them from the mail server.
+        */
         #[optional]
         #[method_id(@__retain_semantics Other requiredHeaders)]
         unsafe fn requiredHeaders(&self) -> Id<NSArray<NSString>>;

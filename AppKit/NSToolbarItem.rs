@@ -44,73 +44,130 @@ extern_methods!(
         pub unsafe fn itemIdentifier(&self) -> Id<NSToolbarItemIdentifier>;
 
         #[cfg(feature = "AppKit_NSToolbar")]
+        /**
+          Use this to determine the toolbar in which an item is currently displayed.
+        */
         #[method_id(@__retain_semantics Other toolbar)]
         pub unsafe fn toolbar(&self) -> Option<Id<NSToolbar>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Use this to set the item's label that appears in the toolbar.  The implication here is that the toolbar will draw the label for the item, and a redraw is triggered by this method.  The toolbar is in charge of the label area.  It is fine for an item to have no toolbar label.  Also, developers should make sure the length of the label is appropriate and not too long.
+        */
         #[method_id(@__retain_semantics Other label)]
         pub unsafe fn label(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Use this to set the item's label that appears in the toolbar.  The implication here is that the toolbar will draw the label for the item, and a redraw is triggered by this method.  The toolbar is in charge of the label area.  It is fine for an item to have no toolbar label.  Also, developers should make sure the length of the label is appropriate and not too long.
+        */
         #[method(setLabel:)]
         pub unsafe fn setLabel(&self, label: &NSString);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Use this to set the item's label that appears when the item is in the customization palette.  All Items must have a palette label, and for most things it is reasonable to set them to the same string as the label used in the toolbar.
+        */
         #[method_id(@__retain_semantics Other paletteLabel)]
         pub unsafe fn paletteLabel(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Use this to set the item's label that appears when the item is in the customization palette.  All Items must have a palette label, and for most things it is reasonable to set them to the same string as the label used in the toolbar.
+        */
         #[method(setPaletteLabel:)]
         pub unsafe fn setPaletteLabel(&self, palette_label: &NSString);
 
         #[cfg(all(feature = "Foundation_NSSet", feature = "Foundation_NSString"))]
+        /**
+         An array of all alternate labels this item may display. The item will use the size of the longest label to prevent resizing when the label is changed.
+        */
         #[method_id(@__retain_semantics Other possibleLabels)]
         pub unsafe fn possibleLabels(&self) -> Id<NSSet<NSString>>;
 
         #[cfg(all(feature = "Foundation_NSSet", feature = "Foundation_NSString"))]
+        /**
+         An array of all alternate labels this item may display. The item will use the size of the longest label to prevent resizing when the label is changed.
+        */
         #[method(setPossibleLabels:)]
         pub unsafe fn setPossibleLabels(&self, possible_labels: &NSSet<NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Use this to set a tooltip to be used when the item is displayed in the toolbar.  (forwards to -view if it responds)
+        */
         #[method_id(@__retain_semantics Other toolTip)]
         pub unsafe fn toolTip(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Use this to set a tooltip to be used when the item is displayed in the toolbar.  (forwards to -view if it responds)
+        */
         #[method(setToolTip:)]
         pub unsafe fn setToolTip(&self, tool_tip: Option<&NSString>);
 
         #[cfg(feature = "AppKit_NSMenuItem")]
+        /**
+          The menu form of a toolbar item's purpose is twofold.  First, when the window is too small to display an item, it will be clipped but remain accessible from a "clipped items" menu containing the menu item returned here.  Second, in text only mode, the menu returned will be used to create the displayed items.  Singleton menu items will be clickable, while submenu items will be represented as a pull down.  For instance, say you want a button that allows you to switch between modes A, B, and C.  You could represent this as a menu by :  a menu item "mode" with three submenu items "A", "B", and "C".   By default, this method returns a singleton menu item with item label as the title.  For standard items, the target, action is set.
+        */
         #[method_id(@__retain_semantics Other menuFormRepresentation)]
         pub unsafe fn menuFormRepresentation(&self) -> Option<Id<NSMenuItem>>;
 
         #[cfg(feature = "AppKit_NSMenuItem")]
+        /**
+          The menu form of a toolbar item's purpose is twofold.  First, when the window is too small to display an item, it will be clipped but remain accessible from a "clipped items" menu containing the menu item returned here.  Second, in text only mode, the menu returned will be used to create the displayed items.  Singleton menu items will be clickable, while submenu items will be represented as a pull down.  For instance, say you want a button that allows you to switch between modes A, B, and C.  You could represent this as a menu by :  a menu item "mode" with three submenu items "A", "B", and "C".   By default, this method returns a singleton menu item with item label as the title.  For standard items, the target, action is set.
+        */
         #[method(setMenuFormRepresentation:)]
         pub unsafe fn setMenuFormRepresentation(
             &self,
             menu_form_representation: Option<&NSMenuItem>,
         );
 
+        /**
+          Tag for your own custom purpose. (forwards to -view if it responds)
+        */
         #[method(tag)]
         pub unsafe fn tag(&self) -> NSInteger;
 
+        /**
+          Tag for your own custom purpose. (forwards to -view if it responds)
+        */
         #[method(setTag:)]
         pub unsafe fn setTag(&self, tag: NSInteger);
 
+        /**
+          Set and get the action of an item. (forwards to -view if it responds)
+        */
         #[method_id(@__retain_semantics Other target)]
         pub unsafe fn target(&self) -> Option<Id<Object>>;
 
+        /**
+          Set and get the action of an item. (forwards to -view if it responds)
+        */
         #[method(setTarget:)]
         pub unsafe fn setTarget(&self, target: Option<&Object>);
 
+        /**
+          Set and get the action of an item. For custom views, this method will call setAction:/action on the view if it responds. (forwards to -view if it responds)
+        */
         #[method(action)]
         pub unsafe fn action(&self) -> Option<Sel>;
 
+        /**
+          Set and get the action of an item. For custom views, this method will call setAction:/action on the view if it responds. (forwards to -view if it responds)
+        */
         #[method(setAction:)]
         pub unsafe fn setAction(&self, action: Option<Sel>);
 
+        /**
+          Set and get the enabled flag of an item.  For custom views, this method will call setEnabled:/isEnabled on the view if it responds. (forwards to -view if it responds)
+        */
         #[method(isEnabled)]
         pub unsafe fn isEnabled(&self) -> bool;
 
+        /**
+          Set and get the enabled flag of an item.  For custom views, this method will call setEnabled:/isEnabled on the view if it responds. (forwards to -view if it responds)
+        */
         #[method(setEnabled:)]
         pub unsafe fn setEnabled(&self, enabled: bool);
 
@@ -123,40 +180,82 @@ extern_methods!(
         pub unsafe fn setImage(&self, image: Option<&NSImage>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Set and get the title of an item. For custom views, this method will call setTitle:/title on the view if it responds. (forwards to -view if it responds)
+        */
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Set and get the title of an item. For custom views, this method will call setTitle:/title on the view if it responds. (forwards to -view if it responds)
+        */
         #[method(setTitle:)]
         pub unsafe fn setTitle(&self, title: &NSString);
 
+        /**
+         When set on an item without a custom view, the button produced will have a bordered style.
+        Defaults to NO.
+        */
         #[method(isBordered)]
         pub unsafe fn isBordered(&self) -> bool;
 
+        /**
+         When set on an item without a custom view, the button produced will have a bordered style.
+        Defaults to NO.
+        */
         #[method(setBordered:)]
         pub unsafe fn setBordered(&self, bordered: bool);
 
+        /**
+         Whether or not the item behaves as a navigation item (i.e. back/forward) in the toolbar. Navigation items may be specially positioned by the system outside the normal list of items of the toolbar in the order specified by -toolbarDefaultItemIdentifiers:.
+        */
         #[method(isNavigational)]
         pub unsafe fn isNavigational(&self) -> bool;
 
+        /**
+         Whether or not the item behaves as a navigation item (i.e. back/forward) in the toolbar. Navigation items may be specially positioned by the system outside the normal list of items of the toolbar in the order specified by -toolbarDefaultItemIdentifiers:.
+        */
         #[method(setNavigational:)]
         pub unsafe fn setNavigational(&self, navigational: bool);
 
         #[cfg(feature = "AppKit_NSView")]
+        /**
+          Use setView: if you want your toolbar item to use something other than the standard.  Note that, by default, many of the set/get methods will be implemented by calls forwarded to the view you set, if it responds to it.
+        */
         #[method_id(@__retain_semantics Other view)]
         pub unsafe fn view(&self) -> Option<Id<NSView>>;
 
         #[cfg(feature = "AppKit_NSView")]
+        /**
+          Use setView: if you want your toolbar item to use something other than the standard.  Note that, by default, many of the set/get methods will be implemented by calls forwarded to the view you set, if it responds to it.
+        */
         #[method(setView:)]
         pub unsafe fn setView(&self, view: Option<&NSView>);
 
+        /**
+         An item is visible if it is present in the NSToolbar and not in the overflow menu.
+        This property is key value observable.
+        */
         #[method(isVisible)]
         pub unsafe fn isVisible(&self) -> bool;
 
+        /**
+         Unless you have already set your own custom view, you should not call these methods.
+        The min size should be small enough to look nice in all display modes.
+        If you do not set a min/max size, the view's size properties will be calculated using constraints. Apps linked before 10.14 will use the view's current size.
+        In general, apps should rely on the automatic measurements and constraints to define min/max sizes rather than setting these properties since this will account for localizations.
+        */
         #[deprecated = "This property is no longer recommended. Instead, let the system automatically measure the size of the view using constraints."]
         #[method(minSize)]
         pub unsafe fn minSize(&self) -> NSSize;
 
+        /**
+         Unless you have already set your own custom view, you should not call these methods.
+        The min size should be small enough to look nice in all display modes.
+        If you do not set a min/max size, the view's size properties will be calculated using constraints. Apps linked before 10.14 will use the view's current size.
+        In general, apps should rely on the automatic measurements and constraints to define min/max sizes rather than setting these properties since this will account for localizations.
+        */
         #[deprecated = "This property is no longer recommended. Instead, let the system automatically measure the size of the view using constraints."]
         #[method(setMinSize:)]
         pub unsafe fn setMinSize(&self, min_size: NSSize);
@@ -169,9 +268,15 @@ extern_methods!(
         #[method(setMaxSize:)]
         pub unsafe fn setMaxSize(&self, max_size: NSSize);
 
+        /**
+          When a toolbar does not have enough space to fit all its items, it must push some into the overflow menu.  Items with the highest visibility priority level are choosen last for the overflow menu.  The default visibilityPriority value is NSToolbarItemVisibilityPriorityStandard.  To suggest that an item always remain visible, give it a value greater than NSToolbarItemVisibilityPriorityStandard, but less than NSToolbarItemVisibilityPriorityUser.   In 10.7, users can no longer modify the toolbar item visibility priority.
+        */
         #[method(visibilityPriority)]
         pub unsafe fn visibilityPriority(&self) -> NSToolbarItemVisibilityPriority;
 
+        /**
+          When a toolbar does not have enough space to fit all its items, it must push some into the overflow menu.  Items with the highest visibility priority level are choosen last for the overflow menu.  The default visibilityPriority value is NSToolbarItemVisibilityPriorityStandard.  To suggest that an item always remain visible, give it a value greater than NSToolbarItemVisibilityPriorityStandard, but less than NSToolbarItemVisibilityPriorityUser.   In 10.7, users can no longer modify the toolbar item visibility priority.
+        */
         #[method(setVisibilityPriority:)]
         pub unsafe fn setVisibilityPriority(
             &self,
@@ -181,12 +286,21 @@ extern_methods!(
         #[method(validate)]
         pub unsafe fn validate(&self);
 
+        /**
+          This property only affects automatic validation performed by NSToolbar. Explicit validation requests, such as the `-[NSToolbar validateVisibleItems]` method, will invoke the `-validate` method even if `autovalidates` is `NO`.
+        */
         #[method(autovalidates)]
         pub unsafe fn autovalidates(&self) -> bool;
 
+        /**
+          This property only affects automatic validation performed by NSToolbar. Explicit validation requests, such as the `-[NSToolbar validateVisibleItems]` method, will invoke the `-validate` method even if `autovalidates` is `NO`.
+        */
         #[method(setAutovalidates:)]
         pub unsafe fn setAutovalidates(&self, autovalidates: bool);
 
+        /**
+          Return YES to allow dragging duplicate items into the toolbar.  By default, if an item with the same identifier is already in the toolbar, dragging in will act as a move of this item.  However, for instance, the separator item drags in as a duplicate always.
+        */
         #[method(allowsDuplicatesInToolbar)]
         pub unsafe fn allowsDuplicatesInToolbar(&self) -> bool;
     }

@@ -24,40 +24,67 @@ unsafe impl NSObjectProtocol for NSDockTile {}
 extern_methods!(
     #[cfg(feature = "AppKit_NSDockTile")]
     unsafe impl NSDockTile {
+        /**
+          get the size of the dock tile, in screen coordinates
+        */
         #[method(size)]
         pub unsafe fn size(&self) -> NSSize;
 
         #[cfg(feature = "AppKit_NSView")]
+        /**
+          set the content view to view.  view should be height and width resizable.  In order to initiate drawing in view, you must call -[NSDockTile display].
+        */
         #[method_id(@__retain_semantics Other contentView)]
         pub unsafe fn contentView(&self) -> Option<Id<NSView>>;
 
         #[cfg(feature = "AppKit_NSView")]
+        /**
+          set the content view to view.  view should be height and width resizable.  In order to initiate drawing in view, you must call -[NSDockTile display].
+        */
         #[method(setContentView:)]
         pub unsafe fn setContentView(&self, content_view: Option<&NSView>);
 
         #[method(display)]
         pub unsafe fn display(&self);
 
+        /**
+          setShowsApplicationBadge: sets whether or not the dock tile should be badged with the application icon.  Default is YES for NSWindow dock tiles, NO for the NSApplication dock tile.
+        */
         #[method(showsApplicationBadge)]
         pub unsafe fn showsApplicationBadge(&self) -> bool;
 
+        /**
+          setShowsApplicationBadge: sets whether or not the dock tile should be badged with the application icon.  Default is YES for NSWindow dock tiles, NO for the NSApplication dock tile.
+        */
         #[method(setShowsApplicationBadge:)]
         pub unsafe fn setShowsApplicationBadge(&self, shows_application_badge: bool);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Badge the dock icon with a localized string.  The badge appearance is system defined.  This is often used to show an unread count in the application dock icon.
+        */
         #[method_id(@__retain_semantics Other badgeLabel)]
         pub unsafe fn badgeLabel(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Badge the dock icon with a localized string.  The badge appearance is system defined.  This is often used to show an unread count in the application dock icon.
+        */
         #[method(setBadgeLabel:)]
         pub unsafe fn setBadgeLabel(&self, badge_label: Option<&NSString>);
 
+        /**
+          -owner will return NSApp for the application dock tile, or the NSWindow for a mini window dock tile.
+        */
         #[method_id(@__retain_semantics Other owner)]
         pub unsafe fn owner(&self) -> Option<Id<Object>>;
     }
 );
 
 extern_protocol!(
+    /**
+      An application may customize its dock tile when not running via a plugin whose principal class implements the NSDockTilePlugIn protocol.  The name of the plugin is indicated by a NSDockTilePlugIn key in the application's Info.plist file.  The plugin is loaded in a system process at login time or when the application tile is added to the Dock.  When the plugin is loaded, the principal class' implementation of -setDockTile: is invoked.  If the principal class implements -dockMenu, -dockMenu is invoked whenever the user causes the application's dock menu to be shown.  When the dock tile is no longer valid (eg. the application has been removed from the dock, -setDockTile: is invoked with a nil NSDockTile.
+    */
     pub unsafe trait NSDockTilePlugIn: NSObjectProtocol {
         #[cfg(feature = "AppKit_NSDockTile")]
         #[method(setDockTile:)]

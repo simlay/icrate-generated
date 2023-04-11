@@ -8,6 +8,15 @@ use crate::WebKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "WebKit_WebBackForwardList")]
+    /**
+     @class WebBackForwardList
+    WebBackForwardList holds an ordered list of WebHistoryItems that comprises the back and
+    forward lists.
+
+    Note that the methods which modify instances of this class do not cause
+    navigation to happen in other layers of the stack;  they are only for maintaining this data
+    structure.
+    */
     #[deprecated]
     pub struct WebBackForwardList;
 
@@ -18,9 +27,27 @@ extern_class!(
 );
 
 #[cfg(feature = "WebKit_WebBackForwardList")]
+/**
+ @class WebBackForwardList
+WebBackForwardList holds an ordered list of WebHistoryItems that comprises the back and
+forward lists.
+
+Note that the methods which modify instances of this class do not cause
+navigation to happen in other layers of the stack;  they are only for maintaining this data
+structure.
+*/
 unsafe impl NSObjectProtocol for WebBackForwardList {}
 
 extern_methods!(
+    /**
+     @class WebBackForwardList
+    WebBackForwardList holds an ordered list of WebHistoryItems that comprises the back and
+    forward lists.
+
+    Note that the methods which modify instances of this class do not cause
+    navigation to happen in other layers of the stack;  they are only for maintaining this data
+    structure.
+    */
     #[cfg(feature = "WebKit_WebBackForwardList")]
     unsafe impl WebBackForwardList {
         #[cfg(feature = "WebKit_WebHistoryItem")]
@@ -38,14 +65,26 @@ extern_methods!(
         pub unsafe fn goToItem(&self, item: Option<&WebHistoryItem>);
 
         #[cfg(feature = "WebKit_WebHistoryItem")]
+        /**
+         @property backItem
+        @abstract The entry right before the current entry, or nil if there isn't one.
+        */
         #[method_id(@__retain_semantics Other backItem)]
         pub unsafe fn backItem(&self) -> Option<Id<WebHistoryItem>>;
 
         #[cfg(feature = "WebKit_WebHistoryItem")]
+        /**
+         @property currentItem
+        @abstract Returns the current entry.
+        */
         #[method_id(@__retain_semantics Other currentItem)]
         pub unsafe fn currentItem(&self) -> Option<Id<WebHistoryItem>>;
 
         #[cfg(feature = "WebKit_WebHistoryItem")]
+        /**
+         @property forwardItem
+        @abstract The entry right after the current entry, or nil if there isn't one.
+        */
         #[method_id(@__retain_semantics Other forwardItem)]
         pub unsafe fn forwardItem(&self) -> Option<Id<WebHistoryItem>>;
 
@@ -57,15 +96,31 @@ extern_methods!(
         #[method_id(@__retain_semantics Other forwardListWithLimit:)]
         pub unsafe fn forwardListWithLimit(&self, limit: c_int) -> Option<Id<NSArray>>;
 
+        /**
+         @property capacity
+        @abstract The list's maximum size.
+        */
         #[method(capacity)]
         pub unsafe fn capacity(&self) -> c_int;
 
+        /**
+         @property capacity
+        @abstract The list's maximum size.
+        */
         #[method(setCapacity:)]
         pub unsafe fn setCapacity(&self, capacity: c_int);
 
+        /**
+         @property backListCount
+        @abstract The number of items in the list.
+        */
         #[method(backListCount)]
         pub unsafe fn backListCount(&self) -> c_int;
 
+        /**
+         @property forwardListCount
+        @result The number of items in the list.
+        */
         #[method(forwardListCount)]
         pub unsafe fn forwardListCount(&self) -> c_int;
 

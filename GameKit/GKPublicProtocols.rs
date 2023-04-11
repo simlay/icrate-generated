@@ -7,6 +7,9 @@ use crate::GameKit::*;
 
 extern_protocol!(
     #[deprecated = "Use MCSession in association with MCSessionDelegate from the MultipeerConnectivity framework instead"]
+    /**
+      Callbacks to the GKSession delegate.
+    */
     pub unsafe trait GKSessionDelegate: NSObjectProtocol {
         #[cfg(all(feature = "Foundation_NSString", feature = "GameKit_GKSession"))]
         #[optional]
@@ -51,6 +54,9 @@ extern_protocol!(
 );
 
 extern_protocol!(
+    /**
+     All clients will need to implement this protocol
+    */
     pub unsafe trait GKVoiceChatClient: NSObjectProtocol {
         #[cfg(all(
             feature = "Foundation_NSData",

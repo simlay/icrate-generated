@@ -10,10 +10,18 @@ extern_methods!(
     #[cfg(feature = "AVFoundation_AVPlayerItem")]
     unsafe impl AVPlayerItem {
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+          The current now playing info for the player item.
+         Setting the info to nil will clear it.
+        */
         #[method_id(@__retain_semantics Other nowPlayingInfo)]
         pub unsafe fn nowPlayingInfo(&self) -> Option<Id<NSDictionary<NSString, Object>>>;
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+          The current now playing info for the player item.
+         Setting the info to nil will clear it.
+        */
         #[method(setNowPlayingInfo:)]
         pub unsafe fn setNowPlayingInfo(
             &self,

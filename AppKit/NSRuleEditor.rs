@@ -80,9 +80,15 @@ unsafe impl NSUserInterfaceItemIdentification for NSRuleEditor {}
 extern_methods!(
     #[cfg(feature = "AppKit_NSRuleEditor")]
     unsafe impl NSRuleEditor {
+        /**
+          Clients can call this method to set and get the delegate for the NSRuleEditor.  NSRuleEditor requires a delegate that implements the required NSRuleEditorDelegateMethods methods to function.
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(&self) -> Option<Id<ProtocolObject<dyn NSRuleEditorDelegate>>>;
 
+        /**
+          Clients can call this method to set and get the delegate for the NSRuleEditor.  NSRuleEditor requires a delegate that implements the required NSRuleEditorDelegateMethods methods to function.
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
@@ -90,10 +96,16 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Clients can call this to automatically set a formatting dictionary based on the strings file with the given name.  Setting a formatting strings file searches the main bundle, and the bundle containing this nib, for a (possibly localized) strings file resource with the given name, loads it, and sets it as the formatting dictionary.  The resulting dictionary can be obtained with -[NSRuleEditor formattingDictionary].  If you set the formatting dictionary explicitly with -[NSRuleEditor setFormattingDictionary:], then it sets the current formattingStringsFilename to nil
+        */
         #[method_id(@__retain_semantics Other formattingStringsFilename)]
         pub unsafe fn formattingStringsFilename(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Clients can call this to automatically set a formatting dictionary based on the strings file with the given name.  Setting a formatting strings file searches the main bundle, and the bundle containing this nib, for a (possibly localized) strings file resource with the given name, loads it, and sets it as the formatting dictionary.  The resulting dictionary can be obtained with -[NSRuleEditor formattingDictionary].  If you set the formatting dictionary explicitly with -[NSRuleEditor setFormattingDictionary:], then it sets the current formattingStringsFilename to nil
+        */
         #[method(setFormattingStringsFilename:)]
         pub unsafe fn setFormattingStringsFilename(
             &self,
@@ -101,10 +113,16 @@ extern_methods!(
         );
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+          Clients can call this to set (and get) a formatting dictionary on the NSRuleEditor.  The formatting dictionary should have NSString keys and NSString values.  The syntax of the keys and values is the same as the syntax for strings files.
+        */
         #[method_id(@__retain_semantics Other formattingDictionary)]
         pub unsafe fn formattingDictionary(&self) -> Option<Id<NSDictionary<NSString, NSString>>>;
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+          Clients can call this to set (and get) a formatting dictionary on the NSRuleEditor.  The formatting dictionary should have NSString keys and NSString values.  The syntax of the keys and values is the same as the syntax for strings files.
+        */
         #[method(setFormattingDictionary:)]
         pub unsafe fn setFormattingDictionary(
             &self,
@@ -114,31 +132,58 @@ extern_methods!(
         #[method(reloadCriteria)]
         pub unsafe fn reloadCriteria(&self);
 
+        /**
+          Clients call this to set and get the nesting mode for the NSRuleEditor.  This is generally set at view creation time and not modified after.  The default is NSRuleEditorNestingModeCompound.
+        */
         #[method(nestingMode)]
         pub unsafe fn nestingMode(&self) -> NSRuleEditorNestingMode;
 
+        /**
+          Clients call this to set and get the nesting mode for the NSRuleEditor.  This is generally set at view creation time and not modified after.  The default is NSRuleEditorNestingModeCompound.
+        */
         #[method(setNestingMode:)]
         pub unsafe fn setNestingMode(&self, nesting_mode: NSRuleEditorNestingMode);
 
+        /**
+          Clients call this to set and get the height of each row.  This method changes the receiver's frame and marks it for redisplay.
+        */
         #[method(rowHeight)]
         pub unsafe fn rowHeight(&self) -> CGFloat;
 
+        /**
+          Clients call this to set and get the height of each row.  This method changes the receiver's frame and marks it for redisplay.
+        */
         #[method(setRowHeight:)]
         pub unsafe fn setRowHeight(&self, row_height: CGFloat);
 
+        /**
+          Clients call this to set the editable property of the control.  Users can only interact with editable NSRuleEditors.  The default is YES.
+        */
         #[method(isEditable)]
         pub unsafe fn isEditable(&self) -> bool;
 
+        /**
+          Clients call this to set the editable property of the control.  Users can only interact with editable NSRuleEditors.  The default is YES.
+        */
         #[method(setEditable:)]
         pub unsafe fn setEditable(&self, editable: bool);
 
+        /**
+          Rule editors that have the canRemoveAllRows property set to NO prevent the user from emptying the rule editor by deleting all the rows.  The rule editor can still be emptied programatically.  The default is YES.
+        */
         #[method(canRemoveAllRows)]
         pub unsafe fn canRemoveAllRows(&self) -> bool;
 
+        /**
+          Rule editors that have the canRemoveAllRows property set to NO prevent the user from emptying the rule editor by deleting all the rows.  The rule editor can still be emptied programatically.  The default is YES.
+        */
         #[method(setCanRemoveAllRows:)]
         pub unsafe fn setCanRemoveAllRows(&self, can_remove_all_rows: bool);
 
         #[cfg(feature = "Foundation_NSPredicate")]
+        /**
+          Clients can call this to obtain the predicate for the view if the delegate implements - ruleEditor: predicatePartsForItem: withValue: inRow:row: .  If the delegate does not, or if the delegate does not return enough parts to construct a full predicate, this method returns nil.
+        */
         #[method_id(@__retain_semantics Other predicate)]
         pub unsafe fn predicate(&self) -> Option<Id<NSPredicate>>;
 
@@ -149,6 +194,9 @@ extern_methods!(
         #[method_id(@__retain_semantics Other predicateForRow:)]
         pub unsafe fn predicateForRow(&self, row: NSInteger) -> Option<Id<NSPredicate>>;
 
+        /**
+          Clients can call this to determine the number of rows
+        */
         #[method(numberOfRows)]
         pub unsafe fn numberOfRows(&self) -> NSInteger;
 
@@ -206,6 +254,9 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSIndexSet")]
+        /**
+          Clients call this to determine the indexes of the selected rows.
+        */
         #[method_id(@__retain_semantics Other selectedRowIndexes)]
         pub unsafe fn selectedRowIndexes(&self) -> Id<NSIndexSet>;
 
@@ -217,41 +268,71 @@ extern_methods!(
             extend: bool,
         );
 
+        /**
+          Sets the class used when creating a new row in the "rows" binding; this class should be KVC and KVO compliant for the key paths listed below.  By default this is NSMutableDictionary
+        */
         #[method(rowClass)]
         pub unsafe fn rowClass(&self) -> &'static Class;
 
+        /**
+          Sets the class used when creating a new row in the "rows" binding; this class should be KVC and KVO compliant for the key paths listed below.  By default this is NSMutableDictionary
+        */
         #[method(setRowClass:)]
         pub unsafe fn setRowClass(&self, row_class: &Class);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Set and get the key path for the row type, which is used to get the row type in the "rows" binding.  The row type is a value property of type NSRuleEditorRowType.  The default is @"rowType".
+        */
         #[method_id(@__retain_semantics Other rowTypeKeyPath)]
         pub unsafe fn rowTypeKeyPath(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Set and get the key path for the row type, which is used to get the row type in the "rows" binding.  The row type is a value property of type NSRuleEditorRowType.  The default is @"rowType".
+        */
         #[method(setRowTypeKeyPath:)]
         pub unsafe fn setRowTypeKeyPath(&self, row_type_key_path: &NSString);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Set and get the key path for the subrows, which is used to determined nested rows in the "rows" binding.  The subrows property is an ordered to-many relationship containing additional bound row objects. The default is @"subrows".
+        */
         #[method_id(@__retain_semantics Other subrowsKeyPath)]
         pub unsafe fn subrowsKeyPath(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Set and get the key path for the subrows, which is used to determined nested rows in the "rows" binding.  The subrows property is an ordered to-many relationship containing additional bound row objects. The default is @"subrows".
+        */
         #[method(setSubrowsKeyPath:)]
         pub unsafe fn setSubrowsKeyPath(&self, subrows_key_path: &NSString);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Set and get the criteria key path, which determines the criteria for a row in the "rows" binding.  (The criteria objects are what the delegate returns from - ruleEditor: child: forCriterion: withRowType:).  The criteria property is an ordered to-many relationship. The default is @"criteria".
+        */
         #[method_id(@__retain_semantics Other criteriaKeyPath)]
         pub unsafe fn criteriaKeyPath(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Set and get the criteria key path, which determines the criteria for a row in the "rows" binding.  (The criteria objects are what the delegate returns from - ruleEditor: child: forCriterion: withRowType:).  The criteria property is an ordered to-many relationship. The default is @"criteria".
+        */
         #[method(setCriteriaKeyPath:)]
         pub unsafe fn setCriteriaKeyPath(&self, criteria_key_path: &NSString);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Set and get the display values key path, which determines the display values for a row (the display values are what the delegate returns from - ruleEditor: displayValueForCriterion: inRow:).  The criteria property is an ordered to-many relationship. The default is @"displayValues".
+        */
         #[method_id(@__retain_semantics Other displayValuesKeyPath)]
         pub unsafe fn displayValuesKeyPath(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Set and get the display values key path, which determines the display values for a row (the display values are what the delegate returns from - ruleEditor: displayValueForCriterion: inRow:).  The criteria property is an ordered to-many relationship. The default is @"displayValues".
+        */
         #[method(setDisplayValuesKeyPath:)]
         pub unsafe fn setDisplayValuesKeyPath(&self, display_values_key_path: &NSString);
     }

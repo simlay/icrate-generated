@@ -9,6 +9,11 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKSeriesBuilder")]
+    /**
+     @class         HKSeriesBuilder
+    @abstract      An HKSeriesBuilder is an abstract class for generating HKSeriesSample objects.
+    Concrete subclasses generate the actual HKSeriesSample objects.
+    */
     pub struct HKSeriesBuilder;
 
     #[cfg(feature = "HealthKit_HKSeriesBuilder")]
@@ -18,9 +23,19 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKSeriesBuilder")]
+/**
+ @class         HKSeriesBuilder
+@abstract      An HKSeriesBuilder is an abstract class for generating HKSeriesSample objects.
+Concrete subclasses generate the actual HKSeriesSample objects.
+*/
 unsafe impl NSObjectProtocol for HKSeriesBuilder {}
 
 extern_methods!(
+    /**
+     @class         HKSeriesBuilder
+    @abstract      An HKSeriesBuilder is an abstract class for generating HKSeriesSample objects.
+    Concrete subclasses generate the actual HKSeriesSample objects.
+    */
     #[cfg(feature = "HealthKit_HKSeriesBuilder")]
     unsafe impl HKSeriesBuilder {
         #[method(discard)]

@@ -36,9 +36,23 @@ extern_methods!(
         #[method_id(@__retain_semantics Other polygon)]
         pub unsafe fn polygon(&self) -> Id<MKPolygon>;
 
+        /**
+          These values define the subregion of the path used to draw the
+         stroke. The values must be in the range [0,1] with zero
+         representing the start of the path and one the end. Values in
+         between zero and one are interpolated linearly along the length.
+         strokeStart defaults to 0 and strokeEnd to 1
+        */
         #[method(strokeStart)]
         pub unsafe fn strokeStart(&self) -> CGFloat;
 
+        /**
+          These values define the subregion of the path used to draw the
+         stroke. The values must be in the range [0,1] with zero
+         representing the start of the path and one the end. Values in
+         between zero and one are interpolated linearly along the length.
+         strokeStart defaults to 0 and strokeEnd to 1
+        */
         #[method(setStrokeStart:)]
         pub unsafe fn setStrokeStart(&self, stroke_start: CGFloat);
 

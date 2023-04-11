@@ -19,6 +19,30 @@ typed_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreAnimation_CAShapeLayer")]
+    /**
+      The shape layer draws a cubic Bezier spline in its coordinate space.
+
+     The spline is described using a CGPath object and may have both fill
+     and stroke components (in which case the stroke is composited over
+     the fill). The shape as a whole is composited between the layer's
+     contents and its first sublayer.
+
+     The path object may be animated using any of the concrete subclasses
+     of CAPropertyAnimation. Paths will interpolate as a linear blend of
+     the "on-line" points; "off-line" points may be interpolated
+     non-linearly (e.g. to preserve continuity of the curve's
+     derivative). If the two paths have a different number of control
+     points or segments the results are undefined.
+
+     The shape will be drawn antialiased, and whenever possible it will
+     be mapped into screen space before being rasterized to preserve
+     resolution independence. (However, certain kinds of image processing
+     operations, e.g. CoreImage filters, applied to the layer or its
+     ancestors may force rasterization in a local coordinate space.)
+
+     Note: rasterization may favor speed over accuracy, e.g. pixels with
+     multiple intersecting path segments may not give exact results.
+    */
     pub struct CAShapeLayer;
 
     #[cfg(feature = "CoreAnimation_CAShapeLayer")]
@@ -29,29 +53,173 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreAnimation_CAShapeLayer")]
+/**
+  The shape layer draws a cubic Bezier spline in its coordinate space.
+
+ The spline is described using a CGPath object and may have both fill
+ and stroke components (in which case the stroke is composited over
+ the fill). The shape as a whole is composited between the layer's
+ contents and its first sublayer.
+
+ The path object may be animated using any of the concrete subclasses
+ of CAPropertyAnimation. Paths will interpolate as a linear blend of
+ the "on-line" points; "off-line" points may be interpolated
+ non-linearly (e.g. to preserve continuity of the curve's
+ derivative). If the two paths have a different number of control
+ points or segments the results are undefined.
+
+ The shape will be drawn antialiased, and whenever possible it will
+ be mapped into screen space before being rasterized to preserve
+ resolution independence. (However, certain kinds of image processing
+ operations, e.g. CoreImage filters, applied to the layer or its
+ ancestors may force rasterization in a local coordinate space.)
+
+ Note: rasterization may favor speed over accuracy, e.g. pixels with
+ multiple intersecting path segments may not give exact results.
+*/
 unsafe impl CAMediaTiming for CAShapeLayer {}
 
 #[cfg(feature = "CoreAnimation_CAShapeLayer")]
+/**
+  The shape layer draws a cubic Bezier spline in its coordinate space.
+
+ The spline is described using a CGPath object and may have both fill
+ and stroke components (in which case the stroke is composited over
+ the fill). The shape as a whole is composited between the layer's
+ contents and its first sublayer.
+
+ The path object may be animated using any of the concrete subclasses
+ of CAPropertyAnimation. Paths will interpolate as a linear blend of
+ the "on-line" points; "off-line" points may be interpolated
+ non-linearly (e.g. to preserve continuity of the curve's
+ derivative). If the two paths have a different number of control
+ points or segments the results are undefined.
+
+ The shape will be drawn antialiased, and whenever possible it will
+ be mapped into screen space before being rasterized to preserve
+ resolution independence. (However, certain kinds of image processing
+ operations, e.g. CoreImage filters, applied to the layer or its
+ ancestors may force rasterization in a local coordinate space.)
+
+ Note: rasterization may favor speed over accuracy, e.g. pixels with
+ multiple intersecting path segments may not give exact results.
+*/
 unsafe impl NSCoding for CAShapeLayer {}
 
 #[cfg(feature = "CoreAnimation_CAShapeLayer")]
+/**
+  The shape layer draws a cubic Bezier spline in its coordinate space.
+
+ The spline is described using a CGPath object and may have both fill
+ and stroke components (in which case the stroke is composited over
+ the fill). The shape as a whole is composited between the layer's
+ contents and its first sublayer.
+
+ The path object may be animated using any of the concrete subclasses
+ of CAPropertyAnimation. Paths will interpolate as a linear blend of
+ the "on-line" points; "off-line" points may be interpolated
+ non-linearly (e.g. to preserve continuity of the curve's
+ derivative). If the two paths have a different number of control
+ points or segments the results are undefined.
+
+ The shape will be drawn antialiased, and whenever possible it will
+ be mapped into screen space before being rasterized to preserve
+ resolution independence. (However, certain kinds of image processing
+ operations, e.g. CoreImage filters, applied to the layer or its
+ ancestors may force rasterization in a local coordinate space.)
+
+ Note: rasterization may favor speed over accuracy, e.g. pixels with
+ multiple intersecting path segments may not give exact results.
+*/
 unsafe impl NSObjectProtocol for CAShapeLayer {}
 
 #[cfg(feature = "CoreAnimation_CAShapeLayer")]
+/**
+  The shape layer draws a cubic Bezier spline in its coordinate space.
+
+ The spline is described using a CGPath object and may have both fill
+ and stroke components (in which case the stroke is composited over
+ the fill). The shape as a whole is composited between the layer's
+ contents and its first sublayer.
+
+ The path object may be animated using any of the concrete subclasses
+ of CAPropertyAnimation. Paths will interpolate as a linear blend of
+ the "on-line" points; "off-line" points may be interpolated
+ non-linearly (e.g. to preserve continuity of the curve's
+ derivative). If the two paths have a different number of control
+ points or segments the results are undefined.
+
+ The shape will be drawn antialiased, and whenever possible it will
+ be mapped into screen space before being rasterized to preserve
+ resolution independence. (However, certain kinds of image processing
+ operations, e.g. CoreImage filters, applied to the layer or its
+ ancestors may force rasterization in a local coordinate space.)
+
+ Note: rasterization may favor speed over accuracy, e.g. pixels with
+ multiple intersecting path segments may not give exact results.
+*/
 unsafe impl NSSecureCoding for CAShapeLayer {}
 
 extern_methods!(
+    /**
+      The shape layer draws a cubic Bezier spline in its coordinate space.
+
+     The spline is described using a CGPath object and may have both fill
+     and stroke components (in which case the stroke is composited over
+     the fill). The shape as a whole is composited between the layer's
+     contents and its first sublayer.
+
+     The path object may be animated using any of the concrete subclasses
+     of CAPropertyAnimation. Paths will interpolate as a linear blend of
+     the "on-line" points; "off-line" points may be interpolated
+     non-linearly (e.g. to preserve continuity of the curve's
+     derivative). If the two paths have a different number of control
+     points or segments the results are undefined.
+
+     The shape will be drawn antialiased, and whenever possible it will
+     be mapped into screen space before being rasterized to preserve
+     resolution independence. (However, certain kinds of image processing
+     operations, e.g. CoreImage filters, applied to the layer or its
+     ancestors may force rasterization in a local coordinate space.)
+
+     Note: rasterization may favor speed over accuracy, e.g. pixels with
+     multiple intersecting path segments may not give exact results.
+    */
     #[cfg(feature = "CoreAnimation_CAShapeLayer")]
     unsafe impl CAShapeLayer {
+        /**
+          The fill rule used when filling the path. Options are `non-zero' and
+         `even-odd'. Defaults to `non-zero'.
+        */
         #[method_id(@__retain_semantics Other fillRule)]
         pub unsafe fn fillRule(&self) -> Id<CAShapeLayerFillRule>;
 
+        /**
+          The fill rule used when filling the path. Options are `non-zero' and
+         `even-odd'. Defaults to `non-zero'.
+        */
         #[method(setFillRule:)]
         pub unsafe fn setFillRule(&self, fill_rule: &CAShapeLayerFillRule);
 
+        /**
+          These values define the subregion of the path used to draw the
+         stroked outline. The values must be in the range [0,1] with zero
+         representing the start of the path and one the end. Values in
+         between zero and one are interpolated linearly along the path
+         length. strokeStart defaults to zero and strokeEnd to one. Both are
+         animatable.
+        */
         #[method(strokeStart)]
         pub unsafe fn strokeStart(&self) -> CGFloat;
 
+        /**
+          These values define the subregion of the path used to draw the
+         stroked outline. The values must be in the range [0,1] with zero
+         representing the start of the path and one the end. Values in
+         between zero and one are interpolated linearly along the path
+         length. strokeStart defaults to zero and strokeEnd to one. Both are
+         animatable.
+        */
         #[method(setStrokeStart:)]
         pub unsafe fn setStrokeStart(&self, stroke_start: CGFloat);
 
@@ -61,41 +229,89 @@ extern_methods!(
         #[method(setStrokeEnd:)]
         pub unsafe fn setStrokeEnd(&self, stroke_end: CGFloat);
 
+        /**
+          The line width used when stroking the path. Defaults to one.
+         Animatable.
+        */
         #[method(lineWidth)]
         pub unsafe fn lineWidth(&self) -> CGFloat;
 
+        /**
+          The line width used when stroking the path. Defaults to one.
+         Animatable.
+        */
         #[method(setLineWidth:)]
         pub unsafe fn setLineWidth(&self, line_width: CGFloat);
 
+        /**
+          The miter limit used when stroking the path. Defaults to ten.
+         Animatable.
+        */
         #[method(miterLimit)]
         pub unsafe fn miterLimit(&self) -> CGFloat;
 
+        /**
+          The miter limit used when stroking the path. Defaults to ten.
+         Animatable.
+        */
         #[method(setMiterLimit:)]
         pub unsafe fn setMiterLimit(&self, miter_limit: CGFloat);
 
+        /**
+          The cap style used when stroking the path. Options are `butt', `round'
+         and `square'. Defaults to `butt'.
+        */
         #[method_id(@__retain_semantics Other lineCap)]
         pub unsafe fn lineCap(&self) -> Id<CAShapeLayerLineCap>;
 
+        /**
+          The cap style used when stroking the path. Options are `butt', `round'
+         and `square'. Defaults to `butt'.
+        */
         #[method(setLineCap:)]
         pub unsafe fn setLineCap(&self, line_cap: &CAShapeLayerLineCap);
 
+        /**
+          The join style used when stroking the path. Options are `miter', `round'
+         and `bevel'. Defaults to `miter'.
+        */
         #[method_id(@__retain_semantics Other lineJoin)]
         pub unsafe fn lineJoin(&self) -> Id<CAShapeLayerLineJoin>;
 
+        /**
+          The join style used when stroking the path. Options are `miter', `round'
+         and `bevel'. Defaults to `miter'.
+        */
         #[method(setLineJoin:)]
         pub unsafe fn setLineJoin(&self, line_join: &CAShapeLayerLineJoin);
 
+        /**
+          The phase of the dashing pattern applied when creating the stroke.
+         Defaults to zero. Animatable.
+        */
         #[method(lineDashPhase)]
         pub unsafe fn lineDashPhase(&self) -> CGFloat;
 
+        /**
+          The phase of the dashing pattern applied when creating the stroke.
+         Defaults to zero. Animatable.
+        */
         #[method(setLineDashPhase:)]
         pub unsafe fn setLineDashPhase(&self, line_dash_phase: CGFloat);
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSNumber"))]
+        /**
+          The dash pattern (an array of NSNumbers) applied when creating the
+         stroked version of the path. Defaults to nil.
+        */
         #[method_id(@__retain_semantics Other lineDashPattern)]
         pub unsafe fn lineDashPattern(&self) -> Option<Id<NSArray<NSNumber>>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSNumber"))]
+        /**
+          The dash pattern (an array of NSNumbers) applied when creating the
+         stroked version of the path. Defaults to nil.
+        */
         #[method(setLineDashPattern:)]
         pub unsafe fn setLineDashPattern(&self, line_dash_pattern: Option<&NSArray<NSNumber>>);
     }
@@ -119,6 +335,30 @@ extern_static!(kCALineCapSquare: &'static CAShapeLayerLineCap);
 
 extern_methods!(
     /// Methods declared on superclass `CALayer`
+    /**
+      The shape layer draws a cubic Bezier spline in its coordinate space.
+
+     The spline is described using a CGPath object and may have both fill
+     and stroke components (in which case the stroke is composited over
+     the fill). The shape as a whole is composited between the layer's
+     contents and its first sublayer.
+
+     The path object may be animated using any of the concrete subclasses
+     of CAPropertyAnimation. Paths will interpolate as a linear blend of
+     the "on-line" points; "off-line" points may be interpolated
+     non-linearly (e.g. to preserve continuity of the curve's
+     derivative). If the two paths have a different number of control
+     points or segments the results are undefined.
+
+     The shape will be drawn antialiased, and whenever possible it will
+     be mapped into screen space before being rasterized to preserve
+     resolution independence. (However, certain kinds of image processing
+     operations, e.g. CoreImage filters, applied to the layer or its
+     ancestors may force rasterization in a local coordinate space.)
+
+     Note: rasterization may favor speed over accuracy, e.g. pixels with
+     multiple intersecting path segments may not give exact results.
+    */
     #[cfg(feature = "CoreAnimation_CAShapeLayer")]
     unsafe impl CAShapeLayer {
         #[method_id(@__retain_semantics Other layer)]

@@ -10,6 +10,9 @@ typed_extensible_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSNotification")]
+    /**
+         Notifications
+    */
     pub struct NSNotification;
 
     #[cfg(feature = "Foundation_NSNotification")]
@@ -19,12 +22,21 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSNotification")]
+/**
+     Notifications
+*/
 unsafe impl NSCoding for NSNotification {}
 
 #[cfg(feature = "Foundation_NSNotification")]
+/**
+     Notifications
+*/
 unsafe impl NSObjectProtocol for NSNotification {}
 
 extern_methods!(
+    /**
+         Notifications
+    */
     #[cfg(feature = "Foundation_NSNotification")]
     unsafe impl NSNotification {
         #[method_id(@__retain_semantics Other name)]
@@ -81,6 +93,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSNotificationCenter")]
+    /**
+         Notification Center
+    */
     pub struct NSNotificationCenter;
 
     #[cfg(feature = "Foundation_NSNotificationCenter")]
@@ -90,9 +105,15 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSNotificationCenter")]
+/**
+     Notification Center
+*/
 unsafe impl NSObjectProtocol for NSNotificationCenter {}
 
 extern_methods!(
+    /**
+         Notification Center
+    */
     #[cfg(feature = "Foundation_NSNotificationCenter")]
     unsafe impl NSNotificationCenter {
         #[method_id(@__retain_semantics Other defaultCenter)]

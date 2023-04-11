@@ -41,6 +41,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "StoreKit_SKOverlayAppConfiguration")]
+    /**
+      An overlay configuration that can be used to show any app from the App Store.
+    */
     pub struct SKOverlayAppConfiguration;
 
     #[cfg(feature = "StoreKit_SKOverlayAppConfiguration")]
@@ -51,9 +54,15 @@ extern_class!(
 );
 
 #[cfg(feature = "StoreKit_SKOverlayAppConfiguration")]
+/**
+  An overlay configuration that can be used to show any app from the App Store.
+*/
 unsafe impl NSObjectProtocol for SKOverlayAppConfiguration {}
 
 extern_methods!(
+    /**
+      An overlay configuration that can be used to show any app from the App Store.
+    */
     #[cfg(feature = "StoreKit_SKOverlayAppConfiguration")]
     unsafe impl SKOverlayAppConfiguration {
         #[method_id(@__retain_semantics Init init)]
@@ -71,34 +80,58 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The identifier of the app that will be shown.
+        */
         #[method_id(@__retain_semantics Other appIdentifier)]
         pub unsafe fn appIdentifier(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The identifier of the app that will be shown.
+        */
         #[method(setAppIdentifier:)]
         pub unsafe fn setAppIdentifier(&self, app_identifier: &NSString);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          A token representing an App Analytics campaign.
+        */
         #[method_id(@__retain_semantics Other campaignToken)]
         pub unsafe fn campaignToken(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          A token representing an App Analytics campaign.
+        */
         #[method(setCampaignToken:)]
         pub unsafe fn setCampaignToken(&self, campaign_token: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The provider token for the developer that created the app being presented.
+        */
         #[method_id(@__retain_semantics Other providerToken)]
         pub unsafe fn providerToken(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The provider token for the developer that created the app being presented.
+        */
         #[method(setProviderToken:)]
         pub unsafe fn setProviderToken(&self, provider_token: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          An optional identifier for an app's custom product page.
+        */
         #[method_id(@__retain_semantics Other customProductPageIdentifier)]
         pub unsafe fn customProductPageIdentifier(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          An optional identifier for an app's custom product page.
+        */
         #[method(setCustomProductPageIdentifier:)]
         pub unsafe fn setCustomProductPageIdentifier(
             &self,
@@ -106,22 +139,40 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          An optional extra parameter for specifying the version of your app that will be shown to the user.
+        */
         #[method_id(@__retain_semantics Other latestReleaseID)]
         pub unsafe fn latestReleaseID(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          An optional extra parameter for specifying the version of your app that will be shown to the user.
+        */
         #[method(setLatestReleaseID:)]
         pub unsafe fn setLatestReleaseID(&self, latest_release_id: Option<&NSString>);
 
+        /**
+          The position an overlay will show at on screen.
+        */
         #[method(position)]
         pub unsafe fn position(&self) -> SKOverlayPosition;
 
+        /**
+          The position an overlay will show at on screen.
+        */
         #[method(setPosition:)]
         pub unsafe fn setPosition(&self, position: SKOverlayPosition);
 
+        /**
+          Allows the user to interactively dismiss an overlay.
+        */
         #[method(userDismissible)]
         pub unsafe fn userDismissible(&self) -> bool;
 
+        /**
+          Allows the user to interactively dismiss an overlay.
+        */
         #[method(setUserDismissible:)]
         pub unsafe fn setUserDismissible(&self, user_dismissible: bool);
 
@@ -142,6 +193,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "StoreKit_SKOverlayAppClipConfiguration")]
+    /**
+      An overlay configuration that can be used to show an app clip's full app.
+    */
     pub struct SKOverlayAppClipConfiguration;
 
     #[cfg(feature = "StoreKit_SKOverlayAppClipConfiguration")]
@@ -152,9 +206,15 @@ extern_class!(
 );
 
 #[cfg(feature = "StoreKit_SKOverlayAppClipConfiguration")]
+/**
+  An overlay configuration that can be used to show an app clip's full app.
+*/
 unsafe impl NSObjectProtocol for SKOverlayAppClipConfiguration {}
 
 extern_methods!(
+    /**
+      An overlay configuration that can be used to show an app clip's full app.
+    */
     #[cfg(feature = "StoreKit_SKOverlayAppClipConfiguration")]
     unsafe impl SKOverlayAppClipConfiguration {
         #[method_id(@__retain_semantics Init init)]
@@ -170,26 +230,44 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          A token representing an App Analytics campaign.
+        */
         #[method_id(@__retain_semantics Other campaignToken)]
         pub unsafe fn campaignToken(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          A token representing an App Analytics campaign.
+        */
         #[method(setCampaignToken:)]
         pub unsafe fn setCampaignToken(&self, campaign_token: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The provider token for the developer that created the app being presented.
+        */
         #[method_id(@__retain_semantics Other providerToken)]
         pub unsafe fn providerToken(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The provider token for the developer that created the app being presented.
+        */
         #[method(setProviderToken:)]
         pub unsafe fn setProviderToken(&self, provider_token: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          An optional identifier for a parent app's custom product page.
+        */
         #[method_id(@__retain_semantics Other customProductPageIdentifier)]
         pub unsafe fn customProductPageIdentifier(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          An optional identifier for a parent app's custom product page.
+        */
         #[method(setCustomProductPageIdentifier:)]
         pub unsafe fn setCustomProductPageIdentifier(
             &self,
@@ -197,16 +275,28 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          An optional extra parameter for specifying the version of your app that will be shown to the user.
+        */
         #[method_id(@__retain_semantics Other latestReleaseID)]
         pub unsafe fn latestReleaseID(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          An optional extra parameter for specifying the version of your app that will be shown to the user.
+        */
         #[method(setLatestReleaseID:)]
         pub unsafe fn setLatestReleaseID(&self, latest_release_id: Option<&NSString>);
 
+        /**
+          The position an overlay will show at on screen.
+        */
         #[method(position)]
         pub unsafe fn position(&self) -> SKOverlayPosition;
 
+        /**
+          The position an overlay will show at on screen.
+        */
         #[method(setPosition:)]
         pub unsafe fn setPosition(&self, position: SKOverlayPosition);
 

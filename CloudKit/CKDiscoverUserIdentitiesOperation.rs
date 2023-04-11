@@ -57,6 +57,11 @@ extern_methods!(
             feature = "CloudKit_CKUserIdentity",
             feature = "CloudKit_CKUserIdentityLookupInfo"
         ))]
+        /**
+          @abstract Called once for each user identity lookup info that was successfully discovered on the server
+
+          @discussion Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(userIdentityDiscoveredBlock)]
         pub unsafe fn userIdentityDiscoveredBlock(
             &self,
@@ -66,6 +71,11 @@ extern_methods!(
             feature = "CloudKit_CKUserIdentity",
             feature = "CloudKit_CKUserIdentityLookupInfo"
         ))]
+        /**
+          @abstract Called once for each user identity lookup info that was successfully discovered on the server
+
+          @discussion Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(setUserIdentityDiscoveredBlock:)]
         pub unsafe fn setUserIdentityDiscoveredBlock(
             &self,
@@ -75,12 +85,24 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSError")]
+        /**
+          @abstract This block is called when the operation completes.
+
+          @discussion The @code -[NSOperation completionBlock] @endcode will also be called if both are set.
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(discoverUserIdentitiesCompletionBlock)]
         pub unsafe fn discoverUserIdentitiesCompletionBlock(
             &self,
         ) -> *mut Block<(*mut NSError,), ()>;
 
         #[cfg(feature = "Foundation_NSError")]
+        /**
+          @abstract This block is called when the operation completes.
+
+          @discussion The @code -[NSOperation completionBlock] @endcode will also be called if both are set.
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(setDiscoverUserIdentitiesCompletionBlock:)]
         pub unsafe fn setDiscoverUserIdentitiesCompletionBlock(
             &self,

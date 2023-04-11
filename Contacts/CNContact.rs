@@ -14,6 +14,11 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      @abstract Sort order for contacts.
+
+     @discussion CNContactSortOrderUserDefault is the user's preferred sort order.
+    */
     pub enum CNContactSortOrder {
         CNContactSortOrderNone = 0,
         CNContactSortOrderUserDefault = 1,
@@ -23,23 +28,39 @@ ns_enum!(
 );
 
 extern_protocol!(
+    /**
+      This protocol is reserved for Contacts framework usage.
+    */
     pub unsafe trait CNKeyDescriptor: NSObjectProtocol + NSSecureCoding {}
 
     unsafe impl ProtocolType for dyn CNKeyDescriptor {}
 );
 
 extern_methods!(
+    /**
+      Allows contact property keys to be used with keysToFetch.
+    */
     /// Contacts
     #[cfg(feature = "Foundation_NSString")]
     unsafe impl NSString {}
 );
 
 #[cfg(feature = "Foundation_NSString")]
+/**
+  Allows contact property keys to be used with keysToFetch.
+*/
 unsafe impl CNKeyDescriptor for NSString {}
 
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNContact")]
+    /**
+      @abstract An immutable value object representing a contact.
+
+     @discussion CNContact is thread safe.
+
+     If using a CNContact instance where you are not certain of the keys that were fetched, use isKeyAvailable: or areKeysAvailable:. If these return NO you need to refetch the contact by the contact identifier with the keys you want to fetch. Accessing a property that was not fetched will throw CNContactPropertyNotFetchedExceptionName.
+    */
     pub struct CNContact;
 
     #[cfg(feature = "Contacts_CNContact")]
@@ -49,18 +70,49 @@ extern_class!(
 );
 
 #[cfg(feature = "Contacts_CNContact")]
+/**
+  @abstract An immutable value object representing a contact.
+
+ @discussion CNContact is thread safe.
+
+ If using a CNContact instance where you are not certain of the keys that were fetched, use isKeyAvailable: or areKeysAvailable:. If these return NO you need to refetch the contact by the contact identifier with the keys you want to fetch. Accessing a property that was not fetched will throw CNContactPropertyNotFetchedExceptionName.
+*/
 unsafe impl NSCoding for CNContact {}
 
 #[cfg(feature = "Contacts_CNContact")]
+/**
+  @abstract An immutable value object representing a contact.
+
+ @discussion CNContact is thread safe.
+
+ If using a CNContact instance where you are not certain of the keys that were fetched, use isKeyAvailable: or areKeysAvailable:. If these return NO you need to refetch the contact by the contact identifier with the keys you want to fetch. Accessing a property that was not fetched will throw CNContactPropertyNotFetchedExceptionName.
+*/
 unsafe impl NSObjectProtocol for CNContact {}
 
 #[cfg(feature = "Contacts_CNContact")]
+/**
+  @abstract An immutable value object representing a contact.
+
+ @discussion CNContact is thread safe.
+
+ If using a CNContact instance where you are not certain of the keys that were fetched, use isKeyAvailable: or areKeysAvailable:. If these return NO you need to refetch the contact by the contact identifier with the keys you want to fetch. Accessing a property that was not fetched will throw CNContactPropertyNotFetchedExceptionName.
+*/
 unsafe impl NSSecureCoding for CNContact {}
 
 extern_methods!(
+    /**
+      @abstract An immutable value object representing a contact.
+
+     @discussion CNContact is thread safe.
+
+     If using a CNContact instance where you are not certain of the keys that were fetched, use isKeyAvailable: or areKeysAvailable:. If these return NO you need to refetch the contact by the contact identifier with the keys you want to fetch. Accessing a property that was not fetched will throw CNContactPropertyNotFetchedExceptionName.
+    */
     #[cfg(feature = "Contacts_CNContact")]
     unsafe impl CNContact {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The identifier is unique among contacts on the device. It can be saved and used for fetching contacts next application launch.
+        */
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Id<NSString>;
 
@@ -197,10 +249,16 @@ extern_methods!(
         ) -> Id<NSArray<CNLabeledValue<CNInstantMessageAddress>>>;
 
         #[cfg(feature = "Foundation_NSDateComponents")]
+        /**
+          The Gregorian birthday.
+        */
         #[method_id(@__retain_semantics Other birthday)]
         pub unsafe fn birthday(&self) -> Option<Id<NSDateComponents>>;
 
         #[cfg(feature = "Foundation_NSDateComponents")]
+        /**
+          The alternate birthday (Lunisolar).
+        */
         #[method_id(@__retain_semantics Other nonGregorianBirthday)]
         pub unsafe fn nonGregorianBirthday(&self) -> Option<Id<NSDateComponents>>;
 
@@ -209,6 +267,9 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSDateComponents"
         ))]
+        /**
+          Other Gregorian dates (anniversaries, etc).
+        */
         #[method_id(@__retain_semantics Other dates)]
         pub unsafe fn dates(&self) -> Id<NSArray<CNLabeledValue<NSDateComponents>>>;
 

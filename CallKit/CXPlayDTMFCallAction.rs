@@ -61,16 +61,28 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The string representation of the digits that should be played as DTMF tones
+        */
         #[method_id(@__retain_semantics Other digits)]
         pub unsafe fn digits(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The string representation of the digits that should be played as DTMF tones
+        */
         #[method(setDigits:)]
         pub unsafe fn setDigits(&self, digits: &NSString);
 
+        /**
+          Whether or not the string of digits represents tones following a hard or soft pause
+        */
         #[method(type)]
         pub unsafe fn r#type(&self) -> CXPlayDTMFCallActionType;
 
+        /**
+          Whether or not the string of digits represents tones following a hard or soft pause
+        */
         #[method(setType:)]
         pub unsafe fn setType(&self, r#type: CXPlayDTMFCallActionType);
     }

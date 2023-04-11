@@ -9,6 +9,10 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKSource")]
+    /**
+     @class     HKSource
+    @abstract  Represents the entity that created an object stored by HealthKit.
+    */
     pub struct HKSource;
 
     #[cfg(feature = "HealthKit_HKSource")]
@@ -18,22 +22,47 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKSource")]
+/**
+ @class     HKSource
+@abstract  Represents the entity that created an object stored by HealthKit.
+*/
 unsafe impl NSCoding for HKSource {}
 
 #[cfg(feature = "HealthKit_HKSource")]
+/**
+ @class     HKSource
+@abstract  Represents the entity that created an object stored by HealthKit.
+*/
 unsafe impl NSObjectProtocol for HKSource {}
 
 #[cfg(feature = "HealthKit_HKSource")]
+/**
+ @class     HKSource
+@abstract  Represents the entity that created an object stored by HealthKit.
+*/
 unsafe impl NSSecureCoding for HKSource {}
 
 extern_methods!(
+    /**
+     @class     HKSource
+    @abstract  Represents the entity that created an object stored by HealthKit.
+    */
     #[cfg(feature = "HealthKit_HKSource")]
     unsafe impl HKSource {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property      name
+        @abstract      The name of the source represented by the receiver.  If the source is an app, then the name is the
+        localized name of the app.
+        */
         #[method_id(@__retain_semantics Other name)]
         pub unsafe fn name(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property  bundleIdentifier
+        @abstract  The bundle identifier of the source represented by the receiver.
+        */
         #[method_id(@__retain_semantics Other bundleIdentifier)]
         pub unsafe fn bundleIdentifier(&self) -> Id<NSString>;
 

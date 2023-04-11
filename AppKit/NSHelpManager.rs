@@ -84,6 +84,11 @@ extern_static!(NSContextHelpModeDidActivateNotification: &'static NSNotification
 extern_static!(NSContextHelpModeDidDeactivateNotification: &'static NSNotificationName);
 
 extern_methods!(
+    /**
+
+      Conveniences for accessing Help.plist
+
+    */
     /// NSBundleHelpExtension
     #[cfg(feature = "Foundation_NSBundle")]
     unsafe impl NSBundle {
@@ -97,6 +102,11 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+
+      Convenience methods on NSApplication
+
+    */
     /// NSApplicationHelpExtension
     #[cfg(feature = "AppKit_NSApplication")]
     unsafe impl NSApplication {

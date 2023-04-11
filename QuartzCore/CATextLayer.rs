@@ -39,39 +39,91 @@ unsafe impl NSSecureCoding for CATextLayer {}
 extern_methods!(
     #[cfg(feature = "CoreAnimation_CATextLayer")]
     unsafe impl CATextLayer {
+        /**
+          The text to be rendered, should be either an NSString or an
+         NSAttributedString. Defaults to nil.
+        */
         #[method_id(@__retain_semantics Other string)]
         pub unsafe fn string(&self) -> Option<Id<Object>>;
 
+        /**
+          The text to be rendered, should be either an NSString or an
+         NSAttributedString. Defaults to nil.
+        */
         #[method(setString:)]
         pub unsafe fn setString(&self, string: Option<&Object>);
 
+        /**
+          The font size. Defaults to 36. Only used when the `string' property
+         is not an NSAttributedString. Animatable (Mac OS X 10.6 and later.)
+        */
         #[method(fontSize)]
         pub unsafe fn fontSize(&self) -> CGFloat;
 
+        /**
+          The font size. Defaults to 36. Only used when the `string' property
+         is not an NSAttributedString. Animatable (Mac OS X 10.6 and later.)
+        */
         #[method(setFontSize:)]
         pub unsafe fn setFontSize(&self, font_size: CGFloat);
 
+        /**
+          When true the string is wrapped to fit within the layer bounds.
+         Defaults to NO.
+        */
         #[method(isWrapped)]
         pub unsafe fn isWrapped(&self) -> bool;
 
+        /**
+          When true the string is wrapped to fit within the layer bounds.
+         Defaults to NO.
+        */
         #[method(setWrapped:)]
         pub unsafe fn setWrapped(&self, wrapped: bool);
 
+        /**
+          Describes how the string is truncated to fit within the layer
+         bounds. The possible options are `none', `start', `middle' and
+         `end'. Defaults to `none'.
+        */
         #[method_id(@__retain_semantics Other truncationMode)]
         pub unsafe fn truncationMode(&self) -> Id<CATextLayerTruncationMode>;
 
+        /**
+          Describes how the string is truncated to fit within the layer
+         bounds. The possible options are `none', `start', `middle' and
+         `end'. Defaults to `none'.
+        */
         #[method(setTruncationMode:)]
         pub unsafe fn setTruncationMode(&self, truncation_mode: &CATextLayerTruncationMode);
 
+        /**
+          Describes how individual lines of text are aligned within the layer
+         bounds. The possible options are `natural', `left', `right',
+         `center' and `justified'. Defaults to `natural'.
+        */
         #[method_id(@__retain_semantics Other alignmentMode)]
         pub unsafe fn alignmentMode(&self) -> Id<CATextLayerAlignmentMode>;
 
+        /**
+          Describes how individual lines of text are aligned within the layer
+         bounds. The possible options are `natural', `left', `right',
+         `center' and `justified'. Defaults to `natural'.
+        */
         #[method(setAlignmentMode:)]
         pub unsafe fn setAlignmentMode(&self, alignment_mode: &CATextLayerAlignmentMode);
 
+        /**
+          Sets allowsFontSubpixelQuantization parameter of CGContextRef
+         passed to the -drawInContext: method. Defaults to NO.
+        */
         #[method(allowsFontSubpixelQuantization)]
         pub unsafe fn allowsFontSubpixelQuantization(&self) -> bool;
 
+        /**
+          Sets allowsFontSubpixelQuantization parameter of CGContextRef
+         passed to the -drawInContext: method. Defaults to NO.
+        */
         #[method(setAllowsFontSubpixelQuantization:)]
         pub unsafe fn setAllowsFontSubpixelQuantization(
             &self,

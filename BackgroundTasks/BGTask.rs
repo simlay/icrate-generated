@@ -7,6 +7,10 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "BackgroundTasks_BGTask")]
+    /**
+     @abstract An abstract class that represents the background work for which the app was launched to handle.
+    @discussion Subclasses of this type are created by the system and should not be directly instantiated.
+    */
     pub struct BGTask;
 
     #[cfg(feature = "BackgroundTasks_BGTask")]
@@ -16,18 +20,39 @@ extern_class!(
 );
 
 #[cfg(feature = "BackgroundTasks_BGTask")]
+/**
+ @abstract An abstract class that represents the background work for which the app was launched to handle.
+@discussion Subclasses of this type are created by the system and should not be directly instantiated.
+*/
 unsafe impl NSObjectProtocol for BGTask {}
 
 extern_methods!(
+    /**
+     @abstract An abstract class that represents the background work for which the app was launched to handle.
+    @discussion Subclasses of this type are created by the system and should not be directly instantiated.
+    */
     #[cfg(feature = "BackgroundTasks_BGTask")]
     unsafe impl BGTask {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract The identifier associated with the request used to schedule this background work.
+        */
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Id<NSString>;
 
+        /**
+         @abstract Called by the system shortly before your app's background time expires.
+        @discussion There is a limit to how long your app has to perform its background work, and your work may need to be interrupted if system conditions change. Assign a handler to this property to cancel any ongoing tasks, perform any needed cleanup, and then call setTaskCompletedWithSuccess: to signal completion to the system and allow your app to be suspended.
+        This property is cleared after it is called by the system or when setTaskCompletedWithSuccess: is called. This is to mitigate the impact of a retain cycle created by referencing the BGTask instance inside this block.
+        */
         #[method(expirationHandler)]
         pub unsafe fn expirationHandler(&self) -> *mut Block<(), ()>;
 
+        /**
+         @abstract Called by the system shortly before your app's background time expires.
+        @discussion There is a limit to how long your app has to perform its background work, and your work may need to be interrupted if system conditions change. Assign a handler to this property to cancel any ongoing tasks, perform any needed cleanup, and then call setTaskCompletedWithSuccess: to signal completion to the system and allow your app to be suspended.
+        This property is cleared after it is called by the system or when setTaskCompletedWithSuccess: is called. This is to mitigate the impact of a retain cycle created by referencing the BGTask instance inside this block.
+        */
         #[method(setExpirationHandler:)]
         pub unsafe fn setExpirationHandler(&self, expiration_handler: Option<&Block<(), ()>>);
 
@@ -45,6 +70,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "BackgroundTasks_BGProcessingTask")]
+    /**
+     @abstract A background task used to perform deferrable processing.
+    */
     pub struct BGProcessingTask;
 
     #[cfg(feature = "BackgroundTasks_BGProcessingTask")]
@@ -55,9 +83,15 @@ extern_class!(
 );
 
 #[cfg(feature = "BackgroundTasks_BGProcessingTask")]
+/**
+ @abstract A background task used to perform deferrable processing.
+*/
 unsafe impl NSObjectProtocol for BGProcessingTask {}
 
 extern_methods!(
+    /**
+     @abstract A background task used to perform deferrable processing.
+    */
     #[cfg(feature = "BackgroundTasks_BGProcessingTask")]
     unsafe impl BGProcessingTask {}
 );
@@ -65,6 +99,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "BackgroundTasks_BGAppRefreshTask")]
+    /**
+     @abstract A background task used to update your app's contents in the background.
+    */
     pub struct BGAppRefreshTask;
 
     #[cfg(feature = "BackgroundTasks_BGAppRefreshTask")]
@@ -75,9 +112,15 @@ extern_class!(
 );
 
 #[cfg(feature = "BackgroundTasks_BGAppRefreshTask")]
+/**
+ @abstract A background task used to update your app's contents in the background.
+*/
 unsafe impl NSObjectProtocol for BGAppRefreshTask {}
 
 extern_methods!(
+    /**
+     @abstract A background task used to update your app's contents in the background.
+    */
     #[cfg(feature = "BackgroundTasks_BGAppRefreshTask")]
     unsafe impl BGAppRefreshTask {}
 );

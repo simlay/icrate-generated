@@ -9,6 +9,9 @@ extern_static!(LPErrorDomain: Option<&'static NSErrorDomain>);
 
 ns_error_enum!(
     #[underlying(NSInteger)]
+    /**
+      Constants used by NSError to indicate errors in the LinkPresentation domain.
+    */
     pub enum LPErrorCode {
         LPErrorUnknown = 1,
         LPErrorMetadataFetchFailed = 2,

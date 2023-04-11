@@ -118,10 +118,16 @@ extern_methods!(
         #[method(isDaylightSavingTime)]
         pub unsafe fn isDaylightSavingTime(&self) -> bool;
 
+        /**
+          for current instant
+        */
         #[method(daylightSavingTimeOffset)]
         pub unsafe fn daylightSavingTimeOffset(&self) -> NSTimeInterval;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          after current instant
+        */
         #[method_id(@__retain_semantics Other nextDaylightSavingTimeTransition)]
         pub unsafe fn nextDaylightSavingTimeTransition(&self) -> Option<Id<NSDate>>;
 

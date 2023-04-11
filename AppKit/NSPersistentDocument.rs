@@ -36,10 +36,16 @@ extern_methods!(
     #[cfg(feature = "AppKit_NSPersistentDocument")]
     unsafe impl NSPersistentDocument {
         #[cfg(feature = "CoreData_NSManagedObjectContext")]
+        /**
+          Persistent documents always have a managed context (and a persistent store coordinator through that context).
+        */
         #[method_id(@__retain_semantics Other managedObjectContext)]
         pub unsafe fn managedObjectContext(&self) -> Option<Id<NSManagedObjectContext>>;
 
         #[cfg(feature = "CoreData_NSManagedObjectContext")]
+        /**
+          Persistent documents always have a managed context (and a persistent store coordinator through that context).
+        */
         #[method(setManagedObjectContext:)]
         pub unsafe fn setManagedObjectContext(
             &self,
@@ -47,6 +53,9 @@ extern_methods!(
         );
 
         #[cfg(feature = "CoreData_NSManagedObjectModel")]
+        /**
+          By default the framework will create a merged model of all models found in the main bundle. Subclasses can return a specific model to use for creating persistent stores.
+        */
         #[method_id(@__retain_semantics Other managedObjectModel)]
         pub unsafe fn managedObjectModel(&self) -> Option<Id<NSManagedObjectModel>>;
 

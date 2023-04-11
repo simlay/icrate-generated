@@ -7,6 +7,9 @@ use crate::Foundation::*;
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+      Bitset options for the autoresizingMask
+    */
     pub enum NSAutoresizingMaskOptions {
         NSViewNotSizable = 0,
         NSViewMinXMargin = 1,
@@ -64,6 +67,32 @@ pub type NSToolTipTag = NSInteger;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSView")]
+    /**
+      An NSRuleEditor is a class that allows the user to create and configure a list of options.  The view has a delegate which offers a tree of choices to the view.  The choices are presented by the view to the user as a row of popup buttons, static text fields, and custom views.  Each row in the list represents a particular path down the tree of choices.  An example of part of a tree of choices and a path through it:
+
+    ----| contains        -------> [CUSTOM TEXT FIELD]
+    Name-------------|   | starts with     |
+    Kind                 | ends with-------|
+    Creation date        | is
+    Modification date
+
+    Each node in the tree is represented by a "criterion," which can be any object.  As the user chooses from the popup menus, the rule editor view will query its delegate for the child criteria of the chosen criterion.  The only restriction on the criteria is that two criterions should be considered equal by isEqual: if they represent the same node, and must not be equal if they represent different nodes.  The path through the tree for a given row is represented by the array of criteria for the row.  For example, the criteria for the above selection would represent "Name", "ends with", and the custom text field; the manner in which the criteria represent those values is up to the developer.
+
+    There are two types of rows - standard rows and header rows (NSRuleEditorRowTypeSimple and NSRuleEditorRowTypeCompound).  A header row can contain other rows, but a standard row cannot.  Header rows and standard rows can have different trees of criteria.  The amount and style of row nesting is configurable.
+
+    Every time a row is created or modified, the rule editor view will query its delegate view for a "display value" for each new criteriion in the row.  The display value is what is presented to the user, and must be a NSString, NSView, or NSMenuItem.  When a criterion is selected in the row, the rule editor will query the criterion for its child criteria and then each of the children for their display value.  If there are multiple children, a popup button is formed from the string values and menu items.  If there is only one child, its display value is displayed as a static text field (if it is a string) or as a view (if the value is a view).
+
+    NSRuleEditor has some optional support for predicates.  For each row, it will ask its delegate for various parts of a predicate, which are returned in a dictionary.  Assuming the delegate returns enough parts for each row, the parts are then combined to form a predicate for the entire view.  This is expressed in the  "predicate" property for the view.  Subclassers can modify the predicate for each row as it is constructed.  Setting a predicate back on the view is not supported.
+
+    NSRuleEditor exposes one binding, "rows."  The "rows" binding may be bound to an ordered to-many relation (e.g. NSMutableArray).  Each object in the relation should have the following properties:
+
+    @"rowType" -> integer representing the type of the row (NSRuleEditorRowType)
+    @"subrows" -> ordered to-many relation (e.g. NSMutableArray) containing the directly nested subrows for the given row
+    @"displayValues" -> ordered to-many relation containing the display values for the row
+    @"criteria" -> ordered to-many relation containing the criteria for the row
+
+    These key paths can be set using the set*KeyPath: methods below
+    */
     pub struct NSView;
 
     #[cfg(feature = "AppKit_NSView")]
@@ -74,30 +103,264 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSView")]
+/**
+  An NSRuleEditor is a class that allows the user to create and configure a list of options.  The view has a delegate which offers a tree of choices to the view.  The choices are presented by the view to the user as a row of popup buttons, static text fields, and custom views.  Each row in the list represents a particular path down the tree of choices.  An example of part of a tree of choices and a path through it:
+
+----| contains        -------> [CUSTOM TEXT FIELD]
+Name-------------|   | starts with     |
+Kind                 | ends with-------|
+Creation date        | is
+Modification date
+
+Each node in the tree is represented by a "criterion," which can be any object.  As the user chooses from the popup menus, the rule editor view will query its delegate for the child criteria of the chosen criterion.  The only restriction on the criteria is that two criterions should be considered equal by isEqual: if they represent the same node, and must not be equal if they represent different nodes.  The path through the tree for a given row is represented by the array of criteria for the row.  For example, the criteria for the above selection would represent "Name", "ends with", and the custom text field; the manner in which the criteria represent those values is up to the developer.
+
+There are two types of rows - standard rows and header rows (NSRuleEditorRowTypeSimple and NSRuleEditorRowTypeCompound).  A header row can contain other rows, but a standard row cannot.  Header rows and standard rows can have different trees of criteria.  The amount and style of row nesting is configurable.
+
+Every time a row is created or modified, the rule editor view will query its delegate view for a "display value" for each new criteriion in the row.  The display value is what is presented to the user, and must be a NSString, NSView, or NSMenuItem.  When a criterion is selected in the row, the rule editor will query the criterion for its child criteria and then each of the children for their display value.  If there are multiple children, a popup button is formed from the string values and menu items.  If there is only one child, its display value is displayed as a static text field (if it is a string) or as a view (if the value is a view).
+
+NSRuleEditor has some optional support for predicates.  For each row, it will ask its delegate for various parts of a predicate, which are returned in a dictionary.  Assuming the delegate returns enough parts for each row, the parts are then combined to form a predicate for the entire view.  This is expressed in the  "predicate" property for the view.  Subclassers can modify the predicate for each row as it is constructed.  Setting a predicate back on the view is not supported.
+
+NSRuleEditor exposes one binding, "rows."  The "rows" binding may be bound to an ordered to-many relation (e.g. NSMutableArray).  Each object in the relation should have the following properties:
+
+@"rowType" -> integer representing the type of the row (NSRuleEditorRowType)
+@"subrows" -> ordered to-many relation (e.g. NSMutableArray) containing the directly nested subrows for the given row
+@"displayValues" -> ordered to-many relation containing the display values for the row
+@"criteria" -> ordered to-many relation containing the criteria for the row
+
+These key paths can be set using the set*KeyPath: methods below
+*/
 unsafe impl NSAccessibility for NSView {}
 
 #[cfg(feature = "AppKit_NSView")]
+/**
+  An NSRuleEditor is a class that allows the user to create and configure a list of options.  The view has a delegate which offers a tree of choices to the view.  The choices are presented by the view to the user as a row of popup buttons, static text fields, and custom views.  Each row in the list represents a particular path down the tree of choices.  An example of part of a tree of choices and a path through it:
+
+----| contains        -------> [CUSTOM TEXT FIELD]
+Name-------------|   | starts with     |
+Kind                 | ends with-------|
+Creation date        | is
+Modification date
+
+Each node in the tree is represented by a "criterion," which can be any object.  As the user chooses from the popup menus, the rule editor view will query its delegate for the child criteria of the chosen criterion.  The only restriction on the criteria is that two criterions should be considered equal by isEqual: if they represent the same node, and must not be equal if they represent different nodes.  The path through the tree for a given row is represented by the array of criteria for the row.  For example, the criteria for the above selection would represent "Name", "ends with", and the custom text field; the manner in which the criteria represent those values is up to the developer.
+
+There are two types of rows - standard rows and header rows (NSRuleEditorRowTypeSimple and NSRuleEditorRowTypeCompound).  A header row can contain other rows, but a standard row cannot.  Header rows and standard rows can have different trees of criteria.  The amount and style of row nesting is configurable.
+
+Every time a row is created or modified, the rule editor view will query its delegate view for a "display value" for each new criteriion in the row.  The display value is what is presented to the user, and must be a NSString, NSView, or NSMenuItem.  When a criterion is selected in the row, the rule editor will query the criterion for its child criteria and then each of the children for their display value.  If there are multiple children, a popup button is formed from the string values and menu items.  If there is only one child, its display value is displayed as a static text field (if it is a string) or as a view (if the value is a view).
+
+NSRuleEditor has some optional support for predicates.  For each row, it will ask its delegate for various parts of a predicate, which are returned in a dictionary.  Assuming the delegate returns enough parts for each row, the parts are then combined to form a predicate for the entire view.  This is expressed in the  "predicate" property for the view.  Subclassers can modify the predicate for each row as it is constructed.  Setting a predicate back on the view is not supported.
+
+NSRuleEditor exposes one binding, "rows."  The "rows" binding may be bound to an ordered to-many relation (e.g. NSMutableArray).  Each object in the relation should have the following properties:
+
+@"rowType" -> integer representing the type of the row (NSRuleEditorRowType)
+@"subrows" -> ordered to-many relation (e.g. NSMutableArray) containing the directly nested subrows for the given row
+@"displayValues" -> ordered to-many relation containing the display values for the row
+@"criteria" -> ordered to-many relation containing the criteria for the row
+
+These key paths can be set using the set*KeyPath: methods below
+*/
 unsafe impl NSAccessibilityElementProtocol for NSView {}
 
 #[cfg(feature = "AppKit_NSView")]
+/**
+  An NSRuleEditor is a class that allows the user to create and configure a list of options.  The view has a delegate which offers a tree of choices to the view.  The choices are presented by the view to the user as a row of popup buttons, static text fields, and custom views.  Each row in the list represents a particular path down the tree of choices.  An example of part of a tree of choices and a path through it:
+
+----| contains        -------> [CUSTOM TEXT FIELD]
+Name-------------|   | starts with     |
+Kind                 | ends with-------|
+Creation date        | is
+Modification date
+
+Each node in the tree is represented by a "criterion," which can be any object.  As the user chooses from the popup menus, the rule editor view will query its delegate for the child criteria of the chosen criterion.  The only restriction on the criteria is that two criterions should be considered equal by isEqual: if they represent the same node, and must not be equal if they represent different nodes.  The path through the tree for a given row is represented by the array of criteria for the row.  For example, the criteria for the above selection would represent "Name", "ends with", and the custom text field; the manner in which the criteria represent those values is up to the developer.
+
+There are two types of rows - standard rows and header rows (NSRuleEditorRowTypeSimple and NSRuleEditorRowTypeCompound).  A header row can contain other rows, but a standard row cannot.  Header rows and standard rows can have different trees of criteria.  The amount and style of row nesting is configurable.
+
+Every time a row is created or modified, the rule editor view will query its delegate view for a "display value" for each new criteriion in the row.  The display value is what is presented to the user, and must be a NSString, NSView, or NSMenuItem.  When a criterion is selected in the row, the rule editor will query the criterion for its child criteria and then each of the children for their display value.  If there are multiple children, a popup button is formed from the string values and menu items.  If there is only one child, its display value is displayed as a static text field (if it is a string) or as a view (if the value is a view).
+
+NSRuleEditor has some optional support for predicates.  For each row, it will ask its delegate for various parts of a predicate, which are returned in a dictionary.  Assuming the delegate returns enough parts for each row, the parts are then combined to form a predicate for the entire view.  This is expressed in the  "predicate" property for the view.  Subclassers can modify the predicate for each row as it is constructed.  Setting a predicate back on the view is not supported.
+
+NSRuleEditor exposes one binding, "rows."  The "rows" binding may be bound to an ordered to-many relation (e.g. NSMutableArray).  Each object in the relation should have the following properties:
+
+@"rowType" -> integer representing the type of the row (NSRuleEditorRowType)
+@"subrows" -> ordered to-many relation (e.g. NSMutableArray) containing the directly nested subrows for the given row
+@"displayValues" -> ordered to-many relation containing the display values for the row
+@"criteria" -> ordered to-many relation containing the criteria for the row
+
+These key paths can be set using the set*KeyPath: methods below
+*/
 unsafe impl NSAnimatablePropertyContainer for NSView {}
 
 #[cfg(feature = "AppKit_NSView")]
+/**
+  An NSRuleEditor is a class that allows the user to create and configure a list of options.  The view has a delegate which offers a tree of choices to the view.  The choices are presented by the view to the user as a row of popup buttons, static text fields, and custom views.  Each row in the list represents a particular path down the tree of choices.  An example of part of a tree of choices and a path through it:
+
+----| contains        -------> [CUSTOM TEXT FIELD]
+Name-------------|   | starts with     |
+Kind                 | ends with-------|
+Creation date        | is
+Modification date
+
+Each node in the tree is represented by a "criterion," which can be any object.  As the user chooses from the popup menus, the rule editor view will query its delegate for the child criteria of the chosen criterion.  The only restriction on the criteria is that two criterions should be considered equal by isEqual: if they represent the same node, and must not be equal if they represent different nodes.  The path through the tree for a given row is represented by the array of criteria for the row.  For example, the criteria for the above selection would represent "Name", "ends with", and the custom text field; the manner in which the criteria represent those values is up to the developer.
+
+There are two types of rows - standard rows and header rows (NSRuleEditorRowTypeSimple and NSRuleEditorRowTypeCompound).  A header row can contain other rows, but a standard row cannot.  Header rows and standard rows can have different trees of criteria.  The amount and style of row nesting is configurable.
+
+Every time a row is created or modified, the rule editor view will query its delegate view for a "display value" for each new criteriion in the row.  The display value is what is presented to the user, and must be a NSString, NSView, or NSMenuItem.  When a criterion is selected in the row, the rule editor will query the criterion for its child criteria and then each of the children for their display value.  If there are multiple children, a popup button is formed from the string values and menu items.  If there is only one child, its display value is displayed as a static text field (if it is a string) or as a view (if the value is a view).
+
+NSRuleEditor has some optional support for predicates.  For each row, it will ask its delegate for various parts of a predicate, which are returned in a dictionary.  Assuming the delegate returns enough parts for each row, the parts are then combined to form a predicate for the entire view.  This is expressed in the  "predicate" property for the view.  Subclassers can modify the predicate for each row as it is constructed.  Setting a predicate back on the view is not supported.
+
+NSRuleEditor exposes one binding, "rows."  The "rows" binding may be bound to an ordered to-many relation (e.g. NSMutableArray).  Each object in the relation should have the following properties:
+
+@"rowType" -> integer representing the type of the row (NSRuleEditorRowType)
+@"subrows" -> ordered to-many relation (e.g. NSMutableArray) containing the directly nested subrows for the given row
+@"displayValues" -> ordered to-many relation containing the display values for the row
+@"criteria" -> ordered to-many relation containing the criteria for the row
+
+These key paths can be set using the set*KeyPath: methods below
+*/
 unsafe impl NSAppearanceCustomization for NSView {}
 
 #[cfg(feature = "AppKit_NSView")]
+/**
+  An NSRuleEditor is a class that allows the user to create and configure a list of options.  The view has a delegate which offers a tree of choices to the view.  The choices are presented by the view to the user as a row of popup buttons, static text fields, and custom views.  Each row in the list represents a particular path down the tree of choices.  An example of part of a tree of choices and a path through it:
+
+----| contains        -------> [CUSTOM TEXT FIELD]
+Name-------------|   | starts with     |
+Kind                 | ends with-------|
+Creation date        | is
+Modification date
+
+Each node in the tree is represented by a "criterion," which can be any object.  As the user chooses from the popup menus, the rule editor view will query its delegate for the child criteria of the chosen criterion.  The only restriction on the criteria is that two criterions should be considered equal by isEqual: if they represent the same node, and must not be equal if they represent different nodes.  The path through the tree for a given row is represented by the array of criteria for the row.  For example, the criteria for the above selection would represent "Name", "ends with", and the custom text field; the manner in which the criteria represent those values is up to the developer.
+
+There are two types of rows - standard rows and header rows (NSRuleEditorRowTypeSimple and NSRuleEditorRowTypeCompound).  A header row can contain other rows, but a standard row cannot.  Header rows and standard rows can have different trees of criteria.  The amount and style of row nesting is configurable.
+
+Every time a row is created or modified, the rule editor view will query its delegate view for a "display value" for each new criteriion in the row.  The display value is what is presented to the user, and must be a NSString, NSView, or NSMenuItem.  When a criterion is selected in the row, the rule editor will query the criterion for its child criteria and then each of the children for their display value.  If there are multiple children, a popup button is formed from the string values and menu items.  If there is only one child, its display value is displayed as a static text field (if it is a string) or as a view (if the value is a view).
+
+NSRuleEditor has some optional support for predicates.  For each row, it will ask its delegate for various parts of a predicate, which are returned in a dictionary.  Assuming the delegate returns enough parts for each row, the parts are then combined to form a predicate for the entire view.  This is expressed in the  "predicate" property for the view.  Subclassers can modify the predicate for each row as it is constructed.  Setting a predicate back on the view is not supported.
+
+NSRuleEditor exposes one binding, "rows."  The "rows" binding may be bound to an ordered to-many relation (e.g. NSMutableArray).  Each object in the relation should have the following properties:
+
+@"rowType" -> integer representing the type of the row (NSRuleEditorRowType)
+@"subrows" -> ordered to-many relation (e.g. NSMutableArray) containing the directly nested subrows for the given row
+@"displayValues" -> ordered to-many relation containing the display values for the row
+@"criteria" -> ordered to-many relation containing the criteria for the row
+
+These key paths can be set using the set*KeyPath: methods below
+*/
 unsafe impl NSCoding for NSView {}
 
 #[cfg(feature = "AppKit_NSView")]
+/**
+  An NSRuleEditor is a class that allows the user to create and configure a list of options.  The view has a delegate which offers a tree of choices to the view.  The choices are presented by the view to the user as a row of popup buttons, static text fields, and custom views.  Each row in the list represents a particular path down the tree of choices.  An example of part of a tree of choices and a path through it:
+
+----| contains        -------> [CUSTOM TEXT FIELD]
+Name-------------|   | starts with     |
+Kind                 | ends with-------|
+Creation date        | is
+Modification date
+
+Each node in the tree is represented by a "criterion," which can be any object.  As the user chooses from the popup menus, the rule editor view will query its delegate for the child criteria of the chosen criterion.  The only restriction on the criteria is that two criterions should be considered equal by isEqual: if they represent the same node, and must not be equal if they represent different nodes.  The path through the tree for a given row is represented by the array of criteria for the row.  For example, the criteria for the above selection would represent "Name", "ends with", and the custom text field; the manner in which the criteria represent those values is up to the developer.
+
+There are two types of rows - standard rows and header rows (NSRuleEditorRowTypeSimple and NSRuleEditorRowTypeCompound).  A header row can contain other rows, but a standard row cannot.  Header rows and standard rows can have different trees of criteria.  The amount and style of row nesting is configurable.
+
+Every time a row is created or modified, the rule editor view will query its delegate view for a "display value" for each new criteriion in the row.  The display value is what is presented to the user, and must be a NSString, NSView, or NSMenuItem.  When a criterion is selected in the row, the rule editor will query the criterion for its child criteria and then each of the children for their display value.  If there are multiple children, a popup button is formed from the string values and menu items.  If there is only one child, its display value is displayed as a static text field (if it is a string) or as a view (if the value is a view).
+
+NSRuleEditor has some optional support for predicates.  For each row, it will ask its delegate for various parts of a predicate, which are returned in a dictionary.  Assuming the delegate returns enough parts for each row, the parts are then combined to form a predicate for the entire view.  This is expressed in the  "predicate" property for the view.  Subclassers can modify the predicate for each row as it is constructed.  Setting a predicate back on the view is not supported.
+
+NSRuleEditor exposes one binding, "rows."  The "rows" binding may be bound to an ordered to-many relation (e.g. NSMutableArray).  Each object in the relation should have the following properties:
+
+@"rowType" -> integer representing the type of the row (NSRuleEditorRowType)
+@"subrows" -> ordered to-many relation (e.g. NSMutableArray) containing the directly nested subrows for the given row
+@"displayValues" -> ordered to-many relation containing the display values for the row
+@"criteria" -> ordered to-many relation containing the criteria for the row
+
+These key paths can be set using the set*KeyPath: methods below
+*/
 unsafe impl NSDraggingDestination for NSView {}
 
 #[cfg(feature = "AppKit_NSView")]
+/**
+  An NSRuleEditor is a class that allows the user to create and configure a list of options.  The view has a delegate which offers a tree of choices to the view.  The choices are presented by the view to the user as a row of popup buttons, static text fields, and custom views.  Each row in the list represents a particular path down the tree of choices.  An example of part of a tree of choices and a path through it:
+
+----| contains        -------> [CUSTOM TEXT FIELD]
+Name-------------|   | starts with     |
+Kind                 | ends with-------|
+Creation date        | is
+Modification date
+
+Each node in the tree is represented by a "criterion," which can be any object.  As the user chooses from the popup menus, the rule editor view will query its delegate for the child criteria of the chosen criterion.  The only restriction on the criteria is that two criterions should be considered equal by isEqual: if they represent the same node, and must not be equal if they represent different nodes.  The path through the tree for a given row is represented by the array of criteria for the row.  For example, the criteria for the above selection would represent "Name", "ends with", and the custom text field; the manner in which the criteria represent those values is up to the developer.
+
+There are two types of rows - standard rows and header rows (NSRuleEditorRowTypeSimple and NSRuleEditorRowTypeCompound).  A header row can contain other rows, but a standard row cannot.  Header rows and standard rows can have different trees of criteria.  The amount and style of row nesting is configurable.
+
+Every time a row is created or modified, the rule editor view will query its delegate view for a "display value" for each new criteriion in the row.  The display value is what is presented to the user, and must be a NSString, NSView, or NSMenuItem.  When a criterion is selected in the row, the rule editor will query the criterion for its child criteria and then each of the children for their display value.  If there are multiple children, a popup button is formed from the string values and menu items.  If there is only one child, its display value is displayed as a static text field (if it is a string) or as a view (if the value is a view).
+
+NSRuleEditor has some optional support for predicates.  For each row, it will ask its delegate for various parts of a predicate, which are returned in a dictionary.  Assuming the delegate returns enough parts for each row, the parts are then combined to form a predicate for the entire view.  This is expressed in the  "predicate" property for the view.  Subclassers can modify the predicate for each row as it is constructed.  Setting a predicate back on the view is not supported.
+
+NSRuleEditor exposes one binding, "rows."  The "rows" binding may be bound to an ordered to-many relation (e.g. NSMutableArray).  Each object in the relation should have the following properties:
+
+@"rowType" -> integer representing the type of the row (NSRuleEditorRowType)
+@"subrows" -> ordered to-many relation (e.g. NSMutableArray) containing the directly nested subrows for the given row
+@"displayValues" -> ordered to-many relation containing the display values for the row
+@"criteria" -> ordered to-many relation containing the criteria for the row
+
+These key paths can be set using the set*KeyPath: methods below
+*/
 unsafe impl NSObjectProtocol for NSView {}
 
 #[cfg(feature = "AppKit_NSView")]
+/**
+  An NSRuleEditor is a class that allows the user to create and configure a list of options.  The view has a delegate which offers a tree of choices to the view.  The choices are presented by the view to the user as a row of popup buttons, static text fields, and custom views.  Each row in the list represents a particular path down the tree of choices.  An example of part of a tree of choices and a path through it:
+
+----| contains        -------> [CUSTOM TEXT FIELD]
+Name-------------|   | starts with     |
+Kind                 | ends with-------|
+Creation date        | is
+Modification date
+
+Each node in the tree is represented by a "criterion," which can be any object.  As the user chooses from the popup menus, the rule editor view will query its delegate for the child criteria of the chosen criterion.  The only restriction on the criteria is that two criterions should be considered equal by isEqual: if they represent the same node, and must not be equal if they represent different nodes.  The path through the tree for a given row is represented by the array of criteria for the row.  For example, the criteria for the above selection would represent "Name", "ends with", and the custom text field; the manner in which the criteria represent those values is up to the developer.
+
+There are two types of rows - standard rows and header rows (NSRuleEditorRowTypeSimple and NSRuleEditorRowTypeCompound).  A header row can contain other rows, but a standard row cannot.  Header rows and standard rows can have different trees of criteria.  The amount and style of row nesting is configurable.
+
+Every time a row is created or modified, the rule editor view will query its delegate view for a "display value" for each new criteriion in the row.  The display value is what is presented to the user, and must be a NSString, NSView, or NSMenuItem.  When a criterion is selected in the row, the rule editor will query the criterion for its child criteria and then each of the children for their display value.  If there are multiple children, a popup button is formed from the string values and menu items.  If there is only one child, its display value is displayed as a static text field (if it is a string) or as a view (if the value is a view).
+
+NSRuleEditor has some optional support for predicates.  For each row, it will ask its delegate for various parts of a predicate, which are returned in a dictionary.  Assuming the delegate returns enough parts for each row, the parts are then combined to form a predicate for the entire view.  This is expressed in the  "predicate" property for the view.  Subclassers can modify the predicate for each row as it is constructed.  Setting a predicate back on the view is not supported.
+
+NSRuleEditor exposes one binding, "rows."  The "rows" binding may be bound to an ordered to-many relation (e.g. NSMutableArray).  Each object in the relation should have the following properties:
+
+@"rowType" -> integer representing the type of the row (NSRuleEditorRowType)
+@"subrows" -> ordered to-many relation (e.g. NSMutableArray) containing the directly nested subrows for the given row
+@"displayValues" -> ordered to-many relation containing the display values for the row
+@"criteria" -> ordered to-many relation containing the criteria for the row
+
+These key paths can be set using the set*KeyPath: methods below
+*/
 unsafe impl NSUserInterfaceItemIdentification for NSView {}
 
 extern_methods!(
+    /**
+      An NSRuleEditor is a class that allows the user to create and configure a list of options.  The view has a delegate which offers a tree of choices to the view.  The choices are presented by the view to the user as a row of popup buttons, static text fields, and custom views.  Each row in the list represents a particular path down the tree of choices.  An example of part of a tree of choices and a path through it:
+
+    ----| contains        -------> [CUSTOM TEXT FIELD]
+    Name-------------|   | starts with     |
+    Kind                 | ends with-------|
+    Creation date        | is
+    Modification date
+
+    Each node in the tree is represented by a "criterion," which can be any object.  As the user chooses from the popup menus, the rule editor view will query its delegate for the child criteria of the chosen criterion.  The only restriction on the criteria is that two criterions should be considered equal by isEqual: if they represent the same node, and must not be equal if they represent different nodes.  The path through the tree for a given row is represented by the array of criteria for the row.  For example, the criteria for the above selection would represent "Name", "ends with", and the custom text field; the manner in which the criteria represent those values is up to the developer.
+
+    There are two types of rows - standard rows and header rows (NSRuleEditorRowTypeSimple and NSRuleEditorRowTypeCompound).  A header row can contain other rows, but a standard row cannot.  Header rows and standard rows can have different trees of criteria.  The amount and style of row nesting is configurable.
+
+    Every time a row is created or modified, the rule editor view will query its delegate view for a "display value" for each new criteriion in the row.  The display value is what is presented to the user, and must be a NSString, NSView, or NSMenuItem.  When a criterion is selected in the row, the rule editor will query the criterion for its child criteria and then each of the children for their display value.  If there are multiple children, a popup button is formed from the string values and menu items.  If there is only one child, its display value is displayed as a static text field (if it is a string) or as a view (if the value is a view).
+
+    NSRuleEditor has some optional support for predicates.  For each row, it will ask its delegate for various parts of a predicate, which are returned in a dictionary.  Assuming the delegate returns enough parts for each row, the parts are then combined to form a predicate for the entire view.  This is expressed in the  "predicate" property for the view.  Subclassers can modify the predicate for each row as it is constructed.  Setting a predicate back on the view is not supported.
+
+    NSRuleEditor exposes one binding, "rows."  The "rows" binding may be bound to an ordered to-many relation (e.g. NSMutableArray).  Each object in the relation should have the following properties:
+
+    @"rowType" -> integer representing the type of the row (NSRuleEditorRowType)
+    @"subrows" -> ordered to-many relation (e.g. NSMutableArray) containing the directly nested subrows for the given row
+    @"displayValues" -> ordered to-many relation containing the display values for the row
+    @"criteria" -> ordered to-many relation containing the criteria for the row
+
+    These key paths can be set using the set*KeyPath: methods below
+    */
     #[cfg(feature = "AppKit_NSView")]
     unsafe impl NSView {
         #[method_id(@__retain_semantics Init initWithFrame:)]
@@ -302,6 +565,9 @@ extern_methods!(
         #[method(isRotatedOrScaledFromBase)]
         pub unsafe fn isRotatedOrScaledFromBase(&self) -> bool;
 
+        /**
+          A hint as to whether or not this view draws its contents completely opaque or not. Opaque content drawing can allow some optimizations to happen. The default value is NO.
+        */
         #[method(isOpaque)]
         pub unsafe fn isOpaque(&self) -> bool;
 
@@ -373,12 +639,21 @@ extern_methods!(
         #[method(convertRectFromLayer:)]
         pub unsafe fn convertRectFromLayer(&self, rect: NSRect) -> NSRect;
 
+        /**
+          Reports whether AppKit may invoke the view's -drawRect: method on a background thread, where it would otherwise be invoked on the main thread.  Defaults to NO.
+        */
         #[method(canDrawConcurrently)]
         pub unsafe fn canDrawConcurrently(&self) -> bool;
 
+        /**
+          Reports whether AppKit may invoke the view's -drawRect: method on a background thread, where it would otherwise be invoked on the main thread.  Defaults to NO.
+        */
         #[method(setCanDrawConcurrently:)]
         pub unsafe fn setCanDrawConcurrently(&self, can_draw_concurrently: bool);
 
+        /**
+          Sets whether AppKit may invoke the view's -drawRect: method on a background thread, where it would otherwise be invoked on the main thread.  Defaults to NO for most kinds of views.  May be set to YES to enable threaded drawing for a particular view instance.  The view's window must also have its "allowsConcurrentViewDrawing" property set to YES (the default) for threading of view drawing to actually take place.
+        */
         #[deprecated = "If a view needs display, -drawRect: or -updateLayer will be called automatically when the view is able to draw.  To check whether a view is in a window, call -window.  To check whether a view is hidden, call -isHiddenOrHasHiddenAncestor."]
         #[method(canDraw)]
         pub unsafe fn canDraw(&self) -> bool;
@@ -519,23 +794,41 @@ extern_methods!(
         #[method(mouseDownCanMoveWindow)]
         pub unsafe fn mouseDownCanMoveWindow(&self) -> bool;
 
+        /**
+          Deprecated in favor of allowedTouchTypes. Return YES if allowedTouchTypes includes NSTouchTypeMaskIndirect
+        */
         #[deprecated = "Use allowedTouchTypes instead"]
         #[method(acceptsTouchEvents)]
         pub unsafe fn acceptsTouchEvents(&self) -> bool;
 
+        /**
+          Deprecated in favor of allowedTouchTypes. Return YES if allowedTouchTypes includes NSTouchTypeMaskIndirect
+        */
         #[deprecated = "Use allowedTouchTypes instead"]
         #[method(setAcceptsTouchEvents:)]
         pub unsafe fn setAcceptsTouchEvents(&self, accepts_touch_events: bool);
 
+        /**
+          In some cases, the user may rest a thumb or other touch on the device. By default, these touches are not delivered and are not included in the event's set of touches. Touches may transition in and out of resting at any time. Unless the view wants restingTouches, began / ended events are simlulated as touches transition from resting to active and vice versa.
+        */
         #[method(wantsRestingTouches)]
         pub unsafe fn wantsRestingTouches(&self) -> bool;
 
+        /**
+          In some cases, the user may rest a thumb or other touch on the device. By default, these touches are not delivered and are not included in the event's set of touches. Touches may transition in and out of resting at any time. Unless the view wants restingTouches, began / ended events are simlulated as touches transition from resting to active and vice versa.
+        */
         #[method(setWantsRestingTouches:)]
         pub unsafe fn setWantsRestingTouches(&self, wants_resting_touches: bool);
 
+        /**
+          Get and set how the layer should redraw when resizing and redisplaying. Prior to 10.8, the default value was always set to NSViewLayerContentsRedrawDuringViewResize when an AppKit managed layer was created. In 10.8 and higher, the value is initialized to the appropriate thing for each individual AppKit view. Generally, the default value is NSViewLayerContentsRedrawOnSetNeedsDisplay if the view responds YES to -wantsUpdateLayer. Otherwise, the value is usually NSViewLayerContentsRedrawDuringViewResize, indicating that the view needs to redraw on each step of an animation via a setFrame: change. On 10.8, the value is not encoded by the view.
+        */
         #[method(layerContentsRedrawPolicy)]
         pub unsafe fn layerContentsRedrawPolicy(&self) -> NSViewLayerContentsRedrawPolicy;
 
+        /**
+          Get and set how the layer should redraw when resizing and redisplaying. Prior to 10.8, the default value was always set to NSViewLayerContentsRedrawDuringViewResize when an AppKit managed layer was created. In 10.8 and higher, the value is initialized to the appropriate thing for each individual AppKit view. Generally, the default value is NSViewLayerContentsRedrawOnSetNeedsDisplay if the view responds YES to -wantsUpdateLayer. Otherwise, the value is usually NSViewLayerContentsRedrawDuringViewResize, indicating that the view needs to redraw on each step of an animation via a setFrame: change. On 10.8, the value is not encoded by the view.
+        */
         #[method(setLayerContentsRedrawPolicy:)]
         pub unsafe fn setLayerContentsRedrawPolicy(
             &self,
@@ -551,21 +844,36 @@ extern_methods!(
             layer_contents_placement: NSViewLayerContentsPlacement,
         );
 
+        /**
+          Indicates if this view should be a "Layer Backed View". When layer backed, all subviews will subsequently also have a layer set on them (however, wantsLayer will only be YES on views that have had it explicitly set). Contents for a layer are specified in one of two ways: if -wantsUpdateLayer returns YES, then one can directly update the layer's contents (or other properties) in -updateLayer. If -wantsUpdateLayer returns NO, then the layer's contents is filled with whatever is drawn by -drawRect:
+        */
         #[method(wantsLayer)]
         pub unsafe fn wantsLayer(&self) -> bool;
 
+        /**
+          Indicates if this view should be a "Layer Backed View". When layer backed, all subviews will subsequently also have a layer set on them (however, wantsLayer will only be YES on views that have had it explicitly set). Contents for a layer are specified in one of two ways: if -wantsUpdateLayer returns YES, then one can directly update the layer's contents (or other properties) in -updateLayer. If -wantsUpdateLayer returns NO, then the layer's contents is filled with whatever is drawn by -drawRect:
+        */
         #[method(setWantsLayer:)]
         pub unsafe fn setWantsLayer(&self, wants_layer: bool);
 
+        /**
+          Layer Backed Views: Return YES if this view supports directly setting the layer properties (such as the contents and backgroundColor) as opposed to filling in the contents with a drawRect: implementation. Most AppKit controls return YES if there is no subclassing involved that would alter the drawing appearance. It will return NO for views that do have subclassing that AppKit does not know about (such as, overriding drawRect:, or other drawing methods).
+        */
         #[method(wantsUpdateLayer)]
         pub unsafe fn wantsUpdateLayer(&self) -> bool;
 
         #[method(updateLayer)]
         pub unsafe fn updateLayer(&self);
 
+        /**
+          When canDrawSubviewsIntoLayer is set to YES, and the view is layer-backed (either explicitly with -wantsLayer=YES, or by having a parent view that is layer-backed), the layer will draw all subviews into this view's layer, and each subview will not get an individual layer (the exception to this is a subview which has wantsLayer explicitly set to YES). This is useful for layer-backing a complex set of views that can not be refactored to take advantage of proper resizing and -wantsUpdateLayer==YES. If canDrawSubviewsIntoLayer is YES, the value returned from wantsUpdateLayer will be ignored, and the layer will always have drawRect: invoked to get the layer's contents. The default value is NO. NOTE: These methods should NOT be overridden, and the setter should always be used.
+        */
         #[method(canDrawSubviewsIntoLayer)]
         pub unsafe fn canDrawSubviewsIntoLayer(&self) -> bool;
 
+        /**
+          When canDrawSubviewsIntoLayer is set to YES, and the view is layer-backed (either explicitly with -wantsLayer=YES, or by having a parent view that is layer-backed), the layer will draw all subviews into this view's layer, and each subview will not get an individual layer (the exception to this is a subview which has wantsLayer explicitly set to YES). This is useful for layer-backing a complex set of views that can not be refactored to take advantage of proper resizing and -wantsUpdateLayer==YES. If canDrawSubviewsIntoLayer is YES, the value returned from wantsUpdateLayer will be ignored, and the layer will always have drawRect: invoked to get the layer's contents. The default value is NO. NOTE: These methods should NOT be overridden, and the setter should always be used.
+        */
         #[method(setCanDrawSubviewsIntoLayer:)]
         pub unsafe fn setCanDrawSubviewsIntoLayer(&self, can_draw_subviews_into_layer: bool);
 
@@ -587,9 +895,15 @@ extern_methods!(
         #[method(setAlphaValue:)]
         pub unsafe fn setAlphaValue(&self, alpha_value: CGFloat);
 
+        /**
+          If you have set a custom layer on your view, and it (or one of its sublayers) uses CIFilters, you should set this. You do not need to set this if you are using the backgroundFilters, compositingFilter, or contentFilters properties below. See the release notes for more information.
+        */
         #[method(layerUsesCoreImageFilters)]
         pub unsafe fn layerUsesCoreImageFilters(&self) -> bool;
 
+        /**
+          If you have set a custom layer on your view, and it (or one of its sublayers) uses CIFilters, you should set this. You do not need to set this if you are using the backgroundFilters, compositingFilter, or contentFilters properties below. See the release notes for more information.
+        */
         #[method(setLayerUsesCoreImageFilters:)]
         pub unsafe fn setLayerUsesCoreImageFilters(&self, layer_uses_core_image_filters: bool);
 
@@ -658,16 +972,29 @@ extern_methods!(
         #[method(viewDidEndLiveResize)]
         pub unsafe fn viewDidEndLiveResize(&self);
 
+        /**
+          inLiveResize can be called at any time to determine if the window is performing a live resize or not. Drawing optimizations can be done when the view is being live-resized.
+        */
         #[method(inLiveResize)]
         pub unsafe fn inLiveResize(&self) -> bool;
 
+        /**
+          A view that returns YES for -preservesContentDuringLiveResize is responsible for invalidating its own dirty rects during live resize
+        */
         #[method(preservesContentDuringLiveResize)]
         pub unsafe fn preservesContentDuringLiveResize(&self) -> bool;
 
+        /**
+          -rectPreservedDuringLiveResize indicates the rect the view previously occupied, in the current coordinate system of the view
+        */
         #[method(rectPreservedDuringLiveResize)]
         pub unsafe fn rectPreservedDuringLiveResize(&self) -> NSRect;
 
         #[cfg(feature = "AppKit_NSTextInputContext")]
+        /**
+          Text Input
+         Returns NSTextInputContext object for the receiver. Returns nil if the receiver doesn't conform to NSTextInputClient protocol.
+        */
         #[method_id(@__retain_semantics Other inputContext)]
         pub unsafe fn inputContext(&self) -> Option<Id<NSTextInputContext>>;
 
@@ -678,9 +1005,15 @@ extern_methods!(
             visible_rect: NSRect,
         ) -> NSRect;
 
+        /**
+          Get and set the user interface layout direction. By default, a basic NSView may not respect the User Interface Layout Direction that is uniquely set on it, and it is up to the developer and supporting subclasses to correctly implement a Right To Left layout implementation. The default value is set to [NSApp userInterfaceLayoutDirection].
+        */
         #[method(userInterfaceLayoutDirection)]
         pub unsafe fn userInterfaceLayoutDirection(&self) -> NSUserInterfaceLayoutDirection;
 
+        /**
+          Get and set the user interface layout direction. By default, a basic NSView may not respect the User Interface Layout Direction that is uniquely set on it, and it is up to the developer and supporting subclasses to correctly implement a Right To Left layout implementation. The default value is set to [NSApp userInterfaceLayoutDirection].
+        */
         #[method(setUserInterfaceLayoutDirection:)]
         pub unsafe fn setUserInterfaceLayoutDirection(
             &self,
@@ -690,18 +1023,32 @@ extern_methods!(
         #[method(prepareForReuse)]
         pub unsafe fn prepareForReuse(&self);
 
+        /**
+          A subclass of any NSScrollView, NSClipView or the NSScrollView's documentView can override this method to verify that its customizations are compatible with 10.9's responsive scrolling behavior. By default, AppKit assumes that a ScrollView is responsive scrolling compatible if it and its clipview and document view do not override certain methods such as -scrollWheel: (See documentation for the expanded list). However, these views may still opt into responsive scrolling if they work with the new scrolling behavior by overriding and returning YES for this method. Likewise, the same set of views may return NO to explicitly opt out of responsive scrolling.
+        */
         #[method(isCompatibleWithResponsiveScrolling)]
         pub unsafe fn isCompatibleWithResponsiveScrolling() -> bool;
 
         #[method(prepareContentInRect:)]
         pub unsafe fn prepareContentInRect(&self, rect: NSRect);
 
+        /**
+          The preparedContentRect is the area of the NSView that has full content coverage. In general, this should be called with the area that is filled in fully with views.  Set this with a value equal to the visibleRect to have overdraw start from the visibleRect and automatically grow larger on idle, as is needed for optimal system performance. The result of preparedContentRect may include the visibleRect, and may not include it if the previously prepared area has been scrolled away.
+        */
         #[method(preparedContentRect)]
         pub unsafe fn preparedContentRect(&self) -> NSRect;
 
+        /**
+          The preparedContentRect is the area of the NSView that has full content coverage. In general, this should be called with the area that is filled in fully with views.  Set this with a value equal to the visibleRect to have overdraw start from the visibleRect and automatically grow larger on idle, as is needed for optimal system performance. The result of preparedContentRect may include the visibleRect, and may not include it if the previously prepared area has been scrolled away.
+        */
         #[method(setPreparedContentRect:)]
         pub unsafe fn setPreparedContentRect(&self, prepared_content_rect: NSRect);
 
+        /**
+          allowsVibrancy is queried when a vibrant appearance is used on a view hierarchy. When allowsVibrancy returns YES, the view will have an appropriate measure taken to ensure it is vibrant on top of its given material.
+
+        Specific subclasses, such as NSControl, will answer this question based on the artwork they draw for a given appearance.
+        */
         #[method(allowsVibrancy)]
         pub unsafe fn allowsVibrancy(&self) -> bool;
 
@@ -851,6 +1198,10 @@ extern_methods!(
         pub unsafe fn drawSheetBorderWithSize(&self, border_size: NSSize);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Printing
+         Returns print job title. Default implementation first tries its window's NSDocument (displayName), then window's title
+        */
         #[method_id(@__retain_semantics Other printJobTitle)]
         pub unsafe fn printJobTitle(&self) -> Id<NSString>;
 
@@ -984,6 +1335,9 @@ extern_methods!(
     /// NSFindIndicator
     #[cfg(feature = "AppKit_NSView")]
     unsafe impl NSView {
+        /**
+          When this method returns YES, the receiver or one of its ancestors is being drawn for a find indicator, meaning the receiver should draw so its contents will be easily readable.
+        */
         #[method(isDrawingFindIndicator)]
         pub unsafe fn isDrawingFindIndicator(&self) -> bool;
     }
@@ -1018,9 +1372,15 @@ extern_methods!(
     /// NSTouchBar
     #[cfg(feature = "AppKit_NSView")]
     unsafe impl NSView {
+        /**
+          Defaults to NSTouchTypeDirect if linked on or after 10_12, 0 otherwise
+        */
         #[method(allowedTouchTypes)]
         pub unsafe fn allowedTouchTypes(&self) -> NSTouchTypeMask;
 
+        /**
+          Defaults to NSTouchTypeDirect if linked on or after 10_12, 0 otherwise
+        */
         #[method(setAllowedTouchTypes:)]
         pub unsafe fn setAllowedTouchTypes(&self, allowed_touch_types: NSTouchTypeMask);
     }
@@ -1030,23 +1390,41 @@ extern_methods!(
     /// NSSafeAreas
     #[cfg(feature = "AppKit_NSView")]
     unsafe impl NSView {
+        /**
+          Indicates the potentially-obscured distance from each edge of the view (e.g, not behind the window title bar, etc., if present).
+        */
         #[method(safeAreaInsets)]
         pub unsafe fn safeAreaInsets(&self) -> NSEdgeInsets;
 
+        /**
+          Configurable insets added to insets inherited from the superview (if any), and contributing to self.safeAreaInsets.
+        */
         #[method(additionalSafeAreaInsets)]
         pub unsafe fn additionalSafeAreaInsets(&self) -> NSEdgeInsets;
 
+        /**
+          Configurable insets added to insets inherited from the superview (if any), and contributing to self.safeAreaInsets.
+        */
         #[method(setAdditionalSafeAreaInsets:)]
         pub unsafe fn setAdditionalSafeAreaInsets(&self, additional_safe_area_insets: NSEdgeInsets);
 
         #[cfg(feature = "AppKit_NSLayoutGuide")]
+        /**
+          This layout guide reflects the safe area for this view (i.e., the frame minus safeAreaInsets), and provides a convenient way to arrange content relative to the safe area using auto layout.
+        */
         #[method_id(@__retain_semantics Other safeAreaLayoutGuide)]
         pub unsafe fn safeAreaLayoutGuide(&self) -> Id<NSLayoutGuide>;
 
+        /**
+          The safe area for this view expressed as a rectangle in the view's coordinate space.
+        */
         #[method(safeAreaRect)]
         pub unsafe fn safeAreaRect(&self) -> NSRect;
 
         #[cfg(feature = "AppKit_NSLayoutGuide")]
+        /**
+          This layout guide provides the recommended amount of padding for content inside a view.
+        */
         #[method_id(@__retain_semantics Other layoutMarginsGuide)]
         pub unsafe fn layoutMarginsGuide(&self) -> Id<NSLayoutGuide>;
     }

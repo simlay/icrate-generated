@@ -26,27 +26,45 @@ extern_methods!(
     #[cfg(feature = "AppKit_NSFilePromiseProvider")]
     unsafe impl NSFilePromiseProvider {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The UTI of the promised file type. An exception is thrown if the fileType does not conform to kUTTypeData or kUTTypeDirectory
+        */
         #[method_id(@__retain_semantics Other fileType)]
         pub unsafe fn fileType(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The UTI of the promised file type. An exception is thrown if the fileType does not conform to kUTTypeData or kUTTypeDirectory
+        */
         #[method(setFileType:)]
         pub unsafe fn setFileType(&self, file_type: &NSString);
 
+        /**
+          Your object that is ultimately responsible for determining the final file name and writing the promised data to the destination.
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(
             &self,
         ) -> Option<Id<ProtocolObject<dyn NSFilePromiseProviderDelegate>>>;
 
+        /**
+          Your object that is ultimately responsible for determining the final file name and writing the promised data to the destination.
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
             delegate: Option<&ProtocolObject<dyn NSFilePromiseProviderDelegate>>,
         );
 
+        /**
+          When a simple string identifier is not enough. Store a pointer to an object that contains the source of the promised file data.
+        */
         #[method_id(@__retain_semantics Other userInfo)]
         pub unsafe fn userInfo(&self) -> Option<Id<Object>>;
 
+        /**
+          When a simple string identifier is not enough. Store a pointer to an object that contains the source of the promised file data.
+        */
         #[method(setUserInfo:)]
         pub unsafe fn setUserInfo(&self, user_info: Option<&Object>);
 

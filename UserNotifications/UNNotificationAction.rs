@@ -40,17 +40,29 @@ extern_methods!(
     #[cfg(feature = "UserNotifications_UNNotificationAction")]
     unsafe impl UNNotificationAction {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The unique identifier for this action.
+        */
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The title to display for this action.
+        */
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Id<NSString>;
 
+        /**
+          The options configured for this action.
+        */
         #[method(options)]
         pub unsafe fn options(&self) -> UNNotificationActionOptions;
 
         #[cfg(feature = "UserNotifications_UNNotificationActionIcon")]
+        /**
+          The icon configured for this action.
+        */
         #[method_id(@__retain_semantics Other icon)]
         pub unsafe fn icon(&self) -> Option<Id<UNNotificationActionIcon>>;
 
@@ -128,10 +140,16 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The text input button title displayed for this action.
+        */
         #[method_id(@__retain_semantics Other textInputButtonTitle)]
         pub unsafe fn textInputButtonTitle(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The placeholder text displayed in the text input field for this action.
+        */
         #[method_id(@__retain_semantics Other textInputPlaceholder)]
         pub unsafe fn textInputPlaceholder(&self) -> Id<NSString>;
     }

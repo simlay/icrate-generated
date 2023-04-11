@@ -22,6 +22,9 @@ typed_enum!(
 
 ns_options!(
     #[underlying(c_uint)]
+    /**
+      Bit definitions for `autoresizingMask' property.
+    */
     pub enum CAAutoresizingMask {
         kCALayerNotSizable = 0,
         kCALayerMinXMargin = 1 << 0,
@@ -35,6 +38,9 @@ ns_options!(
 
 ns_options!(
     #[underlying(c_uint)]
+    /**
+      Bit definitions for `edgeAntialiasingMask' property.
+    */
     pub enum CAEdgeAntialiasingMask {
         kCALayerLeftEdge = 1 << 0,
         kCALayerRightEdge = 1 << 1,
@@ -45,6 +51,9 @@ ns_options!(
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+      Bit definitions for `maskedCorners' property.
+    */
     pub enum CACornerMask {
         kCALayerMinXMinYCorner = 1 << 0,
         kCALayerMaxXMinYCorner = 1 << 1,
@@ -56,6 +65,9 @@ ns_options!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreAnimation_CALayer")]
+    /**
+      The base layer class.
+    */
     pub struct CALayer;
 
     #[cfg(feature = "CoreAnimation_CALayer")]
@@ -65,18 +77,33 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreAnimation_CALayer")]
+/**
+  The base layer class.
+*/
 unsafe impl CAMediaTiming for CALayer {}
 
 #[cfg(feature = "CoreAnimation_CALayer")]
+/**
+  The base layer class.
+*/
 unsafe impl NSCoding for CALayer {}
 
 #[cfg(feature = "CoreAnimation_CALayer")]
+/**
+  The base layer class.
+*/
 unsafe impl NSObjectProtocol for CALayer {}
 
 #[cfg(feature = "CoreAnimation_CALayer")]
+/**
+  The base layer class.
+*/
 unsafe impl NSSecureCoding for CALayer {}
 
 extern_methods!(
+    /**
+      The base layer class.
+    */
     #[cfg(feature = "CoreAnimation_CALayer")]
     unsafe impl CALayer {
         #[method_id(@__retain_semantics Other layer)]
@@ -106,69 +133,165 @@ extern_methods!(
         #[method(shouldArchiveValueForKey:)]
         pub unsafe fn shouldArchiveValueForKey(&self, key: &NSString) -> bool;
 
+        /**
+          The bounds of the layer. Defaults to CGRectZero. Animatable.
+        */
         #[method(bounds)]
         pub fn bounds(&self) -> CGRect;
 
+        /**
+          The bounds of the layer. Defaults to CGRectZero. Animatable.
+        */
         #[method(setBounds:)]
         pub fn setBounds(&self, bounds: CGRect);
 
+        /**
+          The position in the superlayer that the anchor point of the layer's
+         bounds rect is aligned to. Defaults to the zero point. Animatable.
+        */
         #[method(position)]
         pub fn position(&self) -> CGPoint;
 
+        /**
+          The position in the superlayer that the anchor point of the layer's
+         bounds rect is aligned to. Defaults to the zero point. Animatable.
+        */
         #[method(setPosition:)]
         pub fn setPosition(&self, position: CGPoint);
 
+        /**
+          The Z component of the layer's position in its superlayer. Defaults
+         to zero. Animatable.
+        */
         #[method(zPosition)]
         pub fn zPosition(&self) -> CGFloat;
 
+        /**
+          The Z component of the layer's position in its superlayer. Defaults
+         to zero. Animatable.
+        */
         #[method(setZPosition:)]
         pub fn setZPosition(&self, z_position: CGFloat);
 
+        /**
+          Defines the anchor point of the layer's bounds rect, as a point in
+         normalized layer coordinates - '(0, 0)' is the bottom left corner of
+         the bounds rect, '(1, 1)' is the top right corner. Defaults to
+         '(0.5, 0.5)', i.e. the center of the bounds rect. Animatable.
+        */
         #[method(anchorPoint)]
         pub fn anchorPoint(&self) -> CGPoint;
 
+        /**
+          Defines the anchor point of the layer's bounds rect, as a point in
+         normalized layer coordinates - '(0, 0)' is the bottom left corner of
+         the bounds rect, '(1, 1)' is the top right corner. Defaults to
+         '(0.5, 0.5)', i.e. the center of the bounds rect. Animatable.
+        */
         #[method(setAnchorPoint:)]
         pub fn setAnchorPoint(&self, anchor_point: CGPoint);
 
+        /**
+          The Z component of the layer's anchor point (i.e. reference point for
+         position and transform). Defaults to zero. Animatable.
+        */
         #[method(anchorPointZ)]
         pub fn anchorPointZ(&self) -> CGFloat;
 
+        /**
+          The Z component of the layer's anchor point (i.e. reference point for
+         position and transform). Defaults to zero. Animatable.
+        */
         #[method(setAnchorPointZ:)]
         pub fn setAnchorPointZ(&self, anchor_point_z: CGFloat);
 
+        /**
+          A transform applied to the layer relative to the anchor point of its
+         bounds rect. Defaults to the identity transform. Animatable.
+        */
         #[method(transform)]
         pub fn transform(&self) -> CATransform3D;
 
+        /**
+          A transform applied to the layer relative to the anchor point of its
+         bounds rect. Defaults to the identity transform. Animatable.
+        */
         #[method(setTransform:)]
         pub fn setTransform(&self, transform: CATransform3D);
 
+        /**
+          Unlike NSView, each Layer in the hierarchy has an implicit frame
+         rectangle, a function of the `position', `bounds', `anchorPoint',
+         and `transform' properties. When setting the frame the `position'
+         and `bounds.size' are changed to match the given frame.
+        */
         #[method(frame)]
         pub fn frame(&self) -> CGRect;
 
+        /**
+          Unlike NSView, each Layer in the hierarchy has an implicit frame
+         rectangle, a function of the `position', `bounds', `anchorPoint',
+         and `transform' properties. When setting the frame the `position'
+         and `bounds.size' are changed to match the given frame.
+        */
         #[method(setFrame:)]
         pub fn setFrame(&self, frame: CGRect);
 
+        /**
+          When true the layer and its sublayers are not displayed. Defaults to
+         NO. Animatable.
+        */
         #[method(isHidden)]
         pub fn isHidden(&self) -> bool;
 
+        /**
+          When true the layer and its sublayers are not displayed. Defaults to
+         NO. Animatable.
+        */
         #[method(setHidden:)]
         pub fn setHidden(&self, hidden: bool);
 
+        /**
+          When false layers facing away from the viewer are hidden from view.
+         Defaults to YES. Animatable.
+        */
         #[method(isDoubleSided)]
         pub fn isDoubleSided(&self) -> bool;
 
+        /**
+          When false layers facing away from the viewer are hidden from view.
+         Defaults to YES. Animatable.
+        */
         #[method(setDoubleSided:)]
         pub fn setDoubleSided(&self, double_sided: bool);
 
+        /**
+          Whether or not the geometry of the layer (and its sublayers) is
+         flipped vertically. Defaults to NO. Note that even when geometry is
+         flipped, image orientation remains the same (i.e. a CGImageRef
+         stored in the `contents' property will display the same with both
+         flipped=NO and flipped=YES, assuming no transform on the layer).
+        */
         #[method(isGeometryFlipped)]
         pub fn isGeometryFlipped(&self) -> bool;
 
+        /**
+          Whether or not the geometry of the layer (and its sublayers) is
+         flipped vertically. Defaults to NO. Note that even when geometry is
+         flipped, image orientation remains the same (i.e. a CGImageRef
+         stored in the `contents' property will display the same with both
+         flipped=NO and flipped=YES, assuming no transform on the layer).
+        */
         #[method(setGeometryFlipped:)]
         pub fn setGeometryFlipped(&self, geometry_flipped: bool);
 
         #[method(contentsAreFlipped)]
         pub fn contentsAreFlipped(&self) -> bool;
 
+        /**
+          The receiver's superlayer object. Implicitly changed to match the
+         hierarchy described by the `sublayers' properties.
+        */
         #[method_id(@__retain_semantics Other superlayer)]
         pub fn superlayer(&self) -> Option<Id<CALayer>>;
 
@@ -176,10 +299,24 @@ extern_methods!(
         pub fn removeFromSuperlayer(&self);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          The array of sublayers of this layer. The layers are listed in back
+         to front order. Defaults to nil. When setting the value of the
+         property, any newly added layers must have nil superlayers, otherwise
+         the behavior is undefined. Note that the returned array is not
+         guaranteed to retain its elements.
+        */
         #[method_id(@__retain_semantics Other sublayers)]
         pub unsafe fn sublayers(&self) -> Option<Id<NSArray<CALayer>>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          The array of sublayers of this layer. The layers are listed in back
+         to front order. Defaults to nil. When setting the value of the
+         property, any newly added layers must have nil superlayers, otherwise
+         the behavior is undefined. Note that the returned array is not
+         guaranteed to retain its elements.
+        */
         #[method(setSublayers:)]
         pub unsafe fn setSublayers(&self, sublayers: Option<&NSArray<CALayer>>);
 
@@ -198,21 +335,67 @@ extern_methods!(
         #[method(replaceSublayer:with:)]
         pub unsafe fn replaceSublayer_with(&self, old_layer: &CALayer, new_layer: &CALayer);
 
+        /**
+          A transform applied to each member of the `sublayers' array while
+         rendering its contents into the receiver's output. Typically used as
+         the projection matrix to add perspective and other viewing effects
+         into the model. Defaults to identity. Animatable.
+        */
         #[method(sublayerTransform)]
         pub fn sublayerTransform(&self) -> CATransform3D;
 
+        /**
+          A transform applied to each member of the `sublayers' array while
+         rendering its contents into the receiver's output. Typically used as
+         the projection matrix to add perspective and other viewing effects
+         into the model. Defaults to identity. Animatable.
+        */
         #[method(setSublayerTransform:)]
         pub fn setSublayerTransform(&self, sublayer_transform: CATransform3D);
 
+        /**
+          A layer whose alpha channel is used as a mask to select between the
+         layer's background and the result of compositing the layer's
+         contents with its filtered background. Defaults to nil. When used as
+         a mask the layer's `compositingFilter' and `backgroundFilters'
+         properties are ignored. When setting the mask to a new layer, the
+         new layer must have a nil superlayer, otherwise the behavior is
+         undefined. Nested masks (mask layers with their own masks) are
+         unsupported.
+        */
         #[method_id(@__retain_semantics Other mask)]
         pub fn mask(&self) -> Option<Id<CALayer>>;
 
+        /**
+          A layer whose alpha channel is used as a mask to select between the
+         layer's background and the result of compositing the layer's
+         contents with its filtered background. Defaults to nil. When used as
+         a mask the layer's `compositingFilter' and `backgroundFilters'
+         properties are ignored. When setting the mask to a new layer, the
+         new layer must have a nil superlayer, otherwise the behavior is
+         undefined. Nested masks (mask layers with their own masks) are
+         unsupported.
+        */
         #[method(setMask:)]
         pub unsafe fn setMask(&self, mask: Option<&CALayer>);
 
+        /**
+          When true an implicit mask matching the layer bounds is applied to
+         the layer (including the effects of the `cornerRadius' property). If
+         both `mask' and `masksToBounds' are non-nil the two masks are
+         multiplied to get the actual mask values. Defaults to NO.
+         Animatable.
+        */
         #[method(masksToBounds)]
         pub fn masksToBounds(&self) -> bool;
 
+        /**
+          When true an implicit mask matching the layer bounds is applied to
+         the layer (including the effects of the `cornerRadius' property). If
+         both `mask' and `masksToBounds' are non-nil the two masks are
+         multiplied to get the actual mask values. Defaults to NO.
+         Animatable.
+        */
         #[method(setMasksToBounds:)]
         pub fn setMasksToBounds(&self, masks_to_bounds: bool);
 
@@ -245,45 +428,171 @@ extern_methods!(
         #[method(containsPoint:)]
         pub fn containsPoint(&self, p: CGPoint) -> bool;
 
+        /**
+          An object providing the contents of the layer, typically a CGImageRef
+         or an IOSurfaceRef, but may be something else. (For example, NSImage
+         objects are supported on Mac OS X 10.6 and later.) Default value is nil.
+         Animatable.
+        */
         #[method_id(@__retain_semantics Other contents)]
         pub unsafe fn contents(&self) -> Option<Id<Object>>;
 
+        /**
+          An object providing the contents of the layer, typically a CGImageRef
+         or an IOSurfaceRef, but may be something else. (For example, NSImage
+         objects are supported on Mac OS X 10.6 and later.) Default value is nil.
+         Animatable.
+        */
         #[method(setContents:)]
         pub unsafe fn setContents(&self, contents: Option<&Object>);
 
+        /**
+          A rectangle in normalized image coordinates defining the
+         subrectangle of the `contents' property that will be drawn into the
+         layer. If pixels outside the unit rectangles are requested, the edge
+         pixels of the contents image will be extended outwards. If an empty
+         rectangle is provided, the results are undefined. Defaults to the
+         unit rectangle [0 0 1 1]. Animatable.
+        */
         #[method(contentsRect)]
         pub fn contentsRect(&self) -> CGRect;
 
+        /**
+          A rectangle in normalized image coordinates defining the
+         subrectangle of the `contents' property that will be drawn into the
+         layer. If pixels outside the unit rectangles are requested, the edge
+         pixels of the contents image will be extended outwards. If an empty
+         rectangle is provided, the results are undefined. Defaults to the
+         unit rectangle [0 0 1 1]. Animatable.
+        */
         #[method(setContentsRect:)]
         pub fn setContentsRect(&self, contents_rect: CGRect);
 
+        /**
+          A string defining how the contents of the layer is mapped into its
+         bounds rect. Options are `center', `top', `bottom', `left',
+         `right', `topLeft', `topRight', `bottomLeft', `bottomRight',
+         `resize', `resizeAspect', `resizeAspectFill'. The default value is
+         `resize'. Note that "bottom" always means "Minimum Y" and "top"
+         always means "Maximum Y".
+        */
         #[method_id(@__retain_semantics Other contentsGravity)]
         pub fn contentsGravity(&self) -> Id<CALayerContentsGravity>;
 
+        /**
+          A string defining how the contents of the layer is mapped into its
+         bounds rect. Options are `center', `top', `bottom', `left',
+         `right', `topLeft', `topRight', `bottomLeft', `bottomRight',
+         `resize', `resizeAspect', `resizeAspectFill'. The default value is
+         `resize'. Note that "bottom" always means "Minimum Y" and "top"
+         always means "Maximum Y".
+        */
         #[method(setContentsGravity:)]
         pub fn setContentsGravity(&self, contents_gravity: &CALayerContentsGravity);
 
+        /**
+          Defines the scale factor applied to the contents of the layer. If
+         the physical size of the contents is '(w, h)' then the logical size
+         (i.e. for contentsGravity calculations) is defined as '(w
+         contentsScale, h / contentsScale)'. Applies to both images provided
+         explicitly and content provided via -drawInContext: (i.e. if
+         contentsScale is two -drawInContext: will draw into a buffer twice
+         as large as the layer bounds). Defaults to one. Animatable.
+        */
         #[method(contentsScale)]
         pub fn contentsScale(&self) -> CGFloat;
 
+        /**
+          Defines the scale factor applied to the contents of the layer. If
+         the physical size of the contents is '(w, h)' then the logical size
+         (i.e. for contentsGravity calculations) is defined as '(w
+         contentsScale, h / contentsScale)'. Applies to both images provided
+         explicitly and content provided via -drawInContext: (i.e. if
+         contentsScale is two -drawInContext: will draw into a buffer twice
+         as large as the layer bounds). Defaults to one. Animatable.
+        */
         #[method(setContentsScale:)]
         pub fn setContentsScale(&self, contents_scale: CGFloat);
 
+        /**
+          A rectangle in normalized image coordinates defining the scaled
+         center part of the `contents' image.
+
+         When an image is resized due to its `contentsGravity' property its
+         center part implicitly defines the 3x3 grid that controls how the
+         image is scaled to its drawn size. The center part is stretched in
+         both dimensions; the top and bottom parts are only stretched
+         horizontally; the left and right parts are only stretched
+         vertically; the four corner parts are not stretched at all. (This is
+         often called "9-slice scaling".)
+
+         The rectangle is interpreted after the effects of the `contentsRect'
+         property have been applied. It defaults to the unit rectangle [0 0 1
+         1] meaning that the entire image is scaled. As a special case, if
+         the width or height is zero, it is implicitly adjusted to the width
+         or height of a single source pixel centered at that position. If the
+         rectangle extends outside the [0 0 1 1] unit rectangle the result is
+         undefined. Animatable.
+        */
         #[method(contentsCenter)]
         pub fn contentsCenter(&self) -> CGRect;
 
+        /**
+          A rectangle in normalized image coordinates defining the scaled
+         center part of the `contents' image.
+
+         When an image is resized due to its `contentsGravity' property its
+         center part implicitly defines the 3x3 grid that controls how the
+         image is scaled to its drawn size. The center part is stretched in
+         both dimensions; the top and bottom parts are only stretched
+         horizontally; the left and right parts are only stretched
+         vertically; the four corner parts are not stretched at all. (This is
+         often called "9-slice scaling".)
+
+         The rectangle is interpreted after the effects of the `contentsRect'
+         property have been applied. It defaults to the unit rectangle [0 0 1
+         1] meaning that the entire image is scaled. As a special case, if
+         the width or height is zero, it is implicitly adjusted to the width
+         or height of a single source pixel centered at that position. If the
+         rectangle extends outside the [0 0 1 1] unit rectangle the result is
+         undefined. Animatable.
+        */
         #[method(setContentsCenter:)]
         pub fn setContentsCenter(&self, contents_center: CGRect);
 
+        /**
+          A hint for the desired storage format of the layer contents provided by
+         -drawLayerInContext. Defaults to kCAContentsFormatRGBA8Uint. Note that this
+         does not affect the interpretation of the `contents' property directly.
+        */
         #[method_id(@__retain_semantics Other contentsFormat)]
         pub fn contentsFormat(&self) -> Id<CALayerContentsFormat>;
 
+        /**
+          A hint for the desired storage format of the layer contents provided by
+         -drawLayerInContext. Defaults to kCAContentsFormatRGBA8Uint. Note that this
+         does not affect the interpretation of the `contents' property directly.
+        */
         #[method(setContentsFormat:)]
         pub fn setContentsFormat(&self, contents_format: &CALayerContentsFormat);
 
+        /**
+          The filter types to use when rendering the `contents' property of
+         the layer. The minification filter is used when to reduce the size
+         of image data, the magnification filter to increase the size of
+         image data. Currently the allowed values are `nearest' and `linear'.
+         Both properties default to `linear'.
+        */
         #[method_id(@__retain_semantics Other minificationFilter)]
         pub fn minificationFilter(&self) -> Id<CALayerContentsFilter>;
 
+        /**
+          The filter types to use when rendering the `contents' property of
+         the layer. The minification filter is used when to reduce the size
+         of image data, the magnification filter to increase the size of
+         image data. Currently the allowed values are `nearest' and `linear'.
+         Both properties default to `linear'.
+        */
         #[method(setMinificationFilter:)]
         pub fn setMinificationFilter(&self, minification_filter: &CALayerContentsFilter);
 
@@ -293,15 +602,35 @@ extern_methods!(
         #[method(setMagnificationFilter:)]
         pub fn setMagnificationFilter(&self, magnification_filter: &CALayerContentsFilter);
 
+        /**
+          The bias factor added when determining which levels of detail to use
+         when minifying using trilinear filtering. The default value is 0.
+         Animatable.
+        */
         #[method(minificationFilterBias)]
         pub fn minificationFilterBias(&self) -> c_float;
 
+        /**
+          The bias factor added when determining which levels of detail to use
+         when minifying using trilinear filtering. The default value is 0.
+         Animatable.
+        */
         #[method(setMinificationFilterBias:)]
         pub fn setMinificationFilterBias(&self, minification_filter_bias: c_float);
 
+        /**
+          A hint marking that the layer contents provided by -drawInContext:
+         is completely opaque. Defaults to NO. Note that this does not affect
+         the interpretation of the `contents' property directly.
+        */
         #[method(isOpaque)]
         pub fn isOpaque(&self) -> bool;
 
+        /**
+          A hint marking that the layer contents provided by -drawInContext:
+         is completely opaque. Defaults to NO. Note that this does not affect
+         the interpretation of the `contents' property directly.
+        */
         #[method(setOpaque:)]
         pub fn setOpaque(&self, opaque: bool);
 
@@ -320,130 +649,388 @@ extern_methods!(
         #[method(displayIfNeeded)]
         pub fn displayIfNeeded(&self);
 
+        /**
+          When true -setNeedsDisplay will automatically be called when the
+         bounds of the layer changes. Default value is NO.
+        */
         #[method(needsDisplayOnBoundsChange)]
         pub fn needsDisplayOnBoundsChange(&self) -> bool;
 
+        /**
+          When true -setNeedsDisplay will automatically be called when the
+         bounds of the layer changes. Default value is NO.
+        */
         #[method(setNeedsDisplayOnBoundsChange:)]
         pub fn setNeedsDisplayOnBoundsChange(&self, needs_display_on_bounds_change: bool);
 
+        /**
+          When true, the CGContext object passed to the -drawInContext: method
+         may queue the drawing commands submitted to it, such that they will
+         be executed later (i.e. asynchronously to the execution of the
+         -drawInContext: method). This may allow the layer to complete its
+         drawing operations sooner than when executing synchronously. The
+         default value is NO.
+        */
         #[method(drawsAsynchronously)]
         pub fn drawsAsynchronously(&self) -> bool;
 
+        /**
+          When true, the CGContext object passed to the -drawInContext: method
+         may queue the drawing commands submitted to it, such that they will
+         be executed later (i.e. asynchronously to the execution of the
+         -drawInContext: method). This may allow the layer to complete its
+         drawing operations sooner than when executing synchronously. The
+         default value is NO.
+        */
         #[method(setDrawsAsynchronously:)]
         pub fn setDrawsAsynchronously(&self, draws_asynchronously: bool);
 
+        /**
+          Defines how the edges of the layer are rasterized. For each of the
+         four edges (left, right, bottom, top) if the corresponding bit is
+         set the edge will be antialiased. Typically this property is used to
+         disable antialiasing for edges that abut edges of other layers, to
+         eliminate the seams that would otherwise occur. The default value is
+         for all edges to be antialiased.
+        */
         #[method(edgeAntialiasingMask)]
         pub fn edgeAntialiasingMask(&self) -> CAEdgeAntialiasingMask;
 
+        /**
+          Defines how the edges of the layer are rasterized. For each of the
+         four edges (left, right, bottom, top) if the corresponding bit is
+         set the edge will be antialiased. Typically this property is used to
+         disable antialiasing for edges that abut edges of other layers, to
+         eliminate the seams that would otherwise occur. The default value is
+         for all edges to be antialiased.
+        */
         #[method(setEdgeAntialiasingMask:)]
         pub fn setEdgeAntialiasingMask(&self, edge_antialiasing_mask: CAEdgeAntialiasingMask);
 
+        /**
+          When true this layer is allowed to antialias its edges, as requested
+         by the edgeAntialiasingMask.
+
+         The default value is read from the CALayerAllowsEdgeAntialiasing
+         property in the main bundle's Info.plist. On iOS, if that property
+         is not found, the UIViewEdgeAntialiasing property will be used
+         instead. If no value is found in the Info.plist the default value is
+         YES on macOS and NO on iOS.
+        */
         #[method(allowsEdgeAntialiasing)]
         pub fn allowsEdgeAntialiasing(&self) -> bool;
 
+        /**
+          When true this layer is allowed to antialias its edges, as requested
+         by the edgeAntialiasingMask.
+
+         The default value is read from the CALayerAllowsEdgeAntialiasing
+         property in the main bundle's Info.plist. On iOS, if that property
+         is not found, the UIViewEdgeAntialiasing property will be used
+         instead. If no value is found in the Info.plist the default value is
+         YES on macOS and NO on iOS.
+        */
         #[method(setAllowsEdgeAntialiasing:)]
         pub fn setAllowsEdgeAntialiasing(&self, allows_edge_antialiasing: bool);
 
+        /**
+          When positive, the background of the layer will be drawn with
+         rounded corners. Also effects the mask generated by the
+         `masksToBounds' property. Defaults to zero. Animatable.
+        */
         #[method(cornerRadius)]
         pub fn cornerRadius(&self) -> CGFloat;
 
+        /**
+          When positive, the background of the layer will be drawn with
+         rounded corners. Also effects the mask generated by the
+         `masksToBounds' property. Defaults to zero. Animatable.
+        */
         #[method(setCornerRadius:)]
         pub fn setCornerRadius(&self, corner_radius: CGFloat);
 
+        /**
+          Defines which of the four corners receives the masking when using
+         `cornerRadius' property. Defaults to all four corners.
+        */
         #[method(maskedCorners)]
         pub fn maskedCorners(&self) -> CACornerMask;
 
+        /**
+          Defines which of the four corners receives the masking when using
+         `cornerRadius' property. Defaults to all four corners.
+        */
         #[method(setMaskedCorners:)]
         pub fn setMaskedCorners(&self, masked_corners: CACornerMask);
 
+        /**
+          Defines the curve used for rendering the rounded corners of the layer.
+         Defaults to 'kCACornerCurveCircular'.
+        */
         #[method_id(@__retain_semantics Other cornerCurve)]
         pub fn cornerCurve(&self) -> Id<CALayerCornerCurve>;
 
+        /**
+          Defines the curve used for rendering the rounded corners of the layer.
+         Defaults to 'kCACornerCurveCircular'.
+        */
         #[method(setCornerCurve:)]
         pub fn setCornerCurve(&self, corner_curve: &CALayerCornerCurve);
 
         #[method(cornerCurveExpansionFactor:)]
         pub fn cornerCurveExpansionFactor(curve: &CALayerCornerCurve) -> CGFloat;
 
+        /**
+          The width of the layer's border, inset from the layer bounds. The
+         border is composited above the layer's content and sublayers and
+         includes the effects of the `cornerRadius' property. Defaults to
+         zero. Animatable.
+        */
         #[method(borderWidth)]
         pub fn borderWidth(&self) -> CGFloat;
 
+        /**
+          The width of the layer's border, inset from the layer bounds. The
+         border is composited above the layer's content and sublayers and
+         includes the effects of the `cornerRadius' property. Defaults to
+         zero. Animatable.
+        */
         #[method(setBorderWidth:)]
         pub fn setBorderWidth(&self, border_width: CGFloat);
 
+        /**
+          The opacity of the layer, as a value between zero and one. Defaults
+         to one. Specifying a value outside the [0,1] range will give undefined
+         results. Animatable.
+        */
         #[method(opacity)]
         pub fn opacity(&self) -> c_float;
 
+        /**
+          The opacity of the layer, as a value between zero and one. Defaults
+         to one. Specifying a value outside the [0,1] range will give undefined
+         results. Animatable.
+        */
         #[method(setOpacity:)]
         pub fn setOpacity(&self, opacity: c_float);
 
+        /**
+          When true, and the layer's opacity property is less than one, the
+         layer is allowed to composite itself as a group separate from its
+         parent. This gives the correct results when the layer contains
+         multiple opaque components, but may reduce performance.
+
+         The default value is read from the CALayerAllowsGroupOpacity
+         property in the main bundle's Info.plist. On iOS, if that property
+         is not found, the UIViewGroupOpacity property will be used instead.
+         If no value is found in the Info.plist the default value is YES on
+         macOS and NO on iOS.
+        */
         #[method(allowsGroupOpacity)]
         pub fn allowsGroupOpacity(&self) -> bool;
 
+        /**
+          When true, and the layer's opacity property is less than one, the
+         layer is allowed to composite itself as a group separate from its
+         parent. This gives the correct results when the layer contains
+         multiple opaque components, but may reduce performance.
+
+         The default value is read from the CALayerAllowsGroupOpacity
+         property in the main bundle's Info.plist. On iOS, if that property
+         is not found, the UIViewGroupOpacity property will be used instead.
+         If no value is found in the Info.plist the default value is YES on
+         macOS and NO on iOS.
+        */
         #[method(setAllowsGroupOpacity:)]
         pub fn setAllowsGroupOpacity(&self, allows_group_opacity: bool);
 
+        /**
+          A filter object used to composite the layer with its (possibly
+         filtered) background. Default value is nil, which implies source-
+         over compositing. Animatable.
+
+         Note that if the inputs of the filter are modified directly after
+         the filter is attached to a layer, the behavior is undefined. The
+         filter must either be reattached to the layer, or filter properties
+         should be modified by calling -setValue:forKeyPath: on each layer
+         that the filter is attached to. (This also applies to the `filters'
+         and `backgroundFilters' properties.)
+        */
         #[method_id(@__retain_semantics Other compositingFilter)]
         pub unsafe fn compositingFilter(&self) -> Option<Id<Object>>;
 
+        /**
+          A filter object used to composite the layer with its (possibly
+         filtered) background. Default value is nil, which implies source-
+         over compositing. Animatable.
+
+         Note that if the inputs of the filter are modified directly after
+         the filter is attached to a layer, the behavior is undefined. The
+         filter must either be reattached to the layer, or filter properties
+         should be modified by calling -setValue:forKeyPath: on each layer
+         that the filter is attached to. (This also applies to the `filters'
+         and `backgroundFilters' properties.)
+        */
         #[method(setCompositingFilter:)]
         pub unsafe fn setCompositingFilter(&self, compositing_filter: Option<&Object>);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          An array of filters that will be applied to the contents of the
+         layer and its sublayers. Defaults to nil. Animatable.
+        */
         #[method_id(@__retain_semantics Other filters)]
         pub unsafe fn filters(&self) -> Option<Id<NSArray>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          An array of filters that will be applied to the contents of the
+         layer and its sublayers. Defaults to nil. Animatable.
+        */
         #[method(setFilters:)]
         pub unsafe fn setFilters(&self, filters: Option<&NSArray>);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          An array of filters that are applied to the background of the layer.
+         The root layer ignores this property. Animatable.
+        */
         #[method_id(@__retain_semantics Other backgroundFilters)]
         pub unsafe fn backgroundFilters(&self) -> Option<Id<NSArray>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          An array of filters that are applied to the background of the layer.
+         The root layer ignores this property. Animatable.
+        */
         #[method(setBackgroundFilters:)]
         pub unsafe fn setBackgroundFilters(&self, background_filters: Option<&NSArray>);
 
+        /**
+          When true, the layer is rendered as a bitmap in its local coordinate
+         space ("rasterized"), then the bitmap is composited into the
+         destination (with the minificationFilter and magnificationFilter
+         properties of the layer applied if the bitmap needs scaling).
+         Rasterization occurs after the layer's filters and shadow effects
+         are applied, but before the opacity modulation. As an implementation
+         detail the rendering engine may attempt to cache and reuse the
+         bitmap from one frame to the next. (Whether it does or not will have
+         no affect on the rendered output.)
+
+         When false the layer is composited directly into the destination
+         whenever possible (however, certain features of the compositing
+         model may force rasterization, e.g. adding filters).
+
+         Defaults to NO. Animatable.
+        */
         #[method(shouldRasterize)]
         pub fn shouldRasterize(&self) -> bool;
 
+        /**
+          When true, the layer is rendered as a bitmap in its local coordinate
+         space ("rasterized"), then the bitmap is composited into the
+         destination (with the minificationFilter and magnificationFilter
+         properties of the layer applied if the bitmap needs scaling).
+         Rasterization occurs after the layer's filters and shadow effects
+         are applied, but before the opacity modulation. As an implementation
+         detail the rendering engine may attempt to cache and reuse the
+         bitmap from one frame to the next. (Whether it does or not will have
+         no affect on the rendered output.)
+
+         When false the layer is composited directly into the destination
+         whenever possible (however, certain features of the compositing
+         model may force rasterization, e.g. adding filters).
+
+         Defaults to NO. Animatable.
+        */
         #[method(setShouldRasterize:)]
         pub fn setShouldRasterize(&self, should_rasterize: bool);
 
+        /**
+          The scale at which the layer will be rasterized (when the
+         shouldRasterize property has been set to YES) relative to the
+         coordinate space of the layer. Defaults to one. Animatable.
+        */
         #[method(rasterizationScale)]
         pub fn rasterizationScale(&self) -> CGFloat;
 
+        /**
+          The scale at which the layer will be rasterized (when the
+         shouldRasterize property has been set to YES) relative to the
+         coordinate space of the layer. Defaults to one. Animatable.
+        */
         #[method(setRasterizationScale:)]
         pub fn setRasterizationScale(&self, rasterization_scale: CGFloat);
 
+        /**
+          The opacity of the shadow. Defaults to 0. Specifying a value outside the
+         [0,1] range will give undefined results. Animatable.
+        */
         #[method(shadowOpacity)]
         pub fn shadowOpacity(&self) -> c_float;
 
+        /**
+          The opacity of the shadow. Defaults to 0. Specifying a value outside the
+         [0,1] range will give undefined results. Animatable.
+        */
         #[method(setShadowOpacity:)]
         pub fn setShadowOpacity(&self, shadow_opacity: c_float);
 
+        /**
+          The shadow offset. Defaults to (0, -3). Animatable.
+        */
         #[method(shadowOffset)]
         pub fn shadowOffset(&self) -> CGSize;
 
+        /**
+          The shadow offset. Defaults to (0, -3). Animatable.
+        */
         #[method(setShadowOffset:)]
         pub fn setShadowOffset(&self, shadow_offset: CGSize);
 
+        /**
+          The blur radius used to create the shadow. Defaults to 3. Animatable.
+        */
         #[method(shadowRadius)]
         pub fn shadowRadius(&self) -> CGFloat;
 
+        /**
+          The blur radius used to create the shadow. Defaults to 3. Animatable.
+        */
         #[method(setShadowRadius:)]
         pub fn setShadowRadius(&self, shadow_radius: CGFloat);
 
+        /**
+          A bitmask defining how the layer is resized when the bounds of its
+         superlayer changes. See the CAAutoresizingMask enum for the bit
+         definitions. Default value is zero.
+        */
         #[method(autoresizingMask)]
         pub fn autoresizingMask(&self) -> CAAutoresizingMask;
 
+        /**
+          A bitmask defining how the layer is resized when the bounds of its
+         superlayer changes. See the CAAutoresizingMask enum for the bit
+         definitions. Default value is zero.
+        */
         #[method(setAutoresizingMask:)]
         pub fn setAutoresizingMask(&self, autoresizing_mask: CAAutoresizingMask);
 
+        /**
+          The object responsible for assigning frame rects to sublayers,
+         should implement methods from the CALayoutManager informal protocol.
+         When nil (the default value) only the autoresizing style of layout
+         is done (unless a subclass overrides -layoutSublayers).
+        */
         #[method_id(@__retain_semantics Other layoutManager)]
         pub fn layoutManager(&self) -> Option<Id<ProtocolObject<dyn CALayoutManager>>>;
 
+        /**
+          The object responsible for assigning frame rects to sublayers,
+         should implement methods from the CALayoutManager informal protocol.
+         When nil (the default value) only the autoresizing style of layout
+         is done (unless a subclass overrides -layoutSublayers).
+        */
         #[method(setLayoutManager:)]
         pub fn setLayoutManager(
             &self,
@@ -480,10 +1067,18 @@ extern_methods!(
         pub fn actionForKey(&self, event: &NSString) -> Option<Id<ProtocolObject<dyn CAAction>>>;
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+          A dictionary mapping keys to objects implementing the CAAction
+         protocol. Default value is nil.
+        */
         #[method_id(@__retain_semantics Other actions)]
         pub fn actions(&self) -> Option<Id<NSDictionary<NSString, ProtocolObject<dyn CAAction>>>>;
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+          A dictionary mapping keys to objects implementing the CAAction
+         protocol. Default value is nil.
+        */
         #[method(setActions:)]
         pub fn setActions(
             &self,
@@ -510,30 +1105,71 @@ extern_methods!(
         pub unsafe fn animationForKey(&self, key: &NSString) -> Option<Id<CAAnimation>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The name of the layer. Used by some layout managers. Defaults to nil.
+        */
         #[method_id(@__retain_semantics Other name)]
         pub fn name(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The name of the layer. Used by some layout managers. Defaults to nil.
+        */
         #[method(setName:)]
         pub fn setName(&self, name: Option<&NSString>);
 
+        /**
+          An object that will receive the CALayer delegate methods defined
+         below (for those that it implements). The value of this property is
+         not retained. Default value is nil.
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub fn delegate(&self) -> Option<Id<ProtocolObject<dyn CALayerDelegate>>>;
 
+        /**
+          An object that will receive the CALayer delegate methods defined
+         below (for those that it implements). The value of this property is
+         not retained. Default value is nil.
+        */
         #[method(setDelegate:)]
         pub fn setDelegate(&self, delegate: Option<&ProtocolObject<dyn CALayerDelegate>>);
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          When non-nil, a dictionary dereferenced to find property values that
+         aren't explicitly defined by the layer. (This dictionary may in turn
+         have a `style' property, forming a hierarchy of default values.)
+         If the style dictionary doesn't define a value for an attribute, the
+         +defaultValueForKey: method is called. Defaults to nil.
+
+         Note that if the dictionary or any of its ancestors are modified,
+         the values of the layer's properties are undefined until the `style'
+         property is reset.
+        */
         #[method_id(@__retain_semantics Other style)]
         pub unsafe fn style(&self) -> Option<Id<NSDictionary>>;
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          When non-nil, a dictionary dereferenced to find property values that
+         aren't explicitly defined by the layer. (This dictionary may in turn
+         have a `style' property, forming a hierarchy of default values.)
+         If the style dictionary doesn't define a value for an attribute, the
+         +defaultValueForKey: method is called. Defaults to nil.
+
+         Note that if the dictionary or any of its ancestors are modified,
+         the values of the layer's properties are undefined until the `style'
+         property is reset.
+        */
         #[method(setStyle:)]
         pub unsafe fn setStyle(&self, style: Option<&NSDictionary>);
     }
 );
 
 extern_protocol!(
+    /**
+      Layout manager protocol.
+    */
     pub unsafe trait CALayoutManager: NSObjectProtocol {
         #[cfg(feature = "CoreAnimation_CALayer")]
         #[optional]
@@ -555,6 +1191,9 @@ extern_protocol!(
 );
 
 extern_protocol!(
+    /**
+      Action (event handler) protocol.
+    */
     pub unsafe trait CAAction {
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
         #[method(runActionForKey:object:arguments:)]
@@ -570,15 +1209,24 @@ extern_protocol!(
 );
 
 extern_methods!(
+    /**
+      NSNull protocol conformance.
+    */
     /// CAActionAdditions
     #[cfg(feature = "Foundation_NSNull")]
     unsafe impl NSNull {}
 );
 
 #[cfg(feature = "Foundation_NSNull")]
+/**
+  NSNull protocol conformance.
+*/
 unsafe impl CAAction for NSNull {}
 
 extern_protocol!(
+    /**
+      Delegate methods.
+    */
     pub unsafe trait CALayerDelegate: NSObjectProtocol {
         #[cfg(feature = "CoreAnimation_CALayer")]
         #[optional]

@@ -56,6 +56,9 @@ extern_protocol!(
 );
 
 extern_protocol!(
+    /**
+      NSColorPickingCustom MUST be implemented by the CustomPicker, or an error will occur!
+    */
     pub unsafe trait NSColorPickingCustom: NSColorPickingDefault {
         #[method(supportsMode:)]
         unsafe fn supportsMode(&self, mode: NSColorPanelMode) -> bool;

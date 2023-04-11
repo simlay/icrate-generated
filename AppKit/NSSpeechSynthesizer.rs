@@ -97,6 +97,9 @@ extern_static!(NSVoiceLanguage: &'static NSVoiceAttributeKey);
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      Values for NSSpeechBoundary
+    */
     pub enum NSSpeechBoundary {
         NSSpeechImmediateBoundary = 0,
         NSSpeechWordBoundary = 1,

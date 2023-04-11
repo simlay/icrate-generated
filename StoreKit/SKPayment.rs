@@ -32,24 +32,42 @@ extern_methods!(
         pub unsafe fn paymentWithProductIdentifier(identifier: &NSString) -> Id<Object>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Identifier agreed upon with the store.  Required.
+        */
         #[method_id(@__retain_semantics Other productIdentifier)]
         pub unsafe fn productIdentifier(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          Payment request data agreed upon with the store.  Optional.
+        */
         #[method_id(@__retain_semantics Other requestData)]
         pub unsafe fn requestData(&self) -> Option<Id<NSData>>;
 
+        /**
+          default: 1.  Must be at least 1.
+        */
         #[method(quantity)]
         pub unsafe fn quantity(&self) -> NSInteger;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Application-specific user identifier.  Optional.
+        */
         #[method_id(@__retain_semantics Other applicationUsername)]
         pub unsafe fn applicationUsername(&self) -> Option<Id<NSString>>;
 
+        /**
+          Force an "ask to buy" flow for this payment, in the sandbox
+        */
         #[method(simulatesAskToBuyInSandbox)]
         pub unsafe fn simulatesAskToBuyInSandbox(&self) -> bool;
 
         #[cfg(feature = "StoreKit_SKPaymentDiscount")]
+        /**
+          The relevant data for specifying a discount to be applied to this payment. Optional.
+        */
         #[method_id(@__retain_semantics Other paymentDiscount)]
         pub unsafe fn paymentDiscount(&self) -> Option<Id<SKPaymentDiscount>>;
     }

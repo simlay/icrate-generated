@@ -41,10 +41,16 @@ extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASAuthorizationOpenIDRequest")]
     unsafe impl ASAuthorizationOpenIDRequest {
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          @abstract The contact information to be requested from the user.  Only scopes for which this app was authorized for will be returned.
+        */
         #[method_id(@__retain_semantics Other requestedScopes)]
         pub unsafe fn requestedScopes(&self) -> Option<Id<NSArray<ASAuthorizationScope>>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          @abstract The contact information to be requested from the user.  Only scopes for which this app was authorized for will be returned.
+        */
         #[method(setRequestedScopes:)]
         pub unsafe fn setRequestedScopes(
             &self,
@@ -52,24 +58,46 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract State to be passed to the identity provider.  This value will be returned as a part of successful ASAuthorization response.
+        @note The state size may depend on the actual technology used and an error might be returned by the request execution.
+        */
         #[method_id(@__retain_semantics Other state)]
         pub unsafe fn state(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract State to be passed to the identity provider.  This value will be returned as a part of successful ASAuthorization response.
+        @note The state size may depend on the actual technology used and an error might be returned by the request execution.
+        */
         #[method(setState:)]
         pub unsafe fn setState(&self, state: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract Nonce to be passed to the identity provider.  This value can be verified with the identity token provided as a part of successful ASAuthorization response.
+        @note The nonce size may depend on the actual technology used and an error might be returned by the request execution.
+        */
         #[method_id(@__retain_semantics Other nonce)]
         pub unsafe fn nonce(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract Nonce to be passed to the identity provider.  This value can be verified with the identity token provided as a part of successful ASAuthorization response.
+        @note The nonce size may depend on the actual technology used and an error might be returned by the request execution.
+        */
         #[method(setNonce:)]
         pub unsafe fn setNonce(&self, nonce: Option<&NSString>);
 
+        /**
+          @abstract Operation to be executed by the request. The ASAuthorizationOperationImplicit operation interpretation depends on the credential provider implementation.
+        */
         #[method_id(@__retain_semantics Other requestedOperation)]
         pub unsafe fn requestedOperation(&self) -> Id<ASAuthorizationOpenIDOperation>;
 
+        /**
+          @abstract Operation to be executed by the request. The ASAuthorizationOperationImplicit operation interpretation depends on the credential provider implementation.
+        */
         #[method(setRequestedOperation:)]
         pub unsafe fn setRequestedOperation(
             &self,

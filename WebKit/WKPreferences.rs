@@ -8,6 +8,11 @@ use crate::WebKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "WebKit_WKPreferences")]
+    /**
+      A WKPreferences object encapsulates the preference settings for a web
+    view. The preferences object associated with a web view is specified by
+    its web view configuration.
+    */
     pub struct WKPreferences;
 
     #[cfg(feature = "WebKit_WKPreferences")]
@@ -17,65 +22,147 @@ extern_class!(
 );
 
 #[cfg(feature = "WebKit_WKPreferences")]
+/**
+  A WKPreferences object encapsulates the preference settings for a web
+view. The preferences object associated with a web view is specified by
+its web view configuration.
+*/
 unsafe impl NSCoding for WKPreferences {}
 
 #[cfg(feature = "WebKit_WKPreferences")]
+/**
+  A WKPreferences object encapsulates the preference settings for a web
+view. The preferences object associated with a web view is specified by
+its web view configuration.
+*/
 unsafe impl NSObjectProtocol for WKPreferences {}
 
 #[cfg(feature = "WebKit_WKPreferences")]
+/**
+  A WKPreferences object encapsulates the preference settings for a web
+view. The preferences object associated with a web view is specified by
+its web view configuration.
+*/
 unsafe impl NSSecureCoding for WKPreferences {}
 
 extern_methods!(
+    /**
+      A WKPreferences object encapsulates the preference settings for a web
+    view. The preferences object associated with a web view is specified by
+    its web view configuration.
+    */
     #[cfg(feature = "WebKit_WKPreferences")]
     unsafe impl WKPreferences {
+        /**
+          @abstract The minimum font size in points.
+        @discussion The default value is 0.
+        */
         #[method(minimumFontSize)]
         pub unsafe fn minimumFontSize(&self) -> CGFloat;
 
+        /**
+          @abstract The minimum font size in points.
+        @discussion The default value is 0.
+        */
         #[method(setMinimumFontSize:)]
         pub unsafe fn setMinimumFontSize(&self, minimum_font_size: CGFloat);
 
+        /**
+          @abstract A Boolean value indicating whether JavaScript can open
+        windows without user interaction.
+        @discussion The default value is NO in iOS and YES in OS X.
+        */
         #[method(javaScriptCanOpenWindowsAutomatically)]
         pub unsafe fn javaScriptCanOpenWindowsAutomatically(&self) -> bool;
 
+        /**
+          @abstract A Boolean value indicating whether JavaScript can open
+        windows without user interaction.
+        @discussion The default value is NO in iOS and YES in OS X.
+        */
         #[method(setJavaScriptCanOpenWindowsAutomatically:)]
         pub unsafe fn setJavaScriptCanOpenWindowsAutomatically(
             &self,
             java_script_can_open_windows_automatically: bool,
         );
 
+        /**
+          @abstract A Boolean value indicating whether warnings should be
+        shown for suspected fraudulent content such as phishing or malware.
+        @discussion The default value is YES.
+        */
         #[method(isFraudulentWebsiteWarningEnabled)]
         pub unsafe fn isFraudulentWebsiteWarningEnabled(&self) -> bool;
 
+        /**
+          @abstract A Boolean value indicating whether warnings should be
+        shown for suspected fraudulent content such as phishing or malware.
+        @discussion The default value is YES.
+        */
         #[method(setFraudulentWebsiteWarningEnabled:)]
         pub unsafe fn setFraudulentWebsiteWarningEnabled(
             &self,
             fraudulent_website_warning_enabled: bool,
         );
 
+        /**
+         @property tabFocusesLinks
+        @abstract If tabFocusesLinks is YES, the tab key will focus links and form controls.
+        The Option key temporarily reverses this preference.
+        */
         #[method(tabFocusesLinks)]
         pub unsafe fn tabFocusesLinks(&self) -> bool;
 
+        /**
+         @property tabFocusesLinks
+        @abstract If tabFocusesLinks is YES, the tab key will focus links and form controls.
+        The Option key temporarily reverses this preference.
+        */
         #[method(setTabFocusesLinks:)]
         pub unsafe fn setTabFocusesLinks(&self, tab_focuses_links: bool);
 
+        /**
+          @abstract A Boolean value indicating whether text interaction is disabled.
+        */
         #[method(isTextInteractionEnabled)]
         pub unsafe fn isTextInteractionEnabled(&self) -> bool;
 
+        /**
+          @abstract A Boolean value indicating whether text interaction is disabled.
+        */
         #[method(setTextInteractionEnabled:)]
         pub unsafe fn setTextInteractionEnabled(&self, text_interaction_enabled: bool);
 
+        /**
+          @abstract A Boolean value indicating whether WebKit will apply built-in workarounds (quirks)
+        to improve compatibility with certain known websites. You can disable site-specific quirks
+        to help test your website without these workarounds. Enabled by default.
+        */
         #[method(isSiteSpecificQuirksModeEnabled)]
         pub unsafe fn isSiteSpecificQuirksModeEnabled(&self) -> bool;
 
+        /**
+          @abstract A Boolean value indicating whether WebKit will apply built-in workarounds (quirks)
+        to improve compatibility with certain known websites. You can disable site-specific quirks
+        to help test your website without these workarounds. Enabled by default.
+        */
         #[method(setSiteSpecificQuirksModeEnabled:)]
         pub unsafe fn setSiteSpecificQuirksModeEnabled(
             &self,
             site_specific_quirks_mode_enabled: bool,
         );
 
+        /**
+          @abstract A Boolean value indicating whether Fullscreen API is enabled.
+        @discussion The default value is NO. We can set it to YES to enable support for the fullscreen API.
+        */
         #[method(isElementFullscreenEnabled)]
         pub unsafe fn isElementFullscreenEnabled(&self) -> bool;
 
+        /**
+          @abstract A Boolean value indicating whether Fullscreen API is enabled.
+        @discussion The default value is NO. We can set it to YES to enable support for the fullscreen API.
+        */
         #[method(setElementFullscreenEnabled:)]
         pub unsafe fn setElementFullscreenEnabled(&self, element_fullscreen_enabled: bool);
     }

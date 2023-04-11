@@ -10,6 +10,24 @@ use crate::MapKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "EventKit_EKRecurrenceEnd")]
+    /**
+     @class      EKRecurrenceEnd
+    @abstract   Class which represents when a recurrence should end.
+    @discussion EKRecurrenceEnd is an attribute of EKRecurrenceRule that defines how long
+    the recurrence is scheduled to repeat. The recurrence can be defined either
+    with an NSUInteger that indicates the total number times it repeats, or with
+    an NSDate, after which it no longer repeats. An event which is set to never
+    end should have its EKRecurrenceEnd set to nil.
+
+    If the end of the pattern is defines with an NSDate, the client must pass a
+    valid NSDate, nil cannot be passed. If the end of the pattern is defined as
+    terms of a number of occurrences, the occurrenceCount passed to the initializer
+    must be positive, it cannot be 0. If the client attempts to initialize a
+    EKRecurrenceEnd with a nil NSDate or OccurrenceCount of 0, an exception is raised.
+
+    A EKRecurrenceEnd initialized with an end date will return 0 for occurrenceCount.
+    One initialized with a number of occurrences will return nil for its endDate.
+    */
     pub struct EKRecurrenceEnd;
 
     #[cfg(feature = "EventKit_EKRecurrenceEnd")]
@@ -19,15 +37,87 @@ extern_class!(
 );
 
 #[cfg(feature = "EventKit_EKRecurrenceEnd")]
+/**
+ @class      EKRecurrenceEnd
+@abstract   Class which represents when a recurrence should end.
+@discussion EKRecurrenceEnd is an attribute of EKRecurrenceRule that defines how long
+the recurrence is scheduled to repeat. The recurrence can be defined either
+with an NSUInteger that indicates the total number times it repeats, or with
+an NSDate, after which it no longer repeats. An event which is set to never
+end should have its EKRecurrenceEnd set to nil.
+
+If the end of the pattern is defines with an NSDate, the client must pass a
+valid NSDate, nil cannot be passed. If the end of the pattern is defined as
+terms of a number of occurrences, the occurrenceCount passed to the initializer
+must be positive, it cannot be 0. If the client attempts to initialize a
+EKRecurrenceEnd with a nil NSDate or OccurrenceCount of 0, an exception is raised.
+
+A EKRecurrenceEnd initialized with an end date will return 0 for occurrenceCount.
+One initialized with a number of occurrences will return nil for its endDate.
+*/
 unsafe impl NSCoding for EKRecurrenceEnd {}
 
 #[cfg(feature = "EventKit_EKRecurrenceEnd")]
+/**
+ @class      EKRecurrenceEnd
+@abstract   Class which represents when a recurrence should end.
+@discussion EKRecurrenceEnd is an attribute of EKRecurrenceRule that defines how long
+the recurrence is scheduled to repeat. The recurrence can be defined either
+with an NSUInteger that indicates the total number times it repeats, or with
+an NSDate, after which it no longer repeats. An event which is set to never
+end should have its EKRecurrenceEnd set to nil.
+
+If the end of the pattern is defines with an NSDate, the client must pass a
+valid NSDate, nil cannot be passed. If the end of the pattern is defined as
+terms of a number of occurrences, the occurrenceCount passed to the initializer
+must be positive, it cannot be 0. If the client attempts to initialize a
+EKRecurrenceEnd with a nil NSDate or OccurrenceCount of 0, an exception is raised.
+
+A EKRecurrenceEnd initialized with an end date will return 0 for occurrenceCount.
+One initialized with a number of occurrences will return nil for its endDate.
+*/
 unsafe impl NSObjectProtocol for EKRecurrenceEnd {}
 
 #[cfg(feature = "EventKit_EKRecurrenceEnd")]
+/**
+ @class      EKRecurrenceEnd
+@abstract   Class which represents when a recurrence should end.
+@discussion EKRecurrenceEnd is an attribute of EKRecurrenceRule that defines how long
+the recurrence is scheduled to repeat. The recurrence can be defined either
+with an NSUInteger that indicates the total number times it repeats, or with
+an NSDate, after which it no longer repeats. An event which is set to never
+end should have its EKRecurrenceEnd set to nil.
+
+If the end of the pattern is defines with an NSDate, the client must pass a
+valid NSDate, nil cannot be passed. If the end of the pattern is defined as
+terms of a number of occurrences, the occurrenceCount passed to the initializer
+must be positive, it cannot be 0. If the client attempts to initialize a
+EKRecurrenceEnd with a nil NSDate or OccurrenceCount of 0, an exception is raised.
+
+A EKRecurrenceEnd initialized with an end date will return 0 for occurrenceCount.
+One initialized with a number of occurrences will return nil for its endDate.
+*/
 unsafe impl NSSecureCoding for EKRecurrenceEnd {}
 
 extern_methods!(
+    /**
+     @class      EKRecurrenceEnd
+    @abstract   Class which represents when a recurrence should end.
+    @discussion EKRecurrenceEnd is an attribute of EKRecurrenceRule that defines how long
+    the recurrence is scheduled to repeat. The recurrence can be defined either
+    with an NSUInteger that indicates the total number times it repeats, or with
+    an NSDate, after which it no longer repeats. An event which is set to never
+    end should have its EKRecurrenceEnd set to nil.
+
+    If the end of the pattern is defines with an NSDate, the client must pass a
+    valid NSDate, nil cannot be passed. If the end of the pattern is defined as
+    terms of a number of occurrences, the occurrenceCount passed to the initializer
+    must be positive, it cannot be 0. If the client attempts to initialize a
+    EKRecurrenceEnd with a nil NSDate or OccurrenceCount of 0, an exception is raised.
+
+    A EKRecurrenceEnd initialized with an end date will return 0 for occurrenceCount.
+    One initialized with a number of occurrences will return nil for its endDate.
+    */
     #[cfg(feature = "EventKit_EKRecurrenceEnd")]
     unsafe impl EKRecurrenceEnd {
         #[cfg(feature = "Foundation_NSDate")]
@@ -38,9 +128,17 @@ extern_methods!(
         pub unsafe fn recurrenceEndWithOccurrenceCount(occurrence_count: NSUInteger) -> Id<Self>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+         @property   endDate
+        @abstract   The end date of this recurrence, or nil if it's count-based.
+        */
         #[method_id(@__retain_semantics Other endDate)]
         pub unsafe fn endDate(&self) -> Option<Id<NSDate>>;
 
+        /**
+         @property   occurrenceCount
+        @abstract   The maximum occurrence count, or 0 if it's date-based.
+        */
         #[method(occurrenceCount)]
         pub unsafe fn occurrenceCount(&self) -> NSUInteger;
     }

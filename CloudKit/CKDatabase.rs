@@ -47,6 +47,13 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      @abstract Convenience APIs
+
+      @discussion These calls operate on a single item in the default zone and allow for simple operations.
+      If you'd like to batch your requests, add dependencies between requests, set priorities, or schedule operations on your own queue, take a look at the corresponding @c CKOperation.
+      This work is treated as having @c NSQualityOfServiceUserInitiated quality of service.
+    */
     /// ConvenienceMethods
     #[cfg(feature = "CloudKit_CKDatabase")]
     unsafe impl CKDatabase {

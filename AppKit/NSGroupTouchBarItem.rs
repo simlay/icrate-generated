@@ -50,43 +50,88 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "AppKit_NSTouchBar")]
+        /**
+         An NSTouchBar, presented seamlessly as part of the NSTouchBar this item is hosted in.
+        The NSTouchBar may have its own principal item, and can be customized (or not) per the normal customization rules.
+        By default this is an empty bar that cannot be customized. This property is archived.
+        */
         #[method_id(@__retain_semantics Other groupTouchBar)]
         pub unsafe fn groupTouchBar(&self) -> Id<NSTouchBar>;
 
         #[cfg(feature = "AppKit_NSTouchBar")]
+        /**
+         An NSTouchBar, presented seamlessly as part of the NSTouchBar this item is hosted in.
+        The NSTouchBar may have its own principal item, and can be customized (or not) per the normal customization rules.
+        By default this is an empty bar that cannot be customized. This property is archived.
+        */
         #[method(setGroupTouchBar:)]
         pub unsafe fn setGroupTouchBar(&self, group_touch_bar: &NSTouchBar);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         The localized string labelling this item during user customization. The default value is the empty string. This property is archived.
+        */
         #[method_id(@__retain_semantics Other customizationLabel)]
         pub unsafe fn customizationLabel(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         The localized string labelling this item during user customization. The default value is the empty string. This property is archived.
+        */
         #[method(setCustomizationLabel:)]
         pub unsafe fn setCustomizationLabel(&self, customization_label: Option<&NSString>);
 
+        /**
+         Get and set the user interface layout direction of the groupTouchBar, which defines the order in which the items should be laid out.
+        By default, this value is NSUserInterfaceLayoutDirectionLeftToRight.
+        To flip the layout direction of the group to the user’s preferred layout, this should be set to [NSApp userInterfaceLayoutDirection].
+        */
         #[method(groupUserInterfaceLayoutDirection)]
         pub unsafe fn groupUserInterfaceLayoutDirection(&self) -> NSUserInterfaceLayoutDirection;
 
+        /**
+         Get and set the user interface layout direction of the groupTouchBar, which defines the order in which the items should be laid out.
+        By default, this value is NSUserInterfaceLayoutDirectionLeftToRight.
+        To flip the layout direction of the group to the user’s preferred layout, this should be set to [NSApp userInterfaceLayoutDirection].
+        */
         #[method(setGroupUserInterfaceLayoutDirection:)]
         pub unsafe fn setGroupUserInterfaceLayoutDirection(
             &self,
             group_user_interface_layout_direction: NSUserInterfaceLayoutDirection,
         );
 
+        /**
+         When set, items in the associated groupTouchBar will be sized to have equal widths when possible.
+        Defaults to NO.
+        */
         #[method(prefersEqualWidths)]
         pub unsafe fn prefersEqualWidths(&self) -> bool;
 
+        /**
+         When set, items in the associated groupTouchBar will be sized to have equal widths when possible.
+        Defaults to NO.
+        */
         #[method(setPrefersEqualWidths:)]
         pub unsafe fn setPrefersEqualWidths(&self, prefers_equal_widths: bool);
 
+        /**
+         The preferred width for items in the group when prefersEqualWidths is YES. This is the width that items will be set to if they fit, and the item doesn't clip.
+        Optional; ignored if <0. Defaults to -1.
+        */
         #[method(preferredItemWidth)]
         pub unsafe fn preferredItemWidth(&self) -> CGFloat;
 
+        /**
+         The preferred width for items in the group when prefersEqualWidths is YES. This is the width that items will be set to if they fit, and the item doesn't clip.
+        Optional; ignored if <0. Defaults to -1.
+        */
         #[method(setPreferredItemWidth:)]
         pub unsafe fn setPreferredItemWidth(&self, preferred_item_width: CGFloat);
 
         #[cfg(feature = "AppKit_NSUserInterfaceCompressionOptions")]
+        /**
+         The currently active NSUserInterfaceCompressionOptions on the group.
+        */
         #[method_id(@__retain_semantics Other effectiveCompressionOptions)]
         pub unsafe fn effectiveCompressionOptions(&self) -> Id<NSUserInterfaceCompressionOptions>;
 
@@ -94,6 +139,12 @@ extern_methods!(
             feature = "AppKit_NSUserInterfaceCompressionOptions",
             feature = "Foundation_NSArray"
         ))]
+        /**
+         The allowed compression options in the order they will be exercised.
+        Client defined options should be added to specify the order in which they will be exercised.
+        Options not included will be ignored.
+        Defaults to an array containing all standard AppKit options in the order AppKit defines.
+        */
         #[method_id(@__retain_semantics Other prioritizedCompressionOptions)]
         pub unsafe fn prioritizedCompressionOptions(
             &self,
@@ -103,6 +154,12 @@ extern_methods!(
             feature = "AppKit_NSUserInterfaceCompressionOptions",
             feature = "Foundation_NSArray"
         ))]
+        /**
+         The allowed compression options in the order they will be exercised.
+        Client defined options should be added to specify the order in which they will be exercised.
+        Options not included will be ignored.
+        Defaults to an array containing all standard AppKit options in the order AppKit defines.
+        */
         #[method(setPrioritizedCompressionOptions:)]
         pub unsafe fn setPrioritizedCompressionOptions(
             &self,

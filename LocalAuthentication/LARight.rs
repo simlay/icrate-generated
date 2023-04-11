@@ -6,6 +6,9 @@ use crate::LocalAuthentication::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      @brief Each of the different states of a right
+    */
     pub enum LARightState {
         LARightStateUnknown = 0,
         LARightStateAuthorizing = 1,
@@ -17,6 +20,9 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "LocalAuthentication_LARight")]
+    /**
+      @brief Groups a set of requirements that need to be satisfied in order to grant access to certain resource or operation
+    */
     pub struct LARight;
 
     #[cfg(feature = "LocalAuthentication_LARight")]
@@ -26,17 +32,32 @@ extern_class!(
 );
 
 #[cfg(feature = "LocalAuthentication_LARight")]
+/**
+  @brief Groups a set of requirements that need to be satisfied in order to grant access to certain resource or operation
+*/
 unsafe impl NSObjectProtocol for LARight {}
 
 extern_methods!(
+    /**
+      @brief Groups a set of requirements that need to be satisfied in order to grant access to certain resource or operation
+    */
     #[cfg(feature = "LocalAuthentication_LARight")]
     unsafe impl LARight {
+        /**
+          @brief Provides the current authorization state of the @c LARight instance
+        */
         #[method(state)]
         pub unsafe fn state(&self) -> LARightState;
 
+        /**
+          @brief An application-supplied integer that can be used to identify right intances. The default value is @c 0.
+        */
         #[method(tag)]
         pub unsafe fn tag(&self) -> NSInteger;
 
+        /**
+          @brief An application-supplied integer that can be used to identify right intances. The default value is @c 0.
+        */
         #[method(setTag:)]
         pub unsafe fn setTag(&self, tag: NSInteger);
 

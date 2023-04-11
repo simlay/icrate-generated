@@ -7,6 +7,12 @@ use crate::MetricKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MetricKit_MXHangDiagnostic")]
+    /**
+     @class         MXHangDiagnostic
+    @abstract      An MXDiagnostic subclass that encapsulates hang diagnostic reports.
+    @discussion    Applications are considered to be "hanging" when they are unable to handle user input responsively.
+    @discussion    This generally occurs when your applications main thread is blocked.
+    */
     pub struct MXHangDiagnostic;
 
     #[cfg(feature = "MetricKit_MXHangDiagnostic")]
@@ -17,18 +23,46 @@ extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXHangDiagnostic")]
+/**
+ @class         MXHangDiagnostic
+@abstract      An MXDiagnostic subclass that encapsulates hang diagnostic reports.
+@discussion    Applications are considered to be "hanging" when they are unable to handle user input responsively.
+@discussion    This generally occurs when your applications main thread is blocked.
+*/
 unsafe impl NSCoding for MXHangDiagnostic {}
 
 #[cfg(feature = "MetricKit_MXHangDiagnostic")]
+/**
+ @class         MXHangDiagnostic
+@abstract      An MXDiagnostic subclass that encapsulates hang diagnostic reports.
+@discussion    Applications are considered to be "hanging" when they are unable to handle user input responsively.
+@discussion    This generally occurs when your applications main thread is blocked.
+*/
 unsafe impl NSObjectProtocol for MXHangDiagnostic {}
 
 #[cfg(feature = "MetricKit_MXHangDiagnostic")]
+/**
+ @class         MXHangDiagnostic
+@abstract      An MXDiagnostic subclass that encapsulates hang diagnostic reports.
+@discussion    Applications are considered to be "hanging" when they are unable to handle user input responsively.
+@discussion    This generally occurs when your applications main thread is blocked.
+*/
 unsafe impl NSSecureCoding for MXHangDiagnostic {}
 
 extern_methods!(
+    /**
+     @class         MXHangDiagnostic
+    @abstract      An MXDiagnostic subclass that encapsulates hang diagnostic reports.
+    @discussion    Applications are considered to be "hanging" when they are unable to handle user input responsively.
+    @discussion    This generally occurs when your applications main thread is blocked.
+    */
     #[cfg(feature = "MetricKit_MXHangDiagnostic")]
     unsafe impl MXHangDiagnostic {
         #[cfg(feature = "MetricKit_MXCallStackTree")]
+        /**
+         @property      callStackTree
+        @abstract      The application call stack tree associated with the hang.
+        */
         #[method_id(@__retain_semantics Other callStackTree)]
         pub unsafe fn callStackTree(&self) -> Id<MXCallStackTree>;
 
@@ -36,6 +70,11 @@ extern_methods!(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"
         ))]
+        /**
+         @property      hangDuration
+        @abstract      Total hang duration for this diagnostic.
+        @discussion    Dimensioned as NSUnitDuration.
+        */
         #[method_id(@__retain_semantics Other hangDuration)]
         pub unsafe fn hangDuration(&self) -> Id<NSMeasurement<NSUnitDuration>>;
     }

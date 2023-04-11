@@ -7,6 +7,9 @@ use crate::IdentityLookup::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "IdentityLookup_ILMessageFilterCapabilitiesQueryRequest")]
+    /**
+      A request to query a MessageFilter extension about how to interpret a received message.
+    */
     pub struct ILMessageFilterCapabilitiesQueryRequest;
 
     #[cfg(feature = "IdentityLookup_ILMessageFilterCapabilitiesQueryRequest")]
@@ -16,15 +19,27 @@ extern_class!(
 );
 
 #[cfg(feature = "IdentityLookup_ILMessageFilterCapabilitiesQueryRequest")]
+/**
+  A request to query a MessageFilter extension about how to interpret a received message.
+*/
 unsafe impl NSCoding for ILMessageFilterCapabilitiesQueryRequest {}
 
 #[cfg(feature = "IdentityLookup_ILMessageFilterCapabilitiesQueryRequest")]
+/**
+  A request to query a MessageFilter extension about how to interpret a received message.
+*/
 unsafe impl NSObjectProtocol for ILMessageFilterCapabilitiesQueryRequest {}
 
 #[cfg(feature = "IdentityLookup_ILMessageFilterCapabilitiesQueryRequest")]
+/**
+  A request to query a MessageFilter extension about how to interpret a received message.
+*/
 unsafe impl NSSecureCoding for ILMessageFilterCapabilitiesQueryRequest {}
 
 extern_methods!(
+    /**
+      A request to query a MessageFilter extension about how to interpret a received message.
+    */
     #[cfg(feature = "IdentityLookup_ILMessageFilterCapabilitiesQueryRequest")]
     unsafe impl ILMessageFilterCapabilitiesQueryRequest {
         #[method_id(@__retain_semantics Init init)]

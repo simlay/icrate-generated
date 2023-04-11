@@ -53,26 +53,44 @@ extern_methods!(
         pub unsafe fn performFetch(&self) -> Result<(), Id<NSError>>;
 
         #[cfg(feature = "CoreData_NSFetchRequest")]
+        /**
+          NSFetchRequest instance used to do the fetching. You must not change it, its predicate, or its sort descriptor after initialization without disabling caching or calling +deleteCacheWithName.  The sort descriptor used in the request groups objects into sections.
+        */
         #[method_id(@__retain_semantics Other fetchRequest)]
         pub unsafe fn fetchRequest(&self) -> Id<NSFetchRequest<ResultType>>;
 
         #[cfg(feature = "CoreData_NSManagedObjectContext")]
+        /**
+          Managed Object Context used to fetch objects. The controller registers to listen to change notifications on this context and properly update its result set and section information.
+        */
         #[method_id(@__retain_semantics Other managedObjectContext)]
         pub unsafe fn managedObjectContext(&self) -> Id<NSManagedObjectContext>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The keyPath on the fetched objects used to determine the section they belong to.
+        */
         #[method_id(@__retain_semantics Other sectionNameKeyPath)]
         pub unsafe fn sectionNameKeyPath(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Name of the persistent cached section information. Use nil to disable persistent caching, or +deleteCacheWithName to clear a cache.
+        */
         #[method_id(@__retain_semantics Other cacheName)]
         pub unsafe fn cacheName(&self) -> Option<Id<NSString>>;
 
+        /**
+          Delegate that is notified when the result set changes.
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(
             &self,
         ) -> Option<Id<ProtocolObject<dyn NSFetchedResultsControllerDelegate>>>;
 
+        /**
+          Delegate that is notified when the result set changes.
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
@@ -84,6 +102,10 @@ extern_methods!(
         pub unsafe fn deleteCacheWithName(name: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Returns the results of the fetch.
+        Returns nil if the performFetch: hasn't been called.
+        */
         #[method_id(@__retain_semantics Other fetchedObjects)]
         pub unsafe fn fetchedObjects(&self) -> Option<Id<NSArray<ResultType>>>;
 
@@ -106,10 +128,20 @@ extern_methods!(
         ) -> Option<Id<NSString>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          Returns the array of section index titles.
+        Default implementation returns the array created by calling sectionIndexTitleForSectionName: on all the known sections.
+        Developers should override this method if they wish to return a different array for the section index.
+        Only needed if a section index is used.
+        */
         #[method_id(@__retain_semantics Other sectionIndexTitles)]
         pub unsafe fn sectionIndexTitles(&self) -> Id<NSArray<NSString>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Returns an array of objects that implement the NSFetchedResultsSectionInfo protocol.
+        This provide a convenience interface for determining the number of sections, the names and titles of the sections, and access to the model objects that belong to each section.
+        */
         #[method_id(@__retain_semantics Other sections)]
         pub unsafe fn sections(
             &self,
@@ -126,19 +158,34 @@ extern_methods!(
 );
 
 extern_protocol!(
+    /**
+      ================== PROTOCOLS ==================
+    */
     pub unsafe trait NSFetchedResultsSectionInfo {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Name of the section
+        */
         #[method_id(@__retain_semantics Other name)]
         unsafe fn name(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Title of the section (used when displaying the index)
+        */
         #[method_id(@__retain_semantics Other indexTitle)]
         unsafe fn indexTitle(&self) -> Option<Id<NSString>>;
 
+        /**
+          Number of objects in section
+        */
         #[method(numberOfObjects)]
         unsafe fn numberOfObjects(&self) -> NSUInteger;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Returns the array of objects in the section.
+        */
         #[method_id(@__retain_semantics Other objects)]
         unsafe fn objects(&self) -> Option<Id<NSArray>>;
     }

@@ -17,6 +17,11 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNContainer")]
+    /**
+      @abstract An immutable value object representing a container.
+
+     @discussion CNContainer is thread safe.
+    */
     pub struct CNContainer;
 
     #[cfg(feature = "Contacts_CNContainer")]
@@ -26,18 +31,41 @@ extern_class!(
 );
 
 #[cfg(feature = "Contacts_CNContainer")]
+/**
+  @abstract An immutable value object representing a container.
+
+ @discussion CNContainer is thread safe.
+*/
 unsafe impl NSCoding for CNContainer {}
 
 #[cfg(feature = "Contacts_CNContainer")]
+/**
+  @abstract An immutable value object representing a container.
+
+ @discussion CNContainer is thread safe.
+*/
 unsafe impl NSObjectProtocol for CNContainer {}
 
 #[cfg(feature = "Contacts_CNContainer")]
+/**
+  @abstract An immutable value object representing a container.
+
+ @discussion CNContainer is thread safe.
+*/
 unsafe impl NSSecureCoding for CNContainer {}
 
 extern_methods!(
+    /**
+      @abstract An immutable value object representing a container.
+
+     @discussion CNContainer is thread safe.
+    */
     #[cfg(feature = "Contacts_CNContainer")]
     unsafe impl CNContainer {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The identifier is unique among containers on the device. It can be saved and used for fetching containers next application launch.
+        */
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Id<NSString>;
 

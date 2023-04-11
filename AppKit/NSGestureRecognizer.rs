@@ -64,80 +64,138 @@ extern_methods!(
         #[method(setAction:)]
         pub unsafe fn setAction(&self, action: Option<Sel>);
 
+        /**
+          the gesture recognizer's delegate
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(
             &self,
         ) -> Option<Id<ProtocolObject<dyn NSGestureRecognizerDelegate>>>;
 
+        /**
+          the gesture recognizer's delegate
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
             delegate: Option<&ProtocolObject<dyn NSGestureRecognizerDelegate>>,
         );
 
+        /**
+          default is YES. disabled gesture recognizers will not receive events. when changed to NO the gesture recognizer will be cancelled if it's currently recognizing a gesture
+        */
         #[method(isEnabled)]
         pub unsafe fn isEnabled(&self) -> bool;
 
+        /**
+          default is YES. disabled gesture recognizers will not receive events. when changed to NO the gesture recognizer will be cancelled if it's currently recognizing a gesture
+        */
         #[method(setEnabled:)]
         pub unsafe fn setEnabled(&self, enabled: bool);
 
         #[cfg(feature = "AppKit_NSView")]
+        /**
+          an NSGestureRecognizer receives events hit-tested to its view and any of that view's subviews
+        the view the gesture is attached to. set by adding the recognizer to a NSView using the addGestureRecognizer: method
+        */
         #[method_id(@__retain_semantics Other view)]
         pub unsafe fn view(&self) -> Option<Id<NSView>>;
 
         #[cfg(feature = "AppKit_NSPressureConfiguration")]
+        /**
+          The pressure configuration the view should use when this recognizer is eligible for recognition. At any point in time during recognition the view's effective pressure configuration will be the most compatible configuration among the set of active recognizers. This property may be set at any time before or during recognition. If recognition fails, the effective configuration will revert to the view's -pressureConfiguration.
+        */
         #[method_id(@__retain_semantics Other pressureConfiguration)]
         pub unsafe fn pressureConfiguration(&self) -> Id<NSPressureConfiguration>;
 
         #[cfg(feature = "AppKit_NSPressureConfiguration")]
+        /**
+          The pressure configuration the view should use when this recognizer is eligible for recognition. At any point in time during recognition the view's effective pressure configuration will be the most compatible configuration among the set of active recognizers. This property may be set at any time before or during recognition. If recognition fails, the effective configuration will revert to the view's -pressureConfiguration.
+        */
         #[method(setPressureConfiguration:)]
         pub unsafe fn setPressureConfiguration(
             &self,
             pressure_configuration: &NSPressureConfiguration,
         );
 
+        /**
+          default is NO.
+        */
         #[method(delaysPrimaryMouseButtonEvents)]
         pub unsafe fn delaysPrimaryMouseButtonEvents(&self) -> bool;
 
+        /**
+          default is NO.
+        */
         #[method(setDelaysPrimaryMouseButtonEvents:)]
         pub unsafe fn setDelaysPrimaryMouseButtonEvents(
             &self,
             delays_primary_mouse_button_events: bool,
         );
 
+        /**
+          default is NO.
+        */
         #[method(delaysSecondaryMouseButtonEvents)]
         pub unsafe fn delaysSecondaryMouseButtonEvents(&self) -> bool;
 
+        /**
+          default is NO.
+        */
         #[method(setDelaysSecondaryMouseButtonEvents:)]
         pub unsafe fn setDelaysSecondaryMouseButtonEvents(
             &self,
             delays_secondary_mouse_button_events: bool,
         );
 
+        /**
+          default is NO.
+        */
         #[method(delaysOtherMouseButtonEvents)]
         pub unsafe fn delaysOtherMouseButtonEvents(&self) -> bool;
 
+        /**
+          default is NO.
+        */
         #[method(setDelaysOtherMouseButtonEvents:)]
         pub unsafe fn setDelaysOtherMouseButtonEvents(
             &self,
             delays_other_mouse_button_events: bool,
         );
 
+        /**
+          default is NO.
+        */
         #[method(delaysKeyEvents)]
         pub unsafe fn delaysKeyEvents(&self) -> bool;
 
+        /**
+          default is NO.
+        */
         #[method(setDelaysKeyEvents:)]
         pub unsafe fn setDelaysKeyEvents(&self, delays_key_events: bool);
 
+        /**
+          default is NO.
+        */
         #[method(delaysMagnificationEvents)]
         pub unsafe fn delaysMagnificationEvents(&self) -> bool;
 
+        /**
+          default is NO.
+        */
         #[method(setDelaysMagnificationEvents:)]
         pub unsafe fn setDelaysMagnificationEvents(&self, delays_magnification_events: bool);
 
+        /**
+          default is NO.
+        */
         #[method(delaysRotationEvents)]
         pub unsafe fn delaysRotationEvents(&self) -> bool;
 
+        /**
+          default is NO.
+        */
         #[method(setDelaysRotationEvents:)]
         pub unsafe fn setDelaysRotationEvents(&self, delays_rotation_events: bool);
 
@@ -151,9 +209,15 @@ extern_methods!(
     /// NSTouchBar
     #[cfg(feature = "AppKit_NSGestureRecognizer")]
     unsafe impl NSGestureRecognizer {
+        /**
+          Currently, only NSTouchTypeDirect is supported. Defaults to 0
+        */
         #[method(allowedTouchTypes)]
         pub unsafe fn allowedTouchTypes(&self) -> NSTouchTypeMask;
 
+        /**
+          Currently, only NSTouchTypeDirect is supported. Defaults to 0
+        */
         #[method(setAllowedTouchTypes:)]
         pub unsafe fn setAllowedTouchTypes(&self, allowed_touch_types: NSTouchTypeMask);
     }
@@ -219,9 +283,16 @@ extern_protocol!(
 );
 
 extern_methods!(
+    /**
+      the extensions in this header are to be used only by subclasses of NSGestureRecognizer
+     code that uses NSGestureRecognizers must never call these
+    */
     /// NSSubclassUse
     #[cfg(feature = "AppKit_NSGestureRecognizer")]
     unsafe impl NSGestureRecognizer {
+        /**
+          the current state of the gesture recognizer. can only be set by subclasses of NSGestureRecognizer, but can be read by consumers
+        */
         #[method(setState:)]
         pub unsafe fn setState(&self, state: NSGestureRecognizerState);
 

@@ -73,23 +73,38 @@ extern_methods!(
         pub unsafe fn textList(&self) -> Id<NSTextList>;
 
         #[cfg(feature = "Foundation_NSAttributedString")]
+        /**
+          The text list element contents without markers and formatting.
+        */
         #[method_id(@__retain_semantics Other contents)]
         pub unsafe fn contents(&self) -> Option<Id<NSAttributedString>>;
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          Attributes defining the text formatting of marker string inside attributedString.
+        */
         #[method_id(@__retain_semantics Other markerAttributes)]
         pub unsafe fn markerAttributes(
             &self,
         ) -> Option<Id<NSDictionary<NSAttributedStringKey, Object>>>;
 
         #[cfg(feature = "Foundation_NSAttributedString")]
+        /**
+          The contents intended to be displayed. Derived from contents/textList configured with the text list element's position inside the tree. It is overriding its superclass implementation, NSTextParagraph.attributedString
+        */
         #[method_id(@__retain_semantics Other attributedString)]
         pub unsafe fn attributedString(&self) -> Id<NSAttributedString>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          NSTextListElement has children of the same type.
+        */
         #[method_id(@__retain_semantics Other childElements)]
         pub unsafe fn childElements(&self) -> Id<NSArray<NSTextListElement>>;
 
+        /**
+          NSTextListElement has the parent of the same type.
+        */
         #[method_id(@__retain_semantics Other parentElement)]
         pub unsafe fn parentElement(&self) -> Option<Id<NSTextListElement>>;
     }

@@ -83,7 +83,7 @@ extern_static!(NSAppKitVersionNumber10_11_3: NSAppKitVersion = 1404.34);
 
 extern_static!(NSAppKitVersionNumber10_12: NSAppKitVersion = 1504);
 
-extern_static!(NSAppKitVersionNumber10_12_1: NSAppKitVersion = 1504.6);
+extern_static!(NSAppKitVersionNumber10_12_1: NSAppKitVersion = 1504.60);
 
 extern_static!(NSAppKitVersionNumber10_12_2: NSAppKitVersion = 1504.76);
 
@@ -131,24 +131,6 @@ extern_static!(NSAppKitVersionNumber11_3: NSAppKitVersion = 2022.4);
 
 extern_static!(NSAppKitVersionNumber11_4: NSAppKitVersion = 2022.5);
 
-extern_static!(NSAppKitVersionNumber11_5: NSAppKitVersion = 2022.6);
-
-extern_static!(NSAppKitVersionNumber12_0: NSAppKitVersion = 2113);
-
-extern_static!(NSAppKitVersionNumber12_1: NSAppKitVersion = 2113.2);
-
-extern_static!(NSAppKitVersionNumber12_2: NSAppKitVersion = 2113.3);
-
-extern_static!(NSAppKitVersionNumber12_3: NSAppKitVersion = 2113.4);
-
-extern_static!(NSAppKitVersionNumber12_4: NSAppKitVersion = 2113.5);
-
-extern_static!(NSAppKitVersionNumber12_5: NSAppKitVersion = 2113.6);
-
-extern_static!(NSAppKitVersionNumber13_0: NSAppKitVersion = 2299);
-
-extern_static!(NSAppKitVersionNumber13_1: NSAppKitVersion = 2299.3);
-
 extern_static!(NSModalPanelRunLoopMode: &'static NSRunLoopMode);
 
 extern_static!(NSEventTrackingRunLoopMode: &'static NSRunLoopMode);
@@ -165,6 +147,9 @@ extern_static!(NSModalResponseContinue: NSModalResponse = -1002);
 
 extern_enum!(
     #[underlying(c_uint)]
+    /**
+      used with NSRunLoop's performSelector:target:argument:order:modes:
+    */
     pub enum __anonymous__ {
         NSUpdateWindowsRunLoopOrdering = 500000,
     }
@@ -390,10 +375,16 @@ extern_methods!(
         pub unsafe fn setMainMenu(&self, main_menu: Option<&NSMenu>);
 
         #[cfg(feature = "AppKit_NSMenu")]
+        /**
+          Set or get the Help menu for the app.  If a non-nil menu is set as the Help menu, Spotlight for Help will be installed in it; otherwise AppKit will install Spotlight for Help into a menu of its choosing (and that menu is not returned from -helpMenu).  If you wish to completely suppress Spotlight for Help, you can set a menu that does not appear in the menu bar.  NSApplication retains its Help menu and releases it when a different menu is set.
+        */
         #[method_id(@__retain_semantics Other helpMenu)]
         pub unsafe fn helpMenu(&self) -> Option<Id<NSMenu>>;
 
         #[cfg(feature = "AppKit_NSMenu")]
+        /**
+          Set or get the Help menu for the app.  If a non-nil menu is set as the Help menu, Spotlight for Help will be installed in it; otherwise AppKit will install Spotlight for Help into a menu of its choosing (and that menu is not returned from -helpMenu).  If you wish to completely suppress Spotlight for Help, you can set a menu that does not appear in the menu bar.  NSApplication retains its Help menu and releases it when a different menu is set.
+        */
         #[method(setHelpMenu:)]
         pub unsafe fn setHelpMenu(&self, help_menu: Option<&NSMenu>);
 
@@ -438,15 +429,24 @@ extern_methods!(
         #[method(orderFrontCharacterPalette:)]
         pub unsafe fn orderFrontCharacterPalette(&self, sender: Option<&Object>);
 
+        /**
+          Gets or sets the presentationOptions that should be in effect for the system when this application is the active application.  Only certain combinations of NSApplicationPresentationOptions flags are allowed, as detailed in the AppKit Release Notes and the reference documentation for -setPresentationOptions:.  When given an invalid combination of option flags, -setPresentationOptions: raises an exception.
+        */
         #[method(presentationOptions)]
         pub unsafe fn presentationOptions(&self) -> NSApplicationPresentationOptions;
 
+        /**
+          Gets or sets the presentationOptions that should be in effect for the system when this application is the active application.  Only certain combinations of NSApplicationPresentationOptions flags are allowed, as detailed in the AppKit Release Notes and the reference documentation for -setPresentationOptions:.  When given an invalid combination of option flags, -setPresentationOptions: raises an exception.
+        */
         #[method(setPresentationOptions:)]
         pub unsafe fn setPresentationOptions(
             &self,
             presentation_options: NSApplicationPresentationOptions,
         );
 
+        /**
+          Returns the set of application presentation options that are currently in effect for the system.  These are the presentation options that have been put into effect by the currently active application.
+        */
         #[method(currentSystemPresentationOptions)]
         pub unsafe fn currentSystemPresentationOptions(&self) -> NSApplicationPresentationOptions;
 
@@ -600,6 +600,9 @@ extern_methods!(
     /// NSFullKeyboardAccess
     #[cfg(feature = "AppKit_NSApplication")]
     unsafe impl NSApplication {
+        /**
+          Use this method to get the status of Full Keyboard Access, as configured in the Keyboard preference pane. You may use this status to implement your own key loop or to implement in-control tabbing behavior similar to NSTableView. Because of the nature of the preference storage, you will not be notified of changes to the key if you attempt to observe it via key-value observing; however, calling this method is fairly inexpensive, so you should always call it when you need the underlying value instead of caching it.
+        */
         #[method(isFullKeyboardAccessEnabled)]
         pub unsafe fn isFullKeyboardAccessEnabled(&self) -> bool;
     }
@@ -607,6 +610,9 @@ extern_methods!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      return values for -applicationShouldTerminate:
+    */
     pub enum NSApplicationTerminateReply {
         NSTerminateCancel = 0,
         NSTerminateNow = 1,
@@ -616,6 +622,9 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      return values for -application:printFiles:withSettings:showPrintPanels:.
+    */
     pub enum NSApplicationPrintReply {
         NSPrintingCancelled = 0,
         NSPrintingSuccess = 1,
@@ -1038,9 +1047,15 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      Bi-directional User Interface
+    */
     /// NSApplicationLayoutDirection
     #[cfg(feature = "AppKit_NSApplication")]
     unsafe impl NSApplication {
+        /**
+          Returns the application-wide user interface layout direction.
+        */
         #[method(userInterfaceLayoutDirection)]
         pub unsafe fn userInterfaceLayoutDirection(&self) -> NSUserInterfaceLayoutDirection;
     }
@@ -1060,6 +1075,9 @@ extern_methods!(
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+      Soft deprecated. Please use NSApplication's registerForRemoteNotifications along with requestAuthorizationWithOptions: from the UserNotifications.framework to specify allowable notification types.
+    */
     pub enum NSRemoteNotificationType {
         NSRemoteNotificationTypeNone = 0,
         NSRemoteNotificationTypeBadge = 1 << 0,
@@ -1078,6 +1096,9 @@ extern_methods!(
         #[method(unregisterForRemoteNotifications)]
         pub unsafe fn unregisterForRemoteNotifications(&self);
 
+        /**
+          Returns YES if the application is currently registered for remote notifications, taking into account any systemwide settings; doesn't relate to connectivity.
+        */
         #[method(isRegisteredForRemoteNotifications)]
         pub unsafe fn isRegisteredForRemoteNotifications(&self) -> bool;
 
@@ -1186,6 +1207,9 @@ extern_enum!(
 );
 
 extern_methods!(
+    /**
+      Deprecated Methods
+    */
     /// NSDeprecated
     #[cfg(feature = "AppKit_NSApplication")]
     unsafe impl NSApplication {
@@ -1248,6 +1272,9 @@ extern_methods!(
         ) -> Option<Id<NSWindow>>;
 
         #[cfg(feature = "AppKit_NSGraphicsContext")]
+        /**
+          This method is deprecated as of macOS 10.12. Beginning in OS X 10.11 it would always return nil. Prior to this it would return an undefined graphics context that was not generally suitable for drawing.
+        */
         #[deprecated = "This method always returns nil. If you need access to the current drawing context, use [NSGraphicsContext currentContext] inside of a draw operation."]
         #[method_id(@__retain_semantics Other context)]
         pub unsafe fn context(&self) -> Option<Id<NSGraphicsContext>>;

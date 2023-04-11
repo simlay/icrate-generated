@@ -37,11 +37,25 @@ extern_methods!(
             coder: &NSCoder,
         ) -> Option<Id<Self>>;
 
+        /**
+         A string uniquely identifying this bar for customization purposes. All bars with this identifier will have their items coordinated automatically during customization or instantiation.
+
+        NSTouchBars lacking a customizationIdentifier are not customizable.
+
+        This property is archived.
+        */
         #[method_id(@__retain_semantics Other customizationIdentifier)]
         pub unsafe fn customizationIdentifier(
             &self,
         ) -> Option<Id<NSTouchBarCustomizationIdentifier>>;
 
+        /**
+         A string uniquely identifying this bar for customization purposes. All bars with this identifier will have their items coordinated automatically during customization or instantiation.
+
+        NSTouchBars lacking a customizationIdentifier are not customizable.
+
+        This property is archived.
+        */
         #[method(setCustomizationIdentifier:)]
         pub unsafe fn setCustomizationIdentifier(
             &self,
@@ -49,12 +63,22 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+         The items that are presented in the customization palette for the user to add to the NSTouchBar. These items will be presented to the user in the order specified in this array.
+
+        This property is archived.
+        */
         #[method_id(@__retain_semantics Other customizationAllowedItemIdentifiers)]
         pub unsafe fn customizationAllowedItemIdentifiers(
             &self,
         ) -> Id<NSArray<NSTouchBarItemIdentifier>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+         The items that are presented in the customization palette for the user to add to the NSTouchBar. These items will be presented to the user in the order specified in this array.
+
+        This property is archived.
+        */
         #[method(setCustomizationAllowedItemIdentifiers:)]
         pub unsafe fn setCustomizationAllowedItemIdentifiers(
             &self,
@@ -62,12 +86,22 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+         Some items are too important to be removed. The corresponding item identifiers should be listed here. During customization the user will be prevented from removing these items from the NSTouchBar.
+
+        This property is archived.
+        */
         #[method_id(@__retain_semantics Other customizationRequiredItemIdentifiers)]
         pub unsafe fn customizationRequiredItemIdentifiers(
             &self,
         ) -> Id<NSArray<NSTouchBarItemIdentifier>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+         Some items are too important to be removed. The corresponding item identifiers should be listed here. During customization the user will be prevented from removing these items from the NSTouchBar.
+
+        This property is archived.
+        */
         #[method(setCustomizationRequiredItemIdentifiers:)]
         pub unsafe fn setCustomizationRequiredItemIdentifiers(
             &self,
@@ -75,10 +109,26 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+         An array of identifiers specifying the items in this NSTouchBar. When constructing the instantiated items array, the identifiers in this array will be fed through the -itemForIdentifier: method.
+        Item identifiers should be globally unique, excepting NSTouchBarItemIdentifierFixedSpaceSmall, NSTouchBarItemIdentifierFixedSpaceLarge, NSTouchBarItemIdentifierFlexibleSpace, and NSTouchBarItemIdentifierOtherItemsProxy.
+
+        This array also corresponds to the item ordering for the receiver in the “default set” in the customization palette.
+
+        This property is archived.
+        */
         #[method_id(@__retain_semantics Other defaultItemIdentifiers)]
         pub unsafe fn defaultItemIdentifiers(&self) -> Id<NSArray<NSTouchBarItemIdentifier>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+         An array of identifiers specifying the items in this NSTouchBar. When constructing the instantiated items array, the identifiers in this array will be fed through the -itemForIdentifier: method.
+        Item identifiers should be globally unique, excepting NSTouchBarItemIdentifierFixedSpaceSmall, NSTouchBarItemIdentifierFixedSpaceLarge, NSTouchBarItemIdentifierFlexibleSpace, and NSTouchBarItemIdentifierOtherItemsProxy.
+
+        This array also corresponds to the item ordering for the receiver in the “default set” in the customization palette.
+
+        This property is archived.
+        */
         #[method(setDefaultItemIdentifiers:)]
         pub unsafe fn setDefaultItemIdentifiers(
             &self,
@@ -86,23 +136,46 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+         The resolved array of item identifiers. If the bar has not been customized this will match the defaultItemIdentifiers.
+
+        This property is not archived.
+        */
         #[method_id(@__retain_semantics Other itemIdentifiers)]
         pub unsafe fn itemIdentifiers(&self) -> Id<NSArray<NSTouchBarItemIdentifier>>;
 
+        /**
+         Specifying a principal item identifier communicates that the item with that identifier has special significance to this NSTouchBar. Currently, that item will be placed in the center of the resolved  row. Note that multiple visible bars may each specify a principal item identifier - but only one of them can have the request honored.
+
+        This property is archived.
+        */
         #[method_id(@__retain_semantics Other principalItemIdentifier)]
         pub unsafe fn principalItemIdentifier(&self) -> Option<Id<NSTouchBarItemIdentifier>>;
 
+        /**
+         Specifying a principal item identifier communicates that the item with that identifier has special significance to this NSTouchBar. Currently, that item will be placed in the center of the resolved  row. Note that multiple visible bars may each specify a principal item identifier - but only one of them can have the request honored.
+
+        This property is archived.
+        */
         #[method(setPrincipalItemIdentifier:)]
         pub unsafe fn setPrincipalItemIdentifier(
             &self,
             principal_item_identifier: Option<&NSTouchBarItemIdentifier>,
         );
 
+        /**
+         An item identifier designating an item that replaces the standard system escape key. The item may be located in the templateItems set, or provided by the delegate.
+        This property is not archived.
+        */
         #[method_id(@__retain_semantics Other escapeKeyReplacementItemIdentifier)]
         pub unsafe fn escapeKeyReplacementItemIdentifier(
             &self,
         ) -> Option<Id<NSTouchBarItemIdentifier>>;
 
+        /**
+         An item identifier designating an item that replaces the standard system escape key. The item may be located in the templateItems set, or provided by the delegate.
+        This property is not archived.
+        */
         #[method(setEscapeKeyReplacementItemIdentifier:)]
         pub unsafe fn setEscapeKeyReplacementItemIdentifier(
             &self,
@@ -110,16 +183,36 @@ extern_methods!(
         );
 
         #[cfg(all(feature = "AppKit_NSTouchBarItem", feature = "Foundation_NSSet"))]
+        /**
+         Items in this set are the first step in resolving instantiated items from their identifiers. If an item identifier is specified in the itemIdentifiers array, and an item with that identifier is in this set, it will be added to the items array in the corresponding location.
+
+        This property is archived.
+        */
         #[method_id(@__retain_semantics Other templateItems)]
         pub unsafe fn templateItems(&self) -> Id<NSSet<NSTouchBarItem>>;
 
         #[cfg(all(feature = "AppKit_NSTouchBarItem", feature = "Foundation_NSSet"))]
+        /**
+         Items in this set are the first step in resolving instantiated items from their identifiers. If an item identifier is specified in the itemIdentifiers array, and an item with that identifier is in this set, it will be added to the items array in the corresponding location.
+
+        This property is archived.
+        */
         #[method(setTemplateItems:)]
         pub unsafe fn setTemplateItems(&self, template_items: &NSSet<NSTouchBarItem>);
 
+        /**
+         The NSTouchBar delegate. The delegate can dynamically create items.
+
+        This property is conditionally archived (see -encodeConditionalObject:forKey:.)
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(&self) -> Option<Id<ProtocolObject<dyn NSTouchBarDelegate>>>;
 
+        /**
+         The NSTouchBar delegate. The delegate can dynamically create items.
+
+        This property is conditionally archived (see -encodeConditionalObject:forKey:.)
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(&self, delegate: Option<&ProtocolObject<dyn NSTouchBarDelegate>>);
 
@@ -130,12 +223,22 @@ extern_methods!(
             identifier: &NSTouchBarItemIdentifier,
         ) -> Option<Id<NSTouchBarItem>>;
 
+        /**
+         When YES, the NSTouchBar is attached to an eligible NSTouchBar provider, and its items are displayable, assuming adequate space.
+        This property is key value observable.
+        */
         #[method(isVisible)]
         pub unsafe fn isVisible(&self) -> bool;
 
+        /**
+         Convenience method for the NSApp's automaticCustomizeTouchBarMenuItemEnabled property.
+        */
         #[method(isAutomaticCustomizeTouchBarMenuItemEnabled)]
         pub unsafe fn isAutomaticCustomizeTouchBarMenuItemEnabled() -> bool;
 
+        /**
+         Convenience method for the NSApp's automaticCustomizeTouchBarMenuItemEnabled property.
+        */
         #[method(setAutomaticCustomizeTouchBarMenuItemEnabled:)]
         pub unsafe fn setAutomaticCustomizeTouchBarMenuItemEnabled(
             automatic_customize_touch_bar_menu_item_enabled: bool,
@@ -159,8 +262,44 @@ extern_protocol!(
 );
 
 extern_protocol!(
+    /**
+     Instances of NSTouchBar are discovered by searching certain well known components of the application for objects that conform to the NSTouchBarProvider protocol.
+
+    Some specific objects in a process are searched to discover NSTouchBar providers. In order, these objects are:
+     the application delegate
+     the application object itself
+     the main window’s window controller
+     the main window’s delegate
+     the main window itself
+     the main window’s first responder
+     the key window’s window controller
+     the key window’s delegate
+     the key window itself
+     the key window’s first responder
+
+    If any of these objects are an NSResponder or a subclass of NSResponder, the responder chain anchored at that object is also searched.
+
+    For example in a complicated, but otherwise standard application, that chain might look like this.
+
+     Application delegate
+     Application
+     key window controller
+     key window delegate
+     key window
+     view controller (closest to root of window)
+     view (closest to root of window)
+     intermediate view controllers and views
+     key window’s first responder’s view controller
+     key window’s first responder
+
+    NSTouchBars can be nested by including the special NSTouchBarItemIdentifierOtherItemsProxy item identifier. This allows more broadly scoped NSTouchBars (closer to the app delegate) to also display the contents of more narrowly scoped NSTouchBars (closer to the first responder.) If an NSTouchBar omits the special NSTouchBarItemIdentifierOtherItemsProxy item identifier, it will be hidden if a more narrowly scoped NSTouchBar is provided.
+    */
     pub unsafe trait NSTouchBarProvider: NSObjectProtocol {
         #[cfg(feature = "AppKit_NSTouchBar")]
+        /**
+         The basic method for providing an NSTouchBar. AppKit will key value observe this property, if for some reason you wish to replace a live NSTouchBar wholesale.
+        Note that many subclasses of NSResponder already implement this method and conform to this protocol.
+        */
         #[method_id(@__retain_semantics Other touchBar)]
         unsafe fn touchBar(&self) -> Option<Id<NSTouchBar>>;
     }
@@ -173,10 +312,16 @@ extern_methods!(
     #[cfg(feature = "AppKit_NSResponder")]
     unsafe impl NSResponder {
         #[cfg(feature = "AppKit_NSTouchBar")]
+        /**
+         The NSTouchBar object associated with this responder. If no NSTouchBar is explicitly set, NSResponder will send -makeTouchBar to itself to create the default NSTouchBar for this responder. This property is archived.
+        */
         #[method_id(@__retain_semantics Other touchBar)]
         pub unsafe fn touchBar(&self) -> Option<Id<NSTouchBar>>;
 
         #[cfg(feature = "AppKit_NSTouchBar")]
+        /**
+         The NSTouchBar object associated with this responder. If no NSTouchBar is explicitly set, NSResponder will send -makeTouchBar to itself to create the default NSTouchBar for this responder. This property is archived.
+        */
         #[method(setTouchBar:)]
         pub unsafe fn setTouchBar(&self, touch_bar: Option<&NSTouchBar>);
 
@@ -193,9 +338,15 @@ extern_methods!(
     /// NSTouchBarCustomization
     #[cfg(feature = "AppKit_NSApplication")]
     unsafe impl NSApplication {
+        /**
+          Whether or not a menu item to customize the NSTouchBar can be automatically added to the main menu. It will only actually be added when Touch Bar hardware or simulator is present. Defaults to NO. Setting this property to YES is the recommended way to add the customization menu item. But if non-standard placement of the menu item is needed, creating a menu item with an action of `toggleTouchBarCustomizationPalette:` can be used instead.
+        */
         #[method(isAutomaticCustomizeTouchBarMenuItemEnabled)]
         pub unsafe fn isAutomaticCustomizeTouchBarMenuItemEnabled(&self) -> bool;
 
+        /**
+          Whether or not a menu item to customize the NSTouchBar can be automatically added to the main menu. It will only actually be added when Touch Bar hardware or simulator is present. Defaults to NO. Setting this property to YES is the recommended way to add the customization menu item. But if non-standard placement of the menu item is needed, creating a menu item with an action of `toggleTouchBarCustomizationPalette:` can be used instead.
+        */
         #[method(setAutomaticCustomizeTouchBarMenuItemEnabled:)]
         pub unsafe fn setAutomaticCustomizeTouchBarMenuItemEnabled(
             &self,

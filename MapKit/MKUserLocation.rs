@@ -27,30 +27,51 @@ unsafe impl NSObjectProtocol for MKUserLocation {}
 extern_methods!(
     #[cfg(feature = "MapKit_MKUserLocation")]
     unsafe impl MKUserLocation {
+        /**
+          Returns YES if the user's location is being updated.
+        */
         #[method(isUpdating)]
         pub unsafe fn isUpdating(&self) -> bool;
 
         #[cfg(feature = "CoreLocation_CLLocation")]
+        /**
+          Returns nil if the owning MKMapView's showsUserLocation is NO or the user's location has yet to be determined.
+        */
         #[method_id(@__retain_semantics Other location)]
         pub unsafe fn location(&self) -> Option<Id<CLLocation>>;
 
         #[cfg(feature = "CoreLocation_CLHeading")]
+        /**
+          Returns nil if not in MKUserTrackingModeFollowWithHeading
+        */
         #[method_id(@__retain_semantics Other heading)]
         pub unsafe fn heading(&self) -> Option<Id<CLHeading>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The title to be displayed for the user location annotation.
+        */
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The title to be displayed for the user location annotation.
+        */
         #[method(setTitle:)]
         pub unsafe fn setTitle(&self, title: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The subtitle to be displayed for the user location annotation.
+        */
         #[method_id(@__retain_semantics Other subtitle)]
         pub unsafe fn subtitle(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The subtitle to be displayed for the user location annotation.
+        */
         #[method(setSubtitle:)]
         pub unsafe fn setSubtitle(&self, subtitle: Option<&NSString>);
     }

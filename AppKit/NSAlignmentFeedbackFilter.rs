@@ -28,6 +28,9 @@ unsafe impl NSObjectProtocol for NSAlignmentFeedbackFilter {}
 extern_methods!(
     #[cfg(feature = "AppKit_NSAlignmentFeedbackFilter")]
     unsafe impl NSAlignmentFeedbackFilter {
+        /**
+           The event mask indicating which event types the filter accepts. Suitable for use in tracking loops.
+        */
         #[method(inputEventMask)]
         pub unsafe fn inputEventMask() -> NSEventMask;
 

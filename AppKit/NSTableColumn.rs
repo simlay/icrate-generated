@@ -7,6 +7,9 @@ use crate::Foundation::*;
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+      The resizing mask controls the resizability of a table column. Values can be combined together with a bitwise or. The default value is 'NSTableColumnUserResizingMask | NSTableColumnAutoresizingMask'. Compatability note: This method replaces setResizable:.
+    */
     pub enum NSTableColumnResizingOptions {
         NSTableColumnNoResizing = 0,
         NSTableColumnAutoresizingMask = 1 << 0,
@@ -47,9 +50,15 @@ extern_methods!(
         #[method_id(@__retain_semantics Init initWithCoder:)]
         pub unsafe fn initWithCoder(this: Option<Allocated<Self>>, coder: &NSCoder) -> Id<Self>;
 
+        /**
+          Gets and sets the string identifier associated with the NSTableColumn. 'identifier' will be copied. Prior to 10.7, the type was 'id', but was changed to 'NSString *' for NSUserInterfaceItemIdentification.
+        */
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Id<NSUserInterfaceItemIdentifier>;
 
+        /**
+          Gets and sets the string identifier associated with the NSTableColumn. 'identifier' will be copied. Prior to 10.7, the type was 'id', but was changed to 'NSString *' for NSUserInterfaceItemIdentification.
+        */
         #[method(setIdentifier:)]
         pub unsafe fn setIdentifier(&self, identifier: &NSUserInterfaceItemIdentifier);
 
@@ -61,43 +70,83 @@ extern_methods!(
         #[method(setTableView:)]
         pub unsafe fn setTableView(&self, table_view: Option<&NSTableView>);
 
+        /**
+          Gets and sets the current width of the NSTableColumn. The default for is 100.0. Calling setWidth: with a width that is less than the minWidth or larger than the maxWidth will automatically be constrained to minWidth or maxWidth as appropriate.
+        */
         #[method(width)]
         pub unsafe fn width(&self) -> CGFloat;
 
+        /**
+          Gets and sets the current width of the NSTableColumn. The default for is 100.0. Calling setWidth: with a width that is less than the minWidth or larger than the maxWidth will automatically be constrained to minWidth or maxWidth as appropriate.
+        */
         #[method(setWidth:)]
         pub unsafe fn setWidth(&self, width: CGFloat);
 
+        /**
+          Gets and sets the minimum width of the NSTableColumn. The default for is 10.0. If -[self width] is less than the 'minWidth' value when -setMinWidth: is called, the width will automatically be increased to the minWidth and [tableView tile] will be called.
+        Note that if the NSTableColumn is the outlineTableColumn of an NSOutlineView, minWidth will return
+        the maximum of the value set and NSOutlineView.indentationPerLevel.
+        */
         #[method(minWidth)]
         pub unsafe fn minWidth(&self) -> CGFloat;
 
+        /**
+          Gets and sets the minimum width of the NSTableColumn. The default for is 10.0. If -[self width] is less than the 'minWidth' value when -setMinWidth: is called, the width will automatically be increased to the minWidth and [tableView tile] will be called.
+        Note that if the NSTableColumn is the outlineTableColumn of an NSOutlineView, minWidth will return
+        the maximum of the value set and NSOutlineView.indentationPerLevel.
+        */
         #[method(setMinWidth:)]
         pub unsafe fn setMinWidth(&self, min_width: CGFloat);
 
+        /**
+          Gets and sets the maximum width of the NSTableColumn. The default for is MAXFLOAT on Leopard and higher. If -[self width] is greater than the 'maxWidth' value when -setMaxWidth: is called, the width will automatically be decreased to the maxWidth and [tableView tile] will be called.
+        */
         #[method(maxWidth)]
         pub unsafe fn maxWidth(&self) -> CGFloat;
 
+        /**
+          Gets and sets the maximum width of the NSTableColumn. The default for is MAXFLOAT on Leopard and higher. If -[self width] is greater than the 'maxWidth' value when -setMaxWidth: is called, the width will automatically be decreased to the maxWidth and [tableView tile] will be called.
+        */
         #[method(setMaxWidth:)]
         pub unsafe fn setMaxWidth(&self, max_width: CGFloat);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Provides access to the title of this column header.
+        */
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Provides access to the title of this column header.
+        */
         #[method(setTitle:)]
         pub unsafe fn setTitle(&self, title: &NSString);
 
         #[cfg(feature = "AppKit_NSTableHeaderCell")]
+        /**
+          Gets and sets the headerCell associated with this NSTableColumn. 'cell' must be non nil, and should be a member of the NSTableHeaderCell class. The 'headerCell' is a strong reference, and will be retained.
+        */
         #[method_id(@__retain_semantics Other headerCell)]
         pub unsafe fn headerCell(&self) -> Id<NSTableHeaderCell>;
 
         #[cfg(feature = "AppKit_NSTableHeaderCell")]
+        /**
+          Gets and sets the headerCell associated with this NSTableColumn. 'cell' must be non nil, and should be a member of the NSTableHeaderCell class. The 'headerCell' is a strong reference, and will be retained.
+        */
         #[method(setHeaderCell:)]
         pub unsafe fn setHeaderCell(&self, header_cell: &NSTableHeaderCell);
 
+        /**
+          Gets and sets the editability state of this NSTableColumn. The default value is YES. When an NSTableView wants to start editing a dataCell, the following happens: 1. Check [tableColumn isEditable]. If that returns YES, check the (optional) delegate method with tableView:shouldEditTableColumn:row:. If that returns YES, check the [dataCell isEnabled] and [isEnabled isSelectable] states before attempting to edit.
+        */
         #[method(isEditable)]
         pub unsafe fn isEditable(&self) -> bool;
 
+        /**
+          Gets and sets the editability state of this NSTableColumn. The default value is YES. When an NSTableView wants to start editing a dataCell, the following happens: 1. Check [tableColumn isEditable]. If that returns YES, check the (optional) delegate method with tableView:shouldEditTableColumn:row:. If that returns YES, check the [dataCell isEnabled] and [isEnabled isSelectable] states before attempting to edit.
+        */
         #[method(setEditable:)]
         pub unsafe fn setEditable(&self, editable: bool);
 
@@ -105,10 +154,16 @@ extern_methods!(
         pub unsafe fn sizeToFit(&self);
 
         #[cfg(feature = "Foundation_NSSortDescriptor")]
+        /**
+          A column is considered sortable if it has a sortDescriptorPrototype. This prototype defines several things about the columns sorting. The prototype's ascending value defines the default sorting direction. Its key defines an arbitrary attribute which helps clients identify what to sort, while the selector defines how to sort. Note that, it is not required that the key be the same as the identifier. However, the key must be unique from the key used by other columns. The sortDescriptor is archived.
+        */
         #[method_id(@__retain_semantics Other sortDescriptorPrototype)]
         pub unsafe fn sortDescriptorPrototype(&self) -> Option<Id<NSSortDescriptor>>;
 
         #[cfg(feature = "Foundation_NSSortDescriptor")]
+        /**
+          A column is considered sortable if it has a sortDescriptorPrototype. This prototype defines several things about the columns sorting. The prototype's ascending value defines the default sorting direction. Its key defines an arbitrary attribute which helps clients identify what to sort, while the selector defines how to sort. Note that, it is not required that the key be the same as the identifier. However, the key must be unique from the key used by other columns. The sortDescriptor is archived.
+        */
         #[method(setSortDescriptorPrototype:)]
         pub unsafe fn setSortDescriptorPrototype(
             &self,
@@ -122,22 +177,37 @@ extern_methods!(
         pub unsafe fn setResizingMask(&self, resizing_mask: NSTableColumnResizingOptions);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Get and set the Tool Tip for the NSTableColumn header that appears when hovering the mouse over the header for the NSTableColumn. The default value is 'nil', meaning there is no headerToolTip.
+        */
         #[method_id(@__retain_semantics Other headerToolTip)]
         pub unsafe fn headerToolTip(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Get and set the Tool Tip for the NSTableColumn header that appears when hovering the mouse over the header for the NSTableColumn. The default value is 'nil', meaning there is no headerToolTip.
+        */
         #[method(setHeaderToolTip:)]
         pub unsafe fn setHeaderToolTip(&self, header_tool_tip: Option<&NSString>);
 
+        /**
+          Determines if the column is hidden or not. The isHidden value is stored out when the NSTableView automatically saves out NSTableColumn state. Note that columns which are hidden still exist in the the -[NSTableView tableColumns] array and -[NSTableView numberOfColumns] includes columns which are hidden. The default value is NO, meaning the NSTableColumn will not be hidden.
+        */
         #[method(isHidden)]
         pub unsafe fn isHidden(&self) -> bool;
 
+        /**
+          Determines if the column is hidden or not. The isHidden value is stored out when the NSTableView automatically saves out NSTableColumn state. Note that columns which are hidden still exist in the the -[NSTableView tableColumns] array and -[NSTableView numberOfColumns] includes columns which are hidden. The default value is NO, meaning the NSTableColumn will not be hidden.
+        */
         #[method(setHidden:)]
         pub unsafe fn setHidden(&self, hidden: bool);
     }
 );
 
 extern_methods!(
+    /**
+      Deprecated Methods
+    */
     /// NSDeprecated
     #[cfg(feature = "AppKit_NSTableColumn")]
     unsafe impl NSTableColumn {
@@ -149,9 +219,15 @@ extern_methods!(
         #[method(isResizable)]
         pub unsafe fn isResizable(&self) -> bool;
 
+        /**
+          NSCell *
+        */
         #[method_id(@__retain_semantics Other dataCell)]
         pub unsafe fn dataCell(&self) -> Id<Object>;
 
+        /**
+          NSCell *
+        */
         #[method(setDataCell:)]
         pub unsafe fn setDataCell(&self, data_cell: &Object);
 

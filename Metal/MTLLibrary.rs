@@ -91,6 +91,20 @@ extern_methods!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+     @enum MTLFunctionType
+    @abstract An identifier for a top-level Metal function.
+    @discussion Each location in the API where a program is used requires a function written for that specific usage.
+
+    @constant MTLFunctionTypeVertex
+    A vertex shader, usable for a MTLRenderPipelineState.
+
+    @constant MTLFunctionTypeFragment
+    A fragment shader, usable for a MTLRenderPipelineState.
+
+    @constant MTLFunctionTypeKernel
+    A compute kernel, usable to create a MTLComputePipelineState.
+    */
     pub enum MTLFunctionType {
         MTLFunctionTypeVertex = 1,
         MTLFunctionTypeFragment = 2,
@@ -105,6 +119,10 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLFunctionConstant")]
+    /**
+     @interface MTLFunctionConstant
+    @abstract describe an uberShader constant used by the function
+    */
     pub struct MTLFunctionConstant;
 
     #[cfg(feature = "Metal_MTLFunctionConstant")]
@@ -114,9 +132,17 @@ extern_class!(
 );
 
 #[cfg(feature = "Metal_MTLFunctionConstant")]
+/**
+ @interface MTLFunctionConstant
+@abstract describe an uberShader constant used by the function
+*/
 unsafe impl NSObjectProtocol for MTLFunctionConstant {}
 
 extern_methods!(
+    /**
+     @interface MTLFunctionConstant
+    @abstract describe an uberShader constant used by the function
+    */
     #[cfg(feature = "Metal_MTLFunctionConstant")]
     unsafe impl MTLFunctionConstant {
         #[cfg(feature = "Foundation_NSString")]
@@ -135,24 +161,54 @@ extern_methods!(
 );
 
 extern_protocol!(
+    /**
+     @protocol MTLFunction
+    @abstract A handle to intermediate code used as inputs for either a MTLComputePipelineState or a MTLRenderPipelineState.
+    @discussion MTLFunction is a single vertex shader, fragment shader, or compute function.  A Function can only be used with the device that it was created against.
+    */
     pub unsafe trait MTLFunction: NSObjectProtocol {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property label
+        @abstract A string to help identify this object.
+        */
         #[method_id(@__retain_semantics Other label)]
         fn label(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property label
+        @abstract A string to help identify this object.
+        */
         #[method(setLabel:)]
         fn setLabel(&self, label: Option<&NSString>);
 
+        /**
+         @property device
+        @abstract The device this resource was created against.  This resource can only be used with this device.
+        */
         #[method_id(@__retain_semantics Other device)]
         fn device(&self) -> Id<ProtocolObject<dyn MTLDevice>>;
 
+        /**
+         @property functionType
+        @abstract The overall kind of entry point: compute, vertex, or fragment.
+        */
         #[method(functionType)]
         fn functionType(&self) -> MTLFunctionType;
 
+        /**
+         @property patchType
+        @abstract Returns the patch type. MTLPatchTypeNone if it is not a post tessellation vertex shader.
+        */
         #[method(patchType)]
         fn patchType(&self) -> MTLPatchType;
 
+        /**
+         @property patchControlPointCount
+        @abstract Returns the number of patch control points if it was specified in the shader. Returns -1 if it
+        was not specified.
+        */
         #[method(patchControlPointCount)]
         fn patchControlPointCount(&self) -> NSInteger;
 
@@ -161,10 +217,18 @@ extern_protocol!(
         fn vertexAttributes(&self) -> Option<Id<NSArray<MTLVertexAttribute>>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Metal_MTLAttribute"))]
+        /**
+         @property stageInputAttributes
+        @abstract Returns an array describing the attributes
+        */
         #[method_id(@__retain_semantics Other stageInputAttributes)]
         fn stageInputAttributes(&self) -> Option<Id<NSArray<MTLAttribute>>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property name
+        @abstract The name of the function in the shading language.
+        */
         #[method_id(@__retain_semantics Other name)]
         fn name(&self) -> Id<NSString>;
 
@@ -173,6 +237,10 @@ extern_protocol!(
             feature = "Foundation_NSString",
             feature = "Metal_MTLFunctionConstant"
         ))]
+        /**
+         @property functionConstantsDictionary
+        @abstract A dictionary containing information about all function contents, keyed by the constant names.
+        */
         #[method_id(@__retain_semantics Other functionConstantsDictionary)]
         fn functionConstantsDictionary(&self) -> Id<NSDictionary<NSString, MTLFunctionConstant>>;
 
@@ -182,6 +250,10 @@ extern_protocol!(
             buffer_index: NSUInteger,
         ) -> Id<ProtocolObject<dyn MTLArgumentEncoder>>;
 
+        /**
+         @property options
+        @abstract The options this function was created with.
+        */
         #[method(options)]
         fn options(&self) -> MTLFunctionOptions;
     }
@@ -215,6 +287,16 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum MTLLibraryOptimizationLevel
+    @abstract Optimization level for the Metal compiler.
+
+    @constant MTLLibraryOptimizationLevelDefault
+    Optimize for program performance.
+
+    @constant MTLLibraryOptimizationLevelSize
+    Like default, with extra optimizations to reduce code size.
+    */
     pub enum MTLLibraryOptimizationLevel {
         MTLLibraryOptimizationLevelDefault = 0,
         MTLLibraryOptimizationLevelSize = 1,
@@ -239,62 +321,162 @@ extern_methods!(
     #[cfg(feature = "Metal_MTLCompileOptions")]
     unsafe impl MTLCompileOptions {
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+         @property preprocessorNames
+        @abstract List of preprocessor macros to consider to when compiling this program. Specified as key value pairs, using a NSDictionary. The keys must be NSString objects and values can be either NSString or NSNumber objects.
+        @discussion The default value is nil.
+        */
         #[method_id(@__retain_semantics Other preprocessorMacros)]
         pub fn preprocessorMacros(&self) -> Option<Id<NSDictionary<NSString, NSObject>>>;
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+         @property preprocessorNames
+        @abstract List of preprocessor macros to consider to when compiling this program. Specified as key value pairs, using a NSDictionary. The keys must be NSString objects and values can be either NSString or NSNumber objects.
+        @discussion The default value is nil.
+        */
         #[method(setPreprocessorMacros:)]
         pub unsafe fn setPreprocessorMacros(
             &self,
             preprocessor_macros: Option<&NSDictionary<NSString, NSObject>>,
         );
 
+        /**
+         @property fastMathEnabled
+        @abstract If YES, enables the compiler to perform optimizations for floating-point arithmetic that may violate the IEEE 754 standard. It also enables the high precision variant of math functions for single precision floating-point scalar and vector types. fastMathEnabled defaults to YES.
+        */
         #[method(fastMathEnabled)]
         pub fn fastMathEnabled(&self) -> bool;
 
+        /**
+         @property fastMathEnabled
+        @abstract If YES, enables the compiler to perform optimizations for floating-point arithmetic that may violate the IEEE 754 standard. It also enables the high precision variant of math functions for single precision floating-point scalar and vector types. fastMathEnabled defaults to YES.
+        */
         #[method(setFastMathEnabled:)]
         pub fn setFastMathEnabled(&self, fast_math_enabled: bool);
 
+        /**
+         @property languageVersion
+        @abstract set the metal language version used to interpret the source.
+        */
         #[method(languageVersion)]
         pub fn languageVersion(&self) -> MTLLanguageVersion;
 
+        /**
+         @property languageVersion
+        @abstract set the metal language version used to interpret the source.
+        */
         #[method(setLanguageVersion:)]
         pub fn setLanguageVersion(&self, language_version: MTLLanguageVersion);
 
+        /**
+         @property type
+        @abstract Which type the library should be compiled as. The default value is MTLLibraryTypeExecutable.
+        @discussion MTLLibraryTypeExecutable is suitable to build a library of "kernel", "vertex" and "fragment" qualified functions.
+        MTLLibraryType is suitable when the compilation result will instead be used to instantiate a MTLDynamicLibrary.
+        MTLDynamicLibrary contains no qualified functions, but it's unqualified functions and variables can be used as an external dependency for compiling other libraries.
+        */
         #[method(libraryType)]
         pub fn libraryType(&self) -> MTLLibraryType;
 
+        /**
+         @property type
+        @abstract Which type the library should be compiled as. The default value is MTLLibraryTypeExecutable.
+        @discussion MTLLibraryTypeExecutable is suitable to build a library of "kernel", "vertex" and "fragment" qualified functions.
+        MTLLibraryType is suitable when the compilation result will instead be used to instantiate a MTLDynamicLibrary.
+        MTLDynamicLibrary contains no qualified functions, but it's unqualified functions and variables can be used as an external dependency for compiling other libraries.
+        */
         #[method(setLibraryType:)]
         pub fn setLibraryType(&self, library_type: MTLLibraryType);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property installName
+        @abstract The install name of this dynamic library.
+        @discussion The install name is used when a pipeline state is created that depends, directly or indirectly, on a dynamic library.
+        The installName is embedded into any other MTLLibrary that links against the compilation result.
+        This property should be set such that the dynamic library can be found in the file system at the time a pipeline state is created.
+        Specify one of:
+        - an absolute path to a file from which the dynamic library can be loaded, or
+        - a path relative to \@executable_path, where \@executable_path is substituted with the directory name from which the MTLLibrary containing the MTLFunction entrypoint used to create the pipeline state is loaded, or
+        - a path relative to \@loader_path, where \@loader_path is substituted with the directory name from which the MTLLibrary with the reference to this installName embedded is loaded.
+        The first is appropriate for MTLDynamicLibrary written to the file-system using its serializeToURL:error: method on the current device.
+        The others are appropriate when the MTLDynamicLibrary is installed as part of a bundle or app, where the absolute path is not known.
+        This property is ignored when the type property is not set to MTLLibraryTypeDynamic.
+        This propery should not be null if the property type is set to MTLLibraryTypeDynamic: the compilation will fail in that scenario.
+        */
         #[method_id(@__retain_semantics Other installName)]
         pub fn installName(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property installName
+        @abstract The install name of this dynamic library.
+        @discussion The install name is used when a pipeline state is created that depends, directly or indirectly, on a dynamic library.
+        The installName is embedded into any other MTLLibrary that links against the compilation result.
+        This property should be set such that the dynamic library can be found in the file system at the time a pipeline state is created.
+        Specify one of:
+        - an absolute path to a file from which the dynamic library can be loaded, or
+        - a path relative to \@executable_path, where \@executable_path is substituted with the directory name from which the MTLLibrary containing the MTLFunction entrypoint used to create the pipeline state is loaded, or
+        - a path relative to \@loader_path, where \@loader_path is substituted with the directory name from which the MTLLibrary with the reference to this installName embedded is loaded.
+        The first is appropriate for MTLDynamicLibrary written to the file-system using its serializeToURL:error: method on the current device.
+        The others are appropriate when the MTLDynamicLibrary is installed as part of a bundle or app, where the absolute path is not known.
+        This property is ignored when the type property is not set to MTLLibraryTypeDynamic.
+        This propery should not be null if the property type is set to MTLLibraryTypeDynamic: the compilation will fail in that scenario.
+        */
         #[method(setInstallName:)]
         pub unsafe fn setInstallName(&self, install_name: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+         @property libraries
+        @abstract A set of MTLDynamicLibrary instances to link against.
+        The installName of the provided MTLDynamicLibrary is embedded into the compilation result.
+        When a function from the resulting MTLLibrary is used (either as an MTLFunction, or as an to create a pipeline state, the embedded install names are used to automatically load the MTLDynamicLibrary instances.
+        This property can be null if no libraries should be automatically loaded, either because the MTLLibrary has no external dependencies, or because you will use preloadedLibraries to specify the libraries to use at pipeline creation time.
+        */
         #[method_id(@__retain_semantics Other libraries)]
         pub fn libraries(&self) -> Option<Id<NSArray<ProtocolObject<dyn MTLDynamicLibrary>>>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+         @property libraries
+        @abstract A set of MTLDynamicLibrary instances to link against.
+        The installName of the provided MTLDynamicLibrary is embedded into the compilation result.
+        When a function from the resulting MTLLibrary is used (either as an MTLFunction, or as an to create a pipeline state, the embedded install names are used to automatically load the MTLDynamicLibrary instances.
+        This property can be null if no libraries should be automatically loaded, either because the MTLLibrary has no external dependencies, or because you will use preloadedLibraries to specify the libraries to use at pipeline creation time.
+        */
         #[method(setLibraries:)]
         pub fn setLibraries(
             &self,
             libraries: Option<&NSArray<ProtocolObject<dyn MTLDynamicLibrary>>>,
         );
 
+        /**
+         @property preserveInvariance
+        @abstract If YES,  set the compiler to compile shaders to preserve invariance.  The default is false.
+        */
         #[method(preserveInvariance)]
         pub fn preserveInvariance(&self) -> bool;
 
+        /**
+         @property preserveInvariance
+        @abstract If YES,  set the compiler to compile shaders to preserve invariance.  The default is false.
+        */
         #[method(setPreserveInvariance:)]
         pub fn setPreserveInvariance(&self, preserve_invariance: bool);
 
+        /**
+         @property optimizationLevel
+        @abstract Sets the compiler optimization level.
+        */
         #[method(optimizationLevel)]
         pub unsafe fn optimizationLevel(&self) -> MTLLibraryOptimizationLevel;
 
+        /**
+         @property optimizationLevel
+        @abstract Sets the compiler optimization level.
+        */
         #[method(setOptimizationLevel:)]
         pub unsafe fn setOptimizationLevel(&self, optimization_level: MTLLibraryOptimizationLevel);
     }
@@ -304,6 +486,10 @@ extern_static!(MTLLibraryErrorDomain: &'static NSErrorDomain);
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+     @enum MTLLibraryError
+    @abstract NSErrors raised when creating a library.
+    */
     pub enum MTLLibraryError {
         MTLLibraryErrorUnsupported = 1,
         MTLLibraryErrorInternal = 2,
@@ -317,13 +503,25 @@ ns_enum!(
 extern_protocol!(
     pub unsafe trait MTLLibrary: NSObjectProtocol {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property label
+        @abstract A string to help identify this object.
+        */
         #[method_id(@__retain_semantics Other label)]
         fn label(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property label
+        @abstract A string to help identify this object.
+        */
         #[method(setLabel:)]
         fn setLabel(&self, label: Option<&NSString>);
 
+        /**
+         @property device
+        @abstract The device this resource was created against.  This resource can only be used with this device.
+        */
         #[method_id(@__retain_semantics Other device)]
         fn device(&self) -> Id<ProtocolObject<dyn MTLDevice>>;
 
@@ -402,13 +600,30 @@ extern_protocol!(
         ) -> Result<Id<ProtocolObject<dyn MTLFunction>>, Id<NSError>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+         @property functionNames
+        @abstract The array contains NSString objects, with the name of each function in library.
+        */
         #[method_id(@__retain_semantics Other functionNames)]
         fn functionNames(&self) -> Id<NSArray<NSString>>;
 
+        /**
+         @property type
+        @abstract The library type provided when this MTLLibrary was created.
+        Libraries with MTLLibraryTypeExecutable can be used to obtain MTLFunction from.
+        Libraries with MTLLibraryTypeDynamic can be used to resolve external references in other MTLLibrary from.
+        @see MTLCompileOptions
+        */
         #[method(type)]
         unsafe fn r#type(&self) -> MTLLibraryType;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property installName
+        @abstract The installName provided when this MTLLibrary was created.
+        @discussion Always nil if the type of the library is not MTLLibraryTypeDynamic.
+        @see MTLCompileOptions
+        */
         #[method_id(@__retain_semantics Other installName)]
         fn installName(&self) -> Option<Id<NSString>>;
     }

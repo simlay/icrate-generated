@@ -6,6 +6,11 @@ use crate::Metal::*;
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+      @brief Signature defining what data is provided to an intersection function. The signature
+     must match across the shading language declaration of the intersection function table,
+     intersection functions in the table, and the intersector using the table.
+    */
     pub enum MTLIntersectionFunctionSignature {
         MTLIntersectionFunctionSignatureNone = 0,
         MTLIntersectionFunctionSignatureInstancing = 1 << 0,
@@ -38,9 +43,17 @@ extern_methods!(
         pub unsafe fn intersectionFunctionTableDescriptor(
         ) -> Id<MTLIntersectionFunctionTableDescriptor>;
 
+        /**
+          @property functionCount
+         @abstract The number of functions in the table.
+        */
         #[method(functionCount)]
         pub unsafe fn functionCount(&self) -> NSUInteger;
 
+        /**
+          @property functionCount
+         @abstract The number of functions in the table.
+        */
         #[method(setFunctionCount:)]
         pub fn setFunctionCount(&self, function_count: NSUInteger);
     }
@@ -64,6 +77,10 @@ extern_protocol!(
             range: NSRange,
         );
 
+        /**
+         @property gpuResourceID
+        @abstract Handle of the GPU resource suitable for storing in an Argument Buffer
+        */
         #[method(gpuResourceID)]
         unsafe fn gpuResourceID(&self) -> MTLResourceID;
 

@@ -38,12 +38,21 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          @brief The full encoded RFC822 message including headers and body.
+        */
         #[method_id(@__retain_semantics Other rawData)]
         pub unsafe fn rawData(&self) -> Id<NSData>;
 
+        /**
+          @brief Whether or not the encoded message is signed
+        */
         #[method(isSigned)]
         pub unsafe fn isSigned(&self) -> bool;
 
+        /**
+          @brief Whether or not the encoded message is encrypted
+        */
         #[method(isEncrypted)]
         pub unsafe fn isEncrypted(&self) -> bool;
     }

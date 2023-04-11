@@ -76,15 +76,27 @@ extern_methods!(
         #[method(removeItemAtIndex:)]
         pub unsafe fn removeItemAtIndex(&self, index: NSInteger);
 
+        /**
+          Customizable toolbars must have a delegate, and must implement the required NSToolbarDelegate methods.
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(&self) -> Option<Id<ProtocolObject<dyn NSToolbarDelegate>>>;
 
+        /**
+          Customizable toolbars must have a delegate, and must implement the required NSToolbarDelegate methods.
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(&self, delegate: Option<&ProtocolObject<dyn NSToolbarDelegate>>);
 
+        /**
+          toggles the visibliity of the toolbar.
+        */
         #[method(isVisible)]
         pub unsafe fn isVisible(&self) -> bool;
 
+        /**
+          toggles the visibliity of the toolbar.
+        */
         #[method(setVisible:)]
         pub unsafe fn setVisible(&self, visible: bool);
 
@@ -94,15 +106,27 @@ extern_methods!(
         #[method(customizationPaletteIsRunning)]
         pub unsafe fn customizationPaletteIsRunning(&self) -> bool;
 
+        /**
+          ----- Toolbar Attributes  -----
+        */
         #[method(displayMode)]
         pub unsafe fn displayMode(&self) -> NSToolbarDisplayMode;
 
+        /**
+          ----- Toolbar Attributes  -----
+        */
         #[method(setDisplayMode:)]
         pub unsafe fn setDisplayMode(&self, display_mode: NSToolbarDisplayMode);
 
+        /**
+          Sets the toolbar's selected item by identifier.  Use this to force an item identifier to be selected.  Toolbar manages selection of image items automatically.  This method can be used to select identifiers of custom view items, or to force a selection change.  (see toolbarSelectableItemIdentifiers: delegate method for more details).
+        */
         #[method_id(@__retain_semantics Other selectedItemIdentifier)]
         pub unsafe fn selectedItemIdentifier(&self) -> Option<Id<NSToolbarItemIdentifier>>;
 
+        /**
+          Sets the toolbar's selected item by identifier.  Use this to force an item identifier to be selected.  Toolbar manages selection of image items automatically.  This method can be used to select identifiers of custom view items, or to force a selection change.  (see toolbarSelectableItemIdentifiers: delegate method for more details).
+        */
         #[method(setSelectedItemIdentifier:)]
         pub unsafe fn setSelectedItemIdentifier(
             &self,
@@ -117,44 +141,85 @@ extern_methods!(
         #[method(setSizeMode:)]
         pub unsafe fn setSizeMode(&self, size_mode: NSToolbarSizeMode);
 
+        /**
+          Use this API to hide the baseline NSToolbar draws between itself and the main window contents.  The default is YES.  This method should only be used before the toolbar is attached to its window (-[NSWindow setToolbar:]).
+        */
         #[method(showsBaselineSeparator)]
         pub unsafe fn showsBaselineSeparator(&self) -> bool;
 
+        /**
+          Use this API to hide the baseline NSToolbar draws between itself and the main window contents.  The default is YES.  This method should only be used before the toolbar is attached to its window (-[NSWindow setToolbar:]).
+        */
         #[method(setShowsBaselineSeparator:)]
         pub unsafe fn setShowsBaselineSeparator(&self, shows_baseline_separator: bool);
 
+        /**
+          This flag controls whether or not users can configure the toolbar by dragging items around, and whether or not the customization palette can be used.  The default value is NO, but can be changed at any time.  For instance, a developer may not want users to be able to edit the toolbar while some event is being processed.
+        */
         #[method(allowsUserCustomization)]
         pub unsafe fn allowsUserCustomization(&self) -> bool;
 
+        /**
+          This flag controls whether or not users can configure the toolbar by dragging items around, and whether or not the customization palette can be used.  The default value is NO, but can be changed at any time.  For instance, a developer may not want users to be able to edit the toolbar while some event is being processed.
+        */
         #[method(setAllowsUserCustomization:)]
         pub unsafe fn setAllowsUserCustomization(&self, allows_user_customization: bool);
 
+        /**
+          All toolbars with the same name will share the same display attributes, and item order.  Also, if a toolbar autosaves its configuration, the item identifier will be used as the autosave name.
+        */
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Id<NSToolbarIdentifier>;
 
         #[cfg(all(feature = "AppKit_NSToolbarItem", feature = "Foundation_NSArray"))]
+        /**
+          Allows you to access all current items in the toolbar.
+        */
         #[method_id(@__retain_semantics Other items)]
         pub unsafe fn items(&self) -> Id<NSArray<NSToolbarItem>>;
 
         #[cfg(all(feature = "AppKit_NSToolbarItem", feature = "Foundation_NSArray"))]
+        /**
+          Allows you to access the current visible items (non clipped).
+        */
         #[method_id(@__retain_semantics Other visibleItems)]
         pub unsafe fn visibleItems(&self) -> Option<Id<NSArray<NSToolbarItem>>>;
 
         #[cfg(feature = "Foundation_NSSet")]
+        /**
+         Items with centered identifiers will be centered together in the Toolbar relative to the window assuming space allows. The order of items is initially defined by the default set of identifiers, but may be customized by the user. Centered items may not be moved outside of the center set of items by the user.
+
+        This property is archived.
+        */
         #[method_id(@__retain_semantics Other centeredItemIdentifiers)]
         pub unsafe fn centeredItemIdentifiers(&self) -> Id<NSSet<NSToolbarItemIdentifier>>;
 
         #[cfg(feature = "Foundation_NSSet")]
+        /**
+         Items with centered identifiers will be centered together in the Toolbar relative to the window assuming space allows. The order of items is initially defined by the default set of identifiers, but may be customized by the user. Centered items may not be moved outside of the center set of items by the user.
+
+        This property is archived.
+        */
         #[method(setCenteredItemIdentifiers:)]
         pub unsafe fn setCenteredItemIdentifiers(
             &self,
             centered_item_identifiers: &NSSet<NSToolbarItemIdentifier>,
         );
 
+        /**
+         The item with the specified identifier will be positioned in the absolute center of the Toolbar relative to the window assuming space allows. When the window shrinks, the highest priority is to have the most items visible. Thus, centering is broken first (it'll be pushed off to the left/right as necessary). Next, items will be shrunk down a little at a time towards their min size, at the same rate. Finally, items will be removed based on their visibility priority.
+
+        This property is archived.
+        */
         #[deprecated = "Use the centeredItemIdentifiers property instead"]
         #[method_id(@__retain_semantics Other centeredItemIdentifier)]
         pub unsafe fn centeredItemIdentifier(&self) -> Option<Id<NSToolbarItemIdentifier>>;
 
+        /**
+         The item with the specified identifier will be positioned in the absolute center of the Toolbar relative to the window assuming space allows. When the window shrinks, the highest priority is to have the most items visible. Thus, centering is broken first (it'll be pushed off to the left/right as necessary). Next, items will be shrunk down a little at a time towards their min size, at the same rate. Finally, items will be removed based on their visibility priority.
+
+        This property is archived.
+        */
         #[deprecated = "Use the centeredItemIdentifiers property instead"]
         #[method(setCenteredItemIdentifier:)]
         pub unsafe fn setCenteredItemIdentifier(
@@ -162,9 +227,15 @@ extern_methods!(
             centered_item_identifier: Option<&NSToolbarItemIdentifier>,
         );
 
+        /**
+          If autosavesConfiguration is YES, the toolbar will automatically write changes the user makes to user defaults.  Customizable toolbars will want to set this flag to YES.  Setting this to NO means changes in configuration are not written automatically, however you can use the configurationDictionary method to do it yourself.  Default is NO.
+        */
         #[method(autosavesConfiguration)]
         pub unsafe fn autosavesConfiguration(&self) -> bool;
 
+        /**
+          If autosavesConfiguration is YES, the toolbar will automatically write changes the user makes to user defaults.  Customizable toolbars will want to set this flag to YES.  Setting this to NO means changes in configuration are not written automatically, however you can use the configurationDictionary method to do it yourself.  Default is NO.
+        */
         #[method(setAutosavesConfiguration:)]
         pub unsafe fn setAutosavesConfiguration(&self, autosaves_configuration: bool);
 
@@ -182,9 +253,19 @@ extern_methods!(
         #[method(validateVisibleItems)]
         pub unsafe fn validateVisibleItems(&self);
 
+        /**
+          ----- Extension toolbar items -----
+        * When YES, the receiver can dynamically create toolbar items for Action extensions in the toolbar configuration panel. To be included, an extension needs to declare NSExtensionServiceAllowsToolbarItem=YES in its Info.plist. The default value is NO.
+
+        */
         #[method(allowsExtensionItems)]
         pub unsafe fn allowsExtensionItems(&self) -> bool;
 
+        /**
+          ----- Extension toolbar items -----
+        * When YES, the receiver can dynamically create toolbar items for Action extensions in the toolbar configuration panel. To be included, an extension needs to declare NSExtensionServiceAllowsToolbarItem=YES in its Info.plist. The default value is NO.
+
+        */
         #[method(setAllowsExtensionItems:)]
         pub unsafe fn setAllowsExtensionItems(&self, allows_extension_items: bool);
     }
@@ -267,11 +348,17 @@ extern_methods!(
     #[cfg(feature = "AppKit_NSToolbar")]
     unsafe impl NSToolbar {
         #[cfg(feature = "AppKit_NSView")]
+        /**
+         Sets the toolbar full screen accessory view.  When entering full screen, the accessory view is removed from the window if necessary, and attaches underneath the toolbar.  When leaving full screen, the accessory view is returned to the window, if it was in the window previously. To customize this latter behavior, you can implement the NSWindow delegate method windowWillExitFullScreen:.
+        */
         #[deprecated = "Use NSTitlebarAccessoryViewController with NSWindow instead"]
         #[method_id(@__retain_semantics Other fullScreenAccessoryView)]
         pub unsafe fn fullScreenAccessoryView(&self) -> Option<Id<NSView>>;
 
         #[cfg(feature = "AppKit_NSView")]
+        /**
+         Sets the toolbar full screen accessory view.  When entering full screen, the accessory view is removed from the window if necessary, and attaches underneath the toolbar.  When leaving full screen, the accessory view is returned to the window, if it was in the window previously. To customize this latter behavior, you can implement the NSWindow delegate method windowWillExitFullScreen:.
+        */
         #[deprecated = "Use NSTitlebarAccessoryViewController with NSWindow instead"]
         #[method(setFullScreenAccessoryView:)]
         pub unsafe fn setFullScreenAccessoryView(
@@ -279,10 +366,24 @@ extern_methods!(
             full_screen_accessory_view: Option<&NSView>,
         );
 
+        /**
+         The following properties control the minimum and maximum height of the accessory view. The minimum height is used when the menu bar is hidden, and the max height to a fully revealed menu bar. During the reveal, the accessory view's frame is interpolated between its minimum and maximum height.
+
+        If the minimum height is zero (which it is by default), the accessory view is not resized; instead a special transition is used to reveal it with the menu bar. This simplifies the accessory view's task, because it does not have to handle the case of being set to zero height. To create a fixed-height accessory view, set the min and max height to be equal.
+
+        By default, the min height is 0 and the max height gets set to the height of the accessory view's frame when it is set.
+        */
         #[deprecated = "Use NSTitlebarAccessoryViewController and its fullScreenMinHeight property with NSWindow instead."]
         #[method(fullScreenAccessoryViewMinHeight)]
         pub unsafe fn fullScreenAccessoryViewMinHeight(&self) -> CGFloat;
 
+        /**
+         The following properties control the minimum and maximum height of the accessory view. The minimum height is used when the menu bar is hidden, and the max height to a fully revealed menu bar. During the reveal, the accessory view's frame is interpolated between its minimum and maximum height.
+
+        If the minimum height is zero (which it is by default), the accessory view is not resized; instead a special transition is used to reveal it with the menu bar. This simplifies the accessory view's task, because it does not have to handle the case of being set to zero height. To create a fixed-height accessory view, set the min and max height to be equal.
+
+        By default, the min height is 0 and the max height gets set to the height of the accessory view's frame when it is set.
+        */
         #[deprecated = "Use NSTitlebarAccessoryViewController and its fullScreenMinHeight property with NSWindow instead."]
         #[method(setFullScreenAccessoryViewMinHeight:)]
         pub unsafe fn setFullScreenAccessoryViewMinHeight(

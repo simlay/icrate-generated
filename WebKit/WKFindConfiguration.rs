@@ -22,21 +22,47 @@ unsafe impl NSObjectProtocol for WKFindConfiguration {}
 extern_methods!(
     #[cfg(feature = "WebKit_WKFindConfiguration")]
     unsafe impl WKFindConfiguration {
+        /**
+          @abstract The direction to search from the current selection
+        @discussion The search will respect the writing direction of the document.
+        The initial value is NO.
+        */
         #[method(backwards)]
         pub unsafe fn backwards(&self) -> bool;
 
+        /**
+          @abstract The direction to search from the current selection
+        @discussion The search will respect the writing direction of the document.
+        The initial value is NO.
+        */
         #[method(setBackwards:)]
         pub unsafe fn setBackwards(&self, backwards: bool);
 
+        /**
+          @abstract Whether or not the search should be case sensitive
+        @discussion The initial value is NO.
+        */
         #[method(caseSensitive)]
         pub unsafe fn caseSensitive(&self) -> bool;
 
+        /**
+          @abstract Whether or not the search should be case sensitive
+        @discussion The initial value is NO.
+        */
         #[method(setCaseSensitive:)]
         pub unsafe fn setCaseSensitive(&self, case_sensitive: bool);
 
+        /**
+          @abstract Whether the search should start at the beginning of the document once it reaches the end
+        @discussion The initial value is YES.
+        */
         #[method(wraps)]
         pub unsafe fn wraps(&self) -> bool;
 
+        /**
+          @abstract Whether the search should start at the beginning of the document once it reaches the end
+        @discussion The initial value is YES.
+        */
         #[method(setWraps:)]
         pub unsafe fn setWraps(&self, wraps: bool);
     }

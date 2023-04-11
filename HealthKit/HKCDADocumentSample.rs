@@ -9,6 +9,10 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKCDADocumentSample")]
+    /**
+     @class         HKCDADocumentSample
+    @abstract      A sample object representing a CDA document.
+    */
     pub struct HKCDADocumentSample;
 
     #[cfg(feature = "HealthKit_HKCDADocumentSample")]
@@ -19,18 +23,42 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKCDADocumentSample")]
+/**
+ @class         HKCDADocumentSample
+@abstract      A sample object representing a CDA document.
+*/
 unsafe impl NSCoding for HKCDADocumentSample {}
 
 #[cfg(feature = "HealthKit_HKCDADocumentSample")]
+/**
+ @class         HKCDADocumentSample
+@abstract      A sample object representing a CDA document.
+*/
 unsafe impl NSObjectProtocol for HKCDADocumentSample {}
 
 #[cfg(feature = "HealthKit_HKCDADocumentSample")]
+/**
+ @class         HKCDADocumentSample
+@abstract      A sample object representing a CDA document.
+*/
 unsafe impl NSSecureCoding for HKCDADocumentSample {}
 
 extern_methods!(
+    /**
+     @class         HKCDADocumentSample
+    @abstract      A sample object representing a CDA document.
+    */
     #[cfg(feature = "HealthKit_HKCDADocumentSample")]
     unsafe impl HKCDADocumentSample {
         #[cfg(feature = "HealthKit_HKCDADocument")]
+        /**
+         @property      document
+        @abstract      The contents of the document.
+        @discussion    Access to each CDA instance must be authorized by the user in order for the document data to be
+        accessible to an app.  The authorization request occurs the first time a document matches the predicate
+        of an executed HKDocumentQuery.  This property will always be nil if the sample is returned by an
+        HKSampleQuery or an HKAnchoredObjectQuery.
+        */
         #[method_id(@__retain_semantics Other document)]
         pub unsafe fn document(&self) -> Option<Id<HKCDADocument>>;
 
@@ -69,22 +97,47 @@ extern_methods!(
     #[cfg(feature = "HealthKit_HKCDADocument")]
     unsafe impl HKCDADocument {
         #[cfg(feature = "Foundation_NSData")]
+        /**
+         @property  documentData
+        @abstract  The CDA document content in XML format as specified in the CDA standard. This may be nil if the
+        includeDocumentData option in HKDocumentQuery is specified as NO.
+        */
         #[method_id(@__retain_semantics Other documentData)]
         pub unsafe fn documentData(&self) -> Option<Id<NSData>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property      title
+        @abstract      The title of the document.
+        @discussion    This property is extracted automatically from the document.
+        */
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property      patientName
+        @abstract      The name of the patient receiving treatment.
+        @discussion    This property is extracted automatically from the document.
+        */
         #[method_id(@__retain_semantics Other patientName)]
         pub unsafe fn patientName(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property      authorName
+        @abstract      The person responsible for authoring the document.  Usually, this is the treating physician.
+        @discussion    This property is extracted automatically from the document.
+        */
         #[method_id(@__retain_semantics Other authorName)]
         pub unsafe fn authorName(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property      custodianName
+        @abstract      The organization responsible for the document.  This is usually the treating institution name.
+        @discussion    This property is extracted automatically from the document.
+        */
         #[method_id(@__retain_semantics Other custodianName)]
         pub unsafe fn custodianName(&self) -> Id<NSString>;
     }

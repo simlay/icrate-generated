@@ -48,12 +48,22 @@ extern_methods!(
         );
 
         #[cfg(all(feature = "CloudKit_CKSubscription", feature = "Foundation_NSError"))]
+        /**
+          @abstract Called on success or failure for each subscriptionID.
+
+         @discussion Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(perSubscriptionCompletionBlock)]
         pub unsafe fn perSubscriptionCompletionBlock(
             &self,
         ) -> *mut Block<(NonNull<CKSubscriptionID>, *mut CKSubscription, *mut NSError), ()>;
 
         #[cfg(all(feature = "CloudKit_CKSubscription", feature = "Foundation_NSError"))]
+        /**
+          @abstract Called on success or failure for each subscriptionID.
+
+         @discussion Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(setPerSubscriptionCompletionBlock:)]
         pub unsafe fn setPerSubscriptionCompletionBlock(
             &self,
@@ -67,6 +77,14 @@ extern_methods!(
             feature = "Foundation_NSDictionary",
             feature = "Foundation_NSError"
         ))]
+        /**
+          @abstract This block is called when the operation completes.
+
+          @discussion The @code -[NSOperation completionBlock] @endcode will also be called if both are set.
+          If the error is @c CKErrorPartialFailure, the error's userInfo dictionary contains a dictionary of subscriptionID to errors keyed off of @c CKPartialErrorsByItemIDKey.
+          @c subscriptionsBySubscriptionID and any @c CKPartialErrorsByItemIDKey errors are repeats of the data sent back in previous @c perSubscriptionCompletionBlock invocations
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(fetchSubscriptionCompletionBlock)]
         pub unsafe fn fetchSubscriptionCompletionBlock(
             &self,
@@ -83,6 +101,14 @@ extern_methods!(
             feature = "Foundation_NSDictionary",
             feature = "Foundation_NSError"
         ))]
+        /**
+          @abstract This block is called when the operation completes.
+
+          @discussion The @code -[NSOperation completionBlock] @endcode will also be called if both are set.
+          If the error is @c CKErrorPartialFailure, the error's userInfo dictionary contains a dictionary of subscriptionID to errors keyed off of @c CKPartialErrorsByItemIDKey.
+          @c subscriptionsBySubscriptionID and any @c CKPartialErrorsByItemIDKey errors are repeats of the data sent back in previous @c perSubscriptionCompletionBlock invocations
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(setFetchSubscriptionCompletionBlock:)]
         pub unsafe fn setFetchSubscriptionCompletionBlock(
             &self,

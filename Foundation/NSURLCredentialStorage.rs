@@ -6,6 +6,10 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSURLCredentialStorage")]
+    /**
+     @class NSURLCredentialStorage
+    @discussion NSURLCredentialStorage implements a singleton object (shared instance) which manages the shared credentials cache. Note: Whereas in Mac OS X any application can access any credential with a persistence of NSURLCredentialPersistencePermanent provided the user gives permission, in iPhone OS an application can access only its own credentials.
+    */
     pub struct NSURLCredentialStorage;
 
     #[cfg(feature = "Foundation_NSURLCredentialStorage")]
@@ -15,11 +19,24 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSURLCredentialStorage")]
+/**
+ @class NSURLCredentialStorage
+@discussion NSURLCredentialStorage implements a singleton object (shared instance) which manages the shared credentials cache. Note: Whereas in Mac OS X any application can access any credential with a persistence of NSURLCredentialPersistencePermanent provided the user gives permission, in iPhone OS an application can access only its own credentials.
+*/
 unsafe impl NSObjectProtocol for NSURLCredentialStorage {}
 
 extern_methods!(
+    /**
+     @class NSURLCredentialStorage
+    @discussion NSURLCredentialStorage implements a singleton object (shared instance) which manages the shared credentials cache. Note: Whereas in Mac OS X any application can access any credential with a persistence of NSURLCredentialPersistencePermanent provided the user gives permission, in iPhone OS an application can access only its own credentials.
+    */
     #[cfg(feature = "Foundation_NSURLCredentialStorage")]
     unsafe impl NSURLCredentialStorage {
+        /**
+         @property sharedCredentialStorage
+        @abstract Get the shared singleton authentication storage
+        @result the shared authentication storage
+        */
         #[method_id(@__retain_semantics Other sharedCredentialStorage)]
         pub unsafe fn sharedCredentialStorage() -> Id<NSURLCredentialStorage>;
 
@@ -41,6 +58,12 @@ extern_methods!(
             feature = "Foundation_NSURLCredential",
             feature = "Foundation_NSURLProtectionSpace"
         ))]
+        /**
+         @abstract Get a dictionary mapping NSURLProtectionSpaces to dictionaries which map usernames to NSURLCredentials
+        @result an NSDictionary where the keys are NSURLProtectionSpaces
+        and the values are dictionaries, in which the keys are usernames
+        and the values are NSURLCredentials
+        */
         #[method_id(@__retain_semantics Other allCredentials)]
         pub unsafe fn allCredentials(
             &self,

@@ -64,6 +64,9 @@ extern_methods!(
         pub unsafe fn dockType(&self) -> Id<NSString>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          array of strings representing the protocols supported by the accessory
+        */
         #[method_id(@__retain_semantics Other protocolStrings)]
         pub unsafe fn protocolStrings(&self) -> Id<NSArray<NSString>>;
 

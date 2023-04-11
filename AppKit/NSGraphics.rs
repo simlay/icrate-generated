@@ -7,6 +7,9 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      Operation types for composite operators
+    */
     pub enum NSCompositingOperation {
         NSCompositingOperationClear = 0,
         NSCompositingOperationCopy = 1,
@@ -109,6 +112,9 @@ extern_static!(NSCompositeLuminosity: NSCompositingOperation = NSCompositingOper
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      Types of window backing stores.
+    */
     pub enum NSBackingStoreType {
         #[deprecated]
         NSBackingStoreRetained = 0,
@@ -120,6 +126,9 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      ways to order windows
+    */
     pub enum NSWindowOrderingMode {
         NSWindowAbove = 1,
         NSWindowBelow = -1,
@@ -129,6 +138,9 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      order in which to draw focus ring - above or below graphic or just draw ring
+    */
     pub enum NSFocusRingPlacement {
         NSFocusRingOnly = 0,
         NSFocusRingBelow = 1,
@@ -138,6 +150,9 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      used by NSView and NSCell to configure if and how the control should draw its focus ring
+    */
     pub enum NSFocusRingType {
         NSFocusRingTypeDefault = 0,
         NSFocusRingTypeNone = 1,
@@ -147,6 +162,9 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      values interchangeable with CGColorRenderingIntent values
+    */
     pub enum NSColorRenderingIntent {
         NSColorRenderingIntentDefault = 0,
         NSColorRenderingIntentAbsoluteColorimetric = 1,
@@ -182,6 +200,13 @@ extern_static!(NSDeviceBlackColorSpace: &'static NSColorSpaceName);
 
 ns_enum!(
     #[underlying(i32)]
+    /**
+      NSWindowDepth defines the values used in setting window depth limits. "0" indicates default depth. Window depths should not be made persistent as they will not be the same across systems. Use the functions NSBitsPerSampleFromDepth(), NSColorSpaceFromDepth(), NSBitsPerPixelFromDepth(), and NSPlanarFromDepth() to extract info from an NSWindowDepth
+
+    On Mac OS X 10.5 and earlier, use NSBestDepth() to compute window depths. NSBestDepth() will try to accomodate all the parameters (match or better); if there are multiple matches, it gives the closest, with matching colorSpace first, then bps, then planar, then bpp. bpp is "bits per pixel"; 0 indicates default (same as the number of bits per plane, either bps or bps * NSNumberOfColorComponents()); other values maybe used as hints to provide backing stores of different configuration; for instance, 8 bit color. exactMatch is optional and indicates whether all the parameters matched exactly.
+
+    On Mac OS X 10.6 and later, you can pass one of the explicit bit depths below to -[NSWindow setDepthLimit:].  NSWindowDepthTwentyfourBitRGB is the default.
+    */
     pub enum NSWindowDepth {
         NSWindowDepthTwentyfourBitRGB = 0x208,
         NSWindowDepthSixtyfourBitRGB = 0x210,
@@ -233,6 +258,9 @@ extern_static!(NSBlack: CGFloat);
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      Approximate color gamut for use by NSScreen and NSWindow
+    */
     pub enum NSDisplayGamut {
         NSDisplayGamutSRGB = 1,
         NSDisplayGamutP3 = 2,
@@ -425,6 +453,16 @@ extern_fn!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      Runs one of the standard system animation effects (display and sound).
+     'centerLocation' represents the center, in screen coordinates, to show the effect.
+     'size' specifies how big the effect should be.  Use NSZeroSize to get the default size.
+     'animationDelegate' is optionally, an object that wants to know when the effect has completed.
+     'didEndSelector' will be invoked in the animationDelegate when the animation has completed.
+
+     The didEndSelector should have the following signature:
+         - (void)animationEffectDidEnd:(void *)contextInfo;
+    */
     pub enum NSAnimationEffect {
         NSAnimationEffectDisappearingItemDefault = 0,
         NSAnimationEffectPoof = 10,

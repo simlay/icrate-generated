@@ -33,6 +33,10 @@ unsafe impl NSObjectProtocol for NSManagedObject {}
 extern_methods!(
     #[cfg(feature = "CoreData_NSManagedObject")]
     unsafe impl NSManagedObject {
+        /**
+           Distinguish between changes that should and should not dirty the object for any key unknown to Core Data.  10.5 & earlier default to NO.  10.6 and later default to YES.
+            Similarly, transient attributes may be individually flagged as not dirtying the object by adding +(BOOL)contextShouldIgnoreChangesFor<key> where <key> is the property name.
+        */
         #[method(contextShouldIgnoreUnmodeledPropertyChanges)]
         pub unsafe fn contextShouldIgnoreUnmodeledPropertyChanges() -> bool;
 
@@ -63,6 +67,9 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "CoreData_NSManagedObjectContext")]
+        /**
+          identity
+        */
         #[method_id(@__retain_semantics Other managedObjectContext)]
         pub unsafe fn managedObjectContext(&self) -> Option<Id<NSManagedObjectContext>>;
 
@@ -74,6 +81,9 @@ extern_methods!(
         #[method_id(@__retain_semantics Other objectID)]
         pub unsafe fn objectID(&self) -> Id<NSManagedObjectID>;
 
+        /**
+          state - methods
+        */
         #[method(isInserted)]
         pub unsafe fn isInserted(&self) -> bool;
 
@@ -86,9 +96,15 @@ extern_methods!(
         #[method(hasChanges)]
         pub unsafe fn hasChanges(&self) -> bool;
 
+        /**
+          returns YES if any persistent properties do not compare isEqual to their last saved state.  Relationship faults will not be unnecessarily fired.  This differs from the existing -hasChanges method which is a simple dirty flag and also includes transient properties
+        */
         #[method(hasPersistentChangedValues)]
         pub unsafe fn hasPersistentChangedValues(&self) -> bool;
 
+        /**
+          this information is useful in many situations when computations are optional - this can be used to avoid growing the object graph unnecessarily (which allows to control performance as it can avoid time consuming fetches from databases)
+        */
         #[method(isFault)]
         pub unsafe fn isFault(&self) -> bool;
 
@@ -107,6 +123,9 @@ extern_methods!(
             key: &NSString,
         ) -> Id<NSArray<NSManagedObjectID>>;
 
+        /**
+          Allow developers to determine if an object is in a transitional phase when receiving a KVO notification.  Returns 0 if the object is fully initialized as a managed object and not transitioning to or from another state
+        */
         #[method(faultingState)]
         pub unsafe fn faultingState(&self) -> NSUInteger;
 

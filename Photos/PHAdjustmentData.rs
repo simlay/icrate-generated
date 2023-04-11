@@ -33,6 +33,9 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Used to identify the format of the data blob (e.g. identifier "com.apple.myapp" and version "1.0")
+        */
         #[method_id(@__retain_semantics Other formatIdentifier)]
         pub unsafe fn formatIdentifier(&self) -> Id<NSString>;
 
@@ -41,6 +44,9 @@ extern_methods!(
         pub unsafe fn formatVersion(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          Binary blob that describes the adjustments applied to the asset.
+        */
         #[method_id(@__retain_semantics Other data)]
         pub unsafe fn data(&self) -> Id<NSData>;
     }

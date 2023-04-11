@@ -8,6 +8,10 @@ use crate::OSAKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "OSAKit_OSAScriptView")]
+    /**
+      OSAScriptView
+     =============
+    */
     pub struct OSAScriptView;
 
     #[cfg(feature = "OSAKit_OSAScriptView")]
@@ -18,76 +22,170 @@ extern_class!(
 );
 
 #[cfg(feature = "OSAKit_OSAScriptView")]
+/**
+  OSAScriptView
+ =============
+*/
 unsafe impl NSAccessibility for OSAScriptView {}
 
 #[cfg(feature = "OSAKit_OSAScriptView")]
+/**
+  OSAScriptView
+ =============
+*/
 unsafe impl NSAccessibilityElementProtocol for OSAScriptView {}
 
 #[cfg(feature = "OSAKit_OSAScriptView")]
+/**
+  OSAScriptView
+ =============
+*/
 unsafe impl NSAccessibilityNavigableStaticText for OSAScriptView {}
 
 #[cfg(feature = "OSAKit_OSAScriptView")]
+/**
+  OSAScriptView
+ =============
+*/
 unsafe impl NSAccessibilityStaticText for OSAScriptView {}
 
 #[cfg(feature = "OSAKit_OSAScriptView")]
+/**
+  OSAScriptView
+ =============
+*/
 unsafe impl NSAnimatablePropertyContainer for OSAScriptView {}
 
 #[cfg(feature = "OSAKit_OSAScriptView")]
+/**
+  OSAScriptView
+ =============
+*/
 unsafe impl NSAppearanceCustomization for OSAScriptView {}
 
 #[cfg(feature = "OSAKit_OSAScriptView")]
+/**
+  OSAScriptView
+ =============
+*/
 unsafe impl NSChangeSpelling for OSAScriptView {}
 
 #[cfg(feature = "OSAKit_OSAScriptView")]
+/**
+  OSAScriptView
+ =============
+*/
 unsafe impl NSCoding for OSAScriptView {}
 
 #[cfg(feature = "OSAKit_OSAScriptView")]
+/**
+  OSAScriptView
+ =============
+*/
 unsafe impl NSColorChanging for OSAScriptView {}
 
 #[cfg(feature = "OSAKit_OSAScriptView")]
+/**
+  OSAScriptView
+ =============
+*/
 unsafe impl NSDraggingDestination for OSAScriptView {}
 
 #[cfg(feature = "OSAKit_OSAScriptView")]
+/**
+  OSAScriptView
+ =============
+*/
 unsafe impl NSDraggingSource for OSAScriptView {}
 
 #[cfg(feature = "OSAKit_OSAScriptView")]
+/**
+  OSAScriptView
+ =============
+*/
 unsafe impl NSIgnoreMisspelledWords for OSAScriptView {}
 
 #[cfg(feature = "OSAKit_OSAScriptView")]
+/**
+  OSAScriptView
+ =============
+*/
 unsafe impl NSMenuItemValidation for OSAScriptView {}
 
 #[cfg(feature = "OSAKit_OSAScriptView")]
+/**
+  OSAScriptView
+ =============
+*/
 unsafe impl NSObjectProtocol for OSAScriptView {}
 
 #[cfg(feature = "OSAKit_OSAScriptView")]
+/**
+  OSAScriptView
+ =============
+*/
 unsafe impl NSStandardKeyBindingResponding for OSAScriptView {}
 
 #[cfg(feature = "OSAKit_OSAScriptView")]
+/**
+  OSAScriptView
+ =============
+*/
 unsafe impl NSTextContent for OSAScriptView {}
 
 #[cfg(feature = "OSAKit_OSAScriptView")]
+/**
+  OSAScriptView
+ =============
+*/
 unsafe impl NSTextInput for OSAScriptView {}
 
 #[cfg(feature = "OSAKit_OSAScriptView")]
+/**
+  OSAScriptView
+ =============
+*/
 unsafe impl NSTextInputClient for OSAScriptView {}
 
 #[cfg(feature = "OSAKit_OSAScriptView")]
+/**
+  OSAScriptView
+ =============
+*/
 unsafe impl NSTextLayoutOrientationProvider for OSAScriptView {}
 
 #[cfg(feature = "OSAKit_OSAScriptView")]
+/**
+  OSAScriptView
+ =============
+*/
 unsafe impl NSUserInterfaceItemIdentification for OSAScriptView {}
 
 #[cfg(feature = "OSAKit_OSAScriptView")]
+/**
+  OSAScriptView
+ =============
+*/
 unsafe impl NSUserInterfaceValidations for OSAScriptView {}
 
 extern_methods!(
+    /**
+      OSAScriptView
+     =============
+    */
     #[cfg(feature = "OSAKit_OSAScriptView")]
     unsafe impl OSAScriptView {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Accessors
+        */
         #[method_id(@__retain_semantics Other source)]
         pub unsafe fn source(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Accessors
+        */
         #[method(setSource:)]
         pub unsafe fn setSource(&self, source: Option<&NSString>);
 
@@ -131,6 +229,10 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSTextView`
+    /**
+      OSAScriptView
+     =============
+    */
     #[cfg(feature = "OSAKit_OSAScriptView")]
     unsafe impl OSAScriptView {
         #[cfg(feature = "AppKit_NSTextContainer")]
@@ -158,6 +260,10 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `NSTextView`
     ///
+    /**
+      OSAScriptView
+     =============
+    */
     /// NSTextView_Factory
     #[cfg(feature = "OSAKit_OSAScriptView")]
     unsafe impl OSAScriptView {

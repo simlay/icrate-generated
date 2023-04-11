@@ -8,6 +8,9 @@ use crate::GameKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameKit_GKLeaderboardSet")]
+    /**
+      GKLeaderboardSet represents the sets that leaderboards can be broken out into.
+    */
     pub struct GKLeaderboardSet;
 
     #[cfg(feature = "GameKit_GKLeaderboardSet")]
@@ -17,30 +20,54 @@ extern_class!(
 );
 
 #[cfg(feature = "GameKit_GKLeaderboardSet")]
+/**
+  GKLeaderboardSet represents the sets that leaderboards can be broken out into.
+*/
 unsafe impl NSCoding for GKLeaderboardSet {}
 
 #[cfg(feature = "GameKit_GKLeaderboardSet")]
+/**
+  GKLeaderboardSet represents the sets that leaderboards can be broken out into.
+*/
 unsafe impl NSObjectProtocol for GKLeaderboardSet {}
 
 #[cfg(feature = "GameKit_GKLeaderboardSet")]
+/**
+  GKLeaderboardSet represents the sets that leaderboards can be broken out into.
+*/
 unsafe impl NSSecureCoding for GKLeaderboardSet {}
 
 extern_methods!(
+    /**
+      GKLeaderboardSet represents the sets that leaderboards can be broken out into.
+    */
     #[cfg(feature = "GameKit_GKLeaderboardSet")]
     unsafe impl GKLeaderboardSet {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Localized set title.
+        */
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          set when leaderboardSets have been designated a game group; set when loadLeaderboardSetsWithCompletionHandler has been called for leaderboards that support game groups
+        */
         #[method_id(@__retain_semantics Other groupIdentifier)]
         pub unsafe fn groupIdentifier(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          leaderboard set.
+        */
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          leaderboard set.
+        */
         #[method(setIdentifier:)]
         pub unsafe fn setIdentifier(&self, identifier: Option<&NSString>);
 

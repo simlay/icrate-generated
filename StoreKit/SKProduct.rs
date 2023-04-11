@@ -77,6 +77,9 @@ extern_methods!(
         #[method_id(@__retain_semantics Other productIdentifier)]
         pub unsafe fn productIdentifier(&self) -> Id<NSString>;
 
+        /**
+          YES if this product has content downloadable using SKDownload
+        */
         #[method(isDownloadable)]
         pub unsafe fn isDownloadable(&self) -> bool;
 
@@ -84,10 +87,16 @@ extern_methods!(
         #[method(downloadable)]
         pub unsafe fn downloadable(&self) -> bool;
 
+        /**
+          YES if this product allows for sharing among family members
+        */
         #[method(isFamilyShareable)]
         pub unsafe fn isFamilyShareable(&self) -> bool;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSNumber"))]
+        /**
+          Sizes in bytes (NSNumber [long long]) of the downloads available for this product
+        */
         #[deprecated]
         #[method_id(@__retain_semantics Other contentLengths)]
         pub unsafe fn contentLengths(&self) -> Id<NSArray<NSNumber>>;
@@ -97,6 +106,9 @@ extern_methods!(
         pub unsafe fn downloadContentLengths(&self) -> Id<NSArray<NSNumber>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Version of the downloadable content
+        */
         #[deprecated]
         #[method_id(@__retain_semantics Other contentVersion)]
         pub unsafe fn contentVersion(&self) -> Id<NSString>;

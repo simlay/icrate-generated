@@ -7,6 +7,9 @@ use crate::IdentityLookup::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "IdentityLookup_ILMessageFilterQueryResponse")]
+    /**
+      A response to an ILMessageFilterQueryRequest.
+    */
     pub struct ILMessageFilterQueryResponse;
 
     #[cfg(feature = "IdentityLookup_ILMessageFilterQueryResponse")]
@@ -16,26 +19,50 @@ extern_class!(
 );
 
 #[cfg(feature = "IdentityLookup_ILMessageFilterQueryResponse")]
+/**
+  A response to an ILMessageFilterQueryRequest.
+*/
 unsafe impl NSCoding for ILMessageFilterQueryResponse {}
 
 #[cfg(feature = "IdentityLookup_ILMessageFilterQueryResponse")]
+/**
+  A response to an ILMessageFilterQueryRequest.
+*/
 unsafe impl NSObjectProtocol for ILMessageFilterQueryResponse {}
 
 #[cfg(feature = "IdentityLookup_ILMessageFilterQueryResponse")]
+/**
+  A response to an ILMessageFilterQueryRequest.
+*/
 unsafe impl NSSecureCoding for ILMessageFilterQueryResponse {}
 
 extern_methods!(
+    /**
+      A response to an ILMessageFilterQueryRequest.
+    */
     #[cfg(feature = "IdentityLookup_ILMessageFilterQueryResponse")]
     unsafe impl ILMessageFilterQueryResponse {
+        /**
+          Action to take for the received message.
+        */
         #[method(action)]
         pub unsafe fn action(&self) -> ILMessageFilterAction;
 
+        /**
+          Action to take for the received message.
+        */
         #[method(setAction:)]
         pub unsafe fn setAction(&self, action: ILMessageFilterAction);
 
+        /**
+          SubAction to take for the received message.
+        */
         #[method(subAction)]
         pub unsafe fn subAction(&self) -> ILMessageFilterSubAction;
 
+        /**
+          SubAction to take for the received message.
+        */
         #[method(setSubAction:)]
         pub unsafe fn setSubAction(&self, sub_action: ILMessageFilterSubAction);
     }

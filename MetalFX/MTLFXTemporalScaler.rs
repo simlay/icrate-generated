@@ -21,9 +21,15 @@ unsafe impl NSObjectProtocol for MTLFXTemporalScalerDescriptor {}
 extern_methods!(
     #[cfg(feature = "MetalFX_MTLFXTemporalScalerDescriptor")]
     unsafe impl MTLFXTemporalScalerDescriptor {
+        /**
+          These properties must be set to the respective Metal pixel formats for each texture that will be used with the scaler.
+        */
         #[method(colorTextureFormat)]
         pub unsafe fn colorTextureFormat(&self) -> MTLPixelFormat;
 
+        /**
+          These properties must be set to the respective Metal pixel formats for each texture that will be used with the scaler.
+        */
         #[method(setColorTextureFormat:)]
         pub unsafe fn setColorTextureFormat(&self, color_texture_format: MTLPixelFormat);
 
@@ -69,15 +75,39 @@ extern_methods!(
         #[method(setOutputHeight:)]
         pub unsafe fn setOutputHeight(&self, output_height: NSUInteger);
 
+        /**
+          Auto exposure property, setting this to YES to indicate for MetalFX
+         to determine exposure per frame, which will ignore exposureTexture
+         property on the scaler object.
+        */
         #[method(isAutoExposureEnabled)]
         pub unsafe fn isAutoExposureEnabled(&self) -> bool;
 
+        /**
+          Auto exposure property, setting this to YES to indicate for MetalFX
+         to determine exposure per frame, which will ignore exposureTexture
+         property on the scaler object.
+        */
         #[method(setAutoExposureEnabled:)]
         pub unsafe fn setAutoExposureEnabled(&self, auto_exposure_enabled: bool);
 
+        /**
+          Dynamic Resolution properties
+         Set inputContentPropertiesEnabled to YES to indicate using dynamic resolution
+         Scale value represents output resolution / input content resolution for either
+         width or height dimension. It's assumed that aspect ratio of input/output is
+         always the same.
+        */
         #[method(isInputContentPropertiesEnabled)]
         pub unsafe fn isInputContentPropertiesEnabled(&self) -> bool;
 
+        /**
+          Dynamic Resolution properties
+         Set inputContentPropertiesEnabled to YES to indicate using dynamic resolution
+         Scale value represents output resolution / input content resolution for either
+         width or height dimension. It's assumed that aspect ratio of input/output is
+         always the same.
+        */
         #[method(setInputContentPropertiesEnabled:)]
         pub unsafe fn setInputContentPropertiesEnabled(
             &self,
@@ -108,7 +138,13 @@ extern_methods!(
 );
 
 extern_protocol!(
+    /**
+      This is the object that gets created from the descriptor
+    */
     pub unsafe trait MTLFXTemporalScaler: NSObjectProtocol {
+        /**
+          Properties return the minimum required MTLTextureUsage bits required
+        */
         #[method(colorTextureUsage)]
         unsafe fn colorTextureUsage(&self) -> MTLTextureUsage;
 
@@ -121,9 +157,15 @@ extern_protocol!(
         #[method(outputTextureUsage)]
         unsafe fn outputTextureUsage(&self) -> MTLTextureUsage;
 
+        /**
+          Dynamic Resolution property
+        */
         #[method(inputContentWidth)]
         unsafe fn inputContentWidth(&self) -> NSUInteger;
 
+        /**
+          Dynamic Resolution property
+        */
         #[method(setInputContentWidth:)]
         unsafe fn setInputContentWidth(&self, input_content_width: NSUInteger);
 
@@ -133,9 +175,19 @@ extern_protocol!(
         #[method(setInputContentHeight:)]
         unsafe fn setInputContentHeight(&self, input_content_height: NSUInteger);
 
+        /**
+          These can change on a frame by frame basis.
+         We don't care about the textures assigned except that they must
+         match the originally specified dimensions and pixel formats.
+        */
         #[method_id(@__retain_semantics Other colorTexture)]
         unsafe fn colorTexture(&self) -> Option<Id<ProtocolObject<dyn MTLTexture>>>;
 
+        /**
+          These can change on a frame by frame basis.
+         We don't care about the textures assigned except that they must
+         match the originally specified dimensions and pixel formats.
+        */
         #[method(setColorTexture:)]
         unsafe fn setColorTexture(&self, color_texture: Option<&ProtocolObject<dyn MTLTexture>>);
 
@@ -151,30 +203,64 @@ extern_protocol!(
         #[method(setMotionTexture:)]
         unsafe fn setMotionTexture(&self, motion_texture: Option<&ProtocolObject<dyn MTLTexture>>);
 
+        /**
+          outputTexture is required to have MTLStorageModePrivate for storageMode
+        */
         #[method_id(@__retain_semantics Other outputTexture)]
         unsafe fn outputTexture(&self) -> Option<Id<ProtocolObject<dyn MTLTexture>>>;
 
+        /**
+          outputTexture is required to have MTLStorageModePrivate for storageMode
+        */
         #[method(setOutputTexture:)]
         unsafe fn setOutputTexture(&self, output_texture: Option<&ProtocolObject<dyn MTLTexture>>);
 
+        /**
+          Exposure properties
+         Ideally this is a 1x1 R16F texture. Note that only R channel of
+         the texel located at (0, 0) is used for exposure value. The value is used
+         to multiply the input color, use GPU to generate the exposure value.
+        */
         #[method_id(@__retain_semantics Other exposureTexture)]
         unsafe fn exposureTexture(&self) -> Option<Id<ProtocolObject<dyn MTLTexture>>>;
 
+        /**
+          Exposure properties
+         Ideally this is a 1x1 R16F texture. Note that only R channel of
+         the texel located at (0, 0) is used for exposure value. The value is used
+         to multiply the input color, use GPU to generate the exposure value.
+        */
         #[method(setExposureTexture:)]
         unsafe fn setExposureTexture(
             &self,
             exposure_texture: Option<&ProtocolObject<dyn MTLTexture>>,
         );
 
+        /**
+          If the input color is pre-multiplied by fixed value, set this value
+         which MetalFX will use to divide input color, this is not common.
+        */
         #[method(preExposure)]
         unsafe fn preExposure(&self) -> c_float;
 
+        /**
+          If the input color is pre-multiplied by fixed value, set this value
+         which MetalFX will use to divide input color, this is not common.
+        */
         #[method(setPreExposure:)]
         unsafe fn setPreExposure(&self, pre_exposure: c_float);
 
+        /**
+          The jitter offset property indicates the pixel offset to sample in order to
+         return to the frame's reference frame.
+        */
         #[method(jitterOffsetX)]
         unsafe fn jitterOffsetX(&self) -> c_float;
 
+        /**
+          The jitter offset property indicates the pixel offset to sample in order to
+         return to the frame's reference frame.
+        */
         #[method(setJitterOffsetX:)]
         unsafe fn setJitterOffsetX(&self, jitter_offset_x: c_float);
 
@@ -184,9 +270,25 @@ extern_protocol!(
         #[method(setJitterOffsetY:)]
         unsafe fn setJitterOffsetY(&self, jitter_offset_y: c_float);
 
+        /**
+          Scale factor to be applied to motion vectors to convert to pixel/fragment
+         coordinates in the input data.  The expectation for a 1.0 scale factor is
+         that each pixel's motion vector will point to where that pixel was in the
+         prior frame.  Assuming standard Metal device coordinates (0,0 is upper left
+         in the framebuffer), the motion vectors for an object that moved down and
+         to the right in the framebuffer texture by 10 pixels would be -10,-10.
+        */
         #[method(motionVectorScaleX)]
         unsafe fn motionVectorScaleX(&self) -> c_float;
 
+        /**
+          Scale factor to be applied to motion vectors to convert to pixel/fragment
+         coordinates in the input data.  The expectation for a 1.0 scale factor is
+         that each pixel's motion vector will point to where that pixel was in the
+         prior frame.  Assuming standard Metal device coordinates (0,0 is upper left
+         in the framebuffer), the motion vectors for an object that moved down and
+         to the right in the framebuffer texture by 10 pixels would be -10,-10.
+        */
         #[method(setMotionVectorScaleX:)]
         unsafe fn setMotionVectorScaleX(&self, motion_vector_scale_x: c_float);
 
@@ -196,18 +298,33 @@ extern_protocol!(
         #[method(setMotionVectorScaleY:)]
         unsafe fn setMotionVectorScaleY(&self, motion_vector_scale_y: c_float);
 
+        /**
+          Reset.  Set to true when history is invalid (scene cut, etc.)
+        */
         #[method(reset)]
         unsafe fn reset(&self) -> bool;
 
+        /**
+          Reset.  Set to true when history is invalid (scene cut, etc.)
+        */
         #[method(setReset:)]
         unsafe fn setReset(&self, reset: bool);
 
+        /**
+          Set whether the depth buffer uses reversed depth or not. Defaults to YES.
+        */
         #[method(isDepthReversed)]
         unsafe fn isDepthReversed(&self) -> bool;
 
+        /**
+          Set whether the depth buffer uses reversed depth or not. Defaults to YES.
+        */
         #[method(setDepthReversed:)]
         unsafe fn setDepthReversed(&self, depth_reversed: bool);
 
+        /**
+          Read-only immutable properties of effect
+        */
         #[method(colorTextureFormat)]
         unsafe fn colorTextureFormat(&self) -> MTLPixelFormat;
 
@@ -238,9 +355,15 @@ extern_protocol!(
         #[method(inputContentMaxScale)]
         unsafe fn inputContentMaxScale(&self) -> c_float;
 
+        /**
+          Property for synchronization when using untracked resources
+        */
         #[method_id(@__retain_semantics Other fence)]
         unsafe fn fence(&self) -> Option<Id<ProtocolObject<dyn MTLFence>>>;
 
+        /**
+          Property for synchronization when using untracked resources
+        */
         #[method(setFence:)]
         unsafe fn setFence(&self, fence: Option<&ProtocolObject<dyn MTLFence>>);
 

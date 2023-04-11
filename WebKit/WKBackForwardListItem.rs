@@ -8,6 +8,9 @@ use crate::WebKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "WebKit_WKBackForwardListItem")]
+    /**
+      A WKBackForwardListItem object represents a webpage in the back-forward list of a web view.
+    */
     pub struct WKBackForwardListItem;
 
     #[cfg(feature = "WebKit_WKBackForwardListItem")]
@@ -17,23 +20,38 @@ extern_class!(
 );
 
 #[cfg(feature = "WebKit_WKBackForwardListItem")]
+/**
+  A WKBackForwardListItem object represents a webpage in the back-forward list of a web view.
+*/
 unsafe impl NSObjectProtocol for WKBackForwardListItem {}
 
 extern_methods!(
+    /**
+      A WKBackForwardListItem object represents a webpage in the back-forward list of a web view.
+    */
     #[cfg(feature = "WebKit_WKBackForwardListItem")]
     unsafe impl WKBackForwardListItem {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          @abstract The URL of the webpage represented by this item.
+        */
         #[method_id(@__retain_semantics Other URL)]
         pub unsafe fn URL(&self) -> Id<NSURL>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract The title of the webpage represented by this item.
+        */
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          @abstract The URL of the initial request that created this item.
+        */
         #[method_id(@__retain_semantics Other initialURL)]
         pub unsafe fn initialURL(&self) -> Id<NSURL>;
     }

@@ -6,6 +6,14 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      If an object combines a significant amount of content into one label that is not always pertinent,
+    using the accessibilityCustomContent method below provides an alternative way to deliver content to the user.
+
+    For example, in a photos app, you may want the user to know the date, time, orientation, and shutter speed of a photo.
+    However, that information may not always be necessary to the user. Using the AXCustomContentProvider protocol
+    allows the user to experience the content in a more appropriate manner for that assistive technology.
+    */
     pub enum AXCustomContentImportance {
         AXCustomContentImportanceDefault = 0,
         AXCustomContentImportanceHigh = 1,
@@ -47,6 +55,10 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          A localized string that describes how to name this content.
+         For example, 'Orientation' would be an appropriate name used for photo information.
+        */
         #[method_id(@__retain_semantics Other label)]
         pub unsafe fn label(&self) -> Id<NSString>;
 
@@ -55,6 +67,10 @@ extern_methods!(
         pub unsafe fn attributedLabel(&self) -> Id<NSAttributedString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          A localized string that describes the content.
+         For example, 'Portrait' or 'Landscape' would be an appropriate content value for 'Orientation.'
+        */
         #[method_id(@__retain_semantics Other value)]
         pub unsafe fn value(&self) -> Id<NSString>;
 
@@ -62,9 +78,19 @@ extern_methods!(
         #[method_id(@__retain_semantics Other attributedValue)]
         pub unsafe fn attributedValue(&self) -> Id<NSAttributedString>;
 
+        /**
+          Changing this property allows the user to choose when they experience this content, based on preference.
+         For example, this content may be spoken all the time, or only in a "verbose" mode.
+         Default: AXCustomContentImportanceDefault
+        */
         #[method(importance)]
         pub unsafe fn importance(&self) -> AXCustomContentImportance;
 
+        /**
+          Changing this property allows the user to choose when they experience this content, based on preference.
+         For example, this content may be spoken all the time, or only in a "verbose" mode.
+         Default: AXCustomContentImportanceDefault
+        */
         #[method(setImportance:)]
         pub unsafe fn setImportance(&self, importance: AXCustomContentImportance);
 

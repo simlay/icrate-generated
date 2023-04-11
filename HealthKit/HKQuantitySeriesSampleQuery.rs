@@ -24,15 +24,57 @@ unsafe impl NSObjectProtocol for HKQuantitySeriesSampleQuery {}
 extern_methods!(
     #[cfg(feature = "HealthKit_HKQuantitySeriesSampleQuery")]
     unsafe impl HKQuantitySeriesSampleQuery {
+        /**
+         @property      includeSample
+        @abstract      Include owning HKQuantitySample in quantityHandler handler.
+        @discussion    Default value is NO.
+        If includeSample is set then the quantitySample parameter of quantityHandler will
+        be non-nil anytime the quantity parameter is non-nil.
+        Specifying this option has a performance cost.
+        This property may not be modified once the query has been executed.
+        */
         #[method(includeSample)]
         pub unsafe fn includeSample(&self) -> bool;
 
+        /**
+         @property      includeSample
+        @abstract      Include owning HKQuantitySample in quantityHandler handler.
+        @discussion    Default value is NO.
+        If includeSample is set then the quantitySample parameter of quantityHandler will
+        be non-nil anytime the quantity parameter is non-nil.
+        Specifying this option has a performance cost.
+        This property may not be modified once the query has been executed.
+        */
         #[method(setIncludeSample:)]
         pub unsafe fn setIncludeSample(&self, include_sample: bool);
 
+        /**
+         @property      orderByQuantitySampleStartDate
+        @abstract      Order enumerated results first by quantitySample.startDate,
+        then by the quantity's dateInterval.startDate.
+        @discussion    Default value is NO.
+        All quantities owned by a given quantitySample will be
+        enumerated before any quantities owned by any other quantity sample,
+        and the quantity samples will be enumerated in their startDate order.
+        Note that individual quantities may not be returned in their
+        dateInterval.startDate order if more than one quantitySample overlap in time.
+        This property may not be modified once the query has been executed.
+        */
         #[method(orderByQuantitySampleStartDate)]
         pub unsafe fn orderByQuantitySampleStartDate(&self) -> bool;
 
+        /**
+         @property      orderByQuantitySampleStartDate
+        @abstract      Order enumerated results first by quantitySample.startDate,
+        then by the quantity's dateInterval.startDate.
+        @discussion    Default value is NO.
+        All quantities owned by a given quantitySample will be
+        enumerated before any quantities owned by any other quantity sample,
+        and the quantity samples will be enumerated in their startDate order.
+        Note that individual quantities may not be returned in their
+        dateInterval.startDate order if more than one quantitySample overlap in time.
+        This property may not be modified once the query has been executed.
+        */
         #[method(setOrderByQuantitySampleStartDate:)]
         pub unsafe fn setOrderByQuantitySampleStartDate(
             &self,

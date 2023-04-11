@@ -6,6 +6,10 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSXMLDTD")]
+    /**
+     @class NSXMLDTD
+    @abstract Defines the order, repetition, and allowable values for a document
+    */
     pub struct NSXMLDTD;
 
     #[cfg(feature = "Foundation_NSXMLDTD")]
@@ -16,9 +20,17 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSXMLDTD")]
+/**
+ @class NSXMLDTD
+@abstract Defines the order, repetition, and allowable values for a document
+*/
 unsafe impl NSObjectProtocol for NSXMLDTD {}
 
 extern_methods!(
+    /**
+     @class NSXMLDTD
+    @abstract Defines the order, repetition, and allowable values for a document
+    */
     #[cfg(feature = "Foundation_NSXMLDTD")]
     unsafe impl NSXMLDTD {
         #[method_id(@__retain_semantics Init init)]
@@ -48,18 +60,30 @@ extern_methods!(
         ) -> Result<Id<Self>, Id<NSError>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         primitive
+        */
         #[method_id(@__retain_semantics Other publicID)]
         pub unsafe fn publicID(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         primitive
+        */
         #[method(setPublicID:)]
         pub unsafe fn setPublicID(&self, public_id: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         primitive
+        */
         #[method_id(@__retain_semantics Other systemID)]
         pub unsafe fn systemID(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         primitive
+        */
         #[method(setSystemID:)]
         pub unsafe fn setSystemID(&self, system_id: Option<&NSString>);
 
@@ -121,6 +145,10 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSXMLNode`
+    /**
+     @class NSXMLDTD
+    @abstract Defines the order, repetition, and allowable values for a document
+    */
     #[cfg(feature = "Foundation_NSXMLDTD")]
     unsafe impl NSXMLDTD {
         #[method_id(@__retain_semantics Init initWithKind:)]

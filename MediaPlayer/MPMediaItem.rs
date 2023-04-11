@@ -105,6 +105,10 @@ extern_static!(MPMediaItemPropertyIsPreorder: &'static NSString);
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MediaPlayer_MPMediaItem")]
+    /**
+      An MPMediaItem represents a single piece of media in an MPMediaLibrary.
+     Media items have a unique identifier which persists across application launches.
+    */
     pub struct MPMediaItem;
 
     #[cfg(feature = "MediaPlayer_MPMediaItem")]
@@ -115,15 +119,31 @@ extern_class!(
 );
 
 #[cfg(feature = "MediaPlayer_MPMediaItem")]
+/**
+  An MPMediaItem represents a single piece of media in an MPMediaLibrary.
+ Media items have a unique identifier which persists across application launches.
+*/
 unsafe impl NSCoding for MPMediaItem {}
 
 #[cfg(feature = "MediaPlayer_MPMediaItem")]
+/**
+  An MPMediaItem represents a single piece of media in an MPMediaLibrary.
+ Media items have a unique identifier which persists across application launches.
+*/
 unsafe impl NSObjectProtocol for MPMediaItem {}
 
 #[cfg(feature = "MediaPlayer_MPMediaItem")]
+/**
+  An MPMediaItem represents a single piece of media in an MPMediaLibrary.
+ Media items have a unique identifier which persists across application launches.
+*/
 unsafe impl NSSecureCoding for MPMediaItem {}
 
 extern_methods!(
+    /**
+      An MPMediaItem represents a single piece of media in an MPMediaLibrary.
+     Media items have a unique identifier which persists across application launches.
+    */
     #[cfg(feature = "MediaPlayer_MPMediaItem")]
     unsafe impl MPMediaItem {
         #[method(persistentID)]
@@ -296,9 +316,15 @@ extern_methods!(
         #[method_id(@__retain_semantics Other imageWithSize:)]
         pub unsafe fn imageWithSize(&self, size: CGSize) -> Option<Id<NSImage>>;
 
+        /**
+          The bounds of the full size image (in points).
+        */
         #[method(bounds)]
         pub unsafe fn bounds(&self) -> CGRect;
 
+        /**
+          MARK: - Deprecated
+        */
         #[deprecated = "cropRect is no longer used"]
         #[method(imageCropRect)]
         pub unsafe fn imageCropRect(&self) -> CGRect;

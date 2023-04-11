@@ -7,6 +7,25 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     The gravity area describes the area within a StackView that a view will be placed.
+    This placement is also highly related to the set orientation and layoutDirection.
+
+    Gravity areas will align to a specific direction in the StackView, which are described through these enum values.
+    Each gravity area is a distinct portion of the StackView, and the constraints for spacing between gravities is described further in the documentation for the spacing property.
+    In addition to the gravity spacing constraints, the center gravity area also has a constraint tying it to the center of the StackView with a layout priority of NSLayoutPriorityDefaultLow.
+
+    For horizontally-oriented StackViews, NSStackViewGravityLeading, NSStackViewGravityCenter, and NSStackViewGravityTrailing should be used. Leading and trailing are described by the userInterfaceLayoutDirection of the StackView, (leading = left for NSUserInterfaceLayoutDirectionLeftToRight vs leading = right for NSUserInterfaceLayoutDirectionRightToLeft).
+
+    For a vertically-oriented StackView, NSStackViewGravityTop, NSStackViewGravityCenter, and NSStackViewGravityBottom should be used.
+
+    See also:
+    - insertView:atIndex:inGravity:
+    - viewsInGravity:
+    - setViews:inGravity:
+    - NSUserInterfaceLayoutOrientation
+    - NSUserInterfaceLayoutDirection
+    */
     pub enum NSStackViewGravity {
         NSStackViewGravityTop = 1,
         NSStackViewGravityLeading = 1,
@@ -18,6 +37,10 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      Distribution—the layout along the stacking axis.
+    All NSStackViewDistribution enum values fit first and last stacked views tightly to the container, except for NSStackViewDistributionGravityAreas.
+    */
     pub enum NSStackViewDistribution {
         NSStackViewDistributionGravityAreas = -1,
         NSStackViewDistributionFill = 0,
@@ -92,33 +115,63 @@ extern_methods!(
             delegate: Option<&ProtocolObject<dyn NSStackViewDelegate>>,
         );
 
+        /**
+          Orientation of the StackView, defaults to NSUserInterfaceLayoutOrientationHorizontal
+        */
         #[method(orientation)]
         pub unsafe fn orientation(&self) -> NSUserInterfaceLayoutOrientation;
 
+        /**
+          Orientation of the StackView, defaults to NSUserInterfaceLayoutOrientationHorizontal
+        */
         #[method(setOrientation:)]
         pub unsafe fn setOrientation(&self, orientation: NSUserInterfaceLayoutOrientation);
 
+        /**
+          Describes how subviews are aligned within the StackView, defaults to `NSLayoutAttributeCenterY` for horizontal stacks, `NSLayoutAttributeCenterX` for vertical stacks. Setting `NSLayoutAttributeNotAnAttribute` will cause the internal alignment constraints to not be created, and could result in an ambiguous layout. Setting an inapplicable attribute for the set orientation will result in the alignment being ignored (similar to its handling with NSLayoutAttributeNotAnAttribute). The alignment constraints are established at a priority of `NSLayoutPriorityDefaultLow` and are overridable for individual views using external constraints.
+        */
         #[method(alignment)]
         pub unsafe fn alignment(&self) -> NSLayoutAttribute;
 
+        /**
+          Describes how subviews are aligned within the StackView, defaults to `NSLayoutAttributeCenterY` for horizontal stacks, `NSLayoutAttributeCenterX` for vertical stacks. Setting `NSLayoutAttributeNotAnAttribute` will cause the internal alignment constraints to not be created, and could result in an ambiguous layout. Setting an inapplicable attribute for the set orientation will result in the alignment being ignored (similar to its handling with NSLayoutAttributeNotAnAttribute). The alignment constraints are established at a priority of `NSLayoutPriorityDefaultLow` and are overridable for individual views using external constraints.
+        */
         #[method(setAlignment:)]
         pub unsafe fn setAlignment(&self, alignment: NSLayoutAttribute);
 
+        /**
+          Default padding inside the StackView, around all of the subviews.
+        */
         #[method(edgeInsets)]
         pub unsafe fn edgeInsets(&self) -> NSEdgeInsets;
 
+        /**
+          Default padding inside the StackView, around all of the subviews.
+        */
         #[method(setEdgeInsets:)]
         pub unsafe fn setEdgeInsets(&self, edge_insets: NSEdgeInsets);
 
+        /**
+          The spacing and sizing distribution of stacked views along the primary axis. Defaults to GravityAreas.
+        */
         #[method(distribution)]
         pub unsafe fn distribution(&self) -> NSStackViewDistribution;
 
+        /**
+          The spacing and sizing distribution of stacked views along the primary axis. Defaults to GravityAreas.
+        */
         #[method(setDistribution:)]
         pub unsafe fn setDistribution(&self, distribution: NSStackViewDistribution);
 
+        /**
+          Default (minimum) spacing between each view
+        */
         #[method(spacing)]
         pub unsafe fn spacing(&self) -> CGFloat;
 
+        /**
+          Default (minimum) spacing between each view
+        */
         #[method(setSpacing:)]
         pub unsafe fn setSpacing(&self, spacing: CGFloat);
 
@@ -128,13 +181,22 @@ extern_methods!(
         #[method(customSpacingAfterView:)]
         pub unsafe fn customSpacingAfterView(&self, view: &NSView) -> CGFloat;
 
+        /**
+          If YES, when a stacked view's `hidden` property is set to YES, the view will be detached from the stack and reattached when set to NO. Similarly, if the view has a lowered visibility priority and is detached from the stack view, it will be set as `hidden` rather than removed from the view hierarchy. Defaults to YES for apps linked on the 10.11 SDK or later.
+        */
         #[method(detachesHiddenViews)]
         pub unsafe fn detachesHiddenViews(&self) -> bool;
 
+        /**
+          If YES, when a stacked view's `hidden` property is set to YES, the view will be detached from the stack and reattached when set to NO. Similarly, if the view has a lowered visibility priority and is detached from the stack view, it will be set as `hidden` rather than removed from the view hierarchy. Defaults to YES for apps linked on the 10.11 SDK or later.
+        */
         #[method(setDetachesHiddenViews:)]
         pub unsafe fn setDetachesHiddenViews(&self, detaches_hidden_views: bool);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          The list of views that are arranged in a stack by the receiver. They are a subset of \c -subviews, with potential difference in ordering.
+        */
         #[method_id(@__retain_semantics Other arrangedSubviews)]
         pub unsafe fn arrangedSubviews(&self) -> Id<NSArray<NSView>>;
 
@@ -148,6 +210,9 @@ extern_methods!(
         pub unsafe fn removeArrangedSubview(&self, view: &NSView);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          The arrangedSubviews that are currently detached/hidden.
+        */
         #[method_id(@__retain_semantics Other detachedViews)]
         pub unsafe fn detachedViews(&self) -> Id<NSArray<NSView>>;
 
@@ -225,6 +290,9 @@ extern_protocol!(
 );
 
 extern_methods!(
+    /**
+      API that is intended for use when the `distribution` of the receiver is set to `NSStackViewDistributionGravityAreas`.
+    */
     /// NSStackViewGravityAreas
     #[cfg(feature = "AppKit_NSStackView")]
     unsafe impl NSStackView {
@@ -258,6 +326,10 @@ extern_methods!(
         );
 
         #[cfg(all(feature = "AppKit_NSView", feature = "Foundation_NSArray"))]
+        /**
+         Returns an array of all the views managed by this StackView, regardless of detach-status or gravity area.
+        This is indexed in the order of indexing within the StackView. Detached views are indexed at the positions they would have been if they were still attached.
+        */
         #[method_id(@__retain_semantics Other views)]
         pub unsafe fn views(&self) -> Id<NSArray<NSView>>;
     }
@@ -267,10 +339,26 @@ extern_methods!(
     /// NSStackViewDeprecated
     #[cfg(feature = "AppKit_NSStackView")]
     unsafe impl NSStackView {
+        /**
+         Property describing whether or not all spacing between views should be equivalent. Defaults to NO.
+        If set to YES, this modifies the constraints used internally for spacing in such manners:
+        - All spacing is >= spacing @ NSLayoutPriorityRequired
+        - All spacing is == spacing @ huggingPriority
+        - All spacing is == each other @ NSLayoutPriorityDefaultLow
+        - Custom spacing is ignored. StackView's spacing property is used as the minimum spacing between each view
+        */
         #[deprecated = "Set -distribution to NSStackViewDistributionEqualSpacing instead."]
         #[method(hasEqualSpacing)]
         pub unsafe fn hasEqualSpacing(&self) -> bool;
 
+        /**
+         Property describing whether or not all spacing between views should be equivalent. Defaults to NO.
+        If set to YES, this modifies the constraints used internally for spacing in such manners:
+        - All spacing is >= spacing @ NSLayoutPriorityRequired
+        - All spacing is == spacing @ huggingPriority
+        - All spacing is == each other @ NSLayoutPriorityDefaultLow
+        - Custom spacing is ignored. StackView's spacing property is used as the minimum spacing between each view
+        */
         #[deprecated = "Set -distribution to NSStackViewDistributionEqualSpacing instead."]
         #[method(setHasEqualSpacing:)]
         pub unsafe fn setHasEqualSpacing(&self, has_equal_spacing: bool);

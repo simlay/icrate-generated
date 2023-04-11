@@ -39,47 +39,89 @@ extern_methods!(
             drawing_handler: &Block<(NSRect, c_double), ()>,
         ) -> Id<Self>;
 
+        /**
+          The stepper's maximum value. The default is 59.0.
+        */
         #[method(maxValue)]
         pub unsafe fn maxValue(&self) -> c_double;
 
+        /**
+          The stepper's maximum value. The default is 59.0.
+        */
         #[method(setMaxValue:)]
         pub unsafe fn setMaxValue(&self, max_value: c_double);
 
+        /**
+          The stepper's minimum value. The default is 0.0.
+        */
         #[method(minValue)]
         pub unsafe fn minValue(&self) -> c_double;
 
+        /**
+          The stepper's minimum value. The default is 0.0.
+        */
         #[method(setMinValue:)]
         pub unsafe fn setMinValue(&self, min_value: c_double);
 
+        /**
+          The stepper's increment value. The default is 1.0.
+        */
         #[method(increment)]
         pub unsafe fn increment(&self) -> c_double;
 
+        /**
+          The stepper's increment value. The default is 1.0.
+        */
         #[method(setIncrement:)]
         pub unsafe fn setIncrement(&self, increment: c_double);
 
+        /**
+          The current value of the stepper.
+        */
         #[method(value)]
         pub unsafe fn value(&self) -> c_double;
 
+        /**
+          The current value of the stepper.
+        */
         #[method(setValue:)]
         pub unsafe fn setValue(&self, value: c_double);
 
+        /**
+          The target object that receives action messages from the stepper.
+        */
         #[method_id(@__retain_semantics Other target)]
         pub unsafe fn target(&self) -> Option<Id<Object>>;
 
+        /**
+          The target object that receives action messages from the stepper.
+        */
         #[method(setTarget:)]
         pub unsafe fn setTarget(&self, target: Option<&Object>);
 
+        /**
+          The action-message selector associated with the stepper.
+        */
         #[method(action)]
         pub unsafe fn action(&self) -> Option<Sel>;
 
+        /**
+          The action-message selector associated with the stepper.
+        */
         #[method(setAction:)]
         pub unsafe fn setAction(&self, action: Option<Sel>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The localized string labelling this item during user customization. The default value is empty string.
+        */
         #[method_id(@__retain_semantics Other customizationLabel)]
         pub unsafe fn customizationLabel(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The localized string labelling this item during user customization. The default value is empty string.
+        */
         #[method(setCustomizationLabel:)]
         pub unsafe fn setCustomizationLabel(&self, customization_label: Option<&NSString>);
     }

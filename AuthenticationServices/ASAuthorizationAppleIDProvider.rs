@@ -6,6 +6,13 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      @enum ASAuthorizationAppleIDProviderCredentialState
+    @abstract Authorization state of an Apple ID credential.
+    @constant ASAuthorizationAppleIDProviderCredentialAuthorized The Opaque user ID is in good state.
+    @constant ASAuthorizationAppleIDProviderCredentialRevoked The Opaque user ID was revoked by the user.
+    @constant ASAuthorizationAppleIDProviderCredentialNotFound The Opaque user ID was not found.
+    */
     pub enum ASAuthorizationAppleIDProviderCredentialState {
         ASAuthorizationAppleIDProviderCredentialRevoked = 0,
         ASAuthorizationAppleIDProviderCredentialAuthorized = 1,

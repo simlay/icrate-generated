@@ -6,6 +6,10 @@ use crate::Metal::*;
 
 extern_struct!(
     #[encoding_name("?")]
+    /**
+     @struct MTLOrigin
+    @abstract Identify a pixel in an image. MTLOrigin is ususally used as the upper-left corner of a region of a texture.
+    */
     pub struct MTLOrigin {
         pub x: NSUInteger,
         pub y: NSUInteger,
@@ -21,6 +25,10 @@ inline_fn!(
 
 extern_struct!(
     #[encoding_name("?")]
+    /**
+     @typedef MTLSize
+    @abstract A set of dimensions to declare the size of an object, such as an image, texture, threadgroup, or grid.
+    */
     pub struct MTLSize {
         pub width: NSUInteger,
         pub height: NSUInteger,
@@ -36,6 +44,10 @@ inline_fn!(
 
 extern_struct!(
     #[encoding_name("?")]
+    /**
+     @struct MTLRegion
+    @abstract Identify a region in an image or texture.
+    */
     pub struct MTLRegion {
         pub origin: MTLOrigin,
         pub size: MTLSize,
@@ -74,6 +86,10 @@ inline_fn!(
 
 extern_struct!(
     #[encoding_name("?")]
+    /**
+     @struct MTLSamplePosition
+    @abstract Identify a sample within a pixel. Origin is top-left with a range [0,1) for both x and y.
+    */
     pub struct MTLSamplePosition {
         pub x: c_float,
         pub y: c_float,
@@ -95,6 +111,12 @@ inline_fn!(
 );
 
 extern_struct!(
+    /**
+     @typedef MTLResourceID
+    @abstract Handle of the GPU resource suitable for storing in an Argument Buffer
+    @discussion
+    A MTLResourceID represents a specific GPU resource, mutating this handle is undefined unless the mutation results in the value equalling an already existing handle of the same resource type.
+    */
     pub struct MTLResourceID {
         _impl: u64,
     }

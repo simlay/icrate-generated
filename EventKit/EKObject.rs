@@ -24,6 +24,9 @@ unsafe impl NSObjectProtocol for EKObject {}
 extern_methods!(
     #[cfg(feature = "EventKit_EKObject")]
     unsafe impl EKObject {
+        /**
+          Returns YES if this object or any sub-object (alarm, etc.) has uncommitted changes.
+        */
         #[method(hasChanges)]
         pub unsafe fn hasChanges(&self) -> bool;
 

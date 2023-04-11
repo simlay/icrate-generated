@@ -123,21 +123,39 @@ extern_methods!(
         #[method(setSelectable:)]
         pub unsafe fn setSelectable(&self, selectable: bool);
 
+        /**
+         If NO, also clears setImportsGraphics:
+        */
         #[method(isRichText)]
         pub unsafe fn isRichText(&self) -> bool;
 
+        /**
+         If NO, also clears setImportsGraphics:
+        */
         #[method(setRichText:)]
         pub unsafe fn setRichText(&self, rich_text: bool);
 
+        /**
+          If YES, also sets setRichText:
+        */
         #[method(importsGraphics)]
         pub unsafe fn importsGraphics(&self) -> bool;
 
+        /**
+          If YES, also sets setRichText:
+        */
         #[method(setImportsGraphics:)]
         pub unsafe fn setImportsGraphics(&self, imports_graphics: bool);
 
+        /**
+          Indicates whether to end editing on CR, TAB, etc.
+        */
         #[method(isFieldEditor)]
         pub unsafe fn isFieldEditor(&self) -> bool;
 
+        /**
+          Indicates whether to end editing on CR, TAB, etc.
+        */
         #[method(setFieldEditor:)]
         pub unsafe fn setFieldEditor(&self, field_editor: bool);
 
@@ -154,10 +172,16 @@ extern_methods!(
         pub unsafe fn setDrawsBackground(&self, draws_background: bool);
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+          Default is nil. If nil, it implies -drawsBackground=NO
+        */
         #[method_id(@__retain_semantics Other backgroundColor)]
         pub unsafe fn backgroundColor(&self) -> Option<Id<NSColor>>;
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+          Default is nil. If nil, it implies -drawsBackground=NO
+        */
         #[method(setBackgroundColor:)]
         pub unsafe fn setBackgroundColor(&self, background_color: Option<&NSColor>);
 
@@ -182,10 +206,16 @@ extern_methods!(
         pub unsafe fn setFont(&self, font: Option<&NSFont>);
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+          Default is nil. If nil, draws with blackColor
+        */
         #[method_id(@__retain_semantics Other textColor)]
         pub unsafe fn textColor(&self) -> Option<Id<NSColor>>;
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+          Default is nil. If nil, draws with blackColor
+        */
         #[method(setTextColor:)]
         pub unsafe fn setTextColor(&self, text_color: Option<&NSColor>);
 
@@ -300,6 +330,9 @@ extern_methods!(
 
 extern_enum!(
     #[underlying(c_uint)]
+    /**
+      Various important Unicode code points
+    */
     pub enum __anonymous__ {
         NSEnterCharacter = 0x0003,
         NSBackspaceCharacter = 0x0008,
@@ -316,6 +349,9 @@ extern_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      Movement codes for movement between fields; these codes are the integer values of the NSTextMovement key in NSTextDidEndEditing notifications, and are used when completions change in the NSTextView method insertCompletion:forPartialWordRange:movement:isFinal:.  Note that the value 0 is used for movements that do not fall under any of the other values, hence NSOtherTextMovement is a more appropriate name than the previous NSIllegalTextMovement.
+    */
     pub enum NSTextMovement {
         NSTextMovementReturn = 0x10,
         NSTextMovementTab = 0x11,
@@ -339,6 +375,10 @@ extern_static!(NSTextMovementUserInfoKey: &'static NSString);
 
 extern_enum!(
     #[underlying(c_uint)]
+    /**
+      Deprecated
+    The following enum items are deprecated. Use NSTextMovement instead
+    */
     pub enum __anonymous__ {
         NSIllegalTextMovement = 0,
         NSReturnTextMovement = 0x10,
@@ -386,6 +426,9 @@ extern_protocol!(
 
 extern_enum!(
     #[underlying(c_uint)]
+    /**
+      Additional values to be added to NSWritingDirectionLeftToRight or NSWritingDirectionRightToLeft, when used with NSWritingDirectionAttributeName
+    */
     pub enum __anonymous__ {
         #[deprecated = "Use NSWritingDirectionEmbedding instead"]
         NSTextWritingDirectionEmbedding = 0 << 1,

@@ -24,16 +24,34 @@ extern_methods!(
     #[cfg(feature = "AppKit_NSMenuToolbarItem")]
     unsafe impl NSMenuToolbarItem {
         #[cfg(feature = "AppKit_NSMenu")]
+        /**
+         The menu presented to the user from the item.
+        If the item has an action, an arrow will be shown to the user next to the button to access the menu.
+        This will also be shown as the menuFormRepresentation unless otherwise set.
+        */
         #[method_id(@__retain_semantics Other menu)]
         pub unsafe fn menu(&self) -> Id<NSMenu>;
 
         #[cfg(feature = "AppKit_NSMenu")]
+        /**
+         The menu presented to the user from the item.
+        If the item has an action, an arrow will be shown to the user next to the button to access the menu.
+        This will also be shown as the menuFormRepresentation unless otherwise set.
+        */
         #[method(setMenu:)]
         pub unsafe fn setMenu(&self, menu: &NSMenu);
 
+        /**
+         When YES, an indicator will be visible to the user as part of the control indicating that additional functionality is available.
+        Defaults to YES.
+        */
         #[method(showsIndicator)]
         pub unsafe fn showsIndicator(&self) -> bool;
 
+        /**
+         When YES, an indicator will be visible to the user as part of the control indicating that additional functionality is available.
+        Defaults to YES.
+        */
         #[method(setShowsIndicator:)]
         pub unsafe fn setShowsIndicator(&self, shows_indicator: bool);
     }

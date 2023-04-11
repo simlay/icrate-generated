@@ -67,9 +67,15 @@ extern_methods!(
             bitmap_rep: &NSBitmapImageRep,
         ) -> Option<Id<NSGraphicsContext>>;
 
+        /**
+          Setting and identifying the current context in the thread
+        */
         #[method_id(@__retain_semantics Other currentContext)]
         pub unsafe fn currentContext() -> Option<Id<NSGraphicsContext>>;
 
+        /**
+          Setting and identifying the current context in the thread
+        */
         #[method(setCurrentContext:)]
         pub unsafe fn setCurrentContext(current_context: Option<&NSGraphicsContext>);
 
@@ -83,11 +89,17 @@ extern_methods!(
         pub unsafe fn restoreGraphicsState_class();
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          Returns attributes used to create this instance
+        */
         #[method_id(@__retain_semantics Other attributes)]
         pub unsafe fn attributes(
             &self,
         ) -> Option<Id<NSDictionary<NSGraphicsContextAttributeKey, Object>>>;
 
+        /**
+          Testing the drawing destination
+        */
         #[method(isDrawingToScreen)]
         pub unsafe fn isDrawingToScreen(&self) -> bool;
 
@@ -100,6 +112,9 @@ extern_methods!(
         #[method(flushGraphics)]
         pub unsafe fn flushGraphics(&self);
 
+        /**
+          Returns the flip state of the receiver.  The state is determined by messaging -isFlipped to the focus view in the context.  If no view has focus, returns NO unless the receiver is instantiated via graphicsContextWithGraphicsPort:drawingToScreen:flipped: with initialFlippedState == YES.
+        */
         #[method(isFlipped)]
         pub unsafe fn isFlipped(&self) -> bool;
     }

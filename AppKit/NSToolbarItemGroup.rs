@@ -7,6 +7,11 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     NSToolbarItemGroup is a subclass of NSToolbarItem which can be used to create sets of NSToolbarItems that are always attached to one another and that are added, removed, or reordered as a single unit.  Properties that get set on the parent toolbar item, such as label or view, apply to the entire item.  Otherwise, the individual properties are displayed adjacent to one another.
+
+    Subitems will inherit the group's action if no action is defined on the subitem and will validate based on that action when autovalidates is enabled.
+    */
     pub enum NSToolbarItemGroupSelectionMode {
         NSToolbarItemGroupSelectionModeSelectOne = 0,
         NSToolbarItemGroupSelectionModeSelectAny = 1,
@@ -68,31 +73,57 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Set or get the array of subitems for the toolbar item.  By default, a NSToolbarItemGroup has an empty array of subitems.  You should call this to set the subitems before returning the item to the toolbar.  NSToolbarItemGroups may not contain other NSToolbarItemGroups as subitems.
+        */
         #[method_id(@__retain_semantics Other subitems)]
         pub unsafe fn subitems(&self) -> Id<NSArray<NSToolbarItem>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Set or get the array of subitems for the toolbar item.  By default, a NSToolbarItemGroup has an empty array of subitems.  You should call this to set the subitems before returning the item to the toolbar.  NSToolbarItemGroups may not contain other NSToolbarItemGroups as subitems.
+        */
         #[method(setSubitems:)]
         pub unsafe fn setSubitems(&self, subitems: &NSArray<NSToolbarItem>);
 
+        /**
+         The style in which this item will be represented to the user.
+        Defaults to NSToolbarItemGroupControlRepresentationAutomatic.
+        */
         #[method(controlRepresentation)]
         pub unsafe fn controlRepresentation(&self) -> NSToolbarItemGroupControlRepresentation;
 
+        /**
+         The style in which this item will be represented to the user.
+        Defaults to NSToolbarItemGroupControlRepresentationAutomatic.
+        */
         #[method(setControlRepresentation:)]
         pub unsafe fn setControlRepresentation(
             &self,
             control_representation: NSToolbarItemGroupControlRepresentation,
         );
 
+        /**
+         Get and set how selection is handled by the control.
+        */
         #[method(selectionMode)]
         pub unsafe fn selectionMode(&self) -> NSToolbarItemGroupSelectionMode;
 
+        /**
+         Get and set how selection is handled by the control.
+        */
         #[method(setSelectionMode:)]
         pub unsafe fn setSelectionMode(&self, selection_mode: NSToolbarItemGroupSelectionMode);
 
+        /**
+         The most recently selected item of the group, or -1 if nothing is selected.
+        */
         #[method(selectedIndex)]
         pub unsafe fn selectedIndex(&self) -> NSInteger;
 
+        /**
+         The most recently selected item of the group, or -1 if nothing is selected.
+        */
         #[method(setSelectedIndex:)]
         pub unsafe fn setSelectedIndex(&self, selected_index: NSInteger);
 

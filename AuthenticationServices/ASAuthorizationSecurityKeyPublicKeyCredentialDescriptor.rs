@@ -34,6 +34,9 @@ extern_class!(
     #[cfg(
         feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor"
     )]
+    /**
+      @abstract An object to describe a credential on a security key.
+    */
     pub struct ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor;
 
     #[cfg(
@@ -45,21 +48,36 @@ extern_class!(
 );
 
 #[cfg(feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor")]
+/**
+  @abstract An object to describe a credential on a security key.
+*/
 unsafe impl ASAuthorizationPublicKeyCredentialDescriptor
     for ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor
 {
 }
 
 #[cfg(feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor")]
+/**
+  @abstract An object to describe a credential on a security key.
+*/
 unsafe impl NSCoding for ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor {}
 
 #[cfg(feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor")]
+/**
+  @abstract An object to describe a credential on a security key.
+*/
 unsafe impl NSObjectProtocol for ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor {}
 
 #[cfg(feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor")]
+/**
+  @abstract An object to describe a credential on a security key.
+*/
 unsafe impl NSSecureCoding for ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor {}
 
 extern_methods!(
+    /**
+      @abstract An object to describe a credential on a security key.
+    */
     #[cfg(
         feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor"
     )]
@@ -75,12 +93,18 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          @abstract An array indicating transports for the credential indicated by credentialID.
+        */
         #[method_id(@__retain_semantics Other transports)]
         pub unsafe fn transports(
             &self,
         ) -> Id<NSArray<ASAuthorizationSecurityKeyPublicKeyCredentialDescriptorTransport>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          @abstract An array indicating transports for the credential indicated by credentialID.
+        */
         #[method(setTransports:)]
         pub unsafe fn setTransports(
             &self,

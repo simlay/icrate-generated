@@ -7,6 +7,9 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreData_NSPersistentCloudKitContainerOptions")]
+    /**
+     NSPersistentCloudKitContainerOptions provides customization of how NSPersistentCloudKitContainer aligns a given instance of NSPersistentStoreDescription with a CloudKit database.
+    */
     pub struct NSPersistentCloudKitContainerOptions;
 
     #[cfg(feature = "CoreData_NSPersistentCloudKitContainerOptions")]
@@ -16,12 +19,21 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreData_NSPersistentCloudKitContainerOptions")]
+/**
+ NSPersistentCloudKitContainerOptions provides customization of how NSPersistentCloudKitContainer aligns a given instance of NSPersistentStoreDescription with a CloudKit database.
+*/
 unsafe impl NSObjectProtocol for NSPersistentCloudKitContainerOptions {}
 
 extern_methods!(
+    /**
+     NSPersistentCloudKitContainerOptions provides customization of how NSPersistentCloudKitContainer aligns a given instance of NSPersistentStoreDescription with a CloudKit database.
+    */
     #[cfg(feature = "CoreData_NSPersistentCloudKitContainerOptions")]
     unsafe impl NSPersistentCloudKitContainerOptions {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         The container identifier of the CKContainer to use with a given instance of NSPersistentStoreDescription
+        */
         #[method_id(@__retain_semantics Other containerIdentifier)]
         pub unsafe fn containerIdentifier(&self) -> Id<NSString>;
 

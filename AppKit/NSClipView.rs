@@ -96,15 +96,29 @@ extern_methods!(
         #[method(constrainBoundsRect:)]
         pub unsafe fn constrainBoundsRect(&self, proposed_bounds: NSRect) -> NSRect;
 
+        /**
+          The distance that the content view is inset from the enclosing scroll view.
+        Note: animate with [self animator]
+        */
         #[method(contentInsets)]
         pub unsafe fn contentInsets(&self) -> NSEdgeInsets;
 
+        /**
+          The distance that the content view is inset from the enclosing scroll view.
+        Note: animate with [self animator]
+        */
         #[method(setContentInsets:)]
         pub unsafe fn setContentInsets(&self, content_insets: NSEdgeInsets);
 
+        /**
+          When YES, and used as the contentView of an NSScrollView, the clip view will automatically account for other scroll view subviews such as rulers and headers. Defaults to YES.
+        */
         #[method(automaticallyAdjustsContentInsets)]
         pub unsafe fn automaticallyAdjustsContentInsets(&self) -> bool;
 
+        /**
+          When YES, and used as the contentView of an NSScrollView, the clip view will automatically account for other scroll view subviews such as rulers and headers. Defaults to YES.
+        */
         #[method(setAutomaticallyAdjustsContentInsets:)]
         pub unsafe fn setAutomaticallyAdjustsContentInsets(
             &self,

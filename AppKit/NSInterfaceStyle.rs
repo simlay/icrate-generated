@@ -31,6 +31,9 @@ extern_fn!(
 );
 
 extern_methods!(
+    /**
+      Responders can use this function to parameterize their drawing and behavior.  If the responder has specific defaults to control various aspects of its interface individually, the keys for those special settings can be passed in, otherwise pass nil to get the global setting.  The responder should always be passed, but in situations where a responder is not available, pass nil.
+    */
     /// NSInterfaceStyle
     #[cfg(feature = "AppKit_NSResponder")]
     unsafe impl NSResponder {

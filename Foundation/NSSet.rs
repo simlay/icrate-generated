@@ -6,6 +6,9 @@ use crate::Foundation::*;
 __inner_extern_class!(
     #[derive(PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSSet")]
+    /**
+         Immutable Set
+    */
     pub struct NSSet<ObjectType: Message = Object, ObjectTypeOwnership: Ownership = Shared> {
         _inner0: PhantomData<*mut (ObjectType, ObjectTypeOwnership)>,
         notunwindsafe: PhantomData<&'static mut ()>,
@@ -20,30 +23,45 @@ __inner_extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSSet")]
+/**
+     Immutable Set
+*/
 unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSCoding
     for NSSet<ObjectType, ObjectTypeOwnership>
 {
 }
 
 #[cfg(feature = "Foundation_NSSet")]
+/**
+     Immutable Set
+*/
 unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSFastEnumeration
     for NSSet<ObjectType, ObjectTypeOwnership>
 {
 }
 
 #[cfg(feature = "Foundation_NSSet")]
+/**
+     Immutable Set
+*/
 unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSObjectProtocol
     for NSSet<ObjectType, ObjectTypeOwnership>
 {
 }
 
 #[cfg(feature = "Foundation_NSSet")]
+/**
+     Immutable Set
+*/
 unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSSecureCoding
     for NSSet<ObjectType, ObjectTypeOwnership>
 {
 }
 
 extern_methods!(
+    /**
+         Immutable Set
+    */
     #[cfg(feature = "Foundation_NSSet")]
     unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>
         NSSet<ObjectType, ObjectTypeOwnership>
@@ -217,6 +235,9 @@ extern_methods!(
 __inner_extern_class!(
     #[derive(PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSMutableSet")]
+    /**
+         Mutable Set
+    */
     pub struct NSMutableSet<ObjectType: Message = Object, ObjectTypeOwnership: Ownership = Shared> {
         _inner0: PhantomData<*mut (ObjectType, ObjectTypeOwnership)>,
         notunwindsafe: PhantomData<&'static mut ()>,
@@ -232,30 +253,45 @@ __inner_extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSMutableSet")]
+/**
+     Mutable Set
+*/
 unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSCoding
     for NSMutableSet<ObjectType, ObjectTypeOwnership>
 {
 }
 
 #[cfg(feature = "Foundation_NSMutableSet")]
+/**
+     Mutable Set
+*/
 unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSFastEnumeration
     for NSMutableSet<ObjectType, ObjectTypeOwnership>
 {
 }
 
 #[cfg(feature = "Foundation_NSMutableSet")]
+/**
+     Mutable Set
+*/
 unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSObjectProtocol
     for NSMutableSet<ObjectType, ObjectTypeOwnership>
 {
 }
 
 #[cfg(feature = "Foundation_NSMutableSet")]
+/**
+     Mutable Set
+*/
 unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSSecureCoding
     for NSMutableSet<ObjectType, ObjectTypeOwnership>
 {
 }
 
 extern_methods!(
+    /**
+         Mutable Set
+    */
     #[cfg(feature = "Foundation_NSMutableSet")]
     unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>
         NSMutableSet<ObjectType, ObjectTypeOwnership>
@@ -329,6 +365,9 @@ extern_methods!(
 __inner_extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSCountedSet")]
+    /**
+         Counted Set
+    */
     pub struct NSCountedSet<ObjectType: Message = Object, ObjectTypeOwnership: Ownership = Shared> {
         _inner0: PhantomData<*mut (ObjectType, ObjectTypeOwnership)>,
         notunwindsafe: PhantomData<&'static mut ()>,
@@ -344,30 +383,45 @@ __inner_extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSCountedSet")]
+/**
+     Counted Set
+*/
 unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSCoding
     for NSCountedSet<ObjectType, ObjectTypeOwnership>
 {
 }
 
 #[cfg(feature = "Foundation_NSCountedSet")]
+/**
+     Counted Set
+*/
 unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSFastEnumeration
     for NSCountedSet<ObjectType, ObjectTypeOwnership>
 {
 }
 
 #[cfg(feature = "Foundation_NSCountedSet")]
+/**
+     Counted Set
+*/
 unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSObjectProtocol
     for NSCountedSet<ObjectType, ObjectTypeOwnership>
 {
 }
 
 #[cfg(feature = "Foundation_NSCountedSet")]
+/**
+     Counted Set
+*/
 unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSSecureCoding
     for NSCountedSet<ObjectType, ObjectTypeOwnership>
 {
 }
 
 extern_methods!(
+    /**
+         Counted Set
+    */
     #[cfg(feature = "Foundation_NSCountedSet")]
     unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>
         NSCountedSet<ObjectType, ObjectTypeOwnership>
@@ -409,6 +463,9 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `NSSet`
     ///
+    /**
+         Mutable Set
+    */
     /// NSCollectionViewAdditions
     #[cfg(feature = "Foundation_NSMutableSet")]
     unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>
@@ -428,6 +485,9 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSSet`
+    /**
+         Mutable Set
+    */
     #[cfg(feature = "Foundation_NSMutableSet")]
     unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>
         NSMutableSet<ObjectType, ObjectTypeOwnership>
@@ -444,6 +504,9 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `NSSet`
     ///
+    /**
+         Mutable Set
+    */
     /// NSSetCreation
     #[cfg(feature = "Foundation_NSMutableSet")]
     unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>
@@ -493,6 +556,9 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `NSMutableSet`
     ///
+    /**
+         Counted Set
+    */
     /// NSMutableSetCreation
     #[cfg(feature = "Foundation_NSCountedSet")]
     unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>
@@ -506,6 +572,9 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `NSSet`
     ///
+    /**
+         Counted Set
+    */
     /// NSCollectionViewAdditions
     #[cfg(feature = "Foundation_NSCountedSet")]
     unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>
@@ -525,6 +594,9 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSSet`
+    /**
+         Counted Set
+    */
     #[cfg(feature = "Foundation_NSCountedSet")]
     unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>
         NSCountedSet<ObjectType, ObjectTypeOwnership>
@@ -541,6 +613,9 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `NSSet`
     ///
+    /**
+         Counted Set
+    */
     /// NSSetCreation
     #[cfg(feature = "Foundation_NSCountedSet")]
     unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>

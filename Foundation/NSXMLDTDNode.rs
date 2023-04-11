@@ -5,6 +5,10 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+     @typedef NSXMLDTDNodeKind
+    @abstract The subkind of a DTD node kind.
+    */
     pub enum NSXMLDTDNodeKind {
         NSXMLEntityGeneralKind = 1,
         NSXMLEntityParsedKind = 2,
@@ -32,6 +36,15 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSXMLDTDNode")]
+    /**
+     @class NSXMLDTDNode
+    @abstract The nodes that are exclusive to a DTD
+    @discussion Every DTD node has a name. Object value is defined as follows:<ul>
+    <li><b>Entity declaration</b> - the string that that entity resolves to eg "&lt;"</li>
+    <li><b>Attribute declaration</b> - the default value, if any</li>
+    <li><b>Element declaration</b> - the validation string</li>
+    <li><b>Notation declaration</b> - no objectValue</li></ul>
+    */
     pub struct NSXMLDTDNode;
 
     #[cfg(feature = "Foundation_NSXMLDTDNode")]
@@ -42,9 +55,27 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSXMLDTDNode")]
+/**
+ @class NSXMLDTDNode
+@abstract The nodes that are exclusive to a DTD
+@discussion Every DTD node has a name. Object value is defined as follows:<ul>
+<li><b>Entity declaration</b> - the string that that entity resolves to eg "&lt;"</li>
+<li><b>Attribute declaration</b> - the default value, if any</li>
+<li><b>Element declaration</b> - the validation string</li>
+<li><b>Notation declaration</b> - no objectValue</li></ul>
+*/
 unsafe impl NSObjectProtocol for NSXMLDTDNode {}
 
 extern_methods!(
+    /**
+     @class NSXMLDTDNode
+    @abstract The nodes that are exclusive to a DTD
+    @discussion Every DTD node has a name. Object value is defined as follows:<ul>
+    <li><b>Entity declaration</b> - the string that that entity resolves to eg "&lt;"</li>
+    <li><b>Attribute declaration</b> - the default value, if any</li>
+    <li><b>Element declaration</b> - the validation string</li>
+    <li><b>Notation declaration</b> - no objectValue</li></ul>
+    */
     #[cfg(feature = "Foundation_NSXMLDTDNode")]
     unsafe impl NSXMLDTDNode {
         #[cfg(feature = "Foundation_NSString")]
@@ -64,36 +95,63 @@ extern_methods!(
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
+        /**
+         primitive
+        */
         #[method(DTDKind)]
         pub unsafe fn DTDKind(&self) -> NSXMLDTDNodeKind;
 
+        /**
+         primitive
+        */
         #[method(setDTDKind:)]
         pub unsafe fn setDTDKind(&self, dtd_kind: NSXMLDTDNodeKind);
 
+        /**
+         primitive
+        */
         #[method(isExternal)]
         pub unsafe fn isExternal(&self) -> bool;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         primitive
+        */
         #[method_id(@__retain_semantics Other publicID)]
         pub unsafe fn publicID(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         primitive
+        */
         #[method(setPublicID:)]
         pub unsafe fn setPublicID(&self, public_id: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         primitive
+        */
         #[method_id(@__retain_semantics Other systemID)]
         pub unsafe fn systemID(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         primitive
+        */
         #[method(setSystemID:)]
         pub unsafe fn setSystemID(&self, system_id: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         primitive
+        */
         #[method_id(@__retain_semantics Other notationName)]
         pub unsafe fn notationName(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         primitive
+        */
         #[method(setNotationName:)]
         pub unsafe fn setNotationName(&self, notation_name: Option<&NSString>);
     }
@@ -101,6 +159,15 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSXMLNode`
+    /**
+     @class NSXMLDTDNode
+    @abstract The nodes that are exclusive to a DTD
+    @discussion Every DTD node has a name. Object value is defined as follows:<ul>
+    <li><b>Entity declaration</b> - the string that that entity resolves to eg "&lt;"</li>
+    <li><b>Attribute declaration</b> - the default value, if any</li>
+    <li><b>Element declaration</b> - the validation string</li>
+    <li><b>Notation declaration</b> - no objectValue</li></ul>
+    */
     #[cfg(feature = "Foundation_NSXMLDTDNode")]
     unsafe impl NSXMLDTDNode {
         #[method_id(@__retain_semantics Init initWithKind:)]

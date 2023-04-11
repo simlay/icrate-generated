@@ -83,41 +83,71 @@ extern_methods!(
             mode: &NSRunLoopMode,
         );
 
+        /**
+          Set a delegate to receive publish, resolve, or monitor events.
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(&self) -> Option<Id<ProtocolObject<dyn NSNetServiceDelegate>>>;
 
+        /**
+          Set a delegate to receive publish, resolve, or monitor events.
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
             delegate: Option<&ProtocolObject<dyn NSNetServiceDelegate>>,
         );
 
+        /**
+          Initially set to NO. Set to YES to also publish, resolve, or monitor this service over peer to peer Wi-Fi (if available). Must be set before operation starts.
+        */
         #[method(includesPeerToPeer)]
         pub unsafe fn includesPeerToPeer(&self) -> bool;
 
+        /**
+          Initially set to NO. Set to YES to also publish, resolve, or monitor this service over peer to peer Wi-Fi (if available). Must be set before operation starts.
+        */
         #[method(setIncludesPeerToPeer:)]
         pub unsafe fn setIncludesPeerToPeer(&self, includes_peer_to_peer: bool);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Returns the name of the discovered or published service.
+        */
         #[method_id(@__retain_semantics Other name)]
         pub unsafe fn name(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Returns the type of the discovered or published service.
+        */
         #[method_id(@__retain_semantics Other type)]
         pub unsafe fn r#type(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Returns the domain of the discovered or published service.
+        */
         #[method_id(@__retain_semantics Other domain)]
         pub unsafe fn domain(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Returns the DNS host name of the computer hosting the discovered or published service. If a successful resolve has not yet occurred, this method will return nil.
+        */
         #[method_id(@__retain_semantics Other hostName)]
         pub unsafe fn hostName(&self) -> Option<Id<NSString>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSData"))]
+        /**
+          The addresses of the service. This is an NSArray of NSData instances, each of which contains a single struct sockaddr suitable for use with connect(2). In the event that no addresses are resolved for the service or the service has not yet been resolved, an empty NSArray is returned.
+        */
         #[method_id(@__retain_semantics Other addresses)]
         pub unsafe fn addresses(&self) -> Option<Id<NSArray<NSData>>>;
 
+        /**
+          The port of a resolved service. This returns -1 if the service has not been resolved.
+        */
         #[method(port)]
         pub unsafe fn port(&self) -> NSInteger;
 
@@ -194,20 +224,32 @@ extern_methods!(
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
+        /**
+          Set a delegate to receive discovery events.
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(
             &self,
         ) -> Option<Id<ProtocolObject<dyn NSNetServiceBrowserDelegate>>>;
 
+        /**
+          Set a delegate to receive discovery events.
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
             delegate: Option<&ProtocolObject<dyn NSNetServiceBrowserDelegate>>,
         );
 
+        /**
+          Initially set to NO. Set to YES to also browse over peer to peer Wi-Fi (if available). Must be set before starting to search.
+        */
         #[method(includesPeerToPeer)]
         pub unsafe fn includesPeerToPeer(&self) -> bool;
 
+        /**
+          Initially set to NO. Set to YES to also browse over peer to peer Wi-Fi (if available). Must be set before starting to search.
+        */
         #[method(setIncludesPeerToPeer:)]
         pub unsafe fn setIncludesPeerToPeer(&self, includes_peer_to_peer: bool);
 

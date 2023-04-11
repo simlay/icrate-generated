@@ -6,6 +6,10 @@ use crate::Metal::*;
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+     @enum MTLSparseTextureMappingMode
+    @abstract Type of mapping operation for sparse texture
+    */
     pub enum MTLSparseTextureMappingMode {
         MTLSparseTextureMappingModeMap = 0,
         MTLSparseTextureMappingModeUnmap = 1,
@@ -14,6 +18,16 @@ ns_enum!(
 
 extern_struct!(
     #[encoding_name("?")]
+    /**
+     @enum MTLMapIndirectArguments
+    @abstract Structure describing indirect mapping region. This structure is used to populate a buffer for the method  'MTLResourceStateCommandEncoder updateTextureMapping:indirectBuffer:indirectBufferOffset:'
+    @discussion The correct data format for the buffer used in 'MTLResourceStateCommandEncoder updateTextureMapping:indirectBuffer:indirectBufferOffset: is the following:
+
+    struct MTLMapIndirectBufferFormat{
+    uint32_t numMappings;
+    MTLMapIndirectArguments mappings[numMappings];
+    }
+    */
     pub struct MTLMapIndirectArguments {
         pub regionOriginX: u32,
         pub regionOriginY: u32,

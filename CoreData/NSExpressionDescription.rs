@@ -7,6 +7,12 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreData_NSExpressionDescription")]
+    /**
+      Special property description type intended for use with the NSFetchRequest -propertiesToFetch method.
+    An NSExpressionDescription describes a column to be returned from a fetch that may not appear
+    directly as an attribute or relationship on an entity. Examples would be: upper(attribute) or
+    max(attribute). NSExpressionDescriptions cannot be set as properties on NSEntityDescription.
+    */
     pub struct NSExpressionDescription;
 
     #[cfg(feature = "CoreData_NSExpressionDescription")]
@@ -17,12 +23,30 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreData_NSExpressionDescription")]
+/**
+  Special property description type intended for use with the NSFetchRequest -propertiesToFetch method.
+An NSExpressionDescription describes a column to be returned from a fetch that may not appear
+directly as an attribute or relationship on an entity. Examples would be: upper(attribute) or
+max(attribute). NSExpressionDescriptions cannot be set as properties on NSEntityDescription.
+*/
 unsafe impl NSCoding for NSExpressionDescription {}
 
 #[cfg(feature = "CoreData_NSExpressionDescription")]
+/**
+  Special property description type intended for use with the NSFetchRequest -propertiesToFetch method.
+An NSExpressionDescription describes a column to be returned from a fetch that may not appear
+directly as an attribute or relationship on an entity. Examples would be: upper(attribute) or
+max(attribute). NSExpressionDescriptions cannot be set as properties on NSEntityDescription.
+*/
 unsafe impl NSObjectProtocol for NSExpressionDescription {}
 
 extern_methods!(
+    /**
+      Special property description type intended for use with the NSFetchRequest -propertiesToFetch method.
+    An NSExpressionDescription describes a column to be returned from a fetch that may not appear
+    directly as an attribute or relationship on an entity. Examples would be: upper(attribute) or
+    max(attribute). NSExpressionDescriptions cannot be set as properties on NSEntityDescription.
+    */
     #[cfg(feature = "CoreData_NSExpressionDescription")]
     unsafe impl NSExpressionDescription {
         #[cfg(feature = "Foundation_NSExpression")]

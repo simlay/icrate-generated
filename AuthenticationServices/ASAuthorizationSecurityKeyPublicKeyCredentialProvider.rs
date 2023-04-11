@@ -56,6 +56,9 @@ extern_methods!(
         ) -> Id<ASAuthorizationSecurityKeyPublicKeyCredentialAssertionRequest>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract The Relying Party identifier used for all requests created by this object.
+        */
         #[method_id(@__retain_semantics Other relyingPartyIdentifier)]
         pub unsafe fn relyingPartyIdentifier(&self) -> Id<NSString>;
 

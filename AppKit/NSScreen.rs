@@ -23,15 +23,24 @@ extern_methods!(
     #[cfg(feature = "AppKit_NSScreen")]
     unsafe impl NSScreen {
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          All screens; first one is "zero" screen
+        */
         #[method_id(@__retain_semantics Other screens)]
         pub unsafe fn screens() -> Id<NSArray<NSScreen>>;
 
+        /**
+          Screen with key window
+        */
         #[method_id(@__retain_semantics Other mainScreen)]
         pub unsafe fn mainScreen() -> Option<Id<NSScreen>>;
 
         #[method_id(@__retain_semantics Other deepestScreen)]
         pub unsafe fn deepestScreen() -> Option<Id<NSScreen>>;
 
+        /**
+          screensHaveSeparateSpaces returns YES if each screen has its own set of spaces.  This is a system setting and does not necessarily imply that there are multiple screens, nor that there are multiple spaces on any one screen
+        */
         #[method(screensHaveSeparateSpaces)]
         pub unsafe fn screensHaveSeparateSpaces() -> bool;
 
@@ -52,6 +61,9 @@ extern_methods!(
         #[method_id(@__retain_semantics Other colorSpace)]
         pub unsafe fn colorSpace(&self) -> Option<Id<NSColorSpace>>;
 
+        /**
+          0 terminated
+        */
         #[method(supportedWindowDepths)]
         pub unsafe fn supportedWindowDepths(&self) -> NonNull<NSWindowDepth>;
 
@@ -71,6 +83,9 @@ extern_methods!(
             options: NSAlignmentOptions,
         ) -> NSRect;
 
+        /**
+          Returns the scale factor representing the number of backing store pixels corresponding to each linear unit in screen space on this NSScreen. This method is provided for rare cases when the explicit scale factor is needed.  Please use -convert*ToBacking: methods whenever possible.
+        */
         #[method(backingScaleFactor)]
         pub unsafe fn backingScaleFactor(&self) -> CGFloat;
 
@@ -78,9 +93,15 @@ extern_methods!(
         #[method_id(@__retain_semantics Other localizedName)]
         pub unsafe fn localizedName(&self) -> Id<NSString>;
 
+        /**
+          Indicates the obscured distance from each edge of the screen
+        */
         #[method(safeAreaInsets)]
         pub unsafe fn safeAreaInsets(&self) -> NSEdgeInsets;
 
+        /**
+          The following two rects are at the top of the screen, outside the rectangle defined by safeAreaInsets, but also unobscured.  These rects are empty if there are no additional unobscured areas
+        */
         #[method(auxiliaryTopLeftArea)]
         pub unsafe fn auxiliaryTopLeftArea(&self) -> NSRect;
 
@@ -92,34 +113,71 @@ extern_methods!(
 extern_static!(NSScreenColorSpaceDidChangeNotification: &'static NSNotificationName);
 
 extern_methods!(
+    /**
+      Extended Dynamic Range
+    */
     #[cfg(feature = "AppKit_NSScreen")]
     unsafe impl NSScreen {
+        /**
+          Returns the current maximum color component value for the screen. Typically the maximum is 1.0, but if any rendering context on the screen has requested extended dynamic range, it may return a value greater than 1.0, depending on system capabilities and other conditions. Only rendering contexts that support extended dynamic range can use values greater than 1.0. When the value changes, NSApplicationDidChangeScreenParametersNotification will be posted.
+        */
         #[method(maximumExtendedDynamicRangeColorComponentValue)]
         pub unsafe fn maximumExtendedDynamicRangeColorComponentValue(&self) -> CGFloat;
 
+        /**
+          Returns the maximum color component value that the screen is capable of when extended dynamic range is enabled, regardless of whether or not extended dynamic range is currently enabled.
+        */
         #[method(maximumPotentialExtendedDynamicRangeColorComponentValue)]
         pub unsafe fn maximumPotentialExtendedDynamicRangeColorComponentValue(&self) -> CGFloat;
 
+        /**
+          Returns the current maximum color component value for reference rendering to the screen. If values beyond this are used, the display hardware may adjust content to fit into its dynamic range. For screens that do not support reference rendering, this will return 0.
+        */
         #[method(maximumReferenceExtendedDynamicRangeColorComponentValue)]
         pub unsafe fn maximumReferenceExtendedDynamicRangeColorComponentValue(&self) -> CGFloat;
     }
 );
 
 extern_methods!(
+    /**
+      Variable Rate Refresh
+    */
     #[cfg(feature = "AppKit_NSScreen")]
     unsafe impl NSScreen {
+        /**
+          The maximum frames per second this screen supports.
+        */
         #[method(maximumFramesPerSecond)]
         pub unsafe fn maximumFramesPerSecond(&self) -> NSInteger;
 
+        /**
+          The minimum refresh interval this screen supports, in seconds.
+
+        This is the shortest amount of time a frame will be present on screen.
+        minimumRefreshInterval and maximumRefreshInterval will be the same for displays that do not support variable refresh rates.
+        */
         #[method(minimumRefreshInterval)]
         pub unsafe fn minimumRefreshInterval(&self) -> NSTimeInterval;
 
+        /**
+          The maximum refresh interval this screen supports, in seconds.
+
+        minimumRefreshInterval and maximumRefreshInterval will be the same for displays that do not support variable refresh rates.
+        */
         #[method(maximumRefreshInterval)]
         pub unsafe fn maximumRefreshInterval(&self) -> NSTimeInterval;
 
+        /**
+          The update granularity of the screen's current mode, in seconds.
+
+        The display will update at the next boundary defined by the granularity, after the minimum refresh interval has been reached. When 0, the display can update at any time between the minimum and maximum refresh rate intervals of the screen. Fixed refresh rate screen modes will return the refresh interval as the update granularity (e.g. 16.66ms for 60Hz refresh rates), meaning updates only occur at refresh rate boundaries.
+        */
         #[method(displayUpdateGranularity)]
         pub unsafe fn displayUpdateGranularity(&self) -> NSTimeInterval;
 
+        /**
+          The time at which the last framebuffer update occurred on the display, in seconds since startup that the system has been awake.
+        */
         #[method(lastDisplayUpdateTimestamp)]
         pub unsafe fn lastDisplayUpdateTimestamp(&self) -> NSTimeInterval;
     }

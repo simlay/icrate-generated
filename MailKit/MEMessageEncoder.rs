@@ -6,6 +6,9 @@ use crate::Foundation::*;
 use crate::MailKit::*;
 
 extern_protocol!(
+    /**
+      @brief Methods in this protocol can be used by a mail app extension to encode messages.
+    */
     pub unsafe trait MEMessageEncoder: NSObjectProtocol {
         #[cfg(all(
             feature = "MailKit_MEComposeContext",

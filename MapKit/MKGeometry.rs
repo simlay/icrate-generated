@@ -51,6 +51,11 @@ extern_fn!(
 
 extern_struct!(
     #[encoding_name("?")]
+    /**
+      An MKMapPoint is a coordinate that has been projected for use on the
+     two-dimensional map.  An MKMapPoint always refers to a place in the world
+     and can be converted to a CLLocationCoordinate2D and back.
+    */
     pub struct MKMapPoint {
         pub x: c_double,
         pub y: c_double,

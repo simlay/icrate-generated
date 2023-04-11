@@ -15,18 +15,27 @@ ns_enum!(
 
 ns_options!(
     #[underlying(NSInteger)]
+    /**
+      The default behavior is to copy files.
+    */
     pub enum NSItemProviderFileOptions {
         NSItemProviderFileOptionOpenInPlace = 1,
     }
 );
 
 extern_protocol!(
+    /**
+      This protocol allows a class to export its data to a variety of binary representations.
+    */
     pub unsafe trait NSItemProviderWriting: NSObjectProtocol {
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
         #[method_id(@__retain_semantics Other writableTypeIdentifiersForItemProvider)]
         unsafe fn writableTypeIdentifiersForItemProvider_class() -> Id<NSArray<NSString>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          If this method is not implemented, the class method will be consulted instead.
+        */
         #[optional]
         #[method_id(@__retain_semantics Other writableTypeIdentifiersForItemProvider)]
         unsafe fn writableTypeIdentifiersForItemProvider(&self) -> Id<NSArray<NSString>>;
@@ -64,6 +73,9 @@ extern_protocol!(
 );
 
 extern_protocol!(
+    /**
+      This protocol allows a class to be constructed from a variety of binary representations.
+    */
     pub unsafe trait NSItemProviderReading: NSObjectProtocol {
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
         #[method_id(@__retain_semantics Other readableTypeIdentifiersForItemProvider)]
@@ -99,6 +111,9 @@ pub type NSItemProviderLoadHandler = *mut Block<
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSItemProvider")]
+    /**
+      An NSItemProvider is a high level abstraction for an item supporting multiple representations.
+    */
     pub struct NSItemProvider;
 
     #[cfg(feature = "Foundation_NSItemProvider")]
@@ -108,9 +123,15 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSItemProvider")]
+/**
+  An NSItemProvider is a high level abstraction for an item supporting multiple representations.
+*/
 unsafe impl NSObjectProtocol for NSItemProvider {}
 
 extern_methods!(
+    /**
+      An NSItemProvider is a high level abstraction for an item supporting multiple representations.
+    */
     #[cfg(feature = "Foundation_NSItemProvider")]
     unsafe impl NSItemProvider {
         #[method_id(@__retain_semantics Init init)]
@@ -152,6 +173,9 @@ extern_methods!(
         );
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          Returns the list of registered type identifiers, in the order they were registered.
+        */
         #[method_id(@__retain_semantics Other registeredTypeIdentifiers)]
         pub unsafe fn registeredTypeIdentifiers(&self) -> Id<NSArray<NSString>>;
 
@@ -271,12 +295,21 @@ extern_methods!(
 extern_static!(NSItemProviderPreferredImageSizeKey: &'static NSString);
 
 extern_methods!(
+    /**
+      Some uses of NSItemProvider support the use of optional preview images.
+    */
     /// NSPreviewSupport
     #[cfg(feature = "Foundation_NSItemProvider")]
     unsafe impl NSItemProvider {
+        /**
+          Sets a custom preview image handler block for this item provider. The returned item should preferably be NSData or a file NSURL.
+        */
         #[method(previewImageHandler)]
         pub unsafe fn previewImageHandler(&self) -> NSItemProviderLoadHandler;
 
+        /**
+          Sets a custom preview image handler block for this item provider. The returned item should preferably be NSData or a file NSURL.
+        */
         #[method(setPreviewImageHandler:)]
         pub unsafe fn setPreviewImageHandler(
             &self,
@@ -301,6 +334,9 @@ extern_static!(NSItemProviderErrorDomain: &'static NSString);
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      NSItemProvider-related error codes
+    */
     pub enum NSItemProviderErrorCode {
         NSItemProviderUnknownError = -1,
         NSItemProviderItemUnavailableError = -1000,

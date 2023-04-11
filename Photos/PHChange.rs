@@ -75,15 +75,27 @@ extern_methods!(
     unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>
         PHObjectChangeDetails<ObjectType, ObjectTypeOwnership>
     {
+        /**
+          returns the object that was passed in to changeDetailsForObject: (used to determine the changes to the object vs. the objectAfterChanges)
+        */
         #[method_id(@__retain_semantics Other objectBeforeChanges)]
         pub unsafe fn objectBeforeChanges(&self) -> Id<ObjectType, ObjectTypeOwnership>;
 
+        /**
+          the object in the state after this change
+        */
         #[method_id(@__retain_semantics Other objectAfterChanges)]
         pub unsafe fn objectAfterChanges(&self) -> Option<Id<ObjectType, ObjectTypeOwnership>>;
 
+        /**
+          YES if the image or video content for this object has been changed
+        */
         #[method(assetContentChanged)]
         pub unsafe fn assetContentChanged(&self) -> bool;
 
+        /**
+          YES if the object was deleted
+        */
         #[method(objectWasDeleted)]
         pub unsafe fn objectWasDeleted(&self) -> bool;
     }
@@ -120,17 +132,31 @@ extern_methods!(
         PHFetchResultChangeDetails<ObjectType, ObjectTypeOwnership>
     {
         #[cfg(feature = "PhotoKit_PHFetchResult")]
+        /**
+          fetch result with the state of the fetched objects before this change (returns the fetch result passed in to changeDetailsForFetchResult:)
+        */
         #[method_id(@__retain_semantics Other fetchResultBeforeChanges)]
         pub unsafe fn fetchResultBeforeChanges(&self) -> Id<PHFetchResult<ObjectType>>;
 
         #[cfg(feature = "PhotoKit_PHFetchResult")]
+        /**
+          fetch result with the state of the fetched objects after this change
+        */
         #[method_id(@__retain_semantics Other fetchResultAfterChanges)]
         pub unsafe fn fetchResultAfterChanges(&self) -> Id<PHFetchResult<ObjectType>>;
 
+        /**
+          YES if the changes to this fetch result are described by the removed/inserted/changed details.
+         NO indicates that the scope of changes were too large and UI clients should do a full reload, incremental changes could not be provided
+        */
         #[method(hasIncrementalChanges)]
         pub unsafe fn hasIncrementalChanges(&self) -> bool;
 
         #[cfg(feature = "Foundation_NSIndexSet")]
+        /**
+          The indexes of the removed items, relative to the 'before' state of the fetch result
+         returns nil if hasIncrementalChanges is NO
+        */
         #[method_id(@__retain_semantics Other removedIndexes)]
         pub unsafe fn removedIndexes(&self) -> Option<Id<NSIndexSet>>;
 
@@ -139,6 +165,10 @@ extern_methods!(
         pub unsafe fn removedObjects(&self) -> Id<NSArray<ObjectType>>;
 
         #[cfg(feature = "Foundation_NSIndexSet")]
+        /**
+          The indexes of the inserted items, relative to the 'before' state of the fetch result after applying the removedIndexes
+         returns nil if hasIncrementalChanges is NO
+        */
         #[method_id(@__retain_semantics Other insertedIndexes)]
         pub unsafe fn insertedIndexes(&self) -> Option<Id<NSIndexSet>>;
 
@@ -147,6 +177,10 @@ extern_methods!(
         pub unsafe fn insertedObjects(&self) -> Id<NSArray<ObjectType>>;
 
         #[cfg(feature = "Foundation_NSIndexSet")]
+        /**
+          The indexes of the updated items, relative to the 'after' state of the fetch result
+         returns nil if hasIncrementalChanges is NO
+        */
         #[method_id(@__retain_semantics Other changedIndexes)]
         pub unsafe fn changedIndexes(&self) -> Option<Id<NSIndexSet>>;
 
@@ -157,6 +191,10 @@ extern_methods!(
         #[method(enumerateMovesWithBlock:)]
         pub unsafe fn enumerateMovesWithBlock(&self, handler: &Block<(NSUInteger, NSUInteger), ()>);
 
+        /**
+          YES if there are moved items
+         returns NO if hasIncrementalChanges is NO
+        */
         #[method(hasMoves)]
         pub unsafe fn hasMoves(&self) -> bool;
 

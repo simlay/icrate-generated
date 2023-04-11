@@ -8,6 +8,9 @@ use crate::MediaPlayer::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MediaPlayer_MPMediaItemCollection")]
+    /**
+      An MPMediaItemCollection is a collection of related MPMediaItems in a media library.
+    */
     pub struct MPMediaItemCollection;
 
     #[cfg(feature = "MediaPlayer_MPMediaItemCollection")]
@@ -18,15 +21,27 @@ extern_class!(
 );
 
 #[cfg(feature = "MediaPlayer_MPMediaItemCollection")]
+/**
+  An MPMediaItemCollection is a collection of related MPMediaItems in a media library.
+*/
 unsafe impl NSCoding for MPMediaItemCollection {}
 
 #[cfg(feature = "MediaPlayer_MPMediaItemCollection")]
+/**
+  An MPMediaItemCollection is a collection of related MPMediaItems in a media library.
+*/
 unsafe impl NSObjectProtocol for MPMediaItemCollection {}
 
 #[cfg(feature = "MediaPlayer_MPMediaItemCollection")]
+/**
+  An MPMediaItemCollection is a collection of related MPMediaItems in a media library.
+*/
 unsafe impl NSSecureCoding for MPMediaItemCollection {}
 
 extern_methods!(
+    /**
+      An MPMediaItemCollection is a collection of related MPMediaItems in a media library.
+    */
     #[cfg(feature = "MediaPlayer_MPMediaItemCollection")]
     unsafe impl MPMediaItemCollection {
         #[cfg(all(feature = "Foundation_NSArray", feature = "MediaPlayer_MPMediaItem"))]
@@ -43,16 +58,30 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "MediaPlayer_MPMediaItem"))]
+        /**
+          Returns the MPMediaItems in the collection.
+        */
         #[method_id(@__retain_semantics Other items)]
         pub unsafe fn items(&self) -> Id<NSArray<MPMediaItem>>;
 
         #[cfg(feature = "MediaPlayer_MPMediaItem")]
+        /**
+          Returns an item representative of other items in the collection.
+         This item can be used for common item properties in the collection, often more efficiently than fetching an item out of the items array.
+        */
         #[method_id(@__retain_semantics Other representativeItem)]
         pub unsafe fn representativeItem(&self) -> Option<Id<MPMediaItem>>;
 
+        /**
+          Returns the number of items in the collection.
+         In some cases, this is more efficient than fetching the items array and asking for the count.
+        */
         #[method(count)]
         pub unsafe fn count(&self) -> NSUInteger;
 
+        /**
+          Returns the types of media which the collection holds.
+        */
         #[method(mediaTypes)]
         pub unsafe fn mediaTypes(&self) -> MPMediaType;
     }

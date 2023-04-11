@@ -8,6 +8,13 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreLocation_CLVisit")]
+    /**
+       CLVisit
+
+      Discussion
+        An instance of this class represents a possibly open-ended event
+        during which the device was at the specified coordinate.
+    */
     pub struct CLVisit;
 
     #[cfg(feature = "CoreLocation_CLVisit")]
@@ -17,28 +24,83 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreLocation_CLVisit")]
+/**
+   CLVisit
+
+  Discussion
+    An instance of this class represents a possibly open-ended event
+    during which the device was at the specified coordinate.
+*/
 unsafe impl NSCoding for CLVisit {}
 
 #[cfg(feature = "CoreLocation_CLVisit")]
+/**
+   CLVisit
+
+  Discussion
+    An instance of this class represents a possibly open-ended event
+    during which the device was at the specified coordinate.
+*/
 unsafe impl NSObjectProtocol for CLVisit {}
 
 #[cfg(feature = "CoreLocation_CLVisit")]
+/**
+   CLVisit
+
+  Discussion
+    An instance of this class represents a possibly open-ended event
+    during which the device was at the specified coordinate.
+*/
 unsafe impl NSSecureCoding for CLVisit {}
 
 extern_methods!(
+    /**
+       CLVisit
+
+      Discussion
+        An instance of this class represents a possibly open-ended event
+        during which the device was at the specified coordinate.
+    */
     #[cfg(feature = "CoreLocation_CLVisit")]
     unsafe impl CLVisit {
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+           arrivalDate
+
+          Discussion:
+            The date when the visit began.  This may be equal to [NSDate
+            distantPast] if the true arrival date isn't available.
+        */
         #[method_id(@__retain_semantics Other arrivalDate)]
         pub unsafe fn arrivalDate(&self) -> Id<NSDate>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+           departureDate
+
+          Discussion:
+            The date when the visit ended.  This is equal to [NSDate
+            distantFuture] if the device hasn't yet left.
+        */
         #[method_id(@__retain_semantics Other departureDate)]
         pub unsafe fn departureDate(&self) -> Id<NSDate>;
 
+        /**
+           coordinate
+
+          Discussion:
+            The center of the region which the device is visiting.
+        */
         #[method(coordinate)]
         pub unsafe fn coordinate(&self) -> CLLocationCoordinate2D;
 
+        /**
+           horizontalAccuracy
+
+          Discussion:
+            An estimate of the radius (in meters) of the region which the
+            device is visiting.
+        */
         #[method(horizontalAccuracy)]
         pub unsafe fn horizontalAccuracy(&self) -> CLLocationAccuracy;
     }

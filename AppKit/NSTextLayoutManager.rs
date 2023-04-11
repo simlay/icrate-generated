@@ -29,6 +29,9 @@ ns_options!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSTextLayoutManager")]
+    /**
+      NSTextLayoutManager is the center piece of the TextKit object network maintaining the layout geometry via an array of NSTextContainer and layout results with NSTextLayoutFragment associated with NSTextElement vended from the owner NSTextContentManager.
+    */
     pub struct NSTextLayoutManager;
 
     #[cfg(feature = "AppKit_NSTextLayoutManager")]
@@ -38,18 +41,33 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSTextLayoutManager")]
+/**
+  NSTextLayoutManager is the center piece of the TextKit object network maintaining the layout geometry via an array of NSTextContainer and layout results with NSTextLayoutFragment associated with NSTextElement vended from the owner NSTextContentManager.
+*/
 unsafe impl NSCoding for NSTextLayoutManager {}
 
 #[cfg(feature = "AppKit_NSTextLayoutManager")]
+/**
+  NSTextLayoutManager is the center piece of the TextKit object network maintaining the layout geometry via an array of NSTextContainer and layout results with NSTextLayoutFragment associated with NSTextElement vended from the owner NSTextContentManager.
+*/
 unsafe impl NSObjectProtocol for NSTextLayoutManager {}
 
 #[cfg(feature = "AppKit_NSTextLayoutManager")]
+/**
+  NSTextLayoutManager is the center piece of the TextKit object network maintaining the layout geometry via an array of NSTextContainer and layout results with NSTextLayoutFragment associated with NSTextElement vended from the owner NSTextContentManager.
+*/
 unsafe impl NSSecureCoding for NSTextLayoutManager {}
 
 #[cfg(feature = "AppKit_NSTextLayoutManager")]
+/**
+  NSTextLayoutManager is the center piece of the TextKit object network maintaining the layout geometry via an array of NSTextContainer and layout results with NSTextLayoutFragment associated with NSTextElement vended from the owner NSTextContentManager.
+*/
 unsafe impl NSTextSelectionDataSource for NSTextLayoutManager {}
 
 extern_methods!(
+    /**
+      NSTextLayoutManager is the center piece of the TextKit object network maintaining the layout geometry via an array of NSTextContainer and layout results with NSTextLayoutFragment associated with NSTextElement vended from the owner NSTextContentManager.
+    */
     #[cfg(feature = "AppKit_NSTextLayoutManager")]
     unsafe impl NSTextLayoutManager {
         #[method_id(@__retain_semantics Init init)]
@@ -73,28 +91,49 @@ extern_methods!(
             delegate: Option<&ProtocolObject<dyn NSTextLayoutManagerDelegate>>,
         );
 
+        /**
+          If YES, uses the leading as specified by the font. However, this is not appropriate for most UI text. YES by default.
+        */
         #[method(usesFontLeading)]
         pub unsafe fn usesFontLeading(&self) -> bool;
 
+        /**
+          If YES, uses the leading as specified by the font. However, this is not appropriate for most UI text. YES by default.
+        */
         #[method(setUsesFontLeading:)]
         pub unsafe fn setUsesFontLeading(&self, uses_font_leading: bool);
 
+        /**
+          When YES, enables internal security analysis for malicious inputs and activates defensive behaviors. By enabling this functionality, it's possible certain text such as a very long paragraph might result in unexpected layout. NO by default.
+        */
         #[method(limitsLayoutForSuspiciousContents)]
         pub unsafe fn limitsLayoutForSuspiciousContents(&self) -> bool;
 
+        /**
+          When YES, enables internal security analysis for malicious inputs and activates defensive behaviors. By enabling this functionality, it's possible certain text such as a very long paragraph might result in unexpected layout. NO by default.
+        */
         #[method(setLimitsLayoutForSuspiciousContents:)]
         pub unsafe fn setLimitsLayoutForSuspiciousContents(
             &self,
             limits_layout_for_suspicious_contents: bool,
         );
 
+        /**
+          When YES, NSTextLayoutManager will attempt to hyphenate when wrapping lines. May be overridden on a per-paragraph basis by the NSParagraphStyle's usesDefaultHyphenation. The receiver makes the best effort to decide the exact logic including the hyphenation factor based on the context. The default value is NO. Can be overridden by the preference key @"NSUsesDefaultHyphenation".
+        */
         #[method(usesHyphenation)]
         pub unsafe fn usesHyphenation(&self) -> bool;
 
+        /**
+          When YES, NSTextLayoutManager will attempt to hyphenate when wrapping lines. May be overridden on a per-paragraph basis by the NSParagraphStyle's usesDefaultHyphenation. The receiver makes the best effort to decide the exact logic including the hyphenation factor based on the context. The default value is NO. Can be overridden by the preference key @"NSUsesDefaultHyphenation".
+        */
         #[method(setUsesHyphenation:)]
         pub unsafe fn setUsesHyphenation(&self, uses_hyphenation: bool);
 
         #[cfg(feature = "AppKit_NSTextContentManager")]
+        /**
+          Pointing to the NSTextContentManager object strongly referencing the text layout manager.
+        */
         #[method_id(@__retain_semantics Other textContentManager)]
         pub unsafe fn textContentManager(&self) -> Option<Id<NSTextContentManager>>;
 
@@ -103,25 +142,43 @@ extern_methods!(
         pub unsafe fn replaceTextContentManager(&self, text_content_manager: &NSTextContentManager);
 
         #[cfg(feature = "AppKit_NSTextContainer")]
+        /**
+          The text container object providing geometric information for the layout destination. If isSimpleRectangularTextContainer=NO, NSTextLayoutManager always fill from the top instead of allowing non-contiguous layout support.
+        */
         #[method_id(@__retain_semantics Other textContainer)]
         pub unsafe fn textContainer(&self) -> Option<Id<NSTextContainer>>;
 
         #[cfg(feature = "AppKit_NSTextContainer")]
+        /**
+          The text container object providing geometric information for the layout destination. If isSimpleRectangularTextContainer=NO, NSTextLayoutManager always fill from the top instead of allowing non-contiguous layout support.
+        */
         #[method(setTextContainer:)]
         pub unsafe fn setTextContainer(&self, text_container: Option<&NSTextContainer>);
 
+        /**
+          The usage bounds for textContainer. KVO-compliant. Views can observe this property in order to trigger a resize operation. For example, UIView/NSView should call setNeedsUpdateConstraints() when the usage bounds changes.
+        */
         #[method(usageBoundsForTextContainer)]
         pub unsafe fn usageBoundsForTextContainer(&self) -> CGRect;
 
         #[cfg(feature = "AppKit_NSTextViewportLayoutController")]
+        /**
+          Returns NSTextViewportLayoutController associated with textContainer.
+        */
         #[method_id(@__retain_semantics Other textViewportLayoutController)]
         pub unsafe fn textViewportLayoutController(&self) -> Id<NSTextViewportLayoutController>;
 
         #[cfg(feature = "Foundation_NSOperationQueue")]
+        /**
+          If non-nil, it performs layout in the specified queue until estimatedUsageBounds=NO.
+        */
         #[method_id(@__retain_semantics Other layoutQueue)]
         pub unsafe fn layoutQueue(&self) -> Option<Id<NSOperationQueue>>;
 
         #[cfg(feature = "Foundation_NSOperationQueue")]
+        /**
+          If non-nil, it performs layout in the specified queue until estimatedUsageBounds=NO.
+        */
         #[method(setLayoutQueue:)]
         pub unsafe fn setLayoutQueue(&self, layout_queue: Option<&NSOperationQueue>);
 
@@ -160,18 +217,30 @@ extern_methods!(
         ) -> Option<Id<ProtocolObject<dyn NSTextLocation>>>;
 
         #[cfg(all(feature = "AppKit_NSTextSelection", feature = "Foundation_NSArray"))]
+        /**
+          An array of NSTextSelections associated by the text layout manager. Each NSTextSelection represents an insertion point. The selection state is shared among all view ports connected to the text layout manager via text containers.
+        */
         #[method_id(@__retain_semantics Other textSelections)]
         pub unsafe fn textSelections(&self) -> Id<NSArray<NSTextSelection>>;
 
         #[cfg(all(feature = "AppKit_NSTextSelection", feature = "Foundation_NSArray"))]
+        /**
+          An array of NSTextSelections associated by the text layout manager. Each NSTextSelection represents an insertion point. The selection state is shared among all view ports connected to the text layout manager via text containers.
+        */
         #[method(setTextSelections:)]
         pub unsafe fn setTextSelections(&self, text_selections: &NSArray<NSTextSelection>);
 
         #[cfg(feature = "AppKit_NSTextSelectionNavigation")]
+        /**
+          Returns an NSTextSelectionNavigation configured to have the text layout manager as NSTextSelectionDataSource
+        */
         #[method_id(@__retain_semantics Other textSelectionNavigation)]
         pub unsafe fn textSelectionNavigation(&self) -> Id<NSTextSelectionNavigation>;
 
         #[cfg(feature = "AppKit_NSTextSelectionNavigation")]
+        /**
+          Returns an NSTextSelectionNavigation configured to have the text layout manager as NSTextSelectionDataSource
+        */
         #[method(setTextSelectionNavigation:)]
         pub unsafe fn setTextSelectionNavigation(
             &self,
@@ -224,12 +293,18 @@ extern_methods!(
         pub unsafe fn invalidateRenderingAttributesForTextRange(&self, text_range: &NSTextRange);
 
         #[cfg(feature = "AppKit_NSTextLayoutFragment")]
+        /**
+          A callback block invoked whenever NSTextLayoutManager needs to validate the rendering attributes for the range. The validator should use -setRenderingAttributes:forTextRange: to fill the rendering attributes appropriate for the range inside textLayoutFragment.
+        */
         #[method(renderingAttributesValidator)]
         pub unsafe fn renderingAttributesValidator(
             &self,
         ) -> *mut Block<(NonNull<NSTextLayoutManager>, NonNull<NSTextLayoutFragment>), ()>;
 
         #[cfg(feature = "AppKit_NSTextLayoutFragment")]
+        /**
+          A callback block invoked whenever NSTextLayoutManager needs to validate the rendering attributes for the range. The validator should use -setRenderingAttributes:forTextRange: to fill the rendering attributes appropriate for the range inside textLayoutFragment.
+        */
         #[method(setRenderingAttributesValidator:)]
         pub unsafe fn setRenderingAttributesValidator(
             &self,
@@ -239,6 +314,9 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          The default set of attributes for rendering NSLinkAttributeName. The base NSTextLayoutManager class returns with NSUnderlineStyleSingle for NSUnderlineStyleAttributeName and the platform link color for NSForegroundColorAttributeName. The platform color for macOS is +linkColor. Other platforms uses +blueColor.
+        */
         #[method_id(@__retain_semantics Other linkRenderingAttributes)]
         pub unsafe fn linkRenderingAttributes() -> Id<NSDictionary<NSAttributedStringKey, Object>>;
 

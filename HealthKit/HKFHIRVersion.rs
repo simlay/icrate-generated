@@ -9,6 +9,13 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKFHIRVersion")]
+    /**
+     @class         HKFHIRVersion
+    @abstract      Represents a FHIR version.
+    @discussion    FHIR uses semantic versions ("1.0.2", "4.0.1") to communicate which FHIR version a server supports or a
+    given resource is represented in. A FHIR version is associated with one FHIR release.
+    @see           http://hl7.org/fhir/versions.html#versions
+    */
     pub struct HKFHIRVersion;
 
     #[cfg(feature = "HealthKit_HKFHIRVersion")]
@@ -18,15 +25,43 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKFHIRVersion")]
+/**
+ @class         HKFHIRVersion
+@abstract      Represents a FHIR version.
+@discussion    FHIR uses semantic versions ("1.0.2", "4.0.1") to communicate which FHIR version a server supports or a
+given resource is represented in. A FHIR version is associated with one FHIR release.
+@see           http://hl7.org/fhir/versions.html#versions
+*/
 unsafe impl NSCoding for HKFHIRVersion {}
 
 #[cfg(feature = "HealthKit_HKFHIRVersion")]
+/**
+ @class         HKFHIRVersion
+@abstract      Represents a FHIR version.
+@discussion    FHIR uses semantic versions ("1.0.2", "4.0.1") to communicate which FHIR version a server supports or a
+given resource is represented in. A FHIR version is associated with one FHIR release.
+@see           http://hl7.org/fhir/versions.html#versions
+*/
 unsafe impl NSObjectProtocol for HKFHIRVersion {}
 
 #[cfg(feature = "HealthKit_HKFHIRVersion")]
+/**
+ @class         HKFHIRVersion
+@abstract      Represents a FHIR version.
+@discussion    FHIR uses semantic versions ("1.0.2", "4.0.1") to communicate which FHIR version a server supports or a
+given resource is represented in. A FHIR version is associated with one FHIR release.
+@see           http://hl7.org/fhir/versions.html#versions
+*/
 unsafe impl NSSecureCoding for HKFHIRVersion {}
 
 extern_methods!(
+    /**
+     @class         HKFHIRVersion
+    @abstract      Represents a FHIR version.
+    @discussion    FHIR uses semantic versions ("1.0.2", "4.0.1") to communicate which FHIR version a server supports or a
+    given resource is represented in. A FHIR version is associated with one FHIR release.
+    @see           http://hl7.org/fhir/versions.html#versions
+    */
     #[cfg(feature = "HealthKit_HKFHIRVersion")]
     unsafe impl HKFHIRVersion {
         #[method(majorVersion)]
@@ -42,6 +77,10 @@ extern_methods!(
         pub unsafe fn FHIRRelease(&self) -> Id<HKFHIRRelease>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property      stringRepresentation
+        @abstract      A string representation in the format "{major}.{minor}.{patch}".
+        */
         #[method_id(@__retain_semantics Other stringRepresentation)]
         pub unsafe fn stringRepresentation(&self) -> Id<NSString>;
 

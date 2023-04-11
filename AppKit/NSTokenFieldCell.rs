@@ -46,15 +46,27 @@ unsafe impl NSUserInterfaceItemIdentification for NSTokenFieldCell {}
 extern_methods!(
     #[cfg(feature = "AppKit_NSTokenFieldCell")]
     unsafe impl NSTokenFieldCell {
+        /**
+          Sets the default token style used for each new token.  However, if the delegate implements tokenField:styleForRepresentedObject:, that return value will be used instead.
+        */
         #[method(tokenStyle)]
         pub unsafe fn tokenStyle(&self) -> NSTokenStyle;
 
+        /**
+          Sets the default token style used for each new token.  However, if the delegate implements tokenField:styleForRepresentedObject:, that return value will be used instead.
+        */
         #[method(setTokenStyle:)]
         pub unsafe fn setTokenStyle(&self, token_style: NSTokenStyle);
 
+        /**
+          Sets the auto-completion delay before the list of possible completions automatically pops up.  Completions are only offered if the delegate implements the completion delegate API.  A negative delay will disable completion while a delay of 0.0 will make completion UI presentation immediate.
+        */
         #[method(completionDelay)]
         pub unsafe fn completionDelay(&self) -> NSTimeInterval;
 
+        /**
+          Sets the auto-completion delay before the list of possible completions automatically pops up.  Completions are only offered if the delegate implements the completion delegate API.  A negative delay will disable completion while a delay of 0.0 will make completion UI presentation immediate.
+        */
         #[method(setCompletionDelay:)]
         pub unsafe fn setCompletionDelay(&self, completion_delay: NSTimeInterval);
 

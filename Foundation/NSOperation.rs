@@ -49,6 +49,9 @@ extern_methods!(
         #[method(isFinished)]
         pub unsafe fn isFinished(&self) -> bool;
 
+        /**
+          To be deprecated; use and override 'asynchronous' below
+        */
         #[method(isConcurrent)]
         pub unsafe fn isConcurrent(&self) -> bool;
 
@@ -202,6 +205,24 @@ extern_methods!(
     #[cfg(feature = "Foundation_NSOperationQueue")]
     unsafe impl NSOperationQueue {
         #[cfg(feature = "Foundation_NSProgress")]
+        /**
+          @property progress
+         @discussion     The `progress` property represents a total progress of the operations executed in the queue. By default NSOperationQueue
+         does not report progress until the `totalUnitCount` of the progress is set. When the `totalUnitCount` property of the progress is set the
+         queue then opts into participating in progress reporting. When enabled, each operation will contribute 1 unit of completion to the
+         overall progress of the queue for operations that are finished by the end of main (operations that override start and do not invoke super
+         will not contribute to progress). Special attention to race conditions should be made when updating the `totalUnitCount` of the progress
+         as well as care should be taken to avoid 'backwards progress'. For example; when a NSOperationQueue's progress is 5/10, representing 50%
+         completed, and there are 90 more operations about to be added and the `totalUnitCount` that would then make the progress report as 5/100
+         which represents 5%. In this example it would mean that any progress bar would jump from displaying 50% back to 5%, which might not be
+         desirable. In the cases where the `totalUnitCount` needs to be adjusted it is suggested to do this for thread-safety in a barrier by
+         using the `addBarrierBlock:` API. This ensures that no un-expected execution state occurs adjusting into a potentially backwards moving
+         progress scenario.
+
+         @example
+         NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+         queue.progress.totalUnitCount = 10;
+        */
         #[method_id(@__retain_semantics Other progress)]
         pub unsafe fn progress(&self) -> Id<NSProgress>;
 
@@ -271,6 +292,9 @@ extern_methods!(
     #[cfg(feature = "Foundation_NSOperationQueue")]
     unsafe impl NSOperationQueue {
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSOperation"))]
+        /**
+          These two functions are inherently a race condition and should be avoided if possible
+        */
         #[deprecated = "access to operations is inherently a race condition, it should not be used. For barrier style behaviors please use addBarrierBlock: instead"]
         #[method_id(@__retain_semantics Other operations)]
         pub unsafe fn operations(&self) -> Id<NSArray<NSOperation>>;

@@ -31,6 +31,10 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "EventKit_EKEvent")]
+    /**
+     @class      EKEvent
+    @abstract   The EKEvent class represents an occurrence of an event.
+    */
     pub struct EKEvent;
 
     #[cfg(feature = "EventKit_EKEvent")]
@@ -41,9 +45,17 @@ extern_class!(
 );
 
 #[cfg(feature = "EventKit_EKEvent")]
+/**
+ @class      EKEvent
+@abstract   The EKEvent class represents an occurrence of an event.
+*/
 unsafe impl NSObjectProtocol for EKEvent {}
 
 extern_methods!(
+    /**
+     @class      EKEvent
+    @abstract   The EKEvent class represents an occurrence of an event.
+    */
     #[cfg(feature = "EventKit_EKEvent")]
     unsafe impl EKEvent {
         #[cfg(feature = "EventKit_EKEventStore")]
@@ -51,36 +63,102 @@ extern_methods!(
         pub unsafe fn eventWithEventStore(event_store: &EKEventStore) -> Id<EKEvent>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property   eventIdentifier
+        @abstract   A unique identifier for this event.
+        @discussion This identifier can be used to look the event up using [EKEventStore eventWithIdentifier:].
+        You can use this not only to simply fetch the event, but also to validate the event
+        has not been deleted out from under you when you get an external change notification
+        via the EKEventStore database changed notification. If eventWithIdentifier: returns nil,
+        the event was deleted.
+
+        Please note that if you change the calendar of an event, this ID will likely change. It is
+        currently also possible for the ID to change due to a sync operation. For example, if
+        a user moved an event on a different client to another calendar, we'd see it as a
+        completely new event here.
+
+        This may be nil for events that have not been saved.
+        */
         #[method_id(@__retain_semantics Other eventIdentifier)]
         pub unsafe fn eventIdentifier(&self) -> Option<Id<NSString>>;
 
+        /**
+         @property   allDay
+        @abstract   Indicates this event is an 'all day' event.
+        */
         #[method(isAllDay)]
         pub unsafe fn isAllDay(&self) -> bool;
 
+        /**
+         @property   allDay
+        @abstract   Indicates this event is an 'all day' event.
+        */
         #[method(setAllDay:)]
         pub unsafe fn setAllDay(&self, all_day: bool);
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+         @property   startDate
+        @abstract   The start date for the event.
+        @discussion This property represents the start date for this event. Floating events (such
+        as all-day events) are currently always returned in the default time zone.
+        ([NSTimeZone defaultTimeZone])
+
+        This will be nil for new events until you set it.
+        */
         #[method_id(@__retain_semantics Other startDate)]
         pub unsafe fn startDate(&self) -> Id<NSDate>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+         @property   startDate
+        @abstract   The start date for the event.
+        @discussion This property represents the start date for this event. Floating events (such
+        as all-day events) are currently always returned in the default time zone.
+        ([NSTimeZone defaultTimeZone])
+
+        This will be nil for new events until you set it.
+        */
         #[method(setStartDate:)]
         pub unsafe fn setStartDate(&self, start_date: Option<&NSDate>);
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+         @property   endDate
+        @abstract   The end date for the event.
+        @discussion This will be nil for new events until you set it.
+        */
         #[method_id(@__retain_semantics Other endDate)]
         pub unsafe fn endDate(&self) -> Id<NSDate>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+         @property   endDate
+        @abstract   The end date for the event.
+        @discussion This will be nil for new events until you set it.
+        */
         #[method(setEndDate:)]
         pub unsafe fn setEndDate(&self, end_date: Option<&NSDate>);
 
         #[cfg(feature = "EventKit_EKStructuredLocation")]
+        /**
+         @property   structuredLocation
+        @abstract   Allows you to set a structured location (a location with a potential geo-coordinate) on an
+        event. The getter for EKEvent’s location property just returns the structured location’s title.
+        The setter for EKEvent’s location property is equivalent to
+        [event setStructuredLocation:[EKStructuredLocation locationWithTitle:…]].
+        */
         #[method_id(@__retain_semantics Other structuredLocation)]
         pub unsafe fn structuredLocation(&self) -> Option<Id<EKStructuredLocation>>;
 
         #[cfg(feature = "EventKit_EKStructuredLocation")]
+        /**
+         @property   structuredLocation
+        @abstract   Allows you to set a structured location (a location with a potential geo-coordinate) on an
+        event. The getter for EKEvent’s location property just returns the structured location’s title.
+        The setter for EKEvent’s location property is equivalent to
+        [event setStructuredLocation:[EKStructuredLocation locationWithTitle:…]].
+        */
         #[method(setStructuredLocation:)]
         pub unsafe fn setStructuredLocation(
             &self,
@@ -91,22 +169,70 @@ extern_methods!(
         pub unsafe fn compareStartDateWithEvent(&self, other: &EKEvent) -> NSComparisonResult;
 
         #[cfg(feature = "EventKit_EKParticipant")]
+        /**
+         @property   organizer
+        @abstract   The organizer of this event, or nil.
+        */
         #[method_id(@__retain_semantics Other organizer)]
         pub unsafe fn organizer(&self) -> Option<Id<EKParticipant>>;
 
+        /**
+         @property   availability
+        @abstract   The availability setting for this event.
+        @discussion The availability setting is used by CalDAV and Exchange servers to indicate
+        how the time should be treated for scheduling. If the calendar the event is
+        currently in does not support event availability, EKEventAvailabilityNotSupported
+        is returned.
+        */
         #[method(availability)]
         pub unsafe fn availability(&self) -> EKEventAvailability;
 
+        /**
+         @property   availability
+        @abstract   The availability setting for this event.
+        @discussion The availability setting is used by CalDAV and Exchange servers to indicate
+        how the time should be treated for scheduling. If the calendar the event is
+        currently in does not support event availability, EKEventAvailabilityNotSupported
+        is returned.
+        */
         #[method(setAvailability:)]
         pub unsafe fn setAvailability(&self, availability: EKEventAvailability);
 
+        /**
+         @property   status
+        @abstract   The status of the event.
+        @discussion While the status offers four different values in the EKEventStatus enumeration,
+        in practice, the only actionable and reliable status is canceled. Any other status
+        should be considered informational at best. You cannot set this property. If you
+        wish to cancel an event, you should simply remove it using removeEvent:.
+        */
         #[method(status)]
         pub unsafe fn status(&self) -> EKEventStatus;
 
+        /**
+         @property   isDetached
+        @abstract   Represents whether this event is detached from a recurring series.
+        @discussion If this EKEvent is an instance of a repeating event, and an attribute of this
+        EKEvent has been changed from the default value generated by the repeating event,
+        isDetached will return YES. If the EKEvent is unchanged from its default state, or
+        is not a repeating event, isDetached returns NO.
+        */
         #[method(isDetached)]
         pub unsafe fn isDetached(&self) -> bool;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+         @property   occurrenceDate:
+        @abstract   The occurrence date of an event if it is part of a recurring series.
+        @discussion This is only set if the event is part of a recurring series. It returns
+        the date on which this event was originally scheduled to occur. For occurrences
+        that are unmodified from the recurring series, this is the same as the start date.
+        This value will remain the same even if the event has been detached and its start
+        date has changed. Floating events (such as all-day events) are currently returned
+        in the default time zone. ([NSTimeZone defaultTimeZone])
+
+        This will be nil for new events until you set startDate.
+        */
         #[method_id(@__retain_semantics Other occurrenceDate)]
         pub unsafe fn occurrenceDate(&self) -> Option<Id<NSDate>>;
 
@@ -114,13 +240,34 @@ extern_methods!(
         pub unsafe fn refresh(&self) -> bool;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @method     birthdayContactIdentifier
+        @abstract   Specifies the contact identifier of the person this event was created for.
+        @discussion This property is only valid for events in the built-in Birthdays calendar. It specifies
+        the contact identifier (for use with the Contacts framework) of the person this event was
+        created for. For any other type of event, this property returns nil.
+        */
         #[method_id(@__retain_semantics Other birthdayContactIdentifier)]
         pub unsafe fn birthdayContactIdentifier(&self) -> Option<Id<NSString>>;
 
+        /**
+         @property   birthdayPersonID
+        @abstract   Specifies the address book ID of the person this event was created for.
+        @discussion  This property is only valid for events in the built-in Birthdays calendar. It specifies
+        the Address Book ID of the person this event was created for. For any other type of event,
+        this property returns -1.
+        */
         #[method(birthdayPersonID)]
         pub unsafe fn birthdayPersonID(&self) -> NSInteger;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property   birthdayPersonUniqueID
+        @abstract   Specifies the address book unique ID of the person this event was created for.
+        @discussion This property is only valid for events in the built-in Birthdays calendar. It specifies
+        the Address Book unique ID of the person this event was created for. For any other type of event,
+        this property returns nil.
+        */
         #[deprecated = "Use birthdayContactIdentifier instead"]
         #[method_id(@__retain_semantics Other birthdayPersonUniqueID)]
         pub unsafe fn birthdayPersonUniqueID(&self) -> Option<Id<NSString>>;

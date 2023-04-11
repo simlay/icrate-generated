@@ -7,6 +7,13 @@ use crate::GameController::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     This is the battery status and it's represented by one of the following values:
+    GCControllerBatteryStateUnknown means that the current state of battery is unknown or cannot be determined
+    GCControllerBatteryStateDischarging means that controller is on battery and discharging at this moment
+    GCControllerBatteryStateCharging means that controller is plugged in, but it's battery level is less than 100%
+    GCControllerBatteryStateFull means that controller is plugged in and it's battery level is 100%
+    */
     pub enum GCDeviceBatteryState {
         GCDeviceBatteryStateUnknown = -1,
         GCDeviceBatteryStateDischarging = 0,
@@ -18,6 +25,9 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameController_GCDeviceBattery")]
+    /**
+     A controller battery is an abstract representation of the battery level and battery status of a GCController instance.
+    */
     pub struct GCDeviceBattery;
 
     #[cfg(feature = "GameController_GCDeviceBattery")]
@@ -27,14 +37,29 @@ extern_class!(
 );
 
 #[cfg(feature = "GameController_GCDeviceBattery")]
+/**
+ A controller battery is an abstract representation of the battery level and battery status of a GCController instance.
+*/
 unsafe impl NSObjectProtocol for GCDeviceBattery {}
 
 extern_methods!(
+    /**
+     A controller battery is an abstract representation of the battery level and battery status of a GCController instance.
+    */
     #[cfg(feature = "GameController_GCDeviceBattery")]
     unsafe impl GCDeviceBattery {
+        /**
+         This is the battery level for controller.
+        Battery level ranges from 0.0 (fully discharged) to 1.0 (100% charged) and defaults to 0
+        */
         #[method(batteryLevel)]
         pub unsafe fn batteryLevel(&self) -> c_float;
 
+        /**
+         A battery state for controller, defaults to GCControllerBatteryStateUnknown
+
+        @note This property might be useful if you display the information about currently connected controller for player's convenience
+        */
         #[method(batteryState)]
         pub unsafe fn batteryState(&self) -> GCDeviceBatteryState;
 

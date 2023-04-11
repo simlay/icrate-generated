@@ -6,6 +6,10 @@ use crate::Foundation::*;
 use crate::InputMethodKit::*;
 
 extern_protocol!(
+    /**
+     @protocol    IMKStateSetting
+    @abstract    This protocol sets or accesses values that indicate the state of an input method.
+    */
     pub unsafe trait IMKStateSetting {
         #[method(activateServer:)]
         unsafe fn activateServer(&self, sender: Option<&Object>);
@@ -43,6 +47,10 @@ extern_protocol!(
 );
 
 extern_protocol!(
+    /**
+     @protocol    IMKMouseHandling
+    @abstract    This protocol receives mouse events.
+    */
     pub unsafe trait IMKMouseHandling {
         #[method(mouseDownOnCharacterIndex:coordinate:withModifier:continueTracking:client:)]
         unsafe fn mouseDownOnCharacterIndex_coordinate_withModifier_continueTracking_client(
@@ -79,6 +87,13 @@ extern_protocol!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "InputMethodKit_IMKInputController")]
+    /**
+     @class      IMKInputController
+    @abstract    The basic class that controls input on the input method side.
+    @discussion  IMKInputController implements fully implements the protocols defined above.  Typically a developer does not override this class, but provides a delegate object that implements the methods that developer is interested in.  The IMKInputController versions of the protocol methods check if the delegate object implements a method, and  call the delegate version if it exists.
+
+    The IMKServer class which is allocated in an input method's main function creates a controller class for each input session created by a client application. Therefore for every input session there is a corresponding IMKInputController.
+    */
     pub struct IMKInputController;
 
     #[cfg(feature = "InputMethodKit_IMKInputController")]
@@ -88,15 +103,43 @@ extern_class!(
 );
 
 #[cfg(feature = "InputMethodKit_IMKInputController")]
+/**
+ @class      IMKInputController
+@abstract    The basic class that controls input on the input method side.
+@discussion  IMKInputController implements fully implements the protocols defined above.  Typically a developer does not override this class, but provides a delegate object that implements the methods that developer is interested in.  The IMKInputController versions of the protocol methods check if the delegate object implements a method, and  call the delegate version if it exists.
+
+The IMKServer class which is allocated in an input method's main function creates a controller class for each input session created by a client application. Therefore for every input session there is a corresponding IMKInputController.
+*/
 unsafe impl IMKMouseHandling for IMKInputController {}
 
 #[cfg(feature = "InputMethodKit_IMKInputController")]
+/**
+ @class      IMKInputController
+@abstract    The basic class that controls input on the input method side.
+@discussion  IMKInputController implements fully implements the protocols defined above.  Typically a developer does not override this class, but provides a delegate object that implements the methods that developer is interested in.  The IMKInputController versions of the protocol methods check if the delegate object implements a method, and  call the delegate version if it exists.
+
+The IMKServer class which is allocated in an input method's main function creates a controller class for each input session created by a client application. Therefore for every input session there is a corresponding IMKInputController.
+*/
 unsafe impl IMKStateSetting for IMKInputController {}
 
 #[cfg(feature = "InputMethodKit_IMKInputController")]
+/**
+ @class      IMKInputController
+@abstract    The basic class that controls input on the input method side.
+@discussion  IMKInputController implements fully implements the protocols defined above.  Typically a developer does not override this class, but provides a delegate object that implements the methods that developer is interested in.  The IMKInputController versions of the protocol methods check if the delegate object implements a method, and  call the delegate version if it exists.
+
+The IMKServer class which is allocated in an input method's main function creates a controller class for each input session created by a client application. Therefore for every input session there is a corresponding IMKInputController.
+*/
 unsafe impl NSObjectProtocol for IMKInputController {}
 
 extern_methods!(
+    /**
+     @class      IMKInputController
+    @abstract    The basic class that controls input on the input method side.
+    @discussion  IMKInputController implements fully implements the protocols defined above.  Typically a developer does not override this class, but provides a delegate object that implements the methods that developer is interested in.  The IMKInputController versions of the protocol methods check if the delegate object implements a method, and  call the delegate version if it exists.
+
+    The IMKServer class which is allocated in an input method's main function creates a controller class for each input session created by a client application. Therefore for every input session there is a corresponding IMKInputController.
+    */
     #[cfg(feature = "InputMethodKit_IMKInputController")]
     unsafe impl IMKInputController {
         #[cfg(feature = "InputMethodKit_IMKServer")]

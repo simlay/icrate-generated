@@ -6,7 +6,15 @@ use crate::Foundation::*;
 use crate::GameController::*;
 
 extern_protocol!(
+    /**
+     An object conforming to \c GCSwitchElement represents a latching switch.
+    A switch may be in one of several positions, and remains in its last position
+    after the user stops interacting with it.
+    */
     pub unsafe trait GCSwitchElement: GCPhysicalInputElement {
+        /**
+         Get the input containing the absolute position of the switch.
+        */
         #[method_id(@__retain_semantics Other positionInput)]
         unsafe fn positionInput(&self) -> Id<ProtocolObject<dyn GCSwitchPositionInput>>;
     }

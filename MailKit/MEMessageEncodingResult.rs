@@ -8,6 +8,9 @@ use crate::MailKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MailKit_MEMessageEncodingResult")]
+    /**
+      @brief Contains information about an outging mail message after any security measures have been applied.
+    */
     pub struct MEMessageEncodingResult;
 
     #[cfg(feature = "MailKit_MEMessageEncodingResult")]
@@ -17,26 +20,47 @@ extern_class!(
 );
 
 #[cfg(feature = "MailKit_MEMessageEncodingResult")]
+/**
+  @brief Contains information about an outging mail message after any security measures have been applied.
+*/
 unsafe impl NSCoding for MEMessageEncodingResult {}
 
 #[cfg(feature = "MailKit_MEMessageEncodingResult")]
+/**
+  @brief Contains information about an outging mail message after any security measures have been applied.
+*/
 unsafe impl NSObjectProtocol for MEMessageEncodingResult {}
 
 #[cfg(feature = "MailKit_MEMessageEncodingResult")]
+/**
+  @brief Contains information about an outging mail message after any security measures have been applied.
+*/
 unsafe impl NSSecureCoding for MEMessageEncodingResult {}
 
 extern_methods!(
+    /**
+      @brief Contains information about an outging mail message after any security measures have been applied.
+    */
     #[cfg(feature = "MailKit_MEMessageEncodingResult")]
     unsafe impl MEMessageEncodingResult {
         #[cfg(feature = "MailKit_MEEncodedOutgoingMessage")]
+        /**
+          @brief The encoded message. Nil if no need to encode or an error occured while encoding
+        */
         #[method_id(@__retain_semantics Other encodedMessage)]
         pub unsafe fn encodedMessage(&self) -> Option<Id<MEEncodedOutgoingMessage>>;
 
         #[cfg(feature = "Foundation_NSError")]
+        /**
+          @brief Any error that occured while attempting to sign the outgoing message.
+        */
         #[method_id(@__retain_semantics Other signingError)]
         pub unsafe fn signingError(&self) -> Option<Id<NSError>>;
 
         #[cfg(feature = "Foundation_NSError")]
+        /**
+          @brief Any error that occured while attempting to encrypt the outgoing message.
+        */
         #[method_id(@__retain_semantics Other encryptionError)]
         pub unsafe fn encryptionError(&self) -> Option<Id<NSError>>;
 

@@ -6,6 +6,16 @@ use crate::Foundation::*;
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+       @options EAWiFiUnconfiguredAccessoryProperties
+
+      @discussion Represents the properties of an EAWiFiUnconfiguredAccessory.
+
+      @constant EAWiFiUnconfiguredAccessoryPropertySupportsAirPlay  Option set if the accessory is advertising that it supports AirPlay.
+      @constant EAWiFiUnconfiguredAccessoryPropertySupportsAirPrint Option set if the accessory is advertising that it supports AirPrint.
+      @constant EAWiFiUnconfiguredAccessoryPropertySupportsHomeKit  Option set if the accessory is advertising that it supports HomeKit.
+
+    */
     pub enum EAWiFiUnconfiguredAccessoryProperties {
         EAWiFiUnconfiguredAccessoryPropertySupportsAirPlay = 1 << 0,
         EAWiFiUnconfiguredAccessoryPropertySupportsAirPrint = 1 << 1,
@@ -16,6 +26,13 @@ ns_options!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "ExternalAccessory_EAWiFiUnconfiguredAccessory")]
+    /**
+      @brief Object representing an unconfigured MFi Wireless Accessory Configuration (WAC) accessory.
+
+     @discussion This class models an unconfigured MFi Wireless Accessory Configuration accessory
+                 discovered via a EAWiFiUnconfiguredAccessoryBrowser search.
+
+    */
     pub struct EAWiFiUnconfiguredAccessory;
 
     #[cfg(feature = "ExternalAccessory_EAWiFiUnconfiguredAccessory")]
@@ -25,31 +42,81 @@ extern_class!(
 );
 
 #[cfg(feature = "ExternalAccessory_EAWiFiUnconfiguredAccessory")]
+/**
+  @brief Object representing an unconfigured MFi Wireless Accessory Configuration (WAC) accessory.
+
+ @discussion This class models an unconfigured MFi Wireless Accessory Configuration accessory
+             discovered via a EAWiFiUnconfiguredAccessoryBrowser search.
+
+*/
 unsafe impl NSObjectProtocol for EAWiFiUnconfiguredAccessory {}
 
 extern_methods!(
+    /**
+      @brief Object representing an unconfigured MFi Wireless Accessory Configuration (WAC) accessory.
+
+     @discussion This class models an unconfigured MFi Wireless Accessory Configuration accessory
+                 discovered via a EAWiFiUnconfiguredAccessoryBrowser search.
+
+    */
     #[cfg(feature = "ExternalAccessory_EAWiFiUnconfiguredAccessory")]
     unsafe impl EAWiFiUnconfiguredAccessory {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @property name
+
+         @discussion The name of the accessory.
+
+        */
         #[method_id(@__retain_semantics Other name)]
         pub unsafe fn name(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @property manufacturer
+
+         @discussion The name of the accessory's manufacturer.
+
+        */
         #[method_id(@__retain_semantics Other manufacturer)]
         pub unsafe fn manufacturer(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @property model
+
+         @discussion The model name of accessory.
+
+        */
         #[method_id(@__retain_semantics Other model)]
         pub unsafe fn model(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @property ssid
+
+         @discussion The Wi-Fi SSID of the accessory.
+
+        */
         #[method_id(@__retain_semantics Other ssid)]
         pub unsafe fn ssid(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @property macAddress
+
+         @discussion The primary MAC address of the accessory.
+
+        */
         #[method_id(@__retain_semantics Other macAddress)]
         pub unsafe fn macAddress(&self) -> Id<NSString>;
 
+        /**
+          @property properties
+
+         @discussion The properties the accessory supports.
+
+        */
         #[method(properties)]
         pub unsafe fn properties(&self) -> EAWiFiUnconfiguredAccessoryProperties;
     }

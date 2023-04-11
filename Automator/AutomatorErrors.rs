@@ -8,6 +8,9 @@ use crate::OSAKit::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      NSError codes in AMAutomatorErrorDomain
+    */
     pub enum AMErrorCode {
         AMWorkflowNewerVersionError = -100,
         AMWorkflowPropertyListInvalidError = -101,

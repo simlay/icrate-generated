@@ -7,6 +7,9 @@ use crate::Speech::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Speech_SFTranscription")]
+    /**
+      A hypothesized text form of a speech recording
+    */
     pub struct SFTranscription;
 
     #[cfg(feature = "Speech_SFTranscription")]
@@ -16,18 +19,33 @@ extern_class!(
 );
 
 #[cfg(feature = "Speech_SFTranscription")]
+/**
+  A hypothesized text form of a speech recording
+*/
 unsafe impl NSCoding for SFTranscription {}
 
 #[cfg(feature = "Speech_SFTranscription")]
+/**
+  A hypothesized text form of a speech recording
+*/
 unsafe impl NSObjectProtocol for SFTranscription {}
 
 #[cfg(feature = "Speech_SFTranscription")]
+/**
+  A hypothesized text form of a speech recording
+*/
 unsafe impl NSSecureCoding for SFTranscription {}
 
 extern_methods!(
+    /**
+      A hypothesized text form of a speech recording
+    */
     #[cfg(feature = "Speech_SFTranscription")]
     unsafe impl SFTranscription {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Contains the entire recognition, formatted into a single user-displayable string
+        */
         #[method_id(@__retain_semantics Other formattedString)]
         pub unsafe fn formattedString(&self) -> Id<NSString>;
 
@@ -38,10 +56,16 @@ extern_methods!(
         #[method_id(@__retain_semantics Other segments)]
         pub unsafe fn segments(&self) -> Id<NSArray<SFTranscriptionSegment>>;
 
+        /**
+          Measures the number of words spoken per minute
+        */
         #[deprecated = "speakingRate is moved to SFSpeechRecognitionMetadata"]
         #[method(speakingRate)]
         pub unsafe fn speakingRate(&self) -> c_double;
 
+        /**
+          Measures average pause between words (in seconds)
+        */
         #[deprecated = "averagePauseDuration is moved to SFSpeechRecognitionMetadata"]
         #[method(averagePauseDuration)]
         pub unsafe fn averagePauseDuration(&self) -> NSTimeInterval;

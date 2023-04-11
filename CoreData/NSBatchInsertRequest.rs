@@ -82,9 +82,15 @@ extern_methods!(
             managed_object_handler: Option<&Block<(NonNull<NSManagedObject>,), Bool>>,
         );
 
+        /**
+          The type of result that should be returned from this request. Defaults to NSBatchInsertRequestResultTypeStatusOnly
+        */
         #[method(resultType)]
         pub unsafe fn resultType(&self) -> NSBatchInsertRequestResultType;
 
+        /**
+          The type of result that should be returned from this request. Defaults to NSBatchInsertRequestResultTypeStatusOnly
+        */
         #[method(setResultType:)]
         pub unsafe fn setResultType(&self, result_type: NSBatchInsertRequestResultType);
 

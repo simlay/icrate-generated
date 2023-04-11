@@ -8,6 +8,9 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSCachedImageRep")]
+    /**
+      this entire class is deprecated.  Please see the 10.6 AppKit release notes for more information.
+    */
     #[deprecated]
     pub struct NSCachedImageRep;
 
@@ -19,12 +22,21 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSCachedImageRep")]
+/**
+  this entire class is deprecated.  Please see the 10.6 AppKit release notes for more information.
+*/
 unsafe impl NSCoding for NSCachedImageRep {}
 
 #[cfg(feature = "AppKit_NSCachedImageRep")]
+/**
+  this entire class is deprecated.  Please see the 10.6 AppKit release notes for more information.
+*/
 unsafe impl NSObjectProtocol for NSCachedImageRep {}
 
 extern_methods!(
+    /**
+      this entire class is deprecated.  Please see the 10.6 AppKit release notes for more information.
+    */
     #[cfg(feature = "AppKit_NSCachedImageRep")]
     unsafe impl NSCachedImageRep {
         #[cfg(feature = "AppKit_NSWindow")]

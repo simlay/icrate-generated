@@ -8,6 +8,12 @@ use crate::UniformTypeIdentifiers::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum          HKElectrocardiogramLead
+    @abstract      The medically-defined leads supported by HKElectrocardiogram
+    @constant      HKElectrocardiogramLeadAppleWatchSimilarToLeadI.   Apple Watch Series 4 and above has an electrical heart sensor that, when using
+    the ECG app, enables the generation and analysis of an ECG  similar to a Lead I ECG.
+    */
     pub enum HKElectrocardiogramLead {
         HKElectrocardiogramLeadAppleWatchSimilarToLeadI = 1,
     }
@@ -15,6 +21,19 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum          HKElectrocardiogramClassification
+    @abstract      The possible classifications determined for HKElectrocardiograms
+
+    @constant      HKElectrocardiogramClassificationNotSet                      No classification is set on this sample.
+    @constant      HKElectrocardiogramClassificationSinusRhythm                 The sample exhibits no signs  of atrial fibrillation.
+    @constant      HKElectrocardiogramClassificationAtrialFibrillation          The sample exhibits signs of atrial fibrillation.
+    @constant      HKElectrocardiogramClassificationInconclusiveLowHeartRate    The sample classifier could not check for atrial fibrillation due to a heart rate under 50 BPM.
+    @constant      HKElectrocardiogramClassificationInconclusiveHighHeartRate   The sample classifier could not check for atrial fibrillation due to a high heart rate.
+    @constant      HKElectrocardiogramClassificationInconclusivePoorReading     The sample classifier did not attempt a classification due to not meeting the signal requirements.
+    @constant      HKElectrocardiogramClassificationInconclusiveOther           The sample classifier could not determine a classification.
+    @constant      HKElectrocardiogramClassificationUnrecognized                The classification created for this sample is unrecognized on this device.
+    */
     pub enum HKElectrocardiogramClassification {
         HKElectrocardiogramClassificationNotSet = 0,
         HKElectrocardiogramClassificationSinusRhythm = 1,
@@ -29,6 +48,15 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum          HKElectrocardiogramSymptomsStatus
+    @abstract      An indication of whether the user experienced symptoms when taking an ECG
+    @constant      HKElectrocardiogramSymptomsStatusNotSet        The user did not specify whether or not they experienced symptoms.
+    HKElectrocardiogramSymptomsStatusNone          The user did not experience any symptoms during the duration of the electrocardiogram reading.
+    HKElectrocardiogramSymptomsStatusPresent       The user indicated that they experienced symptoms during the duration of the electrocardiogram reading.
+    @discussion    If an HKElectrocardiogram indicates that there are symptoms present, you must do a separate sample query to
+    retrieve those symptoms.
+    */
     pub enum HKElectrocardiogramSymptomsStatus {
         HKElectrocardiogramSymptomsStatusNotSet = 0,
         HKElectrocardiogramSymptomsStatusNone = 1,
@@ -39,6 +67,11 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKElectrocardiogram")]
+    /**
+     @class         HKElectrocardiogram
+    @abstract      An HKElectrocardiogram is a collection of voltage values as waveforms
+    from one or more leads
+    */
     pub struct HKElectrocardiogram;
 
     #[cfg(feature = "HealthKit_HKElectrocardiogram")]
@@ -49,31 +82,66 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKElectrocardiogram")]
+/**
+ @class         HKElectrocardiogram
+@abstract      An HKElectrocardiogram is a collection of voltage values as waveforms
+from one or more leads
+*/
 unsafe impl NSCoding for HKElectrocardiogram {}
 
 #[cfg(feature = "HealthKit_HKElectrocardiogram")]
+/**
+ @class         HKElectrocardiogram
+@abstract      An HKElectrocardiogram is a collection of voltage values as waveforms
+from one or more leads
+*/
 unsafe impl NSObjectProtocol for HKElectrocardiogram {}
 
 #[cfg(feature = "HealthKit_HKElectrocardiogram")]
+/**
+ @class         HKElectrocardiogram
+@abstract      An HKElectrocardiogram is a collection of voltage values as waveforms
+from one or more leads
+*/
 unsafe impl NSSecureCoding for HKElectrocardiogram {}
 
 extern_methods!(
+    /**
+     @class         HKElectrocardiogram
+    @abstract      An HKElectrocardiogram is a collection of voltage values as waveforms
+    from one or more leads
+    */
     #[cfg(feature = "HealthKit_HKElectrocardiogram")]
     unsafe impl HKElectrocardiogram {
+        /**
+         The number of voltage measurements in the electrocardiogram.
+        */
         #[method(numberOfVoltageMeasurements)]
         pub unsafe fn numberOfVoltageMeasurements(&self) -> NSInteger;
 
         #[cfg(feature = "HealthKit_HKQuantity")]
+        /**
+         The frequency at which the data was sampled. This is reported in [HKUnit hertzUnit].
+        */
         #[method_id(@__retain_semantics Other samplingFrequency)]
         pub unsafe fn samplingFrequency(&self) -> Option<Id<HKQuantity>>;
 
+        /**
+         The classification of this electrocardiogram sample.
+        */
         #[method(classification)]
         pub unsafe fn classification(&self) -> HKElectrocardiogramClassification;
 
         #[cfg(feature = "HealthKit_HKQuantity")]
+        /**
+         The average heart rate of the user while the electrocardiogram was recorded.
+        */
         #[method_id(@__retain_semantics Other averageHeartRate)]
         pub unsafe fn averageHeartRate(&self) -> Option<Id<HKQuantity>>;
 
+        /**
+         Whether the user experienced symptoms during this electrocardiogram.
+        */
         #[method(symptomsStatus)]
         pub unsafe fn symptomsStatus(&self) -> HKElectrocardiogramSymptomsStatus;
     }

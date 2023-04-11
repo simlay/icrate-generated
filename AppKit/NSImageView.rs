@@ -87,10 +87,16 @@ extern_methods!(
         pub unsafe fn setImageFrameStyle(&self, image_frame_style: NSImageFrameStyle);
 
         #[cfg(feature = "AppKit_NSImageSymbolConfiguration")]
+        /**
+         Specifies a combination of point size, weight, and scale to use when sizing and displaying symbol images. If a symbol configuration isn't provided, the image view uses a default size, weight, and scale provided by the system. The default value is `nil`.
+        */
         #[method_id(@__retain_semantics Other symbolConfiguration)]
         pub unsafe fn symbolConfiguration(&self) -> Option<Id<NSImageSymbolConfiguration>>;
 
         #[cfg(feature = "AppKit_NSImageSymbolConfiguration")]
+        /**
+         Specifies a combination of point size, weight, and scale to use when sizing and displaying symbol images. If a symbol configuration isn't provided, the image view uses a default size, weight, and scale provided by the system. The default value is `nil`.
+        */
         #[method(setSymbolConfiguration:)]
         pub unsafe fn setSymbolConfiguration(
             &self,
@@ -98,10 +104,16 @@ extern_methods!(
         );
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+         A tint color to be used when rendering template image content. This color may be combined with other effects to produce a theme-appropriate rendition of the template image. A nil value indicates the standard set of effects without color modification. The default value is nil.
+        */
         #[method_id(@__retain_semantics Other contentTintColor)]
         pub unsafe fn contentTintColor(&self) -> Option<Id<NSColor>>;
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+         A tint color to be used when rendering template image content. This color may be combined with other effects to produce a theme-appropriate rendition of the template image. A nil value indicates the standard set of effects without color modification. The default value is nil.
+        */
         #[method(setContentTintColor:)]
         pub unsafe fn setContentTintColor(&self, content_tint_color: Option<&NSColor>);
 

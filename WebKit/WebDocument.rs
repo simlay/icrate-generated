@@ -7,6 +7,10 @@ use crate::WebKit::*;
 
 extern_protocol!(
     #[deprecated]
+    /**
+     @protocol WebDocumentView
+    @discussion Protocol implemented by the document view of WebFrameView
+    */
     pub unsafe trait WebDocumentView: NSObjectProtocol {
         #[cfg(feature = "WebKit_WebDataSource")]
         #[method(setDataSource:)]
@@ -35,6 +39,10 @@ extern_protocol!(
 
 extern_protocol!(
     #[deprecated]
+    /**
+     @protocol WebDocumentSearching
+    @discussion Optional protocol for searching document view of WebFrameView.
+    */
     pub unsafe trait WebDocumentSearching: NSObjectProtocol {
         #[cfg(feature = "Foundation_NSString")]
         #[method(searchFor:direction:caseSensitive:wrap:)]
@@ -52,6 +60,10 @@ extern_protocol!(
 
 extern_protocol!(
     #[deprecated]
+    /**
+     @protocol WebDocumentText
+    @discussion Optional protocol for supporting text operations.
+    */
     pub unsafe trait WebDocumentText: NSObjectProtocol {
         #[method(supportsTextEncoding)]
         unsafe fn supportsTextEncoding(&self) -> bool;
@@ -84,6 +96,10 @@ extern_protocol!(
 
 extern_protocol!(
     #[deprecated]
+    /**
+     @protocol WebDocumentRepresentation
+    @discussion Protocol implemented by the document representation of a data source.
+    */
     pub unsafe trait WebDocumentRepresentation: NSObjectProtocol {
         #[cfg(feature = "WebKit_WebDataSource")]
         #[method(setDataSource:)]

@@ -22,6 +22,9 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      In drag and drop, used to specify the drop operation from inside the delegate method browser:validateDrop:proposedRow:column:dropOperation. See the delegate method description for more information.
+    */
     pub enum NSBrowserDropOperation {
         NSBrowserDropOn = 0,
         NSBrowserDropAbove = 1,
@@ -85,9 +88,15 @@ extern_methods!(
         #[method(setCellClass:)]
         pub unsafe fn setCellClass(&self, factory_id: &Class);
 
+        /**
+          NSCell *
+        */
         #[method_id(@__retain_semantics Other cellPrototype)]
         pub unsafe fn cellPrototype(&self) -> Option<Id<Object>>;
 
+        /**
+          NSCell *
+        */
         #[method(setCellPrototype:)]
         pub unsafe fn setCellPrototype(&self, cell_prototype: Option<&Object>);
 
@@ -232,6 +241,9 @@ extern_methods!(
         #[method_id(@__retain_semantics Other pathToColumn:)]
         pub unsafe fn pathToColumn(&self, column: NSInteger) -> Id<NSString>;
 
+        /**
+          Returns the column and row clicked on to display a context menu. These methods will return -1 when no menu is active.
+        */
         #[method(clickedColumn)]
         pub unsafe fn clickedColumn(&self) -> NSInteger;
 
@@ -241,6 +253,9 @@ extern_methods!(
         #[method(selectedColumn)]
         pub unsafe fn selectedColumn(&self) -> NSInteger;
 
+        /**
+          For the item based browser, selectedCell returns the prepared cell at the selected row in the selected column.
+        */
         #[method_id(@__retain_semantics Other selectedCell)]
         pub unsafe fn selectedCell(&self) -> Option<Id<Object>>;
 
@@ -248,6 +263,9 @@ extern_methods!(
         pub unsafe fn selectedCellInColumn(&self, column: NSInteger) -> Option<Id<Object>>;
 
         #[cfg(all(feature = "AppKit_NSCell", feature = "Foundation_NSArray"))]
+        /**
+          For the item based browser, selectedCells returns a copy of all prepared cells in the selected row in the selected column
+        */
         #[method_id(@__retain_semantics Other selectedCells)]
         pub unsafe fn selectedCells(&self) -> Option<Id<NSArray<NSCell>>>;
 
@@ -258,18 +276,30 @@ extern_methods!(
         pub unsafe fn selectedRowInColumn(&self, column: NSInteger) -> NSInteger;
 
         #[cfg(feature = "Foundation_NSIndexPath")]
+        /**
+          Returns the index path of the item selected in the browser, or nil if there is no selection. The setter sets the browser's selection to the item at path. Throws an exception if the path is invalid. This method can only be used if the delegate implements the item data source methods.
+        */
         #[method_id(@__retain_semantics Other selectionIndexPath)]
         pub unsafe fn selectionIndexPath(&self) -> Option<Id<NSIndexPath>>;
 
         #[cfg(feature = "Foundation_NSIndexPath")]
+        /**
+          Returns the index path of the item selected in the browser, or nil if there is no selection. The setter sets the browser's selection to the item at path. Throws an exception if the path is invalid. This method can only be used if the delegate implements the item data source methods.
+        */
         #[method(setSelectionIndexPath:)]
         pub unsafe fn setSelectionIndexPath(&self, selection_index_path: Option<&NSIndexPath>);
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSIndexPath"))]
+        /**
+          Returns the index paths of all items selected in the browser. The setter sets the browser's selection to the specified index paths. Throws an exception if any of the paths are invalid. This method can only be used if the delegate implements the item data source methods.
+        */
         #[method_id(@__retain_semantics Other selectionIndexPaths)]
         pub unsafe fn selectionIndexPaths(&self) -> Id<NSArray<NSIndexPath>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSIndexPath"))]
+        /**
+          Returns the index paths of all items selected in the browser. The setter sets the browser's selection to the specified index paths. Throws an exception if any of the paths are invalid. This method can only be used if the delegate implements the item data source methods.
+        */
         #[method(setSelectionIndexPaths:)]
         pub unsafe fn setSelectionIndexPaths(&self, selection_index_paths: &NSArray<NSIndexPath>);
 
@@ -299,9 +329,15 @@ extern_methods!(
         #[method(scrollColumnToVisible:)]
         pub unsafe fn scrollColumnToVisible(&self, column: NSInteger);
 
+        /**
+          Returns the last loaded column. This is equal to the total number of columns minus 1. When setting. 'column' must be equal to or less than -lastColumn. To add more columns, use -addColumn.
+        */
         #[method(lastColumn)]
         pub unsafe fn lastColumn(&self) -> NSInteger;
 
+        /**
+          Returns the last loaded column. This is equal to the total number of columns minus 1. When setting. 'column' must be equal to or less than -lastColumn. To add more columns, use -addColumn.
+        */
         #[method(setLastColumn:)]
         pub unsafe fn setLastColumn(&self, last_column: NSInteger);
 
@@ -374,18 +410,30 @@ extern_methods!(
         #[method(columnContentWidthForColumnWidth:)]
         pub unsafe fn columnContentWidthForColumnWidth(&self, column_width: CGFloat) -> CGFloat;
 
+        /**
+          Default is NSBrowserAutoColumnResizing.  This setting is persistent.
+        */
         #[method(columnResizingType)]
         pub unsafe fn columnResizingType(&self) -> NSBrowserColumnResizingType;
 
+        /**
+          Default is NSBrowserAutoColumnResizing.  This setting is persistent.
+        */
         #[method(setColumnResizingType:)]
         pub unsafe fn setColumnResizingType(
             &self,
             column_resizing_type: NSBrowserColumnResizingType,
         );
 
+        /**
+          Default is NO.  This setting is persistent.  This setting only applies to NSBrowserUserColumnResizing type browsers.  If YES, the browser defaults to resizing all columns simultaneously, otherwise it defaults to single column resizing. Holding down the option key while resizing switches the type of resizing used.
+        */
         #[method(prefersAllColumnUserResizing)]
         pub unsafe fn prefersAllColumnUserResizing(&self) -> bool;
 
+        /**
+          Default is NO.  This setting is persistent.  This setting only applies to NSBrowserUserColumnResizing type browsers.  If YES, the browser defaults to resizing all columns simultaneously, otherwise it defaults to single column resizing. Holding down the option key while resizing switches the type of resizing used.
+        */
         #[method(setPrefersAllColumnUserResizing:)]
         pub unsafe fn setPrefersAllColumnUserResizing(
             &self,
@@ -398,9 +446,15 @@ extern_methods!(
         #[method(widthOfColumn:)]
         pub unsafe fn widthOfColumn(&self, column: NSInteger) -> CGFloat;
 
+        /**
+          Get and set the rowHeight. The value must be greater than 0. Calling -setRowHeight: with a non-pixel aligning (fractional) value will be forced to a pixel aligning (integral) value. For variable row height browsers (ones that have the delegate implement -browser:heightOfRow:column:), -rowHeight will be used to draw alternating rows past the last row in each browser column. The default value is 17.0. Note: The rowHeight methods are only valid when using the item delegate methods introduced in Mac OS 10.6. (see NSObject(NSBrowserDelegate)). An exception is thrown if using the older matrix delegate methods
+        */
         #[method(rowHeight)]
         pub unsafe fn rowHeight(&self) -> CGFloat;
 
+        /**
+          Get and set the rowHeight. The value must be greater than 0. Calling -setRowHeight: with a non-pixel aligning (fractional) value will be forced to a pixel aligning (integral) value. For variable row height browsers (ones that have the delegate implement -browser:heightOfRow:column:), -rowHeight will be used to draw alternating rows past the last row in each browser column. The default value is 17.0. Note: The rowHeight methods are only valid when using the item delegate methods introduced in Mac OS 10.6. (see NSObject(NSBrowserDelegate)). An exception is thrown if using the older matrix delegate methods
+        */
         #[method(setRowHeight:)]
         pub unsafe fn setRowHeight(&self, row_height: CGFloat);
 
@@ -418,9 +472,15 @@ extern_methods!(
         #[method(defaultColumnWidth)]
         pub unsafe fn defaultColumnWidth(&self) -> CGFloat;
 
+        /**
+          Sets the name used to automatically save the receivers column configuration.  This setting is persistent.  If name is different from the current name, this method also reads in the saved column configuration for the new name and applies the values to the browser.  Column configuration is defined as an array of column content widths.  One width is saved for each level the user has reached.  That is, browser saves column width based on depth, not based on unique paths.  To do more complex column persistence, you should register for NSBrowserColumnConfigurationDidChangeNotifications and handle persistence yourself.
+        */
         #[method_id(@__retain_semantics Other columnsAutosaveName)]
         pub unsafe fn columnsAutosaveName(&self) -> Id<NSBrowserColumnsAutosaveName>;
 
+        /**
+          Sets the name used to automatically save the receivers column configuration.  This setting is persistent.  If name is different from the current name, this method also reads in the saved column configuration for the new name and applies the values to the browser.  Column configuration is defined as an array of column content widths.  One width is saved for each level the user has reached.  That is, browser saves column width based on depth, not based on unique paths.  To do more complex column persistence, you should register for NSBrowserColumnConfigurationDidChangeNotifications and handle persistence yourself.
+        */
         #[method(setColumnsAutosaveName:)]
         pub unsafe fn setColumnsAutosaveName(
             &self,
@@ -460,17 +520,29 @@ extern_methods!(
             is_local: bool,
         );
 
+        /**
+          Allow type selection in this NSBrowser. The default for 'allowsTypeSelect' is YES.
+        */
         #[method(allowsTypeSelect)]
         pub unsafe fn allowsTypeSelect(&self) -> bool;
 
+        /**
+          Allow type selection in this NSBrowser. The default for 'allowsTypeSelect' is YES.
+        */
         #[method(setAllowsTypeSelect:)]
         pub unsafe fn setAllowsTypeSelect(&self, allows_type_select: bool);
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+          The background color to be drawn. By default, it will be set [NSColor whiteColor]. You can use [NSColor clearColor] to make the background transparent. NSBrowser will return YES from isOpaque if the backgroundColor has an alphaComponent of 1.0 and it doesn't have a title, otherwise, it will return NO. Calling setBackgroundColor: will cause all NSMatrix instances have setDrawsBackground:NO be called in order for the NSBrowser's background color to show through. When drawing with the background color, NSCompositeSourceOver is used for the compositing operation.
+        */
         #[method_id(@__retain_semantics Other backgroundColor)]
         pub unsafe fn backgroundColor(&self) -> Id<NSColor>;
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+          The background color to be drawn. By default, it will be set [NSColor whiteColor]. You can use [NSColor clearColor] to make the background transparent. NSBrowser will return YES from isOpaque if the backgroundColor has an alphaComponent of 1.0 and it doesn't have a title, otherwise, it will return NO. Calling setBackgroundColor: will cause all NSMatrix instances have setDrawsBackground:NO be called in order for the NSBrowser's background color to show through. When drawing with the background color, NSCompositeSourceOver is used for the compositing operation.
+        */
         #[method(setBackgroundColor:)]
         pub unsafe fn setBackgroundColor(&self, background_color: &NSColor);
 

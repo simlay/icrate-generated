@@ -41,9 +41,17 @@ extern_methods!(
         #[method(scrollToRect:)]
         pub unsafe fn scrollToRect(&self, r: CGRect);
 
+        /**
+          Defines the axes in which the layer may be scrolled. Possible values
+         are `none', `vertically', `horizontally' or `both' (the default).
+        */
         #[method_id(@__retain_semantics Other scrollMode)]
         pub unsafe fn scrollMode(&self) -> Id<CAScrollLayerScrollMode>;
 
+        /**
+          Defines the axes in which the layer may be scrolled. Possible values
+         are `none', `vertically', `horizontally' or `both' (the default).
+        */
         #[method(setScrollMode:)]
         pub unsafe fn setScrollMode(&self, scroll_mode: &CAScrollLayerScrollMode);
     }
@@ -59,6 +67,11 @@ extern_methods!(
         #[method(scrollRectToVisible:)]
         pub unsafe fn scrollRectToVisible(&self, r: CGRect);
 
+        /**
+          Returns the visible region of the receiver, in its own coordinate
+         space. The visible region is the area not clipped by the containing
+         scroll layer.
+        */
         #[method(visibleRect)]
         pub unsafe fn visibleRect(&self) -> CGRect;
     }

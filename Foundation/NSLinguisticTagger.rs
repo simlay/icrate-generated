@@ -89,6 +89,9 @@ extern_static!(NSLinguisticTagOrganizationName: &'static NSLinguisticTag);
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      NSLinguisticTaggerUnit specifes the size of units in a string to which tagging applies.  The tagging unit may be word, sentence, paragraph, or document.  Methods that do not specify a unit act at the word level.  Not all combinations of scheme and unit are supported; clients can use +availableTagSchemesForUnit:language: to determine which ones are.
+    */
     pub enum NSLinguisticTaggerUnit {
         NSLinguisticTaggerUnitWord = 0,
         NSLinguisticTaggerUnitSentence = 1,
@@ -99,6 +102,9 @@ ns_enum!(
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+      Options arguments of type NSLinguisticTaggerOptions may include the following flags, which allow clients interested only in certain general types of tokens to specify that tokens of other types should be omitted from the returned results.
+    */
     pub enum NSLinguisticTaggerOptions {
         NSLinguisticTaggerOmitWords = 1 << 0,
         NSLinguisticTaggerOmitPunctuation = 1 << 1,
@@ -272,6 +278,9 @@ extern_methods!(
         ) -> Id<NSArray<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Returns the top identified language (if any) for the entire string.  Convenience for tagAtIndex: with NSLinguisticTagSchemeLanguage and NSLinguisticTaggerUnitDocument.
+        */
         #[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
         #[method_id(@__retain_semantics Other dominantLanguage)]
         pub unsafe fn dominantLanguage(&self) -> Option<Id<NSString>>;

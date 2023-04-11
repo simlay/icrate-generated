@@ -7,6 +7,13 @@ use crate::MediaPlayer::*;
 
 extern_protocol!(
     #[deprecated = "Use CarPlay framework"]
+    /**
+      MPPlayableContentDataSource is a protocol that application objects conform to
+     if they want to support external media players, such as vehicle head units.
+     Data sources are responsible for providing metadata about your media to these
+     systems in a meaningful way, so that features like user interfaces and play
+     queues can be setup automatically.
+    */
     pub unsafe trait MPPlayableContentDataSource: NSObjectProtocol {
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSIndexPath"))]
         #[optional]

@@ -9,6 +9,10 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKAttachmentStore")]
+    /**
+     @class         HKAttachmentStore
+    @discussion    The HKAttachmentStore class provides an interface for accessing and storing HKAttachment objects.
+    */
     pub struct HKAttachmentStore;
 
     #[cfg(feature = "HealthKit_HKAttachmentStore")]
@@ -18,9 +22,17 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKAttachmentStore")]
+/**
+ @class         HKAttachmentStore
+@discussion    The HKAttachmentStore class provides an interface for accessing and storing HKAttachment objects.
+*/
 unsafe impl NSObjectProtocol for HKAttachmentStore {}
 
 extern_methods!(
+    /**
+     @class         HKAttachmentStore
+    @discussion    The HKAttachmentStore class provides an interface for accessing and storing HKAttachment objects.
+    */
     #[cfg(feature = "HealthKit_HKAttachmentStore")]
     unsafe impl HKAttachmentStore {
         #[cfg(feature = "HealthKit_HKHealthStore")]

@@ -8,6 +8,13 @@ use crate::MediaPlayer::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MediaPlayer_MPPlayableContentManager")]
+    /**
+      MPPlayableContentManager is a class that manages the interactions between a
+     media application and an external media player interface. The application
+     provides the content manager with a data source, which allows the media player
+     to browse the media content offered by the application, as well as a delegate,
+     which allows the media player to relay non-media remote playback commands to the application.
+    */
     #[deprecated = "Use CarPlay framework"]
     pub struct MPPlayableContentManager;
 
@@ -18,9 +25,23 @@ extern_class!(
 );
 
 #[cfg(feature = "MediaPlayer_MPPlayableContentManager")]
+/**
+  MPPlayableContentManager is a class that manages the interactions between a
+ media application and an external media player interface. The application
+ provides the content manager with a data source, which allows the media player
+ to browse the media content offered by the application, as well as a delegate,
+ which allows the media player to relay non-media remote playback commands to the application.
+*/
 unsafe impl NSObjectProtocol for MPPlayableContentManager {}
 
 extern_methods!(
+    /**
+      MPPlayableContentManager is a class that manages the interactions between a
+     media application and an external media player interface. The application
+     provides the content manager with a data source, which allows the media player
+     to browse the media content offered by the application, as well as a delegate,
+     which allows the media player to relay non-media remote playback commands to the application.
+    */
     #[cfg(feature = "MediaPlayer_MPPlayableContentManager")]
     unsafe impl MPPlayableContentManager {
         #[method_id(@__retain_semantics Other dataSource)]
@@ -49,11 +70,17 @@ extern_methods!(
         pub unsafe fn context(&self) -> Id<MPPlayableContentManagerContext>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          Tells the content manager which MPContentItems are currently playing based on their identifiers.
+        */
         #[deprecated = "Use CarPlay framework"]
         #[method_id(@__retain_semantics Other nowPlayingIdentifiers)]
         pub unsafe fn nowPlayingIdentifiers(&self) -> Id<NSArray<NSString>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          Tells the content manager which MPContentItems are currently playing based on their identifiers.
+        */
         #[deprecated = "Use CarPlay framework"]
         #[method(setNowPlayingIdentifiers:)]
         pub unsafe fn setNowPlayingIdentifiers(&self, now_playing_identifiers: &NSArray<NSString>);

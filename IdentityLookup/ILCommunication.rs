@@ -7,6 +7,9 @@ use crate::IdentityLookup::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "IdentityLookup_ILCommunication")]
+    /**
+      An incident of communication via some medium.
+    */
     pub struct ILCommunication;
 
     #[cfg(feature = "IdentityLookup_ILCommunication")]
@@ -16,18 +19,33 @@ extern_class!(
 );
 
 #[cfg(feature = "IdentityLookup_ILCommunication")]
+/**
+  An incident of communication via some medium.
+*/
 unsafe impl NSCoding for ILCommunication {}
 
 #[cfg(feature = "IdentityLookup_ILCommunication")]
+/**
+  An incident of communication via some medium.
+*/
 unsafe impl NSObjectProtocol for ILCommunication {}
 
 #[cfg(feature = "IdentityLookup_ILCommunication")]
+/**
+  An incident of communication via some medium.
+*/
 unsafe impl NSSecureCoding for ILCommunication {}
 
 extern_methods!(
+    /**
+      An incident of communication via some medium.
+    */
     #[cfg(feature = "IdentityLookup_ILCommunication")]
     unsafe impl ILCommunication {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The phone number or e-mail address of the sender.  The value will be nil if the sender is unknown.
+        */
         #[method_id(@__retain_semantics Other sender)]
         pub unsafe fn sender(&self) -> Option<Id<NSString>>;
 

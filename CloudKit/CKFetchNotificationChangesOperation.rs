@@ -8,6 +8,15 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CloudKit_CKFetchNotificationChangesOperation")]
+    /**
+      @class CKFetchNotificationChangesOperation
+
+      @abstract An operation that fetches all notification changes.
+
+      @discussion If a change token from a previous @c CKFetchNotificationChangesOperation is passed in, only the notifications that have changed since that token will be fetched.
+      If this is your first fetch, pass nil for the change token.
+      Change tokens are opaque tokens and clients should not infer any behavior based on their content.
+    */
     #[deprecated = "Instead of iterating notifications to enumerate changed record zones, use CKDatabaseSubscription, CKFetchDatabaseChangesOperation, and CKFetchRecordZoneChangesOperation"]
     pub struct CKFetchNotificationChangesOperation;
 
@@ -19,9 +28,27 @@ extern_class!(
 );
 
 #[cfg(feature = "CloudKit_CKFetchNotificationChangesOperation")]
+/**
+  @class CKFetchNotificationChangesOperation
+
+  @abstract An operation that fetches all notification changes.
+
+  @discussion If a change token from a previous @c CKFetchNotificationChangesOperation is passed in, only the notifications that have changed since that token will be fetched.
+  If this is your first fetch, pass nil for the change token.
+  Change tokens are opaque tokens and clients should not infer any behavior based on their content.
+*/
 unsafe impl NSObjectProtocol for CKFetchNotificationChangesOperation {}
 
 extern_methods!(
+    /**
+      @class CKFetchNotificationChangesOperation
+
+      @abstract An operation that fetches all notification changes.
+
+      @discussion If a change token from a previous @c CKFetchNotificationChangesOperation is passed in, only the notifications that have changed since that token will be fetched.
+      If this is your first fetch, pass nil for the change token.
+      Change tokens are opaque tokens and clients should not infer any behavior based on their content.
+    */
     #[cfg(feature = "CloudKit_CKFetchNotificationChangesOperation")]
     unsafe impl CKFetchNotificationChangesOperation {
         #[method_id(@__retain_semantics Init init)]
@@ -51,15 +78,31 @@ extern_methods!(
         #[method(setResultsLimit:)]
         pub unsafe fn setResultsLimit(&self, results_limit: NSUInteger);
 
+        /**
+          @abstract If true, then the server wasn't able to return all the changes in this response.
+
+          @discussion Will be set before @c fetchNotificationChangesCompletionBlock is called.
+          Another @c CKFetchNotificationChangesOperation operation should be run with the updated @c serverChangeToken token from this operation.
+        */
         #[method(moreComing)]
         pub unsafe fn moreComing(&self) -> bool;
 
         #[cfg(feature = "CloudKit_CKNotification")]
+        /**
+          @abstract Called once for each updated notification fetch from the server
+
+          @discussion Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(notificationChangedBlock)]
         pub unsafe fn notificationChangedBlock(&self)
             -> *mut Block<(NonNull<CKNotification>,), ()>;
 
         #[cfg(feature = "CloudKit_CKNotification")]
+        /**
+          @abstract Called once for each updated notification fetch from the server
+
+          @discussion Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(setNotificationChangedBlock:)]
         pub unsafe fn setNotificationChangedBlock(
             &self,
@@ -70,6 +113,14 @@ extern_methods!(
             feature = "CloudKit_CKServerChangeToken",
             feature = "Foundation_NSError"
         ))]
+        /**
+          @abstract This block is called when the operation completes.
+
+          @discussion Clients are responsible for saving the change token at the end of the operation and passing it in to the next call to @c CKFetchNotificationChangesOperation.
+          Note that a fetch can fail partway. If that happens, an updated change token may be returned in the completion block so that already fetched notifications don't need to be re-downloaded on a subsequent operation.
+          If the server returns a @c CKErrorChangeTokenExpired error, the @c previousServerChangeToken value was too old and the client should toss its local cache and re-fetch notification changes starting with a nil @c previousServerChangeToken.
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(fetchNotificationChangesCompletionBlock)]
         pub unsafe fn fetchNotificationChangesCompletionBlock(
             &self,
@@ -79,6 +130,14 @@ extern_methods!(
             feature = "CloudKit_CKServerChangeToken",
             feature = "Foundation_NSError"
         ))]
+        /**
+          @abstract This block is called when the operation completes.
+
+          @discussion Clients are responsible for saving the change token at the end of the operation and passing it in to the next call to @c CKFetchNotificationChangesOperation.
+          Note that a fetch can fail partway. If that happens, an updated change token may be returned in the completion block so that already fetched notifications don't need to be re-downloaded on a subsequent operation.
+          If the server returns a @c CKErrorChangeTokenExpired error, the @c previousServerChangeToken value was too old and the client should toss its local cache and re-fetch notification changes starting with a nil @c previousServerChangeToken.
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(setFetchNotificationChangesCompletionBlock:)]
         pub unsafe fn setFetchNotificationChangesCompletionBlock(
             &self,

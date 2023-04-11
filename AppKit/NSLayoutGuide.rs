@@ -8,6 +8,9 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSLayoutGuide")]
+    /**
+      NSLayoutGuides will not show up in the view hierarchy, but may be used as items in an NSLayoutConstraint and represent a rectangle in the layout engine.
+    */
     pub struct NSLayoutGuide;
 
     #[cfg(feature = "AppKit_NSLayoutGuide")]
@@ -17,35 +20,68 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSLayoutGuide")]
+/**
+  NSLayoutGuides will not show up in the view hierarchy, but may be used as items in an NSLayoutConstraint and represent a rectangle in the layout engine.
+*/
 unsafe impl NSCoding for NSLayoutGuide {}
 
 #[cfg(feature = "AppKit_NSLayoutGuide")]
+/**
+  NSLayoutGuides will not show up in the view hierarchy, but may be used as items in an NSLayoutConstraint and represent a rectangle in the layout engine.
+*/
 unsafe impl NSObjectProtocol for NSLayoutGuide {}
 
 #[cfg(feature = "AppKit_NSLayoutGuide")]
+/**
+  NSLayoutGuides will not show up in the view hierarchy, but may be used as items in an NSLayoutConstraint and represent a rectangle in the layout engine.
+*/
 unsafe impl NSUserInterfaceItemIdentification for NSLayoutGuide {}
 
 extern_methods!(
+    /**
+      NSLayoutGuides will not show up in the view hierarchy, but may be used as items in an NSLayoutConstraint and represent a rectangle in the layout engine.
+    */
     #[cfg(feature = "AppKit_NSLayoutGuide")]
     unsafe impl NSLayoutGuide {
+        /**
+          The frame of the NSLayoutGuide in its owningView's coordinate system. Valid by the time the owningView is laid out.
+        */
         #[method(frame)]
         pub unsafe fn frame(&self) -> NSRect;
 
         #[cfg(feature = "AppKit_NSView")]
+        /**
+          A guide must be added to a view via -[NSView -addLayoutGuide:] before being used in a constraint.  The owningView setter is intended for subclasses to override, and should only be used directly by -addLayoutGuide and -removeLayoutGuide.
+        */
         #[method_id(@__retain_semantics Other owningView)]
         pub unsafe fn owningView(&self) -> Option<Id<NSView>>;
 
         #[cfg(feature = "AppKit_NSView")]
+        /**
+          A guide must be added to a view via -[NSView -addLayoutGuide:] before being used in a constraint.  The owningView setter is intended for subclasses to override, and should only be used directly by -addLayoutGuide and -removeLayoutGuide.
+        */
         #[method(setOwningView:)]
         pub unsafe fn setOwningView(&self, owning_view: Option<&NSView>);
 
+        /**
+          For ease of debugging.  'NS' prefix is reserved for system-created layout guides.
+        */
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Id<NSUserInterfaceItemIdentifier>;
 
+        /**
+          For ease of debugging.  'NS' prefix is reserved for system-created layout guides.
+        */
         #[method(setIdentifier:)]
         pub unsafe fn setIdentifier(&self, identifier: &NSUserInterfaceItemIdentifier);
 
         #[cfg(feature = "AppKit_NSLayoutXAxisAnchor")]
+        /**
+         These properties aid concise creation of constraints.  Layout guides can be constrained using simple code like the following:
+        [view.topAnchor constraintEqualTo:someLayoutGuide.topAnchor constant:10];
+
+        See NSLayoutAnchor.h for more details.
+        */
         #[method_id(@__retain_semantics Other leadingAnchor)]
         pub unsafe fn leadingAnchor(&self) -> Id<NSLayoutXAxisAnchor>;
 
@@ -85,6 +121,9 @@ extern_methods!(
         #[method_id(@__retain_semantics Other centerYAnchor)]
         pub unsafe fn centerYAnchor(&self) -> Id<NSLayoutYAxisAnchor>;
 
+        /**
+          For debugging purposes:
+        */
         #[method(hasAmbiguousLayout)]
         pub unsafe fn hasAmbiguousLayout(&self) -> bool;
 
@@ -98,6 +137,9 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      A layout guide can be used in place of a view for layout purposes.
+    */
     /// NSLayoutGuideSupport
     #[cfg(feature = "AppKit_NSView")]
     unsafe impl NSView {
@@ -110,6 +152,9 @@ extern_methods!(
         pub unsafe fn removeLayoutGuide(&self, guide: &NSLayoutGuide);
 
         #[cfg(all(feature = "AppKit_NSLayoutGuide", feature = "Foundation_NSArray"))]
+        /**
+          This array may contain guides owned by the system, and the ordering is not guaranteed.  Please be careful.
+        */
         #[method_id(@__retain_semantics Other layoutGuides)]
         pub unsafe fn layoutGuides(&self) -> Id<NSArray<NSLayoutGuide>>;
     }

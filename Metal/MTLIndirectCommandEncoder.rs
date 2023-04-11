@@ -5,6 +5,10 @@ use crate::Foundation::*;
 use crate::Metal::*;
 
 extern_protocol!(
+    /**
+     @abstract
+    Describes a CPU-recorded indirect render command
+    */
     pub unsafe trait MTLIndirectRenderCommand: NSObjectProtocol {
         #[method(setRenderPipelineState:)]
         unsafe fn setRenderPipelineState(

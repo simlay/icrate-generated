@@ -9,6 +9,11 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKCategorySample")]
+    /**
+     @class      HKCategorySample
+    @abstract   An HKObject subclass representing an category measurement
+    @discussion Category samples are samples that can be categorized into an enum of concrete values
+    */
     pub struct HKCategorySample;
 
     #[cfg(feature = "HealthKit_HKCategorySample")]
@@ -19,21 +24,45 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKCategorySample")]
+/**
+ @class      HKCategorySample
+@abstract   An HKObject subclass representing an category measurement
+@discussion Category samples are samples that can be categorized into an enum of concrete values
+*/
 unsafe impl NSCoding for HKCategorySample {}
 
 #[cfg(feature = "HealthKit_HKCategorySample")]
+/**
+ @class      HKCategorySample
+@abstract   An HKObject subclass representing an category measurement
+@discussion Category samples are samples that can be categorized into an enum of concrete values
+*/
 unsafe impl NSObjectProtocol for HKCategorySample {}
 
 #[cfg(feature = "HealthKit_HKCategorySample")]
+/**
+ @class      HKCategorySample
+@abstract   An HKObject subclass representing an category measurement
+@discussion Category samples are samples that can be categorized into an enum of concrete values
+*/
 unsafe impl NSSecureCoding for HKCategorySample {}
 
 extern_methods!(
+    /**
+     @class      HKCategorySample
+    @abstract   An HKObject subclass representing an category measurement
+    @discussion Category samples are samples that can be categorized into an enum of concrete values
+    */
     #[cfg(feature = "HealthKit_HKCategorySample")]
     unsafe impl HKCategorySample {
         #[cfg(feature = "HealthKit_HKCategoryType")]
         #[method_id(@__retain_semantics Other categoryType)]
         pub unsafe fn categoryType(&self) -> Id<HKCategoryType>;
 
+        /**
+         @property   value
+        @discussion The preferred enum for the value is determined by the receiver's category type.
+        */
         #[method(value)]
         pub unsafe fn value(&self) -> NSInteger;
 

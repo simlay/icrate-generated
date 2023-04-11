@@ -8,6 +8,13 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CloudKit_CKDiscoverAllUserIdentitiesOperation")]
+    /**
+      @class CKDiscoverAllUserIdentitiesOperation
+
+      @abstract Finds all discoverable users in the device's contacts database. No Contacts access dialog will be displayed.
+
+      @discussion This operation scales linearly with the number of email addresses and phone numbers in the device's address book.  It may take some time to complete.
+    */
     pub struct CKDiscoverAllUserIdentitiesOperation;
 
     #[cfg(feature = "CloudKit_CKDiscoverAllUserIdentitiesOperation")]
@@ -18,21 +25,45 @@ extern_class!(
 );
 
 #[cfg(feature = "CloudKit_CKDiscoverAllUserIdentitiesOperation")]
+/**
+  @class CKDiscoverAllUserIdentitiesOperation
+
+  @abstract Finds all discoverable users in the device's contacts database. No Contacts access dialog will be displayed.
+
+  @discussion This operation scales linearly with the number of email addresses and phone numbers in the device's address book.  It may take some time to complete.
+*/
 unsafe impl NSObjectProtocol for CKDiscoverAllUserIdentitiesOperation {}
 
 extern_methods!(
+    /**
+      @class CKDiscoverAllUserIdentitiesOperation
+
+      @abstract Finds all discoverable users in the device's contacts database. No Contacts access dialog will be displayed.
+
+      @discussion This operation scales linearly with the number of email addresses and phone numbers in the device's address book.  It may take some time to complete.
+    */
     #[cfg(feature = "CloudKit_CKDiscoverAllUserIdentitiesOperation")]
     unsafe impl CKDiscoverAllUserIdentitiesOperation {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
         #[cfg(feature = "CloudKit_CKUserIdentity")]
+        /**
+          @abstract Called once for each successfully-discovered user identity from the device's address book.
+
+          @discussion Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(userIdentityDiscoveredBlock)]
         pub unsafe fn userIdentityDiscoveredBlock(
             &self,
         ) -> *mut Block<(NonNull<CKUserIdentity>,), ()>;
 
         #[cfg(feature = "CloudKit_CKUserIdentity")]
+        /**
+          @abstract Called once for each successfully-discovered user identity from the device's address book.
+
+          @discussion Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(setUserIdentityDiscoveredBlock:)]
         pub unsafe fn setUserIdentityDiscoveredBlock(
             &self,
@@ -40,12 +71,24 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSError")]
+        /**
+          @abstract This block is called when the operation completes.
+
+          @discussion The @code -[NSOperation completionBlock] @endcode will also be called if both are set.
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(discoverAllUserIdentitiesCompletionBlock)]
         pub unsafe fn discoverAllUserIdentitiesCompletionBlock(
             &self,
         ) -> *mut Block<(*mut NSError,), ()>;
 
         #[cfg(feature = "Foundation_NSError")]
+        /**
+          @abstract This block is called when the operation completes.
+
+          @discussion The @code -[NSOperation completionBlock] @endcode will also be called if both are set.
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(setDiscoverAllUserIdentitiesCompletionBlock:)]
         pub unsafe fn setDiscoverAllUserIdentitiesCompletionBlock(
             &self,

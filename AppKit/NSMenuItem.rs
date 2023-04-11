@@ -60,10 +60,16 @@ extern_methods!(
         pub unsafe fn initWithCoder(this: Option<Allocated<Self>>, coder: &NSCoder) -> Id<Self>;
 
         #[cfg(feature = "AppKit_NSMenu")]
+        /**
+          Never call the set method directly it is there only for subclassers.
+        */
         #[method_id(@__retain_semantics Other menu)]
         pub unsafe fn menu(&self) -> Option<Id<NSMenu>>;
 
         #[cfg(feature = "AppKit_NSMenu")]
+        /**
+          Never call the set method directly it is there only for subclassers.
+        */
         #[method(setMenu:)]
         pub unsafe fn setMenu(&self, menu: Option<&NSMenu>);
 
@@ -78,6 +84,9 @@ extern_methods!(
         #[method(setSubmenu:)]
         pub unsafe fn setSubmenu(&self, submenu: Option<&NSMenu>);
 
+        /**
+          Returns the NSMenuItem whose submenu contains the receiver, or nil if the receiver does not have a parent item.
+        */
         #[method_id(@__retain_semantics Other parentItem)]
         pub unsafe fn parentItem(&self) -> Option<Id<NSMenuItem>>;
 
@@ -121,27 +130,45 @@ extern_methods!(
         #[method_id(@__retain_semantics Other userKeyEquivalent)]
         pub unsafe fn userKeyEquivalent(&self) -> Id<NSString>;
 
+        /**
+          By default, when a menu item is hidden, its key equivalent is ignored. By setting this property to YES, you allow a hidden item's key equivalent to be considered when searching for a menu item that matches a key event. This is useful to provide a keyboard shortcut when it's not necessary to have a visible menu item in the menubar. Note that Apple HI guidelines generally recommend that keyboard shortcuts should be clearly indicated in a menu, so this property should be used only rarely.
+        */
         #[method(allowsKeyEquivalentWhenHidden)]
         pub unsafe fn allowsKeyEquivalentWhenHidden(&self) -> bool;
 
+        /**
+          By default, when a menu item is hidden, its key equivalent is ignored. By setting this property to YES, you allow a hidden item's key equivalent to be considered when searching for a menu item that matches a key event. This is useful to provide a keyboard shortcut when it's not necessary to have a visible menu item in the menubar. Note that Apple HI guidelines generally recommend that keyboard shortcuts should be clearly indicated in a menu, so this property should be used only rarely.
+        */
         #[method(setAllowsKeyEquivalentWhenHidden:)]
         pub unsafe fn setAllowsKeyEquivalentWhenHidden(
             &self,
             allows_key_equivalent_when_hidden: bool,
         );
 
+        /**
+          Suppose the system detects a given key equivalent that is not reachable in the current keyboard layout; it will localize the key equivalent to something reachable. By setting this property to NO, you will opt-out this menu item from the system-provided localization. YES by default for apps linked against 12.0 and later SDK.
+        */
         #[method(allowsAutomaticKeyEquivalentLocalization)]
         pub unsafe fn allowsAutomaticKeyEquivalentLocalization(&self) -> bool;
 
+        /**
+          Suppose the system detects a given key equivalent that is not reachable in the current keyboard layout; it will localize the key equivalent to something reachable. By setting this property to NO, you will opt-out this menu item from the system-provided localization. YES by default for apps linked against 12.0 and later SDK.
+        */
         #[method(setAllowsAutomaticKeyEquivalentLocalization:)]
         pub unsafe fn setAllowsAutomaticKeyEquivalentLocalization(
             &self,
             allows_automatic_key_equivalent_localization: bool,
         );
 
+        /**
+          Suppose the system detects a given key equivalent with the following input string [ ] { } ( ) < > ← → in a right-to-left user interface environment (NSUserInterfaceLayoutDirectionRightToLeft); in that case, the system will automatically mirror the key equivalent. For example, a pair of menu items with key equivalents { and } will be localized to } and { in a right-to-left user interface. By setting this property to NO, you will opt-out this menu item of automatically mirroring in RTL. It would be best only to do this if your shortcut action will result in some sort of directional change in the UI, e.g. text alignment or a D-pad in a game. YES by default for apps linked against 12.0 and later SDK.
+        */
         #[method(allowsAutomaticKeyEquivalentMirroring)]
         pub unsafe fn allowsAutomaticKeyEquivalentMirroring(&self) -> bool;
 
+        /**
+          Suppose the system detects a given key equivalent with the following input string [ ] { } ( ) < > ← → in a right-to-left user interface environment (NSUserInterfaceLayoutDirectionRightToLeft); in that case, the system will automatically mirror the key equivalent. For example, a pair of menu items with key equivalents { and } will be localized to } and { in a right-to-left user interface. By setting this property to NO, you will opt-out this menu item of automatically mirroring in RTL. It would be best only to do this if your shortcut action will result in some sort of directional change in the UI, e.g. text alignment or a D-pad in a game. YES by default for apps linked against 12.0 and later SDK.
+        */
         #[method(setAllowsAutomaticKeyEquivalentMirroring:)]
         pub unsafe fn setAllowsAutomaticKeyEquivalentMirroring(
             &self,
@@ -163,26 +190,44 @@ extern_methods!(
         pub unsafe fn setState(&self, state: NSControlStateValue);
 
         #[cfg(feature = "AppKit_NSImage")]
+        /**
+          checkmark by default
+        */
         #[method_id(@__retain_semantics Other onStateImage)]
         pub unsafe fn onStateImage(&self) -> Option<Id<NSImage>>;
 
         #[cfg(feature = "AppKit_NSImage")]
+        /**
+          checkmark by default
+        */
         #[method(setOnStateImage:)]
         pub unsafe fn setOnStateImage(&self, on_state_image: Option<&NSImage>);
 
         #[cfg(feature = "AppKit_NSImage")]
+        /**
+          none by default
+        */
         #[method_id(@__retain_semantics Other offStateImage)]
         pub unsafe fn offStateImage(&self) -> Option<Id<NSImage>>;
 
         #[cfg(feature = "AppKit_NSImage")]
+        /**
+          none by default
+        */
         #[method(setOffStateImage:)]
         pub unsafe fn setOffStateImage(&self, off_state_image: Option<&NSImage>);
 
         #[cfg(feature = "AppKit_NSImage")]
+        /**
+          horizontal line by default
+        */
         #[method_id(@__retain_semantics Other mixedStateImage)]
         pub unsafe fn mixedStateImage(&self) -> Option<Id<NSImage>>;
 
         #[cfg(feature = "AppKit_NSImage")]
+        /**
+          horizontal line by default
+        */
         #[method(setMixedStateImage:)]
         pub unsafe fn setMixedStateImage(&self, mixed_state_image: Option<&NSImage>);
 
@@ -229,19 +274,46 @@ extern_methods!(
         pub unsafe fn setRepresentedObject(&self, represented_object: Option<&Object>);
 
         #[cfg(feature = "AppKit_NSView")]
+        /**
+          Set (and get) the view for a menu item.  By default, a menu item has a nil view.
+        A menu item with a view does not draw its title, state, font, or other standard drawing attributes, and assigns drawing responsibility entirely to the view.  Keyboard equivalents and type-select continue to use the key equivalent and title as normal.
+        A menu item with a view sizes itself according to the view's frame, and the width of the other menu items.  The menu item will always be at least as wide as its view, but it may be wider.  If you want your view to auto-expand to fill the menu item, then make sure that its autoresizing mask has NSViewWidthSizable set; in that case, the view's width at the time setView: is called will be treated as the minimum width for the view.  A menu will resize itself as its containing views change frame size.  Changes to the view's frame during tracking are reflected immediately in the menu.
+        A view in a menu item will receive mouse and keyboard events normally.  During non-sticky menu tracking (manipulating menus with the mouse button held down), a view in a menu item will receive mouseDragged: events.
+        Animation is possible via the usual mechanism (set a timer to call setNeedsDisplay: or display), but because menu tracking occurs in the NSEventTrackingRunLoopMode, you must add the timer to the run loop in that mode.
+        When the menu is opened, the view is added to a window; when the menu is closed the view is removed from the window.  Override viewDidMoveToWindow in your view for a convenient place to start/stop animations, reset tracking rects, etc., but do not attempt to move or otherwise modify the window.
+        When a menu item is copied via NSCopying, any attached view is copied via archiving/unarchiving.  Menu item views are not supported in the Dock menu.
+        */
         #[method_id(@__retain_semantics Other view)]
         pub unsafe fn view(&self) -> Option<Id<NSView>>;
 
         #[cfg(feature = "AppKit_NSView")]
+        /**
+          Set (and get) the view for a menu item.  By default, a menu item has a nil view.
+        A menu item with a view does not draw its title, state, font, or other standard drawing attributes, and assigns drawing responsibility entirely to the view.  Keyboard equivalents and type-select continue to use the key equivalent and title as normal.
+        A menu item with a view sizes itself according to the view's frame, and the width of the other menu items.  The menu item will always be at least as wide as its view, but it may be wider.  If you want your view to auto-expand to fill the menu item, then make sure that its autoresizing mask has NSViewWidthSizable set; in that case, the view's width at the time setView: is called will be treated as the minimum width for the view.  A menu will resize itself as its containing views change frame size.  Changes to the view's frame during tracking are reflected immediately in the menu.
+        A view in a menu item will receive mouse and keyboard events normally.  During non-sticky menu tracking (manipulating menus with the mouse button held down), a view in a menu item will receive mouseDragged: events.
+        Animation is possible via the usual mechanism (set a timer to call setNeedsDisplay: or display), but because menu tracking occurs in the NSEventTrackingRunLoopMode, you must add the timer to the run loop in that mode.
+        When the menu is opened, the view is added to a window; when the menu is closed the view is removed from the window.  Override viewDidMoveToWindow in your view for a convenient place to start/stop animations, reset tracking rects, etc., but do not attempt to move or otherwise modify the window.
+        When a menu item is copied via NSCopying, any attached view is copied via archiving/unarchiving.  Menu item views are not supported in the Dock menu.
+        */
         #[method(setView:)]
         pub unsafe fn setView(&self, view: Option<&NSView>);
 
+        /**
+          Indicates whether the menu item should be drawn highlighted or not.
+        */
         #[method(isHighlighted)]
         pub unsafe fn isHighlighted(&self) -> bool;
 
+        /**
+          Set (and get) the visibility of a menu item.  Hidden menu items (or items with a hidden superitem) do not appear in a menu and do not participate in command key matching.  isHiddenOrHasHiddenAncestor returns YES if the item is hidden or any of its superitems are hidden.
+        */
         #[method(isHidden)]
         pub unsafe fn isHidden(&self) -> bool;
 
+        /**
+          Set (and get) the visibility of a menu item.  Hidden menu items (or items with a hidden superitem) do not appear in a menu and do not participate in command key matching.  isHiddenOrHasHiddenAncestor returns YES if the item is hidden or any of its superitems are hidden.
+        */
         #[method(setHidden:)]
         pub unsafe fn setHidden(&self, hidden: bool);
 
@@ -263,6 +335,9 @@ extern_methods!(
     #[cfg(feature = "AppKit_NSView")]
     unsafe impl NSView {
         #[cfg(feature = "AppKit_NSMenuItem")]
+        /**
+          Returns the menu item containing the receiver or any of its superviews in the view hierarchy, or nil if the receiver's view hierarchy is not in a menu item.
+        */
         #[method_id(@__retain_semantics Other enclosingMenuItem)]
         pub unsafe fn enclosingMenuItem(&self) -> Option<Id<NSMenuItem>>;
     }
@@ -271,6 +346,9 @@ extern_methods!(
 extern_static!(NSMenuItemImportFromDeviceIdentifier: &'static NSUserInterfaceItemIdentifier);
 
 extern_methods!(
+    /**
+      The following methods are deprecated.  They have never done anything useful in Mac OS X.
+    */
     /// NSDeprecated
     #[cfg(feature = "AppKit_NSMenuItem")]
     unsafe impl NSMenuItem {

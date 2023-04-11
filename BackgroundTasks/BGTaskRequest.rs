@@ -7,6 +7,10 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "BackgroundTasks_BGTaskRequest")]
+    /**
+     @abstract An abstract class that represents a request for the app to be launched in the background to perform work.
+    @discussion Do not instantiate instances of this class directly. Instead, use one of its concrete subclasses.
+    */
     pub struct BGTaskRequest;
 
     #[cfg(feature = "BackgroundTasks_BGTaskRequest")]
@@ -16,20 +20,39 @@ extern_class!(
 );
 
 #[cfg(feature = "BackgroundTasks_BGTaskRequest")]
+/**
+ @abstract An abstract class that represents a request for the app to be launched in the background to perform work.
+@discussion Do not instantiate instances of this class directly. Instead, use one of its concrete subclasses.
+*/
 unsafe impl NSObjectProtocol for BGTaskRequest {}
 
 extern_methods!(
+    /**
+     @abstract An abstract class that represents a request for the app to be launched in the background to perform work.
+    @discussion Do not instantiate instances of this class directly. Instead, use one of its concrete subclasses.
+    */
     #[cfg(feature = "BackgroundTasks_BGTaskRequest")]
     unsafe impl BGTaskRequest {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract The identifier associated with this request.
+        */
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+         @abstract The earliest date at which the task may run.
+        @discussion Setting this property does not guarantee that the task will begin at the specified date, but only that it will not begin sooner. If not specified, no start delay is used.
+        */
         #[method_id(@__retain_semantics Other earliestBeginDate)]
         pub unsafe fn earliestBeginDate(&self) -> Option<Id<NSDate>>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+         @abstract The earliest date at which the task may run.
+        @discussion Setting this property does not guarantee that the task will begin at the specified date, but only that it will not begin sooner. If not specified, no start delay is used.
+        */
         #[method(setEarliestBeginDate:)]
         pub unsafe fn setEarliestBeginDate(&self, earliest_begin_date: Option<&NSDate>);
 
@@ -44,6 +67,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "BackgroundTasks_BGAppRefreshTaskRequest")]
+    /**
+     @abstract A request to briefly launch your app to keep its contents up to date.
+    @discussion Schedule a refresh task request to ask that the system launch your app briefly so that you can download data and keep your app's contents up-to-date. The system will fulfill this request intelligently based on system conditions and app usage.
+    */
     pub struct BGAppRefreshTaskRequest;
 
     #[cfg(feature = "BackgroundTasks_BGAppRefreshTaskRequest")]
@@ -54,9 +81,17 @@ extern_class!(
 );
 
 #[cfg(feature = "BackgroundTasks_BGAppRefreshTaskRequest")]
+/**
+ @abstract A request to briefly launch your app to keep its contents up to date.
+@discussion Schedule a refresh task request to ask that the system launch your app briefly so that you can download data and keep your app's contents up-to-date. The system will fulfill this request intelligently based on system conditions and app usage.
+*/
 unsafe impl NSObjectProtocol for BGAppRefreshTaskRequest {}
 
 extern_methods!(
+    /**
+     @abstract A request to briefly launch your app to keep its contents up to date.
+    @discussion Schedule a refresh task request to ask that the system launch your app briefly so that you can download data and keep your app's contents up-to-date. The system will fulfill this request intelligently based on system conditions and app usage.
+    */
     #[cfg(feature = "BackgroundTasks_BGAppRefreshTaskRequest")]
     unsafe impl BGAppRefreshTaskRequest {
         #[cfg(feature = "Foundation_NSString")]
@@ -71,6 +106,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "BackgroundTasks_BGProcessingTaskRequest")]
+    /**
+     @abstract A request to launch your app to perform deferrable processing tasks.
+    @discussion Schedule a processing task request to ask that the system launch your app when conditions are favorable for battery life to handle deferrable, longer-running processing, such as syncing, database maintenance, or similar tasks. The system will attempt to fulfill this request to the best of its ability within the next two days as long as the user has used your app within the past week.
+    */
     pub struct BGProcessingTaskRequest;
 
     #[cfg(feature = "BackgroundTasks_BGProcessingTaskRequest")]
@@ -81,9 +120,17 @@ extern_class!(
 );
 
 #[cfg(feature = "BackgroundTasks_BGProcessingTaskRequest")]
+/**
+ @abstract A request to launch your app to perform deferrable processing tasks.
+@discussion Schedule a processing task request to ask that the system launch your app when conditions are favorable for battery life to handle deferrable, longer-running processing, such as syncing, database maintenance, or similar tasks. The system will attempt to fulfill this request to the best of its ability within the next two days as long as the user has used your app within the past week.
+*/
 unsafe impl NSObjectProtocol for BGProcessingTaskRequest {}
 
 extern_methods!(
+    /**
+     @abstract A request to launch your app to perform deferrable processing tasks.
+    @discussion Schedule a processing task request to ask that the system launch your app when conditions are favorable for battery life to handle deferrable, longer-running processing, such as syncing, database maintenance, or similar tasks. The system will attempt to fulfill this request to the best of its ability within the next two days as long as the user has used your app within the past week.
+    */
     #[cfg(feature = "BackgroundTasks_BGProcessingTaskRequest")]
     unsafe impl BGProcessingTaskRequest {
         #[cfg(feature = "Foundation_NSString")]
@@ -93,15 +140,37 @@ extern_methods!(
             identifier: &NSString,
         ) -> Id<Self>;
 
+        /**
+         @abstract Whether the background task represented by this request requires network connectivity.
+        @discussion If this property is set to YES, the system will only launch your app to fulfill this request when the device has a network connection. If this is set to NO, your app may not have network access.
+        The default value is NO.
+        */
         #[method(requiresNetworkConnectivity)]
         pub unsafe fn requiresNetworkConnectivity(&self) -> bool;
 
+        /**
+         @abstract Whether the background task represented by this request requires network connectivity.
+        @discussion If this property is set to YES, the system will only launch your app to fulfill this request when the device has a network connection. If this is set to NO, your app may not have network access.
+        The default value is NO.
+        */
         #[method(setRequiresNetworkConnectivity:)]
         pub unsafe fn setRequiresNetworkConnectivity(&self, requires_network_connectivity: bool);
 
+        /**
+         @abstract Whether the background task represented by this request should only be done while the device is connected to external power.
+        @discussion If this property is set to YES, the system will launch your app to fulfill this request only while the device is connected to external power. Setting this to YES will also disable the CPU Monitor feature.
+        Specify YES if this task is resource intensive to minimize impact to battery life. Please note that, even if this value is NO, the system will not necessarily schedule this task while the device is on battery power, depending on the type of device and system conditions.
+        The default value is NO.
+        */
         #[method(requiresExternalPower)]
         pub unsafe fn requiresExternalPower(&self) -> bool;
 
+        /**
+         @abstract Whether the background task represented by this request should only be done while the device is connected to external power.
+        @discussion If this property is set to YES, the system will launch your app to fulfill this request only while the device is connected to external power. Setting this to YES will also disable the CPU Monitor feature.
+        Specify YES if this task is resource intensive to minimize impact to battery life. Please note that, even if this value is NO, the system will not necessarily schedule this task while the device is on battery power, depending on the type of device and system conditions.
+        The default value is NO.
+        */
         #[method(setRequiresExternalPower:)]
         pub unsafe fn setRequiresExternalPower(&self, requires_external_power: bool);
     }

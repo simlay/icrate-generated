@@ -36,30 +36,51 @@ extern_methods!(
         pub unsafe fn rearrangeObjects(&self);
 
         #[cfg(feature = "AppKit_NSTreeNode")]
+        /**
+          proxy for the root tree node
+        */
         #[method_id(@__retain_semantics Other arrangedObjects)]
         pub unsafe fn arrangedObjects(&self) -> Id<NSTreeNode>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          key used to find the children of a model object.
+        */
         #[method_id(@__retain_semantics Other childrenKeyPath)]
         pub unsafe fn childrenKeyPath(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          key used to find the children of a model object.
+        */
         #[method(setChildrenKeyPath:)]
         pub unsafe fn setChildrenKeyPath(&self, children_key_path: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          optional for performance
+        */
         #[method_id(@__retain_semantics Other countKeyPath)]
         pub unsafe fn countKeyPath(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          optional for performance
+        */
         #[method(setCountKeyPath:)]
         pub unsafe fn setCountKeyPath(&self, count_key_path: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          optional. inserting/adding children disabled for leaf nodes
+        */
         #[method_id(@__retain_semantics Other leafKeyPath)]
         pub unsafe fn leafKeyPath(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          optional. inserting/adding children disabled for leaf nodes
+        */
         #[method(setLeafKeyPath:)]
         pub unsafe fn setLeafKeyPath(&self, leaf_key_path: Option<&NSString>);
 
@@ -134,21 +155,39 @@ extern_methods!(
             index_paths: &NSArray<NSIndexPath>,
         );
 
+        /**
+          default: YES
+        */
         #[method(avoidsEmptySelection)]
         pub unsafe fn avoidsEmptySelection(&self) -> bool;
 
+        /**
+          default: YES
+        */
         #[method(setAvoidsEmptySelection:)]
         pub unsafe fn setAvoidsEmptySelection(&self, avoids_empty_selection: bool);
 
+        /**
+          default: YES
+        */
         #[method(preservesSelection)]
         pub unsafe fn preservesSelection(&self) -> bool;
 
+        /**
+          default: YES
+        */
         #[method(setPreservesSelection:)]
         pub unsafe fn setPreservesSelection(&self, preserves_selection: bool);
 
+        /**
+          default: YES
+        */
         #[method(selectsInsertedObjects)]
         pub unsafe fn selectsInsertedObjects(&self) -> bool;
 
+        /**
+          default: YES
+        */
         #[method(setSelectsInsertedObjects:)]
         pub unsafe fn setSelectsInsertedObjects(&self, selects_inserted_objects: bool);
 
@@ -162,6 +201,9 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          All selection modification methods returning a BOOL indicate through that flag whether changing the selection was successful (changing the selection might trigger a commitEditing call which fails and thus deny's the selection change).
+        */
         #[method_id(@__retain_semantics Other selectedObjects)]
         pub unsafe fn selectedObjects(&self) -> Id<NSArray>;
 

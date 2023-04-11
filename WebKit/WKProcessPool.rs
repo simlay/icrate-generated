@@ -8,6 +8,13 @@ use crate::WebKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "WebKit_WKProcessPool")]
+    /**
+      A WKProcessPool object represents a pool of web content processes.
+    The process pool associated with a web view is specified by its web view
+    configuration. Each web view is given its own web content process until an
+    implementation-defined process limit is reached; after that, web views
+    with the same process pool end up sharing web content processes.
+    */
     pub struct WKProcessPool;
 
     #[cfg(feature = "WebKit_WKProcessPool")]
@@ -17,15 +24,43 @@ extern_class!(
 );
 
 #[cfg(feature = "WebKit_WKProcessPool")]
+/**
+  A WKProcessPool object represents a pool of web content processes.
+The process pool associated with a web view is specified by its web view
+configuration. Each web view is given its own web content process until an
+implementation-defined process limit is reached; after that, web views
+with the same process pool end up sharing web content processes.
+*/
 unsafe impl NSCoding for WKProcessPool {}
 
 #[cfg(feature = "WebKit_WKProcessPool")]
+/**
+  A WKProcessPool object represents a pool of web content processes.
+The process pool associated with a web view is specified by its web view
+configuration. Each web view is given its own web content process until an
+implementation-defined process limit is reached; after that, web views
+with the same process pool end up sharing web content processes.
+*/
 unsafe impl NSObjectProtocol for WKProcessPool {}
 
 #[cfg(feature = "WebKit_WKProcessPool")]
+/**
+  A WKProcessPool object represents a pool of web content processes.
+The process pool associated with a web view is specified by its web view
+configuration. Each web view is given its own web content process until an
+implementation-defined process limit is reached; after that, web views
+with the same process pool end up sharing web content processes.
+*/
 unsafe impl NSSecureCoding for WKProcessPool {}
 
 extern_methods!(
+    /**
+      A WKProcessPool object represents a pool of web content processes.
+    The process pool associated with a web view is specified by its web view
+    configuration. Each web view is given its own web content process until an
+    implementation-defined process limit is reached; after that, web views
+    with the same process pool end up sharing web content processes.
+    */
     #[cfg(feature = "WebKit_WKProcessPool")]
     unsafe impl WKProcessPool {}
 );

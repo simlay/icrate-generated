@@ -6,6 +6,11 @@ use crate::Metal::*;
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      @enum MTLMutability
+     @abstract Specifies whether a buffer will be modified between the time it is bound and a compute
+     or render pipeline is executed in a draw or dispatch.
+    */
     pub enum MTLMutability {
         MTLMutabilityDefault = 0,
         MTLMutabilityMutable = 1,
@@ -30,9 +35,15 @@ unsafe impl NSObjectProtocol for MTLPipelineBufferDescriptor {}
 extern_methods!(
     #[cfg(feature = "Metal_MTLPipelineBufferDescriptor")]
     unsafe impl MTLPipelineBufferDescriptor {
+        /**
+          Buffer mutability. Defaults to MTLMutabilityDefault: mutable for standard buffers, immutable for argument buffers
+        */
         #[method(mutability)]
         pub fn mutability(&self) -> MTLMutability;
 
+        /**
+          Buffer mutability. Defaults to MTLMutabilityDefault: mutable for standard buffers, immutable for argument buffers
+        */
         #[method(setMutability:)]
         pub fn setMutability(&self, mutability: MTLMutability);
     }

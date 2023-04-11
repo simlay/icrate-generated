@@ -6,6 +6,14 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSHost")]
+    /**
+      DEPRECATION NOTICE
+
+     If you’re using `NSHost` to resolve DNS names so that you can connect to a
+     service, switch to a connect-by-name API, for example, `nw_connection`.
+
+     If you have other DNS resolution needs, switch to <dns_sd.h>.
+    */
     #[deprecated = "Use Network framework instead, see deprecation notice in <Foundation/NSHost.h>"]
     pub struct NSHost;
 
@@ -16,9 +24,25 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSHost")]
+/**
+  DEPRECATION NOTICE
+
+ If you’re using `NSHost` to resolve DNS names so that you can connect to a
+ service, switch to a connect-by-name API, for example, `nw_connection`.
+
+ If you have other DNS resolution needs, switch to <dns_sd.h>.
+*/
 unsafe impl NSObjectProtocol for NSHost {}
 
 extern_methods!(
+    /**
+      DEPRECATION NOTICE
+
+     If you’re using `NSHost` to resolve DNS names so that you can connect to a
+     service, switch to a connect-by-name API, for example, `nw_connection`.
+
+     If you have other DNS resolution needs, switch to <dns_sd.h>.
+    */
     #[cfg(feature = "Foundation_NSHost")]
     unsafe impl NSHost {
         #[method_id(@__retain_semantics Other currentHost)]
@@ -36,18 +60,30 @@ extern_methods!(
         pub unsafe fn isEqualToHost(&self, a_host: &NSHost) -> bool;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          arbitrary choice
+        */
         #[method_id(@__retain_semantics Other name)]
         pub unsafe fn name(&self) -> Option<Id<NSString>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          unordered list
+        */
         #[method_id(@__retain_semantics Other names)]
         pub unsafe fn names(&self) -> Id<NSArray<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          arbitrary choice
+        */
         #[method_id(@__retain_semantics Other address)]
         pub unsafe fn address(&self) -> Option<Id<NSString>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          unordered list of IPv6 and IPv4 addresses
+        */
         #[method_id(@__retain_semantics Other addresses)]
         pub unsafe fn addresses(&self) -> Id<NSArray<NSString>>;
 

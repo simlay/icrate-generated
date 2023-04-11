@@ -33,42 +33,84 @@ extern_methods!(
         pub fn functionDescriptor() -> Id<MTLFunctionDescriptor>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @property name
+         @abstract The name of the `visible` function to find.
+        */
         #[method_id(@__retain_semantics Other name)]
         pub fn name(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @property name
+         @abstract The name of the `visible` function to find.
+        */
         #[method(setName:)]
         pub fn setName(&self, name: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @property specializedName
+         @abstract An optional new name for a `visible` function to allow reuse with different specializations.
+        */
         #[method_id(@__retain_semantics Other specializedName)]
         pub fn specializedName(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @property specializedName
+         @abstract An optional new name for a `visible` function to allow reuse with different specializations.
+        */
         #[method(setSpecializedName:)]
         pub fn setSpecializedName(&self, specialized_name: Option<&NSString>);
 
         #[cfg(feature = "Metal_MTLFunctionConstantValues")]
+        /**
+          @property constantValues
+         @abstract The set of constant values assigned to the function constants. Compilation fails if you do not provide valid constant values for all required function constants.
+        */
         #[method_id(@__retain_semantics Other constantValues)]
         pub fn constantValues(&self) -> Option<Id<MTLFunctionConstantValues>>;
 
         #[cfg(feature = "Metal_MTLFunctionConstantValues")]
+        /**
+          @property constantValues
+         @abstract The set of constant values assigned to the function constants. Compilation fails if you do not provide valid constant values for all required function constants.
+        */
         #[method(setConstantValues:)]
         pub fn setConstantValues(&self, constant_values: Option<&MTLFunctionConstantValues>);
 
+        /**
+          @property options
+         @abstract The options to use for this new `MTLFunction`.
+        */
         #[method(options)]
         pub fn options(&self) -> MTLFunctionOptions;
 
+        /**
+          @property options
+         @abstract The options to use for this new `MTLFunction`.
+        */
         #[method(setOptions:)]
         pub fn setOptions(&self, options: MTLFunctionOptions);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+         @property binaryArchives
+        @abstract The array of archives to be searched.
+        @discussion Binary archives to be searched for precompiled functions during the compilation of this function.
+        */
         #[method_id(@__retain_semantics Other binaryArchives)]
         pub unsafe fn binaryArchives(
             &self,
         ) -> Option<Id<NSArray<ProtocolObject<dyn MTLBinaryArchive>>>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+         @property binaryArchives
+        @abstract The array of archives to be searched.
+        @discussion Binary archives to be searched for precompiled functions during the compilation of this function.
+        */
         #[method(setBinaryArchives:)]
         pub unsafe fn setBinaryArchives(
             &self,

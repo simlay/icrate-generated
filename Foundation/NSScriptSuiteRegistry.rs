@@ -50,6 +50,9 @@ extern_methods!(
         );
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          Return a list of all registered suite names.
+        */
         #[method_id(@__retain_semantics Other suiteNames)]
         pub unsafe fn suiteNames(&self) -> Id<NSArray<NSString>>;
 

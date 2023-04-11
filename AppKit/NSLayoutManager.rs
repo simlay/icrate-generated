@@ -37,6 +37,9 @@ ns_options!(
 
 extern_protocol!(
     pub unsafe trait NSTextLayoutOrientationProvider {
+        /**
+          A property describing the receiver's layout orientation.  This property defines the default value for the range of string laid out in the receiver in absence of explicit NSVerticalGlyphFormAttributeName attribute.  For example, when NSTextLayoutOrientationVertical, the default value for NSVerticalGlyphFormAttributeName is 1.  When rendering into the receiver, the Text System assumes the coordinate system is appropriately rotated.
+        */
         #[method(layoutOrientation)]
         unsafe fn layoutOrientation(&self) -> NSTextLayoutOrientation;
     }
@@ -90,10 +93,18 @@ extern_methods!(
         ) -> Option<Id<Self>>;
 
         #[cfg(feature = "AppKit_NSTextStorage")]
+        /**
+          Accessor for the NSTextStorage object owning the receiver.
+         Avoid assigning a text storage directly through this property.  Adding a layout manager to a text storage through -[NSTextStorage addLayoutManager:] will use the property for assigning the new text storage.
+        */
         #[method_id(@__retain_semantics Other textStorage)]
         pub unsafe fn textStorage(&self) -> Option<Id<NSTextStorage>>;
 
         #[cfg(feature = "AppKit_NSTextStorage")]
+        /**
+          Accessor for the NSTextStorage object owning the receiver.
+         Avoid assigning a text storage directly through this property.  Adding a layout manager to a text storage through -[NSTextStorage addLayoutManager:] will use the property for assigning the new text storage.
+        */
         #[method(setTextStorage:)]
         pub unsafe fn setTextStorage(&self, text_storage: Option<&NSTextStorage>);
 
@@ -102,6 +113,9 @@ extern_methods!(
         pub unsafe fn replaceTextStorage(&self, new_text_storage: &NSTextStorage);
 
         #[cfg(all(feature = "AppKit_NSTextContainer", feature = "Foundation_NSArray"))]
+        /**
+          NSTextContainer objects owner by the receiver.
+        */
         #[method_id(@__retain_semantics Other textContainers)]
         pub unsafe fn textContainers(&self) -> Id<NSArray<NSTextContainer>>;
 
@@ -128,66 +142,123 @@ extern_methods!(
         #[method(textContainerChangedTextView:)]
         pub unsafe fn textContainerChangedTextView(&self, container: &NSTextContainer);
 
+        /**
+          Delegate
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(&self) -> Option<Id<ProtocolObject<dyn NSLayoutManagerDelegate>>>;
 
+        /**
+          Delegate
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
             delegate: Option<&ProtocolObject<dyn NSLayoutManagerDelegate>>,
         );
 
+        /**
+          If YES, then whitespace and other "invisible" characters will be shown with special glyphs or other drawing.  The default is NO.
+        */
         #[method(showsInvisibleCharacters)]
         pub unsafe fn showsInvisibleCharacters(&self) -> bool;
 
+        /**
+          If YES, then whitespace and other "invisible" characters will be shown with special glyphs or other drawing.  The default is NO.
+        */
         #[method(setShowsInvisibleCharacters:)]
         pub unsafe fn setShowsInvisibleCharacters(&self, shows_invisible_characters: bool);
 
+        /**
+          If YES, then control characters will be rendered visibly (usually like "^M").  The default is NO.
+        */
         #[method(showsControlCharacters)]
         pub unsafe fn showsControlCharacters(&self) -> bool;
 
+        /**
+          If YES, then control characters will be rendered visibly (usually like "^M").  The default is NO.
+        */
         #[method(setShowsControlCharacters:)]
         pub unsafe fn setShowsControlCharacters(&self, shows_control_characters: bool);
 
+        /**
+          When YES, NSLayoutManager will attempt to hyphenate when wrapping lines. May be overridden on a per-paragraph basis by the NSParagraphStyle's hyphenationFactor. The receiver makes the best effort to decide the exact logic including the hyphenation factor based on the context. The default value is NO. Can be overridden by the preference key @"NSUsesDefaultHyphenation".
+        */
         #[method(usesDefaultHyphenation)]
         pub unsafe fn usesDefaultHyphenation(&self) -> bool;
 
+        /**
+          When YES, NSLayoutManager will attempt to hyphenate when wrapping lines. May be overridden on a per-paragraph basis by the NSParagraphStyle's hyphenationFactor. The receiver makes the best effort to decide the exact logic including the hyphenation factor based on the context. The default value is NO. Can be overridden by the preference key @"NSUsesDefaultHyphenation".
+        */
         #[method(setUsesDefaultHyphenation:)]
         pub unsafe fn setUsesDefaultHyphenation(&self, uses_default_hyphenation: bool);
 
+        /**
+          By default, a layout manager will use leading as specified by the font.  However, this is not appropriate for most UI text, for which a fixed leading is usually specified by UI layout guidelines.  These methods allow the use of the font's leading to be turned off.
+        */
         #[method(usesFontLeading)]
         pub unsafe fn usesFontLeading(&self) -> bool;
 
+        /**
+          By default, a layout manager will use leading as specified by the font.  However, this is not appropriate for most UI text, for which a fixed leading is usually specified by UI layout guidelines.  These methods allow the use of the font's leading to be turned off.
+        */
         #[method(setUsesFontLeading:)]
         pub unsafe fn setUsesFontLeading(&self, uses_font_leading: bool);
 
+        /**
+          If YES, then the layout manager may perform glyph generation and layout for a given portion of the text, without having glyphs or layout for preceding portions.  The default is NO.  Turning this setting on will significantly alter which portions of the text will have glyph generation or layout performed when a given generation-causing method is invoked.  It also gives significant performance benefits, especially for large documents.
+        */
         #[method(allowsNonContiguousLayout)]
         pub unsafe fn allowsNonContiguousLayout(&self) -> bool;
 
+        /**
+          If YES, then the layout manager may perform glyph generation and layout for a given portion of the text, without having glyphs or layout for preceding portions.  The default is NO.  Turning this setting on will significantly alter which portions of the text will have glyph generation or layout performed when a given generation-causing method is invoked.  It also gives significant performance benefits, especially for large documents.
+        */
         #[method(setAllowsNonContiguousLayout:)]
         pub unsafe fn setAllowsNonContiguousLayout(&self, allows_non_contiguous_layout: bool);
 
+        /**
+          Even if non-contiguous layout is allowed, it may not always be used, and there may not always be layout holes.  This method returns YES if there might currently be non-contiguous portions of the text laid out.
+        */
         #[method(hasNonContiguousLayout)]
         pub unsafe fn hasNonContiguousLayout(&self) -> bool;
 
+        /**
+          When YES, enables internal security analysis for malicious inputs and activates defensive behaviors. By enabling this functionality, it's possible certain text such as a very long paragraph might result in unexpected layout. NO by default.
+        */
         #[method(limitsLayoutForSuspiciousContents)]
         pub unsafe fn limitsLayoutForSuspiciousContents(&self) -> bool;
 
+        /**
+          When YES, enables internal security analysis for malicious inputs and activates defensive behaviors. By enabling this functionality, it's possible certain text such as a very long paragraph might result in unexpected layout. NO by default.
+        */
         #[method(setLimitsLayoutForSuspiciousContents:)]
         pub unsafe fn setLimitsLayoutForSuspiciousContents(
             &self,
             limits_layout_for_suspicious_contents: bool,
         );
 
+        /**
+          These methods allow you to set/query whether the NSLayoutManager will lay out text in the background, i.e. on the main thread when it is idle.  The default is YES, but this should be set to NO whenever the layout manager is being accessed from other threads.
+        */
         #[method(backgroundLayoutEnabled)]
         pub unsafe fn backgroundLayoutEnabled(&self) -> bool;
 
+        /**
+          These methods allow you to set/query whether the NSLayoutManager will lay out text in the background, i.e. on the main thread when it is idle.  The default is YES, but this should be set to NO whenever the layout manager is being accessed from other threads.
+        */
         #[method(setBackgroundLayoutEnabled:)]
         pub unsafe fn setBackgroundLayoutEnabled(&self, background_layout_enabled: bool);
 
+        /**
+          Specifies the default behavior desired if an attachment image is too large to fit in a text container.  Note that attachment cells control their own size and drawing, so this setting can only be advisory for them, but kit-supplied attachment cells will respect it.  The default is NSImageScaleNone, meaning that images will clip rather than scaling.
+        */
         #[method(defaultAttachmentScaling)]
         pub unsafe fn defaultAttachmentScaling(&self) -> NSImageScaling;
 
+        /**
+          Specifies the default behavior desired if an attachment image is too large to fit in a text container.  Note that attachment cells control their own size and drawing, so this setting can only be advisory for them, but kit-supplied attachment cells will respect it.  The default is NSImageScaleNone, meaning that images will clip rather than scaling.
+        */
         #[method(setDefaultAttachmentScaling:)]
         pub unsafe fn setDefaultAttachmentScaling(
             &self,
@@ -195,16 +266,30 @@ extern_methods!(
         );
 
         #[cfg(feature = "AppKit_NSTypesetter")]
+        /**
+          Typesetter
+        By default an NSLayoutManager uses the shared default typesetter.  Setting the typesetter invalidates all glyphs in the NSLayoutManager.  It can't just invalidate layout because the typesetter may have contributed to the actual glyphs as well (e.g. hyphenation).
+        */
         #[method_id(@__retain_semantics Other typesetter)]
         pub unsafe fn typesetter(&self) -> Id<NSTypesetter>;
 
         #[cfg(feature = "AppKit_NSTypesetter")]
+        /**
+          Typesetter
+        By default an NSLayoutManager uses the shared default typesetter.  Setting the typesetter invalidates all glyphs in the NSLayoutManager.  It can't just invalidate layout because the typesetter may have contributed to the actual glyphs as well (e.g. hyphenation).
+        */
         #[method(setTypesetter:)]
         pub unsafe fn setTypesetter(&self, typesetter: &NSTypesetter);
 
+        /**
+          Specifies the typesetter behavior (compatibility setting) value for the layout manager.  The default is determined by the version of AppKit against which the application is linked.
+        */
         #[method(typesetterBehavior)]
         pub unsafe fn typesetterBehavior(&self) -> NSTypesetterBehavior;
 
+        /**
+          Specifies the typesetter behavior (compatibility setting) value for the layout manager.  The default is determined by the version of AppKit against which the application is linked.
+        */
         #[method(setTypesetterBehavior:)]
         pub unsafe fn setTypesetterBehavior(&self, typesetter_behavior: NSTypesetterBehavior);
 
@@ -264,6 +349,9 @@ extern_methods!(
             container: &NSTextContainer,
         );
 
+        /**
+          Returns the total number of glyphs.  If non-contiguous layout is not enabled, this will force generation of glyphs for all characters.
+        */
         #[method(numberOfGlyphs)]
         pub unsafe fn numberOfGlyphs(&self) -> NSUInteger;
 
@@ -396,6 +484,9 @@ extern_methods!(
             flag: bool,
         ) -> NSRect;
 
+        /**
+          Return info about the extra line fragment.  The extra line fragment is used for displaying the line at the end of document when the last character in the document causes a line or paragraph break.  Since the extra line is not associated with any glyph inside the layout manager, the information is handed separately from other line fragment rects.  Typically the extra line fragment is placed in the last document content text container along with other normal line fragment rects.  Line fragment rects and line fragment used rects are always in container coordinates.
+        */
         #[method(extraLineFragmentRect)]
         pub unsafe fn extraLineFragmentRect(&self) -> NSRect;
 
@@ -782,6 +873,9 @@ extern_methods!(
         pub unsafe fn firstTextView(&self) -> Option<Id<NSTextView>>;
 
         #[cfg(feature = "AppKit_NSTextView")]
+        /**
+          This method is special in that it won't cause layout if the beginning of the selected range is not yet laid out.  Other than that this method could be done through other API.
+        */
         #[method_id(@__retain_semantics Other textViewForBeginningOfSelection)]
         pub unsafe fn textViewForBeginningOfSelection(&self) -> Option<Id<NSTextView>>;
     }
@@ -919,6 +1013,9 @@ extern_protocol!(
 
 extern_enum!(
     #[underlying(c_uint)]
+    /**
+      Deprecated
+    */
     #[deprecated = "Use NSGlyphProperty instead"]
     pub enum __anonymous__ {
         #[deprecated]
@@ -1146,6 +1243,9 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      NSGlyph-based API is now deprecated. Use -layoutManager:shouldGenerateGlyphs:properties:characterIndexes:forGlyphRange: instead
+    */
     /// NSGlyphGeneration
     #[cfg(feature = "AppKit_NSLayoutManager")]
     unsafe impl NSLayoutManager {
@@ -1160,4 +1260,7 @@ extern_methods!(
 );
 
 #[cfg(feature = "AppKit_NSLayoutManager")]
+/**
+  NSGlyph-based API is now deprecated. Use -layoutManager:shouldGenerateGlyphs:properties:characterIndexes:forGlyphRange: instead
+*/
 unsafe impl NSGlyphStorage for NSLayoutManager {}

@@ -5,6 +5,9 @@ use crate::Accessibility::*;
 use crate::Foundation::*;
 
 extern_protocol!(
+    /**
+      Chart or graph container elements may adopt this protocol to enable Audio Graph support.
+    */
     pub unsafe trait AXChart: NSObjectProtocol {
         #[cfg(feature = "Accessibility_AXChartDescriptor")]
         #[method_id(@__retain_semantics Other accessibilityChartDescriptor)]
@@ -22,20 +25,39 @@ extern_protocol!(
 );
 
 extern_protocol!(
+    /**
+      Describes a data axis for the chart (e.g. X, Y, etc.)
+     Each AXChart requires at least two AXDataAxis objects
+     to describe, at minimum, and X and a Y axis.
+    */
     pub unsafe trait AXDataAxisDescriptor {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The name or title of this axis.
+        */
         #[method_id(@__retain_semantics Other title)]
         unsafe fn title(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The name or title of this axis.
+        */
         #[method(setTitle:)]
         unsafe fn setTitle(&self, title: &NSString);
 
         #[cfg(feature = "Foundation_NSAttributedString")]
+        /**
+          An attributed version of the title of this axis.
+         When set, this will be used instead of `title`.
+        */
         #[method_id(@__retain_semantics Other attributedTitle)]
         unsafe fn attributedTitle(&self) -> Id<NSAttributedString>;
 
         #[cfg(feature = "Foundation_NSAttributedString")]
+        /**
+          An attributed version of the title of this axis.
+         When set, this will be used instead of `title`.
+        */
         #[method(setAttributedTitle:)]
         unsafe fn setAttributedTitle(&self, attributed_title: &NSAttributedString);
     }
@@ -72,31 +94,59 @@ unsafe impl NSObjectProtocol for AXNumericDataAxisDescriptor {}
 extern_methods!(
     #[cfg(feature = "Accessibility_AXNumericDataAxisDescriptor")]
     unsafe impl AXNumericDataAxisDescriptor {
+        /**
+          The scale to use for this axis. This should match the visual representation in the chart.
+         If not set explicitly, this will default to `linear`.
+        */
         #[method(scaleType)]
         pub unsafe fn scaleType(&self) -> AXNumericDataAxisDescriptorScale;
 
+        /**
+          The scale to use for this axis. This should match the visual representation in the chart.
+         If not set explicitly, this will default to `linear`.
+        */
         #[method(setScaleType:)]
         pub unsafe fn setScaleType(&self, scale_type: AXNumericDataAxisDescriptorScale);
 
+        /**
+          The minimum displayable value for the axis.
+        */
         #[method(lowerBound)]
         pub unsafe fn lowerBound(&self) -> c_double;
 
+        /**
+          The minimum displayable value for the axis.
+        */
         #[method(setLowerBound:)]
         pub unsafe fn setLowerBound(&self, lower_bound: c_double);
 
+        /**
+          The maximum displayable value for the axis.
+        */
         #[method(upperBound)]
         pub unsafe fn upperBound(&self) -> c_double;
 
+        /**
+          The maximum displayable value for the axis.
+        */
         #[method(setUpperBound:)]
         pub unsafe fn setUpperBound(&self, upper_bound: c_double);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Provides a value description to be spoken for a particular data value on this axis.
+         Use this to format data values to string representations that include units, dates, times, etc.
+        */
         #[method(valueDescriptionProvider)]
         pub unsafe fn valueDescriptionProvider(
             &self,
         ) -> NonNull<Block<(c_double,), NonNull<NSString>>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Provides a value description to be spoken for a particular data value on this axis.
+         Use this to format data values to string representations that include units, dates, times, etc.
+        */
         #[method(setValueDescriptionProvider:)]
         pub unsafe fn setValueDescriptionProvider(
             &self,
@@ -104,10 +154,16 @@ extern_methods!(
         );
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSNumber"))]
+        /**
+          The positions of any gridlines along this axis.
+        */
         #[method_id(@__retain_semantics Other gridlinePositions)]
         pub unsafe fn gridlinePositions(&self) -> Id<NSArray<NSNumber>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSNumber"))]
+        /**
+          The positions of any gridlines along this axis.
+        */
         #[method(setGridlinePositions:)]
         pub unsafe fn setGridlinePositions(&self, gridline_positions: &NSArray<NSNumber>);
 
@@ -171,10 +227,22 @@ extern_methods!(
     #[cfg(feature = "Accessibility_AXCategoricalDataAxisDescriptor")]
     unsafe impl AXCategoricalDataAxisDescriptor {
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          The order of the category values for this axis.
+         This list should contain every possible category value for this axis, in the order they are displayed visually in the graph or legend.
+         For example, if your categorical axis represented 'blood type', and the legend contained 'AB, A, B, O' in that order,
+         you would provide an array containing "AB", "A", "B" and "O" in the same order.
+        */
         #[method_id(@__retain_semantics Other categoryOrder)]
         pub unsafe fn categoryOrder(&self) -> Id<NSArray<NSString>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          The order of the category values for this axis.
+         This list should contain every possible category value for this axis, in the order they are displayed visually in the graph or legend.
+         For example, if your categorical axis represented 'blood type', and the legend contained 'AB, A, B, O' in that order,
+         you would provide an array containing "AB", "A", "B" and "O" in the same order.
+        */
         #[method(setCategoryOrder:)]
         pub unsafe fn setCategoryOrder(&self, category_order: &NSArray<NSString>);
 
@@ -209,6 +277,11 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Accessibility_AXDataPointValue")]
+    /**
+      Describes a single data value, either numeric or categorical. Only the `number`
+     property will be used for data points in a numeric axis, and only the `category`
+     property will be used for data points in a categorical axis.
+    */
     pub struct AXDataPointValue;
 
     #[cfg(feature = "Accessibility_AXDataPointValue")]
@@ -218,9 +291,19 @@ extern_class!(
 );
 
 #[cfg(feature = "Accessibility_AXDataPointValue")]
+/**
+  Describes a single data value, either numeric or categorical. Only the `number`
+ property will be used for data points in a numeric axis, and only the `category`
+ property will be used for data points in a categorical axis.
+*/
 unsafe impl NSObjectProtocol for AXDataPointValue {}
 
 extern_methods!(
+    /**
+      Describes a single data value, either numeric or categorical. Only the `number`
+     property will be used for data points in a numeric axis, and only the `category`
+     property will be used for data points in a categorical axis.
+    */
     #[cfg(feature = "Accessibility_AXDataPointValue")]
     unsafe impl AXDataPointValue {
         #[method(number)]
@@ -255,6 +338,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Accessibility_AXDataPoint")]
+    /**
+      Provides axis values for a single data point within a series.
+    */
     pub struct AXDataPoint;
 
     #[cfg(feature = "Accessibility_AXDataPoint")]
@@ -264,24 +350,44 @@ extern_class!(
 );
 
 #[cfg(feature = "Accessibility_AXDataPoint")]
+/**
+  Provides axis values for a single data point within a series.
+*/
 unsafe impl NSObjectProtocol for AXDataPoint {}
 
 extern_methods!(
+    /**
+      Provides axis values for a single data point within a series.
+    */
     #[cfg(feature = "Accessibility_AXDataPoint")]
     unsafe impl AXDataPoint {
         #[cfg(feature = "Accessibility_AXDataPointValue")]
+        /**
+          The x-axis value for this data point.
+         Should be a Double for a numeric x-axis or a String for a categorical x-axis.
+        */
         #[method_id(@__retain_semantics Other xValue)]
         pub unsafe fn xValue(&self) -> Id<AXDataPointValue>;
 
         #[cfg(feature = "Accessibility_AXDataPointValue")]
+        /**
+          The x-axis value for this data point.
+         Should be a Double for a numeric x-axis or a String for a categorical x-axis.
+        */
         #[method(setXValue:)]
         pub unsafe fn setXValue(&self, x_value: &AXDataPointValue);
 
         #[cfg(feature = "Accessibility_AXDataPointValue")]
+        /**
+          The y-axis value for this data point.
+        */
         #[method_id(@__retain_semantics Other yValue)]
         pub unsafe fn yValue(&self) -> Option<Id<AXDataPointValue>>;
 
         #[cfg(feature = "Accessibility_AXDataPointValue")]
+        /**
+          The y-axis value for this data point.
+        */
         #[method(setYValue:)]
         pub unsafe fn setYValue(&self, y_value: Option<&AXDataPointValue>);
 
@@ -289,6 +395,11 @@ extern_methods!(
             feature = "Accessibility_AXDataPointValue",
             feature = "Foundation_NSArray"
         ))]
+        /**
+          Any additional values for additional axes for this data point.
+         These should be provided in the same order as their corresponding
+         `AXDataAxisDescriptor` objects in `AXChartDescriptor.additionalAxes`.
+        */
         #[method_id(@__retain_semantics Other additionalValues)]
         pub unsafe fn additionalValues(&self) -> Id<NSArray<AXDataPointValue>>;
 
@@ -296,22 +407,39 @@ extern_methods!(
             feature = "Accessibility_AXDataPointValue",
             feature = "Foundation_NSArray"
         ))]
+        /**
+          Any additional values for additional axes for this data point.
+         These should be provided in the same order as their corresponding
+         `AXDataAxisDescriptor` objects in `AXChartDescriptor.additionalAxes`.
+        */
         #[method(setAdditionalValues:)]
         pub unsafe fn setAdditionalValues(&self, additional_values: &NSArray<AXDataPointValue>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          A name or label for this data point.
+        */
         #[method_id(@__retain_semantics Other label)]
         pub unsafe fn label(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          A name or label for this data point.
+        */
         #[method(setLabel:)]
         pub unsafe fn setLabel(&self, label: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSAttributedString")]
+        /**
+          An attributed version of the name or label for this data point.
+        */
         #[method_id(@__retain_semantics Other attributedLabel)]
         pub unsafe fn attributedLabel(&self) -> Option<Id<NSAttributedString>>;
 
         #[cfg(feature = "Foundation_NSAttributedString")]
+        /**
+          An attributed version of the name or label for this data point.
+        */
         #[method(setAttributedLabel:)]
         pub unsafe fn setAttributedLabel(&self, attributed_label: Option<&NSAttributedString>);
 
@@ -360,6 +488,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Accessibility_AXDataSeriesDescriptor")]
+    /**
+      Provides information about a data series. A chart may have one or many data series.
+    */
     pub struct AXDataSeriesDescriptor;
 
     #[cfg(feature = "Accessibility_AXDataSeriesDescriptor")]
@@ -369,38 +500,70 @@ extern_class!(
 );
 
 #[cfg(feature = "Accessibility_AXDataSeriesDescriptor")]
+/**
+  Provides information about a data series. A chart may have one or many data series.
+*/
 unsafe impl NSObjectProtocol for AXDataSeriesDescriptor {}
 
 extern_methods!(
+    /**
+      Provides information about a data series. A chart may have one or many data series.
+    */
     #[cfg(feature = "Accessibility_AXDataSeriesDescriptor")]
     unsafe impl AXDataSeriesDescriptor {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The name or title of this data series.
+        */
         #[method_id(@__retain_semantics Other name)]
         pub unsafe fn name(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The name or title of this data series.
+        */
         #[method(setName:)]
         pub unsafe fn setName(&self, name: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSAttributedString")]
+        /**
+          An attributed version of the name of this data series.
+         When set, this will be used instead of `name`.
+        */
         #[method_id(@__retain_semantics Other attributedName)]
         pub unsafe fn attributedName(&self) -> Id<NSAttributedString>;
 
         #[cfg(feature = "Foundation_NSAttributedString")]
+        /**
+          An attributed version of the name of this data series.
+         When set, this will be used instead of `name`.
+        */
         #[method(setAttributedName:)]
         pub unsafe fn setAttributedName(&self, attributed_name: &NSAttributedString);
 
+        /**
+          Whether or not this data series should be treated as continuous.
+        */
         #[method(isContinuous)]
         pub unsafe fn isContinuous(&self) -> bool;
 
+        /**
+          Whether or not this data series should be treated as continuous.
+        */
         #[method(setIsContinuous:)]
         pub unsafe fn setIsContinuous(&self, is_continuous: bool);
 
         #[cfg(all(feature = "Accessibility_AXDataPoint", feature = "Foundation_NSArray"))]
+        /**
+          The data points that make up the series.
+        */
         #[method_id(@__retain_semantics Other dataPoints)]
         pub unsafe fn dataPoints(&self) -> Id<NSArray<AXDataPoint>>;
 
         #[cfg(all(feature = "Accessibility_AXDataPoint", feature = "Foundation_NSArray"))]
+        /**
+          The data points that make up the series.
+        */
         #[method(setDataPoints:)]
         pub unsafe fn setDataPoints(&self, data_points: &NSArray<AXDataPoint>);
 
@@ -440,6 +603,10 @@ extern_methods!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      Describes the content direction of the chart (i.e. the direction in which the X axis is rendered).
+     For example, a bar chart might be leftToRight, while a pie chart might be radialClockwise.
+    */
     pub enum AXChartDescriptorContentDirection {
         AXChartContentDirectionLeftToRight = 0,
         AXChartContentDirectionRightToLeft = 1,
@@ -453,6 +620,9 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Accessibility_AXChartDescriptor")]
+    /**
+      The top-level descriptor object for an accessible chart.
+    */
     pub struct AXChartDescriptor;
 
     #[cfg(feature = "Accessibility_AXChartDescriptor")]
@@ -462,47 +632,87 @@ extern_class!(
 );
 
 #[cfg(feature = "Accessibility_AXChartDescriptor")]
+/**
+  The top-level descriptor object for an accessible chart.
+*/
 unsafe impl NSObjectProtocol for AXChartDescriptor {}
 
 extern_methods!(
+    /**
+      The top-level descriptor object for an accessible chart.
+    */
     #[cfg(feature = "Accessibility_AXChartDescriptor")]
     unsafe impl AXChartDescriptor {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The title of the chart.
+        */
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The title of the chart.
+        */
         #[method(setTitle:)]
         pub unsafe fn setTitle(&self, title: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSAttributedString")]
+        /**
+          An attributed version of the title of the chart.
+         When set, this will be used instead of `title`.
+        */
         #[method_id(@__retain_semantics Other attributedTitle)]
         pub unsafe fn attributedTitle(&self) -> Option<Id<NSAttributedString>>;
 
         #[cfg(feature = "Foundation_NSAttributedString")]
+        /**
+          An attributed version of the title of the chart.
+         When set, this will be used instead of `title`.
+        */
         #[method(setAttributedTitle:)]
         pub unsafe fn setAttributedTitle(&self, attributed_title: Option<&NSAttributedString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          A natural language summary of the key message or features of the chart.
+         e.g. "The chart shows that fuel efficiency decreases as vehicle weight increases."
+        */
         #[method_id(@__retain_semantics Other summary)]
         pub unsafe fn summary(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          A natural language summary of the key message or features of the chart.
+         e.g. "The chart shows that fuel efficiency decreases as vehicle weight increases."
+        */
         #[method(setSummary:)]
         pub unsafe fn setSummary(&self, summary: Option<&NSString>);
 
+        /**
+          The direction of the chart's X axis.
+        */
         #[method(contentDirection)]
         pub unsafe fn contentDirection(&self) -> AXChartDescriptorContentDirection;
 
+        /**
+          The direction of the chart's X axis.
+        */
         #[method(setContentDirection:)]
         pub unsafe fn setContentDirection(
             &self,
             content_direction: AXChartDescriptorContentDirection,
         );
 
+        /**
+          The bounds of the view area for visually rendering data values if applicable, provided in superview coordinates.
+        */
         #[method(contentFrame)]
         pub unsafe fn contentFrame(&self) -> CGRect;
 
+        /**
+          The bounds of the view area for visually rendering data values if applicable, provided in superview coordinates.
+        */
         #[method(setContentFrame:)]
         pub unsafe fn setContentFrame(&self, content_frame: CGRect);
 
@@ -510,6 +720,9 @@ extern_methods!(
             feature = "Accessibility_AXDataSeriesDescriptor",
             feature = "Foundation_NSArray"
         ))]
+        /**
+          A set of data series descriptors describing each series in the chart.
+        */
         #[method_id(@__retain_semantics Other series)]
         pub unsafe fn series(&self) -> Id<NSArray<AXDataSeriesDescriptor>>;
 
@@ -517,30 +730,55 @@ extern_methods!(
             feature = "Accessibility_AXDataSeriesDescriptor",
             feature = "Foundation_NSArray"
         ))]
+        /**
+          A set of data series descriptors describing each series in the chart.
+        */
         #[method(setSeries:)]
         pub unsafe fn setSeries(&self, series: &NSArray<AXDataSeriesDescriptor>);
 
+        /**
+          The axis descriptor for the chart's X axis.
+        */
         #[method_id(@__retain_semantics Other xAxis)]
         pub unsafe fn xAxis(&self) -> Id<ProtocolObject<dyn AXDataAxisDescriptor>>;
 
+        /**
+          The axis descriptor for the chart's X axis.
+        */
         #[method(setXAxis:)]
         pub unsafe fn setXAxis(&self, x_axis: &ProtocolObject<dyn AXDataAxisDescriptor>);
 
         #[cfg(feature = "Accessibility_AXNumericDataAxisDescriptor")]
+        /**
+          The axis descriptor for the chart's Y axis.
+        */
         #[method_id(@__retain_semantics Other yAxis)]
         pub unsafe fn yAxis(&self) -> Option<Id<AXNumericDataAxisDescriptor>>;
 
         #[cfg(feature = "Accessibility_AXNumericDataAxisDescriptor")]
+        /**
+          The axis descriptor for the chart's Y axis.
+        */
         #[method(setYAxis:)]
         pub unsafe fn setYAxis(&self, y_axis: Option<&AXNumericDataAxisDescriptor>);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Descriptors for additional categorical or numerical axes beyond x and y.
+         For example, in a visual chart, these values might be represented by the size
+         or color of data points.
+        */
         #[method_id(@__retain_semantics Other additionalAxes)]
         pub unsafe fn additionalAxes(
             &self,
         ) -> Option<Id<NSArray<ProtocolObject<dyn AXDataAxisDescriptor>>>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Descriptors for additional categorical or numerical axes beyond x and y.
+         For example, in a visual chart, these values might be represented by the size
+         or color of data points.
+        */
         #[method(setAdditionalAxes:)]
         pub unsafe fn setAdditionalAxes(
             &self,

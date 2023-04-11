@@ -10,6 +10,10 @@ use crate::MapKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "EventKit_EKParticipant")]
+    /**
+     @class      EKParticipant
+    @abstract   Abstract class representing a participant attached to an event.
+    */
     pub struct EKParticipant;
 
     #[cfg(feature = "EventKit_EKParticipant")]
@@ -20,32 +24,75 @@ extern_class!(
 );
 
 #[cfg(feature = "EventKit_EKParticipant")]
+/**
+ @class      EKParticipant
+@abstract   Abstract class representing a participant attached to an event.
+*/
 unsafe impl NSObjectProtocol for EKParticipant {}
 
 extern_methods!(
+    /**
+     @class      EKParticipant
+    @abstract   Abstract class representing a participant attached to an event.
+    */
     #[cfg(feature = "EventKit_EKParticipant")]
     unsafe impl EKParticipant {
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+         @property   url
+        @abstract   URL representing this participant.
+        */
         #[method_id(@__retain_semantics Other URL)]
         pub unsafe fn URL(&self) -> Id<NSURL>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property   name
+        @abstract   Name of this participant.
+        */
         #[method_id(@__retain_semantics Other name)]
         pub unsafe fn name(&self) -> Option<Id<NSString>>;
 
+        /**
+         @property   participantStatus
+        @abstract   The status of the attendee.
+        @discussion Returns the status of the attendee as a EKParticipantStatus value.
+        */
         #[method(participantStatus)]
         pub unsafe fn participantStatus(&self) -> EKParticipantStatus;
 
+        /**
+         @property   participantRole
+        @abstract   The role of the attendee.
+        @discussion Returns the role of the attendee as a EKParticipantRole value.
+        */
         #[method(participantRole)]
         pub unsafe fn participantRole(&self) -> EKParticipantRole;
 
+        /**
+         @property   participantType
+        @abstract   The type of the attendee.
+        @discussion Returns the type of the attendee as a EKParticipantType value.
+        */
         #[method(participantType)]
         pub unsafe fn participantType(&self) -> EKParticipantType;
 
+        /**
+         @property   currentUser
+        @abstract   A boolean indicating whether this participant represents the
+        owner of this account.
+        */
         #[method(isCurrentUser)]
         pub unsafe fn isCurrentUser(&self) -> bool;
 
         #[cfg(feature = "Foundation_NSPredicate")]
+        /**
+         @method     contactPredicate
+        @abstract   Returns a predicate to use with Contacts.framework to retrieve the corresponding
+        CNContact instance.
+        @discussion This method returns a predicate that can be used with a CNContactStore to fetch
+        a CNContact instance for this participant, if one exists.
+        */
         #[method_id(@__retain_semantics Other contactPredicate)]
         pub unsafe fn contactPredicate(&self) -> Id<NSPredicate>;
 

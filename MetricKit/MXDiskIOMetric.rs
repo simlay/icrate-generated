@@ -7,6 +7,10 @@ use crate::MetricKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MetricKit_MXDiskIOMetric")]
+    /**
+     @class         MXDiskIOMetric
+    @abstract      An MXMetric subclass that encapsulates disk IO metrics.
+    */
     pub struct MXDiskIOMetric;
 
     #[cfg(feature = "MetricKit_MXDiskIOMetric")]
@@ -17,21 +21,42 @@ extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXDiskIOMetric")]
+/**
+ @class         MXDiskIOMetric
+@abstract      An MXMetric subclass that encapsulates disk IO metrics.
+*/
 unsafe impl NSCoding for MXDiskIOMetric {}
 
 #[cfg(feature = "MetricKit_MXDiskIOMetric")]
+/**
+ @class         MXDiskIOMetric
+@abstract      An MXMetric subclass that encapsulates disk IO metrics.
+*/
 unsafe impl NSObjectProtocol for MXDiskIOMetric {}
 
 #[cfg(feature = "MetricKit_MXDiskIOMetric")]
+/**
+ @class         MXDiskIOMetric
+@abstract      An MXMetric subclass that encapsulates disk IO metrics.
+*/
 unsafe impl NSSecureCoding for MXDiskIOMetric {}
 
 extern_methods!(
+    /**
+     @class         MXDiskIOMetric
+    @abstract      An MXMetric subclass that encapsulates disk IO metrics.
+    */
     #[cfg(feature = "MetricKit_MXDiskIOMetric")]
     unsafe impl MXDiskIOMetric {
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitInformationStorage"
         ))]
+        /**
+         @property      cumulativeLogicalWrites
+        @abstract      Cumulative amount of logical writes.
+        @discussion    Dimensioned as NSUnitInformationStorage.
+        */
         #[method_id(@__retain_semantics Other cumulativeLogicalWrites)]
         pub unsafe fn cumulativeLogicalWrites(&self)
             -> Id<NSMeasurement<NSUnitInformationStorage>>;

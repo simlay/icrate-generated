@@ -10,6 +10,10 @@ use crate::MapKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "EventKit_EKReminder")]
+    /**
+     @class      EKReminder
+    @abstract   The EKReminder class represents a reminder (task/todo).
+    */
     pub struct EKReminder;
 
     #[cfg(feature = "EventKit_EKReminder")]
@@ -20,9 +24,17 @@ extern_class!(
 );
 
 #[cfg(feature = "EventKit_EKReminder")]
+/**
+ @class      EKReminder
+@abstract   The EKReminder class represents a reminder (task/todo).
+*/
 unsafe impl NSObjectProtocol for EKReminder {}
 
 extern_methods!(
+    /**
+     @class      EKReminder
+    @abstract   The EKReminder class represents a reminder (task/todo).
+    */
     #[cfg(feature = "EventKit_EKReminder")]
     unsafe impl EKReminder {
         #[cfg(feature = "EventKit_EKEventStore")]
@@ -30,10 +42,24 @@ extern_methods!(
         pub unsafe fn reminderWithEventStore(event_store: &EKEventStore) -> Id<EKReminder>;
 
         #[cfg(feature = "Foundation_NSDateComponents")]
+        /**
+         @property   startDateComponents
+        @abstract   The start date of the task, as date components.
+        @discussion The use of date components allows the start date and its time zone to be represented in a single property.
+        A nil time zone represents a floating date.  Setting a date component without a hour, minute and second component will set allDay to YES.
+        If you set this property, the calendar must be set to NSCalendarIdentifierGregorian. An exception is raised otherwise.
+        */
         #[method_id(@__retain_semantics Other startDateComponents)]
         pub unsafe fn startDateComponents(&self) -> Option<Id<NSDateComponents>>;
 
         #[cfg(feature = "Foundation_NSDateComponents")]
+        /**
+         @property   startDateComponents
+        @abstract   The start date of the task, as date components.
+        @discussion The use of date components allows the start date and its time zone to be represented in a single property.
+        A nil time zone represents a floating date.  Setting a date component without a hour, minute and second component will set allDay to YES.
+        If you set this property, the calendar must be set to NSCalendarIdentifierGregorian. An exception is raised otherwise.
+        */
         #[method(setStartDateComponents:)]
         pub unsafe fn setStartDateComponents(
             &self,
@@ -41,30 +67,84 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSDateComponents")]
+        /**
+         @property   dueDateComponents
+        @abstract   The date by which this reminder should be completed.
+        @discussion The use of date components allows the due date and its time zone to be represented in a single property.
+        A nil time zone represents a floating date.  Setting a date component without a hour, minute and second component will set allDay to YES.
+        If you set this property, the calendar must be set to NSCalendarIdentifierGregorian. An exception is raised otherwise.
+
+        On iOS, if you set the due date for a reminder, you must also set a start date, otherwise you will receive
+        an error (EKErrorNoStartDate) when attempting to save this reminder. This is not a requirement on OS X.
+        */
         #[method_id(@__retain_semantics Other dueDateComponents)]
         pub unsafe fn dueDateComponents(&self) -> Option<Id<NSDateComponents>>;
 
         #[cfg(feature = "Foundation_NSDateComponents")]
+        /**
+         @property   dueDateComponents
+        @abstract   The date by which this reminder should be completed.
+        @discussion The use of date components allows the due date and its time zone to be represented in a single property.
+        A nil time zone represents a floating date.  Setting a date component without a hour, minute and second component will set allDay to YES.
+        If you set this property, the calendar must be set to NSCalendarIdentifierGregorian. An exception is raised otherwise.
+
+        On iOS, if you set the due date for a reminder, you must also set a start date, otherwise you will receive
+        an error (EKErrorNoStartDate) when attempting to save this reminder. This is not a requirement on OS X.
+        */
         #[method(setDueDateComponents:)]
         pub unsafe fn setDueDateComponents(&self, due_date_components: Option<&NSDateComponents>);
 
+        /**
+         @property   completed
+        @abstract   Whether or not the reminder is completed.
+        @discussion Setting it to YES will set the completed date to the current date.
+        Setting it to NO will set the completed date to nil.
+        */
         #[method(isCompleted)]
         pub unsafe fn isCompleted(&self) -> bool;
 
+        /**
+         @property   completed
+        @abstract   Whether or not the reminder is completed.
+        @discussion Setting it to YES will set the completed date to the current date.
+        Setting it to NO will set the completed date to nil.
+        */
         #[method(setCompleted:)]
         pub unsafe fn setCompleted(&self, completed: bool);
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+         @property   completionDate
+        @abstract   The date on which this reminder was completed.
+        */
         #[method_id(@__retain_semantics Other completionDate)]
         pub unsafe fn completionDate(&self) -> Option<Id<NSDate>>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+         @property   completionDate
+        @abstract   The date on which this reminder was completed.
+        */
         #[method(setCompletionDate:)]
         pub unsafe fn setCompletionDate(&self, completion_date: Option<&NSDate>);
 
+        /**
+         @property   priority
+        @abstract   The priority of the reminder.
+        @discussion Priorities run from 1 (highest) to 9 (lowest).  A priority of 0 means no priority.
+        Saving a reminder with any other priority will fail.
+        Per RFC 5545, priorities of 1-4 are considered "high," a priority of 5 is "medium," and priorities of 6-9 are "low."
+        */
         #[method(priority)]
         pub unsafe fn priority(&self) -> NSUInteger;
 
+        /**
+         @property   priority
+        @abstract   The priority of the reminder.
+        @discussion Priorities run from 1 (highest) to 9 (lowest).  A priority of 0 means no priority.
+        Saving a reminder with any other priority will fail.
+        Per RFC 5545, priorities of 1-4 are considered "high," a priority of 5 is "medium," and priorities of 6-9 are "low."
+        */
         #[method(setPriority:)]
         pub unsafe fn setPriority(&self, priority: NSUInteger);
     }

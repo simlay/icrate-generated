@@ -7,6 +7,9 @@ use crate::Foundation::*;
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+      The following flags are for activateWithOptions:.
+    */
     pub enum NSApplicationActivationOptions {
         NSApplicationActivateAllWindows = 1 << 0,
         NSApplicationActivateIgnoringOtherApps = 1 << 1,
@@ -15,6 +18,9 @@ ns_options!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      The following activation policies control whether and how an application may be activated.  They are determined by the Info.plist.
+    */
     pub enum NSApplicationActivationPolicy {
         NSApplicationActivationPolicyRegular = 0,
         NSApplicationActivationPolicyAccessory = 1,
@@ -39,48 +45,87 @@ unsafe impl NSObjectProtocol for NSRunningApplication {}
 extern_methods!(
     #[cfg(feature = "AppKit_NSRunningApplication")]
     unsafe impl NSRunningApplication {
+        /**
+          Indicates that the process is an exited application.  This is observable through KVO.
+        */
         #[method(isTerminated)]
         pub unsafe fn isTerminated(&self) -> bool;
 
+        /**
+          Indicates that the process is finished launching, which corresponds to the NSApplicationDidFinishLaunching internal notification.  This is observable through KVO.  Some applications do not post this notification and so are never reported as finished launching.
+        */
         #[method(isFinishedLaunching)]
         pub unsafe fn isFinishedLaunching(&self) -> bool;
 
+        /**
+          Indicates whether the application is currently hidden.  This is observable through KVO.
+        */
         #[method(isHidden)]
         pub unsafe fn isHidden(&self) -> bool;
 
+        /**
+          Indicates whether the application is currently frontmost.  This is observable through KVO.
+        */
         #[method(isActive)]
         pub unsafe fn isActive(&self) -> bool;
 
+        /**
+          Indicates whether the application currently owns the menu bar.  This is observable through KVO.
+        */
         #[method(ownsMenuBar)]
         pub unsafe fn ownsMenuBar(&self) -> bool;
 
+        /**
+          Indicates the activation policy of the application.   This is observable through KVO (the type is usually fixed, but may be changed through a call to -[NSApplication setActivationPolicy:]).
+        */
         #[method(activationPolicy)]
         pub unsafe fn activationPolicy(&self) -> NSApplicationActivationPolicy;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Indicates the name of the application.  This is dependent on the current localization of the referenced app, and is suitable for presentation to the user.
+        */
         #[method_id(@__retain_semantics Other localizedName)]
         pub unsafe fn localizedName(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Indicates the CFBundleIdentifier of the application, or nil if the application does not have an Info.plist.
+        */
         #[method_id(@__retain_semantics Other bundleIdentifier)]
         pub unsafe fn bundleIdentifier(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          Indicates the URL to the application's bundle, or nil if the application does not have a bundle.
+        */
         #[method_id(@__retain_semantics Other bundleURL)]
         pub unsafe fn bundleURL(&self) -> Option<Id<NSURL>>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          Indicates the URL to the application's executable.
+        */
         #[method_id(@__retain_semantics Other executableURL)]
         pub unsafe fn executableURL(&self) -> Option<Id<NSURL>>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          Indicates the date when the application was launched.  This property is not available for all applications.  Specifically, it is not available for applications that were launched without going through LaunchServices.
+        */
         #[method_id(@__retain_semantics Other launchDate)]
         pub unsafe fn launchDate(&self) -> Option<Id<NSDate>>;
 
         #[cfg(feature = "AppKit_NSImage")]
+        /**
+          Returns the icon of the application.
+        */
         #[method_id(@__retain_semantics Other icon)]
         pub unsafe fn icon(&self) -> Option<Id<NSImage>>;
 
+        /**
+          Indicates the executing processor architecture for the application, as an NSBundleExecutableArchitecture from NSBundle.h.
+        */
         #[method(executableArchitecture)]
         pub unsafe fn executableArchitecture(&self) -> NSInteger;
 
@@ -105,6 +150,9 @@ extern_methods!(
             bundle_identifier: &NSString,
         ) -> Id<NSArray<NSRunningApplication>>;
 
+        /**
+          Returns an NSRunningApplication representing this application.
+        */
         #[method_id(@__retain_semantics Other currentApplication)]
         pub unsafe fn currentApplication() -> Id<NSRunningApplication>;
 
@@ -121,6 +169,13 @@ extern_methods!(
             feature = "AppKit_NSRunningApplication",
             feature = "Foundation_NSArray"
         ))]
+        /**
+          Returns an array of NSRunningApplications representing currently running applications.  The order of the array is unspecified, but it is stable, meaning that the relative order of particular applications will not change across multiple calls to runningApplications.
+
+        Similar to NSRunningApplication's properties, this property will only change when the main run loop is run in a common mode.  Instead of polling, use key-value observing to be notified of changes to this array property.
+
+        This property is thread safe, in that it may be called from background threads and the result is returned atomically.  This property is observable through KVO.
+        */
         #[method_id(@__retain_semantics Other runningApplications)]
         pub unsafe fn runningApplications(&self) -> Id<NSArray<NSRunningApplication>>;
     }

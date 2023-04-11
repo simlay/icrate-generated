@@ -7,6 +7,10 @@ use crate::MetricKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MetricKit_MXGPUMetric")]
+    /**
+     @class         MXGPUMetric
+    @abstract      An MXMetric subclass that encapsulates GPU metrics.
+    */
     pub struct MXGPUMetric;
 
     #[cfg(feature = "MetricKit_MXGPUMetric")]
@@ -17,21 +21,43 @@ extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXGPUMetric")]
+/**
+ @class         MXGPUMetric
+@abstract      An MXMetric subclass that encapsulates GPU metrics.
+*/
 unsafe impl NSCoding for MXGPUMetric {}
 
 #[cfg(feature = "MetricKit_MXGPUMetric")]
+/**
+ @class         MXGPUMetric
+@abstract      An MXMetric subclass that encapsulates GPU metrics.
+*/
 unsafe impl NSObjectProtocol for MXGPUMetric {}
 
 #[cfg(feature = "MetricKit_MXGPUMetric")]
+/**
+ @class         MXGPUMetric
+@abstract      An MXMetric subclass that encapsulates GPU metrics.
+*/
 unsafe impl NSSecureCoding for MXGPUMetric {}
 
 extern_methods!(
+    /**
+     @class         MXGPUMetric
+    @abstract      An MXMetric subclass that encapsulates GPU metrics.
+    */
     #[cfg(feature = "MetricKit_MXGPUMetric")]
     unsafe impl MXGPUMetric {
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"
         ))]
+        /**
+         @property      cumulativeGPUTime
+        @abstract      GPU time aggregated cumulatively.
+        @discussion    The data here represents the total GPU time an application consumed over the date range of the containing payload.
+        @discussion    Dimensioned as NSUnitDuration.
+        */
         #[method_id(@__retain_semantics Other cumulativeGPUTime)]
         pub unsafe fn cumulativeGPUTime(&self) -> Id<NSMeasurement<NSUnitDuration>>;
     }

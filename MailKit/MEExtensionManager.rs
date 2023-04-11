@@ -8,6 +8,9 @@ use crate::MailKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MailKit_MEExtensionManager")]
+    /**
+      @brief Methods in this class allow the host app to interact with their Mail extension.
+    */
     pub struct MEExtensionManager;
 
     #[cfg(feature = "MailKit_MEExtensionManager")]
@@ -17,9 +20,15 @@ extern_class!(
 );
 
 #[cfg(feature = "MailKit_MEExtensionManager")]
+/**
+  @brief Methods in this class allow the host app to interact with their Mail extension.
+*/
 unsafe impl NSObjectProtocol for MEExtensionManager {}
 
 extern_methods!(
+    /**
+      @brief Methods in this class allow the host app to interact with their Mail extension.
+    */
     #[cfg(feature = "MailKit_MEExtensionManager")]
     unsafe impl MEExtensionManager {
         #[method_id(@__retain_semantics New new)]

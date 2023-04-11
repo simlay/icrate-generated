@@ -8,6 +8,10 @@ use crate::GameController::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameController_GCDeviceCursor")]
+    /**
+     A cursor is a Direction Pad that has its axis extended from [-1; 1] to [width; height] range
+    Up, down, left, right allows to use mouse to simulate DirectionaPad or Thumbstick since values are normalized for these elements
+    */
     pub struct GCDeviceCursor;
 
     #[cfg(feature = "GameController_GCDeviceCursor")]
@@ -18,9 +22,17 @@ extern_class!(
 );
 
 #[cfg(feature = "GameController_GCDeviceCursor")]
+/**
+ A cursor is a Direction Pad that has its axis extended from [-1; 1] to [width; height] range
+Up, down, left, right allows to use mouse to simulate DirectionaPad or Thumbstick since values are normalized for these elements
+*/
 unsafe impl NSObjectProtocol for GCDeviceCursor {}
 
 extern_methods!(
+    /**
+     A cursor is a Direction Pad that has its axis extended from [-1; 1] to [width; height] range
+    Up, down, left, right allows to use mouse to simulate DirectionaPad or Thumbstick since values are normalized for these elements
+    */
     #[cfg(feature = "GameController_GCDeviceCursor")]
     unsafe impl GCDeviceCursor {}
 );

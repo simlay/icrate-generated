@@ -7,6 +7,10 @@ use crate::MetricKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MetricKit_MXMemoryMetric")]
+    /**
+     @class         MXMemoryMetric
+    @abstract      An MXMetric subclass that encapsulates memory metrics.
+    */
     pub struct MXMemoryMetric;
 
     #[cfg(feature = "MetricKit_MXMemoryMetric")]
@@ -17,21 +21,42 @@ extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXMemoryMetric")]
+/**
+ @class         MXMemoryMetric
+@abstract      An MXMetric subclass that encapsulates memory metrics.
+*/
 unsafe impl NSCoding for MXMemoryMetric {}
 
 #[cfg(feature = "MetricKit_MXMemoryMetric")]
+/**
+ @class         MXMemoryMetric
+@abstract      An MXMetric subclass that encapsulates memory metrics.
+*/
 unsafe impl NSObjectProtocol for MXMemoryMetric {}
 
 #[cfg(feature = "MetricKit_MXMemoryMetric")]
+/**
+ @class         MXMemoryMetric
+@abstract      An MXMetric subclass that encapsulates memory metrics.
+*/
 unsafe impl NSSecureCoding for MXMemoryMetric {}
 
 extern_methods!(
+    /**
+     @class         MXMemoryMetric
+    @abstract      An MXMetric subclass that encapsulates memory metrics.
+    */
     #[cfg(feature = "MetricKit_MXMemoryMetric")]
     unsafe impl MXMemoryMetric {
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitInformationStorage"
         ))]
+        /**
+         @property      peakMemoryUsage
+        @abstract      A single value representing the peak memory consumption of the application.
+        @discussion    Dimensioned as NSUnitInformationStorage.
+        */
         #[method_id(@__retain_semantics Other peakMemoryUsage)]
         pub unsafe fn peakMemoryUsage(&self) -> Id<NSMeasurement<NSUnitInformationStorage>>;
 
@@ -39,6 +64,11 @@ extern_methods!(
             feature = "Foundation_NSUnitInformationStorage",
             feature = "MetricKit_MXAverage"
         ))]
+        /**
+         @property      averageSuspendedMemory
+        @abstract      Average memory of the application upon suspend.
+        @discussion    Dimensioned as NSUnitInformationStorage.
+        */
         #[method_id(@__retain_semantics Other averageSuspendedMemory)]
         pub unsafe fn averageSuspendedMemory(&self) -> Id<MXAverage<NSUnitInformationStorage>>;
     }

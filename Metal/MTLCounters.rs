@@ -82,6 +82,10 @@ extern_struct!(
 );
 
 extern_protocol!(
+    /**
+     @protocol MTLCounter
+    @abstract A descriptor for a single counter.
+    */
     pub unsafe trait MTLCounter: NSObjectProtocol {
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other name)]
@@ -92,12 +96,28 @@ extern_protocol!(
 );
 
 extern_protocol!(
+    /**
+     @protocol MTLCounterSet
+    @abstract A collection of MTLCounters that the device can capture in
+    a single pass.
+    */
     pub unsafe trait MTLCounterSet: NSObjectProtocol {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property name The name of the counter set.
+        */
         #[method_id(@__retain_semantics Other name)]
         unsafe fn name(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+         @property counters The set of counters captured by the counter set.
+        @discussion The counters array contains all the counters that will be written
+        when a counter sample is collected.  Counters that do not appear in this array
+        will not be written to the resolved buffer when the samples are resolved, even if
+        they appear in the corresponding resolved counter structure.  Instead
+        MTLCounterErrorValue will be written in the resolved buffer.
+        */
         #[method_id(@__retain_semantics Other counters)]
         unsafe fn counters(&self) -> Id<NSArray<ProtocolObject<dyn MTLCounter>>>;
     }
@@ -108,6 +128,10 @@ extern_protocol!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLCounterSampleBufferDescriptor")]
+    /**
+     @interface MTLCounterSampleBufferDescriptor
+    @abstract Object to represent the counter state.
+    */
     pub struct MTLCounterSampleBufferDescriptor;
 
     #[cfg(feature = "Metal_MTLCounterSampleBufferDescriptor")]
@@ -117,48 +141,100 @@ extern_class!(
 );
 
 #[cfg(feature = "Metal_MTLCounterSampleBufferDescriptor")]
+/**
+ @interface MTLCounterSampleBufferDescriptor
+@abstract Object to represent the counter state.
+*/
 unsafe impl NSObjectProtocol for MTLCounterSampleBufferDescriptor {}
 
 extern_methods!(
+    /**
+     @interface MTLCounterSampleBufferDescriptor
+    @abstract Object to represent the counter state.
+    */
     #[cfg(feature = "Metal_MTLCounterSampleBufferDescriptor")]
     unsafe impl MTLCounterSampleBufferDescriptor {
+        /**
+         @property counterSet The counterset to be sampled for this counter sample buffer
+        */
         #[method_id(@__retain_semantics Other counterSet)]
         pub unsafe fn counterSet(&self) -> Option<Id<ProtocolObject<dyn MTLCounterSet>>>;
 
+        /**
+         @property counterSet The counterset to be sampled for this counter sample buffer
+        */
         #[method(setCounterSet:)]
         pub unsafe fn setCounterSet(&self, counter_set: Option<&ProtocolObject<dyn MTLCounterSet>>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property label A label to identify the sample buffer in debugging tools.
+        */
         #[method_id(@__retain_semantics Other label)]
         pub unsafe fn label(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property label A label to identify the sample buffer in debugging tools.
+        */
         #[method(setLabel:)]
         pub unsafe fn setLabel(&self, label: &NSString);
 
+        /**
+         @property storageMode The storage mode for the sample buffer.  Only
+        MTLStorageModeShared and MTLStorageModePrivate may be used.
+        */
         #[method(storageMode)]
         pub unsafe fn storageMode(&self) -> MTLStorageMode;
 
+        /**
+         @property storageMode The storage mode for the sample buffer.  Only
+        MTLStorageModeShared and MTLStorageModePrivate may be used.
+        */
         #[method(setStorageMode:)]
         pub unsafe fn setStorageMode(&self, storage_mode: MTLStorageMode);
 
+        /**
+         @property sampleCount The number of samples that may be stored in the
+        counter sample buffer.
+        */
         #[method(sampleCount)]
         pub unsafe fn sampleCount(&self) -> NSUInteger;
 
+        /**
+         @property sampleCount The number of samples that may be stored in the
+        counter sample buffer.
+        */
         #[method(setSampleCount:)]
         pub unsafe fn setSampleCount(&self, sample_count: NSUInteger);
     }
 );
 
 extern_protocol!(
+    /**
+     @protocol MTLCounterSampleBuffer
+    @abstract The Counter Sample Buffer contains opaque counter samples as well
+    as state needed to request a sample from the API.
+    */
     pub unsafe trait MTLCounterSampleBuffer: NSObjectProtocol {
+        /**
+         @property device The device that created the sample buffer.  It is only valid
+        to use the sample buffer with this device.
+        */
         #[method_id(@__retain_semantics Other device)]
         unsafe fn device(&self) -> Id<ProtocolObject<dyn MTLDevice>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property label The label for the sample buffer.  This is set by the label
+        property of the descriptor that is used to create the sample buffer.
+        */
         #[method_id(@__retain_semantics Other label)]
         unsafe fn label(&self) -> Id<NSString>;
 
+        /**
+         @property sampleCount The number of samples that may be stored in this sample buffer.
+        */
         #[method(sampleCount)]
         unsafe fn sampleCount(&self) -> NSUInteger;
 
@@ -174,6 +250,17 @@ extern_static!(MTLCounterErrorDomain: &'static NSErrorDomain);
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum MTLCounterSampleBufferError
+    @constant MTLCounterSampleBufferErrorOutOfMemory
+    There wasn't enough memory available to allocate the counter sample buffer.
+
+    @constant MTLCounterSampleBufferErrorInvalid
+    Invalid parameter passed while creating counter sample buffer.
+
+    @constant MTLCounterSampleBufferErrorInternal
+    There was some other error in allocating the counter sample buffer.
+    */
     pub enum MTLCounterSampleBufferError {
         MTLCounterSampleBufferErrorOutOfMemory = 0,
         MTLCounterSampleBufferErrorInvalid = 1,

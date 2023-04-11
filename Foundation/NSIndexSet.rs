@@ -6,6 +6,32 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSIndexSet")]
+    /**
+      An NSRuleEditor is a class that allows the user to create and configure a list of options.  The view has a delegate which offers a tree of choices to the view.  The choices are presented by the view to the user as a row of popup buttons, static text fields, and custom views.  Each row in the list represents a particular path down the tree of choices.  An example of part of a tree of choices and a path through it:
+
+    ----| contains        -------> [CUSTOM TEXT FIELD]
+    Name-------------|   | starts with     |
+    Kind                 | ends with-------|
+    Creation date        | is
+    Modification date
+
+    Each node in the tree is represented by a "criterion," which can be any object.  As the user chooses from the popup menus, the rule editor view will query its delegate for the child criteria of the chosen criterion.  The only restriction on the criteria is that two criterions should be considered equal by isEqual: if they represent the same node, and must not be equal if they represent different nodes.  The path through the tree for a given row is represented by the array of criteria for the row.  For example, the criteria for the above selection would represent "Name", "ends with", and the custom text field; the manner in which the criteria represent those values is up to the developer.
+
+    There are two types of rows - standard rows and header rows (NSRuleEditorRowTypeSimple and NSRuleEditorRowTypeCompound).  A header row can contain other rows, but a standard row cannot.  Header rows and standard rows can have different trees of criteria.  The amount and style of row nesting is configurable.
+
+    Every time a row is created or modified, the rule editor view will query its delegate view for a "display value" for each new criteriion in the row.  The display value is what is presented to the user, and must be a NSString, NSView, or NSMenuItem.  When a criterion is selected in the row, the rule editor will query the criterion for its child criteria and then each of the children for their display value.  If there are multiple children, a popup button is formed from the string values and menu items.  If there is only one child, its display value is displayed as a static text field (if it is a string) or as a view (if the value is a view).
+
+    NSRuleEditor has some optional support for predicates.  For each row, it will ask its delegate for various parts of a predicate, which are returned in a dictionary.  Assuming the delegate returns enough parts for each row, the parts are then combined to form a predicate for the entire view.  This is expressed in the  "predicate" property for the view.  Subclassers can modify the predicate for each row as it is constructed.  Setting a predicate back on the view is not supported.
+
+    NSRuleEditor exposes one binding, "rows."  The "rows" binding may be bound to an ordered to-many relation (e.g. NSMutableArray).  Each object in the relation should have the following properties:
+
+    @"rowType" -> integer representing the type of the row (NSRuleEditorRowType)
+    @"subrows" -> ordered to-many relation (e.g. NSMutableArray) containing the directly nested subrows for the given row
+    @"displayValues" -> ordered to-many relation containing the display values for the row
+    @"criteria" -> ordered to-many relation containing the criteria for the row
+
+    These key paths can be set using the set*KeyPath: methods below
+    */
     pub struct NSIndexSet;
 
     #[cfg(feature = "Foundation_NSIndexSet")]
@@ -15,15 +41,119 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSIndexSet")]
+/**
+  An NSRuleEditor is a class that allows the user to create and configure a list of options.  The view has a delegate which offers a tree of choices to the view.  The choices are presented by the view to the user as a row of popup buttons, static text fields, and custom views.  Each row in the list represents a particular path down the tree of choices.  An example of part of a tree of choices and a path through it:
+
+----| contains        -------> [CUSTOM TEXT FIELD]
+Name-------------|   | starts with     |
+Kind                 | ends with-------|
+Creation date        | is
+Modification date
+
+Each node in the tree is represented by a "criterion," which can be any object.  As the user chooses from the popup menus, the rule editor view will query its delegate for the child criteria of the chosen criterion.  The only restriction on the criteria is that two criterions should be considered equal by isEqual: if they represent the same node, and must not be equal if they represent different nodes.  The path through the tree for a given row is represented by the array of criteria for the row.  For example, the criteria for the above selection would represent "Name", "ends with", and the custom text field; the manner in which the criteria represent those values is up to the developer.
+
+There are two types of rows - standard rows and header rows (NSRuleEditorRowTypeSimple and NSRuleEditorRowTypeCompound).  A header row can contain other rows, but a standard row cannot.  Header rows and standard rows can have different trees of criteria.  The amount and style of row nesting is configurable.
+
+Every time a row is created or modified, the rule editor view will query its delegate view for a "display value" for each new criteriion in the row.  The display value is what is presented to the user, and must be a NSString, NSView, or NSMenuItem.  When a criterion is selected in the row, the rule editor will query the criterion for its child criteria and then each of the children for their display value.  If there are multiple children, a popup button is formed from the string values and menu items.  If there is only one child, its display value is displayed as a static text field (if it is a string) or as a view (if the value is a view).
+
+NSRuleEditor has some optional support for predicates.  For each row, it will ask its delegate for various parts of a predicate, which are returned in a dictionary.  Assuming the delegate returns enough parts for each row, the parts are then combined to form a predicate for the entire view.  This is expressed in the  "predicate" property for the view.  Subclassers can modify the predicate for each row as it is constructed.  Setting a predicate back on the view is not supported.
+
+NSRuleEditor exposes one binding, "rows."  The "rows" binding may be bound to an ordered to-many relation (e.g. NSMutableArray).  Each object in the relation should have the following properties:
+
+@"rowType" -> integer representing the type of the row (NSRuleEditorRowType)
+@"subrows" -> ordered to-many relation (e.g. NSMutableArray) containing the directly nested subrows for the given row
+@"displayValues" -> ordered to-many relation containing the display values for the row
+@"criteria" -> ordered to-many relation containing the criteria for the row
+
+These key paths can be set using the set*KeyPath: methods below
+*/
 unsafe impl NSCoding for NSIndexSet {}
 
 #[cfg(feature = "Foundation_NSIndexSet")]
+/**
+  An NSRuleEditor is a class that allows the user to create and configure a list of options.  The view has a delegate which offers a tree of choices to the view.  The choices are presented by the view to the user as a row of popup buttons, static text fields, and custom views.  Each row in the list represents a particular path down the tree of choices.  An example of part of a tree of choices and a path through it:
+
+----| contains        -------> [CUSTOM TEXT FIELD]
+Name-------------|   | starts with     |
+Kind                 | ends with-------|
+Creation date        | is
+Modification date
+
+Each node in the tree is represented by a "criterion," which can be any object.  As the user chooses from the popup menus, the rule editor view will query its delegate for the child criteria of the chosen criterion.  The only restriction on the criteria is that two criterions should be considered equal by isEqual: if they represent the same node, and must not be equal if they represent different nodes.  The path through the tree for a given row is represented by the array of criteria for the row.  For example, the criteria for the above selection would represent "Name", "ends with", and the custom text field; the manner in which the criteria represent those values is up to the developer.
+
+There are two types of rows - standard rows and header rows (NSRuleEditorRowTypeSimple and NSRuleEditorRowTypeCompound).  A header row can contain other rows, but a standard row cannot.  Header rows and standard rows can have different trees of criteria.  The amount and style of row nesting is configurable.
+
+Every time a row is created or modified, the rule editor view will query its delegate view for a "display value" for each new criteriion in the row.  The display value is what is presented to the user, and must be a NSString, NSView, or NSMenuItem.  When a criterion is selected in the row, the rule editor will query the criterion for its child criteria and then each of the children for their display value.  If there are multiple children, a popup button is formed from the string values and menu items.  If there is only one child, its display value is displayed as a static text field (if it is a string) or as a view (if the value is a view).
+
+NSRuleEditor has some optional support for predicates.  For each row, it will ask its delegate for various parts of a predicate, which are returned in a dictionary.  Assuming the delegate returns enough parts for each row, the parts are then combined to form a predicate for the entire view.  This is expressed in the  "predicate" property for the view.  Subclassers can modify the predicate for each row as it is constructed.  Setting a predicate back on the view is not supported.
+
+NSRuleEditor exposes one binding, "rows."  The "rows" binding may be bound to an ordered to-many relation (e.g. NSMutableArray).  Each object in the relation should have the following properties:
+
+@"rowType" -> integer representing the type of the row (NSRuleEditorRowType)
+@"subrows" -> ordered to-many relation (e.g. NSMutableArray) containing the directly nested subrows for the given row
+@"displayValues" -> ordered to-many relation containing the display values for the row
+@"criteria" -> ordered to-many relation containing the criteria for the row
+
+These key paths can be set using the set*KeyPath: methods below
+*/
 unsafe impl NSObjectProtocol for NSIndexSet {}
 
 #[cfg(feature = "Foundation_NSIndexSet")]
+/**
+  An NSRuleEditor is a class that allows the user to create and configure a list of options.  The view has a delegate which offers a tree of choices to the view.  The choices are presented by the view to the user as a row of popup buttons, static text fields, and custom views.  Each row in the list represents a particular path down the tree of choices.  An example of part of a tree of choices and a path through it:
+
+----| contains        -------> [CUSTOM TEXT FIELD]
+Name-------------|   | starts with     |
+Kind                 | ends with-------|
+Creation date        | is
+Modification date
+
+Each node in the tree is represented by a "criterion," which can be any object.  As the user chooses from the popup menus, the rule editor view will query its delegate for the child criteria of the chosen criterion.  The only restriction on the criteria is that two criterions should be considered equal by isEqual: if they represent the same node, and must not be equal if they represent different nodes.  The path through the tree for a given row is represented by the array of criteria for the row.  For example, the criteria for the above selection would represent "Name", "ends with", and the custom text field; the manner in which the criteria represent those values is up to the developer.
+
+There are two types of rows - standard rows and header rows (NSRuleEditorRowTypeSimple and NSRuleEditorRowTypeCompound).  A header row can contain other rows, but a standard row cannot.  Header rows and standard rows can have different trees of criteria.  The amount and style of row nesting is configurable.
+
+Every time a row is created or modified, the rule editor view will query its delegate view for a "display value" for each new criteriion in the row.  The display value is what is presented to the user, and must be a NSString, NSView, or NSMenuItem.  When a criterion is selected in the row, the rule editor will query the criterion for its child criteria and then each of the children for their display value.  If there are multiple children, a popup button is formed from the string values and menu items.  If there is only one child, its display value is displayed as a static text field (if it is a string) or as a view (if the value is a view).
+
+NSRuleEditor has some optional support for predicates.  For each row, it will ask its delegate for various parts of a predicate, which are returned in a dictionary.  Assuming the delegate returns enough parts for each row, the parts are then combined to form a predicate for the entire view.  This is expressed in the  "predicate" property for the view.  Subclassers can modify the predicate for each row as it is constructed.  Setting a predicate back on the view is not supported.
+
+NSRuleEditor exposes one binding, "rows."  The "rows" binding may be bound to an ordered to-many relation (e.g. NSMutableArray).  Each object in the relation should have the following properties:
+
+@"rowType" -> integer representing the type of the row (NSRuleEditorRowType)
+@"subrows" -> ordered to-many relation (e.g. NSMutableArray) containing the directly nested subrows for the given row
+@"displayValues" -> ordered to-many relation containing the display values for the row
+@"criteria" -> ordered to-many relation containing the criteria for the row
+
+These key paths can be set using the set*KeyPath: methods below
+*/
 unsafe impl NSSecureCoding for NSIndexSet {}
 
 extern_methods!(
+    /**
+      An NSRuleEditor is a class that allows the user to create and configure a list of options.  The view has a delegate which offers a tree of choices to the view.  The choices are presented by the view to the user as a row of popup buttons, static text fields, and custom views.  Each row in the list represents a particular path down the tree of choices.  An example of part of a tree of choices and a path through it:
+
+    ----| contains        -------> [CUSTOM TEXT FIELD]
+    Name-------------|   | starts with     |
+    Kind                 | ends with-------|
+    Creation date        | is
+    Modification date
+
+    Each node in the tree is represented by a "criterion," which can be any object.  As the user chooses from the popup menus, the rule editor view will query its delegate for the child criteria of the chosen criterion.  The only restriction on the criteria is that two criterions should be considered equal by isEqual: if they represent the same node, and must not be equal if they represent different nodes.  The path through the tree for a given row is represented by the array of criteria for the row.  For example, the criteria for the above selection would represent "Name", "ends with", and the custom text field; the manner in which the criteria represent those values is up to the developer.
+
+    There are two types of rows - standard rows and header rows (NSRuleEditorRowTypeSimple and NSRuleEditorRowTypeCompound).  A header row can contain other rows, but a standard row cannot.  Header rows and standard rows can have different trees of criteria.  The amount and style of row nesting is configurable.
+
+    Every time a row is created or modified, the rule editor view will query its delegate view for a "display value" for each new criteriion in the row.  The display value is what is presented to the user, and must be a NSString, NSView, or NSMenuItem.  When a criterion is selected in the row, the rule editor will query the criterion for its child criteria and then each of the children for their display value.  If there are multiple children, a popup button is formed from the string values and menu items.  If there is only one child, its display value is displayed as a static text field (if it is a string) or as a view (if the value is a view).
+
+    NSRuleEditor has some optional support for predicates.  For each row, it will ask its delegate for various parts of a predicate, which are returned in a dictionary.  Assuming the delegate returns enough parts for each row, the parts are then combined to form a predicate for the entire view.  This is expressed in the  "predicate" property for the view.  Subclassers can modify the predicate for each row as it is constructed.  Setting a predicate back on the view is not supported.
+
+    NSRuleEditor exposes one binding, "rows."  The "rows" binding may be bound to an ordered to-many relation (e.g. NSMutableArray).  Each object in the relation should have the following properties:
+
+    @"rowType" -> integer representing the type of the row (NSRuleEditorRowType)
+    @"subrows" -> ordered to-many relation (e.g. NSMutableArray) containing the directly nested subrows for the given row
+    @"displayValues" -> ordered to-many relation containing the display values for the row
+    @"criteria" -> ordered to-many relation containing the criteria for the row
+
+    These key paths can be set using the set*KeyPath: methods below
+    */
     #[cfg(feature = "Foundation_NSIndexSet")]
     unsafe impl NSIndexSet {
         #[method_id(@__retain_semantics Other indexSet)]
@@ -56,6 +186,9 @@ extern_methods!(
         #[method(count)]
         pub unsafe fn count(&self) -> NSUInteger;
 
+        /**
+          The following six methods will return NSNotFound if there is no index in the set satisfying the query.
+        */
         #[method(firstIndex)]
         pub unsafe fn firstIndex(&self) -> NSUInteger;
 

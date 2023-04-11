@@ -41,6 +41,9 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "CoreData_NSPropertyDescription")]
+        /**
+          This may be an NSExpressionDescription that expresses a function
+        */
         #[method_id(@__retain_semantics Other property)]
         pub unsafe fn property(&self) -> Option<Id<NSPropertyDescription>>;
 
@@ -48,15 +51,27 @@ extern_methods!(
         #[method_id(@__retain_semantics Other propertyName)]
         pub unsafe fn propertyName(&self) -> Option<Id<NSString>>;
 
+        /**
+          Default NSIndexTypeBinary
+        */
         #[method(collationType)]
         pub unsafe fn collationType(&self) -> NSFetchIndexElementType;
 
+        /**
+          Default NSIndexTypeBinary
+        */
         #[method(setCollationType:)]
         pub unsafe fn setCollationType(&self, collation_type: NSFetchIndexElementType);
 
+        /**
+          Default YES. Control whether this is an ascending or descending index for indexes which support direction.
+        */
         #[method(isAscending)]
         pub unsafe fn isAscending(&self) -> bool;
 
+        /**
+          Default YES. Control whether this is an ascending or descending index for indexes which support direction.
+        */
         #[method(setAscending:)]
         pub unsafe fn setAscending(&self, ascending: bool);
 

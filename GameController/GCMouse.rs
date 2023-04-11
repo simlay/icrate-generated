@@ -16,6 +16,13 @@ extern_static!(GCMouseDidStopBeingCurrentNotification: &'static NSString);
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameController_GCMouse")]
+    /**
+     Mice are available to an application that links to GameController.framework. There are 2 ways to access mice
+    paired to the system. Adopt both to ensure the best user experience:
+
+    1: Querying for the current array of mice using [GCMouse mice]
+    2: Registering for Connection/Disconnection notifications from NSNotificationCenter.
+    */
     pub struct GCMouse;
 
     #[cfg(feature = "GameController_GCMouse")]
@@ -25,18 +32,48 @@ extern_class!(
 );
 
 #[cfg(feature = "GameController_GCMouse")]
+/**
+ Mice are available to an application that links to GameController.framework. There are 2 ways to access mice
+paired to the system. Adopt both to ensure the best user experience:
+
+1: Querying for the current array of mice using [GCMouse mice]
+2: Registering for Connection/Disconnection notifications from NSNotificationCenter.
+*/
 unsafe impl GCDevice for GCMouse {}
 
 #[cfg(feature = "GameController_GCMouse")]
+/**
+ Mice are available to an application that links to GameController.framework. There are 2 ways to access mice
+paired to the system. Adopt both to ensure the best user experience:
+
+1: Querying for the current array of mice using [GCMouse mice]
+2: Registering for Connection/Disconnection notifications from NSNotificationCenter.
+*/
 unsafe impl NSObjectProtocol for GCMouse {}
 
 extern_methods!(
+    /**
+     Mice are available to an application that links to GameController.framework. There are 2 ways to access mice
+    paired to the system. Adopt both to ensure the best user experience:
+
+    1: Querying for the current array of mice using [GCMouse mice]
+    2: Registering for Connection/Disconnection notifications from NSNotificationCenter.
+    */
     #[cfg(feature = "GameController_GCMouse")]
     unsafe impl GCMouse {
         #[cfg(feature = "GameController_GCMouseInput")]
+        /**
+         Unlike GCController GCMouse supports only one input profile
+        Profile contains mouse buttons, scroll wheel and  pointer delta.
+        */
         #[method_id(@__retain_semantics Other mouseInput)]
         pub unsafe fn mouseInput(&self) -> Option<Id<GCMouseInput>>;
 
+        /**
+         The most recently used mouse device. If a user actuates a mouse input, that mouse will become the current one.
+        @see GCMouseDidBecomeCurrentNotification
+        @see GCMouseDidStopBeingCurrentNotification
+        */
         #[method_id(@__retain_semantics Other current)]
         pub unsafe fn current() -> Option<Id<GCMouse>>;
 

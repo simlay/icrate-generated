@@ -7,6 +7,11 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNContactsUserDefaults")]
+    /**
+      @abstract The user defaults for contacts.
+
+     @note This class is not thread safe.
+    */
     pub struct CNContactsUserDefaults;
 
     #[cfg(feature = "Contacts_CNContactsUserDefaults")]
@@ -16,9 +21,19 @@ extern_class!(
 );
 
 #[cfg(feature = "Contacts_CNContactsUserDefaults")]
+/**
+  @abstract The user defaults for contacts.
+
+ @note This class is not thread safe.
+*/
 unsafe impl NSObjectProtocol for CNContactsUserDefaults {}
 
 extern_methods!(
+    /**
+      @abstract The user defaults for contacts.
+
+     @note This class is not thread safe.
+    */
     #[cfg(feature = "Contacts_CNContactsUserDefaults")]
     unsafe impl CNContactsUserDefaults {
         #[method_id(@__retain_semantics Other sharedDefaults)]

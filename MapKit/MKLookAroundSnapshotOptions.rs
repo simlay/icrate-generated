@@ -35,9 +35,15 @@ extern_methods!(
             point_of_interest_filter: Option<&MKPointOfInterestFilter>,
         );
 
+        /**
+          The size of the image to create. Defaults to 256x256
+        */
         #[method(size)]
         pub unsafe fn size(&self) -> CGSize;
 
+        /**
+          The size of the image to create. Defaults to 256x256
+        */
         #[method(setSize:)]
         pub unsafe fn setSize(&self, size: CGSize);
     }

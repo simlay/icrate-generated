@@ -38,9 +38,19 @@ extern_methods!(
             value_changed_handler: GCControllerButtonValueChangedHandler,
         );
 
+        /**
+         Set this block if you want to be notified when only the pressed state on this button changes. This
+        will get called less often than the valueChangedHandler with the additional feature of the pressed state
+        being different to the last time it was called.
+        */
         #[method(pressedChangedHandler)]
         pub unsafe fn pressedChangedHandler(&self) -> GCControllerButtonValueChangedHandler;
 
+        /**
+         Set this block if you want to be notified when only the pressed state on this button changes. This
+        will get called less often than the valueChangedHandler with the additional feature of the pressed state
+        being different to the last time it was called.
+        */
         #[method(setPressedChangedHandler:)]
         pub unsafe fn setPressedChangedHandler(
             &self,
@@ -56,12 +66,39 @@ extern_methods!(
             touched_changed_handler: GCControllerButtonTouchedChangedHandler,
         );
 
+        /**
+         A normalized value for the input. Between 0 and 1 for button inputs. Values are saturated and thus never exceed the range of [0, 1].
+        @see valueChangedHandler
+        @see pressed
+        */
         #[method(value)]
         pub unsafe fn value(&self) -> c_float;
 
+        /**
+         Buttons are mostly used in a digital sense, thus we have a recommended method for checking for pressed state instead of
+        interpreting the value.
+
+        As a general guideline a button is pressed if the value exceeds 0. However there may be hysterisis applied
+        to counter noisy input values, thus incidental values around the threshold value may not trigger a change
+        in pressed state.
+
+        Others buttons may support two-stage actuation, where the button reports a value between 0 and 1 but is only considered
+        pressed when its value is greater than some threshold other than 0.
+        @see pressedChangedHandler
+        @see value
+        */
         #[method(isPressed)]
         pub unsafe fn isPressed(&self) -> bool;
 
+        /**
+         Some buttons feature capacitive touch capabilities where the user can touch the button
+        without pressing it. In such cases, a button will be touched before it is pressed.
+
+        For buttons without capacitive sensing, the touched state is true if the value exceeds 0.
+
+        @see touchChangedHandler
+        @see pressed
+        */
         #[method(isTouched)]
         pub unsafe fn isTouched(&self) -> bool;
 

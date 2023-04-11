@@ -67,10 +67,16 @@ extern_methods!(
         pub unsafe fn setSearchButtonCell(&self, search_button_cell: Option<&NSButtonCell>);
 
         #[cfg(feature = "AppKit_NSButtonCell")]
+        /**
+          can modify, set or cancel search button.
+        */
         #[method_id(@__retain_semantics Other cancelButtonCell)]
         pub unsafe fn cancelButtonCell(&self) -> Option<Id<NSButtonCell>>;
 
         #[cfg(feature = "AppKit_NSButtonCell")]
+        /**
+          can modify, set or cancel search button.
+        */
         #[method(setCancelButtonCell:)]
         pub unsafe fn setCancelButtonCell(&self, cancel_button_cell: Option<&NSButtonCell>);
 
@@ -90,45 +96,81 @@ extern_methods!(
         pub unsafe fn cancelButtonRectForBounds(&self, rect: NSRect) -> NSRect;
 
         #[cfg(feature = "AppKit_NSMenu")]
+        /**
+          for custom layout or to get current sizes
+        */
         #[method_id(@__retain_semantics Other searchMenuTemplate)]
         pub unsafe fn searchMenuTemplate(&self) -> Option<Id<NSMenu>>;
 
         #[cfg(feature = "AppKit_NSMenu")]
+        /**
+          for custom layout or to get current sizes
+        */
         #[method(setSearchMenuTemplate:)]
         pub unsafe fn setSearchMenuTemplate(&self, search_menu_template: Option<&NSMenu>);
 
+        /**
+          set/get search menu template. Menu can use custom tagged items to indicate special items. this menu isn't actually set but used to construct the dynamic search menu. if cleared, then we don't track recents.
+        */
         #[method(sendsWholeSearchString)]
         pub unsafe fn sendsWholeSearchString(&self) -> bool;
 
+        /**
+          set/get search menu template. Menu can use custom tagged items to indicate special items. this menu isn't actually set but used to construct the dynamic search menu. if cleared, then we don't track recents.
+        */
         #[method(setSendsWholeSearchString:)]
         pub unsafe fn setSendsWholeSearchString(&self, sends_whole_search_string: bool);
 
+        /**
+          if clear, send action on each key stroke (after sufficient amount of time so we don't interfere with typing). if set, send only on return/enter or clicking magnifying search button
+        */
         #[method(maximumRecents)]
         pub unsafe fn maximumRecents(&self) -> NSInteger;
 
+        /**
+          if clear, send action on each key stroke (after sufficient amount of time so we don't interfere with typing). if set, send only on return/enter or clicking magnifying search button
+        */
         #[method(setMaximumRecents:)]
         pub unsafe fn setMaximumRecents(&self, maximum_recents: NSInteger);
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          set/get limit max recents. allowable between 0 and 254. setting -1 will use default.
+        */
         #[method_id(@__retain_semantics Other recentSearches)]
         pub unsafe fn recentSearches(&self) -> Id<NSArray<NSString>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          set/get limit max recents. allowable between 0 and 254. setting -1 will use default.
+        */
         #[method(setRecentSearches:)]
         pub unsafe fn setRecentSearches(&self, recent_searches: Option<&NSArray<NSString>>);
 
+        /**
+          if app wants to do custom search lists. will return empty array if no searches
+        */
         #[method_id(@__retain_semantics Other recentsAutosaveName)]
         pub unsafe fn recentsAutosaveName(&self) -> Option<Id<NSSearchFieldRecentsAutosaveName>>;
 
+        /**
+          if app wants to do custom search lists. will return empty array if no searches
+        */
         #[method(setRecentsAutosaveName:)]
         pub unsafe fn setRecentsAutosaveName(
             &self,
             recents_autosave_name: Option<&NSSearchFieldRecentsAutosaveName>,
         );
 
+        /**
+          must be set to use. default is nil which means no autosave.
+        */
         #[method(sendsSearchStringImmediately)]
         pub unsafe fn sendsSearchStringImmediately(&self) -> bool;
 
+        /**
+          must be set to use. default is nil which means no autosave.
+        */
         #[method(setSendsSearchStringImmediately:)]
         pub unsafe fn setSendsSearchStringImmediately(&self, sends_search_string_immediately: bool);
     }

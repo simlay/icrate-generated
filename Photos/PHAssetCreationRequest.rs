@@ -24,24 +24,42 @@ extern_methods!(
     #[cfg(feature = "PhotoKit_PHAssetResourceCreationOptions")]
     unsafe impl PHAssetResourceCreationOptions {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The filename for the resource. If not specified, one will be inferred from a fileURL if available, or else generated.
+        */
         #[method_id(@__retain_semantics Other originalFilename)]
         pub unsafe fn originalFilename(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The filename for the resource. If not specified, one will be inferred from a fileURL if available, or else generated.
+        */
         #[method(setOriginalFilename:)]
         pub unsafe fn setOriginalFilename(&self, original_filename: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The uniform type identifier for the resource. If not specified, one will be inferred from the PHAssetResourceType.
+        */
         #[method_id(@__retain_semantics Other uniformTypeIdentifier)]
         pub unsafe fn uniformTypeIdentifier(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The uniform type identifier for the resource. If not specified, one will be inferred from the PHAssetResourceType.
+        */
         #[method(setUniformTypeIdentifier:)]
         pub unsafe fn setUniformTypeIdentifier(&self, uniform_type_identifier: Option<&NSString>);
 
+        /**
+          When enabled, the file passed to the creation request will be moved into the photo library without duplicating the file data (the original file is removed if the asset is created successfully), otherwise a copy of the file is created from the original. Defaults to NO.  Attempting to move a file that is open or hardlinked will fail.
+        */
         #[method(shouldMoveFile)]
         pub unsafe fn shouldMoveFile(&self) -> bool;
 
+        /**
+          When enabled, the file passed to the creation request will be moved into the photo library without duplicating the file data (the original file is removed if the asset is created successfully), otherwise a copy of the file is created from the original. Defaults to NO.  Attempting to move a file that is open or hardlinked will fail.
+        */
         #[method(setShouldMoveFile:)]
         pub unsafe fn setShouldMoveFile(&self, should_move_file: bool);
     }
@@ -50,6 +68,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "PhotoKit_PHAssetCreationRequest")]
+    /**
+      PHAssetCreationRequest can only be created or used within a -[PHPhotoLibrary performChanges:] or -[PHPhotoLibrary performChangesAndWait:] block.
+    */
     pub struct PHAssetCreationRequest;
 
     #[cfg(feature = "PhotoKit_PHAssetCreationRequest")]
@@ -60,9 +81,15 @@ extern_class!(
 );
 
 #[cfg(feature = "PhotoKit_PHAssetCreationRequest")]
+/**
+  PHAssetCreationRequest can only be created or used within a -[PHPhotoLibrary performChanges:] or -[PHPhotoLibrary performChangesAndWait:] block.
+*/
 unsafe impl NSObjectProtocol for PHAssetCreationRequest {}
 
 extern_methods!(
+    /**
+      PHAssetCreationRequest can only be created or used within a -[PHPhotoLibrary performChanges:] or -[PHPhotoLibrary performChangesAndWait:] block.
+    */
     #[cfg(feature = "PhotoKit_PHAssetCreationRequest")]
     unsafe impl PHAssetCreationRequest {
         #[method_id(@__retain_semantics Other creationRequestForAsset)]
@@ -100,6 +127,9 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `PHAssetChangeRequest`
+    /**
+      PHAssetCreationRequest can only be created or used within a -[PHPhotoLibrary performChanges:] or -[PHPhotoLibrary performChangesAndWait:] block.
+    */
     #[cfg(feature = "PhotoKit_PHAssetCreationRequest")]
     unsafe impl PHAssetCreationRequest {
         #[cfg(feature = "AppKit_NSImage")]

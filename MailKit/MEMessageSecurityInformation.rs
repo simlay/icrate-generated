@@ -8,6 +8,9 @@ use crate::MailKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MailKit_MEMessageSecurityInformation")]
+    /**
+      @brief Contains security information about a decoded message
+    */
     pub struct MEMessageSecurityInformation;
 
     #[cfg(feature = "MailKit_MEMessageSecurityInformation")]
@@ -17,36 +20,66 @@ extern_class!(
 );
 
 #[cfg(feature = "MailKit_MEMessageSecurityInformation")]
+/**
+  @brief Contains security information about a decoded message
+*/
 unsafe impl NSCoding for MEMessageSecurityInformation {}
 
 #[cfg(feature = "MailKit_MEMessageSecurityInformation")]
+/**
+  @brief Contains security information about a decoded message
+*/
 unsafe impl NSObjectProtocol for MEMessageSecurityInformation {}
 
 #[cfg(feature = "MailKit_MEMessageSecurityInformation")]
+/**
+  @brief Contains security information about a decoded message
+*/
 unsafe impl NSSecureCoding for MEMessageSecurityInformation {}
 
 extern_methods!(
+    /**
+      @brief Contains security information about a decoded message
+    */
     #[cfg(feature = "MailKit_MEMessageSecurityInformation")]
     unsafe impl MEMessageSecurityInformation {
         #[cfg(all(feature = "Foundation_NSArray", feature = "MailKit_MEMessageSigner"))]
+        /**
+          @brief The signers of the message
+        */
         #[method_id(@__retain_semantics Other signers)]
         pub unsafe fn signers(&self) -> Id<NSArray<MEMessageSigner>>;
 
+        /**
+          @brief Whether or not the message was encrypted.
+        */
         #[method(isEncrypted)]
         pub unsafe fn isEncrypted(&self) -> bool;
 
         #[cfg(feature = "Foundation_NSError")]
+        /**
+          @brief Any signing error that occured when decoding the message.
+        */
         #[method_id(@__retain_semantics Other signingError)]
         pub unsafe fn signingError(&self) -> Option<Id<NSError>>;
 
         #[cfg(feature = "Foundation_NSError")]
+        /**
+          @brief Any encryption error that occured when decoding the message.
+        */
         #[method_id(@__retain_semantics Other encryptionError)]
         pub unsafe fn encryptionError(&self) -> Option<Id<NSError>>;
 
+        /**
+          @brief Whether or not Mail should block loading remote content for the message by default. The user will have the option to load remote content manually.
+        */
         #[method(shouldBlockRemoteContent)]
         pub unsafe fn shouldBlockRemoteContent(&self) -> bool;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @brief A localized string containing the reason for blocking remote content.
+        */
         #[method_id(@__retain_semantics Other localizedRemoteContentBlockingReason)]
         pub unsafe fn localizedRemoteContentBlockingReason(&self) -> Option<Id<NSString>>;
 

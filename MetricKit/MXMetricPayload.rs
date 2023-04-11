@@ -7,6 +7,14 @@ use crate::MetricKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MetricKit_MXMetricPayload")]
+    /**
+     @class         MXMetricPayload
+    @abstract      A wrapper class which contains a metric payload and associated properties of that payload.
+    @discussion    MXMetricPayload encapsulates currently supported metric types that can be vended by MetricKit. MXMetric subclasses on MXMetricPayload are nullable. If an MXMetric subclass is nil, it indicates that the data is not available for this payload.
+    @discussion    MXMetricPayload exposes a convenience function, JSONRepresentation, to convert the contents of the payload to a human readable JSON. This should be used in conjunction with other APIs that accept NSData.
+    @discussion    An MXMetricPayload contains data that covers a 24 hour period of application usage. The properties timeStampBegin and timeStampEnd should be used to determine which time range the payload covers.
+    @discussion    It is possible for an MXMetricPayload to cover regions of time where an application was updated, and thus had multiple different app version strings. The property latestApplicationVersion will always reflect the latest appVersion at the time the metric payload was created. Use includesMultipleApplicationVersions to determine if an application changed versions during the time range the payload covers.
+    */
     pub struct MXMetricPayload;
 
     #[cfg(feature = "MetricKit_MXMetricPayload")]
@@ -16,91 +24,202 @@ extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXMetricPayload")]
+/**
+ @class         MXMetricPayload
+@abstract      A wrapper class which contains a metric payload and associated properties of that payload.
+@discussion    MXMetricPayload encapsulates currently supported metric types that can be vended by MetricKit. MXMetric subclasses on MXMetricPayload are nullable. If an MXMetric subclass is nil, it indicates that the data is not available for this payload.
+@discussion    MXMetricPayload exposes a convenience function, JSONRepresentation, to convert the contents of the payload to a human readable JSON. This should be used in conjunction with other APIs that accept NSData.
+@discussion    An MXMetricPayload contains data that covers a 24 hour period of application usage. The properties timeStampBegin and timeStampEnd should be used to determine which time range the payload covers.
+@discussion    It is possible for an MXMetricPayload to cover regions of time where an application was updated, and thus had multiple different app version strings. The property latestApplicationVersion will always reflect the latest appVersion at the time the metric payload was created. Use includesMultipleApplicationVersions to determine if an application changed versions during the time range the payload covers.
+*/
 unsafe impl NSCoding for MXMetricPayload {}
 
 #[cfg(feature = "MetricKit_MXMetricPayload")]
+/**
+ @class         MXMetricPayload
+@abstract      A wrapper class which contains a metric payload and associated properties of that payload.
+@discussion    MXMetricPayload encapsulates currently supported metric types that can be vended by MetricKit. MXMetric subclasses on MXMetricPayload are nullable. If an MXMetric subclass is nil, it indicates that the data is not available for this payload.
+@discussion    MXMetricPayload exposes a convenience function, JSONRepresentation, to convert the contents of the payload to a human readable JSON. This should be used in conjunction with other APIs that accept NSData.
+@discussion    An MXMetricPayload contains data that covers a 24 hour period of application usage. The properties timeStampBegin and timeStampEnd should be used to determine which time range the payload covers.
+@discussion    It is possible for an MXMetricPayload to cover regions of time where an application was updated, and thus had multiple different app version strings. The property latestApplicationVersion will always reflect the latest appVersion at the time the metric payload was created. Use includesMultipleApplicationVersions to determine if an application changed versions during the time range the payload covers.
+*/
 unsafe impl NSObjectProtocol for MXMetricPayload {}
 
 #[cfg(feature = "MetricKit_MXMetricPayload")]
+/**
+ @class         MXMetricPayload
+@abstract      A wrapper class which contains a metric payload and associated properties of that payload.
+@discussion    MXMetricPayload encapsulates currently supported metric types that can be vended by MetricKit. MXMetric subclasses on MXMetricPayload are nullable. If an MXMetric subclass is nil, it indicates that the data is not available for this payload.
+@discussion    MXMetricPayload exposes a convenience function, JSONRepresentation, to convert the contents of the payload to a human readable JSON. This should be used in conjunction with other APIs that accept NSData.
+@discussion    An MXMetricPayload contains data that covers a 24 hour period of application usage. The properties timeStampBegin and timeStampEnd should be used to determine which time range the payload covers.
+@discussion    It is possible for an MXMetricPayload to cover regions of time where an application was updated, and thus had multiple different app version strings. The property latestApplicationVersion will always reflect the latest appVersion at the time the metric payload was created. Use includesMultipleApplicationVersions to determine if an application changed versions during the time range the payload covers.
+*/
 unsafe impl NSSecureCoding for MXMetricPayload {}
 
 extern_methods!(
+    /**
+     @class         MXMetricPayload
+    @abstract      A wrapper class which contains a metric payload and associated properties of that payload.
+    @discussion    MXMetricPayload encapsulates currently supported metric types that can be vended by MetricKit. MXMetric subclasses on MXMetricPayload are nullable. If an MXMetric subclass is nil, it indicates that the data is not available for this payload.
+    @discussion    MXMetricPayload exposes a convenience function, JSONRepresentation, to convert the contents of the payload to a human readable JSON. This should be used in conjunction with other APIs that accept NSData.
+    @discussion    An MXMetricPayload contains data that covers a 24 hour period of application usage. The properties timeStampBegin and timeStampEnd should be used to determine which time range the payload covers.
+    @discussion    It is possible for an MXMetricPayload to cover regions of time where an application was updated, and thus had multiple different app version strings. The property latestApplicationVersion will always reflect the latest appVersion at the time the metric payload was created. Use includesMultipleApplicationVersions to determine if an application changed versions during the time range the payload covers.
+    */
     #[cfg(feature = "MetricKit_MXMetricPayload")]
     unsafe impl MXMetricPayload {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property      latestApplicationVersion
+        @abstract      An NSString representation of the application version from which this payload was generated.
+        @discussion    If the application version was changed during the aggregation of this data, this value will reflect the latest application version at the time of retrieval.
+        */
         #[method_id(@__retain_semantics Other latestApplicationVersion)]
         pub unsafe fn latestApplicationVersion(&self) -> Id<NSString>;
 
+        /**
+         @property      includesMultipleApplicationVersions
+        @abstract      A bool which indicates whether or not this payload contains data from multiple application versions.
+        @discussion    A value of YES indicates that this payload's data reflects multiple application versions.
+        @discussion    A value of NO indicates that this payload only reflects data from the application version specified by latestApplicationVersion.
+        */
         #[method(includesMultipleApplicationVersions)]
         pub unsafe fn includesMultipleApplicationVersions(&self) -> bool;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+         @property      timeStampBegin
+        @abstract      An NSDate object that indicates the time which the payload was generated.
+        */
         #[method_id(@__retain_semantics Other timeStampBegin)]
         pub unsafe fn timeStampBegin(&self) -> Id<NSDate>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+         @property      timeStampEnd
+        @abstract      An NSDate object that indicates the time which the payload was generated.
+        */
         #[method_id(@__retain_semantics Other timeStampEnd)]
         pub unsafe fn timeStampEnd(&self) -> Id<NSDate>;
 
         #[cfg(feature = "MetricKit_MXCPUMetric")]
+        /**
+         @property      cpuMetrics
+        @abstract      An object containing CPU metrics for this application.
+        */
         #[method_id(@__retain_semantics Other cpuMetrics)]
         pub unsafe fn cpuMetrics(&self) -> Option<Id<MXCPUMetric>>;
 
         #[cfg(feature = "MetricKit_MXGPUMetric")]
+        /**
+         @property      gpuMetrics
+        @abstract      An object containing GPU metrics for this application.
+        */
         #[method_id(@__retain_semantics Other gpuMetrics)]
         pub unsafe fn gpuMetrics(&self) -> Option<Id<MXGPUMetric>>;
 
         #[cfg(feature = "MetricKit_MXCellularConditionMetric")]
+        /**
+         @property      cellularConditionMetrics
+        @abstract      An object containing a cellular condition metrics for this application.
+        */
         #[method_id(@__retain_semantics Other cellularConditionMetrics)]
         pub unsafe fn cellularConditionMetrics(&self) -> Option<Id<MXCellularConditionMetric>>;
 
         #[cfg(feature = "MetricKit_MXAppRunTimeMetric")]
+        /**
+         @property      applicationTimeMetrics
+        @abstract      An object containing running mode metrics for this application.
+        */
         #[method_id(@__retain_semantics Other applicationTimeMetrics)]
         pub unsafe fn applicationTimeMetrics(&self) -> Option<Id<MXAppRunTimeMetric>>;
 
         #[cfg(feature = "MetricKit_MXLocationActivityMetric")]
+        /**
+         @property      locationActivityMetrics
+        @abstract      An object containing location activity metrics for this application.
+        */
         #[method_id(@__retain_semantics Other locationActivityMetrics)]
         pub unsafe fn locationActivityMetrics(&self) -> Option<Id<MXLocationActivityMetric>>;
 
         #[cfg(feature = "MetricKit_MXNetworkTransferMetric")]
+        /**
+         @property      networkTransferMetrics
+        @abstract      An object containing network transfer metrics for this application.
+        */
         #[method_id(@__retain_semantics Other networkTransferMetrics)]
         pub unsafe fn networkTransferMetrics(&self) -> Option<Id<MXNetworkTransferMetric>>;
 
         #[cfg(feature = "MetricKit_MXAppLaunchMetric")]
+        /**
+         @property      applicationLaunchMetrics
+        @abstract      An object containing launch metrics for this application.
+        */
         #[method_id(@__retain_semantics Other applicationLaunchMetrics)]
         pub unsafe fn applicationLaunchMetrics(&self) -> Option<Id<MXAppLaunchMetric>>;
 
         #[cfg(feature = "MetricKit_MXAppResponsivenessMetric")]
+        /**
+         @property      applicationResponsivenessMetrics
+        @abstract      An object containing hang metrics for this application.
+        */
         #[method_id(@__retain_semantics Other applicationResponsivenessMetrics)]
         pub unsafe fn applicationResponsivenessMetrics(
             &self,
         ) -> Option<Id<MXAppResponsivenessMetric>>;
 
         #[cfg(feature = "MetricKit_MXDiskIOMetric")]
+        /**
+         @property      diskIOMetrics
+        @abstract      An object containing disk IO metrics for this application.
+        */
         #[method_id(@__retain_semantics Other diskIOMetrics)]
         pub unsafe fn diskIOMetrics(&self) -> Option<Id<MXDiskIOMetric>>;
 
         #[cfg(feature = "MetricKit_MXMemoryMetric")]
+        /**
+         @property      memoryMetrics
+        @abstract      An object containing memory metrics for this application.
+        */
         #[method_id(@__retain_semantics Other memoryMetrics)]
         pub unsafe fn memoryMetrics(&self) -> Option<Id<MXMemoryMetric>>;
 
         #[cfg(feature = "MetricKit_MXDisplayMetric")]
+        /**
+         @property      displayMetrics
+        @abstract      An object containing display metrics for this application.
+        */
         #[method_id(@__retain_semantics Other displayMetrics)]
         pub unsafe fn displayMetrics(&self) -> Option<Id<MXDisplayMetric>>;
 
         #[cfg(feature = "MetricKit_MXAnimationMetric")]
+        /**
+         @property      animationMetrics
+        @abstract      An object containing animation metrics for this application.
+        */
         #[method_id(@__retain_semantics Other animationMetrics)]
         pub unsafe fn animationMetrics(&self) -> Option<Id<MXAnimationMetric>>;
 
         #[cfg(feature = "MetricKit_MXAppExitMetric")]
+        /**
+         @property      applicationExitMetrics
+        @abstract      An object containing exit metrics for this application.
+        */
         #[method_id(@__retain_semantics Other applicationExitMetrics)]
         pub unsafe fn applicationExitMetrics(&self) -> Option<Id<MXAppExitMetric>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "MetricKit_MXSignpostMetric"))]
+        /**
+         @property      signpostMetrics
+        @abstract      An array containing signpost metrics for this application.
+        */
         #[method_id(@__retain_semantics Other signpostMetrics)]
         pub unsafe fn signpostMetrics(&self) -> Option<Id<NSArray<MXSignpostMetric>>>;
 
         #[cfg(feature = "MetricKit_MXMetaData")]
+        /**
+         @property      metaData
+        @abstract      An object containing extra metadata for this payload.
+        */
         #[method_id(@__retain_semantics Other metaData)]
         pub unsafe fn metaData(&self) -> Option<Id<MXMetaData>>;
 

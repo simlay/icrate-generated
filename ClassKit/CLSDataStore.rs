@@ -26,6 +26,9 @@ extern_protocol!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "ClassKit_CLSDataStore")]
+    /**
+     @abstract      The data store maintains and syncs your app's contexts.
+    */
     pub struct CLSDataStore;
 
     #[cfg(feature = "ClassKit_CLSDataStore")]
@@ -35,29 +38,55 @@ extern_class!(
 );
 
 #[cfg(feature = "ClassKit_CLSDataStore")]
+/**
+ @abstract      The data store maintains and syncs your app's contexts.
+*/
 unsafe impl NSObjectProtocol for CLSDataStore {}
 
 extern_methods!(
+    /**
+     @abstract      The data store maintains and syncs your app's contexts.
+    */
     #[cfg(feature = "ClassKit_CLSDataStore")]
     unsafe impl CLSDataStore {
+        /**
+         @abstract      The data store provides read/write access to your app's ClassKit data.
+        @discussion    Data written to the data store is automatically synced via iCloud across the user's devices.
+        */
         #[method_id(@__retain_semantics Other shared)]
         pub unsafe fn shared() -> Id<CLSDataStore>;
 
         #[cfg(feature = "ClassKit_CLSContext")]
+        /**
+         @abstract      Fetch the top level context for the current app.
+        @discussion    The main context is automatically created. Add child contexts to this context to persist them in the data store.
+        */
         #[method_id(@__retain_semantics Other mainAppContext)]
         pub unsafe fn mainAppContext(&self) -> Id<CLSContext>;
 
         #[cfg(feature = "ClassKit_CLSContext")]
+        /**
+         @abstract      Returns the context that is currently active. If no context is active, this will return nil.
+        */
         #[method_id(@__retain_semantics Other activeContext)]
         pub unsafe fn activeContext(&self) -> Option<Id<CLSContext>>;
 
         #[cfg(feature = "ClassKit_CLSActivity")]
+        /**
+         @abstract      Returns the most recently started activity that is running.
+        */
         #[method_id(@__retain_semantics Other runningActivity)]
         pub unsafe fn runningActivity(&self) -> Option<Id<CLSActivity>>;
 
+        /**
+         @abstract      The data store delegate allows for easy population of the app's context hierarchy.
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(&self) -> Option<Id<ProtocolObject<dyn CLSDataStoreDelegate>>>;
 
+        /**
+         @abstract      The data store delegate allows for easy population of the app's context hierarchy.
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,

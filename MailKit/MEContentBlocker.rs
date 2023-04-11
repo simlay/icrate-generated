@@ -6,6 +6,9 @@ use crate::Foundation::*;
 use crate::MailKit::*;
 
 extern_protocol!(
+    /**
+      @brief Methods in this protocol can be used by a mail app extension to block content in mail messages.
+    */
     pub unsafe trait MEContentBlocker: NSObjectProtocol {
         #[cfg(feature = "Foundation_NSData")]
         #[method_id(@__retain_semantics Other contentRulesJSON)]

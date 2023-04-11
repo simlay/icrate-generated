@@ -32,16 +32,28 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "AppKit_NSSplitView")]
+        /**
+         The splitView must be in the same window as the toolbar containing this item by the time the toolbar is shown. Only vertical split views are supported.
+        */
         #[method_id(@__retain_semantics Other splitView)]
         pub unsafe fn splitView(&self) -> Id<NSSplitView>;
 
         #[cfg(feature = "AppKit_NSSplitView")]
+        /**
+         The splitView must be in the same window as the toolbar containing this item by the time the toolbar is shown. Only vertical split views are supported.
+        */
         #[method(setSplitView:)]
         pub unsafe fn setSplitView(&self, split_view: &NSSplitView);
 
+        /**
+         The specific divider of the splitView which will be tracked.
+        */
         #[method(dividerIndex)]
         pub unsafe fn dividerIndex(&self) -> NSInteger;
 
+        /**
+         The specific divider of the splitView which will be tracked.
+        */
         #[method(setDividerIndex:)]
         pub unsafe fn setDividerIndex(&self, divider_index: NSInteger);
     }

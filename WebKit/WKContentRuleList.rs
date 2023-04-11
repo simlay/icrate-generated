@@ -23,6 +23,9 @@ extern_methods!(
     #[cfg(feature = "WebKit_WKContentRuleList")]
     unsafe impl WKContentRuleList {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract A copy of the identifier of the content extension.
+        */
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Id<NSString>;
     }

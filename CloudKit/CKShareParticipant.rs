@@ -17,6 +17,9 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      These permissions determine what share participants can do with records inside that share
+    */
     pub enum CKShareParticipantPermission {
         CKShareParticipantPermissionUnknown = 0,
         CKShareParticipantPermissionNone = 1,
@@ -27,6 +30,14 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      @abstract The participant type determines whether a participant can modify the list of participants on a share.
+
+      @discussion
+      - Owners can add private users
+      - Private users can access the share
+      - Public users are "self-added" when the participant accesses the shareURL.  Owners cannot add public users.
+    */
     pub enum CKShareParticipantRole {
         CKShareParticipantRoleUnknown = 0,
         CKShareParticipantRoleOwner = 1,
@@ -83,16 +94,28 @@ extern_methods!(
         #[method_id(@__retain_semantics Other userIdentity)]
         pub unsafe fn userIdentity(&self) -> Id<CKUserIdentity>;
 
+        /**
+          The default participant role is @c CKShareParticipantRolePrivateUser.
+        */
         #[method(role)]
         pub unsafe fn role(&self) -> CKShareParticipantRole;
 
+        /**
+          The default participant role is @c CKShareParticipantRolePrivateUser.
+        */
         #[method(setRole:)]
         pub unsafe fn setRole(&self, role: CKShareParticipantRole);
 
+        /**
+          The default participant type is @c CKShareParticipantTypePrivateUser.
+        */
         #[deprecated]
         #[method(type)]
         pub unsafe fn r#type(&self) -> CKShareParticipantType;
 
+        /**
+          The default participant type is @c CKShareParticipantTypePrivateUser.
+        */
         #[deprecated]
         #[method(setType:)]
         pub unsafe fn setType(&self, r#type: CKShareParticipantType);
@@ -100,9 +123,15 @@ extern_methods!(
         #[method(acceptanceStatus)]
         pub unsafe fn acceptanceStatus(&self) -> CKShareParticipantAcceptanceStatus;
 
+        /**
+          The default permission for a new participant is @c CKShareParticipantPermissionReadOnly.
+        */
         #[method(permission)]
         pub unsafe fn permission(&self) -> CKShareParticipantPermission;
 
+        /**
+          The default permission for a new participant is @c CKShareParticipantPermissionReadOnly.
+        */
         #[method(setPermission:)]
         pub unsafe fn setPermission(&self, permission: CKShareParticipantPermission);
     }

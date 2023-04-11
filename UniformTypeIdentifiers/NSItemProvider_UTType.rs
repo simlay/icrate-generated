@@ -61,6 +61,11 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "UniformTypeIdentifiers_UTType"
         ))]
+        /**
+          Registered content types, in the order they were registered
+         \discussion Content types should be registered in order of fidelity. Prefer using content types that appear earlier
+         in the array.
+        */
         #[method_id(@__retain_semantics Other registeredContentTypes)]
         pub unsafe fn registeredContentTypes(&self) -> Id<NSArray<UTType>>;
 
@@ -68,6 +73,9 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "UniformTypeIdentifiers_UTType"
         ))]
+        /**
+          Registered content types that can be loaded as files opened in place
+        */
         #[method_id(@__retain_semantics Other registeredContentTypesForOpenInPlace)]
         pub unsafe fn registeredContentTypesForOpenInPlace(&self) -> Id<NSArray<UTType>>;
 

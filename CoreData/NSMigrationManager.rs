@@ -48,9 +48,17 @@ extern_methods!(
             d_options: Option<&NSDictionary>,
         ) -> Result<(), Id<NSError>>;
 
+        /**
+          Tries to use a store specific migration manager to perform the store migration, note that a store specific migration manager class is not guaranteed to perform any of the migration manager delegate callbacks or update values for the observable properties.
+        Defaults to YES
+        */
         #[method(usesStoreSpecificMigrationManager)]
         pub unsafe fn usesStoreSpecificMigrationManager(&self) -> bool;
 
+        /**
+          Tries to use a store specific migration manager to perform the store migration, note that a store specific migration manager class is not guaranteed to perform any of the migration manager delegate callbacks or update values for the observable properties.
+        Defaults to YES
+        */
         #[method(setUsesStoreSpecificMigrationManager:)]
         pub unsafe fn setUsesStoreSpecificMigrationManager(
             &self,
@@ -61,6 +69,9 @@ extern_methods!(
         pub unsafe fn reset(&self);
 
         #[cfg(feature = "CoreData_NSMappingModel")]
+        /**
+          Accessors for the mapping model, source model, and destination model
+        */
         #[method_id(@__retain_semantics Other mappingModel)]
         pub unsafe fn mappingModel(&self) -> Id<NSMappingModel>;
 
@@ -73,6 +84,9 @@ extern_methods!(
         pub unsafe fn destinationModel(&self) -> Id<NSManagedObjectModel>;
 
         #[cfg(feature = "CoreData_NSManagedObjectContext")]
+        /**
+          Accessors for the managed object contexts used for reading the source and destination stores.  These contexts are created lazily, as part of the initialization of two Core Data stacks (one for reading, the other for writing data.)
+        */
         #[method_id(@__retain_semantics Other sourceContext)]
         pub unsafe fn sourceContext(&self) -> Id<NSManagedObjectContext>;
 
@@ -137,17 +151,29 @@ extern_methods!(
         ) -> Id<NSArray<NSManagedObject>>;
 
         #[cfg(feature = "CoreData_NSEntityMapping")]
+        /**
+          Observable property that can be used to determine progress of the migration process.  Returns the current entity mapping being processed. Each entity is processed a total of three times (instance creation, relationship creation, validation)
+        */
         #[method_id(@__retain_semantics Other currentEntityMapping)]
         pub unsafe fn currentEntityMapping(&self) -> Id<NSEntityMapping>;
 
+        /**
+          Observable property that can be used to determine progress of the migration process.  Returns the percentage complete of the migration process.  The progress value is a number from 0 to 1 indicating percent complete.
+        */
         #[method(migrationProgress)]
         pub unsafe fn migrationProgress(&self) -> c_float;
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          Returns/sets the user info for the migration manager
+        */
         #[method_id(@__retain_semantics Other userInfo)]
         pub unsafe fn userInfo(&self) -> Option<Id<NSDictionary>>;
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          Returns/sets the user info for the migration manager
+        */
         #[method(setUserInfo:)]
         pub unsafe fn setUserInfo(&self, user_info: Option<&NSDictionary>);
 

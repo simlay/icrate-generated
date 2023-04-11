@@ -57,6 +57,9 @@ ns_enum!(
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+      NSFileManagerUnmountOptions to pass to unmountVolumeAtURL:options:completionHandler:
+    */
     pub enum NSFileManagerUnmountOptions {
         NSFileManagerUnmountAllPartitionsAndEjectDisk = 1 << 0,
         NSFileManagerUnmountWithoutUI = 1 << 1,
@@ -84,6 +87,9 @@ unsafe impl NSObjectProtocol for NSFileManager {}
 extern_methods!(
     #[cfg(feature = "Foundation_NSFileManager")]
     unsafe impl NSFileManager {
+        /**
+          Returns the default singleton instance.
+        */
         #[method_id(@__retain_semantics Other defaultManager)]
         pub unsafe fn defaultManager() -> Id<NSFileManager>;
 
@@ -175,9 +181,15 @@ extern_methods!(
             dest_url: &NSURL,
         ) -> Result<(), Id<NSError>>;
 
+        /**
+          Instances of NSFileManager may now have delegates. Each instance has one delegate, and the delegate is not retained. In versions of Mac OS X prior to 10.5, the behavior of calling [[NSFileManager alloc] init] was undefined. In Mac OS X 10.5 "Leopard" and later, calling [[NSFileManager alloc] init] returns a new instance of an NSFileManager.
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(&self) -> Option<Id<ProtocolObject<dyn NSFileManagerDelegate>>>;
 
+        /**
+          Instances of NSFileManager may now have delegates. Each instance has one delegate, and the delegate is not retained. In versions of Mac OS X prior to 10.5, the behavior of calling [[NSFileManager alloc] init] was undefined. In Mac OS X 10.5 "Leopard" and later, calling [[NSFileManager alloc] init] returns a new instance of an NSFileManager.
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
@@ -429,6 +441,9 @@ extern_methods!(
         ) -> bool;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Process working directory management. Despite the fact that these are instance methods on NSFileManager, these methods report and change (respectively) the working directory for the entire process. Developers are cautioned that doing so is fraught with peril.
+        */
         #[method_id(@__retain_semantics Other currentDirectoryPath)]
         pub unsafe fn currentDirectoryPath(&self) -> Id<NSString>;
 
@@ -600,6 +615,11 @@ extern_methods!(
             out_date: Option<&mut Option<Id<NSDate>>>,
         ) -> Result<Id<NSURL>, Id<NSError>>;
 
+        /**
+          Returns an opaque token that represents the current ubiquity identity. This object can be copied, encoded, or compared with isEqual:. When ubiquity containers are unavailable because the user has disabled them, or when the user is simply not logged in, this method will return nil. The NSUbiquityIdentityDidChangeNotification notification is posted after this value changes.
+
+        If you don't need the container URL and just want to check if ubiquity containers are available you should use this method instead of checking -URLForUbiquityContainerIdentifier:.
+        */
         #[method_id(@__retain_semantics Other ubiquityIdentityToken)]
         pub unsafe fn ubiquityIdentityToken(&self) -> Option<Id<TodoProtocols>>;
 
@@ -889,6 +909,9 @@ extern_methods!(
         NSDirectoryEnumerator<ObjectType, ObjectTypeOwnership>
     {
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          For NSDirectoryEnumerators created with -enumeratorAtPath:, the -fileAttributes and -directoryAttributes methods return an NSDictionary containing the keys listed below. For NSDirectoryEnumerators created with -enumeratorAtURL:includingPropertiesForKeys:options:errorHandler:, these two methods return nil.
+        */
         #[method_id(@__retain_semantics Other fileAttributes)]
         pub unsafe fn fileAttributes(&self)
             -> Option<Id<NSDictionary<NSFileAttributeKey, Object>>>;
@@ -899,12 +922,18 @@ extern_methods!(
             &self,
         ) -> Option<Id<NSDictionary<NSFileAttributeKey, Object>>>;
 
+        /**
+          For NSDirectoryEnumerators created with -enumeratorAtURL:includingPropertiesForKeys:options:errorHandler: and the NSDirectoryEnumerationIncludesDirectoriesPostOrder option, this property is YES when the current object is a directory that is being enumerated after all of its contents have been enumerated.
+        */
         #[method(isEnumeratingDirectoryPostOrder)]
         pub unsafe fn isEnumeratingDirectoryPostOrder(&self) -> bool;
 
         #[method(skipDescendents)]
         pub unsafe fn skipDescendents(&self);
 
+        /**
+          This method returns the number of levels deep the current object is in the directory hierarchy being enumerated. The directory passed to -enumeratorAtURL:includingPropertiesForKeys:options:errorHandler: is considered to be level 0.
+        */
         #[method(level)]
         pub unsafe fn level(&self) -> NSUInteger;
 
@@ -916,6 +945,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSFileProviderService")]
+    /**
+      In an application that has received a URL to a file owned by a file provider, instances of NSFileProviderService can by obtained by calling -[NSFileManager getFileProviderServicesForItemAtURL:completionHandler:]. Each NSFileProviderService instance can only be used to operate on the URL originally passed to that method.
+    */
     pub struct NSFileProviderService;
 
     #[cfg(feature = "Foundation_NSFileProviderService")]
@@ -925,9 +957,15 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSFileProviderService")]
+/**
+  In an application that has received a URL to a file owned by a file provider, instances of NSFileProviderService can by obtained by calling -[NSFileManager getFileProviderServicesForItemAtURL:completionHandler:]. Each NSFileProviderService instance can only be used to operate on the URL originally passed to that method.
+*/
 unsafe impl NSObjectProtocol for NSFileProviderService {}
 
 extern_methods!(
+    /**
+      In an application that has received a URL to a file owned by a file provider, instances of NSFileProviderService can by obtained by calling -[NSFileManager getFileProviderServicesForItemAtURL:completionHandler:]. Each NSFileProviderService instance can only be used to operate on the URL originally passed to that method.
+    */
     #[cfg(feature = "Foundation_NSFileProviderService")]
     unsafe impl NSFileProviderService {
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSXPCConnection"))]

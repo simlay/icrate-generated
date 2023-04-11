@@ -7,6 +7,9 @@ use crate::Speech::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Speech_SFSpeechRecognitionResult")]
+    /**
+      A recognized utterance, corresponding to a segment of recorded audio with speech and containing one or more transcriptions hypotheses
+    */
     pub struct SFSpeechRecognitionResult;
 
     #[cfg(feature = "Speech_SFSpeechRecognitionResult")]
@@ -16,15 +19,27 @@ extern_class!(
 );
 
 #[cfg(feature = "Speech_SFSpeechRecognitionResult")]
+/**
+  A recognized utterance, corresponding to a segment of recorded audio with speech and containing one or more transcriptions hypotheses
+*/
 unsafe impl NSCoding for SFSpeechRecognitionResult {}
 
 #[cfg(feature = "Speech_SFSpeechRecognitionResult")]
+/**
+  A recognized utterance, corresponding to a segment of recorded audio with speech and containing one or more transcriptions hypotheses
+*/
 unsafe impl NSObjectProtocol for SFSpeechRecognitionResult {}
 
 #[cfg(feature = "Speech_SFSpeechRecognitionResult")]
+/**
+  A recognized utterance, corresponding to a segment of recorded audio with speech and containing one or more transcriptions hypotheses
+*/
 unsafe impl NSSecureCoding for SFSpeechRecognitionResult {}
 
 extern_methods!(
+    /**
+      A recognized utterance, corresponding to a segment of recorded audio with speech and containing one or more transcriptions hypotheses
+    */
     #[cfg(feature = "Speech_SFSpeechRecognitionResult")]
     unsafe impl SFSpeechRecognitionResult {
         #[cfg(feature = "Speech_SFTranscription")]
@@ -32,9 +47,15 @@ extern_methods!(
         pub unsafe fn bestTranscription(&self) -> Id<SFTranscription>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Speech_SFTranscription"))]
+        /**
+          Hypotheses for possible transcriptions, sorted in descending order of confidence (more likely first)
+        */
         #[method_id(@__retain_semantics Other transcriptions)]
         pub unsafe fn transcriptions(&self) -> Id<NSArray<SFTranscription>>;
 
+        /**
+          True if the hypotheses will not change; speech processing is complete.
+        */
         #[method(isFinal)]
         pub unsafe fn isFinal(&self) -> bool;
 

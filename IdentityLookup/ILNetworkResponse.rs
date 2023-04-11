@@ -7,6 +7,9 @@ use crate::IdentityLookup::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "IdentityLookup_ILNetworkResponse")]
+    /**
+      A response to an HTTPS network request.
+    */
     pub struct ILNetworkResponse;
 
     #[cfg(feature = "IdentityLookup_ILNetworkResponse")]
@@ -16,22 +19,40 @@ extern_class!(
 );
 
 #[cfg(feature = "IdentityLookup_ILNetworkResponse")]
+/**
+  A response to an HTTPS network request.
+*/
 unsafe impl NSCoding for ILNetworkResponse {}
 
 #[cfg(feature = "IdentityLookup_ILNetworkResponse")]
+/**
+  A response to an HTTPS network request.
+*/
 unsafe impl NSObjectProtocol for ILNetworkResponse {}
 
 #[cfg(feature = "IdentityLookup_ILNetworkResponse")]
+/**
+  A response to an HTTPS network request.
+*/
 unsafe impl NSSecureCoding for ILNetworkResponse {}
 
 extern_methods!(
+    /**
+      A response to an HTTPS network request.
+    */
     #[cfg(feature = "IdentityLookup_ILNetworkResponse")]
     unsafe impl ILNetworkResponse {
         #[cfg(feature = "Foundation_NSHTTPURLResponse")]
+        /**
+          Represents the URL response itself. See documentation for NSHTTPURLResponse.
+        */
         #[method_id(@__retain_semantics Other urlResponse)]
         pub unsafe fn urlResponse(&self) -> Id<NSHTTPURLResponse>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          Data returned in the HTTPS response.
+        */
         #[method_id(@__retain_semantics Other data)]
         pub unsafe fn data(&self) -> Id<NSData>;
 

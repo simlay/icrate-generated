@@ -7,6 +7,10 @@ use crate::OSAKit::*;
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+      Language Options
+     ================
+    */
     pub enum OSALanguageFeatures {
         OSASupportsCompiling = 0x0002,
         OSASupportsGetSource = 0x0004,
@@ -22,6 +26,10 @@ ns_options!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "OSAKit_OSALanguage")]
+    /**
+      OSALanguage
+     ===========
+    */
     pub struct OSALanguage;
 
     #[cfg(feature = "OSAKit_OSALanguage")]
@@ -31,9 +39,17 @@ extern_class!(
 );
 
 #[cfg(feature = "OSAKit_OSALanguage")]
+/**
+  OSALanguage
+ ===========
+*/
 unsafe impl NSObjectProtocol for OSALanguage {}
 
 extern_methods!(
+    /**
+      OSALanguage
+     ===========
+    */
     #[cfg(feature = "OSAKit_OSALanguage")]
     unsafe impl OSALanguage {
         #[cfg(feature = "Foundation_NSArray")]

@@ -35,9 +35,15 @@ unsafe impl NSUserInterfaceItemIdentification for NSActionCell {}
 extern_methods!(
     #[cfg(feature = "AppKit_NSActionCell")]
     unsafe impl NSActionCell {
+        /**
+          Target is weak for zeroing-weak compatible objects in apps linked on 10.10 or later. Otherwise the behavior of this property is 'assign’.
+        */
         #[method_id(@__retain_semantics Other target)]
         pub unsafe fn target(&self) -> Option<Id<Object>>;
 
+        /**
+          Target is weak for zeroing-weak compatible objects in apps linked on 10.10 or later. Otherwise the behavior of this property is 'assign’.
+        */
         #[method(setTarget:)]
         pub unsafe fn setTarget(&self, target: Option<&Object>);
 

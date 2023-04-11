@@ -95,6 +95,9 @@ extern_methods!(
     #[cfg(feature = "AppKit_NSFontDescriptor")]
     unsafe impl NSFontDescriptor {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Core attribute access
+        */
         #[method_id(@__retain_semantics Other postscriptName)]
         pub unsafe fn postscriptName(&self) -> Option<Id<NSString>>;
 
@@ -108,6 +111,9 @@ extern_methods!(
         #[method(symbolicTraits)]
         pub unsafe fn symbolicTraits(&self) -> NSFontDescriptorSymbolicTraits;
 
+        /**
+          YES indicates that any fonts matching the descriptor needs to be downloaded prior to instantiating a font. To ensure that the matching fonts are available before use, use NSFontAssetRequest to download. NO indicates that the descriptor is not available for download, has already been downloaded, or is backed by an installed font.
+        */
         #[method(requiresFontAssetRequest)]
         pub unsafe fn requiresFontAssetRequest(&self) -> bool;
 
@@ -318,6 +324,9 @@ pub type NSFontFamilyClass = u32;
 
 extern_enum!(
     #[underlying(c_int)]
+    /**
+      The following enum items are deprecated. Use NSFontDescriptorSymbolicTraits instead
+    */
     pub enum __anonymous__ {
         NSFontUnknownClass = 0 << 28,
         NSFontOldStyleSerifsClass = 1 << 28,

@@ -52,6 +52,9 @@ extern_methods!(
             feature = "AuthenticationServices_ASAuthorizationPlatformPublicKeyCredentialDescriptor",
             feature = "Foundation_NSArray"
         ))]
+        /**
+          @abstract A list of credentials to allow for this request. If this ilist is nonempty, only credentials matching the provided descriptors can be used to sign in.
+        */
         #[method_id(@__retain_semantics Other allowedCredentials)]
         pub unsafe fn allowedCredentials(
             &self,
@@ -61,6 +64,9 @@ extern_methods!(
             feature = "AuthenticationServices_ASAuthorizationPlatformPublicKeyCredentialDescriptor",
             feature = "Foundation_NSArray"
         ))]
+        /**
+          @abstract A list of credentials to allow for this request. If this ilist is nonempty, only credentials matching the provided descriptors can be used to sign in.
+        */
         #[method(setAllowedCredentials:)]
         pub unsafe fn setAllowedCredentials(
             &self,

@@ -9,6 +9,9 @@ use crate::OSAKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Automator_AMBundleAction")]
+    /**
+      AMBundleAction
+    */
     pub struct AMBundleAction;
 
     #[cfg(feature = "Automator_AMBundleAction")]
@@ -19,15 +22,27 @@ extern_class!(
 );
 
 #[cfg(feature = "Automator_AMBundleAction")]
+/**
+  AMBundleAction
+*/
 unsafe impl NSCoding for AMBundleAction {}
 
 #[cfg(feature = "Automator_AMBundleAction")]
+/**
+  AMBundleAction
+*/
 unsafe impl NSObjectProtocol for AMBundleAction {}
 
 #[cfg(feature = "Automator_AMBundleAction")]
+/**
+  AMBundleAction
+*/
 unsafe impl NSSecureCoding for AMBundleAction {}
 
 extern_methods!(
+    /**
+      AMBundleAction
+    */
     #[cfg(feature = "Automator_AMBundleAction")]
     unsafe impl AMBundleAction {
         #[method(awakeFromBundle)]
@@ -37,6 +52,9 @@ extern_methods!(
         pub unsafe fn hasView(&self) -> bool;
 
         #[cfg(feature = "AppKit_NSView")]
+        /**
+          Accessors
+        */
         #[method_id(@__retain_semantics Other view)]
         pub unsafe fn view(&self) -> Option<Id<NSView>>;
 
@@ -66,6 +84,9 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `AMAction`
+    /**
+      AMBundleAction
+    */
     #[cfg(feature = "Automator_AMBundleAction")]
     unsafe impl AMBundleAction {
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]

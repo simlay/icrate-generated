@@ -29,6 +29,10 @@ extern_static!(NSSplitViewItemUnspecifiedDimension: CGFloat);
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSSplitViewItem")]
+    /**
+      NSSplitViewItem implements the items used in an NSSplitViewController.
+     The item describes a child ViewController's state in a SplitViewController, e.g. its collapsibility, holding priority and other metrics, and collapsed state.
+    */
     pub struct NSSplitViewItem;
 
     #[cfg(feature = "AppKit_NSSplitViewItem")]
@@ -38,15 +42,31 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSSplitViewItem")]
+/**
+  NSSplitViewItem implements the items used in an NSSplitViewController.
+ The item describes a child ViewController's state in a SplitViewController, e.g. its collapsibility, holding priority and other metrics, and collapsed state.
+*/
 unsafe impl NSAnimatablePropertyContainer for NSSplitViewItem {}
 
 #[cfg(feature = "AppKit_NSSplitViewItem")]
+/**
+  NSSplitViewItem implements the items used in an NSSplitViewController.
+ The item describes a child ViewController's state in a SplitViewController, e.g. its collapsibility, holding priority and other metrics, and collapsed state.
+*/
 unsafe impl NSCoding for NSSplitViewItem {}
 
 #[cfg(feature = "AppKit_NSSplitViewItem")]
+/**
+  NSSplitViewItem implements the items used in an NSSplitViewController.
+ The item describes a child ViewController's state in a SplitViewController, e.g. its collapsibility, holding priority and other metrics, and collapsed state.
+*/
 unsafe impl NSObjectProtocol for NSSplitViewItem {}
 
 extern_methods!(
+    /**
+      NSSplitViewItem implements the items used in an NSSplitViewController.
+     The item describes a child ViewController's state in a SplitViewController, e.g. its collapsibility, holding priority and other metrics, and collapsed state.
+    */
     #[cfg(feature = "AppKit_NSSplitViewItem")]
     unsafe impl NSSplitViewItem {
         #[cfg(feature = "AppKit_NSViewController")]
@@ -64,83 +84,164 @@ extern_methods!(
         pub unsafe fn contentListWithViewController(view_controller: &NSViewController)
             -> Id<Self>;
 
+        /**
+          The standard behavior type of the receiver. See initializers for descriptions of each behavior.
+        */
         #[method(behavior)]
         pub unsafe fn behavior(&self) -> NSSplitViewItemBehavior;
 
         #[cfg(feature = "AppKit_NSViewController")]
+        /**
+          The view controller represented by the SplitViewItem. An exception will be thrown if a new viewController is set while the receiving SplitViewItem is added to a SplitViewController.
+        */
         #[method_id(@__retain_semantics Other viewController)]
         pub unsafe fn viewController(&self) -> Id<NSViewController>;
 
         #[cfg(feature = "AppKit_NSViewController")]
+        /**
+          The view controller represented by the SplitViewItem. An exception will be thrown if a new viewController is set while the receiving SplitViewItem is added to a SplitViewController.
+        */
         #[method(setViewController:)]
         pub unsafe fn setViewController(&self, view_controller: &NSViewController);
 
+        /**
+          Whether or not the child ViewController corresponding to the SplitViewItem is collapsed in the SplitViewController. The default is \c NO. This can be set with the animator proxy to animate the collapse or uncollapse. The exact animation used can be customized by setting it in the -animations dictionary with a key of "collapsed". If this is set to YES before it is added to the SplitViewController, it will be initially collapsed and the SplitViewController will not cause the view to be loaded until it is uncollapsed. This is KVC/KVO compliant and will be updated if the value changes from user interaction.
+        */
         #[method(isCollapsed)]
         pub unsafe fn isCollapsed(&self) -> bool;
 
+        /**
+          Whether or not the child ViewController corresponding to the SplitViewItem is collapsed in the SplitViewController. The default is \c NO. This can be set with the animator proxy to animate the collapse or uncollapse. The exact animation used can be customized by setting it in the -animations dictionary with a key of "collapsed". If this is set to YES before it is added to the SplitViewController, it will be initially collapsed and the SplitViewController will not cause the view to be loaded until it is uncollapsed. This is KVC/KVO compliant and will be updated if the value changes from user interaction.
+        */
         #[method(setCollapsed:)]
         pub unsafe fn setCollapsed(&self, collapsed: bool);
 
+        /**
+          Whether or not the child view controller is collapsible from user interaction - whether by dragging or double clicking a divider. The default is \c NO.
+        */
         #[method(canCollapse)]
         pub unsafe fn canCollapse(&self) -> bool;
 
+        /**
+          Whether or not the child view controller is collapsible from user interaction - whether by dragging or double clicking a divider. The default is \c NO.
+        */
         #[method(setCanCollapse:)]
         pub unsafe fn setCanCollapse(&self, can_collapse: bool);
 
+        /**
+          The resize behavior when the receiver toggles its `collapsed` state programmatically, both animatedly and not. Defaults to `.Default`.
+        */
         #[method(collapseBehavior)]
         pub unsafe fn collapseBehavior(&self) -> NSSplitViewItemCollapseBehavior;
 
+        /**
+          The resize behavior when the receiver toggles its `collapsed` state programmatically, both animatedly and not. Defaults to `.Default`.
+        */
         #[method(setCollapseBehavior:)]
         pub unsafe fn setCollapseBehavior(
             &self,
             collapse_behavior: NSSplitViewItemCollapseBehavior,
         );
 
+        /**
+          A convenience to set the minimum thickness of the split view item -- width for "vertical" split views, height otherwise. If NSSplitViewItemUnspecifiedDimension, no minimum size is enforced by the SplitViewItem, although constraints in the contained view hierarchy might have constraints specify some minimum size on their own. Defaults to NSSplitViewItemUnspecifiedDimension.
+        */
         #[method(minimumThickness)]
         pub unsafe fn minimumThickness(&self) -> CGFloat;
 
+        /**
+          A convenience to set the minimum thickness of the split view item -- width for "vertical" split views, height otherwise. If NSSplitViewItemUnspecifiedDimension, no minimum size is enforced by the SplitViewItem, although constraints in the contained view hierarchy might have constraints specify some minimum size on their own. Defaults to NSSplitViewItemUnspecifiedDimension.
+        */
         #[method(setMinimumThickness:)]
         pub unsafe fn setMinimumThickness(&self, minimum_thickness: CGFloat);
 
+        /**
+          A convenience to set the maximum thickness of the split view item -- width for "vertical" split views, height otherwise. If NSSplitViewItemUnspecifiedDimension, no maximum size is enforced by the SplitViewItem, although constraints in the contained view hierarchy might have constraints specify some maximum size on their own. Defaults to NSSplitViewItemUnspecifiedDimension.
+        */
         #[method(maximumThickness)]
         pub unsafe fn maximumThickness(&self) -> CGFloat;
 
+        /**
+          A convenience to set the maximum thickness of the split view item -- width for "vertical" split views, height otherwise. If NSSplitViewItemUnspecifiedDimension, no maximum size is enforced by the SplitViewItem, although constraints in the contained view hierarchy might have constraints specify some maximum size on their own. Defaults to NSSplitViewItemUnspecifiedDimension.
+        */
         #[method(setMaximumThickness:)]
         pub unsafe fn setMaximumThickness(&self, maximum_thickness: CGFloat);
 
+        /**
+          The percentage of the contained NSSplitView that the NSSplitViewItem prefers to encompass. This is used when double-clicking on a neighbor divider to return to that standard ratio. As well as after entering fullscreen to determine the initial size of the receiver. Defaults to NSSplitViewItemUnspecifiedDimension, which means no resize will occur on double-clicks, and the absolute size is preserved when entering fullscreen.
+        */
         #[method(preferredThicknessFraction)]
         pub unsafe fn preferredThicknessFraction(&self) -> CGFloat;
 
+        /**
+          The percentage of the contained NSSplitView that the NSSplitViewItem prefers to encompass. This is used when double-clicking on a neighbor divider to return to that standard ratio. As well as after entering fullscreen to determine the initial size of the receiver. Defaults to NSSplitViewItemUnspecifiedDimension, which means no resize will occur on double-clicks, and the absolute size is preserved when entering fullscreen.
+        */
         #[method(setPreferredThicknessFraction:)]
         pub unsafe fn setPreferredThicknessFraction(&self, preferred_thickness_fraction: CGFloat);
 
+        /**
+          Sets the priority under which a SplitViewItem will hold its width (for a vertical split view) or height (for a horizontal split view). The view with the lowest priority will be the first to take on additional width if the split view grows or shrinks. The default is \c NSLayoutPriorityDefaultLow.
+        */
         #[method(holdingPriority)]
         pub unsafe fn holdingPriority(&self) -> NSLayoutPriority;
 
+        /**
+          Sets the priority under which a SplitViewItem will hold its width (for a vertical split view) or height (for a horizontal split view). The view with the lowest priority will be the first to take on additional width if the split view grows or shrinks. The default is \c NSLayoutPriorityDefaultLow.
+        */
         #[method(setHoldingPriority:)]
         pub unsafe fn setHoldingPriority(&self, holding_priority: NSLayoutPriority);
 
+        /**
+          The maximum thickness of the split view item when resizing due to automatic sizing, such as entering fullscreen with a set preferredThicknessFraction or proportional sizing. The user can still resize up to the absolute maximum size by dragging the divider or otherwise. If NSSplitViewItemUnspecifiedDimension, no automatic maximum is enforced. Defaults to NSSplitViewItemUnspecifiedDimension.
+        */
         #[method(automaticMaximumThickness)]
         pub unsafe fn automaticMaximumThickness(&self) -> CGFloat;
 
+        /**
+          The maximum thickness of the split view item when resizing due to automatic sizing, such as entering fullscreen with a set preferredThicknessFraction or proportional sizing. The user can still resize up to the absolute maximum size by dragging the divider or otherwise. If NSSplitViewItemUnspecifiedDimension, no automatic maximum is enforced. Defaults to NSSplitViewItemUnspecifiedDimension.
+        */
         #[method(setAutomaticMaximumThickness:)]
         pub unsafe fn setAutomaticMaximumThickness(&self, automatic_maximum_thickness: CGFloat);
 
+        /**
+          If YES, the split view item can be temporarily uncollapsed during a drag by hovering or deep clicking on its neighboring divider. Defaults to NO.
+        */
         #[method(isSpringLoaded)]
         pub unsafe fn isSpringLoaded(&self) -> bool;
 
+        /**
+          If YES, the split view item can be temporarily uncollapsed during a drag by hovering or deep clicking on its neighboring divider. Defaults to NO.
+        */
         #[method(setSpringLoaded:)]
         pub unsafe fn setSpringLoaded(&self, spring_loaded: bool);
 
+        /**
+          Whether or not a sidebar is allowed to be full height in the window when the `NSFullSizeContentViewWindowMask` style mask is also set. Only applies to NSSplitViewItemBehaviorSidebar. Defaults to YES
+        */
         #[method(allowsFullHeightLayout)]
         pub unsafe fn allowsFullHeightLayout(&self) -> bool;
 
+        /**
+          Whether or not a sidebar is allowed to be full height in the window when the `NSFullSizeContentViewWindowMask` style mask is also set. Only applies to NSSplitViewItemBehaviorSidebar. Defaults to YES
+        */
         #[method(setAllowsFullHeightLayout:)]
         pub unsafe fn setAllowsFullHeightLayout(&self, allows_full_height_layout: bool);
 
+        /**
+          Specifies a preference for the style of separator displayed between the titlebar and the content of the split view item.
+
+         For this value to be applicable, the item's view must be associated with its own titlebar section (see `NSTrackingSeparatorToolbarItem` for more info).
+         The default value is NSTitlebarSeparatorStyleAutomatic. This value is subject to the containing window's preference and can be overridden.
+        */
         #[method(titlebarSeparatorStyle)]
         pub unsafe fn titlebarSeparatorStyle(&self) -> NSTitlebarSeparatorStyle;
 
+        /**
+          Specifies a preference for the style of separator displayed between the titlebar and the content of the split view item.
+
+         For this value to be applicable, the item's view must be associated with its own titlebar section (see `NSTrackingSeparatorToolbarItem` for more info).
+         The default value is NSTitlebarSeparatorStyleAutomatic. This value is subject to the containing window's preference and can be overridden.
+        */
         #[method(setTitlebarSeparatorStyle:)]
         pub unsafe fn setTitlebarSeparatorStyle(
             &self,

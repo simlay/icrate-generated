@@ -8,6 +8,9 @@ use crate::GameKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameKit_GKLeaderboardViewController")]
+    /**
+      View controller that provides the standard user interface for leaderboards.  Present modally from the top view controller.
+    */
     #[deprecated = "Use GKGameCenterViewController instead"]
     pub struct GKLeaderboardViewController;
 
@@ -19,24 +22,45 @@ extern_class!(
 );
 
 #[cfg(feature = "GameKit_GKLeaderboardViewController")]
+/**
+  View controller that provides the standard user interface for leaderboards.  Present modally from the top view controller.
+*/
 unsafe impl GKViewController for GKLeaderboardViewController {}
 
 #[cfg(feature = "GameKit_GKLeaderboardViewController")]
+/**
+  View controller that provides the standard user interface for leaderboards.  Present modally from the top view controller.
+*/
 unsafe impl NSCoding for GKLeaderboardViewController {}
 
 #[cfg(feature = "GameKit_GKLeaderboardViewController")]
+/**
+  View controller that provides the standard user interface for leaderboards.  Present modally from the top view controller.
+*/
 unsafe impl NSEditor for GKLeaderboardViewController {}
 
 #[cfg(feature = "GameKit_GKLeaderboardViewController")]
+/**
+  View controller that provides the standard user interface for leaderboards.  Present modally from the top view controller.
+*/
 unsafe impl NSObjectProtocol for GKLeaderboardViewController {}
 
 #[cfg(feature = "GameKit_GKLeaderboardViewController")]
+/**
+  View controller that provides the standard user interface for leaderboards.  Present modally from the top view controller.
+*/
 unsafe impl NSSeguePerforming for GKLeaderboardViewController {}
 
 #[cfg(feature = "GameKit_GKLeaderboardViewController")]
+/**
+  View controller that provides the standard user interface for leaderboards.  Present modally from the top view controller.
+*/
 unsafe impl NSUserInterfaceItemIdentification for GKLeaderboardViewController {}
 
 extern_methods!(
+    /**
+      View controller that provides the standard user interface for leaderboards.  Present modally from the top view controller.
+    */
     #[cfg(feature = "GameKit_GKLeaderboardViewController")]
     unsafe impl GKLeaderboardViewController {}
 );
@@ -87,6 +111,9 @@ extern_protocol!(
 
 extern_methods!(
     /// Methods declared on superclass `GKGameCenterViewController`
+    /**
+      View controller that provides the standard user interface for leaderboards.  Present modally from the top view controller.
+    */
     #[cfg(feature = "GameKit_GKLeaderboardViewController")]
     unsafe impl GKLeaderboardViewController {
         #[method_id(@__retain_semantics Init initWithState:)]
@@ -123,6 +150,9 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSViewController`
+    /**
+      View controller that provides the standard user interface for leaderboards.  Present modally from the top view controller.
+    */
     #[cfg(feature = "GameKit_GKLeaderboardViewController")]
     unsafe impl GKLeaderboardViewController {
         #[cfg(feature = "Foundation_NSBundle")]

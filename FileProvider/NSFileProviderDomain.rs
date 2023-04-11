@@ -13,6 +13,13 @@ typed_extensible_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "FileProvider_NSFileProviderDomainVersion")]
+    /**
+     File provider domain version.
+
+    This object can be used by the `NSFileProviderReplicatedExtension` to describe the
+    current version of the domain. This object is immutable and can safely be used as
+    a key in a dictionary.
+    */
     pub struct NSFileProviderDomainVersion;
 
     #[cfg(feature = "FileProvider_NSFileProviderDomainVersion")]
@@ -22,15 +29,43 @@ extern_class!(
 );
 
 #[cfg(feature = "FileProvider_NSFileProviderDomainVersion")]
+/**
+ File provider domain version.
+
+This object can be used by the `NSFileProviderReplicatedExtension` to describe the
+current version of the domain. This object is immutable and can safely be used as
+a key in a dictionary.
+*/
 unsafe impl NSCoding for NSFileProviderDomainVersion {}
 
 #[cfg(feature = "FileProvider_NSFileProviderDomainVersion")]
+/**
+ File provider domain version.
+
+This object can be used by the `NSFileProviderReplicatedExtension` to describe the
+current version of the domain. This object is immutable and can safely be used as
+a key in a dictionary.
+*/
 unsafe impl NSObjectProtocol for NSFileProviderDomainVersion {}
 
 #[cfg(feature = "FileProvider_NSFileProviderDomainVersion")]
+/**
+ File provider domain version.
+
+This object can be used by the `NSFileProviderReplicatedExtension` to describe the
+current version of the domain. This object is immutable and can safely be used as
+a key in a dictionary.
+*/
 unsafe impl NSSecureCoding for NSFileProviderDomainVersion {}
 
 extern_methods!(
+    /**
+     File provider domain version.
+
+    This object can be used by the `NSFileProviderReplicatedExtension` to describe the
+    current version of the domain. This object is immutable and can safely be used as
+    a key in a dictionary.
+    */
     #[cfg(feature = "FileProvider_NSFileProviderDomainVersion")]
     unsafe impl NSFileProviderDomainVersion {
         #[method_id(@__retain_semantics Other next)]
@@ -46,6 +81,9 @@ extern_methods!(
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+      Testing modes.
+    */
     pub enum NSFileProviderDomainTestingModes {
         NSFileProviderDomainTestingModeAlwaysEnabled = 1 << 0,
         NSFileProviderDomainTestingModeInteractive = 1 << 1,
@@ -55,6 +93,26 @@ ns_options!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "FileProvider_NSFileProviderDomain")]
+    /**
+     File provider domain.
+
+    A file provider domain can be used to represent accounts or different locations
+    exposed within a given file provider.
+
+    Domains can be registered to the system using
+    @c -[NSFileProviderMananger addDomain:completionHandler:]
+
+    By default, a file provider extension does not have any domain.
+
+    On the extension side, a separate instance of NSFileProviderExtension will be
+    created for each @c NSFileProviderDomain registered.  In that case, the
+    @c NSFileProviderExtension.domain properties will indicate which domain the
+    NSFileProviderExtension belongs to (or nil if none).
+
+    All the files on disk belonging to the same domain must be grouped inside a
+    common directory. That directory path is indicated by the
+    @p pathRelativeToDocumentStorage property.
+    */
     pub struct NSFileProviderDomain;
 
     #[cfg(feature = "FileProvider_NSFileProviderDomain")]
@@ -64,9 +122,49 @@ extern_class!(
 );
 
 #[cfg(feature = "FileProvider_NSFileProviderDomain")]
+/**
+ File provider domain.
+
+A file provider domain can be used to represent accounts or different locations
+exposed within a given file provider.
+
+Domains can be registered to the system using
+@c -[NSFileProviderMananger addDomain:completionHandler:]
+
+By default, a file provider extension does not have any domain.
+
+On the extension side, a separate instance of NSFileProviderExtension will be
+created for each @c NSFileProviderDomain registered.  In that case, the
+@c NSFileProviderExtension.domain properties will indicate which domain the
+NSFileProviderExtension belongs to (or nil if none).
+
+All the files on disk belonging to the same domain must be grouped inside a
+common directory. That directory path is indicated by the
+@p pathRelativeToDocumentStorage property.
+*/
 unsafe impl NSObjectProtocol for NSFileProviderDomain {}
 
 extern_methods!(
+    /**
+     File provider domain.
+
+    A file provider domain can be used to represent accounts or different locations
+    exposed within a given file provider.
+
+    Domains can be registered to the system using
+    @c -[NSFileProviderMananger addDomain:completionHandler:]
+
+    By default, a file provider extension does not have any domain.
+
+    On the extension side, a separate instance of NSFileProviderExtension will be
+    created for each @c NSFileProviderDomain registered.  In that case, the
+    @c NSFileProviderExtension.domain properties will indicate which domain the
+    NSFileProviderExtension belongs to (or nil if none).
+
+    All the files on disk belonging to the same domain must be grouped inside a
+    common directory. That directory path is indicated by the
+    @p pathRelativeToDocumentStorage property.
+    */
     #[cfg(feature = "FileProvider_NSFileProviderDomain")]
     unsafe impl NSFileProviderDomain {
         #[cfg(feature = "Foundation_NSString")]
@@ -86,45 +184,153 @@ extern_methods!(
             display_name: &NSString,
         ) -> Id<Self>;
 
+        /**
+         The identifier - as provided by the file provider extension.
+        */
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Id<NSFileProviderDomainIdentifier>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         The display name shown by the system to represent this domain.
+        */
         #[method_id(@__retain_semantics Other displayName)]
         pub unsafe fn displayName(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         The path relative to the document storage of the file provider extension.
+        Files belonging to this domains should be stored under this path.
+        */
         #[method_id(@__retain_semantics Other pathRelativeToDocumentStorage)]
         pub unsafe fn pathRelativeToDocumentStorage(&self) -> Id<NSString>;
 
+        /**
+          If set, the domain is present, but disconnected from its extension.
+        In this state, the user continues to be able to browse the domain's contents,
+        but the extension doesn't receive updates on modifications to the files, nor is
+        it consulted to update folder's contents.
+
+        The disconnected state can be modified on an existing domain via the disconnectWithReason method
+        on NSFileProviderManager.
+        */
         #[method(isDisconnected)]
         pub unsafe fn isDisconnected(&self) -> bool;
 
+        /**
+          If user has disabled this domain from Files.app on iOS or System Settings on macOS, this will be set
+        to NO.
+        */
         #[method(userEnabled)]
         pub unsafe fn userEnabled(&self) -> bool;
 
+        /**
+          If this domain is not user visible.
+
+        Typically, this can be used for dry-run migration. The files are still on disk though.
+        */
         #[method(isHidden)]
         pub unsafe fn isHidden(&self) -> bool;
 
+        /**
+          If this domain is not user visible.
+
+        Typically, this can be used for dry-run migration. The files are still on disk though.
+        */
         #[method(setHidden:)]
         pub unsafe fn setHidden(&self, hidden: bool);
 
+        /**
+          If the domain is a replicated domain.
+
+        If set to YES, it means the domain is replicated. By default, on macOS, the value will always be YES.
+
+        On iOS, it will depend on the way the NSFileProviderDomain object is contructed. Calling
+        -[NSFileProviderDomain initWithIdentifier:displayName:] will initialize a replicated domain.
+        -[NSFileProviderDomain initWithIdentifier:displayName:pathRelativeToDocumentStorage:] will
+        initialize a non-replicated domain.
+
+        To know whether a domain is replicated or not, users are advised to rely on the output of
+        +[NSFileProviderManager getDomainsForProviderIdentifier:completionHandler:]
+        */
         #[method(isReplicated)]
         pub unsafe fn isReplicated(&self) -> bool;
 
+        /**
+          Testing modes.
+
+        Testing modes are exposed as a means for the provider to have more control over the system in
+        a testing environment. Enabling a testing mode alters the behavior of the system and enables
+        some APIs for that mode.
+
+        A process must have the com.apple.developer.fileprovider.testing-mode entitlement in order to
+        configure a domain with non-empty testing modes.
+        */
         #[method(testingModes)]
         pub unsafe fn testingModes(&self) -> NSFileProviderDomainTestingModes;
 
+        /**
+          Testing modes.
+
+        Testing modes are exposed as a means for the provider to have more control over the system in
+        a testing environment. Enabling a testing mode alters the behavior of the system and enables
+        some APIs for that mode.
+
+        A process must have the com.apple.developer.fileprovider.testing-mode entitlement in order to
+        configure a domain with non-empty testing modes.
+        */
         #[method(setTestingModes:)]
         pub unsafe fn setTestingModes(&self, testing_modes: NSFileProviderDomainTestingModes);
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+         Identity of the backing store of the domain on the system.
+
+        This property only applies for extensions that implement NSFileProviderReplicatedExtension.
+
+        This provides an identifier that uniquely identifies the backing store used by the system for
+        the domain. When this identifier has changed, the system has dropped its backing store and is
+        building a new one.
+
+        The system may decide to rebuild its backing store if it got corrupted. The backing store can also
+        be rebuilt as a response to the provider calling `-[NSFileProviderManager reimportItemsBelowItemWithIdentifier:completionHandler:]`.
+        It is guaranteed that calling reimport on the root item will cause the backing store to be rebuilt,
+        but the system can also decide to do so when reimport is called on other items.
+
+        When rebuilding the backing store, the system will invalidate any extension instance associated
+        to that domain. As a consequence, the identity of the backing store associated with that domain
+        is guaranteed to be stable for the lifetime of the NSFileProviderReplicatedExtension instance.
+        */
         #[method_id(@__retain_semantics Other backingStoreIdentity)]
         pub unsafe fn backingStoreIdentity(&self) -> Option<Id<NSData>>;
 
+        /**
+          If the domain supports syncing the trash.
+
+        This property only applies for extensions that implement NSFileProviderReplicatedExtension.
+
+        Defaults to YES. Set this to NO to indicate that the domain cannot sync the trash.
+        If this property is set to YES the system will move the trashed item to the domain trash.
+        If this property is set to NO and the trashed item does not have the NSFileProviderItemCapabilitiesAllowsTrashing capability, the system will offer to permanently delete the item.
+        If this property is set to NO and the trashed item does have the NSFileProviderItemCapabilitiesAllowsTrashing capability, then the system will behave differently based on whether the item
+        is recursively materialized. If the item is fully materialized, it will be moved to the user's home trash and the operation will look like a delete to the extension.
+        If the item is not fully materialized, the system will offer to permanently delete the item.
+        */
         #[method(supportsSyncingTrash)]
         pub unsafe fn supportsSyncingTrash(&self) -> bool;
 
+        /**
+          If the domain supports syncing the trash.
+
+        This property only applies for extensions that implement NSFileProviderReplicatedExtension.
+
+        Defaults to YES. Set this to NO to indicate that the domain cannot sync the trash.
+        If this property is set to YES the system will move the trashed item to the domain trash.
+        If this property is set to NO and the trashed item does not have the NSFileProviderItemCapabilitiesAllowsTrashing capability, the system will offer to permanently delete the item.
+        If this property is set to NO and the trashed item does have the NSFileProviderItemCapabilitiesAllowsTrashing capability, then the system will behave differently based on whether the item
+        is recursively materialized. If the item is fully materialized, it will be moved to the user's home trash and the operation will look like a delete to the extension.
+        If the item is not fully materialized, the system will offer to permanently delete the item.
+        */
         #[method(setSupportsSyncingTrash:)]
         pub unsafe fn setSupportsSyncingTrash(&self, supports_syncing_trash: bool);
     }

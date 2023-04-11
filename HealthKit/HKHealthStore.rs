@@ -9,6 +9,10 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKHealthStore")]
+    /**
+     @class         HKHealthStore
+    @abstract      The HKHealthStore class provides an interface for accessing and storing the user's health data.
+    */
     pub struct HKHealthStore;
 
     #[cfg(feature = "HealthKit_HKHealthStore")]
@@ -18,9 +22,17 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKHealthStore")]
+/**
+ @class         HKHealthStore
+@abstract      The HKHealthStore class provides an interface for accessing and storing the user's health data.
+*/
 unsafe impl NSObjectProtocol for HKHealthStore {}
 
 extern_methods!(
+    /**
+     @class         HKHealthStore
+    @abstract      The HKHealthStore class provides an interface for accessing and storing the user's health data.
+    */
     #[cfg(feature = "HealthKit_HKHealthStore")]
     unsafe impl HKHealthStore {
         #[method(isHealthDataAvailable)]

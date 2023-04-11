@@ -9,6 +9,10 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKDeletedObject")]
+    /**
+     @class         HKDeletedObject
+    @abstract      A class representing an HKObject that was deleted from the HealtKit database.
+    */
     pub struct HKDeletedObject;
 
     #[cfg(feature = "HealthKit_HKDeletedObject")]
@@ -18,22 +22,48 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKDeletedObject")]
+/**
+ @class         HKDeletedObject
+@abstract      A class representing an HKObject that was deleted from the HealtKit database.
+*/
 unsafe impl NSCoding for HKDeletedObject {}
 
 #[cfg(feature = "HealthKit_HKDeletedObject")]
+/**
+ @class         HKDeletedObject
+@abstract      A class representing an HKObject that was deleted from the HealtKit database.
+*/
 unsafe impl NSObjectProtocol for HKDeletedObject {}
 
 #[cfg(feature = "HealthKit_HKDeletedObject")]
+/**
+ @class         HKDeletedObject
+@abstract      A class representing an HKObject that was deleted from the HealtKit database.
+*/
 unsafe impl NSSecureCoding for HKDeletedObject {}
 
 extern_methods!(
+    /**
+     @class         HKDeletedObject
+    @abstract      A class representing an HKObject that was deleted from the HealtKit database.
+    */
     #[cfg(feature = "HealthKit_HKDeletedObject")]
     unsafe impl HKDeletedObject {
         #[cfg(feature = "Foundation_NSUUID")]
+        /**
+         @property      UUID
+        @abstract      The unique identifier of the HKObject that was deleted from the HealthKit database.
+        */
         #[method_id(@__retain_semantics Other UUID)]
         pub unsafe fn UUID(&self) -> Id<NSUUID>;
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+         @property      metadata
+        @abstract      Extra information describing properties of the receiver.
+        @discussion    Metadata retained from the deleted HKObject.
+        Available keys: HKMetadataKeySyncIdentifier, HKMetadataKeySyncVersion
+        */
         #[method_id(@__retain_semantics Other metadata)]
         pub unsafe fn metadata(&self) -> Option<Id<NSDictionary<NSString, Object>>>;
 

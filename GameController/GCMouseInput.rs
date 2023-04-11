@@ -10,6 +10,13 @@ pub type GCMouseMoved = *mut Block<(NonNull<GCMouseInput>, c_float, c_float), ()
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameController_GCMouseInput")]
+    /**
+     Mouse profile that represent a physical mouse object with two axis cursor, two axis scroll,
+    left button, optional right and middle buttons and optional set of auxiliary buttons.
+
+    It only provides information about raw mouse movement deltas. For the valid cursor position
+    at given point in time, use UIHoverGestureRecognizer and NSEvent.mouseLocation.
+    */
     pub struct GCMouseInput;
 
     #[cfg(feature = "GameController_GCMouseInput")]
@@ -20,9 +27,23 @@ extern_class!(
 );
 
 #[cfg(feature = "GameController_GCMouseInput")]
+/**
+ Mouse profile that represent a physical mouse object with two axis cursor, two axis scroll,
+left button, optional right and middle buttons and optional set of auxiliary buttons.
+
+It only provides information about raw mouse movement deltas. For the valid cursor position
+at given point in time, use UIHoverGestureRecognizer and NSEvent.mouseLocation.
+*/
 unsafe impl NSObjectProtocol for GCMouseInput {}
 
 extern_methods!(
+    /**
+     Mouse profile that represent a physical mouse object with two axis cursor, two axis scroll,
+    left button, optional right and middle buttons and optional set of auxiliary buttons.
+
+    It only provides information about raw mouse movement deltas. For the valid cursor position
+    at given point in time, use UIHoverGestureRecognizer and NSEvent.mouseLocation.
+    */
     #[cfg(feature = "GameController_GCMouseInput")]
     unsafe impl GCMouseInput {
         #[method(mouseMovedHandler)]
@@ -32,10 +53,16 @@ extern_methods!(
         pub unsafe fn setMouseMovedHandler(&self, mouse_moved_handler: GCMouseMoved);
 
         #[cfg(feature = "GameController_GCDeviceCursor")]
+        /**
+         Scroll is a dpad with undefined range.
+        */
         #[method_id(@__retain_semantics Other scroll)]
         pub unsafe fn scroll(&self) -> Id<GCDeviceCursor>;
 
         #[cfg(feature = "GameController_GCControllerButtonInput")]
+        /**
+         Mouse buttons that can be used only as digital inputs
+        */
         #[method_id(@__retain_semantics Other leftButton)]
         pub unsafe fn leftButton(&self) -> Id<GCControllerButtonInput>;
 

@@ -73,6 +73,13 @@ extern_protocol!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      @typedef NSScrubberMode
+     @discussion Determines the interaction mode for a NSScrubber control.
+
+     @const NSScrubberModeFixed Panning over the control does not scroll, but instead highlights the element under the user’s finger. The highlighted element is selected the end of the gesture. If the gesture begins on top of the selected element, or if the @c continuous property is set to @c YES, the selection is changed immediately as the user pans.
+     @const NSScrubberModeFree  Panning over the control freely scrolls the scrubber content. Items are selected by tapping or pressing them without panning. If the @c continuous property is set to @c YES, the control automatically selects items as they scroll under the axis specified by the @c itemAlignment property; if @c itemAlignment is @c NSScrubberAlignmentNone, it is interpreted as @c NSScrubberAlignmentCenter for this purpose.
+    */
     pub enum NSScrubberMode {
         NSScrubberModeFixed = 0,
         NSScrubberModeFree = 1,
@@ -81,6 +88,15 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      @typedef NSScrubberAlignment
+     @discussion NSScrubberAlignment specifies the preferred alignment of elements within the control.
+
+     @const NSScrubberAlignmentNone      Specifies no preference for item alignment.
+     @const NSScrubberAlignmentLeading   Specifies that an item will be leading-aligned within the control.
+     @const NSScrubberAlignmentTrailing  Specifies that an item will be trailing-aligned within the control.
+     @const NSScrubberAlignmentCenter    Specifies that an item will be center-aligned within the control.
+    */
     pub enum NSScrubberAlignment {
         NSScrubberAlignmentNone = 0,
         NSScrubberAlignmentLeading = 1,
@@ -92,6 +108,11 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSScrubberSelectionStyle")]
+    /**
+      @class NSScrubberSelectionStyle
+     @abstract @c NSScrubberSelectionStyle is an abstract class that provides decorative accessory views for selected and highlighted items within a NSScrubber control. Class properties provide convenient access to built-in styles. For a completely custom style, subclassers can override @c -makeSelectionView to create and configure arbitrary @c NSScrubberSelectionView subclasses.
+
+    */
     pub struct NSScrubberSelectionStyle;
 
     #[cfg(feature = "AppKit_NSScrubberSelectionStyle")]
@@ -101,12 +122,27 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSScrubberSelectionStyle")]
+/**
+  @class NSScrubberSelectionStyle
+ @abstract @c NSScrubberSelectionStyle is an abstract class that provides decorative accessory views for selected and highlighted items within a NSScrubber control. Class properties provide convenient access to built-in styles. For a completely custom style, subclassers can override @c -makeSelectionView to create and configure arbitrary @c NSScrubberSelectionView subclasses.
+
+*/
 unsafe impl NSCoding for NSScrubberSelectionStyle {}
 
 #[cfg(feature = "AppKit_NSScrubberSelectionStyle")]
+/**
+  @class NSScrubberSelectionStyle
+ @abstract @c NSScrubberSelectionStyle is an abstract class that provides decorative accessory views for selected and highlighted items within a NSScrubber control. Class properties provide convenient access to built-in styles. For a completely custom style, subclassers can override @c -makeSelectionView to create and configure arbitrary @c NSScrubberSelectionView subclasses.
+
+*/
 unsafe impl NSObjectProtocol for NSScrubberSelectionStyle {}
 
 extern_methods!(
+    /**
+      @class NSScrubberSelectionStyle
+     @abstract @c NSScrubberSelectionStyle is an abstract class that provides decorative accessory views for selected and highlighted items within a NSScrubber control. Class properties provide convenient access to built-in styles. For a completely custom style, subclassers can override @c -makeSelectionView to create and configure arbitrary @c NSScrubberSelectionView subclasses.
+
+    */
     #[cfg(feature = "AppKit_NSScrubberSelectionStyle")]
     unsafe impl NSScrubberSelectionStyle {
         #[method_id(@__retain_semantics Other outlineOverlayStyle)]
@@ -131,6 +167,15 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSScrubber")]
+    /**
+      @class NSScrubber
+     @abstract @c NSScrubber is a control designed for the NSTouchBar environment.
+
+     @c NSScrubber arranges a finite number of "items" (represented by views of type @c NSScrubberItemView ) according to a layout object (see @c NSScrubberLayout ), and provides several methods for navigating and selecting those items.
+
+     Clients provide data to @c NSScrubber via a data source object (see the @c NSScrubberDataSource protocol) and react to user interaction via a delegate object (see the @c NSScrubberDelegate protocol).
+
+    */
     pub struct NSScrubber;
 
     #[cfg(feature = "AppKit_NSScrubber")]
@@ -141,30 +186,111 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSScrubber")]
+/**
+  @class NSScrubber
+ @abstract @c NSScrubber is a control designed for the NSTouchBar environment.
+
+ @c NSScrubber arranges a finite number of "items" (represented by views of type @c NSScrubberItemView ) according to a layout object (see @c NSScrubberLayout ), and provides several methods for navigating and selecting those items.
+
+ Clients provide data to @c NSScrubber via a data source object (see the @c NSScrubberDataSource protocol) and react to user interaction via a delegate object (see the @c NSScrubberDelegate protocol).
+
+*/
 unsafe impl NSAccessibility for NSScrubber {}
 
 #[cfg(feature = "AppKit_NSScrubber")]
+/**
+  @class NSScrubber
+ @abstract @c NSScrubber is a control designed for the NSTouchBar environment.
+
+ @c NSScrubber arranges a finite number of "items" (represented by views of type @c NSScrubberItemView ) according to a layout object (see @c NSScrubberLayout ), and provides several methods for navigating and selecting those items.
+
+ Clients provide data to @c NSScrubber via a data source object (see the @c NSScrubberDataSource protocol) and react to user interaction via a delegate object (see the @c NSScrubberDelegate protocol).
+
+*/
 unsafe impl NSAccessibilityElementProtocol for NSScrubber {}
 
 #[cfg(feature = "AppKit_NSScrubber")]
+/**
+  @class NSScrubber
+ @abstract @c NSScrubber is a control designed for the NSTouchBar environment.
+
+ @c NSScrubber arranges a finite number of "items" (represented by views of type @c NSScrubberItemView ) according to a layout object (see @c NSScrubberLayout ), and provides several methods for navigating and selecting those items.
+
+ Clients provide data to @c NSScrubber via a data source object (see the @c NSScrubberDataSource protocol) and react to user interaction via a delegate object (see the @c NSScrubberDelegate protocol).
+
+*/
 unsafe impl NSAnimatablePropertyContainer for NSScrubber {}
 
 #[cfg(feature = "AppKit_NSScrubber")]
+/**
+  @class NSScrubber
+ @abstract @c NSScrubber is a control designed for the NSTouchBar environment.
+
+ @c NSScrubber arranges a finite number of "items" (represented by views of type @c NSScrubberItemView ) according to a layout object (see @c NSScrubberLayout ), and provides several methods for navigating and selecting those items.
+
+ Clients provide data to @c NSScrubber via a data source object (see the @c NSScrubberDataSource protocol) and react to user interaction via a delegate object (see the @c NSScrubberDelegate protocol).
+
+*/
 unsafe impl NSAppearanceCustomization for NSScrubber {}
 
 #[cfg(feature = "AppKit_NSScrubber")]
+/**
+  @class NSScrubber
+ @abstract @c NSScrubber is a control designed for the NSTouchBar environment.
+
+ @c NSScrubber arranges a finite number of "items" (represented by views of type @c NSScrubberItemView ) according to a layout object (see @c NSScrubberLayout ), and provides several methods for navigating and selecting those items.
+
+ Clients provide data to @c NSScrubber via a data source object (see the @c NSScrubberDataSource protocol) and react to user interaction via a delegate object (see the @c NSScrubberDelegate protocol).
+
+*/
 unsafe impl NSCoding for NSScrubber {}
 
 #[cfg(feature = "AppKit_NSScrubber")]
+/**
+  @class NSScrubber
+ @abstract @c NSScrubber is a control designed for the NSTouchBar environment.
+
+ @c NSScrubber arranges a finite number of "items" (represented by views of type @c NSScrubberItemView ) according to a layout object (see @c NSScrubberLayout ), and provides several methods for navigating and selecting those items.
+
+ Clients provide data to @c NSScrubber via a data source object (see the @c NSScrubberDataSource protocol) and react to user interaction via a delegate object (see the @c NSScrubberDelegate protocol).
+
+*/
 unsafe impl NSDraggingDestination for NSScrubber {}
 
 #[cfg(feature = "AppKit_NSScrubber")]
+/**
+  @class NSScrubber
+ @abstract @c NSScrubber is a control designed for the NSTouchBar environment.
+
+ @c NSScrubber arranges a finite number of "items" (represented by views of type @c NSScrubberItemView ) according to a layout object (see @c NSScrubberLayout ), and provides several methods for navigating and selecting those items.
+
+ Clients provide data to @c NSScrubber via a data source object (see the @c NSScrubberDataSource protocol) and react to user interaction via a delegate object (see the @c NSScrubberDelegate protocol).
+
+*/
 unsafe impl NSObjectProtocol for NSScrubber {}
 
 #[cfg(feature = "AppKit_NSScrubber")]
+/**
+  @class NSScrubber
+ @abstract @c NSScrubber is a control designed for the NSTouchBar environment.
+
+ @c NSScrubber arranges a finite number of "items" (represented by views of type @c NSScrubberItemView ) according to a layout object (see @c NSScrubberLayout ), and provides several methods for navigating and selecting those items.
+
+ Clients provide data to @c NSScrubber via a data source object (see the @c NSScrubberDataSource protocol) and react to user interaction via a delegate object (see the @c NSScrubberDelegate protocol).
+
+*/
 unsafe impl NSUserInterfaceItemIdentification for NSScrubber {}
 
 extern_methods!(
+    /**
+      @class NSScrubber
+     @abstract @c NSScrubber is a control designed for the NSTouchBar environment.
+
+     @c NSScrubber arranges a finite number of "items" (represented by views of type @c NSScrubberItemView ) according to a layout object (see @c NSScrubberLayout ), and provides several methods for navigating and selecting those items.
+
+     Clients provide data to @c NSScrubber via a data source object (see the @c NSScrubberDataSource protocol) and react to user interaction via a delegate object (see the @c NSScrubberDelegate protocol).
+
+    */
     #[cfg(feature = "AppKit_NSScrubber")]
     unsafe impl NSScrubber {
         #[method_id(@__retain_semantics Other dataSource)]
@@ -190,47 +316,89 @@ extern_methods!(
         #[method(setScrubberLayout:)]
         pub unsafe fn setScrubberLayout(&self, scrubber_layout: &NSScrubberLayout);
 
+        /**
+          Returns the number of items represented by the scrubber control.
+        */
         #[method(numberOfItems)]
         pub unsafe fn numberOfItems(&self) -> NSInteger;
 
+        /**
+          The index of the currently highlighted item within the control. If there is no highlighted item, the value of this property is (-1).
+        */
         #[method(highlightedIndex)]
         pub unsafe fn highlightedIndex(&self) -> NSInteger;
 
+        /**
+          The index of the selected item within the control. If there is no selected item, the value of this property is (-1). Setting this property through the animator proxy will animate the selection change. Programmatic selection changes do not trigger delegate callbacks.
+        */
         #[method(selectedIndex)]
         pub unsafe fn selectedIndex(&self) -> NSInteger;
 
+        /**
+          The index of the selected item within the control. If there is no selected item, the value of this property is (-1). Setting this property through the animator proxy will animate the selection change. Programmatic selection changes do not trigger delegate callbacks.
+        */
         #[method(setSelectedIndex:)]
         pub unsafe fn setSelectedIndex(&self, selected_index: NSInteger);
 
+        /**
+          Describes the interaction mode for the scrubber control. See the @c NSScrubberMode enumeration for a list of possible values. The default value is @c NSScrubberModeFixed.
+        */
         #[method(mode)]
         pub unsafe fn mode(&self) -> NSScrubberMode;
 
+        /**
+          Describes the interaction mode for the scrubber control. See the @c NSScrubberMode enumeration for a list of possible values. The default value is @c NSScrubberModeFixed.
+        */
         #[method(setMode:)]
         pub unsafe fn setMode(&self, mode: NSScrubberMode);
 
+        /**
+          If the value of @c itemAlignment is not @c NSScrubberAlignmentNone, the scrubber will ensure that some item rests at the preferred alignment within the control following a scrolling or paging interaction. The default value is @c NSScrubberAlignmentNone.
+        */
         #[method(itemAlignment)]
         pub unsafe fn itemAlignment(&self) -> NSScrubberAlignment;
 
+        /**
+          If the value of @c itemAlignment is not @c NSScrubberAlignmentNone, the scrubber will ensure that some item rests at the preferred alignment within the control following a scrolling or paging interaction. The default value is @c NSScrubberAlignmentNone.
+        */
         #[method(setItemAlignment:)]
         pub unsafe fn setItemAlignment(&self, item_alignment: NSScrubberAlignment);
 
+        /**
+          When @c continuous is @c YES, panning over the control in @c NSScrubberModeFixed will immediately select the item under the user's finger, and scrolling in @c NSScrubberModeFree will continuously select items as they pass through the current @c itemAlignment. The default is @c NO.
+        */
         #[method(isContinuous)]
         pub unsafe fn isContinuous(&self) -> bool;
 
+        /**
+          When @c continuous is @c YES, panning over the control in @c NSScrubberModeFixed will immediately select the item under the user's finger, and scrolling in @c NSScrubberModeFree will continuously select items as they pass through the current @c itemAlignment. The default is @c NO.
+        */
         #[method(setContinuous:)]
         pub unsafe fn setContinuous(&self, continuous: bool);
 
+        /**
+          When @c floatsSelectionViews is @c YES, the selection decorations provided by @c selectionBackgroundStyle and @c selectionOverlayStyle will smoothly float between selected items, rather than animating their entrance/exit in-place. The default is @c NO.
+        */
         #[method(floatsSelectionViews)]
         pub unsafe fn floatsSelectionViews(&self) -> bool;
 
+        /**
+          When @c floatsSelectionViews is @c YES, the selection decorations provided by @c selectionBackgroundStyle and @c selectionOverlayStyle will smoothly float between selected items, rather than animating their entrance/exit in-place. The default is @c NO.
+        */
         #[method(setFloatsSelectionViews:)]
         pub unsafe fn setFloatsSelectionViews(&self, floats_selection_views: bool);
 
         #[cfg(feature = "AppKit_NSScrubberSelectionStyle")]
+        /**
+          Specifies a style of decoration to place behind items that are selected and/or highlighted. The default value is @c nil, indicating no built-in background decoration.
+        */
         #[method_id(@__retain_semantics Other selectionBackgroundStyle)]
         pub unsafe fn selectionBackgroundStyle(&self) -> Option<Id<NSScrubberSelectionStyle>>;
 
         #[cfg(feature = "AppKit_NSScrubberSelectionStyle")]
+        /**
+          Specifies a style of decoration to place behind items that are selected and/or highlighted. The default value is @c nil, indicating no built-in background decoration.
+        */
         #[method(setSelectionBackgroundStyle:)]
         pub unsafe fn setSelectionBackgroundStyle(
             &self,
@@ -238,25 +406,43 @@ extern_methods!(
         );
 
         #[cfg(feature = "AppKit_NSScrubberSelectionStyle")]
+        /**
+          Specifies a style of decoration to place above items that are selected and/or highlighted. The default value is @c nil, indicating no built-in overlay decoration.
+        */
         #[method_id(@__retain_semantics Other selectionOverlayStyle)]
         pub unsafe fn selectionOverlayStyle(&self) -> Option<Id<NSScrubberSelectionStyle>>;
 
         #[cfg(feature = "AppKit_NSScrubberSelectionStyle")]
+        /**
+          Specifies a style of decoration to place above items that are selected and/or highlighted. The default value is @c nil, indicating no built-in overlay decoration.
+        */
         #[method(setSelectionOverlayStyle:)]
         pub unsafe fn setSelectionOverlayStyle(
             &self,
             selection_overlay_style: Option<&NSScrubberSelectionStyle>,
         );
 
+        /**
+          If @c showsArrowButtons is @c YES, the control provides leading and trailing arrow buttons. Tapping an arrow button moves the selection index by one element; pressing and holding repeatedly moves the selection. The default is @c NO.
+        */
         #[method(showsArrowButtons)]
         pub unsafe fn showsArrowButtons(&self) -> bool;
 
+        /**
+          If @c showsArrowButtons is @c YES, the control provides leading and trailing arrow buttons. Tapping an arrow button moves the selection index by one element; pressing and holding repeatedly moves the selection. The default is @c NO.
+        */
         #[method(setShowsArrowButtons:)]
         pub unsafe fn setShowsArrowButtons(&self, shows_arrow_buttons: bool);
 
+        /**
+          If @c showsAdditionalContentIndicators is @c YES, the control will draw a fade effect to indicate that there is additional unscrolled content. The default is @c NO.
+        */
         #[method(showsAdditionalContentIndicators)]
         pub unsafe fn showsAdditionalContentIndicators(&self) -> bool;
 
+        /**
+          If @c showsAdditionalContentIndicators is @c YES, the control will draw a fade effect to indicate that there is additional unscrolled content. The default is @c NO.
+        */
         #[method(setShowsAdditionalContentIndicators:)]
         pub unsafe fn setShowsAdditionalContentIndicators(
             &self,
@@ -264,16 +450,28 @@ extern_methods!(
         );
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+          If set, @c backgroundColor is displayed behind the scrubber content. The background color is suppressed if the scrubber is assigned a non-nil @c backgroundView. The default value is @c nil.
+        */
         #[method_id(@__retain_semantics Other backgroundColor)]
         pub unsafe fn backgroundColor(&self) -> Option<Id<NSColor>>;
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+          If set, @c backgroundColor is displayed behind the scrubber content. The background color is suppressed if the scrubber is assigned a non-nil @c backgroundView. The default value is @c nil.
+        */
         #[method(setBackgroundColor:)]
         pub unsafe fn setBackgroundColor(&self, background_color: Option<&NSColor>);
 
+        /**
+          If non-nil, the @c backgroundView is displayed below the scrubber content. The view's layout is managed by @c NSScrubber to match the content area. If this property is non-nil, the @c backgroundColor property has no effect. The default value is @c nil.
+        */
         #[method_id(@__retain_semantics Other backgroundView)]
         pub unsafe fn backgroundView(&self) -> Option<Id<NSView>>;
 
+        /**
+          If non-nil, the @c backgroundView is displayed below the scrubber content. The view's layout is managed by @c NSScrubber to match the content area. If this property is non-nil, the @c backgroundColor property has no effect. The default value is @c nil.
+        */
         #[method(setBackgroundView:)]
         pub unsafe fn setBackgroundView(&self, background_view: Option<&NSView>);
 

@@ -69,6 +69,14 @@ extern_static!(HKMetadataKeySessionEstimate: &'static NSString);
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum          HKHeartRateRecoveryTestType
+    @abstract      Represents the test used to determine a Heart Rate Recovery value
+
+    @constant      HKHeartRateRecoveryTestTypeMaxExercise                  The user was exerted to their physical limit to evaluate actual Heart Rate Recovery.
+    @constant      HKHeartRateRecoveryTestTypePredictionSubMaxExercise     A specific test protocol was used to calculate and correlate a predicted Heart Rate Recovery.
+    @constant      HKHeartRateRecoveryTestTypePredictionNonExercise        A non-exercise equation was used based on user metrics to calculate a predicted Heart Rate Recovery.
+    */
     pub enum HKHeartRateRecoveryTestType {
         HKHeartRateRecoveryTestTypeMaxExercise = 1,
         HKHeartRateRecoveryTestTypePredictionSubMaxExercise = 2,
@@ -168,6 +176,11 @@ extern_static!(HKMetadataKeyLapLength: &'static NSString);
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum          HKWorkoutSwimmingLocationType
+    @abstract      This enumerated type is used to represent the location type of a swimming workout.
+    @discussion    This value indicates whether a swimming workout was performed in a pool or open water.
+    */
     pub enum HKWorkoutSwimmingLocationType {
         HKWorkoutSwimmingLocationTypeUnknown = 0,
         HKWorkoutSwimmingLocationTypePool = 1,
@@ -179,6 +192,10 @@ extern_static!(HKMetadataKeySwimmingLocationType: &'static NSString);
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum          HKSwimmingStrokeStyle
+    @abstract      Represents a style of stroke used during a swimming workout.
+    */
     pub enum HKSwimmingStrokeStyle {
         HKSwimmingStrokeStyleUnknown = 0,
         HKSwimmingStrokeStyleMixed = 1,
@@ -194,6 +211,16 @@ extern_static!(HKMetadataKeySwimmingStrokeStyle: &'static NSString);
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum          HKInsulinDeliveryReason
+    @abstract      Represents a medical reason for the delivery of insulin
+
+    @constant      HKInsulinDeliveryReasonBasal  Delivery for the base metabolic needs of the individual, often
+    administered as a continuous rate from an insulin pump, or a periodic
+    injection of slow-acting insulin.
+    @constant      HKInsulinDeliveryReasonBolus  Delivery for the episodic needs of the individual, such as a meal or
+    glucose level correction.
+    */
     pub enum HKInsulinDeliveryReason {
         HKInsulinDeliveryReasonBasal = 1,
         HKInsulinDeliveryReasonBolus = 2,
@@ -204,6 +231,13 @@ extern_static!(HKMetadataKeyInsulinDeliveryReason: &'static NSString);
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum          HKBloodGlucoseMealTime
+    @abstract      Indicates how your blood glucose reading relates to a meal.
+
+    @constant      HKBloodGlucoseMealTimePreprandial   A glucose value measured at the time just before a meal.
+    @constant      HKBloodGlucoseMealTimePostprandial  A glucose value measured after a meal.
+    */
     pub enum HKBloodGlucoseMealTime {
         HKBloodGlucoseMealTimePreprandial = 1,
         HKBloodGlucoseMealTimePostprandial = 2,
@@ -214,6 +248,14 @@ extern_static!(HKMetadataKeyBloodGlucoseMealTime: &'static NSString);
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum          HKVO2MaxTestType
+    @abstract      Represents the test used to create a VO2 Max Sample.
+
+    @constant      HKVO2MaxTestTypeMaxExercise                      The user was exerted to their physical limit to evaluate and measure actual VO2Max.
+    @constant      HKVO2MaxTestTypePredictionSubMaxExercise         A specific test protocol was used to calculate and correlate a predicted VO2Max.
+    @constant      HKVO2MaxTestTypePredictionNonExercise            A non-exercise equation was used based on user metrics to calculate a predicted VO2Max.
+    */
     pub enum HKVO2MaxTestType {
         HKVO2MaxTestTypeMaxExercise = 1,
         HKVO2MaxTestTypePredictionSubMaxExercise = 2,
@@ -249,6 +291,12 @@ extern_static!(HKMetadataKeyAudioExposureDuration: &'static NSString);
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum          HKAppleECGAlgorithmVersion
+    @abstract      Indicates which algorithm version number was used by the ECG app on Apple Watch.
+
+    @constant      HKAppleECGAlgorithmVersion1   Apple Watch used a version 1 algorithm to generate this ECG.
+    */
     pub enum HKAppleECGAlgorithmVersion {
         HKAppleECGAlgorithmVersion1 = 1,
         HKAppleECGAlgorithmVersion2 = 2,
@@ -259,6 +307,14 @@ extern_static!(HKMetadataKeyAppleECGAlgorithmVersion: &'static NSString);
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum          HKDevicePlacementSide
+    @abstract      The detected placement of the device during the bout of walking
+    @constant      HKDevicePlacementSideUnknown                     Unable to determine the placement of the device
+    @constant      HKDevicePlacementSideLeft                        Device predominantly worn on left side
+    @constant      HKDevicePlacementSideRight                       Device predominantly worn on right side
+    @constant      HKDevicePlacementSideCentral                     Device predominantly worn on the middle of the body
+    */
     pub enum HKDevicePlacementSide {
         HKDevicePlacementSideUnknown = 0,
         HKDevicePlacementSideLeft = 1,

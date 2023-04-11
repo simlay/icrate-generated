@@ -7,6 +7,9 @@ use crate::MailKit::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      @brief An enumeration corresponding to the action user took to start a new mail compose window.
+    */
     pub enum MEComposeUserAction {
         MEComposeUserActionNewMessage = 1,
         MEComposeUserActionReply = 2,
@@ -18,6 +21,9 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MailKit_MEComposeContext")]
+    /**
+      @brief An object encapsulating additional information about the message being composed.
+    */
     pub struct MEComposeContext;
 
     #[cfg(feature = "MailKit_MEComposeContext")]
@@ -27,31 +33,59 @@ extern_class!(
 );
 
 #[cfg(feature = "MailKit_MEComposeContext")]
+/**
+  @brief An object encapsulating additional information about the message being composed.
+*/
 unsafe impl NSObjectProtocol for MEComposeContext {}
 
 extern_methods!(
+    /**
+      @brief An object encapsulating additional information about the message being composed.
+    */
     #[cfg(feature = "MailKit_MEComposeContext")]
     unsafe impl MEComposeContext {
         #[cfg(feature = "Foundation_NSUUID")]
+        /**
+          @brief A unique identifier for the compose context.
+        */
         #[method_id(@__retain_semantics Other contextID)]
         pub unsafe fn contextID(&self) -> Id<NSUUID>;
 
         #[cfg(feature = "MailKit_MEMessage")]
+        /**
+          @brief The original email message on which user performed an action
+         It is @c nil for @c MEComposeUserActionNewMessage actions.
+        */
         #[method_id(@__retain_semantics Other originalMessage)]
         pub unsafe fn originalMessage(&self) -> Option<Id<MEMessage>>;
 
+        /**
+          Indicates the action performed by the user that created this compose context.
+        */
         #[method(action)]
         pub unsafe fn action(&self) -> MEComposeUserAction;
 
+        /**
+          Boolean that indicates the message is encrypted by a Message Security extension.
+        */
         #[method(isEncrypted)]
         pub unsafe fn isEncrypted(&self) -> bool;
 
+        /**
+          Boolean that indicates if the user wants to encrypt the message.
+        */
         #[method(shouldEncrypt)]
         pub unsafe fn shouldEncrypt(&self) -> bool;
 
+        /**
+          Boolean that indicates the message is signed by a Message Security extension.
+        */
         #[method(isSigned)]
         pub unsafe fn isSigned(&self) -> bool;
 
+        /**
+          A Boolean that indicates if the user wants to sign the message.
+        */
         #[method(shouldSign)]
         pub unsafe fn shouldSign(&self) -> bool;
     }

@@ -39,6 +39,9 @@ extern_methods!(
         pub unsafe fn setAdjustmentData(&self, adjustment_data: Option<&PHAdjustmentData>);
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          File URL where the rendered output, with adjustments baked-in, needs to be written to.
+        */
         #[method_id(@__retain_semantics Other renderedContentURL)]
         pub unsafe fn renderedContentURL(&self) -> Id<NSURL>;
     }

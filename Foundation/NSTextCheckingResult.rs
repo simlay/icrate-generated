@@ -5,6 +5,9 @@ use crate::Foundation::*;
 
 ns_options!(
     #[underlying(u64)]
+    /**
+      NSTextCheckingResult is a class used to describe items located by text checking.  Each of these objects represents something that has been found during checking--a misspelled word, a sentence with grammatical issues, a detected URL, a straight quote to be replaced with curly quotes, and so forth.
+    */
     pub enum NSTextCheckingType {
         NSTextCheckingTypeOrthography = 1 << 0,
         NSTextCheckingTypeSpelling = 1 << 1,
@@ -58,6 +61,9 @@ unsafe impl NSSecureCoding for NSTextCheckingResult {}
 extern_methods!(
     #[cfg(feature = "Foundation_NSTextCheckingResult")]
     unsafe impl NSTextCheckingResult {
+        /**
+          Mandatory properties, used with all types of results.
+        */
         #[method(resultType)]
         pub unsafe fn resultType(&self) -> NSTextCheckingType;
 
@@ -71,6 +77,9 @@ extern_methods!(
     #[cfg(feature = "Foundation_NSTextCheckingResult")]
     unsafe impl NSTextCheckingResult {
         #[cfg(feature = "Foundation_NSOrthography")]
+        /**
+          Optional properties, used with certain types of results.
+        */
         #[method_id(@__retain_semantics Other orthography)]
         pub unsafe fn orthography(&self) -> Option<Id<NSOrthography>>;
 
@@ -117,6 +126,9 @@ extern_methods!(
         #[method_id(@__retain_semantics Other phoneNumber)]
         pub unsafe fn phoneNumber(&self) -> Option<Id<NSString>>;
 
+        /**
+          A result must have at least one range, but may optionally have more (for example, to represent regular expression capture groups).  The range at index 0 always matches the range property.  Additional ranges, if any, will have indexes from 1 to numberOfRanges-1. rangeWithName: can be used with named regular expression capture groups.
+        */
         #[method(numberOfRanges)]
         pub unsafe fn numberOfRanges(&self) -> NSUInteger;
 
@@ -134,6 +146,9 @@ extern_methods!(
         ) -> Id<NSTextCheckingResult>;
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+          Deprecated in favor of components
+        */
         #[method_id(@__retain_semantics Other addressComponents)]
         pub unsafe fn addressComponents(
             &self,

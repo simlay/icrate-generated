@@ -30,6 +30,9 @@ extern_static!(WKWebsiteDataTypeFileSystem: &'static NSString);
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "WebKit_WKWebsiteDataRecord")]
+    /**
+      A WKWebsiteDataRecord represents website data, grouped by domain name using the public suffix list.
+    */
     pub struct WKWebsiteDataRecord;
 
     #[cfg(feature = "WebKit_WKWebsiteDataRecord")]
@@ -39,16 +42,28 @@ extern_class!(
 );
 
 #[cfg(feature = "WebKit_WKWebsiteDataRecord")]
+/**
+  A WKWebsiteDataRecord represents website data, grouped by domain name using the public suffix list.
+*/
 unsafe impl NSObjectProtocol for WKWebsiteDataRecord {}
 
 extern_methods!(
+    /**
+      A WKWebsiteDataRecord represents website data, grouped by domain name using the public suffix list.
+    */
     #[cfg(feature = "WebKit_WKWebsiteDataRecord")]
     unsafe impl WKWebsiteDataRecord {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract The display name for the data record. This is usually the domain name.
+        */
         #[method_id(@__retain_semantics Other displayName)]
         pub unsafe fn displayName(&self) -> Id<NSString>;
 
         #[cfg(all(feature = "Foundation_NSSet", feature = "Foundation_NSString"))]
+        /**
+          @abstract The various types of website data that exist for this data record.
+        */
         #[method_id(@__retain_semantics Other dataTypes)]
         pub unsafe fn dataTypes(&self) -> Id<NSSet<NSString>>;
     }

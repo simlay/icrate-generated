@@ -88,6 +88,9 @@ extern_methods!(
 
 extern_class!(
     #[cfg(feature = "Foundation_NSNumber")]
+    /**
+      Forward declarations
+    */
     pub struct NSNumber;
 
     #[cfg(feature = "Foundation_NSNumber")]
@@ -98,15 +101,27 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSNumber")]
+/**
+  Forward declarations
+*/
 unsafe impl NSCoding for NSNumber {}
 
 #[cfg(feature = "Foundation_NSNumber")]
+/**
+  Forward declarations
+*/
 unsafe impl NSObjectProtocol for NSNumber {}
 
 #[cfg(feature = "Foundation_NSNumber")]
+/**
+  Forward declarations
+*/
 unsafe impl NSSecureCoding for NSNumber {}
 
 extern_methods!(
+    /**
+      Forward declarations
+    */
     #[cfg(feature = "Foundation_NSNumber")]
     unsafe impl NSNumber {
         #[cfg(feature = "Foundation_NSCoder")]
@@ -294,6 +309,9 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSValue`
+    /**
+      Forward declarations
+    */
     #[cfg(feature = "Foundation_NSNumber")]
     unsafe impl NSNumber {
         #[method_id(@__retain_semantics Init initWithBytes:objCType:)]

@@ -30,9 +30,15 @@ unsafe impl NSObjectProtocol for MTLFXSpatialScalerDescriptor {}
 extern_methods!(
     #[cfg(feature = "MetalFX_MTLFXSpatialScalerDescriptor")]
     unsafe impl MTLFXSpatialScalerDescriptor {
+        /**
+          These properties must be set to the respective Metal pixel formats for each texture that will be used with the scaler.
+        */
         #[method(colorTextureFormat)]
         pub unsafe fn colorTextureFormat(&self) -> MTLPixelFormat;
 
+        /**
+          These properties must be set to the respective Metal pixel formats for each texture that will be used with the scaler.
+        */
         #[method(setColorTextureFormat:)]
         pub unsafe fn setColorTextureFormat(&self, color_texture_format: MTLPixelFormat);
 
@@ -66,9 +72,15 @@ extern_methods!(
         #[method(setOutputHeight:)]
         pub unsafe fn setOutputHeight(&self, output_height: NSUInteger);
 
+        /**
+          The default for colorProcessingMode is MTLFXSpatialScalerColorProcessingMode_Perceptual
+        */
         #[method(colorProcessingMode)]
         pub unsafe fn colorProcessingMode(&self) -> MTLFXSpatialScalerColorProcessingMode;
 
+        /**
+          The default for colorProcessingMode is MTLFXSpatialScalerColorProcessingMode_Perceptual
+        */
         #[method(setColorProcessingMode:)]
         pub unsafe fn setColorProcessingMode(
             &self,
@@ -87,16 +99,28 @@ extern_methods!(
 );
 
 extern_protocol!(
+    /**
+      This is the object that gets created from the descriptor
+    */
     pub unsafe trait MTLFXSpatialScaler: NSObjectProtocol {
+        /**
+          Properties return the minimum required MTLTextureUsage bits required
+        */
         #[method(colorTextureUsage)]
         unsafe fn colorTextureUsage(&self) -> MTLTextureUsage;
 
         #[method(outputTextureUsage)]
         unsafe fn outputTextureUsage(&self) -> MTLTextureUsage;
 
+        /**
+          Dynamic resolution property
+        */
         #[method(inputContentWidth)]
         unsafe fn inputContentWidth(&self) -> NSUInteger;
 
+        /**
+          Dynamic resolution property
+        */
         #[method(setInputContentWidth:)]
         unsafe fn setInputContentWidth(&self, input_content_width: NSUInteger);
 
@@ -106,18 +130,37 @@ extern_protocol!(
         #[method(setInputContentHeight:)]
         unsafe fn setInputContentHeight(&self, input_content_height: NSUInteger);
 
+        /**
+          These would be all of the "state" needed that is allowed to change on a frame by
+         frame basis.   We don't care about the textures assigned except that they must
+         match the required MTLTextureUsage flags.
+        */
         #[method_id(@__retain_semantics Other colorTexture)]
         unsafe fn colorTexture(&self) -> Option<Id<ProtocolObject<dyn MTLTexture>>>;
 
+        /**
+          These would be all of the "state" needed that is allowed to change on a frame by
+         frame basis.   We don't care about the textures assigned except that they must
+         match the required MTLTextureUsage flags.
+        */
         #[method(setColorTexture:)]
         unsafe fn setColorTexture(&self, color_texture: Option<&ProtocolObject<dyn MTLTexture>>);
 
+        /**
+          outputTexture is required to have MTLStorageModePrivate for storageMode
+        */
         #[method_id(@__retain_semantics Other outputTexture)]
         unsafe fn outputTexture(&self) -> Option<Id<ProtocolObject<dyn MTLTexture>>>;
 
+        /**
+          outputTexture is required to have MTLStorageModePrivate for storageMode
+        */
         #[method(setOutputTexture:)]
         unsafe fn setOutputTexture(&self, output_texture: Option<&ProtocolObject<dyn MTLTexture>>);
 
+        /**
+          Read-only immutable properties of effect
+        */
         #[method(colorTextureFormat)]
         unsafe fn colorTextureFormat(&self) -> MTLPixelFormat;
 
@@ -139,9 +182,15 @@ extern_protocol!(
         #[method(colorProcessingMode)]
         unsafe fn colorProcessingMode(&self) -> MTLFXSpatialScalerColorProcessingMode;
 
+        /**
+          Property for synchronization when using untracked resources
+        */
         #[method_id(@__retain_semantics Other fence)]
         unsafe fn fence(&self) -> Option<Id<ProtocolObject<dyn MTLFence>>>;
 
+        /**
+          Property for synchronization when using untracked resources
+        */
         #[method(setFence:)]
         unsafe fn setFence(&self, fence: Option<&ProtocolObject<dyn MTLFence>>);
 

@@ -7,6 +7,16 @@ use crate::GameController::*;
 
 extern_struct!(
     #[encoding_name("?")]
+    /**
+     A 3 dimensional acceleration vector measured as scalar multiples of earth's gravitational acceleration, G.
+
+    The azimuth direction is assumed to be (0, 0, 1), so a device held at rest with the z axis aligned with the azimuth
+    is assumed to have gravitation applying the vector (0, 0, -1).
+
+    @field x X-axis acceleration as a scalar multiple of earth's gravitational acceleration, G.
+    @field y Y-axis acceleration as a scalar multiple of earth's gravitational acceleration, G.
+    @field z Z-axis acceleration as a scalar multiple of earth's gravitational acceleration, G.
+    */
     pub struct GCAcceleration {
         pub x: c_double,
         pub y: c_double,
@@ -16,6 +26,25 @@ extern_struct!(
 
 extern_struct!(
     #[encoding_name("?")]
+    /**
+     A structure containing 3-axis rotation rate data.
+
+
+    @field x   X-axis rotation rate in radians/second. The sign follows the right hand
+    rule (i.e. if the right hand is wrapped around the X axis such that the
+    tip of the thumb points toward positive X, a positive rotation is one
+    toward the tips of the other 4 fingers).
+
+    @field y   Y-axis rotation rate in radians/second. The sign follows the right hand
+    rule (i.e. if the right hand is wrapped around the Y axis such that the
+    tip of the thumb points toward positive Y, a positive rotation is one
+    toward the tips of the other 4 fingers).
+    @field z
+    Z-axis rotation rate in radians/second. The sign follows the right hand
+    rule (i.e. if the right hand is wrapped around the Z axis such that the
+    tip of the thumb points toward positive Z, a positive rotation is one
+    toward the tips of the other 4 fingers).
+    */
     pub struct GCRotationRate {
         pub x: c_double,
         pub y: c_double,
@@ -25,6 +54,25 @@ extern_struct!(
 
 extern_struct!(
     #[encoding_name("?")]
+    /**
+     A structure containing 3-axis rotation data. The angles are rotated in order or pitch then yaw then roll.
+
+
+    @field pitch X-axis rotation in radians. The sign follows the right hand
+    rule (i.e. if the right hand is wrapped around the X axis such that the
+    tip of the thumb points toward positive X, a positive rotation is one
+    toward the tips of the other 4 fingers).
+
+    @field yaw   Y-axis rotation in radians. The sign follows the right hand
+    rule (i.e. if the right hand is wrapped around the Y axis such that the
+    tip of the thumb points toward positive Y, a positive rotation is one
+    toward the tips of the other 4 fingers).
+
+    @field roll  Z-axis rotation in radians. The sign follows the right hand
+    rule (i.e. if the right hand is wrapped around the Z axis such that the
+    tip of the thumb points toward positive Z, a positive rotation is one
+    toward the tips of the other 4 fingers).
+    */
     pub struct GCEulerAngles {
         pub pitch: c_double,
         pub yaw: c_double,
@@ -33,6 +81,13 @@ extern_struct!(
 );
 
 extern_struct!(
+    /**
+     Represents a quaternion (one way of parameterizing attitude).
+    If q is an instance of GCQuaternion, mathematically it represents the following quaternion:
+
+    q.x*i + q.y*j + q.z*k + q.w
+
+    */
     pub struct GCQuaternion {
         pub x: c_double,
         pub y: c_double,
@@ -46,6 +101,16 @@ pub type GCMotionValueChangedHandler = *mut Block<(NonNull<GCMotion>,), ()>;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameController_GCMotion")]
+    /**
+     A profile for getting motion input from a controller that has the ability to measure acceleration
+    and rotation rate.
+
+    You check for the availablity of motion inputs by getting the motion property
+    of a controller. If that returns a nil value; motion is not available. A non-nil value is a valid
+    GCMotion profile that is able to provide motion input.
+
+    @see GCController.motion
+    */
     pub struct GCMotion;
 
     #[cfg(feature = "GameController_GCMotion")]
@@ -55,9 +120,29 @@ extern_class!(
 );
 
 #[cfg(feature = "GameController_GCMotion")]
+/**
+ A profile for getting motion input from a controller that has the ability to measure acceleration
+and rotation rate.
+
+You check for the availablity of motion inputs by getting the motion property
+of a controller. If that returns a nil value; motion is not available. A non-nil value is a valid
+GCMotion profile that is able to provide motion input.
+
+@see GCController.motion
+*/
 unsafe impl NSObjectProtocol for GCMotion {}
 
 extern_methods!(
+    /**
+     A profile for getting motion input from a controller that has the ability to measure acceleration
+    and rotation rate.
+
+    You check for the availablity of motion inputs by getting the motion property
+    of a controller. If that returns a nil value; motion is not available. A non-nil value is a valid
+    GCMotion profile that is able to provide motion input.
+
+    @see GCController.motion
+    */
     #[cfg(feature = "GameController_GCMotion")]
     unsafe impl GCMotion {
         #[cfg(feature = "GameController_GCController")]
@@ -73,40 +158,119 @@ extern_methods!(
             value_changed_handler: GCMotionValueChangedHandler,
         );
 
+        /**
+         If this property is returns YES, you are responsible for setting sensorsActive to YES when you need motion data from the controller.
+
+        Some controllers, such as the Siri Remote, automatically activate and deactivate motion sensors. In such a case, this property
+        will return NO.
+
+        @see sensorsActive
+        */
         #[method(sensorsRequireManualActivation)]
         pub unsafe fn sensorsRequireManualActivation(&self) -> bool;
 
+        /**
+         Set this property to YES when you wish to receive motion data from the controller. When you set this property to NO, the motion sensors
+        will be disabled and the GCMotion profile will not be updated.
+
+        @note It is highly recommended that you only enable sensor during the period of time you directly need motion data. Motion sensors
+        can drain controller battery, device battery, and needlessly consume Bluetooth bandwidth.
+
+        @see sensorsRequireManualActivation
+        */
         #[method(sensorsActive)]
         pub unsafe fn sensorsActive(&self) -> bool;
 
+        /**
+         Set this property to YES when you wish to receive motion data from the controller. When you set this property to NO, the motion sensors
+        will be disabled and the GCMotion profile will not be updated.
+
+        @note It is highly recommended that you only enable sensor during the period of time you directly need motion data. Motion sensors
+        can drain controller battery, device battery, and needlessly consume Bluetooth bandwidth.
+
+        @see sensorsRequireManualActivation
+        */
         #[method(setSensorsActive:)]
         pub unsafe fn setSensorsActive(&self, sensors_active: bool);
 
+        /**
+         Returns YES if the controller is capable of reporting gravity and user acceleration separately.
+
+        @note Some controllers do not separate gravity from user acceleration, and only report the total acceleration of the controller.
+        Query whether the connected controller has the ability to separate gravity and user acceleration, and it doesn’t, use acceleration instead.
+
+        @see acceleration
+        */
         #[method(hasGravityAndUserAcceleration)]
         pub unsafe fn hasGravityAndUserAcceleration(&self) -> bool;
 
+        /**
+         The gravity vector expressed in the controller's reference frame.
+
+        Note that the total acceleration of the controller is equal to gravity plus userAcceleration.
+
+        @see userAcceleration
+        @see acceleration
+        */
         #[method(gravity)]
         pub unsafe fn gravity(&self) -> GCAcceleration;
 
+        /**
+         The acceleration that the user is giving to the controller.
+
+        Note that the total acceleration of the controller is equal to gravity plus userAcceleration.
+
+        @see gravity
+        @see acceleration
+        */
         #[method(userAcceleration)]
         pub unsafe fn userAcceleration(&self) -> GCAcceleration;
 
+        /**
+         The total acceleration of the controller.
+
+        @see gravity
+        @see userAcceleration
+        */
         #[method(acceleration)]
         pub unsafe fn acceleration(&self) -> GCAcceleration;
 
+        /**
+         The controller generating the motion data has sensors that can accurately determine the current attitude and rotation rate. If this is enabled the motion data for attitude and rotation rate are usable for inputs.
+        */
         #[deprecated = "hasAttitudeAndRotationRate has been deprecated, use -hasAttitude and -hasRotationRate instead"]
         #[method(hasAttitudeAndRotationRate)]
         pub unsafe fn hasAttitudeAndRotationRate(&self) -> bool;
 
+        /**
+         The controller generating the motion data has sensors that can accurately determine the current attitude. If this is enabled the motion data for attitude is usable for inputs.
+        */
         #[method(hasAttitude)]
         pub unsafe fn hasAttitude(&self) -> bool;
 
+        /**
+         The controller generating the motion data has sensors that can accurately determine the current rotation rate. If this is enabled the motion data for rotation rate is usable for inputs.
+        */
         #[method(hasRotationRate)]
         pub unsafe fn hasRotationRate(&self) -> bool;
 
+        /**
+         The current attitude of the controller.
+
+        @note Remotes without accurate attitude and rotation rate can not determine a stable attitude so the values will be (0,0,0,1) at all times.
+        @see hasAttitude
+        @see GCMicroGamepad
+        */
         #[method(attitude)]
         pub unsafe fn attitude(&self) -> GCQuaternion;
 
+        /**
+         The current rotation rate of the controller.
+
+        @note Remotes without accurate attitude and rotation rate can not determine a stable rotation rate so the values will be (0,0,0) at all times.
+        @see hasRotationRate
+        @see GCMicroGamepad
+        */
         #[method(rotationRate)]
         pub unsafe fn rotationRate(&self) -> GCRotationRate;
 

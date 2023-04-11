@@ -7,6 +7,35 @@ use crate::WebKit::*;
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+     @enum WebCacheModel
+
+    @abstract Specifies a usage model for a WebView, which WebKit will use to
+    determine its caching behavior.
+
+    @constant WebCacheModelDocumentViewer Appropriate for a WebView displaying
+    a fixed document -- like a splash screen, a chat document, or a word processing
+    document -- with no UI for navigation. The WebView will behave like any other
+    view, releasing resources when they are no longer referenced. Remote resources,
+    if any, will be cached to disk. This is the most memory-efficient setting.
+
+    Examples: iChat, Mail, TextMate, Growl.
+
+    @constant WebCacheModelDocumentBrowser Appropriate for a WebView displaying
+    a browsable series of documents with a UI for navigating between them -- for
+    example, a reference materials browser or a website designer. The WebView will
+    cache a reasonable number of resources and previously viewed documents in
+    memory and/or on disk.
+
+    Examples: Dictionary, Help Viewer, Coda.
+
+    @constant WebCacheModelPrimaryWebBrowser Appropriate for a WebView in the
+    application that acts as the user's primary web browser. The WebView will cache
+    a very large number of resources and previously viewed documents in memory
+    and/or on disk.
+
+    Examples: Safari, OmniWeb, Shiira.
+    */
     #[deprecated]
     pub enum WebCacheModel {
         #[deprecated]
@@ -23,6 +52,9 @@ extern_static!(WebPreferencesChangedNotification: Option<&'static NSString>);
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "WebKit_WebPreferences")]
+    /**
+     @class WebPreferences
+    */
     #[deprecated]
     pub struct WebPreferences;
 
@@ -33,12 +65,21 @@ extern_class!(
 );
 
 #[cfg(feature = "WebKit_WebPreferences")]
+/**
+ @class WebPreferences
+*/
 unsafe impl NSCoding for WebPreferences {}
 
 #[cfg(feature = "WebKit_WebPreferences")]
+/**
+ @class WebPreferences
+*/
 unsafe impl NSObjectProtocol for WebPreferences {}
 
 extern_methods!(
+    /**
+     @class WebPreferences
+    */
     #[cfg(feature = "WebKit_WebPreferences")]
     unsafe impl WebPreferences {
         #[method_id(@__retain_semantics Other standardPreferences)]
@@ -52,201 +93,435 @@ extern_methods!(
         ) -> Option<Id<Self>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property identifier
+        @result Returns the identifier for this WebPreferences.
+        */
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property standardFontFamily
+        */
         #[method_id(@__retain_semantics Other standardFontFamily)]
         pub unsafe fn standardFontFamily(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property standardFontFamily
+        */
         #[method(setStandardFontFamily:)]
         pub unsafe fn setStandardFontFamily(&self, standard_font_family: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property fixedFontFamily
+        */
         #[method_id(@__retain_semantics Other fixedFontFamily)]
         pub unsafe fn fixedFontFamily(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property fixedFontFamily
+        */
         #[method(setFixedFontFamily:)]
         pub unsafe fn setFixedFontFamily(&self, fixed_font_family: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property serifFontFamily
+        */
         #[method_id(@__retain_semantics Other serifFontFamily)]
         pub unsafe fn serifFontFamily(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property serifFontFamily
+        */
         #[method(setSerifFontFamily:)]
         pub unsafe fn setSerifFontFamily(&self, serif_font_family: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property sansSerifFontFamily
+        */
         #[method_id(@__retain_semantics Other sansSerifFontFamily)]
         pub unsafe fn sansSerifFontFamily(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property sansSerifFontFamily
+        */
         #[method(setSansSerifFontFamily:)]
         pub unsafe fn setSansSerifFontFamily(&self, sans_serif_font_family: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property cursiveFontFamily
+        */
         #[method_id(@__retain_semantics Other cursiveFontFamily)]
         pub unsafe fn cursiveFontFamily(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property cursiveFontFamily
+        */
         #[method(setCursiveFontFamily:)]
         pub unsafe fn setCursiveFontFamily(&self, cursive_font_family: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property fantasyFontFamily
+        */
         #[method_id(@__retain_semantics Other fantasyFontFamily)]
         pub unsafe fn fantasyFontFamily(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property fantasyFontFamily
+        */
         #[method(setFantasyFontFamily:)]
         pub unsafe fn setFantasyFontFamily(&self, fantasy_font_family: Option<&NSString>);
 
+        /**
+         @property defaultFontSize
+        */
         #[method(defaultFontSize)]
         pub unsafe fn defaultFontSize(&self) -> c_int;
 
+        /**
+         @property defaultFontSize
+        */
         #[method(setDefaultFontSize:)]
         pub unsafe fn setDefaultFontSize(&self, default_font_size: c_int);
 
+        /**
+         @property defaultFixedFontSize
+        */
         #[method(defaultFixedFontSize)]
         pub unsafe fn defaultFixedFontSize(&self) -> c_int;
 
+        /**
+         @property defaultFixedFontSize
+        */
         #[method(setDefaultFixedFontSize:)]
         pub unsafe fn setDefaultFixedFontSize(&self, default_fixed_font_size: c_int);
 
+        /**
+         @property minimumFontSize
+        */
         #[method(minimumFontSize)]
         pub unsafe fn minimumFontSize(&self) -> c_int;
 
+        /**
+         @property minimumFontSize
+        */
         #[method(setMinimumFontSize:)]
         pub unsafe fn setMinimumFontSize(&self, minimum_font_size: c_int);
 
+        /**
+         @property minimumLogicalFontSize
+        */
         #[method(minimumLogicalFontSize)]
         pub unsafe fn minimumLogicalFontSize(&self) -> c_int;
 
+        /**
+         @property minimumLogicalFontSize
+        */
         #[method(setMinimumLogicalFontSize:)]
         pub unsafe fn setMinimumLogicalFontSize(&self, minimum_logical_font_size: c_int);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property defaultTextEncodingName
+        */
         #[method_id(@__retain_semantics Other defaultTextEncodingName)]
         pub unsafe fn defaultTextEncodingName(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property defaultTextEncodingName
+        */
         #[method(setDefaultTextEncodingName:)]
         pub unsafe fn setDefaultTextEncodingName(
             &self,
             default_text_encoding_name: Option<&NSString>,
         );
 
+        /**
+         @property userStyleSheetEnabled
+        */
         #[method(userStyleSheetEnabled)]
         pub unsafe fn userStyleSheetEnabled(&self) -> bool;
 
+        /**
+         @property userStyleSheetEnabled
+        */
         #[method(setUserStyleSheetEnabled:)]
         pub unsafe fn setUserStyleSheetEnabled(&self, user_style_sheet_enabled: bool);
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+         @property userStyleSheetLocation
+        @abstract The location of the user style sheet.
+        */
         #[method_id(@__retain_semantics Other userStyleSheetLocation)]
         pub unsafe fn userStyleSheetLocation(&self) -> Option<Id<NSURL>>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+         @property userStyleSheetLocation
+        @abstract The location of the user style sheet.
+        */
         #[method(setUserStyleSheetLocation:)]
         pub unsafe fn setUserStyleSheetLocation(&self, user_style_sheet_location: Option<&NSURL>);
 
+        /**
+         @property javaEnabled
+        @discussion Deprecated function that does nothing and always returns false.
+        */
         #[deprecated]
         #[method(isJavaEnabled)]
         pub unsafe fn isJavaEnabled(&self) -> bool;
 
+        /**
+         @property javaEnabled
+        @discussion Deprecated function that does nothing and always returns false.
+        */
         #[deprecated]
         #[method(setJavaEnabled:)]
         pub unsafe fn setJavaEnabled(&self, java_enabled: bool);
 
+        /**
+         @property javaScriptEnabled
+        */
         #[method(isJavaScriptEnabled)]
         pub unsafe fn isJavaScriptEnabled(&self) -> bool;
 
+        /**
+         @property javaScriptEnabled
+        */
         #[method(setJavaScriptEnabled:)]
         pub unsafe fn setJavaScriptEnabled(&self, java_script_enabled: bool);
 
+        /**
+         @property javaScriptCanOpenWindowsAutomatically
+        */
         #[method(javaScriptCanOpenWindowsAutomatically)]
         pub unsafe fn javaScriptCanOpenWindowsAutomatically(&self) -> bool;
 
+        /**
+         @property javaScriptCanOpenWindowsAutomatically
+        */
         #[method(setJavaScriptCanOpenWindowsAutomatically:)]
         pub unsafe fn setJavaScriptCanOpenWindowsAutomatically(
             &self,
             java_script_can_open_windows_automatically: bool,
         );
 
+        /**
+         @property plugInsEnabled
+        */
         #[method(arePlugInsEnabled)]
         pub unsafe fn arePlugInsEnabled(&self) -> bool;
 
+        /**
+         @property plugInsEnabled
+        */
         #[method(setPlugInsEnabled:)]
         pub unsafe fn setPlugInsEnabled(&self, plug_ins_enabled: bool);
 
+        /**
+         @property allowsAnimatedImages
+        */
         #[method(allowsAnimatedImages)]
         pub unsafe fn allowsAnimatedImages(&self) -> bool;
 
+        /**
+         @property allowsAnimatedImages
+        */
         #[method(setAllowsAnimatedImages:)]
         pub unsafe fn setAllowsAnimatedImages(&self, allows_animated_images: bool);
 
+        /**
+         @property allowsAnimatedImageLooping
+        */
         #[method(allowsAnimatedImageLooping)]
         pub unsafe fn allowsAnimatedImageLooping(&self) -> bool;
 
+        /**
+         @property allowsAnimatedImageLooping
+        */
         #[method(setAllowsAnimatedImageLooping:)]
         pub unsafe fn setAllowsAnimatedImageLooping(&self, allows_animated_image_looping: bool);
 
+        /**
+         @property willLoadImagesAutomatically
+        */
         #[method(loadsImagesAutomatically)]
         pub unsafe fn loadsImagesAutomatically(&self) -> bool;
 
+        /**
+         @property willLoadImagesAutomatically
+        */
         #[method(setLoadsImagesAutomatically:)]
         pub unsafe fn setLoadsImagesAutomatically(&self, loads_images_automatically: bool);
 
+        /**
+         @property autosaves
+        @discussion If autosaves is YES the settings represented by
+        WebPreferences will be stored in the user defaults database.
+        */
         #[method(autosaves)]
         pub unsafe fn autosaves(&self) -> bool;
 
+        /**
+         @property autosaves
+        @discussion If autosaves is YES the settings represented by
+        WebPreferences will be stored in the user defaults database.
+        */
         #[method(setAutosaves:)]
         pub unsafe fn setAutosaves(&self, autosaves: bool);
 
+        /**
+         @property shouldPrintBackgrounds
+        */
         #[method(shouldPrintBackgrounds)]
         pub unsafe fn shouldPrintBackgrounds(&self) -> bool;
 
+        /**
+         @property shouldPrintBackgrounds
+        */
         #[method(setShouldPrintBackgrounds:)]
         pub unsafe fn setShouldPrintBackgrounds(&self, should_print_backgrounds: bool);
 
+        /**
+         @property privateBrowsingEnabled:
+        @abstract If private browsing is enabled, WebKit will not store information
+        about sites the user visits.
+        */
         #[method(privateBrowsingEnabled)]
         pub unsafe fn privateBrowsingEnabled(&self) -> bool;
 
+        /**
+         @property privateBrowsingEnabled:
+        @abstract If private browsing is enabled, WebKit will not store information
+        about sites the user visits.
+        */
         #[method(setPrivateBrowsingEnabled:)]
         pub unsafe fn setPrivateBrowsingEnabled(&self, private_browsing_enabled: bool);
 
+        /**
+         @property tabsToLinks
+        @abstract If tabsToLinks is YES, the tab key will focus links and form controls.
+        The option key temporarily reverses this preference.
+        */
         #[method(tabsToLinks)]
         pub unsafe fn tabsToLinks(&self) -> bool;
 
+        /**
+         @property tabsToLinks
+        @abstract If tabsToLinks is YES, the tab key will focus links and form controls.
+        The option key temporarily reverses this preference.
+        */
         #[method(setTabsToLinks:)]
         pub unsafe fn setTabsToLinks(&self, tabs_to_links: bool);
 
+        /**
+         @property usesPageCache
+        @abstract Whether the receiver's associated WebViews use the shared
+        page cache.
+        @discussion Pages are cached as they are added to a WebBackForwardList, and
+        removed from the cache as they are removed from a WebBackForwardList. Because
+        the page cache is global, caching a page in one WebBackForwardList may cause
+        a page in another WebBackForwardList to be evicted from the cache.
+        */
         #[method(usesPageCache)]
         pub unsafe fn usesPageCache(&self) -> bool;
 
+        /**
+         @property usesPageCache
+        @abstract Whether the receiver's associated WebViews use the shared
+        page cache.
+        @discussion Pages are cached as they are added to a WebBackForwardList, and
+        removed from the cache as they are removed from a WebBackForwardList. Because
+        the page cache is global, caching a page in one WebBackForwardList may cause
+        a page in another WebBackForwardList to be evicted from the cache.
+        */
         #[method(setUsesPageCache:)]
         pub unsafe fn setUsesPageCache(&self, uses_page_cache: bool);
 
+        /**
+         @property cacheModel
+        @abstract Specifies a usage model for a WebView, which WebKit will use to
+        determine its caching behavior. If necessary, WebKit
+        will prune its caches to match cacheModel when set.
+
+        @discussion Research indicates that users tend to browse within clusters of
+        documents that hold resources in common, and to revisit previously visited
+        documents. WebKit and the frameworks below it include built-in caches that take
+        advantage of these patterns, substantially improving document load speed in
+        browsing situations. The WebKit cache model controls the behaviors of all of
+        these caches, including NSURLCache and the various WebCore caches.
+
+        Applications with a browsing interface can improve document load speed
+        substantially by specifying WebCacheModelDocumentBrowser. Applications without
+        a browsing interface can reduce memory usage substantially by specifying
+        WebCacheModelDocumentViewer.
+
+        If cacheModel is not set, WebKit will select a cache model automatically.
+        */
         #[method(cacheModel)]
         pub unsafe fn cacheModel(&self) -> WebCacheModel;
 
+        /**
+         @property cacheModel
+        @abstract Specifies a usage model for a WebView, which WebKit will use to
+        determine its caching behavior. If necessary, WebKit
+        will prune its caches to match cacheModel when set.
+
+        @discussion Research indicates that users tend to browse within clusters of
+        documents that hold resources in common, and to revisit previously visited
+        documents. WebKit and the frameworks below it include built-in caches that take
+        advantage of these patterns, substantially improving document load speed in
+        browsing situations. The WebKit cache model controls the behaviors of all of
+        these caches, including NSURLCache and the various WebCore caches.
+
+        Applications with a browsing interface can improve document load speed
+        substantially by specifying WebCacheModelDocumentBrowser. Applications without
+        a browsing interface can reduce memory usage substantially by specifying
+        WebCacheModelDocumentViewer.
+
+        If cacheModel is not set, WebKit will select a cache model automatically.
+        */
         #[method(setCacheModel:)]
         pub unsafe fn setCacheModel(&self, cache_model: WebCacheModel);
 
+        /**
+         @property suppressesIncrementalRendering
+        */
         #[method(suppressesIncrementalRendering)]
         pub unsafe fn suppressesIncrementalRendering(&self) -> bool;
 
+        /**
+         @property suppressesIncrementalRendering
+        */
         #[method(setSuppressesIncrementalRendering:)]
         pub unsafe fn setSuppressesIncrementalRendering(
             &self,
             suppresses_incremental_rendering: bool,
         );
 
+        /**
+         @property allowsAirPlayForMediaPlayback
+        */
         #[method(allowsAirPlayForMediaPlayback)]
         pub unsafe fn allowsAirPlayForMediaPlayback(&self) -> bool;
 
+        /**
+         @property allowsAirPlayForMediaPlayback
+        */
         #[method(setAllowsAirPlayForMediaPlayback:)]
         pub unsafe fn setAllowsAirPlayForMediaPlayback(
             &self,

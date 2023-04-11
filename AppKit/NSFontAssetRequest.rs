@@ -15,6 +15,15 @@ ns_options!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSFontAssetRequest")]
+    /**
+     The NSFontAssetRequest class is used to interact with the on demand font assets.
+
+    The purpose of the system is to allow an application to download certain font assets on demand, when they are required. This also means that the system can purge any asset from disk when it is no longer required, which will save disk space. This class describes which assets are required, makes the request and reports progress, allows the app to specify how long during its execution that they are required.
+
+    Assets are downloaded into the application container for sandboxed applications, or shared by all applications for non-sandboxed applications, and are made available via the standard NSFont lookup API.
+
+    The request object itself is lightweight. You may create as many as you need, for example to request the same set of font descriptors in different components of your application.
+    */
     pub struct NSFontAssetRequest;
 
     #[cfg(feature = "AppKit_NSFontAssetRequest")]
@@ -24,12 +33,39 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSFontAssetRequest")]
+/**
+ The NSFontAssetRequest class is used to interact with the on demand font assets.
+
+The purpose of the system is to allow an application to download certain font assets on demand, when they are required. This also means that the system can purge any asset from disk when it is no longer required, which will save disk space. This class describes which assets are required, makes the request and reports progress, allows the app to specify how long during its execution that they are required.
+
+Assets are downloaded into the application container for sandboxed applications, or shared by all applications for non-sandboxed applications, and are made available via the standard NSFont lookup API.
+
+The request object itself is lightweight. You may create as many as you need, for example to request the same set of font descriptors in different components of your application.
+*/
 unsafe impl NSObjectProtocol for NSFontAssetRequest {}
 
 #[cfg(feature = "AppKit_NSFontAssetRequest")]
+/**
+ The NSFontAssetRequest class is used to interact with the on demand font assets.
+
+The purpose of the system is to allow an application to download certain font assets on demand, when they are required. This also means that the system can purge any asset from disk when it is no longer required, which will save disk space. This class describes which assets are required, makes the request and reports progress, allows the app to specify how long during its execution that they are required.
+
+Assets are downloaded into the application container for sandboxed applications, or shared by all applications for non-sandboxed applications, and are made available via the standard NSFont lookup API.
+
+The request object itself is lightweight. You may create as many as you need, for example to request the same set of font descriptors in different components of your application.
+*/
 unsafe impl NSProgressReporting for NSFontAssetRequest {}
 
 extern_methods!(
+    /**
+     The NSFontAssetRequest class is used to interact with the on demand font assets.
+
+    The purpose of the system is to allow an application to download certain font assets on demand, when they are required. This also means that the system can purge any asset from disk when it is no longer required, which will save disk space. This class describes which assets are required, makes the request and reports progress, allows the app to specify how long during its execution that they are required.
+
+    Assets are downloaded into the application container for sandboxed applications, or shared by all applications for non-sandboxed applications, and are made available via the standard NSFont lookup API.
+
+    The request object itself is lightweight. You may create as many as you need, for example to request the same set of font descriptors in different components of your application.
+    */
     #[cfg(feature = "AppKit_NSFontAssetRequest")]
     unsafe impl NSFontAssetRequest {
         #[method_id(@__retain_semantics Init init)]
@@ -44,10 +80,16 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(all(feature = "AppKit_NSFontDescriptor", feature = "Foundation_NSArray"))]
+        /**
+         The downloaded font descriptors up to this point.
+        */
         #[method_id(@__retain_semantics Other downloadedFontDescriptors)]
         pub unsafe fn downloadedFontDescriptors(&self) -> Id<NSArray<NSFontDescriptor>>;
 
         #[cfg(feature = "Foundation_NSProgress")]
+        /**
+         Progress for the request. The progress object will be valid at initialization and begin updating after the -downloadFontAssetsWithCompletionHandler: method is called.
+        */
         #[method_id(@__retain_semantics Other progress)]
         pub unsafe fn progress(&self) -> Id<NSProgress>;
 

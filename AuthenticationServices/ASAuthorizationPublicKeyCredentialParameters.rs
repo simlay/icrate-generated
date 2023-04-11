@@ -33,6 +33,9 @@ extern_methods!(
             algorithm: ASCOSEAlgorithmIdentifier,
         ) -> Id<Self>;
 
+        /**
+          @abstract A COSE algorithm indentifier.
+        */
         #[method(algorithm)]
         pub unsafe fn algorithm(&self) -> ASCOSEAlgorithmIdentifier;
 

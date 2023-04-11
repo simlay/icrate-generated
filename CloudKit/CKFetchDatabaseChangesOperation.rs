@@ -8,6 +8,17 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CloudKit_CKFetchDatabaseChangesOperation")]
+    /**
+      @class CKFetchDatabaseChangesOperation
+
+      @abstract This operation will fetch changes to record zones within a database
+
+      @discussion If a change anchor from a previous @c CKFetchDatabaseChangesOperation is passed in, only the zones that have changed since that anchor will be returned.
+      This per-database @c serverChangeToken is not to be confused with the per-recordZone @c serverChangeToken from @c CKFetchRecordZoneChangesOperation.
+      If this is your first fetch or if you wish to re-fetch all zones, pass nil for the change token.
+      Change token are opaque tokens and clients should not infer any behavior based on their content.
+      @c CKFetchDatabaseChangesOperation is supported in a @c privateCloudDatabase and @c sharedCloudDatabase
+    */
     pub struct CKFetchDatabaseChangesOperation;
 
     #[cfg(feature = "CloudKit_CKFetchDatabaseChangesOperation")]
@@ -18,9 +29,31 @@ extern_class!(
 );
 
 #[cfg(feature = "CloudKit_CKFetchDatabaseChangesOperation")]
+/**
+  @class CKFetchDatabaseChangesOperation
+
+  @abstract This operation will fetch changes to record zones within a database
+
+  @discussion If a change anchor from a previous @c CKFetchDatabaseChangesOperation is passed in, only the zones that have changed since that anchor will be returned.
+  This per-database @c serverChangeToken is not to be confused with the per-recordZone @c serverChangeToken from @c CKFetchRecordZoneChangesOperation.
+  If this is your first fetch or if you wish to re-fetch all zones, pass nil for the change token.
+  Change token are opaque tokens and clients should not infer any behavior based on their content.
+  @c CKFetchDatabaseChangesOperation is supported in a @c privateCloudDatabase and @c sharedCloudDatabase
+*/
 unsafe impl NSObjectProtocol for CKFetchDatabaseChangesOperation {}
 
 extern_methods!(
+    /**
+      @class CKFetchDatabaseChangesOperation
+
+      @abstract This operation will fetch changes to record zones within a database
+
+      @discussion If a change anchor from a previous @c CKFetchDatabaseChangesOperation is passed in, only the zones that have changed since that anchor will be returned.
+      This per-database @c serverChangeToken is not to be confused with the per-recordZone @c serverChangeToken from @c CKFetchRecordZoneChangesOperation.
+      If this is your first fetch or if you wish to re-fetch all zones, pass nil for the change token.
+      Change token are opaque tokens and clients should not infer any behavior based on their content.
+      @c CKFetchDatabaseChangesOperation is supported in a @c privateCloudDatabase and @c sharedCloudDatabase
+    */
     #[cfg(feature = "CloudKit_CKFetchDatabaseChangesOperation")]
     unsafe impl CKFetchDatabaseChangesOperation {
         #[method_id(@__retain_semantics Init init)]
@@ -50,9 +83,25 @@ extern_methods!(
         #[method(setResultsLimit:)]
         pub unsafe fn setResultsLimit(&self, results_limit: NSUInteger);
 
+        /**
+          @discussion When set to YES, this operation will send repeated requests to the server until all record zone changes have been fetched.
+
+          @c changeTokenUpdatedBlock will be invoked periodically, to give clients an updated change token so that already-fetched record zone changes don't need to be re-fetched on a subsequent operation.
+          When set to NO, it is the responsibility of the caller to issue subsequent fetch-changes operations when moreComing is YES in a @c fetchDatabaseChangesCompletionBlock invocation.
+          @c fetchAllChanges is @c YES by default
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations
+        */
         #[method(fetchAllChanges)]
         pub unsafe fn fetchAllChanges(&self) -> bool;
 
+        /**
+          @discussion When set to YES, this operation will send repeated requests to the server until all record zone changes have been fetched.
+
+          @c changeTokenUpdatedBlock will be invoked periodically, to give clients an updated change token so that already-fetched record zone changes don't need to be re-fetched on a subsequent operation.
+          When set to NO, it is the responsibility of the caller to issue subsequent fetch-changes operations when moreComing is YES in a @c fetchDatabaseChangesCompletionBlock invocation.
+          @c fetchAllChanges is @c YES by default
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations
+        */
         #[method(setFetchAllChanges:)]
         pub unsafe fn setFetchAllChanges(&self, fetch_all_changes: bool);
 
@@ -83,12 +132,24 @@ extern_methods!(
         );
 
         #[cfg(feature = "CloudKit_CKRecordZoneID")]
+        /**
+          @abstract If this block is set it will be called instead of @c recordZoneWithIDWasDeletedBlock if the user deleted this zone via the iCloud storage UI.
+
+          @discussion This is an indication that the user wanted all data deleted, so local cached data should be wiped and not re-uploaded to the server.
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations
+        */
         #[method(recordZoneWithIDWasPurgedBlock)]
         pub unsafe fn recordZoneWithIDWasPurgedBlock(
             &self,
         ) -> *mut Block<(NonNull<CKRecordZoneID>,), ()>;
 
         #[cfg(feature = "CloudKit_CKRecordZoneID")]
+        /**
+          @abstract If this block is set it will be called instead of @c recordZoneWithIDWasDeletedBlock if the user deleted this zone via the iCloud storage UI.
+
+          @discussion This is an indication that the user wanted all data deleted, so local cached data should be wiped and not re-uploaded to the server.
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations
+        */
         #[method(setRecordZoneWithIDWasPurgedBlock:)]
         pub unsafe fn setRecordZoneWithIDWasPurgedBlock(
             &self,
@@ -96,12 +157,24 @@ extern_methods!(
         );
 
         #[cfg(feature = "CloudKit_CKRecordZoneID")]
+        /**
+          @abstract If this block is set it will be called instead of @c recordZoneWithIDWasDeletedBlock if the user chose to reset all encrypted data for their account.
+
+          @discussion This is an indication that the user had to reset encrypted data during account recovery, so local cached data should be re-uploaded to the server to minimize data loss.
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations
+        */
         #[method(recordZoneWithIDWasDeletedDueToUserEncryptedDataResetBlock)]
         pub unsafe fn recordZoneWithIDWasDeletedDueToUserEncryptedDataResetBlock(
             &self,
         ) -> *mut Block<(NonNull<CKRecordZoneID>,), ()>;
 
         #[cfg(feature = "CloudKit_CKRecordZoneID")]
+        /**
+          @abstract If this block is set it will be called instead of @c recordZoneWithIDWasDeletedBlock if the user chose to reset all encrypted data for their account.
+
+          @discussion This is an indication that the user had to reset encrypted data during account recovery, so local cached data should be re-uploaded to the server to minimize data loss.
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations
+        */
         #[method(setRecordZoneWithIDWasDeletedDueToUserEncryptedDataResetBlock:)]
         pub unsafe fn setRecordZoneWithIDWasDeletedDueToUserEncryptedDataResetBlock(
             &self,
@@ -111,12 +184,18 @@ extern_methods!(
         );
 
         #[cfg(feature = "CloudKit_CKServerChangeToken")]
+        /**
+         ! @discussion Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(changeTokenUpdatedBlock)]
         pub unsafe fn changeTokenUpdatedBlock(
             &self,
         ) -> *mut Block<(NonNull<CKServerChangeToken>,), ()>;
 
         #[cfg(feature = "CloudKit_CKServerChangeToken")]
+        /**
+         ! @discussion Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations.
+        */
         #[method(setChangeTokenUpdatedBlock:)]
         pub unsafe fn setChangeTokenUpdatedBlock(
             &self,
@@ -127,6 +206,14 @@ extern_methods!(
             feature = "CloudKit_CKServerChangeToken",
             feature = "Foundation_NSError"
         ))]
+        /**
+          @abstract This block is called when the operation completes.
+
+          @discussion Clients are responsible for saving the change token at the end of the operation and passing it in to the next call to @c CKFetchDatabaseChangesOperation.
+          If the server returns a @c CKErrorChangeTokenExpired error, the @c previousServerChangeToken value was too old and the client should toss its local cache and re-fetch the changes in this record zone starting with a nil @c previousServerChangeToken.
+          If @c moreComing is true then the server wasn't able to return all the changes in this response. Another @c CKFetchDatabaseChangesOperation operation should be run with the @c previousServerChangeToken token from this operation.
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations
+        */
         #[method(fetchDatabaseChangesCompletionBlock)]
         pub unsafe fn fetchDatabaseChangesCompletionBlock(
             &self,
@@ -136,6 +223,14 @@ extern_methods!(
             feature = "CloudKit_CKServerChangeToken",
             feature = "Foundation_NSError"
         ))]
+        /**
+          @abstract This block is called when the operation completes.
+
+          @discussion Clients are responsible for saving the change token at the end of the operation and passing it in to the next call to @c CKFetchDatabaseChangesOperation.
+          If the server returns a @c CKErrorChangeTokenExpired error, the @c previousServerChangeToken value was too old and the client should toss its local cache and re-fetch the changes in this record zone starting with a nil @c previousServerChangeToken.
+          If @c moreComing is true then the server wasn't able to return all the changes in this response. Another @c CKFetchDatabaseChangesOperation operation should be run with the @c previousServerChangeToken token from this operation.
+          Each @c CKOperation instance has a private serial queue. This queue is used for all callback block invocations
+        */
         #[method(setFetchDatabaseChangesCompletionBlock:)]
         pub unsafe fn setFetchDatabaseChangesCompletionBlock(
             &self,

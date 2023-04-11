@@ -7,6 +7,11 @@ use crate::MetricKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MetricKit_MXLocationActivityMetric")]
+    /**
+     @class         MXLocationActivityMetric
+    @abstract      An MXMetric subclass that encapsulates location metrics
+    @discussion    The metrics contained in this class describe properties of location activity. See MXAppRunTimeMetric for time spent performing location activities.
+    */
     pub struct MXLocationActivityMetric;
 
     #[cfg(feature = "MetricKit_MXLocationActivityMetric")]
@@ -17,21 +22,46 @@ extern_class!(
 );
 
 #[cfg(feature = "MetricKit_MXLocationActivityMetric")]
+/**
+ @class         MXLocationActivityMetric
+@abstract      An MXMetric subclass that encapsulates location metrics
+@discussion    The metrics contained in this class describe properties of location activity. See MXAppRunTimeMetric for time spent performing location activities.
+*/
 unsafe impl NSCoding for MXLocationActivityMetric {}
 
 #[cfg(feature = "MetricKit_MXLocationActivityMetric")]
+/**
+ @class         MXLocationActivityMetric
+@abstract      An MXMetric subclass that encapsulates location metrics
+@discussion    The metrics contained in this class describe properties of location activity. See MXAppRunTimeMetric for time spent performing location activities.
+*/
 unsafe impl NSObjectProtocol for MXLocationActivityMetric {}
 
 #[cfg(feature = "MetricKit_MXLocationActivityMetric")]
+/**
+ @class         MXLocationActivityMetric
+@abstract      An MXMetric subclass that encapsulates location metrics
+@discussion    The metrics contained in this class describe properties of location activity. See MXAppRunTimeMetric for time spent performing location activities.
+*/
 unsafe impl NSSecureCoding for MXLocationActivityMetric {}
 
 extern_methods!(
+    /**
+     @class         MXLocationActivityMetric
+    @abstract      An MXMetric subclass that encapsulates location metrics
+    @discussion    The metrics contained in this class describe properties of location activity. See MXAppRunTimeMetric for time spent performing location activities.
+    */
     #[cfg(feature = "MetricKit_MXLocationActivityMetric")]
     unsafe impl MXLocationActivityMetric {
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"
         ))]
+        /**
+         @property      cumulativeBestAccuracyTime
+        @abstract      Cumulative time spent acquiring location at kCLLocationAccuracyBest.
+        @discussion    Dimensioned as NSUnitDuration.
+        */
         #[method_id(@__retain_semantics Other cumulativeBestAccuracyTime)]
         pub unsafe fn cumulativeBestAccuracyTime(&self) -> Id<NSMeasurement<NSUnitDuration>>;
 
@@ -39,6 +69,11 @@ extern_methods!(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"
         ))]
+        /**
+         @property      cumulativeBestAccuracyForNavigationTime
+        @abstract      Cumulative time spent acquiring location at kCLLocationAccuracyBestForNavigation.
+        @discussion    Dimensioned as NSUnitDuration.
+        */
         #[method_id(@__retain_semantics Other cumulativeBestAccuracyForNavigationTime)]
         pub unsafe fn cumulativeBestAccuracyForNavigationTime(
             &self,
@@ -48,6 +83,11 @@ extern_methods!(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"
         ))]
+        /**
+         @property      cumulativeNearestTenMetersAccuracyTime
+        @abstract      Cumulative time spent acquiring location at kCLLocationAccuracyNearestTenMeters.
+        @discussion    Dimensioned as NSUnitDuration.
+        */
         #[method_id(@__retain_semantics Other cumulativeNearestTenMetersAccuracyTime)]
         pub unsafe fn cumulativeNearestTenMetersAccuracyTime(
             &self,
@@ -57,6 +97,11 @@ extern_methods!(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"
         ))]
+        /**
+         @property      cumulativeHundredMetersAccuracyTime
+        @abstract      Cumulative time spent acquiring location at kCLLocationAccuracyHundredMeters.
+        @discussion    Dimensioned as NSUnitDuration.
+        */
         #[method_id(@__retain_semantics Other cumulativeHundredMetersAccuracyTime)]
         pub unsafe fn cumulativeHundredMetersAccuracyTime(
             &self,
@@ -66,6 +111,11 @@ extern_methods!(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"
         ))]
+        /**
+         @property      cumulativeKilometerAccuracyTime
+        @abstract      Cumulative time spent acquiring location at kCLLocationAccuracyKilometer.
+        @discussion    Dimensioned as NSUnitDuration.
+        */
         #[method_id(@__retain_semantics Other cumulativeKilometerAccuracyTime)]
         pub unsafe fn cumulativeKilometerAccuracyTime(&self) -> Id<NSMeasurement<NSUnitDuration>>;
 
@@ -73,6 +123,11 @@ extern_methods!(
             feature = "Foundation_NSMeasurement",
             feature = "Foundation_NSUnitDuration"
         ))]
+        /**
+         @property      cumulativeThreeKilometersAccuracyTime
+        @abstract      Cumulative time spent acquiring location at kCLLocationAccuracyThreeKilometers.
+        @discussion    Dimensioned as NSUnitDuration.
+        */
         #[method_id(@__retain_semantics Other cumulativeThreeKilometersAccuracyTime)]
         pub unsafe fn cumulativeThreeKilometersAccuracyTime(
             &self,

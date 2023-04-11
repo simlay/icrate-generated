@@ -39,9 +39,17 @@ extern_methods!(
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
+        /**
+          Whether a button (for example) should be enabled and tappable for this
+         particular command.
+        */
         #[method(isEnabled)]
         pub unsafe fn isEnabled(&self) -> bool;
 
+        /**
+          Whether a button (for example) should be enabled and tappable for this
+         particular command.
+        */
         #[method(setEnabled:)]
         pub unsafe fn setEnabled(&self, enabled: bool);
 
@@ -82,10 +90,16 @@ extern_methods!(
     #[cfg(feature = "MediaPlayer_MPSkipIntervalCommand")]
     unsafe impl MPSkipIntervalCommand {
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSNumber"))]
+        /**
+          An array of NSNumbers (NSTimeIntervals) that contain preferred skip intervals.
+        */
         #[method_id(@__retain_semantics Other preferredIntervals)]
         pub unsafe fn preferredIntervals(&self) -> Id<NSArray<NSNumber>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSNumber"))]
+        /**
+          An array of NSNumbers (NSTimeIntervals) that contain preferred skip intervals.
+        */
         #[method(setPreferredIntervals:)]
         pub unsafe fn setPreferredIntervals(&self, preferred_intervals: &NSArray<NSNumber>);
     }
@@ -109,25 +123,51 @@ unsafe impl NSObjectProtocol for MPFeedbackCommand {}
 extern_methods!(
     #[cfg(feature = "MediaPlayer_MPFeedbackCommand")]
     unsafe impl MPFeedbackCommand {
+        /**
+          Whether the feedback command is in an "active" state. An example of when a
+         feedback command would be active is if the user already "liked" a particular
+         content item.
+        */
         #[method(isActive)]
         pub unsafe fn isActive(&self) -> bool;
 
+        /**
+          Whether the feedback command is in an "active" state. An example of when a
+         feedback command would be active is if the user already "liked" a particular
+         content item.
+        */
         #[method(setActive:)]
         pub unsafe fn setActive(&self, active: bool);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          A localized string briefly describing the context of the command.
+        */
         #[method_id(@__retain_semantics Other localizedTitle)]
         pub unsafe fn localizedTitle(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          A localized string briefly describing the context of the command.
+        */
         #[method(setLocalizedTitle:)]
         pub unsafe fn setLocalizedTitle(&self, localized_title: &NSString);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          An optional shorter version of the localized title for this feedback
+         command. MediaPlayer uses this property to display this command's title on
+         remote control interfaces with little screen space.
+        */
         #[method_id(@__retain_semantics Other localizedShortTitle)]
         pub unsafe fn localizedShortTitle(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          An optional shorter version of the localized title for this feedback
+         command. MediaPlayer uses this property to display this command's title on
+         remote control interfaces with little screen space.
+        */
         #[method(setLocalizedShortTitle:)]
         pub unsafe fn setLocalizedShortTitle(&self, localized_short_title: &NSString);
     }
@@ -151,15 +191,27 @@ unsafe impl NSObjectProtocol for MPRatingCommand {}
 extern_methods!(
     #[cfg(feature = "MediaPlayer_MPRatingCommand")]
     unsafe impl MPRatingCommand {
+        /**
+          Minimum rating for the command.
+        */
         #[method(minimumRating)]
         pub unsafe fn minimumRating(&self) -> c_float;
 
+        /**
+          Minimum rating for the command.
+        */
         #[method(setMinimumRating:)]
         pub unsafe fn setMinimumRating(&self, minimum_rating: c_float);
 
+        /**
+          Maximum rating for the command.
+        */
         #[method(maximumRating)]
         pub unsafe fn maximumRating(&self) -> c_float;
 
+        /**
+          Maximum rating for the command.
+        */
         #[method(setMaximumRating:)]
         pub unsafe fn setMaximumRating(&self, maximum_rating: c_float);
     }
@@ -184,10 +236,18 @@ extern_methods!(
     #[cfg(feature = "MediaPlayer_MPChangePlaybackRateCommand")]
     unsafe impl MPChangePlaybackRateCommand {
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSNumber"))]
+        /**
+          An array of NSNumbers (floats) that contain supported playback rates that
+         the command can send.
+        */
         #[method_id(@__retain_semantics Other supportedPlaybackRates)]
         pub unsafe fn supportedPlaybackRates(&self) -> Id<NSArray<NSNumber>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSNumber"))]
+        /**
+          An array of NSNumbers (floats) that contain supported playback rates that
+         the command can send.
+        */
         #[method(setSupportedPlaybackRates:)]
         pub unsafe fn setSupportedPlaybackRates(
             &self,
@@ -199,6 +259,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MediaPlayer_MPChangePlaybackPositionCommand")]
+    /**
+      Command for changing the current playback position in a now playing item.
+     Sends out MPChangePlaybackPositionCommandEvents.
+    */
     pub struct MPChangePlaybackPositionCommand;
 
     #[cfg(feature = "MediaPlayer_MPChangePlaybackPositionCommand")]
@@ -209,9 +273,17 @@ extern_class!(
 );
 
 #[cfg(feature = "MediaPlayer_MPChangePlaybackPositionCommand")]
+/**
+  Command for changing the current playback position in a now playing item.
+ Sends out MPChangePlaybackPositionCommandEvents.
+*/
 unsafe impl NSObjectProtocol for MPChangePlaybackPositionCommand {}
 
 extern_methods!(
+    /**
+      Command for changing the current playback position in a now playing item.
+     Sends out MPChangePlaybackPositionCommandEvents.
+    */
     #[cfg(feature = "MediaPlayer_MPChangePlaybackPositionCommand")]
     unsafe impl MPChangePlaybackPositionCommand {}
 );
@@ -219,6 +291,12 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MediaPlayer_MPChangeShuffleModeCommand")]
+    /**
+      Command for changing the current shuffle mode to use during playback. To
+     update the system's current representation of your app's shuffle mode, set
+     the currentShuffleType property on this command to the proper shuffle type
+     value.
+    */
     pub struct MPChangeShuffleModeCommand;
 
     #[cfg(feature = "MediaPlayer_MPChangeShuffleModeCommand")]
@@ -229,14 +307,32 @@ extern_class!(
 );
 
 #[cfg(feature = "MediaPlayer_MPChangeShuffleModeCommand")]
+/**
+  Command for changing the current shuffle mode to use during playback. To
+ update the system's current representation of your app's shuffle mode, set
+ the currentShuffleType property on this command to the proper shuffle type
+ value.
+*/
 unsafe impl NSObjectProtocol for MPChangeShuffleModeCommand {}
 
 extern_methods!(
+    /**
+      Command for changing the current shuffle mode to use during playback. To
+     update the system's current representation of your app's shuffle mode, set
+     the currentShuffleType property on this command to the proper shuffle type
+     value.
+    */
     #[cfg(feature = "MediaPlayer_MPChangeShuffleModeCommand")]
     unsafe impl MPChangeShuffleModeCommand {
+        /**
+          The app's current shuffle type.
+        */
         #[method(currentShuffleType)]
         pub unsafe fn currentShuffleType(&self) -> MPShuffleType;
 
+        /**
+          The app's current shuffle type.
+        */
         #[method(setCurrentShuffleType:)]
         pub unsafe fn setCurrentShuffleType(&self, current_shuffle_type: MPShuffleType);
     }
@@ -245,6 +341,12 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MediaPlayer_MPChangeRepeatModeCommand")]
+    /**
+      Command for changing the current repeat mode to use during playback. To
+     update the system's current representation of your app's repeat mode, set
+     the currentRepeatType property on this command to the proper repeat type
+     value.
+    */
     pub struct MPChangeRepeatModeCommand;
 
     #[cfg(feature = "MediaPlayer_MPChangeRepeatModeCommand")]
@@ -255,14 +357,32 @@ extern_class!(
 );
 
 #[cfg(feature = "MediaPlayer_MPChangeRepeatModeCommand")]
+/**
+  Command for changing the current repeat mode to use during playback. To
+ update the system's current representation of your app's repeat mode, set
+ the currentRepeatType property on this command to the proper repeat type
+ value.
+*/
 unsafe impl NSObjectProtocol for MPChangeRepeatModeCommand {}
 
 extern_methods!(
+    /**
+      Command for changing the current repeat mode to use during playback. To
+     update the system's current representation of your app's repeat mode, set
+     the currentRepeatType property on this command to the proper repeat type
+     value.
+    */
     #[cfg(feature = "MediaPlayer_MPChangeRepeatModeCommand")]
     unsafe impl MPChangeRepeatModeCommand {
+        /**
+          The app's current repeat mode.
+        */
         #[method(currentRepeatType)]
         pub unsafe fn currentRepeatType(&self) -> MPRepeatType;
 
+        /**
+          The app's current repeat mode.
+        */
         #[method(setCurrentRepeatType:)]
         pub unsafe fn setCurrentRepeatType(&self, current_repeat_type: MPRepeatType);
     }

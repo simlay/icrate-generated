@@ -8,6 +8,9 @@ use crate::StoreKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "StoreKit_SKPaymentQueue")]
+    /**
+      SKPaymentQueue interacts with the server-side payment queue
+    */
     pub struct SKPaymentQueue;
 
     #[cfg(feature = "StoreKit_SKPaymentQueue")]
@@ -17,9 +20,15 @@ extern_class!(
 );
 
 #[cfg(feature = "StoreKit_SKPaymentQueue")]
+/**
+  SKPaymentQueue interacts with the server-side payment queue
+*/
 unsafe impl NSObjectProtocol for SKPaymentQueue {}
 
 extern_methods!(
+    /**
+      SKPaymentQueue interacts with the server-side payment queue
+    */
     #[cfg(feature = "StoreKit_SKPaymentQueue")]
     unsafe impl SKPaymentQueue {
         #[method_id(@__retain_semantics Other delegate)]
@@ -92,6 +101,9 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Array of transactionObservers that are available. Transaction observers are not retained.
+        */
         #[method_id(@__retain_semantics Other transactionObservers)]
         pub unsafe fn transactionObservers(
             &self,
@@ -101,6 +113,9 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "StoreKit_SKPaymentTransaction"
         ))]
+        /**
+          Array of unfinished SKPaymentTransactions.  Only valid while the queue has observers.  Updated asynchronously.
+        */
         #[method_id(@__retain_semantics Other transactions)]
         pub unsafe fn transactions(&self) -> Id<NSArray<SKPaymentTransaction>>;
 

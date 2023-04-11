@@ -94,13 +94,22 @@ extern_methods!(
             configuration: &SKOverlayConfiguration,
         ) -> Id<Self>;
 
+        /**
+          A delegate for overlay events.
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(&self) -> Option<Id<ProtocolObject<dyn SKOverlayDelegate>>>;
 
+        /**
+          A delegate for overlay events.
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(&self, delegate: Option<&ProtocolObject<dyn SKOverlayDelegate>>);
 
         #[cfg(feature = "StoreKit_SKOverlayConfiguration")]
+        /**
+          The overlay configuration.
+        */
         #[method_id(@__retain_semantics Other configuration)]
         pub unsafe fn configuration(&self) -> Id<SKOverlayConfiguration>;
     }

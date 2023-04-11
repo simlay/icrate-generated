@@ -38,6 +38,9 @@ extern_methods!(
         pub unsafe fn setReceiversSpecifier(&self, receivers_ref: Option<&NSScriptObjectSpecifier>);
 
         #[cfg(feature = "Foundation_NSScriptObjectSpecifier")]
+        /**
+          Splits off the inner-most child specifier.  The rest is the receiver specifier while the child is the key specifier.
+        */
         #[method_id(@__retain_semantics Other keySpecifier)]
         pub unsafe fn keySpecifier(&self) -> Id<NSScriptObjectSpecifier>;
     }
@@ -118,6 +121,9 @@ extern_methods!(
         pub unsafe fn createClassDescription(&self) -> Id<NSScriptClassDescription>;
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+          Returns the class description for the class that is to be created (using the "ObjectClass" argument to figure it out).
+        */
         #[method_id(@__retain_semantics Other resolvedKeyDictionary)]
         pub unsafe fn resolvedKeyDictionary(&self) -> Id<NSDictionary<NSString, Object>>;
     }
@@ -149,6 +155,9 @@ extern_methods!(
         pub unsafe fn setReceiversSpecifier(&self, receivers_ref: Option<&NSScriptObjectSpecifier>);
 
         #[cfg(feature = "Foundation_NSScriptObjectSpecifier")]
+        /**
+          Splits off the inner-most child specifier.  The rest is the receiver specifier while the child is the key specifier.
+        */
         #[method_id(@__retain_semantics Other keySpecifier)]
         pub unsafe fn keySpecifier(&self) -> Id<NSScriptObjectSpecifier>;
     }
@@ -226,6 +235,9 @@ extern_methods!(
         pub unsafe fn setReceiversSpecifier(&self, receivers_ref: Option<&NSScriptObjectSpecifier>);
 
         #[cfg(feature = "Foundation_NSScriptObjectSpecifier")]
+        /**
+          Splits off the inner-most child specifier.  The rest is the receiver specifier while the child is the key specifier.
+        */
         #[method_id(@__retain_semantics Other keySpecifier)]
         pub unsafe fn keySpecifier(&self) -> Id<NSScriptObjectSpecifier>;
     }
@@ -283,6 +295,9 @@ extern_methods!(
         pub unsafe fn setReceiversSpecifier(&self, receivers_ref: Option<&NSScriptObjectSpecifier>);
 
         #[cfg(feature = "Foundation_NSScriptObjectSpecifier")]
+        /**
+          Splits off the inner-most child specifier.  The rest is the receiver specifier while the child is the key specifier.
+        */
         #[method_id(@__retain_semantics Other keySpecifier)]
         pub unsafe fn keySpecifier(&self) -> Id<NSScriptObjectSpecifier>;
     }

@@ -8,6 +8,9 @@ use crate::GameKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameKit_GKAchievement")]
+    /**
+      GKAchievement represents a game achievement that the player has started or completely achieved.
+    */
     pub struct GKAchievement;
 
     #[cfg(feature = "GameKit_GKAchievement")]
@@ -17,15 +20,27 @@ extern_class!(
 );
 
 #[cfg(feature = "GameKit_GKAchievement")]
+/**
+  GKAchievement represents a game achievement that the player has started or completely achieved.
+*/
 unsafe impl NSCoding for GKAchievement {}
 
 #[cfg(feature = "GameKit_GKAchievement")]
+/**
+  GKAchievement represents a game achievement that the player has started or completely achieved.
+*/
 unsafe impl NSObjectProtocol for GKAchievement {}
 
 #[cfg(feature = "GameKit_GKAchievement")]
+/**
+  GKAchievement represents a game achievement that the player has started or completely achieved.
+*/
 unsafe impl NSSecureCoding for GKAchievement {}
 
 extern_methods!(
+    /**
+      GKAchievement represents a game achievement that the player has started or completely achieved.
+    */
     #[cfg(feature = "GameKit_GKAchievement")]
     unsafe impl GKAchievement {
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSError"))]
@@ -63,33 +78,60 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Achievement identifier
+        */
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Achievement identifier
+        */
         #[method(setIdentifier:)]
         pub unsafe fn setIdentifier(&self, identifier: Option<&NSString>);
 
+        /**
+          Required, Percentage of achievement complete.
+        */
         #[method(percentComplete)]
         pub unsafe fn percentComplete(&self) -> c_double;
 
+        /**
+          Required, Percentage of achievement complete.
+        */
         #[method(setPercentComplete:)]
         pub unsafe fn setPercentComplete(&self, percent_complete: c_double);
 
+        /**
+          Set to NO until percentComplete = 100.
+        */
         #[method(isCompleted)]
         pub unsafe fn isCompleted(&self) -> bool;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          Date the achievement was last reported. Read-only. Created at initialization
+        */
         #[method_id(@__retain_semantics Other lastReportedDate)]
         pub unsafe fn lastReportedDate(&self) -> Id<NSDate>;
 
+        /**
+          A banner will be momentarily displayed after reporting a completed achievement
+        */
         #[method(showsCompletionBanner)]
         pub unsafe fn showsCompletionBanner(&self) -> bool;
 
+        /**
+          A banner will be momentarily displayed after reporting a completed achievement
+        */
         #[method(setShowsCompletionBanner:)]
         pub unsafe fn setShowsCompletionBanner(&self, shows_completion_banner: bool);
 
         #[cfg(feature = "GameKit_GKPlayer")]
+        /**
+          The identifier of the player that earned the achievement.
+        */
         #[method_id(@__retain_semantics Other player)]
         pub unsafe fn player(&self) -> Option<Id<GKPlayer>>;
     }
@@ -126,6 +168,9 @@ extern_methods!(
         ) -> Option<Id<Self>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          This property is obsolete.
+        */
         #[method_id(@__retain_semantics Other playerID)]
         pub unsafe fn playerID(&self) -> Option<Id<NSString>>;
     }

@@ -44,10 +44,18 @@ extern_methods!(
             -> Id<Self>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract The user name of this credential.
+        @result The user string.
+        */
         #[method_id(@__retain_semantics Other user)]
         pub unsafe fn user(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract The password of this credential.
+        @result The password string.
+        */
         #[method_id(@__retain_semantics Other password)]
         pub unsafe fn password(&self) -> Id<NSString>;
     }

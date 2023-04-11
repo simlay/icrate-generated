@@ -64,10 +64,22 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "LinkPresentation_LPLinkMetadata")]
+        /**
+         The LPLinkMetadata object with which to generate a rich presentation.
+
+        The metadata can either be generated automatically from a URL by LPMetadataProvider,
+        or manually constructed with the desired data.
+        */
         #[method_id(@__retain_semantics Other metadata)]
         pub unsafe fn metadata(&self) -> Id<LPLinkMetadata>;
 
         #[cfg(feature = "LinkPresentation_LPLinkMetadata")]
+        /**
+         The LPLinkMetadata object with which to generate a rich presentation.
+
+        The metadata can either be generated automatically from a URL by LPMetadataProvider,
+        or manually constructed with the desired data.
+        */
         #[method(setMetadata:)]
         pub unsafe fn setMetadata(&self, metadata: &LPLinkMetadata);
     }

@@ -71,69 +71,165 @@ unsafe impl NSObjectProtocol for MTLRenderPassAttachmentDescriptor {}
 extern_methods!(
     #[cfg(feature = "Metal_MTLRenderPassAttachmentDescriptor")]
     unsafe impl MTLRenderPassAttachmentDescriptor {
+        /**
+         @property texture
+        @abstract The MTLTexture object for this attachment.
+        */
         #[method_id(@__retain_semantics Other texture)]
         pub fn texture(&self) -> Option<Id<ProtocolObject<dyn MTLTexture>>>;
 
+        /**
+         @property texture
+        @abstract The MTLTexture object for this attachment.
+        */
         #[method(setTexture:)]
         pub fn setTexture(&self, texture: Option<&ProtocolObject<dyn MTLTexture>>);
 
+        /**
+         @property level
+        @abstract The mipmap level of the texture to be used for rendering.  Default is zero.
+        */
         #[method(level)]
         pub fn level(&self) -> NSUInteger;
 
+        /**
+         @property level
+        @abstract The mipmap level of the texture to be used for rendering.  Default is zero.
+        */
         #[method(setLevel:)]
         pub fn setLevel(&self, level: NSUInteger);
 
+        /**
+         @property slice
+        @abstract The slice of the texture to be used for rendering.  Default is zero.
+        */
         #[method(slice)]
         pub fn slice(&self) -> NSUInteger;
 
+        /**
+         @property slice
+        @abstract The slice of the texture to be used for rendering.  Default is zero.
+        */
         #[method(setSlice:)]
         pub fn setSlice(&self, slice: NSUInteger);
 
+        /**
+         @property depthPlane
+        @abstract The depth plane of the texture to be used for rendering.  Default is zero.
+        */
         #[method(depthPlane)]
         pub fn depthPlane(&self) -> NSUInteger;
 
+        /**
+         @property depthPlane
+        @abstract The depth plane of the texture to be used for rendering.  Default is zero.
+        */
         #[method(setDepthPlane:)]
         pub fn setDepthPlane(&self, depth_plane: NSUInteger);
 
+        /**
+         @property resolveTexture
+        @abstract The texture used for multisample resolve operations.  Only used (and required)
+        if the store action is set to MTLStoreActionMultisampleResolve.
+        */
         #[method_id(@__retain_semantics Other resolveTexture)]
         pub fn resolveTexture(&self) -> Option<Id<ProtocolObject<dyn MTLTexture>>>;
 
+        /**
+         @property resolveTexture
+        @abstract The texture used for multisample resolve operations.  Only used (and required)
+        if the store action is set to MTLStoreActionMultisampleResolve.
+        */
         #[method(setResolveTexture:)]
         pub fn setResolveTexture(&self, resolve_texture: Option<&ProtocolObject<dyn MTLTexture>>);
 
+        /**
+         @property resolveLevel
+        @abstract The mipmap level of the resolve texture to be used for multisample resolve.  Defaults to zero.
+        */
         #[method(resolveLevel)]
         pub fn resolveLevel(&self) -> NSUInteger;
 
+        /**
+         @property resolveLevel
+        @abstract The mipmap level of the resolve texture to be used for multisample resolve.  Defaults to zero.
+        */
         #[method(setResolveLevel:)]
         pub fn setResolveLevel(&self, resolve_level: NSUInteger);
 
+        /**
+         @property resolveLevel
+        @abstract The texture slice of the resolve texture to be used for multisample resolve.  Defaults to zero.
+        */
         #[method(resolveSlice)]
         pub fn resolveSlice(&self) -> NSUInteger;
 
+        /**
+         @property resolveLevel
+        @abstract The texture slice of the resolve texture to be used for multisample resolve.  Defaults to zero.
+        */
         #[method(setResolveSlice:)]
         pub fn setResolveSlice(&self, resolve_slice: NSUInteger);
 
+        /**
+         @property resolveDepthPlane
+        @abstract The texture depth plane of the resolve texture to be used for multisample resolve.  Defaults to zero.
+        */
         #[method(resolveDepthPlane)]
         pub fn resolveDepthPlane(&self) -> NSUInteger;
 
+        /**
+         @property resolveDepthPlane
+        @abstract The texture depth plane of the resolve texture to be used for multisample resolve.  Defaults to zero.
+        */
         #[method(setResolveDepthPlane:)]
         pub fn setResolveDepthPlane(&self, resolve_depth_plane: NSUInteger);
 
+        /**
+         @property loadAction
+        @abstract The action to be performed with this attachment at the beginning of a render pass.  Default is
+        MTLLoadActionDontCare unless specified by a creation or init method.
+        */
         #[method(loadAction)]
         pub fn loadAction(&self) -> MTLLoadAction;
 
+        /**
+         @property loadAction
+        @abstract The action to be performed with this attachment at the beginning of a render pass.  Default is
+        MTLLoadActionDontCare unless specified by a creation or init method.
+        */
         #[method(setLoadAction:)]
         pub fn setLoadAction(&self, load_action: MTLLoadAction);
 
+        /**
+         @property storeAction
+        @abstract The action to be performed with this attachment at the end of a render pass.  Default is
+        MTLStoreActionDontCare unless specified by a creation or init method.
+        */
         #[method(storeAction)]
         pub fn storeAction(&self) -> MTLStoreAction;
 
+        /**
+         @property storeAction
+        @abstract The action to be performed with this attachment at the end of a render pass.  Default is
+        MTLStoreActionDontCare unless specified by a creation or init method.
+        */
         #[method(setStoreAction:)]
         pub fn setStoreAction(&self, store_action: MTLStoreAction);
 
+        /**
+         @property storeActionOptions
+        @abstract Optional configuration for the store action performed with this attachment at the end of a render pass.  Default is
+        MTLStoreActionOptionNone.
+        */
         #[method(storeActionOptions)]
         pub fn storeActionOptions(&self) -> MTLStoreActionOptions;
 
+        /**
+         @property storeActionOptions
+        @abstract Optional configuration for the store action performed with this attachment at the end of a render pass.  Default is
+        MTLStoreActionOptionNone.
+        */
         #[method(setStoreActionOptions:)]
         pub fn setStoreActionOptions(&self, store_action_options: MTLStoreActionOptions);
     }
@@ -157,9 +253,17 @@ unsafe impl NSObjectProtocol for MTLRenderPassColorAttachmentDescriptor {}
 extern_methods!(
     #[cfg(feature = "Metal_MTLRenderPassColorAttachmentDescriptor")]
     unsafe impl MTLRenderPassColorAttachmentDescriptor {
+        /**
+         @property clearColor
+        @abstract The clear color to be used if the loadAction property is MTLLoadActionClear
+        */
         #[method(clearColor)]
         pub fn clearColor(&self) -> MTLClearColor;
 
+        /**
+         @property clearColor
+        @abstract The clear color to be used if the loadAction property is MTLLoadActionClear
+        */
         #[method(setClearColor:)]
         pub fn setClearColor(&self, clear_color: MTLClearColor);
     }
@@ -167,6 +271,10 @@ extern_methods!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+     @enum MTLMultisampleDepthResolveFilter
+    @abstract Controls the MSAA depth resolve operation. Supported on iOS GPU Family 3 and later.
+    */
     pub enum MTLMultisampleDepthResolveFilter {
         MTLMultisampleDepthResolveFilterSample0 = 0,
         MTLMultisampleDepthResolveFilterMin = 1,
@@ -192,15 +300,31 @@ unsafe impl NSObjectProtocol for MTLRenderPassDepthAttachmentDescriptor {}
 extern_methods!(
     #[cfg(feature = "Metal_MTLRenderPassDepthAttachmentDescriptor")]
     unsafe impl MTLRenderPassDepthAttachmentDescriptor {
+        /**
+         @property clearDepth
+        @abstract The clear depth value to be used if the loadAction property is MTLLoadActionClear
+        */
         #[method(clearDepth)]
         pub fn clearDepth(&self) -> c_double;
 
+        /**
+         @property clearDepth
+        @abstract The clear depth value to be used if the loadAction property is MTLLoadActionClear
+        */
         #[method(setClearDepth:)]
         pub fn setClearDepth(&self, clear_depth: c_double);
 
+        /**
+         @property resolveFilter
+        @abstract The filter to be used for depth multisample resolve.  Defaults to MTLMultisampleDepthResolveFilterSample0.
+        */
         #[method(depthResolveFilter)]
         pub fn depthResolveFilter(&self) -> MTLMultisampleDepthResolveFilter;
 
+        /**
+         @property resolveFilter
+        @abstract The filter to be used for depth multisample resolve.  Defaults to MTLMultisampleDepthResolveFilterSample0.
+        */
         #[method(setDepthResolveFilter:)]
         pub fn setDepthResolveFilter(&self, depth_resolve_filter: MTLMultisampleDepthResolveFilter);
     }
@@ -208,6 +332,10 @@ extern_methods!(
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+     @enum MTLMultisampleStencilResolveFilter
+    @abstract Controls the MSAA stencil resolve operation.
+    */
     pub enum MTLMultisampleStencilResolveFilter {
         MTLMultisampleStencilResolveFilterSample0 = 0,
         MTLMultisampleStencilResolveFilterDepthResolvedSample = 1,
@@ -232,15 +360,31 @@ unsafe impl NSObjectProtocol for MTLRenderPassStencilAttachmentDescriptor {}
 extern_methods!(
     #[cfg(feature = "Metal_MTLRenderPassStencilAttachmentDescriptor")]
     unsafe impl MTLRenderPassStencilAttachmentDescriptor {
+        /**
+         @property clearStencil
+        @abstract The clear stencil value to be used if the loadAction property is MTLLoadActionClear
+        */
         #[method(clearStencil)]
         pub fn clearStencil(&self) -> u32;
 
+        /**
+         @property clearStencil
+        @abstract The clear stencil value to be used if the loadAction property is MTLLoadActionClear
+        */
         #[method(setClearStencil:)]
         pub fn setClearStencil(&self, clear_stencil: u32);
 
+        /**
+         @property stencilResolveFilter
+        @abstract The filter to be used for stencil multisample resolve. Defaults to MTLMultisampleStencilResolveFilterSample0.
+        */
         #[method(stencilResolveFilter)]
         pub fn stencilResolveFilter(&self) -> MTLMultisampleStencilResolveFilter;
 
+        /**
+         @property stencilResolveFilter
+        @abstract The filter to be used for stencil multisample resolve. Defaults to MTLMultisampleStencilResolveFilterSample0.
+        */
         #[method(setStencilResolveFilter:)]
         pub fn setStencilResolveFilter(
             &self,
@@ -300,39 +444,119 @@ unsafe impl NSObjectProtocol for MTLRenderPassSampleBufferAttachmentDescriptor {
 extern_methods!(
     #[cfg(feature = "Metal_MTLRenderPassSampleBufferAttachmentDescriptor")]
     unsafe impl MTLRenderPassSampleBufferAttachmentDescriptor {
+        /**
+         @property sampleBuffer
+        @abstract The sample buffer to store samples for the render-pass defined samples.
+        If sampleBuffer is non-nil, the sample indices will be used to store samples into
+        the sample buffer.  If no sample buffer is provided, no samples will be taken.
+        If any of the sample indices are specified as MTLCounterDontSample, no sample
+        will be taken for that action.
+        */
         #[method_id(@__retain_semantics Other sampleBuffer)]
         pub fn sampleBuffer(&self) -> Option<Id<ProtocolObject<dyn MTLCounterSampleBuffer>>>;
 
+        /**
+         @property sampleBuffer
+        @abstract The sample buffer to store samples for the render-pass defined samples.
+        If sampleBuffer is non-nil, the sample indices will be used to store samples into
+        the sample buffer.  If no sample buffer is provided, no samples will be taken.
+        If any of the sample indices are specified as MTLCounterDontSample, no sample
+        will be taken for that action.
+        */
         #[method(setSampleBuffer:)]
         pub fn setSampleBuffer(
             &self,
             sample_buffer: Option<&ProtocolObject<dyn MTLCounterSampleBuffer>>,
         );
 
+        /**
+         @property startOfVertexSampleIndex
+        @abstract The sample index to use to store the sample taken at the start of
+        vertex processing.  Setting the value to MTLCounterDontSample will cause
+        this sample to be omitted.
+        @discussion On devices where MTLCounterSamplingPointAtStageBoundary is unsupported,
+        this sample index is invalid and must be set to MTLCounterDontSample or creation of a render pass will fail.
+        */
         #[method(startOfVertexSampleIndex)]
         pub fn startOfVertexSampleIndex(&self) -> NSUInteger;
 
+        /**
+         @property startOfVertexSampleIndex
+        @abstract The sample index to use to store the sample taken at the start of
+        vertex processing.  Setting the value to MTLCounterDontSample will cause
+        this sample to be omitted.
+        @discussion On devices where MTLCounterSamplingPointAtStageBoundary is unsupported,
+        this sample index is invalid and must be set to MTLCounterDontSample or creation of a render pass will fail.
+        */
         #[method(setStartOfVertexSampleIndex:)]
         pub unsafe fn setStartOfVertexSampleIndex(&self, start_of_vertex_sample_index: NSUInteger);
 
+        /**
+         @property endOfVertexSampleIndex
+        @abstract The sample index to use to store the sample taken at the end of
+        vertex processing.  Setting the value to MTLCounterDontSample will cause
+        this sample to be omitted.
+        @discussion On devices where MTLCounterSamplingPointAtStageBoundary is unsupported,
+        this sample index is invalid and must be set to MTLCounterDontSample or creation of a render pass will fail.
+        */
         #[method(endOfVertexSampleIndex)]
         pub fn endOfVertexSampleIndex(&self) -> NSUInteger;
 
+        /**
+         @property endOfVertexSampleIndex
+        @abstract The sample index to use to store the sample taken at the end of
+        vertex processing.  Setting the value to MTLCounterDontSample will cause
+        this sample to be omitted.
+        @discussion On devices where MTLCounterSamplingPointAtStageBoundary is unsupported,
+        this sample index is invalid and must be set to MTLCounterDontSample or creation of a render pass will fail.
+        */
         #[method(setEndOfVertexSampleIndex:)]
         pub unsafe fn setEndOfVertexSampleIndex(&self, end_of_vertex_sample_index: NSUInteger);
 
+        /**
+         @property startOfFragmentSampleIndex
+        @abstract The sample index to use to store the sample taken at the start of
+        fragment processing.  Setting the value to MTLCounterDontSample will cause
+        this sample to be omitted.
+        @discussion On devices where MTLCounterSamplingPointAtStageBoundary is unsupported,
+        this sample index is invalid and must be set to MTLCounterDontSample or creation of a render pass will fail.
+        */
         #[method(startOfFragmentSampleIndex)]
         pub fn startOfFragmentSampleIndex(&self) -> NSUInteger;
 
+        /**
+         @property startOfFragmentSampleIndex
+        @abstract The sample index to use to store the sample taken at the start of
+        fragment processing.  Setting the value to MTLCounterDontSample will cause
+        this sample to be omitted.
+        @discussion On devices where MTLCounterSamplingPointAtStageBoundary is unsupported,
+        this sample index is invalid and must be set to MTLCounterDontSample or creation of a render pass will fail.
+        */
         #[method(setStartOfFragmentSampleIndex:)]
         pub unsafe fn setStartOfFragmentSampleIndex(
             &self,
             start_of_fragment_sample_index: NSUInteger,
         );
 
+        /**
+         @property endOfFragmentSampleIndex
+        @abstract The sample index to use to store the sample taken at the end of
+        fragment processing.  Setting the value to MTLCounterDontSample will cause
+        this sample to be omitted.
+        @discussion On devices where MTLCounterSamplingPointAtStageBoundary is unsupported,
+        this sample index is invalid and must be set to MTLCounterDontSample or creation of a render pass will fail.
+        */
         #[method(endOfFragmentSampleIndex)]
         pub fn endOfFragmentSampleIndex(&self) -> NSUInteger;
 
+        /**
+         @property endOfFragmentSampleIndex
+        @abstract The sample index to use to store the sample taken at the end of
+        fragment processing.  Setting the value to MTLCounterDontSample will cause
+        this sample to be omitted.
+        @discussion On devices where MTLCounterSamplingPointAtStageBoundary is unsupported,
+        this sample index is invalid and must be set to MTLCounterDontSample or creation of a render pass will fail.
+        */
         #[method(setEndOfFragmentSampleIndex:)]
         pub unsafe fn setEndOfFragmentSampleIndex(&self, end_of_fragment_sample_index: NSUInteger);
     }
@@ -375,6 +599,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLRenderPassDescriptor")]
+    /**
+     @class MTLRenderPassDescriptor
+    @abstract MTLRenderPassDescriptor represents a collection of attachments to be used to create a concrete render command encoder
+    */
     pub struct MTLRenderPassDescriptor;
 
     #[cfg(feature = "Metal_MTLRenderPassDescriptor")]
@@ -384,9 +612,17 @@ extern_class!(
 );
 
 #[cfg(feature = "Metal_MTLRenderPassDescriptor")]
+/**
+ @class MTLRenderPassDescriptor
+@abstract MTLRenderPassDescriptor represents a collection of attachments to be used to create a concrete render command encoder
+*/
 unsafe impl NSObjectProtocol for MTLRenderPassDescriptor {}
 
 extern_methods!(
+    /**
+     @class MTLRenderPassDescriptor
+    @abstract MTLRenderPassDescriptor represents a collection of attachments to be used to create a concrete render command encoder
+    */
     #[cfg(feature = "Metal_MTLRenderPassDescriptor")]
     unsafe impl MTLRenderPassDescriptor {
         #[method_id(@__retain_semantics Other renderPassDescriptor)]
@@ -418,60 +654,140 @@ extern_methods!(
             stencil_attachment: Option<&MTLRenderPassStencilAttachmentDescriptor>,
         );
 
+        /**
+         @property visibilityResultBuffer:
+        @abstract Buffer into which samples passing the depth and stencil tests are counted.
+        */
         #[method_id(@__retain_semantics Other visibilityResultBuffer)]
         pub fn visibilityResultBuffer(&self) -> Option<Id<ProtocolObject<dyn MTLBuffer>>>;
 
+        /**
+         @property visibilityResultBuffer:
+        @abstract Buffer into which samples passing the depth and stencil tests are counted.
+        */
         #[method(setVisibilityResultBuffer:)]
         pub fn setVisibilityResultBuffer(
             &self,
             visibility_result_buffer: Option<&ProtocolObject<dyn MTLBuffer>>,
         );
 
+        /**
+         @property renderTargetArrayLength:
+        @abstract The number of active layers
+        */
         #[method(renderTargetArrayLength)]
         pub fn renderTargetArrayLength(&self) -> NSUInteger;
 
+        /**
+         @property renderTargetArrayLength:
+        @abstract The number of active layers
+        */
         #[method(setRenderTargetArrayLength:)]
         pub unsafe fn setRenderTargetArrayLength(&self, render_target_array_length: NSUInteger);
 
+        /**
+         @property imageblockSampleLength:
+        @abstract The per sample size in bytes of the largest explicit imageblock layout in the renderPass.
+        */
         #[method(imageblockSampleLength)]
         pub fn imageblockSampleLength(&self) -> NSUInteger;
 
+        /**
+         @property imageblockSampleLength:
+        @abstract The per sample size in bytes of the largest explicit imageblock layout in the renderPass.
+        */
         #[method(setImageblockSampleLength:)]
         pub unsafe fn setImageblockSampleLength(&self, imageblock_sample_length: NSUInteger);
 
+        /**
+         @property threadgroupMemoryLength:
+        @abstract The per tile size in bytes of the persistent threadgroup memory allocation.
+        */
         #[method(threadgroupMemoryLength)]
         pub fn threadgroupMemoryLength(&self) -> NSUInteger;
 
+        /**
+         @property threadgroupMemoryLength:
+        @abstract The per tile size in bytes of the persistent threadgroup memory allocation.
+        */
         #[method(setThreadgroupMemoryLength:)]
         pub unsafe fn setThreadgroupMemoryLength(&self, threadgroup_memory_length: NSUInteger);
 
+        /**
+         @property tileWidth:
+        @abstract The width in pixels of the tile.
+        @discussion Defaults to 0. Zero means Metal chooses a width that fits within the local memory.
+        */
         #[method(tileWidth)]
         pub fn tileWidth(&self) -> NSUInteger;
 
+        /**
+         @property tileWidth:
+        @abstract The width in pixels of the tile.
+        @discussion Defaults to 0. Zero means Metal chooses a width that fits within the local memory.
+        */
         #[method(setTileWidth:)]
         pub fn setTileWidth(&self, tile_width: NSUInteger);
 
+        /**
+         @property tileHeight:
+        @abstract The height in pixels of the tile.
+        @discussion Defaults to 0. Zero means Metal chooses a height that fits within the local memory.
+        */
         #[method(tileHeight)]
         pub fn tileHeight(&self) -> NSUInteger;
 
+        /**
+         @property tileHeight:
+        @abstract The height in pixels of the tile.
+        @discussion Defaults to 0. Zero means Metal chooses a height that fits within the local memory.
+        */
         #[method(setTileHeight:)]
         pub fn setTileHeight(&self, tile_height: NSUInteger);
 
+        /**
+         @property defaultRasterSampleCount:
+        @abstract The raster sample count for the render pass when no attachments are given.
+        */
         #[method(defaultRasterSampleCount)]
         pub fn defaultRasterSampleCount(&self) -> NSUInteger;
 
+        /**
+         @property defaultRasterSampleCount:
+        @abstract The raster sample count for the render pass when no attachments are given.
+        */
         #[method(setDefaultRasterSampleCount:)]
         pub fn setDefaultRasterSampleCount(&self, default_raster_sample_count: NSUInteger);
 
+        /**
+         @property renderTargetWidth:
+        @abstract The width in pixels to constrain the render target to.
+        @discussion Defaults to 0. If non-zero the value must be smaller than or equal to the minimum width of all attachments.
+        */
         #[method(renderTargetWidth)]
         pub fn renderTargetWidth(&self) -> NSUInteger;
 
+        /**
+         @property renderTargetWidth:
+        @abstract The width in pixels to constrain the render target to.
+        @discussion Defaults to 0. If non-zero the value must be smaller than or equal to the minimum width of all attachments.
+        */
         #[method(setRenderTargetWidth:)]
         pub fn setRenderTargetWidth(&self, render_target_width: NSUInteger);
 
+        /**
+         @property renderTargetHeight:
+        @abstract The height in pixels to constrain the render target to.
+        @discussion Defaults to 0. If non-zero the value must be smaller than or equal to the minimum height of all attachments.
+        */
         #[method(renderTargetHeight)]
         pub fn renderTargetHeight(&self) -> NSUInteger;
 
+        /**
+         @property renderTargetHeight:
+        @abstract The height in pixels to constrain the render target to.
+        @discussion Defaults to 0. If non-zero the value must be smaller than or equal to the minimum height of all attachments.
+        */
         #[method(setRenderTargetHeight:)]
         pub fn setRenderTargetHeight(&self, render_target_height: NSUInteger);
 
@@ -489,11 +805,21 @@ extern_methods!(
             count: NSUInteger,
         ) -> NSUInteger;
 
+        /**
+         @property rasterizationRateMap
+        @abstract The variable rasterization rate map to use when rendering this pass, or nil to not use variable rasterization rate.
+        @discussion The default value is nil. Enabling variable rasterization rate allows for decreasing the rasterization rate in unimportant regions of screen space.
+        */
         #[method_id(@__retain_semantics Other rasterizationRateMap)]
         pub fn rasterizationRateMap(
             &self,
         ) -> Option<Id<ProtocolObject<dyn MTLRasterizationRateMap>>>;
 
+        /**
+         @property rasterizationRateMap
+        @abstract The variable rasterization rate map to use when rendering this pass, or nil to not use variable rasterization rate.
+        @discussion The default value is nil. Enabling variable rasterization rate allows for decreasing the rasterization rate in unimportant regions of screen space.
+        */
         #[method(setRasterizationRateMap:)]
         pub fn setRasterizationRateMap(
             &self,
@@ -501,6 +827,10 @@ extern_methods!(
         );
 
         #[cfg(feature = "Metal_MTLRenderPassSampleBufferAttachmentDescriptorArray")]
+        /**
+         @property sampleBufferAttachments
+        @abstract An array of sample buffers and associated sample indices.
+        */
         #[method_id(@__retain_semantics Other sampleBufferAttachments)]
         pub fn sampleBufferAttachments(
             &self,

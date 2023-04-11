@@ -10,6 +10,13 @@ extern_static!(WebHistoryItemChangedNotification: Option<&'static NSString>);
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "WebKit_WebHistoryItem")]
+    /**
+     @class WebHistoryItem
+    @discussion  WebHistoryItems are created by WebKit to represent pages visited.
+    The WebBackForwardList and WebHistory classes both use WebHistoryItems to represent
+    pages visited.  With the exception of the displayTitle, the properties of
+    WebHistoryItems are set by WebKit.  WebHistoryItems are normally never created directly.
+    */
     #[deprecated]
     pub struct WebHistoryItem;
 
@@ -20,9 +27,23 @@ extern_class!(
 );
 
 #[cfg(feature = "WebKit_WebHistoryItem")]
+/**
+ @class WebHistoryItem
+@discussion  WebHistoryItems are created by WebKit to represent pages visited.
+The WebBackForwardList and WebHistory classes both use WebHistoryItems to represent
+pages visited.  With the exception of the displayTitle, the properties of
+WebHistoryItems are set by WebKit.  WebHistoryItems are normally never created directly.
+*/
 unsafe impl NSObjectProtocol for WebHistoryItem {}
 
 extern_methods!(
+    /**
+     @class WebHistoryItem
+    @discussion  WebHistoryItems are created by WebKit to represent pages visited.
+    The WebBackForwardList and WebHistory classes both use WebHistoryItems to represent
+    pages visited.  With the exception of the displayTitle, the properties of
+    WebHistoryItems are set by WebKit.  WebHistoryItems are normally never created directly.
+    */
     #[cfg(feature = "WebKit_WebHistoryItem")]
     unsafe impl WebHistoryItem {
         #[cfg(feature = "Foundation_NSString")]
@@ -35,29 +56,65 @@ extern_methods!(
         ) -> Option<Id<Self>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property originalURLString
+        @abstract The string representation of the initial URL of this item.
+        This value is normally set by the WebKit.
+        */
         #[method_id(@__retain_semantics Other originalURLString)]
         pub unsafe fn originalURLString(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property URLString
+        @abstract The string representation of the URL represented by this item.
+        @discussion The URLString may be different than the originalURLString if the page
+        redirected to a new location.  This value is normally set by the WebKit.
+        */
         #[method_id(@__retain_semantics Other URLString)]
         pub unsafe fn URLString(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property title
+        @abstract The title of the page represented by this item.
+        @discussion This title cannot be changed by the client.  This value
+        is normally set by the WebKit when a page title for the item is received.
+        */
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Id<NSString>;
 
+        /**
+         @property lastVisitedTimeInterval
+        @abstract The last time the page represented by this item was visited. The interval
+        is since the reference date as determined by NSDate.  This value is normally set by
+        the WebKit.
+        */
         #[method(lastVisitedTimeInterval)]
         pub unsafe fn lastVisitedTimeInterval(&self) -> NSTimeInterval;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property alternateTitle
+        @abstract A title that may be used by the client to display this item.
+        */
         #[method_id(@__retain_semantics Other alternateTitle)]
         pub unsafe fn alternateTitle(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property alternateTitle
+        @abstract A title that may be used by the client to display this item.
+        */
         #[method(setAlternateTitle:)]
         pub unsafe fn setAlternateTitle(&self, alternate_title: Option<&NSString>);
 
         #[cfg(feature = "AppKit_NSImage")]
+        /**
+         @property icon
+        @abstract The favorite icon of the page represented by this item.
+        @discussion This icon returned will be determined by the WebKit.
+        */
         #[method_id(@__retain_semantics Other icon)]
         pub unsafe fn icon(&self) -> Option<Id<NSImage>>;
     }

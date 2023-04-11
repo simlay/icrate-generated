@@ -58,10 +58,16 @@ extern_methods!(
         #[method(setRegion:)]
         pub unsafe fn setRegion(&self, region: MKCoordinateRegion);
 
+        /**
+          Defaults to MKSearchCompletionFilterTypeLocationsAndQueries
+        */
         #[deprecated = "Use resultTypes"]
         #[method(filterType)]
         pub unsafe fn filterType(&self) -> MKSearchCompletionFilterType;
 
+        /**
+          Defaults to MKSearchCompletionFilterTypeLocationsAndQueries
+        */
         #[deprecated = "Use resultTypes"]
         #[method(setFilterType:)]
         pub unsafe fn setFilterType(&self, filter_type: MKSearchCompletionFilterType);
@@ -154,6 +160,9 @@ extern_methods!(
         pub unsafe fn title(&self) -> Id<NSString>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSValue"))]
+        /**
+          NSValue-wrapped NSRanges
+        */
         #[method_id(@__retain_semantics Other titleHighlightRanges)]
         pub unsafe fn titleHighlightRanges(&self) -> Id<NSArray<NSValue>>;
 
@@ -162,6 +171,9 @@ extern_methods!(
         pub unsafe fn subtitle(&self) -> Id<NSString>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSValue"))]
+        /**
+          NSValue-wrapped NSRanges
+        */
         #[method_id(@__retain_semantics Other subtitleHighlightRanges)]
         pub unsafe fn subtitleHighlightRanges(&self) -> Id<NSArray<NSValue>>;
     }

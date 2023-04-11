@@ -28,9 +28,17 @@ unsafe impl NSSecureCoding for NSTintConfiguration {}
 extern_methods!(
     #[cfg(feature = "AppKit_NSTintConfiguration")]
     unsafe impl NSTintConfiguration {
+        /**
+         Specifies that content should be tinted using the system default for its context.
+        For example, a source list icon's default tint matches the active Accent Color.
+        */
         #[method_id(@__retain_semantics Other defaultTintConfiguration)]
         pub unsafe fn defaultTintConfiguration() -> Id<NSTintConfiguration>;
 
+        /**
+         Specifies that content should prefer a monochrome appearance.
+        Monochrome content remains monochrome regardless of the system Accent Color.
+        */
         #[method_id(@__retain_semantics Other monochromeTintConfiguration)]
         pub unsafe fn monochromeTintConfiguration() -> Id<NSTintConfiguration>;
 
@@ -43,13 +51,22 @@ extern_methods!(
         pub unsafe fn tintConfigurationWithFixedColor(color: &NSColor) -> Id<Self>;
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+         The base NSColor supplied when creating the tint configuration object. If the receiver wasn't created using a base NSColor, this property returns nil.
+        */
         #[method_id(@__retain_semantics Other baseTintColor)]
         pub unsafe fn baseTintColor(&self) -> Option<Id<NSColor>>;
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+         An equivalent NSColor matching the effective content tint of the receiver. If the receiver can't be represented as a NSColor, this property returns nil.
+        */
         #[method_id(@__retain_semantics Other equivalentContentTintColor)]
         pub unsafe fn equivalentContentTintColor(&self) -> Option<Id<NSColor>>;
 
+        /**
+         If YES, the tint configuration alters its effect based on the user's preferred Accent Color. Otherwise, the tint configuration produces a constant effect regardless of the Accent Color preference.
+        */
         #[method(adaptsToUserAccentColor)]
         pub unsafe fn adaptsToUserAccentColor(&self) -> bool;
     }

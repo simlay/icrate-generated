@@ -26,6 +26,9 @@ extern_methods!(
     #[cfg(feature = "GameController_GCRacingWheelInputState")]
     unsafe impl GCRacingWheelInputState {
         #[cfg(feature = "GameController_GCSteeringWheelElement")]
+        /**
+          The steering wheel element.
+        */
         #[method_id(@__retain_semantics Other wheel)]
         pub unsafe fn wheel(&self) -> Id<GCSteeringWheelElement>;
 
@@ -39,6 +42,14 @@ extern_methods!(
         pub unsafe fn clutchPedal(&self) -> Option<Id<ProtocolObject<dyn GCButtonElement>>>;
 
         #[cfg(feature = "GameController_GCGearShifterElement")]
+        /**
+         The element representing an attached gear shifter accessory.
+
+        Note that this element only represents an external gear shifter accessory.
+        Many racing wheels have a pair of built in paddle buttons that can be used for
+        sequential gear shifting.  Those buttons are can be looked up with the
+        \c GCInputLeftPaddle and \c GCInputRightPaddle input names.
+        */
         #[method_id(@__retain_semantics Other shifter)]
         pub unsafe fn shifter(&self) -> Option<Id<GCGearShifterElement>>;
     }

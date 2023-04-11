@@ -7,6 +7,10 @@ use crate::Metal::*;
 pub type MTLDrawablePresentedHandler = *mut Block<(NonNull<ProtocolObject<dyn MTLDrawable>>,), ()>;
 
 extern_protocol!(
+    /**
+     @protocol MTLDrawable
+    @abstract All "drawable" objects (such as those coming from CAMetalLayer) are expected to conform to this protocol
+    */
     pub unsafe trait MTLDrawable: NSObjectProtocol {
         #[method(present)]
         fn present(&self);
@@ -20,9 +24,19 @@ extern_protocol!(
         #[method(addPresentedHandler:)]
         unsafe fn addPresentedHandler(&self, block: MTLDrawablePresentedHandler);
 
+        /**
+         @property presentedTime
+        @abstract The host time that this drawable was presented on screen.
+        @discussion Returns 0 if a frame has not been presented or has been skipped.
+        */
         #[method(presentedTime)]
         unsafe fn presentedTime(&self) -> CFTimeInterval;
 
+        /**
+         @property drawableID
+        @abstract The monotonically incremented ID for all MTLDrawable objects created from the same CAMetalLayer object.
+        @discussion The value starts from 0.
+        */
         #[method(drawableID)]
         fn drawableID(&self) -> NSUInteger;
     }

@@ -29,6 +29,12 @@ extern_methods!(
             feature = "Foundation_NSError",
             feature = "HealthKit_HKActivitySummary"
         ))]
+        /**
+         @property      updateHandler
+        @abstract      An optional handler to be called when activity summaries matching the given predicate are updated.
+        @discussion    This property may not be modified once the query has been executed. If this property is nonnull, then
+        the query must be manually stopped.
+        */
         #[method(updateHandler)]
         pub unsafe fn updateHandler(
             &self,
@@ -46,6 +52,12 @@ extern_methods!(
             feature = "Foundation_NSError",
             feature = "HealthKit_HKActivitySummary"
         ))]
+        /**
+         @property      updateHandler
+        @abstract      An optional handler to be called when activity summaries matching the given predicate are updated.
+        @discussion    This property may not be modified once the query has been executed. If this property is nonnull, then
+        the query must be manually stopped.
+        */
         #[method(setUpdateHandler:)]
         pub unsafe fn setUpdateHandler(
             &self,

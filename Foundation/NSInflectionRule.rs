@@ -72,6 +72,9 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      -----
+    */
     /// NSInflectionAvailability
     #[cfg(feature = "Foundation_NSInflectionRule")]
     unsafe impl NSInflectionRule {
@@ -79,6 +82,9 @@ extern_methods!(
         #[method(canInflectLanguage:)]
         pub unsafe fn canInflectLanguage(language: &NSString) -> bool;
 
+        /**
+          Whether inflection will work in the language of the main bundle's first preferred localization.
+        */
         #[method(canInflectPreferredLocalization)]
         pub unsafe fn canInflectPreferredLocalization() -> bool;
     }

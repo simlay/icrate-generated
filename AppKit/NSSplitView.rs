@@ -55,27 +55,53 @@ unsafe impl NSUserInterfaceItemIdentification for NSSplitView {}
 extern_methods!(
     #[cfg(feature = "AppKit_NSSplitView")]
     unsafe impl NSSplitView {
+        /**
+          Set or get whether the long axes of a split view's dividers are oriented up-and-down (YES) or left-and-right (NO).
+        */
         #[method(isVertical)]
         pub unsafe fn isVertical(&self) -> bool;
 
+        /**
+          Set or get whether the long axes of a split view's dividers are oriented up-and-down (YES) or left-and-right (NO).
+        */
         #[method(setVertical:)]
         pub unsafe fn setVertical(&self, vertical: bool);
 
+        /**
+          What kind of divider to use. NSSplitViewThickDividerStyle is the default.
+        */
         #[method(dividerStyle)]
         pub unsafe fn dividerStyle(&self) -> NSSplitViewDividerStyle;
 
+        /**
+          What kind of divider to use. NSSplitViewThickDividerStyle is the default.
+        */
         #[method(setDividerStyle:)]
         pub unsafe fn setDividerStyle(&self, divider_style: NSSplitViewDividerStyle);
 
+        /**
+          The name to use when autosaving the positions of dividers, and whether or not subviews are collapsed, to preferences. If this value is nil or the string is empty no autosaving is done.
+        */
         #[method_id(@__retain_semantics Other autosaveName)]
         pub unsafe fn autosaveName(&self) -> Option<Id<NSSplitViewAutosaveName>>;
 
+        /**
+          The name to use when autosaving the positions of dividers, and whether or not subviews are collapsed, to preferences. If this value is nil or the string is empty no autosaving is done.
+        */
         #[method(setAutosaveName:)]
         pub unsafe fn setAutosaveName(&self, autosave_name: Option<&NSSplitViewAutosaveName>);
 
+        /**
+          Set or get the delegate of the split view. The delegate will be sent NSSplitViewDelegate messages to which it responds.
+        For apps linked against 10.12, this property has zeroing weak memory semantics. When linked against an older SDK, or with objects that do not support zeroing weak references this falls back to having `assign` semantics.
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(&self) -> Option<Id<ProtocolObject<dyn NSSplitViewDelegate>>>;
 
+        /**
+          Set or get the delegate of the split view. The delegate will be sent NSSplitViewDelegate messages to which it responds.
+        For apps linked against 10.12, this property has zeroing weak memory semantics. When linked against an older SDK, or with objects that do not support zeroing weak references this falls back to having `assign` semantics.
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
@@ -86,9 +112,15 @@ extern_methods!(
         pub unsafe fn drawDividerInRect(&self, rect: NSRect);
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+          Return the color of the dividers that the split view is drawing between subviews. The default implementation of this method returns [NSColor clearColor] for the thick divider style. It will also return [NSColor clearColor] for the thin divider style when the split view is in a textured window. All other thin dividers are drawn with a color that looks good between two white panes. You can override this method to change the color of dividers.
+        */
         #[method_id(@__retain_semantics Other dividerColor)]
         pub unsafe fn dividerColor(&self) -> Id<NSColor>;
 
+        /**
+          Return the thickness of the dividers that the split view is drawing between subviews. The default implementation returns a value that depends on the divider style. You can override this method to change the size of dividers.
+        */
         #[method(dividerThickness)]
         pub unsafe fn dividerThickness(&self) -> CGFloat;
 
@@ -136,13 +168,25 @@ extern_methods!(
     /// NSSplitViewArrangedSubviews
     #[cfg(feature = "AppKit_NSSplitView")]
     unsafe impl NSSplitView {
+        /**
+          Whether or not all subviews will be added as arranged views. When NO, a subview must be explicitly added as an arrangedSubview if the view should be arranged as a split pane. When YES, \c -arrangedSubviews always be identical to \c -subviews. Defaults to YES.
+         Setting this from YES to NO will leave all existing subviews as \c -arrangedSubviews. Setting this from NO to YES will cause \c -arrangedSubviews to become the value of \c -subviews.
+        */
         #[method(arrangesAllSubviews)]
         pub unsafe fn arrangesAllSubviews(&self) -> bool;
 
+        /**
+          Whether or not all subviews will be added as arranged views. When NO, a subview must be explicitly added as an arrangedSubview if the view should be arranged as a split pane. When YES, \c -arrangedSubviews always be identical to \c -subviews. Defaults to YES.
+         Setting this from YES to NO will leave all existing subviews as \c -arrangedSubviews. Setting this from NO to YES will cause \c -arrangedSubviews to become the value of \c -subviews.
+        */
         #[method(setArrangesAllSubviews:)]
         pub unsafe fn setArrangesAllSubviews(&self, arranges_all_subviews: bool);
 
         #[cfg(all(feature = "AppKit_NSView", feature = "Foundation_NSArray"))]
+        /**
+          The list of views that are arranged as split panes in the receiver.
+         They are a subset of \c -subviews, with potential difference in ordering. If \c -arrangesAllSubviews is YES, then \c -arrangedSubviews is identical to \c -subviews.
+        */
         #[method_id(@__retain_semantics Other arrangedSubviews)]
         pub unsafe fn arrangedSubviews(&self) -> Id<NSArray<NSView>>;
 

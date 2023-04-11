@@ -27,17 +27,29 @@ unsafe impl NSSecureCoding for BADownload {}
 extern_methods!(
     #[cfg(feature = "BackgroundAssets_BADownload")]
     unsafe impl BADownload {
+        /**
+          @brief The current state of the respresented download.
+        */
         #[method(state)]
         pub unsafe fn state(&self) -> BADownloadState;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @brief A client defined identifier that uniquely identifies this asset.
+        */
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @brief A UUID that uniquely identifies the download object.
+        */
         #[method_id(@__retain_semantics Other uniqueIdentifier)]
         pub unsafe fn uniqueIdentifier(&self) -> Id<NSString>;
 
+        /**
+          @brief A client set priority to try to order downloads in order of importance
+        */
         #[method(priority)]
         pub unsafe fn priority(&self) -> BADownloaderPriority;
 

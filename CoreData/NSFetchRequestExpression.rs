@@ -37,12 +37,21 @@ extern_methods!(
             count_flag: bool,
         ) -> Id<NSExpression>;
 
+        /**
+          Returns the expression for the fetch request:  evaluating it must return an NSFetchRequest *.
+        */
         #[method_id(@__retain_semantics Other requestExpression)]
         pub unsafe fn requestExpression(&self) -> Id<NSExpression>;
 
+        /**
+          Returns the expression for the managed object context:  evaluating it must return an NSManagedObjectContext *.
+        */
         #[method_id(@__retain_semantics Other contextExpression)]
         pub unsafe fn contextExpression(&self) -> Id<NSExpression>;
 
+        /**
+          Boolean indicating if the request will return object values or merely the count.  If the value returns NO, the managed object context (from the contextExpression) will perform executeFetchRequest:error: with the requestExpression;  if the value returns YES, the managed object context will perform countForFetchRequest:error with the requestExpression.
+        */
         #[method(isCountOnlyRequest)]
         pub unsafe fn isCountOnlyRequest(&self) -> bool;
     }

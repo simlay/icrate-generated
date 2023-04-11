@@ -20,6 +20,11 @@ extern_static!(WebHistoryItemsKey: Option<&'static NSString>);
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "WebKit_WebHistory")]
+    /**
+     @class WebHistory
+    @discussion WebHistory is used to track pages that have been loaded
+    by WebKit.
+    */
     #[deprecated]
     pub struct WebHistory;
 
@@ -30,9 +35,19 @@ extern_class!(
 );
 
 #[cfg(feature = "WebKit_WebHistory")]
+/**
+ @class WebHistory
+@discussion WebHistory is used to track pages that have been loaded
+by WebKit.
+*/
 unsafe impl NSObjectProtocol for WebHistory {}
 
 extern_methods!(
+    /**
+     @class WebHistory
+    @discussion WebHistory is used to track pages that have been loaded
+    by WebKit.
+    */
     #[cfg(feature = "WebKit_WebHistory")]
     unsafe impl WebHistory {
         #[method_id(@__retain_semantics Other optionalSharedHistory)]
@@ -53,6 +68,12 @@ extern_methods!(
         pub unsafe fn removeAllItems(&self);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+         @property orderedLastVisitedDays
+        @abstract An array of NSCalendarDates for which history items exist in the WebHistory.
+        @discussion An array of NSCalendarDates, each one representing a unique day that contains one
+        or more history items, ordered from most recent to oldest.
+        */
         #[method_id(@__retain_semantics Other orderedLastVisitedDays)]
         pub unsafe fn orderedLastVisitedDays(&self) -> Id<NSArray>;
 
@@ -67,15 +88,31 @@ extern_methods!(
         #[method_id(@__retain_semantics Other itemForURL:)]
         pub unsafe fn itemForURL(&self, url: Option<&NSURL>) -> Option<Id<WebHistoryItem>>;
 
+        /**
+         @property historyItemLimit
+        @abstract The maximum number of items that will be stored by the WebHistory.
+        */
         #[method(historyItemLimit)]
         pub unsafe fn historyItemLimit(&self) -> c_int;
 
+        /**
+         @property historyItemLimit
+        @abstract The maximum number of items that will be stored by the WebHistory.
+        */
         #[method(setHistoryItemLimit:)]
         pub unsafe fn setHistoryItemLimit(&self, history_item_limit: c_int);
 
+        /**
+         @property historyAgeInDaysLimit
+        @abstract The maximum number of days to be read from stored history.
+        */
         #[method(historyAgeInDaysLimit)]
         pub unsafe fn historyAgeInDaysLimit(&self) -> c_int;
 
+        /**
+         @property historyAgeInDaysLimit
+        @abstract The maximum number of days to be read from stored history.
+        */
         #[method(setHistoryAgeInDaysLimit:)]
         pub unsafe fn setHistoryAgeInDaysLimit(&self, history_age_in_days_limit: c_int);
     }

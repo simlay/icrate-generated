@@ -9,6 +9,10 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKLiveWorkoutDataSource")]
+    /**
+     @class         HKLiveWorkoutDataSource
+    @discussion    An HKLiveWorkoutDataSource is to be used with an HKWorkoutBuilder to automatically collect samples
+    */
     pub struct HKLiveWorkoutDataSource;
 
     #[cfg(feature = "HealthKit_HKLiveWorkoutDataSource")]
@@ -18,15 +22,27 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKLiveWorkoutDataSource")]
+/**
+ @class         HKLiveWorkoutDataSource
+@discussion    An HKLiveWorkoutDataSource is to be used with an HKWorkoutBuilder to automatically collect samples
+*/
 unsafe impl NSObjectProtocol for HKLiveWorkoutDataSource {}
 
 extern_methods!(
+    /**
+     @class         HKLiveWorkoutDataSource
+    @discussion    An HKLiveWorkoutDataSource is to be used with an HKWorkoutBuilder to automatically collect samples
+    */
     #[cfg(feature = "HealthKit_HKLiveWorkoutDataSource")]
     unsafe impl HKLiveWorkoutDataSource {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
         #[cfg(all(feature = "Foundation_NSSet", feature = "HealthKit_HKQuantityType"))]
+        /**
+         @property      typesToCollect
+        @abstract      The quantity types the receiver is collecting.
+        */
         #[method_id(@__retain_semantics Other typesToCollect)]
         pub unsafe fn typesToCollect(&self) -> Id<NSSet<HKQuantityType>>;
 

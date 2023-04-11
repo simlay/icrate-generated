@@ -7,6 +7,9 @@ pub type unichar = c_ushort;
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+      These options apply to the various search/find and comparison methods (except where noted).
+    */
     pub enum NSStringCompareOptions {
         NSCaseInsensitiveSearch = 1,
         NSLiteralSearch = 2,
@@ -60,6 +63,9 @@ ns_options!(
 extern_class!(
     #[derive(PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSString")]
+    /**
+      Forward declarations
+    */
     pub struct NSString;
 
     #[cfg(feature = "Foundation_NSString")]
@@ -69,17 +75,32 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSString")]
+/**
+  Forward declarations
+*/
 unsafe impl NSCoding for NSString {}
 
 #[cfg(feature = "Foundation_NSString")]
+/**
+  Forward declarations
+*/
 unsafe impl NSObjectProtocol for NSString {}
 
 #[cfg(feature = "Foundation_NSString")]
+/**
+  Forward declarations
+*/
 unsafe impl NSSecureCoding for NSString {}
 
 extern_methods!(
+    /**
+      Forward declarations
+    */
     #[cfg(feature = "Foundation_NSString")]
     unsafe impl NSString {
+        /**
+          NSString primitives. A minimal subclass of NSString just needs to implement these two, along with an init method appropriate for that subclass. We also recommend overriding getCharacters:range: for performance.
+        */
         #[method(length)]
         pub fn length(&self) -> NSUInteger;
 
@@ -294,6 +315,9 @@ extern_methods!(
         #[method_id(@__retain_semantics Other stringByAppendingString:)]
         pub fn stringByAppendingString(&self, a_string: &NSString) -> Id<NSString>;
 
+        /**
+          The following convenience methods all skip initial space characters (whitespaceSet) and ignore trailing characters. They are not locale-aware. NSScanner or NSNumberFormatter can be used for more powerful and locale-aware parsing of numbers.
+        */
         #[method(doubleValue)]
         pub unsafe fn doubleValue(&self) -> c_double;
 
@@ -309,9 +333,15 @@ extern_methods!(
         #[method(longLongValue)]
         pub unsafe fn longLongValue(&self) -> c_longlong;
 
+        /**
+          Skips initial space characters (whitespaceSet), or optional -/+ sign followed by zeroes. Returns YES on encountering one of "Y", "y", "T", "t", or a digit 1-9. It ignores any trailing characters.
+        */
         #[method(boolValue)]
         pub unsafe fn boolValue(&self) -> bool;
 
+        /**
+          The following three return the canonical (non-localized) mappings. They are suitable for programming operations that require stable results not depending on the user's locale preference.  For locale-aware case mapping for strings presented to users, use the "localized" methods below.
+        */
         #[method_id(@__retain_semantics Other uppercaseString)]
         pub unsafe fn uppercaseString(&self) -> Id<NSString>;
 
@@ -321,6 +351,9 @@ extern_methods!(
         #[method_id(@__retain_semantics Other capitalizedString)]
         pub unsafe fn capitalizedString(&self) -> Id<NSString>;
 
+        /**
+          The following three return the locale-aware case mappings. They are suitable for strings presented to the user.
+        */
         #[method_id(@__retain_semantics Other localizedUppercaseString)]
         pub unsafe fn localizedUppercaseString(&self) -> Id<NSString>;
 
@@ -381,12 +414,21 @@ extern_methods!(
             block: &Block<(NonNull<NSString>, NonNull<Bool>), ()>,
         );
 
+        /**
+          Convenience to return null-terminated UTF8 representation
+        */
         #[method(UTF8String)]
         pub fn UTF8String(&self) -> *mut c_char;
 
+        /**
+          Result in O(1) time; a rough estimate
+        */
         #[method(fastestEncoding)]
         pub unsafe fn fastestEncoding(&self) -> NSStringEncoding;
 
+        /**
+          Result in O(n) time; the encoding in which the string is most compact
+        */
         #[method(smallestEncoding)]
         pub unsafe fn smallestEncoding(&self) -> NSStringEncoding;
 
@@ -441,6 +483,9 @@ extern_methods!(
         #[method_id(@__retain_semantics Other localizedNameOfStringEncoding:)]
         pub unsafe fn localizedNameOfStringEncoding(encoding: NSStringEncoding) -> Id<NSString>;
 
+        /**
+          Should be rarely used
+        */
         #[method(defaultCStringEncoding)]
         pub unsafe fn defaultCStringEncoding() -> NSStringEncoding;
 

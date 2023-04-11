@@ -7,6 +7,9 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      NSTextSelectionNavigation is an interface exposing methods for obtaining results from actions performed on text selections. It returns the essential information necessary for editing, selecting, and navigating operations.
+    */
     pub enum NSTextSelectionNavigationDirection {
         NSTextSelectionNavigationDirectionForward = 0,
         NSTextSelectionNavigationDirectionBackward = 1,
@@ -84,20 +87,35 @@ extern_methods!(
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
+        /**
+          The data source object providing the layout and document content information.
+        */
         #[method_id(@__retain_semantics Other textSelectionDataSource)]
         pub unsafe fn textSelectionDataSource(
             &self,
         ) -> Option<Id<ProtocolObject<dyn NSTextSelectionDataSource>>>;
 
+        /**
+          If YES, the object could produce selections with multiple disjoint ranges.
+        */
         #[method(allowsNonContiguousRanges)]
         pub unsafe fn allowsNonContiguousRanges(&self) -> bool;
 
+        /**
+          If YES, the object could produce selections with multiple disjoint ranges.
+        */
         #[method(setAllowsNonContiguousRanges:)]
         pub unsafe fn setAllowsNonContiguousRanges(&self, allows_non_contiguous_ranges: bool);
 
+        /**
+          If YES, rotates the coordinate system for arguments passed to the navigation methods such as -textSelectionsInteractingAtPoint:inContainerAtLocation:anchors:modifiers:selecting:bounds: based on the text container layout orientation. NO by default.
+        */
         #[method(rotatesCoordinateSystemForLayoutOrientation)]
         pub unsafe fn rotatesCoordinateSystemForLayoutOrientation(&self) -> bool;
 
+        /**
+          If YES, rotates the coordinate system for arguments passed to the navigation methods such as -textSelectionsInteractingAtPoint:inContainerAtLocation:anchors:modifiers:selecting:bounds: based on the text container layout orientation. NO by default.
+        */
         #[method(setRotatesCoordinateSystemForLayoutOrientation:)]
         pub unsafe fn setRotatesCoordinateSystemForLayoutOrientation(
             &self,
@@ -174,6 +192,9 @@ extern_methods!(
 extern_protocol!(
     pub unsafe trait NSTextSelectionDataSource: NSObjectProtocol {
         #[cfg(feature = "AppKit_NSTextRange")]
+        /**
+          Declares the starting and ending locations for the document.
+        */
         #[method_id(@__retain_semantics Other documentRange)]
         unsafe fn documentRange(&self) -> Id<NSTextRange>;
 

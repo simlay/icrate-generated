@@ -36,6 +36,9 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MediaPlayer_MPNowPlayingInfoLanguageOption")]
+    /**
+      Represents a single language option option.
+    */
     pub struct MPNowPlayingInfoLanguageOption;
 
     #[cfg(feature = "MediaPlayer_MPNowPlayingInfoLanguageOption")]
@@ -45,9 +48,15 @@ extern_class!(
 );
 
 #[cfg(feature = "MediaPlayer_MPNowPlayingInfoLanguageOption")]
+/**
+  Represents a single language option option.
+*/
 unsafe impl NSObjectProtocol for MPNowPlayingInfoLanguageOption {}
 
 extern_methods!(
+    /**
+      Represents a single language option option.
+    */
     #[cfg(feature = "MediaPlayer_MPNowPlayingInfoLanguageOption")]
     unsafe impl MPNowPlayingInfoLanguageOption {
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
@@ -67,22 +76,41 @@ extern_methods!(
         #[method(isAutomaticAudibleLanguageOption)]
         pub unsafe fn isAutomaticAudibleLanguageOption(&self) -> bool;
 
+        /**
+          The type of language option.
+        */
         #[method(languageOptionType)]
         pub unsafe fn languageOptionType(&self) -> MPNowPlayingInfoLanguageOptionType;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The IETF BCP 47 language tag.
+         A nil languageTag reprsents that this option should be disabled.
+         A languageTag with the value of MPLangaugeOptionAutoLangaugeTag represents
+         that the best langauge based on the system preferences should be used.
+        */
         #[method_id(@__retain_semantics Other languageTag)]
         pub unsafe fn languageTag(&self) -> Option<Id<NSString>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          Characteristics describing the content of the language options.
+         See the LanguageOptionCharacteristics for the most commonly used values.
+        */
         #[method_id(@__retain_semantics Other languageOptionCharacteristics)]
         pub unsafe fn languageOptionCharacteristics(&self) -> Option<Id<NSArray<NSString>>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          A user presentable display name for this option.
+        */
         #[method_id(@__retain_semantics Other displayName)]
         pub unsafe fn displayName(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          A unique identifier representing this option.
+        */
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Option<Id<NSString>>;
     }
@@ -91,6 +119,10 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MediaPlayer_MPNowPlayingInfoLanguageOptionGroup")]
+    /**
+      Represents a mutually exclusive group of language options.
+     Only one language option within a given group may be active at a time.
+    */
     pub struct MPNowPlayingInfoLanguageOptionGroup;
 
     #[cfg(feature = "MediaPlayer_MPNowPlayingInfoLanguageOptionGroup")]
@@ -100,9 +132,17 @@ extern_class!(
 );
 
 #[cfg(feature = "MediaPlayer_MPNowPlayingInfoLanguageOptionGroup")]
+/**
+  Represents a mutually exclusive group of language options.
+ Only one language option within a given group may be active at a time.
+*/
 unsafe impl NSObjectProtocol for MPNowPlayingInfoLanguageOptionGroup {}
 
 extern_methods!(
+    /**
+      Represents a mutually exclusive group of language options.
+     Only one language option within a given group may be active at a time.
+    */
     #[cfg(feature = "MediaPlayer_MPNowPlayingInfoLanguageOptionGroup")]
     unsafe impl MPNowPlayingInfoLanguageOptionGroup {
         #[cfg(all(
@@ -121,13 +161,22 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "MediaPlayer_MPNowPlayingInfoLanguageOption"
         ))]
+        /**
+          The available language options within this group.
+        */
         #[method_id(@__retain_semantics Other languageOptions)]
         pub unsafe fn languageOptions(&self) -> Id<NSArray<MPNowPlayingInfoLanguageOption>>;
 
         #[cfg(feature = "MediaPlayer_MPNowPlayingInfoLanguageOption")]
+        /**
+          The default language option, if any, within this group.
+        */
         #[method_id(@__retain_semantics Other defaultLanguageOption)]
         pub unsafe fn defaultLanguageOption(&self) -> Option<Id<MPNowPlayingInfoLanguageOption>>;
 
+        /**
+          Indicates whether a selection in this group is required at all times.
+        */
         #[method(allowEmptySelection)]
         pub unsafe fn allowEmptySelection(&self) -> bool;
     }

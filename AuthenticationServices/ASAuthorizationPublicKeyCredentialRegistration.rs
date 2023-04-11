@@ -9,6 +9,9 @@ extern_protocol!(
         ASPublicKeyCredential
     {
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          @abstract The raw data containing the authenticator's attestation statement, if one was provided.
+        */
         #[method_id(@__retain_semantics Other rawAttestationObject)]
         unsafe fn rawAttestationObject(&self) -> Option<Id<NSData>>;
     }

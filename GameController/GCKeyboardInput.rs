@@ -18,6 +18,11 @@ pub type GCKeyboardValueChangedHandler = *mut Block<
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameController_GCKeyboardInput")]
+    /**
+     Keyboard profile. Contains the current state of buttons specified in GCKeyCodes.h.
+
+    GCKeyboardInput is designed primarly for input polling. For the best text input experience, UIKit/AppKit usage is recommended.
+    */
     pub struct GCKeyboardInput;
 
     #[cfg(feature = "GameController_GCKeyboardInput")]
@@ -28,9 +33,19 @@ extern_class!(
 );
 
 #[cfg(feature = "GameController_GCKeyboardInput")]
+/**
+ Keyboard profile. Contains the current state of buttons specified in GCKeyCodes.h.
+
+GCKeyboardInput is designed primarly for input polling. For the best text input experience, UIKit/AppKit usage is recommended.
+*/
 unsafe impl NSObjectProtocol for GCKeyboardInput {}
 
 extern_methods!(
+    /**
+     Keyboard profile. Contains the current state of buttons specified in GCKeyCodes.h.
+
+    GCKeyboardInput is designed primarly for input polling. For the best text input experience, UIKit/AppKit usage is recommended.
+    */
     #[cfg(feature = "GameController_GCKeyboardInput")]
     unsafe impl GCKeyboardInput {
         #[method(keyChangedHandler)]
@@ -42,6 +57,9 @@ extern_methods!(
             key_changed_handler: GCKeyboardValueChangedHandler,
         );
 
+        /**
+         Before querying any key for a value it might be useful to check if any key is actually pressed
+        */
         #[method(isAnyKeyPressed)]
         pub unsafe fn isAnyKeyPressed(&self) -> bool;
 

@@ -61,17 +61,29 @@ extern_methods!(
             point_of_interest_filter: Option<&MKPointOfInterestFilter>,
         );
 
+        /**
+          Affects MKMapTypeStandard and MKMapTypeHybrid
+        */
         #[deprecated = "Use pointOfInterestFilter"]
         #[method(showsPointsOfInterest)]
         pub unsafe fn showsPointsOfInterest(&self) -> bool;
 
+        /**
+          Affects MKMapTypeStandard and MKMapTypeHybrid
+        */
         #[deprecated = "Use pointOfInterestFilter"]
         #[method(setShowsPointsOfInterest:)]
         pub unsafe fn setShowsPointsOfInterest(&self, shows_points_of_interest: bool);
 
+        /**
+          Affects MKMapTypeStandard
+        */
         #[method(showsBuildings)]
         pub unsafe fn showsBuildings(&self) -> bool;
 
+        /**
+          Affects MKMapTypeStandard
+        */
         #[method(setShowsBuildings:)]
         pub unsafe fn setShowsBuildings(&self, shows_buildings: bool);
 

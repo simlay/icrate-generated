@@ -35,6 +35,9 @@ extern_methods!(
         pub unsafe fn new() -> Id<Self>;
 
         #[cfg(feature = "CloudKit_CKUserIdentityLookupInfo")]
+        /**
+          This is the @c lookupInfo you passed in to @c CKDiscoverUserIdentitiesOperation or @c CKFetchShareParticipantsOperation
+        */
         #[method_id(@__retain_semantics Other lookupInfo)]
         pub unsafe fn lookupInfo(&self) -> Option<Id<CKUserIdentityLookupInfo>>;
 
@@ -47,6 +50,17 @@ extern_methods!(
         pub unsafe fn userRecordID(&self) -> Option<Id<CKRecordID>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          @abstract Link to the Contacts database.
+
+          @discussion Identities discovered via @c CKDiscoverAllUserIdentitiesOperation correspond to entries in the local Contacts database.  These identities will have @c contactIdentifiers filled out, which your app may use to get additional information about the contacts that were discovered.  Multiple @c contactIdentifiers may exist for a single discovered user, as multiple contacts may contain the same email addresses or phone numbers.
+
+          @return individual, non-unified contacts.
+
+          @discussion To transform these identifiers into an array of unified contact identifiers, pass a @c CNContact.predicateForContacts(withIdentifiers:) predicate into @c CNContactStore.unifiedContacts(matching:keysToFetch:)
+
+          @see Contacts.framework and CNContact.identifier
+        */
         #[method_id(@__retain_semantics Other contactIdentifiers)]
         pub unsafe fn contactIdentifiers(&self) -> Id<NSArray<NSString>>;
 

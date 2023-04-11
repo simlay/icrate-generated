@@ -6,6 +6,9 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSExtensionItem")]
+    /**
+      A NSExtensionItem is an immutable collection of values representing different aspects of an item for the extension to act upon.
+    */
     pub struct NSExtensionItem;
 
     #[cfg(feature = "Foundation_NSExtensionItem")]
@@ -15,30 +18,54 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSExtensionItem")]
+/**
+  A NSExtensionItem is an immutable collection of values representing different aspects of an item for the extension to act upon.
+*/
 unsafe impl NSCoding for NSExtensionItem {}
 
 #[cfg(feature = "Foundation_NSExtensionItem")]
+/**
+  A NSExtensionItem is an immutable collection of values representing different aspects of an item for the extension to act upon.
+*/
 unsafe impl NSObjectProtocol for NSExtensionItem {}
 
 #[cfg(feature = "Foundation_NSExtensionItem")]
+/**
+  A NSExtensionItem is an immutable collection of values representing different aspects of an item for the extension to act upon.
+*/
 unsafe impl NSSecureCoding for NSExtensionItem {}
 
 extern_methods!(
+    /**
+      A NSExtensionItem is an immutable collection of values representing different aspects of an item for the extension to act upon.
+    */
     #[cfg(feature = "Foundation_NSExtensionItem")]
     unsafe impl NSExtensionItem {
         #[cfg(feature = "Foundation_NSAttributedString")]
+        /**
+          (optional) title for the item
+        */
         #[method_id(@__retain_semantics Other attributedTitle)]
         pub unsafe fn attributedTitle(&self) -> Option<Id<NSAttributedString>>;
 
         #[cfg(feature = "Foundation_NSAttributedString")]
+        /**
+          (optional) title for the item
+        */
         #[method(setAttributedTitle:)]
         pub unsafe fn setAttributedTitle(&self, attributed_title: Option<&NSAttributedString>);
 
         #[cfg(feature = "Foundation_NSAttributedString")]
+        /**
+          (optional) content text
+        */
         #[method_id(@__retain_semantics Other attributedContentText)]
         pub unsafe fn attributedContentText(&self) -> Option<Id<NSAttributedString>>;
 
         #[cfg(feature = "Foundation_NSAttributedString")]
+        /**
+          (optional) content text
+        */
         #[method(setAttributedContentText:)]
         pub unsafe fn setAttributedContentText(
             &self,
@@ -46,18 +73,30 @@ extern_methods!(
         );
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSItemProvider"))]
+        /**
+          (optional) Contains images, videos, URLs, etc. This is not meant to be an array of alternate data formats/types, but instead a collection to include in a social media post for example.
+        */
         #[method_id(@__retain_semantics Other attachments)]
         pub unsafe fn attachments(&self) -> Option<Id<NSArray<NSItemProvider>>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSItemProvider"))]
+        /**
+          (optional) Contains images, videos, URLs, etc. This is not meant to be an array of alternate data formats/types, but instead a collection to include in a social media post for example.
+        */
         #[method(setAttachments:)]
         pub unsafe fn setAttachments(&self, attachments: Option<&NSArray<NSItemProvider>>);
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          (optional) dictionary of key-value data. The key/value pairs accepted by the service are expected to be specified in the extension's Info.plist. The values of NSExtensionItem's properties will be reflected into the dictionary.
+        */
         #[method_id(@__retain_semantics Other userInfo)]
         pub unsafe fn userInfo(&self) -> Option<Id<NSDictionary>>;
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          (optional) dictionary of key-value data. The key/value pairs accepted by the service are expected to be specified in the extension's Info.plist. The values of NSExtensionItem's properties will be reflected into the dictionary.
+        */
         #[method(setUserInfo:)]
         pub unsafe fn setUserInfo(&self, user_info: Option<&NSDictionary>);
     }

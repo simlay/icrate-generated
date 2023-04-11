@@ -14,8 +14,14 @@ ns_options!(
 );
 
 extern_protocol!(
+    /**
+      NSTextElementProvider is a protocol conformed by NSTextContentManager and its concrete subclasses. It defines the base interface for interacting with a custom text document content type.
+    */
     pub unsafe trait NSTextElementProvider: NSObjectProtocol {
         #[cfg(feature = "AppKit_NSTextRange")]
+        /**
+          Declares the starting and ending locations for the document. The subclass could use its own implementation of a location object conforming to NSTextRange.
+        */
         #[method_id(@__retain_semantics Other documentRange)]
         unsafe fn documentRange(&self) -> Id<NSTextRange>;
 
@@ -79,6 +85,9 @@ extern_protocol!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSTextContentManager")]
+    /**
+      NSTextContentManager is an abstract class defining the interface for managing the text document contents and the default implementation. The concrete subclass overrides NSTextElementProvider for managing the content backing store. It is the root object strongly referencing the rest of objects in the TextKit network via an array of NSTextLayoutManager. Also, it manages the editing transaction by tracking the active NSTextLayoutManager focused to be editing.
+    */
     pub struct NSTextContentManager;
 
     #[cfg(feature = "AppKit_NSTextContentManager")]
@@ -88,18 +97,33 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSTextContentManager")]
+/**
+  NSTextContentManager is an abstract class defining the interface for managing the text document contents and the default implementation. The concrete subclass overrides NSTextElementProvider for managing the content backing store. It is the root object strongly referencing the rest of objects in the TextKit network via an array of NSTextLayoutManager. Also, it manages the editing transaction by tracking the active NSTextLayoutManager focused to be editing.
+*/
 unsafe impl NSCoding for NSTextContentManager {}
 
 #[cfg(feature = "AppKit_NSTextContentManager")]
+/**
+  NSTextContentManager is an abstract class defining the interface for managing the text document contents and the default implementation. The concrete subclass overrides NSTextElementProvider for managing the content backing store. It is the root object strongly referencing the rest of objects in the TextKit network via an array of NSTextLayoutManager. Also, it manages the editing transaction by tracking the active NSTextLayoutManager focused to be editing.
+*/
 unsafe impl NSObjectProtocol for NSTextContentManager {}
 
 #[cfg(feature = "AppKit_NSTextContentManager")]
+/**
+  NSTextContentManager is an abstract class defining the interface for managing the text document contents and the default implementation. The concrete subclass overrides NSTextElementProvider for managing the content backing store. It is the root object strongly referencing the rest of objects in the TextKit network via an array of NSTextLayoutManager. Also, it manages the editing transaction by tracking the active NSTextLayoutManager focused to be editing.
+*/
 unsafe impl NSSecureCoding for NSTextContentManager {}
 
 #[cfg(feature = "AppKit_NSTextContentManager")]
+/**
+  NSTextContentManager is an abstract class defining the interface for managing the text document contents and the default implementation. The concrete subclass overrides NSTextElementProvider for managing the content backing store. It is the root object strongly referencing the rest of objects in the TextKit network via an array of NSTextLayoutManager. Also, it manages the editing transaction by tracking the active NSTextLayoutManager focused to be editing.
+*/
 unsafe impl NSTextElementProvider for NSTextContentManager {}
 
 extern_methods!(
+    /**
+      NSTextContentManager is an abstract class defining the interface for managing the text document contents and the default implementation. The concrete subclass overrides NSTextElementProvider for managing the content backing store. It is the root object strongly referencing the rest of objects in the TextKit network via an array of NSTextLayoutManager. Also, it manages the editing transaction by tracking the active NSTextLayoutManager focused to be editing.
+    */
     #[cfg(feature = "AppKit_NSTextContentManager")]
     unsafe impl NSTextContentManager {
         #[method_id(@__retain_semantics Init init)]
@@ -124,6 +148,9 @@ extern_methods!(
         );
 
         #[cfg(all(feature = "AppKit_NSTextLayoutManager", feature = "Foundation_NSArray"))]
+        /**
+          An array of NSTextLayoutManager. KVO-compliant
+        */
         #[method_id(@__retain_semantics Other textLayoutManagers)]
         pub unsafe fn textLayoutManagers(&self) -> Id<NSArray<NSTextLayoutManager>>;
 
@@ -136,10 +163,16 @@ extern_methods!(
         pub unsafe fn removeTextLayoutManager(&self, text_layout_manager: &NSTextLayoutManager);
 
         #[cfg(feature = "AppKit_NSTextLayoutManager")]
+        /**
+          The primary NSTextLayoutManager interacting with the user allowing to edit. Setting an NSTextLayoutManager not in textLayoutManagers will reset to nil. It automatically synchronizes pending edits before switching to a new primary object. The operation is synchronous. KVO-compliant
+        */
         #[method_id(@__retain_semantics Other primaryTextLayoutManager)]
         pub unsafe fn primaryTextLayoutManager(&self) -> Option<Id<NSTextLayoutManager>>;
 
         #[cfg(feature = "AppKit_NSTextLayoutManager")]
+        /**
+          The primary NSTextLayoutManager interacting with the user allowing to edit. Setting an NSTextLayoutManager not in textLayoutManagers will reset to nil. It automatically synchronizes pending edits before switching to a new primary object. The operation is synchronous. KVO-compliant
+        */
         #[method(setPrimaryTextLayoutManager:)]
         pub unsafe fn setPrimaryTextLayoutManager(
             &self,
@@ -164,6 +197,9 @@ extern_methods!(
             range: &NSTextRange,
         ) -> Id<NSArray<NSTextElement>>;
 
+        /**
+          When YES, there is an active editing transaction from primaryTextLayoutManager. the synchronization operations to non-primary text layout managers and the backing store block (or fails when synchronous) while this property is YES. Non-primary text layout managers should avoid accessing the elements while this is YES. KVO-compliant
+        */
         #[method(hasEditingTransaction)]
         pub unsafe fn hasEditingTransaction(&self) -> bool;
 
@@ -178,18 +214,30 @@ extern_methods!(
             new_text_range: &NSTextRange,
         );
 
+        /**
+          Automatically synchronizes all text layout managers when hasEditingTransaction becoming NO. YES by default.
+        */
         #[method(automaticallySynchronizesTextLayoutManagers)]
         pub unsafe fn automaticallySynchronizesTextLayoutManagers(&self) -> bool;
 
+        /**
+          Automatically synchronizes all text layout managers when hasEditingTransaction becoming NO. YES by default.
+        */
         #[method(setAutomaticallySynchronizesTextLayoutManagers:)]
         pub unsafe fn setAutomaticallySynchronizesTextLayoutManagers(
             &self,
             automatically_synchronizes_text_layout_managers: bool,
         );
 
+        /**
+          Automatically synchronizes the backing store when hasEditingTransaction becoming NO. NO by default.
+        */
         #[method(automaticallySynchronizesToBackingStore)]
         pub unsafe fn automaticallySynchronizesToBackingStore(&self) -> bool;
 
+        /**
+          Automatically synchronizes the backing store when hasEditingTransaction becoming NO. NO by default.
+        */
         #[method(setAutomaticallySynchronizesToBackingStore:)]
         pub unsafe fn setAutomaticallySynchronizesToBackingStore(
             &self,
@@ -250,6 +298,9 @@ extern_protocol!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSTextContentStorage")]
+    /**
+      NSTextContentStorage is a concrete subclass of NSTextContentManager providing support for NSAttributedString backing-store. It also implements NSTextStorageObserving participating as a client of NSTextStorage. The facility only supports a single NSTextContentStorage associated with a text storage. When -textStorage!=nil, -attributedString is ignored. By default, NSTextContentStorage is initialized with NSTextStorage as the backing-store.
+    */
     pub struct NSTextContentStorage;
 
     #[cfg(feature = "AppKit_NSTextContentStorage")]
@@ -260,21 +311,39 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSTextContentStorage")]
+/**
+  NSTextContentStorage is a concrete subclass of NSTextContentManager providing support for NSAttributedString backing-store. It also implements NSTextStorageObserving participating as a client of NSTextStorage. The facility only supports a single NSTextContentStorage associated with a text storage. When -textStorage!=nil, -attributedString is ignored. By default, NSTextContentStorage is initialized with NSTextStorage as the backing-store.
+*/
 unsafe impl NSCoding for NSTextContentStorage {}
 
 #[cfg(feature = "AppKit_NSTextContentStorage")]
+/**
+  NSTextContentStorage is a concrete subclass of NSTextContentManager providing support for NSAttributedString backing-store. It also implements NSTextStorageObserving participating as a client of NSTextStorage. The facility only supports a single NSTextContentStorage associated with a text storage. When -textStorage!=nil, -attributedString is ignored. By default, NSTextContentStorage is initialized with NSTextStorage as the backing-store.
+*/
 unsafe impl NSObjectProtocol for NSTextContentStorage {}
 
 #[cfg(feature = "AppKit_NSTextContentStorage")]
+/**
+  NSTextContentStorage is a concrete subclass of NSTextContentManager providing support for NSAttributedString backing-store. It also implements NSTextStorageObserving participating as a client of NSTextStorage. The facility only supports a single NSTextContentStorage associated with a text storage. When -textStorage!=nil, -attributedString is ignored. By default, NSTextContentStorage is initialized with NSTextStorage as the backing-store.
+*/
 unsafe impl NSSecureCoding for NSTextContentStorage {}
 
 #[cfg(feature = "AppKit_NSTextContentStorage")]
+/**
+  NSTextContentStorage is a concrete subclass of NSTextContentManager providing support for NSAttributedString backing-store. It also implements NSTextStorageObserving participating as a client of NSTextStorage. The facility only supports a single NSTextContentStorage associated with a text storage. When -textStorage!=nil, -attributedString is ignored. By default, NSTextContentStorage is initialized with NSTextStorage as the backing-store.
+*/
 unsafe impl NSTextElementProvider for NSTextContentStorage {}
 
 #[cfg(feature = "AppKit_NSTextContentStorage")]
+/**
+  NSTextContentStorage is a concrete subclass of NSTextContentManager providing support for NSAttributedString backing-store. It also implements NSTextStorageObserving participating as a client of NSTextStorage. The facility only supports a single NSTextContentStorage associated with a text storage. When -textStorage!=nil, -attributedString is ignored. By default, NSTextContentStorage is initialized with NSTextStorage as the backing-store.
+*/
 unsafe impl NSTextStorageObserving for NSTextContentStorage {}
 
 extern_methods!(
+    /**
+      NSTextContentStorage is a concrete subclass of NSTextContentManager providing support for NSAttributedString backing-store. It also implements NSTextStorageObserving participating as a client of NSTextStorage. The facility only supports a single NSTextContentStorage associated with a text storage. When -textStorage!=nil, -attributedString is ignored. By default, NSTextContentStorage is initialized with NSTextStorage as the backing-store.
+    */
     #[cfg(feature = "AppKit_NSTextContentStorage")]
     unsafe impl NSTextContentStorage {
         #[method_id(@__retain_semantics Other delegate)]
@@ -289,10 +358,16 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSAttributedString")]
+        /**
+          The document contents. KVO-compliant
+        */
         #[method_id(@__retain_semantics Other attributedString)]
         pub unsafe fn attributedString(&self) -> Option<Id<NSAttributedString>>;
 
         #[cfg(feature = "Foundation_NSAttributedString")]
+        /**
+          The document contents. KVO-compliant
+        */
         #[method(setAttributedString:)]
         pub unsafe fn setAttributedString(&self, attributed_string: Option<&NSAttributedString>);
 

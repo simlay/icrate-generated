@@ -24,6 +24,9 @@ extern_methods!(
     #[cfg(feature = "PhotoKit_PHObject")]
     unsafe impl PHObject {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Returns an identifier which persistently identifies the object on a given device
+        */
         #[method_id(@__retain_semantics Other localIdentifier)]
         pub unsafe fn localIdentifier(&self) -> Id<NSString>;
     }
@@ -32,6 +35,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "PhotoKit_PHObjectPlaceholder")]
+    /**
+      PHObjectPlaceholder represents a model object future , vended by change requests when creating a model object.  PHObjectPlaceholder is a read-only object and may be used as a proxy for the real object that will be created both inside and outside of the change block.  Will compare isEqual: to the fetched model object after the change block is performed.
+    */
     pub struct PHObjectPlaceholder;
 
     #[cfg(feature = "PhotoKit_PHObjectPlaceholder")]
@@ -42,9 +48,15 @@ extern_class!(
 );
 
 #[cfg(feature = "PhotoKit_PHObjectPlaceholder")]
+/**
+  PHObjectPlaceholder represents a model object future , vended by change requests when creating a model object.  PHObjectPlaceholder is a read-only object and may be used as a proxy for the real object that will be created both inside and outside of the change block.  Will compare isEqual: to the fetched model object after the change block is performed.
+*/
 unsafe impl NSObjectProtocol for PHObjectPlaceholder {}
 
 extern_methods!(
+    /**
+      PHObjectPlaceholder represents a model object future , vended by change requests when creating a model object.  PHObjectPlaceholder is a read-only object and may be used as a proxy for the real object that will be created both inside and outside of the change block.  Will compare isEqual: to the fetched model object after the change block is performed.
+    */
     #[cfg(feature = "PhotoKit_PHObjectPlaceholder")]
     unsafe impl PHObjectPlaceholder {}
 );

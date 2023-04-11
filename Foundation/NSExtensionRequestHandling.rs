@@ -4,6 +4,9 @@ use crate::common::*;
 use crate::Foundation::*;
 
 extern_protocol!(
+    /**
+      The basic NSExtensionRequestHandling protocol defines a lifecycle hook into the extension. Non view-controller-based services might keep track of the current request using this method. Implemented by the principal object of the extension.
+    */
     pub unsafe trait NSExtensionRequestHandling: NSObjectProtocol {
         #[cfg(feature = "Foundation_NSExtensionContext")]
         #[method(beginRequestWithExtensionContext:)]

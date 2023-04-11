@@ -7,6 +7,9 @@ use crate::Foundation::*;
 __inner_extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNLabeledValue")]
+    /**
+      @abstract A contact property that has a value and label.
+    */
     pub struct CNLabeledValue<ValueType: Message = Object, ValueTypeOwnership: Ownership = Shared> {
         _inner0: PhantomData<*mut (ValueType, ValueTypeOwnership)>,
         notunwindsafe: PhantomData<&'static mut ()>,
@@ -21,29 +24,44 @@ __inner_extern_class!(
 );
 
 #[cfg(feature = "Contacts_CNLabeledValue")]
+/**
+  @abstract A contact property that has a value and label.
+*/
 unsafe impl<ValueType: Message, ValueTypeOwnership: Ownership> NSCoding
     for CNLabeledValue<ValueType, ValueTypeOwnership>
 {
 }
 
 #[cfg(feature = "Contacts_CNLabeledValue")]
+/**
+  @abstract A contact property that has a value and label.
+*/
 unsafe impl<ValueType: Message, ValueTypeOwnership: Ownership> NSObjectProtocol
     for CNLabeledValue<ValueType, ValueTypeOwnership>
 {
 }
 
 #[cfg(feature = "Contacts_CNLabeledValue")]
+/**
+  @abstract A contact property that has a value and label.
+*/
 unsafe impl<ValueType: Message, ValueTypeOwnership: Ownership> NSSecureCoding
     for CNLabeledValue<ValueType, ValueTypeOwnership>
 {
 }
 
 extern_methods!(
+    /**
+      @abstract A contact property that has a value and label.
+    */
     #[cfg(feature = "Contacts_CNLabeledValue")]
     unsafe impl<ValueType: Message, ValueTypeOwnership: Ownership>
         CNLabeledValue<ValueType, ValueTypeOwnership>
     {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The identifier is unique among contacts on the device. It can be saved and used for finding labeled values next application launch.
+        */
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Id<NSString>;
 

@@ -5,6 +5,10 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      All NSUserNotifications API are deprecated. Please switch to the UserNotifications.framework for all notifications work.
+    Used to describe the method in which the user activated the user notification. Alerts can be activated by either clicking on the body of the alert or the action button.
+    */
     #[deprecated = "All NSUserNotifications API should be replaced with UserNotifications.frameworks API"]
     pub enum NSUserNotificationActivationType {
         #[deprecated = "All NSUserNotifications API should be replaced with UserNotifications.frameworks API"]
@@ -40,66 +44,114 @@ extern_methods!(
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The title of the notification. Must be localized as it will be presented to the user. String will be truncated to a length appropriate for display.
+        */
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The title of the notification. Must be localized as it will be presented to the user. String will be truncated to a length appropriate for display.
+        */
         #[method(setTitle:)]
         pub unsafe fn setTitle(&self, title: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The subtitle displayed in the notification. Must be localized as it will be presented to the user. String will be truncated to a length appropriate for display.
+        */
         #[method_id(@__retain_semantics Other subtitle)]
         pub unsafe fn subtitle(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The subtitle displayed in the notification. Must be localized as it will be presented to the user. String will be truncated to a length appropriate for display.
+        */
         #[method(setSubtitle:)]
         pub unsafe fn setSubtitle(&self, subtitle: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The body of the notification. Must be localized as it will be presented to the user. String will be truncated to a length appropriate for display.
+        */
         #[method_id(@__retain_semantics Other informativeText)]
         pub unsafe fn informativeText(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The body of the notification. Must be localized as it will be presented to the user. String will be truncated to a length appropriate for display.
+        */
         #[method(setInformativeText:)]
         pub unsafe fn setInformativeText(&self, informative_text: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The title of the button displayed in the notification. Must be localized as it will be presented to the user. String will be truncated to a length appropriate for display.
+        */
         #[method_id(@__retain_semantics Other actionButtonTitle)]
         pub unsafe fn actionButtonTitle(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The title of the button displayed in the notification. Must be localized as it will be presented to the user. String will be truncated to a length appropriate for display.
+        */
         #[method(setActionButtonTitle:)]
         pub unsafe fn setActionButtonTitle(&self, action_button_title: &NSString);
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+          Application-specific user info that may be retrieved later. All items must be property list types or an exception will be thrown. The userInfo should be of reasonable serialized size or an exception will be thrown.
+        */
         #[method_id(@__retain_semantics Other userInfo)]
         pub unsafe fn userInfo(&self) -> Option<Id<NSDictionary<NSString, Object>>>;
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+          Application-specific user info that may be retrieved later. All items must be property list types or an exception will be thrown. The userInfo should be of reasonable serialized size or an exception will be thrown.
+        */
         #[method(setUserInfo:)]
         pub unsafe fn setUserInfo(&self, user_info: Option<&NSDictionary<NSString, Object>>);
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          Specifies when (in an absolute time) the notification should be delivered. After a notification is delivered, it may be presented to the user.
+        */
         #[method_id(@__retain_semantics Other deliveryDate)]
         pub unsafe fn deliveryDate(&self) -> Option<Id<NSDate>>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          Specifies when (in an absolute time) the notification should be delivered. After a notification is delivered, it may be presented to the user.
+        */
         #[method(setDeliveryDate:)]
         pub unsafe fn setDeliveryDate(&self, delivery_date: Option<&NSDate>);
 
         #[cfg(feature = "Foundation_NSTimeZone")]
+        /**
+          Set the time zone to interpret the delivery date in. If this value is nil and the user switches time zones, the notification center will adjust the time of presentation to account for the time zone change. If a notification should be delivered at a time in a specific time zone (regardless if the user switches time zones), set this value to that time zone. One common value may be the current time zone.
+        */
         #[method_id(@__retain_semantics Other deliveryTimeZone)]
         pub unsafe fn deliveryTimeZone(&self) -> Option<Id<NSTimeZone>>;
 
         #[cfg(feature = "Foundation_NSTimeZone")]
+        /**
+          Set the time zone to interpret the delivery date in. If this value is nil and the user switches time zones, the notification center will adjust the time of presentation to account for the time zone change. If a notification should be delivered at a time in a specific time zone (regardless if the user switches time zones), set this value to that time zone. One common value may be the current time zone.
+        */
         #[method(setDeliveryTimeZone:)]
         pub unsafe fn setDeliveryTimeZone(&self, delivery_time_zone: Option<&NSTimeZone>);
 
         #[cfg(feature = "Foundation_NSDateComponents")]
+        /**
+          The date components that specify how a notification is to be repeated. This value may be nil if the notification should not repeat. The date component values are relative to the date the notification was delivered. If the calendar value of the deliveryRepeatInterval is nil, the current calendar will be used to calculate the repeat interval. For example, if a notification should repeat every hour, set the 'hour' property of the deliveryRepeatInterval to 1.
+        */
         #[method_id(@__retain_semantics Other deliveryRepeatInterval)]
         pub unsafe fn deliveryRepeatInterval(&self) -> Option<Id<NSDateComponents>>;
 
         #[cfg(feature = "Foundation_NSDateComponents")]
+        /**
+          The date components that specify how a notification is to be repeated. This value may be nil if the notification should not repeat. The date component values are relative to the date the notification was delivered. If the calendar value of the deliveryRepeatInterval is nil, the current calendar will be used to calculate the repeat interval. For example, if a notification should repeat every hour, set the 'hour' property of the deliveryRepeatInterval to 1.
+        */
         #[method(setDeliveryRepeatInterval:)]
         pub unsafe fn setDeliveryRepeatInterval(
             &self,
@@ -107,63 +159,114 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          The date at which this notification was actually delivered. The notification center will set this value if a notification is put in the scheduled list and the delivery time arrives. If the notification is delivered directly using the 'deliverNotification:' method on NSUserNotificationCenter, this value will be set to the deliveryDate value (unless deliveryDate is nil, in which case this value is set to the current date). This value is used to sort the list of notifications in the user interface.
+        */
         #[method_id(@__retain_semantics Other actualDeliveryDate)]
         pub unsafe fn actualDeliveryDate(&self) -> Option<Id<NSDate>>;
 
+        /**
+          In some cases, e.g. when your application is frontmost, the notification center may decide not to actually present a delivered notification. In that case, the value of this property will be NO. It will be set to YES if the notification was presented according to user preferences (note: this can mean no dialog, animation, or sound, if the user has turned off notifications completely for your application).
+        */
         #[method(isPresented)]
         pub unsafe fn isPresented(&self) -> bool;
 
+        /**
+          This property will be YES if the user notification is from a remote (push) notification.
+        */
         #[method(isRemote)]
         pub unsafe fn isRemote(&self) -> bool;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The name of the sound file in the resources of the application bundle to play when the notification is delivered. NSUserNotificationDefaultSoundName can be used to play the default Notification Center sound. A value of 'nil' means no sound.
+        */
         #[method_id(@__retain_semantics Other soundName)]
         pub unsafe fn soundName(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The name of the sound file in the resources of the application bundle to play when the notification is delivered. NSUserNotificationDefaultSoundName can be used to play the default Notification Center sound. A value of 'nil' means no sound.
+        */
         #[method(setSoundName:)]
         pub unsafe fn setSoundName(&self, sound_name: Option<&NSString>);
 
+        /**
+          Set to NO if the notification has no action button. This will be the case for notifications that are purely for informational purposes and have no user action. The default value is YES.
+        */
         #[method(hasActionButton)]
         pub unsafe fn hasActionButton(&self) -> bool;
 
+        /**
+          Set to NO if the notification has no action button. This will be the case for notifications that are purely for informational purposes and have no user action. The default value is YES.
+        */
         #[method(setHasActionButton:)]
         pub unsafe fn setHasActionButton(&self, has_action_button: bool);
 
+        /**
+          This property describes how notifications sent to the didActivateNotification were activated.
+        */
         #[method(activationType)]
         pub unsafe fn activationType(&self) -> NSUserNotificationActivationType;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Set this property to a localized string to customize the title of the 'Close' button in an alert-style notification. An empty string will cause the default localized text to be used. A nil value is invalid.
+        */
         #[method_id(@__retain_semantics Other otherButtonTitle)]
         pub unsafe fn otherButtonTitle(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Set this property to a localized string to customize the title of the 'Close' button in an alert-style notification. An empty string will cause the default localized text to be used. A nil value is invalid.
+        */
         #[method(setOtherButtonTitle:)]
         pub unsafe fn setOtherButtonTitle(&self, other_button_title: &NSString);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          This identifier is used to uniquely identify a notification. A notification delivered with the same identifier as an existing notification will replace that notification, rather then display a new one.
+        */
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          This identifier is used to uniquely identify a notification. A notification delivered with the same identifier as an existing notification will replace that notification, rather then display a new one.
+        */
         #[method(setIdentifier:)]
         pub unsafe fn setIdentifier(&self, identifier: Option<&NSString>);
 
+        /**
+          Set to YES if the notification has a reply button. The default value is NO. If both this and hasActionButton are YES, the reply button will be shown.
+        */
         #[method(hasReplyButton)]
         pub unsafe fn hasReplyButton(&self) -> bool;
 
+        /**
+          Set to YES if the notification has a reply button. The default value is NO. If both this and hasActionButton are YES, the reply button will be shown.
+        */
         #[method(setHasReplyButton:)]
         pub unsafe fn setHasReplyButton(&self, has_reply_button: bool);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Optional placeholder for inline reply field.
+        */
         #[method_id(@__retain_semantics Other responsePlaceholder)]
         pub unsafe fn responsePlaceholder(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Optional placeholder for inline reply field.
+        */
         #[method(setResponsePlaceholder:)]
         pub unsafe fn setResponsePlaceholder(&self, response_placeholder: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSAttributedString")]
+        /**
+          When a notification has been responded to, the NSUserNotificationCenter delegate didActivateNotification: will be called with the notification with the activationType set to NSUserNotificationActivationTypeReplied and the response set on the response property
+        */
         #[method_id(@__retain_semantics Other response)]
         pub unsafe fn response(&self) -> Option<Id<NSAttributedString>>;
 
@@ -171,6 +274,9 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSUserNotificationAction"
         ))]
+        /**
+          An array of NSUserNotificationAction objects that describe the different actions that can be taken on a notification in addition to the default action described by actionButtonTitle
+        */
         #[method_id(@__retain_semantics Other additionalActions)]
         pub unsafe fn additionalActions(&self) -> Option<Id<NSArray<NSUserNotificationAction>>>;
 
@@ -178,6 +284,9 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSUserNotificationAction"
         ))]
+        /**
+          An array of NSUserNotificationAction objects that describe the different actions that can be taken on a notification in addition to the default action described by actionButtonTitle
+        */
         #[method(setAdditionalActions:)]
         pub unsafe fn setAdditionalActions(
             &self,
@@ -185,6 +294,9 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSUserNotificationAction")]
+        /**
+          When a user selects an additional action that action will be set on the notification's additionalActivationAction property when passed into the delegate callback didActivateNotification
+        */
         #[method_id(@__retain_semantics Other additionalActivationAction)]
         pub unsafe fn additionalActivationAction(&self) -> Option<Id<NSUserNotificationAction>>;
     }
@@ -193,6 +305,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSUserNotificationAction")]
+    /**
+      An action shown to the user as part of a NSUserNotification in the additionalActions property.
+    */
     #[deprecated = "All NSUserNotifications API should be replaced with UserNotifications.frameworks API"]
     pub struct NSUserNotificationAction;
 
@@ -203,9 +318,15 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSUserNotificationAction")]
+/**
+  An action shown to the user as part of a NSUserNotification in the additionalActions property.
+*/
 unsafe impl NSObjectProtocol for NSUserNotificationAction {}
 
 extern_methods!(
+    /**
+      An action shown to the user as part of a NSUserNotification in the additionalActions property.
+    */
     #[cfg(feature = "Foundation_NSUserNotificationAction")]
     unsafe impl NSUserNotificationAction {
         #[cfg(feature = "Foundation_NSString")]
@@ -220,6 +341,9 @@ extern_methods!(
         pub unsafe fn identifier(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The localized title of the action.
+        */
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Option<Id<NSString>>;
     }
@@ -245,6 +369,9 @@ unsafe impl NSObjectProtocol for NSUserNotificationCenter {}
 extern_methods!(
     #[cfg(feature = "Foundation_NSUserNotificationCenter")]
     unsafe impl NSUserNotificationCenter {
+        /**
+          Get a singleton user notification center that posts notifications for this process.
+        */
         #[method_id(@__retain_semantics Other defaultUserNotificationCenter)]
         pub unsafe fn defaultUserNotificationCenter() -> Id<NSUserNotificationCenter>;
 
@@ -263,6 +390,9 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSUserNotification"
         ))]
+        /**
+          Get a list of notifications that are scheduled but have not yet been presented. Newly scheduled notifications are added to the end of the array. You may also bulk-schedule notifications by setting this array.
+        */
         #[method_id(@__retain_semantics Other scheduledNotifications)]
         pub unsafe fn scheduledNotifications(&self) -> Id<NSArray<NSUserNotification>>;
 
@@ -270,6 +400,9 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSUserNotification"
         ))]
+        /**
+          Get a list of notifications that are scheduled but have not yet been presented. Newly scheduled notifications are added to the end of the array. You may also bulk-schedule notifications by setting this array.
+        */
         #[method(setScheduledNotifications:)]
         pub unsafe fn setScheduledNotifications(
             &self,
@@ -288,6 +421,9 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSUserNotification"
         ))]
+        /**
+          Get a list of notifications that have been delivered to the Notification Center. The number of notifications the user actually sees in the user interface may be less than the size of this array. Note that these may or may not have been actually presented to the user (see the presented property on the NSUserNotification).
+        */
         #[method_id(@__retain_semantics Other deliveredNotifications)]
         pub unsafe fn deliveredNotifications(&self) -> Id<NSArray<NSUserNotification>>;
 
@@ -305,6 +441,9 @@ extern_methods!(
 );
 
 extern_protocol!(
+    /**
+      All NSUserNotifications API are deprecated. Please switch to the UserNotifications.framework for all notifications work.
+    */
     pub unsafe trait NSUserNotificationCenterDelegate: NSObjectProtocol {
         #[cfg(all(
             feature = "Foundation_NSUserNotification",

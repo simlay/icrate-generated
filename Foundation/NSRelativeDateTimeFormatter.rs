@@ -24,6 +24,9 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSRelativeDateTimeFormatter")]
+    /**
+      NSRelativeDateTimeFormatter provides locale-aware formatting of a relative date or time, such as "1 hour ago", "in 2 weeks", "yesterday", and "tomorrow." Note that the string produced by the formatter should only be used in a standalone manner as it may not be grammatically correct to embed the string in longer strings.
+    */
     pub struct NSRelativeDateTimeFormatter;
 
     #[cfg(feature = "Foundation_NSRelativeDateTimeFormatter")]
@@ -34,45 +37,84 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSRelativeDateTimeFormatter")]
+/**
+  NSRelativeDateTimeFormatter provides locale-aware formatting of a relative date or time, such as "1 hour ago", "in 2 weeks", "yesterday", and "tomorrow." Note that the string produced by the formatter should only be used in a standalone manner as it may not be grammatically correct to embed the string in longer strings.
+*/
 unsafe impl NSCoding for NSRelativeDateTimeFormatter {}
 
 #[cfg(feature = "Foundation_NSRelativeDateTimeFormatter")]
+/**
+  NSRelativeDateTimeFormatter provides locale-aware formatting of a relative date or time, such as "1 hour ago", "in 2 weeks", "yesterday", and "tomorrow." Note that the string produced by the formatter should only be used in a standalone manner as it may not be grammatically correct to embed the string in longer strings.
+*/
 unsafe impl NSObjectProtocol for NSRelativeDateTimeFormatter {}
 
 extern_methods!(
+    /**
+      NSRelativeDateTimeFormatter provides locale-aware formatting of a relative date or time, such as "1 hour ago", "in 2 weeks", "yesterday", and "tomorrow." Note that the string produced by the formatter should only be used in a standalone manner as it may not be grammatically correct to embed the string in longer strings.
+    */
     #[cfg(feature = "Foundation_NSRelativeDateTimeFormatter")]
     unsafe impl NSRelativeDateTimeFormatter {
+        /**
+          Specifies how to describe a relative date. For example, "yesterday" vs "1 day ago" in English. Default is NSRelativeDateTimeFormatterStyleNumeric.
+        */
         #[method(dateTimeStyle)]
         pub unsafe fn dateTimeStyle(&self) -> NSRelativeDateTimeFormatterStyle;
 
+        /**
+          Specifies how to describe a relative date. For example, "yesterday" vs "1 day ago" in English. Default is NSRelativeDateTimeFormatterStyleNumeric.
+        */
         #[method(setDateTimeStyle:)]
         pub unsafe fn setDateTimeStyle(&self, date_time_style: NSRelativeDateTimeFormatterStyle);
 
+        /**
+          Specifies how to format the quantity or the name of the unit. For example, "1 day ago" vs "one day ago" in English. Default is NSRelativeDateTimeFormatterUnitsStyleFull.
+        */
         #[method(unitsStyle)]
         pub unsafe fn unitsStyle(&self) -> NSRelativeDateTimeFormatterUnitsStyle;
 
+        /**
+          Specifies how to format the quantity or the name of the unit. For example, "1 day ago" vs "one day ago" in English. Default is NSRelativeDateTimeFormatterUnitsStyleFull.
+        */
         #[method(setUnitsStyle:)]
         pub unsafe fn setUnitsStyle(&self, units_style: NSRelativeDateTimeFormatterUnitsStyle);
 
+        /**
+          Specifies the formatting context of the output. Default is NSFormattingContextUnknown.
+        */
         #[method(formattingContext)]
         pub unsafe fn formattingContext(&self) -> NSFormattingContext;
 
+        /**
+          Specifies the formatting context of the output. Default is NSFormattingContextUnknown.
+        */
         #[method(setFormattingContext:)]
         pub unsafe fn setFormattingContext(&self, formatting_context: NSFormattingContext);
 
         #[cfg(feature = "Foundation_NSCalendar")]
+        /**
+          Specifies the calendar to use for formatting values that do not have an inherent calendar of their own. Defaults to autoupdatingCurrentCalendar. Also resets to autoupdatingCurrentCalendar on assignment of nil.
+        */
         #[method_id(@__retain_semantics Other calendar)]
         pub unsafe fn calendar(&self) -> Id<NSCalendar>;
 
         #[cfg(feature = "Foundation_NSCalendar")]
+        /**
+          Specifies the calendar to use for formatting values that do not have an inherent calendar of their own. Defaults to autoupdatingCurrentCalendar. Also resets to autoupdatingCurrentCalendar on assignment of nil.
+        */
         #[method(setCalendar:)]
         pub unsafe fn setCalendar(&self, calendar: Option<&NSCalendar>);
 
         #[cfg(feature = "Foundation_NSLocale")]
+        /**
+          Specifies the locale of the output string. Defaults to and resets on assignment of nil to the calendar's locale.
+        */
         #[method_id(@__retain_semantics Other locale)]
         pub unsafe fn locale(&self) -> Id<NSLocale>;
 
         #[cfg(feature = "Foundation_NSLocale")]
+        /**
+          Specifies the locale of the output string. Defaults to and resets on assignment of nil to the calendar's locale.
+        */
         #[method(setLocale:)]
         pub unsafe fn setLocale(&self, locale: Option<&NSLocale>);
 

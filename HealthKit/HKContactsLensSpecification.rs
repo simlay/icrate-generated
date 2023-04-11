@@ -9,6 +9,10 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKContactsLensSpecification")]
+    /**
+     @class         HKContactsLensSpecification
+    @abstract      An object subclass representing lens specification for contacts
+    */
     pub struct HKContactsLensSpecification;
 
     #[cfg(feature = "HealthKit_HKContactsLensSpecification")]
@@ -19,22 +23,46 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKContactsLensSpecification")]
+/**
+ @class         HKContactsLensSpecification
+@abstract      An object subclass representing lens specification for contacts
+*/
 unsafe impl NSCoding for HKContactsLensSpecification {}
 
 #[cfg(feature = "HealthKit_HKContactsLensSpecification")]
+/**
+ @class         HKContactsLensSpecification
+@abstract      An object subclass representing lens specification for contacts
+*/
 unsafe impl NSObjectProtocol for HKContactsLensSpecification {}
 
 #[cfg(feature = "HealthKit_HKContactsLensSpecification")]
+/**
+ @class         HKContactsLensSpecification
+@abstract      An object subclass representing lens specification for contacts
+*/
 unsafe impl NSSecureCoding for HKContactsLensSpecification {}
 
 extern_methods!(
+    /**
+     @class         HKContactsLensSpecification
+    @abstract      An object subclass representing lens specification for contacts
+    */
     #[cfg(feature = "HealthKit_HKContactsLensSpecification")]
     unsafe impl HKContactsLensSpecification {
         #[cfg(feature = "HealthKit_HKQuantity")]
+        /**
+         @property      baseCurve
+        @abstract      The curvature of the back surface of the lens (measured in mm)
+        */
         #[method_id(@__retain_semantics Other baseCurve)]
         pub unsafe fn baseCurve(&self) -> Option<Id<HKQuantity>>;
 
         #[cfg(feature = "HealthKit_HKQuantity")]
+        /**
+         @property      diameter
+        @abstract      The width of the lens from edge to edge (measured in mm)
+        */
         #[method_id(@__retain_semantics Other diameter)]
         pub unsafe fn diameter(&self) -> Option<Id<HKQuantity>>;
 

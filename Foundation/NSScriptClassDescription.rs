@@ -36,6 +36,9 @@ extern_methods!(
         ) -> Option<Id<Self>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Return the suite name or class name provided at initialization time.
+        */
         #[method_id(@__retain_semantics Other suiteName)]
         pub unsafe fn suiteName(&self) -> Option<Id<NSString>>;
 
@@ -44,12 +47,21 @@ extern_methods!(
         pub unsafe fn className(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Return the name of the Objective-C that implements the described scriptable class.
+        */
         #[method_id(@__retain_semantics Other implementationClassName)]
         pub unsafe fn implementationClassName(&self) -> Option<Id<NSString>>;
 
+        /**
+          Return the scripting class description of the superclass of the class described by the receiver.
+        */
         #[method_id(@__retain_semantics Other superclassDescription)]
         pub unsafe fn superclassDescription(&self) -> Option<Id<NSScriptClassDescription>>;
 
+        /**
+          Return the primary four character code used to identify the described class in Apple events.
+        */
         #[method(appleEventCode)]
         pub unsafe fn appleEventCode(&self) -> FourCharCode;
 
@@ -93,6 +105,9 @@ extern_methods!(
         ) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Return the value of the DefaultSubcontainerAttribute entry of the class declaration dictionary provided when the receiver was instantiated, or nil if there was no such entry.
+        */
         #[method_id(@__retain_semantics Other defaultSubcontainerAttributeKey)]
         pub unsafe fn defaultSubcontainerAttributeKey(&self) -> Option<Id<NSString>>;
 

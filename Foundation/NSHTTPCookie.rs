@@ -46,6 +46,14 @@ extern_static!(NSHTTPCookieSameSiteStrict: &'static NSHTTPCookieStringPolicy);
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSHTTPCookie")]
+    /**
+     @class NSHTTPCookie
+    @abstract NSHTTPCookie represents an http cookie.
+    @discussion A NSHTTPCookie instance represents a single http cookie. It is
+    an immutable object initialized from a dictionary that contains
+    the various cookie attributes. It has accessors to get the various
+    attributes of a cookie.
+    */
     pub struct NSHTTPCookie;
 
     #[cfg(feature = "Foundation_NSHTTPCookie")]
@@ -55,9 +63,25 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSHTTPCookie")]
+/**
+ @class NSHTTPCookie
+@abstract NSHTTPCookie represents an http cookie.
+@discussion A NSHTTPCookie instance represents a single http cookie. It is
+an immutable object initialized from a dictionary that contains
+the various cookie attributes. It has accessors to get the various
+attributes of a cookie.
+*/
 unsafe impl NSObjectProtocol for NSHTTPCookie {}
 
 extern_methods!(
+    /**
+     @class NSHTTPCookie
+    @abstract NSHTTPCookie represents an http cookie.
+    @discussion A NSHTTPCookie instance represents a single http cookie. It is
+    an immutable object initialized from a dictionary that contains
+    the various cookie attributes. It has accessors to get the various
+    attributes of a cookie.
+    */
     #[cfg(feature = "Foundation_NSHTTPCookie")]
     unsafe impl NSHTTPCookie {
         #[cfg(feature = "Foundation_NSDictionary")]
@@ -96,55 +120,166 @@ extern_methods!(
         ) -> Id<NSArray<NSHTTPCookie>>;
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+         @abstract Returns a dictionary representation of the receiver.
+        @discussion This method returns a dictionary representation of the
+        NSHTTPCookie which can be saved and passed to
+        <tt>-initWithProperties:</tt> or <tt>+cookieWithProperties:</tt>
+        later to reconstitute an equivalent cookie.
+        <p>See the NSHTTPCookie <tt>-initWithProperties:</tt> method for
+        more information on the constraints imposed on the dictionary, and
+        for descriptions of the supported keys and values.
+        @result The dictionary representation of the receiver.
+        */
         #[method_id(@__retain_semantics Other properties)]
         pub unsafe fn properties(
             &self,
         ) -> Option<Id<NSDictionary<NSHTTPCookiePropertyKey, Object>>>;
 
+        /**
+         @abstract Returns the version of the receiver.
+        @discussion Version 0 maps to "old-style" Netscape cookies.
+        Version 1 maps to RFC2965 cookies. There may be future versions.
+        @result the version of the receiver.
+        */
         #[method(version)]
         pub unsafe fn version(&self) -> NSUInteger;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract Returns the name of the receiver.
+        @result the name of the receiver.
+        */
         #[method_id(@__retain_semantics Other name)]
         pub unsafe fn name(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract Returns the value of the receiver.
+        @result the value of the receiver.
+        */
         #[method_id(@__retain_semantics Other value)]
         pub unsafe fn value(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+         @abstract Returns the expires date of the receiver.
+        @result the expires date of the receiver.
+        @discussion The expires date is the date when the cookie should be
+        deleted. The result will be nil if there is no specific expires
+        date. This will be the case only for "session-only" cookies.
+        @result The expires date of the receiver.
+        */
         #[method_id(@__retain_semantics Other expiresDate)]
         pub unsafe fn expiresDate(&self) -> Option<Id<NSDate>>;
 
+        /**
+         @abstract Returns whether the receiver is session-only.
+        @result YES if this receiver should be discarded at the end of the
+        session (regardless of expiration date), NO if receiver need not
+        be discarded at the end of the session.
+        */
         #[method(isSessionOnly)]
         pub unsafe fn isSessionOnly(&self) -> bool;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract Returns the domain of the receiver.
+        @discussion This value specifies URL domain to which the cookie
+        should be sent. A domain with a leading dot means the cookie
+        should be sent to subdomains as well, assuming certain other
+        restrictions are valid. See RFC 2965 for more detail.
+        @result The domain of the receiver.
+        */
         #[method_id(@__retain_semantics Other domain)]
         pub unsafe fn domain(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract Returns the path of the receiver.
+        @discussion This value specifies the URL path under the cookie's
+        domain for which this cookie should be sent. The cookie will also
+        be sent for children of that path, so "/" is the most general.
+        @result The path of the receiver.
+        */
         #[method_id(@__retain_semantics Other path)]
         pub unsafe fn path(&self) -> Id<NSString>;
 
+        /**
+         @abstract Returns whether the receiver should be sent only over
+        secure channels
+        @discussion Cookies may be marked secure by a server (or by a javascript).
+        Cookies marked as such must only be sent via an encrypted connection to
+        trusted servers (i.e. via SSL or TLS), and should not be delivered to any
+        javascript applications to prevent cross-site scripting vulnerabilities.
+        @result YES if this cookie should be sent only over secure channels,
+        NO otherwise.
+        */
         #[method(isSecure)]
         pub unsafe fn isSecure(&self) -> bool;
 
+        /**
+         @abstract Returns whether the receiver should only be sent to HTTP servers
+        per RFC 2965
+        @discussion Cookies may be marked as HTTPOnly by a server (or by a javascript).
+        Cookies marked as such must only be sent via HTTP Headers in HTTP Requests
+        for URL's that match both the path and domain of the respective Cookies.
+        Specifically these cookies should not be delivered to any javascript
+        applications to prevent cross-site scripting vulnerabilities.
+        @result YES if this cookie should only be sent via HTTP headers,
+        NO otherwise.
+        */
         #[method(isHTTPOnly)]
         pub unsafe fn isHTTPOnly(&self) -> bool;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract Returns the comment of the receiver.
+        @discussion This value specifies a string which is suitable for
+        presentation to the user explaining the contents and purpose of this
+        cookie. It may be nil.
+        @result The comment of the receiver, or nil if the receiver has no
+        comment.
+        */
         #[method_id(@__retain_semantics Other comment)]
         pub unsafe fn comment(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+         @abstract Returns the comment URL of the receiver.
+        @discussion This value specifies a URL which is suitable for
+        presentation to the user as a link for further information about
+        this cookie. It may be nil.
+        @result The comment URL of the receiver, or nil if the receiver
+        has no comment URL.
+        */
         #[method_id(@__retain_semantics Other commentURL)]
         pub unsafe fn commentURL(&self) -> Option<Id<NSURL>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSNumber"))]
+        /**
+         @abstract Returns the list ports to which the receiver should be
+        sent.
+        @discussion This value specifies an NSArray of NSNumbers
+        (containing integers) which specify the only ports to which this
+        cookie should be sent.
+        @result The list ports to which the receiver should be sent. The
+        array may be nil, in which case this cookie can be sent to any
+        port.
+        */
         #[method_id(@__retain_semantics Other portList)]
         pub unsafe fn portList(&self) -> Option<Id<NSArray<NSNumber>>>;
 
+        /**
+         @abstract Returns the value of the same site attribute on the cookie.
+        @discussion Cookies can be marked with an attribute Strict or Lax.
+        Cookies marked with "strict" (NSHTTPCookieSameSiteStrict) are not sent along with cross-site requests.
+        Cookies marked with "lax" (NSHTTPCookieSameSiteLax) sent along cross-site requests provided the
+        cross-site requests are top-level-requests (one that changes the url in the address bar).
+        The attribute value is canonicalized and stored. Any value other than the default (strict and lax) will be ignored.
+        @result strict or lax. The result could also be nil, in which case the
+        cookie will be sent along with all cross-site requests.
+        */
         #[method_id(@__retain_semantics Other sameSitePolicy)]
         pub unsafe fn sameSitePolicy(&self) -> Option<Id<NSHTTPCookieStringPolicy>>;
     }

@@ -8,6 +8,9 @@ use crate::GameKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameKit_GKVoiceChatService")]
+    /**
+      GKVoiceChatService provides voice chat capabilities depending on your networking situation.
+    */
     pub struct GKVoiceChatService;
 
     #[cfg(feature = "GameKit_GKVoiceChatService")]
@@ -17,9 +20,15 @@ extern_class!(
 );
 
 #[cfg(feature = "GameKit_GKVoiceChatService")]
+/**
+  GKVoiceChatService provides voice chat capabilities depending on your networking situation.
+*/
 unsafe impl NSObjectProtocol for GKVoiceChatService {}
 
 extern_methods!(
+    /**
+      GKVoiceChatService provides voice chat capabilities depending on your networking situation.
+    */
     #[cfg(feature = "GameKit_GKVoiceChatService")]
     unsafe impl GKVoiceChatService {
         #[method_id(@__retain_semantics Other defaultVoiceChatService)]
@@ -57,33 +66,63 @@ extern_methods!(
             participant_id: Option<&NSString>,
         );
 
+        /**
+          default is NO
+        */
         #[method(isMicrophoneMuted)]
         pub unsafe fn isMicrophoneMuted(&self) -> bool;
 
+        /**
+          default is NO
+        */
         #[method(setMicrophoneMuted:)]
         pub unsafe fn setMicrophoneMuted(&self, microphone_muted: bool);
 
+        /**
+         default 1.0 (max is 1.0, min is 0.0)
+        */
         #[method(remoteParticipantVolume)]
         pub unsafe fn remoteParticipantVolume(&self) -> c_float;
 
+        /**
+         default 1.0 (max is 1.0, min is 0.0)
+        */
         #[method(setRemoteParticipantVolume:)]
         pub unsafe fn setRemoteParticipantVolume(&self, remote_participant_volume: c_float);
 
+        /**
+         default NO
+        */
         #[method(isOutputMeteringEnabled)]
         pub unsafe fn isOutputMeteringEnabled(&self) -> bool;
 
+        /**
+         default NO
+        */
         #[method(setOutputMeteringEnabled:)]
         pub unsafe fn setOutputMeteringEnabled(&self, output_metering_enabled: bool);
 
+        /**
+         default NO
+        */
         #[method(isInputMeteringEnabled)]
         pub unsafe fn isInputMeteringEnabled(&self) -> bool;
 
+        /**
+         default NO
+        */
         #[method(setInputMeteringEnabled:)]
         pub unsafe fn setInputMeteringEnabled(&self, input_metering_enabled: bool);
 
+        /**
+         changes frequently as the far-end participant speaks
+        */
         #[method(outputMeterLevel)]
         pub unsafe fn outputMeterLevel(&self) -> c_float;
 
+        /**
+         changes frequently as the near-end participant speaks
+        */
         #[method(inputMeterLevel)]
         pub unsafe fn inputMeterLevel(&self) -> c_float;
     }

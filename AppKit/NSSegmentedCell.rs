@@ -35,15 +35,27 @@ unsafe impl NSUserInterfaceItemIdentification for NSSegmentedCell {}
 extern_methods!(
     #[cfg(feature = "AppKit_NSSegmentedCell")]
     unsafe impl NSSegmentedCell {
+        /**
+          Number of segments
+        */
         #[method(segmentCount)]
         pub unsafe fn segmentCount(&self) -> NSInteger;
 
+        /**
+          Number of segments
+        */
         #[method(setSegmentCount:)]
         pub unsafe fn setSegmentCount(&self, segment_count: NSInteger);
 
+        /**
+          Which button is active. May turn off other segments depending on mode.
+        */
         #[method(selectedSegment)]
         pub unsafe fn selectedSegment(&self) -> NSInteger;
 
+        /**
+          Which button is active. May turn off other segments depending on mode.
+        */
         #[method(setSelectedSegment:)]
         pub unsafe fn setSelectedSegment(&self, selected_segment: NSInteger);
 
@@ -128,9 +140,15 @@ extern_methods!(
         #[method(tagForSegment:)]
         pub unsafe fn tagForSegment(&self, segment: NSInteger) -> NSInteger;
 
+        /**
+          see NSSegmentedControl.h for segment style names and values
+        */
         #[method(segmentStyle)]
         pub unsafe fn segmentStyle(&self) -> NSSegmentStyle;
 
+        /**
+          see NSSegmentedControl.h for segment style names and values
+        */
         #[method(setSegmentStyle:)]
         pub unsafe fn setSegmentStyle(&self, segment_style: NSSegmentStyle);
 

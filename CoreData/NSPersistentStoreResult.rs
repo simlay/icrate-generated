@@ -46,6 +46,10 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreData_NSPersistentStoreResult")]
+    /**
+      Used to wrap the result of whatever is returned by the persistent store coordinator when
+     -[NSManagedObjectContext executeRequest:error:] is called
+    */
     pub struct NSPersistentStoreResult;
 
     #[cfg(feature = "CoreData_NSPersistentStoreResult")]
@@ -55,9 +59,17 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreData_NSPersistentStoreResult")]
+/**
+  Used to wrap the result of whatever is returned by the persistent store coordinator when
+ -[NSManagedObjectContext executeRequest:error:] is called
+*/
 unsafe impl NSObjectProtocol for NSPersistentStoreResult {}
 
 extern_methods!(
+    /**
+      Used to wrap the result of whatever is returned by the persistent store coordinator when
+     -[NSManagedObjectContext executeRequest:error:] is called
+    */
     #[cfg(feature = "CoreData_NSPersistentStoreResult")]
     unsafe impl NSPersistentStoreResult {}
 );
@@ -141,6 +153,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreData_NSBatchInsertResult")]
+    /**
+      The result returned when executing an NSBatchInsertRequest
+    */
     pub struct NSBatchInsertResult;
 
     #[cfg(feature = "CoreData_NSBatchInsertResult")]
@@ -151,11 +166,20 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreData_NSBatchInsertResult")]
+/**
+  The result returned when executing an NSBatchInsertRequest
+*/
 unsafe impl NSObjectProtocol for NSBatchInsertResult {}
 
 extern_methods!(
+    /**
+      The result returned when executing an NSBatchInsertRequest
+    */
     #[cfg(feature = "CoreData_NSBatchInsertResult")]
     unsafe impl NSBatchInsertResult {
+        /**
+          Return the result. See NSBatchInsertRequestResultType for options
+        */
         #[method_id(@__retain_semantics Other result)]
         pub unsafe fn result(&self) -> Option<Id<Object>>;
 
@@ -167,6 +191,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreData_NSBatchUpdateResult")]
+    /**
+      The result returned when executing an NSBatchUpdateRequest
+    */
     pub struct NSBatchUpdateResult;
 
     #[cfg(feature = "CoreData_NSBatchUpdateResult")]
@@ -177,11 +204,20 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreData_NSBatchUpdateResult")]
+/**
+  The result returned when executing an NSBatchUpdateRequest
+*/
 unsafe impl NSObjectProtocol for NSBatchUpdateResult {}
 
 extern_methods!(
+    /**
+      The result returned when executing an NSBatchUpdateRequest
+    */
     #[cfg(feature = "CoreData_NSBatchUpdateResult")]
     unsafe impl NSBatchUpdateResult {
+        /**
+          Return the result. See NSBatchUpdateRequestResultType for options
+        */
         #[method_id(@__retain_semantics Other result)]
         pub unsafe fn result(&self) -> Option<Id<Object>>;
 
@@ -193,6 +229,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreData_NSBatchDeleteResult")]
+    /**
+      The result returned when executing an NSBatchDeleteRequest
+    */
     pub struct NSBatchDeleteResult;
 
     #[cfg(feature = "CoreData_NSBatchDeleteResult")]
@@ -203,11 +242,20 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreData_NSBatchDeleteResult")]
+/**
+  The result returned when executing an NSBatchDeleteRequest
+*/
 unsafe impl NSObjectProtocol for NSBatchDeleteResult {}
 
 extern_methods!(
+    /**
+      The result returned when executing an NSBatchDeleteRequest
+    */
     #[cfg(feature = "CoreData_NSBatchDeleteResult")]
     unsafe impl NSBatchDeleteResult {
+        /**
+          Return the result. See NSBatchDeleteRequestResultType for options
+        */
         #[method_id(@__retain_semantics Other result)]
         pub unsafe fn result(&self) -> Option<Id<Object>>;
 
@@ -219,6 +267,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreData_NSPersistentHistoryResult")]
+    /**
+      The result returned when executing an NSPersistentHistoryChangeRequest
+    */
     pub struct NSPersistentHistoryResult;
 
     #[cfg(feature = "CoreData_NSPersistentHistoryResult")]
@@ -229,11 +280,20 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreData_NSPersistentHistoryResult")]
+/**
+  The result returned when executing an NSPersistentHistoryChangeRequest
+*/
 unsafe impl NSObjectProtocol for NSPersistentHistoryResult {}
 
 extern_methods!(
+    /**
+      The result returned when executing an NSPersistentHistoryChangeRequest
+    */
     #[cfg(feature = "CoreData_NSPersistentHistoryResult")]
     unsafe impl NSPersistentHistoryResult {
+        /**
+          Return the result. See NSPersistentHistoryResultType for options
+        */
         #[method_id(@__retain_semantics Other result)]
         pub unsafe fn result(&self) -> Option<Id<Object>>;
 
@@ -253,6 +313,9 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreData_NSPersistentCloudKitContainerEventResult")]
+    /**
+      The result returned when executing an NSPersistentCloudKitContainerEventRequest
+    */
     pub struct NSPersistentCloudKitContainerEventResult;
 
     #[cfg(feature = "CoreData_NSPersistentCloudKitContainerEventResult")]
@@ -263,11 +326,20 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreData_NSPersistentCloudKitContainerEventResult")]
+/**
+  The result returned when executing an NSPersistentCloudKitContainerEventRequest
+*/
 unsafe impl NSObjectProtocol for NSPersistentCloudKitContainerEventResult {}
 
 extern_methods!(
+    /**
+      The result returned when executing an NSPersistentCloudKitContainerEventRequest
+    */
     #[cfg(feature = "CoreData_NSPersistentCloudKitContainerEventResult")]
     unsafe impl NSPersistentCloudKitContainerEventResult {
+        /**
+          Return the result. See NSPersistentCloudKitContainerEventResultType for options
+        */
         #[method_id(@__retain_semantics Other result)]
         pub unsafe fn result(&self) -> Option<Id<Object>>;
 

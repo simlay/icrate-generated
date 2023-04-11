@@ -92,11 +92,17 @@ extern_methods!(
         pub unsafe fn performBlockAndWait(&self, block: &Block<(), ()>);
 
         #[cfg(feature = "CoreData_NSPersistentStoreCoordinator")]
+        /**
+          coordinator which provides model and handles persistency (multiple contexts can share a coordinator)
+        */
         #[method_id(@__retain_semantics Other persistentStoreCoordinator)]
         pub unsafe fn persistentStoreCoordinator(&self)
             -> Option<Id<NSPersistentStoreCoordinator>>;
 
         #[cfg(feature = "CoreData_NSPersistentStoreCoordinator")]
+        /**
+          coordinator which provides model and handles persistency (multiple contexts can share a coordinator)
+        */
         #[method(setPersistentStoreCoordinator:)]
         pub unsafe fn setPersistentStoreCoordinator(
             &self,
@@ -110,10 +116,16 @@ extern_methods!(
         pub unsafe fn setParentContext(&self, parent_context: Option<&NSManagedObjectContext>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          custom label for a context.  NSPrivateQueueConcurrencyType contexts will set the label on their queue
+        */
         #[method_id(@__retain_semantics Other name)]
         pub unsafe fn name(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          custom label for a context.  NSPrivateQueueConcurrencyType contexts will set the label on their queue
+        */
         #[method(setName:)]
         pub unsafe fn setName(&self, name: Option<&NSString>);
 
@@ -269,24 +281,42 @@ extern_methods!(
         #[method(tryLock)]
         pub unsafe fn tryLock(&self) -> bool;
 
+        /**
+          The default is YES.
+        */
         #[method(propagatesDeletesAtEndOfEvent)]
         pub unsafe fn propagatesDeletesAtEndOfEvent(&self) -> bool;
 
+        /**
+          The default is YES.
+        */
         #[method(setPropagatesDeletesAtEndOfEvent:)]
         pub unsafe fn setPropagatesDeletesAtEndOfEvent(
             &self,
             propagates_deletes_at_end_of_event: bool,
         );
 
+        /**
+          The default is NO.
+        */
         #[method(retainsRegisteredObjects)]
         pub unsafe fn retainsRegisteredObjects(&self) -> bool;
 
+        /**
+          The default is NO.
+        */
         #[method(setRetainsRegisteredObjects:)]
         pub unsafe fn setRetainsRegisteredObjects(&self, retains_registered_objects: bool);
 
+        /**
+           set the rule to handle inaccessible faults.  If YES, then the managed object is marked deleted and all its properties, including scalars, nonnullable, and mandatory properties, will be nil or zero’d out.  If NO, the context will throw an exception. Managed objects that are inaccessible because their context is nil due to memory management issues will throw an exception regardless.
+        */
         #[method(shouldDeleteInaccessibleFaults)]
         pub unsafe fn shouldDeleteInaccessibleFaults(&self) -> bool;
 
+        /**
+           set the rule to handle inaccessible faults.  If YES, then the managed object is marked deleted and all its properties, including scalars, nonnullable, and mandatory properties, will be nil or zero’d out.  If NO, the context will throw an exception. Managed objects that are inaccessible because their context is nil due to memory management issues will throw an exception regardless.
+        */
         #[method(setShouldDeleteInaccessibleFaults:)]
         pub unsafe fn setShouldDeleteInaccessibleFaults(
             &self,
@@ -306,15 +336,27 @@ extern_methods!(
             property: Option<&NSPropertyDescription>,
         ) -> bool;
 
+        /**
+          a negative value is considered infinite.  The default is infinite staleness.
+        */
         #[method(stalenessInterval)]
         pub unsafe fn stalenessInterval(&self) -> NSTimeInterval;
 
+        /**
+          a negative value is considered infinite.  The default is infinite staleness.
+        */
         #[method(setStalenessInterval:)]
         pub unsafe fn setStalenessInterval(&self, staleness_interval: NSTimeInterval);
 
+        /**
+          default: NSErrorMergePolicy
+        */
         #[method_id(@__retain_semantics Other mergePolicy)]
         pub unsafe fn mergePolicy(&self) -> Id<Object>;
 
+        /**
+          default: NSErrorMergePolicy
+        */
         #[method(setMergePolicy:)]
         pub unsafe fn setMergePolicy(&self, merge_policy: &Object);
 
@@ -344,6 +386,13 @@ extern_methods!(
         );
 
         #[cfg(feature = "CoreData_NSQueryGenerationToken")]
+        /**
+          Return the query generation currently in use by this context. Will be one of the following:
+         - nil, default value => this context is not using generational querying
+         - an opaque token => specifies the generation of data this context is vending
+
+         All child contexts will return nil.
+        */
         #[method_id(@__retain_semantics Other queryGenerationToken)]
         pub unsafe fn queryGenerationToken(&self) -> Option<Id<NSQueryGenerationToken>>;
 
@@ -357,9 +406,15 @@ extern_methods!(
             generation: Option<&NSQueryGenerationToken>,
         ) -> Result<(), Id<NSError>>;
 
+        /**
+          Whether the context automatically merges changes saved to its coordinator or parent context. Setting this property to YES when the context is pinned to a non-current query generation is not supported.
+        */
         #[method(automaticallyMergesChangesFromParent)]
         pub unsafe fn automaticallyMergesChangesFromParent(&self) -> bool;
 
+        /**
+          Whether the context automatically merges changes saved to its coordinator or parent context. Setting this property to YES when the context is pinned to a non-current query generation is not supported.
+        */
         #[method(setAutomaticallyMergesChangesFromParent:)]
         pub unsafe fn setAutomaticallyMergesChangesFromParent(
             &self,
@@ -367,10 +422,16 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Set the author for the context, this will be used as an identifier in the Persistent History Transactions (NSPersistentHistoryTransaction)
+        */
         #[method_id(@__retain_semantics Other transactionAuthor)]
         pub unsafe fn transactionAuthor(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Set the author for the context, this will be used as an identifier in the Persistent History Transactions (NSPersistentHistoryTransaction)
+        */
         #[method(setTransactionAuthor:)]
         pub unsafe fn setTransactionAuthor(&self, transaction_author: Option<&NSString>);
     }

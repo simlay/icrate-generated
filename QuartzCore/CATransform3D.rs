@@ -5,6 +5,9 @@ use crate::CoreAnimation::*;
 use crate::Foundation::*;
 
 extern_struct!(
+    /**
+      Homogeneous three-dimensional transforms.
+    */
     pub struct CATransform3D {
         pub m11: CGFloat,
         pub m12: CGFloat,

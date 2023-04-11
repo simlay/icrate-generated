@@ -22,50 +22,90 @@ extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionKerberosMapping")]
     unsafe impl ASAuthorizationProviderExtensionKerberosMapping {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract The keypath in the response JSON that uses this set of mappings.
+        @discussion If the response tokens from login contain this keypath, then the mapping in this class will be used to create a Kerberos ticket. The expected response is a JSON dictionary with the supplied key names.
+        */
         #[method_id(@__retain_semantics Other ticketKeyPath)]
         pub unsafe fn ticketKeyPath(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract The keypath in the response JSON that uses this set of mappings.
+        @discussion If the response tokens from login contain this keypath, then the mapping in this class will be used to create a Kerberos ticket. The expected response is a JSON dictionary with the supplied key names.
+        */
         #[method(setTicketKeyPath:)]
         pub unsafe fn setTicketKeyPath(&self, ticket_key_path: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract The key name that contains the base64 encoded kerberos AS-REP string.
+        */
         #[method_id(@__retain_semantics Other messageBufferKeyName)]
         pub unsafe fn messageBufferKeyName(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract The key name that contains the base64 encoded kerberos AS-REP string.
+        */
         #[method(setMessageBufferKeyName:)]
         pub unsafe fn setMessageBufferKeyName(&self, message_buffer_key_name: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract The key name that contains the Kerberos Realm string.
+        */
         #[method_id(@__retain_semantics Other realmKeyName)]
         pub unsafe fn realmKeyName(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract The key name that contains the Kerberos Realm string.
+        */
         #[method(setRealmKeyName:)]
         pub unsafe fn setRealmKeyName(&self, realm_key_name: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract The key name that contains the Kerberos service name string.
+        */
         #[method_id(@__retain_semantics Other serviceNameKeyName)]
         pub unsafe fn serviceNameKeyName(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract The key name that contains the Kerberos service name string.
+        */
         #[method(setServiceNameKeyName:)]
         pub unsafe fn setServiceNameKeyName(&self, service_name_key_name: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract The key name that contains the Kerberos client name string.
+        */
         #[method_id(@__retain_semantics Other clientNameKeyName)]
         pub unsafe fn clientNameKeyName(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract The key name that contains the Kerberos client name string.
+        */
         #[method(setClientNameKeyName:)]
         pub unsafe fn setClientNameKeyName(&self, client_name_key_name: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract The key name that contains the Kerberos session key type number.
+        @discussion The value for this key should be the correct encryption type per RFC3962, section 7 for the session key.
+        */
         #[method_id(@__retain_semantics Other encryptionKeyTypeKeyName)]
         pub unsafe fn encryptionKeyTypeKeyName(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract The key name that contains the Kerberos session key type number.
+        @discussion The value for this key should be the correct encryption type per RFC3962, section 7 for the session key.
+        */
         #[method(setEncryptionKeyTypeKeyName:)]
         pub unsafe fn setEncryptionKeyTypeKeyName(
             &self,
@@ -73,10 +113,16 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract The key name that contains the Kerberos session key.
+        */
         #[method_id(@__retain_semantics Other sessionKeyKeyName)]
         pub unsafe fn sessionKeyKeyName(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract The key name that contains the Kerberos session key.
+        */
         #[method(setSessionKeyKeyName:)]
         pub unsafe fn setSessionKeyKeyName(&self, session_key_key_name: Option<&NSString>);
     }
@@ -136,10 +182,18 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract Predicate string used to identify invalid credential errors.
+        @discussion If there is an HTTP 400 or HTTP 401 error when authenticating, this predicate will be used on the response body JSON to determine if the error is due to an invalid password or something else.  If nil, then only an HTTP 401 will be used for an invalid credential.
+        */
         #[method_id(@__retain_semantics Other invalidCredentialPredicate)]
         pub unsafe fn invalidCredentialPredicate(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract Predicate string used to identify invalid credential errors.
+        @discussion If there is an HTTP 400 or HTTP 401 error when authenticating, this predicate will be used on the response body JSON to determine if the error is due to an invalid password or something else.  If nil, then only an HTTP 401 will be used for an invalid credential.
+        */
         #[method(setInvalidCredentialPredicate:)]
         pub unsafe fn setInvalidCredentialPredicate(
             &self,
@@ -147,74 +201,128 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract The display name for the account.  Used for notifications and login prompts.
+        */
         #[method_id(@__retain_semantics Other accountDisplayName)]
         pub unsafe fn accountDisplayName(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract The display name for the account.  Used for notifications and login prompts.
+        */
         #[method(setAccountDisplayName:)]
         pub unsafe fn setAccountDisplayName(&self, account_display_name: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract The login client_id.
+        */
         #[method_id(@__retain_semantics Other clientID)]
         pub unsafe fn clientID(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract The issuer for validation.
+        */
         #[method_id(@__retain_semantics Other issuer)]
         pub unsafe fn issuer(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract The audience for validation and requests.
+        */
         #[method_id(@__retain_semantics Other audience)]
         pub unsafe fn audience(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract The audience for validation and requests.
+        */
         #[method(setAudience:)]
         pub unsafe fn setAudience(&self, audience: &NSString);
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+         @abstract Token Endpoint URL for login request.
+        */
         #[method_id(@__retain_semantics Other tokenEndpointURL)]
         pub unsafe fn tokenEndpointURL(&self) -> Id<NSURL>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+         @abstract Token Endpoint URL for login request.
+        */
         #[method(setTokenEndpointURL:)]
         pub unsafe fn setTokenEndpointURL(&self, token_endpoint_url: &NSURL);
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+         @abstract JWKS Endpoint URL for keys.
+        */
         #[method_id(@__retain_semantics Other jwksEndpointURL)]
         pub unsafe fn jwksEndpointURL(&self) -> Id<NSURL>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+         @abstract JWKS Endpoint URL for keys.
+        */
         #[method(setJwksEndpointURL:)]
         pub unsafe fn setJwksEndpointURL(&self, jwks_endpoint_url: &NSURL);
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+         @abstract Nonce Endpoint URL, defaults to token tokenEndpointURL.
+        */
         #[method_id(@__retain_semantics Other nonceEndpointURL)]
         pub unsafe fn nonceEndpointURL(&self) -> Id<NSURL>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+         @abstract Nonce Endpoint URL, defaults to token tokenEndpointURL.
+        */
         #[method(setNonceEndpointURL:)]
         pub unsafe fn setNonceEndpointURL(&self, nonce_endpoint_url: &NSURL);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract The keypath in the nonce response that contains the nonce value.
+        */
         #[method_id(@__retain_semantics Other nonceResponseKeypath)]
         pub unsafe fn nonceResponseKeypath(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract The keypath in the nonce response that contains the nonce value.
+        */
         #[method(setNonceResponseKeypath:)]
         pub unsafe fn setNonceResponseKeypath(&self, nonce_response_keypath: &NSString);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract The name of the server nonce claim when included in authentication requests.
+        */
         #[method_id(@__retain_semantics Other serverNonceClaimName)]
         pub unsafe fn serverNonceClaimName(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract The name of the server nonce claim when included in authentication requests.
+        */
         #[method(setServerNonceClaimName:)]
         pub unsafe fn setServerNonceClaimName(&self, server_nonce_claim_name: &NSString);
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSURLQueryItem"))]
+        /**
+         @abstract Custom values added to the server nonce POST request body.
+        */
         #[method_id(@__retain_semantics Other customNonceRequestValues)]
         pub unsafe fn customNonceRequestValues(&self) -> Id<NSArray<NSURLQueryItem>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSURLQueryItem"))]
+        /**
+         @abstract Custom values added to the server nonce POST request body.
+        */
         #[method(setCustomNonceRequestValues:)]
         pub unsafe fn setCustomNonceRequestValues(
             &self,
@@ -244,16 +352,28 @@ extern_methods!(
         ) -> Result<(), Id<NSError>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract Additional login scopes.
+        */
         #[method_id(@__retain_semantics Other additionalScopes)]
         pub unsafe fn additionalScopes(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract Additional login scopes.
+        */
         #[method(setAdditionalScopes:)]
         pub unsafe fn setAdditionalScopes(&self, additional_scopes: &NSString);
 
+        /**
+         @abstract If true and there is a refresh token for the user in the SSO tokens, it will be included in the login request.
+        */
         #[method(includePreviousRefreshTokenInLoginRequest)]
         pub unsafe fn includePreviousRefreshTokenInLoginRequest(&self) -> bool;
 
+        /**
+         @abstract If true and there is a refresh token for the user in the SSO tokens, it will be included in the login request.
+        */
         #[method(setIncludePreviousRefreshTokenInLoginRequest:)]
         pub unsafe fn setIncludePreviousRefreshTokenInLoginRequest(
             &self,
@@ -261,10 +381,16 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract The claim name for the previous SSO token value in the login request.
+        */
         #[method_id(@__retain_semantics Other previousRefreshTokenClaimName)]
         pub unsafe fn previousRefreshTokenClaimName(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract The claim name for the previous SSO token value in the login request.
+        */
         #[method(setPreviousRefreshTokenClaimName:)]
         pub unsafe fn setPreviousRefreshTokenClaimName(
             &self,
@@ -272,10 +398,16 @@ extern_methods!(
         );
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSURLQueryItem"))]
+        /**
+         @abstract Custom values added to the login POST request body.
+        */
         #[method_id(@__retain_semantics Other customLoginRequestValues)]
         pub unsafe fn customLoginRequestValues(&self) -> Id<NSArray<NSURLQueryItem>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSURLQueryItem"))]
+        /**
+         @abstract Custom values added to the login POST request body.
+        */
         #[method(setCustomLoginRequestValues:)]
         pub unsafe fn setCustomLoginRequestValues(
             &self,
@@ -308,6 +440,9 @@ extern_methods!(
             feature = "AuthenticationServices_ASAuthorizationProviderExtensionKerberosMapping",
             feature = "Foundation_NSArray"
         ))]
+        /**
+         @abstract The Kerberos ticket mappings to use.
+        */
         #[method_id(@__retain_semantics Other kerberosTicketMappings)]
         pub unsafe fn kerberosTicketMappings(
             &self,
@@ -317,6 +452,9 @@ extern_methods!(
             feature = "AuthenticationServices_ASAuthorizationProviderExtensionKerberosMapping",
             feature = "Foundation_NSArray"
         ))]
+        /**
+         @abstract The Kerberos ticket mappings to use.
+        */
         #[method(setKerberosTicketMappings:)]
         pub unsafe fn setKerberosTicketMappings(
             &self,

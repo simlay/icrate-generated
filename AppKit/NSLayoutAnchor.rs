@@ -6,6 +6,14 @@ use crate::CoreData::*;
 use crate::Foundation::*;
 
 extern_methods!(
+    /**
+     An NSLayoutAnchor represents an edge or dimension of a layout item.  Its concrete subclasses allow concise creation of constraints.  The idea is that instead of invoking +[NSLayoutConstraint constraintWithItem: attribute: relatedBy: toItem: attribute: multiplier: constant:] directly, you can instead do something like this:
+
+    [myView.topAnchor constraintEqualToAnchor:otherView.topAnchor constant:10];
+
+    The -constraint* methods are available in multiple flavors to support use of different relations and omission of unused options.
+
+    */
     #[cfg(feature = "AppKit_NSLayoutAnchor")]
     unsafe impl<AnchorType: Message, AnchorTypeOwnership: Ownership>
         NSLayoutAnchor<AnchorType, AnchorTypeOwnership>
@@ -56,6 +64,9 @@ extern_methods!(
         ) -> Id<NSLayoutConstraint>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          These properties are for debugging only:
+        */
         #[method_id(@__retain_semantics Other name)]
         pub unsafe fn name(&self) -> Id<NSString>;
 
@@ -74,6 +85,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug)]
     #[cfg(feature = "AppKit_NSLayoutXAxisAnchor")]
+    /**
+      Axis-specific subclasses for location anchors: top/bottom, leading/trailing, baseline, etc.
+    */
     pub struct NSLayoutXAxisAnchor;
 
     #[cfg(feature = "AppKit_NSLayoutXAxisAnchor")]
@@ -84,9 +98,15 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSLayoutXAxisAnchor")]
+/**
+  Axis-specific subclasses for location anchors: top/bottom, leading/trailing, baseline, etc.
+*/
 unsafe impl NSObjectProtocol for NSLayoutXAxisAnchor {}
 
 extern_methods!(
+    /**
+      Axis-specific subclasses for location anchors: top/bottom, leading/trailing, baseline, etc.
+    */
     #[cfg(feature = "AppKit_NSLayoutXAxisAnchor")]
     unsafe impl NSLayoutXAxisAnchor {
         #[cfg(feature = "AppKit_NSLayoutDimension")]
@@ -125,6 +145,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug)]
     #[cfg(feature = "AppKit_NSLayoutYAxisAnchor")]
+    /**
+      Axis-specific subclasses for location anchors: top/bottom, leading/trailing, baseline, etc.
+    */
     pub struct NSLayoutYAxisAnchor;
 
     #[cfg(feature = "AppKit_NSLayoutYAxisAnchor")]
@@ -135,9 +158,15 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSLayoutYAxisAnchor")]
+/**
+  Axis-specific subclasses for location anchors: top/bottom, leading/trailing, baseline, etc.
+*/
 unsafe impl NSObjectProtocol for NSLayoutYAxisAnchor {}
 
 extern_methods!(
+    /**
+      Axis-specific subclasses for location anchors: top/bottom, leading/trailing, baseline, etc.
+    */
     #[cfg(feature = "AppKit_NSLayoutYAxisAnchor")]
     unsafe impl NSLayoutYAxisAnchor {
         #[cfg(feature = "AppKit_NSLayoutDimension")]
@@ -176,6 +205,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug)]
     #[cfg(feature = "AppKit_NSLayoutDimension")]
+    /**
+      This layout anchor subclass is used for sizes (width & height).
+    */
     pub struct NSLayoutDimension;
 
     #[cfg(feature = "AppKit_NSLayoutDimension")]
@@ -186,9 +218,15 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSLayoutDimension")]
+/**
+  This layout anchor subclass is used for sizes (width & height).
+*/
 unsafe impl NSObjectProtocol for NSLayoutDimension {}
 
 extern_methods!(
+    /**
+      This layout anchor subclass is used for sizes (width & height).
+    */
     #[cfg(feature = "AppKit_NSLayoutDimension")]
     unsafe impl NSLayoutDimension {
         #[cfg(feature = "AppKit_NSLayoutConstraint")]

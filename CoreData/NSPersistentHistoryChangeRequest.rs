@@ -56,9 +56,15 @@ extern_methods!(
             transaction: Option<&NSPersistentHistoryTransaction>,
         ) -> Id<Self>;
 
+        /**
+          The type of result that should be returned from this request. Defaults to NSPersistentHistoryResultTypeTransactionsAndChanges
+        */
         #[method(resultType)]
         pub unsafe fn resultType(&self) -> NSPersistentHistoryResultType;
 
+        /**
+          The type of result that should be returned from this request. Defaults to NSPersistentHistoryResultTypeTransactionsAndChanges
+        */
         #[method(setResultType:)]
         pub unsafe fn setResultType(&self, result_type: NSPersistentHistoryResultType);
 

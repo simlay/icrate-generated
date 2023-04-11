@@ -51,9 +51,15 @@ extern_methods!(
         #[method(setHeading:)]
         pub unsafe fn setHeading(&self, heading: CLLocationDirection);
 
+        /**
+          In degrees where 0 is looking straight down. Pitch may be clamped to an appropriate value.
+        */
         #[method(pitch)]
         pub unsafe fn pitch(&self) -> CGFloat;
 
+        /**
+          In degrees where 0 is looking straight down. Pitch may be clamped to an appropriate value.
+        */
         #[method(setPitch:)]
         pub unsafe fn setPitch(&self, pitch: CGFloat);
 

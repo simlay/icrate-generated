@@ -52,6 +52,9 @@ ns_options!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      The spring loading highlight styles roughly correlate to {None: NotSpringLoadable, Light: SpringLoadable, Dark: SpringLoadingEngaged}. However, this not not strictly true as Drag & Drop may switch between highlight styles as an animated signal to the user.
+    */
     pub enum NSSpringLoadingHighlight {
         NSSpringLoadingHighlightNone = 0,
         NSSpringLoadingHighlightStandard = 1,
@@ -60,6 +63,11 @@ ns_enum!(
 );
 
 extern_protocol!(
+    /**
+      protocol for the sender argument of the messages sent to a drag destination.  The view or
+    window that registered dragging types sends these messages as dragging is
+    happening to find out details about that session of dragging.
+    */
     pub unsafe trait NSDraggingInfo: NSObjectProtocol {
         #[cfg(feature = "AppKit_NSWindow")]
         #[method_id(@__retain_semantics Other draggingDestinationWindow)]
@@ -71,6 +79,9 @@ extern_protocol!(
         #[method(draggingLocation)]
         unsafe fn draggingLocation(&self) -> NSPoint;
 
+        /**
+          Returns the current location of the current composited dragging image’s origin in NSDraggingFormationNone translated to the base coordinate system of the destination object’s window
+        */
         #[method(draggedImageLocation)]
         unsafe fn draggedImageLocation(&self) -> NSPoint;
 
@@ -104,21 +115,39 @@ extern_protocol!(
             drop_destination: &NSURL,
         ) -> Option<Id<NSArray<NSString>>>;
 
+        /**
+          Controls the dragging formation while the drag is over this destination. The default value is the current drag formation.
+        */
         #[method(draggingFormation)]
         unsafe fn draggingFormation(&self) -> NSDraggingFormation;
 
+        /**
+          Controls the dragging formation while the drag is over this destination. The default value is the current drag formation.
+        */
         #[method(setDraggingFormation:)]
         unsafe fn setDraggingFormation(&self, dragging_formation: NSDraggingFormation);
 
+        /**
+          During the conclusion of an accepted drag, if this property is set to YES, the drag manager will animate each dragging image to their NSDraggingFormationNone locations. Otherwise, the drag images are removed without any animation. Note: This property is inspected between -prepareForDragOperation: and -performDragOperation:. If the final destination frames do not match the current NSDraggingFormationNone frames, then enumerate through the draggingItems during -performDragOperation: to set thier NSDraggingFormationNone frames to the correct destinations.
+        */
         #[method(animatesToDestination)]
         unsafe fn animatesToDestination(&self) -> bool;
 
+        /**
+          During the conclusion of an accepted drag, if this property is set to YES, the drag manager will animate each dragging image to their NSDraggingFormationNone locations. Otherwise, the drag images are removed without any animation. Note: This property is inspected between -prepareForDragOperation: and -performDragOperation:. If the final destination frames do not match the current NSDraggingFormationNone frames, then enumerate through the draggingItems during -performDragOperation: to set thier NSDraggingFormationNone frames to the correct destinations.
+        */
         #[method(setAnimatesToDestination:)]
         unsafe fn setAnimatesToDestination(&self, animates_to_destination: bool);
 
+        /**
+          During draggingEntered: or draggingUpdated:, you are responsible for returning the drag operation. In some cases, you may accept some, but not all items on the dragging pasteboard. (For example, you only accept image files.) If you only accept some of the items, you should set this property so the drag manager can update the drag count badge. When -updateItems: is called, you should set the image of non valid dragging items to nil. If none of the drag items are valid then do not call this method. Simply return NSDragOperationNone from draggingEntered: and/or draggingUpdated: and do not modify any drag item properties.
+        */
         #[method(numberOfValidItemsForDrop)]
         unsafe fn numberOfValidItemsForDrop(&self) -> NSInteger;
 
+        /**
+          During draggingEntered: or draggingUpdated:, you are responsible for returning the drag operation. In some cases, you may accept some, but not all items on the dragging pasteboard. (For example, you only accept image files.) If you only accept some of the items, you should set this property so the drag manager can update the drag count badge. When -updateItems: is called, you should set the image of non valid dragging items to nil. If none of the drag items are valid then do not call this method. Simply return NSDragOperationNone from draggingEntered: and/or draggingUpdated: and do not modify any drag item properties.
+        */
         #[method(setNumberOfValidItemsForDrop:)]
         unsafe fn setNumberOfValidItemsForDrop(&self, number_of_valid_items_for_drop: NSInteger);
 
@@ -149,6 +178,11 @@ extern_protocol!(
 );
 
 extern_protocol!(
+    /**
+      Methods implemented by an object that receives dragged images.  The
+    destination view or window is sent these messages during dragging if it
+    responds to them.
+    */
     pub unsafe trait NSDraggingDestination: NSObjectProtocol {
         #[optional]
         #[method(draggingEntered:)]

@@ -30,16 +30,28 @@ extern_methods!(
         pub unsafe fn accessoryWithImage(image: &NSImage) -> Id<NSSliderAccessory>;
 
         #[cfg(feature = "AppKit_NSSliderAccessoryBehavior")]
+        /**
+          The effect on interaction with the accessory. Defaults to `automaticBehavior`
+        */
         #[method_id(@__retain_semantics Other behavior)]
         pub unsafe fn behavior(&self) -> Id<NSSliderAccessoryBehavior>;
 
         #[cfg(feature = "AppKit_NSSliderAccessoryBehavior")]
+        /**
+          The effect on interaction with the accessory. Defaults to `automaticBehavior`
+        */
         #[method(setBehavior:)]
         pub unsafe fn setBehavior(&self, behavior: &NSSliderAccessoryBehavior);
 
+        /**
+          Whether or not the accessory is interactive and draws with an enabled appearance. Defaults to YES.
+        */
         #[method(isEnabled)]
         pub unsafe fn isEnabled(&self) -> bool;
 
+        /**
+          Whether or not the accessory is interactive and draws with an enabled appearance. Defaults to YES.
+        */
         #[method(setEnabled:)]
         pub unsafe fn setEnabled(&self, enabled: bool);
     }
@@ -76,12 +88,21 @@ unsafe impl NSObjectProtocol for NSSliderAccessoryBehavior {}
 extern_methods!(
     #[cfg(feature = "AppKit_NSSliderAccessoryBehavior")]
     unsafe impl NSSliderAccessoryBehavior {
+        /**
+          The behavior is automatically picked to be the system standard for the slider's current context, e.g. NSTouchBarItems have `.valueStep` behavior.
+        */
         #[method_id(@__retain_semantics Other automaticBehavior)]
         pub unsafe fn automaticBehavior() -> Id<NSSliderAccessoryBehavior>;
 
+        /**
+          The value of the slider moves towards the associated value for the accessory with by a delta of the slider's `altIncrementValue`.
+        */
         #[method_id(@__retain_semantics Other valueStepBehavior)]
         pub unsafe fn valueStepBehavior() -> Id<NSSliderAccessoryBehavior>;
 
+        /**
+          The value of the slider is reset to the associated value for the accessory.
+        */
         #[method_id(@__retain_semantics Other valueResetBehavior)]
         pub unsafe fn valueResetBehavior() -> Id<NSSliderAccessoryBehavior>;
 

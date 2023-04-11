@@ -11,6 +11,9 @@ typed_enum!(
 
 extern_enum!(
     #[underlying(c_uint)]
+    /**
+      NSImageRepMatchesDevice indicates the value is variable, depending on the output device. It can be passed in (or received back) as the value of bitsPerSample, pixelsWide, and pixelsHigh.
+    */
     pub enum __anonymous__ {
         NSImageRepMatchesDevice = 0,
     }
@@ -76,9 +79,15 @@ extern_methods!(
             hints: Option<&NSDictionary<NSImageHintKey, Object>>,
         ) -> bool;
 
+        /**
+          Methods to return info about the image. NSImageRep provides storage for all of these; however, it's illegal to set them in some subclasses.
+        */
         #[method(size)]
         pub unsafe fn size(&self) -> NSSize;
 
+        /**
+          Methods to return info about the image. NSImageRep provides storage for all of these; however, it's illegal to set them in some subclasses.
+        */
         #[method(setSize:)]
         pub unsafe fn setSize(&self, size: NSSize);
 
@@ -118,9 +127,15 @@ extern_methods!(
         #[method(setPixelsHigh:)]
         pub unsafe fn setPixelsHigh(&self, pixels_high: NSInteger);
 
+        /**
+          Default: NSImageLayoutDirectionUnspecified
+        */
         #[method(layoutDirection)]
         pub unsafe fn layoutDirection(&self) -> NSImageLayoutDirection;
 
+        /**
+          Default: NSImageLayoutDirectionUnspecified
+        */
         #[method(setLayoutDirection:)]
         pub unsafe fn setLayoutDirection(&self, layout_direction: NSImageLayoutDirection);
 
@@ -178,10 +193,16 @@ extern_methods!(
         pub unsafe fn imagePasteboardTypes() -> Id<NSArray<NSPasteboardType>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          Implemented by subclassers to indicate what UTI-identified data types they can deal with.
+        */
         #[method_id(@__retain_semantics Other imageUnfilteredTypes)]
         pub unsafe fn imageUnfilteredTypes() -> Id<NSArray<NSString>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          This expands the unfiltered list returned by imageUnfilteredTypes.
+        */
         #[method_id(@__retain_semantics Other imageTypes)]
         pub unsafe fn imageTypes() -> Id<NSArray<NSString>>;
 

@@ -7,6 +7,11 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNSocialProfile")]
+    /**
+      @abstract An immutable value object representing a social profile.
+
+     @discussion CNSocialProfile is thread safe.
+    */
     pub struct CNSocialProfile;
 
     #[cfg(feature = "Contacts_CNSocialProfile")]
@@ -16,15 +21,35 @@ extern_class!(
 );
 
 #[cfg(feature = "Contacts_CNSocialProfile")]
+/**
+  @abstract An immutable value object representing a social profile.
+
+ @discussion CNSocialProfile is thread safe.
+*/
 unsafe impl NSCoding for CNSocialProfile {}
 
 #[cfg(feature = "Contacts_CNSocialProfile")]
+/**
+  @abstract An immutable value object representing a social profile.
+
+ @discussion CNSocialProfile is thread safe.
+*/
 unsafe impl NSObjectProtocol for CNSocialProfile {}
 
 #[cfg(feature = "Contacts_CNSocialProfile")]
+/**
+  @abstract An immutable value object representing a social profile.
+
+ @discussion CNSocialProfile is thread safe.
+*/
 unsafe impl NSSecureCoding for CNSocialProfile {}
 
 extern_methods!(
+    /**
+      @abstract An immutable value object representing a social profile.
+
+     @discussion CNSocialProfile is thread safe.
+    */
     #[cfg(feature = "Contacts_CNSocialProfile")]
     unsafe impl CNSocialProfile {
         #[cfg(feature = "Foundation_NSString")]

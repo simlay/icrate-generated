@@ -7,6 +7,9 @@ use crate::Foundation::*;
 
 extern_enum!(
     #[underlying(c_int)]
+    /**
+      NSOutlineViewDropOnItemIndex may be used as a valid childIndex of a drop target item. In this case, the drop will happen directly on the target item.
+    */
     pub enum __anonymous__ {
         NSOutlineViewDropOnItemIndex = -1,
     }
@@ -91,10 +94,16 @@ extern_methods!(
         );
 
         #[cfg(feature = "AppKit_NSTableColumn")]
+        /**
+          The 'outlineTableColumn' is the column that displays data in a hierarchical fashion, indented one identationlevel per level, decorated with indentation marker (disclosure triangle) on rows that are expandable. A nil 'outlineTableColumn' is silently ignored. On 10.5 and higher, this value is saved in encodeWithCoder: and restored in initWithCoder:.
+        */
         #[method_id(@__retain_semantics Other outlineTableColumn)]
         pub unsafe fn outlineTableColumn(&self) -> Option<Id<NSTableColumn>>;
 
         #[cfg(feature = "AppKit_NSTableColumn")]
+        /**
+          The 'outlineTableColumn' is the column that displays data in a hierarchical fashion, indented one identationlevel per level, decorated with indentation marker (disclosure triangle) on rows that are expandable. A nil 'outlineTableColumn' is silently ignored. On 10.5 and higher, this value is saved in encodeWithCoder: and restored in initWithCoder:.
+        */
         #[method(setOutlineTableColumn:)]
         pub unsafe fn setOutlineTableColumn(&self, outline_table_column: Option<&NSTableColumn>);
 
@@ -162,21 +171,39 @@ extern_methods!(
         #[method(isItemExpanded:)]
         pub unsafe fn isItemExpanded(&self, item: Option<&Object>) -> bool;
 
+        /**
+          Controls the amount of indentation per level. Negative values are ignored, and only integral values are accepted. The default value is 16.0. An indentationPerLevel of 0 can be used to eliminate all indentation and make an NSOutlineView appear more like an NSTableView.
+        */
         #[method(indentationPerLevel)]
         pub unsafe fn indentationPerLevel(&self) -> CGFloat;
 
+        /**
+          Controls the amount of indentation per level. Negative values are ignored, and only integral values are accepted. The default value is 16.0. An indentationPerLevel of 0 can be used to eliminate all indentation and make an NSOutlineView appear more like an NSTableView.
+        */
         #[method(setIndentationPerLevel:)]
         pub unsafe fn setIndentationPerLevel(&self, indentation_per_level: CGFloat);
 
+        /**
+          The indentation marker is the visual indicator that shows an item is expandable (i.e. disclosure triangle). The default value is YES.
+        */
         #[method(indentationMarkerFollowsCell)]
         pub unsafe fn indentationMarkerFollowsCell(&self) -> bool;
 
+        /**
+          The indentation marker is the visual indicator that shows an item is expandable (i.e. disclosure triangle). The default value is YES.
+        */
         #[method(setIndentationMarkerFollowsCell:)]
         pub unsafe fn setIndentationMarkerFollowsCell(&self, indentation_marker_follows_cell: bool);
 
+        /**
+          If autoresizesOutlineColumn is YES, then the outlineTableColumn will automatically resize when there is a new expanded child at a particular depth level. The default value is YES.
+        */
         #[method(autoresizesOutlineColumn)]
         pub unsafe fn autoresizesOutlineColumn(&self) -> bool;
 
+        /**
+          If autoresizesOutlineColumn is YES, then the outlineTableColumn will automatically resize when there is a new expanded child at a particular depth level. The default value is YES.
+        */
         #[method(setAutoresizesOutlineColumn:)]
         pub unsafe fn setAutoresizesOutlineColumn(&self, autoresizes_outline_column: bool);
 
@@ -189,9 +216,15 @@ extern_methods!(
         #[method(shouldCollapseAutoExpandedItemsForDeposited:)]
         pub unsafe fn shouldCollapseAutoExpandedItemsForDeposited(&self, deposited: bool) -> bool;
 
+        /**
+          Persistence. The value for autosaveExpandedItems is saved out in the nib file on Mac OS 10.5 or higher. The default value is NO. Calling setAutosaveExpandedItems:YES requires you to implement outlineView:itemForPersistentObject: and outlineView:persistentObjectForItem:.
+        */
         #[method(autosaveExpandedItems)]
         pub unsafe fn autosaveExpandedItems(&self) -> bool;
 
+        /**
+          Persistence. The value for autosaveExpandedItems is saved out in the nib file on Mac OS 10.5 or higher. The default value is NO. Calling setAutosaveExpandedItems:YES requires you to implement outlineView:itemForPersistentObject: and outlineView:persistentObjectForItem:.
+        */
         #[method(setAutosaveExpandedItems:)]
         pub unsafe fn setAutosaveExpandedItems(&self, autosave_expanded_items: bool);
 
@@ -241,24 +274,39 @@ extern_methods!(
         #[method(moveRowAtIndex:toIndex:)]
         pub unsafe fn moveRowAtIndex_toIndex(&self, old_index: NSInteger, new_index: NSInteger);
 
+        /**
+          Get and set the user interface layout direction. When set to NSUserInterfaceLayoutDirectionRightToLeft, the Outline View will show the disclosure triangle to the right of the cell instead of the left. This method is available for NSOutlineView on 10.7 and higher.
+        */
         #[method(userInterfaceLayoutDirection)]
         pub unsafe fn userInterfaceLayoutDirection(&self) -> NSUserInterfaceLayoutDirection;
 
+        /**
+          Get and set the user interface layout direction. When set to NSUserInterfaceLayoutDirectionRightToLeft, the Outline View will show the disclosure triangle to the right of the cell instead of the left. This method is available for NSOutlineView on 10.7 and higher.
+        */
         #[method(setUserInterfaceLayoutDirection:)]
         pub unsafe fn setUserInterfaceLayoutDirection(
             &self,
             user_interface_layout_direction: NSUserInterfaceLayoutDirection,
         );
 
+        /**
+          When YES, the NSOutlineView will retain and release the objects returned to it from the dataSource (outlineView:child:ofItem:). When NO, it only treats the objects as opaque items and assume the client has a retain on them. The default value is YES for applications linked on 10.12 and later, and NO for previous applications. This value is not encoded in the nib, and must be explicitly set to NO in code if one requires the legacy behavior and is linking on 10.12 and later. In general, this is required if the items themselves create a retain cycle.
+        */
         #[method(stronglyReferencesItems)]
         pub unsafe fn stronglyReferencesItems(&self) -> bool;
 
+        /**
+          When YES, the NSOutlineView will retain and release the objects returned to it from the dataSource (outlineView:child:ofItem:). When NO, it only treats the objects as opaque items and assume the client has a retain on them. The default value is YES for applications linked on 10.12 and later, and NO for previous applications. This value is not encoded in the nib, and must be explicitly set to NO in code if one requires the legacy behavior and is linking on 10.12 and later. In general, this is required if the items themselves create a retain cycle.
+        */
         #[method(setStronglyReferencesItems:)]
         pub unsafe fn setStronglyReferencesItems(&self, strongly_references_items: bool);
     }
 );
 
 extern_protocol!(
+    /**
+      Data Source Note: Specifying nil as the item will refer to the "root" item(s).
+    */
     pub unsafe trait NSOutlineViewDataSource: NSObjectProtocol {
         #[cfg(feature = "AppKit_NSOutlineView")]
         #[optional]

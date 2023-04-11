@@ -40,12 +40,18 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+          @abstract HTTP extra headers for addition with credentials.
+        */
         #[method_id(@__retain_semantics Other httpAuthorizationHeaders)]
         pub unsafe fn httpAuthorizationHeaders(
             &self,
         ) -> Option<Id<NSDictionary<NSString, NSString>>>;
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+          @abstract HTTP extra headers for addition with credentials.
+        */
         #[method(setHttpAuthorizationHeaders:)]
         pub unsafe fn setHttpAuthorizationHeaders(
             &self,
@@ -53,26 +59,44 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSHTTPURLResponse")]
+        /**
+          @abstract HTTP response for OAUth and SAML based authentications.
+        */
         #[method_id(@__retain_semantics Other httpResponse)]
         pub unsafe fn httpResponse(&self) -> Option<Id<NSHTTPURLResponse>>;
 
         #[cfg(feature = "Foundation_NSHTTPURLResponse")]
+        /**
+          @abstract HTTP response for OAUth and SAML based authentications.
+        */
         #[method(setHttpResponse:)]
         pub unsafe fn setHttpResponse(&self, http_response: Option<&NSHTTPURLResponse>);
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          @abstract HTTP response body for OAUth and SAML based authentications.
+        */
         #[method_id(@__retain_semantics Other httpBody)]
         pub unsafe fn httpBody(&self) -> Option<Id<NSData>>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          @abstract HTTP response body for OAUth and SAML based authentications.
+        */
         #[method(setHttpBody:)]
         pub unsafe fn setHttpBody(&self, http_body: Option<&NSData>);
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          @abstract Private SecKeys.
+        */
         #[method_id(@__retain_semantics Other privateKeys)]
         pub unsafe fn privateKeys(&self) -> Id<NSArray>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          @abstract Private SecKeys.
+        */
         #[method(setPrivateKeys:)]
         pub unsafe fn setPrivateKeys(&self, private_keys: &NSArray);
     }

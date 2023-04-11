@@ -178,9 +178,15 @@ extern_methods!(
         #[method(setSegmentStyle:)]
         pub unsafe fn setSegmentStyle(&self, segment_style: NSSegmentStyle);
 
+        /**
+          sends action on deep-press or extended hover while dragging. Defaults to NO.
+        */
         #[method(isSpringLoaded)]
         pub unsafe fn isSpringLoaded(&self) -> bool;
 
+        /**
+          sends action on deep-press or extended hover while dragging. Defaults to NO.
+        */
         #[method(setSpringLoaded:)]
         pub unsafe fn setSpringLoaded(&self, spring_loaded: bool);
 
@@ -190,20 +196,32 @@ extern_methods!(
         #[method(setTrackingMode:)]
         pub unsafe fn setTrackingMode(&self, tracking_mode: NSSegmentSwitchTracking);
 
+        /**
+           This message is valid only for trackingMode=NSSegmentSwitchTrackingMomentaryAccelerator and provides the double value for the selected segment.
+        */
         #[method(doubleValueForSelectedSegment)]
         pub unsafe fn doubleValueForSelectedSegment(&self) -> c_double;
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+          The color of the selected segment's bevel, in appearances that support it
+        */
         #[method_id(@__retain_semantics Other selectedSegmentBezelColor)]
         pub unsafe fn selectedSegmentBezelColor(&self) -> Option<Id<NSColor>>;
 
         #[cfg(feature = "AppKit_NSColor")]
+        /**
+          The color of the selected segment's bevel, in appearances that support it
+        */
         #[method(setSelectedSegmentBezelColor:)]
         pub unsafe fn setSelectedSegmentBezelColor(
             &self,
             selected_segment_bezel_color: Option<&NSColor>,
         );
 
+        /**
+          same as selectedSegment, but useful for connecting a segmented control to -[NSTabView takeSelectedTabViewItemFromSender:]
+        */
         #[method(indexOfSelectedItem)]
         pub unsafe fn indexOfSelectedItem(&self) -> NSInteger;
 
@@ -217,9 +235,15 @@ extern_methods!(
         #[method(alignmentForSegment:)]
         pub unsafe fn alignmentForSegment(&self, segment: NSInteger) -> NSTextAlignment;
 
+        /**
+          Defaults to NSSegmentDistributionFill on 10.13, older systems will continue to behave similarly to NSSegmentDistributionFit
+        */
         #[method(segmentDistribution)]
         pub unsafe fn segmentDistribution(&self) -> NSSegmentDistribution;
 
+        /**
+          Defaults to NSSegmentDistributionFill on 10.13, older systems will continue to behave similarly to NSSegmentDistributionFit
+        */
         #[method(setSegmentDistribution:)]
         pub unsafe fn setSegmentDistribution(&self, segment_distribution: NSSegmentDistribution);
 

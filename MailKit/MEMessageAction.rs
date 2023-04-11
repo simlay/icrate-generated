@@ -37,6 +37,9 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MailKit_MEMessageAction")]
+    /**
+      @brief An action that can be performed on a mail message.
+    */
     pub struct MEMessageAction;
 
     #[cfg(feature = "MailKit_MEMessageAction")]
@@ -46,29 +49,56 @@ extern_class!(
 );
 
 #[cfg(feature = "MailKit_MEMessageAction")]
+/**
+  @brief An action that can be performed on a mail message.
+*/
 unsafe impl NSCoding for MEMessageAction {}
 
 #[cfg(feature = "MailKit_MEMessageAction")]
+/**
+  @brief An action that can be performed on a mail message.
+*/
 unsafe impl NSObjectProtocol for MEMessageAction {}
 
 #[cfg(feature = "MailKit_MEMessageAction")]
+/**
+  @brief An action that can be performed on a mail message.
+*/
 unsafe impl NSSecureCoding for MEMessageAction {}
 
 extern_methods!(
+    /**
+      @brief An action that can be performed on a mail message.
+    */
     #[cfg(feature = "MailKit_MEMessageAction")]
     unsafe impl MEMessageAction {
+        /**
+          @brief Moves the mail message to the user's trash mailbox for the account.
+        */
         #[method_id(@__retain_semantics Other moveToTrashAction)]
         pub unsafe fn moveToTrashAction() -> Id<MEMessageAction>;
 
+        /**
+          @brief Moves the mail message to the user's archive mailbox for the account.
+        */
         #[method_id(@__retain_semantics Other moveToArchiveAction)]
         pub unsafe fn moveToArchiveAction() -> Id<MEMessageAction>;
 
+        /**
+          @brief Moves the mail message to the user's junk mailbox for the account.
+        */
         #[method_id(@__retain_semantics Other moveToJunkAction)]
         pub unsafe fn moveToJunkAction() -> Id<MEMessageAction>;
 
+        /**
+          @brief Marks the mail message as read.
+        */
         #[method_id(@__retain_semantics Other markAsReadAction)]
         pub unsafe fn markAsReadAction() -> Id<MEMessageAction>;
 
+        /**
+          @brief Marks the mail  message as unread.
+        */
         #[method_id(@__retain_semantics Other markAsUnreadAction)]
         pub unsafe fn markAsUnreadAction() -> Id<MEMessageAction>;
 

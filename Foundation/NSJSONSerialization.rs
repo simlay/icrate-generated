@@ -29,6 +29,15 @@ ns_options!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSJSONSerialization")]
+    /**
+      A class for converting JSON to Foundation objects and converting Foundation objects to JSON.
+
+    An object that may be converted to JSON must have the following properties:
+    - Top level object is an NSArray or NSDictionary
+    - All objects are NSString, NSNumber, NSArray, NSDictionary, or NSNull
+    - All dictionary keys are NSStrings
+    - NSNumbers are not NaN or infinity
+    */
     pub struct NSJSONSerialization;
 
     #[cfg(feature = "Foundation_NSJSONSerialization")]
@@ -38,9 +47,27 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSJSONSerialization")]
+/**
+  A class for converting JSON to Foundation objects and converting Foundation objects to JSON.
+
+An object that may be converted to JSON must have the following properties:
+- Top level object is an NSArray or NSDictionary
+- All objects are NSString, NSNumber, NSArray, NSDictionary, or NSNull
+- All dictionary keys are NSStrings
+- NSNumbers are not NaN or infinity
+*/
 unsafe impl NSObjectProtocol for NSJSONSerialization {}
 
 extern_methods!(
+    /**
+      A class for converting JSON to Foundation objects and converting Foundation objects to JSON.
+
+    An object that may be converted to JSON must have the following properties:
+    - Top level object is an NSArray or NSDictionary
+    - All objects are NSString, NSNumber, NSArray, NSDictionary, or NSNull
+    - All dictionary keys are NSStrings
+    - NSNumbers are not NaN or infinity
+    */
     #[cfg(feature = "Foundation_NSJSONSerialization")]
     unsafe impl NSJSONSerialization {
         #[method(isValidJSONObject:)]

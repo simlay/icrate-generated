@@ -8,6 +8,12 @@ use crate::WebKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "WebKit_WKFrameInfo")]
+    /**
+      A WKFrameInfo object contains information about a frame on a webpage.
+    @discussion An instance of this class is a transient, data-only object;
+    it does not uniquely identify a frame across multiple delegate method
+    calls.
+    */
     pub struct WKFrameInfo;
 
     #[cfg(feature = "WebKit_WKFrameInfo")]
@@ -17,23 +23,48 @@ extern_class!(
 );
 
 #[cfg(feature = "WebKit_WKFrameInfo")]
+/**
+  A WKFrameInfo object contains information about a frame on a webpage.
+@discussion An instance of this class is a transient, data-only object;
+it does not uniquely identify a frame across multiple delegate method
+calls.
+*/
 unsafe impl NSObjectProtocol for WKFrameInfo {}
 
 extern_methods!(
+    /**
+      A WKFrameInfo object contains information about a frame on a webpage.
+    @discussion An instance of this class is a transient, data-only object;
+    it does not uniquely identify a frame across multiple delegate method
+    calls.
+    */
     #[cfg(feature = "WebKit_WKFrameInfo")]
     unsafe impl WKFrameInfo {
+        /**
+          @abstract A Boolean value indicating whether the frame is the main frame
+        or a subframe.
+        */
         #[method(isMainFrame)]
         pub unsafe fn isMainFrame(&self) -> bool;
 
         #[cfg(feature = "Foundation_NSURLRequest")]
+        /**
+          @abstract The frame's current request.
+        */
         #[method_id(@__retain_semantics Other request)]
         pub unsafe fn request(&self) -> Id<NSURLRequest>;
 
         #[cfg(feature = "WebKit_WKSecurityOrigin")]
+        /**
+          @abstract The frame's current security origin.
+        */
         #[method_id(@__retain_semantics Other securityOrigin)]
         pub unsafe fn securityOrigin(&self) -> Id<WKSecurityOrigin>;
 
         #[cfg(feature = "WebKit_WKWebView")]
+        /**
+          @abstract The web view of the webpage that contains this frame.
+        */
         #[method_id(@__retain_semantics Other webView)]
         pub unsafe fn webView(&self) -> Option<Id<WKWebView>>;
     }

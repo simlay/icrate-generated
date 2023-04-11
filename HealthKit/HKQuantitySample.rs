@@ -9,6 +9,10 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKQuantitySample")]
+    /**
+     @class         HKQuantitySample
+    @abstract      An abstract HKSample subclass representing a quantity measurement.
+    */
     pub struct HKQuantitySample;
 
     #[cfg(feature = "HealthKit_HKQuantitySample")]
@@ -19,15 +23,31 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKQuantitySample")]
+/**
+ @class         HKQuantitySample
+@abstract      An abstract HKSample subclass representing a quantity measurement.
+*/
 unsafe impl NSCoding for HKQuantitySample {}
 
 #[cfg(feature = "HealthKit_HKQuantitySample")]
+/**
+ @class         HKQuantitySample
+@abstract      An abstract HKSample subclass representing a quantity measurement.
+*/
 unsafe impl NSObjectProtocol for HKQuantitySample {}
 
 #[cfg(feature = "HealthKit_HKQuantitySample")]
+/**
+ @class         HKQuantitySample
+@abstract      An abstract HKSample subclass representing a quantity measurement.
+*/
 unsafe impl NSSecureCoding for HKQuantitySample {}
 
 extern_methods!(
+    /**
+     @class         HKQuantitySample
+    @abstract      An abstract HKSample subclass representing a quantity measurement.
+    */
     #[cfg(feature = "HealthKit_HKQuantitySample")]
     unsafe impl HKQuantitySample {
         #[cfg(feature = "HealthKit_HKQuantityType")]
@@ -38,6 +58,11 @@ extern_methods!(
         #[method_id(@__retain_semantics Other quantity)]
         pub unsafe fn quantity(&self) -> Id<HKQuantity>;
 
+        /**
+         @property      count
+        @abstract      The number of individual values making up the receiver's quantity.
+        @discussion    Requests for the individual series quantities can be made using HKQuantitySeriesSampleQuery.
+        */
         #[method(count)]
         pub unsafe fn count(&self) -> NSInteger;
 

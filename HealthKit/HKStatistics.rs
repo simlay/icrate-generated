@@ -8,6 +8,25 @@ use crate::UniformTypeIdentifiers::*;
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+     @enum          HKStatisticsOptions
+    @abstract      Options for specifying which statistics to calculate
+    @discussion    When querying for HKStatistics objects, an options bitmask will specify which statistics will be
+    calculated.
+
+    Statistics are classified as discrete or cumulative.  If a discrete statistics option is specified for a
+    cumulative HKQuantityType, an exception will be thrown.  If a cumulative statistics options is specified
+    for a discrete HKQuantityType, an exception will also be thrown.
+
+    @constant      HKStatisticsOptionNone
+    @constant      HKStatisticsOptionSeparateBySource
+    @constant      HKStatisticsOptionDiscreteAverage      Calculate averageQuantity when creating statistics.
+    @constant      HKStatisticsOptionDiscreteMin          Calculate minQuantity when creating statistics.
+    @constant      HKStatisticsOptionDiscreteMax          Calculate maxQuantity when creating statistics.
+    @constant      HKStatisticsOptionCumulativeSum        Calculate sumQuantity when creating statistics.
+    @constant      HKStatisticsOptionMostRecent           Calculate mostRecentQuantity when creating statistics.
+    @constant      HKStatisticsOptionDuration             Calculate duration when creating statistics.
+    */
     pub enum HKStatisticsOptions {
         HKStatisticsOptionNone = 0,
         HKStatisticsOptionSeparateBySource = 1 << 0,
@@ -25,6 +44,10 @@ ns_options!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKStatistics")]
+    /**
+     @class         HKStatistics
+    @abstract      Represents statistics for quantity samples over a period of time.
+    */
     pub struct HKStatistics;
 
     #[cfg(feature = "HealthKit_HKStatistics")]
@@ -34,15 +57,31 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKStatistics")]
+/**
+ @class         HKStatistics
+@abstract      Represents statistics for quantity samples over a period of time.
+*/
 unsafe impl NSCoding for HKStatistics {}
 
 #[cfg(feature = "HealthKit_HKStatistics")]
+/**
+ @class         HKStatistics
+@abstract      Represents statistics for quantity samples over a period of time.
+*/
 unsafe impl NSObjectProtocol for HKStatistics {}
 
 #[cfg(feature = "HealthKit_HKStatistics")]
+/**
+ @class         HKStatistics
+@abstract      Represents statistics for quantity samples over a period of time.
+*/
 unsafe impl NSSecureCoding for HKStatistics {}
 
 extern_methods!(
+    /**
+     @class         HKStatistics
+    @abstract      Represents statistics for quantity samples over a period of time.
+    */
     #[cfg(feature = "HealthKit_HKStatistics")]
     unsafe impl HKStatistics {
         #[cfg(feature = "HealthKit_HKQuantityType")]

@@ -41,10 +41,16 @@ extern_methods!(
     #[cfg(feature = "AppKit_NSView")]
     unsafe impl NSView {
         #[cfg(feature = "AppKit_NSPressureConfiguration")]
+        /**
+          The pressure configuration a Force Click trackpad should use when the cursor is over this view. The system can set this configuration before the application receives the initial mouse down event. Does not affect an active pressure event sequence.
+        */
         #[method_id(@__retain_semantics Other pressureConfiguration)]
         pub unsafe fn pressureConfiguration(&self) -> Option<Id<NSPressureConfiguration>>;
 
         #[cfg(feature = "AppKit_NSPressureConfiguration")]
+        /**
+          The pressure configuration a Force Click trackpad should use when the cursor is over this view. The system can set this configuration before the application receives the initial mouse down event. Does not affect an active pressure event sequence.
+        */
         #[method(setPressureConfiguration:)]
         pub unsafe fn setPressureConfiguration(
             &self,

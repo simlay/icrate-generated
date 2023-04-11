@@ -34,9 +34,15 @@ extern_methods!(
     #[cfg(feature = "StoreKit_SKPaymentTransaction")]
     unsafe impl SKPaymentTransaction {
         #[cfg(feature = "Foundation_NSError")]
+        /**
+          Only set if state is SKPaymentTransactionFailed
+        */
         #[method_id(@__retain_semantics Other error)]
         pub unsafe fn error(&self) -> Option<Id<NSError>>;
 
+        /**
+          Only valid if state is SKPaymentTransactionStateRestored.
+        */
         #[method_id(@__retain_semantics Other originalTransaction)]
         pub unsafe fn originalTransaction(&self) -> Option<Id<SKPaymentTransaction>>;
 
@@ -45,19 +51,31 @@ extern_methods!(
         pub unsafe fn payment(&self) -> Id<SKPayment>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "StoreKit_SKDownload"))]
+        /**
+          Available downloads (SKDownload) for this transaction
+        */
         #[deprecated = "Hosted content is no longer supported"]
         #[method_id(@__retain_semantics Other downloads)]
         pub unsafe fn downloads(&self) -> Id<NSArray<SKDownload>>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          The date when the transaction was added to the server queue.  Only valid if state is SKPaymentTransactionStatePurchased or SKPaymentTransactionStateRestored.
+        */
         #[method_id(@__retain_semantics Other transactionDate)]
         pub unsafe fn transactionDate(&self) -> Option<Id<NSDate>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The unique server-provided identifier.  Only valid if state is SKPaymentTransactionStatePurchased or SKPaymentTransactionStateRestored.
+        */
         #[method_id(@__retain_semantics Other transactionIdentifier)]
         pub unsafe fn transactionIdentifier(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          Only valid if state is SKPaymentTransactionStatePurchased.
+        */
         #[deprecated]
         #[method_id(@__retain_semantics Other transactionReceipt)]
         pub unsafe fn transactionReceipt(&self) -> Option<Id<NSData>>;

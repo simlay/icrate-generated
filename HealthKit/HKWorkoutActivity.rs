@@ -9,6 +9,10 @@ use crate::UniformTypeIdentifiers::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKWorkoutActivity")]
+    /**
+     @class         HKWorkoutActivity
+    @abstract      An HKWorkoutActivity is an object describing the properties of an activity within an HKWorkout.
+    */
     pub struct HKWorkoutActivity;
 
     #[cfg(feature = "HealthKit_HKWorkoutActivity")]
@@ -18,35 +22,81 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKWorkoutActivity")]
+/**
+ @class         HKWorkoutActivity
+@abstract      An HKWorkoutActivity is an object describing the properties of an activity within an HKWorkout.
+*/
 unsafe impl NSObjectProtocol for HKWorkoutActivity {}
 
 extern_methods!(
+    /**
+     @class         HKWorkoutActivity
+    @abstract      An HKWorkoutActivity is an object describing the properties of an activity within an HKWorkout.
+    */
     #[cfg(feature = "HealthKit_HKWorkoutActivity")]
     unsafe impl HKWorkoutActivity {
         #[cfg(feature = "Foundation_NSUUID")]
+        /**
+         @property      UUID
+        @abstract      A unique identifier of the activity in the HealthKit database.
+        */
         #[method_id(@__retain_semantics Other UUID)]
         pub unsafe fn UUID(&self) -> Id<NSUUID>;
 
         #[cfg(feature = "HealthKit_HKWorkoutConfiguration")]
+        /**
+         @property      workoutConfiguration
+        @abstract      The configuration object describing the workout activity.
+        */
         #[method_id(@__retain_semantics Other workoutConfiguration)]
         pub unsafe fn workoutConfiguration(&self) -> Id<HKWorkoutConfiguration>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+         @property      startDate
+        @abstract      The point in time when the workout activity was started.
+        */
         #[method_id(@__retain_semantics Other startDate)]
         pub unsafe fn startDate(&self) -> Id<NSDate>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+         @property      endDate
+        @abstract      The point in time when the workout activity was ended.
+        @discussion    This value is nil when a workout activity is in progress.
+        */
         #[method_id(@__retain_semantics Other endDate)]
         pub unsafe fn endDate(&self) -> Option<Id<NSDate>>;
 
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        /**
+         @property      metadata
+        @abstract      Extra information describing properties of the workout activity.
+        @discussion    Keys must be NSString and values must be either NSString, NSNumber, NSDate, or
+        HKQuantity. See HKMetadata.h for potential metadata keys and values.
+        */
         #[method_id(@__retain_semantics Other metadata)]
         pub unsafe fn metadata(&self) -> Option<Id<NSDictionary<NSString, Object>>>;
 
+        /**
+         @property      duration
+        @abstract      The length of time that the workout activity was recording
+        @discussion    The duration is derived from the start and end dates of the activity and takes
+        into account periods that the activity was paused. Periods that the activity was
+        paused are based off of the workoutEvents property of the parent workout object.
+        */
         #[method(duration)]
         pub unsafe fn duration(&self) -> NSTimeInterval;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "HealthKit_HKWorkoutEvent"))]
+        /**
+         @property      workoutEvents
+        @abstract      An array of HKWorkoutEvents that occurred during the workout activity.
+        @discussion    These events will be ordered by date in ascending order. These events are a subset
+        of the workout events that take place between the start date and end date of the
+        activity. This includes any event that overlaps the activity, even partially.
+        Consequently, some events may be included in more than one activity.
+        */
         #[method_id(@__retain_semantics Other workoutEvents)]
         pub unsafe fn workoutEvents(&self) -> Id<NSArray<HKWorkoutEvent>>;
 
@@ -55,6 +105,13 @@ extern_methods!(
             feature = "HealthKit_HKQuantityType",
             feature = "HealthKit_HKStatistics"
         ))]
+        /**
+         @property      allStatistics
+        @abstract      A dictionary of statistics per quantity type during the activity
+        @discussion    This dictionary will contain HKStatistics objects containing the statistics by quantity
+        sample type for all of the samples that have been added to the workout within the date
+        interval of this activity.
+        */
         #[method_id(@__retain_semantics Other allStatistics)]
         pub unsafe fn allStatistics(&self) -> Id<NSDictionary<HKQuantityType, HKStatistics>>;
 

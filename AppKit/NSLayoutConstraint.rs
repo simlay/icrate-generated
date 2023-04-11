@@ -85,6 +85,9 @@ ns_options!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSLayoutConstraint")]
+    /**
+      View Based TableView: The NSTableRowView is the view shown for a row in the table. It is responsible for drawing things associated with the row, including the selection highlight, and group row look. Properties can be changed on a row-by-row basis by using the table delegate method -tableView:didAddRowView:forRow:. Modifications of the properties are NOT reflected by the NSTableView instance; the NSTableRowView is simply a representation of the state. In other words, setting rowView.selected will NOT change the -selectedRowIndexes in NSTableView.
+    */
     pub struct NSLayoutConstraint;
 
     #[cfg(feature = "AppKit_NSLayoutConstraint")]
@@ -94,9 +97,15 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSLayoutConstraint")]
+/**
+  View Based TableView: The NSTableRowView is the view shown for a row in the table. It is responsible for drawing things associated with the row, including the selection highlight, and group row look. Properties can be changed on a row-by-row basis by using the table delegate method -tableView:didAddRowView:forRow:. Modifications of the properties are NOT reflected by the NSTableView instance; the NSTableRowView is simply a representation of the state. In other words, setting rowView.selected will NOT change the -selectedRowIndexes in NSTableView.
+*/
 unsafe impl NSObjectProtocol for NSLayoutConstraint {}
 
 extern_methods!(
+    /**
+      View Based TableView: The NSTableRowView is the view shown for a row in the table. It is responsible for drawing things associated with the row, including the selection highlight, and group row look. Properties can be changed on a row-by-row basis by using the table delegate method -tableView:didAddRowView:forRow:. Modifications of the properties are NOT reflected by the NSTableView instance; the NSTableRowView is simply a representation of the state. In other words, setting rowView.selected will NOT change the -selectedRowIndexes in NSTableView.
+    */
     #[cfg(feature = "AppKit_NSLayoutConstraint")]
     unsafe impl NSLayoutConstraint {
         #[cfg(all(
@@ -129,12 +138,25 @@ extern_methods!(
         #[method(setPriority:)]
         pub unsafe fn setPriority(&self, priority: NSLayoutPriority);
 
+        /**
+          When a view is archived, it archives some but not all constraints in its -constraints array.  The value of shouldBeArchived informs the view if a particular constraint should be archived by the view.
+        If a constraint is created at runtime in response to the state of the object, it isn't appropriate to archive the constraint - rather you archive the state that gives rise to the constraint.  Since the majority of constraints that should be archived are created in Interface Builder (which is smart enough to set this prop to YES), the default value for this property is NO.
+        */
         #[method(shouldBeArchived)]
         pub unsafe fn shouldBeArchived(&self) -> bool;
 
+        /**
+          When a view is archived, it archives some but not all constraints in its -constraints array.  The value of shouldBeArchived informs the view if a particular constraint should be archived by the view.
+        If a constraint is created at runtime in response to the state of the object, it isn't appropriate to archive the constraint - rather you archive the state that gives rise to the constraint.  Since the majority of constraints that should be archived are created in Interface Builder (which is smart enough to set this prop to YES), the default value for this property is NO.
+        */
         #[method(setShouldBeArchived:)]
         pub unsafe fn setShouldBeArchived(&self, should_be_archived: bool);
 
+        /**
+          accessors
+        firstItem.firstAttribute {==,<=,>=} secondItem.secondAttribute * multiplier + constant
+        Access to these properties is not recommended. Use the `firstAnchor` and `secondAnchor` properties instead.
+        */
         #[method_id(@__retain_semantics Other firstItem)]
         pub unsafe fn firstItem(&self) -> Option<Id<Object>>;
 
@@ -148,6 +170,10 @@ extern_methods!(
         pub unsafe fn secondAttribute(&self) -> NSLayoutAttribute;
 
         #[cfg(feature = "AppKit_NSLayoutAnchor")]
+        /**
+          accessors
+        firstAnchor{==,<=,>=} secondAnchor * multiplier + constant
+        */
         #[method_id(@__retain_semantics Other firstAnchor)]
         pub unsafe fn firstAnchor(&self) -> Id<NSLayoutAnchor>;
 
@@ -161,15 +187,27 @@ extern_methods!(
         #[method(multiplier)]
         pub unsafe fn multiplier(&self) -> CGFloat;
 
+        /**
+          Unlike the other properties, the constant may be modified after constraint creation.  Setting the constant on an existing constraint performs much better than removing the constraint and adding a new one that's just like the old but for having a new constant.
+        */
         #[method(constant)]
         pub unsafe fn constant(&self) -> CGFloat;
 
+        /**
+          Unlike the other properties, the constant may be modified after constraint creation.  Setting the constant on an existing constraint performs much better than removing the constraint and adding a new one that's just like the old but for having a new constant.
+        */
         #[method(setConstant:)]
         pub unsafe fn setConstant(&self, constant: CGFloat);
 
+        /**
+          The receiver may be activated or deactivated by manipulating this property.  Only active constraints affect the calculated layout.  Attempting to activate a constraint whose items have no common ancestor will cause an exception to be thrown.  Defaults to NO for newly created constraints.
+        */
         #[method(isActive)]
         pub unsafe fn isActive(&self) -> bool;
 
+        /**
+          The receiver may be activated or deactivated by manipulating this property.  Only active constraints affect the calculated layout.  Attempting to activate a constraint whose items have no common ancestor will cause an exception to be thrown.  Defaults to NO for newly created constraints.
+        */
         #[method(setActive:)]
         pub unsafe fn setActive(&self, active: bool);
 
@@ -188,10 +226,18 @@ extern_methods!(
     #[cfg(feature = "AppKit_NSLayoutConstraint")]
     unsafe impl NSLayoutConstraint {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          For ease in debugging, name a constraint by setting its identifier, which will be printed in the constraint's description.
+        Identifiers starting with NS or UI are reserved by the system.
+        */
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          For ease in debugging, name a constraint by setting its identifier, which will be printed in the constraint's description.
+        Identifiers starting with NS or UI are reserved by the system.
+        */
         #[method(setIdentifier:)]
         pub unsafe fn setIdentifier(&self, identifier: Option<&NSString>);
     }
@@ -206,10 +252,20 @@ extern_methods!(
 unsafe impl NSAnimatablePropertyContainer for NSLayoutConstraint {}
 
 extern_methods!(
+    /**
+      A constraint is typically installed on the closest common ancestor of the views involved in the constraint.
+    It is required that a constraint be installed on _a_ common ancestor of every view involved.  The numbers in a constraint are interpreted in the coordinate system of the view it is installed on.  A view is considered to be an ancestor of itself (as with other NSView API).
+    */
     /// NSConstraintBasedLayoutInstallingConstraints
     #[cfg(feature = "AppKit_NSView")]
     unsafe impl NSView {
         #[cfg(feature = "AppKit_NSLayoutXAxisAnchor")]
+        /**
+         These properties aid concise creation of simple constraints.  Views can be constrained using simple code like the following:
+        [view.topAnchor constraintEqualToAnchor:otherView.bottomAnchor constant:10].active=YES;
+
+        See NSLayoutAnchor.h for more details.
+        */
         #[method_id(@__retain_semantics Other leadingAnchor)]
         pub unsafe fn leadingAnchor(&self) -> Id<NSLayoutXAxisAnchor>;
 
@@ -258,6 +314,9 @@ extern_methods!(
         pub unsafe fn lastBaselineAnchor(&self) -> Id<NSLayoutYAxisAnchor>;
 
         #[cfg(all(feature = "AppKit_NSLayoutConstraint", feature = "Foundation_NSArray"))]
+        /**
+          This property is deprecated and should be avoided.  Instead, create IB outlets or otherwise maintain references to constraints you need to reference directly.
+        */
         #[method_id(@__retain_semantics Other constraints)]
         pub unsafe fn constraints(&self) -> Id<NSArray<NSLayoutConstraint>>;
 
@@ -280,6 +339,15 @@ extern_methods!(
 );
 
 extern_methods!(
+    /**
+      To render a window, the following passes will occur, if necessary.
+
+    update constraints
+    layout
+    display
+
+    Please see the conceptual documentation for a discussion of these methods.
+    */
     /// NSConstraintBasedLayoutCoreMethods
     #[cfg(feature = "AppKit_NSWindow")]
     unsafe impl NSWindow {
@@ -313,15 +381,24 @@ extern_methods!(
     /// NSConstraintBasedCompatibility
     #[cfg(feature = "AppKit_NSView")]
     unsafe impl NSView {
+        /**
+          by default, the autoresizing mask on a view gives rise to constraints that fully determine the view's position.  To do anything interesting with constraints, you need to turn that off. IB will turn it off.
+        */
         #[method(translatesAutoresizingMaskIntoConstraints)]
         pub unsafe fn translatesAutoresizingMaskIntoConstraints(&self) -> bool;
 
+        /**
+          by default, the autoresizing mask on a view gives rise to constraints that fully determine the view's position.  To do anything interesting with constraints, you need to turn that off. IB will turn it off.
+        */
         #[method(setTranslatesAutoresizingMaskIntoConstraints:)]
         pub unsafe fn setTranslatesAutoresizingMaskIntoConstraints(
             &self,
             translates_autoresizing_mask_into_constraints: bool,
         );
 
+        /**
+          constraint based layout engages lazily when someone tries to use it.  If you do all of your constraint set up in -updateConstraints, you might never even receive updateConstraints if no one makes a constraint.  To fix this chicken and egg problem, override this method to return YES if your view needs the window to use constraint based layout.
+        */
         #[method(requiresConstraintBasedLayout)]
         pub unsafe fn requiresConstraintBasedLayout() -> bool;
     }
@@ -341,15 +418,27 @@ extern_methods!(
         #[method(frameForAlignmentRect:)]
         pub unsafe fn frameForAlignmentRect(&self, alignment_rect: NSRect) -> NSRect;
 
+        /**
+          override this if the alignment rect is obtained from the frame by insetting each edge by a fixed amount.  This is only called by alignmentRectForFrame: and frameForAlignmentRect:.
+        */
         #[method(alignmentRectInsets)]
         pub unsafe fn alignmentRectInsets(&self) -> NSEdgeInsets;
 
+        /**
+          override this to provide the distance between NSLayoutAttributeTop and NSLayoutAttributeFirstBaseline.  NSView's implementation returns zero.
+        */
         #[method(firstBaselineOffsetFromTop)]
         pub unsafe fn firstBaselineOffsetFromTop(&self) -> CGFloat;
 
+        /**
+          override this to provide the distance between NSLayoutAttributeBottom and NSLayoutAttributeLastBaseline (or NSLayoutAttributeBaseline).  NSView's implementation returns zero.
+        */
         #[method(lastBaselineOffsetFromBottom)]
         pub unsafe fn lastBaselineOffsetFromBottom(&self) -> CGFloat;
 
+        /**
+          Deprecated. Override lastBaselineOffsetFromBottom instead.
+        */
         #[method(baselineOffsetFromBottom)]
         pub unsafe fn baselineOffsetFromBottom(&self) -> CGFloat;
 
@@ -385,18 +474,30 @@ extern_methods!(
             orientation: NSLayoutConstraintOrientation,
         );
 
+        /**
+          A boolean value that controls whether the receiver's horizontal content size constraint is active.  As an optimization, if the constraint is inactive, Auto Layout may avoid measuring the view's intrinsic content size.  Defaults to YES.
+        */
         #[method(isHorizontalContentSizeConstraintActive)]
         pub unsafe fn isHorizontalContentSizeConstraintActive(&self) -> bool;
 
+        /**
+          A boolean value that controls whether the receiver's horizontal content size constraint is active.  As an optimization, if the constraint is inactive, Auto Layout may avoid measuring the view's intrinsic content size.  Defaults to YES.
+        */
         #[method(setHorizontalContentSizeConstraintActive:)]
         pub unsafe fn setHorizontalContentSizeConstraintActive(
             &self,
             horizontal_content_size_constraint_active: bool,
         );
 
+        /**
+          A boolean value that controls whether the receiver's vertical content size constraint is active.  As an optimization, if the constraint is inactive, Auto Layout may avoid measuring the view's intrinsic content size.  Defaults to YES.
+        */
         #[method(isVerticalContentSizeConstraintActive)]
         pub unsafe fn isVerticalContentSizeConstraintActive(&self) -> bool;
 
+        /**
+          A boolean value that controls whether the receiver's vertical content size constraint is active.  As an optimization, if the constraint is inactive, Auto Layout may avoid measuring the view's intrinsic content size.  Defaults to YES.
+        */
         #[method(setVerticalContentSizeConstraintActive:)]
         pub unsafe fn setVerticalContentSizeConstraintActive(
             &self,
@@ -438,12 +539,22 @@ extern_methods!(
     /// NSConstraintBasedLayoutFittingSize
     #[cfg(feature = "AppKit_NSView")]
     unsafe impl NSView {
+        /**
+          like sizeToFit, but for arbitrary views, and returns the size rather than changing the view's frame.  This considers everything in the receiver's subtree.
+        */
         #[method(fittingSize)]
         pub unsafe fn fittingSize(&self) -> NSSize;
     }
 );
 
 extern_methods!(
+    /**
+      Everything in this section should be used in debugging only, never in shipping code.  These methods may not exist in the future - no promises.
+
+
+    set default NSShowAlignmentRects to YES to see alignment rects drawn.  Useful in conjunction with NSShowAllViews, which shows frames.
+    the existing -[NSView _subtreeDescription] is also very useful
+    */
     /// NSConstraintBasedLayoutDebugging
     #[cfg(feature = "AppKit_NSView")]
     unsafe impl NSView {
@@ -454,6 +565,12 @@ extern_methods!(
             orientation: NSLayoutConstraintOrientation,
         ) -> Id<NSArray<NSLayoutConstraint>>;
 
+        /**
+          If there aren't enough constraints in the system to uniquely determine layout, we say the layout is ambiguous.  For example, if the only constraint in the system was x = y + 100, then there are lots of different possible values for x and y.  This situation is not automatically detected by AppKit, due to performance considerations and details of the algorithm used for layout.
+        The symptom of ambiguity is that views sometimes jump from place to place, or possibly are just in the wrong place.
+        -hasAmbiguousLayout runs a check for whether there is any other frame the receiver could have that could also satisfy the constraints.
+        -exerciseAmbiguousLayout does more.  It randomly changes the frames of views in your window to another of their valid possible layouts.  Making the UI jump back and forth can be helpful for figuring out where you're missing a constraint.
+        */
         #[method(hasAmbiguousLayout)]
         pub unsafe fn hasAmbiguousLayout(&self) -> bool;
 

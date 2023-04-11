@@ -38,12 +38,25 @@ extern_methods!(
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
         #[cfg(feature = "CoreImage_CIImage")]
+        /**
+          The original full-size image from the input live photo
+        */
         #[method_id(@__retain_semantics Other fullSizeImage)]
         pub unsafe fn fullSizeImage(&self) -> Id<CIImage>;
 
+        /**
+          Specify the audio volume of the edited live photo
+         Must be between 0.0 and 1.0
+         Default to 1.0
+        */
         #[method(audioVolume)]
         pub unsafe fn audioVolume(&self) -> c_float;
 
+        /**
+          Specify the audio volume of the edited live photo
+         Must be between 0.0 and 1.0
+         Default to 1.0
+        */
         #[method(setAudioVolume:)]
         pub unsafe fn setAudioVolume(&self, audio_volume: c_float);
 
@@ -82,6 +95,9 @@ extern_methods!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      The type of frame in the Live Photo
+    */
     pub enum PHLivePhotoFrameType {
         PHLivePhotoFrameTypePhoto = 0,
         PHLivePhotoFrameTypeVideo = 1,
@@ -89,14 +105,26 @@ ns_enum!(
 );
 
 extern_protocol!(
+    /**
+      Protocol that describes a single frame of a live photo
+    */
     pub unsafe trait PHLivePhotoFrame {
         #[cfg(feature = "CoreImage_CIImage")]
+        /**
+          Input image for the frame
+        */
         #[method_id(@__retain_semantics Other image)]
         unsafe fn image(&self) -> Id<CIImage>;
 
+        /**
+          The type of frame
+        */
         #[method(type)]
         unsafe fn r#type(&self) -> PHLivePhotoFrameType;
 
+        /**
+          The scale of the frame relative to the full-size image
+        */
         #[method(renderScale)]
         unsafe fn renderScale(&self) -> CGFloat;
     }
@@ -110,6 +138,9 @@ extern_static!(PHLivePhotoEditingErrorDomain: &'static NSString);
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      Error code for Live Photo Editing errors (Deprecated)
+    */
     pub enum PHLivePhotoEditingErrorCode {
         #[deprecated]
         PHLivePhotoEditingErrorCodeUnknown = 0,

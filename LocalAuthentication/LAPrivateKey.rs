@@ -7,6 +7,9 @@ use crate::LocalAuthentication::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "LocalAuthentication_LAPrivateKey")]
+    /**
+      @brief Managed Private Key.
+    */
     pub struct LAPrivateKey;
 
     #[cfg(feature = "LocalAuthentication_LAPrivateKey")]
@@ -16,12 +19,21 @@ extern_class!(
 );
 
 #[cfg(feature = "LocalAuthentication_LAPrivateKey")]
+/**
+  @brief Managed Private Key.
+*/
 unsafe impl NSObjectProtocol for LAPrivateKey {}
 
 extern_methods!(
+    /**
+      @brief Managed Private Key.
+    */
     #[cfg(feature = "LocalAuthentication_LAPrivateKey")]
     unsafe impl LAPrivateKey {
         #[cfg(feature = "LocalAuthentication_LAPublicKey")]
+        /**
+          @brief Offers the public key counterpart of a @c LAPrivateKey instance
+        */
         #[method_id(@__retain_semantics Other publicKey)]
         pub unsafe fn publicKey(&self) -> Id<LAPublicKey>;
 

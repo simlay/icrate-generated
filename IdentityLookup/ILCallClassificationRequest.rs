@@ -32,6 +32,9 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "IdentityLookup_ILCallCommunication"
         ))]
+        /**
+          An array of call communications sorted by date received
+        */
         #[method_id(@__retain_semantics Other callCommunications)]
         pub unsafe fn callCommunications(&self) -> Id<NSArray<ILCallCommunication>>;
 

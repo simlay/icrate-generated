@@ -63,21 +63,43 @@ extern_methods!(
         #[method_id(@__retain_semantics Other matchRequest)]
         pub unsafe fn matchRequest(&self) -> Id<GKMatchRequest>;
 
+        /**
+          set to YES to receive hosted (eg. not peer-to-peer) match results. Will cause the controller to return an array of players instead of a match.
+        */
         #[method(isHosted)]
         pub unsafe fn isHosted(&self) -> bool;
 
+        /**
+          set to YES to receive hosted (eg. not peer-to-peer) match results. Will cause the controller to return an array of players instead of a match.
+        */
         #[method(setHosted:)]
         pub unsafe fn setHosted(&self, hosted: bool);
 
+        /**
+          this controls which mode of matchmaking to support in the UI (all, nearby only, automatch only, invite only).  Throws an exeption if you can not set to the desired mode (due to restrictions)
+        */
         #[method(matchmakingMode)]
         pub unsafe fn matchmakingMode(&self) -> GKMatchmakingMode;
 
+        /**
+          this controls which mode of matchmaking to support in the UI (all, nearby only, automatch only, invite only).  Throws an exeption if you can not set to the desired mode (due to restrictions)
+        */
         #[method(setMatchmakingMode:)]
         pub unsafe fn setMatchmakingMode(&self, matchmaking_mode: GKMatchmakingMode);
 
+        /**
+          A BOOL value to allow the GKMatchMakerViewController to return control to the game once the minimum number of players are connected.
+         By default the value is NO, and the multiplayer match can only proceed after all players are connected.
+         If the value is set to YES, then once the number of connected players is greater than or equal to minPlayers of the match request, matchmakerViewController:didFindMatch: will be called and the game can get the match instance, and update the game scene accordingly. The remaining players wil continue to connect.
+        */
         #[method(canStartWithMinimumPlayers)]
         pub unsafe fn canStartWithMinimumPlayers(&self) -> bool;
 
+        /**
+          A BOOL value to allow the GKMatchMakerViewController to return control to the game once the minimum number of players are connected.
+         By default the value is NO, and the multiplayer match can only proceed after all players are connected.
+         If the value is set to YES, then once the number of connected players is greater than or equal to minPlayers of the match request, matchmakerViewController:didFindMatch: will be called and the game can get the match instance, and update the game scene accordingly. The remaining players wil continue to connect.
+        */
         #[method(setCanStartWithMinimumPlayers:)]
         pub unsafe fn setCanStartWithMinimumPlayers(&self, can_start_with_minimum_players: bool);
 
@@ -104,11 +126,17 @@ extern_methods!(
         pub unsafe fn setHostedPlayer_didConnect(&self, player: &GKPlayer, connected: bool);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          default message to use when inviting friends. Can be edited by the user.
+        */
         #[deprecated]
         #[method_id(@__retain_semantics Other defaultInvitationMessage)]
         pub unsafe fn defaultInvitationMessage(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          default message to use when inviting friends. Can be edited by the user.
+        */
         #[deprecated]
         #[method(setDefaultInvitationMessage:)]
         pub unsafe fn setDefaultInvitationMessage(

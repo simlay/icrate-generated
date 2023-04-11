@@ -7,6 +7,12 @@ use crate::GameController::*;
 
 extern_protocol!(
     pub unsafe trait GCSwitchPositionInput: NSObjectProtocol {
+        /**
+         Set this block if you want to be notified when the value on the switch changes.
+
+        @param input the element that has been modified.
+        @see value
+        */
         #[method(positionDidChangeHandler)]
         unsafe fn positionDidChangeHandler(
             &self,
@@ -19,6 +25,12 @@ extern_protocol!(
             (),
         >;
 
+        /**
+         Set this block if you want to be notified when the value on the switch changes.
+
+        @param input the element that has been modified.
+        @see value
+        */
         #[method(setPositionDidChangeHandler:)]
         unsafe fn setPositionDidChangeHandler(
             &self,
@@ -34,21 +46,54 @@ extern_protocol!(
             >,
         );
 
+        /**
+         The switch's position.
+
+        @see valueDidChangeHandler
+        */
         #[method(position)]
         unsafe fn position(&self) -> NSInteger;
 
+        /**
+         The (inclusive) bounds of possible position values for the switch.
+        */
         #[method(positionRange)]
         unsafe fn positionRange(&self) -> NSRange;
 
+        /**
+         \c YES if the switch input can only transition to positions that are adjacent
+        to the current position.
+        */
         #[method(isSequential)]
         unsafe fn isSequential(&self) -> bool;
 
+        /**
+         Check if the position input value can "roll over" when reaching either of its
+        bounds.
+
+        This will always be \c YES for non-sequential switch inputs.
+        */
         #[method(canWrap)]
         unsafe fn canWrap(&self) -> bool;
 
+        /**
+         The timestamp of the last value.
+
+        This time interval is not relative to any specific point in time.  You can
+        subtract a previous timestamp from the returned timestamp to determine the time
+        (in seconds) between changes to the value.
+        */
         #[method(lastPositionTimestamp)]
         unsafe fn lastPositionTimestamp(&self) -> NSTimeInterval;
 
+        /**
+         The interval (in seconds) between the timestamp of the last event and the
+        current time.
+
+        This should be treated as a lower bound of the event latency.  It may not
+        include (wired or wireless) transmission latency, or latency accrued on
+        the device before the event was transmitted to the host.
+        */
         #[method(lastPositionLatency)]
         unsafe fn lastPositionLatency(&self) -> NSTimeInterval;
     }

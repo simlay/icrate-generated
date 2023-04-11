@@ -5,7 +5,23 @@ use crate::Foundation::*;
 use crate::Metal::*;
 
 extern_protocol!(
+    /**
+     @protocol MTLBuffer
+    @abstract A typeless allocation accessible by both the CPU and the GPU (MTLDevice) or by only the GPU when the storage mode is
+    MTLResourceStorageModePrivate.
+
+    @discussion
+    Unlike in OpenGL and OpenCL, access to buffers is not synchronized.  The caller may use the CPU to modify the data at any time
+    but is also responsible for ensuring synchronization and coherency.
+
+    The contents become undefined if both the CPU and GPU write to the same buffer without a synchronizing action between those writes.
+    This is true even when the regions written do not overlap.
+    */
     pub unsafe trait MTLBuffer: MTLResource {
+        /**
+         @property length
+        @abstract The length of the buffer in bytes.
+        */
         #[method(length)]
         fn length(&self) -> NSUInteger;
 
@@ -31,6 +47,10 @@ extern_protocol!(
         #[method(removeAllDebugMarkers)]
         fn removeAllDebugMarkers(&self);
 
+        /**
+         @property remoteStorageBuffer
+        @abstract For Metal buffer objects that are remote views, this returns the buffer associated with the storage on the originating device.
+        */
         #[method_id(@__retain_semantics Other remoteStorageBuffer)]
         fn remoteStorageBuffer(&self) -> Option<Id<ProtocolObject<dyn MTLBuffer>>>;
 
@@ -40,6 +60,10 @@ extern_protocol!(
             device: &ProtocolObject<dyn MTLDevice>,
         ) -> Option<Id<ProtocolObject<dyn MTLBuffer>>>;
 
+        /**
+         @property gpuAddress
+        @abstract Represents the GPU virtual address of a buffer resource
+        */
         #[method(gpuAddress)]
         fn gpuAddress(&self) -> u64;
     }

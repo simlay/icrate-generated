@@ -74,27 +74,46 @@ extern_methods!(
     #[cfg(feature = "WebKit_WKWebView")]
     unsafe impl WKWebView {
         #[cfg(feature = "WebKit_WKWebViewConfiguration")]
+        /**
+          @abstract A copy of the configuration with which the web view was
+        initialized.
+        */
         #[method_id(@__retain_semantics Other configuration)]
         pub unsafe fn configuration(&self) -> Id<WKWebViewConfiguration>;
 
+        /**
+          @abstract The web view's navigation delegate.
+        */
         #[method_id(@__retain_semantics Other navigationDelegate)]
         pub unsafe fn navigationDelegate(
             &self,
         ) -> Option<Id<ProtocolObject<dyn WKNavigationDelegate>>>;
 
+        /**
+          @abstract The web view's navigation delegate.
+        */
         #[method(setNavigationDelegate:)]
         pub unsafe fn setNavigationDelegate(
             &self,
             navigation_delegate: Option<&ProtocolObject<dyn WKNavigationDelegate>>,
         );
 
+        /**
+          @abstract The web view's user interface delegate.
+        */
         #[method_id(@__retain_semantics Other UIDelegate)]
         pub unsafe fn UIDelegate(&self) -> Option<Id<ProtocolObject<dyn WKUIDelegate>>>;
 
+        /**
+          @abstract The web view's user interface delegate.
+        */
         #[method(setUIDelegate:)]
         pub unsafe fn setUIDelegate(&self, ui_delegate: Option<&ProtocolObject<dyn WKUIDelegate>>);
 
         #[cfg(feature = "WebKit_WKBackForwardList")]
+        /**
+          @abstract The web view's back-forward list.
+        */
         #[method_id(@__retain_semantics Other backForwardList)]
         pub unsafe fn backForwardList(&self) -> Id<WKBackForwardList>;
 
@@ -163,25 +182,72 @@ extern_methods!(
         ) -> Option<Id<WKNavigation>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract The page title.
+        @discussion @link WKWebView @/link is key-value observing (KVO) compliant
+        for this property.
+        */
         #[method_id(@__retain_semantics Other title)]
         pub unsafe fn title(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSURL")]
+        /**
+          @abstract The active URL.
+        @discussion This is the URL that should be reflected in the user
+        interface.
+        @link WKWebView @/link is key-value observing (KVO) compliant for this
+        property.
+        */
         #[method_id(@__retain_semantics Other URL)]
         pub unsafe fn URL(&self) -> Option<Id<NSURL>>;
 
+        /**
+          @abstract A Boolean value indicating whether the view is currently
+        loading content.
+        @discussion @link WKWebView @/link is key-value observing (KVO) compliant
+        for this property.
+        */
         #[method(isLoading)]
         pub unsafe fn isLoading(&self) -> bool;
 
+        /**
+          @abstract An estimate of what fraction of the current navigation has been completed.
+        @discussion This value ranges from 0.0 to 1.0 based on the total number of
+        bytes expected to be received, including the main document and all of its
+        potential subresources. After a navigation completes, the value remains at 1.0
+        until a new navigation starts, at which point it is reset to 0.0.
+        @link WKWebView @/link is key-value observing (KVO) compliant for this
+        property.
+        */
         #[method(estimatedProgress)]
         pub unsafe fn estimatedProgress(&self) -> c_double;
 
+        /**
+          @abstract A Boolean value indicating whether all resources on the page
+        have been loaded over securely encrypted connections.
+        @discussion @link WKWebView @/link is key-value observing (KVO) compliant
+        for this property.
+        */
         #[method(hasOnlySecureContent)]
         pub unsafe fn hasOnlySecureContent(&self) -> bool;
 
+        /**
+          @abstract A Boolean value indicating whether there is a back item in
+        the back-forward list that can be navigated to.
+        @discussion @link WKWebView @/link is key-value observing (KVO) compliant
+        for this property.
+        @seealso backForwardList.
+        */
         #[method(canGoBack)]
         pub unsafe fn canGoBack(&self) -> bool;
 
+        /**
+          @abstract A Boolean value indicating whether there is a forward item in
+        the back-forward list that can be navigated to.
+        @discussion @link WKWebView @/link is key-value observing (KVO) compliant
+        for this property.
+        @seealso backForwardList.
+        */
         #[method(canGoForward)]
         pub unsafe fn canGoForward(&self) -> bool;
 
@@ -292,9 +358,19 @@ extern_methods!(
             completion_handler: &Block<(WKMediaPlaybackState,), ()>,
         );
 
+        /**
+          @abstract The state of camera capture on a web page.
+        @discussion @link WKWebView @/link is key-value observing (KVO) compliant
+        for this property.
+        */
         #[method(cameraCaptureState)]
         pub unsafe fn cameraCaptureState(&self) -> WKMediaCaptureState;
 
+        /**
+          @abstract The state of microphone capture on a web page.
+        @discussion @link WKWebView @/link is key-value observing (KVO) compliant
+        for this property.
+        */
         #[method(microphoneCaptureState)]
         pub unsafe fn microphoneCaptureState(&self) -> WKMediaCaptureState;
 
@@ -343,9 +419,19 @@ extern_methods!(
             completion_handler: &Block<(NonNull<NSData>, NonNull<NSError>), ()>,
         );
 
+        /**
+          @abstract A Boolean value indicating whether horizontal swipe gestures
+        will trigger back-forward list navigations.
+        @discussion The default value is NO.
+        */
         #[method(allowsBackForwardNavigationGestures)]
         pub unsafe fn allowsBackForwardNavigationGestures(&self) -> bool;
 
+        /**
+          @abstract A Boolean value indicating whether horizontal swipe gestures
+        will trigger back-forward list navigations.
+        @discussion The default value is NO.
+        */
         #[method(setAllowsBackForwardNavigationGestures:)]
         pub unsafe fn setAllowsBackForwardNavigationGestures(
             &self,
@@ -353,28 +439,66 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract The custom user agent string or nil if no custom user agent string has been set.
+        */
         #[method_id(@__retain_semantics Other customUserAgent)]
         pub unsafe fn customUserAgent(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract The custom user agent string or nil if no custom user agent string has been set.
+        */
         #[method(setCustomUserAgent:)]
         pub unsafe fn setCustomUserAgent(&self, custom_user_agent: Option<&NSString>);
 
+        /**
+          @abstract A Boolean value indicating whether link preview is allowed for any
+        links inside this WKWebView.
+        @discussion The default value is YES on Mac and iOS.
+        */
         #[method(allowsLinkPreview)]
         pub unsafe fn allowsLinkPreview(&self) -> bool;
 
+        /**
+          @abstract A Boolean value indicating whether link preview is allowed for any
+        links inside this WKWebView.
+        @discussion The default value is YES on Mac and iOS.
+        */
         #[method(setAllowsLinkPreview:)]
         pub unsafe fn setAllowsLinkPreview(&self, allows_link_preview: bool);
 
+        /**
+          @abstract A Boolean value indicating whether magnify gestures will
+        change the web view's magnification.
+        @discussion It is possible to set the magnification property even if
+        allowsMagnification is set to NO.
+        The default value is NO.
+        */
         #[method(allowsMagnification)]
         pub unsafe fn allowsMagnification(&self) -> bool;
 
+        /**
+          @abstract A Boolean value indicating whether magnify gestures will
+        change the web view's magnification.
+        @discussion It is possible to set the magnification property even if
+        allowsMagnification is set to NO.
+        The default value is NO.
+        */
         #[method(setAllowsMagnification:)]
         pub unsafe fn setAllowsMagnification(&self, allows_magnification: bool);
 
+        /**
+          @abstract The factor by which the viewport of the page is currently scaled.
+        @discussion The default value is 1.0.
+        */
         #[method(magnification)]
         pub unsafe fn magnification(&self) -> CGFloat;
 
+        /**
+          @abstract The factor by which the viewport of the page is currently scaled.
+        @discussion The default value is 1.0.
+        */
         #[method(setMagnification:)]
         pub unsafe fn setMagnification(&self, magnification: CGFloat);
 
@@ -385,9 +509,21 @@ extern_methods!(
             point: CGPoint,
         );
 
+        /**
+          @abstract The factor by which page content is scaled relative to the viewport.
+        @discussion The default value is 1.0.
+        Changing this value is equivalent to web content setting the CSS "zoom"
+        property on all page content.
+        */
         #[method(pageZoom)]
         pub unsafe fn pageZoom(&self) -> CGFloat;
 
+        /**
+          @abstract The factor by which page content is scaled relative to the viewport.
+        @discussion The default value is 1.0.
+        Changing this value is equivalent to web content setting the CSS "zoom"
+        property on all page content.
+        */
         #[method(setPageZoom:)]
         pub unsafe fn setPageZoom(&self, page_zoom: CGFloat);
 
@@ -425,16 +561,38 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract The media type for the WKWebView
+        @discussion The value of mediaType will override the normal value of the CSS media property.
+        Setting the value to nil will restore the normal value.
+        The default value is nil.
+        */
         #[method_id(@__retain_semantics Other mediaType)]
         pub unsafe fn mediaType(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          @abstract The media type for the WKWebView
+        @discussion The value of mediaType will override the normal value of the CSS media property.
+        Setting the value to nil will restore the normal value.
+        The default value is nil.
+        */
         #[method(setMediaType:)]
         pub unsafe fn setMediaType(&self, media_type: Option<&NSString>);
 
+        /**
+          @abstract The interaction state for the WKWebView
+        @discussion The interaction state (back-forward list, currently loaded page, scroll position, form data...) for the WKWebView, which
+        can be retrieved and set on another WKWebView to restore state.
+        */
         #[method_id(@__retain_semantics Other interactionState)]
         pub unsafe fn interactionState(&self) -> Option<Id<Object>>;
 
+        /**
+          @abstract The interaction state for the WKWebView
+        @discussion The interaction state (back-forward list, currently loaded page, scroll position, form data...) for the WKWebView, which
+        can be retrieved and set on another WKWebView to restore state.
+        */
         #[method(setInteractionState:)]
         pub unsafe fn setInteractionState(&self, interaction_state: Option<&Object>);
 
@@ -526,6 +684,15 @@ extern_methods!(
             under_page_background_color: Option<&NSColor>,
         );
 
+        /**
+          @abstract A WKWebView's fullscreen state.
+        @discussion @link WKWebView @link is key-value observing (KVO) compliant for this property. When an element
+        in the WKWebView enters fullscreen, WebKit will replace the WKWebView in the application view hierarchy with
+        a "placeholder" view, and move the WKWebView into a fullscreen window. When the element exits fullscreen later,
+        the WKWebView will be moved back into the application view hierarchy. An application may need to adjust/restore
+        its native UI components when the fullscreen state changes. The application should observe the fullscreenState
+        property of WKWebView in order to receive notifications regarding the fullscreen state change.
+        */
         #[method(fullscreenState)]
         pub unsafe fn fullscreenState(&self) -> WKFullscreenState;
 

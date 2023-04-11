@@ -7,6 +7,13 @@ use crate::Foundation::*;
 
 ns_closed_enum!(
     #[underlying(NSInteger)]
+    /**
+      CLRegionState
+
+     Discussion:
+        Represents the current state of the device with reference to a region.
+
+    */
     pub enum CLRegionState {
         CLRegionStateUnknown = 0,
         CLRegionStateInside = 1,
@@ -16,6 +23,13 @@ ns_closed_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      CLProximity
+
+     Discussion:
+        Represents the current proximity of an entity.
+
+    */
     pub enum CLProximity {
         CLProximityUnknown = 0,
         CLProximityImmediate = 1,
@@ -27,6 +41,12 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreLocation_CLRegion")]
+    /**
+       CLRegion
+
+      Discussion:
+        A logical area.
+    */
     pub struct CLRegion;
 
     #[cfg(feature = "CoreLocation_CLRegion")]
@@ -36,15 +56,39 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreLocation_CLRegion")]
+/**
+   CLRegion
+
+  Discussion:
+    A logical area.
+*/
 unsafe impl NSCoding for CLRegion {}
 
 #[cfg(feature = "CoreLocation_CLRegion")]
+/**
+   CLRegion
+
+  Discussion:
+    A logical area.
+*/
 unsafe impl NSObjectProtocol for CLRegion {}
 
 #[cfg(feature = "CoreLocation_CLRegion")]
+/**
+   CLRegion
+
+  Discussion:
+    A logical area.
+*/
 unsafe impl NSSecureCoding for CLRegion {}
 
 extern_methods!(
+    /**
+       CLRegion
+
+      Discussion:
+        A logical area.
+    */
     #[cfg(feature = "CoreLocation_CLRegion")]
     unsafe impl CLRegion {
         #[cfg(feature = "Foundation_NSString")]
@@ -57,27 +101,77 @@ extern_methods!(
             identifier: &NSString,
         ) -> Id<Self>;
 
+        /**
+           center
+
+          Discussion:
+            Returns the coordinate of the center of the region.
+
+            This method has been deprecated, please see CLCircularRegion.
+        */
         #[deprecated = "Please see CLCircularRegion"]
         #[method(center)]
         pub unsafe fn center(&self) -> CLLocationCoordinate2D;
 
+        /**
+           radius
+
+          Discussion:
+            Returns the radius of the region.
+
+            This method has been deprecated, please see CLCircularRegion.
+        */
         #[deprecated = "Please see CLCircularRegion"]
         #[method(radius)]
         pub unsafe fn radius(&self) -> CLLocationDistance;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+           identifier
+
+          Discussion:
+            Returns the region's identifier.
+        */
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Id<NSString>;
 
+        /**
+           notifyOnEntry
+
+          Discussion:
+            App will be launched and the delegate will be notified via locationManager:didEnterRegion:
+            when the user enters the region. By default, this is YES.
+        */
         #[method(notifyOnEntry)]
         pub unsafe fn notifyOnEntry(&self) -> bool;
 
+        /**
+           notifyOnEntry
+
+          Discussion:
+            App will be launched and the delegate will be notified via locationManager:didEnterRegion:
+            when the user enters the region. By default, this is YES.
+        */
         #[method(setNotifyOnEntry:)]
         pub unsafe fn setNotifyOnEntry(&self, notify_on_entry: bool);
 
+        /**
+           notifyOnExit
+
+          Discussion:
+            App will be launched and the delegate will be notified via locationManager:didExitRegion:
+            when the user exits the region. By default, this is YES.
+        */
         #[method(notifyOnExit)]
         pub unsafe fn notifyOnExit(&self) -> bool;
 
+        /**
+           notifyOnExit
+
+          Discussion:
+            App will be launched and the delegate will be notified via locationManager:didExitRegion:
+            when the user exits the region. By default, this is YES.
+        */
         #[method(setNotifyOnExit:)]
         pub unsafe fn setNotifyOnExit(&self, notify_on_exit: bool);
 

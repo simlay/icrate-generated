@@ -6,6 +6,29 @@ use crate::Metal::*;
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+     @enum MTLCommandBufferStatus
+
+    @abstract MTLCommandBufferStatus reports the current stage in the lifetime of MTLCommandBuffer, as it proceeds to enqueued, committed, scheduled, and completed.
+
+    @constant MTLCommandBufferStatusNotEnqueued
+    The command buffer has not been enqueued yet.
+
+    @constant MTLCommandBufferStatusEnqueued
+    This command buffer is enqueued, but not committed.
+
+    @constant MTLCommandBufferStatusCommitted
+    Commited to its command queue, but not yet scheduled for execution.
+
+    @constant MTLCommandBufferStatusScheduled
+    All dependencies have been resolved and the command buffer has been scheduled for execution.
+
+    @constant MTLCommandBufferStatusCompleted
+    The command buffer has finished executing successfully: any blocks set with -addCompletedHandler: may now be called.
+
+    @constant MTLCommandBufferStatusError
+    Execution of the command buffer was aborted due to an error during execution.  Check -error for more information.
+    */
     pub enum MTLCommandBufferStatus {
         MTLCommandBufferStatusNotEnqueued = 0,
         MTLCommandBufferStatusEnqueued = 1,
@@ -20,6 +43,40 @@ extern_static!(MTLCommandBufferErrorDomain: &'static NSErrorDomain);
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+     @enum MTLCommandBufferError
+    @abstract Error codes that can be found in MTLCommandBuffer.error
+
+    @constant MTLCommandBufferErrorInternal
+    An internal error that doesn't fit into the other categories. The actual low level error code is encoded in the local description.
+
+    @constant MTLCommandBufferErrorTimeout
+    Execution of this command buffer took too long, execution of this command was interrupted and aborted.
+
+    @constant MTLCommandBufferErrorPageFault
+    Execution of this command buffer generated an unserviceable GPU page fault. This can caused by buffer read write attribute mismatch or out of boundary access.
+
+    @constant MTLCommandBufferErrorAccessRevoked
+    Access to this device has been revoked because this client has been responsible for too many timeouts or hangs.
+
+    @constant MTLCommandBufferErrorNotPermitted
+    This process does not have access to use this device.
+
+    @constant MTLCommandBufferErrorOutOfMemory
+    Insufficient memory was available to execute this command buffer.
+
+    @constant MTLCommandBufferErrorInvalidResource
+    The command buffer referenced an invalid resource.  This is most commonly caused when the caller deletes a resource before executing a command buffer that refers to it.
+
+    @constant MTLCommandBufferErrorMemoryless
+    One or more internal resources limits reached that prevent using memoryless render pass attachments. See error string for more detail.
+
+    @constant MTLCommandBufferErrorDeviceRemoved
+    The device was physically removed before the command could finish execution
+
+    @constant MTLCommandBufferErrorStackOverflow
+    Execution of the command buffer was stopped due to Stack Overflow Exception. [MTLComputePipelineDescriptor maxCallStackDepth] setting needs to be checked.
+    */
     pub enum MTLCommandBufferError {
         MTLCommandBufferErrorNone = 0,
         MTLCommandBufferErrorInternal = 1,
@@ -41,6 +98,15 @@ extern_static!(MTLCommandBufferEncoderInfoErrorKey: &'static NSErrorUserInfoKey)
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+     @abstract Options for controlling the error reporting for Metal command buffer objects.
+
+    @constant MTLCommandBufferErrorOptionNone
+    No special error reporting.
+
+    @constant MTLCommandBufferErrorOptionEncoderExecutionStatus
+    Provide the execution status of the individual encoders within the command buffer. In the event of a command buffer error, populate the `userInfo` dictionary of the command buffer's NSError parameter, see MTLCommandBufferEncoderInfoErrorKey and MTLCommandBufferEncoderInfo. Note that enabling this error reporting option may increase CPU, GPU, and/or memory overhead on some platforms; testing for impact is suggested.
+    */
     pub enum MTLCommandBufferErrorOption {
         MTLCommandBufferErrorOptionNone = 0,
         MTLCommandBufferErrorOptionEncoderExecutionStatus = 1 << 0,
@@ -49,6 +115,24 @@ ns_options!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @abstract The error states for a Metal command encoder after command buffer execution.
+
+    @constant MTLCommandEncoderErrorStateUnknown
+    The state of the commands associated with the encoder is unknown (the error information was likely not requested).
+
+    @constant MTLCommandEncoderErrorStateCompleted
+    The commands associated with the encoder were completed.
+
+    @constant MTLCommandEncoderErrorStateAffected
+    The commands associated with the encoder were affected by an error, which may or may not have been caused by the commands themselves, and failed to execute in full.
+
+    @constant MTLCommandEncoderErrorStatePending
+    The commands associated with the encoder never started execution.
+
+    @constant MTLCommandEncoderErrorStateFaulted
+    The commands associated with the encoder caused an error.
+    */
     pub enum MTLCommandEncoderErrorState {
         MTLCommandEncoderErrorStateUnknown = 0,
         MTLCommandEncoderErrorStateCompleted = 1,
@@ -61,6 +145,10 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLCommandBufferDescriptor")]
+    /**
+     @class MTLCommandBufferDescriptor
+    @abstract An object that you use to configure new Metal command buffer objects.
+    */
     pub struct MTLCommandBufferDescriptor;
 
     #[cfg(feature = "Metal_MTLCommandBufferDescriptor")]
@@ -70,35 +158,71 @@ extern_class!(
 );
 
 #[cfg(feature = "Metal_MTLCommandBufferDescriptor")]
+/**
+ @class MTLCommandBufferDescriptor
+@abstract An object that you use to configure new Metal command buffer objects.
+*/
 unsafe impl NSObjectProtocol for MTLCommandBufferDescriptor {}
 
 extern_methods!(
+    /**
+     @class MTLCommandBufferDescriptor
+    @abstract An object that you use to configure new Metal command buffer objects.
+    */
     #[cfg(feature = "Metal_MTLCommandBufferDescriptor")]
     unsafe impl MTLCommandBufferDescriptor {
+        /**
+         @property retainedReferences
+        @abstract If YES, the created command buffer holds strong references to objects needed for it to execute. If NO, the created command buffer does not hold strong references to objects needed for it to execute.
+        */
         #[method(retainedReferences)]
         pub unsafe fn retainedReferences(&self) -> bool;
 
+        /**
+         @property retainedReferences
+        @abstract If YES, the created command buffer holds strong references to objects needed for it to execute. If NO, the created command buffer does not hold strong references to objects needed for it to execute.
+        */
         #[method(setRetainedReferences:)]
         pub unsafe fn setRetainedReferences(&self, retained_references: bool);
 
+        /**
+         @property errorOptions
+        @abstract A set of options to influence the error reporting of the created command buffer. See MTLCommandBufferErrorOption.
+        */
         #[method(errorOptions)]
         pub unsafe fn errorOptions(&self) -> MTLCommandBufferErrorOption;
 
+        /**
+         @property errorOptions
+        @abstract A set of options to influence the error reporting of the created command buffer. See MTLCommandBufferErrorOption.
+        */
         #[method(setErrorOptions:)]
         pub unsafe fn setErrorOptions(&self, error_options: MTLCommandBufferErrorOption);
     }
 );
 
 extern_protocol!(
+    /**
+     @abstract Provides execution status information for a Metal command encoder.
+    */
     pub unsafe trait MTLCommandBufferEncoderInfo: NSObjectProtocol {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract The debug label given to the associated Metal command encoder at command buffer submission.
+        */
         #[method_id(@__retain_semantics Other label)]
         unsafe fn label(&self) -> Id<NSString>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+         @abstract The debug signposts inserted into the associated Metal command encoder.
+        */
         #[method_id(@__retain_semantics Other debugSignposts)]
         unsafe fn debugSignposts(&self) -> Id<NSArray<NSString>>;
 
+        /**
+         @abstract The error state of the associated Metal command encoder.
+        */
         #[method(errorState)]
         unsafe fn errorState(&self) -> MTLCommandEncoderErrorState;
     }
@@ -110,6 +234,17 @@ pub type MTLCommandBufferHandler = *mut Block<(NonNull<ProtocolObject<dyn MTLCom
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+     @enum MTLDispatchType
+
+    @abstract MTLDispatchType Describes how a command encoder will execute dispatched work.
+
+    @constant MTLDispatchTypeSerial
+    Command encoder dispatches are executed in dispatched order.
+
+    @constant MTLDispatchTypeConcurrent
+    Command encoder dispatches are executed in parallel with each other.
+    */
     pub enum MTLDispatchType {
         MTLDispatchTypeSerial = 0,
         MTLDispatchTypeConcurrent = 1,
@@ -117,24 +252,51 @@ ns_enum!(
 );
 
 extern_protocol!(
+    /**
+     @protocol MTLCommandBuffer
+    @abstract A serial list of commands for the device to execute.
+    */
     pub unsafe trait MTLCommandBuffer: NSObjectProtocol {
+        /**
+         @property device
+        @abstract The device this resource was created against.
+        */
         #[method_id(@__retain_semantics Other device)]
         unsafe fn device(&self) -> Id<ProtocolObject<dyn MTLDevice>>;
 
+        /**
+         @property commandQueue
+        @abstract The command queue this command buffer was created from.
+        */
         #[method_id(@__retain_semantics Other commandQueue)]
         unsafe fn commandQueue(&self) -> Id<ProtocolObject<dyn MTLCommandQueue>>;
 
+        /**
+         @property retainedReferences
+        @abstract If YES, this command buffer holds strong references to objects needed to execute this command buffer.
+        */
         #[method(retainedReferences)]
         unsafe fn retainedReferences(&self) -> bool;
 
+        /**
+         @abstract The set of options configuring the error reporting of the created command buffer.
+        */
         #[method(errorOptions)]
         unsafe fn errorOptions(&self) -> MTLCommandBufferErrorOption;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property label
+        @abstract A string to help identify this object.
+        */
         #[method_id(@__retain_semantics Other label)]
         fn label(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @property label
+        @abstract A string to help identify this object.
+        */
         #[method(setLabel:)]
         fn setLabel(&self, label: Option<&NSString>);
 
@@ -144,12 +306,24 @@ extern_protocol!(
         #[method(kernelEndTime)]
         unsafe fn kernelEndTime(&self) -> CFTimeInterval;
 
+        /**
+         @property logs
+        @abstract Logs generated by the command buffer during execution of the GPU commands. Valid after GPU execution is completed
+        */
         #[method_id(@__retain_semantics Other logs)]
         unsafe fn logs(&self) -> Id<ProtocolObject<dyn MTLLogContainer>>;
 
+        /**
+         @property GPUStartTime
+        @abstract The host time in seconds that GPU starts executing this command buffer. Returns zero if it has not started. This usually can be called in command buffer completion handler.
+        */
         #[method(GPUStartTime)]
         unsafe fn GPUStartTime(&self) -> CFTimeInterval;
 
+        /**
+         @property GPUEndTime
+        @abstract The host time in seconds that GPU finishes executing this command buffer. Returns zero if CPU has not received completion notification. This usually can be called in command buffer completion handler.
+        */
         #[method(GPUEndTime)]
         unsafe fn GPUEndTime(&self) -> CFTimeInterval;
 
@@ -188,10 +362,18 @@ extern_protocol!(
         #[method(waitUntilCompleted)]
         unsafe fn waitUntilCompleted(&self);
 
+        /**
+         @property status
+        @abstract status reports the current stage in the lifetime of MTLCommandBuffer, as it proceeds to enqueued, committed, scheduled, and completed.
+        */
         #[method(status)]
         fn status(&self) -> MTLCommandBufferStatus;
 
         #[cfg(feature = "Foundation_NSError")]
+        /**
+         @property error
+        @abstract If an error occurred during execution, the NSError may contain more details about the problem.
+        */
         #[method_id(@__retain_semantics Other error)]
         unsafe fn error(&self) -> Option<Id<NSError>>;
 

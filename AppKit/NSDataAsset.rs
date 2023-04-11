@@ -10,6 +10,9 @@ pub type NSDataAssetName = NSString;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSDataAsset")]
+    /**
+      An NSDataAsset instance provides access to a data entry in an asset catalog such as Images.xcassets. Data entries and image entries in asset catalogs do not share the same namespace. For example, if an asset catalog contains an image entry named @"foo" but no data entry named @"foo", [[NSDataAsset alloc] initWithName:@"foo"] will return nil.
+    */
     pub struct NSDataAsset;
 
     #[cfg(feature = "AppKit_NSDataAsset")]
@@ -19,9 +22,15 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSDataAsset")]
+/**
+  An NSDataAsset instance provides access to a data entry in an asset catalog such as Images.xcassets. Data entries and image entries in asset catalogs do not share the same namespace. For example, if an asset catalog contains an image entry named @"foo" but no data entry named @"foo", [[NSDataAsset alloc] initWithName:@"foo"] will return nil.
+*/
 unsafe impl NSObjectProtocol for NSDataAsset {}
 
 extern_methods!(
+    /**
+      An NSDataAsset instance provides access to a data entry in an asset catalog such as Images.xcassets. Data entries and image entries in asset catalogs do not share the same namespace. For example, if an asset catalog contains an image entry named @"foo" but no data entry named @"foo", [[NSDataAsset alloc] initWithName:@"foo"] will return nil.
+    */
     #[cfg(feature = "AppKit_NSDataAsset")]
     unsafe impl NSDataAsset {
         #[method_id(@__retain_semantics Init init)]
@@ -41,14 +50,23 @@ extern_methods!(
             bundle: &NSBundle,
         ) -> Option<Id<Self>>;
 
+        /**
+          The name used to reference the data asset
+        */
         #[method_id(@__retain_semantics Other name)]
         pub unsafe fn name(&self) -> Id<NSDataAssetName>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          The data for this asset, as stored in the asset catalog
+        */
         #[method_id(@__retain_semantics Other data)]
         pub unsafe fn data(&self) -> Id<NSData>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The Uniform Type Identifier for this data object.
+        */
         #[method_id(@__retain_semantics Other typeIdentifier)]
         pub unsafe fn typeIdentifier(&self) -> Id<NSString>;
     }

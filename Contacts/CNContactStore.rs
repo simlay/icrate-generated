@@ -6,6 +6,9 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      @abstract The entities the user can grant access to.
+    */
     pub enum CNEntityType {
         CNEntityTypeContacts = 0,
     }
@@ -13,6 +16,9 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      @abstract The authorization the user has given the application to access an entity type.
+    */
     pub enum CNAuthorizationStatus {
         CNAuthorizationStatusNotDetermined = 0,
         CNAuthorizationStatusRestricted = 1,
@@ -24,6 +30,17 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNContactStore")]
+    /**
+      @abstract Provides methods to fetch and save contacts.
+
+     @discussion The CNContactStore is a thread safe class that can fetch and save contacts, fetch and save groups, and fetch containers.
+
+     @note Some good practices are:
+     1) Only fetch contact properties that will be used.
+     2) When fetching all contacts and caching the results, first fetch all contact identifiers only. Then fetch batches of detailed contacts by identifiers as you need them.
+     3) To aggregate several contact fetches collect a set of unique contact identifiers from the fetches. Then fetch batches of detailed contacts by identifiers.
+     4) When CNContactStoreDidChangeNotification is posted, if you cache any fetched contacts/groups/containers then they must be refetched and the old cached objects released.
+    */
     pub struct CNContactStore;
 
     #[cfg(feature = "Contacts_CNContactStore")]
@@ -33,9 +50,31 @@ extern_class!(
 );
 
 #[cfg(feature = "Contacts_CNContactStore")]
+/**
+  @abstract Provides methods to fetch and save contacts.
+
+ @discussion The CNContactStore is a thread safe class that can fetch and save contacts, fetch and save groups, and fetch containers.
+
+ @note Some good practices are:
+ 1) Only fetch contact properties that will be used.
+ 2) When fetching all contacts and caching the results, first fetch all contact identifiers only. Then fetch batches of detailed contacts by identifiers as you need them.
+ 3) To aggregate several contact fetches collect a set of unique contact identifiers from the fetches. Then fetch batches of detailed contacts by identifiers.
+ 4) When CNContactStoreDidChangeNotification is posted, if you cache any fetched contacts/groups/containers then they must be refetched and the old cached objects released.
+*/
 unsafe impl NSObjectProtocol for CNContactStore {}
 
 extern_methods!(
+    /**
+      @abstract Provides methods to fetch and save contacts.
+
+     @discussion The CNContactStore is a thread safe class that can fetch and save contacts, fetch and save groups, and fetch containers.
+
+     @note Some good practices are:
+     1) Only fetch contact properties that will be used.
+     2) When fetching all contacts and caching the results, first fetch all contact identifiers only. Then fetch batches of detailed contacts by identifiers as you need them.
+     3) To aggregate several contact fetches collect a set of unique contact identifiers from the fetches. Then fetch batches of detailed contacts by identifiers.
+     4) When CNContactStoreDidChangeNotification is posted, if you cache any fetched contacts/groups/containers then they must be refetched and the old cached objects released.
+    */
     #[cfg(feature = "Contacts_CNContactStore")]
     unsafe impl CNContactStore {
         #[method(authorizationStatusForEntityType:)]
@@ -159,6 +198,11 @@ extern_methods!(
         ) -> Result<(), Id<NSError>>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+           @abstract The current history token.
+
+          @discussion Retrieve the current history token. If you are fetching contacts or change history events, you should use the token on the @c CNFetchResult instead.
+        */
         #[method_id(@__retain_semantics Other currentHistoryToken)]
         pub unsafe fn currentHistoryToken(&self) -> Option<Id<NSData>>;
 

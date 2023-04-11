@@ -7,6 +7,11 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreData_NSIncrementalStore")]
+    /**
+      Abstract class defining the API through which Core Data communicates with a store.
+     This API is designed to allow users to create persistent stores which load and save
+     data incrementally, allowing for the management of large and/or shared datasets.
+    */
     pub struct NSIncrementalStore;
 
     #[cfg(feature = "CoreData_NSIncrementalStore")]
@@ -17,9 +22,19 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreData_NSIncrementalStore")]
+/**
+  Abstract class defining the API through which Core Data communicates with a store.
+ This API is designed to allow users to create persistent stores which load and save
+ data incrementally, allowing for the management of large and/or shared datasets.
+*/
 unsafe impl NSObjectProtocol for NSIncrementalStore {}
 
 extern_methods!(
+    /**
+      Abstract class defining the API through which Core Data communicates with a store.
+     This API is designed to allow users to create persistent stores which load and save
+     data incrementally, allowing for the management of large and/or shared datasets.
+    */
     #[cfg(feature = "CoreData_NSIncrementalStore")]
     unsafe impl NSIncrementalStore {
         #[cfg(feature = "Foundation_NSError")]
@@ -117,6 +132,11 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSPersistentStore`
+    /**
+      Abstract class defining the API through which Core Data communicates with a store.
+     This API is designed to allow users to create persistent stores which load and save
+     data incrementally, allowing for the management of large and/or shared datasets.
+    */
     #[cfg(feature = "CoreData_NSIncrementalStore")]
     unsafe impl NSIncrementalStore {
         #[cfg(all(

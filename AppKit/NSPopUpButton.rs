@@ -61,16 +61,28 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "AppKit_NSMenu")]
+        /**
+          Overrides behavior of NSView.  This is the menu for the popup, not a context menu.  PopUpButtons do not have context menus.
+        */
         #[method_id(@__retain_semantics Other menu)]
         pub unsafe fn menu(&self) -> Option<Id<NSMenu>>;
 
         #[cfg(feature = "AppKit_NSMenu")]
+        /**
+          Overrides behavior of NSView.  This is the menu for the popup, not a context menu.  PopUpButtons do not have context menus.
+        */
         #[method(setMenu:)]
         pub unsafe fn setMenu(&self, menu: Option<&NSMenu>);
 
+        /**
+          Behavior settings
+        */
         #[method(pullsDown)]
         pub unsafe fn pullsDown(&self) -> bool;
 
+        /**
+          Behavior settings
+        */
         #[method(setPullsDown:)]
         pub unsafe fn setPullsDown(&self, pulls_down: bool);
 
@@ -109,6 +121,9 @@ extern_methods!(
         pub unsafe fn removeAllItems(&self);
 
         #[cfg(all(feature = "AppKit_NSMenuItem", feature = "Foundation_NSArray"))]
+        /**
+          Accessing the items
+        */
         #[method_id(@__retain_semantics Other itemArray)]
         pub unsafe fn itemArray(&self) -> Id<NSArray<NSMenuItem>>;
 

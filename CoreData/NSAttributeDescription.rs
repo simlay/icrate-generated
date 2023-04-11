@@ -6,6 +6,9 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      types explicitly distinguish between bit sizes to ensure data store independence of the underlying operating system
+    */
     pub enum NSAttributeType {
         NSUndefinedAttributeType = 0,
         NSInteger16AttributeType = 100,
@@ -28,6 +31,9 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreData_NSAttributeDescription")]
+    /**
+      Attributes represent individual values like strings, numbers, dates, etc.
+    */
     pub struct NSAttributeDescription;
 
     #[cfg(feature = "CoreData_NSAttributeDescription")]
@@ -38,17 +44,32 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreData_NSAttributeDescription")]
+/**
+  Attributes represent individual values like strings, numbers, dates, etc.
+*/
 unsafe impl NSCoding for NSAttributeDescription {}
 
 #[cfg(feature = "CoreData_NSAttributeDescription")]
+/**
+  Attributes represent individual values like strings, numbers, dates, etc.
+*/
 unsafe impl NSObjectProtocol for NSAttributeDescription {}
 
 extern_methods!(
+    /**
+      Attributes represent individual values like strings, numbers, dates, etc.
+    */
     #[cfg(feature = "CoreData_NSAttributeDescription")]
     unsafe impl NSAttributeDescription {
+        /**
+          NSUndefinedAttributeType is valid for transient properties - Core Data will still track the property as an id value and register undo/redo actions, etc. NSUndefinedAttributeType is illegal for non-transient properties.
+        */
         #[method(attributeType)]
         pub unsafe fn attributeType(&self) -> NSAttributeType;
 
+        /**
+          NSUndefinedAttributeType is valid for transient properties - Core Data will still track the property as an id value and register undo/redo actions, etc. NSUndefinedAttributeType is illegal for non-transient properties.
+        */
         #[method(setAttributeType:)]
         pub unsafe fn setAttributeType(&self, attribute_type: NSAttributeType);
 
@@ -63,21 +84,36 @@ extern_methods!(
             attribute_value_class_name: Option<&NSString>,
         );
 
+        /**
+          value is retained and not copied
+        */
         #[method_id(@__retain_semantics Other defaultValue)]
         pub unsafe fn defaultValue(&self) -> Option<Id<Object>>;
 
+        /**
+          value is retained and not copied
+        */
         #[method(setDefaultValue:)]
         pub unsafe fn setDefaultValue(&self, default_value: Option<&Object>);
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          Returns the version hash for the attribute.  This value includes the versionHash information from the NSPropertyDescription superclass, and the attribute type.
+        */
         #[method_id(@__retain_semantics Other versionHash)]
         pub unsafe fn versionHash(&self) -> Id<NSData>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The name of the transformer used to convert a NSTransformedAttributeType.  The transformer must output NSData from transformValue and allow reverse transformation.  If this value is not set, or set to nil, Core Data will default to using a transformer which uses NSCoding to archive/unarchive the attribute value.
+        */
         #[method_id(@__retain_semantics Other valueTransformerName)]
         pub unsafe fn valueTransformerName(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The name of the transformer used to convert a NSTransformedAttributeType.  The transformer must output NSData from transformValue and allow reverse transformation.  If this value is not set, or set to nil, Core Data will default to using a transformer which uses NSCoding to archive/unarchive the attribute value.
+        */
         #[method(setValueTransformerName:)]
         pub unsafe fn setValueTransformerName(&self, value_transformer_name: Option<&NSString>);
 
@@ -90,18 +126,42 @@ extern_methods!(
             allows_external_binary_data_storage: bool,
         );
 
+        /**
+          Indicates if the value of the attribute should be captured on delete when Persistent History is enabled
+        */
         #[method(preservesValueInHistoryOnDeletion)]
         pub unsafe fn preservesValueInHistoryOnDeletion(&self) -> bool;
 
+        /**
+          Indicates if the value of the attribute should be captured on delete when Persistent History is enabled
+        */
         #[method(setPreservesValueInHistoryOnDeletion:)]
         pub unsafe fn setPreservesValueInHistoryOnDeletion(
             &self,
             preserves_value_in_history_on_deletion: bool,
         );
 
+        /**
+          This property can be set to enable encryption-at-rest on data stored in CloudKit servers.
+
+         There are several restrictions on how clients can use this property:
+          1. Attributes to be encrypted must be new additions to the CloudKit schema. Attributes that already exist in the production schema cannot be changed to support encryption.
+          2. Attributes cannot (ever) change their encryption state in the CloudKit schema. Once something is encrypted (or not) it will forever be so.
+
+         Note: This property does not affect the data in the persistent store. Local file encryption should continue to be managed by using NSFileProtection and other standard platform security mechanisms.
+        */
         #[method(allowsCloudEncryption)]
         pub unsafe fn allowsCloudEncryption(&self) -> bool;
 
+        /**
+          This property can be set to enable encryption-at-rest on data stored in CloudKit servers.
+
+         There are several restrictions on how clients can use this property:
+          1. Attributes to be encrypted must be new additions to the CloudKit schema. Attributes that already exist in the production schema cannot be changed to support encryption.
+          2. Attributes cannot (ever) change their encryption state in the CloudKit schema. Once something is encrypted (or not) it will forever be so.
+
+         Note: This property does not affect the data in the persistent store. Local file encryption should continue to be managed by using NSFileProtection and other standard platform security mechanisms.
+        */
         #[method(setAllowsCloudEncryption:)]
         pub unsafe fn setAllowsCloudEncryption(&self, allows_cloud_encryption: bool);
     }

@@ -9,9 +9,16 @@ use crate::MapKit::*;
 
 extern_protocol!(
     pub unsafe trait MKOverlay: MKAnnotation {
+        /**
+          From MKAnnotation, for areas this should return the centroid of the area.
+        */
         #[method(coordinate)]
         unsafe fn coordinate(&self) -> CLLocationCoordinate2D;
 
+        /**
+          boundingMapRect should be the smallest rectangle that completely contains the overlay.
+         For overlays that span the 180th meridian, boundingMapRect should have either a negative MinX or a MaxX that is greater than MKMapSizeWorld.width.
+        */
         #[method(boundingMapRect)]
         unsafe fn boundingMapRect(&self) -> MKMapRect;
 

@@ -5,6 +5,11 @@ use crate::Contacts::*;
 use crate::Foundation::*;
 
 extern_methods!(
+    /**
+      @abstract The predicates to match groups against.
+
+     @discussion Can only use these predicates with CNContactStore.
+    */
     /// Predicates
     #[cfg(feature = "Contacts_CNGroup")]
     unsafe impl CNGroup {

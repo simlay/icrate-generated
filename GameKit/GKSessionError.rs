@@ -9,6 +9,9 @@ extern_static!(GKSessionErrorDomain: &'static NSString);
 
 ns_enum!(
     #[underlying(c_int)]
+    /**
+      code
+    */
     pub enum GKSessionError {
         GKSessionInvalidParameterError = 30500,
         GKSessionPeerNotFoundError = 30501,

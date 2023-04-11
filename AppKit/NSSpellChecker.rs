@@ -31,6 +31,9 @@ extern_static!(NSTextCheckingSelectedRangeKey: &'static NSTextCheckingOptionKey)
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      When a correction is automatically proposed, the user may respond in one of several ways.  Clients may report this to the spell checker so that it can learn from the user's response and adjust future correction behavior accordingly.  The tag, language, word, and correction should match those from the original correction result, so that the spellchecker can match them.  This implies that in order to record responses properly, clients must store the original word and original correction at least from the point at which the user accepts it until the user edits or reverts it.
+    */
     pub enum NSCorrectionResponse {
         NSCorrectionResponseNone = 0,
         NSCorrectionResponseAccepted = 1,
@@ -43,6 +46,9 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      Client views may use the NSCorrectionIndicator APIs to display a suitable user interface to indicate a correction intended to be made, and allowing the user to accept or reject it; or once a correction has been made, to indicate the original form, allowing the user to revert back to it; or to display multiple alternatives from which the user may choose one if desired.  The primaryString is the first string displayed, a correction or reversion according to the type of indicator; the alternativeStrings should be additional alternatives, if available.  Only one indicator at a time may be displayed for a given view, and the only thing a client may do with the indicator after displaying it is to dismiss it.  When an indicator is dismissed, whether by user action or by the view, the completion block will be called, with the acceptedString argument being either the replacement string accepted by the user, or nil if the user has not accepted a replacement.
+    */
     pub enum NSCorrectionIndicatorType {
         NSCorrectionIndicatorTypeDefault = 0,
         NSCorrectionIndicatorTypeReversion = 1,
@@ -53,6 +59,13 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSSpellChecker")]
+    /**
+      The NSSpellChecker object is used by a client (e.g. a document in an application) to spell-check a given NSString.  There is only one NSSpellChecker instance per application (since spell-checking is interactive and you only have one mouse and one keyboard).
+
+    The string being spell-checked need only be valid for the duration of the call to checkSpellingOfString:... or countWordsInString:.
+
+    The usual usage of this is to implement a checkSpelling: method in an object that has text to check, then, upon receiving checkSpelling:, the object calls [[NSSpellChecker sharedInstance] checkSpellingOfString:...] with an NSString object consisting of the text that should be checked.  The caller is responsible for selecting the misspelled word that is found and for updating the panel UI if desired with the updateSpellPanelWithMisspelledWord: method.
+    */
     pub struct NSSpellChecker;
 
     #[cfg(feature = "AppKit_NSSpellChecker")]
@@ -62,11 +75,28 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSSpellChecker")]
+/**
+  The NSSpellChecker object is used by a client (e.g. a document in an application) to spell-check a given NSString.  There is only one NSSpellChecker instance per application (since spell-checking is interactive and you only have one mouse and one keyboard).
+
+The string being spell-checked need only be valid for the duration of the call to checkSpellingOfString:... or countWordsInString:.
+
+The usual usage of this is to implement a checkSpelling: method in an object that has text to check, then, upon receiving checkSpelling:, the object calls [[NSSpellChecker sharedInstance] checkSpellingOfString:...] with an NSString object consisting of the text that should be checked.  The caller is responsible for selecting the misspelled word that is found and for updating the panel UI if desired with the updateSpellPanelWithMisspelledWord: method.
+*/
 unsafe impl NSObjectProtocol for NSSpellChecker {}
 
 extern_methods!(
+    /**
+      The NSSpellChecker object is used by a client (e.g. a document in an application) to spell-check a given NSString.  There is only one NSSpellChecker instance per application (since spell-checking is interactive and you only have one mouse and one keyboard).
+
+    The string being spell-checked need only be valid for the duration of the call to checkSpellingOfString:... or countWordsInString:.
+
+    The usual usage of this is to implement a checkSpelling: method in an object that has text to check, then, upon receiving checkSpelling:, the object calls [[NSSpellChecker sharedInstance] checkSpellingOfString:...] with an NSString object consisting of the text that should be checked.  The caller is responsible for selecting the misspelled word that is found and for updating the panel UI if desired with the updateSpellPanelWithMisspelledWord: method.
+    */
     #[cfg(feature = "AppKit_NSSpellChecker")]
     unsafe impl NSSpellChecker {
+        /**
+          Only one per application.
+        */
         #[method_id(@__retain_semantics Other sharedSpellChecker)]
         pub unsafe fn sharedSpellChecker() -> Id<NSSpellChecker>;
 
@@ -227,6 +257,9 @@ extern_methods!(
         );
 
         #[cfg(feature = "AppKit_NSPanel")]
+        /**
+          Set and get attributes of the spelling and grammar panel.
+        */
         #[method_id(@__retain_semantics Other spellingPanel)]
         pub unsafe fn spellingPanel(&self) -> Id<NSPanel>;
 
@@ -239,6 +272,9 @@ extern_methods!(
         pub unsafe fn setAccessoryView(&self, accessory_view: Option<&NSView>);
 
         #[cfg(feature = "AppKit_NSPanel")]
+        /**
+          Set and get attributes of the substitutions panel.
+        */
         #[method_id(@__retain_semantics Other substitutionsPanel)]
         pub unsafe fn substitutionsPanel(&self) -> Id<NSPanel>;
 
@@ -372,6 +408,9 @@ extern_methods!(
         ) -> bool;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          Entries in the availableLanguages list are all available spellchecking languages in user preference order, as described in the spellchecker's info dictionary, usually language abbreviations such as en_US.  The userPreferredLanguages will be a subset of the availableLanguages, as selected by the user for use with spellchecking, in preference order.  If automaticallyIdentifiesLanguages is YES, then text checking will automatically use these as appropriate; otherwise, it will use the language set by setLanguage:.  The older checkSpellingOfString:... and checkGrammarOfString:... methods will use the language set by setLanguage:, if they are called with a nil language argument.
+        */
         #[method_id(@__retain_semantics Other availableLanguages)]
         pub unsafe fn availableLanguages(&self) -> Id<NSArray<NSString>>;
 
@@ -404,6 +443,9 @@ extern_methods!(
         #[method(unlearnWord:)]
         pub unsafe fn unlearnWord(&self, word: &NSString);
 
+        /**
+          These methods allow clients to determine the global user preference settings for automatic text replacement, spelling correction, quote substitution, dash substitution, autocapitalization, and double-space-to-period substitution.  Text views by default will follow these automatically, but clients may override that by programmatically setting the values on the text view.  These methods will be useful for non-text view clients and others who wish to keep track of the settings.  Notifications are available (see below) when the settings change.
+        */
         #[method(isAutomaticTextReplacementEnabled)]
         pub unsafe fn isAutomaticTextReplacementEnabled() -> bool;
 

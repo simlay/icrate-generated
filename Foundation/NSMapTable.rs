@@ -147,6 +147,9 @@ extern_methods!(
         pub unsafe fn weakToWeakObjectsMapTable() -> Id<NSMapTable<KeyType, ObjectType>>;
 
         #[cfg(feature = "Foundation_NSPointerFunctions")]
+        /**
+          return an NSPointerFunctions object reflecting the functions in use.  This is a new autoreleased object that can be subsequently modified and/or used directly in the creation of other pointer "collections".
+        */
         #[method_id(@__retain_semantics Other keyPointerFunctions)]
         pub unsafe fn keyPointerFunctions(&self) -> Id<NSPointerFunctions>;
 
@@ -192,6 +195,9 @@ extern_methods!(
 
 extern_struct!(
     #[encoding_name("?")]
+    /**
+         void * Map table operations
+    */
     pub struct NSMapEnumerator {
         _pi: NSUInteger,
         _si: NSUInteger,
@@ -295,6 +301,9 @@ extern_fn!(
 
 extern_struct!(
     #[encoding_name("?")]
+    /**
+          Legacy
+    */
     pub struct NSMapTableKeyCallBacks {
         pub hash: Option<unsafe extern "C" fn(NonNull<NSMapTable>, NonNull<c_void>) -> NSUInteger>,
         pub isEqual: Option<

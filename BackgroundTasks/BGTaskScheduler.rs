@@ -8,6 +8,12 @@ extern_static!(BGTaskSchedulerErrorDomain: &'static NSErrorDomain);
 
 ns_error_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum BGTaskSchedulerErrorCode
+    @constant BGTaskSchedulerErrorCodeUnavailable Background task scheduling functionality is not available for this app/extension. Background App Refresh may have been disabled in Settings.
+    @constant BGTaskSchedulerErrorCodeTooManyPendingTaskRequests The task request could not be submitted because there are too many pending task requests of this type. Cancel some existing task requests before trying again.
+    @constant BGTaskSchedulerErrorCodeNotPermitted The task request could not be submitted because the appropriate background mode is not included in the UIBackgroundModes array, or its identifier was not present in the BGTaskSchedulerPermittedIdentifiers array in the app's Info.plist.
+    */
     pub enum BGTaskSchedulerErrorCode {
         BGTaskSchedulerErrorCodeUnavailable = 1,
         BGTaskSchedulerErrorCodeTooManyPendingTaskRequests = 2,
@@ -18,6 +24,10 @@ ns_error_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "BackgroundTasks_BGTaskScheduler")]
+    /**
+     @class BGTaskScheduler
+    @abstract The object you use to schedule deferrable work to be done in the background.
+    */
     pub struct BGTaskScheduler;
 
     #[cfg(feature = "BackgroundTasks_BGTaskScheduler")]
@@ -27,9 +37,17 @@ extern_class!(
 );
 
 #[cfg(feature = "BackgroundTasks_BGTaskScheduler")]
+/**
+ @class BGTaskScheduler
+@abstract The object you use to schedule deferrable work to be done in the background.
+*/
 unsafe impl NSObjectProtocol for BGTaskScheduler {}
 
 extern_methods!(
+    /**
+     @class BGTaskScheduler
+    @abstract The object you use to schedule deferrable work to be done in the background.
+    */
     #[cfg(feature = "BackgroundTasks_BGTaskScheduler")]
     unsafe impl BGTaskScheduler {
         #[method_id(@__retain_semantics Init init)]

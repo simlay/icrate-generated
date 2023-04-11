@@ -7,6 +7,11 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNPostalAddress")]
+    /**
+      @abstract An immutable value object representing a postal address.
+
+     @discussion CNPostalAddress is thread safe.
+    */
     pub struct CNPostalAddress;
 
     #[cfg(feature = "Contacts_CNPostalAddress")]
@@ -16,18 +21,41 @@ extern_class!(
 );
 
 #[cfg(feature = "Contacts_CNPostalAddress")]
+/**
+  @abstract An immutable value object representing a postal address.
+
+ @discussion CNPostalAddress is thread safe.
+*/
 unsafe impl NSCoding for CNPostalAddress {}
 
 #[cfg(feature = "Contacts_CNPostalAddress")]
+/**
+  @abstract An immutable value object representing a postal address.
+
+ @discussion CNPostalAddress is thread safe.
+*/
 unsafe impl NSObjectProtocol for CNPostalAddress {}
 
 #[cfg(feature = "Contacts_CNPostalAddress")]
+/**
+  @abstract An immutable value object representing a postal address.
+
+ @discussion CNPostalAddress is thread safe.
+*/
 unsafe impl NSSecureCoding for CNPostalAddress {}
 
 extern_methods!(
+    /**
+      @abstract An immutable value object representing a postal address.
+
+     @discussion CNPostalAddress is thread safe.
+    */
     #[cfg(feature = "Contacts_CNPostalAddress")]
     unsafe impl CNPostalAddress {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          multi-street address is delimited with carriage returns “\n”
+        */
         #[method_id(@__retain_semantics Other street)]
         pub unsafe fn street(&self) -> Id<NSString>;
 

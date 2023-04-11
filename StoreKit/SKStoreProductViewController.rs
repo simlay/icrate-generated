@@ -35,11 +35,17 @@ unsafe impl NSUserInterfaceItemIdentification for SKStoreProductViewController {
 extern_methods!(
     #[cfg(feature = "StoreKit_SKStoreProductViewController")]
     unsafe impl SKStoreProductViewController {
+        /**
+          Delegate for product page events
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(
             &self,
         ) -> Option<Id<ProtocolObject<dyn SKStoreProductViewControllerDelegate>>>;
 
+        /**
+          Delegate for product page events
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,

@@ -112,32 +112,65 @@ extern_methods!(
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(&self, delegate: Option<&ProtocolObject<dyn NSSoundDelegate>>);
 
+        /**
+          Returns the duration of the sound in seconds.
+        */
         #[method(duration)]
         pub unsafe fn duration(&self) -> NSTimeInterval;
 
+        /**
+          Sets and gets the volume for the sound without affecting the system-wide volume. The valid range is between 0. and 1., inclusive.
+        */
         #[method(volume)]
         pub unsafe fn volume(&self) -> c_float;
 
+        /**
+          Sets and gets the volume for the sound without affecting the system-wide volume. The valid range is between 0. and 1., inclusive.
+        */
         #[method(setVolume:)]
         pub unsafe fn setVolume(&self, volume: c_float);
 
+        /**
+          Getter: If the sound is playing, currentTime returns the number of  seconds into the sound where playing is occurring.  If the sound is not playing, currentTime returns the number of seconds into the sound where playing would start.
+        Setter: Sets the location of the currently playing audio to seconds. If the sound is not playing, this sets the number of seconds into the sound where playing would begin. The currentTime is not archived, copied, or stored on the pasteboard - all new sounds start with a currentTime of 0.
+        */
         #[method(currentTime)]
         pub unsafe fn currentTime(&self) -> NSTimeInterval;
 
+        /**
+          Getter: If the sound is playing, currentTime returns the number of  seconds into the sound where playing is occurring.  If the sound is not playing, currentTime returns the number of seconds into the sound where playing would start.
+        Setter: Sets the location of the currently playing audio to seconds. If the sound is not playing, this sets the number of seconds into the sound where playing would begin. The currentTime is not archived, copied, or stored on the pasteboard - all new sounds start with a currentTime of 0.
+        */
         #[method(setCurrentTime:)]
         pub unsafe fn setCurrentTime(&self, current_time: NSTimeInterval);
 
+        /**
+          Setter: Sets whether the sound should automatically restart when it is finished playing.  If the sound is currently playing, this takes effect immediately. The default is NO.  A looping sound does not send sound:didFinishPlaying: to its delegate unless it is sent a stop message.
+        Getter: Returns whether the sound will automatically restart when it is finished playing.
+        */
         #[method(loops)]
         pub unsafe fn loops(&self) -> bool;
 
+        /**
+          Setter: Sets whether the sound should automatically restart when it is finished playing.  If the sound is currently playing, this takes effect immediately. The default is NO.  A looping sound does not send sound:didFinishPlaying: to its delegate unless it is sent a stop message.
+        Getter: Returns whether the sound will automatically restart when it is finished playing.
+        */
         #[method(setLoops:)]
         pub unsafe fn setLoops(&self, loops: bool);
 
+        /**
+          Setter: Set the UID of the audio device where playback will occur.  Pass nil to play on the default output device.
+        Getter: Get the UID of the audio device where playback will occur.  Returns nil if playback tracks the default device, which is the default.
+        */
         #[method_id(@__retain_semantics Other playbackDeviceIdentifier)]
         pub unsafe fn playbackDeviceIdentifier(
             &self,
         ) -> Option<Id<NSSoundPlaybackDeviceIdentifier>>;
 
+        /**
+          Setter: Set the UID of the audio device where playback will occur.  Pass nil to play on the default output device.
+        Getter: Get the UID of the audio device where playback will occur.  Returns nil if playback tracks the default device, which is the default.
+        */
         #[method(setPlaybackDeviceIdentifier:)]
         pub unsafe fn setPlaybackDeviceIdentifier(
             &self,

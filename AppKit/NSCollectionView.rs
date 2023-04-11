@@ -25,6 +25,9 @@ ns_enum!(
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+      Used with NSCollectionView's -selectItemsAtIndexPaths:scrollPosition: and -scrollToItemsAtIndexPaths:scrollPosition: to specify how the bounding box of the specified items should be positioned within the CollectionView's visibleRect.  NSCollectionView will try to satisfy this request as closely as feasible, while staying within the enclosing ClipView's scrollable range.
+    */
     pub enum NSCollectionViewScrollPosition {
         NSCollectionViewScrollPositionNone = 0,
         NSCollectionViewScrollPositionTop = 1 << 0,
@@ -43,6 +46,9 @@ ns_options!(
 pub type NSCollectionViewSupplementaryElementKind = NSString;
 
 extern_protocol!(
+    /**
+      NSCollectionViewElement declares functionality shared by (1) NSCollectionViewItems and (2) "supplementary" or "decoration" views that can be added to an NSCollectionView.  Each such reusable entity has the ability to be reset to its initial state by being sent -prepareForReuse, the ability to take size, position, and other state from an NSCollectionViewLayoutAttributes instance, and the ability to respond to transitions from one layout to another.  Note that, since these methods are all optional and invoked only when found to be present, all existing NSView classes can be considered conforming, and are therefore eligible to be used a supplementary and decorative views.  NSView and NSCollectionViewElement both conform to NSUserInterfaceItemIdentification, which provides an "identifier" property that CollectionView uses to track an item or supplementary/decoration view's kind.
+    */
     pub unsafe trait NSCollectionViewElement:
         NSObjectProtocol + NSUserInterfaceItemIdentification
     {
@@ -89,13 +95,22 @@ extern_protocol!(
 );
 
 extern_protocol!(
+    /**
+      Section header views can conform to this protocol, to enable a CollectionView to find the section collapse toggle button (when present).
+    */
     pub unsafe trait NSCollectionViewSectionHeaderView: NSCollectionViewElement {
         #[cfg(feature = "AppKit_NSButton")]
+        /**
+          If your header contains a button that's set up to toggle section collapse, wire this outlet to it.  This enables CollectionView to automatically show and hide the button, based on whether the section's items all fit.
+        */
         #[optional]
         #[method_id(@__retain_semantics Other sectionCollapseButton)]
         unsafe fn sectionCollapseButton(&self) -> Option<Id<NSButton>>;
 
         #[cfg(feature = "AppKit_NSButton")]
+        /**
+          If your header contains a button that's set up to toggle section collapse, wire this outlet to it.  This enables CollectionView to automatically show and hide the button, based on whether the section's items all fit.
+        */
         #[optional]
         #[method(setSectionCollapseButton:)]
         unsafe fn setSectionCollapseButton(&self, section_collapse_button: Option<&NSButton>);
@@ -107,6 +122,9 @@ extern_protocol!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSCollectionViewItem")]
+    /**
+      An NSCollectionViewItem associates a visual representation (view subtree) with a representedObject of arbitrary type.  It also tracks whether the representedObject is part of the enclosing NSCollectionView's current selection.  Note that NSCollectionViewItem inherits some useful properties -- in particular, "representedObject" and "view" -- from NSViewController.
+    */
     pub struct NSCollectionViewItem;
 
     #[cfg(feature = "AppKit_NSCollectionViewItem")]
@@ -117,55 +135,103 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSCollectionViewItem")]
+/**
+  An NSCollectionViewItem associates a visual representation (view subtree) with a representedObject of arbitrary type.  It also tracks whether the representedObject is part of the enclosing NSCollectionView's current selection.  Note that NSCollectionViewItem inherits some useful properties -- in particular, "representedObject" and "view" -- from NSViewController.
+*/
 unsafe impl NSCoding for NSCollectionViewItem {}
 
 #[cfg(feature = "AppKit_NSCollectionViewItem")]
+/**
+  An NSCollectionViewItem associates a visual representation (view subtree) with a representedObject of arbitrary type.  It also tracks whether the representedObject is part of the enclosing NSCollectionView's current selection.  Note that NSCollectionViewItem inherits some useful properties -- in particular, "representedObject" and "view" -- from NSViewController.
+*/
 unsafe impl NSCollectionViewElement for NSCollectionViewItem {}
 
 #[cfg(feature = "AppKit_NSCollectionViewItem")]
+/**
+  An NSCollectionViewItem associates a visual representation (view subtree) with a representedObject of arbitrary type.  It also tracks whether the representedObject is part of the enclosing NSCollectionView's current selection.  Note that NSCollectionViewItem inherits some useful properties -- in particular, "representedObject" and "view" -- from NSViewController.
+*/
 unsafe impl NSEditor for NSCollectionViewItem {}
 
 #[cfg(feature = "AppKit_NSCollectionViewItem")]
+/**
+  An NSCollectionViewItem associates a visual representation (view subtree) with a representedObject of arbitrary type.  It also tracks whether the representedObject is part of the enclosing NSCollectionView's current selection.  Note that NSCollectionViewItem inherits some useful properties -- in particular, "representedObject" and "view" -- from NSViewController.
+*/
 unsafe impl NSObjectProtocol for NSCollectionViewItem {}
 
 #[cfg(feature = "AppKit_NSCollectionViewItem")]
+/**
+  An NSCollectionViewItem associates a visual representation (view subtree) with a representedObject of arbitrary type.  It also tracks whether the representedObject is part of the enclosing NSCollectionView's current selection.  Note that NSCollectionViewItem inherits some useful properties -- in particular, "representedObject" and "view" -- from NSViewController.
+*/
 unsafe impl NSSeguePerforming for NSCollectionViewItem {}
 
 #[cfg(feature = "AppKit_NSCollectionViewItem")]
+/**
+  An NSCollectionViewItem associates a visual representation (view subtree) with a representedObject of arbitrary type.  It also tracks whether the representedObject is part of the enclosing NSCollectionView's current selection.  Note that NSCollectionViewItem inherits some useful properties -- in particular, "representedObject" and "view" -- from NSViewController.
+*/
 unsafe impl NSUserInterfaceItemIdentification for NSCollectionViewItem {}
 
 extern_methods!(
+    /**
+      An NSCollectionViewItem associates a visual representation (view subtree) with a representedObject of arbitrary type.  It also tracks whether the representedObject is part of the enclosing NSCollectionView's current selection.  Note that NSCollectionViewItem inherits some useful properties -- in particular, "representedObject" and "view" -- from NSViewController.
+    */
     #[cfg(feature = "AppKit_NSCollectionViewItem")]
     unsafe impl NSCollectionViewItem {
         #[cfg(feature = "AppKit_NSCollectionView")]
+        /**
+          Non-retained backlink to the containing CollectionView.
+        */
         #[method_id(@__retain_semantics Other collectionView)]
         pub unsafe fn collectionView(&self) -> Option<Id<NSCollectionView>>;
 
+        /**
+          Whether the item is part of its collectionView's current selection.
+        */
         #[method(isSelected)]
         pub unsafe fn isSelected(&self) -> bool;
 
+        /**
+          Whether the item is part of its collectionView's current selection.
+        */
         #[method(setSelected:)]
         pub unsafe fn setSelected(&self, selected: bool);
 
+        /**
+          Whether the item should be shown as highlighted for proposed selection, deselection, as a drop target, or not highlighted.
+        */
         #[method(highlightState)]
         pub unsafe fn highlightState(&self) -> NSCollectionViewItemHighlightState;
 
+        /**
+          Whether the item should be shown as highlighted for proposed selection, deselection, as a drop target, or not highlighted.
+        */
         #[method(setHighlightState:)]
         pub unsafe fn setHighlightState(&self, highlight_state: NSCollectionViewItemHighlightState);
 
         #[cfg(feature = "AppKit_NSImageView")]
+        /**
+          Convenience outlet to the item's primary NSImageView (if any).
+        */
         #[method_id(@__retain_semantics Other imageView)]
         pub unsafe fn imageView(&self) -> Option<Id<NSImageView>>;
 
         #[cfg(feature = "AppKit_NSImageView")]
+        /**
+          Convenience outlet to the item's primary NSImageView (if any).
+        */
         #[method(setImageView:)]
         pub unsafe fn setImageView(&self, image_view: Option<&NSImageView>);
 
         #[cfg(feature = "AppKit_NSTextField")]
+        /**
+          Convenience outlet to the item's primary NSTextField (if any).
+        */
         #[method_id(@__retain_semantics Other textField)]
         pub unsafe fn textField(&self) -> Option<Id<NSTextField>>;
 
         #[cfg(feature = "AppKit_NSTextField")]
+        /**
+          Convenience outlet to the item's primary NSTextField (if any).
+        */
         #[method(setTextField:)]
         pub unsafe fn setTextField(&self, text_field: Option<&NSTextField>);
 
@@ -173,6 +239,9 @@ extern_methods!(
             feature = "AppKit_NSDraggingImageComponent",
             feature = "Foundation_NSArray"
         ))]
+        /**
+          Multi-image drag and drop support. The default implementation will return an array of up to two NSDraggingImageComponent instances -- one for the imageView and another for the textField (if not nil). This methods can be subclassed and overridden to provide a custom set of NSDraggingImageComponents to create the drag image. Note: the component frames are relative to a coordinate system that has its origin at the bottom left, so you need to take into account the flippedness of your view when computing the component frames.
+        */
         #[method_id(@__retain_semantics Other draggingImageComponents)]
         pub unsafe fn draggingImageComponents(&self) -> Id<NSArray<NSDraggingImageComponent>>;
     }
@@ -181,6 +250,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSCollectionView")]
+    /**
+      An NSCollectionView presents an ordered collection of items, with flexible, customizable appearance and layout.  The user may be permitted to select items, and/or drag items into and out of the CollectionView.
+    */
     pub struct NSCollectionView;
 
     #[cfg(feature = "AppKit_NSCollectionView")]
@@ -191,51 +263,101 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSCollectionView")]
+/**
+  An NSCollectionView presents an ordered collection of items, with flexible, customizable appearance and layout.  The user may be permitted to select items, and/or drag items into and out of the CollectionView.
+*/
 unsafe impl NSAccessibility for NSCollectionView {}
 
 #[cfg(feature = "AppKit_NSCollectionView")]
+/**
+  An NSCollectionView presents an ordered collection of items, with flexible, customizable appearance and layout.  The user may be permitted to select items, and/or drag items into and out of the CollectionView.
+*/
 unsafe impl NSAccessibilityElementProtocol for NSCollectionView {}
 
 #[cfg(feature = "AppKit_NSCollectionView")]
+/**
+  An NSCollectionView presents an ordered collection of items, with flexible, customizable appearance and layout.  The user may be permitted to select items, and/or drag items into and out of the CollectionView.
+*/
 unsafe impl NSAnimatablePropertyContainer for NSCollectionView {}
 
 #[cfg(feature = "AppKit_NSCollectionView")]
+/**
+  An NSCollectionView presents an ordered collection of items, with flexible, customizable appearance and layout.  The user may be permitted to select items, and/or drag items into and out of the CollectionView.
+*/
 unsafe impl NSAppearanceCustomization for NSCollectionView {}
 
 #[cfg(feature = "AppKit_NSCollectionView")]
+/**
+  An NSCollectionView presents an ordered collection of items, with flexible, customizable appearance and layout.  The user may be permitted to select items, and/or drag items into and out of the CollectionView.
+*/
 unsafe impl NSCoding for NSCollectionView {}
 
 #[cfg(feature = "AppKit_NSCollectionView")]
+/**
+  An NSCollectionView presents an ordered collection of items, with flexible, customizable appearance and layout.  The user may be permitted to select items, and/or drag items into and out of the CollectionView.
+*/
 unsafe impl NSDraggingDestination for NSCollectionView {}
 
 #[cfg(feature = "AppKit_NSCollectionView")]
+/**
+  An NSCollectionView presents an ordered collection of items, with flexible, customizable appearance and layout.  The user may be permitted to select items, and/or drag items into and out of the CollectionView.
+*/
 unsafe impl NSDraggingSource for NSCollectionView {}
 
 #[cfg(feature = "AppKit_NSCollectionView")]
+/**
+  An NSCollectionView presents an ordered collection of items, with flexible, customizable appearance and layout.  The user may be permitted to select items, and/or drag items into and out of the CollectionView.
+*/
 unsafe impl NSObjectProtocol for NSCollectionView {}
 
 #[cfg(feature = "AppKit_NSCollectionView")]
+/**
+  An NSCollectionView presents an ordered collection of items, with flexible, customizable appearance and layout.  The user may be permitted to select items, and/or drag items into and out of the CollectionView.
+*/
 unsafe impl NSUserInterfaceItemIdentification for NSCollectionView {}
 
 extern_methods!(
+    /**
+      An NSCollectionView presents an ordered collection of items, with flexible, customizable appearance and layout.  The user may be permitted to select items, and/or drag items into and out of the CollectionView.
+    */
     #[cfg(feature = "AppKit_NSCollectionView")]
     unsafe impl NSCollectionView {
+        /**
+          A non-retained data source object, that the CollectionView will consult to obtain information about the model objects to be represented and the number of sections to divide them among, and to make (recycle or instantiate) items and supplementary views.  See the NSCollectionViewDataSource protocol, declared below, for the methods this delegate should implement.
+
+        Defaults to nil, which makes the CollectionView look to its "content" property or NSContentBinding for model object information.  The "content" property should only be used with the default "Grid" collectionViewLayout and legacy -newItemForRepresentedObject: / itemPrototype mechanisms for instantiating items.
+
+        To get the new capabilities and behaviors, and use the new NSCollectionView APIs added in OS X 10.11, you must specify a dataSource.  Setting dataSource != nil causes the CollectionView to empty its "content" array, and attempting to set "content" to a non-empty array while dataSource != nil is considered a programming error that will cause an exception to be raised.
+        */
         #[method_id(@__retain_semantics Other dataSource)]
         pub unsafe fn dataSource(
             &self,
         ) -> Option<Id<ProtocolObject<dyn NSCollectionViewDataSource>>>;
 
+        /**
+          A non-retained data source object, that the CollectionView will consult to obtain information about the model objects to be represented and the number of sections to divide them among, and to make (recycle or instantiate) items and supplementary views.  See the NSCollectionViewDataSource protocol, declared below, for the methods this delegate should implement.
+
+        Defaults to nil, which makes the CollectionView look to its "content" property or NSContentBinding for model object information.  The "content" property should only be used with the default "Grid" collectionViewLayout and legacy -newItemForRepresentedObject: / itemPrototype mechanisms for instantiating items.
+
+        To get the new capabilities and behaviors, and use the new NSCollectionView APIs added in OS X 10.11, you must specify a dataSource.  Setting dataSource != nil causes the CollectionView to empty its "content" array, and attempting to set "content" to a non-empty array while dataSource != nil is considered a programming error that will cause an exception to be raised.
+        */
         #[method(setDataSource:)]
         pub unsafe fn setDataSource(
             &self,
             data_source: Option<&ProtocolObject<dyn NSCollectionViewDataSource>>,
         );
 
+        /**
+          An optional assistant to the CollectionView's 'dataSource' (potentially the same object), that receives notifications conducive to managing item data pre-fetching.
+        */
         #[method_id(@__retain_semantics Other prefetchDataSource)]
         pub unsafe fn prefetchDataSource(
             &self,
         ) -> Option<Id<ProtocolObject<dyn NSCollectionViewPrefetching>>>;
 
+        /**
+          An optional assistant to the CollectionView's 'dataSource' (potentially the same object), that receives notifications conducive to managing item data pre-fetching.
+        */
         #[method(setPrefetchDataSource:)]
         pub unsafe fn setPrefetchDataSource(
             &self,
@@ -243,34 +365,62 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          The array of model objects that will be shown as "items" in this CollectionView.  The objects may be of any type(s).  If you prefer not to give the CollectionView a "dataSource", you can set its "content" property explicitly, or bind the CollectionView's NSContentBinding to an NSArrayController's arrangedObjects property, to provide the CollectionView with its model objects.  A CollectionView whose content is provided in this way cannot have more than one section.
+
+        Each corresponding "item" instantiated by the CollectionView will have its representedObject property wired to the corresponding model object from this "content" array.  Attempts to set "content" to nil are ignored on OS X 10.10 and earlier.  On OS X 10.11 and later, setting "content" to nil raises an exception.  (Set "content" to an empty NSArray instead, if you want to empty the CollectionView.)
+        */
         #[method_id(@__retain_semantics Other content)]
         pub unsafe fn content(&self) -> Id<NSArray<Object>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          The array of model objects that will be shown as "items" in this CollectionView.  The objects may be of any type(s).  If you prefer not to give the CollectionView a "dataSource", you can set its "content" property explicitly, or bind the CollectionView's NSContentBinding to an NSArrayController's arrangedObjects property, to provide the CollectionView with its model objects.  A CollectionView whose content is provided in this way cannot have more than one section.
+
+        Each corresponding "item" instantiated by the CollectionView will have its representedObject property wired to the corresponding model object from this "content" array.  Attempts to set "content" to nil are ignored on OS X 10.10 and earlier.  On OS X 10.11 and later, setting "content" to nil raises an exception.  (Set "content" to an empty NSArray instead, if you want to empty the CollectionView.)
+        */
         #[method(setContent:)]
         pub unsafe fn setContent(&self, content: &NSArray<Object>);
 
         #[method(reloadData)]
         pub unsafe fn reloadData(&self);
 
+        /**
+          An optional, non-retained delegate object, that will have the opportunity to influence the CollectionView's drag-and-drop, selection, highlighting, and layout transitioning behaviors.  See the NSCollectionViewDelegate protocol, declared below, for the methods this delegate may implement.  Defaults to nil, which leaves the CollectionView to determine its own behaviors.
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(&self) -> Option<Id<ProtocolObject<dyn NSCollectionViewDelegate>>>;
 
+        /**
+          An optional, non-retained delegate object, that will have the opportunity to influence the CollectionView's drag-and-drop, selection, highlighting, and layout transitioning behaviors.  See the NSCollectionViewDelegate protocol, declared below, for the methods this delegate may implement.  Defaults to nil, which leaves the CollectionView to determine its own behaviors.
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(
             &self,
             delegate: Option<&ProtocolObject<dyn NSCollectionViewDelegate>>,
         );
 
+        /**
+          An optional background view that's positioned underneath all of the CollectionView's content.  Defaults to nil.  The backgroundView's scrolling behavior and frame are determined by the "backgroundViewScrollsWithContent" property, as described below.  If "backgroundColors" are also specified for the CollectionView, backgroundColor[0] is drawn anywhere the backgroundView's content allows it to show through.
+        */
         #[method_id(@__retain_semantics Other backgroundView)]
         pub unsafe fn backgroundView(&self) -> Option<Id<NSView>>;
 
+        /**
+          An optional background view that's positioned underneath all of the CollectionView's content.  Defaults to nil.  The backgroundView's scrolling behavior and frame are determined by the "backgroundViewScrollsWithContent" property, as described below.  If "backgroundColors" are also specified for the CollectionView, backgroundColor[0] is drawn anywhere the backgroundView's content allows it to show through.
+        */
         #[method(setBackgroundView:)]
         pub unsafe fn setBackgroundView(&self, background_view: Option<&NSView>);
 
+        /**
+          When YES, the CollectionView's backgroundView (if any) will match the CollectionView's frame and scroll with the CollectionView's items and other content.  When NO (the default, compatible with the behavior on OS X 10.11), the backgroundView is made to fill the CollectionView's visible area, and remains stationary when the CollectionView's content is scrolled.  Archived with the CollectionView's other persistent properties.
+        */
         #[method(backgroundViewScrollsWithContent)]
         pub unsafe fn backgroundViewScrollsWithContent(&self) -> bool;
 
+        /**
+          When YES, the CollectionView's backgroundView (if any) will match the CollectionView's frame and scroll with the CollectionView's items and other content.  When NO (the default, compatible with the behavior on OS X 10.11), the backgroundView is made to fill the CollectionView's visible area, and remains stationary when the CollectionView's content is scrolled.  Archived with the CollectionView's other persistent properties.
+        */
         #[method(setBackgroundViewScrollsWithContent:)]
         pub unsafe fn setBackgroundViewScrollsWithContent(
             &self,
@@ -278,10 +428,20 @@ extern_methods!(
         );
 
         #[cfg(feature = "AppKit_NSCollectionViewLayout")]
+        /**
+          The layout object that determines how the NSCollectionView's items will be sized and positioned.  Defaults to an instance of NSCollectionViewGridLayout whose maxNumberOfRows, maxNumberOfColumns, minItemSize, maxItemSize, and backgroundColors properties mirror the NSCollectionView's.  Replace this object, or change the values of its parameters, to change the layout.  collectionViewLayout may be set to nil for an NSCollectionView that is not using the dataSource-based API.
+
+        To get an animated transition to the new layout, use [[collectionView animator] setCollectionViewLayout:].  You can use NSAnimationContext's completionHandler provisions to notify you when the transition is complete.
+        */
         #[method_id(@__retain_semantics Other collectionViewLayout)]
         pub unsafe fn collectionViewLayout(&self) -> Option<Id<NSCollectionViewLayout>>;
 
         #[cfg(feature = "AppKit_NSCollectionViewLayout")]
+        /**
+          The layout object that determines how the NSCollectionView's items will be sized and positioned.  Defaults to an instance of NSCollectionViewGridLayout whose maxNumberOfRows, maxNumberOfColumns, minItemSize, maxItemSize, and backgroundColors properties mirror the NSCollectionView's.  Replace this object, or change the values of its parameters, to change the layout.  collectionViewLayout may be set to nil for an NSCollectionView that is not using the dataSource-based API.
+
+        To get an animated transition to the new layout, use [[collectionView animator] setCollectionViewLayout:].  You can use NSAnimationContext's completionHandler provisions to notify you when the transition is complete.
+        */
         #[method(setCollectionViewLayout:)]
         pub unsafe fn setCollectionViewLayout(
             &self,
@@ -320,53 +480,95 @@ extern_methods!(
         ) -> NSRect;
 
         #[cfg(all(feature = "AppKit_NSColor", feature = "Foundation_NSArray"))]
+        /**
+          The first background color in the array is used as the background of the entire collection view. Passing nil resets the background colors back to the default.
+        */
         #[method_id(@__retain_semantics Other backgroundColors)]
         pub unsafe fn backgroundColors(&self) -> Id<NSArray<NSColor>>;
 
         #[cfg(all(feature = "AppKit_NSColor", feature = "Foundation_NSArray"))]
+        /**
+          The first background color in the array is used as the background of the entire collection view. Passing nil resets the background colors back to the default.
+        */
         #[method(setBackgroundColors:)]
         pub unsafe fn setBackgroundColors(&self, background_colors: Option<&NSArray<NSColor>>);
 
+        /**
+          The number of sections displayed by the collection view.
+        */
         #[method(numberOfSections)]
         pub unsafe fn numberOfSections(&self) -> NSInteger;
 
         #[method(numberOfItemsInSection:)]
         pub unsafe fn numberOfItemsInSection(&self, section: NSInteger) -> NSInteger;
 
+        /**
+          Whether the CollectionView is its window's current firstResponder.  This bindable property is useful for determining appropriate appearance for selected items.
+        */
         #[method(isFirstResponder)]
         pub unsafe fn isFirstResponder(&self) -> bool;
 
+        /**
+          Whether the user can select items in the CollectionView.  Defaults to NO.  Changing this from YES to NO clears the CollectionView's current selection (if any), causing selectionIndexes to become an empty index set.
+        */
         #[method(isSelectable)]
         pub unsafe fn isSelectable(&self) -> bool;
 
+        /**
+          Whether the user can select items in the CollectionView.  Defaults to NO.  Changing this from YES to NO clears the CollectionView's current selection (if any), causing selectionIndexes to become an empty index set.
+        */
         #[method(setSelectable:)]
         pub unsafe fn setSelectable(&self, selectable: bool);
 
+        /**
+          Whether the CollectionView allows its selection to become empty.  Defaults to YES.  When this is set to NO and "selectable" is YES, the CollectionView will attempt to always leave at least one item selected, when the CollectionView has at least one item.
+        */
         #[method(allowsEmptySelection)]
         pub unsafe fn allowsEmptySelection(&self) -> bool;
 
+        /**
+          Whether the CollectionView allows its selection to become empty.  Defaults to YES.  When this is set to NO and "selectable" is YES, the CollectionView will attempt to always leave at least one item selected, when the CollectionView has at least one item.
+        */
         #[method(setAllowsEmptySelection:)]
         pub unsafe fn setAllowsEmptySelection(&self, allows_empty_selection: bool);
 
+        /**
+          Whether the user can simultaneously select multiple items in the CollectionView.  Defaults to NO, which means only one item at a time (or none) may be selected.  Changing this from YES to NO causes the CollectionView's selection to be reduced to the selected item with the lowest index in the section with the lowest index, if more than one item was selected.
+        */
         #[method(allowsMultipleSelection)]
         pub unsafe fn allowsMultipleSelection(&self) -> bool;
 
+        /**
+          Whether the user can simultaneously select multiple items in the CollectionView.  Defaults to NO, which means only one item at a time (or none) may be selected.  Changing this from YES to NO causes the CollectionView's selection to be reduced to the selected item with the lowest index in the section with the lowest index, if more than one item was selected.
+        */
         #[method(setAllowsMultipleSelection:)]
         pub unsafe fn setAllowsMultipleSelection(&self, allows_multiple_selection: bool);
 
         #[cfg(feature = "Foundation_NSIndexSet")]
+        /**
+          (Soft-Deprecated)  The indexes of the items that are currently "selected", indicating that user operations should target the "content" objects having these indexes.  Getting or setting this property raises an exception on 10.11 and later, if the CollectionView has more than one section.  Use "selectionIndexPaths" instead.
+        */
         #[method_id(@__retain_semantics Other selectionIndexes)]
         pub unsafe fn selectionIndexes(&self) -> Id<NSIndexSet>;
 
         #[cfg(feature = "Foundation_NSIndexSet")]
+        /**
+          (Soft-Deprecated)  The indexes of the items that are currently "selected", indicating that user operations should target the "content" objects having these indexes.  Getting or setting this property raises an exception on 10.11 and later, if the CollectionView has more than one section.  Use "selectionIndexPaths" instead.
+        */
         #[method(setSelectionIndexes:)]
         pub unsafe fn setSelectionIndexes(&self, selection_indexes: &NSIndexSet);
 
         #[cfg(all(feature = "Foundation_NSIndexPath", feature = "Foundation_NSSet"))]
+        /**
+          A set of of NSIndexPath values, that identify the currently selected items by (section,indexInSection).  When using the new NSCollectionView APIs on 10.11 and later, use this property instead of "selectionIndexes".  You can change the set of selected items by setting this property.  To request an animated transition of affected items between their selected and deselected appearances, you can set this property via the CollectionView's "animator" proxy: [[collectionView animator] setSelectionIndexPaths:newIndexPaths].  CollectionView will raise an exception if any of the given indexPaths is out-of-bounds.  This property is Key-Value Observable.
+        */
         #[method_id(@__retain_semantics Other selectionIndexPaths)]
         pub unsafe fn selectionIndexPaths(&self) -> Id<NSSet<NSIndexPath>>;
 
         #[cfg(all(feature = "Foundation_NSIndexPath", feature = "Foundation_NSSet"))]
+        /**
+          A set of of NSIndexPath values, that identify the currently selected items by (section,indexInSection).  When using the new NSCollectionView APIs on 10.11 and later, use this property instead of "selectionIndexes".  You can change the set of selected items by setting this property.  To request an animated transition of affected items between their selected and deselected appearances, you can set this property via the CollectionView's "animator" proxy: [[collectionView animator] setSelectionIndexPaths:newIndexPaths].  CollectionView will raise an exception if any of the given indexPaths is out-of-bounds.  This property is Key-Value Observable.
+        */
         #[method(setSelectionIndexPaths:)]
         pub unsafe fn setSelectionIndexPaths(&self, selection_index_paths: &NSSet<NSIndexPath>);
 
@@ -1135,43 +1337,77 @@ extern_methods!(
         ) -> Id<NSCollectionViewItem>;
 
         #[cfg(feature = "AppKit_NSCollectionViewItem")]
+        /**
+          A prototype NSCollectionViewItem that a dataSource-less NSCollectionView should clone to produce new items.  When not using a dataSource, you must either specify an itemPrototype, or override -newItemForRepresentedObject:, for the CollectionView to be able to create and display items.
+
+        It is considered a programming error to send this message to an NSCollectionView that has a dataSource; an exception will be raised.
+        */
         #[deprecated = "Use -registerNib:forItemWithIdentifier: or -registerClass:forItemWithIdentifier: instead."]
         #[method_id(@__retain_semantics Other itemPrototype)]
         pub unsafe fn itemPrototype(&self) -> Option<Id<NSCollectionViewItem>>;
 
         #[cfg(feature = "AppKit_NSCollectionViewItem")]
+        /**
+          A prototype NSCollectionViewItem that a dataSource-less NSCollectionView should clone to produce new items.  When not using a dataSource, you must either specify an itemPrototype, or override -newItemForRepresentedObject:, for the CollectionView to be able to create and display items.
+
+        It is considered a programming error to send this message to an NSCollectionView that has a dataSource; an exception will be raised.
+        */
         #[deprecated = "Use -registerNib:forItemWithIdentifier: or -registerClass:forItemWithIdentifier: instead."]
         #[method(setItemPrototype:)]
         pub unsafe fn setItemPrototype(&self, item_prototype: Option<&NSCollectionViewItem>);
 
+        /**
+          default: 0, which means no limit
+        */
         #[deprecated = "Use NSCollectionViewGridLayout as the receiver's collectionViewLayout, setting its maximumNumberOfRows instead"]
         #[method(maxNumberOfRows)]
         pub unsafe fn maxNumberOfRows(&self) -> NSUInteger;
 
+        /**
+          default: 0, which means no limit
+        */
         #[deprecated = "Use NSCollectionViewGridLayout as the receiver's collectionViewLayout, setting its maximumNumberOfRows instead"]
         #[method(setMaxNumberOfRows:)]
         pub unsafe fn setMaxNumberOfRows(&self, max_number_of_rows: NSUInteger);
 
+        /**
+          default: 0, which means no limit
+        */
         #[deprecated = "Use NSCollectionViewGridLayout as the receiver's collectionViewLayout, setting its maximumNumberOfColumns instead"]
         #[method(maxNumberOfColumns)]
         pub unsafe fn maxNumberOfColumns(&self) -> NSUInteger;
 
+        /**
+          default: 0, which means no limit
+        */
         #[deprecated = "Use NSCollectionViewGridLayout as the receiver's collectionViewLayout, setting its maximumNumberOfColumns instead"]
         #[method(setMaxNumberOfColumns:)]
         pub unsafe fn setMaxNumberOfColumns(&self, max_number_of_columns: NSUInteger);
 
+        /**
+          default: (0; 0)
+        */
         #[deprecated = "Use NSCollectionViewGridLayout as the receiver's collectionViewLayout, setting its minimumItemSize instead"]
         #[method(minItemSize)]
         pub unsafe fn minItemSize(&self) -> NSSize;
 
+        /**
+          default: (0; 0)
+        */
         #[deprecated = "Use NSCollectionViewGridLayout as the receiver's collectionViewLayout, setting its minimumItemSize instead"]
         #[method(setMinItemSize:)]
         pub unsafe fn setMinItemSize(&self, min_item_size: NSSize);
 
+        /**
+          default: (0; 0), which means no limit
+        */
         #[deprecated = "Use NSCollectionViewGridLayout as the receiver's collectionViewLayout, setting its maximumItemSize instead"]
         #[method(maxItemSize)]
         pub unsafe fn maxItemSize(&self) -> NSSize;
 
+        /**
+          default: (0; 0), which means no limit
+        */
         #[deprecated = "Use NSCollectionViewGridLayout as the receiver's collectionViewLayout, setting its maximumItemSize instead"]
         #[method(setMaxItemSize:)]
         pub unsafe fn setMaxItemSize(&self, max_item_size: NSSize);
@@ -1180,6 +1416,9 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSViewController`
+    /**
+      An NSCollectionViewItem associates a visual representation (view subtree) with a representedObject of arbitrary type.  It also tracks whether the representedObject is part of the enclosing NSCollectionView's current selection.  Note that NSCollectionViewItem inherits some useful properties -- in particular, "representedObject" and "view" -- from NSViewController.
+    */
     #[cfg(feature = "AppKit_NSCollectionViewItem")]
     unsafe impl NSCollectionViewItem {
         #[cfg(feature = "Foundation_NSBundle")]
@@ -1194,6 +1433,9 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `NSView`
+    /**
+      An NSCollectionView presents an ordered collection of items, with flexible, customizable appearance and layout.  The user may be permitted to select items, and/or drag items into and out of the CollectionView.
+    */
     #[cfg(feature = "AppKit_NSCollectionView")]
     unsafe impl NSCollectionView {
         #[method_id(@__retain_semantics Init initWithFrame:)]

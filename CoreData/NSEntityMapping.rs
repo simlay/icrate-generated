@@ -6,6 +6,9 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+       mapping types
+    */
     pub enum NSEntityMappingType {
         NSUndefinedEntityMappingType = 0x00,
         NSCustomEntityMappingType = 0x01,
@@ -34,32 +37,56 @@ extern_methods!(
     #[cfg(feature = "CoreData_NSEntityMapping")]
     unsafe impl NSEntityMapping {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Returns/sets the name of the mapping. The name is used only as a means of distinguishing mappings in a model.  If not specified, defaults to the string composed by the source entity name followed by the destination entity name (ex. SourceName->DestinationName)
+        */
         #[method_id(@__retain_semantics Other name)]
         pub unsafe fn name(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Returns/sets the name of the mapping. The name is used only as a means of distinguishing mappings in a model.  If not specified, defaults to the string composed by the source entity name followed by the destination entity name (ex. SourceName->DestinationName)
+        */
         #[method(setName:)]
         pub unsafe fn setName(&self, name: Option<&NSString>);
 
+        /**
+          Returns/sets the mapping type.  (If a custom entity mapping type is utilized, the developer must specify a migrationPolicyClassName as well.)
+        */
         #[method(mappingType)]
         pub unsafe fn mappingType(&self) -> NSEntityMappingType;
 
+        /**
+          Returns/sets the mapping type.  (If a custom entity mapping type is utilized, the developer must specify a migrationPolicyClassName as well.)
+        */
         #[method(setMappingType:)]
         pub unsafe fn setMappingType(&self, mapping_type: NSEntityMappingType);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Returns/sets the source entity name for the mapping.  (Mappings are not directly bound to NSEntityDescriptions;  developers can use the sourceEntityForEntityMapping: API on the NSMigrationManager to retrieve the entity description for this name.)
+        */
         #[method_id(@__retain_semantics Other sourceEntityName)]
         pub unsafe fn sourceEntityName(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Returns/sets the source entity name for the mapping.  (Mappings are not directly bound to NSEntityDescriptions;  developers can use the sourceEntityForEntityMapping: API on the NSMigrationManager to retrieve the entity description for this name.)
+        */
         #[method(setSourceEntityName:)]
         pub unsafe fn setSourceEntityName(&self, source_entity_name: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          Returns/sets the version hash for the source entity for the mapping.  VersionHashes are calculated by the Core Data framework (see NSEntityDescrition's versionHash method). The sourceEntityVersionHash must equal the version hash of the source entity represented by the mapping.
+        */
         #[method_id(@__retain_semantics Other sourceEntityVersionHash)]
         pub unsafe fn sourceEntityVersionHash(&self) -> Option<Id<NSData>>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          Returns/sets the version hash for the source entity for the mapping.  VersionHashes are calculated by the Core Data framework (see NSEntityDescrition's versionHash method). The sourceEntityVersionHash must equal the version hash of the source entity represented by the mapping.
+        */
         #[method(setSourceEntityVersionHash:)]
         pub unsafe fn setSourceEntityVersionHash(
             &self,
@@ -67,18 +94,30 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Returns/sets the destination entity name for the mapping.  (Mappings are not directly bound to NSEntityDescriptions;  developers can use the destinationEntityForEntityMapping: API on the NSMigrationManager to retrieve the entity description for this name.)
+        */
         #[method_id(@__retain_semantics Other destinationEntityName)]
         pub unsafe fn destinationEntityName(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Returns/sets the destination entity name for the mapping.  (Mappings are not directly bound to NSEntityDescriptions;  developers can use the destinationEntityForEntityMapping: API on the NSMigrationManager to retrieve the entity description for this name.)
+        */
         #[method(setDestinationEntityName:)]
         pub unsafe fn setDestinationEntityName(&self, destination_entity_name: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          Returns/sets the version hash for the destination entity for the mapping.  VersionHashes are calculated by the Core Data framework (see NSEntityDescrition's versionHash method). The destinationEntityVersionHash must equal the version hash of the destination entity represented by the mapping.
+        */
         #[method_id(@__retain_semantics Other destinationEntityVersionHash)]
         pub unsafe fn destinationEntityVersionHash(&self) -> Option<Id<NSData>>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+          Returns/sets the version hash for the destination entity for the mapping.  VersionHashes are calculated by the Core Data framework (see NSEntityDescrition's versionHash method). The destinationEntityVersionHash must equal the version hash of the destination entity represented by the mapping.
+        */
         #[method(setDestinationEntityVersionHash:)]
         pub unsafe fn setDestinationEntityVersionHash(
             &self,
@@ -86,10 +125,16 @@ extern_methods!(
         );
 
         #[cfg(all(feature = "CoreData_NSPropertyMapping", feature = "Foundation_NSArray"))]
+        /**
+          Returns/sets the array of attribute mappings for the entity mapping.  The order of mappings in this collection dictates the order in which the mappings will be processed during a migration.
+        */
         #[method_id(@__retain_semantics Other attributeMappings)]
         pub unsafe fn attributeMappings(&self) -> Option<Id<NSArray<NSPropertyMapping>>>;
 
         #[cfg(all(feature = "CoreData_NSPropertyMapping", feature = "Foundation_NSArray"))]
+        /**
+          Returns/sets the array of attribute mappings for the entity mapping.  The order of mappings in this collection dictates the order in which the mappings will be processed during a migration.
+        */
         #[method(setAttributeMappings:)]
         pub unsafe fn setAttributeMappings(
             &self,
@@ -97,10 +142,16 @@ extern_methods!(
         );
 
         #[cfg(all(feature = "CoreData_NSPropertyMapping", feature = "Foundation_NSArray"))]
+        /**
+          Returns/sets the array of relationship mappings for the entity mapping.  The order of mappings in this collection dictates the order in which the mappings will be processed during a migration.
+        */
         #[method_id(@__retain_semantics Other relationshipMappings)]
         pub unsafe fn relationshipMappings(&self) -> Option<Id<NSArray<NSPropertyMapping>>>;
 
         #[cfg(all(feature = "CoreData_NSPropertyMapping", feature = "Foundation_NSArray"))]
+        /**
+          Returns/sets the array of relationship mappings for the entity mapping.  The order of mappings in this collection dictates the order in which the mappings will be processed during a migration.
+        */
         #[method(setRelationshipMappings:)]
         pub unsafe fn setRelationshipMappings(
             &self,
@@ -108,26 +159,44 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSExpression")]
+        /**
+          Returns/sets the source expression for the mapping.  The source expression is used to obtain the collection of managed object instances to process through the mapping.  The expression can be a fetch request expression, or any other expression which evaluates to a collection.
+        */
         #[method_id(@__retain_semantics Other sourceExpression)]
         pub unsafe fn sourceExpression(&self) -> Option<Id<NSExpression>>;
 
         #[cfg(feature = "Foundation_NSExpression")]
+        /**
+          Returns/sets the source expression for the mapping.  The source expression is used to obtain the collection of managed object instances to process through the mapping.  The expression can be a fetch request expression, or any other expression which evaluates to a collection.
+        */
         #[method(setSourceExpression:)]
         pub unsafe fn setSourceExpression(&self, source_expression: Option<&NSExpression>);
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          Returns/sets the user info dictionary for the mapping
+        */
         #[method_id(@__retain_semantics Other userInfo)]
         pub unsafe fn userInfo(&self) -> Option<Id<NSDictionary>>;
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          Returns/sets the user info dictionary for the mapping
+        */
         #[method(setUserInfo:)]
         pub unsafe fn setUserInfo(&self, user_info: Option<&NSDictionary>);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Returns/sets the class name of the migration policy for the class.  If not specified, the default migration class name is NSEntityMigrationPolicy, though developers can specify a subclass for specific behavior.
+        */
         #[method_id(@__retain_semantics Other entityMigrationPolicyClassName)]
         pub unsafe fn entityMigrationPolicyClassName(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Returns/sets the class name of the migration policy for the class.  If not specified, the default migration class name is NSEntityMigrationPolicy, though developers can specify a subclass for specific behavior.
+        */
         #[method(setEntityMigrationPolicyClassName:)]
         pub unsafe fn setEntityMigrationPolicyClassName(
             &self,

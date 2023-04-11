@@ -7,6 +7,9 @@ use crate::Foundation::*;
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+      NSTextList represents a stylistic format of a group of text list items belonging to the same nested level. It supports both ordered and unordered lists. The type of marker is defined by markerFormat.
+    */
     pub enum NSTextListOptions {
         NSTextListPrependEnclosingMarker = 1 << 0,
     }
@@ -101,12 +104,21 @@ extern_methods!(
         #[method(listOptions)]
         pub unsafe fn listOptions(&self) -> NSTextListOptions;
 
+        /**
+          When > 0, it is used to define the starting value for a group of ordered text list.
+        */
         #[method(startingItemNumber)]
         pub unsafe fn startingItemNumber(&self) -> NSInteger;
 
+        /**
+          When > 0, it is used to define the starting value for a group of ordered text list.
+        */
         #[method(setStartingItemNumber:)]
         pub unsafe fn setStartingItemNumber(&self, starting_item_number: NSInteger);
 
+        /**
+          Yes if markerFormat is an ordered text list type
+        */
         #[method(isOrdered)]
         pub unsafe fn isOrdered(&self) -> bool;
 

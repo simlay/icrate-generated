@@ -48,25 +48,43 @@ extern_methods!(
         pub unsafe fn decline(&self);
 
         #[cfg(feature = "GameKit_GKPlayer")]
+        /**
+          The GKPlayer who issued the challenge
+        */
         #[method_id(@__retain_semantics Other issuingPlayer)]
         pub unsafe fn issuingPlayer(&self) -> Option<Id<GKPlayer>>;
 
         #[cfg(feature = "GameKit_GKPlayer")]
+        /**
+          The GKPlayer who has received the challenge
+        */
         #[method_id(@__retain_semantics Other receivingPlayer)]
         pub unsafe fn receivingPlayer(&self) -> Option<Id<GKPlayer>>;
 
+        /**
+          Current state of the challenge
+        */
         #[method(state)]
         pub unsafe fn state(&self) -> GKChallengeState;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          Date the challenge was issued
+        */
         #[method_id(@__retain_semantics Other issueDate)]
         pub unsafe fn issueDate(&self) -> Id<NSDate>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+          Date the challenge was completed or aborted
+        */
         #[method_id(@__retain_semantics Other completionDate)]
         pub unsafe fn completionDate(&self) -> Option<Id<NSDate>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The message sent to receivers of this challenge
+        */
         #[method_id(@__retain_semantics Other message)]
         pub unsafe fn message(&self) -> Option<Id<NSString>>;
     }
@@ -77,11 +95,17 @@ extern_methods!(
     #[cfg(feature = "GameKit_GKChallenge")]
     unsafe impl GKChallenge {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          This property is obsolete.
+        */
         #[deprecated = " This property is obsolete, Use issuingPlayer instead"]
         #[method_id(@__retain_semantics Other issuingPlayerID)]
         pub unsafe fn issuingPlayerID(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          This property is obsolete.
+        */
         #[deprecated = " This property is obsolete, Use receivingPlayer instead"]
         #[method_id(@__retain_semantics Other receivingPlayerID)]
         pub unsafe fn receivingPlayerID(&self) -> Option<Id<NSString>>;
@@ -113,6 +137,9 @@ extern_methods!(
     #[cfg(feature = "GameKit_GKScoreChallenge")]
     unsafe impl GKScoreChallenge {
         #[cfg(feature = "GameKit_GKScore")]
+        /**
+          The score to meet to satisfy this challenge
+        */
         #[method_id(@__retain_semantics Other score)]
         pub unsafe fn score(&self) -> Option<Id<GKScore>>;
     }
@@ -143,6 +170,9 @@ extern_methods!(
     #[cfg(feature = "GameKit_GKAchievementChallenge")]
     unsafe impl GKAchievementChallenge {
         #[cfg(feature = "GameKit_GKAchievement")]
+        /**
+          The achievement to achieve to satisfy this challenge
+        */
         #[method_id(@__retain_semantics Other achievement)]
         pub unsafe fn achievement(&self) -> Option<Id<GKAchievement>>;
     }
@@ -257,6 +287,9 @@ pub type GKChallengeComposeCompletionBlock =
     *mut Block<(NonNull<NSViewController>, Bool, *mut NSArray<NSString>), ()>;
 
 extern_methods!(
+    /**
+      Use the following category methods to issue GKScoreChallenges and GKAchievementChallenges to an array of playerIDs. Players may not issue challenges to themselves nor to non-friends. Please see the GameKit reference documentation for further details on these methods.
+    */
     /// GKChallengeUI
     #[cfg(feature = "GameKit_GKScore")]
     unsafe impl GKScore {

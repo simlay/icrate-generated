@@ -8,6 +8,9 @@ use crate::MailKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MailKit_MEOutgoingMessageEncodingStatus")]
+    /**
+      @brief Contains information about any security measures that will be applied to a mail message when it is sent or any errrors that occurred while verifying security status.
+    */
     pub struct MEOutgoingMessageEncodingStatus;
 
     #[cfg(feature = "MailKit_MEOutgoingMessageEncodingStatus")]
@@ -17,28 +20,52 @@ extern_class!(
 );
 
 #[cfg(feature = "MailKit_MEOutgoingMessageEncodingStatus")]
+/**
+  @brief Contains information about any security measures that will be applied to a mail message when it is sent or any errrors that occurred while verifying security status.
+*/
 unsafe impl NSCoding for MEOutgoingMessageEncodingStatus {}
 
 #[cfg(feature = "MailKit_MEOutgoingMessageEncodingStatus")]
+/**
+  @brief Contains information about any security measures that will be applied to a mail message when it is sent or any errrors that occurred while verifying security status.
+*/
 unsafe impl NSObjectProtocol for MEOutgoingMessageEncodingStatus {}
 
 #[cfg(feature = "MailKit_MEOutgoingMessageEncodingStatus")]
+/**
+  @brief Contains information about any security measures that will be applied to a mail message when it is sent or any errrors that occurred while verifying security status.
+*/
 unsafe impl NSSecureCoding for MEOutgoingMessageEncodingStatus {}
 
 extern_methods!(
+    /**
+      @brief Contains information about any security measures that will be applied to a mail message when it is sent or any errrors that occurred while verifying security status.
+    */
     #[cfg(feature = "MailKit_MEOutgoingMessageEncodingStatus")]
     unsafe impl MEOutgoingMessageEncodingStatus {
+        /**
+          @brief Whether or not the message can be signed.
+        */
         #[method(canSign)]
         pub unsafe fn canSign(&self) -> bool;
 
+        /**
+          @brief Whether or not the message can be encrypted.
+        */
         #[method(canEncrypt)]
         pub unsafe fn canEncrypt(&self) -> bool;
 
         #[cfg(feature = "Foundation_NSError")]
+        /**
+          @brief Any error that occurred while verifying the security status for the outgoing mail message.
+        */
         #[method_id(@__retain_semantics Other securityError)]
         pub unsafe fn securityError(&self) -> Option<Id<NSError>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "MailKit_MEEmailAddress"))]
+        /**
+          @brief A list of any recipients for which the message should be encrypted but an error occurred. This could include missing the public key for the recipient.
+        */
         #[method_id(@__retain_semantics Other addressesFailingEncryption)]
         pub unsafe fn addressesFailingEncryption(&self) -> Id<NSArray<MEEmailAddress>>;
 

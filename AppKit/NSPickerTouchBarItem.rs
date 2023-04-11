@@ -64,9 +64,17 @@ extern_methods!(
             action: Option<Sel>,
         ) -> Id<Self>;
 
+        /**
+         The style in which this item will be represented to the user.
+        Defaults to NSPickerRepresentationAutomatic.
+        */
         #[method(controlRepresentation)]
         pub unsafe fn controlRepresentation(&self) -> NSPickerTouchBarItemControlRepresentation;
 
+        /**
+         The style in which this item will be represented to the user.
+        Defaults to NSPickerRepresentationAutomatic.
+        */
         #[method(setControlRepresentation:)]
         pub unsafe fn setControlRepresentation(
             &self,
@@ -74,10 +82,20 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         The user facing label and or image visible when the control is in the collapsed representation.
+        If the selectionMode is NSPickerSelectionModeSelectOne, the collapsed representation will automatically be populated with the associated label and or image from the seelctedIndex.
+        Setting these values may be used to override any automatic behavior.
+        */
         #[method_id(@__retain_semantics Other collapsedRepresentationLabel)]
         pub unsafe fn collapsedRepresentationLabel(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         The user facing label and or image visible when the control is in the collapsed representation.
+        If the selectionMode is NSPickerSelectionModeSelectOne, the collapsed representation will automatically be populated with the associated label and or image from the seelctedIndex.
+        Setting these values may be used to override any automatic behavior.
+        */
         #[method(setCollapsedRepresentationLabel:)]
         pub unsafe fn setCollapsedRepresentationLabel(
             &self,
@@ -95,9 +113,15 @@ extern_methods!(
             collapsed_representation_image: Option<&NSImage>,
         );
 
+        /**
+         The most recently selected index of the control, or -1 if nothing is selected.
+        */
         #[method(selectedIndex)]
         pub unsafe fn selectedIndex(&self) -> NSInteger;
 
+        /**
+         The most recently selected index of the control, or -1 if nothing is selected.
+        */
         #[method(setSelectedIndex:)]
         pub unsafe fn setSelectedIndex(&self, selected_index: NSInteger);
 
@@ -109,15 +133,27 @@ extern_methods!(
         #[method(setSelectionColor:)]
         pub unsafe fn setSelectionColor(&self, selection_color: Option<&NSColor>);
 
+        /**
+         Defaults to NSPickerTouchBarItemSelectionModeSelectOne
+        */
         #[method(selectionMode)]
         pub unsafe fn selectionMode(&self) -> NSPickerTouchBarItemSelectionMode;
 
+        /**
+         Defaults to NSPickerTouchBarItemSelectionModeSelectOne
+        */
         #[method(setSelectionMode:)]
         pub unsafe fn setSelectionMode(&self, selection_mode: NSPickerTouchBarItemSelectionMode);
 
+        /**
+         The number of options represented in the control.
+        */
         #[method(numberOfOptions)]
         pub unsafe fn numberOfOptions(&self) -> NSInteger;
 
+        /**
+         The number of options represented in the control.
+        */
         #[method(setNumberOfOptions:)]
         pub unsafe fn setNumberOfOptions(&self, number_of_options: NSInteger);
 
@@ -162,10 +198,16 @@ extern_methods!(
         pub unsafe fn isEnabledAtIndex(&self, index: NSInteger) -> bool;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The localized string labelling this item during user customization. The default value is empty string.
+        */
         #[method_id(@__retain_semantics Other customizationLabel)]
         pub unsafe fn customizationLabel(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The localized string labelling this item during user customization. The default value is empty string.
+        */
         #[method(setCustomizationLabel:)]
         pub unsafe fn setCustomizationLabel(&self, customization_label: Option<&NSString>);
     }

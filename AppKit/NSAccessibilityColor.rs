@@ -8,6 +8,9 @@ use crate::Foundation::*;
 extern_protocol!(
     pub unsafe trait NSAccessibilityColor {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @brief Returns a localized description of the color for use in accessibility attributes.
+        */
         #[method_id(@__retain_semantics Other accessibilityName)]
         unsafe fn accessibilityName(&self) -> Id<NSString>;
     }

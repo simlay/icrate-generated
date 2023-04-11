@@ -7,6 +7,9 @@ use crate::Foundation::*;
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+      Valid return values for -[NSPrinter statusForTable:].
+    */
     pub enum NSPrinterTableStatus {
         NSPrinterTableOK = 0,
         NSPrinterTableNotFound = 1,
@@ -43,10 +46,16 @@ extern_methods!(
     #[cfg(feature = "AppKit_NSPrinter")]
     unsafe impl NSPrinter {
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          Return an array of strings that contain the human-readable names of all available printers.
+        */
         #[method_id(@__retain_semantics Other printerNames)]
         pub unsafe fn printerNames() -> Id<NSArray<NSString>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+          Return an array of strings that contain the human-readable descriptions of the makes and models of all available printers. The array may contain fewer entries than the array that would be returned by an invocation of +printerNames.
+        */
         #[method_id(@__retain_semantics Other printerTypes)]
         pub unsafe fn printerTypes() -> Id<NSArray<NSPrinterTypeName>>;
 
@@ -58,12 +67,21 @@ extern_methods!(
         pub unsafe fn printerWithType(r#type: &NSPrinterTypeName) -> Option<Id<NSPrinter>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          Return the printer's human-readable name, or an empty string for failure.
+        */
         #[method_id(@__retain_semantics Other name)]
         pub unsafe fn name(&self) -> Id<NSString>;
 
+        /**
+          Return a human-readable description of the printer's make and model, or an empty string for failure.
+        */
         #[method_id(@__retain_semantics Other type)]
         pub unsafe fn r#type(&self) -> Id<NSPrinterTypeName>;
 
+        /**
+          Return the PostScript language level of the printer if it is a PostScript printer, or 0 if it is not a PostScript printer or for failure.
+        */
         #[method(languageLevel)]
         pub unsafe fn languageLevel(&self) -> NSInteger;
 
@@ -71,6 +89,9 @@ extern_methods!(
         pub unsafe fn pageSizeForPaper(&self, paper_name: &NSPrinterPaperName) -> NSSize;
 
         #[cfg(feature = "Foundation_NSDictionary")]
+        /**
+          Return a dictionary that describes the printing device using entries keyed by the NSDevice... strings declared in NSGraphics.h. The only entry that is guaranteed to exist in the returned dictionary is NSDeviceIsPrinter.
+        */
         #[method_id(@__retain_semantics Other deviceDescription)]
         pub unsafe fn deviceDescription(&self) -> Id<NSDictionary<NSDeviceDescriptionKey, Object>>;
     }

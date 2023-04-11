@@ -10,6 +10,13 @@ extern_static!(WebArchivePboardType: Option<&'static NSString>);
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "WebKit_WebArchive")]
+    /**
+     @class WebArchive
+    @discussion WebArchive represents a main resource as well as all the subresources and subframes associated with the main resource.
+    The main resource can be an entire web page, a portion of a web page, or some other kind of data such as an image.
+    This class can be used for saving standalone web pages, representing portions of a web page on the pasteboard, or any other
+    application where one class is needed to represent rich web content.
+    */
     #[deprecated]
     pub struct WebArchive;
 
@@ -20,12 +27,33 @@ extern_class!(
 );
 
 #[cfg(feature = "WebKit_WebArchive")]
+/**
+ @class WebArchive
+@discussion WebArchive represents a main resource as well as all the subresources and subframes associated with the main resource.
+The main resource can be an entire web page, a portion of a web page, or some other kind of data such as an image.
+This class can be used for saving standalone web pages, representing portions of a web page on the pasteboard, or any other
+application where one class is needed to represent rich web content.
+*/
 unsafe impl NSCoding for WebArchive {}
 
 #[cfg(feature = "WebKit_WebArchive")]
+/**
+ @class WebArchive
+@discussion WebArchive represents a main resource as well as all the subresources and subframes associated with the main resource.
+The main resource can be an entire web page, a portion of a web page, or some other kind of data such as an image.
+This class can be used for saving standalone web pages, representing portions of a web page on the pasteboard, or any other
+application where one class is needed to represent rich web content.
+*/
 unsafe impl NSObjectProtocol for WebArchive {}
 
 extern_methods!(
+    /**
+     @class WebArchive
+    @discussion WebArchive represents a main resource as well as all the subresources and subframes associated with the main resource.
+    The main resource can be an entire web page, a portion of a web page, or some other kind of data such as an image.
+    This class can be used for saving standalone web pages, representing portions of a web page on the pasteboard, or any other
+    application where one class is needed to represent rich web content.
+    */
     #[cfg(feature = "WebKit_WebArchive")]
     unsafe impl WebArchive {
         #[cfg(all(feature = "Foundation_NSArray", feature = "WebKit_WebResource"))]
@@ -45,18 +73,36 @@ extern_methods!(
         ) -> Option<Id<Self>>;
 
         #[cfg(feature = "WebKit_WebResource")]
+        /**
+         @property mainResource
+        @abstract The main resource of the archive.
+        */
         #[method_id(@__retain_semantics Other mainResource)]
         pub unsafe fn mainResource(&self) -> Option<Id<WebResource>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+         @property subresources
+        @abstract The subresource of the archive (can be nil).
+        */
         #[method_id(@__retain_semantics Other subresources)]
         pub unsafe fn subresources(&self) -> Id<NSArray>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        /**
+         @property subframeArchives
+        @abstract The archives representing the subframes of the archive (can be nil).
+        */
         #[method_id(@__retain_semantics Other subframeArchives)]
         pub unsafe fn subframeArchives(&self) -> Id<NSArray>;
 
         #[cfg(feature = "Foundation_NSData")]
+        /**
+         @property data
+        @abstract The data representation of the archive.
+        @discussion The data returned by this method can be used to save a web archive to a file or to place a web archive on the pasteboard
+        using WebArchivePboardType. To create a WebArchive using the returned data, call initWithData:.
+        */
         #[method_id(@__retain_semantics Other data)]
         pub unsafe fn data(&self) -> Id<NSData>;
     }

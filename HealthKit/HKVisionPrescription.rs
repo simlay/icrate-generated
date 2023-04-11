@@ -8,6 +8,10 @@ use crate::UniformTypeIdentifiers::*;
 
 ns_enum!(
     #[underlying(NSUInteger)]
+    /**
+     @enum          HKVisionPrescriptionType
+    @abstract      Represents a vision prescription type
+    */
     pub enum HKVisionPrescriptionType {
         HKVisionPrescriptionTypeGlasses = 1,
         HKVisionPrescriptionTypeContacts = 2,
@@ -17,6 +21,10 @@ ns_enum!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKVisionPrescription")]
+    /**
+     @class         HKVisionPrescription
+    @abstract      HKSample subclass representing a vision prescription
+    */
     pub struct HKVisionPrescription;
 
     #[cfg(feature = "HealthKit_HKVisionPrescription")]
@@ -27,25 +35,53 @@ extern_class!(
 );
 
 #[cfg(feature = "HealthKit_HKVisionPrescription")]
+/**
+ @class         HKVisionPrescription
+@abstract      HKSample subclass representing a vision prescription
+*/
 unsafe impl NSCoding for HKVisionPrescription {}
 
 #[cfg(feature = "HealthKit_HKVisionPrescription")]
+/**
+ @class         HKVisionPrescription
+@abstract      HKSample subclass representing a vision prescription
+*/
 unsafe impl NSObjectProtocol for HKVisionPrescription {}
 
 #[cfg(feature = "HealthKit_HKVisionPrescription")]
+/**
+ @class         HKVisionPrescription
+@abstract      HKSample subclass representing a vision prescription
+*/
 unsafe impl NSSecureCoding for HKVisionPrescription {}
 
 extern_methods!(
+    /**
+     @class         HKVisionPrescription
+    @abstract      HKSample subclass representing a vision prescription
+    */
     #[cfg(feature = "HealthKit_HKVisionPrescription")]
     unsafe impl HKVisionPrescription {
+        /**
+         @property      prescriptionType
+        @abstract      A vision prescription type (glasses or contacts)
+        */
         #[method(prescriptionType)]
         pub unsafe fn prescriptionType(&self) -> HKVisionPrescriptionType;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+         @property      dateIssued
+        @abstract      The date the prescription was issued
+        */
         #[method_id(@__retain_semantics Other dateIssued)]
         pub unsafe fn dateIssued(&self) -> Id<NSDate>;
 
         #[cfg(feature = "Foundation_NSDate")]
+        /**
+         @property      expirationDate
+        @abstract      The date the prescription will expire
+        */
         #[method_id(@__retain_semantics Other expirationDate)]
         pub unsafe fn expirationDate(&self) -> Option<Id<NSDate>>;
 

@@ -9,6 +9,10 @@ use crate::MetalKit::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MetalKit_MTKView")]
+    /**
+     @class MTKView
+    @abstract View for rendering metal content
+    */
     pub struct MTKView;
 
     #[cfg(feature = "MetalKit_MTKView")]
@@ -19,30 +23,66 @@ extern_class!(
 );
 
 #[cfg(feature = "MetalKit_MTKView")]
+/**
+ @class MTKView
+@abstract View for rendering metal content
+*/
 unsafe impl NSAccessibility for MTKView {}
 
 #[cfg(feature = "MetalKit_MTKView")]
+/**
+ @class MTKView
+@abstract View for rendering metal content
+*/
 unsafe impl NSAccessibilityElementProtocol for MTKView {}
 
 #[cfg(feature = "MetalKit_MTKView")]
+/**
+ @class MTKView
+@abstract View for rendering metal content
+*/
 unsafe impl NSAnimatablePropertyContainer for MTKView {}
 
 #[cfg(feature = "MetalKit_MTKView")]
+/**
+ @class MTKView
+@abstract View for rendering metal content
+*/
 unsafe impl NSAppearanceCustomization for MTKView {}
 
 #[cfg(feature = "MetalKit_MTKView")]
+/**
+ @class MTKView
+@abstract View for rendering metal content
+*/
 unsafe impl NSCoding for MTKView {}
 
 #[cfg(feature = "MetalKit_MTKView")]
+/**
+ @class MTKView
+@abstract View for rendering metal content
+*/
 unsafe impl NSDraggingDestination for MTKView {}
 
 #[cfg(feature = "MetalKit_MTKView")]
+/**
+ @class MTKView
+@abstract View for rendering metal content
+*/
 unsafe impl NSObjectProtocol for MTKView {}
 
 #[cfg(feature = "MetalKit_MTKView")]
+/**
+ @class MTKView
+@abstract View for rendering metal content
+*/
 unsafe impl NSUserInterfaceItemIdentification for MTKView {}
 
 extern_methods!(
+    /**
+     @class MTKView
+    @abstract View for rendering metal content
+    */
     #[cfg(feature = "MetalKit_MTKView")]
     unsafe impl MTKView {
         #[method_id(@__retain_semantics Init initWithFrame:device:)]
@@ -56,93 +96,225 @@ extern_methods!(
         #[method_id(@__retain_semantics Init initWithCoder:)]
         pub unsafe fn initWithCoder(this: Option<Allocated<Self>>, coder: &NSCoder) -> Id<Self>;
 
+        /**
+         @property delegate
+        @abstract The delegate handling common view operations
+        */
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(&self) -> Option<Id<ProtocolObject<dyn MTKViewDelegate>>>;
 
+        /**
+         @property delegate
+        @abstract The delegate handling common view operations
+        */
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(&self, delegate: Option<&ProtocolObject<dyn MTKViewDelegate>>);
 
+        /**
+         @property device
+        @abstract The MTLDevice used to create Metal objects
+        @discussion This must be explicitly set by the application unless it was passed into the initializer. Defaults to nil
+        */
         #[method_id(@__retain_semantics Other device)]
         pub unsafe fn device(&self) -> Option<Id<ProtocolObject<dyn MTLDevice>>>;
 
+        /**
+         @property device
+        @abstract The MTLDevice used to create Metal objects
+        @discussion This must be explicitly set by the application unless it was passed into the initializer. Defaults to nil
+        */
         #[method(setDevice:)]
         pub unsafe fn setDevice(&self, device: Option<&ProtocolObject<dyn MTLDevice>>);
 
+        /**
+         @property framebufferOnly
+        @abstract If the currentDrawable can be used for sampling or texture read operations
+        @discussion This defaults to YES. This property controls whether or not the returned drawables' MTLTextures may only be used for framebuffer attachments (YES) or whether they may also be used for texture sampling and pixel read/write operations (NO). A value of YES allows the CAMetalLayer to allocate the MTLTexture objects in ways that are optimized for display purposes that makes them unsuitable for sampling. The recommended value for most applications is YES.
+        */
         #[method(framebufferOnly)]
         pub unsafe fn framebufferOnly(&self) -> bool;
 
+        /**
+         @property framebufferOnly
+        @abstract If the currentDrawable can be used for sampling or texture read operations
+        @discussion This defaults to YES. This property controls whether or not the returned drawables' MTLTextures may only be used for framebuffer attachments (YES) or whether they may also be used for texture sampling and pixel read/write operations (NO). A value of YES allows the CAMetalLayer to allocate the MTLTexture objects in ways that are optimized for display purposes that makes them unsuitable for sampling. The recommended value for most applications is YES.
+        */
         #[method(setFramebufferOnly:)]
         pub unsafe fn setFramebufferOnly(&self, framebuffer_only: bool);
 
+        /**
+         @property depthStencilAttachmentTextureUsage
+        @abstract The usage flags set on the depth attachment.
+        @discussion This property controls the texture usage flags set on the MTKView's depth-stencil attachment on creation.  This value defaults to MTLTextureUsageRenderTarget. The recommended value for most applications is MTLTextureUsageRenderTarget. Changing this value re-creates the depth attachment, but any data currently in the depth attachment will be lost.
+        */
         #[method(depthStencilAttachmentTextureUsage)]
         pub unsafe fn depthStencilAttachmentTextureUsage(&self) -> MTLTextureUsage;
 
+        /**
+         @property depthStencilAttachmentTextureUsage
+        @abstract The usage flags set on the depth attachment.
+        @discussion This property controls the texture usage flags set on the MTKView's depth-stencil attachment on creation.  This value defaults to MTLTextureUsageRenderTarget. The recommended value for most applications is MTLTextureUsageRenderTarget. Changing this value re-creates the depth attachment, but any data currently in the depth attachment will be lost.
+        */
         #[method(setDepthStencilAttachmentTextureUsage:)]
         pub unsafe fn setDepthStencilAttachmentTextureUsage(
             &self,
             depth_stencil_attachment_texture_usage: MTLTextureUsage,
         );
 
+        /**
+         @property multisampleColorAttachmentTextureUsage
+        @abstract The texture usage flags for the multisample color attachment.
+        @discussion This property controls the texture usage flags set on the the multisample color attachment attachment.  This value defaults to MTLTextureUsageRenderTarget. The recommended value for most applications is MTLTextureUsageRenderTarget. Changing this value re-creates the multisample color attachment, but any data currently in the multisample color attachment will be lost.
+        */
         #[method(multisampleColorAttachmentTextureUsage)]
         pub unsafe fn multisampleColorAttachmentTextureUsage(&self) -> MTLTextureUsage;
 
+        /**
+         @property multisampleColorAttachmentTextureUsage
+        @abstract The texture usage flags for the multisample color attachment.
+        @discussion This property controls the texture usage flags set on the the multisample color attachment attachment.  This value defaults to MTLTextureUsageRenderTarget. The recommended value for most applications is MTLTextureUsageRenderTarget. Changing this value re-creates the multisample color attachment, but any data currently in the multisample color attachment will be lost.
+        */
         #[method(setMultisampleColorAttachmentTextureUsage:)]
         pub unsafe fn setMultisampleColorAttachmentTextureUsage(
             &self,
             multisample_color_attachment_texture_usage: MTLTextureUsage,
         );
 
+        /**
+         @property presentsWithTransaction
+        @abstract If the layer should be presented synchronously
+        @discussion Defaults to NO. When NO, changes to the layer's render buffer appear on-screen asynchronously to normal layer updates. When YES, changes to the MTL content are sent to the screen via the standard CATransaction mechanisms.
+        */
         #[method(presentsWithTransaction)]
         pub unsafe fn presentsWithTransaction(&self) -> bool;
 
+        /**
+         @property presentsWithTransaction
+        @abstract If the layer should be presented synchronously
+        @discussion Defaults to NO. When NO, changes to the layer's render buffer appear on-screen asynchronously to normal layer updates. When YES, changes to the MTL content are sent to the screen via the standard CATransaction mechanisms.
+        */
         #[method(setPresentsWithTransaction:)]
         pub unsafe fn setPresentsWithTransaction(&self, presents_with_transaction: bool);
 
+        /**
+         @property colorPixelFormat
+        @abstract The pixelFormat for the drawable's texture.
+        */
         #[method(colorPixelFormat)]
         pub unsafe fn colorPixelFormat(&self) -> MTLPixelFormat;
 
+        /**
+         @property colorPixelFormat
+        @abstract The pixelFormat for the drawable's texture.
+        */
         #[method(setColorPixelFormat:)]
         pub unsafe fn setColorPixelFormat(&self, color_pixel_format: MTLPixelFormat);
 
+        /**
+         @property depthStencilPixelFormat
+        @abstract The pixelFormat used to create depthStencilTexture
+        */
         #[method(depthStencilPixelFormat)]
         pub unsafe fn depthStencilPixelFormat(&self) -> MTLPixelFormat;
 
+        /**
+         @property depthStencilPixelFormat
+        @abstract The pixelFormat used to create depthStencilTexture
+        */
         #[method(setDepthStencilPixelFormat:)]
         pub unsafe fn setDepthStencilPixelFormat(&self, depth_stencil_pixel_format: MTLPixelFormat);
 
+        /**
+         @property depthStencilStorageMode
+        @abstract The storage mode for the depthStencilTexture. Defaults to MTLStorageModePrivate.
+        */
         #[method(depthStencilStorageMode)]
         pub unsafe fn depthStencilStorageMode(&self) -> MTLStorageMode;
 
+        /**
+         @property depthStencilStorageMode
+        @abstract The storage mode for the depthStencilTexture. Defaults to MTLStorageModePrivate.
+        */
         #[method(setDepthStencilStorageMode:)]
         pub unsafe fn setDepthStencilStorageMode(&self, depth_stencil_storage_mode: MTLStorageMode);
 
+        /**
+         @property sampleCount
+        @abstract The sample count used to to create multisampleColorTexture
+        @discussion This defaults to 1.  If sampleCount is greater than 1 a multisampled color texture will be created and the currentDrawable's texture will be set as the resolve texture in the currentRenderPassDescriptor and the store action will be set to MTLStoreActionMultisampleResolve
+        */
         #[method(sampleCount)]
         pub unsafe fn sampleCount(&self) -> NSUInteger;
 
+        /**
+         @property sampleCount
+        @abstract The sample count used to to create multisampleColorTexture
+        @discussion This defaults to 1.  If sampleCount is greater than 1 a multisampled color texture will be created and the currentDrawable's texture will be set as the resolve texture in the currentRenderPassDescriptor and the store action will be set to MTLStoreActionMultisampleResolve
+        */
         #[method(setSampleCount:)]
         pub unsafe fn setSampleCount(&self, sample_count: NSUInteger);
 
+        /**
+         @property clearColor
+        @abstract The clear color value used to generate the currentRenderPassDescriptor
+        @discussion This defaults to (0.0, 0.0, 0.0, 1.0)
+        */
         #[method(clearColor)]
         pub unsafe fn clearColor(&self) -> MTLClearColor;
 
+        /**
+         @property clearColor
+        @abstract The clear color value used to generate the currentRenderPassDescriptor
+        @discussion This defaults to (0.0, 0.0, 0.0, 1.0)
+        */
         #[method(setClearColor:)]
         pub unsafe fn setClearColor(&self, clear_color: MTLClearColor);
 
+        /**
+         @property clearDepth
+        @abstract The clear depth value used to generate the currentRenderPassDescriptor
+        @discussion This defaults to 1.0
+        */
         #[method(clearDepth)]
         pub unsafe fn clearDepth(&self) -> c_double;
 
+        /**
+         @property clearDepth
+        @abstract The clear depth value used to generate the currentRenderPassDescriptor
+        @discussion This defaults to 1.0
+        */
         #[method(setClearDepth:)]
         pub unsafe fn setClearDepth(&self, clear_depth: c_double);
 
+        /**
+         @property clearStencil
+        @abstract The clear stencil value used to generate currentRenderPassDescriptor
+        @discussion This defaults to 0
+        */
         #[method(clearStencil)]
         pub unsafe fn clearStencil(&self) -> u32;
 
+        /**
+         @property clearStencil
+        @abstract The clear stencil value used to generate currentRenderPassDescriptor
+        @discussion This defaults to 0
+        */
         #[method(setClearStencil:)]
         pub unsafe fn setClearStencil(&self, clear_stencil: u32);
 
+        /**
+         @property depthStencilTexture
+        @abstract A packed depth and stencil texture to be attached to a MTLRenderPassDescriptor
+        @discussion The view will generate the depth buffer using the specified depthPixelFormat.  This will be nil if depthStencilPixelFormat is MTLPixelFormatInvalid.
+        */
         #[method_id(@__retain_semantics Other depthStencilTexture)]
         pub unsafe fn depthStencilTexture(&self) -> Option<Id<ProtocolObject<dyn MTLTexture>>>;
 
+        /**
+         @property multisampleColorTexture
+        @abstract A multisample color texture that will be resolved into the currentDrawable's texture
+        @discussion The view will generate the multisample color buffer using the specified colorPixelFormat.  This will be nil if sampleCount is less than or equal to 1.
+        */
         #[method_id(@__retain_semantics Other multisampleColorTexture)]
         pub unsafe fn multisampleColorTexture(&self) -> Option<Id<ProtocolObject<dyn MTLTexture>>>;
 
@@ -150,42 +322,107 @@ extern_methods!(
         pub unsafe fn releaseDrawables(&self);
 
         #[cfg(feature = "Metal_MTLRenderPassDescriptor")]
+        /**
+         @property currentRenderPassDescriptor
+        @abstract A render pass descriptor generated from the currentDrawable's texture and the view's depth, stencil, and sample buffers and clear values.
+        @discussion This is a convience property.  The view does not use this descriptor and there is no requirement for an app to use this descriptor.
+        */
         #[method_id(@__retain_semantics Other currentRenderPassDescriptor)]
         pub unsafe fn currentRenderPassDescriptor(&self) -> Option<Id<MTLRenderPassDescriptor>>;
 
+        /**
+         @property preferredFramesPerSecond
+        @abstract The rate you want the view to redraw its contents.
+        @discussion When your application sets its preferred frame rate, the view chooses a frame rate as close to that as possible based on the capabilities of the screen the view is displayed on. The actual frame rate chosen is usually a factor of the maximum refresh rate of the screen to provide a consistent frame rate. For example, if the maximum refresh rate of the screen is 60 frames per second, that is also the highest frame rate the view sets as the actual frame rate. However, if you ask for a lower frame rate, it might choose 30, 20, 15 or some other factor to be the actual frame rate. Your application should choose a frame rate that it can consistently maintain. The default value is 60 frames per second.
+        */
         #[method(preferredFramesPerSecond)]
         pub unsafe fn preferredFramesPerSecond(&self) -> NSInteger;
 
+        /**
+         @property preferredFramesPerSecond
+        @abstract The rate you want the view to redraw its contents.
+        @discussion When your application sets its preferred frame rate, the view chooses a frame rate as close to that as possible based on the capabilities of the screen the view is displayed on. The actual frame rate chosen is usually a factor of the maximum refresh rate of the screen to provide a consistent frame rate. For example, if the maximum refresh rate of the screen is 60 frames per second, that is also the highest frame rate the view sets as the actual frame rate. However, if you ask for a lower frame rate, it might choose 30, 20, 15 or some other factor to be the actual frame rate. Your application should choose a frame rate that it can consistently maintain. The default value is 60 frames per second.
+        */
         #[method(setPreferredFramesPerSecond:)]
         pub unsafe fn setPreferredFramesPerSecond(&self, preferred_frames_per_second: NSInteger);
 
+        /**
+         @property enableSetNeedsDisplay
+        @abstract Controls whether the view responds to setNeedsDisplay.
+        @discussion If true, then the view behaves similarily to a UIView or NSView, responding to calls to setNeedsDisplay. When the view has been marked for display, the view is automatically redisplayed on each pass through the application’s event loop. Setting enableSetNeedsDisplay to true will also pause the MTKView's internal render loop and updates will instead be event driven. The default value is false.
+        */
         #[method(enableSetNeedsDisplay)]
         pub unsafe fn enableSetNeedsDisplay(&self) -> bool;
 
+        /**
+         @property enableSetNeedsDisplay
+        @abstract Controls whether the view responds to setNeedsDisplay.
+        @discussion If true, then the view behaves similarily to a UIView or NSView, responding to calls to setNeedsDisplay. When the view has been marked for display, the view is automatically redisplayed on each pass through the application’s event loop. Setting enableSetNeedsDisplay to true will also pause the MTKView's internal render loop and updates will instead be event driven. The default value is false.
+        */
         #[method(setEnableSetNeedsDisplay:)]
         pub unsafe fn setEnableSetNeedsDisplay(&self, enable_set_needs_display: bool);
 
+        /**
+         @property autoResizeDrawable
+        @abstract Controls whether to resize the drawable as the view changes size.
+        @discussion If true, the size of the currentDrawable's texture, depthStencilTexture, and multisampleColorTexture will automatically resize as the view resizes.  If false, these textures will take on the size of drawableSize and drawableSize will not change. The default value is true.
+        */
         #[method(autoResizeDrawable)]
         pub unsafe fn autoResizeDrawable(&self) -> bool;
 
+        /**
+         @property autoResizeDrawable
+        @abstract Controls whether to resize the drawable as the view changes size.
+        @discussion If true, the size of the currentDrawable's texture, depthStencilTexture, and multisampleColorTexture will automatically resize as the view resizes.  If false, these textures will take on the size of drawableSize and drawableSize will not change. The default value is true.
+        */
         #[method(setAutoResizeDrawable:)]
         pub unsafe fn setAutoResizeDrawable(&self, auto_resize_drawable: bool);
 
+        /**
+         @property drawableSize
+        @abstract The current size of drawable textures
+        @discussion The size currentDrawable's texture, depthStencilTexture, and multisampleColorTexture.  If autoResizeDrawable is true this value will be updated as the view's size changes. If autoResizeDrawable is false, this can be set to fix the size of the drawable textures.
+        */
         #[method(drawableSize)]
         pub unsafe fn drawableSize(&self) -> CGSize;
 
+        /**
+         @property drawableSize
+        @abstract The current size of drawable textures
+        @discussion The size currentDrawable's texture, depthStencilTexture, and multisampleColorTexture.  If autoResizeDrawable is true this value will be updated as the view's size changes. If autoResizeDrawable is false, this can be set to fix the size of the drawable textures.
+        */
         #[method(setDrawableSize:)]
         pub unsafe fn setDrawableSize(&self, drawable_size: CGSize);
 
+        /**
+         @property preferredDrawableSize
+        @abstract The preferred drawable size reported by the backing NSView to match a NSView's native resolution.
+        @discussion this value can be observed via key-value observation to determine if the current native drawable size has changed.
+        */
         #[method(preferredDrawableSize)]
         pub unsafe fn preferredDrawableSize(&self) -> CGSize;
 
+        /**
+         @property preferredDevice
+        @abstract The preferred device is updated per-frame by the system in order to identify the most efficient GPU for presentation (e.g. the one being used for compositing).
+        @discussion This value is determined by the underlying CAMetalLayer and this property is a convenience accessor for it.
+        */
         #[method_id(@__retain_semantics Other preferredDevice)]
         pub unsafe fn preferredDevice(&self) -> Option<Id<ProtocolObject<dyn MTLDevice>>>;
 
+        /**
+         @property paused
+        @abstract Controls whether the draw methods should countinue at preferredFramesPerSecond
+        @discussion If true, the delegate will receive drawInMTKView: messages or the subclass will receive drawRect: messages at a rate of preferredFramesPerSecond based on an internal timer. The default value is false.
+        */
         #[method(isPaused)]
         pub unsafe fn isPaused(&self) -> bool;
 
+        /**
+         @property paused
+        @abstract Controls whether the draw methods should countinue at preferredFramesPerSecond
+        @discussion If true, the delegate will receive drawInMTKView: messages or the subclass will receive drawRect: messages at a rate of preferredFramesPerSecond based on an internal timer. The default value is false.
+        */
         #[method(setPaused:)]
         pub unsafe fn setPaused(&self, paused: bool);
 
@@ -195,6 +432,10 @@ extern_methods!(
 );
 
 extern_protocol!(
+    /**
+     @class MTKViewDelegate
+    @abstract Allows an object to render into the view and respond to resize events
+    */
     pub unsafe trait MTKViewDelegate: NSObjectProtocol {
         #[cfg(feature = "MetalKit_MTKView")]
         #[method(mtkView:drawableSizeWillChange:)]
@@ -210,6 +451,10 @@ extern_protocol!(
 
 extern_methods!(
     /// Methods declared on superclass `NSView`
+    /**
+     @class MTKView
+    @abstract View for rendering metal content
+    */
     #[cfg(feature = "MetalKit_MTKView")]
     unsafe impl MTKView {
         #[method_id(@__retain_semantics Init initWithFrame:)]

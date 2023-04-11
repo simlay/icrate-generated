@@ -7,6 +7,13 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNMutableContact")]
+    /**
+      @abstract A mutable value object representing a contact.
+
+     @discussion CNMutableContact is not thread safe. If this is a mutable copy of CNContact then it will throw CNContactPropertyNotFetchedExceptionName when accessing a property that was not fetched for the CNContact.
+
+     @note To remove properties when saving a mutable contact, set string properties and array properties to empty values. Set other properties to nil.
+    */
     pub struct CNMutableContact;
 
     #[cfg(feature = "Contacts_CNMutableContact")]
@@ -17,15 +24,43 @@ extern_class!(
 );
 
 #[cfg(feature = "Contacts_CNMutableContact")]
+/**
+  @abstract A mutable value object representing a contact.
+
+ @discussion CNMutableContact is not thread safe. If this is a mutable copy of CNContact then it will throw CNContactPropertyNotFetchedExceptionName when accessing a property that was not fetched for the CNContact.
+
+ @note To remove properties when saving a mutable contact, set string properties and array properties to empty values. Set other properties to nil.
+*/
 unsafe impl NSCoding for CNMutableContact {}
 
 #[cfg(feature = "Contacts_CNMutableContact")]
+/**
+  @abstract A mutable value object representing a contact.
+
+ @discussion CNMutableContact is not thread safe. If this is a mutable copy of CNContact then it will throw CNContactPropertyNotFetchedExceptionName when accessing a property that was not fetched for the CNContact.
+
+ @note To remove properties when saving a mutable contact, set string properties and array properties to empty values. Set other properties to nil.
+*/
 unsafe impl NSObjectProtocol for CNMutableContact {}
 
 #[cfg(feature = "Contacts_CNMutableContact")]
+/**
+  @abstract A mutable value object representing a contact.
+
+ @discussion CNMutableContact is not thread safe. If this is a mutable copy of CNContact then it will throw CNContactPropertyNotFetchedExceptionName when accessing a property that was not fetched for the CNContact.
+
+ @note To remove properties when saving a mutable contact, set string properties and array properties to empty values. Set other properties to nil.
+*/
 unsafe impl NSSecureCoding for CNMutableContact {}
 
 extern_methods!(
+    /**
+      @abstract A mutable value object representing a contact.
+
+     @discussion CNMutableContact is not thread safe. If this is a mutable copy of CNContact then it will throw CNContactPropertyNotFetchedExceptionName when accessing a property that was not fetched for the CNContact.
+
+     @note To remove properties when saving a mutable contact, set string properties and array properties to empty values. Set other properties to nil.
+    */
     #[cfg(feature = "Contacts_CNMutableContact")]
     unsafe impl CNMutableContact {
         #[method(contactType)]
@@ -292,18 +327,38 @@ extern_methods!(
         );
 
         #[cfg(feature = "Foundation_NSDateComponents")]
+        /**
+          @abstract The Gregorian birthday.
+
+          @description Only uses day, month and year components. Needs to have at least a day and a month.
+        */
         #[method_id(@__retain_semantics Other birthday)]
         pub unsafe fn birthday(&self) -> Option<Id<NSDateComponents>>;
 
         #[cfg(feature = "Foundation_NSDateComponents")]
+        /**
+          @abstract The Gregorian birthday.
+
+          @description Only uses day, month and year components. Needs to have at least a day and a month.
+        */
         #[method(setBirthday:)]
         pub unsafe fn setBirthday(&self, birthday: Option<&NSDateComponents>);
 
         #[cfg(feature = "Foundation_NSDateComponents")]
+        /**
+          @abstract The alternate birthday (Lunisolar).
+
+          @description Only uses day, month, year and calendar components. Needs to have at least a day and a month. Calendar must be Chinese, Hebrew or Islamic.
+        */
         #[method_id(@__retain_semantics Other nonGregorianBirthday)]
         pub unsafe fn nonGregorianBirthday(&self) -> Option<Id<NSDateComponents>>;
 
         #[cfg(feature = "Foundation_NSDateComponents")]
+        /**
+          @abstract The alternate birthday (Lunisolar).
+
+          @description Only uses day, month, year and calendar components. Needs to have at least a day and a month. Calendar must be Chinese, Hebrew or Islamic.
+        */
         #[method(setNonGregorianBirthday:)]
         pub unsafe fn setNonGregorianBirthday(
             &self,
@@ -315,6 +370,11 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSDateComponents"
         ))]
+        /**
+          @abstract Other Gregorian dates (anniversaries, etc).
+
+          @description Only uses day, month and year components. Needs to have at least a day and a month.
+        */
         #[method_id(@__retain_semantics Other dates)]
         pub unsafe fn dates(&self) -> Id<NSArray<CNLabeledValue<NSDateComponents>>>;
 
@@ -323,6 +383,11 @@ extern_methods!(
             feature = "Foundation_NSArray",
             feature = "Foundation_NSDateComponents"
         ))]
+        /**
+          @abstract Other Gregorian dates (anniversaries, etc).
+
+          @description Only uses day, month and year components. Needs to have at least a day and a month.
+        */
         #[method(setDates:)]
         pub unsafe fn setDates(&self, dates: &NSArray<CNLabeledValue<NSDateComponents>>);
     }

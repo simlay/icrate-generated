@@ -7,6 +7,9 @@ use crate::Foundation::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreData_NSPersistentStoreDescription")]
+    /**
+      An instance of NSPersistentStoreDescription encapsulates all information needed to describe a persistent store.
+    */
     pub struct NSPersistentStoreDescription;
 
     #[cfg(feature = "CoreData_NSPersistentStoreDescription")]
@@ -16,9 +19,15 @@ extern_class!(
 );
 
 #[cfg(feature = "CoreData_NSPersistentStoreDescription")]
+/**
+  An instance of NSPersistentStoreDescription encapsulates all information needed to describe a persistent store.
+*/
 unsafe impl NSObjectProtocol for NSPersistentStoreDescription {}
 
 extern_methods!(
+    /**
+      An instance of NSPersistentStoreDescription encapsulates all information needed to describe a persistent store.
+    */
     #[cfg(feature = "CoreData_NSPersistentStoreDescription")]
     unsafe impl NSPersistentStoreDescription {
         #[cfg(feature = "Foundation_NSURL")]
@@ -57,9 +66,15 @@ extern_methods!(
         #[method(setOption:forKey:)]
         pub unsafe fn setOption_forKey(&self, option: Option<&NSObject>, key: &NSString);
 
+        /**
+          Store options
+        */
         #[method(isReadOnly)]
         pub unsafe fn isReadOnly(&self) -> bool;
 
+        /**
+          Store options
+        */
         #[method(setReadOnly:)]
         pub unsafe fn setReadOnly(&self, read_only: bool);
 
@@ -77,9 +92,15 @@ extern_methods!(
         #[method(setValue:forPragmaNamed:)]
         pub unsafe fn setValue_forPragmaNamed(&self, value: Option<&NSObject>, name: &NSString);
 
+        /**
+          addPersistentStore-time behaviours
+        */
         #[method(shouldAddStoreAsynchronously)]
         pub unsafe fn shouldAddStoreAsynchronously(&self) -> bool;
 
+        /**
+          addPersistentStore-time behaviours
+        */
         #[method(setShouldAddStoreAsynchronously:)]
         pub unsafe fn setShouldAddStoreAsynchronously(&self, should_add_store_asynchronously: bool);
 
@@ -112,12 +133,20 @@ extern_methods!(
     #[cfg(feature = "CoreData_NSPersistentStoreDescription")]
     unsafe impl NSPersistentStoreDescription {
         #[cfg(feature = "CoreData_NSPersistentCloudKitContainerOptions")]
+        /**
+         Use this property to apply customized instances of NSPersistentCloudKitContainerOptions to
+        a store description you wish to use with CloudKit.
+        */
         #[method_id(@__retain_semantics Other cloudKitContainerOptions)]
         pub unsafe fn cloudKitContainerOptions(
             &self,
         ) -> Option<Id<NSPersistentCloudKitContainerOptions>>;
 
         #[cfg(feature = "CoreData_NSPersistentCloudKitContainerOptions")]
+        /**
+         Use this property to apply customized instances of NSPersistentCloudKitContainerOptions to
+        a store description you wish to use with CloudKit.
+        */
         #[method(setCloudKitContainerOptions:)]
         pub unsafe fn setCloudKitContainerOptions(
             &self,

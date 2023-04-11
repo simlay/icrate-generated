@@ -43,6 +43,9 @@ inline_fn!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSTouch")]
+    /**
+      Unlike the iPhone, NSTouch objects do not persist for the life of the touch.
+    */
     pub struct NSTouch;
 
     #[cfg(feature = "AppKit_NSTouch")]
@@ -52,26 +55,45 @@ extern_class!(
 );
 
 #[cfg(feature = "AppKit_NSTouch")]
+/**
+  Unlike the iPhone, NSTouch objects do not persist for the life of the touch.
+*/
 unsafe impl NSObjectProtocol for NSTouch {}
 
 extern_methods!(
+    /**
+      Unlike the iPhone, NSTouch objects do not persist for the life of the touch.
+    */
     #[cfg(feature = "AppKit_NSTouch")]
     unsafe impl NSTouch {
+        /**
+          Properties of this touch
+         Use the identity property to track changes to a particular touch during the touch's life. While touch identities may be re-used, they are unique during the life of the touch, even when multiple devices are present. Note: identity objects implement the NSCopying protocol so that they may be used as keys in an NSDictionary. Use isEqual: to compare two touch identities.
+        */
         #[method_id(@__retain_semantics Other identity)]
         pub unsafe fn identity(&self) -> Id<TodoProtocols>;
 
         #[method(phase)]
         pub unsafe fn phase(&self) -> NSTouchPhase;
 
+        /**
+          Scaled absolute position is in [0,1], where (0, 0) is the lower left of the surface.
+        */
         #[method(normalizedPosition)]
         pub unsafe fn normalizedPosition(&self) -> NSPoint;
 
         #[method(isResting)]
         pub unsafe fn isResting(&self) -> bool;
 
+        /**
+          The digitizer that generated the touch. Useful to distinguish touches emanating from multiple-device scenario
+        */
         #[method_id(@__retain_semantics Other device)]
         pub unsafe fn device(&self) -> Option<Id<Object>>;
 
+        /**
+          The range of the touch device in points (72ppi). Note: 0,0 is the lower left of the surface.
+        */
         #[method(deviceSize)]
         pub unsafe fn deviceSize(&self) -> NSSize;
     }
@@ -81,6 +103,9 @@ extern_methods!(
     /// NSTouchBar
     #[cfg(feature = "AppKit_NSTouch")]
     unsafe impl NSTouch {
+        /**
+          A touch can only be one type at a time
+        */
         #[method(type)]
         pub unsafe fn r#type(&self) -> NSTouchType;
 

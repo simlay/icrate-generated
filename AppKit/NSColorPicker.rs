@@ -64,9 +64,15 @@ extern_methods!(
         pub unsafe fn setMode(&self, mode: NSColorPanelMode);
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          The default implementation of buttonToolTip returns the current classname
+        */
         #[method_id(@__retain_semantics Other buttonToolTip)]
         pub unsafe fn buttonToolTip(&self) -> Id<NSString>;
 
+        /**
+          The default implementation of minContentSize will look at your view's Autosizing behavior and do the right thing based on that.
+        */
         #[method(minContentSize)]
         pub unsafe fn minContentSize(&self) -> NSSize;
     }

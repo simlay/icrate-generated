@@ -56,15 +56,31 @@ extern_methods!(
             associated_index: NSUInteger,
         ) -> Id<NSOrderedCollectionChange<ObjectType>>;
 
+        /**
+          The object that was inserted or removed, if recorded
+        */
         #[method_id(@__retain_semantics Other object)]
         pub unsafe fn object(&self) -> Option<Id<ObjectType, ObjectTypeOwnership>>;
 
+        /**
+          The change type: insert or remove
+        */
         #[method(changeType)]
         pub unsafe fn changeType(&self) -> NSCollectionChangeType;
 
+        /**
+          For removes, the index of the object in the original state.
+         For inserts, the index of the object in the final state.
+        */
         #[method(index)]
         pub unsafe fn index(&self) -> NSUInteger;
 
+        /**
+          When non-NSNotFound, indicates that this change is one half of a move, with
+         this value referring to the index of the other change that completes it.
+         For differences produced by identity comparison (instead of equality), each
+         change representing a move operation may store different objects.
+        */
         #[method(associatedIndex)]
         pub unsafe fn associatedIndex(&self) -> NSUInteger;
 

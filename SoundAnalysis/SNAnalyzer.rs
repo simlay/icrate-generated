@@ -7,6 +7,10 @@ use crate::SoundAnalysis::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "SoundAnalysis_SNAudioStreamAnalyzer")]
+    /**
+     @brief Analyzes a stream of audio data and provides analysis results to the client
+    @discussion SNAudioStreamAnalyzer should be used to analyze a stream of audio, represented by a sequence of audio buffers over time.
+    */
     pub struct SNAudioStreamAnalyzer;
 
     #[cfg(feature = "SoundAnalysis_SNAudioStreamAnalyzer")]
@@ -16,9 +20,17 @@ extern_class!(
 );
 
 #[cfg(feature = "SoundAnalysis_SNAudioStreamAnalyzer")]
+/**
+ @brief Analyzes a stream of audio data and provides analysis results to the client
+@discussion SNAudioStreamAnalyzer should be used to analyze a stream of audio, represented by a sequence of audio buffers over time.
+*/
 unsafe impl NSObjectProtocol for SNAudioStreamAnalyzer {}
 
 extern_methods!(
+    /**
+     @brief Analyzes a stream of audio data and provides analysis results to the client
+    @discussion SNAudioStreamAnalyzer should be used to analyze a stream of audio, represented by a sequence of audio buffers over time.
+    */
     #[cfg(feature = "SoundAnalysis_SNAudioStreamAnalyzer")]
     unsafe impl SNAudioStreamAnalyzer {
         #[cfg(feature = "AVFAudio_AVAudioFormat")]
@@ -61,6 +73,9 @@ extern_methods!(
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "SoundAnalysis_SNAudioFileAnalyzer")]
+    /**
+     @brief Analyzes an audio file and provides analysis results to the client
+    */
     pub struct SNAudioFileAnalyzer;
 
     #[cfg(feature = "SoundAnalysis_SNAudioFileAnalyzer")]
@@ -70,9 +85,15 @@ extern_class!(
 );
 
 #[cfg(feature = "SoundAnalysis_SNAudioFileAnalyzer")]
+/**
+ @brief Analyzes an audio file and provides analysis results to the client
+*/
 unsafe impl NSObjectProtocol for SNAudioFileAnalyzer {}
 
 extern_methods!(
+    /**
+     @brief Analyzes an audio file and provides analysis results to the client
+    */
     #[cfg(feature = "SoundAnalysis_SNAudioFileAnalyzer")]
     unsafe impl SNAudioFileAnalyzer {
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSURL"))]

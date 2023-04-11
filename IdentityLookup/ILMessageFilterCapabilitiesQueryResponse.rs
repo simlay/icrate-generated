@@ -7,6 +7,9 @@ use crate::IdentityLookup::*;
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "IdentityLookup_ILMessageFilterCapabilitiesQueryResponse")]
+    /**
+      A response to an ILMessageFilterCapabilitiesQueryRequest.
+    */
     pub struct ILMessageFilterCapabilitiesQueryResponse;
 
     #[cfg(feature = "IdentityLookup_ILMessageFilterCapabilitiesQueryResponse")]
@@ -16,22 +19,40 @@ extern_class!(
 );
 
 #[cfg(feature = "IdentityLookup_ILMessageFilterCapabilitiesQueryResponse")]
+/**
+  A response to an ILMessageFilterCapabilitiesQueryRequest.
+*/
 unsafe impl NSCoding for ILMessageFilterCapabilitiesQueryResponse {}
 
 #[cfg(feature = "IdentityLookup_ILMessageFilterCapabilitiesQueryResponse")]
+/**
+  A response to an ILMessageFilterCapabilitiesQueryRequest.
+*/
 unsafe impl NSObjectProtocol for ILMessageFilterCapabilitiesQueryResponse {}
 
 #[cfg(feature = "IdentityLookup_ILMessageFilterCapabilitiesQueryResponse")]
+/**
+  A response to an ILMessageFilterCapabilitiesQueryRequest.
+*/
 unsafe impl NSSecureCoding for ILMessageFilterCapabilitiesQueryResponse {}
 
 extern_methods!(
+    /**
+      A response to an ILMessageFilterCapabilitiesQueryRequest.
+    */
     #[cfg(feature = "IdentityLookup_ILMessageFilterCapabilitiesQueryResponse")]
     unsafe impl ILMessageFilterCapabilitiesQueryResponse {
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSNumber"))]
+        /**
+          Array of type ILMessageFilterSubAction under Transactional
+        */
         #[method_id(@__retain_semantics Other transactionalSubActions)]
         pub unsafe fn transactionalSubActions(&self) -> Id<NSArray<NSNumber>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSNumber"))]
+        /**
+          Array of type ILMessageFilterSubAction under Transactional
+        */
         #[method(setTransactionalSubActions:)]
         pub unsafe fn setTransactionalSubActions(
             &self,
@@ -39,10 +60,16 @@ extern_methods!(
         );
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSNumber"))]
+        /**
+          Array of type ILMessageFilterSubAction under Promotional
+        */
         #[method_id(@__retain_semantics Other promotionalSubActions)]
         pub unsafe fn promotionalSubActions(&self) -> Id<NSArray<NSNumber>>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSNumber"))]
+        /**
+          Array of type ILMessageFilterSubAction under Promotional
+        */
         #[method(setPromotionalSubActions:)]
         pub unsafe fn setPromotionalSubActions(&self, promotional_sub_actions: &NSArray<NSNumber>);
     }

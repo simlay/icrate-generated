@@ -6,6 +6,9 @@ use crate::IdentityLookup::*;
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      Describes various classification actions.
+    */
     pub enum ILClassificationAction {
         ILClassificationActionNone = 0,
         ILClassificationActionReportNotJunk = 1,

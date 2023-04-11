@@ -7,6 +7,9 @@ use crate::Foundation::*;
 
 extern_enum!(
     #[underlying(c_uint)]
+    /**
+      NSError codes for AppKit added errors in NSCocoaErrorDomain.  Foundation error codes can be found in <Foundation/FoundationErrors.h>; CoreData error codes in <CoreData/CoreDataErrors.h>.
+    */
     pub enum __anonymous__ {
         NSTextReadInapplicableDocumentTypeError = 65806,
         NSTextWriteInapplicableDocumentTypeError = 66062,

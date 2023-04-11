@@ -47,6 +47,10 @@ extern_methods!(
             feature = "CoreAnimation_CAEmitterCell",
             feature = "Foundation_NSArray"
         ))]
+        /**
+          The array of emitter cells attached to the layer. Each object must
+         have the CAEmitterCell class.
+        */
         #[method_id(@__retain_semantics Other emitterCells)]
         pub unsafe fn emitterCells(&self) -> Option<Id<NSArray<CAEmitterCell>>>;
 
@@ -54,24 +58,52 @@ extern_methods!(
             feature = "CoreAnimation_CAEmitterCell",
             feature = "Foundation_NSArray"
         ))]
+        /**
+          The array of emitter cells attached to the layer. Each object must
+         have the CAEmitterCell class.
+        */
         #[method(setEmitterCells:)]
         pub unsafe fn setEmitterCells(&self, emitter_cells: Option<&NSArray<CAEmitterCell>>);
 
+        /**
+          The birth rate of each cell is multiplied by this number to give the
+         actual number of particles created every second. Default value is one.
+         Animatable.
+        */
         #[method(birthRate)]
         pub unsafe fn birthRate(&self) -> c_float;
 
+        /**
+          The birth rate of each cell is multiplied by this number to give the
+         actual number of particles created every second. Default value is one.
+         Animatable.
+        */
         #[method(setBirthRate:)]
         pub unsafe fn setBirthRate(&self, birth_rate: c_float);
 
+        /**
+          The cell lifetime range is multiplied by this value when particles are
+         created. Defaults to one. Animatable.
+        */
         #[method(lifetime)]
         pub unsafe fn lifetime(&self) -> c_float;
 
+        /**
+          The cell lifetime range is multiplied by this value when particles are
+         created. Defaults to one. Animatable.
+        */
         #[method(setLifetime:)]
         pub unsafe fn setLifetime(&self, lifetime: c_float);
 
+        /**
+          The center of the emission shape. Defaults to (0, 0, 0). Animatable.
+        */
         #[method(emitterPosition)]
         pub unsafe fn emitterPosition(&self) -> CGPoint;
 
+        /**
+          The center of the emission shape. Defaults to (0, 0, 0). Animatable.
+        */
         #[method(setEmitterPosition:)]
         pub unsafe fn setEmitterPosition(&self, emitter_position: CGPoint);
 
@@ -81,9 +113,19 @@ extern_methods!(
         #[method(setEmitterZPosition:)]
         pub unsafe fn setEmitterZPosition(&self, emitter_z_position: CGFloat);
 
+        /**
+          The size of the emission shape. Defaults to (0, 0, 0). Animatable.
+         Depending on the `emitterShape' property some of the values may be
+         ignored.
+        */
         #[method(emitterSize)]
         pub unsafe fn emitterSize(&self) -> CGSize;
 
+        /**
+          The size of the emission shape. Defaults to (0, 0, 0). Animatable.
+         Depending on the `emitterShape' property some of the values may be
+         ignored.
+        */
         #[method(setEmitterSize:)]
         pub unsafe fn setEmitterSize(&self, emitter_size: CGSize);
 
@@ -93,51 +135,131 @@ extern_methods!(
         #[method(setEmitterDepth:)]
         pub unsafe fn setEmitterDepth(&self, emitter_depth: CGFloat);
 
+        /**
+          A string defining the type of emission shape used. Current options are:
+         `point' (the default), `line', `rectangle', `circle', `cuboid' and
+         `sphere'.
+        */
         #[method_id(@__retain_semantics Other emitterShape)]
         pub unsafe fn emitterShape(&self) -> Id<CAEmitterLayerEmitterShape>;
 
+        /**
+          A string defining the type of emission shape used. Current options are:
+         `point' (the default), `line', `rectangle', `circle', `cuboid' and
+         `sphere'.
+        */
         #[method(setEmitterShape:)]
         pub unsafe fn setEmitterShape(&self, emitter_shape: &CAEmitterLayerEmitterShape);
 
+        /**
+          A string defining how particles are created relative to the emission
+         shape. Current options are `points', `outline', `surface' and
+         `volume' (the default).
+        */
         #[method_id(@__retain_semantics Other emitterMode)]
         pub unsafe fn emitterMode(&self) -> Id<CAEmitterLayerEmitterMode>;
 
+        /**
+          A string defining how particles are created relative to the emission
+         shape. Current options are `points', `outline', `surface' and
+         `volume' (the default).
+        */
         #[method(setEmitterMode:)]
         pub unsafe fn setEmitterMode(&self, emitter_mode: &CAEmitterLayerEmitterMode);
 
+        /**
+          A string defining how particles are composited into the layer's
+         image. Current options are `unordered' (the default), `oldestFirst',
+         `oldestLast', `backToFront' (i.e. sorted into Z order) and
+         `additive'. The first four use source-over compositing, the last
+         uses additive compositing.
+        */
         #[method_id(@__retain_semantics Other renderMode)]
         pub unsafe fn renderMode(&self) -> Id<CAEmitterLayerRenderMode>;
 
+        /**
+          A string defining how particles are composited into the layer's
+         image. Current options are `unordered' (the default), `oldestFirst',
+         `oldestLast', `backToFront' (i.e. sorted into Z order) and
+         `additive'. The first four use source-over compositing, the last
+         uses additive compositing.
+        */
         #[method(setRenderMode:)]
         pub unsafe fn setRenderMode(&self, render_mode: &CAEmitterLayerRenderMode);
 
+        /**
+          When true the particles are rendered as if they directly inhabit the
+         three dimensional coordinate space of the layer's superlayer, rather
+         than being flattened into the layer's plane first. Defaults to NO.
+         If true, the effect of the `filters', `backgroundFilters' and shadow-
+         related properties of the layer is undefined.
+        */
         #[method(preservesDepth)]
         pub unsafe fn preservesDepth(&self) -> bool;
 
+        /**
+          When true the particles are rendered as if they directly inhabit the
+         three dimensional coordinate space of the layer's superlayer, rather
+         than being flattened into the layer's plane first. Defaults to NO.
+         If true, the effect of the `filters', `backgroundFilters' and shadow-
+         related properties of the layer is undefined.
+        */
         #[method(setPreservesDepth:)]
         pub unsafe fn setPreservesDepth(&self, preserves_depth: bool);
 
+        /**
+          Multiplies the cell-defined particle velocity. Defaults to one.
+         Animatable.
+        */
         #[method(velocity)]
         pub unsafe fn velocity(&self) -> c_float;
 
+        /**
+          Multiplies the cell-defined particle velocity. Defaults to one.
+         Animatable.
+        */
         #[method(setVelocity:)]
         pub unsafe fn setVelocity(&self, velocity: c_float);
 
+        /**
+          Multiplies the cell-defined particle scale. Defaults to one. Animatable.
+        */
         #[method(scale)]
         pub unsafe fn scale(&self) -> c_float;
 
+        /**
+          Multiplies the cell-defined particle scale. Defaults to one. Animatable.
+        */
         #[method(setScale:)]
         pub unsafe fn setScale(&self, scale: c_float);
 
+        /**
+          Multiplies the cell-defined particle spin. Defaults to one. Animatable.
+        */
         #[method(spin)]
         pub unsafe fn spin(&self) -> c_float;
 
+        /**
+          Multiplies the cell-defined particle spin. Defaults to one. Animatable.
+        */
         #[method(setSpin:)]
         pub unsafe fn setSpin(&self, spin: c_float);
 
+        /**
+          The seed used to initialize the random number generator. Defaults to
+         zero. Each layer has its own RNG state. For properties with a mean M
+         and a range R, random values of the properties are uniformly
+         distributed in the interval [M - R/2, M + R/2].
+        */
         #[method(seed)]
         pub unsafe fn seed(&self) -> c_uint;
 
+        /**
+          The seed used to initialize the random number generator. Defaults to
+         zero. Each layer has its own RNG state. For properties with a mean M
+         and a range R, random values of the properties are uniformly
+         distributed in the interval [M - R/2, M + R/2].
+        */
         #[method(setSeed:)]
         pub unsafe fn setSeed(&self, seed: c_uint);
     }

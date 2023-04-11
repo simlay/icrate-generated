@@ -7,6 +7,9 @@ use crate::Foundation::*;
 
 ns_options!(
     #[underlying(NSUInteger)]
+    /**
+      NSTextLayoutFragment represents the layout fragment typically corresponding to a rendering surface such as CALayer or UIView/NSView subclasses.
+    */
     pub enum NSTextLayoutFragmentEnumerationOptions {
         NSTextLayoutFragmentEnumerationOptionsNone = 0,
         NSTextLayoutFragmentEnumerationOptionsReverse = 1 << 0,
@@ -72,46 +75,82 @@ extern_methods!(
         pub unsafe fn textLayoutManager(&self) -> Option<Id<NSTextLayoutManager>>;
 
         #[cfg(feature = "AppKit_NSTextElement")]
+        /**
+          The parent text element
+        */
         #[method_id(@__retain_semantics Other textElement)]
         pub unsafe fn textElement(&self) -> Option<Id<NSTextElement>>;
 
         #[cfg(feature = "AppKit_NSTextRange")]
+        /**
+          range inside textElement relative to the document origin
+        */
         #[method_id(@__retain_semantics Other rangeInElement)]
         pub unsafe fn rangeInElement(&self) -> Id<NSTextRange>;
 
         #[cfg(all(feature = "AppKit_NSTextLineFragment", feature = "Foundation_NSArray"))]
+        /**
+          An array of NSTextLineFragments. Valid when NSTextLayoutFragmentStateLayoutAvailable. KVO-compliant
+        */
         #[method_id(@__retain_semantics Other textLineFragments)]
         pub unsafe fn textLineFragments(&self) -> Id<NSArray<NSTextLineFragment>>;
 
         #[cfg(feature = "Foundation_NSOperationQueue")]
+        /**
+          When non-nil, the layout operation is dispatched to the queue asynchronously.
+        */
         #[method_id(@__retain_semantics Other layoutQueue)]
         pub unsafe fn layoutQueue(&self) -> Option<Id<NSOperationQueue>>;
 
         #[cfg(feature = "Foundation_NSOperationQueue")]
+        /**
+          When non-nil, the layout operation is dispatched to the queue asynchronously.
+        */
         #[method(setLayoutQueue:)]
         pub unsafe fn setLayoutQueue(&self, layout_queue: Option<&NSOperationQueue>);
 
+        /**
+          The layout information state. KVO-compliant
+        */
         #[method(state)]
         pub unsafe fn state(&self) -> NSTextLayoutFragmentState;
 
         #[method(invalidateLayout)]
         pub unsafe fn invalidateLayout(&self);
 
+        /**
+          The rect for tiling the layout fragment inside the target layout coordinate system typically in an NSTextContainer.
+        */
         #[method(layoutFragmentFrame)]
         pub unsafe fn layoutFragmentFrame(&self) -> CGRect;
 
+        /**
+          The bounds defining the area required for rendering the contents. The coordinate system is vertically flipped from the layoutFragmentFrame origin ({0,0} is at the upper left corner). The size should be larger than layoutFragmentFrame.size. The origin could be in the negative coordinate since the rendering could be stretched out of layoutFragmentFrame. Only valid when state > NSTextLayoutFragmentStateEstimatedUsageBounds.
+        */
         #[method(renderingSurfaceBounds)]
         pub unsafe fn renderingSurfaceBounds(&self) -> CGRect;
 
+        /**
+          The amount of margin space reserved during paragraph layout between the leading edge of the text layout fragment (according to the primary writing direction of the paragraph) and the start of the lines in the paragraph.
+        */
         #[method(leadingPadding)]
         pub unsafe fn leadingPadding(&self) -> CGFloat;
 
+        /**
+          The amount of margin space reserved during paragraph layout between the end of the lines in the paragraph and the trailing edge of the text layout fragment (according to the primary writing direction of the paragraph).
+        */
         #[method(trailingPadding)]
         pub unsafe fn trailingPadding(&self) -> CGFloat;
 
+        /**
+          The amount of space reserved during paragraph layout between the top of the text layout fragment and the top of the first line in the paragraph.
+        */
         #[method(topMargin)]
         pub unsafe fn topMargin(&self) -> CGFloat;
 
+        /**
+          The amount of space reserved during paragraph layout between the bottom of the last line in the paragraph and the bottom of the text layout fragment.
+        */
         #[method(bottomMargin)]
         pub unsafe fn bottomMargin(&self) -> CGFloat;
 
@@ -119,6 +158,9 @@ extern_methods!(
             feature = "AppKit_NSTextAttachmentViewProvider",
             feature = "Foundation_NSArray"
         ))]
+        /**
+          Returns NSTextAttachmentViewProvider associated with the receiver. The property contents are only valid with NSTextLayoutFragmentStateLayoutAvailable.
+        */
         #[method_id(@__retain_semantics Other textAttachmentViewProviders)]
         pub unsafe fn textAttachmentViewProviders(
             &self,

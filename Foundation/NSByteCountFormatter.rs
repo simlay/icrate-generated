@@ -88,27 +88,51 @@ extern_methods!(
         #[method_id(@__retain_semantics Other stringForObjectValue:)]
         pub unsafe fn stringForObjectValue(&self, obj: Option<&Object>) -> Option<Id<NSString>>;
 
+        /**
+          Specify the units that can be used in the output. If NSByteCountFormatterUseDefault, uses platform-appropriate settings; otherwise will only use the specified units. This is the default value. Note that ZB and YB cannot be covered by the range of possible values, but you can still choose to use these units to get fractional display ("0.0035 ZB" for instance).
+        */
         #[method(allowedUnits)]
         pub unsafe fn allowedUnits(&self) -> NSByteCountFormatterUnits;
 
+        /**
+          Specify the units that can be used in the output. If NSByteCountFormatterUseDefault, uses platform-appropriate settings; otherwise will only use the specified units. This is the default value. Note that ZB and YB cannot be covered by the range of possible values, but you can still choose to use these units to get fractional display ("0.0035 ZB" for instance).
+        */
         #[method(setAllowedUnits:)]
         pub unsafe fn setAllowedUnits(&self, allowed_units: NSByteCountFormatterUnits);
 
+        /**
+          Specify how the count is displayed by indicating the number of bytes to be used for kilobyte. The default setting is NSByteCountFormatterFileCount, which is the system specific value for file and storage sizes.
+        */
         #[method(countStyle)]
         pub unsafe fn countStyle(&self) -> NSByteCountFormatterCountStyle;
 
+        /**
+          Specify how the count is displayed by indicating the number of bytes to be used for kilobyte. The default setting is NSByteCountFormatterFileCount, which is the system specific value for file and storage sizes.
+        */
         #[method(setCountStyle:)]
         pub unsafe fn setCountStyle(&self, count_style: NSByteCountFormatterCountStyle);
 
+        /**
+          Choose whether to allow more natural display of some values, such as zero, where it may be displayed as "Zero KB," ignoring all other flags or options (with the exception of NSByteCountFormatterUseBytes, which would generate "Zero bytes"). The result is appropriate for standalone output. Default value is YES. Special handling of certain values such as zero is especially important in some languages, so it's highly recommended that this property be left in its default state.
+        */
         #[method(allowsNonnumericFormatting)]
         pub unsafe fn allowsNonnumericFormatting(&self) -> bool;
 
+        /**
+          Choose whether to allow more natural display of some values, such as zero, where it may be displayed as "Zero KB," ignoring all other flags or options (with the exception of NSByteCountFormatterUseBytes, which would generate "Zero bytes"). The result is appropriate for standalone output. Default value is YES. Special handling of certain values such as zero is especially important in some languages, so it's highly recommended that this property be left in its default state.
+        */
         #[method(setAllowsNonnumericFormatting:)]
         pub unsafe fn setAllowsNonnumericFormatting(&self, allows_nonnumeric_formatting: bool);
 
+        /**
+          Choose whether to include the number or the units in the resulting formatted string. (For example, instead of 723 KB, returns "723" or "KB".) You can call the API twice to get both parts, separately. But note that putting them together yourself via string concatenation may be wrong for some locales; so use this functionality with care.  Both of these values are YES by default.  Setting both to NO will unsurprisingly result in an empty string.
+        */
         #[method(includesUnit)]
         pub unsafe fn includesUnit(&self) -> bool;
 
+        /**
+          Choose whether to include the number or the units in the resulting formatted string. (For example, instead of 723 KB, returns "723" or "KB".) You can call the API twice to get both parts, separately. But note that putting them together yourself via string concatenation may be wrong for some locales; so use this functionality with care.  Both of these values are YES by default.  Setting both to NO will unsurprisingly result in an empty string.
+        */
         #[method(setIncludesUnit:)]
         pub unsafe fn setIncludesUnit(&self, includes_unit: bool);
 
@@ -118,27 +142,51 @@ extern_methods!(
         #[method(setIncludesCount:)]
         pub unsafe fn setIncludesCount(&self, includes_count: bool);
 
+        /**
+          Choose whether to parenthetically (localized as appropriate) display the actual number of bytes as well, for instance "723 KB (722,842 bytes)".  This will happen only if needed, that is, the first part is already not showing the exact byte count.  If includesUnit or includesCount are NO, then this setting has no effect.  Default value is NO.
+        */
         #[method(includesActualByteCount)]
         pub unsafe fn includesActualByteCount(&self) -> bool;
 
+        /**
+          Choose whether to parenthetically (localized as appropriate) display the actual number of bytes as well, for instance "723 KB (722,842 bytes)".  This will happen only if needed, that is, the first part is already not showing the exact byte count.  If includesUnit or includesCount are NO, then this setting has no effect.  Default value is NO.
+        */
         #[method(setIncludesActualByteCount:)]
         pub unsafe fn setIncludesActualByteCount(&self, includes_actual_byte_count: bool);
 
+        /**
+          Choose the display style. The "adaptive" algorithm is platform specific and uses a different number of fraction digits based on the magnitude (in 10.8: 0 fraction digits for bytes and KB; 1 fraction digits for MB; 2 for GB and above). Otherwise the result always tries to show at least three significant digits, introducing fraction digits as necessary. Default is YES.
+        */
         #[method(isAdaptive)]
         pub unsafe fn isAdaptive(&self) -> bool;
 
+        /**
+          Choose the display style. The "adaptive" algorithm is platform specific and uses a different number of fraction digits based on the magnitude (in 10.8: 0 fraction digits for bytes and KB; 1 fraction digits for MB; 2 for GB and above). Otherwise the result always tries to show at least three significant digits, introducing fraction digits as necessary. Default is YES.
+        */
         #[method(setAdaptive:)]
         pub unsafe fn setAdaptive(&self, adaptive: bool);
 
+        /**
+          Choose whether to zero pad fraction digits so a consistent number of fraction digits are displayed, causing updating displays to remain more stable. For instance, if the adaptive algorithm is used, this option formats 1.19 and 1.2 GB as "1.19 GB" and "1.20 GB" respectively, while without the option the latter would be displayed as "1.2 GB". Default value is NO.
+        */
         #[method(zeroPadsFractionDigits)]
         pub unsafe fn zeroPadsFractionDigits(&self) -> bool;
 
+        /**
+          Choose whether to zero pad fraction digits so a consistent number of fraction digits are displayed, causing updating displays to remain more stable. For instance, if the adaptive algorithm is used, this option formats 1.19 and 1.2 GB as "1.19 GB" and "1.20 GB" respectively, while without the option the latter would be displayed as "1.2 GB". Default value is NO.
+        */
         #[method(setZeroPadsFractionDigits:)]
         pub unsafe fn setZeroPadsFractionDigits(&self, zero_pads_fraction_digits: bool);
 
+        /**
+          Specify the formatting context for the formatted string. Default is NSFormattingContextUnknown.
+        */
         #[method(formattingContext)]
         pub unsafe fn formattingContext(&self) -> NSFormattingContext;
 
+        /**
+          Specify the formatting context for the formatted string. Default is NSFormattingContextUnknown.
+        */
         #[method(setFormattingContext:)]
         pub unsafe fn setFormattingContext(&self, formatting_context: NSFormattingContext);
     }

@@ -25,6 +25,9 @@ extern_methods!(
     #[cfg(feature = "MapKit_MKDirectionsResponse")]
     unsafe impl MKDirectionsResponse {
         #[cfg(feature = "MapKit_MKMapItem")]
+        /**
+          Source and destination may be filled with additional details compared to the request object.
+        */
         #[method_id(@__retain_semantics Other source)]
         pub unsafe fn source(&self) -> Id<MKMapItem>;
 
@@ -56,23 +59,38 @@ extern_methods!(
     #[cfg(feature = "MapKit_MKRoute")]
     unsafe impl MKRoute {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          localized description of the route's significant feature, e.g. "US-101"
+        */
         #[method_id(@__retain_semantics Other name)]
         pub unsafe fn name(&self) -> Id<NSString>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
+        /**
+          localized notices of route conditions. e.g. "Avoid during winter storms"
+        */
         #[method_id(@__retain_semantics Other advisoryNotices)]
         pub unsafe fn advisoryNotices(&self) -> Id<NSArray<NSString>>;
 
+        /**
+          overall route distance in meters
+        */
         #[method(distance)]
         pub unsafe fn distance(&self) -> CLLocationDistance;
 
         #[method(expectedTravelTime)]
         pub unsafe fn expectedTravelTime(&self) -> NSTimeInterval;
 
+        /**
+          overall route transport type
+        */
         #[method(transportType)]
         pub unsafe fn transportType(&self) -> MKDirectionsTransportType;
 
         #[cfg(feature = "MapKit_MKPolyline")]
+        /**
+          detailed route geometry
+        */
         #[method_id(@__retain_semantics Other polyline)]
         pub unsafe fn polyline(&self) -> Id<MKPolyline>;
 
@@ -80,9 +98,15 @@ extern_methods!(
         #[method_id(@__retain_semantics Other steps)]
         pub unsafe fn steps(&self) -> Id<NSArray<MKRouteStep>>;
 
+        /**
+          indicates if the route contains tolls
+        */
         #[method(hasTolls)]
         pub unsafe fn hasTolls(&self) -> bool;
 
+        /**
+          indicates if the route contains highways
+        */
         #[method(hasHighways)]
         pub unsafe fn hasHighways(&self) -> bool;
     }
@@ -106,20 +130,35 @@ extern_methods!(
     #[cfg(feature = "MapKit_MKRouteStep")]
     unsafe impl MKRouteStep {
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          localized written instructions
+        */
         #[method_id(@__retain_semantics Other instructions)]
         pub unsafe fn instructions(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+          additional localized legal or warning notice related to this step (e.g. "Do not cross tracks when lights flash")
+        */
         #[method_id(@__retain_semantics Other notice)]
         pub unsafe fn notice(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "MapKit_MKPolyline")]
+        /**
+          detailed step geometry
+        */
         #[method_id(@__retain_semantics Other polyline)]
         pub unsafe fn polyline(&self) -> Id<MKPolyline>;
 
+        /**
+          step distance in meters
+        */
         #[method(distance)]
         pub unsafe fn distance(&self) -> CLLocationDistance;
 
+        /**
+          step transport type (may differ from overall route transport type)
+        */
         #[method(transportType)]
         pub unsafe fn transportType(&self) -> MKDirectionsTransportType;
     }
@@ -143,6 +182,9 @@ extern_methods!(
     #[cfg(feature = "MapKit_MKETAResponse")]
     unsafe impl MKETAResponse {
         #[cfg(feature = "MapKit_MKMapItem")]
+        /**
+          Source and destination may be filled with additional details compared to the request object.
+        */
         #[method_id(@__retain_semantics Other source)]
         pub unsafe fn source(&self) -> Id<MKMapItem>;
 
@@ -153,6 +195,9 @@ extern_methods!(
         #[method(expectedTravelTime)]
         pub unsafe fn expectedTravelTime(&self) -> NSTimeInterval;
 
+        /**
+          overall route distance in meters
+        */
         #[method(distance)]
         pub unsafe fn distance(&self) -> CLLocationDistance;
 

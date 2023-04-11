@@ -10,6 +10,25 @@ extern_static!(HKErrorDomain: &'static NSString);
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum      HKErrorCode
+
+    @constant  HKNoError                           No error.
+    @constant  HKErrorHealthDataUnavailable        HealthKit is not available on this device.
+    @constant  HKErrorHealthDataRestricted         HealthKit is restricted on this device.
+    @constant  HKErrorInvalidArgument              An invalid argument was provided to the API.
+    @constant  HKErrorAuthorizationDenied          The application is not authorized to perform the requested operation.
+    @constant  HKErrorAuthorizationNotDetermined   The user has not yet chosen whether the application is authorized to
+    perform the requested operation.
+    @constant  HKErrorDatabaseInaccessible         Protected health data is inaccessible because the device is locked.
+    @constant  HKErrorUserCanceled                 The user canceled the operation.
+    @constant  HKErrorAnotherWorkoutSessionStarted Another workout session was started by this or another application.
+    @constant  HKErrorUserExitedWorkoutSession     User exited the application while a workout session was running.
+    @constant  HKErrorRequiredAuthorizationDenied  The user has not granted the application authorization to access
+    required data types.
+    @constant  HKErrorNoData                       No data is available for the requested query and predicate, and so the
+    query's result could not be meaningfully computed.
+    */
     pub enum HKErrorCode {
         HKNoError = 0,
         HKErrorHealthDataUnavailable = 1,
@@ -28,6 +47,9 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum      HKUpdateFrequency
+    */
     pub enum HKUpdateFrequency {
         HKUpdateFrequencyImmediate = 1,
         HKUpdateFrequencyHourly = 2,
@@ -38,6 +60,16 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum      HKAuthorizationStatus
+    @abstract  This enumerated type is used to indicate the currently granted authorization status for a specific
+    HKObjectType.
+
+    @constant  HKAuthorizationStatusNotDetermined      The user has not yet made a choice regarding whether this
+    application may save objects of the specified type.
+    @constant  HKAuthorizationStatusSharingDenied      This application is not allowed to save objects of the specified type.
+    @constant  HKAuthorizationStatusSharingAuthorized  This application is authorized to save objects of the specified type.
+    */
     pub enum HKAuthorizationStatus {
         HKAuthorizationStatusNotDetermined = 0,
         HKAuthorizationStatusSharingDenied = 1,
@@ -47,6 +79,15 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum      HKAuthorizationRequestStatus
+    @abstract  This enumerated type is used to indicate whether it is necessary to request authorization from the user.
+
+    @constant  HKAuthorizationRequestStatusUnknown         The authorization request status could not be determined because
+    an error occurred.
+    @constant  HKAuthorizationRequestStatusShouldRequest   The application should request authorization from the user.
+    @constant  HKAuthorizationRequestStatusUnnecessary     Requesting authorization from the user is unnecessary.
+    */
     pub enum HKAuthorizationRequestStatus {
         HKAuthorizationRequestStatusUnknown = 0,
         HKAuthorizationRequestStatusShouldRequest = 1,
@@ -56,6 +97,10 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum       HKBiologicalSex
+    @abstract   This enumerated type is used to represent the biological sex of an individual.
+    */
     pub enum HKBiologicalSex {
         HKBiologicalSexNotSet = 0,
         HKBiologicalSexFemale = 1,
@@ -66,6 +111,10 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum       HKBloodType
+    @abstract   This enumerated type is used to represent the blood type of an individual.
+    */
     pub enum HKBloodType {
         HKBloodTypeNotSet = 0,
         HKBloodTypeAPositive = 1,
@@ -81,6 +130,23 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum          HKCategoryValueSleepAnalysis
+    @abstract      Set of values that may be used for HKCategorySamples with the HKCategoryTypeIdentifierSleepAnalysis type.
+    @discussion    To represent the user being both in bed and asleep, use two or more samples with overlapping times. By comparing the
+    start and end times of these samples, it is possible to calculate a number of secondary statistics:
+    1) The amount of time it took for the user to fall asleep
+    2) The percentage of time in bed that the user actually spent sleeping,
+    3) The number of times the user woke while in bed
+    4) The total amount of time spent both in bed and asleep.
+
+    @constant HKCategoryValueSleepAnalysisInBed The user is in bed.
+    @constant HKCategoryValueSleepAnalysisAwake The user is awake.
+    @constant HKCategoryValueSleepAnalysisAsleepUnspecified The user is asleep and no specific stage is specified.
+    @constant HKCategoryValueSleepAnalysisAsleepCore Corresponds to Stages 1 and 2 of AASM scoring model.
+    @constant HKCategoryValueSleepAnalysisAsleepDeep  Corresponds to Stage 3 of AASM scoring model.
+    @constant HKCategoryValueSleepAnalysisAsleepREM Corresponds to REM stage of AASM scoring model.
+    */
     pub enum HKCategoryValueSleepAnalysis {
         HKCategoryValueSleepAnalysisInBed = 0,
         HKCategoryValueSleepAnalysisAsleepUnspecified = 1,
@@ -100,6 +166,15 @@ extern_fn!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum          HKCategoryValueAppleStandHour
+    @abstract      Set of values that may be used for HKCategorySamples with the HKCategoryTypeIdentifierAppleStandHour type.
+
+    @constant      HKCategoryValueAppleStandHourStood  The user stood up and moved a little for at least one minute during
+    the sample.
+    @constant      HKCategoryValueAppleStandHourIdle   The user did not stand up and move a little for at least one
+    continuous minute during the sample.
+    */
     pub enum HKCategoryValueAppleStandHour {
         HKCategoryValueAppleStandHourStood = 0,
         HKCategoryValueAppleStandHourIdle = 1,
@@ -108,6 +183,19 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum          HKFitzpatrickSkinType
+    @abstract      This enumerated type is used to represent the skin type of an individual based on the Fitzpatrick scale.
+    @discussion    The Fitzpatrick scale is a numerical classification for skin color based on the skin's response to sun
+    exposure in terms of the degree of burning and tanning.
+
+    @constant      HKFitzpatrickSkinTypeI      Pale white skin that always burns easily in the sun and never tans.
+    @constant      HKFitzpatrickSkinTypeII     White skin that burns easily and tans minimally.
+    @constant      HKFitzpatrickSkinTypeIII    White to light brown skin that burns moderately and tans uniformly.
+    @constant      HKFitzpatrickSkinTypeIV     Beige-olive, lightly tanned skin that burns minimally and tans moderately.
+    @constant      HKFitzpatrickSkinTypeV      Brown skin that rarely burns and tans profusely.
+    @constant      HKFitzpatrickSkinTypeVI     Dark brown to black skin that never burns and tans profusely.
+    */
     pub enum HKFitzpatrickSkinType {
         HKFitzpatrickSkinTypeNotSet = 0,
         HKFitzpatrickSkinTypeI = 1,
@@ -121,6 +209,13 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum          HKWheelchairUse
+    @abstract      This enumerated type is used to represent whether the user uses a wheelchair.
+
+    @constant      HKWheelchairUseNo      The user does not use a wheelchair.
+    @constant      HKWheelchairUseYes     The user does use a wheelchair.
+    */
     pub enum HKWheelchairUse {
         HKWheelchairUseNotSet = 0,
         HKWheelchairUseNo = 1,
@@ -130,6 +225,11 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum          HKCategoryValueCervicalMucusQuality
+    @abstract      Set of values that may be used for HKCategorySamples with the HKCategoryTypeIdentifierCervicalMucusQuality type.
+    @discussion    These cervical mucus quality values are ordered from least-fertile (Dry) to most-fertile (EggWhite).
+    */
     pub enum HKCategoryValueCervicalMucusQuality {
         HKCategoryValueCervicalMucusQualityDry = 1,
         HKCategoryValueCervicalMucusQualitySticky = 2,
@@ -141,6 +241,12 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum          HKCategoryValueOvulationTestResult
+    @abstract      Set of values that may be used for HKCategorySamples with the HKCategoryTypeIdentifierOvulationTestResult type.
+    @discussion    This category value tracks the result of a home ovulation test that use surges in hormone levels to
+    indicate fertility.
+    */
     pub enum HKCategoryValueOvulationTestResult {
         HKCategoryValueOvulationTestResultNegative = 1,
         HKCategoryValueOvulationTestResultLuteinizingHormoneSurge = 2,
@@ -154,6 +260,12 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum          HKCategoryValuePregnancyTestResult
+    @abstract      Set of values that may be used for HKCategorySamples with the HKCategoryTypeIdentifierPregnancyTestResult type.
+    @discussion    This category value tracks the result of a home pregnancy test that checks for presence of the human chorionic
+    gonadotrophin (hCG) hormone in urine to confirm pregnancy.
+    */
     pub enum HKCategoryValuePregnancyTestResult {
         HKCategoryValuePregnancyTestResultNegative = 1,
         HKCategoryValuePregnancyTestResultPositive = 2,
@@ -163,6 +275,12 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum          HKCategoryValueProgesteroneTestResult
+    @abstract      Set of values that may be used for HKCategorySamples with the HKCategoryTypeIdentifierProgesteroneTestResult type.
+    @discussion    This category value tracks the result of a home ovulation confirmation test that use surges in hormone levels to
+    confirm if ovulation has occurred.
+    */
     pub enum HKCategoryValueProgesteroneTestResult {
         HKCategoryValueProgesteroneTestResultNegative = 1,
         HKCategoryValueProgesteroneTestResultPositive = 2,
@@ -172,6 +290,10 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum          HKCategoryValueMenstrualFlow
+    @abstract      Set of values to indicate the type of menstrual flow.
+    */
     pub enum HKCategoryValueMenstrualFlow {
         HKCategoryValueMenstrualFlowUnspecified = 1,
         HKCategoryValueMenstrualFlowLight = 2,
@@ -183,6 +305,10 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum          HKCategoryValue
+    @abstract      This category value is to be used for types which don't have a specific value defined.
+    */
     pub enum HKCategoryValue {
         HKCategoryValueNotApplicable = 0,
     }
@@ -190,6 +316,10 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum          HKCategoryValueAudioExposureEvent
+    @abstract      Specifies the kind of audio exposure event associated with the sample.
+    */
     #[deprecated]
     pub enum HKCategoryValueAudioExposureEvent {
         #[deprecated]
@@ -199,6 +329,13 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum          HKCategoryValueEnvironmentalAudioExposureEvent
+    @abstract      Specifies the kind of environmental audio exposure event associated with the sample.
+
+    @constant      HKCategoryValueEnvironmentalAudioExposureEventMomentaryLimit          This constant defines environmental events associated
+    with the user being exposed to a loud environment during a short timespan.
+    */
     pub enum HKCategoryValueEnvironmentalAudioExposureEvent {
         HKCategoryValueEnvironmentalAudioExposureEventMomentaryLimit = 1,
     }
@@ -206,6 +343,10 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum          HKCategoryValueContraceptive
+    @abstract      Set of values to indicate the type of contraceptive.
+    */
     pub enum HKCategoryValueContraceptive {
         HKCategoryValueContraceptiveUnspecified = 1,
         HKCategoryValueContraceptiveImplant = 2,
@@ -219,6 +360,10 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum          HKCategoryValueSeverity
+    @abstract      Set of values to indicate the severity of a symptom.
+    */
     pub enum HKCategoryValueSeverity {
         HKCategoryValueSeverityUnspecified = 0,
         HKCategoryValueSeverityNotPresent = 1,
@@ -230,6 +375,10 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum          HKCategoryValueAppetiteChanges
+    @abstract      Set of values to indicate the direction of appetite changes.
+    */
     pub enum HKCategoryValueAppetiteChanges {
         HKCategoryValueAppetiteChangesUnspecified = 0,
         HKCategoryValueAppetiteChangesNoChange = 1,
@@ -240,6 +389,10 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum          HKCategoryValuePresence
+    @abstract      Set of values to indicate whether a data type is present or not.
+    */
     pub enum HKCategoryValuePresence {
         HKCategoryValuePresencePresent = 0,
         HKCategoryValuePresenceNotPresent = 1,
@@ -248,6 +401,11 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum          HKCategoryValueHeadphoneAudioExposureEvent
+    @abstract      Specifies the kind of headphone exposure event associated with the sample.
+    @constant      HKCategoryValueHeadphoneAudioExposureEventSevenDayLimit     This constant defines headphone events associated with the user being exposed to significant audio levels throught a seven-day period.
+    */
     pub enum HKCategoryValueHeadphoneAudioExposureEvent {
         HKCategoryValueHeadphoneAudioExposureEventSevenDayLimit = 1,
     }
@@ -255,6 +413,12 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum          HKCategoryValueLowCardioFitnessEvent
+    @abstract      Specifies the type of cardio fitness event.
+
+    @constant      HKCategoryValueLowCardioFitnessEventLowFitness       This constant defines an event where a VO2Max measurement was recorded that falls into the "Low" fitness classification
+    */
     pub enum HKCategoryValueLowCardioFitnessEvent {
         HKCategoryValueLowCardioFitnessEventLowFitness = 1,
     }
@@ -262,6 +426,12 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum          HKActivityMoveMode
+    @abstract      This enumerated type is used to represent the activity mode for the user's move ring.
+    @constant      HKActivityMoveModeActiveEnergy     User's move ring is updated from Active Energy Burned
+    @constant      HKActivityMoveModeAppleMoveTime    User's move ring is updated from Apple Move Time
+    */
     pub enum HKActivityMoveMode {
         HKActivityMoveModeActiveEnergy = 1,
         HKActivityMoveModeAppleMoveTime = 2,
@@ -270,6 +440,14 @@ ns_enum!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+     @enum          HKCategoryValueAppleWalkingSteadinessEvent
+    @abstract      Specifies the kind of Apple Walking Steadiness event associated with the sample.
+    @constant      HKCategoryValueAppleWalkingSteadinessEventInitialLow           This constant defines Apple Walking Steadiness events associated with the user's walking steadiness being low.
+    @constant      HKCategoryValueAppleWalkingSteadinessEventInitialVeryLow       This constant defines Apple Walking Steadiness events associated with the user's walking steadiness being very low.
+    @constant      HKCategoryValueAppleWalkingSteadinessEventRepeatLow            This constant defines Apple Walking Steadiness events associated with the user's walking steadiness remaining low over a significant time period.
+    @constant      HKCategoryValueAppleWalkingSteadinessEventRepeatVeryLow        This constant defines Apple Walking Steadiness events associated with the user's walking steadiness remaining very low over a significant time period.
+    */
     pub enum HKCategoryValueAppleWalkingSteadinessEvent {
         HKCategoryValueAppleWalkingSteadinessEventInitialLow = 1,
         HKCategoryValueAppleWalkingSteadinessEventInitialVeryLow = 2,

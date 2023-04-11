@@ -36,6 +36,10 @@ extern_static!(NSURLAuthenticationMethodServerTrust: &'static NSString);
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSURLProtectionSpace")]
+    /**
+     @class NSURLProtectionSpace
+    @discussion This class represents a protection space requiring authentication.
+    */
     pub struct NSURLProtectionSpace;
 
     #[cfg(feature = "Foundation_NSURLProtectionSpace")]
@@ -45,15 +49,31 @@ extern_class!(
 );
 
 #[cfg(feature = "Foundation_NSURLProtectionSpace")]
+/**
+ @class NSURLProtectionSpace
+@discussion This class represents a protection space requiring authentication.
+*/
 unsafe impl NSCoding for NSURLProtectionSpace {}
 
 #[cfg(feature = "Foundation_NSURLProtectionSpace")]
+/**
+ @class NSURLProtectionSpace
+@discussion This class represents a protection space requiring authentication.
+*/
 unsafe impl NSObjectProtocol for NSURLProtectionSpace {}
 
 #[cfg(feature = "Foundation_NSURLProtectionSpace")]
+/**
+ @class NSURLProtectionSpace
+@discussion This class represents a protection space requiring authentication.
+*/
 unsafe impl NSSecureCoding for NSURLProtectionSpace {}
 
 extern_methods!(
+    /**
+     @class NSURLProtectionSpace
+    @discussion This class represents a protection space requiring authentication.
+    */
     #[cfg(feature = "Foundation_NSURLProtectionSpace")]
     unsafe impl NSURLProtectionSpace {
         #[cfg(feature = "Foundation_NSString")]
@@ -79,47 +99,92 @@ extern_methods!(
         ) -> Id<Self>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract Get the authentication realm for which the protection space that
+        needs authentication
+        @discussion This is generally only available for http
+        authentication, and may be nil otherwise.
+        @result The realm string
+        */
         #[method_id(@__retain_semantics Other realm)]
         pub unsafe fn realm(&self) -> Option<Id<NSString>>;
 
+        /**
+         @abstract Determine if the password for this protection space can be sent securely
+        @result YES if a secure authentication method or protocol will be used, NO otherwise
+        */
         #[method(receivesCredentialSecurely)]
         pub unsafe fn receivesCredentialSecurely(&self) -> bool;
 
+        /**
+         @abstract Determine if this authenticating protection space is a proxy server
+        @result YES if a proxy, NO otherwise
+        */
         #[method(isProxy)]
         pub unsafe fn isProxy(&self) -> bool;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract Get the proxy host if this is a proxy authentication, or the host from the URL.
+        @result The host for this protection space.
+        */
         #[method_id(@__retain_semantics Other host)]
         pub unsafe fn host(&self) -> Id<NSString>;
 
+        /**
+         @abstract Get the proxy port if this is a proxy authentication, or the port from the URL.
+        @result The port for this protection space, or 0 if not set.
+        */
         #[method(port)]
         pub unsafe fn port(&self) -> NSInteger;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract Get the type of this protection space, if a proxy
+        @result The type string, or nil if not a proxy.
+        */
         #[method_id(@__retain_semantics Other proxyType)]
         pub unsafe fn proxyType(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract Get the protocol of this protection space, if not a proxy
+        @result The type string, or nil if a proxy.
+        */
         #[method_id(@__retain_semantics Other protocol)]
         pub unsafe fn protocol(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        /**
+         @abstract Get the authentication method to be used for this protection space
+        @result The authentication method
+        */
         #[method_id(@__retain_semantics Other authenticationMethod)]
         pub unsafe fn authenticationMethod(&self) -> Id<NSString>;
     }
 );
 
 extern_methods!(
+    /**
+     @discussion This category supplies additional information for use when a client certificate is required by the server in order to complete authentication.
+    */
     /// NSClientCertificateSpace
     #[cfg(feature = "Foundation_NSURLProtectionSpace")]
     unsafe impl NSURLProtectionSpace {
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSData"))]
+        /**
+         @abstract Returns an array of acceptable certificate issuing authorities for client certification authentication. Issuers are identified by their distinguished name and returned as a DER encoded data.
+        @result An array of NSData objects.  (Nil if the authenticationMethod is not NSURLAuthenticationMethodClientCertificate)
+        */
         #[method_id(@__retain_semantics Other distinguishedNames)]
         pub unsafe fn distinguishedNames(&self) -> Option<Id<NSArray<NSData>>>;
     }
 );
 
 extern_methods!(
+    /**
+     @discussion This category supplies additional information for use by the client to evaluate whether to trust a given server during a security handshake.
+    */
     /// NSServerTrustValidationSpace
     #[cfg(feature = "Foundation_NSURLProtectionSpace")]
     unsafe impl NSURLProtectionSpace {}

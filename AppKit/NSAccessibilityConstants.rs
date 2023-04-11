@@ -872,6 +872,9 @@ extern_fn!(
 
 ns_enum!(
     #[underlying(NSInteger)]
+    /**
+      System defined priority levels.  This priority level should be included for every NSAccessibilityAnnouncementRequestedNotification.
+    */
     pub enum NSAccessibilityPriorityLevel {
         NSAccessibilityPriorityLow = 10,
         NSAccessibilityPriorityMedium = 50,
