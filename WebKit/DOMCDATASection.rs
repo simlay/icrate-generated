@@ -11,11 +11,11 @@ extern_class!(
     #[deprecated]
     pub struct DOMCDATASection;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMCDATASection")]
     unsafe impl ClassType for DOMCDATASection {
         #[inherits(DOMCharacterData, DOMNode, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMText;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -23,9 +23,30 @@ extern_class!(
 unsafe impl DOMEventTarget for DOMCDATASection {}
 
 #[cfg(feature = "WebKit_DOMCDATASection")]
+unsafe impl NSCopying for DOMCDATASection {}
+
+#[cfg(feature = "WebKit_DOMCDATASection")]
 unsafe impl NSObjectProtocol for DOMCDATASection {}
 
 extern_methods!(
     #[cfg(feature = "WebKit_DOMCDATASection")]
     unsafe impl DOMCDATASection {}
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMCDATASection")]
+    unsafe impl DOMCDATASection {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMCDATASection")]
+    unsafe impl DOMCDATASection {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
 );

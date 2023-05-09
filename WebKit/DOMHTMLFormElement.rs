@@ -11,16 +11,19 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLFormElement;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLFormElement")]
     unsafe impl ClassType for DOMHTMLFormElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMHTMLElement;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_DOMHTMLFormElement")]
 unsafe impl DOMEventTarget for DOMHTMLFormElement {}
+
+#[cfg(feature = "WebKit_DOMHTMLFormElement")]
+unsafe impl NSCopying for DOMHTMLFormElement {}
 
 #[cfg(feature = "WebKit_DOMHTMLFormElement")]
 unsafe impl NSObjectProtocol for DOMHTMLFormElement {}
@@ -96,5 +99,23 @@ extern_methods!(
 
         #[method(reset)]
         pub unsafe fn reset(&self);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMHTMLFormElement")]
+    unsafe impl DOMHTMLFormElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMHTMLFormElement")]
+    unsafe impl DOMHTMLFormElement {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

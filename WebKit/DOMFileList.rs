@@ -11,13 +11,16 @@ extern_class!(
     #[deprecated]
     pub struct DOMFileList;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMFileList")]
     unsafe impl ClassType for DOMFileList {
         #[inherits(WebScriptObject, NSObject)]
         type Super = DOMObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "WebKit_DOMFileList")]
+unsafe impl NSCopying for DOMFileList {}
 
 #[cfg(feature = "WebKit_DOMFileList")]
 unsafe impl NSObjectProtocol for DOMFileList {}
@@ -31,5 +34,23 @@ extern_methods!(
         #[cfg(feature = "WebKit_DOMFile")]
         #[method_id(@__retain_semantics Other item:)]
         pub unsafe fn item(&self, index: c_uint) -> Option<Id<DOMFile>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMFileList")]
+    unsafe impl DOMFileList {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMFileList")]
+    unsafe impl DOMFileList {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

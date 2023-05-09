@@ -13,11 +13,11 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKMultiPoint;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKMultiPoint")]
     unsafe impl ClassType for MKMultiPoint {
         #[inherits(NSObject)]
         type Super = MKShape;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -59,5 +59,17 @@ extern_methods!(
         #[method_id(@__retain_semantics Other locationsAtPointIndexes:)]
         pub unsafe fn locationsAtPointIndexes(&self, indexes: &NSIndexSet)
             -> Id<NSArray<NSNumber>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MapKit_MKMultiPoint")]
+    unsafe impl MKMultiPoint {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

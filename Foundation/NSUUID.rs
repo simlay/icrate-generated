@@ -11,11 +11,15 @@ extern_class!(
     #[cfg(feature = "Foundation_NSUUID")]
     unsafe impl ClassType for NSUUID {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSUUID")]
 unsafe impl NSCoding for NSUUID {}
+
+#[cfg(feature = "Foundation_NSUUID")]
+unsafe impl NSCopying for NSUUID {}
 
 #[cfg(feature = "Foundation_NSUUID")]
 unsafe impl NSObjectProtocol for NSUUID {}
@@ -47,3 +51,19 @@ extern_methods!(
         pub fn UUIDString(&self) -> Id<NSString>;
     }
 );
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSUUID")]
+    unsafe impl NSUUID {
+        #[method_id(@__retain_semantics New new)]
+        pub fn new() -> Id<Self>;
+    }
+);
+#[cfg(feature = "Foundation_NSUUID")]
+impl DefaultId for NSUUID {
+    #[inline]
+    fn default_id() -> Id<Self> {
+        Self::new()
+    }
+}

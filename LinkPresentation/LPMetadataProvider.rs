@@ -11,10 +11,10 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos")))]
     pub struct LPMetadataProvider;
 
-    #[cfg(not(any(target_os = "tvos")))]
     #[cfg(feature = "LinkPresentation_LPMetadataProvider")]
     unsafe impl ClassType for LPMetadataProvider {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -64,5 +64,17 @@ extern_methods!(
 
         #[method(setTimeout:)]
         pub unsafe fn setTimeout(&self, timeout: NSTimeInterval);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "LinkPresentation_LPMetadataProvider")]
+    unsafe impl LPMetadataProvider {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

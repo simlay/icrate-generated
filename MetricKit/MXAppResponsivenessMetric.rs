@@ -10,11 +10,11 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct MXAppResponsivenessMetric;
 
-    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "MetricKit_MXAppResponsivenessMetric")]
     unsafe impl ClassType for MXAppResponsivenessMetric {
         #[inherits(NSObject)]
         type Super = MXMetric;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -40,5 +40,17 @@ extern_methods!(
         ))]
         #[method_id(@__retain_semantics Other histogrammedApplicationHangTime)]
         pub unsafe fn histogrammedApplicationHangTime(&self) -> Id<MXHistogram<NSUnitDuration>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MetricKit_MXAppResponsivenessMetric")]
+    unsafe impl MXAppResponsivenessMetric {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

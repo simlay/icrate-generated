@@ -115,11 +115,15 @@ extern_class!(
     #[cfg(feature = "Foundation_NSCalendar")]
     unsafe impl ClassType for NSCalendar {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSCalendar")]
 unsafe impl NSCoding for NSCalendar {}
+
+#[cfg(feature = "Foundation_NSCalendar")]
+unsafe impl NSCopying for NSCalendar {}
 
 #[cfg(feature = "Foundation_NSCalendar")]
 unsafe impl NSObjectProtocol for NSCalendar {}
@@ -561,6 +565,15 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSCalendar")]
+    unsafe impl NSCalendar {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_static!(NSCalendarDayChangedNotification: &'static NSNotificationName);
 
 ns_enum!(
@@ -580,11 +593,15 @@ extern_class!(
     #[cfg(feature = "Foundation_NSDateComponents")]
     unsafe impl ClassType for NSDateComponents {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSDateComponents")]
 unsafe impl NSCoding for NSDateComponents {}
+
+#[cfg(feature = "Foundation_NSDateComponents")]
+unsafe impl NSCopying for NSDateComponents {}
 
 #[cfg(feature = "Foundation_NSDateComponents")]
 unsafe impl NSObjectProtocol for NSDateComponents {}
@@ -725,5 +742,17 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSCalendar")]
         #[method(isValidDateInCalendar:)]
         pub unsafe fn isValidDateInCalendar(&self, calendar: &NSCalendar) -> bool;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSDateComponents")]
+    unsafe impl NSDateComponents {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

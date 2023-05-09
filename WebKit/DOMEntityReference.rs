@@ -11,11 +11,11 @@ extern_class!(
     #[deprecated]
     pub struct DOMEntityReference;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMEntityReference")]
     unsafe impl ClassType for DOMEntityReference {
         #[inherits(DOMObject, WebScriptObject, NSObject)]
         type Super = DOMNode;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -23,9 +23,30 @@ extern_class!(
 unsafe impl DOMEventTarget for DOMEntityReference {}
 
 #[cfg(feature = "WebKit_DOMEntityReference")]
+unsafe impl NSCopying for DOMEntityReference {}
+
+#[cfg(feature = "WebKit_DOMEntityReference")]
 unsafe impl NSObjectProtocol for DOMEntityReference {}
 
 extern_methods!(
     #[cfg(feature = "WebKit_DOMEntityReference")]
     unsafe impl DOMEntityReference {}
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMEntityReference")]
+    unsafe impl DOMEntityReference {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMEntityReference")]
+    unsafe impl DOMEntityReference {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
 );

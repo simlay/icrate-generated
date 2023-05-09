@@ -32,16 +32,20 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos")))]
     pub struct UNNotificationCategory;
 
-    #[cfg(not(any(target_os = "tvos")))]
     #[cfg(feature = "UserNotifications_UNNotificationCategory")]
     unsafe impl ClassType for UNNotificationCategory {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "UserNotifications_UNNotificationCategory")]
 #[cfg(not(any(target_os = "tvos")))]
 unsafe impl NSCoding for UNNotificationCategory {}
+
+#[cfg(feature = "UserNotifications_UNNotificationCategory")]
+#[cfg(not(any(target_os = "tvos")))]
+unsafe impl NSCopying for UNNotificationCategory {}
 
 #[cfg(feature = "UserNotifications_UNNotificationCategory")]
 #[cfg(not(any(target_os = "tvos")))]
@@ -129,5 +133,14 @@ extern_methods!(
 
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "UserNotifications_UNNotificationCategory")]
+    unsafe impl UNNotificationCategory {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -13,11 +13,15 @@ extern_class!(
     #[cfg(feature = "LinkPresentation_LPLinkMetadata")]
     unsafe impl ClassType for LPLinkMetadata {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "LinkPresentation_LPLinkMetadata")]
 unsafe impl NSCoding for LPLinkMetadata {}
+
+#[cfg(feature = "LinkPresentation_LPLinkMetadata")]
+unsafe impl NSCopying for LPLinkMetadata {}
 
 #[cfg(feature = "LinkPresentation_LPLinkMetadata")]
 unsafe impl NSObjectProtocol for LPLinkMetadata {}
@@ -83,5 +87,17 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSURL")]
         #[method(setRemoteVideoURL:)]
         pub unsafe fn setRemoteVideoURL(&self, remote_video_url: Option<&NSURL>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "LinkPresentation_LPLinkMetadata")]
+    unsafe impl LPLinkMetadata {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

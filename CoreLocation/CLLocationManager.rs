@@ -60,6 +60,7 @@ extern_class!(
     #[cfg(feature = "CoreLocation_CLLocationManager")]
     unsafe impl ClassType for CLLocationManager {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -394,5 +395,17 @@ extern_methods!(
             sample_count: NSInteger,
             handler: &Block<(NonNull<NSArray<CLLocation>>, *mut NSError), ()>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreLocation_CLLocationManager")]
+    unsafe impl CLLocationManager {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

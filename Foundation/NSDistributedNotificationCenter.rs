@@ -46,6 +46,7 @@ extern_class!(
     unsafe impl ClassType for NSDistributedNotificationCenter {
         #[inherits(NSObject)]
         type Super = NSNotificationCenter;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -135,5 +136,17 @@ extern_methods!(
             a_name: Option<&NSNotificationName>,
             an_object: Option<&NSString>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSDistributedNotificationCenter")]
+    unsafe impl NSDistributedNotificationCenter {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

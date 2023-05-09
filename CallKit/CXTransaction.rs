@@ -10,16 +10,20 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct CXTransaction;
 
-    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "CallKit_CXTransaction")]
     unsafe impl ClassType for CXTransaction {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "CallKit_CXTransaction")]
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSCoding for CXTransaction {}
+
+#[cfg(feature = "CallKit_CXTransaction")]
+#[cfg(not(any(target_os = "macos")))]
+unsafe impl NSCopying for CXTransaction {}
 
 #[cfg(feature = "CallKit_CXTransaction")]
 #[cfg(not(any(target_os = "macos")))]
@@ -58,5 +62,17 @@ extern_methods!(
         #[cfg(feature = "CallKit_CXAction")]
         #[method(addAction:)]
         pub unsafe fn addAction(&self, action: &CXAction);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CallKit_CXTransaction")]
+    unsafe impl CXTransaction {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

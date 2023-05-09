@@ -24,6 +24,18 @@ ns_enum!(
     }
 );
 
+#[cfg(feature = "AppKit_NSPopover")]
+unsafe impl NSAccessibility for NSPopover {}
+
+#[cfg(feature = "AppKit_NSPopover")]
+unsafe impl NSAccessibilityElementProtocol for NSPopover {}
+
+#[cfg(feature = "AppKit_NSPopover")]
+unsafe impl NSCoding for NSPopover {}
+
+#[cfg(feature = "AppKit_NSPopover")]
+unsafe impl NSObjectProtocol for NSPopover {}
+
 extern_methods!(
     #[cfg(feature = "AppKit_NSPopover")]
     unsafe impl NSPopover {
@@ -98,6 +110,15 @@ extern_methods!(
 
         #[method(close)]
         pub unsafe fn close(&self);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSPopover")]
+    unsafe impl NSPopover {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

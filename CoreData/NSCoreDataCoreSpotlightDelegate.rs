@@ -15,10 +15,10 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct NSCoreDataCoreSpotlightDelegate;
 
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "CoreData_NSCoreDataCoreSpotlightDelegate")]
     unsafe impl ClassType for NSCoreDataCoreSpotlightDelegate {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -84,5 +84,14 @@ extern_methods!(
             &self,
             completion_handler: &Block<(*mut NSError,), ()>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreData_NSCoreDataCoreSpotlightDelegate")]
+    unsafe impl NSCoreDataCoreSpotlightDelegate {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

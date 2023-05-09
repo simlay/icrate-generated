@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(feature = "StoreKit_SKPaymentQueue")]
     unsafe impl ClassType for SKPaymentQueue {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -111,6 +112,18 @@ extern_methods!(
         #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(presentCodeRedemptionSheet)]
         pub unsafe fn presentCodeRedemptionSheet(&self);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "StoreKit_SKPaymentQueue")]
+    unsafe impl SKPaymentQueue {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

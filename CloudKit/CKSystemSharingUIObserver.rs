@@ -11,10 +11,10 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct CKSystemSharingUIObserver;
 
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "CloudKit_CKSystemSharingUIObserver")]
     unsafe impl ClassType for CKSystemSharingUIObserver {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 

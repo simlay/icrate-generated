@@ -11,16 +11,19 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLTableColElement;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLTableColElement")]
     unsafe impl ClassType for DOMHTMLTableColElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMHTMLElement;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_DOMHTMLTableColElement")]
 unsafe impl DOMEventTarget for DOMHTMLTableColElement {}
+
+#[cfg(feature = "WebKit_DOMHTMLTableColElement")]
+unsafe impl NSCopying for DOMHTMLTableColElement {}
 
 #[cfg(feature = "WebKit_DOMHTMLTableColElement")]
 unsafe impl NSObjectProtocol for DOMHTMLTableColElement {}
@@ -73,5 +76,23 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method(setWidth:)]
         pub unsafe fn setWidth(&self, width: Option<&NSString>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMHTMLTableColElement")]
+    unsafe impl DOMHTMLTableColElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMHTMLTableColElement")]
+    unsafe impl DOMHTMLTableColElement {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

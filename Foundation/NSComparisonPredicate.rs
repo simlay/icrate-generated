@@ -50,11 +50,15 @@ extern_class!(
     unsafe impl ClassType for NSComparisonPredicate {
         #[inherits(NSObject)]
         type Super = NSPredicate;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSComparisonPredicate")]
 unsafe impl NSCoding for NSComparisonPredicate {}
+
+#[cfg(feature = "Foundation_NSComparisonPredicate")]
+unsafe impl NSCopying for NSComparisonPredicate {}
 
 #[cfg(feature = "Foundation_NSComparisonPredicate")]
 unsafe impl NSObjectProtocol for NSComparisonPredicate {}
@@ -129,5 +133,17 @@ extern_methods!(
 
         #[method(options)]
         pub unsafe fn options(&self) -> NSComparisonPredicateOptions;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSComparisonPredicate")]
+    unsafe impl NSComparisonPredicate {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

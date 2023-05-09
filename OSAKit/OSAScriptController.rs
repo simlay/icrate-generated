@@ -23,6 +23,7 @@ extern_class!(
     unsafe impl ClassType for OSAScriptController {
         #[inherits(NSObject)]
         type Super = NSController;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -90,5 +91,30 @@ extern_methods!(
 
         #[method(stopScript:)]
         pub unsafe fn stopScript(&self, sender: Option<&Object>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSController`
+    #[cfg(feature = "OSAKit_OSAScriptController")]
+    unsafe impl OSAScriptController {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(
+            this: Option<Allocated<Self>>,
+            coder: &NSCoder,
+        ) -> Option<Id<Self>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "OSAKit_OSAScriptController")]
+    unsafe impl OSAScriptController {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

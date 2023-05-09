@@ -50,6 +50,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSTextFinder")]
     unsafe impl ClassType for NSTextFinder {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -125,6 +126,15 @@ extern_methods!(
 
         #[method(noteClientStringWillChange)]
         pub unsafe fn noteClientStringWillChange(&self);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSTextFinder")]
+    unsafe impl NSTextFinder {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

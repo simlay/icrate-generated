@@ -11,13 +11,16 @@ extern_class!(
     #[deprecated]
     pub struct DOMTreeWalker;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMTreeWalker")]
     unsafe impl ClassType for DOMTreeWalker {
         #[inherits(WebScriptObject, NSObject)]
         type Super = DOMObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "WebKit_DOMTreeWalker")]
+unsafe impl NSCopying for DOMTreeWalker {}
 
 #[cfg(feature = "WebKit_DOMTreeWalker")]
 unsafe impl NSObjectProtocol for DOMTreeWalker {}
@@ -73,5 +76,23 @@ extern_methods!(
         #[cfg(feature = "WebKit_DOMNode")]
         #[method_id(@__retain_semantics Other nextNode)]
         pub unsafe fn nextNode(&self) -> Option<Id<DOMNode>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMTreeWalker")]
+    unsafe impl DOMTreeWalker {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMTreeWalker")]
+    unsafe impl DOMTreeWalker {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

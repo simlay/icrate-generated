@@ -10,12 +10,16 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct CXCallUpdate;
 
-    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "CallKit_CXCallUpdate")]
     unsafe impl ClassType for CXCallUpdate {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "CallKit_CXCallUpdate")]
+#[cfg(not(any(target_os = "macos")))]
+unsafe impl NSCopying for CXCallUpdate {}
 
 #[cfg(feature = "CallKit_CXCallUpdate")]
 #[cfg(not(any(target_os = "macos")))]
@@ -70,5 +74,17 @@ extern_methods!(
 
         #[method(setHasVideo:)]
         pub unsafe fn setHasVideo(&self, has_video: bool);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CallKit_CXCallUpdate")]
+    unsafe impl CXCallUpdate {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

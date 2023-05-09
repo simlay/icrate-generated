@@ -12,11 +12,11 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct HKVerifiableClinicalRecordQuery;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "HealthKit_HKVerifiableClinicalRecordQuery")]
     unsafe impl ClassType for HKVerifiableClinicalRecordQuery {
         #[inherits(NSObject)]
         type Super = HKQuery;
+        type Mutability = InteriorMutable;
     }
 );
 

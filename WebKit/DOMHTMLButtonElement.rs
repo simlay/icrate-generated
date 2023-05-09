@@ -11,16 +11,19 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLButtonElement;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLButtonElement")]
     unsafe impl ClassType for DOMHTMLButtonElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMHTMLElement;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_DOMHTMLButtonElement")]
 unsafe impl DOMEventTarget for DOMHTMLButtonElement {}
+
+#[cfg(feature = "WebKit_DOMHTMLButtonElement")]
+unsafe impl NSCopying for DOMHTMLButtonElement {}
 
 #[cfg(feature = "WebKit_DOMHTMLButtonElement")]
 unsafe impl NSObjectProtocol for DOMHTMLButtonElement {}
@@ -83,5 +86,23 @@ extern_methods!(
 
         #[method(click)]
         pub unsafe fn click(&self);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMHTMLButtonElement")]
+    unsafe impl DOMHTMLButtonElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMHTMLButtonElement")]
+    unsafe impl DOMHTMLButtonElement {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

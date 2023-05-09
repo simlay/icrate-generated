@@ -15,8 +15,12 @@ extern_class!(
     #[cfg(feature = "AppKit_NSDataAsset")]
     unsafe impl ClassType for NSDataAsset {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "AppKit_NSDataAsset")]
+unsafe impl NSCopying for NSDataAsset {}
 
 #[cfg(feature = "AppKit_NSDataAsset")]
 unsafe impl NSObjectProtocol for NSDataAsset {}
@@ -51,5 +55,14 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other typeIdentifier)]
         pub unsafe fn typeIdentifier(&self) -> Id<NSString>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSDataAsset")]
+    unsafe impl NSDataAsset {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

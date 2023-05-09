@@ -12,6 +12,7 @@ extern_class!(
     #[cfg(feature = "ExternalAccessory_EASession")]
     unsafe impl ClassType for EASession {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -47,5 +48,17 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSOutputStream")]
         #[method_id(@__retain_semantics Other outputStream)]
         pub unsafe fn outputStream(&self) -> Option<Id<NSOutputStream>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "ExternalAccessory_EASession")]
+    unsafe impl EASession {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

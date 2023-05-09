@@ -18,6 +18,7 @@ extern_class!(
     #[cfg(feature = "FileProvider_NSFileProviderDomainVersion")]
     unsafe impl ClassType for NSFileProviderDomainVersion {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -44,6 +45,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "FileProvider_NSFileProviderDomainVersion")]
+    unsafe impl NSFileProviderDomainVersion {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 ns_options!(
     #[underlying(NSUInteger)]
     pub enum NSFileProviderDomainTestingModes {
@@ -60,6 +73,7 @@ extern_class!(
     #[cfg(feature = "FileProvider_NSFileProviderDomain")]
     unsafe impl ClassType for NSFileProviderDomain {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -134,6 +148,18 @@ extern_methods!(
         #[cfg(not(any(target_os = "ios")))]
         #[method(setSupportsSyncingTrash:)]
         pub unsafe fn setSupportsSyncingTrash(&self, supports_syncing_trash: bool);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "FileProvider_NSFileProviderDomain")]
+    unsafe impl NSFileProviderDomain {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

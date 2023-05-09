@@ -120,11 +120,15 @@ extern_class!(
     #[cfg(feature = "HealthKit_HKWorkoutEvent")]
     unsafe impl ClassType for HKWorkoutEvent {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "HealthKit_HKWorkoutEvent")]
 unsafe impl NSCoding for HKWorkoutEvent {}
+
+#[cfg(feature = "HealthKit_HKWorkoutEvent")]
+unsafe impl NSCopying for HKWorkoutEvent {}
 
 #[cfg(feature = "HealthKit_HKWorkoutEvent")]
 unsafe impl NSObjectProtocol for HKWorkoutEvent {}
@@ -189,6 +193,15 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "HealthKit_HKWorkoutEvent")]
+    unsafe impl HKWorkoutEvent {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKWorkout")]
@@ -198,6 +211,7 @@ extern_class!(
     unsafe impl ClassType for HKWorkout {
         #[inherits(HKObject, NSObject)]
         type Super = HKSample;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -395,6 +409,24 @@ extern_methods!(
             device: Option<&HKDevice>,
             metadata: Option<&NSDictionary<NSString, Object>>,
         ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `HKObject`
+    #[cfg(feature = "HealthKit_HKWorkout")]
+    unsafe impl HKWorkout {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "HealthKit_HKWorkout")]
+    unsafe impl HKWorkout {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

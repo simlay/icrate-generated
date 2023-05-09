@@ -12,6 +12,7 @@ extern_class!(
     #[cfg(feature = "DeviceCheck_DCAppAttestService")]
     unsafe impl ClassType for DCAppAttestService {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -59,5 +60,17 @@ extern_methods!(
             client_data_hash: &NSData,
             completion_handler: &Block<(*mut NSData, *mut NSError), ()>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "DeviceCheck_DCAppAttestService")]
+    unsafe impl DCAppAttestService {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

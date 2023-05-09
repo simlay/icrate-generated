@@ -24,6 +24,7 @@ extern_class!(
     #[cfg(feature = "WebKit_WKHTTPCookieStore")]
     unsafe impl ClassType for WKHTTPCookieStore {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -67,5 +68,14 @@ extern_methods!(
             &self,
             observer: &ProtocolObject<dyn WKHTTPCookieStoreObserver>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_WKHTTPCookieStore")]
+    unsafe impl WKHTTPCookieStore {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

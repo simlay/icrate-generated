@@ -14,6 +14,7 @@ extern_class!(
     unsafe impl ClassType for GCXboxGamepad {
         #[inherits(GCPhysicalInputProfile, NSObject)]
         type Super = GCExtendedGamepad;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -42,5 +43,17 @@ extern_methods!(
         #[cfg(feature = "GameController_GCControllerButtonInput")]
         #[method_id(@__retain_semantics Other buttonShare)]
         pub unsafe fn buttonShare(&self) -> Option<Id<GCControllerButtonInput>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameController_GCXboxGamepad")]
+    unsafe impl GCXboxGamepad {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

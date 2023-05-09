@@ -34,6 +34,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSTextLayoutManager")]
     unsafe impl ClassType for NSTextLayoutManager {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -282,6 +283,15 @@ extern_methods!(
             range: &NSTextRange,
             attributed_string: &NSAttributedString,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSTextLayoutManager")]
+    unsafe impl NSTextLayoutManager {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

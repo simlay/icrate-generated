@@ -3,56 +3,32 @@
 use crate::common::*;
 use crate::Foundation::*;
 
-__inner_extern_class!(
-    #[derive(Debug, PartialEq, Eq, Hash)]
-    #[cfg(feature = "Foundation_NSOrderedSet")]
-    pub struct NSOrderedSet<ObjectType: Message = Object, ObjectTypeOwnership: Ownership = Shared> {
-        _inner0: PhantomData<*mut (ObjectType, ObjectTypeOwnership)>,
-        notunwindsafe: PhantomData<&'static mut ()>,
-    }
-
-    #[cfg(feature = "Foundation_NSOrderedSet")]
-    unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> ClassType
-        for NSOrderedSet<ObjectType, ObjectTypeOwnership>
-    {
-        type Super = NSObject;
-    }
-);
+#[cfg(feature = "Foundation_NSOrderedSet")]
+unsafe impl<ObjectType: Message + NSCoding> NSCoding for NSOrderedSet<ObjectType> {}
 
 #[cfg(feature = "Foundation_NSOrderedSet")]
-unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSCoding
-    for NSOrderedSet<ObjectType, ObjectTypeOwnership>
-{
-}
+unsafe impl<ObjectType: IsIdCloneable> NSCopying for NSOrderedSet<ObjectType> {}
 
 #[cfg(feature = "Foundation_NSOrderedSet")]
-unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSFastEnumeration
-    for NSOrderedSet<ObjectType, ObjectTypeOwnership>
-{
-}
+unsafe impl<ObjectType: Message> NSFastEnumeration for NSOrderedSet<ObjectType> {}
 
 #[cfg(feature = "Foundation_NSOrderedSet")]
-unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSObjectProtocol
-    for NSOrderedSet<ObjectType, ObjectTypeOwnership>
-{
-}
+unsafe impl<ObjectType: IsIdCloneable> NSMutableCopying for NSOrderedSet<ObjectType> {}
 
 #[cfg(feature = "Foundation_NSOrderedSet")]
-unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSSecureCoding
-    for NSOrderedSet<ObjectType, ObjectTypeOwnership>
-{
-}
+unsafe impl<ObjectType: Message> NSObjectProtocol for NSOrderedSet<ObjectType> {}
+
+#[cfg(feature = "Foundation_NSOrderedSet")]
+unsafe impl<ObjectType: Message + NSSecureCoding> NSSecureCoding for NSOrderedSet<ObjectType> {}
 
 extern_methods!(
     #[cfg(feature = "Foundation_NSOrderedSet")]
-    unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>
-        NSOrderedSet<ObjectType, ObjectTypeOwnership>
-    {
+    unsafe impl<ObjectType: Message> NSOrderedSet<ObjectType> {
         #[method(count)]
         pub unsafe fn count(&self) -> NSUInteger;
 
         #[method_id(@__retain_semantics Other objectAtIndex:)]
-        pub unsafe fn objectAtIndex(&self, idx: NSUInteger) -> Id<ObjectType, ObjectTypeOwnership>;
+        pub unsafe fn objectAtIndex(&self, idx: NSUInteger) -> Id<ObjectType>;
 
         #[method(indexOfObject:)]
         pub unsafe fn indexOfObject(&self, object: &ObjectType) -> NSUInteger;
@@ -77,11 +53,18 @@ extern_methods!(
 );
 
 extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSOrderedSet")]
+    unsafe impl<ObjectType: Message> NSOrderedSet<ObjectType> {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
+extern_methods!(
     /// NSExtendedOrderedSet
     #[cfg(feature = "Foundation_NSOrderedSet")]
-    unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>
-        NSOrderedSet<ObjectType, ObjectTypeOwnership>
-    {
+    unsafe impl<ObjectType: Message> NSOrderedSet<ObjectType> {
         #[method(getObjects:range:)]
         pub unsafe fn getObjects_range(&self, objects: *mut NonNull<ObjectType>, range: NSRange);
 
@@ -90,10 +73,10 @@ extern_methods!(
         pub unsafe fn objectsAtIndexes(&self, indexes: &NSIndexSet) -> Id<NSArray<ObjectType>>;
 
         #[method_id(@__retain_semantics Other firstObject)]
-        pub unsafe fn firstObject(&self) -> Option<Id<ObjectType, ObjectTypeOwnership>>;
+        pub unsafe fn firstObject(&self) -> Option<Id<ObjectType>>;
 
         #[method_id(@__retain_semantics Other lastObject)]
-        pub unsafe fn lastObject(&self) -> Option<Id<ObjectType, ObjectTypeOwnership>>;
+        pub unsafe fn lastObject(&self) -> Option<Id<ObjectType>>;
 
         #[method(isEqualToOrderedSet:)]
         pub unsafe fn isEqualToOrderedSet(&self, other: &NSOrderedSet<ObjectType>) -> bool;
@@ -116,10 +99,7 @@ extern_methods!(
         pub unsafe fn isSubsetOfSet(&self, set: &NSSet<ObjectType>) -> bool;
 
         #[method_id(@__retain_semantics Other objectAtIndexedSubscript:)]
-        pub unsafe fn objectAtIndexedSubscript(
-            &self,
-            idx: NSUInteger,
-        ) -> Id<ObjectType, ObjectTypeOwnership>;
+        pub unsafe fn objectAtIndexedSubscript(&self, idx: NSUInteger) -> Id<ObjectType>;
 
         #[cfg(feature = "Foundation_NSEnumerator")]
         #[method_id(@__retain_semantics Other objectEnumerator)]
@@ -253,9 +233,123 @@ extern_methods!(
 extern_methods!(
     /// NSOrderedSetCreation
     #[cfg(feature = "Foundation_NSOrderedSet")]
-    unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>
-        NSOrderedSet<ObjectType, ObjectTypeOwnership>
-    {
+    unsafe impl<ObjectType: Message> NSOrderedSet<ObjectType> {
+        #[method_id(@__retain_semantics Other orderedSet)]
+        pub unsafe fn orderedSet() -> Id<Self>;
+
+        #[method_id(@__retain_semantics Other orderedSetWithObject:)]
+        pub unsafe fn orderedSetWithObject(object: &ObjectType) -> Id<Self>;
+
+        #[method_id(@__retain_semantics Other orderedSetWithObjects:count:)]
+        pub unsafe fn orderedSetWithObjects_count(
+            objects: NonNull<NonNull<ObjectType>>,
+            cnt: NSUInteger,
+        ) -> Id<Self>;
+
+        #[method_id(@__retain_semantics Other orderedSetWithOrderedSet:)]
+        pub unsafe fn orderedSetWithOrderedSet(set: &NSOrderedSet<ObjectType>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics Other orderedSetWithOrderedSet:range:copyItems:)]
+        pub unsafe fn orderedSetWithOrderedSet_range_copyItems(
+            set: &NSOrderedSet<ObjectType>,
+            range: NSRange,
+            flag: bool,
+        ) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSArray")]
+        #[method_id(@__retain_semantics Other orderedSetWithArray:)]
+        pub unsafe fn orderedSetWithArray(array: &NSArray<ObjectType>) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSArray")]
+        #[method_id(@__retain_semantics Other orderedSetWithArray:range:copyItems:)]
+        pub unsafe fn orderedSetWithArray_range_copyItems(
+            array: &NSArray<ObjectType>,
+            range: NSRange,
+            flag: bool,
+        ) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSSet")]
+        #[method_id(@__retain_semantics Other orderedSetWithSet:)]
+        pub unsafe fn orderedSetWithSet(set: &NSSet<ObjectType>) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSSet")]
+        #[method_id(@__retain_semantics Other orderedSetWithSet:copyItems:)]
+        pub unsafe fn orderedSetWithSet_copyItems(set: &NSSet<ObjectType>, flag: bool) -> Id<Self>;
+
+        #[method_id(@__retain_semantics Init initWithObject:)]
+        pub unsafe fn initWithObject(
+            this: Option<Allocated<Self>>,
+            object: &ObjectType,
+        ) -> Id<Self>;
+
+        #[method_id(@__retain_semantics Init initWithOrderedSet:)]
+        pub unsafe fn initWithOrderedSet(
+            this: Option<Allocated<Self>>,
+            set: &NSOrderedSet<ObjectType>,
+        ) -> Id<Self>;
+
+        #[method_id(@__retain_semantics Init initWithOrderedSet:copyItems:)]
+        pub unsafe fn initWithOrderedSet_copyItems(
+            this: Option<Allocated<Self>>,
+            set: &NSOrderedSet<ObjectType>,
+            flag: bool,
+        ) -> Id<Self>;
+
+        #[method_id(@__retain_semantics Init initWithOrderedSet:range:copyItems:)]
+        pub unsafe fn initWithOrderedSet_range_copyItems(
+            this: Option<Allocated<Self>>,
+            set: &NSOrderedSet<ObjectType>,
+            range: NSRange,
+            flag: bool,
+        ) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSArray")]
+        #[method_id(@__retain_semantics Init initWithArray:)]
+        pub unsafe fn initWithArray(
+            this: Option<Allocated<Self>>,
+            array: &NSArray<ObjectType>,
+        ) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSArray")]
+        #[method_id(@__retain_semantics Init initWithArray:copyItems:)]
+        pub unsafe fn initWithArray_copyItems(
+            this: Option<Allocated<Self>>,
+            set: &NSArray<ObjectType>,
+            flag: bool,
+        ) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSArray")]
+        #[method_id(@__retain_semantics Init initWithArray:range:copyItems:)]
+        pub unsafe fn initWithArray_range_copyItems(
+            this: Option<Allocated<Self>>,
+            set: &NSArray<ObjectType>,
+            range: NSRange,
+            flag: bool,
+        ) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSSet")]
+        #[method_id(@__retain_semantics Init initWithSet:)]
+        pub unsafe fn initWithSet(
+            this: Option<Allocated<Self>>,
+            set: &NSSet<ObjectType>,
+        ) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSSet")]
+        #[method_id(@__retain_semantics Init initWithSet:copyItems:)]
+        pub unsafe fn initWithSet_copyItems(
+            this: Option<Allocated<Self>>,
+            set: &NSSet<ObjectType>,
+            flag: bool,
+        ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSOrderedSet`
+    ///
+    /// NSOrderedSetCreation
+    #[cfg(feature = "Foundation_NSMutableOrderedSet")]
+    unsafe impl<ObjectType: Message> NSMutableOrderedSet<ObjectType> {
         #[method_id(@__retain_semantics Other orderedSet)]
         pub unsafe fn orderedSet() -> Id<Self>;
 
@@ -369,9 +463,7 @@ extern_methods!(
 extern_methods!(
     /// NSOrderedSetDiffing
     #[cfg(feature = "Foundation_NSOrderedSet")]
-    unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>
-        NSOrderedSet<ObjectType, ObjectTypeOwnership>
-    {
+    unsafe impl<ObjectType: Message> NSOrderedSet<ObjectType> {
         #[cfg(feature = "Foundation_NSOrderedCollectionDifference")]
         #[method_id(@__retain_semantics Other differenceFromOrderedSet:withOptions:usingEquivalenceTest:)]
         pub unsafe fn differenceFromOrderedSet_withOptions_usingEquivalenceTest(
@@ -405,126 +497,133 @@ extern_methods!(
     }
 );
 
-__inner_extern_class!(
-    #[derive(Debug, PartialEq, Eq, Hash)]
-    #[cfg(feature = "Foundation_NSMutableOrderedSet")]
-    pub struct NSMutableOrderedSet<
-        ObjectType: Message = Object,
-        ObjectTypeOwnership: Ownership = Shared,
-    > {
-        _inner0: PhantomData<*mut (ObjectType, ObjectTypeOwnership)>,
-        notunwindsafe: PhantomData<&'static mut ()>,
-    }
-
-    #[cfg(feature = "Foundation_NSMutableOrderedSet")]
-    unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> ClassType
-        for NSMutableOrderedSet<ObjectType, ObjectTypeOwnership>
-    {
-        #[inherits(NSObject)]
-        type Super = NSOrderedSet<ObjectType, ObjectTypeOwnership>;
-    }
-);
+#[cfg(feature = "Foundation_NSMutableOrderedSet")]
+unsafe impl<ObjectType: Message + NSCoding> NSCoding for NSMutableOrderedSet<ObjectType> {}
 
 #[cfg(feature = "Foundation_NSMutableOrderedSet")]
-unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSCoding
-    for NSMutableOrderedSet<ObjectType, ObjectTypeOwnership>
-{
-}
+unsafe impl<ObjectType: IsIdCloneable> NSCopying for NSMutableOrderedSet<ObjectType> {}
 
 #[cfg(feature = "Foundation_NSMutableOrderedSet")]
-unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSFastEnumeration
-    for NSMutableOrderedSet<ObjectType, ObjectTypeOwnership>
-{
-}
+unsafe impl<ObjectType: Message> NSFastEnumeration for NSMutableOrderedSet<ObjectType> {}
 
 #[cfg(feature = "Foundation_NSMutableOrderedSet")]
-unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSObjectProtocol
-    for NSMutableOrderedSet<ObjectType, ObjectTypeOwnership>
-{
-}
+unsafe impl<ObjectType: IsIdCloneable> NSMutableCopying for NSMutableOrderedSet<ObjectType> {}
 
 #[cfg(feature = "Foundation_NSMutableOrderedSet")]
-unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSSecureCoding
-    for NSMutableOrderedSet<ObjectType, ObjectTypeOwnership>
+unsafe impl<ObjectType: Message> NSObjectProtocol for NSMutableOrderedSet<ObjectType> {}
+
+#[cfg(feature = "Foundation_NSMutableOrderedSet")]
+unsafe impl<ObjectType: Message + NSSecureCoding> NSSecureCoding
+    for NSMutableOrderedSet<ObjectType>
 {
 }
 
 extern_methods!(
     #[cfg(feature = "Foundation_NSMutableOrderedSet")]
-    unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>
-        NSMutableOrderedSet<ObjectType, ObjectTypeOwnership>
-    {
+    unsafe impl<ObjectType: Message> NSMutableOrderedSet<ObjectType> {
         #[method(insertObject:atIndex:)]
-        pub unsafe fn insertObject_atIndex(&self, object: &ObjectType, idx: NSUInteger);
+        pub unsafe fn insertObject_atIndex(&mut self, object: &ObjectType, idx: NSUInteger);
 
         #[method(removeObjectAtIndex:)]
-        pub unsafe fn removeObjectAtIndex(&self, idx: NSUInteger);
+        pub unsafe fn removeObjectAtIndex(&mut self, idx: NSUInteger);
 
         #[method(replaceObjectAtIndex:withObject:)]
-        pub unsafe fn replaceObjectAtIndex_withObject(&self, idx: NSUInteger, object: &ObjectType);
+        pub unsafe fn replaceObjectAtIndex_withObject(
+            &mut self,
+            idx: NSUInteger,
+            object: &ObjectType,
+        );
 
         #[cfg(feature = "Foundation_NSCoder")]
         #[method_id(@__retain_semantics Init initWithCoder:)]
         pub unsafe fn initWithCoder(
             this: Option<Allocated<Self>>,
             coder: &NSCoder,
-        ) -> Option<Id<Self, Owned>>;
+        ) -> Option<Id<Self>>;
 
         #[method_id(@__retain_semantics Init init)]
-        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self, Owned>;
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
         #[method_id(@__retain_semantics Init initWithCapacity:)]
         pub unsafe fn initWithCapacity(
             this: Option<Allocated<Self>>,
             num_items: NSUInteger,
-        ) -> Id<Self, Owned>;
+        ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSOrderedSet`
+    #[cfg(feature = "Foundation_NSMutableOrderedSet")]
+    unsafe impl<ObjectType: Message> NSMutableOrderedSet<ObjectType> {
+        #[method_id(@__retain_semantics Init initWithObjects:count:)]
+        pub unsafe fn initWithObjects_count(
+            this: Option<Allocated<Self>>,
+            objects: *mut NonNull<ObjectType>,
+            cnt: NSUInteger,
+        ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSMutableOrderedSet")]
+    unsafe impl<ObjectType: Message> NSMutableOrderedSet<ObjectType> {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 
 extern_methods!(
     /// NSExtendedMutableOrderedSet
     #[cfg(feature = "Foundation_NSMutableOrderedSet")]
-    unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>
-        NSMutableOrderedSet<ObjectType, ObjectTypeOwnership>
-    {
+    unsafe impl<ObjectType: Message> NSMutableOrderedSet<ObjectType> {
         #[method(addObject:)]
-        pub unsafe fn addObject(&self, object: &ObjectType);
+        pub unsafe fn addObject(&mut self, object: &ObjectType);
 
         #[method(addObjects:count:)]
-        pub unsafe fn addObjects_count(&self, objects: *mut NonNull<ObjectType>, count: NSUInteger);
+        pub unsafe fn addObjects_count(
+            &mut self,
+            objects: *mut NonNull<ObjectType>,
+            count: NSUInteger,
+        );
 
         #[cfg(feature = "Foundation_NSArray")]
         #[method(addObjectsFromArray:)]
-        pub unsafe fn addObjectsFromArray(&self, array: &NSArray<ObjectType>);
+        pub unsafe fn addObjectsFromArray(&mut self, array: &NSArray<ObjectType>);
 
         #[method(exchangeObjectAtIndex:withObjectAtIndex:)]
         pub unsafe fn exchangeObjectAtIndex_withObjectAtIndex(
-            &self,
+            &mut self,
             idx1: NSUInteger,
             idx2: NSUInteger,
         );
 
         #[cfg(feature = "Foundation_NSIndexSet")]
         #[method(moveObjectsAtIndexes:toIndex:)]
-        pub unsafe fn moveObjectsAtIndexes_toIndex(&self, indexes: &NSIndexSet, idx: NSUInteger);
+        pub unsafe fn moveObjectsAtIndexes_toIndex(
+            &mut self,
+            indexes: &NSIndexSet,
+            idx: NSUInteger,
+        );
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSIndexSet"))]
         #[method(insertObjects:atIndexes:)]
         pub unsafe fn insertObjects_atIndexes(
-            &self,
+            &mut self,
             objects: &NSArray<ObjectType>,
             indexes: &NSIndexSet,
         );
 
         #[method(setObject:atIndex:)]
-        pub unsafe fn setObject_atIndex(&self, obj: &ObjectType, idx: NSUInteger);
+        pub unsafe fn setObject_atIndex(&mut self, obj: &ObjectType, idx: NSUInteger);
 
         #[method(setObject:atIndexedSubscript:)]
-        pub unsafe fn setObject_atIndexedSubscript(&self, obj: &ObjectType, idx: NSUInteger);
+        pub unsafe fn setObject_atIndexedSubscript(&mut self, obj: &ObjectType, idx: NSUInteger);
 
         #[method(replaceObjectsInRange:withObjects:count:)]
         pub unsafe fn replaceObjectsInRange_withObjects_count(
-            &self,
+            &mut self,
             range: NSRange,
             objects: *mut NonNull<ObjectType>,
             count: NSUInteger,
@@ -533,65 +632,65 @@ extern_methods!(
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSIndexSet"))]
         #[method(replaceObjectsAtIndexes:withObjects:)]
         pub unsafe fn replaceObjectsAtIndexes_withObjects(
-            &self,
+            &mut self,
             indexes: &NSIndexSet,
             objects: &NSArray<ObjectType>,
         );
 
         #[method(removeObjectsInRange:)]
-        pub unsafe fn removeObjectsInRange(&self, range: NSRange);
+        pub unsafe fn removeObjectsInRange(&mut self, range: NSRange);
 
         #[cfg(feature = "Foundation_NSIndexSet")]
         #[method(removeObjectsAtIndexes:)]
-        pub unsafe fn removeObjectsAtIndexes(&self, indexes: &NSIndexSet);
+        pub unsafe fn removeObjectsAtIndexes(&mut self, indexes: &NSIndexSet);
 
         #[method(removeAllObjects)]
-        pub unsafe fn removeAllObjects(&self);
+        pub unsafe fn removeAllObjects(&mut self);
 
         #[method(removeObject:)]
-        pub unsafe fn removeObject(&self, object: &ObjectType);
+        pub unsafe fn removeObject(&mut self, object: &ObjectType);
 
         #[cfg(feature = "Foundation_NSArray")]
         #[method(removeObjectsInArray:)]
-        pub unsafe fn removeObjectsInArray(&self, array: &NSArray<ObjectType>);
+        pub unsafe fn removeObjectsInArray(&mut self, array: &NSArray<ObjectType>);
 
         #[cfg(feature = "Foundation_NSOrderedSet")]
         #[method(intersectOrderedSet:)]
-        pub unsafe fn intersectOrderedSet(&self, other: &NSOrderedSet<ObjectType>);
+        pub unsafe fn intersectOrderedSet(&mut self, other: &NSOrderedSet<ObjectType>);
 
         #[cfg(feature = "Foundation_NSOrderedSet")]
         #[method(minusOrderedSet:)]
-        pub unsafe fn minusOrderedSet(&self, other: &NSOrderedSet<ObjectType>);
+        pub unsafe fn minusOrderedSet(&mut self, other: &NSOrderedSet<ObjectType>);
 
         #[cfg(feature = "Foundation_NSOrderedSet")]
         #[method(unionOrderedSet:)]
-        pub unsafe fn unionOrderedSet(&self, other: &NSOrderedSet<ObjectType>);
+        pub unsafe fn unionOrderedSet(&mut self, other: &NSOrderedSet<ObjectType>);
 
         #[cfg(feature = "Foundation_NSSet")]
         #[method(intersectSet:)]
-        pub unsafe fn intersectSet(&self, other: &NSSet<ObjectType>);
+        pub unsafe fn intersectSet(&mut self, other: &NSSet<ObjectType>);
 
         #[cfg(feature = "Foundation_NSSet")]
         #[method(minusSet:)]
-        pub unsafe fn minusSet(&self, other: &NSSet<ObjectType>);
+        pub unsafe fn minusSet(&mut self, other: &NSSet<ObjectType>);
 
         #[cfg(feature = "Foundation_NSSet")]
         #[method(unionSet:)]
-        pub unsafe fn unionSet(&self, other: &NSSet<ObjectType>);
+        pub unsafe fn unionSet(&mut self, other: &NSSet<ObjectType>);
 
         #[method(sortUsingComparator:)]
-        pub unsafe fn sortUsingComparator(&self, cmptr: NSComparator);
+        pub unsafe fn sortUsingComparator(&mut self, cmptr: NSComparator);
 
         #[method(sortWithOptions:usingComparator:)]
         pub unsafe fn sortWithOptions_usingComparator(
-            &self,
+            &mut self,
             opts: NSSortOptions,
             cmptr: NSComparator,
         );
 
         #[method(sortRange:options:usingComparator:)]
         pub unsafe fn sortRange_options_usingComparator(
-            &self,
+            &mut self,
             range: NSRange,
             opts: NSSortOptions,
             cmptr: NSComparator,
@@ -602,161 +701,21 @@ extern_methods!(
 extern_methods!(
     /// NSMutableOrderedSetCreation
     #[cfg(feature = "Foundation_NSMutableOrderedSet")]
-    unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>
-        NSMutableOrderedSet<ObjectType, ObjectTypeOwnership>
-    {
+    unsafe impl<ObjectType: Message> NSMutableOrderedSet<ObjectType> {
         #[method_id(@__retain_semantics Other orderedSetWithCapacity:)]
-        pub unsafe fn orderedSetWithCapacity(num_items: NSUInteger) -> Id<Self, Owned>;
+        pub unsafe fn orderedSetWithCapacity(num_items: NSUInteger) -> Id<Self>;
     }
 );
 
 extern_methods!(
     /// NSMutableOrderedSetDiffing
     #[cfg(feature = "Foundation_NSMutableOrderedSet")]
-    unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>
-        NSMutableOrderedSet<ObjectType, ObjectTypeOwnership>
-    {
+    unsafe impl<ObjectType: Message> NSMutableOrderedSet<ObjectType> {
         #[cfg(feature = "Foundation_NSOrderedCollectionDifference")]
         #[method(applyDifference:)]
         pub unsafe fn applyDifference(
-            &self,
+            &mut self,
             difference: &NSOrderedCollectionDifference<ObjectType>,
         );
-    }
-);
-
-extern_methods!(
-    /// Methods declared on superclass `NSOrderedSet`
-    #[cfg(feature = "Foundation_NSMutableOrderedSet")]
-    unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>
-        NSMutableOrderedSet<ObjectType, ObjectTypeOwnership>
-    {
-        #[method_id(@__retain_semantics Init initWithObjects:count:)]
-        pub unsafe fn initWithObjects_count(
-            this: Option<Allocated<Self>>,
-            objects: *mut NonNull<ObjectType>,
-            cnt: NSUInteger,
-        ) -> Id<Self, Owned>;
-    }
-);
-
-extern_methods!(
-    /// Methods declared on superclass `NSOrderedSet`
-    ///
-    /// NSOrderedSetCreation
-    #[cfg(feature = "Foundation_NSMutableOrderedSet")]
-    unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>
-        NSMutableOrderedSet<ObjectType, ObjectTypeOwnership>
-    {
-        #[method_id(@__retain_semantics Other orderedSet)]
-        pub unsafe fn orderedSet() -> Id<Self, Owned>;
-
-        #[method_id(@__retain_semantics Other orderedSetWithObject:)]
-        pub unsafe fn orderedSetWithObject(object: &ObjectType) -> Id<Self, Owned>;
-
-        #[method_id(@__retain_semantics Other orderedSetWithObjects:count:)]
-        pub unsafe fn orderedSetWithObjects_count(
-            objects: NonNull<NonNull<ObjectType>>,
-            cnt: NSUInteger,
-        ) -> Id<Self, Owned>;
-
-        #[method_id(@__retain_semantics Other orderedSetWithOrderedSet:)]
-        pub unsafe fn orderedSetWithOrderedSet(set: &NSOrderedSet<ObjectType>) -> Id<Self, Owned>;
-
-        #[method_id(@__retain_semantics Other orderedSetWithOrderedSet:range:copyItems:)]
-        pub unsafe fn orderedSetWithOrderedSet_range_copyItems(
-            set: &NSOrderedSet<ObjectType>,
-            range: NSRange,
-            flag: bool,
-        ) -> Id<Self, Owned>;
-
-        #[cfg(feature = "Foundation_NSArray")]
-        #[method_id(@__retain_semantics Other orderedSetWithArray:)]
-        pub unsafe fn orderedSetWithArray(array: &NSArray<ObjectType>) -> Id<Self, Owned>;
-
-        #[cfg(feature = "Foundation_NSArray")]
-        #[method_id(@__retain_semantics Other orderedSetWithArray:range:copyItems:)]
-        pub unsafe fn orderedSetWithArray_range_copyItems(
-            array: &NSArray<ObjectType>,
-            range: NSRange,
-            flag: bool,
-        ) -> Id<Self, Owned>;
-
-        #[cfg(feature = "Foundation_NSSet")]
-        #[method_id(@__retain_semantics Other orderedSetWithSet:)]
-        pub unsafe fn orderedSetWithSet(set: &NSSet<ObjectType>) -> Id<Self, Owned>;
-
-        #[cfg(feature = "Foundation_NSSet")]
-        #[method_id(@__retain_semantics Other orderedSetWithSet:copyItems:)]
-        pub unsafe fn orderedSetWithSet_copyItems(
-            set: &NSSet<ObjectType>,
-            flag: bool,
-        ) -> Id<Self, Owned>;
-
-        #[method_id(@__retain_semantics Init initWithObject:)]
-        pub unsafe fn initWithObject(
-            this: Option<Allocated<Self>>,
-            object: &ObjectType,
-        ) -> Id<Self, Owned>;
-
-        #[method_id(@__retain_semantics Init initWithOrderedSet:)]
-        pub unsafe fn initWithOrderedSet(
-            this: Option<Allocated<Self>>,
-            set: &NSOrderedSet<ObjectType>,
-        ) -> Id<Self, Owned>;
-
-        #[method_id(@__retain_semantics Init initWithOrderedSet:copyItems:)]
-        pub unsafe fn initWithOrderedSet_copyItems(
-            this: Option<Allocated<Self>>,
-            set: &NSOrderedSet<ObjectType>,
-            flag: bool,
-        ) -> Id<Self, Owned>;
-
-        #[method_id(@__retain_semantics Init initWithOrderedSet:range:copyItems:)]
-        pub unsafe fn initWithOrderedSet_range_copyItems(
-            this: Option<Allocated<Self>>,
-            set: &NSOrderedSet<ObjectType>,
-            range: NSRange,
-            flag: bool,
-        ) -> Id<Self, Owned>;
-
-        #[cfg(feature = "Foundation_NSArray")]
-        #[method_id(@__retain_semantics Init initWithArray:)]
-        pub unsafe fn initWithArray(
-            this: Option<Allocated<Self>>,
-            array: &NSArray<ObjectType>,
-        ) -> Id<Self, Owned>;
-
-        #[cfg(feature = "Foundation_NSArray")]
-        #[method_id(@__retain_semantics Init initWithArray:copyItems:)]
-        pub unsafe fn initWithArray_copyItems(
-            this: Option<Allocated<Self>>,
-            set: &NSArray<ObjectType>,
-            flag: bool,
-        ) -> Id<Self, Owned>;
-
-        #[cfg(feature = "Foundation_NSArray")]
-        #[method_id(@__retain_semantics Init initWithArray:range:copyItems:)]
-        pub unsafe fn initWithArray_range_copyItems(
-            this: Option<Allocated<Self>>,
-            set: &NSArray<ObjectType>,
-            range: NSRange,
-            flag: bool,
-        ) -> Id<Self, Owned>;
-
-        #[cfg(feature = "Foundation_NSSet")]
-        #[method_id(@__retain_semantics Init initWithSet:)]
-        pub unsafe fn initWithSet(
-            this: Option<Allocated<Self>>,
-            set: &NSSet<ObjectType>,
-        ) -> Id<Self, Owned>;
-
-        #[cfg(feature = "Foundation_NSSet")]
-        #[method_id(@__retain_semantics Init initWithSet:copyItems:)]
-        pub unsafe fn initWithSet_copyItems(
-            this: Option<Allocated<Self>>,
-            set: &NSSet<ObjectType>,
-            flag: bool,
-        ) -> Id<Self, Owned>;
     }
 );

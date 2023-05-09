@@ -12,6 +12,7 @@ extern_class!(
     #[cfg(feature = "CoreAnimation_CARemoteLayerClient")]
     unsafe impl ClassType for CARemoteLayerClient {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -34,5 +35,17 @@ extern_methods!(
         #[cfg(feature = "CoreAnimation_CALayer")]
         #[method(setLayer:)]
         pub unsafe fn setLayer(&self, layer: Option<&CALayer>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreAnimation_CARemoteLayerClient")]
+    unsafe impl CARemoteLayerClient {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

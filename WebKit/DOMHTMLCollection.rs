@@ -11,13 +11,16 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLCollection;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLCollection")]
     unsafe impl ClassType for DOMHTMLCollection {
         #[inherits(WebScriptObject, NSObject)]
         type Super = DOMObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "WebKit_DOMHTMLCollection")]
+unsafe impl NSCopying for DOMHTMLCollection {}
 
 #[cfg(feature = "WebKit_DOMHTMLCollection")]
 unsafe impl NSObjectProtocol for DOMHTMLCollection {}
@@ -39,5 +42,23 @@ extern_methods!(
         #[cfg(all(feature = "Foundation_NSString", feature = "WebKit_DOMNodeList"))]
         #[method_id(@__retain_semantics Other tags:)]
         pub unsafe fn tags(&self, name: Option<&NSString>) -> Option<Id<DOMNodeList>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMHTMLCollection")]
+    unsafe impl DOMHTMLCollection {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMHTMLCollection")]
+    unsafe impl DOMHTMLCollection {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

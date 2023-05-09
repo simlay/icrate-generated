@@ -14,6 +14,7 @@ extern_class!(
     unsafe impl ClassType for CKFetchRecordZoneChangesOperation {
         #[inherits(CKOperation, NSOperation, NSObject)]
         type Super = CKDatabaseOperation;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -225,6 +226,15 @@ extern_methods!(
 );
 
 extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CloudKit_CKFetchRecordZoneChangesOperation")]
+    unsafe impl CKFetchRecordZoneChangesOperation {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
+extern_methods!(
     /// Deprecated
     #[cfg(feature = "CloudKit_CKFetchRecordZoneChangesOperation")]
     unsafe impl CKFetchRecordZoneChangesOperation {
@@ -279,11 +289,15 @@ extern_class!(
     #[cfg(feature = "CloudKit_CKFetchRecordZoneChangesConfiguration")]
     unsafe impl ClassType for CKFetchRecordZoneChangesConfiguration {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "CloudKit_CKFetchRecordZoneChangesConfiguration")]
 unsafe impl NSCoding for CKFetchRecordZoneChangesConfiguration {}
+
+#[cfg(feature = "CloudKit_CKFetchRecordZoneChangesConfiguration")]
+unsafe impl NSCopying for CKFetchRecordZoneChangesConfiguration {}
 
 #[cfg(feature = "CloudKit_CKFetchRecordZoneChangesConfiguration")]
 unsafe impl NSObjectProtocol for CKFetchRecordZoneChangesConfiguration {}
@@ -321,21 +335,36 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CloudKit_CKFetchRecordZoneChangesConfiguration")]
+    unsafe impl CKFetchRecordZoneChangesConfiguration {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CloudKit_CKFetchRecordZoneChangesOptions")]
     #[deprecated]
     pub struct CKFetchRecordZoneChangesOptions;
 
-    #[deprecated]
     #[cfg(feature = "CloudKit_CKFetchRecordZoneChangesOptions")]
     unsafe impl ClassType for CKFetchRecordZoneChangesOptions {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "CloudKit_CKFetchRecordZoneChangesOptions")]
 unsafe impl NSCoding for CKFetchRecordZoneChangesOptions {}
+
+#[cfg(feature = "CloudKit_CKFetchRecordZoneChangesOptions")]
+unsafe impl NSCopying for CKFetchRecordZoneChangesOptions {}
 
 #[cfg(feature = "CloudKit_CKFetchRecordZoneChangesOptions")]
 unsafe impl NSObjectProtocol for CKFetchRecordZoneChangesOptions {}
@@ -370,5 +399,17 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSArray")]
         #[method(setDesiredKeys:)]
         pub unsafe fn setDesiredKeys(&self, desired_keys: Option<&NSArray<CKRecordFieldKey>>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CloudKit_CKFetchRecordZoneChangesOptions")]
+    unsafe impl CKFetchRecordZoneChangesOptions {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

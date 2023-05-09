@@ -16,12 +16,16 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKLocalPointsOfInterestRequest;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKLocalPointsOfInterestRequest")]
     unsafe impl ClassType for MKLocalPointsOfInterestRequest {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "MapKit_MKLocalPointsOfInterestRequest")]
+#[cfg(not(any(target_os = "watchos")))]
+unsafe impl NSCopying for MKLocalPointsOfInterestRequest {}
 
 #[cfg(feature = "MapKit_MKLocalPointsOfInterestRequest")]
 #[cfg(not(any(target_os = "watchos")))]
@@ -66,5 +70,14 @@ extern_methods!(
             &self,
             point_of_interest_filter: Option<&MKPointOfInterestFilter>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MapKit_MKLocalPointsOfInterestRequest")]
+    unsafe impl MKLocalPointsOfInterestRequest {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

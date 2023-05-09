@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(feature = "GameKit_GKLeaderboardScore")]
     unsafe impl ClassType for GKLeaderboardScore {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -49,5 +50,17 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method(setLeaderboardID:)]
         pub unsafe fn setLeaderboardID(&self, leaderboard_id: &NSString);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameKit_GKLeaderboardScore")]
+    unsafe impl GKLeaderboardScore {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

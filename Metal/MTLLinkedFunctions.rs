@@ -12,8 +12,12 @@ extern_class!(
     #[cfg(feature = "Metal_MTLLinkedFunctions")]
     unsafe impl ClassType for MTLLinkedFunctions {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLLinkedFunctions")]
+unsafe impl NSCopying for MTLLinkedFunctions {}
 
 #[cfg(feature = "Metal_MTLLinkedFunctions")]
 unsafe impl NSObjectProtocol for MTLLinkedFunctions {}
@@ -76,3 +80,22 @@ extern_methods!(
         );
     }
 );
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLLinkedFunctions")]
+    unsafe impl MTLLinkedFunctions {
+        #[method_id(@__retain_semantics Init init)]
+        pub fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub fn new() -> Id<Self>;
+    }
+);
+#[cfg(feature = "Metal_MTLLinkedFunctions")]
+impl DefaultId for MTLLinkedFunctions {
+    #[inline]
+    fn default_id() -> Id<Self> {
+        Self::new()
+    }
+}

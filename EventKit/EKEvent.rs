@@ -37,6 +37,7 @@ extern_class!(
     unsafe impl ClassType for EKEvent {
         #[inherits(EKObject, NSObject)]
         type Super = EKCalendarItem;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -125,5 +126,17 @@ extern_methods!(
         #[deprecated = "Use birthdayContactIdentifier instead"]
         #[method_id(@__retain_semantics Other birthdayPersonUniqueID)]
         pub unsafe fn birthdayPersonUniqueID(&self) -> Option<Id<NSString>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "EventKit_EKEvent")]
+    unsafe impl EKEvent {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

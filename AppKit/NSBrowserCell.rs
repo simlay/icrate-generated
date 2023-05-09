@@ -14,6 +14,7 @@ extern_class!(
     unsafe impl ClassType for NSBrowserCell {
         #[inherits(NSObject)]
         type Super = NSCell;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -25,6 +26,9 @@ unsafe impl NSAccessibilityElementProtocol for NSBrowserCell {}
 
 #[cfg(feature = "AppKit_NSBrowserCell")]
 unsafe impl NSCoding for NSBrowserCell {}
+
+#[cfg(feature = "AppKit_NSBrowserCell")]
+unsafe impl NSCopying for NSBrowserCell {}
 
 #[cfg(feature = "AppKit_NSBrowserCell")]
 unsafe impl NSObjectProtocol for NSBrowserCell {}
@@ -95,5 +99,23 @@ extern_methods!(
         #[cfg(feature = "AppKit_NSImage")]
         #[method(setAlternateImage:)]
         pub unsafe fn setAlternateImage(&self, alternate_image: Option<&NSImage>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSCell`
+    #[cfg(feature = "AppKit_NSBrowserCell")]
+    unsafe impl NSBrowserCell {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSBrowserCell")]
+    unsafe impl NSBrowserCell {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

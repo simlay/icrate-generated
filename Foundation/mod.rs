@@ -480,14 +480,10 @@ pub use self::__NSAppleScript::NSAppleScriptErrorRange;
 pub use self::__NSArchiver::NSArchiver;
 #[cfg(feature = "Foundation_NSUnarchiver")]
 pub use self::__NSArchiver::NSUnarchiver;
-#[cfg(feature = "Foundation_NSArray")]
-pub use self::__NSArray::NSArray;
 pub use self::__NSArray::NSBinarySearchingFirstEqual;
 pub use self::__NSArray::NSBinarySearchingInsertionIndex;
 pub use self::__NSArray::NSBinarySearchingLastEqual;
 pub use self::__NSArray::NSBinarySearchingOptions;
-#[cfg(feature = "Foundation_NSMutableArray")]
-pub use self::__NSArray::NSMutableArray;
 pub use self::__NSAttributedString::NSAlternateDescriptionAttributeName;
 #[cfg(feature = "Foundation_NSAttributedString")]
 pub use self::__NSAttributedString::NSAttributedString;
@@ -837,10 +833,6 @@ pub use self::__NSDecimalNumber::NSDecimalNumberExactnessException;
 pub use self::__NSDecimalNumber::NSDecimalNumberHandler;
 pub use self::__NSDecimalNumber::NSDecimalNumberOverflowException;
 pub use self::__NSDecimalNumber::NSDecimalNumberUnderflowException;
-#[cfg(feature = "Foundation_NSDictionary")]
-pub use self::__NSDictionary::NSDictionary;
-#[cfg(feature = "Foundation_NSMutableDictionary")]
-pub use self::__NSDictionary::NSMutableDictionary;
 #[cfg(feature = "Foundation_NSDistantObject")]
 pub use self::__NSDistantObject::NSDistantObject;
 #[cfg(feature = "Foundation_NSDistributedLock")]
@@ -2074,10 +2066,6 @@ pub use self::__NSOrderedCollectionDifference::NSOrderedCollectionDifferenceCalc
 pub use self::__NSOrderedCollectionDifference::NSOrderedCollectionDifferenceCalculationOmitInsertedObjects;
 pub use self::__NSOrderedCollectionDifference::NSOrderedCollectionDifferenceCalculationOmitRemovedObjects;
 pub use self::__NSOrderedCollectionDifference::NSOrderedCollectionDifferenceCalculationOptions;
-#[cfg(feature = "Foundation_NSMutableOrderedSet")]
-pub use self::__NSOrderedSet::NSMutableOrderedSet;
-#[cfg(feature = "Foundation_NSOrderedSet")]
-pub use self::__NSOrderedSet::NSOrderedSet;
 #[cfg(feature = "Foundation_NSOrthography")]
 pub use self::__NSOrthography::NSOrthography;
 pub use self::__NSPathUtilities::NSAdminApplicationDirectory;
@@ -2423,12 +2411,6 @@ pub use self::__NSScriptWhoseTests::NSScriptWhoseTest;
 #[cfg(feature = "Foundation_NSSpecifierTest")]
 pub use self::__NSScriptWhoseTests::NSSpecifierTest;
 pub use self::__NSScriptWhoseTests::NSTestComparisonOperation;
-#[cfg(feature = "Foundation_NSCountedSet")]
-pub use self::__NSSet::NSCountedSet;
-#[cfg(feature = "Foundation_NSMutableSet")]
-pub use self::__NSSet::NSMutableSet;
-#[cfg(feature = "Foundation_NSSet")]
-pub use self::__NSSet::NSSet;
 #[cfg(feature = "Foundation_NSSortDescriptor")]
 pub use self::__NSSortDescriptor::NSSortDescriptor;
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]

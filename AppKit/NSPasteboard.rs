@@ -80,6 +80,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSPasteboard")]
     unsafe impl ClassType for NSPasteboard {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -217,6 +218,18 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other stringForType:)]
         pub unsafe fn stringForType(&self, data_type: &NSPasteboardType) -> Option<Id<NSString>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSPasteboard")]
+    unsafe impl NSPasteboard {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

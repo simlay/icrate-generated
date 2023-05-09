@@ -34,6 +34,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSTextLayoutFragment")]
     unsafe impl ClassType for NSTextLayoutFragment {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -129,5 +130,14 @@ extern_methods!(
             &self,
             location: &ProtocolObject<dyn NSTextLocation>,
         ) -> CGRect;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSTextLayoutFragment")]
+    unsafe impl NSTextLayoutFragment {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

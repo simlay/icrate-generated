@@ -42,11 +42,15 @@ extern_class!(
     unsafe impl ClassType for NSDecimalNumber {
         #[inherits(NSValue, NSObject)]
         type Super = NSNumber;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSDecimalNumber")]
 unsafe impl NSCoding for NSDecimalNumber {}
+
+#[cfg(feature = "Foundation_NSDecimalNumber")]
+unsafe impl NSCopying for NSDecimalNumber {}
 
 #[cfg(feature = "Foundation_NSDecimalNumber")]
 unsafe impl NSObjectProtocol for NSDecimalNumber {}
@@ -231,6 +235,44 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSNumber`
+    #[cfg(feature = "Foundation_NSDecimalNumber")]
+    unsafe impl NSDecimalNumber {
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(
+            this: Option<Allocated<Self>>,
+            coder: &NSCoder,
+        ) -> Option<Id<Self>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSValue`
+    #[cfg(feature = "Foundation_NSDecimalNumber")]
+    unsafe impl NSDecimalNumber {
+        #[method_id(@__retain_semantics Init initWithBytes:objCType:)]
+        pub unsafe fn initWithBytes_objCType(
+            this: Option<Allocated<Self>>,
+            value: NonNull<c_void>,
+            r#type: NonNull<c_char>,
+        ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSDecimalNumber")]
+    unsafe impl NSDecimalNumber {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSDecimalNumberHandler")]
@@ -239,6 +281,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSDecimalNumberHandler")]
     unsafe impl ClassType for NSDecimalNumberHandler {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -281,6 +324,18 @@ extern_methods!(
 );
 
 extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSDecimalNumberHandler")]
+    unsafe impl NSDecimalNumberHandler {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
+extern_methods!(
     /// NSDecimalNumberExtensions
     #[cfg(feature = "Foundation_NSNumber")]
     unsafe impl NSNumber {
@@ -295,18 +350,5 @@ extern_methods!(
     unsafe impl NSScanner {
         #[method(scanDecimal:)]
         pub unsafe fn scanDecimal(&self, dcm: *mut NSDecimal) -> bool;
-    }
-);
-
-extern_methods!(
-    /// Methods declared on superclass `NSValue`
-    #[cfg(feature = "Foundation_NSDecimalNumber")]
-    unsafe impl NSDecimalNumber {
-        #[method_id(@__retain_semantics Init initWithBytes:objCType:)]
-        pub unsafe fn initWithBytes_objCType(
-            this: Option<Allocated<Self>>,
-            value: NonNull<c_void>,
-            r#type: NonNull<c_char>,
-        ) -> Id<Self>;
     }
 );

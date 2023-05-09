@@ -30,8 +30,12 @@ extern_class!(
     #[cfg(feature = "Foundation_NSXMLNode")]
     unsafe impl ClassType for NSXMLNode {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Foundation_NSXMLNode")]
+unsafe impl NSCopying for NSXMLNode {}
 
 #[cfg(feature = "Foundation_NSXMLNode")]
 unsafe impl NSObjectProtocol for NSXMLNode {}
@@ -270,5 +274,14 @@ extern_methods!(
             &self,
             xquery: &NSString,
         ) -> Result<Id<NSArray>, Id<NSError>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSXMLNode")]
+    unsafe impl NSXMLNode {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

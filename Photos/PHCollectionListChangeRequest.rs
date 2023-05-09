@@ -15,6 +15,7 @@ extern_class!(
     unsafe impl ClassType for PHCollectionListChangeRequest {
         #[inherits(NSObject)]
         type Super = PHChangeRequest;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -107,5 +108,17 @@ extern_methods!(
             indexes: &NSIndexSet,
             to_index: NSUInteger,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "PhotoKit_PHCollectionListChangeRequest")]
+    unsafe impl PHCollectionListChangeRequest {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

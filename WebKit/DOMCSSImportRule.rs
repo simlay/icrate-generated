@@ -11,13 +11,16 @@ extern_class!(
     #[deprecated]
     pub struct DOMCSSImportRule;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMCSSImportRule")]
     unsafe impl ClassType for DOMCSSImportRule {
         #[inherits(DOMObject, WebScriptObject, NSObject)]
         type Super = DOMCSSRule;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "WebKit_DOMCSSImportRule")]
+unsafe impl NSCopying for DOMCSSImportRule {}
 
 #[cfg(feature = "WebKit_DOMCSSImportRule")]
 unsafe impl NSObjectProtocol for DOMCSSImportRule {}
@@ -36,5 +39,23 @@ extern_methods!(
         #[cfg(feature = "WebKit_DOMCSSStyleSheet")]
         #[method_id(@__retain_semantics Other styleSheet)]
         pub unsafe fn styleSheet(&self) -> Option<Id<DOMCSSStyleSheet>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMCSSImportRule")]
+    unsafe impl DOMCSSImportRule {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMCSSImportRule")]
+    unsafe impl DOMCSSImportRule {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

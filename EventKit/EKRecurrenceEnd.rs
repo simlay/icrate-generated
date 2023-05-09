@@ -15,11 +15,15 @@ extern_class!(
     #[cfg(feature = "EventKit_EKRecurrenceEnd")]
     unsafe impl ClassType for EKRecurrenceEnd {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "EventKit_EKRecurrenceEnd")]
 unsafe impl NSCoding for EKRecurrenceEnd {}
+
+#[cfg(feature = "EventKit_EKRecurrenceEnd")]
+unsafe impl NSCopying for EKRecurrenceEnd {}
 
 #[cfg(feature = "EventKit_EKRecurrenceEnd")]
 unsafe impl NSObjectProtocol for EKRecurrenceEnd {}
@@ -43,5 +47,17 @@ extern_methods!(
 
         #[method(occurrenceCount)]
         pub unsafe fn occurrenceCount(&self) -> NSUInteger;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "EventKit_EKRecurrenceEnd")]
+    unsafe impl EKRecurrenceEnd {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

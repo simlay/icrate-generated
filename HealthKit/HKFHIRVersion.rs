@@ -12,16 +12,20 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct HKFHIRVersion;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "HealthKit_HKFHIRVersion")]
     unsafe impl ClassType for HKFHIRVersion {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "HealthKit_HKFHIRVersion")]
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSCoding for HKFHIRVersion {}
+
+#[cfg(feature = "HealthKit_HKFHIRVersion")]
+#[cfg(not(any(target_os = "watchos")))]
+unsafe impl NSCopying for HKFHIRVersion {}
 
 #[cfg(feature = "HealthKit_HKFHIRVersion")]
 #[cfg(not(any(target_os = "watchos")))]
@@ -65,5 +69,14 @@ extern_methods!(
 
         #[method_id(@__retain_semantics Other primaryR4Version)]
         pub unsafe fn primaryR4Version() -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "HealthKit_HKFHIRVersion")]
+    unsafe impl HKFHIRVersion {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

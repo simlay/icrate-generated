@@ -38,8 +38,12 @@ extern_class!(
     unsafe impl ClassType for NSXMLDTDNode {
         #[inherits(NSObject)]
         type Super = NSXMLNode;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Foundation_NSXMLDTDNode")]
+unsafe impl NSCopying for NSXMLDTDNode {}
 
 #[cfg(feature = "Foundation_NSXMLDTDNode")]
 unsafe impl NSObjectProtocol for NSXMLDTDNode {}
@@ -105,5 +109,14 @@ extern_methods!(
     unsafe impl NSXMLDTDNode {
         #[method_id(@__retain_semantics Init initWithKind:)]
         pub unsafe fn initWithKind(this: Option<Allocated<Self>>, kind: NSXMLNodeKind) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSXMLDTDNode")]
+    unsafe impl NSXMLDTDNode {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

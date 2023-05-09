@@ -25,6 +25,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSFileVersion")]
     unsafe impl ClassType for NSFileVersion {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -142,5 +143,17 @@ extern_methods!(
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSURL"))]
         #[method(removeOtherVersionsOfItemAtURL:error:_)]
         pub unsafe fn removeOtherVersionsOfItemAtURL_error(url: &NSURL) -> Result<(), Id<NSError>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSFileVersion")]
+    unsafe impl NSFileVersion {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

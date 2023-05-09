@@ -38,11 +38,15 @@ extern_class!(
     #[cfg(feature = "AppKit_NSAnimation")]
     unsafe impl ClassType for NSAnimation {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "AppKit_NSAnimation")]
 unsafe impl NSCoding for NSAnimation {}
+
+#[cfg(feature = "AppKit_NSAnimation")]
+unsafe impl NSCopying for NSAnimation {}
 
 #[cfg(feature = "AppKit_NSAnimation")]
 unsafe impl NSObjectProtocol for NSAnimation {}
@@ -158,6 +162,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSAnimation")]
+    unsafe impl NSAnimation {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_protocol!(
     pub unsafe trait NSAnimationDelegate: NSObjectProtocol {
         #[cfg(feature = "AppKit_NSAnimation")]
@@ -226,11 +242,15 @@ extern_class!(
     unsafe impl ClassType for NSViewAnimation {
         #[inherits(NSObject)]
         type Super = NSAnimation;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "AppKit_NSViewAnimation")]
 unsafe impl NSCoding for NSViewAnimation {}
+
+#[cfg(feature = "AppKit_NSViewAnimation")]
+unsafe impl NSCopying for NSViewAnimation {}
 
 #[cfg(feature = "AppKit_NSViewAnimation")]
 unsafe impl NSObjectProtocol for NSViewAnimation {}
@@ -257,6 +277,38 @@ extern_methods!(
             &self,
             view_animations: &NSArray<NSDictionary<NSViewAnimationKey, Object>>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSAnimation`
+    #[cfg(feature = "AppKit_NSViewAnimation")]
+    unsafe impl NSViewAnimation {
+        #[method_id(@__retain_semantics Init initWithDuration:animationCurve:)]
+        pub unsafe fn initWithDuration_animationCurve(
+            this: Option<Allocated<Self>>,
+            duration: NSTimeInterval,
+            animation_curve: NSAnimationCurve,
+        ) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(
+            this: Option<Allocated<Self>>,
+            coder: &NSCoder,
+        ) -> Option<Id<Self>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSViewAnimation")]
+    unsafe impl NSViewAnimation {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 
@@ -288,16 +340,3 @@ extern_protocol!(
 extern_static!(NSAnimationTriggerOrderIn: &'static NSAnimatablePropertyKey);
 
 extern_static!(NSAnimationTriggerOrderOut: &'static NSAnimatablePropertyKey);
-
-extern_methods!(
-    /// Methods declared on superclass `NSAnimation`
-    #[cfg(feature = "AppKit_NSViewAnimation")]
-    unsafe impl NSViewAnimation {
-        #[method_id(@__retain_semantics Init initWithDuration:animationCurve:)]
-        pub unsafe fn initWithDuration_animationCurve(
-            this: Option<Allocated<Self>>,
-            duration: NSTimeInterval,
-            animation_curve: NSAnimationCurve,
-        ) -> Id<Self>;
-    }
-);

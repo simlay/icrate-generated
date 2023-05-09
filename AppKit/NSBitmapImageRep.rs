@@ -99,11 +99,15 @@ extern_class!(
     unsafe impl ClassType for NSBitmapImageRep {
         #[inherits(NSObject)]
         type Super = NSImageRep;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "AppKit_NSBitmapImageRep")]
 unsafe impl NSCoding for NSBitmapImageRep {}
+
+#[cfg(feature = "AppKit_NSBitmapImageRep")]
+unsafe impl NSCopying for NSBitmapImageRep {}
 
 #[cfg(feature = "AppKit_NSBitmapImageRep")]
 unsafe impl NSObjectProtocol for NSBitmapImageRep {}
@@ -298,6 +302,31 @@ extern_methods!(
             &self,
             new_space: &NSColorSpace,
         ) -> Option<Id<NSBitmapImageRep>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSImageRep`
+    #[cfg(feature = "AppKit_NSBitmapImageRep")]
+    unsafe impl NSBitmapImageRep {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(
+            this: Option<Allocated<Self>>,
+            coder: &NSCoder,
+        ) -> Option<Id<Self>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSBitmapImageRep")]
+    unsafe impl NSBitmapImageRep {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

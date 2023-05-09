@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSDistributedLock")]
     unsafe impl ClassType for NSDistributedLock {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -52,5 +53,14 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSDate")]
         #[method_id(@__retain_semantics Other lockDate)]
         pub unsafe fn lockDate(&self) -> Id<NSDate>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSDistributedLock")]
+    unsafe impl NSDistributedLock {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

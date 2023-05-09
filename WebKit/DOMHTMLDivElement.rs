@@ -11,16 +11,19 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLDivElement;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLDivElement")]
     unsafe impl ClassType for DOMHTMLDivElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMHTMLElement;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_DOMHTMLDivElement")]
 unsafe impl DOMEventTarget for DOMHTMLDivElement {}
+
+#[cfg(feature = "WebKit_DOMHTMLDivElement")]
+unsafe impl NSCopying for DOMHTMLDivElement {}
 
 #[cfg(feature = "WebKit_DOMHTMLDivElement")]
 unsafe impl NSObjectProtocol for DOMHTMLDivElement {}
@@ -35,5 +38,23 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method(setAlign:)]
         pub unsafe fn setAlign(&self, align: Option<&NSString>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMHTMLDivElement")]
+    unsafe impl DOMHTMLDivElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMHTMLDivElement")]
+    unsafe impl DOMHTMLDivElement {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

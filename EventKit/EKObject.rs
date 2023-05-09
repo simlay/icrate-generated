@@ -15,6 +15,7 @@ extern_class!(
     #[cfg(feature = "EventKit_EKObject")]
     unsafe impl ClassType for EKObject {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -38,5 +39,17 @@ extern_methods!(
 
         #[method(refresh)]
         pub unsafe fn refresh(&self) -> bool;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "EventKit_EKObject")]
+    unsafe impl EKObject {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

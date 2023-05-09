@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(feature = "WebKit_WKNavigationResponse")]
     unsafe impl ClassType for WKNavigationResponse {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -31,5 +32,17 @@ extern_methods!(
 
         #[method(canShowMIMEType)]
         pub unsafe fn canShowMIMEType(&self) -> bool;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_WKNavigationResponse")]
+    unsafe impl WKNavigationResponse {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

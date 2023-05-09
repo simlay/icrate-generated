@@ -11,16 +11,19 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLBodyElement;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLBodyElement")]
     unsafe impl ClassType for DOMHTMLBodyElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMHTMLElement;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_DOMHTMLBodyElement")]
 unsafe impl DOMEventTarget for DOMHTMLBodyElement {}
+
+#[cfg(feature = "WebKit_DOMHTMLBodyElement")]
+unsafe impl NSCopying for DOMHTMLBodyElement {}
 
 #[cfg(feature = "WebKit_DOMHTMLBodyElement")]
 unsafe impl NSObjectProtocol for DOMHTMLBodyElement {}
@@ -75,5 +78,23 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method(setVLink:)]
         pub unsafe fn setVLink(&self, v_link: Option<&NSString>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMHTMLBodyElement")]
+    unsafe impl DOMHTMLBodyElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMHTMLBodyElement")]
+    unsafe impl DOMHTMLBodyElement {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

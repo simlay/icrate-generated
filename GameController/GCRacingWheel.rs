@@ -17,10 +17,10 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     pub struct GCRacingWheel;
 
-    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     #[cfg(feature = "GameController_GCRacingWheel")]
     unsafe impl ClassType for GCRacingWheel {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -62,5 +62,14 @@ extern_methods!(
 
         #[method_id(@__retain_semantics Other capture)]
         pub unsafe fn capture(&self) -> Id<GCRacingWheel>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameController_GCRacingWheel")]
+    unsafe impl GCRacingWheel {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

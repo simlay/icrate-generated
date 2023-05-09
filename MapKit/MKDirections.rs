@@ -17,10 +17,10 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKDirections;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKDirections")]
     unsafe impl ClassType for MKDirections {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -53,5 +53,17 @@ extern_methods!(
 
         #[method(isCalculating)]
         pub unsafe fn isCalculating(&self) -> bool;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MapKit_MKDirections")]
+    unsafe impl MKDirections {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

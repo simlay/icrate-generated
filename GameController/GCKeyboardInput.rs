@@ -24,6 +24,7 @@ extern_class!(
     unsafe impl ClassType for GCKeyboardInput {
         #[inherits(NSObject)]
         type Super = GCPhysicalInputProfile;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -51,5 +52,17 @@ extern_methods!(
             &self,
             code: GCKeyCode,
         ) -> Option<Id<GCControllerButtonInput>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameController_GCKeyboardInput")]
+    unsafe impl GCKeyboardInput {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

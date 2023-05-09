@@ -85,8 +85,12 @@ extern_class!(
     #[cfg(feature = "Metal_MTLIOCommandQueueDescriptor")]
     unsafe impl ClassType for MTLIOCommandQueueDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLIOCommandQueueDescriptor")]
+unsafe impl NSCopying for MTLIOCommandQueueDescriptor {}
 
 #[cfg(feature = "Metal_MTLIOCommandQueueDescriptor")]
 unsafe impl NSObjectProtocol for MTLIOCommandQueueDescriptor {}
@@ -128,6 +132,18 @@ extern_methods!(
             &self,
             scratch_buffer_allocator: Option<&ProtocolObject<dyn MTLIOScratchBufferAllocator>>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLIOCommandQueueDescriptor")]
+    unsafe impl MTLIOCommandQueueDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

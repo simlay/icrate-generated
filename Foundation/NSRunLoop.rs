@@ -15,6 +15,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSRunLoop")]
     unsafe impl ClassType for NSRunLoop {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -56,6 +57,18 @@ extern_methods!(
             mode: &NSRunLoopMode,
             limit_date: &NSDate,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSRunLoop")]
+    unsafe impl NSRunLoop {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

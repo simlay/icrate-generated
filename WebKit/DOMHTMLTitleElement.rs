@@ -11,16 +11,19 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLTitleElement;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLTitleElement")]
     unsafe impl ClassType for DOMHTMLTitleElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMHTMLElement;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_DOMHTMLTitleElement")]
 unsafe impl DOMEventTarget for DOMHTMLTitleElement {}
+
+#[cfg(feature = "WebKit_DOMHTMLTitleElement")]
+unsafe impl NSCopying for DOMHTMLTitleElement {}
 
 #[cfg(feature = "WebKit_DOMHTMLTitleElement")]
 unsafe impl NSObjectProtocol for DOMHTMLTitleElement {}
@@ -35,5 +38,23 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method(setText:)]
         pub unsafe fn setText(&self, text: Option<&NSString>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMHTMLTitleElement")]
+    unsafe impl DOMHTMLTitleElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMHTMLTitleElement")]
+    unsafe impl DOMHTMLTitleElement {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

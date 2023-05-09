@@ -21,10 +21,10 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct GKChallenge;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "GameKit_GKChallenge")]
     unsafe impl ClassType for GKChallenge {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -78,6 +78,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameKit_GKChallenge")]
+    unsafe impl GKChallenge {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Obsoleted
@@ -101,11 +113,11 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct GKScoreChallenge;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "GameKit_GKScoreChallenge")]
     unsafe impl ClassType for GKScoreChallenge {
         #[inherits(NSObject)]
         type Super = GKChallenge;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -131,17 +143,29 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameKit_GKScoreChallenge")]
+    unsafe impl GKScoreChallenge {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameKit_GKAchievementChallenge")]
     #[cfg(not(any(target_os = "watchos")))]
     pub struct GKAchievementChallenge;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "GameKit_GKAchievementChallenge")]
     unsafe impl ClassType for GKAchievementChallenge {
         #[inherits(NSObject)]
         type Super = GKChallenge;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -164,6 +188,18 @@ extern_methods!(
         #[cfg(feature = "GameKit_GKAchievement")]
         #[method_id(@__retain_semantics Other achievement)]
         pub unsafe fn achievement(&self) -> Option<Id<GKAchievement>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameKit_GKAchievementChallenge")]
+    unsafe impl GKAchievementChallenge {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

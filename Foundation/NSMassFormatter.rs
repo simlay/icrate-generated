@@ -23,11 +23,15 @@ extern_class!(
     unsafe impl ClassType for NSMassFormatter {
         #[inherits(NSObject)]
         type Super = NSFormatter;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSMassFormatter")]
 unsafe impl NSCoding for NSMassFormatter {}
+
+#[cfg(feature = "Foundation_NSMassFormatter")]
+unsafe impl NSCopying for NSMassFormatter {}
 
 #[cfg(feature = "Foundation_NSMassFormatter")]
 unsafe impl NSObjectProtocol for NSMassFormatter {}
@@ -91,5 +95,17 @@ extern_methods!(
             string: &NSString,
             error: Option<&mut Option<Id<NSString>>>,
         ) -> bool;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSMassFormatter")]
+    unsafe impl NSMassFormatter {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

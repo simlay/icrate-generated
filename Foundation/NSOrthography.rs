@@ -11,11 +11,15 @@ extern_class!(
     #[cfg(feature = "Foundation_NSOrthography")]
     unsafe impl ClassType for NSOrthography {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSOrthography")]
 unsafe impl NSCoding for NSOrthography {}
+
+#[cfg(feature = "Foundation_NSOrthography")]
+unsafe impl NSCopying for NSOrthography {}
 
 #[cfg(feature = "Foundation_NSOrthography")]
 unsafe impl NSObjectProtocol for NSOrthography {}
@@ -56,6 +60,18 @@ extern_methods!(
             this: Option<Allocated<Self>>,
             coder: &NSCoder,
         ) -> Option<Id<Self>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSOrthography")]
+    unsafe impl NSOrthography {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

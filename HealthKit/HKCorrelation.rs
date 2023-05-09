@@ -15,6 +15,7 @@ extern_class!(
     unsafe impl ClassType for HKCorrelation {
         #[inherits(HKObject, NSObject)]
         type Super = HKSample;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -88,5 +89,23 @@ extern_methods!(
         #[cfg(all(feature = "Foundation_NSSet", feature = "HealthKit_HKObjectType"))]
         #[method_id(@__retain_semantics Other objectsForType:)]
         pub unsafe fn objectsForType(&self, object_type: &HKObjectType) -> Id<NSSet<HKSample>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `HKObject`
+    #[cfg(feature = "HealthKit_HKCorrelation")]
+    unsafe impl HKCorrelation {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "HealthKit_HKCorrelation")]
+    unsafe impl HKCorrelation {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

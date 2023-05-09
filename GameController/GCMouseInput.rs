@@ -16,6 +16,7 @@ extern_class!(
     unsafe impl ClassType for GCMouseInput {
         #[inherits(NSObject)]
         type Super = GCPhysicalInputProfile;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -53,5 +54,17 @@ extern_methods!(
         ))]
         #[method_id(@__retain_semantics Other auxiliaryButtons)]
         pub unsafe fn auxiliaryButtons(&self) -> Option<Id<NSArray<GCControllerButtonInput>>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameController_GCMouseInput")]
+    unsafe impl GCMouseInput {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

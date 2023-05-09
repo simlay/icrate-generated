@@ -27,6 +27,7 @@ extern_class!(
     #[cfg(feature = "EventKit_EKEventStore")]
     unsafe impl ClassType for EKEventStore {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -302,6 +303,15 @@ extern_methods!(
         #[cfg(not(any(target_os = "watchos")))]
         #[method(refreshSourcesIfNecessary)]
         pub unsafe fn refreshSourcesIfNecessary(&self);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "EventKit_EKEventStore")]
+    unsafe impl EKEventStore {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

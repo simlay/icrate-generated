@@ -11,13 +11,16 @@ extern_class!(
     #[deprecated]
     pub struct DOMNamedNodeMap;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMNamedNodeMap")]
     unsafe impl ClassType for DOMNamedNodeMap {
         #[inherits(WebScriptObject, NSObject)]
         type Super = DOMObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "WebKit_DOMNamedNodeMap")]
+unsafe impl NSCopying for DOMNamedNodeMap {}
 
 #[cfg(feature = "WebKit_DOMNamedNodeMap")]
 unsafe impl NSObjectProtocol for DOMNamedNodeMap {}
@@ -63,6 +66,24 @@ extern_methods!(
             namespace_uri: Option<&NSString>,
             local_name: Option<&NSString>,
         ) -> Option<Id<DOMNode>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMNamedNodeMap")]
+    unsafe impl DOMNamedNodeMap {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMNamedNodeMap")]
+    unsafe impl DOMNamedNodeMap {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

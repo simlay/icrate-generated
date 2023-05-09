@@ -13,6 +13,7 @@ extern_class!(
     unsafe impl ClassType for MXCPUExceptionDiagnostic {
         #[inherits(NSObject)]
         type Super = MXDiagnostic;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -45,5 +46,17 @@ extern_methods!(
         ))]
         #[method_id(@__retain_semantics Other totalSampledTime)]
         pub unsafe fn totalSampledTime(&self) -> Id<NSMeasurement<NSUnitDuration>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MetricKit_MXCPUExceptionDiagnostic")]
+    unsafe impl MXCPUExceptionDiagnostic {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

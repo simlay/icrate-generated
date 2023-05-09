@@ -11,16 +11,19 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLFrameElement;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLFrameElement")]
     unsafe impl ClassType for DOMHTMLFrameElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMHTMLElement;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_DOMHTMLFrameElement")]
 unsafe impl DOMEventTarget for DOMHTMLFrameElement {}
+
+#[cfg(feature = "WebKit_DOMHTMLFrameElement")]
+unsafe impl NSCopying for DOMHTMLFrameElement {}
 
 #[cfg(feature = "WebKit_DOMHTMLFrameElement")]
 unsafe impl NSObjectProtocol for DOMHTMLFrameElement {}
@@ -111,5 +114,23 @@ extern_methods!(
 
         #[method(height)]
         pub unsafe fn height(&self) -> c_int;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMHTMLFrameElement")]
+    unsafe impl DOMHTMLFrameElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMHTMLFrameElement")]
+    unsafe impl DOMHTMLFrameElement {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -11,10 +11,10 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct GKVoiceChatService;
 
-    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "GameKit_GKVoiceChatService")]
     unsafe impl ClassType for GKVoiceChatService {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -92,5 +92,17 @@ extern_methods!(
 
         #[method(inputMeterLevel)]
         pub unsafe fn inputMeterLevel(&self) -> c_float;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameKit_GKVoiceChatService")]
+    unsafe impl GKVoiceChatService {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

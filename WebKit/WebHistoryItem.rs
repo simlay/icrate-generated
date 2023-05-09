@@ -13,12 +13,15 @@ extern_class!(
     #[deprecated]
     pub struct WebHistoryItem;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_WebHistoryItem")]
     unsafe impl ClassType for WebHistoryItem {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "WebKit_WebHistoryItem")]
+unsafe impl NSCopying for WebHistoryItem {}
 
 #[cfg(feature = "WebKit_WebHistoryItem")]
 unsafe impl NSObjectProtocol for WebHistoryItem {}
@@ -61,5 +64,17 @@ extern_methods!(
         #[cfg(feature = "AppKit_NSImage")]
         #[method_id(@__retain_semantics Other icon)]
         pub unsafe fn icon(&self) -> Option<Id<NSImage>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_WebHistoryItem")]
+    unsafe impl WebHistoryItem {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

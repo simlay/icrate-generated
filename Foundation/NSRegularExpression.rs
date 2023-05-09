@@ -24,11 +24,15 @@ extern_class!(
     #[cfg(feature = "Foundation_NSRegularExpression")]
     unsafe impl ClassType for NSRegularExpression {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSRegularExpression")]
 unsafe impl NSCoding for NSRegularExpression {}
+
+#[cfg(feature = "Foundation_NSRegularExpression")]
+unsafe impl NSCopying for NSRegularExpression {}
 
 #[cfg(feature = "Foundation_NSRegularExpression")]
 unsafe impl NSObjectProtocol for NSRegularExpression {}
@@ -67,6 +71,18 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other escapedPatternForString:)]
         pub unsafe fn escapedPatternForString(string: &NSString) -> Id<NSString>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSRegularExpression")]
+    unsafe impl NSRegularExpression {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 
@@ -209,11 +225,15 @@ extern_class!(
     unsafe impl ClassType for NSDataDetector {
         #[inherits(NSObject)]
         type Super = NSRegularExpression;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSDataDetector")]
 unsafe impl NSCoding for NSDataDetector {}
+
+#[cfg(feature = "Foundation_NSDataDetector")]
+unsafe impl NSCopying for NSDataDetector {}
 
 #[cfg(feature = "Foundation_NSDataDetector")]
 unsafe impl NSObjectProtocol for NSDataDetector {}
@@ -253,5 +273,17 @@ extern_methods!(
             pattern: &NSString,
             options: NSRegularExpressionOptions,
         ) -> Result<Id<Self>, Id<NSError>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSDataDetector")]
+    unsafe impl NSDataDetector {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

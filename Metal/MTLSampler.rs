@@ -50,8 +50,12 @@ extern_class!(
     #[cfg(feature = "Metal_MTLSamplerDescriptor")]
     unsafe impl ClassType for MTLSamplerDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLSamplerDescriptor")]
+unsafe impl NSCopying for MTLSamplerDescriptor {}
 
 #[cfg(feature = "Metal_MTLSamplerDescriptor")]
 unsafe impl NSObjectProtocol for MTLSamplerDescriptor {}
@@ -152,6 +156,25 @@ extern_methods!(
         pub fn setLabel(&self, label: Option<&NSString>);
     }
 );
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLSamplerDescriptor")]
+    unsafe impl MTLSamplerDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub fn new() -> Id<Self>;
+    }
+);
+#[cfg(feature = "Metal_MTLSamplerDescriptor")]
+impl DefaultId for MTLSamplerDescriptor {
+    #[inline]
+    fn default_id() -> Id<Self> {
+        Self::new()
+    }
+}
 
 extern_protocol!(
     pub unsafe trait MTLSamplerState: NSObjectProtocol {

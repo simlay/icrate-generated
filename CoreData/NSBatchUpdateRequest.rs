@@ -13,8 +13,12 @@ extern_class!(
     unsafe impl ClassType for NSBatchUpdateRequest {
         #[inherits(NSObject)]
         type Super = NSPersistentStoreRequest;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "CoreData_NSBatchUpdateRequest")]
+unsafe impl NSCopying for NSBatchUpdateRequest {}
 
 #[cfg(feature = "CoreData_NSBatchUpdateRequest")]
 unsafe impl NSObjectProtocol for NSBatchUpdateRequest {}
@@ -75,5 +79,17 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSDictionary")]
         #[method(setPropertiesToUpdate:)]
         pub unsafe fn setPropertiesToUpdate(&self, properties_to_update: Option<&NSDictionary>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreData_NSBatchUpdateRequest")]
+    unsafe impl NSBatchUpdateRequest {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

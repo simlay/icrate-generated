@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSController")]
     unsafe impl ClassType for NSController {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -63,5 +64,14 @@ extern_methods!(
 
         #[method(isEditing)]
         pub unsafe fn isEditing(&self) -> bool;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSController")]
+    unsafe impl NSController {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

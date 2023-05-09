@@ -13,8 +13,12 @@ extern_class!(
     unsafe impl ClassType for NSBatchInsertRequest {
         #[inherits(NSObject)]
         type Super = NSPersistentStoreRequest;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "CoreData_NSBatchInsertRequest")]
+unsafe impl NSCopying for NSBatchInsertRequest {}
 
 #[cfg(feature = "CoreData_NSBatchInsertRequest")]
 unsafe impl NSObjectProtocol for NSBatchInsertRequest {}
@@ -186,5 +190,14 @@ extern_methods!(
             entity_name: &NSString,
             handler: &Block<(NonNull<NSManagedObject>,), Bool>,
         ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreData_NSBatchInsertRequest")]
+    unsafe impl NSBatchInsertRequest {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

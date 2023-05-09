@@ -14,6 +14,7 @@ extern_class!(
     unsafe impl ClassType for CKFetchRecordsOperation {
         #[inherits(CKOperation, NSOperation, NSObject)]
         type Super = CKDatabaseOperation;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -112,5 +113,14 @@ extern_methods!(
                 &Block<(*mut NSDictionary<CKRecordID, CKRecord>, *mut NSError), ()>,
             >,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CloudKit_CKFetchRecordsOperation")]
+    unsafe impl CKFetchRecordsOperation {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

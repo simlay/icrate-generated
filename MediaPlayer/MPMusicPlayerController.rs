@@ -71,10 +71,10 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     pub struct MPMusicPlayerController;
 
-    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPMusicPlayerController")]
     unsafe impl ClassType for MPMusicPlayerController {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 

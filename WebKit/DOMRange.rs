@@ -33,13 +33,16 @@ extern_class!(
     #[deprecated]
     pub struct DOMRange;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMRange")]
     unsafe impl ClassType for DOMRange {
         #[inherits(WebScriptObject, NSObject)]
         type Super = DOMObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "WebKit_DOMRange")]
+unsafe impl NSCopying for DOMRange {}
 
 #[cfg(feature = "WebKit_DOMRange")]
 unsafe impl NSObjectProtocol for DOMRange {}
@@ -176,6 +179,24 @@ extern_methods!(
             ref_node: Option<&DOMNode>,
             offset: c_int,
         ) -> bool;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMRange")]
+    unsafe impl DOMRange {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMRange")]
+    unsafe impl DOMRange {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

@@ -11,10 +11,10 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct SKOverlayTransitionContext;
 
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "StoreKit_SKOverlayTransitionContext")]
     unsafe impl ClassType for SKOverlayTransitionContext {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 

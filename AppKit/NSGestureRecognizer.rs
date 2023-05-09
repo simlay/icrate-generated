@@ -26,6 +26,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSGestureRecognizer")]
     unsafe impl ClassType for NSGestureRecognizer {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -144,6 +145,18 @@ extern_methods!(
         #[cfg(feature = "AppKit_NSView")]
         #[method(locationInView:)]
         pub unsafe fn locationInView(&self, view: Option<&NSView>) -> NSPoint;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSGestureRecognizer")]
+    unsafe impl NSGestureRecognizer {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

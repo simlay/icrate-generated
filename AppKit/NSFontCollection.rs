@@ -40,11 +40,18 @@ extern_class!(
     #[cfg(feature = "AppKit_NSFontCollection")]
     unsafe impl ClassType for NSFontCollection {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "AppKit_NSFontCollection")]
 unsafe impl NSCoding for NSFontCollection {}
+
+#[cfg(feature = "AppKit_NSFontCollection")]
+unsafe impl NSCopying for NSFontCollection {}
+
+#[cfg(feature = "AppKit_NSFontCollection")]
+unsafe impl NSMutableCopying for NSFontCollection {}
 
 #[cfg(feature = "AppKit_NSFontCollection")]
 unsafe impl NSObjectProtocol for NSFontCollection {}
@@ -154,6 +161,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSFontCollection")]
+    unsafe impl NSFontCollection {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSMutableFontCollection")]
@@ -163,11 +182,18 @@ extern_class!(
     unsafe impl ClassType for NSMutableFontCollection {
         #[inherits(NSObject)]
         type Super = NSFontCollection;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "AppKit_NSMutableFontCollection")]
 unsafe impl NSCoding for NSMutableFontCollection {}
+
+#[cfg(feature = "AppKit_NSMutableFontCollection")]
+unsafe impl NSCopying for NSMutableFontCollection {}
+
+#[cfg(feature = "AppKit_NSMutableFontCollection")]
+unsafe impl NSMutableCopying for NSMutableFontCollection {}
 
 #[cfg(feature = "AppKit_NSMutableFontCollection")]
 unsafe impl NSObjectProtocol for NSMutableFontCollection {}
@@ -228,6 +254,18 @@ extern_methods!(
         #[cfg(all(feature = "AppKit_NSFontDescriptor", feature = "Foundation_NSArray"))]
         #[method(removeQueryForDescriptors:)]
         pub unsafe fn removeQueryForDescriptors(&self, descriptors: &NSArray<NSFontDescriptor>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSMutableFontCollection")]
+    unsafe impl NSMutableFontCollection {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

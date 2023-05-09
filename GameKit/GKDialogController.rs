@@ -20,6 +20,7 @@ extern_class!(
     unsafe impl ClassType for GKDialogController {
         #[inherits(NSObject)]
         type Super = NSResponder;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -46,6 +47,34 @@ extern_methods!(
 
         #[method(dismiss:)]
         pub unsafe fn dismiss(&self, sender: &Object);
+    }
+);
+
+#[cfg(not(any(target_os = "ios")))]
+extern_methods!(
+    /// Methods declared on superclass `NSResponder`
+    #[cfg(feature = "GameKit_GKDialogController")]
+    unsafe impl GKDialogController {
+        #[cfg(not(any(target_os = "ios")))]
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[cfg(not(any(target_os = "ios")))]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(
+            this: Option<Allocated<Self>>,
+            coder: &NSCoder,
+        ) -> Option<Id<Self>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameKit_GKDialogController")]
+    unsafe impl GKDialogController {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

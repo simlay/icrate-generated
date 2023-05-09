@@ -13,11 +13,11 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKGradientPolylineRenderer;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKGradientPolylineRenderer")]
     unsafe impl ClassType for MKGradientPolylineRenderer {
         #[inherits(MKOverlayPathRenderer, MKOverlayRenderer, NSObject)]
         type Super = MKPolylineRenderer;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -75,5 +75,17 @@ extern_methods!(
             this: Option<Allocated<Self>>,
             overlay: &ProtocolObject<dyn MKOverlay>,
         ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MapKit_MKGradientPolylineRenderer")]
+    unsafe impl MKGradientPolylineRenderer {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

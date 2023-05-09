@@ -11,13 +11,16 @@ extern_class!(
     #[deprecated]
     pub struct DOMCounter;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMCounter")]
     unsafe impl ClassType for DOMCounter {
         #[inherits(WebScriptObject, NSObject)]
         type Super = DOMObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "WebKit_DOMCounter")]
+unsafe impl NSCopying for DOMCounter {}
 
 #[cfg(feature = "WebKit_DOMCounter")]
 unsafe impl NSObjectProtocol for DOMCounter {}
@@ -36,5 +39,23 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other separator)]
         pub unsafe fn separator(&self) -> Id<NSString>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMCounter")]
+    unsafe impl DOMCounter {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMCounter")]
+    unsafe impl DOMCounter {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -25,8 +25,12 @@ extern_class!(
     #[cfg(feature = "Metal_MTLBinaryArchiveDescriptor")]
     unsafe impl ClassType for MTLBinaryArchiveDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLBinaryArchiveDescriptor")]
+unsafe impl NSCopying for MTLBinaryArchiveDescriptor {}
 
 #[cfg(feature = "Metal_MTLBinaryArchiveDescriptor")]
 unsafe impl NSObjectProtocol for MTLBinaryArchiveDescriptor {}
@@ -43,6 +47,25 @@ extern_methods!(
         pub fn setUrl(&self, url: Option<&NSURL>);
     }
 );
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLBinaryArchiveDescriptor")]
+    unsafe impl MTLBinaryArchiveDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub fn new() -> Id<Self>;
+    }
+);
+#[cfg(feature = "Metal_MTLBinaryArchiveDescriptor")]
+impl DefaultId for MTLBinaryArchiveDescriptor {
+    #[inline]
+    fn default_id() -> Id<Self> {
+        Self::new()
+    }
+}
 
 extern_protocol!(
     pub unsafe trait MTLBinaryArchive: NSObjectProtocol {

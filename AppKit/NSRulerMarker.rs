@@ -13,11 +13,15 @@ extern_class!(
     #[cfg(feature = "AppKit_NSRulerMarker")]
     unsafe impl ClassType for NSRulerMarker {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "AppKit_NSRulerMarker")]
 unsafe impl NSCoding for NSRulerMarker {}
+
+#[cfg(feature = "AppKit_NSRulerMarker")]
+unsafe impl NSCopying for NSRulerMarker {}
 
 #[cfg(feature = "AppKit_NSRulerMarker")]
 unsafe impl NSObjectProtocol for NSRulerMarker {}
@@ -100,5 +104,14 @@ extern_methods!(
         #[method(trackMouse:adding:)]
         pub unsafe fn trackMouse_adding(&self, mouse_down_event: &NSEvent, is_adding: bool)
             -> bool;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSRulerMarker")]
+    unsafe impl NSRulerMarker {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

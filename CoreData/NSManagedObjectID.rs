@@ -12,8 +12,12 @@ extern_class!(
     #[cfg(feature = "CoreData_NSManagedObjectID")]
     unsafe impl ClassType for NSManagedObjectID {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "CoreData_NSManagedObjectID")]
+unsafe impl NSCopying for NSManagedObjectID {}
 
 #[cfg(feature = "CoreData_NSManagedObjectID")]
 unsafe impl NSObjectProtocol for NSManagedObjectID {}
@@ -35,5 +39,17 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSURL")]
         #[method_id(@__retain_semantics Other URIRepresentation)]
         pub unsafe fn URIRepresentation(&self) -> Id<NSURL>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreData_NSManagedObjectID")]
+    unsafe impl NSManagedObjectID {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

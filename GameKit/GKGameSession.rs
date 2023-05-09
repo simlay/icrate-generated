@@ -28,11 +28,10 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct GKGameSession;
 
-    #[deprecated = "For real-time matches, use GKMatchmakerViewController. For turn-based matches, use GKTurnBasedMatchmakerViewController."]
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "GameKit_GKGameSession")]
     unsafe impl ClassType for GKGameSession {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -184,5 +183,17 @@ extern_methods!(
             players: &NSArray<GKCloudPlayer>,
             completion_handler: &Block<(*mut NSError,), ()>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameKit_GKGameSession")]
+    unsafe impl GKGameSession {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

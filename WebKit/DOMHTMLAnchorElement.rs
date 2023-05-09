@@ -11,16 +11,19 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLAnchorElement;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLAnchorElement")]
     unsafe impl ClassType for DOMHTMLAnchorElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMHTMLElement;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_DOMHTMLAnchorElement")]
 unsafe impl DOMEventTarget for DOMHTMLAnchorElement {}
+
+#[cfg(feature = "WebKit_DOMHTMLAnchorElement")]
+unsafe impl NSCopying for DOMHTMLAnchorElement {}
 
 #[cfg(feature = "WebKit_DOMHTMLAnchorElement")]
 unsafe impl NSObjectProtocol for DOMHTMLAnchorElement {}
@@ -153,5 +156,23 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other hashName)]
         pub unsafe fn hashName(&self) -> Id<NSString>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMHTMLAnchorElement")]
+    unsafe impl DOMHTMLAnchorElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMHTMLAnchorElement")]
+    unsafe impl DOMHTMLAnchorElement {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

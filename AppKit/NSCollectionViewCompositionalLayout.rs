@@ -65,8 +65,12 @@ extern_class!(
     #[cfg(feature = "AppKit_NSCollectionViewCompositionalLayoutConfiguration")]
     unsafe impl ClassType for NSCollectionViewCompositionalLayoutConfiguration {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "AppKit_NSCollectionViewCompositionalLayoutConfiguration")]
+unsafe impl NSCopying for NSCollectionViewCompositionalLayoutConfiguration {}
 
 #[cfg(feature = "AppKit_NSCollectionViewCompositionalLayoutConfiguration")]
 unsafe impl NSObjectProtocol for NSCollectionViewCompositionalLayoutConfiguration {}
@@ -107,6 +111,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSCollectionViewCompositionalLayoutConfiguration")]
+    unsafe impl NSCollectionViewCompositionalLayoutConfiguration {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 pub type NSCollectionViewCompositionalLayoutSectionProvider = *mut Block<
     (
         NSInteger,
@@ -124,6 +140,7 @@ extern_class!(
     unsafe impl ClassType for NSCollectionViewCompositionalLayout {
         #[inherits(NSObject)]
         type Super = NSCollectionViewLayout;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -216,8 +233,12 @@ extern_class!(
     #[cfg(feature = "AppKit_NSCollectionLayoutSection")]
     unsafe impl ClassType for NSCollectionLayoutSection {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "AppKit_NSCollectionLayoutSection")]
+unsafe impl NSCopying for NSCollectionLayoutSection {}
 
 #[cfg(feature = "AppKit_NSCollectionLayoutSection")]
 unsafe impl NSObjectProtocol for NSCollectionLayoutSection {}
@@ -324,8 +345,12 @@ extern_class!(
     #[cfg(feature = "AppKit_NSCollectionLayoutItem")]
     unsafe impl ClassType for NSCollectionLayoutItem {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "AppKit_NSCollectionLayoutItem")]
+unsafe impl NSCopying for NSCollectionLayoutItem {}
 
 #[cfg(feature = "AppKit_NSCollectionLayoutItem")]
 unsafe impl NSObjectProtocol for NSCollectionLayoutItem {}
@@ -390,8 +415,12 @@ extern_class!(
     #[cfg(feature = "AppKit_NSCollectionLayoutGroupCustomItem")]
     unsafe impl ClassType for NSCollectionLayoutGroupCustomItem {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "AppKit_NSCollectionLayoutGroupCustomItem")]
+unsafe impl NSCopying for NSCollectionLayoutGroupCustomItem {}
 
 #[cfg(feature = "AppKit_NSCollectionLayoutGroupCustomItem")]
 unsafe impl NSObjectProtocol for NSCollectionLayoutGroupCustomItem {}
@@ -433,8 +462,12 @@ extern_class!(
     unsafe impl ClassType for NSCollectionLayoutGroup {
         #[inherits(NSObject)]
         type Super = NSCollectionLayoutItem;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "AppKit_NSCollectionLayoutGroup")]
+unsafe impl NSCopying for NSCollectionLayoutGroup {}
 
 #[cfg(feature = "AppKit_NSCollectionLayoutGroup")]
 unsafe impl NSObjectProtocol for NSCollectionLayoutGroup {}
@@ -530,6 +563,27 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSCollectionLayoutItem`
+    #[cfg(feature = "AppKit_NSCollectionLayoutGroup")]
+    unsafe impl NSCollectionLayoutGroup {
+        #[cfg(feature = "AppKit_NSCollectionLayoutSize")]
+        #[method_id(@__retain_semantics Other itemWithLayoutSize:)]
+        pub unsafe fn itemWithLayoutSize(layout_size: &NSCollectionLayoutSize) -> Id<Self>;
+
+        #[cfg(all(
+            feature = "AppKit_NSCollectionLayoutSize",
+            feature = "AppKit_NSCollectionLayoutSupplementaryItem",
+            feature = "Foundation_NSArray"
+        ))]
+        #[method_id(@__retain_semantics Other itemWithLayoutSize:supplementaryItems:)]
+        pub unsafe fn itemWithLayoutSize_supplementaryItems(
+            layout_size: &NSCollectionLayoutSize,
+            supplementary_items: &NSArray<NSCollectionLayoutSupplementaryItem>,
+        ) -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSCollectionLayoutDimension")]
@@ -538,8 +592,12 @@ extern_class!(
     #[cfg(feature = "AppKit_NSCollectionLayoutDimension")]
     unsafe impl ClassType for NSCollectionLayoutDimension {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "AppKit_NSCollectionLayoutDimension")]
+unsafe impl NSCopying for NSCollectionLayoutDimension {}
 
 #[cfg(feature = "AppKit_NSCollectionLayoutDimension")]
 unsafe impl NSObjectProtocol for NSCollectionLayoutDimension {}
@@ -590,8 +648,12 @@ extern_class!(
     #[cfg(feature = "AppKit_NSCollectionLayoutSize")]
     unsafe impl ClassType for NSCollectionLayoutSize {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "AppKit_NSCollectionLayoutSize")]
+unsafe impl NSCopying for NSCollectionLayoutSize {}
 
 #[cfg(feature = "AppKit_NSCollectionLayoutSize")]
 unsafe impl NSObjectProtocol for NSCollectionLayoutSize {}
@@ -630,8 +692,12 @@ extern_class!(
     #[cfg(feature = "AppKit_NSCollectionLayoutSpacing")]
     unsafe impl ClassType for NSCollectionLayoutSpacing {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "AppKit_NSCollectionLayoutSpacing")]
+unsafe impl NSCopying for NSCollectionLayoutSpacing {}
 
 #[cfg(feature = "AppKit_NSCollectionLayoutSpacing")]
 unsafe impl NSObjectProtocol for NSCollectionLayoutSpacing {}
@@ -670,8 +736,12 @@ extern_class!(
     #[cfg(feature = "AppKit_NSCollectionLayoutEdgeSpacing")]
     unsafe impl ClassType for NSCollectionLayoutEdgeSpacing {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "AppKit_NSCollectionLayoutEdgeSpacing")]
+unsafe impl NSCopying for NSCollectionLayoutEdgeSpacing {}
 
 #[cfg(feature = "AppKit_NSCollectionLayoutEdgeSpacing")]
 unsafe impl NSObjectProtocol for NSCollectionLayoutEdgeSpacing {}
@@ -721,8 +791,12 @@ extern_class!(
     unsafe impl ClassType for NSCollectionLayoutSupplementaryItem {
         #[inherits(NSObject)]
         type Super = NSCollectionLayoutItem;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "AppKit_NSCollectionLayoutSupplementaryItem")]
+unsafe impl NSCopying for NSCollectionLayoutSupplementaryItem {}
 
 #[cfg(feature = "AppKit_NSCollectionLayoutSupplementaryItem")]
 unsafe impl NSObjectProtocol for NSCollectionLayoutSupplementaryItem {}
@@ -781,6 +855,26 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSCollectionLayoutItem`
+    #[cfg(feature = "AppKit_NSCollectionLayoutSupplementaryItem")]
+    unsafe impl NSCollectionLayoutSupplementaryItem {
+        #[cfg(feature = "AppKit_NSCollectionLayoutSize")]
+        #[method_id(@__retain_semantics Other itemWithLayoutSize:)]
+        pub unsafe fn itemWithLayoutSize(layout_size: &NSCollectionLayoutSize) -> Id<Self>;
+
+        #[cfg(all(
+            feature = "AppKit_NSCollectionLayoutSize",
+            feature = "Foundation_NSArray"
+        ))]
+        #[method_id(@__retain_semantics Other itemWithLayoutSize:supplementaryItems:)]
+        pub unsafe fn itemWithLayoutSize_supplementaryItems(
+            layout_size: &NSCollectionLayoutSize,
+            supplementary_items: &NSArray<NSCollectionLayoutSupplementaryItem>,
+        ) -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSCollectionLayoutBoundarySupplementaryItem")]
@@ -790,8 +884,12 @@ extern_class!(
     unsafe impl ClassType for NSCollectionLayoutBoundarySupplementaryItem {
         #[inherits(NSCollectionLayoutItem, NSObject)]
         type Super = NSCollectionLayoutSupplementaryItem;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "AppKit_NSCollectionLayoutBoundarySupplementaryItem")]
+unsafe impl NSCopying for NSCollectionLayoutBoundarySupplementaryItem {}
 
 #[cfg(feature = "AppKit_NSCollectionLayoutBoundarySupplementaryItem")]
 unsafe impl NSObjectProtocol for NSCollectionLayoutBoundarySupplementaryItem {}
@@ -848,6 +946,57 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSCollectionLayoutSupplementaryItem`
+    #[cfg(feature = "AppKit_NSCollectionLayoutBoundarySupplementaryItem")]
+    unsafe impl NSCollectionLayoutBoundarySupplementaryItem {
+        #[cfg(all(
+            feature = "AppKit_NSCollectionLayoutAnchor",
+            feature = "AppKit_NSCollectionLayoutSize",
+            feature = "Foundation_NSString"
+        ))]
+        #[method_id(@__retain_semantics Other supplementaryItemWithLayoutSize:elementKind:containerAnchor:)]
+        pub unsafe fn supplementaryItemWithLayoutSize_elementKind_containerAnchor(
+            layout_size: &NSCollectionLayoutSize,
+            element_kind: &NSString,
+            container_anchor: &NSCollectionLayoutAnchor,
+        ) -> Id<Self>;
+
+        #[cfg(all(
+            feature = "AppKit_NSCollectionLayoutAnchor",
+            feature = "AppKit_NSCollectionLayoutSize",
+            feature = "Foundation_NSString"
+        ))]
+        #[method_id(@__retain_semantics Other supplementaryItemWithLayoutSize:elementKind:containerAnchor:itemAnchor:)]
+        pub unsafe fn supplementaryItemWithLayoutSize_elementKind_containerAnchor_itemAnchor(
+            layout_size: &NSCollectionLayoutSize,
+            element_kind: &NSString,
+            container_anchor: &NSCollectionLayoutAnchor,
+            item_anchor: &NSCollectionLayoutAnchor,
+        ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSCollectionLayoutItem`
+    #[cfg(feature = "AppKit_NSCollectionLayoutBoundarySupplementaryItem")]
+    unsafe impl NSCollectionLayoutBoundarySupplementaryItem {
+        #[cfg(feature = "AppKit_NSCollectionLayoutSize")]
+        #[method_id(@__retain_semantics Other itemWithLayoutSize:)]
+        pub unsafe fn itemWithLayoutSize(layout_size: &NSCollectionLayoutSize) -> Id<Self>;
+
+        #[cfg(all(
+            feature = "AppKit_NSCollectionLayoutSize",
+            feature = "Foundation_NSArray"
+        ))]
+        #[method_id(@__retain_semantics Other itemWithLayoutSize:supplementaryItems:)]
+        pub unsafe fn itemWithLayoutSize_supplementaryItems(
+            layout_size: &NSCollectionLayoutSize,
+            supplementary_items: &NSArray<NSCollectionLayoutSupplementaryItem>,
+        ) -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSCollectionLayoutDecorationItem")]
@@ -857,8 +1006,12 @@ extern_class!(
     unsafe impl ClassType for NSCollectionLayoutDecorationItem {
         #[inherits(NSObject)]
         type Super = NSCollectionLayoutItem;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "AppKit_NSCollectionLayoutDecorationItem")]
+unsafe impl NSCopying for NSCollectionLayoutDecorationItem {}
 
 #[cfg(feature = "AppKit_NSCollectionLayoutDecorationItem")]
 unsafe impl NSObjectProtocol for NSCollectionLayoutDecorationItem {}
@@ -888,6 +1041,27 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSCollectionLayoutItem`
+    #[cfg(feature = "AppKit_NSCollectionLayoutDecorationItem")]
+    unsafe impl NSCollectionLayoutDecorationItem {
+        #[cfg(feature = "AppKit_NSCollectionLayoutSize")]
+        #[method_id(@__retain_semantics Other itemWithLayoutSize:)]
+        pub unsafe fn itemWithLayoutSize(layout_size: &NSCollectionLayoutSize) -> Id<Self>;
+
+        #[cfg(all(
+            feature = "AppKit_NSCollectionLayoutSize",
+            feature = "AppKit_NSCollectionLayoutSupplementaryItem",
+            feature = "Foundation_NSArray"
+        ))]
+        #[method_id(@__retain_semantics Other itemWithLayoutSize:supplementaryItems:)]
+        pub unsafe fn itemWithLayoutSize_supplementaryItems(
+            layout_size: &NSCollectionLayoutSize,
+            supplementary_items: &NSArray<NSCollectionLayoutSupplementaryItem>,
+        ) -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSCollectionLayoutAnchor")]
@@ -896,8 +1070,12 @@ extern_class!(
     #[cfg(feature = "AppKit_NSCollectionLayoutAnchor")]
     unsafe impl ClassType for NSCollectionLayoutAnchor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "AppKit_NSCollectionLayoutAnchor")]
+unsafe impl NSCopying for NSCollectionLayoutAnchor {}
 
 #[cfg(feature = "AppKit_NSCollectionLayoutAnchor")]
 unsafe impl NSObjectProtocol for NSCollectionLayoutAnchor {}
@@ -1016,117 +1194,4 @@ extern_protocol!(
     }
 
     unsafe impl ProtocolType for dyn NSCollectionLayoutVisibleItem {}
-);
-
-extern_methods!(
-    /// Methods declared on superclass `NSCollectionLayoutItem`
-    #[cfg(feature = "AppKit_NSCollectionLayoutGroup")]
-    unsafe impl NSCollectionLayoutGroup {
-        #[cfg(feature = "AppKit_NSCollectionLayoutSize")]
-        #[method_id(@__retain_semantics Other itemWithLayoutSize:)]
-        pub unsafe fn itemWithLayoutSize(layout_size: &NSCollectionLayoutSize) -> Id<Self>;
-
-        #[cfg(all(
-            feature = "AppKit_NSCollectionLayoutSize",
-            feature = "AppKit_NSCollectionLayoutSupplementaryItem",
-            feature = "Foundation_NSArray"
-        ))]
-        #[method_id(@__retain_semantics Other itemWithLayoutSize:supplementaryItems:)]
-        pub unsafe fn itemWithLayoutSize_supplementaryItems(
-            layout_size: &NSCollectionLayoutSize,
-            supplementary_items: &NSArray<NSCollectionLayoutSupplementaryItem>,
-        ) -> Id<Self>;
-    }
-);
-
-extern_methods!(
-    /// Methods declared on superclass `NSCollectionLayoutItem`
-    #[cfg(feature = "AppKit_NSCollectionLayoutSupplementaryItem")]
-    unsafe impl NSCollectionLayoutSupplementaryItem {
-        #[cfg(feature = "AppKit_NSCollectionLayoutSize")]
-        #[method_id(@__retain_semantics Other itemWithLayoutSize:)]
-        pub unsafe fn itemWithLayoutSize(layout_size: &NSCollectionLayoutSize) -> Id<Self>;
-
-        #[cfg(all(
-            feature = "AppKit_NSCollectionLayoutSize",
-            feature = "Foundation_NSArray"
-        ))]
-        #[method_id(@__retain_semantics Other itemWithLayoutSize:supplementaryItems:)]
-        pub unsafe fn itemWithLayoutSize_supplementaryItems(
-            layout_size: &NSCollectionLayoutSize,
-            supplementary_items: &NSArray<NSCollectionLayoutSupplementaryItem>,
-        ) -> Id<Self>;
-    }
-);
-
-extern_methods!(
-    /// Methods declared on superclass `NSCollectionLayoutSupplementaryItem`
-    #[cfg(feature = "AppKit_NSCollectionLayoutBoundarySupplementaryItem")]
-    unsafe impl NSCollectionLayoutBoundarySupplementaryItem {
-        #[cfg(all(
-            feature = "AppKit_NSCollectionLayoutAnchor",
-            feature = "AppKit_NSCollectionLayoutSize",
-            feature = "Foundation_NSString"
-        ))]
-        #[method_id(@__retain_semantics Other supplementaryItemWithLayoutSize:elementKind:containerAnchor:)]
-        pub unsafe fn supplementaryItemWithLayoutSize_elementKind_containerAnchor(
-            layout_size: &NSCollectionLayoutSize,
-            element_kind: &NSString,
-            container_anchor: &NSCollectionLayoutAnchor,
-        ) -> Id<Self>;
-
-        #[cfg(all(
-            feature = "AppKit_NSCollectionLayoutAnchor",
-            feature = "AppKit_NSCollectionLayoutSize",
-            feature = "Foundation_NSString"
-        ))]
-        #[method_id(@__retain_semantics Other supplementaryItemWithLayoutSize:elementKind:containerAnchor:itemAnchor:)]
-        pub unsafe fn supplementaryItemWithLayoutSize_elementKind_containerAnchor_itemAnchor(
-            layout_size: &NSCollectionLayoutSize,
-            element_kind: &NSString,
-            container_anchor: &NSCollectionLayoutAnchor,
-            item_anchor: &NSCollectionLayoutAnchor,
-        ) -> Id<Self>;
-    }
-);
-
-extern_methods!(
-    /// Methods declared on superclass `NSCollectionLayoutItem`
-    #[cfg(feature = "AppKit_NSCollectionLayoutBoundarySupplementaryItem")]
-    unsafe impl NSCollectionLayoutBoundarySupplementaryItem {
-        #[cfg(feature = "AppKit_NSCollectionLayoutSize")]
-        #[method_id(@__retain_semantics Other itemWithLayoutSize:)]
-        pub unsafe fn itemWithLayoutSize(layout_size: &NSCollectionLayoutSize) -> Id<Self>;
-
-        #[cfg(all(
-            feature = "AppKit_NSCollectionLayoutSize",
-            feature = "Foundation_NSArray"
-        ))]
-        #[method_id(@__retain_semantics Other itemWithLayoutSize:supplementaryItems:)]
-        pub unsafe fn itemWithLayoutSize_supplementaryItems(
-            layout_size: &NSCollectionLayoutSize,
-            supplementary_items: &NSArray<NSCollectionLayoutSupplementaryItem>,
-        ) -> Id<Self>;
-    }
-);
-
-extern_methods!(
-    /// Methods declared on superclass `NSCollectionLayoutItem`
-    #[cfg(feature = "AppKit_NSCollectionLayoutDecorationItem")]
-    unsafe impl NSCollectionLayoutDecorationItem {
-        #[cfg(feature = "AppKit_NSCollectionLayoutSize")]
-        #[method_id(@__retain_semantics Other itemWithLayoutSize:)]
-        pub unsafe fn itemWithLayoutSize(layout_size: &NSCollectionLayoutSize) -> Id<Self>;
-
-        #[cfg(all(
-            feature = "AppKit_NSCollectionLayoutSize",
-            feature = "AppKit_NSCollectionLayoutSupplementaryItem",
-            feature = "Foundation_NSArray"
-        ))]
-        #[method_id(@__retain_semantics Other itemWithLayoutSize:supplementaryItems:)]
-        pub unsafe fn itemWithLayoutSize_supplementaryItems(
-            layout_size: &NSCollectionLayoutSize,
-            supplementary_items: &NSArray<NSCollectionLayoutSupplementaryItem>,
-        ) -> Id<Self>;
-    }
 );

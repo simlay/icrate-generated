@@ -35,6 +35,7 @@ extern_class!(
     #[cfg(feature = "GameController_GCDeviceHaptics")]
     unsafe impl ClassType for GCDeviceHaptics {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -57,5 +58,14 @@ extern_methods!(
             &self,
             locality: &GCHapticsLocality,
         ) -> Option<Id<CHHapticEngine>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameController_GCDeviceHaptics")]
+    unsafe impl GCDeviceHaptics {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -106,8 +106,12 @@ extern_class!(
     #[cfg(feature = "Foundation_NSItemProvider")]
     unsafe impl ClassType for NSItemProvider {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Foundation_NSItemProvider")]
+unsafe impl NSCopying for NSItemProvider {}
 
 #[cfg(feature = "Foundation_NSItemProvider")]
 unsafe impl NSObjectProtocol for NSItemProvider {}
@@ -269,6 +273,15 @@ extern_methods!(
             options: Option<&NSDictionary>,
             completion_handler: NSItemProviderCompletionHandler,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSItemProvider")]
+    unsafe impl NSItemProvider {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

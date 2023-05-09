@@ -14,6 +14,7 @@ extern_class!(
     unsafe impl ClassType for CKDiscoverUserIdentitiesOperation {
         #[inherits(NSOperation, NSObject)]
         type Super = CKOperation;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -86,5 +87,14 @@ extern_methods!(
             &self,
             discover_user_identities_completion_block: Option<&Block<(*mut NSError,), ()>>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CloudKit_CKDiscoverUserIdentitiesOperation")]
+    unsafe impl CKDiscoverUserIdentitiesOperation {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSTreeNode")]
     unsafe impl ClassType for NSTreeNode {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -47,7 +48,7 @@ extern_methods!(
 
         #[cfg(feature = "Foundation_NSMutableArray")]
         #[method_id(@__retain_semantics Other mutableChildNodes)]
-        pub unsafe fn mutableChildNodes(&self) -> Id<NSMutableArray<NSTreeNode>, Owned>;
+        pub unsafe fn mutableChildNodes(&self) -> Id<NSMutableArray<NSTreeNode>>;
 
         #[cfg(feature = "Foundation_NSIndexPath")]
         #[method_id(@__retain_semantics Other descendantNodeAtIndexPath:)]
@@ -69,5 +70,17 @@ extern_methods!(
             sort_descriptors: &NSArray<NSSortDescriptor>,
             recursively: bool,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSTreeNode")]
+    unsafe impl NSTreeNode {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

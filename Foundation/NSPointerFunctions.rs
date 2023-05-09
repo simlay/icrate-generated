@@ -32,8 +32,12 @@ extern_class!(
     #[cfg(feature = "Foundation_NSPointerFunctions")]
     unsafe impl ClassType for NSPointerFunctions {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Foundation_NSPointerFunctions")]
+unsafe impl NSCopying for NSPointerFunctions {}
 
 #[cfg(feature = "Foundation_NSPointerFunctions")]
 unsafe impl NSObjectProtocol for NSPointerFunctions {}
@@ -182,5 +186,17 @@ extern_methods!(
             &self,
             uses_weak_read_and_write_barriers: bool,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSPointerFunctions")]
+    unsafe impl NSPointerFunctions {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

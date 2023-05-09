@@ -22,6 +22,7 @@ extern_class!(
     #[cfg(feature = "GameController_GCControllerElement")]
     unsafe impl ClassType for GCControllerElement {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -84,5 +85,17 @@ extern_methods!(
         #[cfg(all(feature = "Foundation_NSSet", feature = "Foundation_NSString"))]
         #[method_id(@__retain_semantics Other aliases)]
         pub unsafe fn aliases(&self) -> Id<NSSet<NSString>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameController_GCControllerElement")]
+    unsafe impl GCControllerElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

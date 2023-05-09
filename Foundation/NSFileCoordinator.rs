@@ -32,6 +32,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSFileAccessIntent")]
     unsafe impl ClassType for NSFileAccessIntent {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -61,6 +62,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSFileAccessIntent")]
+    unsafe impl NSFileAccessIntent {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSFileCoordinator")]
@@ -69,6 +82,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSFileCoordinator")]
     unsafe impl ClassType for NSFileCoordinator {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -195,5 +209,17 @@ extern_methods!(
 
         #[method(cancel)]
         pub unsafe fn cancel(&self);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSFileCoordinator")]
+    unsafe impl NSFileCoordinator {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

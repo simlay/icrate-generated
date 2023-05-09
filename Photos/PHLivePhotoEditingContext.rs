@@ -18,6 +18,7 @@ extern_class!(
     #[cfg(feature = "PhotoKit_PHLivePhotoEditingContext")]
     unsafe impl ClassType for PHLivePhotoEditingContext {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -77,6 +78,15 @@ extern_methods!(
 
         #[method(cancel)]
         pub unsafe fn cancel(&self);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "PhotoKit_PHLivePhotoEditingContext")]
+    unsafe impl PHLivePhotoEditingContext {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

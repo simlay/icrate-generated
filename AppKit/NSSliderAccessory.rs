@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSSliderAccessory")]
     unsafe impl ClassType for NSSliderAccessory {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -46,6 +47,18 @@ extern_methods!(
 );
 
 extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSSliderAccessory")]
+    unsafe impl NSSliderAccessory {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
+extern_methods!(
     #[cfg(feature = "AppKit_NSSliderAccessory")]
     unsafe impl NSSliderAccessory {}
 );
@@ -64,11 +77,15 @@ extern_class!(
     #[cfg(feature = "AppKit_NSSliderAccessoryBehavior")]
     unsafe impl ClassType for NSSliderAccessoryBehavior {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "AppKit_NSSliderAccessoryBehavior")]
 unsafe impl NSCoding for NSSliderAccessoryBehavior {}
+
+#[cfg(feature = "AppKit_NSSliderAccessoryBehavior")]
+unsafe impl NSCopying for NSSliderAccessoryBehavior {}
 
 #[cfg(feature = "AppKit_NSSliderAccessoryBehavior")]
 unsafe impl NSObjectProtocol for NSSliderAccessoryBehavior {}
@@ -100,5 +117,17 @@ extern_methods!(
         #[cfg(feature = "AppKit_NSSliderAccessory")]
         #[method(handleAction:)]
         pub unsafe fn handleAction(&self, sender: &NSSliderAccessory);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSSliderAccessoryBehavior")]
+    unsafe impl NSSliderAccessoryBehavior {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -379,11 +379,15 @@ extern_class!(
     #[cfg(feature = "Foundation_NSURL")]
     unsafe impl ClassType for NSURL {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSURL")]
 unsafe impl NSCoding for NSURL {}
+
+#[cfg(feature = "Foundation_NSURL")]
+unsafe impl NSCopying for NSURL {}
 
 #[cfg(feature = "Foundation_NSURL")]
 unsafe impl NSObjectProtocol for NSURL {}
@@ -745,6 +749,18 @@ extern_methods!(
 );
 
 extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSURL")]
+    unsafe impl NSURL {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
+extern_methods!(
     /// NSPromisedItems
     #[cfg(feature = "Foundation_NSURL")]
     unsafe impl NSURL {
@@ -793,11 +809,15 @@ extern_class!(
     #[cfg(feature = "Foundation_NSURLQueryItem")]
     unsafe impl ClassType for NSURLQueryItem {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSURLQueryItem")]
 unsafe impl NSCoding for NSURLQueryItem {}
+
+#[cfg(feature = "Foundation_NSURLQueryItem")]
+unsafe impl NSCopying for NSURLQueryItem {}
 
 #[cfg(feature = "Foundation_NSURLQueryItem")]
 unsafe impl NSObjectProtocol for NSURLQueryItem {}
@@ -833,6 +853,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSURLQueryItem")]
+    unsafe impl NSURLQueryItem {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSURLComponents")]
@@ -841,8 +873,12 @@ extern_class!(
     #[cfg(feature = "Foundation_NSURLComponents")]
     unsafe impl ClassType for NSURLComponents {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Foundation_NSURLComponents")]
+unsafe impl NSCopying for NSURLComponents {}
 
 #[cfg(feature = "Foundation_NSURLComponents")]
 unsafe impl NSObjectProtocol for NSURLComponents {}
@@ -1059,6 +1095,15 @@ extern_methods!(
 );
 
 extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSURLComponents")]
+    unsafe impl NSURLComponents {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
+extern_methods!(
     /// NSURLUtilities
     #[cfg(feature = "Foundation_NSCharacterSet")]
     unsafe impl NSCharacterSet {
@@ -1178,11 +1223,15 @@ extern_class!(
     #[cfg(feature = "Foundation_NSFileSecurity")]
     unsafe impl ClassType for NSFileSecurity {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSFileSecurity")]
 unsafe impl NSCoding for NSFileSecurity {}
+
+#[cfg(feature = "Foundation_NSFileSecurity")]
+unsafe impl NSCopying for NSFileSecurity {}
 
 #[cfg(feature = "Foundation_NSFileSecurity")]
 unsafe impl NSObjectProtocol for NSFileSecurity {}
@@ -1199,6 +1248,18 @@ extern_methods!(
             this: Option<Allocated<Self>>,
             coder: &NSCoder,
         ) -> Option<Id<Self>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSFileSecurity")]
+    unsafe impl NSFileSecurity {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

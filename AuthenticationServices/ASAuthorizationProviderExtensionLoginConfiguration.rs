@@ -10,10 +10,10 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub struct ASAuthorizationProviderExtensionKerberosMapping;
 
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionKerberosMapping")]
     unsafe impl ClassType for ASAuthorizationProviderExtensionKerberosMapping {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -86,16 +86,28 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionKerberosMapping")]
+    unsafe impl ASAuthorizationProviderExtensionKerberosMapping {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionLoginConfiguration")]
     #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub struct ASAuthorizationProviderExtensionLoginConfiguration;
 
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionLoginConfiguration")]
     unsafe impl ClassType for ASAuthorizationProviderExtensionLoginConfiguration {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 

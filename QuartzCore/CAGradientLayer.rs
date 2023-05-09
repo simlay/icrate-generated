@@ -17,6 +17,7 @@ extern_class!(
     unsafe impl ClassType for CAGradientLayer {
         #[inherits(NSObject)]
         type Super = CALayer;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -71,12 +72,6 @@ extern_methods!(
     }
 );
 
-extern_static!(kCAGradientLayerAxial: &'static CAGradientLayerType);
-
-extern_static!(kCAGradientLayerRadial: &'static CAGradientLayerType);
-
-extern_static!(kCAGradientLayerConic: &'static CAGradientLayerType);
-
 extern_methods!(
     /// Methods declared on superclass `CALayer`
     #[cfg(feature = "CoreAnimation_CAGradientLayer")]
@@ -84,7 +79,25 @@ extern_methods!(
         #[method_id(@__retain_semantics Other layer)]
         pub unsafe fn layer() -> Id<Self>;
 
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
         #[method_id(@__retain_semantics Init initWithLayer:)]
         pub unsafe fn initWithLayer(this: Option<Allocated<Self>>, layer: &Object) -> Id<Self>;
     }
 );
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreAnimation_CAGradientLayer")]
+    unsafe impl CAGradientLayer {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
+extern_static!(kCAGradientLayerAxial: &'static CAGradientLayerType);
+
+extern_static!(kCAGradientLayerRadial: &'static CAGradientLayerType);
+
+extern_static!(kCAGradientLayerConic: &'static CAGradientLayerType);

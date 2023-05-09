@@ -23,6 +23,7 @@ extern_class!(
     unsafe impl ClassType for NSScrollView {
         #[inherits(NSResponder, NSObject)]
         type Super = NSView;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -335,6 +336,24 @@ extern_methods!(
 
         #[method(setScrollerInsets:)]
         pub unsafe fn setScrollerInsets(&self, scroller_insets: NSEdgeInsets);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSResponder`
+    #[cfg(feature = "AppKit_NSScrollView")]
+    unsafe impl NSScrollView {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSScrollView")]
+    unsafe impl NSScrollView {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

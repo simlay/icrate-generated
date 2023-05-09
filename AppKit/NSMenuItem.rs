@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSMenuItem")]
     unsafe impl ClassType for NSMenuItem {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -24,6 +25,9 @@ unsafe impl NSAccessibilityElementProtocol for NSMenuItem {}
 
 #[cfg(feature = "AppKit_NSMenuItem")]
 unsafe impl NSCoding for NSMenuItem {}
+
+#[cfg(feature = "AppKit_NSMenuItem")]
+unsafe impl NSCopying for NSMenuItem {}
 
 #[cfg(feature = "AppKit_NSMenuItem")]
 unsafe impl NSObjectProtocol for NSMenuItem {}
@@ -255,6 +259,18 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method(setToolTip:)]
         pub unsafe fn setToolTip(&self, tool_tip: Option<&NSString>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSMenuItem")]
+    unsafe impl NSMenuItem {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

@@ -15,6 +15,7 @@ extern_class!(
     unsafe impl ClassType for HKWorkoutRouteBuilder {
         #[inherits(NSObject)]
         type Super = HKSeriesBuilder;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -70,5 +71,23 @@ extern_methods!(
             metadata: Option<&NSDictionary<NSString, Object>>,
             completion: &Block<(*mut HKWorkoutRoute, *mut NSError), ()>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `HKSeriesBuilder`
+    #[cfg(feature = "HealthKit_HKWorkoutRouteBuilder")]
+    unsafe impl HKWorkoutRouteBuilder {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "HealthKit_HKWorkoutRouteBuilder")]
+    unsafe impl HKWorkoutRouteBuilder {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

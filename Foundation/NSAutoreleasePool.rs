@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSAutoreleasePool")]
     unsafe impl ClassType for NSAutoreleasePool {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -28,5 +29,17 @@ extern_methods!(
 
         #[method(drain)]
         pub unsafe fn drain(&self);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSAutoreleasePool")]
+    unsafe impl NSAutoreleasePool {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

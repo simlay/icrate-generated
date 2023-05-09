@@ -40,6 +40,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSProcessInfo")]
     unsafe impl ClassType for NSProcessInfo {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -141,6 +142,18 @@ extern_methods!(
             &self,
             automatic_termination_support_enabled: bool,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSProcessInfo")]
+    unsafe impl NSProcessInfo {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

@@ -11,13 +11,16 @@ extern_class!(
     #[deprecated]
     pub struct DOMProgressEvent;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMProgressEvent")]
     unsafe impl ClassType for DOMProgressEvent {
         #[inherits(DOMObject, WebScriptObject, NSObject)]
         type Super = DOMEvent;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "WebKit_DOMProgressEvent")]
+unsafe impl NSCopying for DOMProgressEvent {}
 
 #[cfg(feature = "WebKit_DOMProgressEvent")]
 unsafe impl NSObjectProtocol for DOMProgressEvent {}
@@ -33,5 +36,23 @@ extern_methods!(
 
         #[method(total)]
         pub unsafe fn total(&self) -> c_ulonglong;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMProgressEvent")]
+    unsafe impl DOMProgressEvent {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMProgressEvent")]
+    unsafe impl DOMProgressEvent {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

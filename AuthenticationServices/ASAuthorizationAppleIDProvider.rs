@@ -26,6 +26,7 @@ extern_class!(
     #[cfg(feature = "AuthenticationServices_ASAuthorizationAppleIDProvider")]
     unsafe impl ClassType for ASAuthorizationAppleIDProvider {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -49,5 +50,17 @@ extern_methods!(
             user_id: &NSString,
             completion: &Block<(ASAuthorizationAppleIDProviderCredentialState, *mut NSError), ()>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AuthenticationServices_ASAuthorizationAppleIDProvider")]
+    unsafe impl ASAuthorizationAppleIDProvider {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

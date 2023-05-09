@@ -14,6 +14,7 @@ extern_class!(
     unsafe impl ClassType for NSComboBoxCell {
         #[inherits(NSActionCell, NSCell, NSObject)]
         type Super = NSTextFieldCell;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -25,6 +26,9 @@ unsafe impl NSAccessibilityElementProtocol for NSComboBoxCell {}
 
 #[cfg(feature = "AppKit_NSComboBoxCell")]
 unsafe impl NSCoding for NSComboBoxCell {}
+
+#[cfg(feature = "AppKit_NSComboBoxCell")]
+unsafe impl NSCopying for NSComboBoxCell {}
 
 #[cfg(feature = "AppKit_NSComboBoxCell")]
 unsafe impl NSObjectProtocol for NSComboBoxCell {}
@@ -152,6 +156,45 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSTextFieldCell`
+    #[cfg(feature = "AppKit_NSComboBoxCell")]
+    unsafe impl NSComboBoxCell {
+        #[cfg(feature = "Foundation_NSString")]
+        #[method_id(@__retain_semantics Init initTextCell:)]
+        pub unsafe fn initTextCell(this: Option<Allocated<Self>>, string: &NSString) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(this: Option<Allocated<Self>>, coder: &NSCoder) -> Id<Self>;
+
+        #[cfg(feature = "AppKit_NSImage")]
+        #[method_id(@__retain_semantics Init initImageCell:)]
+        pub unsafe fn initImageCell(
+            this: Option<Allocated<Self>>,
+            image: Option<&NSImage>,
+        ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSCell`
+    #[cfg(feature = "AppKit_NSComboBoxCell")]
+    unsafe impl NSComboBoxCell {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSComboBoxCell")]
+    unsafe impl NSComboBoxCell {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_protocol!(
     pub unsafe trait NSComboBoxCellDataSource: NSObjectProtocol {
         #[cfg(feature = "AppKit_NSComboBoxCell")]
@@ -188,21 +231,4 @@ extern_protocol!(
     }
 
     unsafe impl ProtocolType for dyn NSComboBoxCellDataSource {}
-);
-
-extern_methods!(
-    /// Methods declared on superclass `NSTextFieldCell`
-    #[cfg(feature = "AppKit_NSComboBoxCell")]
-    unsafe impl NSComboBoxCell {
-        #[cfg(feature = "Foundation_NSString")]
-        #[method_id(@__retain_semantics Init initTextCell:)]
-        pub unsafe fn initTextCell(this: Option<Allocated<Self>>, string: &NSString) -> Id<Self>;
-
-        #[cfg(feature = "AppKit_NSImage")]
-        #[method_id(@__retain_semantics Init initImageCell:)]
-        pub unsafe fn initImageCell(
-            this: Option<Allocated<Self>>,
-            image: Option<&NSImage>,
-        ) -> Id<Self>;
-    }
 );

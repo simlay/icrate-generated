@@ -15,16 +15,20 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos")))]
     pub struct CLHeading;
 
-    #[cfg(not(any(target_os = "tvos")))]
     #[cfg(feature = "CoreLocation_CLHeading")]
     unsafe impl ClassType for CLHeading {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "CoreLocation_CLHeading")]
 #[cfg(not(any(target_os = "tvos")))]
 unsafe impl NSCoding for CLHeading {}
+
+#[cfg(feature = "CoreLocation_CLHeading")]
+#[cfg(not(any(target_os = "tvos")))]
+unsafe impl NSCopying for CLHeading {}
 
 #[cfg(feature = "CoreLocation_CLHeading")]
 #[cfg(not(any(target_os = "tvos")))]
@@ -59,5 +63,17 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSDate")]
         #[method_id(@__retain_semantics Other timestamp)]
         pub unsafe fn timestamp(&self) -> Id<NSDate>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreLocation_CLHeading")]
+    unsafe impl CLHeading {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

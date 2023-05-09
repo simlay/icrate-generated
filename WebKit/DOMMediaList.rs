@@ -11,13 +11,16 @@ extern_class!(
     #[deprecated]
     pub struct DOMMediaList;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMMediaList")]
     unsafe impl ClassType for DOMMediaList {
         #[inherits(WebScriptObject, NSObject)]
         type Super = DOMObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "WebKit_DOMMediaList")]
+unsafe impl NSCopying for DOMMediaList {}
 
 #[cfg(feature = "WebKit_DOMMediaList")]
 unsafe impl NSObjectProtocol for DOMMediaList {}
@@ -47,5 +50,23 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method(appendMedium:)]
         pub unsafe fn appendMedium(&self, new_medium: Option<&NSString>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMMediaList")]
+    unsafe impl DOMMediaList {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMMediaList")]
+    unsafe impl DOMMediaList {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

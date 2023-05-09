@@ -23,6 +23,7 @@ extern_class!(
     unsafe impl ClassType for NSPopUpButtonCell {
         #[inherits(NSButtonCell, NSActionCell, NSCell, NSObject)]
         type Super = NSMenuItemCell;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -34,6 +35,9 @@ unsafe impl NSAccessibilityElementProtocol for NSPopUpButtonCell {}
 
 #[cfg(feature = "AppKit_NSPopUpButtonCell")]
 unsafe impl NSCoding for NSPopUpButtonCell {}
+
+#[cfg(feature = "AppKit_NSPopUpButtonCell")]
+unsafe impl NSCopying for NSPopUpButtonCell {}
 
 #[cfg(feature = "AppKit_NSPopUpButtonCell")]
 unsafe impl NSMenuItemValidation for NSPopUpButtonCell {}
@@ -218,8 +222,6 @@ extern_methods!(
     }
 );
 
-extern_static!(NSPopUpButtonCellWillPopUpNotification: &'static NSNotificationName);
-
 extern_methods!(
     /// Methods declared on superclass `NSMenuItemCell`
     #[cfg(feature = "AppKit_NSPopUpButtonCell")]
@@ -242,3 +244,23 @@ extern_methods!(
         ) -> Id<Self>;
     }
 );
+
+extern_methods!(
+    /// Methods declared on superclass `NSCell`
+    #[cfg(feature = "AppKit_NSPopUpButtonCell")]
+    unsafe impl NSPopUpButtonCell {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSPopUpButtonCell")]
+    unsafe impl NSPopUpButtonCell {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
+extern_static!(NSPopUpButtonCellWillPopUpNotification: &'static NSNotificationName);

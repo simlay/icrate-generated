@@ -12,8 +12,12 @@ extern_class!(
     #[cfg(feature = "Metal_MTLComputePassSampleBufferAttachmentDescriptor")]
     unsafe impl ClassType for MTLComputePassSampleBufferAttachmentDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLComputePassSampleBufferAttachmentDescriptor")]
+unsafe impl NSCopying for MTLComputePassSampleBufferAttachmentDescriptor {}
 
 #[cfg(feature = "Metal_MTLComputePassSampleBufferAttachmentDescriptor")]
 unsafe impl NSObjectProtocol for MTLComputePassSampleBufferAttachmentDescriptor {}
@@ -48,6 +52,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLComputePassSampleBufferAttachmentDescriptor")]
+    unsafe impl MTLComputePassSampleBufferAttachmentDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLComputePassSampleBufferAttachmentDescriptorArray")]
@@ -56,6 +72,7 @@ extern_class!(
     #[cfg(feature = "Metal_MTLComputePassSampleBufferAttachmentDescriptorArray")]
     unsafe impl ClassType for MTLComputePassSampleBufferAttachmentDescriptorArray {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -82,6 +99,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLComputePassSampleBufferAttachmentDescriptorArray")]
+    unsafe impl MTLComputePassSampleBufferAttachmentDescriptorArray {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLComputePassDescriptor")]
@@ -90,8 +119,12 @@ extern_class!(
     #[cfg(feature = "Metal_MTLComputePassDescriptor")]
     unsafe impl ClassType for MTLComputePassDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLComputePassDescriptor")]
+unsafe impl NSCopying for MTLComputePassDescriptor {}
 
 #[cfg(feature = "Metal_MTLComputePassDescriptor")]
 unsafe impl NSObjectProtocol for MTLComputePassDescriptor {}
@@ -113,5 +146,17 @@ extern_methods!(
         pub unsafe fn sampleBufferAttachments(
             &self,
         ) -> Id<MTLComputePassSampleBufferAttachmentDescriptorArray>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLComputePassDescriptor")]
+    unsafe impl MTLComputePassDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

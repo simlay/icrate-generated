@@ -42,6 +42,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSImage")]
     unsafe impl ClassType for NSImage {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -393,9 +394,24 @@ extern_methods!(
 );
 
 extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSImage")]
+    unsafe impl NSImage {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
+extern_methods!(
     #[cfg(feature = "AppKit_NSImage")]
     unsafe impl NSImage {}
 );
+
+#[cfg(feature = "AppKit_NSImage")]
+unsafe impl NSCopying for NSImage {}
 
 #[cfg(feature = "AppKit_NSImage")]
 unsafe impl NSPasteboardReading for NSImage {}
@@ -898,11 +914,15 @@ extern_class!(
     #[cfg(feature = "AppKit_NSImageSymbolConfiguration")]
     unsafe impl ClassType for NSImageSymbolConfiguration {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "AppKit_NSImageSymbolConfiguration")]
 unsafe impl NSCoding for NSImageSymbolConfiguration {}
+
+#[cfg(feature = "AppKit_NSImageSymbolConfiguration")]
+unsafe impl NSCopying for NSImageSymbolConfiguration {}
 
 #[cfg(feature = "AppKit_NSImageSymbolConfiguration")]
 unsafe impl NSObjectProtocol for NSImageSymbolConfiguration {}
@@ -961,5 +981,17 @@ extern_methods!(
             &self,
             configuration: &NSImageSymbolConfiguration,
         ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSImageSymbolConfiguration")]
+    unsafe impl NSImageSymbolConfiguration {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -14,6 +14,7 @@ extern_class!(
     unsafe impl ClassType for NSStepperTouchBarItem {
         #[inherits(NSObject)]
         type Super = NSTouchBarItem;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -94,5 +95,24 @@ extern_methods!(
             this: Option<Allocated<Self>>,
             identifier: &NSTouchBarItemIdentifier,
         ) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(
+            this: Option<Allocated<Self>>,
+            coder: &NSCoder,
+        ) -> Option<Id<Self>>;
+
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSStepperTouchBarItem")]
+    unsafe impl NSStepperTouchBarItem {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

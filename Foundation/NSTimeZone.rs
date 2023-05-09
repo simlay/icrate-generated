@@ -11,11 +11,15 @@ extern_class!(
     #[cfg(feature = "Foundation_NSTimeZone")]
     unsafe impl ClassType for NSTimeZone {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSTimeZone")]
 unsafe impl NSCoding for NSTimeZone {}
+
+#[cfg(feature = "Foundation_NSTimeZone")]
+unsafe impl NSCopying for NSTimeZone {}
 
 #[cfg(feature = "Foundation_NSTimeZone")]
 unsafe impl NSObjectProtocol for NSTimeZone {}
@@ -56,6 +60,18 @@ extern_methods!(
             &self,
             a_date: &NSDate,
         ) -> Option<Id<NSDate>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSTimeZone")]
+    unsafe impl NSTimeZone {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

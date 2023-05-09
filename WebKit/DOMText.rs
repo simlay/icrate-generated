@@ -11,16 +11,19 @@ extern_class!(
     #[deprecated]
     pub struct DOMText;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMText")]
     unsafe impl ClassType for DOMText {
         #[inherits(DOMNode, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMCharacterData;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_DOMText")]
 unsafe impl DOMEventTarget for DOMText {}
+
+#[cfg(feature = "WebKit_DOMText")]
+unsafe impl NSCopying for DOMText {}
 
 #[cfg(feature = "WebKit_DOMText")]
 unsafe impl NSObjectProtocol for DOMText {}
@@ -38,5 +41,23 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other replaceWholeText:)]
         pub unsafe fn replaceWholeText(&self, content: Option<&NSString>) -> Option<Id<DOMText>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMText")]
+    unsafe impl DOMText {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMText")]
+    unsafe impl DOMText {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

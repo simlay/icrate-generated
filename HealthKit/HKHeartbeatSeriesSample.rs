@@ -15,6 +15,7 @@ extern_class!(
     unsafe impl ClassType for HKHeartbeatSeriesSample {
         #[inherits(HKSample, HKObject, NSObject)]
         type Super = HKSeriesSample;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -30,4 +31,22 @@ unsafe impl NSSecureCoding for HKHeartbeatSeriesSample {}
 extern_methods!(
     #[cfg(feature = "HealthKit_HKHeartbeatSeriesSample")]
     unsafe impl HKHeartbeatSeriesSample {}
+);
+
+extern_methods!(
+    /// Methods declared on superclass `HKObject`
+    #[cfg(feature = "HealthKit_HKHeartbeatSeriesSample")]
+    unsafe impl HKHeartbeatSeriesSample {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "HealthKit_HKHeartbeatSeriesSample")]
+    unsafe impl HKHeartbeatSeriesSample {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
 );

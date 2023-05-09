@@ -11,10 +11,10 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct SKArcadeService;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "StoreKit_SKArcadeService")]
     unsafe impl ClassType for SKArcadeService {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -46,5 +46,17 @@ extern_methods!(
         #[cfg(not(any(target_os = "watchos")))]
         #[method(repairArcadeApp)]
         pub unsafe fn repairArcadeApp();
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "StoreKit_SKArcadeService")]
+    unsafe impl SKArcadeService {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

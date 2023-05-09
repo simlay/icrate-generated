@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(feature = "WebKit_WKNavigation")]
     unsafe impl ClassType for WKNavigation {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -24,5 +25,17 @@ extern_methods!(
     unsafe impl WKNavigation {
         #[method(effectiveContentMode)]
         pub unsafe fn effectiveContentMode(&self) -> WKContentMode;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_WKNavigation")]
+    unsafe impl WKNavigation {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

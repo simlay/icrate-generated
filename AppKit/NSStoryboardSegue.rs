@@ -15,6 +15,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSStoryboardSegue")]
     unsafe impl ClassType for NSStoryboardSegue {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -51,6 +52,18 @@ extern_methods!(
 
         #[method(perform)]
         pub unsafe fn perform(&self);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSStoryboardSegue")]
+    unsafe impl NSStoryboardSegue {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

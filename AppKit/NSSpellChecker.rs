@@ -58,6 +58,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSSpellChecker")]
     unsafe impl ClassType for NSSpellChecker {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -432,6 +433,18 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method(setLanguage:)]
         pub unsafe fn setLanguage(&self, language: &NSString) -> bool;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSSpellChecker")]
+    unsafe impl NSSpellChecker {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

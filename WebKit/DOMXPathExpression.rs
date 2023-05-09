@@ -11,13 +11,16 @@ extern_class!(
     #[deprecated]
     pub struct DOMXPathExpression;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMXPathExpression")]
     unsafe impl ClassType for DOMXPathExpression {
         #[inherits(WebScriptObject, NSObject)]
         type Super = DOMObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "WebKit_DOMXPathExpression")]
+unsafe impl NSCopying for DOMXPathExpression {}
 
 #[cfg(feature = "WebKit_DOMXPathExpression")]
 unsafe impl NSObjectProtocol for DOMXPathExpression {}
@@ -33,6 +36,24 @@ extern_methods!(
             r#type: c_ushort,
             in_result: Option<&DOMXPathResult>,
         ) -> Option<Id<DOMXPathResult>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMXPathExpression")]
+    unsafe impl DOMXPathExpression {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMXPathExpression")]
+    unsafe impl DOMXPathExpression {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

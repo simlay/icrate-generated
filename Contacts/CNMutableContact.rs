@@ -13,11 +13,18 @@ extern_class!(
     unsafe impl ClassType for CNMutableContact {
         #[inherits(NSObject)]
         type Super = CNContact;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Contacts_CNMutableContact")]
 unsafe impl NSCoding for CNMutableContact {}
+
+#[cfg(feature = "Contacts_CNMutableContact")]
+unsafe impl NSCopying for CNMutableContact {}
+
+#[cfg(feature = "Contacts_CNMutableContact")]
+unsafe impl NSMutableCopying for CNMutableContact {}
 
 #[cfg(feature = "Contacts_CNMutableContact")]
 unsafe impl NSObjectProtocol for CNMutableContact {}
@@ -325,5 +332,17 @@ extern_methods!(
         ))]
         #[method(setDates:)]
         pub unsafe fn setDates(&self, dates: &NSArray<CNLabeledValue<NSDateComponents>>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Contacts_CNMutableContact")]
+    unsafe impl CNMutableContact {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

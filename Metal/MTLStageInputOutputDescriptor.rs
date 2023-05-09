@@ -93,8 +93,12 @@ extern_class!(
     #[cfg(feature = "Metal_MTLBufferLayoutDescriptor")]
     unsafe impl ClassType for MTLBufferLayoutDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLBufferLayoutDescriptor")]
+unsafe impl NSCopying for MTLBufferLayoutDescriptor {}
 
 #[cfg(feature = "Metal_MTLBufferLayoutDescriptor")]
 unsafe impl NSObjectProtocol for MTLBufferLayoutDescriptor {}
@@ -122,6 +126,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLBufferLayoutDescriptor")]
+    unsafe impl MTLBufferLayoutDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLBufferLayoutDescriptorArray")]
@@ -130,6 +146,7 @@ extern_class!(
     #[cfg(feature = "Metal_MTLBufferLayoutDescriptorArray")]
     unsafe impl ClassType for MTLBufferLayoutDescriptorArray {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -156,6 +173,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLBufferLayoutDescriptorArray")]
+    unsafe impl MTLBufferLayoutDescriptorArray {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLAttributeDescriptor")]
@@ -164,8 +193,12 @@ extern_class!(
     #[cfg(feature = "Metal_MTLAttributeDescriptor")]
     unsafe impl ClassType for MTLAttributeDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLAttributeDescriptor")]
+unsafe impl NSCopying for MTLAttributeDescriptor {}
 
 #[cfg(feature = "Metal_MTLAttributeDescriptor")]
 unsafe impl NSObjectProtocol for MTLAttributeDescriptor {}
@@ -193,6 +226,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLAttributeDescriptor")]
+    unsafe impl MTLAttributeDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLAttributeDescriptorArray")]
@@ -201,6 +246,7 @@ extern_class!(
     #[cfg(feature = "Metal_MTLAttributeDescriptorArray")]
     unsafe impl ClassType for MTLAttributeDescriptorArray {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -227,6 +273,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLAttributeDescriptorArray")]
+    unsafe impl MTLAttributeDescriptorArray {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLStageInputOutputDescriptor")]
@@ -235,8 +293,12 @@ extern_class!(
     #[cfg(feature = "Metal_MTLStageInputOutputDescriptor")]
     unsafe impl ClassType for MTLStageInputOutputDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLStageInputOutputDescriptor")]
+unsafe impl NSCopying for MTLStageInputOutputDescriptor {}
 
 #[cfg(feature = "Metal_MTLStageInputOutputDescriptor")]
 unsafe impl NSObjectProtocol for MTLStageInputOutputDescriptor {}
@@ -269,5 +331,17 @@ extern_methods!(
 
         #[method(reset)]
         pub fn reset(&self);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLStageInputOutputDescriptor")]
+    unsafe impl MTLStageInputOutputDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

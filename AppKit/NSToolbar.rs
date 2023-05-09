@@ -47,6 +47,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSToolbar")]
     unsafe impl ClassType for NSToolbar {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -186,6 +187,15 @@ extern_methods!(
 
         #[method(setAllowsExtensionItems:)]
         pub unsafe fn setAllowsExtensionItems(&self, allows_extension_items: bool);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSToolbar")]
+    unsafe impl NSToolbar {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

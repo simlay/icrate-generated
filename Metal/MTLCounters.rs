@@ -113,8 +113,12 @@ extern_class!(
     #[cfg(feature = "Metal_MTLCounterSampleBufferDescriptor")]
     unsafe impl ClassType for MTLCounterSampleBufferDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLCounterSampleBufferDescriptor")]
+unsafe impl NSCopying for MTLCounterSampleBufferDescriptor {}
 
 #[cfg(feature = "Metal_MTLCounterSampleBufferDescriptor")]
 unsafe impl NSObjectProtocol for MTLCounterSampleBufferDescriptor {}
@@ -147,6 +151,18 @@ extern_methods!(
 
         #[method(setSampleCount:)]
         pub unsafe fn setSampleCount(&self, sample_count: NSUInteger);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLCounterSampleBufferDescriptor")]
+    unsafe impl MTLCounterSampleBufferDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

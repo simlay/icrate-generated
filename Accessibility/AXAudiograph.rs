@@ -60,11 +60,15 @@ extern_class!(
     #[cfg(feature = "Accessibility_AXNumericDataAxisDescriptor")]
     unsafe impl ClassType for AXNumericDataAxisDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Accessibility_AXNumericDataAxisDescriptor")]
 unsafe impl AXDataAxisDescriptor for AXNumericDataAxisDescriptor {}
+
+#[cfg(feature = "Accessibility_AXNumericDataAxisDescriptor")]
+unsafe impl NSCopying for AXNumericDataAxisDescriptor {}
 
 #[cfg(feature = "Accessibility_AXNumericDataAxisDescriptor")]
 unsafe impl NSObjectProtocol for AXNumericDataAxisDescriptor {}
@@ -158,11 +162,15 @@ extern_class!(
     #[cfg(feature = "Accessibility_AXCategoricalDataAxisDescriptor")]
     unsafe impl ClassType for AXCategoricalDataAxisDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Accessibility_AXCategoricalDataAxisDescriptor")]
 unsafe impl AXDataAxisDescriptor for AXCategoricalDataAxisDescriptor {}
+
+#[cfg(feature = "Accessibility_AXCategoricalDataAxisDescriptor")]
+unsafe impl NSCopying for AXCategoricalDataAxisDescriptor {}
 
 #[cfg(feature = "Accessibility_AXCategoricalDataAxisDescriptor")]
 unsafe impl NSObjectProtocol for AXCategoricalDataAxisDescriptor {}
@@ -214,8 +222,12 @@ extern_class!(
     #[cfg(feature = "Accessibility_AXDataPointValue")]
     unsafe impl ClassType for AXDataPointValue {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Accessibility_AXDataPointValue")]
+unsafe impl NSCopying for AXDataPointValue {}
 
 #[cfg(feature = "Accessibility_AXDataPointValue")]
 unsafe impl NSObjectProtocol for AXDataPointValue {}
@@ -260,8 +272,12 @@ extern_class!(
     #[cfg(feature = "Accessibility_AXDataPoint")]
     unsafe impl ClassType for AXDataPoint {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Accessibility_AXDataPoint")]
+unsafe impl NSCopying for AXDataPoint {}
 
 #[cfg(feature = "Accessibility_AXDataPoint")]
 unsafe impl NSObjectProtocol for AXDataPoint {}
@@ -365,8 +381,12 @@ extern_class!(
     #[cfg(feature = "Accessibility_AXDataSeriesDescriptor")]
     unsafe impl ClassType for AXDataSeriesDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Accessibility_AXDataSeriesDescriptor")]
+unsafe impl NSCopying for AXDataSeriesDescriptor {}
 
 #[cfg(feature = "Accessibility_AXDataSeriesDescriptor")]
 unsafe impl NSObjectProtocol for AXDataSeriesDescriptor {}
@@ -458,8 +478,12 @@ extern_class!(
     #[cfg(feature = "Accessibility_AXChartDescriptor")]
     unsafe impl ClassType for AXChartDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Accessibility_AXChartDescriptor")]
+unsafe impl NSCopying for AXChartDescriptor {}
 
 #[cfg(feature = "Accessibility_AXChartDescriptor")]
 unsafe impl NSObjectProtocol for AXChartDescriptor {}
@@ -631,6 +655,7 @@ extern_class!(
     #[cfg(feature = "Accessibility_AXLiveAudioGraph")]
     unsafe impl ClassType for AXLiveAudioGraph {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -648,5 +673,17 @@ extern_methods!(
 
         #[method(stop)]
         pub unsafe fn stop();
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Accessibility_AXLiveAudioGraph")]
+    unsafe impl AXLiveAudioGraph {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

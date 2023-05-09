@@ -22,11 +22,15 @@ extern_class!(
     #[cfg(feature = "Contacts_CNContainer")]
     unsafe impl ClassType for CNContainer {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Contacts_CNContainer")]
 unsafe impl NSCoding for CNContainer {}
+
+#[cfg(feature = "Contacts_CNContainer")]
+unsafe impl NSCopying for CNContainer {}
 
 #[cfg(feature = "Contacts_CNContainer")]
 unsafe impl NSObjectProtocol for CNContainer {}
@@ -47,6 +51,18 @@ extern_methods!(
 
         #[method(type)]
         pub unsafe fn r#type(&self) -> CNContainerType;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Contacts_CNContainer")]
+    unsafe impl CNContainer {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

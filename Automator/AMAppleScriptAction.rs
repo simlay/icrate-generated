@@ -15,11 +15,15 @@ extern_class!(
     unsafe impl ClassType for AMAppleScriptAction {
         #[inherits(AMAction, NSObject)]
         type Super = AMBundleAction;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Automator_AMAppleScriptAction")]
 unsafe impl NSCoding for AMAppleScriptAction {}
+
+#[cfg(feature = "Automator_AMAppleScriptAction")]
+unsafe impl NSCopying for AMAppleScriptAction {}
 
 #[cfg(feature = "Automator_AMAppleScriptAction")]
 unsafe impl NSObjectProtocol for AMAppleScriptAction {}
@@ -58,5 +62,17 @@ extern_methods!(
             this: Option<Allocated<Self>>,
             file_url: &NSURL,
         ) -> Result<Id<Self>, Id<NSError>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Automator_AMAppleScriptAction")]
+    unsafe impl AMAppleScriptAction {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

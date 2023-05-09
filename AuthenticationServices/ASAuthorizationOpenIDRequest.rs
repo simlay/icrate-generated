@@ -25,11 +25,15 @@ extern_class!(
     unsafe impl ClassType for ASAuthorizationOpenIDRequest {
         #[inherits(NSObject)]
         type Super = ASAuthorizationRequest;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "AuthenticationServices_ASAuthorizationOpenIDRequest")]
 unsafe impl NSCoding for ASAuthorizationOpenIDRequest {}
+
+#[cfg(feature = "AuthenticationServices_ASAuthorizationOpenIDRequest")]
+unsafe impl NSCopying for ASAuthorizationOpenIDRequest {}
 
 #[cfg(feature = "AuthenticationServices_ASAuthorizationOpenIDRequest")]
 unsafe impl NSObjectProtocol for ASAuthorizationOpenIDRequest {}
@@ -75,5 +79,17 @@ extern_methods!(
             &self,
             requested_operation: &ASAuthorizationOpenIDOperation,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `ASAuthorizationRequest`
+    #[cfg(feature = "AuthenticationServices_ASAuthorizationOpenIDRequest")]
+    unsafe impl ASAuthorizationOpenIDRequest {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
     }
 );

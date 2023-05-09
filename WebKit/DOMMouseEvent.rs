@@ -11,13 +11,16 @@ extern_class!(
     #[deprecated]
     pub struct DOMMouseEvent;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMMouseEvent")]
     unsafe impl ClassType for DOMMouseEvent {
         #[inherits(DOMEvent, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMUIEvent;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "WebKit_DOMMouseEvent")]
+unsafe impl NSCopying for DOMMouseEvent {}
 
 #[cfg(feature = "WebKit_DOMMouseEvent")]
 unsafe impl NSObjectProtocol for DOMMouseEvent {}
@@ -95,6 +98,24 @@ extern_methods!(
             button: c_ushort,
             related_target: Option<&ProtocolObject<dyn DOMEventTarget>>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMMouseEvent")]
+    unsafe impl DOMMouseEvent {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMMouseEvent")]
+    unsafe impl DOMMouseEvent {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSUserActivity")]
     unsafe impl ClassType for NSUserActivity {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -201,6 +202,15 @@ extern_methods!(
         #[cfg(not(any(target_os = "tvos")))]
         #[method(deleteAllSavedUserActivitiesWithCompletionHandler:)]
         pub unsafe fn deleteAllSavedUserActivitiesWithCompletionHandler(handler: &Block<(), ()>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSUserActivity")]
+    unsafe impl NSUserActivity {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

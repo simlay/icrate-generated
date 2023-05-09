@@ -35,11 +35,15 @@ extern_class!(
     #[cfg(feature = "AppKit_NSColor")]
     unsafe impl ClassType for NSColor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "AppKit_NSColor")]
 unsafe impl NSCoding for NSColor {}
+
+#[cfg(feature = "AppKit_NSColor")]
+unsafe impl NSCopying for NSColor {}
 
 #[cfg(feature = "AppKit_NSColor")]
 unsafe impl NSObjectProtocol for NSColor {}
@@ -549,6 +553,15 @@ extern_methods!(
 
         #[method(setIgnoresAlpha:)]
         pub unsafe fn setIgnoresAlpha(ignores_alpha: bool);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSColor")]
+    unsafe impl NSColor {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

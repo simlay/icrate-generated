@@ -13,11 +13,15 @@ extern_class!(
     unsafe impl ClassType for NSExpressionDescription {
         #[inherits(NSObject)]
         type Super = NSPropertyDescription;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "CoreData_NSExpressionDescription")]
 unsafe impl NSCoding for NSExpressionDescription {}
+
+#[cfg(feature = "CoreData_NSExpressionDescription")]
+unsafe impl NSCopying for NSExpressionDescription {}
 
 #[cfg(feature = "CoreData_NSExpressionDescription")]
 unsafe impl NSObjectProtocol for NSExpressionDescription {}
@@ -38,5 +42,17 @@ extern_methods!(
 
         #[method(setExpressionResultType:)]
         pub unsafe fn setExpressionResultType(&self, expression_result_type: NSAttributeType);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreData_NSExpressionDescription")]
+    unsafe impl NSExpressionDescription {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

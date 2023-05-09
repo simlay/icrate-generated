@@ -99,6 +99,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSURLHandle")]
     unsafe impl ClassType for NSURLHandle {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -252,5 +253,17 @@ extern_methods!(
         #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(endLoadInBackground)]
         pub unsafe fn endLoadInBackground(&self);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSURLHandle")]
+    unsafe impl NSURLHandle {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

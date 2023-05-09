@@ -12,11 +12,15 @@ extern_class!(
     #[cfg(feature = "Contacts_CNContactProperty")]
     unsafe impl ClassType for CNContactProperty {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Contacts_CNContactProperty")]
 unsafe impl NSCoding for CNContactProperty {}
+
+#[cfg(feature = "Contacts_CNContactProperty")]
+unsafe impl NSCopying for CNContactProperty {}
 
 #[cfg(feature = "Contacts_CNContactProperty")]
 unsafe impl NSObjectProtocol for CNContactProperty {}
@@ -45,5 +49,17 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other label)]
         pub unsafe fn label(&self) -> Option<Id<NSString>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Contacts_CNContactProperty")]
+    unsafe impl CNContactProperty {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

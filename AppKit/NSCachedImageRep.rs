@@ -11,16 +11,19 @@ extern_class!(
     #[deprecated]
     pub struct NSCachedImageRep;
 
-    #[deprecated]
     #[cfg(feature = "AppKit_NSCachedImageRep")]
     unsafe impl ClassType for NSCachedImageRep {
         #[inherits(NSObject)]
         type Super = NSImageRep;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "AppKit_NSCachedImageRep")]
 unsafe impl NSCoding for NSCachedImageRep {}
+
+#[cfg(feature = "AppKit_NSCachedImageRep")]
+unsafe impl NSCopying for NSCachedImageRep {}
 
 #[cfg(feature = "AppKit_NSCachedImageRep")]
 unsafe impl NSObjectProtocol for NSCachedImageRep {}
@@ -55,5 +58,30 @@ extern_methods!(
         #[deprecated]
         #[method(rect)]
         pub unsafe fn rect(&self) -> NSRect;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSImageRep`
+    #[cfg(feature = "AppKit_NSCachedImageRep")]
+    unsafe impl NSCachedImageRep {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(
+            this: Option<Allocated<Self>>,
+            coder: &NSCoder,
+        ) -> Option<Id<Self>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSCachedImageRep")]
+    unsafe impl NSCachedImageRep {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

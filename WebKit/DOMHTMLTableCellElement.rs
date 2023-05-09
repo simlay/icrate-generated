@@ -11,16 +11,19 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLTableCellElement;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLTableCellElement")]
     unsafe impl ClassType for DOMHTMLTableCellElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMHTMLElement;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_DOMHTMLTableCellElement")]
 unsafe impl DOMEventTarget for DOMHTMLTableCellElement {}
+
+#[cfg(feature = "WebKit_DOMHTMLTableCellElement")]
+unsafe impl NSCopying for DOMHTMLTableCellElement {}
 
 #[cfg(feature = "WebKit_DOMHTMLTableCellElement")]
 unsafe impl NSObjectProtocol for DOMHTMLTableCellElement {}
@@ -136,5 +139,23 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method(setScope:)]
         pub unsafe fn setScope(&self, scope: Option<&NSString>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMHTMLTableCellElement")]
+    unsafe impl DOMHTMLTableCellElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMHTMLTableCellElement")]
+    unsafe impl DOMHTMLTableCellElement {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

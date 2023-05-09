@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSResponder")]
     unsafe impl ClassType for NSResponder {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -236,6 +237,15 @@ extern_methods!(
             action: Sel,
             sender: Option<&Object>,
         ) -> Option<Id<Object>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSResponder")]
+    unsafe impl NSResponder {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

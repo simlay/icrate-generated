@@ -32,8 +32,12 @@ extern_class!(
     unsafe impl ClassType for NSToolbarItemGroup {
         #[inherits(NSObject)]
         type Super = NSToolbarItem;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "AppKit_NSToolbarItemGroup")]
+unsafe impl NSCopying for NSToolbarItemGroup {}
 
 #[cfg(feature = "AppKit_NSToolbarItemGroup")]
 unsafe impl NSObjectProtocol for NSToolbarItemGroup {}
@@ -113,5 +117,17 @@ extern_methods!(
             this: Option<Allocated<Self>>,
             item_identifier: &NSToolbarItemIdentifier,
         ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSToolbarItemGroup")]
+    unsafe impl NSToolbarItemGroup {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

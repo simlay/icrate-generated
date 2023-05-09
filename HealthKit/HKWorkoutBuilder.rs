@@ -14,6 +14,7 @@ extern_class!(
     #[cfg(feature = "HealthKit_HKWorkoutBuilder")]
     unsafe impl ClassType for HKWorkoutBuilder {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -201,5 +202,14 @@ extern_methods!(
             &self,
             series_type: &HKSeriesType,
         ) -> Option<Id<HKSeriesBuilder>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "HealthKit_HKWorkoutBuilder")]
+    unsafe impl HKWorkoutBuilder {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

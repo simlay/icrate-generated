@@ -22,6 +22,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSOperation")]
     unsafe impl ClassType for NSOperation {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -107,6 +108,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSOperation")]
+    unsafe impl NSOperation {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSBlockOperation")]
@@ -116,6 +129,7 @@ extern_class!(
     unsafe impl ClassType for NSBlockOperation {
         #[inherits(NSObject)]
         type Super = NSOperation;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -133,6 +147,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSBlockOperation")]
+    unsafe impl NSBlockOperation {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSInvocationOperation")]
@@ -142,6 +168,7 @@ extern_class!(
     unsafe impl ClassType for NSInvocationOperation {
         #[inherits(NSObject)]
         type Super = NSOperation;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -175,6 +202,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSInvocationOperation")]
+    unsafe impl NSInvocationOperation {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_static!(NSInvocationOperationVoidResultException: &'static NSExceptionName);
 
 extern_static!(NSInvocationOperationCancelledException: &'static NSExceptionName);
@@ -189,6 +228,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSOperationQueue")]
     unsafe impl ClassType for NSOperationQueue {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -263,6 +303,18 @@ extern_methods!(
 
         #[method_id(@__retain_semantics Other mainQueue)]
         pub unsafe fn mainQueue() -> Id<NSOperationQueue>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSOperationQueue")]
+    unsafe impl NSOperationQueue {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

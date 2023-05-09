@@ -14,8 +14,12 @@ extern_class!(
     unsafe impl ClassType for NSSearchToolbarItem {
         #[inherits(NSObject)]
         type Super = NSToolbarItem;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "AppKit_NSSearchToolbarItem")]
+unsafe impl NSCopying for NSSearchToolbarItem {}
 
 #[cfg(feature = "AppKit_NSSearchToolbarItem")]
 unsafe impl NSObjectProtocol for NSSearchToolbarItem {}
@@ -74,5 +78,17 @@ extern_methods!(
             this: Option<Allocated<Self>>,
             item_identifier: &NSToolbarItemIdentifier,
         ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSSearchToolbarItem")]
+    unsafe impl NSSearchToolbarItem {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

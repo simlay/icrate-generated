@@ -14,6 +14,7 @@ extern_class!(
     unsafe impl ClassType for CKModifyRecordZonesOperation {
         #[inherits(CKOperation, NSOperation, NSObject)]
         type Super = CKDatabaseOperation;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -136,5 +137,14 @@ extern_methods!(
                 >,
             >,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CloudKit_CKModifyRecordZonesOperation")]
+    unsafe impl CKModifyRecordZonesOperation {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -23,11 +23,15 @@ extern_class!(
     unsafe impl ClassType for NSRelationshipDescription {
         #[inherits(NSObject)]
         type Super = NSPropertyDescription;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "CoreData_NSRelationshipDescription")]
 unsafe impl NSCoding for NSRelationshipDescription {}
+
+#[cfg(feature = "CoreData_NSRelationshipDescription")]
+unsafe impl NSCopying for NSRelationshipDescription {}
 
 #[cfg(feature = "CoreData_NSRelationshipDescription")]
 unsafe impl NSObjectProtocol for NSRelationshipDescription {}
@@ -82,5 +86,17 @@ extern_methods!(
 
         #[method(setOrdered:)]
         pub unsafe fn setOrdered(&self, ordered: bool);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreData_NSRelationshipDescription")]
+    unsafe impl NSRelationshipDescription {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

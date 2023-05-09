@@ -38,6 +38,7 @@ extern_class!(
     #[cfg(feature = "GameKit_GKLeaderboard")]
     unsafe impl ClassType for GKLeaderboard {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -255,10 +256,6 @@ extern_methods!(
         #[deprecated = "Use loadEntriesForPlayerScope:timeScope:range:completionHandler: method to obtain scores."]
         #[method(isLoading)]
         pub unsafe fn isLoading(&self) -> bool;
-
-        #[deprecated = "Do not instantiate GKLeaderboard directly. Use class method loadLeaderboardsWithIDs:completionHandler: to get the leaderboards."]
-        #[method_id(@__retain_semantics Init init)]
-        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
         #[cfg(all(feature = "Foundation_NSArray", feature = "GameKit_GKPlayer"))]
         #[deprecated = "Use instance method loadEntriesForPlayers:timeScope:completionHandler: instead."]

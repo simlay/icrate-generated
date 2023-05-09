@@ -10,10 +10,10 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct ASAuthorizationSingleSignOnProvider;
 
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "AuthenticationServices_ASAuthorizationSingleSignOnProvider")]
     unsafe impl ClassType for ASAuthorizationSingleSignOnProvider {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 

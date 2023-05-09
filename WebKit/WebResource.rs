@@ -13,11 +13,15 @@ extern_class!(
     #[cfg(feature = "WebKit_WebResource")]
     unsafe impl ClassType for WebResource {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_WebResource")]
 unsafe impl NSCoding for WebResource {}
+
+#[cfg(feature = "WebKit_WebResource")]
+unsafe impl NSCopying for WebResource {}
 
 #[cfg(feature = "WebKit_WebResource")]
 unsafe impl NSObjectProtocol for WebResource {}
@@ -59,5 +63,17 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other frameName)]
         pub unsafe fn frameName(&self) -> Id<NSString>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_WebResource")]
+    unsafe impl WebResource {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

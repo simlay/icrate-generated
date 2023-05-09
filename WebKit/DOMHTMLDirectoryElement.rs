@@ -11,16 +11,19 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLDirectoryElement;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLDirectoryElement")]
     unsafe impl ClassType for DOMHTMLDirectoryElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMHTMLElement;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_DOMHTMLDirectoryElement")]
 unsafe impl DOMEventTarget for DOMHTMLDirectoryElement {}
+
+#[cfg(feature = "WebKit_DOMHTMLDirectoryElement")]
+unsafe impl NSCopying for DOMHTMLDirectoryElement {}
 
 #[cfg(feature = "WebKit_DOMHTMLDirectoryElement")]
 unsafe impl NSObjectProtocol for DOMHTMLDirectoryElement {}
@@ -33,5 +36,23 @@ extern_methods!(
 
         #[method(setCompact:)]
         pub unsafe fn setCompact(&self, compact: bool);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMHTMLDirectoryElement")]
+    unsafe impl DOMHTMLDirectoryElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMHTMLDirectoryElement")]
+    unsafe impl DOMHTMLDirectoryElement {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

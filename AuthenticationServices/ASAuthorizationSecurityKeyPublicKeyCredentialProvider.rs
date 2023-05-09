@@ -10,10 +10,10 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct ASAuthorizationSecurityKeyPublicKeyCredentialProvider;
 
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialProvider")]
     unsafe impl ClassType for ASAuthorizationSecurityKeyPublicKeyCredentialProvider {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 

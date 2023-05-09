@@ -11,10 +11,10 @@ extern_class!(
     #[deprecated]
     pub struct WebDataSource;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_WebDataSource")]
     unsafe impl ClassType for WebDataSource {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -50,7 +50,7 @@ extern_methods!(
 
         #[cfg(feature = "Foundation_NSMutableURLRequest")]
         #[method_id(@__retain_semantics Other request)]
-        pub unsafe fn request(&self) -> Option<Id<NSMutableURLRequest, Owned>>;
+        pub unsafe fn request(&self) -> Option<Id<NSMutableURLRequest>>;
 
         #[cfg(feature = "Foundation_NSURLResponse")]
         #[method_id(@__retain_semantics Other response)]
@@ -90,5 +90,17 @@ extern_methods!(
         #[cfg(feature = "WebKit_WebResource")]
         #[method(addSubresource:)]
         pub unsafe fn addSubresource(&self, subresource: Option<&WebResource>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_WebDataSource")]
+    unsafe impl WebDataSource {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

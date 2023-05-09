@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSPageLayout")]
     unsafe impl ClassType for NSPageLayout {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -58,6 +59,18 @@ extern_methods!(
         #[cfg(feature = "AppKit_NSPrintInfo")]
         #[method_id(@__retain_semantics Other printInfo)]
         pub unsafe fn printInfo(&self) -> Option<Id<NSPrintInfo>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSPageLayout")]
+    unsafe impl NSPageLayout {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

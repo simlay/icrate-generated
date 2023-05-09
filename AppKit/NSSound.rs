@@ -19,11 +19,15 @@ extern_class!(
     #[cfg(feature = "AppKit_NSSound")]
     unsafe impl ClassType for NSSound {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "AppKit_NSSound")]
 unsafe impl NSCoding for NSSound {}
+
+#[cfg(feature = "AppKit_NSSound")]
+unsafe impl NSCopying for NSSound {}
 
 #[cfg(feature = "AppKit_NSSound")]
 unsafe impl NSObjectProtocol for NSSound {}
@@ -153,6 +157,18 @@ extern_methods!(
         #[deprecated]
         #[method_id(@__retain_semantics Other channelMapping)]
         pub unsafe fn channelMapping(&self) -> Option<Id<NSArray>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSSound")]
+    unsafe impl NSSound {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

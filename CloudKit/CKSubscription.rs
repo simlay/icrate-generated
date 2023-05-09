@@ -24,11 +24,15 @@ extern_class!(
     #[cfg(feature = "CloudKit_CKSubscription")]
     unsafe impl ClassType for CKSubscription {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "CloudKit_CKSubscription")]
 unsafe impl NSCoding for CKSubscription {}
+
+#[cfg(feature = "CloudKit_CKSubscription")]
+unsafe impl NSCopying for CKSubscription {}
 
 #[cfg(feature = "CloudKit_CKSubscription")]
 unsafe impl NSObjectProtocol for CKSubscription {}
@@ -80,11 +84,15 @@ extern_class!(
     unsafe impl ClassType for CKQuerySubscription {
         #[inherits(NSObject)]
         type Super = CKSubscription;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "CloudKit_CKQuerySubscription")]
 unsafe impl NSCoding for CKQuerySubscription {}
+
+#[cfg(feature = "CloudKit_CKQuerySubscription")]
+unsafe impl NSCopying for CKQuerySubscription {}
 
 #[cfg(feature = "CloudKit_CKQuerySubscription")]
 unsafe impl NSObjectProtocol for CKQuerySubscription {}
@@ -139,6 +147,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `CKSubscription`
+    #[cfg(feature = "CloudKit_CKQuerySubscription")]
+    unsafe impl CKQuerySubscription {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CloudKit_CKRecordZoneSubscription")]
@@ -148,11 +168,15 @@ extern_class!(
     unsafe impl ClassType for CKRecordZoneSubscription {
         #[inherits(NSObject)]
         type Super = CKSubscription;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "CloudKit_CKRecordZoneSubscription")]
 unsafe impl NSCoding for CKRecordZoneSubscription {}
+
+#[cfg(feature = "CloudKit_CKRecordZoneSubscription")]
+unsafe impl NSCopying for CKRecordZoneSubscription {}
 
 #[cfg(feature = "CloudKit_CKRecordZoneSubscription")]
 unsafe impl NSObjectProtocol for CKRecordZoneSubscription {}
@@ -195,6 +219,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `CKSubscription`
+    #[cfg(feature = "CloudKit_CKRecordZoneSubscription")]
+    unsafe impl CKRecordZoneSubscription {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CloudKit_CKDatabaseSubscription")]
@@ -204,11 +240,15 @@ extern_class!(
     unsafe impl ClassType for CKDatabaseSubscription {
         #[inherits(NSObject)]
         type Super = CKSubscription;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "CloudKit_CKDatabaseSubscription")]
 unsafe impl NSCoding for CKDatabaseSubscription {}
+
+#[cfg(feature = "CloudKit_CKDatabaseSubscription")]
+unsafe impl NSCopying for CKDatabaseSubscription {}
 
 #[cfg(feature = "CloudKit_CKDatabaseSubscription")]
 unsafe impl NSObjectProtocol for CKDatabaseSubscription {}
@@ -252,11 +292,15 @@ extern_class!(
     #[cfg(feature = "CloudKit_CKNotificationInfo")]
     unsafe impl ClassType for CKNotificationInfo {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "CloudKit_CKNotificationInfo")]
 unsafe impl NSCoding for CKNotificationInfo {}
+
+#[cfg(feature = "CloudKit_CKNotificationInfo")]
+unsafe impl NSCopying for CKNotificationInfo {}
 
 #[cfg(feature = "CloudKit_CKNotificationInfo")]
 unsafe impl NSObjectProtocol for CKNotificationInfo {}
@@ -445,5 +489,17 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method(setCollapseIDKey:)]
         pub unsafe fn setCollapseIDKey(&self, collapse_id_key: Option<&NSString>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CloudKit_CKNotificationInfo")]
+    unsafe impl CKNotificationInfo {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

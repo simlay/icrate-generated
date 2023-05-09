@@ -30,11 +30,15 @@ extern_class!(
     unsafe impl ClassType for CNContactFormatter {
         #[inherits(NSObject)]
         type Super = NSFormatter;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Contacts_CNContactFormatter")]
 unsafe impl NSCoding for CNContactFormatter {}
+
+#[cfg(feature = "Contacts_CNContactFormatter")]
+unsafe impl NSCopying for CNContactFormatter {}
 
 #[cfg(feature = "Contacts_CNContactFormatter")]
 unsafe impl NSObjectProtocol for CNContactFormatter {}
@@ -106,6 +110,18 @@ extern_methods!(
             contact: &CNContact,
             attributes: Option<&NSDictionary>,
         ) -> Option<Id<NSAttributedString>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Contacts_CNContactFormatter")]
+    unsafe impl CNContactFormatter {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

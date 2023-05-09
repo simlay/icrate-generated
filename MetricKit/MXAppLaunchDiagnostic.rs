@@ -10,11 +10,11 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct MXAppLaunchDiagnostic;
 
-    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "MetricKit_MXAppLaunchDiagnostic")]
     unsafe impl ClassType for MXAppLaunchDiagnostic {
         #[inherits(NSObject)]
         type Super = MXDiagnostic;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -44,5 +44,17 @@ extern_methods!(
         ))]
         #[method_id(@__retain_semantics Other launchDuration)]
         pub unsafe fn launchDuration(&self) -> Id<NSMeasurement<NSUnitDuration>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MetricKit_MXAppLaunchDiagnostic")]
+    unsafe impl MXAppLaunchDiagnostic {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

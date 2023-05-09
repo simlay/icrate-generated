@@ -13,8 +13,12 @@ extern_class!(
     #[cfg(feature = "WebKit_WKFrameInfo")]
     unsafe impl ClassType for WKFrameInfo {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "WebKit_WKFrameInfo")]
+unsafe impl NSCopying for WKFrameInfo {}
 
 #[cfg(feature = "WebKit_WKFrameInfo")]
 unsafe impl NSObjectProtocol for WKFrameInfo {}
@@ -36,5 +40,17 @@ extern_methods!(
         #[cfg(feature = "WebKit_WKWebView")]
         #[method_id(@__retain_semantics Other webView)]
         pub unsafe fn webView(&self) -> Option<Id<WKWebView>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_WKFrameInfo")]
+    unsafe impl WKFrameInfo {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

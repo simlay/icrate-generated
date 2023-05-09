@@ -10,11 +10,11 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct LAPersistedRight;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "LocalAuthentication_LAPersistedRight")]
     unsafe impl ClassType for LAPersistedRight {
         #[inherits(NSObject)]
         type Super = LARight;
+        type Mutability = InteriorMutable;
     }
 );
 

@@ -11,16 +11,19 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLLinkElement;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLLinkElement")]
     unsafe impl ClassType for DOMHTMLLinkElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMHTMLElement;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_DOMHTMLLinkElement")]
 unsafe impl DOMEventTarget for DOMHTMLLinkElement {}
+
+#[cfg(feature = "WebKit_DOMHTMLLinkElement")]
+unsafe impl NSCopying for DOMHTMLLinkElement {}
 
 #[cfg(feature = "WebKit_DOMHTMLLinkElement")]
 unsafe impl NSObjectProtocol for DOMHTMLLinkElement {}
@@ -105,5 +108,23 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSURL")]
         #[method_id(@__retain_semantics Other absoluteLinkURL)]
         pub unsafe fn absoluteLinkURL(&self) -> Id<NSURL>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMHTMLLinkElement")]
+    unsafe impl DOMHTMLLinkElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMHTMLLinkElement")]
+    unsafe impl DOMHTMLLinkElement {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

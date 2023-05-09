@@ -19,6 +19,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSCoder")]
     unsafe impl ClassType for NSCoder {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -54,6 +55,18 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method(versionForClassName:)]
         pub unsafe fn versionForClassName(&self, class_name: &NSString) -> NSInteger;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSCoder")]
+    unsafe impl NSCoder {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

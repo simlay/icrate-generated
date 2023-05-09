@@ -26,11 +26,15 @@ extern_class!(
     unsafe impl ClassType for NSLengthFormatter {
         #[inherits(NSObject)]
         type Super = NSFormatter;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSLengthFormatter")]
 unsafe impl NSCoding for NSLengthFormatter {}
+
+#[cfg(feature = "Foundation_NSLengthFormatter")]
+unsafe impl NSCopying for NSLengthFormatter {}
 
 #[cfg(feature = "Foundation_NSLengthFormatter")]
 unsafe impl NSObjectProtocol for NSLengthFormatter {}
@@ -94,5 +98,17 @@ extern_methods!(
             string: &NSString,
             error: Option<&mut Option<Id<NSString>>>,
         ) -> bool;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSLengthFormatter")]
+    unsafe impl NSLengthFormatter {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

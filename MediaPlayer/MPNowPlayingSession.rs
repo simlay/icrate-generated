@@ -11,12 +11,16 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     pub struct MPAdTimeRange;
 
-    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPAdTimeRange")]
     unsafe impl ClassType for MPAdTimeRange {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "MediaPlayer_MPAdTimeRange")]
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+unsafe impl NSCopying for MPAdTimeRange {}
 
 #[cfg(feature = "MediaPlayer_MPAdTimeRange")]
 #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
@@ -42,10 +46,10 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     pub struct MPNowPlayingSession;
 
-    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPNowPlayingSession")]
     unsafe impl ClassType for MPNowPlayingSession {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 

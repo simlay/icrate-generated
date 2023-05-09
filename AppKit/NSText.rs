@@ -23,6 +23,7 @@ extern_class!(
     unsafe impl ClassType for NSText {
         #[inherits(NSResponder, NSObject)]
         type Super = NSView;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -295,6 +296,24 @@ extern_methods!(
 
         #[method(toggleRuler:)]
         pub unsafe fn toggleRuler(&self, sender: Option<&Object>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSResponder`
+    #[cfg(feature = "AppKit_NSText")]
+    unsafe impl NSText {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSText")]
+    unsafe impl NSText {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

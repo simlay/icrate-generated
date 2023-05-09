@@ -32,11 +32,15 @@ extern_class!(
     #[cfg(feature = "Foundation_NSFormatter")]
     unsafe impl ClassType for NSFormatter {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSFormatter")]
 unsafe impl NSCoding for NSFormatter {}
+
+#[cfg(feature = "Foundation_NSFormatter")]
+unsafe impl NSCopying for NSFormatter {}
 
 #[cfg(feature = "Foundation_NSFormatter")]
 unsafe impl NSObjectProtocol for NSFormatter {}
@@ -91,5 +95,17 @@ extern_methods!(
             orig_sel_range: NSRange,
             error: Option<&mut Option<Id<NSString>>>,
         ) -> bool;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSFormatter")]
+    unsafe impl NSFormatter {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

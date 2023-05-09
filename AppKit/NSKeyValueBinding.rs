@@ -21,8 +21,12 @@ extern_class!(
     #[cfg(feature = "AppKit_NSBindingSelectionMarker")]
     unsafe impl ClassType for NSBindingSelectionMarker {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "AppKit_NSBindingSelectionMarker")]
+unsafe impl NSCopying for NSBindingSelectionMarker {}
 
 #[cfg(feature = "AppKit_NSBindingSelectionMarker")]
 unsafe impl NSObjectProtocol for NSBindingSelectionMarker {}
@@ -56,6 +60,15 @@ extern_methods!(
             object_class: &Class,
             binding: &NSBindingName,
         ) -> Option<Id<Object>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSBindingSelectionMarker")]
+    unsafe impl NSBindingSelectionMarker {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

@@ -12,11 +12,15 @@ extern_class!(
     #[cfg(feature = "Speech_SFAcousticFeature")]
     unsafe impl ClassType for SFAcousticFeature {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Speech_SFAcousticFeature")]
 unsafe impl NSCoding for SFAcousticFeature {}
+
+#[cfg(feature = "Speech_SFAcousticFeature")]
+unsafe impl NSCopying for SFAcousticFeature {}
 
 #[cfg(feature = "Speech_SFAcousticFeature")]
 unsafe impl NSObjectProtocol for SFAcousticFeature {}
@@ -36,6 +40,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Speech_SFAcousticFeature")]
+    unsafe impl SFAcousticFeature {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Speech_SFVoiceAnalytics")]
@@ -44,11 +60,15 @@ extern_class!(
     #[cfg(feature = "Speech_SFVoiceAnalytics")]
     unsafe impl ClassType for SFVoiceAnalytics {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Speech_SFVoiceAnalytics")]
 unsafe impl NSCoding for SFVoiceAnalytics {}
+
+#[cfg(feature = "Speech_SFVoiceAnalytics")]
+unsafe impl NSCopying for SFVoiceAnalytics {}
 
 #[cfg(feature = "Speech_SFVoiceAnalytics")]
 unsafe impl NSObjectProtocol for SFVoiceAnalytics {}
@@ -74,5 +94,17 @@ extern_methods!(
         #[cfg(feature = "Speech_SFAcousticFeature")]
         #[method_id(@__retain_semantics Other voicing)]
         pub unsafe fn voicing(&self) -> Id<SFAcousticFeature>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Speech_SFVoiceAnalytics")]
+    unsafe impl SFVoiceAnalytics {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

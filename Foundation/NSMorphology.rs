@@ -55,11 +55,15 @@ extern_class!(
     #[cfg(feature = "Foundation_NSMorphology")]
     unsafe impl ClassType for NSMorphology {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSMorphology")]
 unsafe impl NSCoding for NSMorphology {}
+
+#[cfg(feature = "Foundation_NSMorphology")]
+unsafe impl NSCopying for NSMorphology {}
 
 #[cfg(feature = "Foundation_NSMorphology")]
 unsafe impl NSObjectProtocol for NSMorphology {}
@@ -87,6 +91,18 @@ extern_methods!(
 
         #[method(setNumber:)]
         pub unsafe fn setNumber(&self, number: NSGrammaticalNumber);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSMorphology")]
+    unsafe impl NSMorphology {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 
@@ -126,11 +142,15 @@ extern_class!(
     #[cfg(feature = "Foundation_NSMorphologyCustomPronoun")]
     unsafe impl ClassType for NSMorphologyCustomPronoun {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSMorphologyCustomPronoun")]
 unsafe impl NSCoding for NSMorphologyCustomPronoun {}
+
+#[cfg(feature = "Foundation_NSMorphologyCustomPronoun")]
+unsafe impl NSCopying for NSMorphologyCustomPronoun {}
 
 #[cfg(feature = "Foundation_NSMorphologyCustomPronoun")]
 unsafe impl NSObjectProtocol for NSMorphologyCustomPronoun {}
@@ -191,6 +211,18 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method(setReflexiveForm:)]
         pub unsafe fn setReflexiveForm(&self, reflexive_form: Option<&NSString>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSMorphologyCustomPronoun")]
+    unsafe impl NSMorphologyCustomPronoun {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

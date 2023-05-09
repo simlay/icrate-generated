@@ -12,6 +12,7 @@ extern_class!(
     #[cfg(feature = "CoreData_NSMigrationManager")]
     unsafe impl ClassType for NSMigrationManager {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -154,5 +155,17 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSError")]
         #[method(cancelMigrationWithError:)]
         pub unsafe fn cancelMigrationWithError(&self, error: &NSError);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreData_NSMigrationManager")]
+    unsafe impl NSMigrationManager {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

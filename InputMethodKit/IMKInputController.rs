@@ -84,6 +84,7 @@ extern_class!(
     #[cfg(feature = "InputMethodKit_IMKInputController")]
     unsafe impl ClassType for IMKInputController {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -119,7 +120,7 @@ extern_methods!(
         pub unsafe fn compositionAttributesAtRange(
             &self,
             range: NSRange,
-        ) -> Option<Id<NSMutableDictionary, Owned>>;
+        ) -> Option<Id<NSMutableDictionary>>;
 
         #[method(selectionRange)]
         pub unsafe fn selectionRange(&self) -> NSRange;
@@ -184,5 +185,17 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSAttributedString")]
         #[method(candidateSelected:)]
         pub unsafe fn candidateSelected(&self, candidate_string: Option<&NSAttributedString>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "InputMethodKit_IMKInputController")]
+    unsafe impl IMKInputController {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

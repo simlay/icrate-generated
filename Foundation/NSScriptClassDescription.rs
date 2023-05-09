@@ -12,6 +12,7 @@ extern_class!(
     unsafe impl ClassType for NSScriptClassDescription {
         #[inherits(NSObject)]
         type Super = NSClassDescription;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -122,6 +123,18 @@ extern_methods!(
         #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(hasWritablePropertyForKey:)]
         pub unsafe fn hasWritablePropertyForKey(&self, key: &NSString) -> bool;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSScriptClassDescription")]
+    unsafe impl NSScriptClassDescription {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

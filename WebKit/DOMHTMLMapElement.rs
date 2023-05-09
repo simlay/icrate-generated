@@ -11,16 +11,19 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLMapElement;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLMapElement")]
     unsafe impl ClassType for DOMHTMLMapElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMHTMLElement;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_DOMHTMLMapElement")]
 unsafe impl DOMEventTarget for DOMHTMLMapElement {}
+
+#[cfg(feature = "WebKit_DOMHTMLMapElement")]
+unsafe impl NSCopying for DOMHTMLMapElement {}
 
 #[cfg(feature = "WebKit_DOMHTMLMapElement")]
 unsafe impl NSObjectProtocol for DOMHTMLMapElement {}
@@ -39,5 +42,23 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method(setName:)]
         pub unsafe fn setName(&self, name: Option<&NSString>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMHTMLMapElement")]
+    unsafe impl DOMHTMLMapElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMHTMLMapElement")]
+    unsafe impl DOMHTMLMapElement {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

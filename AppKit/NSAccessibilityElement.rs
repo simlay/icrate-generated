@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSAccessibilityElement")]
     unsafe impl ClassType for NSAccessibilityElement {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -45,5 +46,17 @@ extern_methods!(
             &self,
             accessibility_frame_in_parent_space: NSRect,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSAccessibilityElement")]
+    unsafe impl NSAccessibilityElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

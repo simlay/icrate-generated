@@ -12,12 +12,11 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct GKCloudPlayer;
 
-    #[deprecated = "GKGameSession is deprecated. Use GKPlayer for both real-time and turn-based matchmaking APIs."]
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "GameKit_GKCloudPlayer")]
     unsafe impl ClassType for GKCloudPlayer {
         #[inherits(NSObject)]
         type Super = GKBasePlayer;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -35,5 +34,17 @@ extern_methods!(
             container_name: Option<&NSString>,
             handler: &Block<(*mut GKCloudPlayer, *mut NSError), ()>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameKit_GKCloudPlayer")]
+    unsafe impl GKCloudPlayer {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSCursor")]
     unsafe impl ClassType for NSCursor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -124,6 +125,18 @@ extern_methods!(
 
         #[method(set)]
         pub unsafe fn set(&self);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSCursor")]
+    unsafe impl NSCursor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

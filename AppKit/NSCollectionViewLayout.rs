@@ -29,8 +29,12 @@ extern_class!(
     #[cfg(feature = "AppKit_NSCollectionViewLayoutAttributes")]
     unsafe impl ClassType for NSCollectionViewLayoutAttributes {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "AppKit_NSCollectionViewLayoutAttributes")]
+unsafe impl NSCopying for NSCollectionViewLayoutAttributes {}
 
 #[cfg(feature = "AppKit_NSCollectionViewLayoutAttributes")]
 unsafe impl NSObjectProtocol for NSCollectionViewLayoutAttributes {}
@@ -109,6 +113,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSCollectionViewLayoutAttributes")]
+    unsafe impl NSCollectionViewLayoutAttributes {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 ns_enum!(
     #[underlying(NSInteger)]
     pub enum NSCollectionUpdateAction {
@@ -128,6 +144,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSCollectionViewUpdateItem")]
     unsafe impl ClassType for NSCollectionViewUpdateItem {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -150,6 +167,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSCollectionViewUpdateItem")]
+    unsafe impl NSCollectionViewUpdateItem {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSCollectionViewLayoutInvalidationContext")]
@@ -158,6 +187,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSCollectionViewLayoutInvalidationContext")]
     unsafe impl ClassType for NSCollectionViewLayoutInvalidationContext {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -231,6 +261,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSCollectionViewLayoutInvalidationContext")]
+    unsafe impl NSCollectionViewLayoutInvalidationContext {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSCollectionViewLayout")]
@@ -239,6 +281,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSCollectionViewLayout")]
     unsafe impl ClassType for NSCollectionViewLayout {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -279,6 +322,18 @@ extern_methods!(
             nib: Option<&NSNib>,
             element_kind: &NSCollectionViewDecorationElementKind,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSCollectionViewLayout")]
+    unsafe impl NSCollectionViewLayout {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

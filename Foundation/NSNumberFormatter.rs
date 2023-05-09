@@ -60,11 +60,15 @@ extern_class!(
     unsafe impl ClassType for NSNumberFormatter {
         #[inherits(NSObject)]
         type Super = NSFormatter;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSNumberFormatter")]
 unsafe impl NSCoding for NSNumberFormatter {}
+
+#[cfg(feature = "Foundation_NSNumberFormatter")]
+unsafe impl NSCopying for NSNumberFormatter {}
 
 #[cfg(feature = "Foundation_NSNumberFormatter")]
 unsafe impl NSObjectProtocol for NSNumberFormatter {}
@@ -558,6 +562,18 @@ extern_methods!(
             &self,
             partial_string_validation_enabled: bool,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSNumberFormatter")]
+    unsafe impl NSNumberFormatter {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

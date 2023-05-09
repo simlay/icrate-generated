@@ -14,6 +14,7 @@ extern_class!(
     unsafe impl ClassType for OSAScriptView {
         #[inherits(NSText, NSView, NSResponder, NSObject)]
         type Super = NSTextView;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -141,6 +142,13 @@ extern_methods!(
             container: Option<&NSTextContainer>,
         ) -> Id<Self>;
 
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(
+            this: Option<Allocated<Self>>,
+            coder: &NSCoder,
+        ) -> Option<Id<Self>>;
+
         #[method_id(@__retain_semantics Init initWithFrame:)]
         pub unsafe fn initWithFrame(this: Option<Allocated<Self>>, frame_rect: NSRect) -> Id<Self>;
 
@@ -156,12 +164,19 @@ extern_methods!(
 );
 
 extern_methods!(
-    /// Methods declared on superclass `NSTextView`
-    ///
-    /// NSTextView_Factory
+    /// Methods declared on superclass `NSResponder`
     #[cfg(feature = "OSAKit_OSAScriptView")]
     unsafe impl OSAScriptView {
-        #[method_id(@__retain_semantics Other fieldEditor)]
-        pub unsafe fn fieldEditor() -> Id<Self>;
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "OSAKit_OSAScriptView")]
+    unsafe impl OSAScriptView {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

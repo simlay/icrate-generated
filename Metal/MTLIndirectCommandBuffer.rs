@@ -41,8 +41,12 @@ extern_class!(
     #[cfg(feature = "Metal_MTLIndirectCommandBufferDescriptor")]
     unsafe impl ClassType for MTLIndirectCommandBufferDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLIndirectCommandBufferDescriptor")]
+unsafe impl NSCopying for MTLIndirectCommandBufferDescriptor {}
 
 #[cfg(feature = "Metal_MTLIndirectCommandBufferDescriptor")]
 unsafe impl NSObjectProtocol for MTLIndirectCommandBufferDescriptor {}
@@ -91,6 +95,18 @@ extern_methods!(
 
         #[method(setSupportRayTracing:)]
         pub unsafe fn setSupportRayTracing(&self, support_ray_tracing: bool);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLIndirectCommandBufferDescriptor")]
+    unsafe impl MTLIndirectCommandBufferDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

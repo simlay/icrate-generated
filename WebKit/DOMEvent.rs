@@ -25,13 +25,16 @@ extern_class!(
     #[deprecated]
     pub struct DOMEvent;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMEvent")]
     unsafe impl ClassType for DOMEvent {
         #[inherits(WebScriptObject, NSObject)]
         type Super = DOMObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "WebKit_DOMEvent")]
+unsafe impl NSCopying for DOMEvent {}
 
 #[cfg(feature = "WebKit_DOMEvent")]
 unsafe impl NSObjectProtocol for DOMEvent {}
@@ -90,6 +93,24 @@ extern_methods!(
             can_bubble_arg: bool,
             cancelable_arg: bool,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMEvent")]
+    unsafe impl DOMEvent {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMEvent")]
+    unsafe impl DOMEvent {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

@@ -31,10 +31,10 @@ extern_class!(
     #[deprecated = "Hosted content is no longer supported"]
     pub struct SKDownload;
 
-    #[deprecated = "Hosted content is no longer supported"]
     #[cfg(feature = "StoreKit_SKDownload")]
     unsafe impl ClassType for SKDownload {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -107,5 +107,17 @@ extern_methods!(
         #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(deleteContentForProductID:)]
         pub unsafe fn deleteContentForProductID(product_id: &NSString);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "StoreKit_SKDownload")]
+    unsafe impl SKDownload {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

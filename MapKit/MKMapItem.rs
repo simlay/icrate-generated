@@ -15,6 +15,7 @@ extern_class!(
     #[cfg(feature = "MapKit_MKMapItem")]
     unsafe impl ClassType for MKMapItem {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -103,6 +104,18 @@ extern_methods!(
             map_items: &NSArray<MKMapItem>,
             launch_options: Option<&NSDictionary<NSString, Object>>,
         ) -> bool;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MapKit_MKMapItem")]
+    unsafe impl MKMapItem {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

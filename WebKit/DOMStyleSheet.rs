@@ -11,13 +11,16 @@ extern_class!(
     #[deprecated]
     pub struct DOMStyleSheet;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMStyleSheet")]
     unsafe impl ClassType for DOMStyleSheet {
         #[inherits(WebScriptObject, NSObject)]
         type Super = DOMObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "WebKit_DOMStyleSheet")]
+unsafe impl NSCopying for DOMStyleSheet {}
 
 #[cfg(feature = "WebKit_DOMStyleSheet")]
 unsafe impl NSObjectProtocol for DOMStyleSheet {}
@@ -53,5 +56,23 @@ extern_methods!(
         #[cfg(feature = "WebKit_DOMMediaList")]
         #[method_id(@__retain_semantics Other media)]
         pub unsafe fn media(&self) -> Option<Id<DOMMediaList>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMStyleSheet")]
+    unsafe impl DOMStyleSheet {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMStyleSheet")]
+    unsafe impl DOMStyleSheet {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

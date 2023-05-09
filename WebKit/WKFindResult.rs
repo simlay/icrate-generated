@@ -13,8 +13,12 @@ extern_class!(
     #[cfg(feature = "WebKit_WKFindResult")]
     unsafe impl ClassType for WKFindResult {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "WebKit_WKFindResult")]
+unsafe impl NSCopying for WKFindResult {}
 
 #[cfg(feature = "WebKit_WKFindResult")]
 unsafe impl NSObjectProtocol for WKFindResult {}
@@ -27,5 +31,14 @@ extern_methods!(
 
         #[method(matchFound)]
         pub unsafe fn matchFound(&self) -> bool;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_WKFindResult")]
+    unsafe impl WKFindResult {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

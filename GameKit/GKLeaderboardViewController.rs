@@ -11,11 +11,11 @@ extern_class!(
     #[deprecated = "Use GKGameCenterViewController instead"]
     pub struct GKLeaderboardViewController;
 
-    #[deprecated = "Use GKGameCenterViewController instead"]
     #[cfg(feature = "GameKit_GKLeaderboardViewController")]
     unsafe impl ClassType for GKLeaderboardViewController {
         #[inherits(NSViewController, NSResponder, NSObject)]
         type Super = GKGameCenterViewController;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -40,6 +40,50 @@ unsafe impl NSUserInterfaceItemIdentification for GKLeaderboardViewController {}
 extern_methods!(
     #[cfg(feature = "GameKit_GKLeaderboardViewController")]
     unsafe impl GKLeaderboardViewController {}
+);
+
+#[cfg(not(any(target_os = "ios")))]
+extern_methods!(
+    /// Methods declared on superclass `NSViewController`
+    #[cfg(feature = "GameKit_GKLeaderboardViewController")]
+    unsafe impl GKLeaderboardViewController {
+        #[cfg(feature = "Foundation_NSBundle")]
+        #[cfg(not(any(target_os = "ios")))]
+        #[method_id(@__retain_semantics Init initWithNibName:bundle:)]
+        pub unsafe fn initWithNibName_bundle(
+            this: Option<Allocated<Self>>,
+            nib_name_or_nil: Option<&NSNibName>,
+            nib_bundle_or_nil: Option<&NSBundle>,
+        ) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[cfg(not(any(target_os = "ios")))]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(
+            this: Option<Allocated<Self>>,
+            coder: &NSCoder,
+        ) -> Option<Id<Self>>;
+    }
+);
+
+#[cfg(not(any(target_os = "ios")))]
+extern_methods!(
+    /// Methods declared on superclass `NSResponder`
+    #[cfg(feature = "GameKit_GKLeaderboardViewController")]
+    unsafe impl GKLeaderboardViewController {
+        #[cfg(not(any(target_os = "ios")))]
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameKit_GKLeaderboardViewController")]
+    unsafe impl GKLeaderboardViewController {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
 );
 
 extern_methods!(
@@ -83,58 +127,4 @@ extern_protocol!(
     }
 
     unsafe impl ProtocolType for dyn GKLeaderboardViewControllerDelegate {}
-);
-
-extern_methods!(
-    /// Methods declared on superclass `GKGameCenterViewController`
-    #[cfg(feature = "GameKit_GKLeaderboardViewController")]
-    unsafe impl GKLeaderboardViewController {
-        #[cfg(not(any(target_os = "watchos")))]
-        #[method_id(@__retain_semantics Init initWithState:)]
-        pub unsafe fn initWithState(
-            this: Option<Allocated<Self>>,
-            state: GKGameCenterViewControllerState,
-        ) -> Id<Self>;
-
-        #[cfg(feature = "Foundation_NSString")]
-        #[cfg(not(any(target_os = "watchos")))]
-        #[method_id(@__retain_semantics Init initWithLeaderboardID:playerScope:timeScope:)]
-        pub unsafe fn initWithLeaderboardID_playerScope_timeScope(
-            this: Option<Allocated<Self>>,
-            leaderboard_id: &NSString,
-            player_scope: GKLeaderboardPlayerScope,
-            time_scope: GKLeaderboardTimeScope,
-        ) -> Id<Self>;
-
-        #[cfg(feature = "GameKit_GKLeaderboard")]
-        #[cfg(not(any(target_os = "watchos")))]
-        #[method_id(@__retain_semantics Init initWithLeaderboard:playerScope:)]
-        pub unsafe fn initWithLeaderboard_playerScope(
-            this: Option<Allocated<Self>>,
-            leaderboard: &GKLeaderboard,
-            player_scope: GKLeaderboardPlayerScope,
-        ) -> Id<Self>;
-
-        #[cfg(feature = "Foundation_NSString")]
-        #[cfg(not(any(target_os = "watchos")))]
-        #[method_id(@__retain_semantics Init initWithAchievementID:)]
-        pub unsafe fn initWithAchievementID(
-            this: Option<Allocated<Self>>,
-            achievement_id: &NSString,
-        ) -> Id<Self>;
-    }
-);
-
-extern_methods!(
-    /// Methods declared on superclass `NSViewController`
-    #[cfg(feature = "GameKit_GKLeaderboardViewController")]
-    unsafe impl GKLeaderboardViewController {
-        #[cfg(feature = "Foundation_NSBundle")]
-        #[method_id(@__retain_semantics Init initWithNibName:bundle:)]
-        pub unsafe fn initWithNibName_bundle(
-            this: Option<Allocated<Self>>,
-            nib_name_or_nil: Option<&NSNibName>,
-            nib_bundle_or_nil: Option<&NSBundle>,
-        ) -> Id<Self>;
-    }
 );

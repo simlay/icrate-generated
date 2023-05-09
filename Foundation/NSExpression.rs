@@ -30,11 +30,15 @@ extern_class!(
     #[cfg(feature = "Foundation_NSExpression")]
     unsafe impl ClassType for NSExpression {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSExpression")]
 unsafe impl NSCoding for NSExpression {}
+
+#[cfg(feature = "Foundation_NSExpression")]
+unsafe impl NSCopying for NSExpression {}
 
 #[cfg(feature = "Foundation_NSExpression")]
 unsafe impl NSObjectProtocol for NSExpression {}
@@ -226,5 +230,17 @@ extern_methods!(
 
         #[method(allowEvaluation)]
         pub unsafe fn allowEvaluation(&self);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSExpression")]
+    unsafe impl NSExpression {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

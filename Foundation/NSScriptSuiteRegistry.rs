@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSScriptSuiteRegistry")]
     unsafe impl ClassType for NSScriptSuiteRegistry {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -108,5 +109,17 @@ extern_methods!(
         #[cfg(all(feature = "Foundation_NSData", feature = "Foundation_NSString"))]
         #[method_id(@__retain_semantics Other aeteResource:)]
         pub unsafe fn aeteResource(&self, language_name: &NSString) -> Option<Id<NSData>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSScriptSuiteRegistry")]
+    unsafe impl NSScriptSuiteRegistry {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

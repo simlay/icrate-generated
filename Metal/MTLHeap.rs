@@ -21,8 +21,12 @@ extern_class!(
     #[cfg(feature = "Metal_MTLHeapDescriptor")]
     unsafe impl ClassType for MTLHeapDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLHeapDescriptor")]
+unsafe impl NSCopying for MTLHeapDescriptor {}
 
 #[cfg(feature = "Metal_MTLHeapDescriptor")]
 unsafe impl NSObjectProtocol for MTLHeapDescriptor {}
@@ -71,6 +75,18 @@ extern_methods!(
 
         #[method(setType:)]
         pub fn setType(&self, r#type: MTLHeapType);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLHeapDescriptor")]
+    unsafe impl MTLHeapDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

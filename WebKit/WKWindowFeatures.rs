@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(feature = "WebKit_WKWindowFeatures")]
     unsafe impl ClassType for WKWindowFeatures {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -53,5 +54,17 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSNumber")]
         #[method_id(@__retain_semantics Other height)]
         pub unsafe fn height(&self) -> Option<Id<NSNumber>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_WKWindowFeatures")]
+    unsafe impl WKWindowFeatures {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

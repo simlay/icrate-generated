@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSMenu")]
     unsafe impl ClassType for NSMenu {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -27,6 +28,9 @@ unsafe impl NSAppearanceCustomization for NSMenu {}
 
 #[cfg(feature = "AppKit_NSMenu")]
 unsafe impl NSCoding for NSMenu {}
+
+#[cfg(feature = "AppKit_NSMenu")]
+unsafe impl NSCopying for NSMenu {}
 
 #[cfg(feature = "AppKit_NSMenu")]
 unsafe impl NSObjectProtocol for NSMenu {}
@@ -260,6 +264,18 @@ extern_methods!(
             &self,
             user_interface_layout_direction: NSUserInterfaceLayoutDirection,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSMenu")]
+    unsafe impl NSMenu {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

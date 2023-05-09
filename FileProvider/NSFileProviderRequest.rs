@@ -14,6 +14,7 @@ extern_class!(
     #[cfg(feature = "FileProvider_NSFileProviderRequest")]
     unsafe impl ClassType for NSFileProviderRequest {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -37,5 +38,17 @@ extern_methods!(
         #[cfg(feature = "FileProvider_NSFileProviderDomainVersion")]
         #[method_id(@__retain_semantics Other domainVersion)]
         pub unsafe fn domainVersion(&self) -> Option<Id<NSFileProviderDomainVersion>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "FileProvider_NSFileProviderRequest")]
+    unsafe impl NSFileProviderRequest {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

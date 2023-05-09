@@ -32,6 +32,7 @@ extern_class!(
     unsafe impl ClassType for NSSearchField {
         #[inherits(NSControl, NSView, NSResponder, NSObject)]
         type Super = NSTextField;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -138,6 +139,40 @@ extern_methods!(
 );
 
 extern_methods!(
+    /// Methods declared on superclass `NSControl`
+    #[cfg(feature = "AppKit_NSSearchField")]
+    unsafe impl NSSearchField {
+        #[method_id(@__retain_semantics Init initWithFrame:)]
+        pub unsafe fn initWithFrame(this: Option<Allocated<Self>>, frame_rect: NSRect) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(
+            this: Option<Allocated<Self>>,
+            coder: &NSCoder,
+        ) -> Option<Id<Self>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSResponder`
+    #[cfg(feature = "AppKit_NSSearchField")]
+    unsafe impl NSSearchField {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSSearchField")]
+    unsafe impl NSSearchField {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
+extern_methods!(
     /// NSSearchField_Deprecated
     #[cfg(feature = "AppKit_NSSearchField")]
     unsafe impl NSSearchField {
@@ -160,40 +195,5 @@ extern_methods!(
         #[deprecated = "The placeholder centering UI design is no longer available. Setting this property is no-op."]
         #[method(setCentersPlaceholder:)]
         pub unsafe fn setCentersPlaceholder(&self, centers_placeholder: bool);
-    }
-);
-
-extern_methods!(
-    /// Methods declared on superclass `NSTextField`
-    ///
-    /// NSTextFieldConvenience
-    #[cfg(feature = "AppKit_NSSearchField")]
-    unsafe impl NSSearchField {
-        #[cfg(feature = "Foundation_NSString")]
-        #[method_id(@__retain_semantics Other labelWithString:)]
-        pub unsafe fn labelWithString(string_value: &NSString) -> Id<Self>;
-
-        #[cfg(feature = "Foundation_NSString")]
-        #[method_id(@__retain_semantics Other wrappingLabelWithString:)]
-        pub unsafe fn wrappingLabelWithString(string_value: &NSString) -> Id<Self>;
-
-        #[cfg(feature = "Foundation_NSAttributedString")]
-        #[method_id(@__retain_semantics Other labelWithAttributedString:)]
-        pub unsafe fn labelWithAttributedString(
-            attributed_string_value: &NSAttributedString,
-        ) -> Id<Self>;
-
-        #[cfg(feature = "Foundation_NSString")]
-        #[method_id(@__retain_semantics Other textFieldWithString:)]
-        pub unsafe fn textFieldWithString(string_value: &NSString) -> Id<Self>;
-    }
-);
-
-extern_methods!(
-    /// Methods declared on superclass `NSControl`
-    #[cfg(feature = "AppKit_NSSearchField")]
-    unsafe impl NSSearchField {
-        #[method_id(@__retain_semantics Init initWithFrame:)]
-        pub unsafe fn initWithFrame(this: Option<Allocated<Self>>, frame_rect: NSRect) -> Id<Self>;
     }
 );

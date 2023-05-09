@@ -11,10 +11,10 @@ extern_class!(
     #[deprecated = "Replaced by GKLeaderboardScore"]
     pub struct GKScore;
 
-    #[deprecated = "Replaced by GKLeaderboardScore"]
     #[cfg(feature = "GameKit_GKScore")]
     unsafe impl ClassType for GKScore {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -92,6 +92,18 @@ extern_methods!(
             scores: &NSArray<GKScore>,
             completion_handler: Option<&Block<(*mut NSError,), ()>>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameKit_GKScore")]
+    unsafe impl GKScore {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

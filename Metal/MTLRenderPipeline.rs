@@ -106,8 +106,12 @@ extern_class!(
     #[cfg(feature = "Metal_MTLRenderPipelineColorAttachmentDescriptor")]
     unsafe impl ClassType for MTLRenderPipelineColorAttachmentDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLRenderPipelineColorAttachmentDescriptor")]
+unsafe impl NSCopying for MTLRenderPipelineColorAttachmentDescriptor {}
 
 #[cfg(feature = "Metal_MTLRenderPipelineColorAttachmentDescriptor")]
 unsafe impl NSObjectProtocol for MTLRenderPipelineColorAttachmentDescriptor {}
@@ -174,6 +178,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLRenderPipelineColorAttachmentDescriptor")]
+    unsafe impl MTLRenderPipelineColorAttachmentDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLRenderPipelineReflection")]
@@ -182,6 +198,7 @@ extern_class!(
     #[cfg(feature = "Metal_MTLRenderPipelineReflection")]
     unsafe impl ClassType for MTLRenderPipelineReflection {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -228,6 +245,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLRenderPipelineReflection")]
+    unsafe impl MTLRenderPipelineReflection {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLRenderPipelineDescriptor")]
@@ -236,8 +265,12 @@ extern_class!(
     #[cfg(feature = "Metal_MTLRenderPipelineDescriptor")]
     unsafe impl ClassType for MTLRenderPipelineDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLRenderPipelineDescriptor")]
+unsafe impl NSCopying for MTLRenderPipelineDescriptor {}
 
 #[cfg(feature = "Metal_MTLRenderPipelineDescriptor")]
 unsafe impl NSObjectProtocol for MTLRenderPipelineDescriptor {}
@@ -510,6 +543,25 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLRenderPipelineDescriptor")]
+    unsafe impl MTLRenderPipelineDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub fn new() -> Id<Self>;
+    }
+);
+#[cfg(feature = "Metal_MTLRenderPipelineDescriptor")]
+impl DefaultId for MTLRenderPipelineDescriptor {
+    #[inline]
+    fn default_id() -> Id<Self> {
+        Self::new()
+    }
+}
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLRenderPipelineFunctionsDescriptor")]
@@ -518,8 +570,12 @@ extern_class!(
     #[cfg(feature = "Metal_MTLRenderPipelineFunctionsDescriptor")]
     unsafe impl ClassType for MTLRenderPipelineFunctionsDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLRenderPipelineFunctionsDescriptor")]
+unsafe impl NSCopying for MTLRenderPipelineFunctionsDescriptor {}
 
 #[cfg(feature = "Metal_MTLRenderPipelineFunctionsDescriptor")]
 unsafe impl NSObjectProtocol for MTLRenderPipelineFunctionsDescriptor {}
@@ -565,6 +621,18 @@ extern_methods!(
             &self,
             tile_additional_binary_functions: Option<&NSArray<ProtocolObject<dyn MTLFunction>>>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLRenderPipelineFunctionsDescriptor")]
+    unsafe impl MTLRenderPipelineFunctionsDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 
@@ -658,6 +726,7 @@ extern_class!(
     #[cfg(feature = "Metal_MTLRenderPipelineColorAttachmentDescriptorArray")]
     unsafe impl ClassType for MTLRenderPipelineColorAttachmentDescriptorArray {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -684,6 +753,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLRenderPipelineColorAttachmentDescriptorArray")]
+    unsafe impl MTLRenderPipelineColorAttachmentDescriptorArray {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLTileRenderPipelineColorAttachmentDescriptor")]
@@ -692,8 +773,12 @@ extern_class!(
     #[cfg(feature = "Metal_MTLTileRenderPipelineColorAttachmentDescriptor")]
     unsafe impl ClassType for MTLTileRenderPipelineColorAttachmentDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLTileRenderPipelineColorAttachmentDescriptor")]
+unsafe impl NSCopying for MTLTileRenderPipelineColorAttachmentDescriptor {}
 
 #[cfg(feature = "Metal_MTLTileRenderPipelineColorAttachmentDescriptor")]
 unsafe impl NSObjectProtocol for MTLTileRenderPipelineColorAttachmentDescriptor {}
@@ -709,6 +794,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLTileRenderPipelineColorAttachmentDescriptor")]
+    unsafe impl MTLTileRenderPipelineColorAttachmentDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLTileRenderPipelineColorAttachmentDescriptorArray")]
@@ -717,6 +814,7 @@ extern_class!(
     #[cfg(feature = "Metal_MTLTileRenderPipelineColorAttachmentDescriptorArray")]
     unsafe impl ClassType for MTLTileRenderPipelineColorAttachmentDescriptorArray {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -743,6 +841,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLTileRenderPipelineColorAttachmentDescriptorArray")]
+    unsafe impl MTLTileRenderPipelineColorAttachmentDescriptorArray {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLTileRenderPipelineDescriptor")]
@@ -751,8 +861,12 @@ extern_class!(
     #[cfg(feature = "Metal_MTLTileRenderPipelineDescriptor")]
     unsafe impl ClassType for MTLTileRenderPipelineDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLTileRenderPipelineDescriptor")]
+unsafe impl NSCopying for MTLTileRenderPipelineDescriptor {}
 
 #[cfg(feature = "Metal_MTLTileRenderPipelineDescriptor")]
 unsafe impl NSObjectProtocol for MTLTileRenderPipelineDescriptor {}
@@ -859,6 +973,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLTileRenderPipelineDescriptor")]
+    unsafe impl MTLTileRenderPipelineDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLMeshRenderPipelineDescriptor")]
@@ -867,8 +993,12 @@ extern_class!(
     #[cfg(feature = "Metal_MTLMeshRenderPipelineDescriptor")]
     unsafe impl ClassType for MTLMeshRenderPipelineDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLMeshRenderPipelineDescriptor")]
+unsafe impl NSCopying for MTLMeshRenderPipelineDescriptor {}
 
 #[cfg(feature = "Metal_MTLMeshRenderPipelineDescriptor")]
 unsafe impl NSObjectProtocol for MTLMeshRenderPipelineDescriptor {}
@@ -1033,5 +1163,17 @@ extern_methods!(
 
         #[method(reset)]
         pub unsafe fn reset(&self);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLMeshRenderPipelineDescriptor")]
+    unsafe impl MTLMeshRenderPipelineDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

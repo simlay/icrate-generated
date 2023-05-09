@@ -12,8 +12,12 @@ extern_class!(
     #[cfg(feature = "CoreData_NSPersistentHistoryTransaction")]
     unsafe impl ClassType for NSPersistentHistoryTransaction {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "CoreData_NSPersistentHistoryTransaction")]
+unsafe impl NSCopying for NSPersistentHistoryTransaction {}
 
 #[cfg(feature = "CoreData_NSPersistentHistoryTransaction")]
 unsafe impl NSObjectProtocol for NSPersistentHistoryTransaction {}
@@ -79,5 +83,17 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSNotification")]
         #[method_id(@__retain_semantics Other objectIDNotification)]
         pub unsafe fn objectIDNotification(&self) -> Id<NSNotification>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreData_NSPersistentHistoryTransaction")]
+    unsafe impl NSPersistentHistoryTransaction {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

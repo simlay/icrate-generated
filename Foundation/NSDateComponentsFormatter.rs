@@ -40,11 +40,15 @@ extern_class!(
     unsafe impl ClassType for NSDateComponentsFormatter {
         #[inherits(NSObject)]
         type Super = NSFormatter;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSDateComponentsFormatter")]
 unsafe impl NSCoding for NSDateComponentsFormatter {}
+
+#[cfg(feature = "Foundation_NSDateComponentsFormatter")]
+unsafe impl NSCopying for NSDateComponentsFormatter {}
 
 #[cfg(feature = "Foundation_NSDateComponentsFormatter")]
 unsafe impl NSObjectProtocol for NSDateComponentsFormatter {}
@@ -171,5 +175,17 @@ extern_methods!(
             string: &NSString,
             error: Option<&mut Option<Id<NSString>>>,
         ) -> bool;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSDateComponentsFormatter")]
+    unsafe impl NSDateComponentsFormatter {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

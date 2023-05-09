@@ -14,8 +14,12 @@ extern_class!(
     #[cfg(feature = "Automator_AMWorkflow")]
     unsafe impl ClassType for AMWorkflow {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Automator_AMWorkflow")]
+unsafe impl NSCopying for AMWorkflow {}
 
 #[cfg(feature = "Automator_AMWorkflow")]
 unsafe impl NSObjectProtocol for AMWorkflow {}
@@ -94,5 +98,14 @@ extern_methods!(
 
         #[method_id(@__retain_semantics Other output)]
         pub unsafe fn output(&self) -> Option<Id<Object>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Automator_AMWorkflow")]
+    unsafe impl AMWorkflow {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

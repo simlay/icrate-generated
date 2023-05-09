@@ -12,16 +12,20 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct HKVerifiableClinicalRecordSubject;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "HealthKit_HKVerifiableClinicalRecordSubject")]
     unsafe impl ClassType for HKVerifiableClinicalRecordSubject {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "HealthKit_HKVerifiableClinicalRecordSubject")]
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSCoding for HKVerifiableClinicalRecordSubject {}
+
+#[cfg(feature = "HealthKit_HKVerifiableClinicalRecordSubject")]
+#[cfg(not(any(target_os = "watchos")))]
+unsafe impl NSCopying for HKVerifiableClinicalRecordSubject {}
 
 #[cfg(feature = "HealthKit_HKVerifiableClinicalRecordSubject")]
 #[cfg(not(any(target_os = "watchos")))]

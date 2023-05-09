@@ -12,8 +12,12 @@ extern_class!(
     #[cfg(feature = "Metal_MTLVisibleFunctionTableDescriptor")]
     unsafe impl ClassType for MTLVisibleFunctionTableDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLVisibleFunctionTableDescriptor")]
+unsafe impl NSCopying for MTLVisibleFunctionTableDescriptor {}
 
 #[cfg(feature = "Metal_MTLVisibleFunctionTableDescriptor")]
 unsafe impl NSObjectProtocol for MTLVisibleFunctionTableDescriptor {}
@@ -29,6 +33,18 @@ extern_methods!(
 
         #[method(setFunctionCount:)]
         pub unsafe fn setFunctionCount(&self, function_count: NSUInteger);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLVisibleFunctionTableDescriptor")]
+    unsafe impl MTLVisibleFunctionTableDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

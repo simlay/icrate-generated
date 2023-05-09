@@ -10,11 +10,11 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct ASCredentialProviderExtensionContext;
 
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "AuthenticationServices_ASCredentialProviderExtensionContext")]
     unsafe impl ClassType for ASCredentialProviderExtensionContext {
         #[inherits(NSObject)]
         type Super = NSExtensionContext;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -48,5 +48,17 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSError")]
         #[method(cancelRequestWithError:)]
         pub unsafe fn cancelRequestWithError(&self, error: &NSError);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AuthenticationServices_ASCredentialProviderExtensionContext")]
+    unsafe impl ASCredentialProviderExtensionContext {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

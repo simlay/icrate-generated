@@ -13,8 +13,12 @@ extern_class!(
     #[cfg(feature = "WebKit_WKFindConfiguration")]
     unsafe impl ClassType for WKFindConfiguration {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "WebKit_WKFindConfiguration")]
+unsafe impl NSCopying for WKFindConfiguration {}
 
 #[cfg(feature = "WebKit_WKFindConfiguration")]
 unsafe impl NSObjectProtocol for WKFindConfiguration {}
@@ -39,5 +43,17 @@ extern_methods!(
 
         #[method(setWraps:)]
         pub unsafe fn setWraps(&self, wraps: bool);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_WKFindConfiguration")]
+    unsafe impl WKFindConfiguration {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -13,10 +13,10 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKTileOverlay;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKTileOverlay")]
     unsafe impl ClassType for MKTileOverlay {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -76,6 +76,18 @@ extern_methods!(
 
         #[method(setCanReplaceMapContent:)]
         pub unsafe fn setCanReplaceMapContent(&self, can_replace_map_content: bool);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MapKit_MKTileOverlay")]
+    unsafe impl MKTileOverlay {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

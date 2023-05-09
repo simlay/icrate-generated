@@ -11,16 +11,19 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLModElement;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLModElement")]
     unsafe impl ClassType for DOMHTMLModElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMHTMLElement;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_DOMHTMLModElement")]
 unsafe impl DOMEventTarget for DOMHTMLModElement {}
+
+#[cfg(feature = "WebKit_DOMHTMLModElement")]
+unsafe impl NSCopying for DOMHTMLModElement {}
 
 #[cfg(feature = "WebKit_DOMHTMLModElement")]
 unsafe impl NSObjectProtocol for DOMHTMLModElement {}
@@ -43,5 +46,23 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method(setDateTime:)]
         pub unsafe fn setDateTime(&self, date_time: Option<&NSString>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMHTMLModElement")]
+    unsafe impl DOMHTMLModElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMHTMLModElement")]
+    unsafe impl DOMHTMLModElement {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

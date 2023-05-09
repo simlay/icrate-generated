@@ -25,8 +25,12 @@ extern_class!(
     #[cfg(feature = "Metal_MTLIntersectionFunctionTableDescriptor")]
     unsafe impl ClassType for MTLIntersectionFunctionTableDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLIntersectionFunctionTableDescriptor")]
+unsafe impl NSCopying for MTLIntersectionFunctionTableDescriptor {}
 
 #[cfg(feature = "Metal_MTLIntersectionFunctionTableDescriptor")]
 unsafe impl NSObjectProtocol for MTLIntersectionFunctionTableDescriptor {}
@@ -45,6 +49,25 @@ extern_methods!(
         pub fn setFunctionCount(&self, function_count: NSUInteger);
     }
 );
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLIntersectionFunctionTableDescriptor")]
+    unsafe impl MTLIntersectionFunctionTableDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub fn new() -> Id<Self>;
+    }
+);
+#[cfg(feature = "Metal_MTLIntersectionFunctionTableDescriptor")]
+impl DefaultId for MTLIntersectionFunctionTableDescriptor {
+    #[inline]
+    fn default_id() -> Id<Self> {
+        Self::new()
+    }
+}
 
 extern_protocol!(
     pub unsafe trait MTLIntersectionFunctionTable: MTLResource {

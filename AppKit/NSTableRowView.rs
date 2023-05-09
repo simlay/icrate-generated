@@ -14,6 +14,7 @@ extern_class!(
     unsafe impl ClassType for NSTableRowView {
         #[inherits(NSResponder, NSObject)]
         type Super = NSView;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -158,5 +159,30 @@ extern_methods!(
     unsafe impl NSTableRowView {
         #[method_id(@__retain_semantics Init initWithFrame:)]
         pub unsafe fn initWithFrame(this: Option<Allocated<Self>>, frame_rect: NSRect) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(
+            this: Option<Allocated<Self>>,
+            coder: &NSCoder,
+        ) -> Option<Id<Self>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSResponder`
+    #[cfg(feature = "AppKit_NSTableRowView")]
+    unsafe impl NSTableRowView {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSTableRowView")]
+    unsafe impl NSTableRowView {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

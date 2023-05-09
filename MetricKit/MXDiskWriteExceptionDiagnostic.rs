@@ -13,6 +13,7 @@ extern_class!(
     unsafe impl ClassType for MXDiskWriteExceptionDiagnostic {
         #[inherits(NSObject)]
         type Super = MXDiagnostic;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -38,5 +39,17 @@ extern_methods!(
         ))]
         #[method_id(@__retain_semantics Other totalWritesCaused)]
         pub unsafe fn totalWritesCaused(&self) -> Id<NSMeasurement<NSUnitInformationStorage>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MetricKit_MXDiskWriteExceptionDiagnostic")]
+    unsafe impl MXDiskWriteExceptionDiagnostic {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

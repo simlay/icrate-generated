@@ -13,8 +13,12 @@ extern_class!(
     unsafe impl ClassType for NSBatchDeleteRequest {
         #[inherits(NSObject)]
         type Super = NSPersistentStoreRequest;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "CoreData_NSBatchDeleteRequest")]
+unsafe impl NSCopying for NSBatchDeleteRequest {}
 
 #[cfg(feature = "CoreData_NSBatchDeleteRequest")]
 unsafe impl NSObjectProtocol for NSBatchDeleteRequest {}
@@ -48,5 +52,14 @@ extern_methods!(
         #[cfg(feature = "CoreData_NSFetchRequest")]
         #[method_id(@__retain_semantics Other fetchRequest)]
         pub unsafe fn fetchRequest(&self) -> Id<NSFetchRequest>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreData_NSBatchDeleteRequest")]
+    unsafe impl NSBatchDeleteRequest {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

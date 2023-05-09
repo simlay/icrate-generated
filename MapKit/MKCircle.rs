@@ -13,11 +13,11 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKCircle;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKCircle")]
     unsafe impl ClassType for MKCircle {
         #[inherits(NSObject)]
         type Super = MKShape;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -54,5 +54,17 @@ extern_methods!(
 
         #[method(boundingMapRect)]
         pub unsafe fn boundingMapRect(&self) -> MKMapRect;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MapKit_MKCircle")]
+    unsafe impl MKCircle {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -23,6 +23,7 @@ extern_class!(
     #[cfg(feature = "AdServices_AAAttribution")]
     unsafe impl ClassType for AAAttribution {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -35,5 +36,17 @@ extern_methods!(
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSString"))]
         #[method_id(@__retain_semantics Other attributionTokenWithError:_)]
         pub unsafe fn attributionTokenWithError() -> Result<Id<NSString>, Id<NSError>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AdServices_AAAttribution")]
+    unsafe impl AAAttribution {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

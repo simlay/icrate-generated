@@ -41,11 +41,15 @@ extern_class!(
     #[cfg(feature = "AppKit_NSTextTab")]
     unsafe impl ClassType for NSTextTab {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "AppKit_NSTextTab")]
 unsafe impl NSCoding for NSTextTab {}
+
+#[cfg(feature = "AppKit_NSTextTab")]
+unsafe impl NSCopying for NSTextTab {}
 
 #[cfg(feature = "AppKit_NSTextTab")]
 unsafe impl NSObjectProtocol for NSTextTab {}
@@ -82,6 +86,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSTextTab")]
+    unsafe impl NSTextTab {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSParagraphStyle")]
@@ -90,11 +106,18 @@ extern_class!(
     #[cfg(feature = "AppKit_NSParagraphStyle")]
     unsafe impl ClassType for NSParagraphStyle {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "AppKit_NSParagraphStyle")]
 unsafe impl NSCoding for NSParagraphStyle {}
+
+#[cfg(feature = "AppKit_NSParagraphStyle")]
+unsafe impl NSCopying for NSParagraphStyle {}
+
+#[cfg(feature = "AppKit_NSParagraphStyle")]
+unsafe impl NSMutableCopying for NSParagraphStyle {}
 
 #[cfg(feature = "AppKit_NSParagraphStyle")]
 unsafe impl NSObjectProtocol for NSParagraphStyle {}
@@ -185,6 +208,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSParagraphStyle")]
+    unsafe impl NSParagraphStyle {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSMutableParagraphStyle")]
@@ -194,11 +229,18 @@ extern_class!(
     unsafe impl ClassType for NSMutableParagraphStyle {
         #[inherits(NSObject)]
         type Super = NSParagraphStyle;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "AppKit_NSMutableParagraphStyle")]
 unsafe impl NSCoding for NSMutableParagraphStyle {}
+
+#[cfg(feature = "AppKit_NSMutableParagraphStyle")]
+unsafe impl NSCopying for NSMutableParagraphStyle {}
+
+#[cfg(feature = "AppKit_NSMutableParagraphStyle")]
+unsafe impl NSMutableCopying for NSMutableParagraphStyle {}
 
 #[cfg(feature = "AppKit_NSMutableParagraphStyle")]
 unsafe impl NSObjectProtocol for NSMutableParagraphStyle {}
@@ -363,6 +405,18 @@ extern_methods!(
 
         #[method(setLineBreakStrategy:)]
         pub unsafe fn setLineBreakStrategy(&self, line_break_strategy: NSLineBreakStrategy);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSMutableParagraphStyle")]
+    unsafe impl NSMutableParagraphStyle {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

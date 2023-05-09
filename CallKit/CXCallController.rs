@@ -10,10 +10,10 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct CXCallController;
 
-    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "CallKit_CXCallController")]
     unsafe impl ClassType for CXCallController {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -59,5 +59,14 @@ extern_methods!(
             action: &CXAction,
             completion: &Block<(*mut NSError,), ()>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CallKit_CXCallController")]
+    unsafe impl CXCallController {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

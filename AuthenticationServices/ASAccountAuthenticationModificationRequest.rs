@@ -10,10 +10,10 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct ASAccountAuthenticationModificationRequest;
 
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationRequest")]
     unsafe impl ClassType for ASAccountAuthenticationModificationRequest {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -25,4 +25,16 @@ unsafe impl NSObjectProtocol for ASAccountAuthenticationModificationRequest {}
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationRequest")]
     unsafe impl ASAccountAuthenticationModificationRequest {}
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationRequest")]
+    unsafe impl ASAccountAuthenticationModificationRequest {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
 );

@@ -14,11 +14,15 @@ extern_class!(
     unsafe impl ClassType for NSCustomImageRep {
         #[inherits(NSObject)]
         type Super = NSImageRep;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "AppKit_NSCustomImageRep")]
 unsafe impl NSCoding for NSCustomImageRep {}
+
+#[cfg(feature = "AppKit_NSCustomImageRep")]
+unsafe impl NSCopying for NSCustomImageRep {}
 
 #[cfg(feature = "AppKit_NSCustomImageRep")]
 unsafe impl NSObjectProtocol for NSCustomImageRep {}
@@ -49,5 +53,30 @@ extern_methods!(
 
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(&self) -> Option<Id<Object>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSImageRep`
+    #[cfg(feature = "AppKit_NSCustomImageRep")]
+    unsafe impl NSCustomImageRep {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(
+            this: Option<Allocated<Self>>,
+            coder: &NSCoder,
+        ) -> Option<Id<Self>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSCustomImageRep")]
+    unsafe impl NSCustomImageRep {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

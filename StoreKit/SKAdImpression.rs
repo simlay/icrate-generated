@@ -11,10 +11,10 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct SKAdImpression;
 
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "StoreKit_SKAdImpression")]
     unsafe impl ClassType for SKAdImpression {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -129,5 +129,17 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method(setVersion:)]
         pub unsafe fn setVersion(&self, version: &NSString);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "StoreKit_SKAdImpression")]
+    unsafe impl SKAdImpression {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

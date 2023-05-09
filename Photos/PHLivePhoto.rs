@@ -24,11 +24,15 @@ extern_class!(
     #[cfg(feature = "PhotoKit_PHLivePhoto")]
     unsafe impl ClassType for PHLivePhoto {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "PhotoKit_PHLivePhoto")]
 unsafe impl NSCoding for PHLivePhoto {}
+
+#[cfg(feature = "PhotoKit_PHLivePhoto")]
+unsafe impl NSCopying for PHLivePhoto {}
 
 #[cfg(feature = "PhotoKit_PHLivePhoto")]
 unsafe impl NSObjectProtocol for PHLivePhoto {}
@@ -62,6 +66,15 @@ extern_methods!(
 
         #[method(cancelLivePhotoRequestWithRequestID:)]
         pub unsafe fn cancelLivePhotoRequestWithRequestID(request_id: PHLivePhotoRequestID);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "PhotoKit_PHLivePhoto")]
+    unsafe impl PHLivePhoto {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

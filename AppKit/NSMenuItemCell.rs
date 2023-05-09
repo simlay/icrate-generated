@@ -14,6 +14,7 @@ extern_class!(
     unsafe impl ClassType for NSMenuItemCell {
         #[inherits(NSActionCell, NSCell, NSObject)]
         type Super = NSButtonCell;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -25,6 +26,9 @@ unsafe impl NSAccessibilityElementProtocol for NSMenuItemCell {}
 
 #[cfg(feature = "AppKit_NSMenuItemCell")]
 unsafe impl NSCoding for NSMenuItemCell {}
+
+#[cfg(feature = "AppKit_NSMenuItemCell")]
+unsafe impl NSCopying for NSMenuItemCell {}
 
 #[cfg(feature = "AppKit_NSMenuItemCell")]
 unsafe impl NSObjectProtocol for NSMenuItemCell {}
@@ -145,5 +149,23 @@ extern_methods!(
             this: Option<Allocated<Self>>,
             image: Option<&NSImage>,
         ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSCell`
+    #[cfg(feature = "AppKit_NSMenuItemCell")]
+    unsafe impl NSMenuItemCell {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSMenuItemCell")]
+    unsafe impl NSMenuItemCell {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

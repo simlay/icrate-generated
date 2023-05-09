@@ -12,6 +12,7 @@ extern_class!(
     #[cfg(feature = "Contacts_CNContactsUserDefaults")]
     unsafe impl ClassType for CNContactsUserDefaults {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -30,5 +31,17 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other countryCode)]
         pub unsafe fn countryCode(&self) -> Id<NSString>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Contacts_CNContactsUserDefaults")]
+    unsafe impl CNContactsUserDefaults {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

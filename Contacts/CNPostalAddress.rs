@@ -12,11 +12,18 @@ extern_class!(
     #[cfg(feature = "Contacts_CNPostalAddress")]
     unsafe impl ClassType for CNPostalAddress {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Contacts_CNPostalAddress")]
 unsafe impl NSCoding for CNPostalAddress {}
+
+#[cfg(feature = "Contacts_CNPostalAddress")]
+unsafe impl NSCopying for CNPostalAddress {}
+
+#[cfg(feature = "Contacts_CNPostalAddress")]
+unsafe impl NSMutableCopying for CNPostalAddress {}
 
 #[cfg(feature = "Contacts_CNPostalAddress")]
 unsafe impl NSObjectProtocol for CNPostalAddress {}
@@ -62,6 +69,18 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other localizedStringForKey:)]
         pub unsafe fn localizedStringForKey(key: &NSString) -> Id<NSString>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Contacts_CNPostalAddress")]
+    unsafe impl CNPostalAddress {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

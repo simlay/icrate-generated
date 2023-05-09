@@ -11,13 +11,16 @@ extern_class!(
     #[deprecated]
     pub struct DOMNodeIterator;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMNodeIterator")]
     unsafe impl ClassType for DOMNodeIterator {
         #[inherits(WebScriptObject, NSObject)]
         type Super = DOMObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "WebKit_DOMNodeIterator")]
+unsafe impl NSCopying for DOMNodeIterator {}
 
 #[cfg(feature = "WebKit_DOMNodeIterator")]
 unsafe impl NSObjectProtocol for DOMNodeIterator {}
@@ -55,5 +58,23 @@ extern_methods!(
 
         #[method(detach)]
         pub unsafe fn detach(&self);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMNodeIterator")]
+    unsafe impl DOMNodeIterator {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMNodeIterator")]
+    unsafe impl DOMNodeIterator {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

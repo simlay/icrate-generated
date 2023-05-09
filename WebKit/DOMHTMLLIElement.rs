@@ -11,16 +11,19 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLLIElement;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLLIElement")]
     unsafe impl ClassType for DOMHTMLLIElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMHTMLElement;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_DOMHTMLLIElement")]
 unsafe impl DOMEventTarget for DOMHTMLLIElement {}
+
+#[cfg(feature = "WebKit_DOMHTMLLIElement")]
+unsafe impl NSCopying for DOMHTMLLIElement {}
 
 #[cfg(feature = "WebKit_DOMHTMLLIElement")]
 unsafe impl NSObjectProtocol for DOMHTMLLIElement {}
@@ -41,5 +44,23 @@ extern_methods!(
 
         #[method(setValue:)]
         pub unsafe fn setValue(&self, value: c_int);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMHTMLLIElement")]
+    unsafe impl DOMHTMLLIElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMHTMLLIElement")]
+    unsafe impl DOMHTMLLIElement {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

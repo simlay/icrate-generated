@@ -10,11 +10,11 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct MXLocationActivityMetric;
 
-    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "MetricKit_MXLocationActivityMetric")]
     unsafe impl ClassType for MXLocationActivityMetric {
         #[inherits(NSObject)]
         type Super = MXMetric;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -83,5 +83,17 @@ extern_methods!(
         pub unsafe fn cumulativeThreeKilometersAccuracyTime(
             &self,
         ) -> Id<NSMeasurement<NSUnitDuration>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MetricKit_MXLocationActivityMetric")]
+    unsafe impl MXLocationActivityMetric {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

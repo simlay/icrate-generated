@@ -11,16 +11,19 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLFrameSetElement;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLFrameSetElement")]
     unsafe impl ClassType for DOMHTMLFrameSetElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMHTMLElement;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_DOMHTMLFrameSetElement")]
 unsafe impl DOMEventTarget for DOMHTMLFrameSetElement {}
+
+#[cfg(feature = "WebKit_DOMHTMLFrameSetElement")]
+unsafe impl NSCopying for DOMHTMLFrameSetElement {}
 
 #[cfg(feature = "WebKit_DOMHTMLFrameSetElement")]
 unsafe impl NSObjectProtocol for DOMHTMLFrameSetElement {}
@@ -43,5 +46,23 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method(setRows:)]
         pub unsafe fn setRows(&self, rows: Option<&NSString>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMHTMLFrameSetElement")]
+    unsafe impl DOMHTMLFrameSetElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMHTMLFrameSetElement")]
+    unsafe impl DOMHTMLFrameSetElement {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

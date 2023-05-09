@@ -11,11 +11,11 @@ extern_class!(
     #[deprecated = "Instead of iterating notifications to enumerate changed record zones, use CKDatabaseSubscription, CKFetchDatabaseChangesOperation, and CKFetchRecordZoneChangesOperation"]
     pub struct CKFetchNotificationChangesOperation;
 
-    #[deprecated = "Instead of iterating notifications to enumerate changed record zones, use CKDatabaseSubscription, CKFetchDatabaseChangesOperation, and CKFetchRecordZoneChangesOperation"]
     #[cfg(feature = "CloudKit_CKFetchNotificationChangesOperation")]
     unsafe impl ClassType for CKFetchNotificationChangesOperation {
         #[inherits(NSOperation, NSObject)]
         type Super = CKOperation;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -87,5 +87,14 @@ extern_methods!(
                 &Block<(*mut CKServerChangeToken, *mut NSError), ()>,
             >,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CloudKit_CKFetchNotificationChangesOperation")]
+    unsafe impl CKFetchNotificationChangesOperation {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

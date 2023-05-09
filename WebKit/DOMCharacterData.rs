@@ -11,16 +11,19 @@ extern_class!(
     #[deprecated]
     pub struct DOMCharacterData;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMCharacterData")]
     unsafe impl ClassType for DOMCharacterData {
         #[inherits(DOMObject, WebScriptObject, NSObject)]
         type Super = DOMNode;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_DOMCharacterData")]
 unsafe impl DOMEventTarget for DOMCharacterData {}
+
+#[cfg(feature = "WebKit_DOMCharacterData")]
+unsafe impl NSCopying for DOMCharacterData {}
 
 #[cfg(feature = "WebKit_DOMCharacterData")]
 unsafe impl NSObjectProtocol for DOMCharacterData {}
@@ -66,6 +69,24 @@ extern_methods!(
             length: c_uint,
             data: Option<&NSString>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMCharacterData")]
+    unsafe impl DOMCharacterData {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMCharacterData")]
+    unsafe impl DOMCharacterData {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

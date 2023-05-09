@@ -13,12 +13,16 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKMapSnapshotOptions;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKMapSnapshotOptions")]
     unsafe impl ClassType for MKMapSnapshotOptions {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "MapKit_MKMapSnapshotOptions")]
+#[cfg(not(any(target_os = "watchos")))]
+unsafe impl NSCopying for MKMapSnapshotOptions {}
 
 #[cfg(feature = "MapKit_MKMapSnapshotOptions")]
 #[cfg(not(any(target_os = "watchos")))]
@@ -98,5 +102,17 @@ extern_methods!(
         #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(setAppearance:)]
         pub unsafe fn setAppearance(&self, appearance: Option<&NSAppearance>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MapKit_MKMapSnapshotOptions")]
+    unsafe impl MKMapSnapshotOptions {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

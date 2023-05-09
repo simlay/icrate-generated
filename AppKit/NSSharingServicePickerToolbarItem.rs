@@ -14,8 +14,12 @@ extern_class!(
     unsafe impl ClassType for NSSharingServicePickerToolbarItem {
         #[inherits(NSObject)]
         type Super = NSToolbarItem;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "AppKit_NSSharingServicePickerToolbarItem")]
+unsafe impl NSCopying for NSSharingServicePickerToolbarItem {}
 
 #[cfg(feature = "AppKit_NSSharingServicePickerToolbarItem")]
 unsafe impl NSObjectProtocol for NSSharingServicePickerToolbarItem {}
@@ -36,6 +40,30 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSToolbarItem`
+    #[cfg(feature = "AppKit_NSSharingServicePickerToolbarItem")]
+    unsafe impl NSSharingServicePickerToolbarItem {
+        #[method_id(@__retain_semantics Init initWithItemIdentifier:)]
+        pub unsafe fn initWithItemIdentifier(
+            this: Option<Allocated<Self>>,
+            item_identifier: &NSToolbarItemIdentifier,
+        ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSSharingServicePickerToolbarItem")]
+    unsafe impl NSSharingServicePickerToolbarItem {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_protocol!(
     pub unsafe trait NSSharingServicePickerToolbarItemDelegate:
         NSSharingServicePickerDelegate
@@ -52,16 +80,4 @@ extern_protocol!(
     }
 
     unsafe impl ProtocolType for dyn NSSharingServicePickerToolbarItemDelegate {}
-);
-
-extern_methods!(
-    /// Methods declared on superclass `NSToolbarItem`
-    #[cfg(feature = "AppKit_NSSharingServicePickerToolbarItem")]
-    unsafe impl NSSharingServicePickerToolbarItem {
-        #[method_id(@__retain_semantics Init initWithItemIdentifier:)]
-        pub unsafe fn initWithItemIdentifier(
-            this: Option<Allocated<Self>>,
-            item_identifier: &NSToolbarItemIdentifier,
-        ) -> Id<Self>;
-    }
 );

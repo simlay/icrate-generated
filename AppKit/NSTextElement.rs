@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSTextElement")]
     unsafe impl ClassType for NSTextElement {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -60,6 +61,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSTextElement")]
+    unsafe impl NSTextElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSTextParagraph")]
@@ -69,6 +82,7 @@ extern_class!(
     unsafe impl ClassType for NSTextParagraph {
         #[inherits(NSObject)]
         type Super = NSTextElement;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -109,5 +123,17 @@ extern_methods!(
             this: Option<Allocated<Self>>,
             text_content_manager: Option<&NSTextContentManager>,
         ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSTextParagraph")]
+    unsafe impl NSTextParagraph {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

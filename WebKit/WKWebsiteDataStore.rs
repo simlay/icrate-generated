@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(feature = "WebKit_WKWebsiteDataStore")]
     unsafe impl ClassType for WKWebsiteDataStore {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -90,5 +91,14 @@ extern_methods!(
         #[cfg(feature = "WebKit_WKHTTPCookieStore")]
         #[method_id(@__retain_semantics Other httpCookieStore)]
         pub unsafe fn httpCookieStore(&self) -> Id<WKHTTPCookieStore>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_WKWebsiteDataStore")]
+    unsafe impl WKWebsiteDataStore {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new_class() -> Id<Self>;
     }
 );

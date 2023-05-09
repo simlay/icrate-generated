@@ -13,16 +13,20 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKMapCamera;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKMapCamera")]
     unsafe impl ClassType for MKMapCamera {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "MapKit_MKMapCamera")]
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSCoding for MKMapCamera {}
+
+#[cfg(feature = "MapKit_MKMapCamera")]
+#[cfg(not(any(target_os = "watchos")))]
+unsafe impl NSCopying for MKMapCamera {}
 
 #[cfg(feature = "MapKit_MKMapCamera")]
 #[cfg(not(any(target_os = "watchos")))]
@@ -101,5 +105,17 @@ extern_methods!(
             view_size: CGSize,
             allow_pitch: bool,
         ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MapKit_MKMapCamera")]
+    unsafe impl MKMapCamera {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

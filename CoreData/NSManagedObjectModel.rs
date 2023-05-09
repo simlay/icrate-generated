@@ -12,11 +12,15 @@ extern_class!(
     #[cfg(feature = "CoreData_NSManagedObjectModel")]
     unsafe impl ClassType for NSManagedObjectModel {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "CoreData_NSManagedObjectModel")]
 unsafe impl NSCoding for NSManagedObjectModel {}
+
+#[cfg(feature = "CoreData_NSManagedObjectModel")]
+unsafe impl NSCopying for NSManagedObjectModel {}
 
 #[cfg(feature = "CoreData_NSManagedObjectModel")]
 unsafe impl NSFastEnumeration for NSManagedObjectModel {}
@@ -193,5 +197,14 @@ extern_methods!(
         ))]
         #[method_id(@__retain_semantics Other entityVersionHashesByName)]
         pub unsafe fn entityVersionHashesByName(&self) -> Id<NSDictionary<NSString, NSData>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreData_NSManagedObjectModel")]
+    unsafe impl NSManagedObjectModel {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

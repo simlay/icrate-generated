@@ -70,10 +70,10 @@ extern_class!(
     #[deprecated = "Use NSTextInputContext instead"]
     pub struct NSInputManager;
 
-    #[deprecated = "Use NSTextInputContext instead"]
     #[cfg(feature = "AppKit_NSInputManager")]
     unsafe impl ClassType for NSInputManager {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -155,5 +155,17 @@ extern_methods!(
         #[deprecated]
         #[method(wantsToDelayTextChangeNotifications)]
         pub unsafe fn wantsToDelayTextChangeNotifications(&self) -> bool;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSInputManager")]
+    unsafe impl NSInputManager {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

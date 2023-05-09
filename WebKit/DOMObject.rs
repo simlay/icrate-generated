@@ -13,13 +13,16 @@ extern_class!(
     #[deprecated]
     pub struct DOMObject;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMObject")]
     unsafe impl ClassType for DOMObject {
         #[inherits(NSObject)]
         type Super = WebScriptObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "WebKit_DOMObject")]
+unsafe impl NSCopying for DOMObject {}
 
 #[cfg(feature = "WebKit_DOMObject")]
 unsafe impl NSObjectProtocol for DOMObject {}
@@ -28,7 +31,16 @@ extern_methods!(
     #[cfg(feature = "WebKit_DOMObject")]
     unsafe impl DOMObject {
         #[method_id(@__retain_semantics Init init)]
-        pub unsafe fn init(this: Option<Allocated<Self>>) -> Option<Id<Self>>;
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMObject")]
+    unsafe impl DOMObject {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

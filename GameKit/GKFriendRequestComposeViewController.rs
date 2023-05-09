@@ -11,11 +11,11 @@ extern_class!(
     #[deprecated]
     pub struct GKFriendRequestComposeViewController;
 
-    #[deprecated]
     #[cfg(feature = "GameKit_GKFriendRequestComposeViewController")]
     unsafe impl ClassType for GKFriendRequestComposeViewController {
         #[inherits(NSResponder, NSObject)]
         type Super = NSViewController;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -40,6 +40,50 @@ unsafe impl NSUserInterfaceItemIdentification for GKFriendRequestComposeViewCont
 extern_methods!(
     #[cfg(feature = "GameKit_GKFriendRequestComposeViewController")]
     unsafe impl GKFriendRequestComposeViewController {}
+);
+
+#[cfg(not(any(target_os = "ios")))]
+extern_methods!(
+    /// Methods declared on superclass `NSViewController`
+    #[cfg(feature = "GameKit_GKFriendRequestComposeViewController")]
+    unsafe impl GKFriendRequestComposeViewController {
+        #[cfg(feature = "Foundation_NSBundle")]
+        #[cfg(not(any(target_os = "ios")))]
+        #[method_id(@__retain_semantics Init initWithNibName:bundle:)]
+        pub unsafe fn initWithNibName_bundle(
+            this: Option<Allocated<Self>>,
+            nib_name_or_nil: Option<&NSNibName>,
+            nib_bundle_or_nil: Option<&NSBundle>,
+        ) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[cfg(not(any(target_os = "ios")))]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(
+            this: Option<Allocated<Self>>,
+            coder: &NSCoder,
+        ) -> Option<Id<Self>>;
+    }
+);
+
+#[cfg(not(any(target_os = "ios")))]
+extern_methods!(
+    /// Methods declared on superclass `NSResponder`
+    #[cfg(feature = "GameKit_GKFriendRequestComposeViewController")]
+    unsafe impl GKFriendRequestComposeViewController {
+        #[cfg(not(any(target_os = "ios")))]
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameKit_GKFriendRequestComposeViewController")]
+    unsafe impl GKFriendRequestComposeViewController {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
 );
 
 extern_methods!(
@@ -94,18 +138,4 @@ extern_protocol!(
     }
 
     unsafe impl ProtocolType for dyn GKFriendRequestComposeViewControllerDelegate {}
-);
-
-extern_methods!(
-    /// Methods declared on superclass `NSViewController`
-    #[cfg(feature = "GameKit_GKFriendRequestComposeViewController")]
-    unsafe impl GKFriendRequestComposeViewController {
-        #[cfg(feature = "Foundation_NSBundle")]
-        #[method_id(@__retain_semantics Init initWithNibName:bundle:)]
-        pub unsafe fn initWithNibName_bundle(
-            this: Option<Allocated<Self>>,
-            nib_name_or_nil: Option<&NSNibName>,
-            nib_bundle_or_nil: Option<&NSBundle>,
-        ) -> Id<Self>;
-    }
 );

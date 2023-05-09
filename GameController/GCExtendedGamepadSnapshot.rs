@@ -11,11 +11,11 @@ extern_class!(
     #[deprecated = "GCExtendedGamepadSnapshot has been deprecated, use [GCController controllerWithExtendedGamepad] instead"]
     pub struct GCExtendedGamepadSnapshot;
 
-    #[deprecated = "GCExtendedGamepadSnapshot has been deprecated, use [GCController controllerWithExtendedGamepad] instead"]
     #[cfg(feature = "GameController_GCExtendedGamepadSnapshot")]
     unsafe impl ClassType for GCExtendedGamepadSnapshot {
         #[inherits(GCPhysicalInputProfile, NSObject)]
         type Super = GCExtendedGamepad;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -47,6 +47,18 @@ extern_methods!(
             controller: &GCController,
             data: &NSData,
         ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameController_GCExtendedGamepadSnapshot")]
+    unsafe impl GCExtendedGamepadSnapshot {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

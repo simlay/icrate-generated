@@ -22,6 +22,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSTask")]
     unsafe impl ClassType for NSTask {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -134,6 +135,15 @@ extern_methods!(
 
         #[method(setQualityOfService:)]
         pub unsafe fn setQualityOfService(&self, quality_of_service: NSQualityOfService);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSTask")]
+    unsafe impl NSTask {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

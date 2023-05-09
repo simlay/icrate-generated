@@ -14,6 +14,7 @@ extern_class!(
     unsafe impl ClassType for NSSegmentedCell {
         #[inherits(NSCell, NSObject)]
         type Super = NSActionCell;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -25,6 +26,9 @@ unsafe impl NSAccessibilityElementProtocol for NSSegmentedCell {}
 
 #[cfg(feature = "AppKit_NSSegmentedCell")]
 unsafe impl NSCoding for NSSegmentedCell {}
+
+#[cfg(feature = "AppKit_NSSegmentedCell")]
+unsafe impl NSCopying for NSSegmentedCell {}
 
 #[cfg(feature = "AppKit_NSSegmentedCell")]
 unsafe impl NSObjectProtocol for NSSegmentedCell {}
@@ -146,21 +150,12 @@ extern_methods!(
 );
 
 extern_methods!(
-    /// NSSegmentBackgroundStyle
-    #[cfg(feature = "AppKit_NSSegmentedCell")]
-    unsafe impl NSSegmentedCell {
-        #[method(interiorBackgroundStyleForSegment:)]
-        pub unsafe fn interiorBackgroundStyleForSegment(
-            &self,
-            segment: NSInteger,
-        ) -> NSBackgroundStyle;
-    }
-);
-
-extern_methods!(
     /// Methods declared on superclass `NSCell`
     #[cfg(feature = "AppKit_NSSegmentedCell")]
     unsafe impl NSSegmentedCell {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Init initTextCell:)]
         pub unsafe fn initTextCell(this: Option<Allocated<Self>>, string: &NSString) -> Id<Self>;
@@ -171,5 +166,30 @@ extern_methods!(
             this: Option<Allocated<Self>>,
             image: Option<&NSImage>,
         ) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(this: Option<Allocated<Self>>, coder: &NSCoder) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSSegmentedCell")]
+    unsafe impl NSSegmentedCell {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// NSSegmentBackgroundStyle
+    #[cfg(feature = "AppKit_NSSegmentedCell")]
+    unsafe impl NSSegmentedCell {
+        #[method(interiorBackgroundStyleForSegment:)]
+        pub unsafe fn interiorBackgroundStyleForSegment(
+            &self,
+            segment: NSInteger,
+        ) -> NSBackgroundStyle;
     }
 );

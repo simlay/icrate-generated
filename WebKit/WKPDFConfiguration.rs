@@ -13,8 +13,12 @@ extern_class!(
     #[cfg(feature = "WebKit_WKPDFConfiguration")]
     unsafe impl ClassType for WKPDFConfiguration {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "WebKit_WKPDFConfiguration")]
+unsafe impl NSCopying for WKPDFConfiguration {}
 
 #[cfg(feature = "WebKit_WKPDFConfiguration")]
 unsafe impl NSObjectProtocol for WKPDFConfiguration {}
@@ -27,5 +31,17 @@ extern_methods!(
 
         #[method(setRect:)]
         pub unsafe fn setRect(&self, rect: CGRect);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_WKPDFConfiguration")]
+    unsafe impl WKPDFConfiguration {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

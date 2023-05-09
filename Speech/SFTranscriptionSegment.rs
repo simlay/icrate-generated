@@ -12,11 +12,15 @@ extern_class!(
     #[cfg(feature = "Speech_SFTranscriptionSegment")]
     unsafe impl ClassType for SFTranscriptionSegment {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Speech_SFTranscriptionSegment")]
 unsafe impl NSCoding for SFTranscriptionSegment {}
+
+#[cfg(feature = "Speech_SFTranscriptionSegment")]
+unsafe impl NSCopying for SFTranscriptionSegment {}
 
 #[cfg(feature = "Speech_SFTranscriptionSegment")]
 unsafe impl NSObjectProtocol for SFTranscriptionSegment {}
@@ -51,5 +55,17 @@ extern_methods!(
         #[deprecated = "voiceAnalytics is moved to SFSpeechRecognitionMetadata"]
         #[method_id(@__retain_semantics Other voiceAnalytics)]
         pub unsafe fn voiceAnalytics(&self) -> Option<Id<SFVoiceAnalytics>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Speech_SFTranscriptionSegment")]
+    unsafe impl SFTranscriptionSegment {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

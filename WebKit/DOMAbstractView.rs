@@ -11,13 +11,16 @@ extern_class!(
     #[deprecated]
     pub struct DOMAbstractView;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMAbstractView")]
     unsafe impl ClassType for DOMAbstractView {
         #[inherits(WebScriptObject, NSObject)]
         type Super = DOMObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "WebKit_DOMAbstractView")]
+unsafe impl NSCopying for DOMAbstractView {}
 
 #[cfg(feature = "WebKit_DOMAbstractView")]
 unsafe impl NSObjectProtocol for DOMAbstractView {}
@@ -28,5 +31,23 @@ extern_methods!(
         #[cfg(feature = "WebKit_DOMDocument")]
         #[method_id(@__retain_semantics Other document)]
         pub unsafe fn document(&self) -> Option<Id<DOMDocument>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMAbstractView")]
+    unsafe impl DOMAbstractView {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMAbstractView")]
+    unsafe impl DOMAbstractView {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

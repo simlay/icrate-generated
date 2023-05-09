@@ -11,13 +11,16 @@ extern_class!(
     #[deprecated]
     pub struct DOMCSSValueList;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMCSSValueList")]
     unsafe impl ClassType for DOMCSSValueList {
         #[inherits(DOMObject, WebScriptObject, NSObject)]
         type Super = DOMCSSValue;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "WebKit_DOMCSSValueList")]
+unsafe impl NSCopying for DOMCSSValueList {}
 
 #[cfg(feature = "WebKit_DOMCSSValueList")]
 unsafe impl NSObjectProtocol for DOMCSSValueList {}
@@ -30,5 +33,23 @@ extern_methods!(
 
         #[method_id(@__retain_semantics Other item:)]
         pub unsafe fn item(&self, index: c_uint) -> Option<Id<DOMCSSValue>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMCSSValueList")]
+    unsafe impl DOMCSSValueList {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMCSSValueList")]
+    unsafe impl DOMCSSValueList {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

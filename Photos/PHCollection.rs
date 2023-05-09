@@ -15,8 +15,12 @@ extern_class!(
     unsafe impl ClassType for PHCollection {
         #[inherits(NSObject)]
         type Super = PHObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "PhotoKit_PHCollection")]
+unsafe impl NSCopying for PHCollection {}
 
 #[cfg(feature = "PhotoKit_PHCollection")]
 unsafe impl NSObjectProtocol for PHCollection {}
@@ -62,6 +66,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "PhotoKit_PHCollection")]
+    unsafe impl PHCollection {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "PhotoKit_PHAssetCollection")]
@@ -71,8 +87,12 @@ extern_class!(
     unsafe impl ClassType for PHAssetCollection {
         #[inherits(PHObject, NSObject)]
         type Super = PHCollection;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "PhotoKit_PHAssetCollection")]
+unsafe impl NSCopying for PHAssetCollection {}
 
 #[cfg(feature = "PhotoKit_PHAssetCollection")]
 unsafe impl NSObjectProtocol for PHAssetCollection {}
@@ -201,6 +221,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "PhotoKit_PHAssetCollection")]
+    unsafe impl PHAssetCollection {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "PhotoKit_PHCollectionList")]
@@ -210,8 +242,12 @@ extern_class!(
     unsafe impl ClassType for PHCollectionList {
         #[inherits(PHObject, NSObject)]
         type Super = PHCollection;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "PhotoKit_PHCollectionList")]
+unsafe impl NSCopying for PHCollectionList {}
 
 #[cfg(feature = "PhotoKit_PHCollectionList")]
 unsafe impl NSObjectProtocol for PHCollectionList {}
@@ -309,5 +345,17 @@ extern_methods!(
             fetch_result: &PHFetchResult<PHCollection>,
             title: Option<&NSString>,
         ) -> Id<PHCollectionList>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "PhotoKit_PHCollectionList")]
+    unsafe impl PHCollectionList {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

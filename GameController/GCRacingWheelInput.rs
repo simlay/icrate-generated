@@ -11,10 +11,10 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     pub struct GCRacingWheelInputState;
 
-    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     #[cfg(feature = "GameController_GCRacingWheelInputState")]
     unsafe impl ClassType for GCRacingWheelInputState {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -49,17 +49,29 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameController_GCRacingWheelInputState")]
+    unsafe impl GCRacingWheelInputState {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameController_GCRacingWheelInput")]
     #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     pub struct GCRacingWheelInput;
 
-    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     #[cfg(feature = "GameController_GCRacingWheelInput")]
     unsafe impl ClassType for GCRacingWheelInput {
         #[inherits(NSObject)]
         type Super = GCRacingWheelInputState;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -84,5 +96,17 @@ extern_methods!(
 
         #[method_id(@__retain_semantics Other nextInputState)]
         pub unsafe fn nextInputState(&self) -> Option<Id<GCRacingWheelInputState>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameController_GCRacingWheelInput")]
+    unsafe impl GCRacingWheelInput {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

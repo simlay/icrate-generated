@@ -11,11 +11,15 @@ extern_class!(
     #[cfg(feature = "Foundation_NSPersonNameComponents")]
     unsafe impl ClassType for NSPersonNameComponents {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSPersonNameComponents")]
 unsafe impl NSCoding for NSPersonNameComponents {}
+
+#[cfg(feature = "Foundation_NSPersonNameComponents")]
+unsafe impl NSCopying for NSPersonNameComponents {}
 
 #[cfg(feature = "Foundation_NSPersonNameComponents")]
 unsafe impl NSObjectProtocol for NSPersonNameComponents {}
@@ -82,5 +86,17 @@ extern_methods!(
             &self,
             phonetic_representation: Option<&NSPersonNameComponents>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSPersonNameComponents")]
+    unsafe impl NSPersonNameComponents {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

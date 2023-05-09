@@ -13,11 +13,15 @@ extern_class!(
     #[cfg(feature = "UserNotifications_UNNotificationTrigger")]
     unsafe impl ClassType for UNNotificationTrigger {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "UserNotifications_UNNotificationTrigger")]
 unsafe impl NSCoding for UNNotificationTrigger {}
+
+#[cfg(feature = "UserNotifications_UNNotificationTrigger")]
+unsafe impl NSCopying for UNNotificationTrigger {}
 
 #[cfg(feature = "UserNotifications_UNNotificationTrigger")]
 unsafe impl NSObjectProtocol for UNNotificationTrigger {}
@@ -36,6 +40,15 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "UserNotifications_UNNotificationTrigger")]
+    unsafe impl UNNotificationTrigger {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "UserNotifications_UNPushNotificationTrigger")]
@@ -45,11 +58,15 @@ extern_class!(
     unsafe impl ClassType for UNPushNotificationTrigger {
         #[inherits(NSObject)]
         type Super = UNNotificationTrigger;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "UserNotifications_UNPushNotificationTrigger")]
 unsafe impl NSCoding for UNPushNotificationTrigger {}
+
+#[cfg(feature = "UserNotifications_UNPushNotificationTrigger")]
+unsafe impl NSCopying for UNPushNotificationTrigger {}
 
 #[cfg(feature = "UserNotifications_UNPushNotificationTrigger")]
 unsafe impl NSObjectProtocol for UNPushNotificationTrigger {}
@@ -62,6 +79,24 @@ extern_methods!(
     unsafe impl UNPushNotificationTrigger {}
 );
 
+extern_methods!(
+    /// Methods declared on superclass `UNNotificationTrigger`
+    #[cfg(feature = "UserNotifications_UNPushNotificationTrigger")]
+    unsafe impl UNPushNotificationTrigger {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "UserNotifications_UNPushNotificationTrigger")]
+    unsafe impl UNPushNotificationTrigger {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "UserNotifications_UNTimeIntervalNotificationTrigger")]
@@ -71,11 +106,15 @@ extern_class!(
     unsafe impl ClassType for UNTimeIntervalNotificationTrigger {
         #[inherits(NSObject)]
         type Super = UNNotificationTrigger;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "UserNotifications_UNTimeIntervalNotificationTrigger")]
 unsafe impl NSCoding for UNTimeIntervalNotificationTrigger {}
+
+#[cfg(feature = "UserNotifications_UNTimeIntervalNotificationTrigger")]
+unsafe impl NSCopying for UNTimeIntervalNotificationTrigger {}
 
 #[cfg(feature = "UserNotifications_UNTimeIntervalNotificationTrigger")]
 unsafe impl NSObjectProtocol for UNTimeIntervalNotificationTrigger {}
@@ -101,6 +140,24 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `UNNotificationTrigger`
+    #[cfg(feature = "UserNotifications_UNTimeIntervalNotificationTrigger")]
+    unsafe impl UNTimeIntervalNotificationTrigger {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "UserNotifications_UNTimeIntervalNotificationTrigger")]
+    unsafe impl UNTimeIntervalNotificationTrigger {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "UserNotifications_UNCalendarNotificationTrigger")]
@@ -110,11 +167,15 @@ extern_class!(
     unsafe impl ClassType for UNCalendarNotificationTrigger {
         #[inherits(NSObject)]
         type Super = UNNotificationTrigger;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "UserNotifications_UNCalendarNotificationTrigger")]
 unsafe impl NSCoding for UNCalendarNotificationTrigger {}
+
+#[cfg(feature = "UserNotifications_UNCalendarNotificationTrigger")]
+unsafe impl NSCopying for UNCalendarNotificationTrigger {}
 
 #[cfg(feature = "UserNotifications_UNCalendarNotificationTrigger")]
 unsafe impl NSObjectProtocol for UNCalendarNotificationTrigger {}
@@ -142,23 +203,45 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `UNNotificationTrigger`
+    #[cfg(feature = "UserNotifications_UNCalendarNotificationTrigger")]
+    unsafe impl UNCalendarNotificationTrigger {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "UserNotifications_UNCalendarNotificationTrigger")]
+    unsafe impl UNCalendarNotificationTrigger {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "UserNotifications_UNLocationNotificationTrigger")]
     #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
     pub struct UNLocationNotificationTrigger;
 
-    #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
     #[cfg(feature = "UserNotifications_UNLocationNotificationTrigger")]
     unsafe impl ClassType for UNLocationNotificationTrigger {
         #[inherits(NSObject)]
         type Super = UNNotificationTrigger;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "UserNotifications_UNLocationNotificationTrigger")]
 #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
 unsafe impl NSCoding for UNLocationNotificationTrigger {}
+
+#[cfg(feature = "UserNotifications_UNLocationNotificationTrigger")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos")))]
+unsafe impl NSCopying for UNLocationNotificationTrigger {}
 
 #[cfg(feature = "UserNotifications_UNLocationNotificationTrigger")]
 #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
@@ -179,5 +262,23 @@ extern_methods!(
         #[cfg(feature = "CoreLocation_CLRegion")]
         #[method_id(@__retain_semantics Other triggerWithRegion:repeats:)]
         pub unsafe fn triggerWithRegion_repeats(region: &CLRegion, repeats: bool) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `UNNotificationTrigger`
+    #[cfg(feature = "UserNotifications_UNLocationNotificationTrigger")]
+    unsafe impl UNLocationNotificationTrigger {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "UserNotifications_UNLocationNotificationTrigger")]
+    unsafe impl UNLocationNotificationTrigger {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

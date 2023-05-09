@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSSpellServer")]
     unsafe impl ClassType for NSSpellServer {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -47,6 +48,18 @@ extern_methods!(
 
         #[method(run)]
         pub unsafe fn run(&self);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSSpellServer")]
+    unsafe impl NSSpellServer {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

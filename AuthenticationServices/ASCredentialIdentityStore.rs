@@ -26,10 +26,10 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct ASCredentialIdentityStore;
 
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "AuthenticationServices_ASCredentialIdentityStore")]
     unsafe impl ClassType for ASCredentialIdentityStore {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -96,5 +96,14 @@ extern_methods!(
             new_credential_identities: &NSArray<ASPasswordCredentialIdentity>,
             completion: Option<&Block<(Bool, *mut NSError), ()>>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AuthenticationServices_ASCredentialIdentityStore")]
+    unsafe impl ASCredentialIdentityStore {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

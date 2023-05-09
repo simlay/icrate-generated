@@ -47,11 +47,15 @@ extern_class!(
     unsafe impl ClassType for HKClinicalType {
         #[inherits(HKObjectType, NSObject)]
         type Super = HKSampleType;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "HealthKit_HKClinicalType")]
 unsafe impl NSCoding for HKClinicalType {}
+
+#[cfg(feature = "HealthKit_HKClinicalType")]
+unsafe impl NSCopying for HKClinicalType {}
 
 #[cfg(feature = "HealthKit_HKClinicalType")]
 unsafe impl NSObjectProtocol for HKClinicalType {}
@@ -62,4 +66,22 @@ unsafe impl NSSecureCoding for HKClinicalType {}
 extern_methods!(
     #[cfg(feature = "HealthKit_HKClinicalType")]
     unsafe impl HKClinicalType {}
+);
+
+extern_methods!(
+    /// Methods declared on superclass `HKObjectType`
+    #[cfg(feature = "HealthKit_HKClinicalType")]
+    unsafe impl HKClinicalType {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "HealthKit_HKClinicalType")]
+    unsafe impl HKClinicalType {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
 );

@@ -25,11 +25,11 @@ extern_class!(
     #[deprecated = "Drawers are deprecated; consider using NSSplitViewController"]
     pub struct NSDrawer;
 
-    #[deprecated = "Drawers are deprecated; consider using NSSplitViewController"]
     #[cfg(feature = "AppKit_NSDrawer")]
     unsafe impl ClassType for NSDrawer {
         #[inherits(NSObject)]
         type Super = NSResponder;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -136,6 +136,31 @@ extern_methods!(
 
         #[method(setTrailingOffset:)]
         pub unsafe fn setTrailingOffset(&self, trailing_offset: CGFloat);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSResponder`
+    #[cfg(feature = "AppKit_NSDrawer")]
+    unsafe impl NSDrawer {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(
+            this: Option<Allocated<Self>>,
+            coder: &NSCoder,
+        ) -> Option<Id<Self>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSDrawer")]
+    unsafe impl NSDrawer {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

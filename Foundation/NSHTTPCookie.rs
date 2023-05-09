@@ -51,6 +51,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSHTTPCookie")]
     unsafe impl ClassType for NSHTTPCookie {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -147,5 +148,17 @@ extern_methods!(
 
         #[method_id(@__retain_semantics Other sameSitePolicy)]
         pub unsafe fn sameSitePolicy(&self) -> Option<Id<NSHTTPCookieStringPolicy>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSHTTPCookie")]
+    unsafe impl NSHTTPCookie {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

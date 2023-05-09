@@ -23,16 +23,20 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct CXHandle;
 
-    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "CallKit_CXHandle")]
     unsafe impl ClassType for CXHandle {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "CallKit_CXHandle")]
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSCoding for CXHandle {}
+
+#[cfg(feature = "CallKit_CXHandle")]
+#[cfg(not(any(target_os = "macos")))]
+unsafe impl NSCopying for CXHandle {}
 
 #[cfg(feature = "CallKit_CXHandle")]
 #[cfg(not(any(target_os = "macos")))]
@@ -66,5 +70,14 @@ extern_methods!(
 
         #[method(isEqualToHandle:)]
         pub unsafe fn isEqualToHandle(&self, handle: &CXHandle) -> bool;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CallKit_CXHandle")]
+    unsafe impl CXHandle {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

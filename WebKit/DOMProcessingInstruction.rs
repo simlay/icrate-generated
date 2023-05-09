@@ -11,16 +11,19 @@ extern_class!(
     #[deprecated]
     pub struct DOMProcessingInstruction;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMProcessingInstruction")]
     unsafe impl ClassType for DOMProcessingInstruction {
         #[inherits(DOMNode, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMCharacterData;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_DOMProcessingInstruction")]
 unsafe impl DOMEventTarget for DOMProcessingInstruction {}
+
+#[cfg(feature = "WebKit_DOMProcessingInstruction")]
+unsafe impl NSCopying for DOMProcessingInstruction {}
 
 #[cfg(feature = "WebKit_DOMProcessingInstruction")]
 unsafe impl NSObjectProtocol for DOMProcessingInstruction {}
@@ -35,5 +38,23 @@ extern_methods!(
         #[cfg(feature = "WebKit_DOMStyleSheet")]
         #[method_id(@__retain_semantics Other sheet)]
         pub unsafe fn sheet(&self) -> Option<Id<DOMStyleSheet>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMProcessingInstruction")]
+    unsafe impl DOMProcessingInstruction {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMProcessingInstruction")]
+    unsafe impl DOMProcessingInstruction {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

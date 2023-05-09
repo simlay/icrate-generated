@@ -19,6 +19,7 @@ extern_class!(
     #[cfg(feature = "ExternalAccessory_EAAccessory")]
     unsafe impl ClassType for EAAccessory {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -75,6 +76,18 @@ extern_methods!(
             &self,
             delegate: Option<&ProtocolObject<dyn EAAccessoryDelegate>>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "ExternalAccessory_EAAccessory")]
+    unsafe impl EAAccessory {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

@@ -11,10 +11,10 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     pub struct GCSteeringWheelElement;
 
-    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     #[cfg(feature = "GameController_GCSteeringWheelElement")]
     unsafe impl ClassType for GCSteeringWheelElement {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -39,5 +39,14 @@ extern_methods!(
 
         #[method(maximumDegreesOfRotation)]
         pub unsafe fn maximumDegreesOfRotation(&self) -> c_float;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameController_GCSteeringWheelElement")]
+    unsafe impl GCSteeringWheelElement {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -11,16 +11,19 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLFieldSetElement;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLFieldSetElement")]
     unsafe impl ClassType for DOMHTMLFieldSetElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMHTMLElement;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_DOMHTMLFieldSetElement")]
 unsafe impl DOMEventTarget for DOMHTMLFieldSetElement {}
+
+#[cfg(feature = "WebKit_DOMHTMLFieldSetElement")]
+unsafe impl NSCopying for DOMHTMLFieldSetElement {}
 
 #[cfg(feature = "WebKit_DOMHTMLFieldSetElement")]
 unsafe impl NSObjectProtocol for DOMHTMLFieldSetElement {}
@@ -31,5 +34,23 @@ extern_methods!(
         #[cfg(feature = "WebKit_DOMHTMLFormElement")]
         #[method_id(@__retain_semantics Other form)]
         pub unsafe fn form(&self) -> Option<Id<DOMHTMLFormElement>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMHTMLFieldSetElement")]
+    unsafe impl DOMHTMLFieldSetElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMHTMLFieldSetElement")]
+    unsafe impl DOMHTMLFieldSetElement {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

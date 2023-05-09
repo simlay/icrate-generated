@@ -12,11 +12,10 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct MPPlayableContentManager;
 
-    #[deprecated = "Use CarPlay framework"]
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPPlayableContentManager")]
     unsafe impl ClassType for MPPlayableContentManager {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -74,5 +73,17 @@ extern_methods!(
 
         #[method(endUpdates)]
         pub unsafe fn endUpdates(&self);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MediaPlayer_MPPlayableContentManager")]
+    unsafe impl MPPlayableContentManager {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -16,6 +16,7 @@ extern_class!(
     unsafe impl ClassType for EKReminder {
         #[inherits(EKObject, NSObject)]
         type Super = EKCalendarItem;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -67,5 +68,17 @@ extern_methods!(
 
         #[method(setPriority:)]
         pub unsafe fn setPriority(&self, priority: NSUInteger);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "EventKit_EKReminder")]
+    unsafe impl EKReminder {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

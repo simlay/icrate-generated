@@ -42,6 +42,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSGraphicsContext")]
     unsafe impl ClassType for NSGraphicsContext {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -102,6 +103,18 @@ extern_methods!(
 
         #[method(isFlipped)]
         pub unsafe fn isFlipped(&self) -> bool;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSGraphicsContext")]
+    unsafe impl NSGraphicsContext {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

@@ -22,11 +22,15 @@ extern_class!(
     unsafe impl ClassType for NSEnergyFormatter {
         #[inherits(NSObject)]
         type Super = NSFormatter;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSEnergyFormatter")]
 unsafe impl NSCoding for NSEnergyFormatter {}
+
+#[cfg(feature = "Foundation_NSEnergyFormatter")]
+unsafe impl NSCopying for NSEnergyFormatter {}
 
 #[cfg(feature = "Foundation_NSEnergyFormatter")]
 unsafe impl NSObjectProtocol for NSEnergyFormatter {}
@@ -90,5 +94,17 @@ extern_methods!(
             string: &NSString,
             error: Option<&mut Option<Id<NSString>>>,
         ) -> bool;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSEnergyFormatter")]
+    unsafe impl NSEnergyFormatter {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

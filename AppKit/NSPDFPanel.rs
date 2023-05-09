@@ -22,6 +22,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSPDFPanel")]
     unsafe impl ClassType for NSPDFPanel {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -67,5 +68,17 @@ extern_methods!(
             doc_window: Option<&NSWindow>,
             completion_handler: &Block<(NSInteger,), ()>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSPDFPanel")]
+    unsafe impl NSPDFPanel {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -25,6 +25,7 @@ extern_class!(
     unsafe impl ClassType for CAShapeLayer {
         #[inherits(NSObject)]
         type Super = CALayer;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -101,6 +102,30 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `CALayer`
+    #[cfg(feature = "CoreAnimation_CAShapeLayer")]
+    unsafe impl CAShapeLayer {
+        #[method_id(@__retain_semantics Other layer)]
+        pub unsafe fn layer() -> Id<Self>;
+
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics Init initWithLayer:)]
+        pub unsafe fn initWithLayer(this: Option<Allocated<Self>>, layer: &Object) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreAnimation_CAShapeLayer")]
+    unsafe impl CAShapeLayer {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_static!(kCAFillRuleNonZero: &'static CAShapeLayerFillRule);
 
 extern_static!(kCAFillRuleEvenOdd: &'static CAShapeLayerFillRule);
@@ -116,15 +141,3 @@ extern_static!(kCALineCapButt: &'static CAShapeLayerLineCap);
 extern_static!(kCALineCapRound: &'static CAShapeLayerLineCap);
 
 extern_static!(kCALineCapSquare: &'static CAShapeLayerLineCap);
-
-extern_methods!(
-    /// Methods declared on superclass `CALayer`
-    #[cfg(feature = "CoreAnimation_CAShapeLayer")]
-    unsafe impl CAShapeLayer {
-        #[method_id(@__retain_semantics Other layer)]
-        pub unsafe fn layer() -> Id<Self>;
-
-        #[method_id(@__retain_semantics Init initWithLayer:)]
-        pub unsafe fn initWithLayer(this: Option<Allocated<Self>>, layer: &Object) -> Id<Self>;
-    }
-);

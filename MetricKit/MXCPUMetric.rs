@@ -10,11 +10,11 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct MXCPUMetric;
 
-    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "MetricKit_MXCPUMetric")]
     unsafe impl ClassType for MXCPUMetric {
         #[inherits(NSObject)]
         type Super = MXMetric;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -45,5 +45,17 @@ extern_methods!(
         #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics Other cumulativeCPUInstructions)]
         pub unsafe fn cumulativeCPUInstructions(&self) -> Id<NSMeasurement<NSUnit>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MetricKit_MXCPUMetric")]
+    unsafe impl MXCPUMetric {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

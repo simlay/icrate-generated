@@ -15,11 +15,15 @@ extern_class!(
     #[cfg(feature = "Foundation_NSNotification")]
     unsafe impl ClassType for NSNotification {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSNotification")]
 unsafe impl NSCoding for NSNotification {}
+
+#[cfg(feature = "Foundation_NSNotification")]
+unsafe impl NSCopying for NSNotification {}
 
 #[cfg(feature = "Foundation_NSNotification")]
 unsafe impl NSObjectProtocol for NSNotification {}
@@ -72,9 +76,6 @@ extern_methods!(
             an_object: Option<&Object>,
             a_user_info: Option<&NSDictionary>,
         ) -> Id<Self>;
-
-        #[method_id(@__retain_semantics Init init)]
-        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
     }
 );
 
@@ -86,6 +87,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSNotificationCenter")]
     unsafe impl ClassType for NSNotificationCenter {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -150,5 +152,17 @@ extern_methods!(
             queue: Option<&NSOperationQueue>,
             block: &Block<(NonNull<NSNotification>,), ()>,
         ) -> Id<NSObject>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSNotificationCenter")]
+    unsafe impl NSNotificationCenter {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

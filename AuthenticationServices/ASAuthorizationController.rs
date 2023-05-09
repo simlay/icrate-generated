@@ -77,6 +77,7 @@ extern_class!(
     #[cfg(feature = "AuthenticationServices_ASAuthorizationController")]
     unsafe impl ClassType for ASAuthorizationController {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 

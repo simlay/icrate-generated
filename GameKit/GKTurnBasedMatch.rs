@@ -52,6 +52,7 @@ extern_class!(
     #[cfg(feature = "GameKit_GKTurnBasedParticipant")]
     unsafe impl ClassType for GKTurnBasedParticipant {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -81,6 +82,18 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSDate")]
         #[method_id(@__retain_semantics Other timeoutDate)]
         pub unsafe fn timeoutDate(&self) -> Option<Id<NSDate>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameKit_GKTurnBasedParticipant")]
+    unsafe impl GKTurnBasedParticipant {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 
@@ -202,6 +215,7 @@ extern_class!(
     #[cfg(feature = "GameKit_GKTurnBasedMatch")]
     unsafe impl ClassType for GKTurnBasedMatch {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -504,6 +518,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameKit_GKTurnBasedMatch")]
+    unsafe impl GKTurnBasedMatch {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 ns_enum!(
     #[underlying(i8)]
     pub enum GKTurnBasedExchangeStatus {
@@ -527,6 +553,7 @@ extern_class!(
     #[cfg(feature = "GameKit_GKTurnBasedExchange")]
     unsafe impl ClassType for GKTurnBasedExchange {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -611,6 +638,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameKit_GKTurnBasedExchange")]
+    unsafe impl GKTurnBasedExchange {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameKit_GKTurnBasedExchangeReply")]
@@ -619,6 +658,7 @@ extern_class!(
     #[cfg(feature = "GameKit_GKTurnBasedExchangeReply")]
     unsafe impl ClassType for GKTurnBasedExchangeReply {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -643,6 +683,18 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSDate")]
         #[method_id(@__retain_semantics Other replyDate)]
         pub unsafe fn replyDate(&self) -> Option<Id<NSDate>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameKit_GKTurnBasedExchangeReply")]
+    unsafe impl GKTurnBasedExchangeReply {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 
@@ -684,10 +736,10 @@ extern_class!(
     #[deprecated = "Use registerListener on GKLocalPlayer with an object that implements the GKTurnBasedEventListener protocol"]
     pub struct GKTurnBasedEventHandler;
 
-    #[deprecated = "Use registerListener on GKLocalPlayer with an object that implements the GKTurnBasedEventListener protocol"]
     #[cfg(feature = "GameKit_GKTurnBasedEventHandler")]
     unsafe impl ClassType for GKTurnBasedEventHandler {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -708,5 +760,17 @@ extern_methods!(
         #[deprecated]
         #[method(setDelegate:)]
         pub unsafe fn setDelegate(&self, delegate: Option<&NSObject>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameKit_GKTurnBasedEventHandler")]
+    unsafe impl GKTurnBasedEventHandler {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

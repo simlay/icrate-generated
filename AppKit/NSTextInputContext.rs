@@ -15,6 +15,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSTextInputContext")]
     unsafe impl ClassType for NSTextInputContext {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -93,6 +94,15 @@ extern_methods!(
         pub unsafe fn localizedNameForInputSource(
             input_source_identifier: &NSTextInputSourceIdentifier,
         ) -> Option<Id<NSString>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSTextInputContext")]
+    unsafe impl NSTextInputContext {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

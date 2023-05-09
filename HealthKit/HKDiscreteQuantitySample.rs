@@ -15,6 +15,7 @@ extern_class!(
     unsafe impl ClassType for HKDiscreteQuantitySample {
         #[inherits(HKSample, HKObject, NSObject)]
         type Super = HKQuantitySample;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -51,20 +52,6 @@ extern_methods!(
         pub unsafe fn mostRecentQuantityDateInterval(&self) -> Id<NSDateInterval>;
     }
 );
-
-extern_static!(HKPredicateKeyPathMin: &'static NSString);
-
-extern_static!(HKPredicateKeyPathAverage: &'static NSString);
-
-extern_static!(HKPredicateKeyPathMax: &'static NSString);
-
-extern_static!(HKPredicateKeyPathMostRecent: &'static NSString);
-
-extern_static!(HKPredicateKeyPathMostRecentStartDate: &'static NSString);
-
-extern_static!(HKPredicateKeyPathMostRecentEndDate: &'static NSString);
-
-extern_static!(HKPredicateKeyPathMostRecentDuration: &'static NSString);
 
 extern_methods!(
     /// Methods declared on superclass `HKQuantitySample`
@@ -118,3 +105,35 @@ extern_methods!(
         ) -> Id<Self>;
     }
 );
+
+extern_methods!(
+    /// Methods declared on superclass `HKObject`
+    #[cfg(feature = "HealthKit_HKDiscreteQuantitySample")]
+    unsafe impl HKDiscreteQuantitySample {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "HealthKit_HKDiscreteQuantitySample")]
+    unsafe impl HKDiscreteQuantitySample {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
+extern_static!(HKPredicateKeyPathMin: &'static NSString);
+
+extern_static!(HKPredicateKeyPathAverage: &'static NSString);
+
+extern_static!(HKPredicateKeyPathMax: &'static NSString);
+
+extern_static!(HKPredicateKeyPathMostRecent: &'static NSString);
+
+extern_static!(HKPredicateKeyPathMostRecentStartDate: &'static NSString);
+
+extern_static!(HKPredicateKeyPathMostRecentEndDate: &'static NSString);
+
+extern_static!(HKPredicateKeyPathMostRecentDuration: &'static NSString);

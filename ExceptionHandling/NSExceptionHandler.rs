@@ -49,6 +49,7 @@ extern_class!(
     #[cfg(feature = "ExceptionHandling_NSExceptionHandler")]
     unsafe impl ClassType for NSExceptionHandler {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -78,5 +79,17 @@ extern_methods!(
 
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(&self) -> Option<Id<Object>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "ExceptionHandling_NSExceptionHandler")]
+    unsafe impl NSExceptionHandler {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

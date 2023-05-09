@@ -25,10 +25,10 @@ extern_class!(
     #[deprecated]
     pub struct WebPreferences;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_WebPreferences")]
     unsafe impl ClassType for WebPreferences {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -252,5 +252,17 @@ extern_methods!(
             &self,
             allows_air_play_for_media_playback: bool,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_WebPreferences")]
+    unsafe impl WebPreferences {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

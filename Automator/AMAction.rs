@@ -24,6 +24,7 @@ extern_class!(
     #[cfg(feature = "Automator_AMAction")]
     unsafe impl ClassType for AMAction {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -148,5 +149,17 @@ extern_methods!(
 
         #[method(isStopped)]
         pub unsafe fn isStopped(&self) -> bool;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Automator_AMAction")]
+    unsafe impl AMAction {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

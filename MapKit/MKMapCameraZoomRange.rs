@@ -16,16 +16,20 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKMapCameraZoomRange;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKMapCameraZoomRange")]
     unsafe impl ClassType for MKMapCameraZoomRange {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "MapKit_MKMapCameraZoomRange")]
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSCoding for MKMapCameraZoomRange {}
+
+#[cfg(feature = "MapKit_MKMapCameraZoomRange")]
+#[cfg(not(any(target_os = "watchos")))]
+unsafe impl NSCopying for MKMapCameraZoomRange {}
 
 #[cfg(feature = "MapKit_MKMapCameraZoomRange")]
 #[cfg(not(any(target_os = "watchos")))]
@@ -63,5 +67,17 @@ extern_methods!(
 
         #[method(maxCenterCoordinateDistance)]
         pub unsafe fn maxCenterCoordinateDistance(&self) -> CLLocationDistance;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MapKit_MKMapCameraZoomRange")]
+    unsafe impl MKMapCameraZoomRange {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

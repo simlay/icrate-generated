@@ -39,10 +39,10 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKLocalSearchCompleter;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKLocalSearchCompleter")]
     unsafe impl ClassType for MKLocalSearchCompleter {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -125,6 +125,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MapKit_MKLocalSearchCompleter")]
+    unsafe impl MKLocalSearchCompleter {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 #[cfg(not(any(target_os = "watchos")))]
 extern_protocol!(
     pub unsafe trait MKLocalSearchCompleterDelegate: NSObjectProtocol {
@@ -155,10 +167,10 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKLocalSearchCompletion;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKLocalSearchCompletion")]
     unsafe impl ClassType for MKLocalSearchCompletion {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -185,6 +197,18 @@ extern_methods!(
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSValue"))]
         #[method_id(@__retain_semantics Other subtitleHighlightRanges)]
         pub unsafe fn subtitleHighlightRanges(&self) -> Id<NSArray<NSValue>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MapKit_MKLocalSearchCompletion")]
+    unsafe impl MKLocalSearchCompletion {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

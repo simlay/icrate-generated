@@ -10,17 +10,21 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct CXSetMutedCallAction;
 
-    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "CallKit_CXSetMutedCallAction")]
     unsafe impl ClassType for CXSetMutedCallAction {
         #[inherits(CXAction, NSObject)]
         type Super = CXCallAction;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "CallKit_CXSetMutedCallAction")]
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSCoding for CXSetMutedCallAction {}
+
+#[cfg(feature = "CallKit_CXSetMutedCallAction")]
+#[cfg(not(any(target_os = "macos")))]
+unsafe impl NSCopying for CXSetMutedCallAction {}
 
 #[cfg(feature = "CallKit_CXSetMutedCallAction")]
 #[cfg(not(any(target_os = "macos")))]
@@ -61,5 +65,24 @@ extern_methods!(
 
         #[method(setMuted:)]
         pub unsafe fn setMuted(&self, muted: bool);
+    }
+);
+
+#[cfg(not(any(target_os = "macos")))]
+extern_methods!(
+    /// Methods declared on superclass `CXCallAction`
+    #[cfg(feature = "CallKit_CXSetMutedCallAction")]
+    unsafe impl CXSetMutedCallAction {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CallKit_CXSetMutedCallAction")]
+    unsafe impl CXSetMutedCallAction {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

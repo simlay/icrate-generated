@@ -11,10 +11,10 @@ extern_class!(
     #[deprecated = "Use MCSession from the MultipeerConnectivity framework instead"]
     pub struct GKSession;
 
-    #[deprecated = "Use MCSession from the MultipeerConnectivity framework instead"]
     #[cfg(feature = "GameKit_GKSession")]
     unsafe impl ClassType for GKSession {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -112,5 +112,17 @@ extern_methods!(
             &self,
             state: GKPeerConnectionState,
         ) -> Option<Id<NSArray>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameKit_GKSession")]
+    unsafe impl GKSession {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

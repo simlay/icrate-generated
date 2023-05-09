@@ -17,6 +17,7 @@ extern_class!(
     unsafe impl ClassType for GKPlayer {
         #[inherits(NSObject)]
         type Super = GKBasePlayer;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -61,6 +62,18 @@ extern_methods!(
         #[cfg(not(any(target_os = "watchos")))]
         #[method(isInvitable)]
         pub unsafe fn isInvitable(&self) -> bool;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameKit_GKPlayer")]
+    unsafe impl GKPlayer {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

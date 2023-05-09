@@ -14,6 +14,7 @@ extern_class!(
     unsafe impl ClassType for NSSecureTextField {
         #[inherits(NSControl, NSView, NSResponder, NSObject)]
         type Super = NSTextField;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -58,6 +59,40 @@ extern_methods!(
     unsafe impl NSSecureTextField {}
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSControl`
+    #[cfg(feature = "AppKit_NSSecureTextField")]
+    unsafe impl NSSecureTextField {
+        #[method_id(@__retain_semantics Init initWithFrame:)]
+        pub unsafe fn initWithFrame(this: Option<Allocated<Self>>, frame_rect: NSRect) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(
+            this: Option<Allocated<Self>>,
+            coder: &NSCoder,
+        ) -> Option<Id<Self>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSResponder`
+    #[cfg(feature = "AppKit_NSSecureTextField")]
+    unsafe impl NSSecureTextField {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSSecureTextField")]
+    unsafe impl NSSecureTextField {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSSecureTextFieldCell")]
@@ -67,6 +102,7 @@ extern_class!(
     unsafe impl ClassType for NSSecureTextFieldCell {
         #[inherits(NSActionCell, NSCell, NSObject)]
         type Super = NSTextFieldCell;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -78,6 +114,9 @@ unsafe impl NSAccessibilityElementProtocol for NSSecureTextFieldCell {}
 
 #[cfg(feature = "AppKit_NSSecureTextFieldCell")]
 unsafe impl NSCoding for NSSecureTextFieldCell {}
+
+#[cfg(feature = "AppKit_NSSecureTextFieldCell")]
+unsafe impl NSCopying for NSSecureTextFieldCell {}
 
 #[cfg(feature = "AppKit_NSSecureTextFieldCell")]
 unsafe impl NSObjectProtocol for NSSecureTextFieldCell {}
@@ -97,41 +136,6 @@ extern_methods!(
 );
 
 extern_methods!(
-    /// Methods declared on superclass `NSTextField`
-    ///
-    /// NSTextFieldConvenience
-    #[cfg(feature = "AppKit_NSSecureTextField")]
-    unsafe impl NSSecureTextField {
-        #[cfg(feature = "Foundation_NSString")]
-        #[method_id(@__retain_semantics Other labelWithString:)]
-        pub unsafe fn labelWithString(string_value: &NSString) -> Id<Self>;
-
-        #[cfg(feature = "Foundation_NSString")]
-        #[method_id(@__retain_semantics Other wrappingLabelWithString:)]
-        pub unsafe fn wrappingLabelWithString(string_value: &NSString) -> Id<Self>;
-
-        #[cfg(feature = "Foundation_NSAttributedString")]
-        #[method_id(@__retain_semantics Other labelWithAttributedString:)]
-        pub unsafe fn labelWithAttributedString(
-            attributed_string_value: &NSAttributedString,
-        ) -> Id<Self>;
-
-        #[cfg(feature = "Foundation_NSString")]
-        #[method_id(@__retain_semantics Other textFieldWithString:)]
-        pub unsafe fn textFieldWithString(string_value: &NSString) -> Id<Self>;
-    }
-);
-
-extern_methods!(
-    /// Methods declared on superclass `NSControl`
-    #[cfg(feature = "AppKit_NSSecureTextField")]
-    unsafe impl NSSecureTextField {
-        #[method_id(@__retain_semantics Init initWithFrame:)]
-        pub unsafe fn initWithFrame(this: Option<Allocated<Self>>, frame_rect: NSRect) -> Id<Self>;
-    }
-);
-
-extern_methods!(
     /// Methods declared on superclass `NSTextFieldCell`
     #[cfg(feature = "AppKit_NSSecureTextFieldCell")]
     unsafe impl NSSecureTextFieldCell {
@@ -139,11 +143,33 @@ extern_methods!(
         #[method_id(@__retain_semantics Init initTextCell:)]
         pub unsafe fn initTextCell(this: Option<Allocated<Self>>, string: &NSString) -> Id<Self>;
 
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(this: Option<Allocated<Self>>, coder: &NSCoder) -> Id<Self>;
+
         #[cfg(feature = "AppKit_NSImage")]
         #[method_id(@__retain_semantics Init initImageCell:)]
         pub unsafe fn initImageCell(
             this: Option<Allocated<Self>>,
             image: Option<&NSImage>,
         ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSCell`
+    #[cfg(feature = "AppKit_NSSecureTextFieldCell")]
+    unsafe impl NSSecureTextFieldCell {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSSecureTextFieldCell")]
+    unsafe impl NSSecureTextFieldCell {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -15,6 +15,7 @@ extern_class!(
     unsafe impl ClassType for HKDocumentQuery {
         #[inherits(NSObject)]
         type Super = HKQuery;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -63,5 +64,23 @@ extern_methods!(
                 (),
             >,
         ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `HKQuery`
+    #[cfg(feature = "HealthKit_HKDocumentQuery")]
+    unsafe impl HKDocumentQuery {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "HealthKit_HKDocumentQuery")]
+    unsafe impl HKDocumentQuery {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

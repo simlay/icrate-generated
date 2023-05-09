@@ -12,8 +12,12 @@ extern_class!(
     unsafe impl ClassType for NSXMLElement {
         #[inherits(NSObject)]
         type Super = NSXMLNode;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Foundation_NSXMLElement")]
+unsafe impl NSCopying for NSXMLElement {}
 
 #[cfg(feature = "Foundation_NSXMLElement")]
 unsafe impl NSObjectProtocol for NSXMLElement {}
@@ -161,6 +165,27 @@ extern_methods!(
 );
 
 extern_methods!(
+    /// Methods declared on superclass `NSXMLNode`
+    #[cfg(feature = "Foundation_NSXMLElement")]
+    unsafe impl NSXMLElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics Init initWithKind:)]
+        pub unsafe fn initWithKind(this: Option<Allocated<Self>>, kind: NSXMLNodeKind) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSXMLElement")]
+    unsafe impl NSXMLElement {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
+extern_methods!(
     /// NSDeprecated
     #[cfg(feature = "Foundation_NSXMLElement")]
     unsafe impl NSXMLElement {
@@ -168,14 +193,5 @@ extern_methods!(
         #[deprecated]
         #[method(setAttributesAsDictionary:)]
         pub unsafe fn setAttributesAsDictionary(&self, attributes: &NSDictionary);
-    }
-);
-
-extern_methods!(
-    /// Methods declared on superclass `NSXMLNode`
-    #[cfg(feature = "Foundation_NSXMLElement")]
-    unsafe impl NSXMLElement {
-        #[method_id(@__retain_semantics Init initWithKind:)]
-        pub unsafe fn initWithKind(this: Option<Allocated<Self>>, kind: NSXMLNodeKind) -> Id<Self>;
     }
 );

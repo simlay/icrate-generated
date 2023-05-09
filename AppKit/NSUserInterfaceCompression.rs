@@ -13,11 +13,15 @@ extern_class!(
     #[cfg(feature = "AppKit_NSUserInterfaceCompressionOptions")]
     unsafe impl ClassType for NSUserInterfaceCompressionOptions {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "AppKit_NSUserInterfaceCompressionOptions")]
 unsafe impl NSCoding for NSUserInterfaceCompressionOptions {}
+
+#[cfg(feature = "AppKit_NSUserInterfaceCompressionOptions")]
+unsafe impl NSCopying for NSUserInterfaceCompressionOptions {}
 
 #[cfg(feature = "AppKit_NSUserInterfaceCompressionOptions")]
 unsafe impl NSObjectProtocol for NSUserInterfaceCompressionOptions {}
@@ -82,6 +86,15 @@ extern_methods!(
 
         #[method_id(@__retain_semantics Other standardOptions)]
         pub unsafe fn standardOptions() -> Id<NSUserInterfaceCompressionOptions>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSUserInterfaceCompressionOptions")]
+    unsafe impl NSUserInterfaceCompressionOptions {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

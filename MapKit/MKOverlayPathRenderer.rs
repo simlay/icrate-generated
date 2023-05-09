@@ -13,11 +13,11 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKOverlayPathRenderer;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKOverlayPathRenderer")]
     unsafe impl ClassType for MKOverlayPathRenderer {
         #[inherits(NSObject)]
         type Super = MKOverlayRenderer;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -97,5 +97,17 @@ extern_methods!(
             this: Option<Allocated<Self>>,
             overlay: &ProtocolObject<dyn MKOverlay>,
         ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MapKit_MKOverlayPathRenderer")]
+    unsafe impl MKOverlayPathRenderer {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

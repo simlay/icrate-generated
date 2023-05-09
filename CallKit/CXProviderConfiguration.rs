@@ -12,8 +12,12 @@ extern_class!(
     #[cfg(feature = "CallKit_CXProviderConfiguration")]
     unsafe impl ClassType for CXProviderConfiguration {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "CallKit_CXProviderConfiguration")]
+unsafe impl NSCopying for CXProviderConfiguration {}
 
 #[cfg(feature = "CallKit_CXProviderConfiguration")]
 unsafe impl NSObjectProtocol for CXProviderConfiguration {}
@@ -86,5 +90,14 @@ extern_methods!(
             this: Option<Allocated<Self>>,
             localized_name: &NSString,
         ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CallKit_CXProviderConfiguration")]
+    unsafe impl CXProviderConfiguration {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

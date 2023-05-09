@@ -11,13 +11,16 @@ extern_class!(
     #[deprecated]
     pub struct DOMCSSUnknownRule;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMCSSUnknownRule")]
     unsafe impl ClassType for DOMCSSUnknownRule {
         #[inherits(DOMObject, WebScriptObject, NSObject)]
         type Super = DOMCSSRule;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "WebKit_DOMCSSUnknownRule")]
+unsafe impl NSCopying for DOMCSSUnknownRule {}
 
 #[cfg(feature = "WebKit_DOMCSSUnknownRule")]
 unsafe impl NSObjectProtocol for DOMCSSUnknownRule {}
@@ -25,4 +28,22 @@ unsafe impl NSObjectProtocol for DOMCSSUnknownRule {}
 extern_methods!(
     #[cfg(feature = "WebKit_DOMCSSUnknownRule")]
     unsafe impl DOMCSSUnknownRule {}
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMCSSUnknownRule")]
+    unsafe impl DOMCSSUnknownRule {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMCSSUnknownRule")]
+    unsafe impl DOMCSSUnknownRule {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
 );

@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSAnimationContext")]
     unsafe impl ClassType for NSAnimationContext {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -57,5 +58,17 @@ extern_methods!(
 
         #[method(setAllowsImplicitAnimation:)]
         pub unsafe fn setAllowsImplicitAnimation(&self, allows_implicit_animation: bool);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSAnimationContext")]
+    unsafe impl NSAnimationContext {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

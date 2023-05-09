@@ -16,6 +16,7 @@ extern_class!(
     unsafe impl ClassType for NSSplitViewController {
         #[inherits(NSResponder, NSObject)]
         type Super = NSViewController;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -147,15 +148,6 @@ extern_methods!(
 );
 
 extern_methods!(
-    /// NSSplitViewControllerToggleSidebarAction
-    #[cfg(feature = "AppKit_NSSplitViewController")]
-    unsafe impl NSSplitViewController {
-        #[method(toggleSidebar:)]
-        pub unsafe fn toggleSidebar(&self, sender: Option<&Object>);
-    }
-);
-
-extern_methods!(
     /// Methods declared on superclass `NSViewController`
     #[cfg(feature = "AppKit_NSSplitViewController")]
     unsafe impl NSSplitViewController {
@@ -166,5 +158,39 @@ extern_methods!(
             nib_name_or_nil: Option<&NSNibName>,
             nib_bundle_or_nil: Option<&NSBundle>,
         ) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(
+            this: Option<Allocated<Self>>,
+            coder: &NSCoder,
+        ) -> Option<Id<Self>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSResponder`
+    #[cfg(feature = "AppKit_NSSplitViewController")]
+    unsafe impl NSSplitViewController {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSSplitViewController")]
+    unsafe impl NSSplitViewController {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// NSSplitViewControllerToggleSidebarAction
+    #[cfg(feature = "AppKit_NSSplitViewController")]
+    unsafe impl NSSplitViewController {
+        #[method(toggleSidebar:)]
+        pub unsafe fn toggleSidebar(&self, sender: Option<&Object>);
     }
 );

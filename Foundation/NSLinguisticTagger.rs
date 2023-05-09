@@ -114,10 +114,10 @@ extern_class!(
     #[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
     pub struct NSLinguisticTagger;
 
-    #[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
     #[cfg(feature = "Foundation_NSLinguisticTagger")]
     unsafe impl ClassType for NSLinguisticTagger {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -340,6 +340,18 @@ extern_methods!(
             sentence_range: NSRangePointer,
             scores: Option<&mut Option<Id<NSArray<NSValue>>>>,
         ) -> Option<Id<NSArray<NSString>>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSLinguisticTagger")]
+    unsafe impl NSLinguisticTagger {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

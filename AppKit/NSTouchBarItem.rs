@@ -27,6 +27,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSTouchBarItem")]
     unsafe impl ClassType for NSTouchBarItem {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -78,6 +79,15 @@ extern_methods!(
 
         #[method(isVisible)]
         pub unsafe fn isVisible(&self) -> bool;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSTouchBarItem")]
+    unsafe impl NSTouchBarItem {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

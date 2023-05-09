@@ -28,6 +28,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSAlert")]
     unsafe impl ClassType for NSAlert {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -132,6 +133,18 @@ extern_methods!(
         #[cfg(feature = "AppKit_NSWindow")]
         #[method_id(@__retain_semantics Other window)]
         pub unsafe fn window(&self) -> Id<NSWindow>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSAlert")]
+    unsafe impl NSAlert {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

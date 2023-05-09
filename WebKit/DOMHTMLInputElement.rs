@@ -11,16 +11,19 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLInputElement;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLInputElement")]
     unsafe impl ClassType for DOMHTMLInputElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMHTMLElement;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_DOMHTMLInputElement")]
 unsafe impl DOMEventTarget for DOMHTMLInputElement {}
+
+#[cfg(feature = "WebKit_DOMHTMLInputElement")]
+unsafe impl NSCopying for DOMHTMLInputElement {}
 
 #[cfg(feature = "WebKit_DOMHTMLInputElement")]
 unsafe impl NSObjectProtocol for DOMHTMLInputElement {}
@@ -209,5 +212,23 @@ extern_methods!(
 
         #[method(click)]
         pub unsafe fn click(&self);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMHTMLInputElement")]
+    unsafe impl DOMHTMLInputElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMHTMLInputElement")]
+    unsafe impl DOMHTMLInputElement {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

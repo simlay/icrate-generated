@@ -71,10 +71,10 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct SKOverlay;
 
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "StoreKit_SKOverlay")]
     unsafe impl ClassType for SKOverlay {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 

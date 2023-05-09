@@ -33,8 +33,12 @@ extern_class!(
     #[cfg(feature = "Metal_MTLAccelerationStructureDescriptor")]
     unsafe impl ClassType for MTLAccelerationStructureDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLAccelerationStructureDescriptor")]
+unsafe impl NSCopying for MTLAccelerationStructureDescriptor {}
 
 #[cfg(feature = "Metal_MTLAccelerationStructureDescriptor")]
 unsafe impl NSObjectProtocol for MTLAccelerationStructureDescriptor {}
@@ -50,6 +54,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLAccelerationStructureDescriptor")]
+    unsafe impl MTLAccelerationStructureDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLAccelerationStructureGeometryDescriptor")]
@@ -58,8 +74,12 @@ extern_class!(
     #[cfg(feature = "Metal_MTLAccelerationStructureGeometryDescriptor")]
     unsafe impl ClassType for MTLAccelerationStructureGeometryDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLAccelerationStructureGeometryDescriptor")]
+unsafe impl NSCopying for MTLAccelerationStructureGeometryDescriptor {}
 
 #[cfg(feature = "Metal_MTLAccelerationStructureGeometryDescriptor")]
 unsafe impl NSObjectProtocol for MTLAccelerationStructureGeometryDescriptor {}
@@ -128,6 +148,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLAccelerationStructureGeometryDescriptor")]
+    unsafe impl MTLAccelerationStructureGeometryDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 ns_enum!(
     #[underlying(u32)]
     pub enum MTLMotionBorderMode {
@@ -145,8 +177,12 @@ extern_class!(
     unsafe impl ClassType for MTLPrimitiveAccelerationStructureDescriptor {
         #[inherits(NSObject)]
         type Super = MTLAccelerationStructureDescriptor;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLPrimitiveAccelerationStructureDescriptor")]
+unsafe impl NSCopying for MTLPrimitiveAccelerationStructureDescriptor {}
 
 #[cfg(feature = "Metal_MTLPrimitiveAccelerationStructureDescriptor")]
 unsafe impl NSObjectProtocol for MTLPrimitiveAccelerationStructureDescriptor {}
@@ -211,6 +247,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLPrimitiveAccelerationStructureDescriptor")]
+    unsafe impl MTLPrimitiveAccelerationStructureDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLAccelerationStructureTriangleGeometryDescriptor")]
@@ -220,8 +268,12 @@ extern_class!(
     unsafe impl ClassType for MTLAccelerationStructureTriangleGeometryDescriptor {
         #[inherits(NSObject)]
         type Super = MTLAccelerationStructureGeometryDescriptor;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLAccelerationStructureTriangleGeometryDescriptor")]
+unsafe impl NSCopying for MTLAccelerationStructureTriangleGeometryDescriptor {}
 
 #[cfg(feature = "Metal_MTLAccelerationStructureTriangleGeometryDescriptor")]
 unsafe impl NSObjectProtocol for MTLAccelerationStructureTriangleGeometryDescriptor {}
@@ -302,6 +354,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLAccelerationStructureTriangleGeometryDescriptor")]
+    unsafe impl MTLAccelerationStructureTriangleGeometryDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLAccelerationStructureBoundingBoxGeometryDescriptor")]
@@ -311,8 +375,12 @@ extern_class!(
     unsafe impl ClassType for MTLAccelerationStructureBoundingBoxGeometryDescriptor {
         #[inherits(NSObject)]
         type Super = MTLAccelerationStructureGeometryDescriptor;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLAccelerationStructureBoundingBoxGeometryDescriptor")]
+unsafe impl NSCopying for MTLAccelerationStructureBoundingBoxGeometryDescriptor {}
 
 #[cfg(feature = "Metal_MTLAccelerationStructureBoundingBoxGeometryDescriptor")]
 unsafe impl NSObjectProtocol for MTLAccelerationStructureBoundingBoxGeometryDescriptor {}
@@ -352,6 +420,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLAccelerationStructureBoundingBoxGeometryDescriptor")]
+    unsafe impl MTLAccelerationStructureBoundingBoxGeometryDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLMotionKeyframeData")]
@@ -360,6 +440,7 @@ extern_class!(
     #[cfg(feature = "Metal_MTLMotionKeyframeData")]
     unsafe impl ClassType for MTLMotionKeyframeData {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -386,6 +467,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLMotionKeyframeData")]
+    unsafe impl MTLMotionKeyframeData {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLAccelerationStructureMotionTriangleGeometryDescriptor")]
@@ -395,8 +488,12 @@ extern_class!(
     unsafe impl ClassType for MTLAccelerationStructureMotionTriangleGeometryDescriptor {
         #[inherits(NSObject)]
         type Super = MTLAccelerationStructureGeometryDescriptor;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLAccelerationStructureMotionTriangleGeometryDescriptor")]
+unsafe impl NSCopying for MTLAccelerationStructureMotionTriangleGeometryDescriptor {}
 
 #[cfg(feature = "Metal_MTLAccelerationStructureMotionTriangleGeometryDescriptor")]
 unsafe impl NSObjectProtocol for MTLAccelerationStructureMotionTriangleGeometryDescriptor {}
@@ -479,6 +576,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLAccelerationStructureMotionTriangleGeometryDescriptor")]
+    unsafe impl MTLAccelerationStructureMotionTriangleGeometryDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLAccelerationStructureMotionBoundingBoxGeometryDescriptor")]
@@ -488,8 +597,12 @@ extern_class!(
     unsafe impl ClassType for MTLAccelerationStructureMotionBoundingBoxGeometryDescriptor {
         #[inherits(NSObject)]
         type Super = MTLAccelerationStructureGeometryDescriptor;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLAccelerationStructureMotionBoundingBoxGeometryDescriptor")]
+unsafe impl NSCopying for MTLAccelerationStructureMotionBoundingBoxGeometryDescriptor {}
 
 #[cfg(feature = "Metal_MTLAccelerationStructureMotionBoundingBoxGeometryDescriptor")]
 unsafe impl NSObjectProtocol for MTLAccelerationStructureMotionBoundingBoxGeometryDescriptor {}
@@ -528,6 +641,18 @@ extern_methods!(
 
         #[method_id(@__retain_semantics Other descriptor)]
         pub unsafe fn descriptor() -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLAccelerationStructureMotionBoundingBoxGeometryDescriptor")]
+    unsafe impl MTLAccelerationStructureMotionBoundingBoxGeometryDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 
@@ -589,8 +714,12 @@ extern_class!(
     unsafe impl ClassType for MTLInstanceAccelerationStructureDescriptor {
         #[inherits(NSObject)]
         type Super = MTLAccelerationStructureDescriptor;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLInstanceAccelerationStructureDescriptor")]
+unsafe impl NSCopying for MTLInstanceAccelerationStructureDescriptor {}
 
 #[cfg(feature = "Metal_MTLInstanceAccelerationStructureDescriptor")]
 unsafe impl NSObjectProtocol for MTLInstanceAccelerationStructureDescriptor {}
@@ -680,6 +809,18 @@ extern_methods!(
 
         #[method_id(@__retain_semantics Other descriptor)]
         pub fn descriptor() -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLInstanceAccelerationStructureDescriptor")]
+    unsafe impl MTLInstanceAccelerationStructureDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

@@ -25,10 +25,10 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct SKAdNetwork;
 
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "StoreKit_SKAdNetwork")]
     unsafe impl ClassType for SKAdNetwork {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -92,6 +92,18 @@ extern_methods!(
             lock_window: bool,
             completion: Option<&Block<(*mut NSError,), ()>>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "StoreKit_SKAdNetwork")]
+    unsafe impl SKAdNetwork {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

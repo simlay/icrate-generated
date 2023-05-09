@@ -13,10 +13,10 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct MKLookAroundSceneRequest;
 
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKLookAroundSceneRequest")]
     unsafe impl ClassType for MKLookAroundSceneRequest {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 

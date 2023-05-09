@@ -14,6 +14,7 @@ extern_class!(
     unsafe impl ClassType for CKAcceptSharesOperation {
         #[inherits(NSOperation, NSObject)]
         type Super = CKOperation;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -74,5 +75,14 @@ extern_methods!(
             &self,
             accept_shares_completion_block: Option<&Block<(*mut NSError,), ()>>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CloudKit_CKAcceptSharesOperation")]
+    unsafe impl CKAcceptSharesOperation {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -29,11 +29,18 @@ extern_class!(
     #[cfg(feature = "UserNotifications_UNNotificationContent")]
     unsafe impl ClassType for UNNotificationContent {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "UserNotifications_UNNotificationContent")]
 unsafe impl NSCoding for UNNotificationContent {}
+
+#[cfg(feature = "UserNotifications_UNNotificationContent")]
+unsafe impl NSCopying for UNNotificationContent {}
+
+#[cfg(feature = "UserNotifications_UNNotificationContent")]
+unsafe impl NSMutableCopying for UNNotificationContent {}
 
 #[cfg(feature = "UserNotifications_UNNotificationContent")]
 unsafe impl NSObjectProtocol for UNNotificationContent {}
@@ -129,6 +136,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "UserNotifications_UNNotificationContent")]
+    unsafe impl UNNotificationContent {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "UserNotifications_UNMutableNotificationContent")]
@@ -138,11 +157,18 @@ extern_class!(
     unsafe impl ClassType for UNMutableNotificationContent {
         #[inherits(NSObject)]
         type Super = UNNotificationContent;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "UserNotifications_UNMutableNotificationContent")]
 unsafe impl NSCoding for UNMutableNotificationContent {}
+
+#[cfg(feature = "UserNotifications_UNMutableNotificationContent")]
+unsafe impl NSCopying for UNMutableNotificationContent {}
+
+#[cfg(feature = "UserNotifications_UNMutableNotificationContent")]
+unsafe impl NSMutableCopying for UNMutableNotificationContent {}
 
 #[cfg(feature = "UserNotifications_UNMutableNotificationContent")]
 unsafe impl NSObjectProtocol for UNMutableNotificationContent {}
@@ -308,5 +334,17 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method(setFilterCriteria:)]
         pub unsafe fn setFilterCriteria(&self, filter_criteria: Option<&NSString>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "UserNotifications_UNMutableNotificationContent")]
+    unsafe impl UNMutableNotificationContent {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

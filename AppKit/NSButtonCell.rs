@@ -49,6 +49,7 @@ extern_class!(
     unsafe impl ClassType for NSButtonCell {
         #[inherits(NSCell, NSObject)]
         type Super = NSActionCell;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -60,6 +61,9 @@ unsafe impl NSAccessibilityElementProtocol for NSButtonCell {}
 
 #[cfg(feature = "AppKit_NSButtonCell")]
 unsafe impl NSCoding for NSButtonCell {}
+
+#[cfg(feature = "AppKit_NSButtonCell")]
+unsafe impl NSCopying for NSButtonCell {}
 
 #[cfg(feature = "AppKit_NSButtonCell")]
 unsafe impl NSObjectProtocol for NSButtonCell {}
@@ -260,6 +264,24 @@ extern_methods!(
             frame: NSRect,
             control_view: &NSView,
         ) -> NSRect;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSCell`
+    #[cfg(feature = "AppKit_NSButtonCell")]
+    unsafe impl NSButtonCell {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSButtonCell")]
+    unsafe impl NSButtonCell {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

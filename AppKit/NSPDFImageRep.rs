@@ -14,11 +14,15 @@ extern_class!(
     unsafe impl ClassType for NSPDFImageRep {
         #[inherits(NSObject)]
         type Super = NSImageRep;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "AppKit_NSPDFImageRep")]
 unsafe impl NSCoding for NSPDFImageRep {}
+
+#[cfg(feature = "AppKit_NSPDFImageRep")]
+unsafe impl NSCopying for NSPDFImageRep {}
 
 #[cfg(feature = "AppKit_NSPDFImageRep")]
 unsafe impl NSObjectProtocol for NSPDFImageRep {}
@@ -52,5 +56,30 @@ extern_methods!(
 
         #[method(pageCount)]
         pub unsafe fn pageCount(&self) -> NSInteger;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSImageRep`
+    #[cfg(feature = "AppKit_NSPDFImageRep")]
+    unsafe impl NSPDFImageRep {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(
+            this: Option<Allocated<Self>>,
+            coder: &NSCoder,
+        ) -> Option<Id<Self>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSPDFImageRep")]
+    unsafe impl NSPDFImageRep {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

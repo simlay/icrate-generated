@@ -26,6 +26,7 @@ extern_class!(
     #[cfg(feature = "FileProvider_NSFileProviderItemVersion")]
     unsafe impl ClassType for NSFileProviderItemVersion {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -54,6 +55,18 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSData")]
         #[method_id(@__retain_semantics Other metadataVersion)]
         pub unsafe fn metadataVersion(&self) -> Id<NSData>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "FileProvider_NSFileProviderItemVersion")]
+    unsafe impl NSFileProviderItemVersion {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

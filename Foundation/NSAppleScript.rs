@@ -26,8 +26,12 @@ extern_class!(
     #[cfg(feature = "Foundation_NSAppleScript")]
     unsafe impl ClassType for NSAppleScript {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Foundation_NSAppleScript")]
+unsafe impl NSCopying for NSAppleScript {}
 
 #[cfg(feature = "Foundation_NSAppleScript")]
 unsafe impl NSObjectProtocol for NSAppleScript {}
@@ -90,5 +94,17 @@ extern_methods!(
             event: &NSAppleEventDescriptor,
             error_info: Option<&mut Option<Id<NSDictionary<NSString, Object>>>>,
         ) -> Id<NSAppleEventDescriptor>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSAppleScript")]
+    unsafe impl NSAppleScript {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

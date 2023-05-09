@@ -14,6 +14,7 @@ extern_class!(
     unsafe impl ClassType for NSObjectController {
         #[inherits(NSObject)]
         type Super = NSController;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -105,6 +106,24 @@ extern_methods!(
             &self,
             item: &ProtocolObject<dyn NSValidatedUserInterfaceItem>,
         ) -> bool;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSController`
+    #[cfg(feature = "AppKit_NSObjectController")]
+    unsafe impl NSObjectController {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSObjectController")]
+    unsafe impl NSObjectController {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

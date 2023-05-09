@@ -13,8 +13,12 @@ extern_class!(
     unsafe impl ClassType for NSPersistentHistoryChangeRequest {
         #[inherits(NSObject)]
         type Super = NSPersistentStoreRequest;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "CoreData_NSPersistentHistoryChangeRequest")]
+unsafe impl NSCopying for NSPersistentHistoryChangeRequest {}
 
 #[cfg(feature = "CoreData_NSPersistentHistoryChangeRequest")]
 unsafe impl NSObjectProtocol for NSPersistentHistoryChangeRequest {}
@@ -73,5 +77,17 @@ extern_methods!(
         #[cfg(feature = "CoreData_NSFetchRequest")]
         #[method(setFetchRequest:)]
         pub unsafe fn setFetchRequest(&self, fetch_request: Option<&NSFetchRequest>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreData_NSPersistentHistoryChangeRequest")]
+    unsafe impl NSPersistentHistoryChangeRequest {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

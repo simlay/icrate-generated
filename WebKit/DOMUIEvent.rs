@@ -11,13 +11,16 @@ extern_class!(
     #[deprecated]
     pub struct DOMUIEvent;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMUIEvent")]
     unsafe impl ClassType for DOMUIEvent {
         #[inherits(DOMObject, WebScriptObject, NSObject)]
         type Super = DOMEvent;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "WebKit_DOMUIEvent")]
+unsafe impl NSCopying for DOMUIEvent {}
 
 #[cfg(feature = "WebKit_DOMUIEvent")]
 unsafe impl NSObjectProtocol for DOMUIEvent {}
@@ -65,6 +68,24 @@ extern_methods!(
             view: Option<&DOMAbstractView>,
             detail: c_int,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMUIEvent")]
+    unsafe impl DOMUIEvent {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMUIEvent")]
+    unsafe impl DOMUIEvent {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

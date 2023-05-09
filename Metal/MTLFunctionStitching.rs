@@ -18,6 +18,7 @@ extern_class!(
     #[cfg(feature = "Metal_MTLFunctionStitchingAttributeAlwaysInline")]
     unsafe impl ClassType for MTLFunctionStitchingAttributeAlwaysInline {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -30,6 +31,18 @@ unsafe impl NSObjectProtocol for MTLFunctionStitchingAttributeAlwaysInline {}
 extern_methods!(
     #[cfg(feature = "Metal_MTLFunctionStitchingAttributeAlwaysInline")]
     unsafe impl MTLFunctionStitchingAttributeAlwaysInline {}
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLFunctionStitchingAttributeAlwaysInline")]
+    unsafe impl MTLFunctionStitchingAttributeAlwaysInline {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
 );
 
 extern_protocol!(
@@ -46,11 +59,15 @@ extern_class!(
     #[cfg(feature = "Metal_MTLFunctionStitchingInputNode")]
     unsafe impl ClassType for MTLFunctionStitchingInputNode {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Metal_MTLFunctionStitchingInputNode")]
 unsafe impl MTLFunctionStitchingNode for MTLFunctionStitchingInputNode {}
+
+#[cfg(feature = "Metal_MTLFunctionStitchingInputNode")]
+unsafe impl NSCopying for MTLFunctionStitchingInputNode {}
 
 #[cfg(feature = "Metal_MTLFunctionStitchingInputNode")]
 unsafe impl NSObjectProtocol for MTLFunctionStitchingInputNode {}
@@ -72,6 +89,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLFunctionStitchingInputNode")]
+    unsafe impl MTLFunctionStitchingInputNode {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLFunctionStitchingFunctionNode")]
@@ -80,11 +109,15 @@ extern_class!(
     #[cfg(feature = "Metal_MTLFunctionStitchingFunctionNode")]
     unsafe impl ClassType for MTLFunctionStitchingFunctionNode {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Metal_MTLFunctionStitchingFunctionNode")]
 unsafe impl MTLFunctionStitchingNode for MTLFunctionStitchingFunctionNode {}
+
+#[cfg(feature = "Metal_MTLFunctionStitchingFunctionNode")]
+unsafe impl NSCopying for MTLFunctionStitchingFunctionNode {}
 
 #[cfg(feature = "Metal_MTLFunctionStitchingFunctionNode")]
 unsafe impl NSObjectProtocol for MTLFunctionStitchingFunctionNode {}
@@ -134,6 +167,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLFunctionStitchingFunctionNode")]
+    unsafe impl MTLFunctionStitchingFunctionNode {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLFunctionStitchingGraph")]
@@ -142,8 +187,12 @@ extern_class!(
     #[cfg(feature = "Metal_MTLFunctionStitchingGraph")]
     unsafe impl ClassType for MTLFunctionStitchingGraph {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLFunctionStitchingGraph")]
+unsafe impl NSCopying for MTLFunctionStitchingGraph {}
 
 #[cfg(feature = "Metal_MTLFunctionStitchingGraph")]
 unsafe impl NSObjectProtocol for MTLFunctionStitchingGraph {}
@@ -210,6 +259,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLFunctionStitchingGraph")]
+    unsafe impl MTLFunctionStitchingGraph {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLStitchedLibraryDescriptor")]
@@ -218,8 +279,12 @@ extern_class!(
     #[cfg(feature = "Metal_MTLStitchedLibraryDescriptor")]
     unsafe impl ClassType for MTLStitchedLibraryDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLStitchedLibraryDescriptor")]
+unsafe impl NSCopying for MTLStitchedLibraryDescriptor {}
 
 #[cfg(feature = "Metal_MTLStitchedLibraryDescriptor")]
 unsafe impl NSObjectProtocol for MTLStitchedLibraryDescriptor {}
@@ -251,5 +316,17 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSArray")]
         #[method(setFunctions:)]
         pub unsafe fn setFunctions(&self, functions: &NSArray<ProtocolObject<dyn MTLFunction>>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLStitchedLibraryDescriptor")]
+    unsafe impl MTLStitchedLibraryDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -14,6 +14,7 @@ extern_class!(
     unsafe impl ClassType for NSTableHeaderCell {
         #[inherits(NSActionCell, NSCell, NSObject)]
         type Super = NSTextFieldCell;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -25,6 +26,9 @@ unsafe impl NSAccessibilityElementProtocol for NSTableHeaderCell {}
 
 #[cfg(feature = "AppKit_NSTableHeaderCell")]
 unsafe impl NSCoding for NSTableHeaderCell {}
+
+#[cfg(feature = "AppKit_NSTableHeaderCell")]
+unsafe impl NSCopying for NSTableHeaderCell {}
 
 #[cfg(feature = "AppKit_NSTableHeaderCell")]
 unsafe impl NSObjectProtocol for NSTableHeaderCell {}
@@ -58,11 +62,33 @@ extern_methods!(
         #[method_id(@__retain_semantics Init initTextCell:)]
         pub unsafe fn initTextCell(this: Option<Allocated<Self>>, string: &NSString) -> Id<Self>;
 
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(this: Option<Allocated<Self>>, coder: &NSCoder) -> Id<Self>;
+
         #[cfg(feature = "AppKit_NSImage")]
         #[method_id(@__retain_semantics Init initImageCell:)]
         pub unsafe fn initImageCell(
             this: Option<Allocated<Self>>,
             image: Option<&NSImage>,
         ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSCell`
+    #[cfg(feature = "AppKit_NSTableHeaderCell")]
+    unsafe impl NSTableHeaderCell {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSTableHeaderCell")]
+    unsafe impl NSTableHeaderCell {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

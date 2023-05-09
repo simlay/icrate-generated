@@ -11,16 +11,19 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLLabelElement;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLLabelElement")]
     unsafe impl ClassType for DOMHTMLLabelElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMHTMLElement;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_DOMHTMLLabelElement")]
 unsafe impl DOMEventTarget for DOMHTMLLabelElement {}
+
+#[cfg(feature = "WebKit_DOMHTMLLabelElement")]
+unsafe impl NSCopying for DOMHTMLLabelElement {}
 
 #[cfg(feature = "WebKit_DOMHTMLLabelElement")]
 unsafe impl NSObjectProtocol for DOMHTMLLabelElement {}
@@ -49,5 +52,23 @@ extern_methods!(
         #[deprecated]
         #[method(setAccessKey:)]
         pub unsafe fn setAccessKey(&self, access_key: Option<&NSString>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMHTMLLabelElement")]
+    unsafe impl DOMHTMLLabelElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMHTMLLabelElement")]
+    unsafe impl DOMHTMLLabelElement {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

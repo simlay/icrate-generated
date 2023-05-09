@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSPathControlItem")]
     unsafe impl ClassType for NSPathControlItem {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -49,5 +50,17 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSURL")]
         #[method_id(@__retain_semantics Other URL)]
         pub unsafe fn URL(&self) -> Option<Id<NSURL>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSPathControlItem")]
+    unsafe impl NSPathControlItem {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

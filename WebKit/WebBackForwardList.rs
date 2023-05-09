@@ -11,10 +11,10 @@ extern_class!(
     #[deprecated]
     pub struct WebBackForwardList;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_WebBackForwardList")]
     unsafe impl ClassType for WebBackForwardList {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -77,6 +77,18 @@ extern_methods!(
         #[cfg(feature = "WebKit_WebHistoryItem")]
         #[method_id(@__retain_semantics Other itemAtIndex:)]
         pub unsafe fn itemAtIndex(&self, index: c_int) -> Option<Id<WebHistoryItem>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_WebBackForwardList")]
+    unsafe impl WebBackForwardList {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

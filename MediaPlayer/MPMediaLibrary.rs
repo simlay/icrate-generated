@@ -26,10 +26,10 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct MPMediaLibrary;
 
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPMediaLibrary")]
     unsafe impl ClassType for MPMediaLibrary {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -96,6 +96,18 @@ extern_methods!(
             creation_metadata: Option<&MPMediaPlaylistCreationMetadata>,
             completion_handler: &Block<(*mut MPMediaPlaylist, *mut NSError), ()>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MediaPlayer_MPMediaLibrary")]
+    unsafe impl MPMediaLibrary {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

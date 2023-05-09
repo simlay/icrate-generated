@@ -15,6 +15,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSUndoManager")]
     unsafe impl ClassType for NSUndoManager {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -145,6 +146,18 @@ extern_methods!(
         #[method_id(@__retain_semantics Other redoMenuTitleForUndoActionName:)]
         pub unsafe fn redoMenuTitleForUndoActionName(&self, action_name: &NSString)
             -> Id<NSString>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSUndoManager")]
+    unsafe impl NSUndoManager {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

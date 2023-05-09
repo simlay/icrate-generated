@@ -23,10 +23,10 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub struct ASAuthorizationProviderExtensionLoginManager;
 
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionLoginManager")]
     unsafe impl ClassType for ASAuthorizationProviderExtensionLoginManager {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 

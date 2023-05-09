@@ -14,6 +14,7 @@ extern_class!(
     #[cfg(feature = "PhotoKit_PHChange")]
     unsafe impl ClassType for PHChange {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -45,41 +46,53 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "PhotoKit_PHChange")]
+    unsafe impl PHChange {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 __inner_extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "PhotoKit_PHObjectChangeDetails")]
-    pub struct PHObjectChangeDetails<
-        ObjectType: Message = Object,
-        ObjectTypeOwnership: Ownership = Shared,
-    > {
-        _inner0: PhantomData<*mut (ObjectType, ObjectTypeOwnership)>,
+    pub struct PHObjectChangeDetails<ObjectType: Message = Object> {
+        __superclass: NSObject,
+        _inner0: PhantomData<*mut ObjectType>,
         notunwindsafe: PhantomData<&'static mut ()>,
     }
 
     #[cfg(feature = "PhotoKit_PHObjectChangeDetails")]
-    unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> ClassType
-        for PHObjectChangeDetails<ObjectType, ObjectTypeOwnership>
-    {
+    unsafe impl<ObjectType: Message> ClassType for PHObjectChangeDetails<ObjectType> {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
+
+        fn as_super(&self) -> &Self::Super {
+            &self.__superclass
+        }
+
+        fn as_super_mut(&mut self) -> &mut Self::Super {
+            &mut self.__superclass
+        }
     }
 );
 
 #[cfg(feature = "PhotoKit_PHObjectChangeDetails")]
-unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSObjectProtocol
-    for PHObjectChangeDetails<ObjectType, ObjectTypeOwnership>
-{
-}
+unsafe impl<ObjectType: Message> NSObjectProtocol for PHObjectChangeDetails<ObjectType> {}
 
 extern_methods!(
     #[cfg(feature = "PhotoKit_PHObjectChangeDetails")]
-    unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>
-        PHObjectChangeDetails<ObjectType, ObjectTypeOwnership>
-    {
+    unsafe impl<ObjectType: Message> PHObjectChangeDetails<ObjectType> {
         #[method_id(@__retain_semantics Other objectBeforeChanges)]
-        pub unsafe fn objectBeforeChanges(&self) -> Id<ObjectType, ObjectTypeOwnership>;
+        pub unsafe fn objectBeforeChanges(&self) -> Id<ObjectType>;
 
         #[method_id(@__retain_semantics Other objectAfterChanges)]
-        pub unsafe fn objectAfterChanges(&self) -> Option<Id<ObjectType, ObjectTypeOwnership>>;
+        pub unsafe fn objectAfterChanges(&self) -> Option<Id<ObjectType>>;
 
         #[method(assetContentChanged)]
         pub unsafe fn assetContentChanged(&self) -> bool;
@@ -89,36 +102,48 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "PhotoKit_PHObjectChangeDetails")]
+    unsafe impl<ObjectType: Message> PHObjectChangeDetails<ObjectType> {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 __inner_extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "PhotoKit_PHFetchResultChangeDetails")]
-    pub struct PHFetchResultChangeDetails<
-        ObjectType: Message = Object,
-        ObjectTypeOwnership: Ownership = Shared,
-    > {
-        _inner0: PhantomData<*mut (ObjectType, ObjectTypeOwnership)>,
+    pub struct PHFetchResultChangeDetails<ObjectType: Message = Object> {
+        __superclass: NSObject,
+        _inner0: PhantomData<*mut ObjectType>,
         notunwindsafe: PhantomData<&'static mut ()>,
     }
 
     #[cfg(feature = "PhotoKit_PHFetchResultChangeDetails")]
-    unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> ClassType
-        for PHFetchResultChangeDetails<ObjectType, ObjectTypeOwnership>
-    {
+    unsafe impl<ObjectType: Message> ClassType for PHFetchResultChangeDetails<ObjectType> {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
+
+        fn as_super(&self) -> &Self::Super {
+            &self.__superclass
+        }
+
+        fn as_super_mut(&mut self) -> &mut Self::Super {
+            &mut self.__superclass
+        }
     }
 );
 
 #[cfg(feature = "PhotoKit_PHFetchResultChangeDetails")]
-unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSObjectProtocol
-    for PHFetchResultChangeDetails<ObjectType, ObjectTypeOwnership>
-{
-}
+unsafe impl<ObjectType: Message> NSObjectProtocol for PHFetchResultChangeDetails<ObjectType> {}
 
 extern_methods!(
     #[cfg(feature = "PhotoKit_PHFetchResultChangeDetails")]
-    unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>
-        PHFetchResultChangeDetails<ObjectType, ObjectTypeOwnership>
-    {
+    unsafe impl<ObjectType: Message> PHFetchResultChangeDetails<ObjectType> {
         #[cfg(feature = "PhotoKit_PHFetchResult")]
         #[method_id(@__retain_semantics Other fetchResultBeforeChanges)]
         pub unsafe fn fetchResultBeforeChanges(&self) -> Id<PHFetchResult<ObjectType>>;
@@ -167,5 +192,17 @@ extern_methods!(
             to_result: &PHFetchResult<ObjectType>,
             changed_objects: &NSArray<ObjectType>,
         ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "PhotoKit_PHFetchResultChangeDetails")]
+    unsafe impl<ObjectType: Message> PHFetchResultChangeDetails<ObjectType> {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

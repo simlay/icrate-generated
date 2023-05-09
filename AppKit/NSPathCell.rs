@@ -24,6 +24,7 @@ extern_class!(
     unsafe impl ClassType for NSPathCell {
         #[inherits(NSCell, NSObject)]
         type Super = NSActionCell;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -35,6 +36,9 @@ unsafe impl NSAccessibilityElementProtocol for NSPathCell {}
 
 #[cfg(feature = "AppKit_NSPathCell")]
 unsafe impl NSCoding for NSPathCell {}
+
+#[cfg(feature = "AppKit_NSPathCell")]
+unsafe impl NSCopying for NSPathCell {}
 
 #[cfg(feature = "AppKit_NSPathCell")]
 unsafe impl NSMenuItemValidation for NSPathCell {}
@@ -171,6 +175,39 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSCell`
+    #[cfg(feature = "AppKit_NSPathCell")]
+    unsafe impl NSPathCell {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSString")]
+        #[method_id(@__retain_semantics Init initTextCell:)]
+        pub unsafe fn initTextCell(this: Option<Allocated<Self>>, string: &NSString) -> Id<Self>;
+
+        #[cfg(feature = "AppKit_NSImage")]
+        #[method_id(@__retain_semantics Init initImageCell:)]
+        pub unsafe fn initImageCell(
+            this: Option<Allocated<Self>>,
+            image: Option<&NSImage>,
+        ) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(this: Option<Allocated<Self>>, coder: &NSCoder) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSPathCell")]
+    unsafe impl NSPathCell {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_protocol!(
     pub unsafe trait NSPathCellDelegate: NSObjectProtocol {
         #[cfg(all(feature = "AppKit_NSOpenPanel", feature = "AppKit_NSPathCell"))]
@@ -189,21 +226,4 @@ extern_protocol!(
     }
 
     unsafe impl ProtocolType for dyn NSPathCellDelegate {}
-);
-
-extern_methods!(
-    /// Methods declared on superclass `NSCell`
-    #[cfg(feature = "AppKit_NSPathCell")]
-    unsafe impl NSPathCell {
-        #[cfg(feature = "Foundation_NSString")]
-        #[method_id(@__retain_semantics Init initTextCell:)]
-        pub unsafe fn initTextCell(this: Option<Allocated<Self>>, string: &NSString) -> Id<Self>;
-
-        #[cfg(feature = "AppKit_NSImage")]
-        #[method_id(@__retain_semantics Init initImageCell:)]
-        pub unsafe fn initImageCell(
-            this: Option<Allocated<Self>>,
-            image: Option<&NSImage>,
-        ) -> Id<Self>;
-    }
 );

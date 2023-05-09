@@ -15,11 +15,15 @@ extern_class!(
     #[cfg(feature = "EventKit_EKRecurrenceDayOfWeek")]
     unsafe impl ClassType for EKRecurrenceDayOfWeek {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "EventKit_EKRecurrenceDayOfWeek")]
 unsafe impl NSCoding for EKRecurrenceDayOfWeek {}
+
+#[cfg(feature = "EventKit_EKRecurrenceDayOfWeek")]
+unsafe impl NSCopying for EKRecurrenceDayOfWeek {}
 
 #[cfg(feature = "EventKit_EKRecurrenceDayOfWeek")]
 unsafe impl NSObjectProtocol for EKRecurrenceDayOfWeek {}
@@ -51,5 +55,17 @@ extern_methods!(
 
         #[method(weekNumber)]
         pub unsafe fn weekNumber(&self) -> NSInteger;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "EventKit_EKRecurrenceDayOfWeek")]
+    unsafe impl EKRecurrenceDayOfWeek {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

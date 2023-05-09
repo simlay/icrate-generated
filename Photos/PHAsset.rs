@@ -15,8 +15,12 @@ extern_class!(
     unsafe impl ClassType for PHAsset {
         #[inherits(NSObject)]
         type Super = PHObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "PhotoKit_PHAsset")]
+unsafe impl NSCopying for PHAsset {}
 
 #[cfg(feature = "PhotoKit_PHAsset")]
 unsafe impl NSObjectProtocol for PHAsset {}
@@ -165,5 +169,17 @@ extern_methods!(
             asset_ur_ls: &NSArray<NSURL>,
             options: Option<&PHFetchOptions>,
         ) -> Id<PHFetchResult<PHAsset>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "PhotoKit_PHAsset")]
+    unsafe impl PHAsset {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

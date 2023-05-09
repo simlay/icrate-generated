@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSExtensionContext")]
     unsafe impl ClassType for NSExtensionContext {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -43,6 +44,18 @@ extern_methods!(
             url: &NSURL,
             completion_handler: Option<&Block<(Bool,), ()>>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSExtensionContext")]
+    unsafe impl NSExtensionContext {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

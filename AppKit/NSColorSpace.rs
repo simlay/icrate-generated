@@ -27,6 +27,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSColorSpace")]
     unsafe impl ClassType for NSColorSpace {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -113,6 +114,18 @@ extern_methods!(
         pub unsafe fn availableColorSpacesWithModel(
             model: NSColorSpaceModel,
         ) -> Id<NSArray<NSColorSpace>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSColorSpace")]
+    unsafe impl NSColorSpace {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

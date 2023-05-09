@@ -9,16 +9,19 @@ extern_class!(
     #[deprecated = "Use NSCalendar and NSDateComponents and NSDateFormatter instead"]
     pub struct NSCalendarDate;
 
-    #[deprecated = "Use NSCalendar and NSDateComponents and NSDateFormatter instead"]
     #[cfg(feature = "Foundation_NSCalendarDate")]
     unsafe impl ClassType for NSCalendarDate {
         #[inherits(NSObject)]
         type Super = NSDate;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSCalendarDate")]
 unsafe impl NSCoding for NSCalendarDate {}
+
+#[cfg(feature = "Foundation_NSCalendarDate")]
+unsafe impl NSCopying for NSCalendarDate {}
 
 #[cfg(feature = "Foundation_NSCalendarDate")]
 unsafe impl NSObjectProtocol for NSCalendarDate {}
@@ -215,6 +218,37 @@ extern_methods!(
 );
 
 extern_methods!(
+    /// Methods declared on superclass `NSDate`
+    #[cfg(feature = "Foundation_NSCalendarDate")]
+    unsafe impl NSCalendarDate {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics Init initWithTimeIntervalSinceReferenceDate:)]
+        pub unsafe fn initWithTimeIntervalSinceReferenceDate(
+            this: Option<Allocated<Self>>,
+            ti: NSTimeInterval,
+        ) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(
+            this: Option<Allocated<Self>>,
+            coder: &NSCoder,
+        ) -> Option<Id<Self>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSCalendarDate")]
+    unsafe impl NSCalendarDate {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
+extern_methods!(
     /// NSCalendarDateExtras
     #[cfg(feature = "Foundation_NSDate")]
     unsafe impl NSDate {
@@ -266,62 +300,5 @@ extern_methods!(
             this: Option<Allocated<Self>>,
             description: &NSString,
         ) -> Option<Id<Self>>;
-    }
-);
-
-extern_methods!(
-    /// Methods declared on superclass `NSDate`
-    #[cfg(feature = "Foundation_NSCalendarDate")]
-    unsafe impl NSCalendarDate {
-        #[method_id(@__retain_semantics Init initWithTimeIntervalSinceReferenceDate:)]
-        pub unsafe fn initWithTimeIntervalSinceReferenceDate(
-            this: Option<Allocated<Self>>,
-            ti: NSTimeInterval,
-        ) -> Id<Self>;
-    }
-);
-
-extern_methods!(
-    /// Methods declared on superclass `NSDate`
-    ///
-    /// NSDateCreation
-    #[cfg(feature = "Foundation_NSCalendarDate")]
-    unsafe impl NSCalendarDate {
-        #[method_id(@__retain_semantics Other date)]
-        pub unsafe fn date() -> Id<Self>;
-
-        #[method_id(@__retain_semantics Other dateWithTimeIntervalSinceNow:)]
-        pub unsafe fn dateWithTimeIntervalSinceNow(secs: NSTimeInterval) -> Id<Self>;
-
-        #[method_id(@__retain_semantics Other dateWithTimeIntervalSinceReferenceDate:)]
-        pub unsafe fn dateWithTimeIntervalSinceReferenceDate(ti: NSTimeInterval) -> Id<Self>;
-
-        #[method_id(@__retain_semantics Other dateWithTimeIntervalSince1970:)]
-        pub unsafe fn dateWithTimeIntervalSince1970(secs: NSTimeInterval) -> Id<Self>;
-
-        #[method_id(@__retain_semantics Other dateWithTimeInterval:sinceDate:)]
-        pub unsafe fn dateWithTimeInterval_sinceDate(
-            secs_to_be_added: NSTimeInterval,
-            date: &NSDate,
-        ) -> Id<Self>;
-
-        #[method_id(@__retain_semantics Init initWithTimeIntervalSinceNow:)]
-        pub unsafe fn initWithTimeIntervalSinceNow(
-            this: Option<Allocated<Self>>,
-            secs: NSTimeInterval,
-        ) -> Id<Self>;
-
-        #[method_id(@__retain_semantics Init initWithTimeIntervalSince1970:)]
-        pub unsafe fn initWithTimeIntervalSince1970(
-            this: Option<Allocated<Self>>,
-            secs: NSTimeInterval,
-        ) -> Id<Self>;
-
-        #[method_id(@__retain_semantics Init initWithTimeInterval:sinceDate:)]
-        pub unsafe fn initWithTimeInterval_sinceDate(
-            this: Option<Allocated<Self>>,
-            secs_to_be_added: NSTimeInterval,
-            date: &NSDate,
-        ) -> Id<Self>;
     }
 );

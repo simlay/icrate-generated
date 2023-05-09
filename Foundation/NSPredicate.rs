@@ -11,11 +11,15 @@ extern_class!(
     #[cfg(feature = "Foundation_NSPredicate")]
     unsafe impl ClassType for NSPredicate {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSPredicate")]
 unsafe impl NSCoding for NSPredicate {}
+
+#[cfg(feature = "Foundation_NSPredicate")]
+unsafe impl NSCopying for NSPredicate {}
 
 #[cfg(feature = "Foundation_NSPredicate")]
 unsafe impl NSObjectProtocol for NSPredicate {}
@@ -77,11 +81,21 @@ extern_methods!(
 );
 
 extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSPredicate")]
+    unsafe impl NSPredicate {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
+extern_methods!(
     /// NSPredicateSupport
     #[cfg(feature = "Foundation_NSArray")]
-    unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>
-        NSArray<ObjectType, ObjectTypeOwnership>
-    {
+    unsafe impl<ObjectType: Message> NSArray<ObjectType> {
         #[cfg(feature = "Foundation_NSPredicate")]
         #[method_id(@__retain_semantics Other filteredArrayUsingPredicate:)]
         pub unsafe fn filteredArrayUsingPredicate(
@@ -94,21 +108,17 @@ extern_methods!(
 extern_methods!(
     /// NSPredicateSupport
     #[cfg(feature = "Foundation_NSMutableArray")]
-    unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>
-        NSMutableArray<ObjectType, ObjectTypeOwnership>
-    {
+    unsafe impl<ObjectType: Message> NSMutableArray<ObjectType> {
         #[cfg(feature = "Foundation_NSPredicate")]
         #[method(filterUsingPredicate:)]
-        pub unsafe fn filterUsingPredicate(&self, predicate: &NSPredicate);
+        pub unsafe fn filterUsingPredicate(&mut self, predicate: &NSPredicate);
     }
 );
 
 extern_methods!(
     /// NSPredicateSupport
     #[cfg(feature = "Foundation_NSSet")]
-    unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>
-        NSSet<ObjectType, ObjectTypeOwnership>
-    {
+    unsafe impl<ObjectType: Message> NSSet<ObjectType> {
         #[cfg(feature = "Foundation_NSPredicate")]
         #[method_id(@__retain_semantics Other filteredSetUsingPredicate:)]
         pub unsafe fn filteredSetUsingPredicate(
@@ -121,21 +131,17 @@ extern_methods!(
 extern_methods!(
     /// NSPredicateSupport
     #[cfg(feature = "Foundation_NSMutableSet")]
-    unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>
-        NSMutableSet<ObjectType, ObjectTypeOwnership>
-    {
+    unsafe impl<ObjectType: Message> NSMutableSet<ObjectType> {
         #[cfg(feature = "Foundation_NSPredicate")]
         #[method(filterUsingPredicate:)]
-        pub unsafe fn filterUsingPredicate(&self, predicate: &NSPredicate);
+        pub unsafe fn filterUsingPredicate(&mut self, predicate: &NSPredicate);
     }
 );
 
 extern_methods!(
     /// NSPredicateSupport
     #[cfg(feature = "Foundation_NSOrderedSet")]
-    unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>
-        NSOrderedSet<ObjectType, ObjectTypeOwnership>
-    {
+    unsafe impl<ObjectType: Message> NSOrderedSet<ObjectType> {
         #[cfg(feature = "Foundation_NSPredicate")]
         #[method_id(@__retain_semantics Other filteredOrderedSetUsingPredicate:)]
         pub unsafe fn filteredOrderedSetUsingPredicate(
@@ -148,11 +154,9 @@ extern_methods!(
 extern_methods!(
     /// NSPredicateSupport
     #[cfg(feature = "Foundation_NSMutableOrderedSet")]
-    unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>
-        NSMutableOrderedSet<ObjectType, ObjectTypeOwnership>
-    {
+    unsafe impl<ObjectType: Message> NSMutableOrderedSet<ObjectType> {
         #[cfg(feature = "Foundation_NSPredicate")]
         #[method(filterUsingPredicate:)]
-        pub unsafe fn filterUsingPredicate(&self, p: &NSPredicate);
+        pub unsafe fn filterUsingPredicate(&mut self, p: &NSPredicate);
     }
 );

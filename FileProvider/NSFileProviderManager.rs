@@ -25,6 +25,7 @@ extern_class!(
     #[cfg(feature = "FileProvider_NSFileProviderManager")]
     unsafe impl ClassType for NSFileProviderManager {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -176,6 +177,15 @@ extern_methods!(
             &self,
             kind: &NSProgressFileOperationKind,
         ) -> Id<NSProgress>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "FileProvider_NSFileProviderManager")]
+    unsafe impl NSFileProviderManager {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

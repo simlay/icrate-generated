@@ -10,17 +10,21 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct CXSetHeldCallAction;
 
-    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "CallKit_CXSetHeldCallAction")]
     unsafe impl ClassType for CXSetHeldCallAction {
         #[inherits(CXAction, NSObject)]
         type Super = CXCallAction;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "CallKit_CXSetHeldCallAction")]
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSCoding for CXSetHeldCallAction {}
+
+#[cfg(feature = "CallKit_CXSetHeldCallAction")]
+#[cfg(not(any(target_os = "macos")))]
+unsafe impl NSCopying for CXSetHeldCallAction {}
 
 #[cfg(feature = "CallKit_CXSetHeldCallAction")]
 #[cfg(not(any(target_os = "macos")))]
@@ -61,5 +65,24 @@ extern_methods!(
 
         #[method(setOnHold:)]
         pub unsafe fn setOnHold(&self, on_hold: bool);
+    }
+);
+
+#[cfg(not(any(target_os = "macos")))]
+extern_methods!(
+    /// Methods declared on superclass `CXCallAction`
+    #[cfg(feature = "CallKit_CXSetHeldCallAction")]
+    unsafe impl CXSetHeldCallAction {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CallKit_CXSetHeldCallAction")]
+    unsafe impl CXSetHeldCallAction {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

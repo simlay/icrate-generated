@@ -14,11 +14,15 @@ extern_class!(
     #[cfg(feature = "HealthKit_HKActivitySummary")]
     unsafe impl ClassType for HKActivitySummary {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "HealthKit_HKActivitySummary")]
 unsafe impl NSCoding for HKActivitySummary {}
+
+#[cfg(feature = "HealthKit_HKActivitySummary")]
+unsafe impl NSCopying for HKActivitySummary {}
 
 #[cfg(feature = "HealthKit_HKActivitySummary")]
 unsafe impl NSObjectProtocol for HKActivitySummary {}
@@ -128,6 +132,18 @@ extern_methods!(
         #[cfg(feature = "HealthKit_HKQuantity")]
         #[method(setStandHoursGoal:)]
         pub unsafe fn setStandHoursGoal(&self, stand_hours_goal: Option<&HKQuantity>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "HealthKit_HKActivitySummary")]
+    unsafe impl HKActivitySummary {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

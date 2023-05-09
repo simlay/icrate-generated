@@ -154,10 +154,10 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct CXProvider;
 
-    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "CallKit_CXProvider")]
     unsafe impl ClassType for CXProvider {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 

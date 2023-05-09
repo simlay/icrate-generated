@@ -14,6 +14,7 @@ extern_class!(
     unsafe impl ClassType for CKFetchShareParticipantsOperation {
         #[inherits(NSOperation, NSObject)]
         type Super = CKOperation;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -119,5 +120,14 @@ extern_methods!(
             &self,
             fetch_share_participants_completion_block: Option<&Block<(*mut NSError,), ()>>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CloudKit_CKFetchShareParticipantsOperation")]
+    unsafe impl CKFetchShareParticipantsOperation {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

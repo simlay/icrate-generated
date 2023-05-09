@@ -14,6 +14,7 @@ extern_class!(
     #[cfg(feature = "HealthKit_HKHealthStore")]
     unsafe impl ClassType for HKHealthStore {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -222,6 +223,18 @@ extern_methods!(
         pub unsafe fn activityMoveModeWithError(
             &self,
         ) -> Result<Id<HKActivityMoveModeObject>, Id<NSError>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "HealthKit_HKHealthStore")]
+    unsafe impl HKHealthStore {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

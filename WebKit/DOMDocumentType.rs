@@ -11,16 +11,19 @@ extern_class!(
     #[deprecated]
     pub struct DOMDocumentType;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMDocumentType")]
     unsafe impl ClassType for DOMDocumentType {
         #[inherits(DOMObject, WebScriptObject, NSObject)]
         type Super = DOMNode;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_DOMDocumentType")]
 unsafe impl DOMEventTarget for DOMDocumentType {}
+
+#[cfg(feature = "WebKit_DOMDocumentType")]
+unsafe impl NSCopying for DOMDocumentType {}
 
 #[cfg(feature = "WebKit_DOMDocumentType")]
 unsafe impl NSObjectProtocol for DOMDocumentType {}
@@ -51,5 +54,23 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other internalSubset)]
         pub unsafe fn internalSubset(&self) -> Id<NSString>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMDocumentType")]
+    unsafe impl DOMDocumentType {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMDocumentType")]
+    unsafe impl DOMDocumentType {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

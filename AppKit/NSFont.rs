@@ -15,11 +15,15 @@ extern_class!(
     #[cfg(feature = "AppKit_NSFont")]
     unsafe impl ClassType for NSFont {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "AppKit_NSFont")]
 unsafe impl NSCoding for NSFont {}
+
+#[cfg(feature = "AppKit_NSFont")]
+unsafe impl NSCopying for NSFont {}
 
 #[cfg(feature = "AppKit_NSFont")]
 unsafe impl NSObjectProtocol for NSFont {}
@@ -224,6 +228,18 @@ extern_methods!(
 
         #[method(isVertical)]
         pub unsafe fn isVertical(&self) -> bool;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSFont")]
+    unsafe impl NSFont {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

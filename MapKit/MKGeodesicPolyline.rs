@@ -13,11 +13,11 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKGeodesicPolyline;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKGeodesicPolyline")]
     unsafe impl ClassType for MKGeodesicPolyline {
         #[inherits(MKMultiPoint, MKShape, NSObject)]
         type Super = MKPolyline;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -48,5 +48,17 @@ extern_methods!(
             coords: NonNull<CLLocationCoordinate2D>,
             count: NSUInteger,
         ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MapKit_MKGeodesicPolyline")]
+    unsafe impl MKGeodesicPolyline {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

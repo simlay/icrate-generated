@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(feature = "WebKit_WKScriptMessage")]
     unsafe impl ClassType for WKScriptMessage {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -40,5 +41,17 @@ extern_methods!(
         #[cfg(feature = "WebKit_WKContentWorld")]
         #[method_id(@__retain_semantics Other world)]
         pub unsafe fn world(&self) -> Id<WKContentWorld>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_WKScriptMessage")]
+    unsafe impl WKScriptMessage {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

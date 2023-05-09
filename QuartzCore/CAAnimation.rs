@@ -28,6 +28,7 @@ extern_class!(
     #[cfg(feature = "CoreAnimation_CAAnimation")]
     unsafe impl ClassType for CAAnimation {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -39,6 +40,9 @@ unsafe impl CAMediaTiming for CAAnimation {}
 
 #[cfg(feature = "CoreAnimation_CAAnimation")]
 unsafe impl NSCoding for CAAnimation {}
+
+#[cfg(feature = "CoreAnimation_CAAnimation")]
+unsafe impl NSCopying for CAAnimation {}
 
 #[cfg(feature = "CoreAnimation_CAAnimation")]
 unsafe impl NSObjectProtocol for CAAnimation {}
@@ -94,6 +98,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreAnimation_CAAnimation")]
+    unsafe impl CAAnimation {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_protocol!(
     pub unsafe trait CAAnimationDelegate: NSObjectProtocol {
         #[cfg(feature = "CoreAnimation_CAAnimation")]
@@ -119,6 +135,7 @@ extern_class!(
     unsafe impl ClassType for CAPropertyAnimation {
         #[inherits(NSObject)]
         type Super = CAAnimation;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -130,6 +147,9 @@ unsafe impl CAMediaTiming for CAPropertyAnimation {}
 
 #[cfg(feature = "CoreAnimation_CAPropertyAnimation")]
 unsafe impl NSCoding for CAPropertyAnimation {}
+
+#[cfg(feature = "CoreAnimation_CAPropertyAnimation")]
+unsafe impl NSCopying for CAPropertyAnimation {}
 
 #[cfg(feature = "CoreAnimation_CAPropertyAnimation")]
 unsafe impl NSObjectProtocol for CAPropertyAnimation {}
@@ -174,6 +194,27 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `CAAnimation`
+    #[cfg(feature = "CoreAnimation_CAPropertyAnimation")]
+    unsafe impl CAPropertyAnimation {
+        #[method_id(@__retain_semantics Other animation)]
+        pub unsafe fn animation() -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreAnimation_CAPropertyAnimation")]
+    unsafe impl CAPropertyAnimation {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreAnimation_CABasicAnimation")]
@@ -183,6 +224,7 @@ extern_class!(
     unsafe impl ClassType for CABasicAnimation {
         #[inherits(CAAnimation, NSObject)]
         type Super = CAPropertyAnimation;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -194,6 +236,9 @@ unsafe impl CAMediaTiming for CABasicAnimation {}
 
 #[cfg(feature = "CoreAnimation_CABasicAnimation")]
 unsafe impl NSCoding for CABasicAnimation {}
+
+#[cfg(feature = "CoreAnimation_CABasicAnimation")]
+unsafe impl NSCopying for CABasicAnimation {}
 
 #[cfg(feature = "CoreAnimation_CABasicAnimation")]
 unsafe impl NSObjectProtocol for CABasicAnimation {}
@@ -224,6 +269,37 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `CAPropertyAnimation`
+    #[cfg(feature = "CoreAnimation_CABasicAnimation")]
+    unsafe impl CABasicAnimation {
+        #[cfg(feature = "Foundation_NSString")]
+        #[method_id(@__retain_semantics Other animationWithKeyPath:)]
+        pub unsafe fn animationWithKeyPath(path: Option<&NSString>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `CAAnimation`
+    #[cfg(feature = "CoreAnimation_CABasicAnimation")]
+    unsafe impl CABasicAnimation {
+        #[method_id(@__retain_semantics Other animation)]
+        pub unsafe fn animation() -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreAnimation_CABasicAnimation")]
+    unsafe impl CABasicAnimation {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreAnimation_CAKeyframeAnimation")]
@@ -233,6 +309,7 @@ extern_class!(
     unsafe impl ClassType for CAKeyframeAnimation {
         #[inherits(CAAnimation, NSObject)]
         type Super = CAPropertyAnimation;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -244,6 +321,9 @@ unsafe impl CAMediaTiming for CAKeyframeAnimation {}
 
 #[cfg(feature = "CoreAnimation_CAKeyframeAnimation")]
 unsafe impl NSCoding for CAKeyframeAnimation {}
+
+#[cfg(feature = "CoreAnimation_CAKeyframeAnimation")]
+unsafe impl NSCopying for CAKeyframeAnimation {}
 
 #[cfg(feature = "CoreAnimation_CAKeyframeAnimation")]
 unsafe impl NSObjectProtocol for CAKeyframeAnimation {}
@@ -325,6 +405,37 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `CAPropertyAnimation`
+    #[cfg(feature = "CoreAnimation_CAKeyframeAnimation")]
+    unsafe impl CAKeyframeAnimation {
+        #[cfg(feature = "Foundation_NSString")]
+        #[method_id(@__retain_semantics Other animationWithKeyPath:)]
+        pub unsafe fn animationWithKeyPath(path: Option<&NSString>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `CAAnimation`
+    #[cfg(feature = "CoreAnimation_CAKeyframeAnimation")]
+    unsafe impl CAKeyframeAnimation {
+        #[method_id(@__retain_semantics Other animation)]
+        pub unsafe fn animation() -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreAnimation_CAKeyframeAnimation")]
+    unsafe impl CAKeyframeAnimation {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_static!(kCAAnimationLinear: &'static CAAnimationCalculationMode);
 
 extern_static!(kCAAnimationDiscrete: &'static CAAnimationCalculationMode);
@@ -348,6 +459,7 @@ extern_class!(
     unsafe impl ClassType for CASpringAnimation {
         #[inherits(CAPropertyAnimation, CAAnimation, NSObject)]
         type Super = CABasicAnimation;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -359,6 +471,9 @@ unsafe impl CAMediaTiming for CASpringAnimation {}
 
 #[cfg(feature = "CoreAnimation_CASpringAnimation")]
 unsafe impl NSCoding for CASpringAnimation {}
+
+#[cfg(feature = "CoreAnimation_CASpringAnimation")]
+unsafe impl NSCopying for CASpringAnimation {}
 
 #[cfg(feature = "CoreAnimation_CASpringAnimation")]
 unsafe impl NSObjectProtocol for CASpringAnimation {}
@@ -398,6 +513,37 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `CAPropertyAnimation`
+    #[cfg(feature = "CoreAnimation_CASpringAnimation")]
+    unsafe impl CASpringAnimation {
+        #[cfg(feature = "Foundation_NSString")]
+        #[method_id(@__retain_semantics Other animationWithKeyPath:)]
+        pub unsafe fn animationWithKeyPath(path: Option<&NSString>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `CAAnimation`
+    #[cfg(feature = "CoreAnimation_CASpringAnimation")]
+    unsafe impl CASpringAnimation {
+        #[method_id(@__retain_semantics Other animation)]
+        pub unsafe fn animation() -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreAnimation_CASpringAnimation")]
+    unsafe impl CASpringAnimation {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreAnimation_CATransition")]
@@ -407,6 +553,7 @@ extern_class!(
     unsafe impl ClassType for CATransition {
         #[inherits(NSObject)]
         type Super = CAAnimation;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -418,6 +565,9 @@ unsafe impl CAMediaTiming for CATransition {}
 
 #[cfg(feature = "CoreAnimation_CATransition")]
 unsafe impl NSCoding for CATransition {}
+
+#[cfg(feature = "CoreAnimation_CATransition")]
+unsafe impl NSCopying for CATransition {}
 
 #[cfg(feature = "CoreAnimation_CATransition")]
 unsafe impl NSObjectProtocol for CATransition {}
@@ -460,6 +610,27 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `CAAnimation`
+    #[cfg(feature = "CoreAnimation_CATransition")]
+    unsafe impl CATransition {
+        #[method_id(@__retain_semantics Other animation)]
+        pub unsafe fn animation() -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreAnimation_CATransition")]
+    unsafe impl CATransition {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_static!(kCATransitionFade: &'static CATransitionType);
 
 extern_static!(kCATransitionMoveIn: &'static CATransitionType);
@@ -485,6 +656,7 @@ extern_class!(
     unsafe impl ClassType for CAAnimationGroup {
         #[inherits(NSObject)]
         type Super = CAAnimation;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -496,6 +668,9 @@ unsafe impl CAMediaTiming for CAAnimationGroup {}
 
 #[cfg(feature = "CoreAnimation_CAAnimationGroup")]
 unsafe impl NSCoding for CAAnimationGroup {}
+
+#[cfg(feature = "CoreAnimation_CAAnimationGroup")]
+unsafe impl NSCopying for CAAnimationGroup {}
 
 #[cfg(feature = "CoreAnimation_CAAnimationGroup")]
 unsafe impl NSObjectProtocol for CAAnimationGroup {}
@@ -518,84 +693,21 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `CAAnimation`
-    #[cfg(feature = "CoreAnimation_CAPropertyAnimation")]
-    unsafe impl CAPropertyAnimation {
-        #[method_id(@__retain_semantics Other animation)]
-        pub unsafe fn animation() -> Id<Self>;
-    }
-);
-
-extern_methods!(
-    /// Methods declared on superclass `CAPropertyAnimation`
-    #[cfg(feature = "CoreAnimation_CABasicAnimation")]
-    unsafe impl CABasicAnimation {
-        #[cfg(feature = "Foundation_NSString")]
-        #[method_id(@__retain_semantics Other animationWithKeyPath:)]
-        pub unsafe fn animationWithKeyPath(path: Option<&NSString>) -> Id<Self>;
-    }
-);
-
-extern_methods!(
-    /// Methods declared on superclass `CAAnimation`
-    #[cfg(feature = "CoreAnimation_CABasicAnimation")]
-    unsafe impl CABasicAnimation {
-        #[method_id(@__retain_semantics Other animation)]
-        pub unsafe fn animation() -> Id<Self>;
-    }
-);
-
-extern_methods!(
-    /// Methods declared on superclass `CAPropertyAnimation`
-    #[cfg(feature = "CoreAnimation_CAKeyframeAnimation")]
-    unsafe impl CAKeyframeAnimation {
-        #[cfg(feature = "Foundation_NSString")]
-        #[method_id(@__retain_semantics Other animationWithKeyPath:)]
-        pub unsafe fn animationWithKeyPath(path: Option<&NSString>) -> Id<Self>;
-    }
-);
-
-extern_methods!(
-    /// Methods declared on superclass `CAAnimation`
-    #[cfg(feature = "CoreAnimation_CAKeyframeAnimation")]
-    unsafe impl CAKeyframeAnimation {
-        #[method_id(@__retain_semantics Other animation)]
-        pub unsafe fn animation() -> Id<Self>;
-    }
-);
-
-extern_methods!(
-    /// Methods declared on superclass `CAPropertyAnimation`
-    #[cfg(feature = "CoreAnimation_CASpringAnimation")]
-    unsafe impl CASpringAnimation {
-        #[cfg(feature = "Foundation_NSString")]
-        #[method_id(@__retain_semantics Other animationWithKeyPath:)]
-        pub unsafe fn animationWithKeyPath(path: Option<&NSString>) -> Id<Self>;
-    }
-);
-
-extern_methods!(
-    /// Methods declared on superclass `CAAnimation`
-    #[cfg(feature = "CoreAnimation_CASpringAnimation")]
-    unsafe impl CASpringAnimation {
-        #[method_id(@__retain_semantics Other animation)]
-        pub unsafe fn animation() -> Id<Self>;
-    }
-);
-
-extern_methods!(
-    /// Methods declared on superclass `CAAnimation`
-    #[cfg(feature = "CoreAnimation_CATransition")]
-    unsafe impl CATransition {
-        #[method_id(@__retain_semantics Other animation)]
-        pub unsafe fn animation() -> Id<Self>;
-    }
-);
-
-extern_methods!(
-    /// Methods declared on superclass `CAAnimation`
     #[cfg(feature = "CoreAnimation_CAAnimationGroup")]
     unsafe impl CAAnimationGroup {
         #[method_id(@__retain_semantics Other animation)]
         pub unsafe fn animation() -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreAnimation_CAAnimationGroup")]
+    unsafe impl CAAnimationGroup {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

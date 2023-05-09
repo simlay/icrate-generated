@@ -11,11 +11,15 @@ extern_class!(
     #[cfg(feature = "Foundation_NSURLResponse")]
     unsafe impl ClassType for NSURLResponse {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSURLResponse")]
 unsafe impl NSCoding for NSURLResponse {}
+
+#[cfg(feature = "Foundation_NSURLResponse")]
+unsafe impl NSCopying for NSURLResponse {}
 
 #[cfg(feature = "Foundation_NSURLResponse")]
 unsafe impl NSObjectProtocol for NSURLResponse {}
@@ -57,6 +61,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSURLResponse")]
+    unsafe impl NSURLResponse {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSHTTPURLResponse")]
@@ -66,11 +82,15 @@ extern_class!(
     unsafe impl ClassType for NSHTTPURLResponse {
         #[inherits(NSObject)]
         type Super = NSURLResponse;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSHTTPURLResponse")]
 unsafe impl NSCoding for NSHTTPURLResponse {}
+
+#[cfg(feature = "Foundation_NSHTTPURLResponse")]
+unsafe impl NSCopying for NSHTTPURLResponse {}
 
 #[cfg(feature = "Foundation_NSHTTPURLResponse")]
 unsafe impl NSObjectProtocol for NSHTTPURLResponse {}
@@ -125,5 +145,17 @@ extern_methods!(
             length: NSInteger,
             name: Option<&NSString>,
         ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSHTTPURLResponse")]
+    unsafe impl NSHTTPURLResponse {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

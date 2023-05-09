@@ -11,16 +11,19 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLPreElement;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLPreElement")]
     unsafe impl ClassType for DOMHTMLPreElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMHTMLElement;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_DOMHTMLPreElement")]
 unsafe impl DOMEventTarget for DOMHTMLPreElement {}
+
+#[cfg(feature = "WebKit_DOMHTMLPreElement")]
+unsafe impl NSCopying for DOMHTMLPreElement {}
 
 #[cfg(feature = "WebKit_DOMHTMLPreElement")]
 unsafe impl NSObjectProtocol for DOMHTMLPreElement {}
@@ -39,5 +42,23 @@ extern_methods!(
 
         #[method(setWrap:)]
         pub unsafe fn setWrap(&self, wrap: bool);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMHTMLPreElement")]
+    unsafe impl DOMHTMLPreElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMHTMLPreElement")]
+    unsafe impl DOMHTMLPreElement {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

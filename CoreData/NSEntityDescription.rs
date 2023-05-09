@@ -12,11 +12,15 @@ extern_class!(
     #[cfg(feature = "CoreData_NSEntityDescription")]
     unsafe impl ClassType for NSEntityDescription {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "CoreData_NSEntityDescription")]
 unsafe impl NSCoding for NSEntityDescription {}
+
+#[cfg(feature = "CoreData_NSEntityDescription")]
+unsafe impl NSCopying for NSEntityDescription {}
 
 #[cfg(feature = "CoreData_NSEntityDescription")]
 unsafe impl NSFastEnumeration for NSEntityDescription {}
@@ -219,5 +223,17 @@ extern_methods!(
             &self,
             core_spotlight_display_name_expression: &NSExpression,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreData_NSEntityDescription")]
+    unsafe impl NSEntityDescription {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

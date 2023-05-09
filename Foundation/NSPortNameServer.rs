@@ -9,10 +9,10 @@ extern_class!(
     #[deprecated = "Use NSXPCConnection instead"]
     pub struct NSPortNameServer;
 
-    #[deprecated = "Use NSXPCConnection instead"]
     #[cfg(feature = "Foundation_NSPortNameServer")]
     unsafe impl ClassType for NSPortNameServer {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -47,17 +47,29 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSPortNameServer")]
+    unsafe impl NSPortNameServer {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSMachBootstrapServer")]
     #[deprecated = "Use NSXPCConnection instead"]
     pub struct NSMachBootstrapServer;
 
-    #[deprecated = "Use NSXPCConnection instead"]
     #[cfg(feature = "Foundation_NSMachBootstrapServer")]
     unsafe impl ClassType for NSMachBootstrapServer {
         #[inherits(NSObject)]
         type Super = NSPortNameServer;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -92,17 +104,29 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSMachBootstrapServer")]
+    unsafe impl NSMachBootstrapServer {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSMessagePortNameServer")]
     #[deprecated = "Use NSXPCConnection instead"]
     pub struct NSMessagePortNameServer;
 
-    #[deprecated = "Use NSXPCConnection instead"]
     #[cfg(feature = "Foundation_NSMessagePortNameServer")]
     unsafe impl ClassType for NSMessagePortNameServer {
         #[inherits(NSObject)]
         type Super = NSPortNameServer;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -129,17 +153,29 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSMessagePortNameServer")]
+    unsafe impl NSMessagePortNameServer {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSSocketPortNameServer")]
     #[deprecated = "Use NSXPCConnection instead"]
     pub struct NSSocketPortNameServer;
 
-    #[deprecated = "Use NSXPCConnection instead"]
     #[cfg(feature = "Foundation_NSSocketPortNameServer")]
     unsafe impl ClassType for NSSocketPortNameServer {
         #[inherits(NSObject)]
         type Super = NSPortNameServer;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -195,5 +231,17 @@ extern_methods!(
 
         #[method(setDefaultNameServerPortNumber:)]
         pub unsafe fn setDefaultNameServerPortNumber(&self, default_name_server_port_number: u16);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSSocketPortNameServer")]
+    unsafe impl NSSocketPortNameServer {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

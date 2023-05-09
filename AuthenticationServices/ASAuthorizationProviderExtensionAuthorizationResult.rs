@@ -10,10 +10,10 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct ASAuthorizationProviderExtensionAuthorizationResult;
 
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionAuthorizationResult")]
     unsafe impl ClassType for ASAuthorizationProviderExtensionAuthorizationResult {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -79,5 +79,17 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSArray")]
         #[method(setPrivateKeys:)]
         pub unsafe fn setPrivateKeys(&self, private_keys: &NSArray);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionAuthorizationResult")]
+    unsafe impl ASAuthorizationProviderExtensionAuthorizationResult {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

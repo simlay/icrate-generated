@@ -41,11 +41,15 @@ extern_class!(
     #[cfg(feature = "CoreLocation_CLRegion")]
     unsafe impl ClassType for CLRegion {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "CoreLocation_CLRegion")]
 unsafe impl NSCoding for CLRegion {}
+
+#[cfg(feature = "CoreLocation_CLRegion")]
+unsafe impl NSCopying for CLRegion {}
 
 #[cfg(feature = "CoreLocation_CLRegion")]
 unsafe impl NSObjectProtocol for CLRegion {}
@@ -97,5 +101,17 @@ extern_methods!(
         #[cfg(not(any(target_os = "tvos")))]
         #[method(containsCoordinate:)]
         pub unsafe fn containsCoordinate(&self, coordinate: CLLocationCoordinate2D) -> bool;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreLocation_CLRegion")]
+    unsafe impl CLRegion {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

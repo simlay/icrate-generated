@@ -23,13 +23,16 @@ extern_class!(
     #[deprecated]
     pub struct DOMWheelEvent;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMWheelEvent")]
     unsafe impl ClassType for DOMWheelEvent {
         #[inherits(DOMUIEvent, DOMEvent, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMMouseEvent;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "WebKit_DOMWheelEvent")]
+unsafe impl NSCopying for DOMWheelEvent {}
 
 #[cfg(feature = "WebKit_DOMWheelEvent")]
 unsafe impl NSObjectProtocol for DOMWheelEvent {}
@@ -65,5 +68,23 @@ extern_methods!(
             shift_key: bool,
             meta_key: bool,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMWheelEvent")]
+    unsafe impl DOMWheelEvent {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMWheelEvent")]
+    unsafe impl DOMWheelEvent {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

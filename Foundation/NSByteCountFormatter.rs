@@ -39,11 +39,15 @@ extern_class!(
     unsafe impl ClassType for NSByteCountFormatter {
         #[inherits(NSObject)]
         type Super = NSFormatter;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSByteCountFormatter")]
 unsafe impl NSCoding for NSByteCountFormatter {}
+
+#[cfg(feature = "Foundation_NSByteCountFormatter")]
+unsafe impl NSCopying for NSByteCountFormatter {}
 
 #[cfg(feature = "Foundation_NSByteCountFormatter")]
 unsafe impl NSObjectProtocol for NSByteCountFormatter {}
@@ -141,5 +145,17 @@ extern_methods!(
 
         #[method(setFormattingContext:)]
         pub unsafe fn setFormattingContext(&self, formatting_context: NSFormattingContext);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSByteCountFormatter")]
+    unsafe impl NSByteCountFormatter {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

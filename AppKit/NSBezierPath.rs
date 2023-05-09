@@ -49,11 +49,15 @@ extern_class!(
     #[cfg(feature = "AppKit_NSBezierPath")]
     unsafe impl ClassType for NSBezierPath {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "AppKit_NSBezierPath")]
 unsafe impl NSCoding for NSBezierPath {}
+
+#[cfg(feature = "AppKit_NSBezierPath")]
+unsafe impl NSCopying for NSBezierPath {}
 
 #[cfg(feature = "AppKit_NSBezierPath")]
 unsafe impl NSObjectProtocol for NSBezierPath {}
@@ -320,6 +324,18 @@ extern_methods!(
 
         #[method(containsPoint:)]
         pub unsafe fn containsPoint(&self, point: NSPoint) -> bool;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSBezierPath")]
+    unsafe impl NSBezierPath {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

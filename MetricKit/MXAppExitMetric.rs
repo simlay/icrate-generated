@@ -10,10 +10,10 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct MXForegroundExitData;
 
-    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "MetricKit_MXForegroundExitData")]
     unsafe impl ClassType for MXForegroundExitData {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -53,16 +53,28 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MetricKit_MXForegroundExitData")]
+    unsafe impl MXForegroundExitData {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MetricKit_MXBackgroundExitData")]
     #[cfg(not(any(target_os = "macos")))]
     pub struct MXBackgroundExitData;
 
-    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "MetricKit_MXBackgroundExitData")]
     unsafe impl ClassType for MXBackgroundExitData {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -114,17 +126,29 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MetricKit_MXBackgroundExitData")]
+    unsafe impl MXBackgroundExitData {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MetricKit_MXAppExitMetric")]
     #[cfg(not(any(target_os = "macos")))]
     pub struct MXAppExitMetric;
 
-    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "MetricKit_MXAppExitMetric")]
     unsafe impl ClassType for MXAppExitMetric {
         #[inherits(NSObject)]
         type Super = MXMetric;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -151,5 +175,17 @@ extern_methods!(
         #[cfg(feature = "MetricKit_MXBackgroundExitData")]
         #[method_id(@__retain_semantics Other backgroundExitData)]
         pub unsafe fn backgroundExitData(&self) -> Id<MXBackgroundExitData>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MetricKit_MXAppExitMetric")]
+    unsafe impl MXAppExitMetric {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

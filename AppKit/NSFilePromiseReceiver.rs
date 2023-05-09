@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSFilePromiseReceiver")]
     unsafe impl ClassType for NSFilePromiseReceiver {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -51,5 +52,17 @@ extern_methods!(
             operation_queue: &NSOperationQueue,
             reader: &Block<(NonNull<NSURL>, *mut NSError), ()>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSFilePromiseReceiver")]
+    unsafe impl NSFilePromiseReceiver {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

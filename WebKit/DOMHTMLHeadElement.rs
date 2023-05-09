@@ -11,16 +11,19 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLHeadElement;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLHeadElement")]
     unsafe impl ClassType for DOMHTMLHeadElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMHTMLElement;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_DOMHTMLHeadElement")]
 unsafe impl DOMEventTarget for DOMHTMLHeadElement {}
+
+#[cfg(feature = "WebKit_DOMHTMLHeadElement")]
+unsafe impl NSCopying for DOMHTMLHeadElement {}
 
 #[cfg(feature = "WebKit_DOMHTMLHeadElement")]
 unsafe impl NSObjectProtocol for DOMHTMLHeadElement {}
@@ -35,5 +38,23 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method(setProfile:)]
         pub unsafe fn setProfile(&self, profile: Option<&NSString>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMHTMLHeadElement")]
+    unsafe impl DOMHTMLHeadElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMHTMLHeadElement")]
+    unsafe impl DOMHTMLHeadElement {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

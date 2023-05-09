@@ -10,10 +10,10 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct LASecret;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "LocalAuthentication_LASecret")]
     unsafe impl ClassType for LASecret {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 

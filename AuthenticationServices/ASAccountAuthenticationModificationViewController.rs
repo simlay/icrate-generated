@@ -4,6 +4,29 @@ use crate::common::*;
 use crate::AuthenticationServices::*;
 use crate::Foundation::*;
 
+#[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationViewController")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+unsafe impl NSCoding for ASAccountAuthenticationModificationViewController {}
+
+#[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationViewController")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+unsafe impl NSEditor for ASAccountAuthenticationModificationViewController {}
+
+#[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationViewController")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+unsafe impl NSObjectProtocol for ASAccountAuthenticationModificationViewController {}
+
+#[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationViewController")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+unsafe impl NSSeguePerforming for ASAccountAuthenticationModificationViewController {}
+
+#[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationViewController")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+unsafe impl NSUserInterfaceItemIdentification
+    for ASAccountAuthenticationModificationViewController
+{
+}
+
 #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationViewController")]
@@ -74,5 +97,49 @@ extern_methods!(
 
         #[method(cancelRequest)]
         pub unsafe fn cancelRequest(&self);
+    }
+);
+
+#[cfg(not(any(target_os = "ios")))]
+extern_methods!(
+    /// Methods declared on superclass `NSViewController`
+    #[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationViewController")]
+    unsafe impl ASAccountAuthenticationModificationViewController {
+        #[cfg(feature = "Foundation_NSBundle")]
+        #[cfg(not(any(target_os = "ios")))]
+        #[method_id(@__retain_semantics Init initWithNibName:bundle:)]
+        pub unsafe fn initWithNibName_bundle(
+            this: Option<Allocated<Self>>,
+            nib_name_or_nil: Option<&NSNibName>,
+            nib_bundle_or_nil: Option<&NSBundle>,
+        ) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[cfg(not(any(target_os = "ios")))]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(
+            this: Option<Allocated<Self>>,
+            coder: &NSCoder,
+        ) -> Option<Id<Self>>;
+    }
+);
+
+#[cfg(not(any(target_os = "ios")))]
+extern_methods!(
+    /// Methods declared on superclass `NSResponder`
+    #[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationViewController")]
+    unsafe impl ASAccountAuthenticationModificationViewController {
+        #[cfg(not(any(target_os = "ios")))]
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationViewController")]
+    unsafe impl ASAccountAuthenticationModificationViewController {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

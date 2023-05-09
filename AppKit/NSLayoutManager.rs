@@ -64,6 +64,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSLayoutManager")]
     unsafe impl ClassType for NSLayoutManager {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -736,6 +737,15 @@ extern_methods!(
         #[cfg(feature = "AppKit_NSFont")]
         #[method(defaultBaselineOffsetForFont:)]
         pub unsafe fn defaultBaselineOffsetForFont(&self, the_font: &NSFont) -> CGFloat;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSLayoutManager")]
+    unsafe impl NSLayoutManager {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

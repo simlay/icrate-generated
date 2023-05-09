@@ -33,6 +33,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSPropertyListSerialization")]
     unsafe impl ClassType for NSPropertyListSerialization {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -71,5 +72,17 @@ extern_methods!(
             opt: NSPropertyListReadOptions,
             format: *mut NSPropertyListFormat,
         ) -> Result<Id<Object>, Id<NSError>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSPropertyListSerialization")]
+    unsafe impl NSPropertyListSerialization {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

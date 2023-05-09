@@ -15,6 +15,7 @@ extern_class!(
     #[cfg(feature = "CoreLocation_CLGeocoder")]
     unsafe impl ClassType for CLGeocoder {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -86,6 +87,18 @@ extern_methods!(
 
         #[method(cancelGeocode)]
         pub unsafe fn cancelGeocode(&self);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreLocation_CLGeocoder")]
+    unsafe impl CLGeocoder {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

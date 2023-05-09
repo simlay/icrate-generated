@@ -13,10 +13,10 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct MKLookAroundSnapshotter;
 
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKLookAroundSnapshotter")]
     unsafe impl ClassType for MKLookAroundSnapshotter {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 

@@ -84,6 +84,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSTextContentManager")]
     unsafe impl ClassType for NSTextContentManager {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -198,6 +199,15 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSTextContentManager")]
+    unsafe impl NSTextContentManager {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_protocol!(
     pub unsafe trait NSTextContentManagerDelegate: NSObjectProtocol {
         #[cfg(all(
@@ -256,6 +266,7 @@ extern_class!(
     unsafe impl ClassType for NSTextContentStorage {
         #[inherits(NSObject)]
         type Super = NSTextContentManager;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -337,6 +348,31 @@ extern_methods!(
             text_range: &NSTextRange,
             for_editing_text_selection: bool,
         ) -> Option<Id<NSTextRange>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSTextContentManager`
+    #[cfg(feature = "AppKit_NSTextContentStorage")]
+    unsafe impl NSTextContentStorage {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(
+            this: Option<Allocated<Self>>,
+            coder: &NSCoder,
+        ) -> Option<Id<Self>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSTextContentStorage")]
+    unsafe impl NSTextContentStorage {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

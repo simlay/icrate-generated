@@ -48,6 +48,7 @@ extern_class!(
     unsafe impl ClassType for IMKCandidates {
         #[inherits(NSObject)]
         type Super = NSResponder;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -190,5 +191,30 @@ extern_methods!(
 
         #[method(clearSelection)]
         pub unsafe fn clearSelection(&self);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSResponder`
+    #[cfg(feature = "InputMethodKit_IMKCandidates")]
+    unsafe impl IMKCandidates {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(
+            this: Option<Allocated<Self>>,
+            coder: &NSCoder,
+        ) -> Option<Id<Self>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "InputMethodKit_IMKCandidates")]
+    unsafe impl IMKCandidates {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

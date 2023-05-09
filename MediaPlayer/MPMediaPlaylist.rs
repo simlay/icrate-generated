@@ -40,11 +40,11 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct MPMediaPlaylist;
 
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPMediaPlaylist")]
     unsafe impl ClassType for MPMediaPlaylist {
         #[inherits(MPMediaEntity, NSObject)]
         type Super = MPMediaItemCollection;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -114,16 +114,42 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+extern_methods!(
+    /// Methods declared on superclass `MPMediaItemCollection`
+    #[cfg(feature = "MediaPlayer_MPMediaPlaylist")]
+    unsafe impl MPMediaPlaylist {
+        #[cfg(all(feature = "Foundation_NSArray", feature = "MediaPlayer_MPMediaItem"))]
+        #[method_id(@__retain_semantics Init initWithItems:)]
+        pub unsafe fn initWithItems(
+            this: Option<Allocated<Self>>,
+            items: &NSArray<MPMediaItem>,
+        ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MediaPlayer_MPMediaPlaylist")]
+    unsafe impl MPMediaPlaylist {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MediaPlayer_MPMediaPlaylistCreationMetadata")]
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct MPMediaPlaylistCreationMetadata;
 
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPMediaPlaylistCreationMetadata")]
     unsafe impl ClassType for MPMediaPlaylistCreationMetadata {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -164,19 +190,5 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method(setDescriptionText:)]
         pub unsafe fn setDescriptionText(&self, description_text: &NSString);
-    }
-);
-
-#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
-extern_methods!(
-    /// Methods declared on superclass `MPMediaItemCollection`
-    #[cfg(feature = "MediaPlayer_MPMediaPlaylist")]
-    unsafe impl MPMediaPlaylist {
-        #[cfg(all(feature = "Foundation_NSArray", feature = "MediaPlayer_MPMediaItem"))]
-        #[method_id(@__retain_semantics Init initWithItems:)]
-        pub unsafe fn initWithItems(
-            this: Option<Allocated<Self>>,
-            items: &NSArray<MPMediaItem>,
-        ) -> Id<Self>;
     }
 );

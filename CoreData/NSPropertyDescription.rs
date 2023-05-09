@@ -12,11 +12,15 @@ extern_class!(
     #[cfg(feature = "CoreData_NSPropertyDescription")]
     unsafe impl ClassType for NSPropertyDescription {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "CoreData_NSPropertyDescription")]
 unsafe impl NSCoding for NSPropertyDescription {}
+
+#[cfg(feature = "CoreData_NSPropertyDescription")]
+unsafe impl NSCopying for NSPropertyDescription {}
 
 #[cfg(feature = "CoreData_NSPropertyDescription")]
 unsafe impl NSObjectProtocol for NSPropertyDescription {}
@@ -117,5 +121,17 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method(setRenamingIdentifier:)]
         pub unsafe fn setRenamingIdentifier(&self, renaming_identifier: Option<&NSString>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreData_NSPropertyDescription")]
+    unsafe impl NSPropertyDescription {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

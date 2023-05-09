@@ -10,17 +10,21 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct CXStartCallAction;
 
-    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "CallKit_CXStartCallAction")]
     unsafe impl ClassType for CXStartCallAction {
         #[inherits(CXAction, NSObject)]
         type Super = CXCallAction;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "CallKit_CXStartCallAction")]
 #[cfg(not(any(target_os = "macos")))]
 unsafe impl NSCoding for CXStartCallAction {}
+
+#[cfg(feature = "CallKit_CXStartCallAction")]
+#[cfg(not(any(target_os = "macos")))]
+unsafe impl NSCopying for CXStartCallAction {}
 
 #[cfg(feature = "CallKit_CXStartCallAction")]
 #[cfg(not(any(target_os = "macos")))]
@@ -81,5 +85,24 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSDate")]
         #[method(fulfillWithDateStarted:)]
         pub unsafe fn fulfillWithDateStarted(&self, date_started: &NSDate);
+    }
+);
+
+#[cfg(not(any(target_os = "macos")))]
+extern_methods!(
+    /// Methods declared on superclass `CXCallAction`
+    #[cfg(feature = "CallKit_CXStartCallAction")]
+    unsafe impl CXStartCallAction {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CallKit_CXStartCallAction")]
+    unsafe impl CXStartCallAction {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

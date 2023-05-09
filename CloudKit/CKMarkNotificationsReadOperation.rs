@@ -11,11 +11,11 @@ extern_class!(
     #[deprecated = "Instead of iterating notifications, consider using CKDatabaseSubscription, CKFetchDatabaseChangesOperation, and CKFetchRecordZoneChangesOperation as appropriate"]
     pub struct CKMarkNotificationsReadOperation;
 
-    #[deprecated = "Instead of iterating notifications, consider using CKDatabaseSubscription, CKFetchDatabaseChangesOperation, and CKFetchRecordZoneChangesOperation as appropriate"]
     #[cfg(feature = "CloudKit_CKMarkNotificationsReadOperation")]
     unsafe impl ClassType for CKMarkNotificationsReadOperation {
         #[inherits(NSOperation, NSObject)]
         type Super = CKOperation;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -68,5 +68,14 @@ extern_methods!(
                 &Block<(*mut NSArray<CKNotificationID>, *mut NSError), ()>,
             >,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CloudKit_CKMarkNotificationsReadOperation")]
+    unsafe impl CKMarkNotificationsReadOperation {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

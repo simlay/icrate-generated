@@ -23,6 +23,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSLock")]
     unsafe impl ClassType for NSLock {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -52,6 +53,25 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSLock")]
+    unsafe impl NSLock {
+        #[method_id(@__retain_semantics Init init)]
+        pub fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub fn new() -> Id<Self>;
+    }
+);
+#[cfg(feature = "Foundation_NSLock")]
+impl DefaultId for NSLock {
+    #[inline]
+    fn default_id() -> Id<Self> {
+        Self::new()
+    }
+}
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSConditionLock")]
@@ -60,6 +80,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSConditionLock")]
     unsafe impl ClassType for NSConditionLock {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -115,6 +136,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSConditionLock")]
+    unsafe impl NSConditionLock {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSRecursiveLock")]
@@ -123,6 +156,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSRecursiveLock")]
     unsafe impl ClassType for NSRecursiveLock {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -152,6 +186,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSRecursiveLock")]
+    unsafe impl NSRecursiveLock {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSCondition")]
@@ -160,6 +206,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSCondition")]
     unsafe impl ClassType for NSCondition {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -192,5 +239,17 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method(setName:)]
         pub unsafe fn setName(&self, name: Option<&NSString>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSCondition")]
+    unsafe impl NSCondition {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

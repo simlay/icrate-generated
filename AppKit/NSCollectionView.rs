@@ -113,6 +113,7 @@ extern_class!(
     unsafe impl ClassType for NSCollectionViewItem {
         #[inherits(NSResponder, NSObject)]
         type Super = NSViewController;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -121,6 +122,9 @@ unsafe impl NSCoding for NSCollectionViewItem {}
 
 #[cfg(feature = "AppKit_NSCollectionViewItem")]
 unsafe impl NSCollectionViewElement for NSCollectionViewItem {}
+
+#[cfg(feature = "AppKit_NSCollectionViewItem")]
+unsafe impl NSCopying for NSCollectionViewItem {}
 
 #[cfg(feature = "AppKit_NSCollectionViewItem")]
 unsafe impl NSEditor for NSCollectionViewItem {}
@@ -178,6 +182,45 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSViewController`
+    #[cfg(feature = "AppKit_NSCollectionViewItem")]
+    unsafe impl NSCollectionViewItem {
+        #[cfg(feature = "Foundation_NSBundle")]
+        #[method_id(@__retain_semantics Init initWithNibName:bundle:)]
+        pub unsafe fn initWithNibName_bundle(
+            this: Option<Allocated<Self>>,
+            nib_name_or_nil: Option<&NSNibName>,
+            nib_bundle_or_nil: Option<&NSBundle>,
+        ) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(
+            this: Option<Allocated<Self>>,
+            coder: &NSCoder,
+        ) -> Option<Id<Self>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSResponder`
+    #[cfg(feature = "AppKit_NSCollectionViewItem")]
+    unsafe impl NSCollectionViewItem {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSCollectionViewItem")]
+    unsafe impl NSCollectionViewItem {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSCollectionView")]
@@ -187,6 +230,7 @@ extern_class!(
     unsafe impl ClassType for NSCollectionView {
         #[inherits(NSResponder, NSObject)]
         type Super = NSView;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -587,6 +631,40 @@ extern_methods!(
             event: &NSEvent,
             drag_image_offset: NSPointPointer,
         ) -> Id<NSImage>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSView`
+    #[cfg(feature = "AppKit_NSCollectionView")]
+    unsafe impl NSCollectionView {
+        #[method_id(@__retain_semantics Init initWithFrame:)]
+        pub unsafe fn initWithFrame(this: Option<Allocated<Self>>, frame_rect: NSRect) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(
+            this: Option<Allocated<Self>>,
+            coder: &NSCoder,
+        ) -> Option<Id<Self>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSResponder`
+    #[cfg(feature = "AppKit_NSCollectionView")]
+    unsafe impl NSCollectionView {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSCollectionView")]
+    unsafe impl NSCollectionView {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 
@@ -1123,6 +1201,24 @@ extern_methods!(
 );
 
 extern_methods!(
+    /// Methods declared on superclass `NSSet`
+    ///
+    /// NSCollectionViewAdditions
+    #[cfg(feature = "Foundation_NSMutableSet")]
+    unsafe impl NSMutableSet {
+        #[cfg(feature = "Foundation_NSIndexPath")]
+        #[method_id(@__retain_semantics Other setWithCollectionViewIndexPath:)]
+        pub unsafe fn setWithCollectionViewIndexPath(index_path: &NSIndexPath) -> Id<Self>;
+
+        #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSIndexPath"))]
+        #[method_id(@__retain_semantics Other setWithCollectionViewIndexPaths:)]
+        pub unsafe fn setWithCollectionViewIndexPaths(
+            index_paths: &NSArray<NSIndexPath>,
+        ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
     /// NSDeprecated
     #[cfg(feature = "AppKit_NSCollectionView")]
     unsafe impl NSCollectionView {
@@ -1175,28 +1271,5 @@ extern_methods!(
         #[deprecated = "Use NSCollectionViewGridLayout as the receiver's collectionViewLayout, setting its maximumItemSize instead"]
         #[method(setMaxItemSize:)]
         pub unsafe fn setMaxItemSize(&self, max_item_size: NSSize);
-    }
-);
-
-extern_methods!(
-    /// Methods declared on superclass `NSViewController`
-    #[cfg(feature = "AppKit_NSCollectionViewItem")]
-    unsafe impl NSCollectionViewItem {
-        #[cfg(feature = "Foundation_NSBundle")]
-        #[method_id(@__retain_semantics Init initWithNibName:bundle:)]
-        pub unsafe fn initWithNibName_bundle(
-            this: Option<Allocated<Self>>,
-            nib_name_or_nil: Option<&NSNibName>,
-            nib_bundle_or_nil: Option<&NSBundle>,
-        ) -> Id<Self>;
-    }
-);
-
-extern_methods!(
-    /// Methods declared on superclass `NSView`
-    #[cfg(feature = "AppKit_NSCollectionView")]
-    unsafe impl NSCollectionView {
-        #[method_id(@__retain_semantics Init initWithFrame:)]
-        pub unsafe fn initWithFrame(this: Option<Allocated<Self>>, frame_rect: NSRect) -> Id<Self>;
     }
 );

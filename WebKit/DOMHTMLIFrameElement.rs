@@ -11,16 +11,19 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLIFrameElement;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLIFrameElement")]
     unsafe impl ClassType for DOMHTMLIFrameElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMHTMLElement;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_DOMHTMLIFrameElement")]
 unsafe impl DOMEventTarget for DOMHTMLIFrameElement {}
+
+#[cfg(feature = "WebKit_DOMHTMLIFrameElement")]
+unsafe impl NSCopying for DOMHTMLIFrameElement {}
 
 #[cfg(feature = "WebKit_DOMHTMLIFrameElement")]
 unsafe impl NSObjectProtocol for DOMHTMLIFrameElement {}
@@ -115,5 +118,23 @@ extern_methods!(
         #[cfg(feature = "WebKit_DOMAbstractView")]
         #[method_id(@__retain_semantics Other contentWindow)]
         pub unsafe fn contentWindow(&self) -> Option<Id<DOMAbstractView>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMHTMLIFrameElement")]
+    unsafe impl DOMHTMLIFrameElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMHTMLIFrameElement")]
+    unsafe impl DOMHTMLIFrameElement {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

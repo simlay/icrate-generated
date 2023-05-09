@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSDocumentController")]
     unsafe impl ClassType for NSDocumentController {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -307,6 +308,15 @@ extern_methods!(
             &self,
             item: &ProtocolObject<dyn NSValidatedUserInterfaceItem>,
         ) -> bool;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSDocumentController")]
+    unsafe impl NSDocumentController {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

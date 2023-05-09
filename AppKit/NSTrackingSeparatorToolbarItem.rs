@@ -14,8 +14,12 @@ extern_class!(
     unsafe impl ClassType for NSTrackingSeparatorToolbarItem {
         #[inherits(NSObject)]
         type Super = NSToolbarItem;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "AppKit_NSTrackingSeparatorToolbarItem")]
+unsafe impl NSCopying for NSTrackingSeparatorToolbarItem {}
 
 #[cfg(feature = "AppKit_NSTrackingSeparatorToolbarItem")]
 unsafe impl NSObjectProtocol for NSTrackingSeparatorToolbarItem {}
@@ -56,5 +60,17 @@ extern_methods!(
             this: Option<Allocated<Self>>,
             item_identifier: &NSToolbarItemIdentifier,
         ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSTrackingSeparatorToolbarItem")]
+    unsafe impl NSTrackingSeparatorToolbarItem {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -155,6 +155,7 @@ extern_class!(
     #[cfg(feature = "Metal_MTLType")]
     unsafe impl ClassType for MTLType {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -169,6 +170,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLType")]
+    unsafe impl MTLType {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLStructMember")]
@@ -177,6 +190,7 @@ extern_class!(
     #[cfg(feature = "Metal_MTLStructMember")]
     unsafe impl ClassType for MTLStructMember {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -217,6 +231,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLStructMember")]
+    unsafe impl MTLStructMember {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLStructType")]
@@ -226,6 +252,7 @@ extern_class!(
     unsafe impl ClassType for MTLStructType {
         #[inherits(NSObject)]
         type Super = MTLType;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -245,6 +272,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLStructType")]
+    unsafe impl MTLStructType {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLArrayType")]
@@ -254,6 +293,7 @@ extern_class!(
     unsafe impl ClassType for MTLArrayType {
         #[inherits(NSObject)]
         type Super = MTLType;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -292,6 +332,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLArrayType")]
+    unsafe impl MTLArrayType {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLPointerType")]
@@ -301,6 +353,7 @@ extern_class!(
     unsafe impl ClassType for MTLPointerType {
         #[inherits(NSObject)]
         type Super = MTLType;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -335,6 +388,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLPointerType")]
+    unsafe impl MTLPointerType {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLTextureReferenceType")]
@@ -344,6 +409,7 @@ extern_class!(
     unsafe impl ClassType for MTLTextureReferenceType {
         #[inherits(NSObject)]
         type Super = MTLType;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -367,16 +433,28 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLTextureReferenceType")]
+    unsafe impl MTLTextureReferenceType {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLArgument")]
     #[deprecated]
     pub struct MTLArgument;
 
-    #[deprecated]
     #[cfg(feature = "Metal_MTLArgument")]
     unsafe impl ClassType for MTLArgument {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -436,6 +514,18 @@ extern_methods!(
 
         #[method(arrayLength)]
         pub unsafe fn arrayLength(&self) -> NSUInteger;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLArgument")]
+    unsafe impl MTLArgument {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

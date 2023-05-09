@@ -11,11 +11,11 @@ extern_class!(
     #[deprecated]
     pub struct DOMDocumentFragment;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMDocumentFragment")]
     unsafe impl ClassType for DOMDocumentFragment {
         #[inherits(DOMObject, WebScriptObject, NSObject)]
         type Super = DOMNode;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -23,9 +23,30 @@ extern_class!(
 unsafe impl DOMEventTarget for DOMDocumentFragment {}
 
 #[cfg(feature = "WebKit_DOMDocumentFragment")]
+unsafe impl NSCopying for DOMDocumentFragment {}
+
+#[cfg(feature = "WebKit_DOMDocumentFragment")]
 unsafe impl NSObjectProtocol for DOMDocumentFragment {}
 
 extern_methods!(
     #[cfg(feature = "WebKit_DOMDocumentFragment")]
     unsafe impl DOMDocumentFragment {}
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMDocumentFragment")]
+    unsafe impl DOMDocumentFragment {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMDocumentFragment")]
+    unsafe impl DOMDocumentFragment {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
 );

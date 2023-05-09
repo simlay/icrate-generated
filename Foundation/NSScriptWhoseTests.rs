@@ -25,6 +25,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSScriptWhoseTest")]
     unsafe impl ClassType for NSScriptWhoseTest {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -52,6 +53,15 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSScriptWhoseTest")]
+    unsafe impl NSScriptWhoseTest {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSLogicalTest")]
@@ -61,6 +71,7 @@ extern_class!(
     unsafe impl ClassType for NSLogicalTest {
         #[inherits(NSObject)]
         type Super = NSScriptWhoseTest;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -95,6 +106,31 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSScriptWhoseTest`
+    #[cfg(feature = "Foundation_NSLogicalTest")]
+    unsafe impl NSLogicalTest {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(
+            this: Option<Allocated<Self>>,
+            in_coder: &NSCoder,
+        ) -> Option<Id<Self>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSLogicalTest")]
+    unsafe impl NSLogicalTest {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSSpecifierTest")]
@@ -104,6 +140,7 @@ extern_class!(
     unsafe impl ClassType for NSSpecifierTest {
         #[inherits(NSObject)]
         type Super = NSScriptWhoseTest;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -140,5 +177,14 @@ extern_methods!(
             comp_op: NSTestComparisonOperation,
             obj2: Option<&Object>,
         ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSSpecifierTest")]
+    unsafe impl NSSpecifierTest {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -43,11 +43,15 @@ extern_class!(
     #[cfg(feature = "Foundation_NSTextCheckingResult")]
     unsafe impl ClassType for NSTextCheckingResult {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSTextCheckingResult")]
 unsafe impl NSCoding for NSTextCheckingResult {}
+
+#[cfg(feature = "Foundation_NSTextCheckingResult")]
+unsafe impl NSCopying for NSTextCheckingResult {}
 
 #[cfg(feature = "Foundation_NSTextCheckingResult")]
 unsafe impl NSObjectProtocol for NSTextCheckingResult {}
@@ -63,6 +67,18 @@ extern_methods!(
 
         #[method(range)]
         pub unsafe fn range(&self) -> NSRange;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSTextCheckingResult")]
+    unsafe impl NSTextCheckingResult {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

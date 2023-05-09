@@ -14,11 +14,15 @@ extern_class!(
     #[cfg(feature = "HealthKit_HKBiologicalSexObject")]
     unsafe impl ClassType for HKBiologicalSexObject {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "HealthKit_HKBiologicalSexObject")]
 unsafe impl NSCoding for HKBiologicalSexObject {}
+
+#[cfg(feature = "HealthKit_HKBiologicalSexObject")]
+unsafe impl NSCopying for HKBiologicalSexObject {}
 
 #[cfg(feature = "HealthKit_HKBiologicalSexObject")]
 unsafe impl NSObjectProtocol for HKBiologicalSexObject {}
@@ -34,6 +38,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "HealthKit_HKBiologicalSexObject")]
+    unsafe impl HKBiologicalSexObject {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKBloodTypeObject")]
@@ -42,11 +58,15 @@ extern_class!(
     #[cfg(feature = "HealthKit_HKBloodTypeObject")]
     unsafe impl ClassType for HKBloodTypeObject {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "HealthKit_HKBloodTypeObject")]
 unsafe impl NSCoding for HKBloodTypeObject {}
+
+#[cfg(feature = "HealthKit_HKBloodTypeObject")]
+unsafe impl NSCopying for HKBloodTypeObject {}
 
 #[cfg(feature = "HealthKit_HKBloodTypeObject")]
 unsafe impl NSObjectProtocol for HKBloodTypeObject {}
@@ -62,6 +82,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "HealthKit_HKBloodTypeObject")]
+    unsafe impl HKBloodTypeObject {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKFitzpatrickSkinTypeObject")]
@@ -70,11 +102,15 @@ extern_class!(
     #[cfg(feature = "HealthKit_HKFitzpatrickSkinTypeObject")]
     unsafe impl ClassType for HKFitzpatrickSkinTypeObject {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "HealthKit_HKFitzpatrickSkinTypeObject")]
 unsafe impl NSCoding for HKFitzpatrickSkinTypeObject {}
+
+#[cfg(feature = "HealthKit_HKFitzpatrickSkinTypeObject")]
+unsafe impl NSCopying for HKFitzpatrickSkinTypeObject {}
 
 #[cfg(feature = "HealthKit_HKFitzpatrickSkinTypeObject")]
 unsafe impl NSObjectProtocol for HKFitzpatrickSkinTypeObject {}
@@ -90,6 +126,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "HealthKit_HKFitzpatrickSkinTypeObject")]
+    unsafe impl HKFitzpatrickSkinTypeObject {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKWheelchairUseObject")]
@@ -98,11 +146,15 @@ extern_class!(
     #[cfg(feature = "HealthKit_HKWheelchairUseObject")]
     unsafe impl ClassType for HKWheelchairUseObject {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "HealthKit_HKWheelchairUseObject")]
 unsafe impl NSCoding for HKWheelchairUseObject {}
+
+#[cfg(feature = "HealthKit_HKWheelchairUseObject")]
+unsafe impl NSCopying for HKWheelchairUseObject {}
 
 #[cfg(feature = "HealthKit_HKWheelchairUseObject")]
 unsafe impl NSObjectProtocol for HKWheelchairUseObject {}
@@ -118,6 +170,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "HealthKit_HKWheelchairUseObject")]
+    unsafe impl HKWheelchairUseObject {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "HealthKit_HKActivityMoveModeObject")]
@@ -126,11 +190,15 @@ extern_class!(
     #[cfg(feature = "HealthKit_HKActivityMoveModeObject")]
     unsafe impl ClassType for HKActivityMoveModeObject {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "HealthKit_HKActivityMoveModeObject")]
 unsafe impl NSCoding for HKActivityMoveModeObject {}
+
+#[cfg(feature = "HealthKit_HKActivityMoveModeObject")]
+unsafe impl NSCopying for HKActivityMoveModeObject {}
 
 #[cfg(feature = "HealthKit_HKActivityMoveModeObject")]
 unsafe impl NSObjectProtocol for HKActivityMoveModeObject {}
@@ -143,5 +211,17 @@ extern_methods!(
     unsafe impl HKActivityMoveModeObject {
         #[method(activityMoveMode)]
         pub unsafe fn activityMoveMode(&self) -> HKActivityMoveMode;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "HealthKit_HKActivityMoveModeObject")]
+    unsafe impl HKActivityMoveModeObject {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

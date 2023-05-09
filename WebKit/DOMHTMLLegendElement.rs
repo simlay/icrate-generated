@@ -11,16 +11,19 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLLegendElement;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLLegendElement")]
     unsafe impl ClassType for DOMHTMLLegendElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMHTMLElement;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_DOMHTMLLegendElement")]
 unsafe impl DOMEventTarget for DOMHTMLLegendElement {}
+
+#[cfg(feature = "WebKit_DOMHTMLLegendElement")]
+unsafe impl NSCopying for DOMHTMLLegendElement {}
 
 #[cfg(feature = "WebKit_DOMHTMLLegendElement")]
 unsafe impl NSObjectProtocol for DOMHTMLLegendElement {}
@@ -49,5 +52,23 @@ extern_methods!(
         #[deprecated]
         #[method(setAccessKey:)]
         pub unsafe fn setAccessKey(&self, access_key: Option<&NSString>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMHTMLLegendElement")]
+    unsafe impl DOMHTMLLegendElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMHTMLLegendElement")]
+    unsafe impl DOMHTMLLegendElement {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

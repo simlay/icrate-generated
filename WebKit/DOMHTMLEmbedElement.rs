@@ -11,16 +11,19 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLEmbedElement;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLEmbedElement")]
     unsafe impl ClassType for DOMHTMLEmbedElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMHTMLElement;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_DOMHTMLEmbedElement")]
 unsafe impl DOMEventTarget for DOMHTMLEmbedElement {}
+
+#[cfg(feature = "WebKit_DOMHTMLEmbedElement")]
+unsafe impl NSCopying for DOMHTMLEmbedElement {}
 
 #[cfg(feature = "WebKit_DOMHTMLEmbedElement")]
 unsafe impl NSObjectProtocol for DOMHTMLEmbedElement {}
@@ -71,5 +74,23 @@ extern_methods!(
 
         #[method(setWidth:)]
         pub unsafe fn setWidth(&self, width: c_int);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMHTMLEmbedElement")]
+    unsafe impl DOMHTMLEmbedElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMHTMLEmbedElement")]
+    unsafe impl DOMHTMLEmbedElement {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

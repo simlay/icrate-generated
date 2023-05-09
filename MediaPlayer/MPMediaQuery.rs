@@ -34,16 +34,20 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct MPMediaQuery;
 
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPMediaQuery")]
     unsafe impl ClassType for MPMediaQuery {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "MediaPlayer_MPMediaQuery")]
 #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSCoding for MPMediaQuery {}
+
+#[cfg(feature = "MediaPlayer_MPMediaQuery")]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
+unsafe impl NSCopying for MPMediaQuery {}
 
 #[cfg(feature = "MediaPlayer_MPMediaQuery")]
 #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
@@ -143,16 +147,28 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MediaPlayer_MPMediaQuery")]
+    unsafe impl MPMediaQuery {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MediaPlayer_MPMediaPredicate")]
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct MPMediaPredicate;
 
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPMediaPredicate")]
     unsafe impl ClassType for MPMediaPredicate {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -174,6 +190,18 @@ extern_methods!(
     unsafe impl MPMediaPredicate {}
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MediaPlayer_MPMediaPredicate")]
+    unsafe impl MPMediaPredicate {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 ns_enum!(
     #[underlying(NSInteger)]
@@ -191,11 +219,11 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct MPMediaPropertyPredicate;
 
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPMediaPropertyPredicate")]
     unsafe impl ClassType for MPMediaPropertyPredicate {
         #[inherits(NSObject)]
         type Super = MPMediaPredicate;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -239,5 +267,17 @@ extern_methods!(
 
         #[method(comparisonType)]
         pub unsafe fn comparisonType(&self) -> MPMediaPredicateComparison;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MediaPlayer_MPMediaPropertyPredicate")]
+    unsafe impl MPMediaPropertyPredicate {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

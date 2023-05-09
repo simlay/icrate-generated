@@ -11,16 +11,20 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct CLVisit;
 
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "CoreLocation_CLVisit")]
     unsafe impl ClassType for CLVisit {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "CoreLocation_CLVisit")]
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSCoding for CLVisit {}
+
+#[cfg(feature = "CoreLocation_CLVisit")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+unsafe impl NSCopying for CLVisit {}
 
 #[cfg(feature = "CoreLocation_CLVisit")]
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
@@ -47,5 +51,17 @@ extern_methods!(
 
         #[method(horizontalAccuracy)]
         pub unsafe fn horizontalAccuracy(&self) -> CLLocationAccuracy;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreLocation_CLVisit")]
+    unsafe impl CLVisit {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -9,10 +9,10 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub struct NSURLDownload;
 
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "Foundation_NSURLDownload")]
     unsafe impl ClassType for NSURLDownload {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -67,6 +67,18 @@ extern_methods!(
 
         #[method(setDeletesFileUponFailure:)]
         pub unsafe fn setDeletesFileUponFailure(&self, deletes_file_upon_failure: bool);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSURLDownload")]
+    unsafe impl NSURLDownload {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

@@ -21,6 +21,7 @@ extern_class!(
     unsafe impl ClassType for NSOutlineView {
         #[inherits(NSControl, NSView, NSResponder, NSObject)]
         type Super = NSTableView;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -255,6 +256,40 @@ extern_methods!(
 
         #[method(setStronglyReferencesItems:)]
         pub unsafe fn setStronglyReferencesItems(&self, strongly_references_items: bool);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSTableView`
+    #[cfg(feature = "AppKit_NSOutlineView")]
+    unsafe impl NSOutlineView {
+        #[method_id(@__retain_semantics Init initWithFrame:)]
+        pub unsafe fn initWithFrame(this: Option<Allocated<Self>>, frame_rect: NSRect) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(
+            this: Option<Allocated<Self>>,
+            coder: &NSCoder,
+        ) -> Option<Id<Self>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSResponder`
+    #[cfg(feature = "AppKit_NSOutlineView")]
+    unsafe impl NSOutlineView {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSOutlineView")]
+    unsafe impl NSOutlineView {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 
@@ -812,12 +847,3 @@ extern_static!(NSOutlineViewItemDidExpandNotification: &'static NSNotificationNa
 extern_static!(NSOutlineViewItemWillCollapseNotification: &'static NSNotificationName);
 
 extern_static!(NSOutlineViewItemDidCollapseNotification: &'static NSNotificationName);
-
-extern_methods!(
-    /// Methods declared on superclass `NSTableView`
-    #[cfg(feature = "AppKit_NSOutlineView")]
-    unsafe impl NSOutlineView {
-        #[method_id(@__retain_semantics Init initWithFrame:)]
-        pub unsafe fn initWithFrame(this: Option<Allocated<Self>>, frame_rect: NSRect) -> Id<Self>;
-    }
-);

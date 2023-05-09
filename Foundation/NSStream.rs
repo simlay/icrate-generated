@@ -41,6 +41,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSStream")]
     unsafe impl ClassType for NSStream {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -97,6 +98,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSStream")]
+    unsafe impl NSStream {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSInputStream")]
@@ -106,6 +119,7 @@ extern_class!(
     unsafe impl ClassType for NSInputStream {
         #[inherits(NSObject)]
         type Super = NSStream;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -138,6 +152,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSInputStream")]
+    unsafe impl NSInputStream {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSOutputStream")]
@@ -147,6 +173,7 @@ extern_class!(
     unsafe impl ClassType for NSOutputStream {
         #[inherits(NSObject)]
         type Super = NSStream;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -179,6 +206,18 @@ extern_methods!(
             url: &NSURL,
             should_append: bool,
         ) -> Option<Id<Self>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSOutputStream")]
+    unsafe impl NSOutputStream {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

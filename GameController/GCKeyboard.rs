@@ -17,6 +17,7 @@ extern_class!(
     #[cfg(feature = "GameController_GCKeyboard")]
     unsafe impl ClassType for GCKeyboard {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -35,5 +36,17 @@ extern_methods!(
 
         #[method_id(@__retain_semantics Other coalescedKeyboard)]
         pub unsafe fn coalescedKeyboard() -> Option<Id<GCKeyboard>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameController_GCKeyboard")]
+    unsafe impl GCKeyboard {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

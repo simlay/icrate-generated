@@ -14,6 +14,7 @@ extern_class!(
     #[cfg(feature = "HealthKit_HKQuantitySeriesSampleBuilder")]
     unsafe impl ClassType for HKQuantitySeriesSampleBuilder {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -109,5 +110,14 @@ extern_methods!(
 
         #[method(discard)]
         pub unsafe fn discard(&self);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "HealthKit_HKQuantitySeriesSampleBuilder")]
+    unsafe impl HKQuantitySeriesSampleBuilder {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -13,11 +13,15 @@ extern_class!(
     #[cfg(feature = "AppKit_NSShadow")]
     unsafe impl ClassType for NSShadow {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "AppKit_NSShadow")]
 unsafe impl NSCoding for NSShadow {}
+
+#[cfg(feature = "AppKit_NSShadow")]
+unsafe impl NSCopying for NSShadow {}
 
 #[cfg(feature = "AppKit_NSShadow")]
 unsafe impl NSObjectProtocol for NSShadow {}
@@ -53,5 +57,14 @@ extern_methods!(
 
         #[method(set)]
         pub unsafe fn set(&self);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSShadow")]
+    unsafe impl NSShadow {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

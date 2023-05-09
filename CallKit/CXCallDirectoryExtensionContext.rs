@@ -28,11 +28,11 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     pub struct CXCallDirectoryExtensionContext;
 
-    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     #[cfg(feature = "CallKit_CXCallDirectoryExtensionContext")]
     unsafe impl ClassType for CXCallDirectoryExtensionContext {
         #[inherits(NSObject)]
         type Super = NSExtensionContext;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -108,5 +108,17 @@ extern_methods!(
             items: Option<&NSArray>,
             completion_handler: Option<&Block<(Bool,), ()>>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CallKit_CXCallDirectoryExtensionContext")]
+    unsafe impl CXCallDirectoryExtensionContext {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

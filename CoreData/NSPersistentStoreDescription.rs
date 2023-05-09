@@ -12,8 +12,12 @@ extern_class!(
     #[cfg(feature = "CoreData_NSPersistentStoreDescription")]
     unsafe impl ClassType for NSPersistentStoreDescription {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "CoreData_NSPersistentStoreDescription")]
+unsafe impl NSCopying for NSPersistentStoreDescription {}
 
 #[cfg(feature = "CoreData_NSPersistentStoreDescription")]
 unsafe impl NSObjectProtocol for NSPersistentStoreDescription {}
@@ -104,6 +108,18 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSURL")]
         #[method_id(@__retain_semantics Init initWithURL:)]
         pub unsafe fn initWithURL(this: Option<Allocated<Self>>, url: &NSURL) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreData_NSPersistentStoreDescription")]
+    unsafe impl NSPersistentStoreDescription {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

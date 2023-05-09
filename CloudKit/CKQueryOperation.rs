@@ -13,11 +13,15 @@ extern_class!(
     #[cfg(feature = "CloudKit_CKQueryCursor")]
     unsafe impl ClassType for CKQueryCursor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "CloudKit_CKQueryCursor")]
 unsafe impl NSCoding for CKQueryCursor {}
+
+#[cfg(feature = "CloudKit_CKQueryCursor")]
+unsafe impl NSCopying for CKQueryCursor {}
 
 #[cfg(feature = "CloudKit_CKQueryCursor")]
 unsafe impl NSObjectProtocol for CKQueryCursor {}
@@ -47,6 +51,7 @@ extern_class!(
     unsafe impl ClassType for CKQueryOperation {
         #[inherits(CKOperation, NSOperation, NSObject)]
         type Super = CKDatabaseOperation;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -156,5 +161,14 @@ extern_methods!(
             &self,
             query_completion_block: Option<&Block<(*mut CKQueryCursor, *mut NSError), ()>>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CloudKit_CKQueryOperation")]
+    unsafe impl CKQueryOperation {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -10,10 +10,10 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct LAAuthenticationRequirement;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "LocalAuthentication_LAAuthenticationRequirement")]
     unsafe impl ClassType for LAAuthenticationRequirement {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -42,16 +42,28 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "LocalAuthentication_LAAuthenticationRequirement")]
+    unsafe impl LAAuthenticationRequirement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "LocalAuthentication_LABiometryFallbackRequirement")]
     #[cfg(not(any(target_os = "watchos")))]
     pub struct LABiometryFallbackRequirement;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "LocalAuthentication_LABiometryFallbackRequirement")]
     unsafe impl ClassType for LABiometryFallbackRequirement {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -68,5 +80,17 @@ extern_methods!(
 
         #[method_id(@__retain_semantics Other devicePasscodeRequirement)]
         pub unsafe fn devicePasscodeRequirement() -> Id<LABiometryFallbackRequirement>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "LocalAuthentication_LABiometryFallbackRequirement")]
+    unsafe impl LABiometryFallbackRequirement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -22,10 +22,10 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct GKVoiceChat;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "GameKit_GKVoiceChat")]
     unsafe impl ClassType for GKVoiceChat {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -85,6 +85,18 @@ extern_methods!(
 
         #[method(isVoIPAllowed)]
         pub unsafe fn isVoIPAllowed() -> bool;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameKit_GKVoiceChat")]
+    unsafe impl GKVoiceChat {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

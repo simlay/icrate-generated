@@ -11,10 +11,10 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     pub struct GCGearShifterElement;
 
-    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     #[cfg(feature = "GameController_GCGearShifterElement")]
     unsafe impl ClassType for GCGearShifterElement {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -35,5 +35,17 @@ extern_methods!(
 
         #[method_id(@__retain_semantics Other sequentialInput)]
         pub unsafe fn sequentialInput(&self) -> Option<Id<ProtocolObject<dyn GCRelativeInput>>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameController_GCGearShifterElement")]
+    unsafe impl GCGearShifterElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

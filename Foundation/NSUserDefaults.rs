@@ -17,6 +17,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSUserDefaults")]
     unsafe impl ClassType for NSUserDefaults {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -208,6 +209,15 @@ extern_methods!(
             key: &NSString,
             domain: &NSString,
         ) -> bool;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSUserDefaults")]
+    unsafe impl NSUserDefaults {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

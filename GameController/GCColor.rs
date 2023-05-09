@@ -13,11 +13,15 @@ extern_class!(
     #[cfg(feature = "GameController_GCColor")]
     unsafe impl ClassType for GCColor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "GameController_GCColor")]
 unsafe impl NSCoding for GCColor {}
+
+#[cfg(feature = "GameController_GCColor")]
+unsafe impl NSCopying for GCColor {}
 
 #[cfg(feature = "GameController_GCColor")]
 unsafe impl NSObjectProtocol for GCColor {}
@@ -47,5 +51,14 @@ extern_methods!(
 
         #[method(blue)]
         pub unsafe fn blue(&self) -> c_float;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameController_GCColor")]
+    unsafe impl GCColor {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

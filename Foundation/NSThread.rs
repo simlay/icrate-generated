@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSThread")]
     unsafe impl ClassType for NSThread {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -38,7 +39,7 @@ extern_methods!(
 
         #[cfg(feature = "Foundation_NSMutableDictionary")]
         #[method_id(@__retain_semantics Other threadDictionary)]
-        pub unsafe fn threadDictionary(&self) -> Id<NSMutableDictionary, Owned>;
+        pub unsafe fn threadDictionary(&self) -> Id<NSMutableDictionary>;
 
         #[cfg(feature = "Foundation_NSDate")]
         #[method(sleepUntilDate:)]
@@ -100,7 +101,7 @@ extern_methods!(
         pub fn mainThread() -> Id<NSThread>;
 
         #[method_id(@__retain_semantics Init init)]
-        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+        pub fn init(this: Option<Allocated<Self>>) -> Id<Self>;
 
         #[method_id(@__retain_semantics Init initWithTarget:selector:object:)]
         pub unsafe fn initWithTarget_selector_object(
@@ -135,6 +136,22 @@ extern_methods!(
         pub unsafe fn main(&self);
     }
 );
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSThread")]
+    unsafe impl NSThread {
+        #[method_id(@__retain_semantics New new)]
+        pub fn new() -> Id<Self>;
+    }
+);
+#[cfg(feature = "Foundation_NSThread")]
+impl DefaultId for NSThread {
+    #[inline]
+    fn default_id() -> Id<Self> {
+        Self::new()
+    }
+}
 
 extern_static!(NSWillBecomeMultiThreadedNotification: &'static NSNotificationName);
 

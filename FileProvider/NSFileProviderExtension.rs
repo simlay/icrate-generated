@@ -12,10 +12,10 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct NSFileProviderExtension;
 
-    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "FileProvider_NSFileProviderExtension")]
     unsafe impl ClassType for NSFileProviderExtension {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -72,6 +72,18 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSURL")]
         #[method(itemChangedAtURL:)]
         pub unsafe fn itemChangedAtURL(&self, url: &NSURL);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "FileProvider_NSFileProviderExtension")]
+    unsafe impl NSFileProviderExtension {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

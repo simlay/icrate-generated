@@ -10,10 +10,10 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct ILMessageFilterQueryRequest;
 
-    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "IdentityLookup_ILMessageFilterQueryRequest")]
     unsafe impl ClassType for ILMessageFilterQueryRequest {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 

@@ -24,6 +24,7 @@ extern_class!(
     unsafe impl ClassType for GKMatchmakerViewController {
         #[inherits(NSResponder, NSObject)]
         type Super = NSViewController;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -115,6 +116,50 @@ extern_methods!(
             &self,
             default_invitation_message: Option<&NSString>,
         );
+    }
+);
+
+#[cfg(not(any(target_os = "ios")))]
+extern_methods!(
+    /// Methods declared on superclass `NSViewController`
+    #[cfg(feature = "GameKit_GKMatchmakerViewController")]
+    unsafe impl GKMatchmakerViewController {
+        #[cfg(feature = "Foundation_NSBundle")]
+        #[cfg(not(any(target_os = "ios")))]
+        #[method_id(@__retain_semantics Init initWithNibName:bundle:)]
+        pub unsafe fn initWithNibName_bundle(
+            this: Option<Allocated<Self>>,
+            nib_name_or_nil: Option<&NSNibName>,
+            nib_bundle_or_nil: Option<&NSBundle>,
+        ) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[cfg(not(any(target_os = "ios")))]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(
+            this: Option<Allocated<Self>>,
+            coder: &NSCoder,
+        ) -> Option<Id<Self>>;
+    }
+);
+
+#[cfg(not(any(target_os = "ios")))]
+extern_methods!(
+    /// Methods declared on superclass `NSResponder`
+    #[cfg(feature = "GameKit_GKMatchmakerViewController")]
+    unsafe impl GKMatchmakerViewController {
+        #[cfg(not(any(target_os = "ios")))]
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameKit_GKMatchmakerViewController")]
+    unsafe impl GKMatchmakerViewController {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 
@@ -215,18 +260,4 @@ extern_protocol!(
     }
 
     unsafe impl ProtocolType for dyn GKMatchmakerViewControllerDelegate {}
-);
-
-extern_methods!(
-    /// Methods declared on superclass `NSViewController`
-    #[cfg(feature = "GameKit_GKMatchmakerViewController")]
-    unsafe impl GKMatchmakerViewController {
-        #[cfg(feature = "Foundation_NSBundle")]
-        #[method_id(@__retain_semantics Init initWithNibName:bundle:)]
-        pub unsafe fn initWithNibName_bundle(
-            this: Option<Allocated<Self>>,
-            nib_name_or_nil: Option<&NSNibName>,
-            nib_bundle_or_nil: Option<&NSBundle>,
-        ) -> Id<Self>;
-    }
 );

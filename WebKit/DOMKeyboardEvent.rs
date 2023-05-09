@@ -25,13 +25,16 @@ extern_class!(
     #[deprecated]
     pub struct DOMKeyboardEvent;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMKeyboardEvent")]
     unsafe impl ClassType for DOMKeyboardEvent {
         #[inherits(DOMEvent, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMUIEvent;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "WebKit_DOMKeyboardEvent")]
+unsafe impl NSCopying for DOMKeyboardEvent {}
 
 #[cfg(feature = "WebKit_DOMKeyboardEvent")]
 unsafe impl NSObjectProtocol for DOMKeyboardEvent {}
@@ -142,5 +145,23 @@ extern_methods!(
             shift_key: bool,
             meta_key: bool,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMKeyboardEvent")]
+    unsafe impl DOMKeyboardEvent {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMKeyboardEvent")]
+    unsafe impl DOMKeyboardEvent {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

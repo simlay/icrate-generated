@@ -45,13 +45,16 @@ extern_class!(
     #[deprecated]
     pub struct DOMCSSRule;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMCSSRule")]
     unsafe impl ClassType for DOMCSSRule {
         #[inherits(WebScriptObject, NSObject)]
         type Super = DOMObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "WebKit_DOMCSSRule")]
+unsafe impl NSCopying for DOMCSSRule {}
 
 #[cfg(feature = "WebKit_DOMCSSRule")]
 unsafe impl NSObjectProtocol for DOMCSSRule {}
@@ -76,5 +79,23 @@ extern_methods!(
 
         #[method_id(@__retain_semantics Other parentRule)]
         pub unsafe fn parentRule(&self) -> Option<Id<DOMCSSRule>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMCSSRule")]
+    unsafe impl DOMCSSRule {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMCSSRule")]
+    unsafe impl DOMCSSRule {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -21,10 +21,10 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct CXCallObserver;
 
-    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "CallKit_CXCallObserver")]
     unsafe impl ClassType for CXCallObserver {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -39,5 +39,17 @@ extern_methods!(
         #[cfg(all(feature = "CallKit_CXCall", feature = "Foundation_NSArray"))]
         #[method_id(@__retain_semantics Other calls)]
         pub unsafe fn calls(&self) -> Id<NSArray<CXCall>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CallKit_CXCallObserver")]
+    unsafe impl CXCallObserver {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -28,10 +28,10 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct GKMatch;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "GameKit_GKMatch")]
     unsafe impl ClassType for GKMatch {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -98,6 +98,18 @@ extern_methods!(
             &self,
             completion_handler: Option<&Block<(*mut GKMatch, *mut NSError), ()>>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameKit_GKMatch")]
+    unsafe impl GKMatch {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

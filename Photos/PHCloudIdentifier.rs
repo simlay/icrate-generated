@@ -14,6 +14,7 @@ extern_class!(
     #[cfg(feature = "PhotoKit_PHCloudIdentifier")]
     unsafe impl ClassType for PHCloudIdentifier {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -47,6 +48,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "PhotoKit_PHCloudIdentifier")]
+    unsafe impl PHCloudIdentifier {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "PhotoKit_PHCloudIdentifierMapping")]
@@ -55,6 +68,7 @@ extern_class!(
     #[cfg(feature = "PhotoKit_PHCloudIdentifierMapping")]
     unsafe impl ClassType for PHCloudIdentifierMapping {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -74,6 +88,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "PhotoKit_PHCloudIdentifierMapping")]
+    unsafe impl PHCloudIdentifierMapping {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "PhotoKit_PHLocalIdentifierMapping")]
@@ -82,6 +108,7 @@ extern_class!(
     #[cfg(feature = "PhotoKit_PHLocalIdentifierMapping")]
     unsafe impl ClassType for PHLocalIdentifierMapping {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -102,9 +129,24 @@ extern_methods!(
 );
 
 extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "PhotoKit_PHLocalIdentifierMapping")]
+    unsafe impl PHLocalIdentifierMapping {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
+extern_methods!(
     #[cfg(feature = "PhotoKit_PHCloudIdentifier")]
     unsafe impl PHCloudIdentifier {}
 );
+
+#[cfg(feature = "PhotoKit_PHCloudIdentifier")]
+unsafe impl NSCopying for PHCloudIdentifier {}
 
 extern_methods!(
     /// CloudIdentifiers

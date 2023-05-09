@@ -13,10 +13,10 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKUserLocation;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKUserLocation")]
     unsafe impl ClassType for MKUserLocation {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -59,5 +59,17 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method(setSubtitle:)]
         pub unsafe fn setSubtitle(&self, subtitle: Option<&NSString>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MapKit_MKUserLocation")]
+    unsafe impl MKUserLocation {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

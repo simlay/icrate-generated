@@ -15,6 +15,7 @@ extern_class!(
     unsafe impl ClassType for HKCumulativeQuantitySample {
         #[inherits(HKSample, HKObject, NSObject)]
         type Super = HKQuantitySample;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -35,8 +36,6 @@ extern_methods!(
         pub unsafe fn sumQuantity(&self) -> Id<HKQuantity>;
     }
 );
-
-extern_static!(HKPredicateKeyPathSum: &'static NSString);
 
 extern_methods!(
     /// Methods declared on superclass `HKQuantitySample`
@@ -90,3 +89,23 @@ extern_methods!(
         ) -> Id<Self>;
     }
 );
+
+extern_methods!(
+    /// Methods declared on superclass `HKObject`
+    #[cfg(feature = "HealthKit_HKCumulativeQuantitySample")]
+    unsafe impl HKCumulativeQuantitySample {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "HealthKit_HKCumulativeQuantitySample")]
+    unsafe impl HKCumulativeQuantitySample {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
+extern_static!(HKPredicateKeyPathSum: &'static NSString);

@@ -15,11 +15,15 @@ extern_class!(
     #[cfg(feature = "Foundation_NSPort")]
     unsafe impl ClassType for NSPort {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSPort")]
 unsafe impl NSCoding for NSPort {}
+
+#[cfg(feature = "Foundation_NSPort")]
+unsafe impl NSCopying for NSPort {}
 
 #[cfg(feature = "Foundation_NSPort")]
 unsafe impl NSObjectProtocol for NSPort {}
@@ -96,6 +100,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSPort")]
+    unsafe impl NSPort {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_protocol!(
     pub unsafe trait NSPortDelegate: NSObjectProtocol {
         #[cfg(feature = "Foundation_NSPortMessage")]
@@ -125,11 +141,15 @@ extern_class!(
     unsafe impl ClassType for NSMachPort {
         #[inherits(NSObject)]
         type Super = NSPort;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSMachPort")]
 unsafe impl NSCoding for NSMachPort {}
+
+#[cfg(feature = "Foundation_NSMachPort")]
+unsafe impl NSCopying for NSMachPort {}
 
 #[cfg(feature = "Foundation_NSMachPort")]
 unsafe impl NSObjectProtocol for NSMachPort {}
@@ -175,6 +195,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSMachPort")]
+    unsafe impl NSMachPort {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_protocol!(
     pub unsafe trait NSMachPortDelegate: NSPortDelegate {
         #[optional]
@@ -194,6 +226,7 @@ extern_class!(
     unsafe impl ClassType for NSMessagePort {
         #[inherits(NSObject)]
         type Super = NSPort;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -201,11 +234,26 @@ extern_class!(
 unsafe impl NSCoding for NSMessagePort {}
 
 #[cfg(feature = "Foundation_NSMessagePort")]
+unsafe impl NSCopying for NSMessagePort {}
+
+#[cfg(feature = "Foundation_NSMessagePort")]
 unsafe impl NSObjectProtocol for NSMessagePort {}
 
 extern_methods!(
     #[cfg(feature = "Foundation_NSMessagePort")]
     unsafe impl NSMessagePort {}
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSMessagePort")]
+    unsafe impl NSMessagePort {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
 );
 
 extern_class!(
@@ -217,11 +265,15 @@ extern_class!(
     unsafe impl ClassType for NSSocketPort {
         #[inherits(NSObject)]
         type Super = NSPort;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSSocketPort")]
 unsafe impl NSCoding for NSSocketPort {}
+
+#[cfg(feature = "Foundation_NSSocketPort")]
+unsafe impl NSCopying for NSSocketPort {}
 
 #[cfg(feature = "Foundation_NSSocketPort")]
 unsafe impl NSObjectProtocol for NSSocketPort {}
@@ -290,5 +342,14 @@ extern_methods!(
 
         #[method(socket)]
         pub unsafe fn socket(&self) -> NSSocketNativeHandle;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSSocketPort")]
+    unsafe impl NSSocketPort {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -11,11 +11,11 @@ extern_class!(
     #[deprecated]
     pub struct WebDownload;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_WebDownload")]
     unsafe impl ClassType for WebDownload {
         #[inherits(NSObject)]
         type Super = NSURLDownload;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -27,20 +27,7 @@ extern_methods!(
     unsafe impl WebDownload {}
 );
 
-extern_protocol!(
-    pub unsafe trait WebDownloadDelegate: NSURLDownloadDelegate {
-        #[cfg(all(feature = "AppKit_NSWindow", feature = "WebKit_WebDownload"))]
-        #[optional]
-        #[method_id(@__retain_semantics Other downloadWindowForAuthenticationSheet:)]
-        unsafe fn downloadWindowForAuthenticationSheet(
-            &self,
-            download: Option<&WebDownload>,
-        ) -> Option<Id<NSWindow>>;
-    }
-
-    unsafe impl ProtocolType for dyn WebDownloadDelegate {}
-);
-
+#[cfg(not(any(target_os = "ios")))]
 extern_methods!(
     /// Methods declared on superclass `NSURLDownload`
     #[cfg(feature = "WebKit_WebDownload")]
@@ -64,4 +51,30 @@ extern_methods!(
             path: &NSString,
         ) -> Id<Self>;
     }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_WebDownload")]
+    unsafe impl WebDownload {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
+extern_protocol!(
+    pub unsafe trait WebDownloadDelegate: NSURLDownloadDelegate {
+        #[cfg(all(feature = "AppKit_NSWindow", feature = "WebKit_WebDownload"))]
+        #[optional]
+        #[method_id(@__retain_semantics Other downloadWindowForAuthenticationSheet:)]
+        unsafe fn downloadWindowForAuthenticationSheet(
+            &self,
+            download: Option<&WebDownload>,
+        ) -> Option<Id<NSWindow>>;
+    }
+
+    unsafe impl ProtocolType for dyn WebDownloadDelegate {}
 );

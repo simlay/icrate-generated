@@ -16,8 +16,12 @@ extern_class!(
     unsafe impl ClassType for EKAlarm {
         #[inherits(NSObject)]
         type Super = EKObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "EventKit_EKAlarm")]
+unsafe impl NSCopying for EKAlarm {}
 
 #[cfg(feature = "EventKit_EKAlarm")]
 unsafe impl NSObjectProtocol for EKAlarm {}
@@ -91,5 +95,17 @@ extern_methods!(
         #[deprecated]
         #[method(setUrl:)]
         pub unsafe fn setUrl(&self, url: Option<&NSURL>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "EventKit_EKAlarm")]
+    unsafe impl EKAlarm {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

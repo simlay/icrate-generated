@@ -11,16 +11,19 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLUListElement;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLUListElement")]
     unsafe impl ClassType for DOMHTMLUListElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMHTMLElement;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_DOMHTMLUListElement")]
 unsafe impl DOMEventTarget for DOMHTMLUListElement {}
+
+#[cfg(feature = "WebKit_DOMHTMLUListElement")]
+unsafe impl NSCopying for DOMHTMLUListElement {}
 
 #[cfg(feature = "WebKit_DOMHTMLUListElement")]
 unsafe impl NSObjectProtocol for DOMHTMLUListElement {}
@@ -41,5 +44,23 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method(setType:)]
         pub unsafe fn setType(&self, r#type: Option<&NSString>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMHTMLUListElement")]
+    unsafe impl DOMHTMLUListElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMHTMLUListElement")]
+    unsafe impl DOMHTMLUListElement {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

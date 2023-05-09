@@ -28,10 +28,10 @@ extern_class!(
     #[cfg(not(any(target_os = "ios")))]
     pub struct HKWorkoutSession;
 
-    #[cfg(not(any(target_os = "ios")))]
     #[cfg(feature = "HealthKit_HKWorkoutSession")]
     unsafe impl ClassType for HKWorkoutSession {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -162,6 +162,15 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSDate")]
         #[method(endCurrentActivityOnDate:)]
         pub unsafe fn endCurrentActivityOnDate(&self, date: &NSDate);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "HealthKit_HKWorkoutSession")]
+    unsafe impl HKWorkoutSession {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

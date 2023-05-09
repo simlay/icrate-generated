@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSSpeechRecognizer")]
     unsafe impl ClassType for NSSpeechRecognizer {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -68,6 +69,15 @@ extern_methods!(
 
         #[method(setBlocksOtherRecognizers:)]
         pub unsafe fn setBlocksOtherRecognizers(&self, blocks_other_recognizers: bool);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSSpeechRecognizer")]
+    unsafe impl NSSpeechRecognizer {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

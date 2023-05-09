@@ -13,10 +13,10 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKOverlayRenderer;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKOverlayRenderer")]
     unsafe impl ClassType for MKOverlayRenderer {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -77,6 +77,18 @@ extern_methods!(
 
         #[method(contentScaleFactor)]
         pub unsafe fn contentScaleFactor(&self) -> CGFloat;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MapKit_MKOverlayRenderer")]
+    unsafe impl MKOverlayRenderer {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

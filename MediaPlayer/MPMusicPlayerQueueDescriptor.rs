@@ -11,10 +11,10 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     pub struct MPMusicPlayerQueueDescriptor;
 
-    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPMusicPlayerQueueDescriptor")]
     unsafe impl ClassType for MPMusicPlayerQueueDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -40,11 +40,11 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct MPMusicPlayerMediaItemQueueDescriptor;
 
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPMusicPlayerMediaItemQueueDescriptor")]
     unsafe impl ClassType for MPMusicPlayerMediaItemQueueDescriptor {
         #[inherits(NSObject)]
         type Super = MPMusicPlayerQueueDescriptor;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -100,17 +100,30 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+extern_methods!(
+    /// Methods declared on superclass `MPMusicPlayerQueueDescriptor`
+    #[cfg(feature = "MediaPlayer_MPMusicPlayerMediaItemQueueDescriptor")]
+    unsafe impl MPMusicPlayerMediaItemQueueDescriptor {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MediaPlayer_MPMusicPlayerStoreQueueDescriptor")]
     #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     pub struct MPMusicPlayerStoreQueueDescriptor;
 
-    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPMusicPlayerStoreQueueDescriptor")]
     unsafe impl ClassType for MPMusicPlayerStoreQueueDescriptor {
         #[inherits(NSObject)]
         type Super = MPMusicPlayerQueueDescriptor;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -163,16 +176,29 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+extern_methods!(
+    /// Methods declared on superclass `MPMusicPlayerQueueDescriptor`
+    #[cfg(feature = "MediaPlayer_MPMusicPlayerStoreQueueDescriptor")]
+    unsafe impl MPMusicPlayerStoreQueueDescriptor {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MediaPlayer_MPMusicPlayerPlayParameters")]
     #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     pub struct MPMusicPlayerPlayParameters;
 
-    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPMusicPlayerPlayParameters")]
     unsafe impl ClassType for MPMusicPlayerPlayParameters {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -197,17 +223,29 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MediaPlayer_MPMusicPlayerPlayParameters")]
+    unsafe impl MPMusicPlayerPlayParameters {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MediaPlayer_MPMusicPlayerPlayParametersQueueDescriptor")]
     #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     pub struct MPMusicPlayerPlayParametersQueueDescriptor;
 
-    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPMusicPlayerPlayParametersQueueDescriptor")]
     unsafe impl ClassType for MPMusicPlayerPlayParametersQueueDescriptor {
         #[inherits(NSObject)]
         type Super = MPMusicPlayerQueueDescriptor;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -272,5 +310,18 @@ extern_methods!(
             end_time: NSTimeInterval,
             play_parameters: &MPMusicPlayerPlayParameters,
         );
+    }
+);
+
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+extern_methods!(
+    /// Methods declared on superclass `MPMusicPlayerQueueDescriptor`
+    #[cfg(feature = "MediaPlayer_MPMusicPlayerPlayParametersQueueDescriptor")]
+    unsafe impl MPMusicPlayerPlayParametersQueueDescriptor {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
     }
 );

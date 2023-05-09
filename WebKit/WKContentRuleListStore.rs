@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(feature = "WebKit_WKContentRuleListStore")]
     unsafe impl ClassType for WKContentRuleListStore {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -68,5 +69,17 @@ extern_methods!(
             &self,
             completion_handler: Option<&Block<(*mut NSArray<NSString>,), ()>>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_WKContentRuleListStore")]
+    unsafe impl WKContentRuleListStore {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

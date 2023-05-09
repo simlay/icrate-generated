@@ -13,11 +13,11 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKPointAnnotation;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKPointAnnotation")]
     unsafe impl ClassType for MKPointAnnotation {
         #[inherits(NSObject)]
         type Super = MKShape;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -58,5 +58,14 @@ extern_methods!(
 
         #[method(setCoordinate:)]
         pub unsafe fn setCoordinate(&self, coordinate: CLLocationCoordinate2D);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MapKit_MKPointAnnotation")]
+    unsafe impl MKPointAnnotation {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

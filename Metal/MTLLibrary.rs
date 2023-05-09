@@ -21,6 +21,7 @@ extern_class!(
     #[cfg(feature = "Metal_MTLVertexAttribute")]
     unsafe impl ClassType for MTLVertexAttribute {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -51,6 +52,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLVertexAttribute")]
+    unsafe impl MTLVertexAttribute {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLAttribute")]
@@ -59,6 +72,7 @@ extern_class!(
     #[cfg(feature = "Metal_MTLAttribute")]
     unsafe impl ClassType for MTLAttribute {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -89,6 +103,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLAttribute")]
+    unsafe impl MTLAttribute {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 ns_enum!(
     #[underlying(NSUInteger)]
     pub enum MTLFunctionType {
@@ -110,6 +136,7 @@ extern_class!(
     #[cfg(feature = "Metal_MTLFunctionConstant")]
     unsafe impl ClassType for MTLFunctionConstant {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -131,6 +158,18 @@ extern_methods!(
 
         #[method(required)]
         pub fn required(&self) -> bool;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLFunctionConstant")]
+    unsafe impl MTLFunctionConstant {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 
@@ -230,8 +269,12 @@ extern_class!(
     #[cfg(feature = "Metal_MTLCompileOptions")]
     unsafe impl ClassType for MTLCompileOptions {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLCompileOptions")]
+unsafe impl NSCopying for MTLCompileOptions {}
 
 #[cfg(feature = "Metal_MTLCompileOptions")]
 unsafe impl NSObjectProtocol for MTLCompileOptions {}
@@ -300,6 +343,25 @@ extern_methods!(
         pub unsafe fn setOptimizationLevel(&self, optimization_level: MTLLibraryOptimizationLevel);
     }
 );
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLCompileOptions")]
+    unsafe impl MTLCompileOptions {
+        #[method_id(@__retain_semantics Init init)]
+        pub fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub fn new() -> Id<Self>;
+    }
+);
+#[cfg(feature = "Metal_MTLCompileOptions")]
+impl DefaultId for MTLCompileOptions {
+    #[inline]
+    fn default_id() -> Id<Self> {
+        Self::new()
+    }
+}
 
 extern_static!(MTLLibraryErrorDomain: &'static NSErrorDomain);
 

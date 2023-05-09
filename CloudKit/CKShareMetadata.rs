@@ -13,11 +13,15 @@ extern_class!(
     #[cfg(feature = "CloudKit_CKShareMetadata")]
     unsafe impl ClassType for CKShareMetadata {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "CloudKit_CKShareMetadata")]
 unsafe impl NSCoding for CKShareMetadata {}
+
+#[cfg(feature = "CloudKit_CKShareMetadata")]
+unsafe impl NSCopying for CKShareMetadata {}
 
 #[cfg(feature = "CloudKit_CKShareMetadata")]
 unsafe impl NSObjectProtocol for CKShareMetadata {}
@@ -65,5 +69,17 @@ extern_methods!(
         #[deprecated]
         #[method_id(@__retain_semantics Other rootRecordID)]
         pub unsafe fn rootRecordID(&self) -> Id<CKRecordID>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CloudKit_CKShareMetadata")]
+    unsafe impl CKShareMetadata {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

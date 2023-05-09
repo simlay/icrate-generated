@@ -25,10 +25,10 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct LARight;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "LocalAuthentication_LARight")]
     unsafe impl ClassType for LARight {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -73,5 +73,14 @@ extern_methods!(
 
         #[method(deauthorizeWithCompletion:)]
         pub unsafe fn deauthorizeWithCompletion(&self, handler: &Block<(), ()>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "LocalAuthentication_LARight")]
+    unsafe impl LARight {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

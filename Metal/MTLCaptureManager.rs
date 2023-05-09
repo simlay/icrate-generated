@@ -31,8 +31,12 @@ extern_class!(
     #[cfg(feature = "Metal_MTLCaptureDescriptor")]
     unsafe impl ClassType for MTLCaptureDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLCaptureDescriptor")]
+unsafe impl NSCopying for MTLCaptureDescriptor {}
 
 #[cfg(feature = "Metal_MTLCaptureDescriptor")]
 unsafe impl NSObjectProtocol for MTLCaptureDescriptor {}
@@ -62,6 +66,25 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLCaptureDescriptor")]
+    unsafe impl MTLCaptureDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub fn new() -> Id<Self>;
+    }
+);
+#[cfg(feature = "Metal_MTLCaptureDescriptor")]
+impl DefaultId for MTLCaptureDescriptor {
+    #[inline]
+    fn default_id() -> Id<Self> {
+        Self::new()
+    }
+}
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLCaptureManager")]
@@ -70,6 +93,7 @@ extern_class!(
     #[cfg(feature = "Metal_MTLCaptureManager")]
     unsafe impl ClassType for MTLCaptureManager {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -137,5 +161,14 @@ extern_methods!(
 
         #[method(isCapturing)]
         pub fn isCapturing(&self) -> bool;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLCaptureManager")]
+    unsafe impl MTLCaptureManager {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

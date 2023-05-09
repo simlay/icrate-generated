@@ -92,6 +92,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSTextAttachment")]
     unsafe impl ClassType for NSTextAttachment {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -208,6 +209,18 @@ extern_methods!(
 );
 
 extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSTextAttachment")]
+    unsafe impl NSTextAttachment {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
+extern_methods!(
     /// NSAttributedStringAttachmentConveniences
     #[cfg(feature = "Foundation_NSAttributedString")]
     unsafe impl NSAttributedString {
@@ -227,6 +240,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSTextAttachmentViewProvider")]
     unsafe impl ClassType for NSTextAttachmentViewProvider {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -309,6 +323,6 @@ extern_methods!(
     unsafe impl NSMutableAttributedString {
         #[cfg(feature = "Foundation_NSString")]
         #[method(updateAttachmentsFromPath:)]
-        pub unsafe fn updateAttachmentsFromPath(&self, path: &NSString);
+        pub unsafe fn updateAttachmentsFromPath(&mut self, path: &NSString);
     }
 );

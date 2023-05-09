@@ -14,6 +14,7 @@ extern_class!(
     unsafe impl ClassType for NSCollectionViewGridLayout {
         #[inherits(NSObject)]
         type Super = NSCollectionViewLayout;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -75,5 +76,17 @@ extern_methods!(
         #[cfg(all(feature = "AppKit_NSColor", feature = "Foundation_NSArray"))]
         #[method(setBackgroundColors:)]
         pub unsafe fn setBackgroundColors(&self, background_colors: Option<&NSArray<NSColor>>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSCollectionViewGridLayout")]
+    unsafe impl NSCollectionViewGridLayout {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

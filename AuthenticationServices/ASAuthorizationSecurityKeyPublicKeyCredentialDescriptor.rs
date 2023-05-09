@@ -42,12 +42,12 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor;
 
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(
         feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor"
     )]
     unsafe impl ClassType for ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -61,6 +61,10 @@ unsafe impl ASAuthorizationPublicKeyCredentialDescriptor
 #[cfg(feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor")]
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSCoding for ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor {}
+
+#[cfg(feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+unsafe impl NSCopying for ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor {}
 
 #[cfg(feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor")]
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]

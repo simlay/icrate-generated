@@ -14,6 +14,7 @@ extern_class!(
     unsafe impl ClassType for GCDualSenseGamepad {
         #[inherits(GCPhysicalInputProfile, NSObject)]
         type Super = GCExtendedGamepad;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -42,5 +43,17 @@ extern_methods!(
         #[cfg(feature = "GameController_GCDualSenseAdaptiveTrigger")]
         #[method_id(@__retain_semantics Other rightTrigger)]
         pub unsafe fn rightTrigger(&self) -> Id<GCDualSenseAdaptiveTrigger>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameController_GCDualSenseGamepad")]
+    unsafe impl GCDualSenseGamepad {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

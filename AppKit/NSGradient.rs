@@ -21,11 +21,15 @@ extern_class!(
     #[cfg(feature = "AppKit_NSGradient")]
     unsafe impl ClassType for NSGradient {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "AppKit_NSGradient")]
 unsafe impl NSCoding for NSGradient {}
+
+#[cfg(feature = "AppKit_NSGradient")]
+unsafe impl NSCopying for NSGradient {}
 
 #[cfg(feature = "AppKit_NSGradient")]
 unsafe impl NSObjectProtocol for NSGradient {}
@@ -127,5 +131,17 @@ extern_methods!(
         #[cfg(feature = "AppKit_NSColor")]
         #[method_id(@__retain_semantics Other interpolatedColorAtLocation:)]
         pub unsafe fn interpolatedColorAtLocation(&self, location: CGFloat) -> Id<NSColor>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSGradient")]
+    unsafe impl NSGradient {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

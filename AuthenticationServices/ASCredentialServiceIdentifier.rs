@@ -21,16 +21,20 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct ASCredentialServiceIdentifier;
 
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "AuthenticationServices_ASCredentialServiceIdentifier")]
     unsafe impl ClassType for ASCredentialServiceIdentifier {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "AuthenticationServices_ASCredentialServiceIdentifier")]
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSCoding for ASCredentialServiceIdentifier {}
+
+#[cfg(feature = "AuthenticationServices_ASCredentialServiceIdentifier")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+unsafe impl NSCopying for ASCredentialServiceIdentifier {}
 
 #[cfg(feature = "AuthenticationServices_ASCredentialServiceIdentifier")]
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
@@ -58,5 +62,17 @@ extern_methods!(
 
         #[method(type)]
         pub unsafe fn r#type(&self) -> ASCredentialServiceIdentifierType;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AuthenticationServices_ASCredentialServiceIdentifier")]
+    unsafe impl ASCredentialServiceIdentifier {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

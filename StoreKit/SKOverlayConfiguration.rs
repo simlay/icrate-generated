@@ -22,10 +22,10 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct SKOverlayConfiguration;
 
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "StoreKit_SKOverlayConfiguration")]
     unsafe impl ClassType for SKOverlayConfiguration {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -51,11 +51,11 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct SKOverlayAppConfiguration;
 
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "StoreKit_SKOverlayAppConfiguration")]
     unsafe impl ClassType for SKOverlayAppConfiguration {
         #[inherits(NSObject)]
         type Super = SKOverlayConfiguration;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -161,11 +161,11 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct SKOverlayAppClipConfiguration;
 
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "StoreKit_SKOverlayAppClipConfiguration")]
     unsafe impl ClassType for SKOverlayAppClipConfiguration {
         #[inherits(NSObject)]
         type Super = SKOverlayConfiguration;
+        type Mutability = InteriorMutable;
     }
 );
 

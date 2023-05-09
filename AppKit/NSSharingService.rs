@@ -57,6 +57,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSSharingService")]
     unsafe impl ClassType for NSSharingService {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -157,6 +158,15 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSArray")]
         #[method(performWithItems:)]
         pub unsafe fn performWithItems(&self, items: &NSArray);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSSharingService")]
+    unsafe impl NSSharingService {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 
@@ -307,6 +317,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSSharingServicePicker")]
     unsafe impl ClassType for NSSharingServicePicker {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -349,6 +360,15 @@ extern_methods!(
         #[cfg(feature = "AppKit_NSMenuItem")]
         #[method_id(@__retain_semantics Other standardShareMenuItem)]
         pub unsafe fn standardShareMenuItem(&self) -> Id<NSMenuItem>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSSharingServicePicker")]
+    unsafe impl NSSharingServicePicker {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

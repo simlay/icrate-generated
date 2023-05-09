@@ -13,10 +13,10 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKDirectionsResponse;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKDirectionsResponse")]
     unsafe impl ClassType for MKDirectionsResponse {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -42,16 +42,28 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MapKit_MKDirectionsResponse")]
+    unsafe impl MKDirectionsResponse {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MapKit_MKRoute")]
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKRoute;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKRoute")]
     unsafe impl ClassType for MKRoute {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -98,16 +110,28 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MapKit_MKRoute")]
+    unsafe impl MKRoute {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MapKit_MKRouteStep")]
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKRouteStep;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKRouteStep")]
     unsafe impl ClassType for MKRouteStep {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -139,16 +163,28 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MapKit_MKRouteStep")]
+    unsafe impl MKRouteStep {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MapKit_MKETAResponse")]
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKETAResponse;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKETAResponse")]
     unsafe impl ClassType for MKETAResponse {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -184,5 +220,17 @@ extern_methods!(
 
         #[method(transportType)]
         pub unsafe fn transportType(&self) -> MKDirectionsTransportType;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MapKit_MKETAResponse")]
+    unsafe impl MKETAResponse {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

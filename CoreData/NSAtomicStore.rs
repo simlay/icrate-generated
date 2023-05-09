@@ -13,6 +13,7 @@ extern_class!(
     unsafe impl ClassType for NSAtomicStore {
         #[inherits(NSObject)]
         type Super = NSPersistentStore;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -121,5 +122,23 @@ extern_methods!(
             &self,
             object_id: &NSManagedObjectID,
         ) -> Id<Object>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSPersistentStore`
+    #[cfg(feature = "CoreData_NSAtomicStore")]
+    unsafe impl NSAtomicStore {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreData_NSAtomicStore")]
+    unsafe impl NSAtomicStore {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

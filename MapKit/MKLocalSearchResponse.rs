@@ -13,10 +13,10 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKLocalSearchResponse;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKLocalSearchResponse")]
     unsafe impl ClassType for MKLocalSearchResponse {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -34,5 +34,17 @@ extern_methods!(
 
         #[method(boundingRegion)]
         pub unsafe fn boundingRegion(&self) -> MKCoordinateRegion;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MapKit_MKLocalSearchResponse")]
+    unsafe impl MKLocalSearchResponse {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -23,13 +23,16 @@ extern_class!(
     #[deprecated]
     pub struct DOMMutationEvent;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMMutationEvent")]
     unsafe impl ClassType for DOMMutationEvent {
         #[inherits(DOMObject, WebScriptObject, NSObject)]
         type Super = DOMEvent;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "WebKit_DOMMutationEvent")]
+unsafe impl NSCopying for DOMMutationEvent {}
 
 #[cfg(feature = "WebKit_DOMMutationEvent")]
 unsafe impl NSObjectProtocol for DOMMutationEvent {}
@@ -65,6 +68,24 @@ extern_methods!(
             attr_name: Option<&NSString>,
             attr_change: c_ushort,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMMutationEvent")]
+    unsafe impl DOMMutationEvent {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMMutationEvent")]
+    unsafe impl DOMMutationEvent {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

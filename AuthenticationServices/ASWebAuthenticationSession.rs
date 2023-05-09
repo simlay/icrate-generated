@@ -28,10 +28,10 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos")))]
     pub struct ASWebAuthenticationSession;
 
-    #[cfg(not(any(target_os = "tvos")))]
     #[cfg(feature = "AuthenticationServices_ASWebAuthenticationSession")]
     unsafe impl ClassType for ASWebAuthenticationSession {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 

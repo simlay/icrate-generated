@@ -11,11 +11,15 @@ extern_class!(
     #[cfg(feature = "Foundation_NSDateInterval")]
     unsafe impl ClassType for NSDateInterval {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSDateInterval")]
 unsafe impl NSCoding for NSDateInterval {}
+
+#[cfg(feature = "Foundation_NSDateInterval")]
+unsafe impl NSCopying for NSDateInterval {}
 
 #[cfg(feature = "Foundation_NSDateInterval")]
 unsafe impl NSObjectProtocol for NSDateInterval {}
@@ -78,5 +82,14 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSDate")]
         #[method(containsDate:)]
         pub unsafe fn containsDate(&self, date: &NSDate) -> bool;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSDateInterval")]
+    unsafe impl NSDateInterval {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

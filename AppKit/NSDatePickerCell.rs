@@ -43,6 +43,7 @@ extern_class!(
     unsafe impl ClassType for NSDatePickerCell {
         #[inherits(NSCell, NSObject)]
         type Super = NSActionCell;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -54,6 +55,9 @@ unsafe impl NSAccessibilityElementProtocol for NSDatePickerCell {}
 
 #[cfg(feature = "AppKit_NSDatePickerCell")]
 unsafe impl NSCoding for NSDatePickerCell {}
+
+#[cfg(feature = "AppKit_NSDatePickerCell")]
+unsafe impl NSCopying for NSDatePickerCell {}
 
 #[cfg(feature = "AppKit_NSDatePickerCell")]
 unsafe impl NSObjectProtocol for NSDatePickerCell {}
@@ -181,6 +185,24 @@ extern_methods!(
             &self,
             delegate: Option<&ProtocolObject<dyn NSDatePickerCellDelegate>>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSCell`
+    #[cfg(feature = "AppKit_NSDatePickerCell")]
+    unsafe impl NSDatePickerCell {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSDatePickerCell")]
+    unsafe impl NSDatePickerCell {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

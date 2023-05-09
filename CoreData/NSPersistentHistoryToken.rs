@@ -12,11 +12,15 @@ extern_class!(
     #[cfg(feature = "CoreData_NSPersistentHistoryToken")]
     unsafe impl ClassType for NSPersistentHistoryToken {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "CoreData_NSPersistentHistoryToken")]
 unsafe impl NSCoding for NSPersistentHistoryToken {}
+
+#[cfg(feature = "CoreData_NSPersistentHistoryToken")]
+unsafe impl NSCopying for NSPersistentHistoryToken {}
 
 #[cfg(feature = "CoreData_NSPersistentHistoryToken")]
 unsafe impl NSObjectProtocol for NSPersistentHistoryToken {}
@@ -27,4 +31,16 @@ unsafe impl NSSecureCoding for NSPersistentHistoryToken {}
 extern_methods!(
     #[cfg(feature = "CoreData_NSPersistentHistoryToken")]
     unsafe impl NSPersistentHistoryToken {}
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreData_NSPersistentHistoryToken")]
+    unsafe impl NSPersistentHistoryToken {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
 );

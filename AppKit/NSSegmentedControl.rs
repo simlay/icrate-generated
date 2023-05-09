@@ -48,6 +48,7 @@ extern_class!(
     unsafe impl ClassType for NSSegmentedControl {
         #[inherits(NSView, NSResponder, NSObject)]
         type Super = NSControl;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -250,6 +251,40 @@ extern_methods!(
 );
 
 extern_methods!(
+    /// Methods declared on superclass `NSControl`
+    #[cfg(feature = "AppKit_NSSegmentedControl")]
+    unsafe impl NSSegmentedControl {
+        #[method_id(@__retain_semantics Init initWithFrame:)]
+        pub unsafe fn initWithFrame(this: Option<Allocated<Self>>, frame_rect: NSRect) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(
+            this: Option<Allocated<Self>>,
+            coder: &NSCoder,
+        ) -> Option<Id<Self>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSResponder`
+    #[cfg(feature = "AppKit_NSSegmentedControl")]
+    unsafe impl NSSegmentedControl {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSSegmentedControl")]
+    unsafe impl NSSegmentedControl {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
+extern_methods!(
     /// NSSegmentedControlConvenience
     #[cfg(feature = "AppKit_NSSegmentedControl")]
     unsafe impl NSSegmentedControl {
@@ -270,14 +305,5 @@ extern_methods!(
             target: Option<&Object>,
             action: Option<Sel>,
         ) -> Id<Self>;
-    }
-);
-
-extern_methods!(
-    /// Methods declared on superclass `NSControl`
-    #[cfg(feature = "AppKit_NSSegmentedControl")]
-    unsafe impl NSSegmentedControl {
-        #[method_id(@__retain_semantics Init initWithFrame:)]
-        pub unsafe fn initWithFrame(this: Option<Allocated<Self>>, frame_rect: NSRect) -> Id<Self>;
     }
 );

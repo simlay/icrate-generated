@@ -14,6 +14,7 @@ extern_class!(
     unsafe impl ClassType for GKLocalPlayer {
         #[inherits(GKBasePlayer, NSObject)]
         type Super = GKPlayer;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -85,6 +86,29 @@ extern_methods!(
                 &Block<(*mut NSURL, *mut NSData, *mut NSData, u64, *mut NSError), ()>,
             >,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `GKPlayer`
+    #[cfg(feature = "GameKit_GKLocalPlayer")]
+    unsafe impl GKLocalPlayer {
+        #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "watchos")))]
+        #[method_id(@__retain_semantics Other anonymousGuestPlayerWithIdentifier:)]
+        pub unsafe fn anonymousGuestPlayerWithIdentifier(guest_identifier: &NSString) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameKit_GKLocalPlayer")]
+    unsafe impl GKLocalPlayer {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 
@@ -272,16 +296,5 @@ extern_methods!(
             &self,
             window: Option<&NSWindow>,
         ) -> Result<(), Id<NSError>>;
-    }
-);
-
-extern_methods!(
-    /// Methods declared on superclass `GKPlayer`
-    #[cfg(feature = "GameKit_GKLocalPlayer")]
-    unsafe impl GKLocalPlayer {
-        #[cfg(feature = "Foundation_NSString")]
-        #[cfg(not(any(target_os = "watchos")))]
-        #[method_id(@__retain_semantics Other anonymousGuestPlayerWithIdentifier:)]
-        pub unsafe fn anonymousGuestPlayerWithIdentifier(guest_identifier: &NSString) -> Id<Self>;
     }
 );

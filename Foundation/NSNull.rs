@@ -11,11 +11,15 @@ extern_class!(
     #[cfg(feature = "Foundation_NSNull")]
     unsafe impl ClassType for NSNull {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSNull")]
 unsafe impl NSCoding for NSNull {}
+
+#[cfg(feature = "Foundation_NSNull")]
+unsafe impl NSCopying for NSNull {}
 
 #[cfg(feature = "Foundation_NSNull")]
 unsafe impl NSObjectProtocol for NSNull {}
@@ -28,5 +32,17 @@ extern_methods!(
     unsafe impl NSNull {
         #[method_id(@__retain_semantics Other null)]
         pub unsafe fn null() -> Id<NSNull>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSNull")]
+    unsafe impl NSNull {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

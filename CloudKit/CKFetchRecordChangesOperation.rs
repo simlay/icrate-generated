@@ -11,11 +11,11 @@ extern_class!(
     #[deprecated]
     pub struct CKFetchRecordChangesOperation;
 
-    #[deprecated]
     #[cfg(feature = "CloudKit_CKFetchRecordChangesOperation")]
     unsafe impl ClassType for CKFetchRecordChangesOperation {
         #[inherits(CKOperation, NSOperation, NSObject)]
         type Super = CKDatabaseOperation;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -119,5 +119,14 @@ extern_methods!(
                 &Block<(*mut CKServerChangeToken, *mut NSData, *mut NSError), ()>,
             >,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CloudKit_CKFetchRecordChangesOperation")]
+    unsafe impl CKFetchRecordChangesOperation {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

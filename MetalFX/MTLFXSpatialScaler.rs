@@ -21,6 +21,7 @@ extern_class!(
     #[cfg(feature = "MetalFX_MTLFXSpatialScalerDescriptor")]
     unsafe impl ClassType for MTLFXSpatialScalerDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -83,6 +84,18 @@ extern_methods!(
 
         #[method(supportsDevice:)]
         pub unsafe fn supportsDevice(device: &ProtocolObject<dyn MTLDevice>) -> bool;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MetalFX_MTLFXSpatialScalerDescriptor")]
+    unsafe impl MTLFXSpatialScalerDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

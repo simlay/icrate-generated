@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSTextLineFragment")]
     unsafe impl ClassType for NSTextLineFragment {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -76,5 +77,14 @@ extern_methods!(
 
         #[method(fractionOfDistanceThroughGlyphForPoint:)]
         pub unsafe fn fractionOfDistanceThroughGlyphForPoint(&self, point: CGPoint) -> CGFloat;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSTextLineFragment")]
+    unsafe impl NSTextLineFragment {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

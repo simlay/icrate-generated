@@ -33,6 +33,7 @@ extern_class!(
     #[cfg(feature = "UserNotifications_UNUserNotificationCenter")]
     unsafe impl ClassType for UNUserNotificationCenter {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -158,6 +159,15 @@ extern_methods!(
             new_badge_count: NSInteger,
             completion_handler: Option<&Block<(*mut NSError,), ()>>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "UserNotifications_UNUserNotificationCenter")]
+    unsafe impl UNUserNotificationCenter {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

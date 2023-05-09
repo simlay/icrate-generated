@@ -25,13 +25,16 @@ extern_class!(
     #[deprecated]
     pub struct DOMCSSValue;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMCSSValue")]
     unsafe impl ClassType for DOMCSSValue {
         #[inherits(WebScriptObject, NSObject)]
         type Super = DOMObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "WebKit_DOMCSSValue")]
+unsafe impl NSCopying for DOMCSSValue {}
 
 #[cfg(feature = "WebKit_DOMCSSValue")]
 unsafe impl NSObjectProtocol for DOMCSSValue {}
@@ -49,5 +52,23 @@ extern_methods!(
 
         #[method(cssValueType)]
         pub unsafe fn cssValueType(&self) -> c_ushort;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMCSSValue")]
+    unsafe impl DOMCSSValue {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMCSSValue")]
+    unsafe impl DOMCSSValue {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

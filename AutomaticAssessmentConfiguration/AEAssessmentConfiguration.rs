@@ -21,8 +21,12 @@ extern_class!(
     #[cfg(feature = "AutomaticAssessmentConfiguration_AEAssessmentConfiguration")]
     unsafe impl ClassType for AEAssessmentConfiguration {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "AutomaticAssessmentConfiguration_AEAssessmentConfiguration")]
+unsafe impl NSCopying for AEAssessmentConfiguration {}
 
 #[cfg(feature = "AutomaticAssessmentConfiguration_AEAssessmentConfiguration")]
 unsafe impl NSObjectProtocol for AEAssessmentConfiguration {}
@@ -136,5 +140,17 @@ extern_methods!(
         #[cfg(not(any(target_os = "ios")))]
         #[method(removeApplication:)]
         pub unsafe fn removeApplication(&self, application: &AEAssessmentApplication);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AutomaticAssessmentConfiguration_AEAssessmentConfiguration")]
+    unsafe impl AEAssessmentConfiguration {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -12,13 +12,13 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct ASAuthorizationSecurityKeyPublicKeyCredentialAssertionRequest;
 
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(
         feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialAssertionRequest"
     )]
     unsafe impl ClassType for ASAuthorizationSecurityKeyPublicKeyCredentialAssertionRequest {
         #[inherits(NSObject)]
         type Super = ASAuthorizationRequest;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -36,6 +36,12 @@ unsafe impl ASAuthorizationPublicKeyCredentialAssertionRequest
 )]
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSCoding for ASAuthorizationSecurityKeyPublicKeyCredentialAssertionRequest {}
+
+#[cfg(
+    feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialAssertionRequest"
+)]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+unsafe impl NSCopying for ASAuthorizationSecurityKeyPublicKeyCredentialAssertionRequest {}
 
 #[cfg(
     feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialAssertionRequest"
@@ -73,5 +79,19 @@ extern_methods!(
             &self,
             allowed_credentials: &NSArray<ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `ASAuthorizationRequest`
+    #[cfg(
+        feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialAssertionRequest"
+    )]
+    unsafe impl ASAuthorizationSecurityKeyPublicKeyCredentialAssertionRequest {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
     }
 );

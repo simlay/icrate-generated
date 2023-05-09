@@ -22,6 +22,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSBundle")]
     unsafe impl ClassType for NSBundle {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -355,6 +356,18 @@ extern_methods!(
 );
 
 extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSBundle")]
+    unsafe impl NSBundle {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
+extern_methods!(
     /// NSBundleExtensionMethods
     #[cfg(feature = "Foundation_NSString")]
     unsafe impl NSString {
@@ -373,10 +386,10 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct NSBundleResourceRequest;
 
-    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "Foundation_NSBundleResourceRequest")]
     unsafe impl ClassType for NSBundleResourceRequest {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -453,6 +466,15 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSProgress")]
         #[method_id(@__retain_semantics Other progress)]
         pub unsafe fn progress(&self) -> Id<NSProgress>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSBundleResourceRequest")]
+    unsafe impl NSBundleResourceRequest {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

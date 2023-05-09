@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSWindowTab")]
     unsafe impl ClassType for NSWindowTab {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -53,5 +54,17 @@ extern_methods!(
         #[cfg(feature = "AppKit_NSView")]
         #[method(setAccessoryView:)]
         pub unsafe fn setAccessoryView(&self, accessory_view: Option<&NSView>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSWindowTab")]
+    unsafe impl NSWindowTab {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

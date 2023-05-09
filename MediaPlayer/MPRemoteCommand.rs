@@ -24,6 +24,7 @@ extern_class!(
     #[cfg(feature = "MediaPlayer_MPRemoteCommand")]
     unsafe impl ClassType for MPRemoteCommand {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -72,6 +73,7 @@ extern_class!(
     unsafe impl ClassType for MPSkipIntervalCommand {
         #[inherits(NSObject)]
         type Super = MPRemoteCommand;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -91,6 +93,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `MPRemoteCommand`
+    #[cfg(feature = "MediaPlayer_MPSkipIntervalCommand")]
+    unsafe impl MPSkipIntervalCommand {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MediaPlayer_MPFeedbackCommand")]
@@ -100,6 +114,7 @@ extern_class!(
     unsafe impl ClassType for MPFeedbackCommand {
         #[inherits(NSObject)]
         type Super = MPRemoteCommand;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -133,6 +148,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `MPRemoteCommand`
+    #[cfg(feature = "MediaPlayer_MPFeedbackCommand")]
+    unsafe impl MPFeedbackCommand {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MediaPlayer_MPRatingCommand")]
@@ -142,6 +169,7 @@ extern_class!(
     unsafe impl ClassType for MPRatingCommand {
         #[inherits(NSObject)]
         type Super = MPRemoteCommand;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -165,6 +193,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `MPRemoteCommand`
+    #[cfg(feature = "MediaPlayer_MPRatingCommand")]
+    unsafe impl MPRatingCommand {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MediaPlayer_MPChangePlaybackRateCommand")]
@@ -174,6 +214,7 @@ extern_class!(
     unsafe impl ClassType for MPChangePlaybackRateCommand {
         #[inherits(NSObject)]
         type Super = MPRemoteCommand;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -196,6 +237,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `MPRemoteCommand`
+    #[cfg(feature = "MediaPlayer_MPChangePlaybackRateCommand")]
+    unsafe impl MPChangePlaybackRateCommand {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MediaPlayer_MPChangePlaybackPositionCommand")]
@@ -205,6 +258,7 @@ extern_class!(
     unsafe impl ClassType for MPChangePlaybackPositionCommand {
         #[inherits(NSObject)]
         type Super = MPRemoteCommand;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -216,6 +270,18 @@ extern_methods!(
     unsafe impl MPChangePlaybackPositionCommand {}
 );
 
+extern_methods!(
+    /// Methods declared on superclass `MPRemoteCommand`
+    #[cfg(feature = "MediaPlayer_MPChangePlaybackPositionCommand")]
+    unsafe impl MPChangePlaybackPositionCommand {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MediaPlayer_MPChangeShuffleModeCommand")]
@@ -225,6 +291,7 @@ extern_class!(
     unsafe impl ClassType for MPChangeShuffleModeCommand {
         #[inherits(NSObject)]
         type Super = MPRemoteCommand;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -242,6 +309,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `MPRemoteCommand`
+    #[cfg(feature = "MediaPlayer_MPChangeShuffleModeCommand")]
+    unsafe impl MPChangeShuffleModeCommand {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MediaPlayer_MPChangeRepeatModeCommand")]
@@ -251,6 +330,7 @@ extern_class!(
     unsafe impl ClassType for MPChangeRepeatModeCommand {
         #[inherits(NSObject)]
         type Super = MPRemoteCommand;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -265,5 +345,17 @@ extern_methods!(
 
         #[method(setCurrentRepeatType:)]
         pub unsafe fn setCurrentRepeatType(&self, current_repeat_type: MPRepeatType);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `MPRemoteCommand`
+    #[cfg(feature = "MediaPlayer_MPChangeRepeatModeCommand")]
+    unsafe impl MPChangeRepeatModeCommand {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
     }
 );

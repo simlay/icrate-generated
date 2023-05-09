@@ -32,6 +32,42 @@ ns_enum!(
     }
 );
 
+#[cfg(feature = "AuthenticationServices_ASAuthorizationAppleIDButton")]
+#[cfg(not(any(target_os = "watchos")))]
+unsafe impl NSAccessibility for ASAuthorizationAppleIDButton {}
+
+#[cfg(feature = "AuthenticationServices_ASAuthorizationAppleIDButton")]
+#[cfg(not(any(target_os = "watchos")))]
+unsafe impl NSAccessibilityButton for ASAuthorizationAppleIDButton {}
+
+#[cfg(feature = "AuthenticationServices_ASAuthorizationAppleIDButton")]
+#[cfg(not(any(target_os = "watchos")))]
+unsafe impl NSAccessibilityElementProtocol for ASAuthorizationAppleIDButton {}
+
+#[cfg(feature = "AuthenticationServices_ASAuthorizationAppleIDButton")]
+#[cfg(not(any(target_os = "watchos")))]
+unsafe impl NSAnimatablePropertyContainer for ASAuthorizationAppleIDButton {}
+
+#[cfg(feature = "AuthenticationServices_ASAuthorizationAppleIDButton")]
+#[cfg(not(any(target_os = "watchos")))]
+unsafe impl NSAppearanceCustomization for ASAuthorizationAppleIDButton {}
+
+#[cfg(feature = "AuthenticationServices_ASAuthorizationAppleIDButton")]
+#[cfg(not(any(target_os = "watchos")))]
+unsafe impl NSCoding for ASAuthorizationAppleIDButton {}
+
+#[cfg(feature = "AuthenticationServices_ASAuthorizationAppleIDButton")]
+#[cfg(not(any(target_os = "watchos")))]
+unsafe impl NSDraggingDestination for ASAuthorizationAppleIDButton {}
+
+#[cfg(feature = "AuthenticationServices_ASAuthorizationAppleIDButton")]
+#[cfg(not(any(target_os = "watchos")))]
+unsafe impl NSObjectProtocol for ASAuthorizationAppleIDButton {}
+
+#[cfg(feature = "AuthenticationServices_ASAuthorizationAppleIDButton")]
+#[cfg(not(any(target_os = "watchos")))]
+unsafe impl NSUserInterfaceItemIdentification for ASAuthorizationAppleIDButton {}
+
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASAuthorizationAppleIDButton")]
@@ -56,5 +92,44 @@ extern_methods!(
         #[cfg(not(any(target_os = "tvos")))]
         #[method(setCornerRadius:)]
         pub unsafe fn setCornerRadius(&self, corner_radius: CGFloat);
+    }
+);
+
+#[cfg(not(any(target_os = "ios")))]
+extern_methods!(
+    /// Methods declared on superclass `NSControl`
+    #[cfg(feature = "AuthenticationServices_ASAuthorizationAppleIDButton")]
+    unsafe impl ASAuthorizationAppleIDButton {
+        #[cfg(not(any(target_os = "ios")))]
+        #[method_id(@__retain_semantics Init initWithFrame:)]
+        pub unsafe fn initWithFrame(this: Option<Allocated<Self>>, frame_rect: NSRect) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[cfg(not(any(target_os = "ios")))]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(
+            this: Option<Allocated<Self>>,
+            coder: &NSCoder,
+        ) -> Option<Id<Self>>;
+    }
+);
+
+#[cfg(not(any(target_os = "ios")))]
+extern_methods!(
+    /// Methods declared on superclass `NSResponder`
+    #[cfg(feature = "AuthenticationServices_ASAuthorizationAppleIDButton")]
+    unsafe impl ASAuthorizationAppleIDButton {
+        #[cfg(not(any(target_os = "ios")))]
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AuthenticationServices_ASAuthorizationAppleIDButton")]
+    unsafe impl ASAuthorizationAppleIDButton {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

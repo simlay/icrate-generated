@@ -32,11 +32,15 @@ extern_class!(
     unsafe impl ClassType for NSDateFormatter {
         #[inherits(NSObject)]
         type Super = NSFormatter;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSDateFormatter")]
 unsafe impl NSCoding for NSDateFormatter {}
+
+#[cfg(feature = "Foundation_NSDateFormatter")]
+unsafe impl NSCopying for NSDateFormatter {}
 
 #[cfg(feature = "Foundation_NSDateFormatter")]
 unsafe impl NSObjectProtocol for NSDateFormatter {}
@@ -382,6 +386,18 @@ extern_methods!(
 
         #[method(setDoesRelativeDateFormatting:)]
         pub unsafe fn setDoesRelativeDateFormatting(&self, does_relative_date_formatting: bool);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSDateFormatter")]
+    unsafe impl NSDateFormatter {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

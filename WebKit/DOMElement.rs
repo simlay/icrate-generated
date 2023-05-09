@@ -19,16 +19,19 @@ extern_class!(
     #[deprecated]
     pub struct DOMElement;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMElement")]
     unsafe impl ClassType for DOMElement {
         #[inherits(DOMObject, WebScriptObject, NSObject)]
         type Super = DOMNode;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_DOMElement")]
 unsafe impl DOMEventTarget for DOMElement {}
+
+#[cfg(feature = "WebKit_DOMElement")]
+unsafe impl NSCopying for DOMElement {}
 
 #[cfg(feature = "WebKit_DOMElement")]
 unsafe impl NSObjectProtocol for DOMElement {}
@@ -259,6 +262,24 @@ extern_methods!(
             &self,
             selectors: Option<&NSString>,
         ) -> Option<Id<DOMNodeList>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMElement")]
+    unsafe impl DOMElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMElement")]
+    unsafe impl DOMElement {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

@@ -11,11 +11,11 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub struct EXHostViewController;
 
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "ExtensionKit_EXHostViewController")]
     unsafe impl ClassType for EXHostViewController {
         #[inherits(NSResponder, NSObject)]
         type Super = NSViewController;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -69,6 +69,50 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "ios")))]
+extern_methods!(
+    /// Methods declared on superclass `NSViewController`
+    #[cfg(feature = "ExtensionKit_EXHostViewController")]
+    unsafe impl EXHostViewController {
+        #[cfg(feature = "Foundation_NSBundle")]
+        #[cfg(not(any(target_os = "ios")))]
+        #[method_id(@__retain_semantics Init initWithNibName:bundle:)]
+        pub unsafe fn initWithNibName_bundle(
+            this: Option<Allocated<Self>>,
+            nib_name_or_nil: Option<&NSNibName>,
+            nib_bundle_or_nil: Option<&NSBundle>,
+        ) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[cfg(not(any(target_os = "ios")))]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(
+            this: Option<Allocated<Self>>,
+            coder: &NSCoder,
+        ) -> Option<Id<Self>>;
+    }
+);
+
+#[cfg(not(any(target_os = "ios")))]
+extern_methods!(
+    /// Methods declared on superclass `NSResponder`
+    #[cfg(feature = "ExtensionKit_EXHostViewController")]
+    unsafe impl EXHostViewController {
+        #[cfg(not(any(target_os = "ios")))]
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "ExtensionKit_EXHostViewController")]
+    unsafe impl EXHostViewController {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_protocol!(
     pub unsafe trait EXHostViewControllerDelegate: NSObjectProtocol {
@@ -91,19 +135,4 @@ extern_protocol!(
     }
 
     unsafe impl ProtocolType for dyn EXHostViewControllerDelegate {}
-);
-
-#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
-extern_methods!(
-    /// Methods declared on superclass `NSViewController`
-    #[cfg(feature = "ExtensionKit_EXHostViewController")]
-    unsafe impl EXHostViewController {
-        #[cfg(feature = "Foundation_NSBundle")]
-        #[method_id(@__retain_semantics Init initWithNibName:bundle:)]
-        pub unsafe fn initWithNibName_bundle(
-            this: Option<Allocated<Self>>,
-            nib_name_or_nil: Option<&NSNibName>,
-            nib_bundle_or_nil: Option<&NSBundle>,
-        ) -> Id<Self>;
-    }
 );

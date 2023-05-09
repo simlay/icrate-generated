@@ -16,6 +16,7 @@ extern_class!(
     unsafe impl ClassType for CKOperation {
         #[inherits(NSObject)]
         type Super = NSOperation;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -58,6 +59,15 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CloudKit_CKOperation")]
+    unsafe impl CKOperation {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CloudKit_CKOperationConfiguration")]
@@ -66,6 +76,7 @@ extern_class!(
     #[cfg(feature = "CloudKit_CKOperationConfiguration")]
     unsafe impl ClassType for CKOperationConfiguration {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -118,6 +129,18 @@ extern_methods!(
             &self,
             timeout_interval_for_resource: NSTimeInterval,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CloudKit_CKOperationConfiguration")]
+    unsafe impl CKOperationConfiguration {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

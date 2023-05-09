@@ -11,10 +11,10 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct SKStoreReviewController;
 
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "StoreKit_SKStoreReviewController")]
     unsafe impl ClassType for SKStoreReviewController {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -30,5 +30,17 @@ extern_methods!(
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(requestReview)]
         pub unsafe fn requestReview();
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "StoreKit_SKStoreReviewController")]
+    unsafe impl SKStoreReviewController {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

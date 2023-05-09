@@ -60,11 +60,15 @@ extern_class!(
     #[cfg(feature = "UserNotifications_UNNotificationSettings")]
     unsafe impl ClassType for UNNotificationSettings {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "UserNotifications_UNNotificationSettings")]
 unsafe impl NSCoding for UNNotificationSettings {}
+
+#[cfg(feature = "UserNotifications_UNNotificationSettings")]
+unsafe impl NSCopying for UNNotificationSettings {}
 
 #[cfg(feature = "UserNotifications_UNNotificationSettings")]
 unsafe impl NSObjectProtocol for UNNotificationSettings {}
@@ -136,5 +140,14 @@ extern_methods!(
 
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "UserNotifications_UNNotificationSettings")]
+    unsafe impl UNNotificationSettings {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

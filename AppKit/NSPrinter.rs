@@ -30,11 +30,15 @@ extern_class!(
     #[cfg(feature = "AppKit_NSPrinter")]
     unsafe impl ClassType for NSPrinter {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "AppKit_NSPrinter")]
 unsafe impl NSCoding for NSPrinter {}
+
+#[cfg(feature = "AppKit_NSPrinter")]
+unsafe impl NSCopying for NSPrinter {}
 
 #[cfg(feature = "AppKit_NSPrinter")]
 unsafe impl NSObjectProtocol for NSPrinter {}
@@ -73,6 +77,18 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSDictionary")]
         #[method_id(@__retain_semantics Other deviceDescription)]
         pub unsafe fn deviceDescription(&self) -> Id<NSDictionary<NSDeviceDescriptionKey, Object>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSPrinter")]
+    unsafe impl NSPrinter {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

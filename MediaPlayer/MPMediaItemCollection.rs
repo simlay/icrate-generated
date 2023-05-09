@@ -11,11 +11,11 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct MPMediaItemCollection;
 
-    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPMediaItemCollection")]
     unsafe impl ClassType for MPMediaItemCollection {
         #[inherits(NSObject)]
         type Super = MPMediaEntity;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -61,5 +61,17 @@ extern_methods!(
 
         #[method(mediaTypes)]
         pub unsafe fn mediaTypes(&self) -> MPMediaType;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MediaPlayer_MPMediaItemCollection")]
+    unsafe impl MPMediaItemCollection {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -47,6 +47,7 @@ extern_class!(
     unsafe impl ClassType for NSFontPanel {
         #[inherits(NSWindow, NSResponder, NSObject)]
         type Super = NSPanel;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -119,6 +120,60 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSWindow`
+    #[cfg(feature = "AppKit_NSFontPanel")]
+    unsafe impl NSFontPanel {
+        #[method_id(@__retain_semantics Init initWithContentRect:styleMask:backing:defer:)]
+        pub unsafe fn initWithContentRect_styleMask_backing_defer(
+            this: Option<Allocated<Self>>,
+            content_rect: NSRect,
+            style: NSWindowStyleMask,
+            backing_store_type: NSBackingStoreType,
+            flag: bool,
+        ) -> Id<Self>;
+
+        #[cfg(feature = "AppKit_NSScreen")]
+        #[method_id(@__retain_semantics Init initWithContentRect:styleMask:backing:defer:screen:)]
+        pub unsafe fn initWithContentRect_styleMask_backing_defer_screen(
+            this: Option<Allocated<Self>>,
+            content_rect: NSRect,
+            style: NSWindowStyleMask,
+            backing_store_type: NSBackingStoreType,
+            flag: bool,
+            screen: Option<&NSScreen>,
+        ) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(this: Option<Allocated<Self>>, coder: &NSCoder) -> Id<Self>;
+
+        #[cfg(feature = "AppKit_NSViewController")]
+        #[method_id(@__retain_semantics Other windowWithContentViewController:)]
+        pub unsafe fn windowWithContentViewController(
+            content_view_controller: &NSViewController,
+        ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSResponder`
+    #[cfg(feature = "AppKit_NSFontPanel")]
+    unsafe impl NSFontPanel {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSFontPanel")]
+    unsafe impl NSFontPanel {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_enum!(
     #[underlying(c_uint)]
     pub enum __anonymous__ {
@@ -146,37 +201,5 @@ extern_enum!(
         NSFPSizeField = 129,
         NSFPSizeTitle = 133,
         NSFPCurrentField = 134,
-    }
-);
-
-extern_methods!(
-    /// Methods declared on superclass `NSWindow`
-    #[cfg(feature = "AppKit_NSFontPanel")]
-    unsafe impl NSFontPanel {
-        #[method_id(@__retain_semantics Init initWithContentRect:styleMask:backing:defer:)]
-        pub unsafe fn initWithContentRect_styleMask_backing_defer(
-            this: Option<Allocated<Self>>,
-            content_rect: NSRect,
-            style: NSWindowStyleMask,
-            backing_store_type: NSBackingStoreType,
-            flag: bool,
-        ) -> Id<Self>;
-
-        #[cfg(feature = "AppKit_NSScreen")]
-        #[method_id(@__retain_semantics Init initWithContentRect:styleMask:backing:defer:screen:)]
-        pub unsafe fn initWithContentRect_styleMask_backing_defer_screen(
-            this: Option<Allocated<Self>>,
-            content_rect: NSRect,
-            style: NSWindowStyleMask,
-            backing_store_type: NSBackingStoreType,
-            flag: bool,
-            screen: Option<&NSScreen>,
-        ) -> Id<Self>;
-
-        #[cfg(feature = "AppKit_NSViewController")]
-        #[method_id(@__retain_semantics Other windowWithContentViewController:)]
-        pub unsafe fn windowWithContentViewController(
-            content_view_controller: &NSViewController,
-        ) -> Id<Self>;
     }
 );

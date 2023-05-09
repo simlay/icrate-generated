@@ -61,6 +61,7 @@ extern_class!(
     #[cfg(feature = "CoreAnimation_CALayer")]
     unsafe impl ClassType for CALayer {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -532,6 +533,22 @@ extern_methods!(
         pub unsafe fn setStyle(&self, style: Option<&NSDictionary>);
     }
 );
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreAnimation_CALayer")]
+    unsafe impl CALayer {
+        #[method_id(@__retain_semantics New new)]
+        pub fn new() -> Id<Self>;
+    }
+);
+#[cfg(feature = "CoreAnimation_CALayer")]
+impl DefaultId for CALayer {
+    #[inline]
+    fn default_id() -> Id<Self> {
+        Self::new()
+    }
+}
 
 extern_protocol!(
     pub unsafe trait CALayoutManager: NSObjectProtocol {

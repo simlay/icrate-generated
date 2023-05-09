@@ -12,13 +12,13 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct ASAuthorizationPlatformPublicKeyCredentialAssertionRequest;
 
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(
         feature = "AuthenticationServices_ASAuthorizationPlatformPublicKeyCredentialAssertionRequest"
     )]
     unsafe impl ClassType for ASAuthorizationPlatformPublicKeyCredentialAssertionRequest {
         #[inherits(NSObject)]
         type Super = ASAuthorizationRequest;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -36,6 +36,12 @@ unsafe impl ASAuthorizationPublicKeyCredentialAssertionRequest
 )]
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSCoding for ASAuthorizationPlatformPublicKeyCredentialAssertionRequest {}
+
+#[cfg(
+    feature = "AuthenticationServices_ASAuthorizationPlatformPublicKeyCredentialAssertionRequest"
+)]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+unsafe impl NSCopying for ASAuthorizationPlatformPublicKeyCredentialAssertionRequest {}
 
 #[cfg(
     feature = "AuthenticationServices_ASAuthorizationPlatformPublicKeyCredentialAssertionRequest"

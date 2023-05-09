@@ -12,11 +12,15 @@ extern_class!(
     #[cfg(feature = "Speech_SFTranscription")]
     unsafe impl ClassType for SFTranscription {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Speech_SFTranscription")]
 unsafe impl NSCoding for SFTranscription {}
+
+#[cfg(feature = "Speech_SFTranscription")]
+unsafe impl NSCopying for SFTranscription {}
 
 #[cfg(feature = "Speech_SFTranscription")]
 unsafe impl NSObjectProtocol for SFTranscription {}
@@ -45,5 +49,17 @@ extern_methods!(
         #[deprecated = "averagePauseDuration is moved to SFSpeechRecognitionMetadata"]
         #[method(averagePauseDuration)]
         pub unsafe fn averagePauseDuration(&self) -> NSTimeInterval;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Speech_SFTranscription")]
+    unsafe impl SFTranscription {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

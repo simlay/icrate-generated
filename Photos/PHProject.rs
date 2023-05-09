@@ -12,13 +12,17 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     pub struct PHProject;
 
-    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     #[cfg(feature = "PhotoKit_PHProject")]
     unsafe impl ClassType for PHProject {
         #[inherits(PHCollection, PHObject, NSObject)]
         type Super = PHAssetCollection;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "PhotoKit_PHProject")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos")))]
+unsafe impl NSCopying for PHProject {}
 
 #[cfg(feature = "PhotoKit_PHProject")]
 #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
@@ -36,5 +40,17 @@ extern_methods!(
         #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[method(hasProjectPreview)]
         pub unsafe fn hasProjectPreview(&self) -> bool;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "PhotoKit_PHProject")]
+    unsafe impl PHProject {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

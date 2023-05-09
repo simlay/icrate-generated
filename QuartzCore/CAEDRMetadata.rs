@@ -12,6 +12,7 @@ extern_class!(
     #[cfg(feature = "CoreAnimation_CAEDRMetadata")]
     unsafe impl ClassType for CAEDRMetadata {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -44,5 +45,14 @@ extern_methods!(
 
         #[method(isAvailable)]
         pub unsafe fn isAvailable() -> bool;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreAnimation_CAEDRMetadata")]
+    unsafe impl CAEDRMetadata {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -16,6 +16,7 @@ extern_class!(
     unsafe impl ClassType for MKPlacemark {
         #[inherits(NSObject)]
         type Super = CLPlacemark;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -24,6 +25,9 @@ unsafe impl MKAnnotation for MKPlacemark {}
 
 #[cfg(feature = "MapKit_MKPlacemark")]
 unsafe impl NSCoding for MKPlacemark {}
+
+#[cfg(feature = "MapKit_MKPlacemark")]
+unsafe impl NSCopying for MKPlacemark {}
 
 #[cfg(feature = "MapKit_MKPlacemark")]
 unsafe impl NSObjectProtocol for MKPlacemark {}
@@ -67,6 +71,24 @@ extern_methods!(
     /// Methods declared on superclass `CLPlacemark`
     #[cfg(feature = "MapKit_MKPlacemark")]
     unsafe impl MKPlacemark {
+        #[cfg(not(any(
+            target_os = "ios",
+            target_os = "macos",
+            target_os = "tvos",
+            target_os = "watchos"
+        )))]
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[cfg(not(any(
+            target_os = "ios",
+            target_os = "macos",
+            target_os = "tvos",
+            target_os = "watchos"
+        )))]
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+
         #[method_id(@__retain_semantics Init initWithPlacemark:)]
         pub unsafe fn initWithPlacemark(
             this: Option<Allocated<Self>>,

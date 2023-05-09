@@ -42,6 +42,7 @@ extern_class!(
     #[cfg(feature = "GameKit_GKMatchRequest")]
     unsafe impl ClassType for GKMatchRequest {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -150,16 +151,28 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameKit_GKMatchRequest")]
+    unsafe impl GKMatchRequest {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "GameKit_GKInvite")]
     #[cfg(not(any(target_os = "watchos")))]
     pub struct GKInvite;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "GameKit_GKInvite")]
     unsafe impl ClassType for GKInvite {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -188,6 +201,18 @@ extern_methods!(
         #[deprecated = "This property is obsolete, use sender instead"]
         #[method_id(@__retain_semantics Other inviter)]
         pub unsafe fn inviter(&self) -> Id<NSString>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameKit_GKInvite")]
+    unsafe impl GKInvite {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 
@@ -233,10 +258,10 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct GKMatchmaker;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "GameKit_GKMatchmaker")]
     unsafe impl ClassType for GKMatchmaker {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -336,6 +361,18 @@ extern_methods!(
 
         #[method(stopBrowsingForNearbyPlayers)]
         pub unsafe fn stopBrowsingForNearbyPlayers(&self);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameKit_GKMatchmaker")]
+    unsafe impl GKMatchmaker {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

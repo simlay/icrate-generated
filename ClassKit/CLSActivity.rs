@@ -13,6 +13,7 @@ extern_class!(
     unsafe impl ClassType for CLSActivity {
         #[inherits(NSObject)]
         type Super = CLSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -58,6 +59,18 @@ extern_methods!(
         #[cfg(all(feature = "ClassKit_CLSActivityItem", feature = "Foundation_NSArray"))]
         #[method_id(@__retain_semantics Other additionalActivityItems)]
         pub unsafe fn additionalActivityItems(&self) -> Id<NSArray<CLSActivityItem>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `CLSObject`
+    #[cfg(feature = "ClassKit_CLSActivity")]
+    unsafe impl CLSActivity {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
     }
 );
 

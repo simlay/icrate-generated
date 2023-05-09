@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSURLSession")]
     unsafe impl ClassType for NSURLSession {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -367,8 +368,12 @@ extern_class!(
     #[cfg(feature = "Foundation_NSURLSessionTask")]
     unsafe impl ClassType for NSURLSessionTask {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Foundation_NSURLSessionTask")]
+unsafe impl NSCopying for NSURLSessionTask {}
 
 #[cfg(feature = "Foundation_NSURLSessionTask")]
 unsafe impl NSObjectProtocol for NSURLSessionTask {}
@@ -506,8 +511,12 @@ extern_class!(
     unsafe impl ClassType for NSURLSessionDataTask {
         #[inherits(NSObject)]
         type Super = NSURLSessionTask;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Foundation_NSURLSessionDataTask")]
+unsafe impl NSCopying for NSURLSessionDataTask {}
 
 #[cfg(feature = "Foundation_NSURLSessionDataTask")]
 unsafe impl NSObjectProtocol for NSURLSessionDataTask {}
@@ -537,8 +546,12 @@ extern_class!(
     unsafe impl ClassType for NSURLSessionUploadTask {
         #[inherits(NSURLSessionTask, NSObject)]
         type Super = NSURLSessionDataTask;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Foundation_NSURLSessionUploadTask")]
+unsafe impl NSCopying for NSURLSessionUploadTask {}
 
 #[cfg(feature = "Foundation_NSURLSessionUploadTask")]
 unsafe impl NSObjectProtocol for NSURLSessionUploadTask {}
@@ -568,8 +581,12 @@ extern_class!(
     unsafe impl ClassType for NSURLSessionDownloadTask {
         #[inherits(NSObject)]
         type Super = NSURLSessionTask;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Foundation_NSURLSessionDownloadTask")]
+unsafe impl NSCopying for NSURLSessionDownloadTask {}
 
 #[cfg(feature = "Foundation_NSURLSessionDownloadTask")]
 unsafe impl NSObjectProtocol for NSURLSessionDownloadTask {}
@@ -606,8 +623,12 @@ extern_class!(
     unsafe impl ClassType for NSURLSessionStreamTask {
         #[inherits(NSObject)]
         type Super = NSURLSessionTask;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Foundation_NSURLSessionStreamTask")]
+unsafe impl NSCopying for NSURLSessionStreamTask {}
 
 #[cfg(feature = "Foundation_NSURLSessionStreamTask")]
 unsafe impl NSObjectProtocol for NSURLSessionStreamTask {}
@@ -679,6 +700,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSURLSessionWebSocketMessage")]
     unsafe impl ClassType for NSURLSessionWebSocketMessage {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -743,8 +765,12 @@ extern_class!(
     unsafe impl ClassType for NSURLSessionWebSocketTask {
         #[inherits(NSObject)]
         type Super = NSURLSessionTask;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Foundation_NSURLSessionWebSocketTask")]
+unsafe impl NSCopying for NSURLSessionWebSocketTask {}
 
 #[cfg(feature = "Foundation_NSURLSessionWebSocketTask")]
 unsafe impl NSObjectProtocol for NSURLSessionWebSocketTask {}
@@ -835,8 +861,12 @@ extern_class!(
     #[cfg(feature = "Foundation_NSURLSessionConfiguration")]
     unsafe impl ClassType for NSURLSessionConfiguration {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Foundation_NSURLSessionConfiguration")]
+unsafe impl NSCopying for NSURLSessionConfiguration {}
 
 #[cfg(feature = "Foundation_NSURLSessionConfiguration")]
 unsafe impl NSObjectProtocol for NSURLSessionConfiguration {}
@@ -1535,6 +1565,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSURLSessionTaskTransactionMetrics")]
     unsafe impl ClassType for NSURLSessionTaskTransactionMetrics {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -1686,6 +1717,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSURLSessionTaskMetrics")]
     unsafe impl ClassType for NSURLSessionTaskMetrics {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 

@@ -20,6 +20,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSFontAssetRequest")]
     unsafe impl ClassType for NSFontAssetRequest {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -57,5 +58,14 @@ extern_methods!(
             &self,
             completion_handler: &Block<(*mut NSError,), Bool>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSFontAssetRequest")]
+    unsafe impl NSFontAssetRequest {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

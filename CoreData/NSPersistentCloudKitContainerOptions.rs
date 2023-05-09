@@ -12,6 +12,7 @@ extern_class!(
     #[cfg(feature = "CoreData_NSPersistentCloudKitContainerOptions")]
     unsafe impl ClassType for NSPersistentCloudKitContainerOptions {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -34,5 +35,14 @@ extern_methods!(
             this: Option<Allocated<Self>>,
             container_identifier: &NSString,
         ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreData_NSPersistentCloudKitContainerOptions")]
+    unsafe impl NSPersistentCloudKitContainerOptions {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

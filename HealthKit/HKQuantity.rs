@@ -14,11 +14,15 @@ extern_class!(
     #[cfg(feature = "HealthKit_HKQuantity")]
     unsafe impl ClassType for HKQuantity {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "HealthKit_HKQuantity")]
 unsafe impl NSCoding for HKQuantity {}
+
+#[cfg(feature = "HealthKit_HKQuantity")]
+unsafe impl NSCopying for HKQuantity {}
 
 #[cfg(feature = "HealthKit_HKQuantity")]
 unsafe impl NSObjectProtocol for HKQuantity {}
@@ -46,5 +50,14 @@ extern_methods!(
 
         #[method(compare:)]
         pub unsafe fn compare(&self, quantity: &HKQuantity) -> NSComparisonResult;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "HealthKit_HKQuantity")]
+    unsafe impl HKQuantity {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

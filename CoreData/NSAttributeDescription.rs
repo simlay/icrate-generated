@@ -34,11 +34,15 @@ extern_class!(
     unsafe impl ClassType for NSAttributeDescription {
         #[inherits(NSObject)]
         type Super = NSPropertyDescription;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "CoreData_NSAttributeDescription")]
 unsafe impl NSCoding for NSAttributeDescription {}
+
+#[cfg(feature = "CoreData_NSAttributeDescription")]
+unsafe impl NSCopying for NSAttributeDescription {}
 
 #[cfg(feature = "CoreData_NSAttributeDescription")]
 unsafe impl NSObjectProtocol for NSAttributeDescription {}
@@ -104,5 +108,17 @@ extern_methods!(
 
         #[method(setAllowsCloudEncryption:)]
         pub unsafe fn setAllowsCloudEncryption(&self, allows_cloud_encryption: bool);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreData_NSAttributeDescription")]
+    unsafe impl NSAttributeDescription {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(feature = "StoreKit_SKStorefront")]
     unsafe impl ClassType for SKStorefront {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -29,5 +30,17 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other identifier)]
         pub unsafe fn identifier(&self) -> Id<NSString>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "StoreKit_SKStorefront")]
+    unsafe impl SKStorefront {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

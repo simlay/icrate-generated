@@ -15,6 +15,7 @@ extern_class!(
     unsafe impl ClassType for HKSample {
         #[inherits(NSObject)]
         type Super = HKObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -44,6 +45,24 @@ extern_methods!(
 
         #[method(hasUndeterminedDuration)]
         pub unsafe fn hasUndeterminedDuration(&self) -> bool;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `HKObject`
+    #[cfg(feature = "HealthKit_HKSample")]
+    unsafe impl HKSample {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "HealthKit_HKSample")]
+    unsafe impl HKSample {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

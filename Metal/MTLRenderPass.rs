@@ -62,8 +62,12 @@ extern_class!(
     #[cfg(feature = "Metal_MTLRenderPassAttachmentDescriptor")]
     unsafe impl ClassType for MTLRenderPassAttachmentDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLRenderPassAttachmentDescriptor")]
+unsafe impl NSCopying for MTLRenderPassAttachmentDescriptor {}
 
 #[cfg(feature = "Metal_MTLRenderPassAttachmentDescriptor")]
 unsafe impl NSObjectProtocol for MTLRenderPassAttachmentDescriptor {}
@@ -139,6 +143,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLRenderPassAttachmentDescriptor")]
+    unsafe impl MTLRenderPassAttachmentDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLRenderPassColorAttachmentDescriptor")]
@@ -148,8 +164,12 @@ extern_class!(
     unsafe impl ClassType for MTLRenderPassColorAttachmentDescriptor {
         #[inherits(NSObject)]
         type Super = MTLRenderPassAttachmentDescriptor;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLRenderPassColorAttachmentDescriptor")]
+unsafe impl NSCopying for MTLRenderPassColorAttachmentDescriptor {}
 
 #[cfg(feature = "Metal_MTLRenderPassColorAttachmentDescriptor")]
 unsafe impl NSObjectProtocol for MTLRenderPassColorAttachmentDescriptor {}
@@ -164,6 +184,25 @@ extern_methods!(
         pub fn setClearColor(&self, clear_color: MTLClearColor);
     }
 );
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLRenderPassColorAttachmentDescriptor")]
+    unsafe impl MTLRenderPassColorAttachmentDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub fn new() -> Id<Self>;
+    }
+);
+#[cfg(feature = "Metal_MTLRenderPassColorAttachmentDescriptor")]
+impl DefaultId for MTLRenderPassColorAttachmentDescriptor {
+    #[inline]
+    fn default_id() -> Id<Self> {
+        Self::new()
+    }
+}
 
 ns_enum!(
     #[underlying(NSUInteger)]
@@ -183,8 +222,12 @@ extern_class!(
     unsafe impl ClassType for MTLRenderPassDepthAttachmentDescriptor {
         #[inherits(NSObject)]
         type Super = MTLRenderPassAttachmentDescriptor;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLRenderPassDepthAttachmentDescriptor")]
+unsafe impl NSCopying for MTLRenderPassDepthAttachmentDescriptor {}
 
 #[cfg(feature = "Metal_MTLRenderPassDepthAttachmentDescriptor")]
 unsafe impl NSObjectProtocol for MTLRenderPassDepthAttachmentDescriptor {}
@@ -206,6 +249,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLRenderPassDepthAttachmentDescriptor")]
+    unsafe impl MTLRenderPassDepthAttachmentDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 ns_enum!(
     #[underlying(NSUInteger)]
     pub enum MTLMultisampleStencilResolveFilter {
@@ -223,8 +278,12 @@ extern_class!(
     unsafe impl ClassType for MTLRenderPassStencilAttachmentDescriptor {
         #[inherits(NSObject)]
         type Super = MTLRenderPassAttachmentDescriptor;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLRenderPassStencilAttachmentDescriptor")]
+unsafe impl NSCopying for MTLRenderPassStencilAttachmentDescriptor {}
 
 #[cfg(feature = "Metal_MTLRenderPassStencilAttachmentDescriptor")]
 unsafe impl NSObjectProtocol for MTLRenderPassStencilAttachmentDescriptor {}
@@ -249,6 +308,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLRenderPassStencilAttachmentDescriptor")]
+    unsafe impl MTLRenderPassStencilAttachmentDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLRenderPassColorAttachmentDescriptorArray")]
@@ -257,6 +328,7 @@ extern_class!(
     #[cfg(feature = "Metal_MTLRenderPassColorAttachmentDescriptorArray")]
     unsafe impl ClassType for MTLRenderPassColorAttachmentDescriptorArray {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -283,6 +355,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLRenderPassColorAttachmentDescriptorArray")]
+    unsafe impl MTLRenderPassColorAttachmentDescriptorArray {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLRenderPassSampleBufferAttachmentDescriptor")]
@@ -291,8 +375,12 @@ extern_class!(
     #[cfg(feature = "Metal_MTLRenderPassSampleBufferAttachmentDescriptor")]
     unsafe impl ClassType for MTLRenderPassSampleBufferAttachmentDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLRenderPassSampleBufferAttachmentDescriptor")]
+unsafe impl NSCopying for MTLRenderPassSampleBufferAttachmentDescriptor {}
 
 #[cfg(feature = "Metal_MTLRenderPassSampleBufferAttachmentDescriptor")]
 unsafe impl NSObjectProtocol for MTLRenderPassSampleBufferAttachmentDescriptor {}
@@ -338,6 +426,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLRenderPassSampleBufferAttachmentDescriptor")]
+    unsafe impl MTLRenderPassSampleBufferAttachmentDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLRenderPassSampleBufferAttachmentDescriptorArray")]
@@ -346,6 +446,7 @@ extern_class!(
     #[cfg(feature = "Metal_MTLRenderPassSampleBufferAttachmentDescriptorArray")]
     unsafe impl ClassType for MTLRenderPassSampleBufferAttachmentDescriptorArray {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -372,6 +473,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLRenderPassSampleBufferAttachmentDescriptorArray")]
+    unsafe impl MTLRenderPassSampleBufferAttachmentDescriptorArray {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLRenderPassDescriptor")]
@@ -380,8 +493,12 @@ extern_class!(
     #[cfg(feature = "Metal_MTLRenderPassDescriptor")]
     unsafe impl ClassType for MTLRenderPassDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLRenderPassDescriptor")]
+unsafe impl NSCopying for MTLRenderPassDescriptor {}
 
 #[cfg(feature = "Metal_MTLRenderPassDescriptor")]
 unsafe impl NSObjectProtocol for MTLRenderPassDescriptor {}
@@ -505,6 +622,18 @@ extern_methods!(
         pub fn sampleBufferAttachments(
             &self,
         ) -> Id<MTLRenderPassSampleBufferAttachmentDescriptorArray>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLRenderPassDescriptor")]
+    unsafe impl MTLRenderPassDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

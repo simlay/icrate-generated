@@ -41,16 +41,20 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     pub struct ASWebAuthenticationSessionRequest;
 
-    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     #[cfg(feature = "AuthenticationServices_ASWebAuthenticationSessionRequest")]
     unsafe impl ClassType for ASWebAuthenticationSessionRequest {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "AuthenticationServices_ASWebAuthenticationSessionRequest")]
 #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 unsafe impl NSCoding for ASWebAuthenticationSessionRequest {}
+
+#[cfg(feature = "AuthenticationServices_ASWebAuthenticationSessionRequest")]
+#[cfg(not(any(target_os = "ios", target_os = "tvos")))]
+unsafe impl NSCopying for ASWebAuthenticationSessionRequest {}
 
 #[cfg(feature = "AuthenticationServices_ASWebAuthenticationSessionRequest")]
 #[cfg(not(any(target_os = "ios", target_os = "tvos")))]

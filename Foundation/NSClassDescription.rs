@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSClassDescription")]
     unsafe impl ClassType for NSClassDescription {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -50,6 +51,18 @@ extern_methods!(
             &self,
             relationship_key: &NSString,
         ) -> Option<Id<NSString>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSClassDescription")]
+    unsafe impl NSClassDescription {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

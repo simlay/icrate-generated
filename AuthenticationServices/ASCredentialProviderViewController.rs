@@ -4,6 +4,26 @@ use crate::common::*;
 use crate::AuthenticationServices::*;
 use crate::Foundation::*;
 
+#[cfg(feature = "AuthenticationServices_ASCredentialProviderViewController")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+unsafe impl NSCoding for ASCredentialProviderViewController {}
+
+#[cfg(feature = "AuthenticationServices_ASCredentialProviderViewController")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+unsafe impl NSEditor for ASCredentialProviderViewController {}
+
+#[cfg(feature = "AuthenticationServices_ASCredentialProviderViewController")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+unsafe impl NSObjectProtocol for ASCredentialProviderViewController {}
+
+#[cfg(feature = "AuthenticationServices_ASCredentialProviderViewController")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+unsafe impl NSSeguePerforming for ASCredentialProviderViewController {}
+
+#[cfg(feature = "AuthenticationServices_ASCredentialProviderViewController")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+unsafe impl NSUserInterfaceItemIdentification for ASCredentialProviderViewController {}
+
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASCredentialProviderViewController")]
@@ -38,5 +58,49 @@ extern_methods!(
 
         #[method(prepareInterfaceForExtensionConfiguration)]
         pub unsafe fn prepareInterfaceForExtensionConfiguration(&self);
+    }
+);
+
+#[cfg(not(any(target_os = "ios")))]
+extern_methods!(
+    /// Methods declared on superclass `NSViewController`
+    #[cfg(feature = "AuthenticationServices_ASCredentialProviderViewController")]
+    unsafe impl ASCredentialProviderViewController {
+        #[cfg(feature = "Foundation_NSBundle")]
+        #[cfg(not(any(target_os = "ios")))]
+        #[method_id(@__retain_semantics Init initWithNibName:bundle:)]
+        pub unsafe fn initWithNibName_bundle(
+            this: Option<Allocated<Self>>,
+            nib_name_or_nil: Option<&NSNibName>,
+            nib_bundle_or_nil: Option<&NSBundle>,
+        ) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[cfg(not(any(target_os = "ios")))]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(
+            this: Option<Allocated<Self>>,
+            coder: &NSCoder,
+        ) -> Option<Id<Self>>;
+    }
+);
+
+#[cfg(not(any(target_os = "ios")))]
+extern_methods!(
+    /// Methods declared on superclass `NSResponder`
+    #[cfg(feature = "AuthenticationServices_ASCredentialProviderViewController")]
+    unsafe impl ASCredentialProviderViewController {
+        #[cfg(not(any(target_os = "ios")))]
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AuthenticationServices_ASCredentialProviderViewController")]
+    unsafe impl ASCredentialProviderViewController {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

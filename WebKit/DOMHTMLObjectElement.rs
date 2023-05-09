@@ -11,16 +11,19 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLObjectElement;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLObjectElement")]
     unsafe impl ClassType for DOMHTMLObjectElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMHTMLElement;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_DOMHTMLObjectElement")]
 unsafe impl DOMEventTarget for DOMHTMLObjectElement {}
+
+#[cfg(feature = "WebKit_DOMHTMLObjectElement")]
+unsafe impl NSCopying for DOMHTMLObjectElement {}
 
 #[cfg(feature = "WebKit_DOMHTMLObjectElement")]
 unsafe impl NSObjectProtocol for DOMHTMLObjectElement {}
@@ -161,5 +164,23 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSURL")]
         #[method_id(@__retain_semantics Other absoluteImageURL)]
         pub unsafe fn absoluteImageURL(&self) -> Id<NSURL>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMHTMLObjectElement")]
+    unsafe impl DOMHTMLObjectElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMHTMLObjectElement")]
+    unsafe impl DOMHTMLObjectElement {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

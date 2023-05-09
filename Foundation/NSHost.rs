@@ -10,11 +10,10 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub struct NSHost;
 
-    #[deprecated = "Use Network framework instead, see deprecation notice in <Foundation/NSHost.h>"]
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "Foundation_NSHost")]
     unsafe impl ClassType for NSHost {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -75,5 +74,17 @@ extern_methods!(
         #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(flushHostCache)]
         pub unsafe fn flushHostCache();
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSHost")]
+    unsafe impl NSHost {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

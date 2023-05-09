@@ -11,13 +11,16 @@ extern_class!(
     #[deprecated]
     pub struct DOMCSSPageRule;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMCSSPageRule")]
     unsafe impl ClassType for DOMCSSPageRule {
         #[inherits(DOMObject, WebScriptObject, NSObject)]
         type Super = DOMCSSRule;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "WebKit_DOMCSSPageRule")]
+unsafe impl NSCopying for DOMCSSPageRule {}
 
 #[cfg(feature = "WebKit_DOMCSSPageRule")]
 unsafe impl NSObjectProtocol for DOMCSSPageRule {}
@@ -36,5 +39,23 @@ extern_methods!(
         #[cfg(feature = "WebKit_DOMCSSStyleDeclaration")]
         #[method_id(@__retain_semantics Other style)]
         pub unsafe fn style(&self) -> Option<Id<DOMCSSStyleDeclaration>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMCSSPageRule")]
+    unsafe impl DOMCSSPageRule {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMCSSPageRule")]
+    unsafe impl DOMCSSPageRule {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

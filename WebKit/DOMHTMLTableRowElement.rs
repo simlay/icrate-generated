@@ -11,16 +11,19 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLTableRowElement;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLTableRowElement")]
     unsafe impl ClassType for DOMHTMLTableRowElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMHTMLElement;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_DOMHTMLTableRowElement")]
 unsafe impl DOMEventTarget for DOMHTMLTableRowElement {}
+
+#[cfg(feature = "WebKit_DOMHTMLTableRowElement")]
+unsafe impl NSCopying for DOMHTMLTableRowElement {}
 
 #[cfg(feature = "WebKit_DOMHTMLTableRowElement")]
 unsafe impl NSObjectProtocol for DOMHTMLTableRowElement {}
@@ -83,5 +86,23 @@ extern_methods!(
 
         #[method(deleteCell:)]
         pub unsafe fn deleteCell(&self, index: c_int);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMHTMLTableRowElement")]
+    unsafe impl DOMHTMLTableRowElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMHTMLTableRowElement")]
+    unsafe impl DOMHTMLTableRowElement {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

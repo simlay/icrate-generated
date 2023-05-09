@@ -16,6 +16,7 @@ extern_class!(
     unsafe impl ClassType for EKCalendar {
         #[inherits(NSObject)]
         type Super = EKObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -82,5 +83,17 @@ extern_methods!(
 
         #[method(allowedEntityTypes)]
         pub unsafe fn allowedEntityTypes(&self) -> EKEntityMask;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "EventKit_EKCalendar")]
+    unsafe impl EKCalendar {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

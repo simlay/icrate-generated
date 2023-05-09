@@ -10,11 +10,15 @@ extern_class!(
     #[cfg(feature = "Foundation_NSValue")]
     unsafe impl ClassType for NSValue {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSValue")]
 unsafe impl NSCoding for NSValue {}
+
+#[cfg(feature = "Foundation_NSValue")]
+unsafe impl NSCopying for NSValue {}
 
 #[cfg(feature = "Foundation_NSValue")]
 unsafe impl NSObjectProtocol for NSValue {}
@@ -94,11 +98,15 @@ extern_class!(
     unsafe impl ClassType for NSNumber {
         #[inherits(NSObject)]
         type Super = NSValue;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSNumber")]
 unsafe impl NSCoding for NSNumber {}
+
+#[cfg(feature = "Foundation_NSNumber")]
+unsafe impl NSCopying for NSNumber {}
 
 #[cfg(feature = "Foundation_NSNumber")]
 unsafe impl NSObjectProtocol for NSNumber {}
@@ -232,6 +240,19 @@ extern_methods!(
 );
 
 extern_methods!(
+    /// Methods declared on superclass `NSValue`
+    #[cfg(feature = "Foundation_NSNumber")]
+    unsafe impl NSNumber {
+        #[method_id(@__retain_semantics Init initWithBytes:objCType:)]
+        pub unsafe fn initWithBytes_objCType(
+            this: Option<Allocated<Self>>,
+            value: NonNull<c_void>,
+            r#type: NonNull<c_char>,
+        ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
     /// NSNumberCreation
     #[cfg(feature = "Foundation_NSNumber")]
     unsafe impl NSNumber {
@@ -289,18 +310,5 @@ extern_methods!(
         #[deprecated]
         #[method(getValue:)]
         pub unsafe fn getValue(&self, value: NonNull<c_void>);
-    }
-);
-
-extern_methods!(
-    /// Methods declared on superclass `NSValue`
-    #[cfg(feature = "Foundation_NSNumber")]
-    unsafe impl NSNumber {
-        #[method_id(@__retain_semantics Init initWithBytes:objCType:)]
-        pub unsafe fn initWithBytes_objCType(
-            this: Option<Allocated<Self>>,
-            value: NonNull<c_void>,
-            r#type: NonNull<c_char>,
-        ) -> Id<Self>;
     }
 );

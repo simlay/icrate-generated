@@ -79,6 +79,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSFileManager")]
     unsafe impl ClassType for NSFileManager {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -639,6 +640,18 @@ extern_methods!(
 );
 
 extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSFileManager")]
+    unsafe impl NSFileManager {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
+extern_methods!(
     /// NSUserInformation
     #[cfg(feature = "Foundation_NSFileManager")]
     unsafe impl NSFileManager {
@@ -863,40 +876,37 @@ extern_protocol!(
 __inner_extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSDirectoryEnumerator")]
-    pub struct NSDirectoryEnumerator<
-        ObjectType: Message = Object,
-        ObjectTypeOwnership: Ownership = Shared,
-    > {
-        _inner0: PhantomData<*mut (ObjectType, ObjectTypeOwnership)>,
+    pub struct NSDirectoryEnumerator<ObjectType: Message = Object> {
+        __superclass: NSEnumerator<ObjectType>,
+        _inner0: PhantomData<*mut ObjectType>,
         notunwindsafe: PhantomData<&'static mut ()>,
     }
 
     #[cfg(feature = "Foundation_NSDirectoryEnumerator")]
-    unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> ClassType
-        for NSDirectoryEnumerator<ObjectType, ObjectTypeOwnership>
-    {
+    unsafe impl<ObjectType: Message> ClassType for NSDirectoryEnumerator<ObjectType> {
         #[inherits(NSObject)]
-        type Super = NSEnumerator<ObjectType, ObjectTypeOwnership>;
+        type Super = NSEnumerator<ObjectType>;
+        type Mutability = InteriorMutable;
+
+        fn as_super(&self) -> &Self::Super {
+            &self.__superclass
+        }
+
+        fn as_super_mut(&mut self) -> &mut Self::Super {
+            &mut self.__superclass
+        }
     }
 );
 
 #[cfg(feature = "Foundation_NSDirectoryEnumerator")]
-unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSFastEnumeration
-    for NSDirectoryEnumerator<ObjectType, ObjectTypeOwnership>
-{
-}
+unsafe impl<ObjectType: Message> NSFastEnumeration for NSDirectoryEnumerator<ObjectType> {}
 
 #[cfg(feature = "Foundation_NSDirectoryEnumerator")]
-unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership> NSObjectProtocol
-    for NSDirectoryEnumerator<ObjectType, ObjectTypeOwnership>
-{
-}
+unsafe impl<ObjectType: Message> NSObjectProtocol for NSDirectoryEnumerator<ObjectType> {}
 
 extern_methods!(
     #[cfg(feature = "Foundation_NSDirectoryEnumerator")]
-    unsafe impl<ObjectType: Message, ObjectTypeOwnership: Ownership>
-        NSDirectoryEnumerator<ObjectType, ObjectTypeOwnership>
-    {
+    unsafe impl<ObjectType: Message> NSDirectoryEnumerator<ObjectType> {
         #[cfg(feature = "Foundation_NSDictionary")]
         #[method_id(@__retain_semantics Other fileAttributes)]
         pub unsafe fn fileAttributes(&self)
@@ -922,16 +932,28 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSDirectoryEnumerator")]
+    unsafe impl<ObjectType: Message> NSDirectoryEnumerator<ObjectType> {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSFileProviderService")]
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct NSFileProviderService;
 
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "Foundation_NSFileProviderService")]
     unsafe impl ClassType for NSFileProviderService {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -952,6 +974,18 @@ extern_methods!(
 
         #[method_id(@__retain_semantics Other name)]
         pub unsafe fn name(&self) -> Id<NSFileProviderServiceName>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSFileProviderService")]
+    unsafe impl NSFileProviderService {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 
@@ -1028,13 +1062,7 @@ extern_static!(NSFileSystemFreeNodes: &'static NSFileAttributeKey);
 extern_methods!(
     /// NSFileAttributes
     #[cfg(feature = "Foundation_NSDictionary")]
-    unsafe impl<
-            KeyType: Message,
-            ObjectType: Message,
-            KeyTypeOwnership: Ownership,
-            ObjectTypeOwnership: Ownership,
-        > NSDictionary<KeyType, ObjectType, KeyTypeOwnership, ObjectTypeOwnership>
-    {
+    unsafe impl<KeyType: Message, ObjectType: Message> NSDictionary<KeyType, ObjectType> {
         #[method(fileSize)]
         pub unsafe fn fileSize(&self) -> c_ulonglong;
 

@@ -11,16 +11,19 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLFontElement;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLFontElement")]
     unsafe impl ClassType for DOMHTMLFontElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMHTMLElement;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_DOMHTMLFontElement")]
 unsafe impl DOMEventTarget for DOMHTMLFontElement {}
+
+#[cfg(feature = "WebKit_DOMHTMLFontElement")]
+unsafe impl NSCopying for DOMHTMLFontElement {}
 
 #[cfg(feature = "WebKit_DOMHTMLFontElement")]
 unsafe impl NSObjectProtocol for DOMHTMLFontElement {}
@@ -51,5 +54,23 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method(setSize:)]
         pub unsafe fn setSize(&self, size: Option<&NSString>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMHTMLFontElement")]
+    unsafe impl DOMHTMLFontElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMHTMLFontElement")]
+    unsafe impl DOMHTMLFontElement {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -13,6 +13,7 @@ extern_class!(
     unsafe impl ClassType for MXHangDiagnostic {
         #[inherits(NSObject)]
         type Super = MXDiagnostic;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -38,5 +39,17 @@ extern_methods!(
         ))]
         #[method_id(@__retain_semantics Other hangDuration)]
         pub unsafe fn hangDuration(&self) -> Id<NSMeasurement<NSUnitDuration>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MetricKit_MXHangDiagnostic")]
+    unsafe impl MXHangDiagnostic {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

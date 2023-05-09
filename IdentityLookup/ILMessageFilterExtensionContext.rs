@@ -10,11 +10,11 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct ILMessageFilterExtensionContext;
 
-    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "IdentityLookup_ILMessageFilterExtensionContext")]
     unsafe impl ClassType for ILMessageFilterExtensionContext {
         #[inherits(NSObject)]
         type Super = NSExtensionContext;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -35,5 +35,17 @@ extern_methods!(
             &self,
             completion: &Block<(*mut ILNetworkResponse, *mut NSError), ()>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "IdentityLookup_ILMessageFilterExtensionContext")]
+    unsafe impl ILMessageFilterExtensionContext {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

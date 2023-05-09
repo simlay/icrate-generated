@@ -10,11 +10,10 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub struct NSGarbageCollector;
 
-    #[deprecated = "Building Garbage Collected apps is no longer supported."]
-    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "Foundation_NSGarbageCollector")]
     unsafe impl ClassType for NSGarbageCollector {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -57,5 +56,17 @@ extern_methods!(
 
         #[method(zone)]
         pub unsafe fn zone(&self) -> NonNull<NSZone>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSGarbageCollector")]
+    unsafe impl NSGarbageCollector {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -12,6 +12,7 @@ extern_class!(
     #[cfg(feature = "DataDetection_DDMatch")]
     unsafe impl ClassType for DDMatch {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -30,6 +31,15 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "DataDetection_DDMatch")]
+    unsafe impl DDMatch {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "DataDetection_DDMatchLink")]
@@ -39,6 +49,7 @@ extern_class!(
     unsafe impl ClassType for DDMatchLink {
         #[inherits(NSObject)]
         type Super = DDMatch;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -54,6 +65,24 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `DDMatch`
+    #[cfg(feature = "DataDetection_DDMatchLink")]
+    unsafe impl DDMatchLink {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "DataDetection_DDMatchLink")]
+    unsafe impl DDMatchLink {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "DataDetection_DDMatchPhoneNumber")]
@@ -63,6 +92,7 @@ extern_class!(
     unsafe impl ClassType for DDMatchPhoneNumber {
         #[inherits(NSObject)]
         type Super = DDMatch;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -82,6 +112,24 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `DDMatch`
+    #[cfg(feature = "DataDetection_DDMatchPhoneNumber")]
+    unsafe impl DDMatchPhoneNumber {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "DataDetection_DDMatchPhoneNumber")]
+    unsafe impl DDMatchPhoneNumber {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "DataDetection_DDMatchEmailAddress")]
@@ -91,6 +139,7 @@ extern_class!(
     unsafe impl ClassType for DDMatchEmailAddress {
         #[inherits(NSObject)]
         type Super = DDMatch;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -110,6 +159,24 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `DDMatch`
+    #[cfg(feature = "DataDetection_DDMatchEmailAddress")]
+    unsafe impl DDMatchEmailAddress {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "DataDetection_DDMatchEmailAddress")]
+    unsafe impl DDMatchEmailAddress {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "DataDetection_DDMatchPostalAddress")]
@@ -119,6 +186,7 @@ extern_class!(
     unsafe impl ClassType for DDMatchPostalAddress {
         #[inherits(NSObject)]
         type Super = DDMatch;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -150,6 +218,24 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `DDMatch`
+    #[cfg(feature = "DataDetection_DDMatchPostalAddress")]
+    unsafe impl DDMatchPostalAddress {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "DataDetection_DDMatchPostalAddress")]
+    unsafe impl DDMatchPostalAddress {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "DataDetection_DDMatchCalendarEvent")]
@@ -159,6 +245,7 @@ extern_class!(
     unsafe impl ClassType for DDMatchCalendarEvent {
         #[inherits(NSObject)]
         type Super = DDMatch;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -189,6 +276,24 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `DDMatch`
+    #[cfg(feature = "DataDetection_DDMatchCalendarEvent")]
+    unsafe impl DDMatchCalendarEvent {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "DataDetection_DDMatchCalendarEvent")]
+    unsafe impl DDMatchCalendarEvent {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "DataDetection_DDMatchShipmentTrackingNumber")]
@@ -198,6 +303,7 @@ extern_class!(
     unsafe impl ClassType for DDMatchShipmentTrackingNumber {
         #[inherits(NSObject)]
         type Super = DDMatch;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -217,6 +323,24 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `DDMatch`
+    #[cfg(feature = "DataDetection_DDMatchShipmentTrackingNumber")]
+    unsafe impl DDMatchShipmentTrackingNumber {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "DataDetection_DDMatchShipmentTrackingNumber")]
+    unsafe impl DDMatchShipmentTrackingNumber {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "DataDetection_DDMatchFlightNumber")]
@@ -226,6 +350,7 @@ extern_class!(
     unsafe impl ClassType for DDMatchFlightNumber {
         #[inherits(NSObject)]
         type Super = DDMatch;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -245,6 +370,24 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `DDMatch`
+    #[cfg(feature = "DataDetection_DDMatchFlightNumber")]
+    unsafe impl DDMatchFlightNumber {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "DataDetection_DDMatchFlightNumber")]
+    unsafe impl DDMatchFlightNumber {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "DataDetection_DDMatchMoneyAmount")]
@@ -254,6 +397,7 @@ extern_class!(
     unsafe impl ClassType for DDMatchMoneyAmount {
         #[inherits(NSObject)]
         type Super = DDMatch;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -269,5 +413,23 @@ extern_methods!(
 
         #[method(amount)]
         pub unsafe fn amount(&self) -> c_double;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DDMatch`
+    #[cfg(feature = "DataDetection_DDMatchMoneyAmount")]
+    unsafe impl DDMatchMoneyAmount {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "DataDetection_DDMatchMoneyAmount")]
+    unsafe impl DDMatchMoneyAmount {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

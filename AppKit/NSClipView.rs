@@ -14,6 +14,7 @@ extern_class!(
     unsafe impl ClassType for NSClipView {
         #[inherits(NSResponder, NSObject)]
         type Super = NSView;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -114,6 +115,40 @@ extern_methods!(
 );
 
 extern_methods!(
+    /// Methods declared on superclass `NSView`
+    #[cfg(feature = "AppKit_NSClipView")]
+    unsafe impl NSClipView {
+        #[method_id(@__retain_semantics Init initWithFrame:)]
+        pub unsafe fn initWithFrame(this: Option<Allocated<Self>>, frame_rect: NSRect) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(
+            this: Option<Allocated<Self>>,
+            coder: &NSCoder,
+        ) -> Option<Id<Self>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSResponder`
+    #[cfg(feature = "AppKit_NSClipView")]
+    unsafe impl NSClipView {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSClipView")]
+    unsafe impl NSClipView {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
+extern_methods!(
     /// NSClipViewSuperview
     #[cfg(feature = "AppKit_NSView")]
     unsafe impl NSView {
@@ -141,14 +176,5 @@ extern_methods!(
         #[deprecated = "Setting this property has no effect.  NSClipView will always minimize the area of the document view that is invalidated.  To force invalidation of the document view, use -[NSView setNeedsDisplayInRect:]."]
         #[method(setCopiesOnScroll:)]
         pub unsafe fn setCopiesOnScroll(&self, copies_on_scroll: bool);
-    }
-);
-
-extern_methods!(
-    /// Methods declared on superclass `NSView`
-    #[cfg(feature = "AppKit_NSClipView")]
-    unsafe impl NSClipView {
-        #[method_id(@__retain_semantics Init initWithFrame:)]
-        pub unsafe fn initWithFrame(this: Option<Allocated<Self>>, frame_rect: NSRect) -> Id<Self>;
     }
 );

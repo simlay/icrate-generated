@@ -60,11 +60,15 @@ extern_class!(
     #[cfg(feature = "AppKit_NSTextBlock")]
     unsafe impl ClassType for NSTextBlock {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "AppKit_NSTextBlock")]
 unsafe impl NSCoding for NSTextBlock {}
+
+#[cfg(feature = "AppKit_NSTextBlock")]
+unsafe impl NSCopying for NSTextBlock {}
 
 #[cfg(feature = "AppKit_NSTextBlock")]
 unsafe impl NSObjectProtocol for NSTextBlock {}
@@ -193,6 +197,15 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSTextBlock")]
+    unsafe impl NSTextBlock {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSTextTableBlock")]
@@ -202,11 +215,15 @@ extern_class!(
     unsafe impl ClassType for NSTextTableBlock {
         #[inherits(NSObject)]
         type Super = NSTextBlock;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "AppKit_NSTextTableBlock")]
 unsafe impl NSCoding for NSTextTableBlock {}
+
+#[cfg(feature = "AppKit_NSTextTableBlock")]
+unsafe impl NSCopying for NSTextTableBlock {}
 
 #[cfg(feature = "AppKit_NSTextTableBlock")]
 unsafe impl NSObjectProtocol for NSTextTableBlock {}
@@ -246,6 +263,24 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSTextBlock`
+    #[cfg(feature = "AppKit_NSTextTableBlock")]
+    unsafe impl NSTextTableBlock {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSTextTableBlock")]
+    unsafe impl NSTextTableBlock {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSTextTable")]
@@ -255,11 +290,15 @@ extern_class!(
     unsafe impl ClassType for NSTextTable {
         #[inherits(NSObject)]
         type Super = NSTextBlock;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "AppKit_NSTextTable")]
 unsafe impl NSCoding for NSTextTable {}
+
+#[cfg(feature = "AppKit_NSTextTable")]
+unsafe impl NSCopying for NSTextTable {}
 
 #[cfg(feature = "AppKit_NSTextTable")]
 unsafe impl NSObjectProtocol for NSTextTable {}
@@ -336,5 +375,23 @@ extern_methods!(
             char_range: NSRange,
             layout_manager: &NSLayoutManager,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSTextBlock`
+    #[cfg(feature = "AppKit_NSTextTable")]
+    unsafe impl NSTextTable {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSTextTable")]
+    unsafe impl NSTextTable {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

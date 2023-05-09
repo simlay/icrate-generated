@@ -13,8 +13,12 @@ extern_class!(
     unsafe impl ClassType for NSPersistentCloudKitContainerEventRequest {
         #[inherits(NSObject)]
         type Super = NSPersistentStoreRequest;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "CoreData_NSPersistentCloudKitContainerEventRequest")]
+unsafe impl NSCopying for NSPersistentCloudKitContainerEventRequest {}
 
 #[cfg(feature = "CoreData_NSPersistentCloudKitContainerEventRequest")]
 unsafe impl NSObjectProtocol for NSPersistentCloudKitContainerEventRequest {}
@@ -48,5 +52,17 @@ extern_methods!(
         #[cfg(feature = "CoreData_NSFetchRequest")]
         #[method_id(@__retain_semantics Other fetchRequestForEvents)]
         pub unsafe fn fetchRequestForEvents() -> Id<NSFetchRequest>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreData_NSPersistentCloudKitContainerEventRequest")]
+    unsafe impl NSPersistentCloudKitContainerEventRequest {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

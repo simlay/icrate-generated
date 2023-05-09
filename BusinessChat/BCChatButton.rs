@@ -22,6 +22,7 @@ extern_class!(
     unsafe impl ClassType for BCChatButton {
         #[inherits(NSView, NSResponder, NSObject)]
         type Super = NSControl;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -67,11 +68,33 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "ios")))]
 extern_methods!(
     /// Methods declared on superclass `NSControl`
     #[cfg(feature = "BusinessChat_BCChatButton")]
     unsafe impl BCChatButton {
+        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithFrame:)]
         pub unsafe fn initWithFrame(this: Option<Allocated<Self>>, frame_rect: NSRect) -> Id<Self>;
+    }
+);
+
+#[cfg(not(any(target_os = "ios")))]
+extern_methods!(
+    /// Methods declared on superclass `NSResponder`
+    #[cfg(feature = "BusinessChat_BCChatButton")]
+    unsafe impl BCChatButton {
+        #[cfg(not(any(target_os = "ios")))]
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "BusinessChat_BCChatButton")]
+    unsafe impl BCChatButton {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -15,6 +15,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSTouchBar")]
     unsafe impl ClassType for NSTouchBar {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -140,6 +141,15 @@ extern_methods!(
         pub unsafe fn setAutomaticCustomizeTouchBarMenuItemEnabled(
             automatic_customize_touch_bar_menu_item_enabled: bool,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSTouchBar")]
+    unsafe impl NSTouchBar {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

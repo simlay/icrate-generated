@@ -40,8 +40,12 @@ extern_class!(
     #[cfg(feature = "Metal_MTLStencilDescriptor")]
     unsafe impl ClassType for MTLStencilDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLStencilDescriptor")]
+unsafe impl NSCopying for MTLStencilDescriptor {}
 
 #[cfg(feature = "Metal_MTLStencilDescriptor")]
 unsafe impl NSObjectProtocol for MTLStencilDescriptor {}
@@ -90,6 +94,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLStencilDescriptor")]
+    unsafe impl MTLStencilDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLDepthStencilDescriptor")]
@@ -98,8 +114,12 @@ extern_class!(
     #[cfg(feature = "Metal_MTLDepthStencilDescriptor")]
     unsafe impl ClassType for MTLDepthStencilDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLDepthStencilDescriptor")]
+unsafe impl NSCopying for MTLDepthStencilDescriptor {}
 
 #[cfg(feature = "Metal_MTLDepthStencilDescriptor")]
 unsafe impl NSObjectProtocol for MTLDepthStencilDescriptor {}
@@ -142,6 +162,18 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method(setLabel:)]
         pub fn setLabel(&self, label: Option<&NSString>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLDepthStencilDescriptor")]
+    unsafe impl MTLDepthStencilDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

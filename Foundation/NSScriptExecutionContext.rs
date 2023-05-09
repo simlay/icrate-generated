@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSScriptExecutionContext")]
     unsafe impl ClassType for NSScriptExecutionContext {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -40,5 +41,17 @@ extern_methods!(
 
         #[method(setRangeContainerObject:)]
         pub unsafe fn setRangeContainerObject(&self, range_container_object: Option<&Object>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSScriptExecutionContext")]
+    unsafe impl NSScriptExecutionContext {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

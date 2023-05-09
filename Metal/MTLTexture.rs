@@ -61,6 +61,7 @@ extern_class!(
     #[cfg(feature = "Metal_MTLSharedTextureHandle")]
     unsafe impl ClassType for MTLSharedTextureHandle {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -82,6 +83,18 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other label)]
         pub fn label(&self) -> Option<Id<NSString>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLSharedTextureHandle")]
+    unsafe impl MTLSharedTextureHandle {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 
@@ -112,8 +125,12 @@ extern_class!(
     #[cfg(feature = "Metal_MTLTextureDescriptor")]
     unsafe impl ClassType for MTLTextureDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLTextureDescriptor")]
+unsafe impl NSCopying for MTLTextureDescriptor {}
 
 #[cfg(feature = "Metal_MTLTextureDescriptor")]
 unsafe impl NSObjectProtocol for MTLTextureDescriptor {}
@@ -239,6 +256,18 @@ extern_methods!(
 
         #[method(setSwizzle:)]
         pub fn setSwizzle(&self, swizzle: MTLTextureSwizzleChannels);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLTextureDescriptor")]
+    unsafe impl MTLTextureDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

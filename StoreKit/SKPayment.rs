@@ -13,8 +13,15 @@ extern_class!(
     #[cfg(feature = "StoreKit_SKPayment")]
     unsafe impl ClassType for SKPayment {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "StoreKit_SKPayment")]
+unsafe impl NSCopying for SKPayment {}
+
+#[cfg(feature = "StoreKit_SKPayment")]
+unsafe impl NSMutableCopying for SKPayment {}
 
 #[cfg(feature = "StoreKit_SKPayment")]
 unsafe impl NSObjectProtocol for SKPayment {}
@@ -56,6 +63,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "StoreKit_SKPayment")]
+    unsafe impl SKPayment {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "StoreKit_SKMutablePayment")]
@@ -65,8 +84,15 @@ extern_class!(
     unsafe impl ClassType for SKMutablePayment {
         #[inherits(NSObject)]
         type Super = SKPayment;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "StoreKit_SKMutablePayment")]
+unsafe impl NSCopying for SKMutablePayment {}
+
+#[cfg(feature = "StoreKit_SKMutablePayment")]
+unsafe impl NSMutableCopying for SKMutablePayment {}
 
 #[cfg(feature = "StoreKit_SKMutablePayment")]
 unsafe impl NSObjectProtocol for SKMutablePayment {}
@@ -127,5 +153,17 @@ extern_methods!(
         #[cfg(feature = "StoreKit_SKProduct")]
         #[method_id(@__retain_semantics Other paymentWithProduct:)]
         pub unsafe fn paymentWithProduct(product: &SKProduct) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "StoreKit_SKMutablePayment")]
+    unsafe impl SKMutablePayment {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

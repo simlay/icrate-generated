@@ -14,11 +14,15 @@ extern_class!(
     #[cfg(feature = "HealthKit_HKUnit")]
     unsafe impl ClassType for HKUnit {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "HealthKit_HKUnit")]
 unsafe impl NSCoding for HKUnit {}
+
+#[cfg(feature = "HealthKit_HKUnit")]
+unsafe impl NSCopying for HKUnit {}
 
 #[cfg(feature = "HealthKit_HKUnit")]
 unsafe impl NSObjectProtocol for HKUnit {}
@@ -66,6 +70,15 @@ extern_methods!(
 
         #[method(isNull)]
         pub unsafe fn isNull(&self) -> bool;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "HealthKit_HKUnit")]
+    unsafe impl HKUnit {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

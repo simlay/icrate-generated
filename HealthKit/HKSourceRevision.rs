@@ -14,11 +14,15 @@ extern_class!(
     #[cfg(feature = "HealthKit_HKSourceRevision")]
     unsafe impl ClassType for HKSourceRevision {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "HealthKit_HKSourceRevision")]
 unsafe impl NSCoding for HKSourceRevision {}
+
+#[cfg(feature = "HealthKit_HKSourceRevision")]
+unsafe impl NSCopying for HKSourceRevision {}
 
 #[cfg(feature = "HealthKit_HKSourceRevision")]
 unsafe impl NSObjectProtocol for HKSourceRevision {}
@@ -64,6 +68,15 @@ extern_methods!(
 
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "HealthKit_HKSourceRevision")]
+    unsafe impl HKSourceRevision {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

@@ -16,8 +16,12 @@ extern_class!(
     unsafe impl ClassType for EKParticipant {
         #[inherits(NSObject)]
         type Super = EKObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "EventKit_EKParticipant")]
+unsafe impl NSCopying for EKParticipant {}
 
 #[cfg(feature = "EventKit_EKParticipant")]
 unsafe impl NSObjectProtocol for EKParticipant {}
@@ -56,5 +60,17 @@ extern_methods!(
             &self,
             address_book: &ABAddressBook,
         ) -> Option<Id<ABPerson>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "EventKit_EKParticipant")]
+    unsafe impl EKParticipant {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

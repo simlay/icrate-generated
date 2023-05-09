@@ -12,6 +12,7 @@ extern_class!(
     #[cfg(feature = "Metal_MTLComputePipelineReflection")]
     unsafe impl ClassType for MTLComputePipelineReflection {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -32,6 +33,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLComputePipelineReflection")]
+    unsafe impl MTLComputePipelineReflection {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLComputePipelineDescriptor")]
@@ -40,8 +53,12 @@ extern_class!(
     #[cfg(feature = "Metal_MTLComputePipelineDescriptor")]
     unsafe impl ClassType for MTLComputePipelineDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLComputePipelineDescriptor")]
+unsafe impl NSCopying for MTLComputePipelineDescriptor {}
 
 #[cfg(feature = "Metal_MTLComputePipelineDescriptor")]
 unsafe impl NSObjectProtocol for MTLComputePipelineDescriptor {}
@@ -165,6 +182,25 @@ extern_methods!(
         pub fn setMaxCallStackDepth(&self, max_call_stack_depth: NSUInteger);
     }
 );
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLComputePipelineDescriptor")]
+    unsafe impl MTLComputePipelineDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub fn new() -> Id<Self>;
+    }
+);
+#[cfg(feature = "Metal_MTLComputePipelineDescriptor")]
+impl DefaultId for MTLComputePipelineDescriptor {
+    #[inline]
+    fn default_id() -> Id<Self> {
+        Self::new()
+    }
+}
 
 extern_protocol!(
     pub unsafe trait MTLComputePipelineState: NSObjectProtocol {

@@ -11,10 +11,10 @@ extern_class!(
     #[deprecated]
     pub struct WebFrame;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_WebFrame")]
     unsafe impl ClassType for WebFrame {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -123,5 +123,17 @@ extern_methods!(
         #[cfg(feature = "WebKit_WebScriptObject")]
         #[method_id(@__retain_semantics Other windowObject)]
         pub unsafe fn windowObject(&self) -> Option<Id<WebScriptObject>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_WebFrame")]
+    unsafe impl WebFrame {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -24,6 +24,7 @@ extern_class!(
     unsafe impl ClassType for CLSProgressReportingCapability {
         #[inherits(NSObject)]
         type Super = CLSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -53,5 +54,17 @@ extern_methods!(
             kind: CLSProgressReportingCapabilityKind,
             details: Option<&NSString>,
         ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `CLSObject`
+    #[cfg(feature = "ClassKit_CLSProgressReportingCapability")]
+    unsafe impl CLSProgressReportingCapability {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
     }
 );

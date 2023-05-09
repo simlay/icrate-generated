@@ -13,11 +13,11 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKPolyline;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKPolyline")]
     unsafe impl ClassType for MKPolyline {
         #[inherits(MKShape, NSObject)]
         type Super = MKMultiPoint;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -48,5 +48,17 @@ extern_methods!(
             coords: NonNull<CLLocationCoordinate2D>,
             count: NSUInteger,
         ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MapKit_MKPolyline")]
+    unsafe impl MKPolyline {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

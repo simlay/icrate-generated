@@ -23,13 +23,16 @@ extern_class!(
     #[deprecated]
     pub struct DOMOverflowEvent;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMOverflowEvent")]
     unsafe impl ClassType for DOMOverflowEvent {
         #[inherits(DOMObject, WebScriptObject, NSObject)]
         type Super = DOMEvent;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "WebKit_DOMOverflowEvent")]
+unsafe impl NSCopying for DOMOverflowEvent {}
 
 #[cfg(feature = "WebKit_DOMOverflowEvent")]
 unsafe impl NSObjectProtocol for DOMOverflowEvent {}
@@ -53,5 +56,23 @@ extern_methods!(
             horizontal_overflow: bool,
             vertical_overflow: bool,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMOverflowEvent")]
+    unsafe impl DOMOverflowEvent {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMOverflowEvent")]
+    unsafe impl DOMOverflowEvent {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

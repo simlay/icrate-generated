@@ -10,11 +10,11 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct ILCallClassificationRequest;
 
-    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "IdentityLookup_ILCallClassificationRequest")]
     unsafe impl ClassType for ILCallClassificationRequest {
         #[inherits(NSObject)]
         type Super = ILClassificationRequest;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -43,5 +43,14 @@ extern_methods!(
 
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "IdentityLookup_ILCallClassificationRequest")]
+    unsafe impl ILCallClassificationRequest {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

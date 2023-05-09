@@ -19,6 +19,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSAlignmentFeedbackFilter")]
     unsafe impl ClassType for NSAlignmentFeedbackFilter {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -76,5 +77,17 @@ extern_methods!(
             alignment_feedback_tokens: &NSArray<ProtocolObject<dyn NSAlignmentFeedbackToken>>,
             performance_time: NSHapticFeedbackPerformanceTime,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSAlignmentFeedbackFilter")]
+    unsafe impl NSAlignmentFeedbackFilter {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

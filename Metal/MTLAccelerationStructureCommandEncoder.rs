@@ -133,8 +133,12 @@ extern_class!(
     #[cfg(feature = "Metal_MTLAccelerationStructurePassSampleBufferAttachmentDescriptor")]
     unsafe impl ClassType for MTLAccelerationStructurePassSampleBufferAttachmentDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLAccelerationStructurePassSampleBufferAttachmentDescriptor")]
+unsafe impl NSCopying for MTLAccelerationStructurePassSampleBufferAttachmentDescriptor {}
 
 #[cfg(feature = "Metal_MTLAccelerationStructurePassSampleBufferAttachmentDescriptor")]
 unsafe impl NSObjectProtocol for MTLAccelerationStructurePassSampleBufferAttachmentDescriptor {}
@@ -169,6 +173,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLAccelerationStructurePassSampleBufferAttachmentDescriptor")]
+    unsafe impl MTLAccelerationStructurePassSampleBufferAttachmentDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLAccelerationStructurePassSampleBufferAttachmentDescriptorArray")]
@@ -177,6 +193,7 @@ extern_class!(
     #[cfg(feature = "Metal_MTLAccelerationStructurePassSampleBufferAttachmentDescriptorArray")]
     unsafe impl ClassType for MTLAccelerationStructurePassSampleBufferAttachmentDescriptorArray {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -203,6 +220,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLAccelerationStructurePassSampleBufferAttachmentDescriptorArray")]
+    unsafe impl MTLAccelerationStructurePassSampleBufferAttachmentDescriptorArray {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLAccelerationStructurePassDescriptor")]
@@ -211,8 +240,12 @@ extern_class!(
     #[cfg(feature = "Metal_MTLAccelerationStructurePassDescriptor")]
     unsafe impl ClassType for MTLAccelerationStructurePassDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLAccelerationStructurePassDescriptor")]
+unsafe impl NSCopying for MTLAccelerationStructurePassDescriptor {}
 
 #[cfg(feature = "Metal_MTLAccelerationStructurePassDescriptor")]
 unsafe impl NSObjectProtocol for MTLAccelerationStructurePassDescriptor {}
@@ -229,5 +262,17 @@ extern_methods!(
         pub unsafe fn sampleBufferAttachments(
             &self,
         ) -> Id<MTLAccelerationStructurePassSampleBufferAttachmentDescriptorArray>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLAccelerationStructurePassDescriptor")]
+    unsafe impl MTLAccelerationStructurePassDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

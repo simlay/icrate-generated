@@ -14,6 +14,7 @@ extern_class!(
     unsafe impl ClassType for NSPanel {
         #[inherits(NSResponder, NSObject)]
         type Super = NSWindow;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -67,25 +68,6 @@ extern_methods!(
     }
 );
 
-extern_fn!(
-    #[deprecated = "Use NSAlert instead"]
-    pub unsafe fn NSReleaseAlertPanel(panel: Option<&Object>);
-);
-
-extern_enum!(
-    #[underlying(c_int)]
-    pub enum __anonymous__ {
-        #[deprecated = "Use NSAlertFirstButtonReturn with an NSAlert presentation instead"]
-        NSAlertDefaultReturn = 1,
-        #[deprecated = "Use NSAlertFirstButtonReturn and other NSModalResponses with an NSAlert presentation instead"]
-        NSAlertAlternateReturn = 0,
-        #[deprecated = "Use NSAlertFirstButtonReturn and other NSModalResponses with an NSAlert presentation instead"]
-        NSAlertOtherReturn = -1,
-        #[deprecated = "Use NSAlertFirstButtonReturn and other NSModalResponses with an NSAlert presentation instead"]
-        NSAlertErrorReturn = -2,
-    }
-);
-
 extern_methods!(
     /// Methods declared on superclass `NSWindow`
     #[cfg(feature = "AppKit_NSPanel")]
@@ -110,10 +92,51 @@ extern_methods!(
             screen: Option<&NSScreen>,
         ) -> Id<Self>;
 
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(this: Option<Allocated<Self>>, coder: &NSCoder) -> Id<Self>;
+
         #[cfg(feature = "AppKit_NSViewController")]
         #[method_id(@__retain_semantics Other windowWithContentViewController:)]
         pub unsafe fn windowWithContentViewController(
             content_view_controller: &NSViewController,
         ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSResponder`
+    #[cfg(feature = "AppKit_NSPanel")]
+    unsafe impl NSPanel {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSPanel")]
+    unsafe impl NSPanel {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
+extern_fn!(
+    #[deprecated = "Use NSAlert instead"]
+    pub unsafe fn NSReleaseAlertPanel(panel: Option<&Object>);
+);
+
+extern_enum!(
+    #[underlying(c_int)]
+    pub enum __anonymous__ {
+        #[deprecated = "Use NSAlertFirstButtonReturn with an NSAlert presentation instead"]
+        NSAlertDefaultReturn = 1,
+        #[deprecated = "Use NSAlertFirstButtonReturn and other NSModalResponses with an NSAlert presentation instead"]
+        NSAlertAlternateReturn = 0,
+        #[deprecated = "Use NSAlertFirstButtonReturn and other NSModalResponses with an NSAlert presentation instead"]
+        NSAlertOtherReturn = -1,
+        #[deprecated = "Use NSAlertFirstButtonReturn and other NSModalResponses with an NSAlert presentation instead"]
+        NSAlertErrorReturn = -2,
     }
 );

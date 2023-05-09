@@ -10,17 +10,21 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct ASAuthorizationSingleSignOnRequest;
 
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "AuthenticationServices_ASAuthorizationSingleSignOnRequest")]
     unsafe impl ClassType for ASAuthorizationSingleSignOnRequest {
         #[inherits(ASAuthorizationRequest, NSObject)]
         type Super = ASAuthorizationOpenIDRequest;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "AuthenticationServices_ASAuthorizationSingleSignOnRequest")]
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 unsafe impl NSCoding for ASAuthorizationSingleSignOnRequest {}
+
+#[cfg(feature = "AuthenticationServices_ASAuthorizationSingleSignOnRequest")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+unsafe impl NSCopying for ASAuthorizationSingleSignOnRequest {}
 
 #[cfg(feature = "AuthenticationServices_ASAuthorizationSingleSignOnRequest")]
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
@@ -52,5 +56,17 @@ extern_methods!(
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(setUserInterfaceEnabled:)]
         pub unsafe fn setUserInterfaceEnabled(&self, user_interface_enabled: bool);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `ASAuthorizationRequest`
+    #[cfg(feature = "AuthenticationServices_ASAuthorizationSingleSignOnRequest")]
+    unsafe impl ASAuthorizationSingleSignOnRequest {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
     }
 );

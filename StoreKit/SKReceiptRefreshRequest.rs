@@ -14,6 +14,7 @@ extern_class!(
     unsafe impl ClassType for SKReceiptRefreshRequest {
         #[inherits(NSObject)]
         type Super = SKRequest;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -33,6 +34,18 @@ extern_methods!(
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
         #[method_id(@__retain_semantics Other receiptProperties)]
         pub unsafe fn receiptProperties(&self) -> Option<Id<NSDictionary<NSString, Object>>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "StoreKit_SKReceiptRefreshRequest")]
+    unsafe impl SKReceiptRefreshRequest {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

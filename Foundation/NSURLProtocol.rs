@@ -87,6 +87,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSURLProtocol")]
     unsafe impl ClassType for NSURLProtocol {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -170,6 +171,18 @@ extern_methods!(
 
         #[method(unregisterClass:)]
         pub unsafe fn unregisterClass(protocol_class: &Class);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSURLProtocol")]
+    unsafe impl NSURLProtocol {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

@@ -20,11 +20,15 @@ extern_class!(
     unsafe impl ClassType for CNPostalAddressFormatter {
         #[inherits(NSObject)]
         type Super = NSFormatter;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Contacts_CNPostalAddressFormatter")]
 unsafe impl NSCoding for CNPostalAddressFormatter {}
+
+#[cfg(feature = "Contacts_CNPostalAddressFormatter")]
+unsafe impl NSCopying for CNPostalAddressFormatter {}
 
 #[cfg(feature = "Contacts_CNPostalAddressFormatter")]
 unsafe impl NSObjectProtocol for CNPostalAddressFormatter {}
@@ -75,6 +79,18 @@ extern_methods!(
             postal_address: &CNPostalAddress,
             attributes: &NSDictionary,
         ) -> Id<NSAttributedString>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Contacts_CNPostalAddressFormatter")]
+    unsafe impl CNPostalAddressFormatter {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

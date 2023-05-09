@@ -11,16 +11,19 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLOptionElement;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLOptionElement")]
     unsafe impl ClassType for DOMHTMLOptionElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMHTMLElement;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_DOMHTMLOptionElement")]
 unsafe impl DOMEventTarget for DOMHTMLOptionElement {}
+
+#[cfg(feature = "WebKit_DOMHTMLOptionElement")]
+unsafe impl NSCopying for DOMHTMLOptionElement {}
 
 #[cfg(feature = "WebKit_DOMHTMLOptionElement")]
 unsafe impl NSObjectProtocol for DOMHTMLOptionElement {}
@@ -72,5 +75,23 @@ extern_methods!(
 
         #[method(index)]
         pub unsafe fn index(&self) -> c_int;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMHTMLOptionElement")]
+    unsafe impl DOMHTMLOptionElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMHTMLOptionElement")]
+    unsafe impl DOMHTMLOptionElement {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

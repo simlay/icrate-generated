@@ -12,6 +12,7 @@ extern_class!(
     #[cfg(feature = "CoreAnimation_CAEmitterCell")]
     unsafe impl ClassType for CAEmitterCell {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -254,5 +255,17 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSDictionary")]
         #[method(setStyle:)]
         pub unsafe fn setStyle(&self, style: Option<&NSDictionary>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreAnimation_CAEmitterCell")]
+    unsafe impl CAEmitterCell {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -14,8 +14,12 @@ extern_class!(
     #[cfg(feature = "PhotoKit_PHFetchOptions")]
     unsafe impl ClassType for PHFetchOptions {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "PhotoKit_PHFetchOptions")]
+unsafe impl NSCopying for PHFetchOptions {}
 
 #[cfg(feature = "PhotoKit_PHFetchOptions")]
 unsafe impl NSObjectProtocol for PHFetchOptions {}
@@ -83,5 +87,17 @@ extern_methods!(
             &self,
             wants_incremental_change_details: bool,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "PhotoKit_PHFetchOptions")]
+    unsafe impl PHFetchOptions {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

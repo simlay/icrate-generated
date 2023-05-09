@@ -116,6 +116,7 @@ extern_class!(
     #[cfg(feature = "CoreData_NSPersistentStoreCoordinator")]
     unsafe impl ClassType for NSPersistentStoreCoordinator {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -433,6 +434,18 @@ extern_methods!(
             store_url: &NSURL,
             options: Option<&NSDictionary>,
         ) -> Result<(), Id<NSError>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreData_NSPersistentStoreCoordinator")]
+    unsafe impl NSPersistentStoreCoordinator {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

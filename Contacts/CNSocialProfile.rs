@@ -12,11 +12,15 @@ extern_class!(
     #[cfg(feature = "Contacts_CNSocialProfile")]
     unsafe impl ClassType for CNSocialProfile {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Contacts_CNSocialProfile")]
 unsafe impl NSCoding for CNSocialProfile {}
+
+#[cfg(feature = "Contacts_CNSocialProfile")]
+unsafe impl NSCopying for CNSocialProfile {}
 
 #[cfg(feature = "Contacts_CNSocialProfile")]
 unsafe impl NSObjectProtocol for CNSocialProfile {}
@@ -60,6 +64,18 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other localizedStringForService:)]
         pub unsafe fn localizedStringForService(service: &NSString) -> Id<NSString>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Contacts_CNSocialProfile")]
+    unsafe impl CNSocialProfile {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

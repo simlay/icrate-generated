@@ -13,10 +13,10 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct MKLookAroundSnapshotOptions;
 
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKLookAroundSnapshotOptions")]
     unsafe impl ClassType for MKLookAroundSnapshotOptions {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -44,5 +44,17 @@ extern_methods!(
 
         #[method(setSize:)]
         pub unsafe fn setSize(&self, size: CGSize);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MapKit_MKLookAroundSnapshotOptions")]
+    unsafe impl MKLookAroundSnapshotOptions {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

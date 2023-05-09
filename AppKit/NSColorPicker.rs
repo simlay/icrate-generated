@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSColorPicker")]
     unsafe impl ClassType for NSColorPicker {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -69,5 +70,17 @@ extern_methods!(
 
         #[method(minContentSize)]
         pub unsafe fn minContentSize(&self) -> NSSize;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSColorPicker")]
+    unsafe impl NSColorPicker {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

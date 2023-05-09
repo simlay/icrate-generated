@@ -40,11 +40,10 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct NSNetService;
 
-    #[deprecated = "Use nw_connection_t or nw_listener_t in Network framework instead"]
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "Foundation_NSNetService")]
     unsafe impl ClassType for NSNetService {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -181,6 +180,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSNetService")]
+    unsafe impl NSNetService {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSNetServiceBrowser")]
@@ -188,11 +199,10 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct NSNetServiceBrowser;
 
-    #[deprecated = "Use nw_browser_t in Network framework instead"]
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "Foundation_NSNetServiceBrowser")]
     unsafe impl ClassType for NSNetServiceBrowser {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -256,6 +266,15 @@ extern_methods!(
 
         #[method(stop)]
         pub unsafe fn stop(&self);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSNetServiceBrowser")]
+    unsafe impl NSNetServiceBrowser {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

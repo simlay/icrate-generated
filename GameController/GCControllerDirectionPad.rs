@@ -17,6 +17,7 @@ extern_class!(
     unsafe impl ClassType for GCControllerDirectionPad {
         #[inherits(NSObject)]
         type Super = GCControllerElement;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -61,5 +62,17 @@ extern_methods!(
 
         #[method(setValueForXAxis:yAxis:)]
         pub unsafe fn setValueForXAxis_yAxis(&self, x_axis: c_float, y_axis: c_float);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameController_GCControllerDirectionPad")]
+    unsafe impl GCControllerDirectionPad {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

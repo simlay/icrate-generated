@@ -24,10 +24,10 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct SKProductStorePromotionController;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "StoreKit_SKProductStorePromotionController")]
     unsafe impl ClassType for SKProductStorePromotionController {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -88,5 +88,17 @@ extern_methods!(
             promotion_order: &NSArray<SKProduct>,
             completion_handler: Option<&Block<(*mut NSError,), ()>>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "StoreKit_SKProductStorePromotionController")]
+    unsafe impl SKProductStorePromotionController {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

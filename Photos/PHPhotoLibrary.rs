@@ -53,6 +53,7 @@ extern_class!(
     #[cfg(feature = "PhotoKit_PHPhotoLibrary")]
     unsafe impl ClassType for PHPhotoLibrary {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -126,5 +127,17 @@ extern_methods!(
         #[cfg(feature = "PhotoKit_PHPersistentChangeToken")]
         #[method_id(@__retain_semantics Other currentChangeToken)]
         pub unsafe fn currentChangeToken(&self) -> Id<PHPersistentChangeToken>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "PhotoKit_PHPhotoLibrary")]
+    unsafe impl PHPhotoLibrary {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

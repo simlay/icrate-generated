@@ -25,6 +25,7 @@ extern_class!(
     unsafe impl ClassType for CAEmitterLayer {
         #[inherits(NSObject)]
         type Super = CALayer;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -143,6 +144,30 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `CALayer`
+    #[cfg(feature = "CoreAnimation_CAEmitterLayer")]
+    unsafe impl CAEmitterLayer {
+        #[method_id(@__retain_semantics Other layer)]
+        pub unsafe fn layer() -> Id<Self>;
+
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics Init initWithLayer:)]
+        pub unsafe fn initWithLayer(this: Option<Allocated<Self>>, layer: &Object) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreAnimation_CAEmitterLayer")]
+    unsafe impl CAEmitterLayer {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_static!(kCAEmitterLayerPoint: &'static CAEmitterLayerEmitterShape);
 
 extern_static!(kCAEmitterLayerLine: &'static CAEmitterLayerEmitterShape);
@@ -172,15 +197,3 @@ extern_static!(kCAEmitterLayerOldestLast: &'static CAEmitterLayerRenderMode);
 extern_static!(kCAEmitterLayerBackToFront: &'static CAEmitterLayerRenderMode);
 
 extern_static!(kCAEmitterLayerAdditive: &'static CAEmitterLayerRenderMode);
-
-extern_methods!(
-    /// Methods declared on superclass `CALayer`
-    #[cfg(feature = "CoreAnimation_CAEmitterLayer")]
-    unsafe impl CAEmitterLayer {
-        #[method_id(@__retain_semantics Other layer)]
-        pub unsafe fn layer() -> Id<Self>;
-
-        #[method_id(@__retain_semantics Init initWithLayer:)]
-        pub unsafe fn initWithLayer(this: Option<Allocated<Self>>, layer: &Object) -> Id<Self>;
-    }
-);

@@ -9,10 +9,10 @@ extern_class!(
     #[deprecated = "Use NSXPCConnection instead"]
     pub struct NSDistantObject;
 
-    #[deprecated = "Use NSXPCConnection instead"]
     #[cfg(feature = "Foundation_NSDistantObject")]
     unsafe impl ClassType for NSDistantObject {
         type Super = NSProxy;
+        type Mutability = InteriorMutable;
     }
 );
 

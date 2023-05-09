@@ -11,11 +11,15 @@ extern_class!(
     #[cfg(feature = "Foundation_NSIndexPath")]
     unsafe impl ClassType for NSIndexPath {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSIndexPath")]
 unsafe impl NSCoding for NSIndexPath {}
+
+#[cfg(feature = "Foundation_NSIndexPath")]
+unsafe impl NSCopying for NSIndexPath {}
 
 #[cfg(feature = "Foundation_NSIndexPath")]
 unsafe impl NSObjectProtocol for NSIndexPath {}
@@ -66,6 +70,18 @@ extern_methods!(
 
         #[method(compare:)]
         pub unsafe fn compare(&self, other_object: &NSIndexPath) -> NSComparisonResult;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSIndexPath")]
+    unsafe impl NSIndexPath {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

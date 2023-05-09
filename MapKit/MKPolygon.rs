@@ -13,11 +13,11 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKPolygon;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKPolygon")]
     unsafe impl ClassType for MKPolygon {
         #[inherits(MKShape, NSObject)]
         type Super = MKMultiPoint;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -68,5 +68,17 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSArray")]
         #[method_id(@__retain_semantics Other interiorPolygons)]
         pub unsafe fn interiorPolygons(&self) -> Option<Id<NSArray<MKPolygon>>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MapKit_MKPolygon")]
+    unsafe impl MKPolygon {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

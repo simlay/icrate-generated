@@ -12,6 +12,7 @@ extern_class!(
     #[cfg(feature = "Metal_MTLRasterizationRateSampleArray")]
     unsafe impl ClassType for MTLRasterizationRateSampleArray {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -31,6 +32,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLRasterizationRateSampleArray")]
+    unsafe impl MTLRasterizationRateSampleArray {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLRasterizationRateLayerDescriptor")]
@@ -39,8 +52,12 @@ extern_class!(
     #[cfg(feature = "Metal_MTLRasterizationRateLayerDescriptor")]
     unsafe impl ClassType for MTLRasterizationRateLayerDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLRasterizationRateLayerDescriptor")]
+unsafe impl NSCopying for MTLRasterizationRateLayerDescriptor {}
 
 #[cfg(feature = "Metal_MTLRasterizationRateLayerDescriptor")]
 unsafe impl NSObjectProtocol for MTLRasterizationRateLayerDescriptor {}
@@ -86,6 +103,15 @@ extern_methods!(
 );
 
 extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLRasterizationRateLayerDescriptor")]
+    unsafe impl MTLRasterizationRateLayerDescriptor {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
+extern_methods!(
     #[cfg(feature = "Metal_MTLRasterizationRateLayerDescriptor")]
     unsafe impl MTLRasterizationRateLayerDescriptor {}
 );
@@ -98,6 +124,7 @@ extern_class!(
     #[cfg(feature = "Metal_MTLRasterizationRateLayerArray")]
     unsafe impl ClassType for MTLRasterizationRateLayerArray {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -124,6 +151,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLRasterizationRateLayerArray")]
+    unsafe impl MTLRasterizationRateLayerArray {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Metal_MTLRasterizationRateMapDescriptor")]
@@ -132,8 +171,12 @@ extern_class!(
     #[cfg(feature = "Metal_MTLRasterizationRateMapDescriptor")]
     unsafe impl ClassType for MTLRasterizationRateMapDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLRasterizationRateMapDescriptor")]
+unsafe impl NSCopying for MTLRasterizationRateMapDescriptor {}
 
 #[cfg(feature = "Metal_MTLRasterizationRateMapDescriptor")]
 unsafe impl NSObjectProtocol for MTLRasterizationRateMapDescriptor {}
@@ -196,6 +239,18 @@ extern_methods!(
 
         #[method(layerCount)]
         pub unsafe fn layerCount(&self) -> NSUInteger;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLRasterizationRateMapDescriptor")]
+    unsafe impl MTLRasterizationRateMapDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

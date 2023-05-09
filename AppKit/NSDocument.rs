@@ -40,6 +40,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSDocument")]
     unsafe impl ClassType for NSDocument {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -815,6 +816,15 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSFileVersion")]
         #[method(presentedItemDidResolveConflictVersion:)]
         pub unsafe fn presentedItemDidResolveConflictVersion(&self, version: &NSFileVersion);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSDocument")]
+    unsafe impl NSDocument {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

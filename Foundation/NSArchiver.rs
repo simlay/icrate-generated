@@ -9,11 +9,11 @@ extern_class!(
     #[deprecated = "Use NSKeyedArchiver instead"]
     pub struct NSArchiver;
 
-    #[deprecated = "Use NSKeyedArchiver instead"]
     #[cfg(feature = "Foundation_NSArchiver")]
     unsafe impl ClassType for NSArchiver {
         #[inherits(NSObject)]
         type Super = NSCoder;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -32,7 +32,7 @@ extern_methods!(
 
         #[cfg(feature = "Foundation_NSMutableData")]
         #[method_id(@__retain_semantics Other archiverData)]
-        pub unsafe fn archiverData(&self) -> Id<NSMutableData, Owned>;
+        pub unsafe fn archiverData(&self) -> Id<NSMutableData>;
 
         #[method(encodeRootObject:)]
         pub unsafe fn encodeRootObject(&self, root_object: &Object);
@@ -68,17 +68,29 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSArchiver")]
+    unsafe impl NSArchiver {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Foundation_NSUnarchiver")]
     #[deprecated = "Use NSKeyedUnarchiver instead"]
     pub struct NSUnarchiver;
 
-    #[deprecated = "Use NSKeyedUnarchiver instead"]
     #[cfg(feature = "Foundation_NSUnarchiver")]
     unsafe impl ClassType for NSUnarchiver {
         #[inherits(NSObject)]
         type Super = NSCoder;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -145,5 +157,17 @@ extern_methods!(
 
         #[method(replaceObject:withObject:)]
         pub unsafe fn replaceObject_withObject(&self, object: &Object, new_object: &Object);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSUnarchiver")]
+    unsafe impl NSUnarchiver {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

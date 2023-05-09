@@ -48,8 +48,12 @@ extern_class!(
     #[cfg(feature = "AppKit_NSTouch")]
     unsafe impl ClassType for NSTouch {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "AppKit_NSTouch")]
+unsafe impl NSCopying for NSTouch {}
 
 #[cfg(feature = "AppKit_NSTouch")]
 unsafe impl NSObjectProtocol for NSTouch {}
@@ -74,6 +78,18 @@ extern_methods!(
 
         #[method(deviceSize)]
         pub unsafe fn deviceSize(&self) -> NSSize;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSTouch")]
+    unsafe impl NSTouch {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

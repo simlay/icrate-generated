@@ -14,11 +14,15 @@ extern_class!(
     unsafe impl ClassType for NSPICTImageRep {
         #[inherits(NSObject)]
         type Super = NSImageRep;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "AppKit_NSPICTImageRep")]
 unsafe impl NSCoding for NSPICTImageRep {}
+
+#[cfg(feature = "AppKit_NSPICTImageRep")]
+unsafe impl NSCopying for NSPICTImageRep {}
 
 #[cfg(feature = "AppKit_NSPICTImageRep")]
 unsafe impl NSObjectProtocol for NSPICTImageRep {}
@@ -43,5 +47,30 @@ extern_methods!(
 
         #[method(boundingBox)]
         pub unsafe fn boundingBox(&self) -> NSRect;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSImageRep`
+    #[cfg(feature = "AppKit_NSPICTImageRep")]
+    unsafe impl NSPICTImageRep {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(
+            this: Option<Allocated<Self>>,
+            coder: &NSCoder,
+        ) -> Option<Id<Self>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSPICTImageRep")]
+    unsafe impl NSPICTImageRep {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

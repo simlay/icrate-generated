@@ -11,16 +11,19 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLOptGroupElement;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLOptGroupElement")]
     unsafe impl ClassType for DOMHTMLOptGroupElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMHTMLElement;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_DOMHTMLOptGroupElement")]
 unsafe impl DOMEventTarget for DOMHTMLOptGroupElement {}
+
+#[cfg(feature = "WebKit_DOMHTMLOptGroupElement")]
+unsafe impl NSCopying for DOMHTMLOptGroupElement {}
 
 #[cfg(feature = "WebKit_DOMHTMLOptGroupElement")]
 unsafe impl NSObjectProtocol for DOMHTMLOptGroupElement {}
@@ -41,5 +44,23 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method(setLabel:)]
         pub unsafe fn setLabel(&self, label: Option<&NSString>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMHTMLOptGroupElement")]
+    unsafe impl DOMHTMLOptGroupElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMHTMLOptGroupElement")]
+    unsafe impl DOMHTMLOptGroupElement {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

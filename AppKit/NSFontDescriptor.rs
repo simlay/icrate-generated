@@ -80,11 +80,15 @@ extern_class!(
     #[cfg(feature = "AppKit_NSFontDescriptor")]
     unsafe impl ClassType for NSFontDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "AppKit_NSFontDescriptor")]
 unsafe impl NSCoding for NSFontDescriptor {}
+
+#[cfg(feature = "AppKit_NSFontDescriptor")]
+unsafe impl NSCopying for NSFontDescriptor {}
 
 #[cfg(feature = "AppKit_NSFontDescriptor")]
 unsafe impl NSObjectProtocol for NSFontDescriptor {}
@@ -210,6 +214,18 @@ extern_methods!(
             &self,
             design: &NSFontDescriptorSystemDesign,
         ) -> Option<Id<Self>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSFontDescriptor")]
+    unsafe impl NSFontDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

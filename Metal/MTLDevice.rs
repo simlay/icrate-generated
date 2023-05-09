@@ -282,8 +282,12 @@ extern_class!(
     #[cfg(feature = "Metal_MTLArgumentDescriptor")]
     unsafe impl ClassType for MTLArgumentDescriptor {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Metal_MTLArgumentDescriptor")]
+unsafe impl NSCopying for MTLArgumentDescriptor {}
 
 #[cfg(feature = "Metal_MTLArgumentDescriptor")]
 unsafe impl NSObjectProtocol for MTLArgumentDescriptor {}
@@ -329,6 +333,18 @@ extern_methods!(
 
         #[method(setConstantBlockAlignment:)]
         pub unsafe fn setConstantBlockAlignment(&self, constant_block_alignment: NSUInteger);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Metal_MTLArgumentDescriptor")]
+    unsafe impl MTLArgumentDescriptor {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

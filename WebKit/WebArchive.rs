@@ -13,15 +13,18 @@ extern_class!(
     #[deprecated]
     pub struct WebArchive;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_WebArchive")]
     unsafe impl ClassType for WebArchive {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_WebArchive")]
 unsafe impl NSCoding for WebArchive {}
+
+#[cfg(feature = "WebKit_WebArchive")]
+unsafe impl NSCopying for WebArchive {}
 
 #[cfg(feature = "WebKit_WebArchive")]
 unsafe impl NSObjectProtocol for WebArchive {}
@@ -60,5 +63,17 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSData")]
         #[method_id(@__retain_semantics Other data)]
         pub unsafe fn data(&self) -> Id<NSData>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_WebArchive")]
+    unsafe impl WebArchive {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

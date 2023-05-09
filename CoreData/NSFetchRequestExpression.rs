@@ -15,11 +15,15 @@ extern_class!(
     unsafe impl ClassType for NSFetchRequestExpression {
         #[inherits(NSObject)]
         type Super = NSExpression;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "CoreData_NSFetchRequestExpression")]
 unsafe impl NSCoding for NSFetchRequestExpression {}
+
+#[cfg(feature = "CoreData_NSFetchRequestExpression")]
+unsafe impl NSCopying for NSFetchRequestExpression {}
 
 #[cfg(feature = "CoreData_NSFetchRequestExpression")]
 unsafe impl NSObjectProtocol for NSFetchRequestExpression {}
@@ -57,5 +61,24 @@ extern_methods!(
             this: Option<Allocated<Self>>,
             r#type: NSExpressionType,
         ) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(
+            this: Option<Allocated<Self>>,
+            coder: &NSCoder,
+        ) -> Option<Id<Self>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreData_NSFetchRequestExpression")]
+    unsafe impl NSFetchRequestExpression {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

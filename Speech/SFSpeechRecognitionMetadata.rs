@@ -12,11 +12,15 @@ extern_class!(
     #[cfg(feature = "Speech_SFSpeechRecognitionMetadata")]
     unsafe impl ClassType for SFSpeechRecognitionMetadata {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Speech_SFSpeechRecognitionMetadata")]
 unsafe impl NSCoding for SFSpeechRecognitionMetadata {}
+
+#[cfg(feature = "Speech_SFSpeechRecognitionMetadata")]
+unsafe impl NSCopying for SFSpeechRecognitionMetadata {}
 
 #[cfg(feature = "Speech_SFSpeechRecognitionMetadata")]
 unsafe impl NSObjectProtocol for SFSpeechRecognitionMetadata {}
@@ -42,5 +46,17 @@ extern_methods!(
         #[cfg(feature = "Speech_SFVoiceAnalytics")]
         #[method_id(@__retain_semantics Other voiceAnalytics)]
         pub unsafe fn voiceAnalytics(&self) -> Option<Id<SFVoiceAnalytics>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Speech_SFSpeechRecognitionMetadata")]
+    unsafe impl SFSpeechRecognitionMetadata {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -17,6 +17,7 @@ extern_class!(
     unsafe impl ClassType for CAScrollLayer {
         #[inherits(NSObject)]
         type Super = CALayer;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -50,6 +51,30 @@ extern_methods!(
 );
 
 extern_methods!(
+    /// Methods declared on superclass `CALayer`
+    #[cfg(feature = "CoreAnimation_CAScrollLayer")]
+    unsafe impl CAScrollLayer {
+        #[method_id(@__retain_semantics Other layer)]
+        pub unsafe fn layer() -> Id<Self>;
+
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics Init initWithLayer:)]
+        pub unsafe fn initWithLayer(this: Option<Allocated<Self>>, layer: &Object) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreAnimation_CAScrollLayer")]
+    unsafe impl CAScrollLayer {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
+extern_methods!(
     /// CALayerScrolling
     #[cfg(feature = "CoreAnimation_CALayer")]
     unsafe impl CALayer {
@@ -71,15 +96,3 @@ extern_static!(kCAScrollVertically: &'static CAScrollLayerScrollMode);
 extern_static!(kCAScrollHorizontally: &'static CAScrollLayerScrollMode);
 
 extern_static!(kCAScrollBoth: &'static CAScrollLayerScrollMode);
-
-extern_methods!(
-    /// Methods declared on superclass `CALayer`
-    #[cfg(feature = "CoreAnimation_CAScrollLayer")]
-    unsafe impl CAScrollLayer {
-        #[method_id(@__retain_semantics Other layer)]
-        pub unsafe fn layer() -> Id<Self>;
-
-        #[method_id(@__retain_semantics Init initWithLayer:)]
-        pub unsafe fn initWithLayer(this: Option<Allocated<Self>>, layer: &Object) -> Id<Self>;
-    }
-);

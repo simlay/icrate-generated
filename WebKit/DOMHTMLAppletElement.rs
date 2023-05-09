@@ -11,16 +11,19 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLAppletElement;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLAppletElement")]
     unsafe impl ClassType for DOMHTMLAppletElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMHTMLElement;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_DOMHTMLAppletElement")]
 unsafe impl DOMEventTarget for DOMHTMLAppletElement {}
+
+#[cfg(feature = "WebKit_DOMHTMLAppletElement")]
+unsafe impl NSCopying for DOMHTMLAppletElement {}
 
 #[cfg(feature = "WebKit_DOMHTMLAppletElement")]
 unsafe impl NSObjectProtocol for DOMHTMLAppletElement {}
@@ -111,5 +114,23 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method(setWidth:)]
         pub unsafe fn setWidth(&self, width: Option<&NSString>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMHTMLAppletElement")]
+    unsafe impl DOMHTMLAppletElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMHTMLAppletElement")]
+    unsafe impl DOMHTMLAppletElement {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

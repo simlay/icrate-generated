@@ -12,11 +12,15 @@ extern_class!(
     #[cfg(feature = "Contacts_CNChangeHistoryEvent")]
     unsafe impl ClassType for CNChangeHistoryEvent {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Contacts_CNChangeHistoryEvent")]
 unsafe impl NSCoding for CNChangeHistoryEvent {}
+
+#[cfg(feature = "Contacts_CNChangeHistoryEvent")]
+unsafe impl NSCopying for CNChangeHistoryEvent {}
 
 #[cfg(feature = "Contacts_CNChangeHistoryEvent")]
 unsafe impl NSObjectProtocol for CNChangeHistoryEvent {}
@@ -35,6 +39,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Contacts_CNChangeHistoryEvent")]
+    unsafe impl CNChangeHistoryEvent {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNChangeHistoryDropEverythingEvent")]
@@ -44,11 +60,15 @@ extern_class!(
     unsafe impl ClassType for CNChangeHistoryDropEverythingEvent {
         #[inherits(NSObject)]
         type Super = CNChangeHistoryEvent;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Contacts_CNChangeHistoryDropEverythingEvent")]
 unsafe impl NSCoding for CNChangeHistoryDropEverythingEvent {}
+
+#[cfg(feature = "Contacts_CNChangeHistoryDropEverythingEvent")]
+unsafe impl NSCopying for CNChangeHistoryDropEverythingEvent {}
 
 #[cfg(feature = "Contacts_CNChangeHistoryDropEverythingEvent")]
 unsafe impl NSObjectProtocol for CNChangeHistoryDropEverythingEvent {}
@@ -61,6 +81,18 @@ extern_methods!(
     unsafe impl CNChangeHistoryDropEverythingEvent {}
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Contacts_CNChangeHistoryDropEverythingEvent")]
+    unsafe impl CNChangeHistoryDropEverythingEvent {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNChangeHistoryAddContactEvent")]
@@ -70,11 +102,15 @@ extern_class!(
     unsafe impl ClassType for CNChangeHistoryAddContactEvent {
         #[inherits(NSObject)]
         type Super = CNChangeHistoryEvent;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Contacts_CNChangeHistoryAddContactEvent")]
 unsafe impl NSCoding for CNChangeHistoryAddContactEvent {}
+
+#[cfg(feature = "Contacts_CNChangeHistoryAddContactEvent")]
+unsafe impl NSCopying for CNChangeHistoryAddContactEvent {}
 
 #[cfg(feature = "Contacts_CNChangeHistoryAddContactEvent")]
 unsafe impl NSObjectProtocol for CNChangeHistoryAddContactEvent {}
@@ -95,6 +131,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Contacts_CNChangeHistoryAddContactEvent")]
+    unsafe impl CNChangeHistoryAddContactEvent {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNChangeHistoryUpdateContactEvent")]
@@ -104,11 +152,15 @@ extern_class!(
     unsafe impl ClassType for CNChangeHistoryUpdateContactEvent {
         #[inherits(NSObject)]
         type Super = CNChangeHistoryEvent;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Contacts_CNChangeHistoryUpdateContactEvent")]
 unsafe impl NSCoding for CNChangeHistoryUpdateContactEvent {}
+
+#[cfg(feature = "Contacts_CNChangeHistoryUpdateContactEvent")]
+unsafe impl NSCopying for CNChangeHistoryUpdateContactEvent {}
 
 #[cfg(feature = "Contacts_CNChangeHistoryUpdateContactEvent")]
 unsafe impl NSObjectProtocol for CNChangeHistoryUpdateContactEvent {}
@@ -125,6 +177,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Contacts_CNChangeHistoryUpdateContactEvent")]
+    unsafe impl CNChangeHistoryUpdateContactEvent {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNChangeHistoryDeleteContactEvent")]
@@ -134,11 +198,15 @@ extern_class!(
     unsafe impl ClassType for CNChangeHistoryDeleteContactEvent {
         #[inherits(NSObject)]
         type Super = CNChangeHistoryEvent;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Contacts_CNChangeHistoryDeleteContactEvent")]
 unsafe impl NSCoding for CNChangeHistoryDeleteContactEvent {}
+
+#[cfg(feature = "Contacts_CNChangeHistoryDeleteContactEvent")]
+unsafe impl NSCopying for CNChangeHistoryDeleteContactEvent {}
 
 #[cfg(feature = "Contacts_CNChangeHistoryDeleteContactEvent")]
 unsafe impl NSObjectProtocol for CNChangeHistoryDeleteContactEvent {}
@@ -155,6 +223,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Contacts_CNChangeHistoryDeleteContactEvent")]
+    unsafe impl CNChangeHistoryDeleteContactEvent {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNChangeHistoryAddGroupEvent")]
@@ -164,11 +244,15 @@ extern_class!(
     unsafe impl ClassType for CNChangeHistoryAddGroupEvent {
         #[inherits(NSObject)]
         type Super = CNChangeHistoryEvent;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Contacts_CNChangeHistoryAddGroupEvent")]
 unsafe impl NSCoding for CNChangeHistoryAddGroupEvent {}
+
+#[cfg(feature = "Contacts_CNChangeHistoryAddGroupEvent")]
+unsafe impl NSCopying for CNChangeHistoryAddGroupEvent {}
 
 #[cfg(feature = "Contacts_CNChangeHistoryAddGroupEvent")]
 unsafe impl NSObjectProtocol for CNChangeHistoryAddGroupEvent {}
@@ -189,6 +273,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Contacts_CNChangeHistoryAddGroupEvent")]
+    unsafe impl CNChangeHistoryAddGroupEvent {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNChangeHistoryUpdateGroupEvent")]
@@ -198,11 +294,15 @@ extern_class!(
     unsafe impl ClassType for CNChangeHistoryUpdateGroupEvent {
         #[inherits(NSObject)]
         type Super = CNChangeHistoryEvent;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Contacts_CNChangeHistoryUpdateGroupEvent")]
 unsafe impl NSCoding for CNChangeHistoryUpdateGroupEvent {}
+
+#[cfg(feature = "Contacts_CNChangeHistoryUpdateGroupEvent")]
+unsafe impl NSCopying for CNChangeHistoryUpdateGroupEvent {}
 
 #[cfg(feature = "Contacts_CNChangeHistoryUpdateGroupEvent")]
 unsafe impl NSObjectProtocol for CNChangeHistoryUpdateGroupEvent {}
@@ -219,6 +319,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Contacts_CNChangeHistoryUpdateGroupEvent")]
+    unsafe impl CNChangeHistoryUpdateGroupEvent {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNChangeHistoryDeleteGroupEvent")]
@@ -228,11 +340,15 @@ extern_class!(
     unsafe impl ClassType for CNChangeHistoryDeleteGroupEvent {
         #[inherits(NSObject)]
         type Super = CNChangeHistoryEvent;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Contacts_CNChangeHistoryDeleteGroupEvent")]
 unsafe impl NSCoding for CNChangeHistoryDeleteGroupEvent {}
+
+#[cfg(feature = "Contacts_CNChangeHistoryDeleteGroupEvent")]
+unsafe impl NSCopying for CNChangeHistoryDeleteGroupEvent {}
 
 #[cfg(feature = "Contacts_CNChangeHistoryDeleteGroupEvent")]
 unsafe impl NSObjectProtocol for CNChangeHistoryDeleteGroupEvent {}
@@ -249,6 +365,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Contacts_CNChangeHistoryDeleteGroupEvent")]
+    unsafe impl CNChangeHistoryDeleteGroupEvent {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNChangeHistoryAddMemberToGroupEvent")]
@@ -258,11 +386,15 @@ extern_class!(
     unsafe impl ClassType for CNChangeHistoryAddMemberToGroupEvent {
         #[inherits(NSObject)]
         type Super = CNChangeHistoryEvent;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Contacts_CNChangeHistoryAddMemberToGroupEvent")]
 unsafe impl NSCoding for CNChangeHistoryAddMemberToGroupEvent {}
+
+#[cfg(feature = "Contacts_CNChangeHistoryAddMemberToGroupEvent")]
+unsafe impl NSCopying for CNChangeHistoryAddMemberToGroupEvent {}
 
 #[cfg(feature = "Contacts_CNChangeHistoryAddMemberToGroupEvent")]
 unsafe impl NSObjectProtocol for CNChangeHistoryAddMemberToGroupEvent {}
@@ -283,6 +415,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Contacts_CNChangeHistoryAddMemberToGroupEvent")]
+    unsafe impl CNChangeHistoryAddMemberToGroupEvent {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNChangeHistoryRemoveMemberFromGroupEvent")]
@@ -292,11 +436,15 @@ extern_class!(
     unsafe impl ClassType for CNChangeHistoryRemoveMemberFromGroupEvent {
         #[inherits(NSObject)]
         type Super = CNChangeHistoryEvent;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Contacts_CNChangeHistoryRemoveMemberFromGroupEvent")]
 unsafe impl NSCoding for CNChangeHistoryRemoveMemberFromGroupEvent {}
+
+#[cfg(feature = "Contacts_CNChangeHistoryRemoveMemberFromGroupEvent")]
+unsafe impl NSCopying for CNChangeHistoryRemoveMemberFromGroupEvent {}
 
 #[cfg(feature = "Contacts_CNChangeHistoryRemoveMemberFromGroupEvent")]
 unsafe impl NSObjectProtocol for CNChangeHistoryRemoveMemberFromGroupEvent {}
@@ -317,6 +465,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Contacts_CNChangeHistoryRemoveMemberFromGroupEvent")]
+    unsafe impl CNChangeHistoryRemoveMemberFromGroupEvent {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNChangeHistoryAddSubgroupToGroupEvent")]
@@ -326,11 +486,15 @@ extern_class!(
     unsafe impl ClassType for CNChangeHistoryAddSubgroupToGroupEvent {
         #[inherits(NSObject)]
         type Super = CNChangeHistoryEvent;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Contacts_CNChangeHistoryAddSubgroupToGroupEvent")]
 unsafe impl NSCoding for CNChangeHistoryAddSubgroupToGroupEvent {}
+
+#[cfg(feature = "Contacts_CNChangeHistoryAddSubgroupToGroupEvent")]
+unsafe impl NSCopying for CNChangeHistoryAddSubgroupToGroupEvent {}
 
 #[cfg(feature = "Contacts_CNChangeHistoryAddSubgroupToGroupEvent")]
 unsafe impl NSObjectProtocol for CNChangeHistoryAddSubgroupToGroupEvent {}
@@ -351,6 +515,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Contacts_CNChangeHistoryAddSubgroupToGroupEvent")]
+    unsafe impl CNChangeHistoryAddSubgroupToGroupEvent {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "Contacts_CNChangeHistoryRemoveSubgroupFromGroupEvent")]
@@ -360,11 +536,15 @@ extern_class!(
     unsafe impl ClassType for CNChangeHistoryRemoveSubgroupFromGroupEvent {
         #[inherits(NSObject)]
         type Super = CNChangeHistoryEvent;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Contacts_CNChangeHistoryRemoveSubgroupFromGroupEvent")]
 unsafe impl NSCoding for CNChangeHistoryRemoveSubgroupFromGroupEvent {}
+
+#[cfg(feature = "Contacts_CNChangeHistoryRemoveSubgroupFromGroupEvent")]
+unsafe impl NSCopying for CNChangeHistoryRemoveSubgroupFromGroupEvent {}
 
 #[cfg(feature = "Contacts_CNChangeHistoryRemoveSubgroupFromGroupEvent")]
 unsafe impl NSObjectProtocol for CNChangeHistoryRemoveSubgroupFromGroupEvent {}
@@ -382,6 +562,18 @@ extern_methods!(
         #[cfg(feature = "Contacts_CNGroup")]
         #[method_id(@__retain_semantics Other group)]
         pub unsafe fn group(&self) -> Id<CNGroup>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Contacts_CNChangeHistoryRemoveSubgroupFromGroupEvent")]
+    unsafe impl CNChangeHistoryRemoveSubgroupFromGroupEvent {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

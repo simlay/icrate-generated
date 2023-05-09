@@ -10,10 +10,10 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct LARightStore;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "LocalAuthentication_LARightStore")]
     unsafe impl ClassType for LARightStore {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 

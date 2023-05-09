@@ -117,6 +117,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSCell")]
     unsafe impl ClassType for NSCell {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -128,6 +129,9 @@ unsafe impl NSAccessibilityElementProtocol for NSCell {}
 
 #[cfg(feature = "AppKit_NSCell")]
 unsafe impl NSCoding for NSCell {}
+
+#[cfg(feature = "AppKit_NSCell")]
+unsafe impl NSCopying for NSCell {}
 
 #[cfg(feature = "AppKit_NSCell")]
 unsafe impl NSObjectProtocol for NSCell {}
@@ -597,6 +601,15 @@ extern_methods!(
             frame: NSRect,
             view: &NSView,
         ) -> Id<NSArray<NSDraggingImageComponent>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSCell")]
+    unsafe impl NSCell {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

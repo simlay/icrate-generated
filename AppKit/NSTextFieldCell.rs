@@ -22,6 +22,7 @@ extern_class!(
     unsafe impl ClassType for NSTextFieldCell {
         #[inherits(NSCell, NSObject)]
         type Super = NSActionCell;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -33,6 +34,9 @@ unsafe impl NSAccessibilityElementProtocol for NSTextFieldCell {}
 
 #[cfg(feature = "AppKit_NSTextFieldCell")]
 unsafe impl NSCoding for NSTextFieldCell {}
+
+#[cfg(feature = "AppKit_NSTextFieldCell")]
+unsafe impl NSCopying for NSTextFieldCell {}
 
 #[cfg(feature = "AppKit_NSTextFieldCell")]
 unsafe impl NSObjectProtocol for NSTextFieldCell {}
@@ -122,5 +126,23 @@ extern_methods!(
             &self,
             allowed_input_source_locales: Option<&NSArray<NSString>>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSCell`
+    #[cfg(feature = "AppKit_NSTextFieldCell")]
+    unsafe impl NSTextFieldCell {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSTextFieldCell")]
+    unsafe impl NSTextFieldCell {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -11,10 +11,10 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     pub struct MPMusicPlayerControllerQueue;
 
-    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPMusicPlayerControllerQueue")]
     unsafe impl ClassType for MPMusicPlayerControllerQueue {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -44,11 +44,11 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     pub struct MPMusicPlayerControllerMutableQueue;
 
-    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPMusicPlayerControllerMutableQueue")]
     unsafe impl ClassType for MPMusicPlayerControllerMutableQueue {
         #[inherits(NSObject)]
         type Super = MPMusicPlayerControllerQueue;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -77,17 +77,30 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+extern_methods!(
+    /// Methods declared on superclass `MPMusicPlayerControllerQueue`
+    #[cfg(feature = "MediaPlayer_MPMusicPlayerControllerMutableQueue")]
+    unsafe impl MPMusicPlayerControllerMutableQueue {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "MediaPlayer_MPMusicPlayerApplicationController")]
     #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     pub struct MPMusicPlayerApplicationController;
 
-    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPMusicPlayerApplicationController")]
     unsafe impl ClassType for MPMusicPlayerApplicationController {
         #[inherits(NSObject)]
         type Super = MPMusicPlayerController;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -114,6 +127,19 @@ extern_methods!(
             queue_transaction: &Block<(NonNull<MPMusicPlayerControllerMutableQueue>,), ()>,
             completion_handler: &Block<(NonNull<MPMusicPlayerControllerQueue>, *mut NSError), ()>,
         );
+    }
+);
+
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+extern_methods!(
+    /// Methods declared on superclass `MPMusicPlayerController`
+    #[cfg(feature = "MediaPlayer_MPMusicPlayerApplicationController")]
+    unsafe impl MPMusicPlayerApplicationController {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
     }
 );
 

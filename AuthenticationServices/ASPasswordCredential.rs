@@ -12,6 +12,7 @@ extern_class!(
     #[cfg(feature = "AuthenticationServices_ASPasswordCredential")]
     unsafe impl ClassType for ASPasswordCredential {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -20,6 +21,9 @@ unsafe impl ASAuthorizationCredential for ASPasswordCredential {}
 
 #[cfg(feature = "AuthenticationServices_ASPasswordCredential")]
 unsafe impl NSCoding for ASPasswordCredential {}
+
+#[cfg(feature = "AuthenticationServices_ASPasswordCredential")]
+unsafe impl NSCopying for ASPasswordCredential {}
 
 #[cfg(feature = "AuthenticationServices_ASPasswordCredential")]
 unsafe impl NSObjectProtocol for ASPasswordCredential {}
@@ -50,5 +54,17 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other password)]
         pub unsafe fn password(&self) -> Id<NSString>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AuthenticationServices_ASPasswordCredential")]
+    unsafe impl ASPasswordCredential {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

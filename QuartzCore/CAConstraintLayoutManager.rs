@@ -44,6 +44,7 @@ extern_class!(
     #[cfg(feature = "CoreAnimation_CAConstraintLayoutManager")]
     unsafe impl ClassType for CAConstraintLayoutManager {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -61,6 +62,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreAnimation_CAConstraintLayoutManager")]
+    unsafe impl CAConstraintLayoutManager {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreAnimation_CAConstraint")]
@@ -69,6 +82,7 @@ extern_class!(
     #[cfg(feature = "CoreAnimation_CAConstraint")]
     unsafe impl ClassType for CAConstraint {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -137,5 +151,17 @@ extern_methods!(
 
         #[method(offset)]
         pub unsafe fn offset(&self) -> CGFloat;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreAnimation_CAConstraint")]
+    unsafe impl CAConstraint {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -31,6 +31,7 @@ extern_class!(
     unsafe impl ClassType for SKProductsRequest {
         #[inherits(NSObject)]
         type Super = SKRequest;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -58,6 +59,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "StoreKit_SKProductsRequest")]
+    unsafe impl SKProductsRequest {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "StoreKit_SKProductsResponse")]
@@ -66,6 +79,7 @@ extern_class!(
     #[cfg(feature = "StoreKit_SKProductsResponse")]
     unsafe impl ClassType for SKProductsResponse {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -82,5 +96,17 @@ extern_methods!(
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
         #[method_id(@__retain_semantics Other invalidProductIdentifiers)]
         pub unsafe fn invalidProductIdentifiers(&self) -> Id<NSArray<NSString>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "StoreKit_SKProductsResponse")]
+    unsafe impl SKProductsResponse {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

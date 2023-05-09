@@ -12,10 +12,10 @@ extern_class!(
     #[cfg(not(any(target_os = "ios")))]
     pub struct HKLiveWorkoutDataSource;
 
-    #[cfg(not(any(target_os = "ios")))]
     #[cfg(feature = "HealthKit_HKLiveWorkoutDataSource")]
     unsafe impl ClassType for HKLiveWorkoutDataSource {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -59,5 +59,14 @@ extern_methods!(
         #[cfg(feature = "HealthKit_HKQuantityType")]
         #[method(disableCollectionForType:)]
         pub unsafe fn disableCollectionForType(&self, quantity_type: &HKQuantityType);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "HealthKit_HKLiveWorkoutDataSource")]
+    unsafe impl HKLiveWorkoutDataSource {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

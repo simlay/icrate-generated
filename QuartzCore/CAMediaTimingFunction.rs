@@ -16,6 +16,7 @@ extern_class!(
     #[cfg(feature = "CoreAnimation_CAMediaTimingFunction")]
     unsafe impl ClassType for CAMediaTimingFunction {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -50,6 +51,18 @@ extern_methods!(
             c2x: c_float,
             c2y: c_float,
         ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreAnimation_CAMediaTimingFunction")]
+    unsafe impl CAMediaTimingFunction {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

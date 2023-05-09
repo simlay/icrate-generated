@@ -23,6 +23,7 @@ extern_class!(
     unsafe impl ClassType for CLSBinaryItem {
         #[inherits(CLSObject, NSObject)]
         type Super = CLSActivityItem;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -55,5 +56,17 @@ extern_methods!(
             title: &NSString,
             value_type: CLSBinaryValueType,
         ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `CLSActivityItem`
+    #[cfg(feature = "ClassKit_CLSBinaryItem")]
+    unsafe impl CLSBinaryItem {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
     }
 );

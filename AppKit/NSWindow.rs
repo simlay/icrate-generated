@@ -185,6 +185,7 @@ extern_class!(
     unsafe impl ClassType for NSWindow {
         #[inherits(NSObject)]
         type Super = NSResponder;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -1192,6 +1193,24 @@ extern_methods!(
 
         #[method(windowTitlebarLayoutDirection)]
         pub unsafe fn windowTitlebarLayoutDirection(&self) -> NSUserInterfaceLayoutDirection;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSResponder`
+    #[cfg(feature = "AppKit_NSWindow")]
+    unsafe impl NSWindow {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSWindow")]
+    unsafe impl NSWindow {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

@@ -15,6 +15,7 @@ extern_class!(
     #[cfg(feature = "EventKit_EKVirtualConferenceProvider")]
     unsafe impl ClassType for EKVirtualConferenceProvider {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -54,5 +55,17 @@ extern_methods!(
             identifier: &EKVirtualConferenceRoomTypeIdentifier,
             completion_handler: &Block<(*mut EKVirtualConferenceDescriptor, *mut NSError), ()>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "EventKit_EKVirtualConferenceProvider")]
+    unsafe impl EKVirtualConferenceProvider {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -11,11 +11,15 @@ extern_class!(
     #[cfg(feature = "Foundation_NSPointerArray")]
     unsafe impl ClassType for NSPointerArray {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "Foundation_NSPointerArray")]
 unsafe impl NSCoding for NSPointerArray {}
+
+#[cfg(feature = "Foundation_NSPointerArray")]
+unsafe impl NSCopying for NSPointerArray {}
 
 #[cfg(feature = "Foundation_NSPointerArray")]
 unsafe impl NSFastEnumeration for NSPointerArray {}
@@ -84,6 +88,18 @@ extern_methods!(
 
         #[method(setCount:)]
         pub unsafe fn setCount(&self, count: NSUInteger);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSPointerArray")]
+    unsafe impl NSPointerArray {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

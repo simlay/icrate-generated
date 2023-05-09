@@ -125,10 +125,10 @@ extern_class!(
     #[deprecated]
     pub struct NSInputServer;
 
-    #[deprecated]
     #[cfg(feature = "AppKit_NSInputServer")]
     unsafe impl ClassType for NSInputServer {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -152,5 +152,17 @@ extern_methods!(
             delegate: Option<&Object>,
             name: Option<&NSString>,
         ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSInputServer")]
+    unsafe impl NSInputServer {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

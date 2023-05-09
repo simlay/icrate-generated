@@ -23,6 +23,7 @@ extern_class!(
     #[cfg(feature = "CoreData_NSMergeConflict")]
     unsafe impl ClassType for NSMergeConflict {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -74,6 +75,15 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreData_NSMergeConflict")]
+    unsafe impl NSMergeConflict {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreData_NSConstraintConflict")]
@@ -82,6 +92,7 @@ extern_class!(
     #[cfg(feature = "CoreData_NSConstraintConflict")]
     unsafe impl ClassType for NSConstraintConflict {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -133,6 +144,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreData_NSConstraintConflict")]
+    unsafe impl NSConstraintConflict {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CoreData_NSMergePolicy")]
@@ -141,6 +164,7 @@ extern_class!(
     #[cfg(feature = "CoreData_NSMergePolicy")]
     unsafe impl ClassType for NSMergePolicy {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -202,5 +226,14 @@ extern_methods!(
             &self,
             list: &NSArray<NSConstraintConflict>,
         ) -> Result<(), Id<NSError>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreData_NSMergePolicy")]
+    unsafe impl NSMergePolicy {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

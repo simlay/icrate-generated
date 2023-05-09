@@ -13,11 +13,15 @@ extern_class!(
     unsafe impl ClassType for NSDerivedAttributeDescription {
         #[inherits(NSPropertyDescription, NSObject)]
         type Super = NSAttributeDescription;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "CoreData_NSDerivedAttributeDescription")]
 unsafe impl NSCoding for NSDerivedAttributeDescription {}
+
+#[cfg(feature = "CoreData_NSDerivedAttributeDescription")]
+unsafe impl NSCopying for NSDerivedAttributeDescription {}
 
 #[cfg(feature = "CoreData_NSDerivedAttributeDescription")]
 unsafe impl NSObjectProtocol for NSDerivedAttributeDescription {}
@@ -32,5 +36,17 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSExpression")]
         #[method(setDerivationExpression:)]
         pub unsafe fn setDerivationExpression(&self, derivation_expression: Option<&NSExpression>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreData_NSDerivedAttributeDescription")]
+    unsafe impl NSDerivedAttributeDescription {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

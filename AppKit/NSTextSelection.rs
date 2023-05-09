@@ -32,6 +32,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSTextSelection")]
     unsafe impl ClassType for NSTextSelection {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -135,5 +136,14 @@ extern_methods!(
             &self,
             text_ranges: &NSArray<NSTextRange>,
         ) -> Id<NSTextSelection>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSTextSelection")]
+    unsafe impl NSTextSelection {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

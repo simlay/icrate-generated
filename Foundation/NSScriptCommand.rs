@@ -28,6 +28,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSScriptCommand")]
     unsafe impl ClassType for NSScriptCommand {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -155,5 +156,17 @@ extern_methods!(
 
         #[method(resumeExecutionWithResult:)]
         pub unsafe fn resumeExecutionWithResult(&self, result: Option<&Object>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSScriptCommand")]
+    unsafe impl NSScriptCommand {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

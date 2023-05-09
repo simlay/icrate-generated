@@ -27,6 +27,7 @@ extern_class!(
     #[cfg(feature = "CloudKit_CKOperationGroup")]
     unsafe impl ClassType for CKOperationGroup {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -93,5 +94,14 @@ extern_methods!(
             &self,
             expected_receive_size: CKOperationGroupTransferSize,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CloudKit_CKOperationGroup")]
+    unsafe impl CKOperationGroup {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

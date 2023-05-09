@@ -11,10 +11,10 @@ extern_class!(
     #[deprecated]
     pub struct NSMovie;
 
-    #[deprecated]
     #[cfg(feature = "AppKit_NSMovie")]
     unsafe impl ClassType for NSMovie {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -37,5 +37,14 @@ extern_methods!(
         #[deprecated = "As of macOS 10.15 this method always returns nil."]
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Option<Id<Self>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSMovie")]
+    unsafe impl NSMovie {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -30,11 +30,15 @@ extern_class!(
     #[cfg(feature = "HealthKit_HKDevice")]
     unsafe impl ClassType for HKDevice {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "HealthKit_HKDevice")]
 unsafe impl NSCoding for HKDevice {}
+
+#[cfg(feature = "HealthKit_HKDevice")]
+unsafe impl NSCopying for HKDevice {}
 
 #[cfg(feature = "HealthKit_HKDevice")]
 unsafe impl NSObjectProtocol for HKDevice {}
@@ -96,5 +100,14 @@ extern_methods!(
 
         #[method_id(@__retain_semantics Other localDevice)]
         pub unsafe fn localDevice() -> Id<HKDevice>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "HealthKit_HKDevice")]
+    unsafe impl HKDevice {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

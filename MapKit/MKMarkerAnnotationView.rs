@@ -13,11 +13,11 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKMarkerAnnotationView;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKMarkerAnnotationView")]
     unsafe impl ClassType for MKMarkerAnnotationView {
         #[inherits(NSView, NSResponder, NSObject)]
         type Super = MKAnnotationView;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -117,7 +117,6 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `MKAnnotationView`
     #[cfg(feature = "MapKit_MKMarkerAnnotationView")]
@@ -129,15 +128,43 @@ extern_methods!(
             annotation: Option<&ProtocolObject<dyn MKAnnotation>>,
             reuse_identifier: Option<&NSString>,
         ) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(
+            this: Option<Allocated<Self>>,
+            a_decoder: &NSCoder,
+        ) -> Option<Id<Self>>;
     }
 );
 
-#[cfg(not(any(target_os = "watchos")))]
+#[cfg(not(any(target_os = "ios")))]
 extern_methods!(
     /// Methods declared on superclass `NSView`
     #[cfg(feature = "MapKit_MKMarkerAnnotationView")]
     unsafe impl MKMarkerAnnotationView {
+        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithFrame:)]
         pub unsafe fn initWithFrame(this: Option<Allocated<Self>>, frame_rect: NSRect) -> Id<Self>;
+    }
+);
+
+#[cfg(not(any(target_os = "ios")))]
+extern_methods!(
+    /// Methods declared on superclass `NSResponder`
+    #[cfg(feature = "MapKit_MKMarkerAnnotationView")]
+    unsafe impl MKMarkerAnnotationView {
+        #[cfg(not(any(target_os = "ios")))]
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MapKit_MKMarkerAnnotationView")]
+    unsafe impl MKMarkerAnnotationView {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

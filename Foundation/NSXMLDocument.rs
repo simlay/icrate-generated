@@ -22,8 +22,12 @@ extern_class!(
     unsafe impl ClassType for NSXMLDocument {
         #[inherits(NSObject)]
         type Super = NSXMLNode;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "Foundation_NSXMLDocument")]
+unsafe impl NSCopying for NSXMLDocument {}
 
 #[cfg(feature = "Foundation_NSXMLDocument")]
 unsafe impl NSObjectProtocol for NSXMLDocument {}
@@ -212,5 +216,14 @@ extern_methods!(
             kind: NSXMLNodeKind,
             options: NSXMLNodeOptions,
         ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSXMLDocument")]
+    unsafe impl NSXMLDocument {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

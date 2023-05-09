@@ -12,6 +12,7 @@ extern_class!(
     #[cfg(feature = "CoreData_NSPersistentContainer")]
     unsafe impl ClassType for NSPersistentContainer {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -109,5 +110,17 @@ extern_methods!(
             &self,
             block: &Block<(NonNull<NSManagedObjectContext>,), ()>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreData_NSPersistentContainer")]
+    unsafe impl NSPersistentContainer {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -13,17 +13,21 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKHybridMapConfiguration;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKHybridMapConfiguration")]
     unsafe impl ClassType for MKHybridMapConfiguration {
         #[inherits(NSObject)]
         type Super = MKMapConfiguration;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "MapKit_MKHybridMapConfiguration")]
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSCoding for MKHybridMapConfiguration {}
+
+#[cfg(feature = "MapKit_MKHybridMapConfiguration")]
+#[cfg(not(any(target_os = "watchos")))]
+unsafe impl NSCopying for MKHybridMapConfiguration {}
 
 #[cfg(feature = "MapKit_MKHybridMapConfiguration")]
 #[cfg(not(any(target_os = "watchos")))]
@@ -62,5 +66,15 @@ extern_methods!(
 
         #[method(setShowsTraffic:)]
         pub unsafe fn setShowsTraffic(&self, shows_traffic: bool);
+    }
+);
+
+#[cfg(not(any(target_os = "watchos")))]
+extern_methods!(
+    /// Methods declared on superclass `MKMapConfiguration`
+    #[cfg(feature = "MapKit_MKHybridMapConfiguration")]
+    unsafe impl MKHybridMapConfiguration {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

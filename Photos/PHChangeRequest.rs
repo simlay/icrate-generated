@@ -14,6 +14,7 @@ extern_class!(
     #[cfg(feature = "PhotoKit_PHChangeRequest")]
     unsafe impl ClassType for PHChangeRequest {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -23,4 +24,16 @@ unsafe impl NSObjectProtocol for PHChangeRequest {}
 extern_methods!(
     #[cfg(feature = "PhotoKit_PHChangeRequest")]
     unsafe impl PHChangeRequest {}
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "PhotoKit_PHChangeRequest")]
+    unsafe impl PHChangeRequest {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
 );

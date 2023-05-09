@@ -23,6 +23,7 @@ extern_class!(
     #[cfg(feature = "GameKit_GKAccessPoint")]
     unsafe impl ClassType for GKAccessPoint {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -87,5 +88,17 @@ extern_methods!(
             state: GKGameCenterViewControllerState,
             handler: &Block<(), ()>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameKit_GKAccessPoint")]
+    unsafe impl GKAccessPoint {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

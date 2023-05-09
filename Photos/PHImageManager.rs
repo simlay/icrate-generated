@@ -44,8 +44,12 @@ extern_class!(
     #[cfg(feature = "PhotoKit_PHImageRequestOptions")]
     unsafe impl ClassType for PHImageRequestOptions {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "PhotoKit_PHImageRequestOptions")]
+unsafe impl NSCopying for PHImageRequestOptions {}
 
 #[cfg(feature = "PhotoKit_PHImageRequestOptions")]
 unsafe impl NSObjectProtocol for PHImageRequestOptions {}
@@ -97,6 +101,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "PhotoKit_PHImageRequestOptions")]
+    unsafe impl PHImageRequestOptions {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "PhotoKit_PHLivePhotoRequestOptions")]
@@ -105,8 +121,12 @@ extern_class!(
     #[cfg(feature = "PhotoKit_PHLivePhotoRequestOptions")]
     unsafe impl ClassType for PHLivePhotoRequestOptions {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "PhotoKit_PHLivePhotoRequestOptions")]
+unsafe impl NSCopying for PHLivePhotoRequestOptions {}
 
 #[cfg(feature = "PhotoKit_PHLivePhotoRequestOptions")]
 unsafe impl NSObjectProtocol for PHLivePhotoRequestOptions {}
@@ -140,6 +160,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "PhotoKit_PHLivePhotoRequestOptions")]
+    unsafe impl PHLivePhotoRequestOptions {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 ns_enum!(
     #[underlying(NSInteger)]
     pub enum PHVideoRequestOptionsVersion {
@@ -169,6 +201,7 @@ extern_class!(
     #[cfg(feature = "PhotoKit_PHVideoRequestOptions")]
     unsafe impl ClassType for PHVideoRequestOptions {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -204,6 +237,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "PhotoKit_PHVideoRequestOptions")]
+    unsafe impl PHVideoRequestOptions {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 pub type PHImageRequestID = i32;
 
 extern_static!(PHInvalidImageRequestID: PHImageRequestID = 0);
@@ -228,6 +273,7 @@ extern_class!(
     #[cfg(feature = "PhotoKit_PHImageManager")]
     unsafe impl ClassType for PHImageManager {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -322,6 +368,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "PhotoKit_PHImageManager")]
+    unsafe impl PHImageManager {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "PhotoKit_PHCachingImageManager")]
@@ -331,6 +389,7 @@ extern_class!(
     unsafe impl ClassType for PHCachingImageManager {
         #[inherits(NSObject)]
         type Super = PHImageManager;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -379,5 +438,17 @@ extern_methods!(
 
         #[method(stopCachingImagesForAllAssets)]
         pub unsafe fn stopCachingImagesForAllAssets(&self);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "PhotoKit_PHCachingImageManager")]
+    unsafe impl PHCachingImageManager {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

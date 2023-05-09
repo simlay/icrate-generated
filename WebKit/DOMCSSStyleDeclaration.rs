@@ -11,13 +11,16 @@ extern_class!(
     #[deprecated]
     pub struct DOMCSSStyleDeclaration;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMCSSStyleDeclaration")]
     unsafe impl ClassType for DOMCSSStyleDeclaration {
         #[inherits(WebScriptObject, NSObject)]
         type Super = DOMObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "WebKit_DOMCSSStyleDeclaration")]
+unsafe impl NSCopying for DOMCSSStyleDeclaration {}
 
 #[cfg(feature = "WebKit_DOMCSSStyleDeclaration")]
 unsafe impl NSObjectProtocol for DOMCSSStyleDeclaration {}
@@ -92,6 +95,24 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method(isPropertyImplicit:)]
         pub unsafe fn isPropertyImplicit(&self, property_name: Option<&NSString>) -> bool;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMCSSStyleDeclaration")]
+    unsafe impl DOMCSSStyleDeclaration {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMCSSStyleDeclaration")]
+    unsafe impl DOMCSSStyleDeclaration {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

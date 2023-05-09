@@ -13,11 +13,15 @@ extern_class!(
     #[cfg(feature = "CloudKit_CKNotificationID")]
     unsafe impl ClassType for CKNotificationID {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "CloudKit_CKNotificationID")]
 unsafe impl NSCoding for CKNotificationID {}
+
+#[cfg(feature = "CloudKit_CKNotificationID")]
+unsafe impl NSCopying for CKNotificationID {}
 
 #[cfg(feature = "CloudKit_CKNotificationID")]
 unsafe impl NSObjectProtocol for CKNotificationID {}
@@ -28,6 +32,18 @@ unsafe impl NSSecureCoding for CKNotificationID {}
 extern_methods!(
     #[cfg(feature = "CloudKit_CKNotificationID")]
     unsafe impl CKNotificationID {}
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CloudKit_CKNotificationID")]
+    unsafe impl CKNotificationID {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
 );
 
 ns_enum!(
@@ -48,6 +64,7 @@ extern_class!(
     #[cfg(feature = "CloudKit_CKNotification")]
     unsafe impl ClassType for CKNotification {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -179,6 +196,7 @@ extern_class!(
     unsafe impl ClassType for CKQueryNotification {
         #[inherits(NSObject)]
         type Super = CKNotification;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -204,6 +222,24 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `CKNotification`
+    #[cfg(feature = "CloudKit_CKQueryNotification")]
+    unsafe impl CKQueryNotification {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSDictionary")]
+        #[method_id(@__retain_semantics Other notificationFromRemoteNotificationDictionary:)]
+        pub unsafe fn notificationFromRemoteNotificationDictionary(
+            notification_dictionary: &NSDictionary,
+        ) -> Option<Id<Self>>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CloudKit_CKRecordZoneNotification")]
@@ -213,6 +249,7 @@ extern_class!(
     unsafe impl ClassType for CKRecordZoneNotification {
         #[inherits(NSObject)]
         type Super = CKNotification;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -231,6 +268,24 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `CKNotification`
+    #[cfg(feature = "CloudKit_CKRecordZoneNotification")]
+    unsafe impl CKRecordZoneNotification {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSDictionary")]
+        #[method_id(@__retain_semantics Other notificationFromRemoteNotificationDictionary:)]
+        pub unsafe fn notificationFromRemoteNotificationDictionary(
+            notification_dictionary: &NSDictionary,
+        ) -> Option<Id<Self>>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "CloudKit_CKDatabaseNotification")]
@@ -240,6 +295,7 @@ extern_class!(
     unsafe impl ClassType for CKDatabaseNotification {
         #[inherits(NSObject)]
         type Super = CKNotification;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -256,32 +312,14 @@ extern_methods!(
 
 extern_methods!(
     /// Methods declared on superclass `CKNotification`
-    #[cfg(feature = "CloudKit_CKQueryNotification")]
-    unsafe impl CKQueryNotification {
-        #[cfg(feature = "Foundation_NSDictionary")]
-        #[method_id(@__retain_semantics Other notificationFromRemoteNotificationDictionary:)]
-        pub unsafe fn notificationFromRemoteNotificationDictionary(
-            notification_dictionary: &NSDictionary,
-        ) -> Option<Id<Self>>;
-    }
-);
-
-extern_methods!(
-    /// Methods declared on superclass `CKNotification`
-    #[cfg(feature = "CloudKit_CKRecordZoneNotification")]
-    unsafe impl CKRecordZoneNotification {
-        #[cfg(feature = "Foundation_NSDictionary")]
-        #[method_id(@__retain_semantics Other notificationFromRemoteNotificationDictionary:)]
-        pub unsafe fn notificationFromRemoteNotificationDictionary(
-            notification_dictionary: &NSDictionary,
-        ) -> Option<Id<Self>>;
-    }
-);
-
-extern_methods!(
-    /// Methods declared on superclass `CKNotification`
     #[cfg(feature = "CloudKit_CKDatabaseNotification")]
     unsafe impl CKDatabaseNotification {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+
         #[cfg(feature = "Foundation_NSDictionary")]
         #[method_id(@__retain_semantics Other notificationFromRemoteNotificationDictionary:)]
         pub unsafe fn notificationFromRemoteNotificationDictionary(

@@ -17,6 +17,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSColorList")]
     unsafe impl ClassType for NSColorList {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -94,6 +95,18 @@ extern_methods!(
 
         #[method(removeFile)]
         pub unsafe fn removeFile(&self);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSColorList")]
+    unsafe impl NSColorList {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

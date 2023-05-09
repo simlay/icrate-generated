@@ -45,6 +45,7 @@ extern_class!(
     unsafe impl ClassType for HKElectrocardiogram {
         #[inherits(HKObject, NSObject)]
         type Super = HKSample;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -76,6 +77,24 @@ extern_methods!(
 
         #[method(symptomsStatus)]
         pub unsafe fn symptomsStatus(&self) -> HKElectrocardiogramSymptomsStatus;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `HKObject`
+    #[cfg(feature = "HealthKit_HKElectrocardiogram")]
+    unsafe impl HKElectrocardiogram {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "HealthKit_HKElectrocardiogram")]
+    unsafe impl HKElectrocardiogram {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

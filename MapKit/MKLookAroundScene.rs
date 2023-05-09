@@ -13,12 +13,16 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct MKLookAroundScene;
 
-    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKLookAroundScene")]
     unsafe impl ClassType for MKLookAroundScene {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "MapKit_MKLookAroundScene")]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
+unsafe impl NSCopying for MKLookAroundScene {}
 
 #[cfg(feature = "MapKit_MKLookAroundScene")]
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]

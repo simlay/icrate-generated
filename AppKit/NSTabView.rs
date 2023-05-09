@@ -49,6 +49,7 @@ extern_class!(
     unsafe impl ClassType for NSTabView {
         #[inherits(NSResponder, NSObject)]
         type Super = NSView;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -216,6 +217,40 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSView`
+    #[cfg(feature = "AppKit_NSTabView")]
+    unsafe impl NSTabView {
+        #[method_id(@__retain_semantics Init initWithFrame:)]
+        pub unsafe fn initWithFrame(this: Option<Allocated<Self>>, frame_rect: NSRect) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(
+            this: Option<Allocated<Self>>,
+            coder: &NSCoder,
+        ) -> Option<Id<Self>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSResponder`
+    #[cfg(feature = "AppKit_NSTabView")]
+    unsafe impl NSTabView {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSTabView")]
+    unsafe impl NSTabView {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_protocol!(
     pub unsafe trait NSTabViewDelegate: NSObjectProtocol {
         #[cfg(all(feature = "AppKit_NSTabView", feature = "AppKit_NSTabViewItem"))]
@@ -252,13 +287,4 @@ extern_protocol!(
     }
 
     unsafe impl ProtocolType for dyn NSTabViewDelegate {}
-);
-
-extern_methods!(
-    /// Methods declared on superclass `NSView`
-    #[cfg(feature = "AppKit_NSTabView")]
-    unsafe impl NSTabView {
-        #[method_id(@__retain_semantics Init initWithFrame:)]
-        pub unsafe fn initWithFrame(this: Option<Allocated<Self>>, frame_rect: NSRect) -> Id<Self>;
-    }
 );

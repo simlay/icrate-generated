@@ -14,6 +14,7 @@ extern_class!(
     unsafe impl ClassType for NSFormCell {
         #[inherits(NSCell, NSObject)]
         type Super = NSActionCell;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -25,6 +26,9 @@ unsafe impl NSAccessibilityElementProtocol for NSFormCell {}
 
 #[cfg(feature = "AppKit_NSFormCell")]
 unsafe impl NSCoding for NSFormCell {}
+
+#[cfg(feature = "AppKit_NSFormCell")]
+unsafe impl NSCopying for NSFormCell {}
 
 #[cfg(feature = "AppKit_NSFormCell")]
 unsafe impl NSObjectProtocol for NSFormCell {}
@@ -120,6 +124,24 @@ extern_methods!(
 
         #[method(setPreferredTextFieldWidth:)]
         pub unsafe fn setPreferredTextFieldWidth(&self, preferred_text_field_width: CGFloat);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSCell`
+    #[cfg(feature = "AppKit_NSFormCell")]
+    unsafe impl NSFormCell {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSFormCell")]
+    unsafe impl NSFormCell {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

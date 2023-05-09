@@ -22,6 +22,7 @@ extern_class!(
     #[cfg(feature = "Speech_SFSpeechRecognizer")]
     unsafe impl ClassType for SFSpeechRecognizer {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -113,6 +114,15 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSOperationQueue")]
         #[method(setQueue:)]
         pub unsafe fn setQueue(&self, queue: &NSOperationQueue);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Speech_SFSpeechRecognizer")]
+    unsafe impl SFSpeechRecognizer {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(feature = "Foundation_NSScriptCommandDescription")]
     unsafe impl ClassType for NSScriptCommandDescription {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -105,5 +106,14 @@ extern_methods!(
             &self,
             zone: *mut NSZone,
         ) -> Id<NSScriptCommand>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "Foundation_NSScriptCommandDescription")]
+    unsafe impl NSScriptCommandDescription {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -14,11 +14,11 @@ extern_class!(
     #[deprecated]
     pub struct GCGamepad;
 
-    #[deprecated]
     #[cfg(feature = "GameController_GCGamepad")]
     unsafe impl ClassType for GCGamepad {
         #[inherits(NSObject)]
         type Super = GCPhysicalInputProfile;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -72,5 +72,17 @@ extern_methods!(
         #[cfg(feature = "GameController_GCControllerButtonInput")]
         #[method_id(@__retain_semantics Other rightShoulder)]
         pub unsafe fn rightShoulder(&self) -> Id<GCControllerButtonInput>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameController_GCGamepad")]
+    unsafe impl GCGamepad {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

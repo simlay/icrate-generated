@@ -11,11 +11,11 @@ extern_class!(
     #[deprecated = "No longer supported, will cease working at some point in the future"]
     pub struct CKModifyBadgeOperation;
 
-    #[deprecated = "No longer supported, will cease working at some point in the future"]
     #[cfg(feature = "CloudKit_CKModifyBadgeOperation")]
     unsafe impl ClassType for CKModifyBadgeOperation {
         #[inherits(NSOperation, NSObject)]
         type Super = CKOperation;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -50,5 +50,14 @@ extern_methods!(
             &self,
             modify_badge_completion_block: Option<&Block<(*mut NSError,), ()>>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CloudKit_CKModifyBadgeOperation")]
+    unsafe impl CKModifyBadgeOperation {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

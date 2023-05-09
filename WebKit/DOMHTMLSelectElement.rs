@@ -11,16 +11,19 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLSelectElement;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLSelectElement")]
     unsafe impl ClassType for DOMHTMLSelectElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMHTMLElement;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_DOMHTMLSelectElement")]
 unsafe impl DOMEventTarget for DOMHTMLSelectElement {}
+
+#[cfg(feature = "WebKit_DOMHTMLSelectElement")]
+unsafe impl NSCopying for DOMHTMLSelectElement {}
 
 #[cfg(feature = "WebKit_DOMHTMLSelectElement")]
 unsafe impl NSObjectProtocol for DOMHTMLSelectElement {}
@@ -108,6 +111,24 @@ extern_methods!(
 
         #[method(remove:)]
         pub unsafe fn remove(&self, index: c_int);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMHTMLSelectElement")]
+    unsafe impl DOMHTMLSelectElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMHTMLSelectElement")]
+    unsafe impl DOMHTMLSelectElement {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

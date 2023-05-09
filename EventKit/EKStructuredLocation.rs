@@ -16,8 +16,12 @@ extern_class!(
     unsafe impl ClassType for EKStructuredLocation {
         #[inherits(NSObject)]
         type Super = EKObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "EventKit_EKStructuredLocation")]
+unsafe impl NSCopying for EKStructuredLocation {}
 
 #[cfg(feature = "EventKit_EKStructuredLocation")]
 unsafe impl NSObjectProtocol for EKStructuredLocation {}
@@ -54,5 +58,17 @@ extern_methods!(
 
         #[method(setRadius:)]
         pub unsafe fn setRadius(&self, radius: c_double);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "EventKit_EKStructuredLocation")]
+    unsafe impl EKStructuredLocation {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -13,10 +13,10 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKClusterAnnotation;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKClusterAnnotation")]
     unsafe impl ClassType for MKClusterAnnotation {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -61,5 +61,14 @@ extern_methods!(
             this: Option<Allocated<Self>>,
             member_annotations: &NSArray<ProtocolObject<dyn MKAnnotation>>,
         ) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MapKit_MKClusterAnnotation")]
+    unsafe impl MKClusterAnnotation {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

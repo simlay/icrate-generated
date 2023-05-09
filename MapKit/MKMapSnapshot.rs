@@ -13,10 +13,10 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKMapSnapshot;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKMapSnapshot")]
     unsafe impl ClassType for MKMapSnapshot {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -39,5 +39,17 @@ extern_methods!(
 
         #[method(pointForCoordinate:)]
         pub unsafe fn pointForCoordinate(&self, coordinate: CLLocationCoordinate2D) -> NSPoint;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "MapKit_MKMapSnapshot")]
+    unsafe impl MKMapSnapshot {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

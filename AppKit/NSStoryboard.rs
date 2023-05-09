@@ -19,6 +19,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSStoryboard")]
     unsafe impl ClassType for NSStoryboard {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -59,5 +60,17 @@ extern_methods!(
             identifier: &NSStoryboardSceneIdentifier,
             block: NSStoryboardControllerCreator,
         ) -> Id<Object>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSStoryboard")]
+    unsafe impl NSStoryboard {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

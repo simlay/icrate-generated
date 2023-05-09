@@ -20,8 +20,12 @@ extern_class!(
     #[cfg(feature = "PhotoKit_PHAssetResourceRequestOptions")]
     unsafe impl ClassType for PHAssetResourceRequestOptions {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "PhotoKit_PHAssetResourceRequestOptions")]
+unsafe impl NSCopying for PHAssetResourceRequestOptions {}
 
 #[cfg(feature = "PhotoKit_PHAssetResourceRequestOptions")]
 unsafe impl NSObjectProtocol for PHAssetResourceRequestOptions {}
@@ -43,6 +47,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "PhotoKit_PHAssetResourceRequestOptions")]
+    unsafe impl PHAssetResourceRequestOptions {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "PhotoKit_PHAssetResourceManager")]
@@ -51,6 +67,7 @@ extern_class!(
     #[cfg(feature = "PhotoKit_PHAssetResourceManager")]
     unsafe impl ClassType for PHAssetResourceManager {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -95,5 +112,17 @@ extern_methods!(
 
         #[method(cancelDataRequest:)]
         pub unsafe fn cancelDataRequest(&self, request_id: PHAssetResourceDataRequestID);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "PhotoKit_PHAssetResourceManager")]
+    unsafe impl PHAssetResourceManager {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

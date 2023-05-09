@@ -14,6 +14,7 @@ extern_class!(
     #[cfg(feature = "HealthKit_HKQuery")]
     unsafe impl ClassType for HKQuery {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -38,6 +39,15 @@ extern_methods!(
 
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "HealthKit_HKQuery")]
+    unsafe impl HKQuery {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

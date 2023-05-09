@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSDraggingSession")]
     unsafe impl ClassType for NSDraggingSession {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -68,5 +69,17 @@ extern_methods!(
             search_options: &NSDictionary<NSPasteboardReadingOptionKey, Object>,
             block: &Block<(NonNull<NSDraggingItem>, NSInteger, NonNull<Bool>), ()>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSDraggingSession")]
+    unsafe impl NSDraggingSession {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

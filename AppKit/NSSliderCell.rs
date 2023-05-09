@@ -32,6 +32,7 @@ extern_class!(
     unsafe impl ClassType for NSSliderCell {
         #[inherits(NSCell, NSObject)]
         type Super = NSActionCell;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -43,6 +44,9 @@ unsafe impl NSAccessibilityElementProtocol for NSSliderCell {}
 
 #[cfg(feature = "AppKit_NSSliderCell")]
 unsafe impl NSCoding for NSSliderCell {}
+
+#[cfg(feature = "AppKit_NSSliderCell")]
+unsafe impl NSCopying for NSSliderCell {}
 
 #[cfg(feature = "AppKit_NSSliderCell")]
 unsafe impl NSObjectProtocol for NSSliderCell {}
@@ -103,6 +107,39 @@ extern_methods!(
 
         #[method(drawBarInside:flipped:)]
         pub unsafe fn drawBarInside_flipped(&self, rect: NSRect, flipped: bool);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSCell`
+    #[cfg(feature = "AppKit_NSSliderCell")]
+    unsafe impl NSSliderCell {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSString")]
+        #[method_id(@__retain_semantics Init initTextCell:)]
+        pub unsafe fn initTextCell(this: Option<Allocated<Self>>, string: &NSString) -> Id<Self>;
+
+        #[cfg(feature = "AppKit_NSImage")]
+        #[method_id(@__retain_semantics Init initImageCell:)]
+        pub unsafe fn initImageCell(
+            this: Option<Allocated<Self>>,
+            image: Option<&NSImage>,
+        ) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(this: Option<Allocated<Self>>, coder: &NSCoder) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSSliderCell")]
+    unsafe impl NSSliderCell {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 
@@ -221,20 +258,3 @@ extern_static!(NSTickMarkRight: NSTickMarkPosition = NSTickMarkPositionTrailing)
 extern_static!(NSLinearSlider: NSSliderType = NSSliderTypeLinear);
 
 extern_static!(NSCircularSlider: NSSliderType = NSSliderTypeCircular);
-
-extern_methods!(
-    /// Methods declared on superclass `NSCell`
-    #[cfg(feature = "AppKit_NSSliderCell")]
-    unsafe impl NSSliderCell {
-        #[cfg(feature = "Foundation_NSString")]
-        #[method_id(@__retain_semantics Init initTextCell:)]
-        pub unsafe fn initTextCell(this: Option<Allocated<Self>>, string: &NSString) -> Id<Self>;
-
-        #[cfg(feature = "AppKit_NSImage")]
-        #[method_id(@__retain_semantics Init initImageCell:)]
-        pub unsafe fn initImageCell(
-            this: Option<Allocated<Self>>,
-            image: Option<&NSImage>,
-        ) -> Id<Self>;
-    }
-);

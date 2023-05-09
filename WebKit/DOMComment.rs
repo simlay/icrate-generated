@@ -11,11 +11,11 @@ extern_class!(
     #[deprecated]
     pub struct DOMComment;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMComment")]
     unsafe impl ClassType for DOMComment {
         #[inherits(DOMNode, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMCharacterData;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -23,9 +23,30 @@ extern_class!(
 unsafe impl DOMEventTarget for DOMComment {}
 
 #[cfg(feature = "WebKit_DOMComment")]
+unsafe impl NSCopying for DOMComment {}
+
+#[cfg(feature = "WebKit_DOMComment")]
 unsafe impl NSObjectProtocol for DOMComment {}
 
 extern_methods!(
     #[cfg(feature = "WebKit_DOMComment")]
     unsafe impl DOMComment {}
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMComment")]
+    unsafe impl DOMComment {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMComment")]
+    unsafe impl DOMComment {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
 );

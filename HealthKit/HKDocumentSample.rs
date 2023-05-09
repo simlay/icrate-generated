@@ -15,6 +15,7 @@ extern_class!(
     unsafe impl ClassType for HKDocumentSample {
         #[inherits(HKObject, NSObject)]
         type Super = HKSample;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -33,5 +34,23 @@ extern_methods!(
         #[cfg(feature = "HealthKit_HKDocumentType")]
         #[method_id(@__retain_semantics Other documentType)]
         pub unsafe fn documentType(&self) -> Id<HKDocumentType>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `HKObject`
+    #[cfg(feature = "HealthKit_HKDocumentSample")]
+    unsafe impl HKDocumentSample {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "HealthKit_HKDocumentSample")]
+    unsafe impl HKDocumentSample {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

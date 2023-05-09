@@ -29,11 +29,15 @@ extern_class!(
     #[cfg(feature = "AppKit_NSTrackingArea")]
     unsafe impl ClassType for NSTrackingArea {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "AppKit_NSTrackingArea")]
 unsafe impl NSCoding for NSTrackingArea {}
+
+#[cfg(feature = "AppKit_NSTrackingArea")]
+unsafe impl NSCopying for NSTrackingArea {}
 
 #[cfg(feature = "AppKit_NSTrackingArea")]
 unsafe impl NSObjectProtocol for NSTrackingArea {}
@@ -63,5 +67,17 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSDictionary")]
         #[method_id(@__retain_semantics Other userInfo)]
         pub unsafe fn userInfo(&self) -> Option<Id<NSDictionary<Object, Object>>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSTrackingArea")]
+    unsafe impl NSTrackingArea {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

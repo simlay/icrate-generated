@@ -77,13 +77,16 @@ extern_class!(
     #[deprecated]
     pub struct DOMCSSPrimitiveValue;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMCSSPrimitiveValue")]
     unsafe impl ClassType for DOMCSSPrimitiveValue {
         #[inherits(DOMObject, WebScriptObject, NSObject)]
         type Super = DOMCSSValue;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "WebKit_DOMCSSPrimitiveValue")]
+unsafe impl NSCopying for DOMCSSPrimitiveValue {}
 
 #[cfg(feature = "WebKit_DOMCSSPrimitiveValue")]
 unsafe impl NSObjectProtocol for DOMCSSPrimitiveValue {}
@@ -123,6 +126,24 @@ extern_methods!(
         #[cfg(feature = "WebKit_DOMRGBColor")]
         #[method_id(@__retain_semantics Other getRGBColorValue)]
         pub unsafe fn getRGBColorValue(&self) -> Option<Id<DOMRGBColor>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMCSSPrimitiveValue")]
+    unsafe impl DOMCSSPrimitiveValue {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMCSSPrimitiveValue")]
+    unsafe impl DOMCSSPrimitiveValue {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

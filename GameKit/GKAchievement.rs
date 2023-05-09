@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(feature = "GameKit_GKAchievement")]
     unsafe impl ClassType for GKAchievement {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -92,6 +93,18 @@ extern_methods!(
         #[cfg(feature = "GameKit_GKPlayer")]
         #[method_id(@__retain_semantics Other player)]
         pub unsafe fn player(&self) -> Option<Id<GKPlayer>>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "GameKit_GKAchievement")]
+    unsafe impl GKAchievement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

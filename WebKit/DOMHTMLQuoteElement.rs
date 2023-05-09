@@ -11,16 +11,19 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLQuoteElement;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLQuoteElement")]
     unsafe impl ClassType for DOMHTMLQuoteElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMHTMLElement;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_DOMHTMLQuoteElement")]
 unsafe impl DOMEventTarget for DOMHTMLQuoteElement {}
+
+#[cfg(feature = "WebKit_DOMHTMLQuoteElement")]
+unsafe impl NSCopying for DOMHTMLQuoteElement {}
 
 #[cfg(feature = "WebKit_DOMHTMLQuoteElement")]
 unsafe impl NSObjectProtocol for DOMHTMLQuoteElement {}
@@ -35,5 +38,23 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method(setCite:)]
         pub unsafe fn setCite(&self, cite: Option<&NSString>);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMHTMLQuoteElement")]
+    unsafe impl DOMHTMLQuoteElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMHTMLQuoteElement")]
+    unsafe impl DOMHTMLQuoteElement {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

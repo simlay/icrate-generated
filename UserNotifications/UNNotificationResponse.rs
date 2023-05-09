@@ -17,16 +17,20 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos")))]
     pub struct UNNotificationResponse;
 
-    #[cfg(not(any(target_os = "tvos")))]
     #[cfg(feature = "UserNotifications_UNNotificationResponse")]
     unsafe impl ClassType for UNNotificationResponse {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "UserNotifications_UNNotificationResponse")]
 #[cfg(not(any(target_os = "tvos")))]
 unsafe impl NSCoding for UNNotificationResponse {}
+
+#[cfg(feature = "UserNotifications_UNNotificationResponse")]
+#[cfg(not(any(target_os = "tvos")))]
+unsafe impl NSCopying for UNNotificationResponse {}
 
 #[cfg(feature = "UserNotifications_UNNotificationResponse")]
 #[cfg(not(any(target_os = "tvos")))]
@@ -53,23 +57,36 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "UserNotifications_UNNotificationResponse")]
+    unsafe impl UNNotificationResponse {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "UserNotifications_UNTextInputNotificationResponse")]
     #[cfg(not(any(target_os = "tvos")))]
     pub struct UNTextInputNotificationResponse;
 
-    #[cfg(not(any(target_os = "tvos")))]
     #[cfg(feature = "UserNotifications_UNTextInputNotificationResponse")]
     unsafe impl ClassType for UNTextInputNotificationResponse {
         #[inherits(NSObject)]
         type Super = UNNotificationResponse;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "UserNotifications_UNTextInputNotificationResponse")]
 #[cfg(not(any(target_os = "tvos")))]
 unsafe impl NSCoding for UNTextInputNotificationResponse {}
+
+#[cfg(feature = "UserNotifications_UNTextInputNotificationResponse")]
+#[cfg(not(any(target_os = "tvos")))]
+unsafe impl NSCopying for UNTextInputNotificationResponse {}
 
 #[cfg(feature = "UserNotifications_UNTextInputNotificationResponse")]
 #[cfg(not(any(target_os = "tvos")))]
@@ -86,5 +103,24 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other userText)]
         pub unsafe fn userText(&self) -> Id<NSString>;
+    }
+);
+
+#[cfg(not(any(target_os = "tvos")))]
+extern_methods!(
+    /// Methods declared on superclass `UNNotificationResponse`
+    #[cfg(feature = "UserNotifications_UNTextInputNotificationResponse")]
+    unsafe impl UNTextInputNotificationResponse {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "UserNotifications_UNTextInputNotificationResponse")]
+    unsafe impl UNTextInputNotificationResponse {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

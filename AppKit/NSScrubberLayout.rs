@@ -13,8 +13,12 @@ extern_class!(
     #[cfg(feature = "AppKit_NSScrubberLayoutAttributes")]
     unsafe impl ClassType for NSScrubberLayoutAttributes {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "AppKit_NSScrubberLayoutAttributes")]
+unsafe impl NSCopying for NSScrubberLayoutAttributes {}
 
 #[cfg(feature = "AppKit_NSScrubberLayoutAttributes")]
 unsafe impl NSObjectProtocol for NSScrubberLayoutAttributes {}
@@ -45,6 +49,18 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSScrubberLayoutAttributes")]
+    unsafe impl NSScrubberLayoutAttributes {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSScrubberLayout")]
@@ -53,6 +69,7 @@ extern_class!(
     #[cfg(feature = "AppKit_NSScrubberLayout")]
     unsafe impl ClassType for NSScrubberLayout {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -126,6 +143,15 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSScrubberLayout")]
+    unsafe impl NSScrubberLayout {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_protocol!(
     pub unsafe trait NSScrubberFlowLayoutDelegate: NSScrubberDelegate {
         #[cfg(all(feature = "AppKit_NSScrubber", feature = "AppKit_NSScrubberFlowLayout"))]
@@ -151,6 +177,7 @@ extern_class!(
     unsafe impl ClassType for NSScrubberFlowLayout {
         #[inherits(NSObject)]
         type Super = NSScrubberLayout;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -181,6 +208,28 @@ extern_methods!(
     }
 );
 
+extern_methods!(
+    /// Methods declared on superclass `NSScrubberLayout`
+    #[cfg(feature = "AppKit_NSScrubberFlowLayout")]
+    unsafe impl NSScrubberFlowLayout {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[cfg(feature = "Foundation_NSCoder")]
+        #[method_id(@__retain_semantics Init initWithCoder:)]
+        pub unsafe fn initWithCoder(this: Option<Allocated<Self>>, coder: &NSCoder) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSScrubberFlowLayout")]
+    unsafe impl NSScrubberFlowLayout {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
+    }
+);
+
 extern_class!(
     #[derive(Debug, PartialEq, Eq, Hash)]
     #[cfg(feature = "AppKit_NSScrubberProportionalLayout")]
@@ -190,6 +239,7 @@ extern_class!(
     unsafe impl ClassType for NSScrubberProportionalLayout {
         #[inherits(NSObject)]
         type Super = NSScrubberLayout;
+        type Mutability = InteriorMutable;
     }
 );
 
@@ -217,5 +267,23 @@ extern_methods!(
         #[cfg(feature = "Foundation_NSCoder")]
         #[method_id(@__retain_semantics Init initWithCoder:)]
         pub unsafe fn initWithCoder(this: Option<Allocated<Self>>, coder: &NSCoder) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSScrubberLayout`
+    #[cfg(feature = "AppKit_NSScrubberProportionalLayout")]
+    unsafe impl NSScrubberProportionalLayout {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "AppKit_NSScrubberProportionalLayout")]
+    unsafe impl NSScrubberProportionalLayout {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

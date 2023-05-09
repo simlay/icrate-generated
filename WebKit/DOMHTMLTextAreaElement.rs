@@ -11,16 +11,19 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLTextAreaElement;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLTextAreaElement")]
     unsafe impl ClassType for DOMHTMLTextAreaElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]
         type Super = DOMHTMLElement;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "WebKit_DOMHTMLTextAreaElement")]
 unsafe impl DOMEventTarget for DOMHTMLTextAreaElement {}
+
+#[cfg(feature = "WebKit_DOMHTMLTextAreaElement")]
+unsafe impl NSCopying for DOMHTMLTextAreaElement {}
 
 #[cfg(feature = "WebKit_DOMHTMLTextAreaElement")]
 unsafe impl NSObjectProtocol for DOMHTMLTextAreaElement {}
@@ -120,5 +123,23 @@ extern_methods!(
 
         #[method(setSelectionRange:end:)]
         pub unsafe fn setSelectionRange_end(&self, start: c_int, end: c_int);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMHTMLTextAreaElement")]
+    unsafe impl DOMHTMLTextAreaElement {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMHTMLTextAreaElement")]
+    unsafe impl DOMHTMLTextAreaElement {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

@@ -21,16 +21,20 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKMapConfiguration;
 
-    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKMapConfiguration")]
     unsafe impl ClassType for MKMapConfiguration {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "MapKit_MKMapConfiguration")]
 #[cfg(not(any(target_os = "watchos")))]
 unsafe impl NSCoding for MKMapConfiguration {}
+
+#[cfg(feature = "MapKit_MKMapConfiguration")]
+#[cfg(not(any(target_os = "watchos")))]
+unsafe impl NSCopying for MKMapConfiguration {}
 
 #[cfg(feature = "MapKit_MKMapConfiguration")]
 #[cfg(not(any(target_os = "watchos")))]

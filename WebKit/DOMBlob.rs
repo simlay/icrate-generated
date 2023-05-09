@@ -11,13 +11,16 @@ extern_class!(
     #[deprecated]
     pub struct DOMBlob;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMBlob")]
     unsafe impl ClassType for DOMBlob {
         #[inherits(WebScriptObject, NSObject)]
         type Super = DOMObject;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "WebKit_DOMBlob")]
+unsafe impl NSCopying for DOMBlob {}
 
 #[cfg(feature = "WebKit_DOMBlob")]
 unsafe impl NSObjectProtocol for DOMBlob {}
@@ -27,5 +30,23 @@ extern_methods!(
     unsafe impl DOMBlob {
         #[method(size)]
         pub unsafe fn size(&self) -> c_ulonglong;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMBlob")]
+    unsafe impl DOMBlob {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMBlob")]
+    unsafe impl DOMBlob {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );

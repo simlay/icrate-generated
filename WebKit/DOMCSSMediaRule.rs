@@ -11,13 +11,16 @@ extern_class!(
     #[deprecated]
     pub struct DOMCSSMediaRule;
 
-    #[deprecated]
     #[cfg(feature = "WebKit_DOMCSSMediaRule")]
     unsafe impl ClassType for DOMCSSMediaRule {
         #[inherits(DOMObject, WebScriptObject, NSObject)]
         type Super = DOMCSSRule;
+        type Mutability = InteriorMutable;
     }
 );
+
+#[cfg(feature = "WebKit_DOMCSSMediaRule")]
+unsafe impl NSCopying for DOMCSSMediaRule {}
 
 #[cfg(feature = "WebKit_DOMCSSMediaRule")]
 unsafe impl NSObjectProtocol for DOMCSSMediaRule {}
@@ -39,6 +42,24 @@ extern_methods!(
 
         #[method(deleteRule:)]
         pub unsafe fn deleteRule(&self, index: c_uint);
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `DOMObject`
+    #[cfg(feature = "WebKit_DOMCSSMediaRule")]
+    unsafe impl DOMCSSMediaRule {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "WebKit_DOMCSSMediaRule")]
+    unsafe impl DOMCSSMediaRule {
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
 

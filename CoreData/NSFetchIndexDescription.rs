@@ -12,11 +12,15 @@ extern_class!(
     #[cfg(feature = "CoreData_NSFetchIndexDescription")]
     unsafe impl ClassType for NSFetchIndexDescription {
         type Super = NSObject;
+        type Mutability = InteriorMutable;
     }
 );
 
 #[cfg(feature = "CoreData_NSFetchIndexDescription")]
 unsafe impl NSCoding for NSFetchIndexDescription {}
+
+#[cfg(feature = "CoreData_NSFetchIndexDescription")]
+unsafe impl NSCopying for NSFetchIndexDescription {}
 
 #[cfg(feature = "CoreData_NSFetchIndexDescription")]
 unsafe impl NSObjectProtocol for NSFetchIndexDescription {}
@@ -72,5 +76,17 @@ extern_methods!(
             &self,
             partial_index_predicate: Option<&NSPredicate>,
         );
+    }
+);
+
+extern_methods!(
+    /// Methods declared on superclass `NSObject`
+    #[cfg(feature = "CoreData_NSFetchIndexDescription")]
+    unsafe impl NSFetchIndexDescription {
+        #[method_id(@__retain_semantics Init init)]
+        pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
+
+        #[method_id(@__retain_semantics New new)]
+        pub unsafe fn new() -> Id<Self>;
     }
 );
