@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct GKChallengesViewController;
 
+    #[deprecated]
     #[cfg(feature = "GameKit_GKChallengesViewController")]
     unsafe impl ClassType for GKChallengesViewController {
         #[inherits(NSResponder, NSObject)]
@@ -53,7 +54,6 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
 extern_methods!(
     /// Methods declared on superclass `NSViewController`
     #[cfg(feature = "GameKit_GKChallengesViewController")]
@@ -77,7 +77,6 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
 extern_methods!(
     /// Methods declared on superclass `NSResponder`
     #[cfg(feature = "GameKit_GKChallengesViewController")]

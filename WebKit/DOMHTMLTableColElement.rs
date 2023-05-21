@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLTableColElement;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLTableColElement")]
     unsafe impl ClassType for DOMHTMLTableColElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]

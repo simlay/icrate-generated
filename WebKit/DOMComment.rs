@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMComment;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMComment")]
     unsafe impl ClassType for DOMComment {
         #[inherits(DOMNode, DOMObject, WebScriptObject, NSObject)]

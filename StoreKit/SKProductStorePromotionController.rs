@@ -24,6 +24,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct SKProductStorePromotionController;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "StoreKit_SKProductStorePromotionController")]
     unsafe impl ClassType for SKProductStorePromotionController {
         type Super = NSObject;
@@ -38,6 +39,7 @@ unsafe impl NSObjectProtocol for SKProductStorePromotionController {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "StoreKit_SKProductStorePromotionController")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl SKProductStorePromotionController {
         #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other defaultController)]
@@ -91,9 +93,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "StoreKit_SKProductStorePromotionController")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl SKProductStorePromotionController {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

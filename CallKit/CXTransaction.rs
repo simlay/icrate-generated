@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct CXTransaction;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "CallKit_CXTransaction")]
     unsafe impl ClassType for CXTransaction {
         type Super = NSObject;
@@ -36,6 +37,7 @@ unsafe impl NSSecureCoding for CXTransaction {}
 #[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "CallKit_CXTransaction")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXTransaction {
         #[cfg(feature = "Foundation_NSUUID")]
         #[method_id(@__retain_semantics Other UUID)]
@@ -65,9 +67,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "CallKit_CXTransaction")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXTransaction {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

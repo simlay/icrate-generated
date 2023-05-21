@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKShape;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKShape")]
     unsafe impl ClassType for MKShape {
         type Super = NSObject;
@@ -31,6 +32,7 @@ unsafe impl NSObjectProtocol for MKShape {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKShape")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKShape {
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other title)]
@@ -50,9 +52,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MapKit_MKShape")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKShape {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

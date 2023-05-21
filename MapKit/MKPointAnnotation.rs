@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKPointAnnotation;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKPointAnnotation")]
     unsafe impl ClassType for MKPointAnnotation {
         #[inherits(NSObject)]
@@ -32,6 +33,7 @@ unsafe impl NSObjectProtocol for MKPointAnnotation {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKPointAnnotation")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKPointAnnotation {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
@@ -61,9 +63,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MapKit_MKPointAnnotation")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKPointAnnotation {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

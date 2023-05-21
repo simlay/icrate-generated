@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct ILMessageFilterQueryRequest;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "IdentityLookup_ILMessageFilterQueryRequest")]
     unsafe impl ClassType for ILMessageFilterQueryRequest {
         type Super = NSObject;
@@ -32,6 +33,7 @@ unsafe impl NSSecureCoding for ILMessageFilterQueryRequest {}
 #[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "IdentityLookup_ILMessageFilterQueryRequest")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl ILMessageFilterQueryRequest {
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other sender)]

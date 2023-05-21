@@ -23,6 +23,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct CXPlayDTMFCallAction;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "CallKit_CXPlayDTMFCallAction")]
     unsafe impl ClassType for CXPlayDTMFCallAction {
         #[inherits(CXAction, NSObject)]
@@ -50,6 +51,7 @@ unsafe impl NSSecureCoding for CXPlayDTMFCallAction {}
 #[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "CallKit_CXPlayDTMFCallAction")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXPlayDTMFCallAction {
         #[cfg(all(feature = "Foundation_NSString", feature = "Foundation_NSUUID"))]
         #[method_id(@__retain_semantics Init initWithCallUUID:digits:type:)]
@@ -94,15 +96,18 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `CXCallAction`
     #[cfg(feature = "CallKit_CXPlayDTMFCallAction")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXPlayDTMFCallAction {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "CallKit_CXPlayDTMFCallAction")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXPlayDTMFCallAction {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

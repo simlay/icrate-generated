@@ -23,6 +23,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
     pub struct SKCloudServiceSetupViewController;
 
+    #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
     #[cfg(feature = "StoreKit_SKCloudServiceSetupViewController")]
     unsafe impl ClassType for SKCloudServiceSetupViewController {
         #[inherits(NSResponder, NSObject)]
@@ -54,6 +55,7 @@ unsafe impl NSUserInterfaceItemIdentification for SKCloudServiceSetupViewControl
 #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
 extern_methods!(
     #[cfg(feature = "StoreKit_SKCloudServiceSetupViewController")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
     unsafe impl SKCloudServiceSetupViewController {
         #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
         #[method_id(@__retain_semantics Other delegate)]
@@ -79,10 +81,11 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
+#[cfg(not(any(target_os = "macos", target_os = "tvos")))]
 extern_methods!(
     /// Methods declared on superclass `NSViewController`
     #[cfg(feature = "StoreKit_SKCloudServiceSetupViewController")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
     unsafe impl SKCloudServiceSetupViewController {
         #[cfg(feature = "Foundation_NSBundle")]
         #[cfg(not(any(target_os = "ios")))]
@@ -103,10 +106,11 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
+#[cfg(not(any(target_os = "macos", target_os = "tvos")))]
 extern_methods!(
     /// Methods declared on superclass `NSResponder`
     #[cfg(feature = "StoreKit_SKCloudServiceSetupViewController")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
     unsafe impl SKCloudServiceSetupViewController {
         #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init init)]
@@ -114,9 +118,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos", target_os = "tvos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "StoreKit_SKCloudServiceSetupViewController")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
     unsafe impl SKCloudServiceSetupViewController {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

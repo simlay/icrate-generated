@@ -15,6 +15,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct CLBeaconIdentityConstraint;
 
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "CoreLocation_CLBeaconIdentityConstraint")]
     unsafe impl ClassType for CLBeaconIdentityConstraint {
         type Super = NSObject;
@@ -41,6 +42,7 @@ unsafe impl NSSecureCoding for CLBeaconIdentityConstraint {}
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "CoreLocation_CLBeaconIdentityConstraint")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl CLBeaconIdentityConstraint {
         #[cfg(feature = "Foundation_NSUUID")]
         #[method_id(@__retain_semantics Other UUID)]
@@ -77,9 +79,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "CoreLocation_CLBeaconIdentityConstraint")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl CLBeaconIdentityConstraint {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

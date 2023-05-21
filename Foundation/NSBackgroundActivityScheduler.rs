@@ -23,6 +23,7 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub struct NSBackgroundActivityScheduler;
 
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "Foundation_NSBackgroundActivityScheduler")]
     unsafe impl ClassType for NSBackgroundActivityScheduler {
         type Super = NSObject;
@@ -37,6 +38,7 @@ unsafe impl NSObjectProtocol for NSBackgroundActivityScheduler {}
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "Foundation_NSBackgroundActivityScheduler")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSBackgroundActivityScheduler {
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Init initWithIdentifier:)]
@@ -87,9 +89,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "Foundation_NSBackgroundActivityScheduler")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSBackgroundActivityScheduler {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

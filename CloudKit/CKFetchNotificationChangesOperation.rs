@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated = "Instead of iterating notifications to enumerate changed record zones, use CKDatabaseSubscription, CKFetchDatabaseChangesOperation, and CKFetchRecordZoneChangesOperation"]
     pub struct CKFetchNotificationChangesOperation;
 
+    #[deprecated = "Instead of iterating notifications to enumerate changed record zones, use CKDatabaseSubscription, CKFetchDatabaseChangesOperation, and CKFetchRecordZoneChangesOperation"]
     #[cfg(feature = "CloudKit_CKFetchNotificationChangesOperation")]
     unsafe impl ClassType for CKFetchNotificationChangesOperation {
         #[inherits(NSOperation, NSObject)]

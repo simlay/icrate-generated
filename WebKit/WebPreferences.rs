@@ -25,6 +25,7 @@ extern_class!(
     #[deprecated]
     pub struct WebPreferences;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_WebPreferences")]
     unsafe impl ClassType for WebPreferences {
         type Super = NSObject;

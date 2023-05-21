@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMAttr;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMAttr")]
     unsafe impl ClassType for DOMAttr {
         #[inherits(DOMObject, WebScriptObject, NSObject)]

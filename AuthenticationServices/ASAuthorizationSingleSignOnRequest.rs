@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct ASAuthorizationSingleSignOnRequest;
 
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "AuthenticationServices_ASAuthorizationSingleSignOnRequest")]
     unsafe impl ClassType for ASAuthorizationSingleSignOnRequest {
         #[inherits(ASAuthorizationRequest, NSObject)]
@@ -37,6 +38,7 @@ unsafe impl NSSecureCoding for ASAuthorizationSingleSignOnRequest {}
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASAuthorizationSingleSignOnRequest")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAuthorizationSingleSignOnRequest {
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSURLQueryItem"))]
         #[method_id(@__retain_semantics Other authorizationOptions)]
@@ -59,9 +61,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `ASAuthorizationRequest`
     #[cfg(feature = "AuthenticationServices_ASAuthorizationSingleSignOnRequest")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAuthorizationSingleSignOnRequest {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

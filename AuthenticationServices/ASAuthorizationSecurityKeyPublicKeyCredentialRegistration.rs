@@ -12,6 +12,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct ASAuthorizationSecurityKeyPublicKeyCredentialRegistration;
 
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(
         feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialRegistration"
     )]
@@ -60,14 +61,17 @@ extern_methods!(
     #[cfg(
         feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialRegistration"
     )]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAuthorizationSecurityKeyPublicKeyCredentialRegistration {}
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(
         feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialRegistration"
     )]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAuthorizationSecurityKeyPublicKeyCredentialRegistration {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

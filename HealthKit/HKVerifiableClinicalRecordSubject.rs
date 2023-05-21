@@ -12,6 +12,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct HKVerifiableClinicalRecordSubject;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "HealthKit_HKVerifiableClinicalRecordSubject")]
     unsafe impl ClassType for HKVerifiableClinicalRecordSubject {
         type Super = NSObject;
@@ -38,6 +39,7 @@ unsafe impl NSSecureCoding for HKVerifiableClinicalRecordSubject {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "HealthKit_HKVerifiableClinicalRecordSubject")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl HKVerifiableClinicalRecordSubject {
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other fullName)]

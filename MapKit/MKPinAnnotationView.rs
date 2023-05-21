@@ -30,6 +30,8 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKPinAnnotationView;
 
+    #[deprecated]
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKPinAnnotationView")]
     unsafe impl ClassType for MKPinAnnotationView {
         #[inherits(NSView, NSResponder, NSObject)]
@@ -73,6 +75,7 @@ unsafe impl NSUserInterfaceItemIdentification for MKPinAnnotationView {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKPinAnnotationView")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKPinAnnotationView {
         #[cfg(feature = "AppKit_NSColor")]
         #[method_id(@__retain_semantics Other redPinColor)]
@@ -112,9 +115,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `MKAnnotationView`
     #[cfg(feature = "MapKit_MKPinAnnotationView")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKPinAnnotationView {
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Init initWithAnnotation:reuseIdentifier:)]
@@ -133,10 +138,11 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSView`
     #[cfg(feature = "MapKit_MKPinAnnotationView")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKPinAnnotationView {
         #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithFrame:)]
@@ -144,10 +150,11 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSResponder`
     #[cfg(feature = "MapKit_MKPinAnnotationView")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKPinAnnotationView {
         #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init init)]
@@ -155,9 +162,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MapKit_MKPinAnnotationView")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKPinAnnotationView {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

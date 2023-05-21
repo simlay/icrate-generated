@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct WebScriptObject;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_WebScriptObject")]
     unsafe impl ClassType for WebScriptObject {
         type Super = NSObject;
@@ -82,6 +83,7 @@ extern_class!(
     #[deprecated]
     pub struct WebUndefined;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_WebUndefined")]
     unsafe impl ClassType for WebUndefined {
         type Super = NSObject;

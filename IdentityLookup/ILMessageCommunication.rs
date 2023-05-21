@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct ILMessageCommunication;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "IdentityLookup_ILMessageCommunication")]
     unsafe impl ClassType for ILMessageCommunication {
         #[inherits(NSObject)]
@@ -33,6 +34,7 @@ unsafe impl NSSecureCoding for ILMessageCommunication {}
 #[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "IdentityLookup_ILMessageCommunication")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl ILMessageCommunication {
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other messageBody)]
@@ -49,9 +51,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "IdentityLookup_ILMessageCommunication")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl ILMessageCommunication {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLFieldSetElement;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLFieldSetElement")]
     unsafe impl ClassType for DOMHTMLFieldSetElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]

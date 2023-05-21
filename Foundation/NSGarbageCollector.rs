@@ -10,6 +10,8 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub struct NSGarbageCollector;
 
+    #[deprecated = "Building Garbage Collected apps is no longer supported."]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "Foundation_NSGarbageCollector")]
     unsafe impl ClassType for NSGarbageCollector {
         type Super = NSObject;
@@ -24,6 +26,7 @@ unsafe impl NSObjectProtocol for NSGarbageCollector {}
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "Foundation_NSGarbageCollector")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSGarbageCollector {
         #[method_id(@__retain_semantics Other defaultCollector)]
         pub unsafe fn defaultCollector() -> Id<Object>;
@@ -59,9 +62,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "Foundation_NSGarbageCollector")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSGarbageCollector {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

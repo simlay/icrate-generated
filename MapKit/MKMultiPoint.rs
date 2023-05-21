@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKMultiPoint;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKMultiPoint")]
     unsafe impl ClassType for MKMultiPoint {
         #[inherits(NSObject)]
@@ -32,6 +33,7 @@ unsafe impl NSObjectProtocol for MKMultiPoint {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKMultiPoint")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKMultiPoint {
         #[method(points)]
         pub unsafe fn points(&self) -> NonNull<MKMapPoint>;
@@ -62,9 +64,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MapKit_MKMultiPoint")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKMultiPoint {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

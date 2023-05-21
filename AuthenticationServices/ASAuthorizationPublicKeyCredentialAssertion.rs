@@ -10,14 +10,17 @@ extern_protocol!(
         ASPublicKeyCredential
     {
         #[cfg(feature = "Foundation_NSData")]
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other rawAuthenticatorData)]
         unsafe fn rawAuthenticatorData(&self) -> Id<NSData>;
 
         #[cfg(feature = "Foundation_NSData")]
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other userID)]
         unsafe fn userID(&self) -> Id<NSData>;
 
         #[cfg(feature = "Foundation_NSData")]
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other signature)]
         unsafe fn signature(&self) -> Id<NSData>;
     }

@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct MXDisplayMetric;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "MetricKit_MXDisplayMetric")]
     unsafe impl ClassType for MXDisplayMetric {
         #[inherits(NSObject)]
@@ -33,6 +34,7 @@ unsafe impl NSSecureCoding for MXDisplayMetric {}
 #[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "MetricKit_MXDisplayMetric")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXDisplayMetric {
         #[cfg(all(
             feature = "MetricKit_MXAverage",
@@ -45,9 +47,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MetricKit_MXDisplayMetric")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXDisplayMetric {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

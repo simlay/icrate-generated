@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct WebFrameView;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_WebFrameView")]
     unsafe impl ClassType for WebFrameView {
         #[inherits(NSResponder, NSObject)]
@@ -77,7 +78,6 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
 extern_methods!(
     /// Methods declared on superclass `NSView`
     #[cfg(feature = "WebKit_WebFrameView")]
@@ -96,7 +96,6 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
 extern_methods!(
     /// Methods declared on superclass `NSResponder`
     #[cfg(feature = "WebKit_WebFrameView")]

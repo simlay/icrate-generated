@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKHybridMapConfiguration;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKHybridMapConfiguration")]
     unsafe impl ClassType for MKHybridMapConfiguration {
         #[inherits(NSObject)]
@@ -40,6 +41,7 @@ unsafe impl NSSecureCoding for MKHybridMapConfiguration {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKHybridMapConfiguration")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKHybridMapConfiguration {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
@@ -73,6 +75,7 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `MKMapConfiguration`
     #[cfg(feature = "MapKit_MKHybridMapConfiguration")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKHybridMapConfiguration {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

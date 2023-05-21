@@ -14,6 +14,7 @@ typed_extensible_enum!(
 extern_methods!(
     /// NSFileProviderActions
     #[cfg(feature = "FileProvider_NSFileProviderExtension")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl NSFileProviderExtension {
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSURL"))]
         #[method(importDocumentAtURL:toParentItemIdentifier:completionHandler:)]

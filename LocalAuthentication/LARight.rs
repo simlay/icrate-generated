@@ -25,6 +25,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct LARight;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "LocalAuthentication_LARight")]
     unsafe impl ClassType for LARight {
         type Super = NSObject;
@@ -39,6 +40,7 @@ unsafe impl NSObjectProtocol for LARight {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "LocalAuthentication_LARight")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl LARight {
         #[method(state)]
         pub unsafe fn state(&self) -> LARightState;
@@ -76,9 +78,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "LocalAuthentication_LARight")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl LARight {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

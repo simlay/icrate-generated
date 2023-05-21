@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMNodeList;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMNodeList")]
     unsafe impl ClassType for DOMNodeList {
         #[inherits(WebScriptObject, NSObject)]

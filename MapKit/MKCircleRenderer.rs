@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKCircleRenderer;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKCircleRenderer")]
     unsafe impl ClassType for MKCircleRenderer {
         #[inherits(MKOverlayRenderer, NSObject)]
@@ -28,6 +29,7 @@ unsafe impl NSObjectProtocol for MKCircleRenderer {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKCircleRenderer")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKCircleRenderer {
         #[cfg(feature = "MapKit_MKCircle")]
         #[method_id(@__retain_semantics Init initWithCircle:)]
@@ -59,6 +61,7 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `MKOverlayRenderer`
     #[cfg(feature = "MapKit_MKCircleRenderer")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKCircleRenderer {
         #[method_id(@__retain_semantics Init initWithOverlay:)]
         pub unsafe fn initWithOverlay(
@@ -68,9 +71,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MapKit_MKCircleRenderer")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKCircleRenderer {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct ILCallClassificationRequest;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "IdentityLookup_ILCallClassificationRequest")]
     unsafe impl ClassType for ILCallClassificationRequest {
         #[inherits(NSObject)]
@@ -33,6 +34,7 @@ unsafe impl NSSecureCoding for ILCallClassificationRequest {}
 #[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "IdentityLookup_ILCallClassificationRequest")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl ILCallClassificationRequest {
         #[cfg(all(
             feature = "Foundation_NSArray",
@@ -46,9 +48,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "IdentityLookup_ILCallClassificationRequest")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl ILCallClassificationRequest {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

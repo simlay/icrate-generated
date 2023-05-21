@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated = "GCMicroGamepadSnapshot has been deprecated, use [GCController controllerWithMicroGamepad] instead"]
     pub struct GCMicroGamepadSnapshot;
 
+    #[deprecated = "GCMicroGamepadSnapshot has been deprecated, use [GCController controllerWithMicroGamepad] instead"]
     #[cfg(feature = "GameController_GCMicroGamepadSnapshot")]
     unsafe impl ClassType for GCMicroGamepadSnapshot {
         #[inherits(GCPhysicalInputProfile, NSObject)]

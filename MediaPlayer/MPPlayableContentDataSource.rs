@@ -9,6 +9,7 @@ use crate::MediaPlayer::*;
 extern_protocol!(
     pub unsafe trait MPPlayableContentDataSource: NSObjectProtocol {
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSIndexPath"))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method(beginLoadingChildItemsAtIndexPath:completionHandler:)]
         unsafe fn beginLoadingChildItemsAtIndexPath_completionHandler(
@@ -18,6 +19,7 @@ extern_protocol!(
         );
 
         #[cfg(feature = "Foundation_NSIndexPath")]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method(childItemsDisplayPlaybackProgressAtIndexPath:)]
         unsafe fn childItemsDisplayPlaybackProgressAtIndexPath(
@@ -30,6 +32,7 @@ extern_protocol!(
             feature = "Foundation_NSString",
             feature = "MediaPlayer_MPContentItem"
         ))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[deprecated = "Use CarPlay framework"]
         #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[optional]
@@ -41,6 +44,7 @@ extern_protocol!(
         );
 
         #[cfg(feature = "Foundation_NSIndexPath")]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(numberOfChildItemsAtIndexPath:)]
         unsafe fn numberOfChildItemsAtIndexPath(&self, index_path: &NSIndexPath) -> NSInteger;
 
@@ -48,6 +52,7 @@ extern_protocol!(
             feature = "Foundation_NSIndexPath",
             feature = "MediaPlayer_MPContentItem"
         ))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other contentItemAtIndexPath:)]
         unsafe fn contentItemAtIndexPath(
             &self,

@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct WebDownload;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_WebDownload")]
     unsafe impl ClassType for WebDownload {
         #[inherits(NSObject)]
@@ -27,7 +28,6 @@ extern_methods!(
     unsafe impl WebDownload {}
 );
 
-#[cfg(not(any(target_os = "ios")))]
 extern_methods!(
     /// Methods declared on superclass `NSURLDownload`
     #[cfg(feature = "WebKit_WebDownload")]

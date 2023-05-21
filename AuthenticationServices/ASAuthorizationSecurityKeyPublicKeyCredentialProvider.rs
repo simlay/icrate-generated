@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct ASAuthorizationSecurityKeyPublicKeyCredentialProvider;
 
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialProvider")]
     unsafe impl ClassType for ASAuthorizationSecurityKeyPublicKeyCredentialProvider {
         type Super = NSObject;
@@ -28,6 +29,7 @@ unsafe impl NSObjectProtocol for ASAuthorizationSecurityKeyPublicKeyCredentialPr
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialProvider")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAuthorizationSecurityKeyPublicKeyCredentialProvider {
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Init initWithRelyingPartyIdentifier:)]

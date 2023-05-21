@@ -68,7 +68,6 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
 extern_methods!(
     /// Methods declared on superclass `NSControl`
     #[cfg(feature = "BusinessChat_BCChatButton")]
@@ -79,7 +78,6 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
 extern_methods!(
     /// Methods declared on superclass `NSResponder`
     #[cfg(feature = "BusinessChat_BCChatButton")]

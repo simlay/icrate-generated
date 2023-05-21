@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     pub struct GCSteeringWheelElement;
 
+    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     #[cfg(feature = "GameController_GCSteeringWheelElement")]
     unsafe impl ClassType for GCSteeringWheelElement {
         type Super = NSObject;
@@ -33,6 +34,7 @@ unsafe impl NSObjectProtocol for GCSteeringWheelElement {}
 #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 extern_methods!(
     #[cfg(feature = "GameController_GCSteeringWheelElement")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     unsafe impl GCSteeringWheelElement {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
@@ -42,9 +44,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "GameController_GCSteeringWheelElement")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     unsafe impl GCSteeringWheelElement {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

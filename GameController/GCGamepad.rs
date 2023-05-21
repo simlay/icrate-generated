@@ -14,6 +14,7 @@ extern_class!(
     #[deprecated]
     pub struct GCGamepad;
 
+    #[deprecated]
     #[cfg(feature = "GameController_GCGamepad")]
     unsafe impl ClassType for GCGamepad {
         #[inherits(NSObject)]

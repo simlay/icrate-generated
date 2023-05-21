@@ -22,6 +22,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct GKVoiceChat;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "GameKit_GKVoiceChat")]
     unsafe impl ClassType for GKVoiceChat {
         type Super = NSObject;
@@ -36,6 +37,7 @@ unsafe impl NSObjectProtocol for GKVoiceChat {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "GameKit_GKVoiceChat")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl GKVoiceChat {
         #[method(start)]
         pub unsafe fn start(&self);
@@ -88,9 +90,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "GameKit_GKVoiceChat")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl GKVoiceChat {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
@@ -104,6 +108,7 @@ extern_methods!(
 extern_methods!(
     /// Deprecated
     #[cfg(feature = "GameKit_GKVoiceChat")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl GKVoiceChat {
         #[cfg(feature = "Foundation_NSString")]
         #[deprecated = "use setPlayerVoiceChatStateDidChangeHandler:"]
@@ -126,6 +131,7 @@ extern_methods!(
 extern_methods!(
     /// Obsoleted
     #[cfg(feature = "GameKit_GKVoiceChat")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl GKVoiceChat {
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
         #[deprecated = "use players"]

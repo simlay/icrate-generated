@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct SKOverlayTransitionContext;
 
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "StoreKit_SKOverlayTransitionContext")]
     unsafe impl ClassType for SKOverlayTransitionContext {
         type Super = NSObject;
@@ -25,6 +26,7 @@ unsafe impl NSObjectProtocol for SKOverlayTransitionContext {}
 #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "StoreKit_SKOverlayTransitionContext")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl SKOverlayTransitionContext {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

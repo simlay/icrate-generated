@@ -14,6 +14,7 @@ extern_protocol!(
             feature = "HealthKit_HKLiveWorkoutBuilder",
             feature = "HealthKit_HKSampleType"
         ))]
+        #[cfg(not(any(target_os = "ios")))]
         #[method(workoutBuilder:didCollectDataOfTypes:)]
         unsafe fn workoutBuilder_didCollectDataOfTypes(
             &self,
@@ -22,6 +23,7 @@ extern_protocol!(
         );
 
         #[cfg(feature = "HealthKit_HKLiveWorkoutBuilder")]
+        #[cfg(not(any(target_os = "ios")))]
         #[method(workoutBuilderDidCollectEvent:)]
         unsafe fn workoutBuilderDidCollectEvent(&self, workout_builder: &HKLiveWorkoutBuilder);
 
@@ -29,6 +31,7 @@ extern_protocol!(
             feature = "HealthKit_HKLiveWorkoutBuilder",
             feature = "HealthKit_HKWorkoutActivity"
         ))]
+        #[cfg(not(any(target_os = "ios")))]
         #[optional]
         #[method(workoutBuilder:didBeginActivity:)]
         unsafe fn workoutBuilder_didBeginActivity(
@@ -41,6 +44,7 @@ extern_protocol!(
             feature = "HealthKit_HKLiveWorkoutBuilder",
             feature = "HealthKit_HKWorkoutActivity"
         ))]
+        #[cfg(not(any(target_os = "ios")))]
         #[optional]
         #[method(workoutBuilder:didEndActivity:)]
         unsafe fn workoutBuilder_didEndActivity(
@@ -59,6 +63,7 @@ extern_class!(
     #[cfg(not(any(target_os = "ios")))]
     pub struct HKLiveWorkoutBuilder;
 
+    #[cfg(not(any(target_os = "ios")))]
     #[cfg(feature = "HealthKit_HKLiveWorkoutBuilder")]
     unsafe impl ClassType for HKLiveWorkoutBuilder {
         #[inherits(NSObject)]
@@ -74,6 +79,7 @@ unsafe impl NSObjectProtocol for HKLiveWorkoutBuilder {}
 #[cfg(not(any(target_os = "ios")))]
 extern_methods!(
     #[cfg(feature = "HealthKit_HKLiveWorkoutBuilder")]
+    #[cfg(not(any(target_os = "ios")))]
     unsafe impl HKLiveWorkoutBuilder {
         #[cfg(all(
             feature = "HealthKit_HKDevice",
@@ -126,18 +132,22 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "ios")))]
 extern_methods!(
     /// Methods declared on superclass `HKWorkoutBuilder`
     #[cfg(feature = "HealthKit_HKLiveWorkoutBuilder")]
+    #[cfg(not(any(target_os = "ios")))]
     unsafe impl HKLiveWorkoutBuilder {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
     }
 );
 
+#[cfg(not(any(target_os = "ios")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "HealthKit_HKLiveWorkoutBuilder")]
+    #[cfg(not(any(target_os = "ios")))]
     unsafe impl HKLiveWorkoutBuilder {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

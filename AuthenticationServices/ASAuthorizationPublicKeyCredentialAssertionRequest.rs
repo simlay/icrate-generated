@@ -10,28 +10,34 @@ extern_protocol!(
         NSObjectProtocol + NSSecureCoding
     {
         #[cfg(feature = "Foundation_NSData")]
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other challenge)]
         unsafe fn challenge(&self) -> Id<NSData>;
 
         #[cfg(feature = "Foundation_NSData")]
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(setChallenge:)]
         unsafe fn setChallenge(&self, challenge: &NSData);
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other relyingPartyIdentifier)]
         unsafe fn relyingPartyIdentifier(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(setRelyingPartyIdentifier:)]
         unsafe fn setRelyingPartyIdentifier(&self, relying_party_identifier: &NSString);
 
         #[cfg(feature = "Foundation_NSArray")]
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other allowedCredentials)]
         unsafe fn allowedCredentials(
             &self,
         ) -> Id<NSArray<ProtocolObject<dyn ASAuthorizationPublicKeyCredentialDescriptor>>>;
 
         #[cfg(feature = "Foundation_NSArray")]
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(setAllowedCredentials:)]
         unsafe fn setAllowedCredentials(
             &self,
@@ -40,11 +46,13 @@ extern_protocol!(
             >,
         );
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other userVerificationPreference)]
         unsafe fn userVerificationPreference(
             &self,
         ) -> Id<ASAuthorizationPublicKeyCredentialUserVerificationPreference>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(setUserVerificationPreference:)]
         unsafe fn setUserVerificationPreference(
             &self,

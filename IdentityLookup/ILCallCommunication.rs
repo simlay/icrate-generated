@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct ILCallCommunication;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "IdentityLookup_ILCallCommunication")]
     unsafe impl ClassType for ILCallCommunication {
         #[inherits(NSObject)]
@@ -33,6 +34,7 @@ unsafe impl NSSecureCoding for ILCallCommunication {}
 #[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "IdentityLookup_ILCallCommunication")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl ILCallCommunication {
         #[method(isEqualToCallCommunication:)]
         pub unsafe fn isEqualToCallCommunication(
@@ -45,9 +47,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "IdentityLookup_ILCallCommunication")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl ILCallCommunication {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

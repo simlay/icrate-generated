@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMProgressEvent;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMProgressEvent")]
     unsafe impl ClassType for DOMProgressEvent {
         #[inherits(DOMObject, WebScriptObject, NSObject)]

@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct MXNetworkTransferMetric;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "MetricKit_MXNetworkTransferMetric")]
     unsafe impl ClassType for MXNetworkTransferMetric {
         #[inherits(NSObject)]
@@ -33,6 +34,7 @@ unsafe impl NSSecureCoding for MXNetworkTransferMetric {}
 #[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "MetricKit_MXNetworkTransferMetric")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXNetworkTransferMetric {
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
@@ -68,9 +70,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MetricKit_MXNetworkTransferMetric")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXNetworkTransferMetric {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

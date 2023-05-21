@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKGradientPolylineRenderer;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKGradientPolylineRenderer")]
     unsafe impl ClassType for MKGradientPolylineRenderer {
         #[inherits(MKOverlayPathRenderer, MKOverlayRenderer, NSObject)]
@@ -28,6 +29,7 @@ unsafe impl NSObjectProtocol for MKGradientPolylineRenderer {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKGradientPolylineRenderer")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKGradientPolylineRenderer {
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSNumber"))]
         #[method_id(@__retain_semantics Other locations)]
@@ -55,6 +57,7 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `MKPolylineRenderer`
     #[cfg(feature = "MapKit_MKGradientPolylineRenderer")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKGradientPolylineRenderer {
         #[cfg(feature = "MapKit_MKPolyline")]
         #[method_id(@__retain_semantics Init initWithPolyline:)]
@@ -69,6 +72,7 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `MKOverlayRenderer`
     #[cfg(feature = "MapKit_MKGradientPolylineRenderer")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKGradientPolylineRenderer {
         #[method_id(@__retain_semantics Init initWithOverlay:)]
         pub unsafe fn initWithOverlay(
@@ -78,9 +82,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MapKit_MKGradientPolylineRenderer")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKGradientPolylineRenderer {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

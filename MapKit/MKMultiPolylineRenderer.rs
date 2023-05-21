@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKMultiPolylineRenderer;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKMultiPolylineRenderer")]
     unsafe impl ClassType for MKMultiPolylineRenderer {
         #[inherits(MKOverlayRenderer, NSObject)]
@@ -28,6 +29,7 @@ unsafe impl NSObjectProtocol for MKMultiPolylineRenderer {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKMultiPolylineRenderer")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKMultiPolylineRenderer {
         #[cfg(feature = "MapKit_MKMultiPolyline")]
         #[method_id(@__retain_semantics Init initWithMultiPolyline:)]
@@ -46,6 +48,7 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `MKOverlayRenderer`
     #[cfg(feature = "MapKit_MKMultiPolylineRenderer")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKMultiPolylineRenderer {
         #[method_id(@__retain_semantics Init initWithOverlay:)]
         pub unsafe fn initWithOverlay(
@@ -55,9 +58,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MapKit_MKMultiPolylineRenderer")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKMultiPolylineRenderer {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

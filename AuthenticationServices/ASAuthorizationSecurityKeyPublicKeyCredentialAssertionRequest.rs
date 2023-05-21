@@ -12,6 +12,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct ASAuthorizationSecurityKeyPublicKeyCredentialAssertionRequest;
 
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(
         feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialAssertionRequest"
     )]
@@ -60,6 +61,7 @@ extern_methods!(
     #[cfg(
         feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialAssertionRequest"
     )]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAuthorizationSecurityKeyPublicKeyCredentialAssertionRequest {
         #[cfg(all(
             feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor",
@@ -82,11 +84,13 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `ASAuthorizationRequest`
     #[cfg(
         feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialAssertionRequest"
     )]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAuthorizationSecurityKeyPublicKeyCredentialAssertionRequest {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

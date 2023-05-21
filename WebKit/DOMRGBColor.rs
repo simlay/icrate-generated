@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMRGBColor;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMRGBColor")]
     unsafe impl ClassType for DOMRGBColor {
         #[inherits(WebScriptObject, NSObject)]

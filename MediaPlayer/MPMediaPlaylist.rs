@@ -40,6 +40,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct MPMediaPlaylist;
 
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPMediaPlaylist")]
     unsafe impl ClassType for MPMediaPlaylist {
         #[inherits(MPMediaEntity, NSObject)]
@@ -63,6 +64,7 @@ unsafe impl NSSecureCoding for MPMediaPlaylist {}
 #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MediaPlayer_MPMediaPlaylist")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl MPMediaPlaylist {
         #[method(persistentID)]
         pub unsafe fn persistentID(&self) -> MPMediaEntityPersistentID;
@@ -118,6 +120,7 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `MPMediaItemCollection`
     #[cfg(feature = "MediaPlayer_MPMediaPlaylist")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl MPMediaPlaylist {
         #[cfg(all(feature = "Foundation_NSArray", feature = "MediaPlayer_MPMediaItem"))]
         #[method_id(@__retain_semantics Init initWithItems:)]
@@ -128,9 +131,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MediaPlayer_MPMediaPlaylist")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl MPMediaPlaylist {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
@@ -146,6 +151,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct MPMediaPlaylistCreationMetadata;
 
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPMediaPlaylistCreationMetadata")]
     unsafe impl ClassType for MPMediaPlaylistCreationMetadata {
         type Super = NSObject;
@@ -160,6 +166,7 @@ unsafe impl NSObjectProtocol for MPMediaPlaylistCreationMetadata {}
 #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MediaPlayer_MPMediaPlaylistCreationMetadata")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl MPMediaPlaylistCreationMetadata {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

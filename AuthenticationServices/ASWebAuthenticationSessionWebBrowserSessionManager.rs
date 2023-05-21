@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     pub struct ASWebAuthenticationSessionWebBrowserSessionManager;
 
+    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     #[cfg(feature = "AuthenticationServices_ASWebAuthenticationSessionWebBrowserSessionManager")]
     unsafe impl ClassType for ASWebAuthenticationSessionWebBrowserSessionManager {
         type Super = NSObject;
@@ -24,6 +25,7 @@ unsafe impl NSObjectProtocol for ASWebAuthenticationSessionWebBrowserSessionMana
 #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASWebAuthenticationSessionWebBrowserSessionManager")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     unsafe impl ASWebAuthenticationSessionWebBrowserSessionManager {
         #[method_id(@__retain_semantics Other sharedManager)]
         pub unsafe fn sharedManager() -> Id<ASWebAuthenticationSessionWebBrowserSessionManager>;
@@ -46,9 +48,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "AuthenticationServices_ASWebAuthenticationSessionWebBrowserSessionManager")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     unsafe impl ASWebAuthenticationSessionWebBrowserSessionManager {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

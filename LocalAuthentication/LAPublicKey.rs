@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct LAPublicKey;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "LocalAuthentication_LAPublicKey")]
     unsafe impl ClassType for LAPublicKey {
         type Super = NSObject;
@@ -24,6 +25,7 @@ unsafe impl NSObjectProtocol for LAPublicKey {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "LocalAuthentication_LAPublicKey")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl LAPublicKey {
         #[cfg(all(feature = "Foundation_NSData", feature = "Foundation_NSError"))]
         #[method(exportBytesWithCompletion:)]

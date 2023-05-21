@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct MXMetric;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "MetricKit_MXMetric")]
     unsafe impl ClassType for MXMetric {
         type Super = NSObject;
@@ -32,6 +33,7 @@ unsafe impl NSSecureCoding for MXMetric {}
 #[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "MetricKit_MXMetric")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXMetric {
         #[cfg(feature = "Foundation_NSData")]
         #[method_id(@__retain_semantics Other JSONRepresentation)]
@@ -50,9 +52,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MetricKit_MXMetric")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXMetric {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

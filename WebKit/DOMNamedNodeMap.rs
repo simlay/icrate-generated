@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMNamedNodeMap;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMNamedNodeMap")]
     unsafe impl ClassType for DOMNamedNodeMap {
         #[inherits(WebScriptObject, NSObject)]

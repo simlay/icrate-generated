@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKCircle;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKCircle")]
     unsafe impl ClassType for MKCircle {
         #[inherits(NSObject)]
@@ -36,6 +37,7 @@ unsafe impl NSObjectProtocol for MKCircle {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKCircle")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKCircle {
         #[method_id(@__retain_semantics Other circleWithCenterCoordinate:radius:)]
         pub unsafe fn circleWithCenterCoordinate_radius(
@@ -57,9 +59,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MapKit_MKCircle")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKCircle {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

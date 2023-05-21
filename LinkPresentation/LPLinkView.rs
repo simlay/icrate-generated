@@ -74,7 +74,6 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
 extern_methods!(
     /// Methods declared on superclass `NSView`
     #[cfg(feature = "LinkPresentation_LPLinkView")]
@@ -85,7 +84,6 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
 extern_methods!(
     /// Methods declared on superclass `NSResponder`
     #[cfg(feature = "LinkPresentation_LPLinkView")]

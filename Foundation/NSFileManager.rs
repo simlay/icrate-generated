@@ -950,6 +950,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct NSFileProviderService;
 
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "Foundation_NSFileProviderService")]
     unsafe impl ClassType for NSFileProviderService {
         type Super = NSObject;
@@ -964,6 +965,7 @@ unsafe impl NSObjectProtocol for NSFileProviderService {}
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "Foundation_NSFileProviderService")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSFileProviderService {
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSXPCConnection"))]
         #[method(getFileProviderConnectionWithCompletionHandler:)]
@@ -977,9 +979,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "Foundation_NSFileProviderService")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSFileProviderService {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

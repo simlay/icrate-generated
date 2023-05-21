@@ -386,6 +386,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct NSBundleResourceRequest;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "Foundation_NSBundleResourceRequest")]
     unsafe impl ClassType for NSBundleResourceRequest {
         type Super = NSObject;
@@ -404,6 +405,7 @@ unsafe impl NSProgressReporting for NSBundleResourceRequest {}
 #[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "Foundation_NSBundleResourceRequest")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl NSBundleResourceRequest {
         #[cfg(not(any(
             target_os = "ios",
@@ -469,9 +471,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "Foundation_NSBundleResourceRequest")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl NSBundleResourceRequest {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

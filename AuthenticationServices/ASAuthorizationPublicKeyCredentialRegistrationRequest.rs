@@ -10,57 +10,70 @@ extern_protocol!(
         NSObjectProtocol + NSSecureCoding
     {
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other relyingPartyIdentifier)]
         unsafe fn relyingPartyIdentifier(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSData")]
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other userID)]
         unsafe fn userID(&self) -> Id<NSData>;
 
         #[cfg(feature = "Foundation_NSData")]
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(setUserID:)]
         unsafe fn setUserID(&self, user_id: &NSData);
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other name)]
         unsafe fn name(&self) -> Id<NSString>;
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(setName:)]
         unsafe fn setName(&self, name: &NSString);
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other displayName)]
         unsafe fn displayName(&self) -> Option<Id<NSString>>;
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(setDisplayName:)]
         unsafe fn setDisplayName(&self, display_name: Option<&NSString>);
 
         #[cfg(feature = "Foundation_NSData")]
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other challenge)]
         unsafe fn challenge(&self) -> Id<NSData>;
 
         #[cfg(feature = "Foundation_NSData")]
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(setChallenge:)]
         unsafe fn setChallenge(&self, challenge: &NSData);
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other userVerificationPreference)]
         unsafe fn userVerificationPreference(
             &self,
         ) -> Id<ASAuthorizationPublicKeyCredentialUserVerificationPreference>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(setUserVerificationPreference:)]
         unsafe fn setUserVerificationPreference(
             &self,
             user_verification_preference: &ASAuthorizationPublicKeyCredentialUserVerificationPreference,
         );
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other attestationPreference)]
         unsafe fn attestationPreference(
             &self,
         ) -> Id<ASAuthorizationPublicKeyCredentialAttestationKind>;
 
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(setAttestationPreference:)]
         unsafe fn setAttestationPreference(
             &self,

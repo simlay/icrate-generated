@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKUserLocation;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKUserLocation")]
     unsafe impl ClassType for MKUserLocation {
         type Super = NSObject;
@@ -31,6 +32,7 @@ unsafe impl NSObjectProtocol for MKUserLocation {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKUserLocation")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKUserLocation {
         #[method(isUpdating)]
         pub unsafe fn isUpdating(&self) -> bool;
@@ -62,9 +64,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MapKit_MKUserLocation")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKUserLocation {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

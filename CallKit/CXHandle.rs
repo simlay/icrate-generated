@@ -23,6 +23,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct CXHandle;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "CallKit_CXHandle")]
     unsafe impl ClassType for CXHandle {
         type Super = NSObject;
@@ -49,6 +50,7 @@ unsafe impl NSSecureCoding for CXHandle {}
 #[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "CallKit_CXHandle")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXHandle {
         #[method(type)]
         pub unsafe fn r#type(&self) -> CXHandleType;
@@ -73,9 +75,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "CallKit_CXHandle")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXHandle {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

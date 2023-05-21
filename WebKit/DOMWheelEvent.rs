@@ -23,6 +23,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMWheelEvent;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMWheelEvent")]
     unsafe impl ClassType for DOMWheelEvent {
         #[inherits(DOMUIEvent, DOMEvent, DOMObject, WebScriptObject, NSObject)]

@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct LARightStore;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "LocalAuthentication_LARightStore")]
     unsafe impl ClassType for LARightStore {
         type Super = NSObject;
@@ -24,6 +25,7 @@ unsafe impl NSObjectProtocol for LARightStore {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "LocalAuthentication_LARightStore")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl LARightStore {
         #[method_id(@__retain_semantics Other sharedStore)]
         pub unsafe fn sharedStore() -> Id<LARightStore>;

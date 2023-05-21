@@ -50,6 +50,7 @@ ns_enum!(
 extern_protocol!(
     pub unsafe trait NSURLHandleClient {
         #[cfg(all(feature = "Foundation_NSData", feature = "Foundation_NSURLHandle"))]
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[deprecated]
         #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(URLHandle:resourceDataDidBecomeAvailable:)]
@@ -60,24 +61,28 @@ extern_protocol!(
         );
 
         #[cfg(feature = "Foundation_NSURLHandle")]
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[deprecated]
         #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(URLHandleResourceDidBeginLoading:)]
         unsafe fn URLHandleResourceDidBeginLoading(&self, sender: Option<&NSURLHandle>);
 
         #[cfg(feature = "Foundation_NSURLHandle")]
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[deprecated]
         #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(URLHandleResourceDidFinishLoading:)]
         unsafe fn URLHandleResourceDidFinishLoading(&self, sender: Option<&NSURLHandle>);
 
         #[cfg(feature = "Foundation_NSURLHandle")]
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[deprecated]
         #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(URLHandleResourceDidCancelLoading:)]
         unsafe fn URLHandleResourceDidCancelLoading(&self, sender: Option<&NSURLHandle>);
 
         #[cfg(all(feature = "Foundation_NSString", feature = "Foundation_NSURLHandle"))]
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[deprecated]
         #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(URLHandle:resourceDidFailLoadingWithReason:)]

@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLInputElement;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLInputElement")]
     unsafe impl ClassType for DOMHTMLInputElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]

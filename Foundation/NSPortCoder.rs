@@ -9,6 +9,7 @@ extern_class!(
     #[deprecated = "Use NSXPCConnection instead"]
     pub struct NSPortCoder;
 
+    #[deprecated = "Use NSXPCConnection instead"]
     #[cfg(feature = "Foundation_NSPortCoder")]
     unsafe impl ClassType for NSPortCoder {
         #[inherits(NSObject)]

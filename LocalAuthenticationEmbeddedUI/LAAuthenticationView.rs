@@ -12,6 +12,7 @@ extern_class!(
     #[cfg(not(any(target_os = "ios")))]
     pub struct LAAuthenticationView;
 
+    #[cfg(not(any(target_os = "ios")))]
     #[cfg(feature = "LocalAuthenticationEmbeddedUI_LAAuthenticationView")]
     unsafe impl ClassType for LAAuthenticationView {
         #[inherits(NSResponder, NSObject)]
@@ -55,6 +56,7 @@ unsafe impl NSUserInterfaceItemIdentification for LAAuthenticationView {}
 #[cfg(not(any(target_os = "ios")))]
 extern_methods!(
     #[cfg(feature = "LocalAuthenticationEmbeddedUI_LAAuthenticationView")]
+    #[cfg(not(any(target_os = "ios")))]
     unsafe impl LAAuthenticationView {
         #[method_id(@__retain_semantics Init initWithFrame:)]
         pub unsafe fn initWithFrame(this: Option<Allocated<Self>>, frame_rect: NSRect) -> Id<Self>;
@@ -95,6 +97,7 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `NSResponder`
     #[cfg(feature = "LocalAuthenticationEmbeddedUI_LAAuthenticationView")]
+    #[cfg(not(any(target_os = "ios")))]
     unsafe impl LAAuthenticationView {
         #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init init)]
@@ -102,9 +105,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "ios")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "LocalAuthenticationEmbeddedUI_LAAuthenticationView")]
+    #[cfg(not(any(target_os = "ios")))]
     unsafe impl LAAuthenticationView {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

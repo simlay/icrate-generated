@@ -45,6 +45,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMCSSRule;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMCSSRule")]
     unsafe impl ClassType for DOMCSSRule {
         #[inherits(WebScriptObject, NSObject)]

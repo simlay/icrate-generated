@@ -12,6 +12,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct NSFileProviderExtension;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "FileProvider_NSFileProviderExtension")]
     unsafe impl ClassType for NSFileProviderExtension {
         type Super = NSObject;
@@ -26,6 +27,7 @@ unsafe impl NSObjectProtocol for NSFileProviderExtension {}
 #[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "FileProvider_NSFileProviderExtension")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl NSFileProviderExtension {
         #[cfg(feature = "Foundation_NSError")]
         #[cfg(not(any(target_os = "macos")))]
@@ -75,9 +77,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "FileProvider_NSFileProviderExtension")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl NSFileProviderExtension {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
@@ -91,6 +95,7 @@ extern_methods!(
 extern_methods!(
     /// Deprecated
     #[cfg(feature = "FileProvider_NSFileProviderExtension")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl NSFileProviderExtension {
         #[cfg(all(
             feature = "Foundation_NSDictionary",

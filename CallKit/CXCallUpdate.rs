@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct CXCallUpdate;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "CallKit_CXCallUpdate")]
     unsafe impl ClassType for CXCallUpdate {
         type Super = NSObject;
@@ -28,6 +29,7 @@ unsafe impl NSObjectProtocol for CXCallUpdate {}
 #[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "CallKit_CXCallUpdate")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXCallUpdate {
         #[cfg(feature = "CallKit_CXHandle")]
         #[method_id(@__retain_semantics Other remoteHandle)]
@@ -77,9 +79,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "CallKit_CXCallUpdate")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXCallUpdate {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

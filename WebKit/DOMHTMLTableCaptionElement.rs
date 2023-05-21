@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLTableCaptionElement;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLTableCaptionElement")]
     unsafe impl ClassType for DOMHTMLTableCaptionElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]

@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct ASAuthorizationSingleSignOnProvider;
 
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "AuthenticationServices_ASAuthorizationSingleSignOnProvider")]
     unsafe impl ClassType for ASAuthorizationSingleSignOnProvider {
         type Super = NSObject;
@@ -28,6 +29,7 @@ unsafe impl NSObjectProtocol for ASAuthorizationSingleSignOnProvider {}
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASAuthorizationSingleSignOnProvider")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAuthorizationSingleSignOnProvider {
         #[cfg(feature = "Foundation_NSURL")]
         #[method_id(@__retain_semantics Other authorizationProviderWithIdentityProviderURL:)]

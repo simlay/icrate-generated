@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLBaseFontElement;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLBaseFontElement")]
     unsafe impl ClassType for DOMHTMLBaseFontElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]

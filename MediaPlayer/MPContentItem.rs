@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MPContentItem;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPContentItem")]
     unsafe impl ClassType for MPContentItem {
         type Super = NSObject;
@@ -25,6 +26,7 @@ unsafe impl NSObjectProtocol for MPContentItem {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MediaPlayer_MPContentItem")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MPContentItem {
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Init initWithIdentifier:)]
@@ -93,9 +95,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MediaPlayer_MPContentItem")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MPContentItem {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

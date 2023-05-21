@@ -31,6 +31,7 @@ extern_class!(
     #[deprecated = "Hosted content is no longer supported"]
     pub struct SKDownload;
 
+    #[deprecated = "Hosted content is no longer supported"]
     #[cfg(feature = "StoreKit_SKDownload")]
     unsafe impl ClassType for SKDownload {
         type Super = NSObject;

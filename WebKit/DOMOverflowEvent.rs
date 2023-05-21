@@ -23,6 +23,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMOverflowEvent;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMOverflowEvent")]
     unsafe impl ClassType for DOMOverflowEvent {
         #[inherits(DOMObject, WebScriptObject, NSObject)]

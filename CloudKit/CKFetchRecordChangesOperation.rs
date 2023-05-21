@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct CKFetchRecordChangesOperation;
 
+    #[deprecated]
     #[cfg(feature = "CloudKit_CKFetchRecordChangesOperation")]
     unsafe impl ClassType for CKFetchRecordChangesOperation {
         #[inherits(CKOperation, NSOperation, NSObject)]

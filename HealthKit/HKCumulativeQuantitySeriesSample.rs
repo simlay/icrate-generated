@@ -12,6 +12,7 @@ extern_class!(
     #[deprecated]
     pub struct HKCumulativeQuantitySeriesSample;
 
+    #[deprecated]
     #[cfg(feature = "HealthKit_HKCumulativeQuantitySeriesSample")]
     unsafe impl ClassType for HKCumulativeQuantitySeriesSample {
         #[inherits(HKQuantitySample, HKSample, HKObject, NSObject)]

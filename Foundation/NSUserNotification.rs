@@ -30,6 +30,8 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub struct NSUserNotification;
 
+    #[deprecated = "All NSUserNotifications API should be replaced with UserNotifications.frameworks API"]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "Foundation_NSUserNotification")]
     unsafe impl ClassType for NSUserNotification {
         type Super = NSObject;
@@ -48,6 +50,7 @@ unsafe impl NSObjectProtocol for NSUserNotification {}
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "Foundation_NSUserNotification")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSUserNotification {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
@@ -213,9 +216,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "Foundation_NSUserNotification")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSUserNotification {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
@@ -229,6 +234,8 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub struct NSUserNotificationAction;
 
+    #[deprecated = "All NSUserNotifications API should be replaced with UserNotifications.frameworks API"]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "Foundation_NSUserNotificationAction")]
     unsafe impl ClassType for NSUserNotificationAction {
         type Super = NSObject;
@@ -247,6 +254,7 @@ unsafe impl NSObjectProtocol for NSUserNotificationAction {}
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "Foundation_NSUserNotificationAction")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSUserNotificationAction {
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other actionWithIdentifier:title:)]
@@ -265,9 +273,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "Foundation_NSUserNotificationAction")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSUserNotificationAction {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
@@ -287,6 +297,8 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub struct NSUserNotificationCenter;
 
+    #[deprecated = "All NSUserNotifications API should be replaced with UserNotifications.frameworks API"]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "Foundation_NSUserNotificationCenter")]
     unsafe impl ClassType for NSUserNotificationCenter {
         type Super = NSObject;
@@ -301,6 +313,7 @@ unsafe impl NSObjectProtocol for NSUserNotificationCenter {}
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "Foundation_NSUserNotificationCenter")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSUserNotificationCenter {
         #[method_id(@__retain_semantics Other defaultUserNotificationCenter)]
         pub unsafe fn defaultUserNotificationCenter() -> Id<NSUserNotificationCenter>;
@@ -361,9 +374,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "Foundation_NSUserNotificationCenter")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSUserNotificationCenter {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

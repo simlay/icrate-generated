@@ -10,16 +10,20 @@ use crate::MapKit::*;
 #[cfg(not(any(target_os = "watchos")))]
 extern_protocol!(
     pub unsafe trait MKOverlay: MKAnnotation {
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(coordinate)]
         unsafe fn coordinate(&self) -> CLLocationCoordinate2D;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[method(boundingMapRect)]
         unsafe fn boundingMapRect(&self) -> MKMapRect;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(intersectsMapRect:)]
         unsafe fn intersectsMapRect(&self, map_rect: MKMapRect) -> bool;
 
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(canReplaceMapContent)]
         unsafe fn canReplaceMapContent(&self) -> bool;

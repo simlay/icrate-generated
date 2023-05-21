@@ -114,6 +114,7 @@ extern_class!(
     #[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
     pub struct NSLinguisticTagger;
 
+    #[deprecated = "All NSLinguisticTagger API should be replaced with NaturalLanguage.framework API"]
     #[cfg(feature = "Foundation_NSLinguisticTagger")]
     unsafe impl ClassType for NSLinguisticTagger {
         type Super = NSObject;

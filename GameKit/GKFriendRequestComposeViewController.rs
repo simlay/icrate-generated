@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct GKFriendRequestComposeViewController;
 
+    #[deprecated]
     #[cfg(feature = "GameKit_GKFriendRequestComposeViewController")]
     unsafe impl ClassType for GKFriendRequestComposeViewController {
         #[inherits(NSResponder, NSObject)]
@@ -42,7 +43,6 @@ extern_methods!(
     unsafe impl GKFriendRequestComposeViewController {}
 );
 
-#[cfg(not(any(target_os = "ios")))]
 extern_methods!(
     /// Methods declared on superclass `NSViewController`
     #[cfg(feature = "GameKit_GKFriendRequestComposeViewController")]
@@ -66,7 +66,6 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
 extern_methods!(
     /// Methods declared on superclass `NSResponder`
     #[cfg(feature = "GameKit_GKFriendRequestComposeViewController")]

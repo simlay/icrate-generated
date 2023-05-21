@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMMediaList;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMMediaList")]
     unsafe impl ClassType for DOMMediaList {
         #[inherits(WebScriptObject, NSObject)]

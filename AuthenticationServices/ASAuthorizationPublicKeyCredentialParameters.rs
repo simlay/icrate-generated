@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct ASAuthorizationPublicKeyCredentialParameters;
 
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "AuthenticationServices_ASAuthorizationPublicKeyCredentialParameters")]
     unsafe impl ClassType for ASAuthorizationPublicKeyCredentialParameters {
         type Super = NSObject;
@@ -36,6 +37,7 @@ unsafe impl NSSecureCoding for ASAuthorizationPublicKeyCredentialParameters {}
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASAuthorizationPublicKeyCredentialParameters")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAuthorizationPublicKeyCredentialParameters {
         #[method_id(@__retain_semantics Init initWithAlgorithm:)]
         pub unsafe fn initWithAlgorithm(

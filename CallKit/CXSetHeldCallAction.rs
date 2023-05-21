@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct CXSetHeldCallAction;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "CallKit_CXSetHeldCallAction")]
     unsafe impl ClassType for CXSetHeldCallAction {
         #[inherits(CXAction, NSObject)]
@@ -37,6 +38,7 @@ unsafe impl NSSecureCoding for CXSetHeldCallAction {}
 #[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "CallKit_CXSetHeldCallAction")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXSetHeldCallAction {
         #[cfg(feature = "Foundation_NSUUID")]
         #[method_id(@__retain_semantics Init initWithCallUUID:onHold:)]
@@ -72,15 +74,18 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `CXCallAction`
     #[cfg(feature = "CallKit_CXSetHeldCallAction")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXSetHeldCallAction {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "CallKit_CXSetHeldCallAction")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXSetHeldCallAction {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

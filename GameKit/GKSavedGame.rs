@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct GKSavedGame;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "GameKit_GKSavedGame")]
     unsafe impl ClassType for GKSavedGame {
         type Super = NSObject;
@@ -29,6 +30,7 @@ unsafe impl NSObjectProtocol for GKSavedGame {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "GameKit_GKSavedGame")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl GKSavedGame {
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other name)]
@@ -51,9 +53,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "GameKit_GKSavedGame")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl GKSavedGame {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKPolygon;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKPolygon")]
     unsafe impl ClassType for MKPolygon {
         #[inherits(MKShape, NSObject)]
@@ -36,6 +37,7 @@ unsafe impl NSObjectProtocol for MKPolygon {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKPolygon")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKPolygon {
         #[method_id(@__retain_semantics Other polygonWithPoints:count:)]
         pub unsafe fn polygonWithPoints_count(
@@ -71,9 +73,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MapKit_MKPolygon")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKPolygon {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

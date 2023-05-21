@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct MXCellularConditionMetric;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "MetricKit_MXCellularConditionMetric")]
     unsafe impl ClassType for MXCellularConditionMetric {
         #[inherits(NSObject)]
@@ -33,6 +34,7 @@ unsafe impl NSSecureCoding for MXCellularConditionMetric {}
 #[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "MetricKit_MXCellularConditionMetric")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXCellularConditionMetric {
         #[cfg(all(
             feature = "MetricKit_MXHistogram",
@@ -44,9 +46,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MetricKit_MXCellularConditionMetric")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXCellularConditionMetric {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

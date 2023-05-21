@@ -25,6 +25,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMKeyboardEvent;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMKeyboardEvent")]
     unsafe impl ClassType for DOMKeyboardEvent {
         #[inherits(DOMEvent, DOMObject, WebScriptObject, NSObject)]

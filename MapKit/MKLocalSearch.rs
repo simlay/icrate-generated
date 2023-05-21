@@ -16,6 +16,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKLocalSearch;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKLocalSearch")]
     unsafe impl ClassType for MKLocalSearch {
         type Super = NSObject;
@@ -30,6 +31,7 @@ unsafe impl NSObjectProtocol for MKLocalSearch {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKLocalSearch")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKLocalSearch {
         #[cfg(feature = "MapKit_MKLocalSearchRequest")]
         #[method_id(@__retain_semantics Init initWithRequest:)]
@@ -60,9 +62,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MapKit_MKLocalSearch")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKLocalSearch {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

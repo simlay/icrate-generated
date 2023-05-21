@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated = "Use GKGameCenterViewController instead"]
     pub struct GKAchievementViewController;
 
+    #[deprecated = "Use GKGameCenterViewController instead"]
     #[cfg(feature = "GameKit_GKAchievementViewController")]
     unsafe impl ClassType for GKAchievementViewController {
         #[inherits(NSViewController, NSResponder, NSObject)]
@@ -53,7 +54,6 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
 extern_methods!(
     /// Methods declared on superclass `NSViewController`
     #[cfg(feature = "GameKit_GKAchievementViewController")]
@@ -77,7 +77,6 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
 extern_methods!(
     /// Methods declared on superclass `NSResponder`
     #[cfg(feature = "GameKit_GKAchievementViewController")]

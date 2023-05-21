@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub struct NSUserScriptTask;
 
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "Foundation_NSUserScriptTask")]
     unsafe impl ClassType for NSUserScriptTask {
         type Super = NSObject;
@@ -25,6 +26,7 @@ unsafe impl NSObjectProtocol for NSUserScriptTask {}
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "Foundation_NSUserScriptTask")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSUserScriptTask {
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSURL"))]
         #[method_id(@__retain_semantics Init initWithURL:error:_)]
@@ -45,9 +47,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "Foundation_NSUserScriptTask")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSUserScriptTask {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
@@ -65,6 +69,7 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub struct NSUserUnixTask;
 
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "Foundation_NSUserUnixTask")]
     unsafe impl ClassType for NSUserUnixTask {
         #[inherits(NSObject)]
@@ -80,6 +85,7 @@ unsafe impl NSObjectProtocol for NSUserUnixTask {}
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "Foundation_NSUserUnixTask")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSUserUnixTask {
         #[cfg(feature = "Foundation_NSFileHandle")]
         #[method_id(@__retain_semantics Other standardInput)]
@@ -119,6 +125,7 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `NSUserScriptTask`
     #[cfg(feature = "Foundation_NSUserUnixTask")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSUserUnixTask {
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSURL"))]
         #[method_id(@__retain_semantics Init initWithURL:error:_)]
@@ -129,9 +136,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "Foundation_NSUserUnixTask")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSUserUnixTask {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
@@ -150,6 +159,7 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub struct NSUserAppleScriptTask;
 
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "Foundation_NSUserAppleScriptTask")]
     unsafe impl ClassType for NSUserAppleScriptTask {
         #[inherits(NSObject)]
@@ -165,6 +175,7 @@ unsafe impl NSObjectProtocol for NSUserAppleScriptTask {}
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "Foundation_NSUserAppleScriptTask")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSUserAppleScriptTask {
         #[cfg(feature = "Foundation_NSAppleEventDescriptor")]
         #[method(executeWithAppleEvent:completionHandler:)]
@@ -180,6 +191,7 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `NSUserScriptTask`
     #[cfg(feature = "Foundation_NSUserAppleScriptTask")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSUserAppleScriptTask {
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSURL"))]
         #[method_id(@__retain_semantics Init initWithURL:error:_)]
@@ -190,9 +202,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "Foundation_NSUserAppleScriptTask")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSUserAppleScriptTask {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
@@ -210,6 +224,7 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub struct NSUserAutomatorTask;
 
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "Foundation_NSUserAutomatorTask")]
     unsafe impl ClassType for NSUserAutomatorTask {
         #[inherits(NSObject)]
@@ -225,6 +240,7 @@ unsafe impl NSObjectProtocol for NSUserAutomatorTask {}
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "Foundation_NSUserAutomatorTask")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSUserAutomatorTask {
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
         #[method_id(@__retain_semantics Other variables)]
@@ -247,6 +263,7 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `NSUserScriptTask`
     #[cfg(feature = "Foundation_NSUserAutomatorTask")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSUserAutomatorTask {
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSURL"))]
         #[method_id(@__retain_semantics Init initWithURL:error:_)]
@@ -257,9 +274,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "Foundation_NSUserAutomatorTask")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSUserAutomatorTask {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

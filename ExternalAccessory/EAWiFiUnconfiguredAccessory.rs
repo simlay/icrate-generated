@@ -19,6 +19,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct EAWiFiUnconfiguredAccessory;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "ExternalAccessory_EAWiFiUnconfiguredAccessory")]
     unsafe impl ClassType for EAWiFiUnconfiguredAccessory {
         type Super = NSObject;
@@ -33,6 +34,7 @@ unsafe impl NSObjectProtocol for EAWiFiUnconfiguredAccessory {}
 #[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "ExternalAccessory_EAWiFiUnconfiguredAccessory")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl EAWiFiUnconfiguredAccessory {
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other name)]
@@ -59,9 +61,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "ExternalAccessory_EAWiFiUnconfiguredAccessory")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl EAWiFiUnconfiguredAccessory {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

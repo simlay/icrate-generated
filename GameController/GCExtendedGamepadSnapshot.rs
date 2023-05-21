@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated = "GCExtendedGamepadSnapshot has been deprecated, use [GCController controllerWithExtendedGamepad] instead"]
     pub struct GCExtendedGamepadSnapshot;
 
+    #[deprecated = "GCExtendedGamepadSnapshot has been deprecated, use [GCController controllerWithExtendedGamepad] instead"]
     #[cfg(feature = "GameController_GCExtendedGamepadSnapshot")]
     unsafe impl ClassType for GCExtendedGamepadSnapshot {
         #[inherits(GCPhysicalInputProfile, NSObject)]

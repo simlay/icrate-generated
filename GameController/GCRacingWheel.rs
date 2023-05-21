@@ -17,6 +17,7 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     pub struct GCRacingWheel;
 
+    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     #[cfg(feature = "GameController_GCRacingWheel")]
     unsafe impl ClassType for GCRacingWheel {
         type Super = NSObject;
@@ -35,6 +36,7 @@ unsafe impl NSObjectProtocol for GCRacingWheel {}
 #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 extern_methods!(
     #[cfg(feature = "GameController_GCRacingWheel")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     unsafe impl GCRacingWheel {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
@@ -65,9 +67,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "GameController_GCRacingWheel")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     unsafe impl GCRacingWheel {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

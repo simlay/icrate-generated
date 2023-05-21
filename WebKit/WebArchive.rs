@@ -13,6 +13,7 @@ extern_class!(
     #[deprecated]
     pub struct WebArchive;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_WebArchive")]
     unsafe impl ClassType for WebArchive {
         type Super = NSObject;

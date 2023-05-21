@@ -12,6 +12,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct HKVerifiableClinicalRecordQuery;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "HealthKit_HKVerifiableClinicalRecordQuery")]
     unsafe impl ClassType for HKVerifiableClinicalRecordQuery {
         #[inherits(NSObject)]
@@ -27,6 +28,7 @@ unsafe impl NSObjectProtocol for HKVerifiableClinicalRecordQuery {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "HealthKit_HKVerifiableClinicalRecordQuery")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl HKVerifiableClinicalRecordQuery {
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
         #[method_id(@__retain_semantics Other recordTypes)]

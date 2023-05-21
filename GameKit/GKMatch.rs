@@ -28,6 +28,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct GKMatch;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "GameKit_GKMatch")]
     unsafe impl ClassType for GKMatch {
         type Super = NSObject;
@@ -42,6 +43,7 @@ unsafe impl NSObjectProtocol for GKMatch {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "GameKit_GKMatch")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl GKMatch {
         #[cfg(all(feature = "Foundation_NSArray", feature = "GameKit_GKPlayer"))]
         #[method_id(@__retain_semantics Other players)]
@@ -101,9 +103,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "GameKit_GKMatch")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl GKMatch {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
@@ -121,6 +125,7 @@ extern_protocol!(
             feature = "GameKit_GKMatch",
             feature = "GameKit_GKPlayer"
         ))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(match:didReceiveData:fromRemotePlayer:)]
         unsafe fn match_didReceiveData_fromRemotePlayer(
@@ -135,6 +140,7 @@ extern_protocol!(
             feature = "GameKit_GKMatch",
             feature = "GameKit_GKPlayer"
         ))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(match:didReceiveData:forRecipient:fromRemotePlayer:)]
         unsafe fn match_didReceiveData_forRecipient_fromRemotePlayer(
@@ -146,6 +152,7 @@ extern_protocol!(
         );
 
         #[cfg(all(feature = "GameKit_GKMatch", feature = "GameKit_GKPlayer"))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(match:player:didChangeConnectionState:)]
         unsafe fn match_player_didChangeConnectionState(
@@ -156,11 +163,13 @@ extern_protocol!(
         );
 
         #[cfg(all(feature = "Foundation_NSError", feature = "GameKit_GKMatch"))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(match:didFailWithError:)]
         unsafe fn match_didFailWithError(&self, r#match: &GKMatch, error: Option<&NSError>);
 
         #[cfg(all(feature = "GameKit_GKMatch", feature = "GameKit_GKPlayer"))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(match:shouldReinviteDisconnectedPlayer:)]
         unsafe fn match_shouldReinviteDisconnectedPlayer(
@@ -174,6 +183,7 @@ extern_protocol!(
             feature = "Foundation_NSString",
             feature = "GameKit_GKMatch"
         ))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[deprecated = "This is never invoked and its implementation does nothing, use match:didReceiveData:fromRemotePlayer:"]
         #[optional]
         #[method(match:didReceiveData:fromPlayer:)]
@@ -185,6 +195,7 @@ extern_protocol!(
         );
 
         #[cfg(all(feature = "Foundation_NSString", feature = "GameKit_GKMatch"))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[deprecated = "This is never invoked and its implementation does nothing, use match:player:didChangeConnectionState:"]
         #[optional]
         #[method(match:player:didChangeState:)]
@@ -196,6 +207,7 @@ extern_protocol!(
         );
 
         #[cfg(all(feature = "Foundation_NSString", feature = "GameKit_GKMatch"))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[deprecated = "This is never invoked and its implementation does nothing, use shouldReinviteDisconnectedPlayer:"]
         #[optional]
         #[method(match:shouldReinvitePlayer:)]
@@ -213,6 +225,7 @@ extern_protocol!(
 extern_methods!(
     /// Obsoleted
     #[cfg(feature = "GameKit_GKMatch")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl GKMatch {
         #[cfg(feature = "Foundation_NSString")]
         #[deprecated = "This is never invoked and its implementation does nothing, use chooseBestHostingPlayerWithCompletionHandler:"]

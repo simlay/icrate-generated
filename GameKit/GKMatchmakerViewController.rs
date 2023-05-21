@@ -119,7 +119,6 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
 extern_methods!(
     /// Methods declared on superclass `NSViewController`
     #[cfg(feature = "GameKit_GKMatchmakerViewController")]
@@ -143,7 +142,6 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
 extern_methods!(
     /// Methods declared on superclass `NSResponder`
     #[cfg(feature = "GameKit_GKMatchmakerViewController")]

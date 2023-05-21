@@ -23,6 +23,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMMutationEvent;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMMutationEvent")]
     unsafe impl ClassType for DOMMutationEvent {
         #[inherits(DOMObject, WebScriptObject, NSObject)]

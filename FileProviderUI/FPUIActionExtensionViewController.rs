@@ -55,7 +55,6 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
 extern_methods!(
     /// Methods declared on superclass `NSViewController`
     #[cfg(feature = "FileProviderUI_FPUIActionExtensionViewController")]
@@ -79,7 +78,6 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
 extern_methods!(
     /// Methods declared on superclass `NSResponder`
     #[cfg(feature = "FileProviderUI_FPUIActionExtensionViewController")]

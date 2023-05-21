@@ -28,6 +28,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos")))]
     pub struct ASWebAuthenticationSession;
 
+    #[cfg(not(any(target_os = "tvos")))]
     #[cfg(feature = "AuthenticationServices_ASWebAuthenticationSession")]
     unsafe impl ClassType for ASWebAuthenticationSession {
         type Super = NSObject;
@@ -42,6 +43,7 @@ unsafe impl NSObjectProtocol for ASWebAuthenticationSession {}
 #[cfg(not(any(target_os = "tvos")))]
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASWebAuthenticationSession")]
+    #[cfg(not(any(target_os = "tvos")))]
     unsafe impl ASWebAuthenticationSession {
         #[cfg(all(feature = "Foundation_NSString", feature = "Foundation_NSURL"))]
         #[method_id(@__retain_semantics Init initWithURL:callbackURLScheme:completionHandler:)]
@@ -99,6 +101,7 @@ extern_protocol!(
         NSObjectProtocol
     {
         #[cfg(feature = "AuthenticationServices_ASWebAuthenticationSession")]
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other presentationAnchorForWebAuthenticationSession:)]
         unsafe fn presentationAnchorForWebAuthenticationSession(
             &self,

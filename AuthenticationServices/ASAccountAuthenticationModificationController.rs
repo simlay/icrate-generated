@@ -14,6 +14,7 @@ extern_protocol!(
             feature = "AuthenticationServices_ASAccountAuthenticationModificationRequest",
             feature = "Foundation_NSDictionary"
         ))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method(accountAuthenticationModificationController:didSuccessfullyCompleteRequest:withUserInfo:)]
         unsafe fn accountAuthenticationModificationController_didSuccessfullyCompleteRequest_withUserInfo(
@@ -28,6 +29,7 @@ extern_protocol!(
             feature = "AuthenticationServices_ASAccountAuthenticationModificationRequest",
             feature = "Foundation_NSError"
         ))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method(accountAuthenticationModificationController:didFailRequest:withError:)]
         unsafe fn accountAuthenticationModificationController_didFailRequest_withError(
@@ -47,6 +49,7 @@ extern_protocol!(
         NSObjectProtocol
     {
         #[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationController")]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method_id(@__retain_semantics Other presentationAnchorForAccountAuthenticationModificationController:)]
         unsafe fn presentationAnchorForAccountAuthenticationModificationController(
             &self,
@@ -66,6 +69,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct ASAccountAuthenticationModificationController;
 
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationController")]
     unsafe impl ClassType for ASAccountAuthenticationModificationController {
         type Super = NSObject;
@@ -80,6 +84,7 @@ unsafe impl NSObjectProtocol for ASAccountAuthenticationModificationController {
 #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationController")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAccountAuthenticationModificationController {
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(
@@ -121,9 +126,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationController")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAccountAuthenticationModificationController {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

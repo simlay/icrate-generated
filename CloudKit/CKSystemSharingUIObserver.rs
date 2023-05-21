@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct CKSystemSharingUIObserver;
 
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "CloudKit_CKSystemSharingUIObserver")]
     unsafe impl ClassType for CKSystemSharingUIObserver {
         type Super = NSObject;
@@ -25,6 +26,7 @@ unsafe impl NSObjectProtocol for CKSystemSharingUIObserver {}
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "CloudKit_CKSystemSharingUIObserver")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl CKSystemSharingUIObserver {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

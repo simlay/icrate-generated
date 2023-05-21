@@ -227,6 +227,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
     pub struct UNLocationNotificationTrigger;
 
+    #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
     #[cfg(feature = "UserNotifications_UNLocationNotificationTrigger")]
     unsafe impl ClassType for UNLocationNotificationTrigger {
         #[inherits(NSObject)]
@@ -254,6 +255,7 @@ unsafe impl NSSecureCoding for UNLocationNotificationTrigger {}
 #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
 extern_methods!(
     #[cfg(feature = "UserNotifications_UNLocationNotificationTrigger")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
     unsafe impl UNLocationNotificationTrigger {
         #[cfg(feature = "CoreLocation_CLRegion")]
         #[method_id(@__retain_semantics Other region)]
@@ -265,18 +267,22 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos", target_os = "tvos")))]
 extern_methods!(
     /// Methods declared on superclass `UNNotificationTrigger`
     #[cfg(feature = "UserNotifications_UNLocationNotificationTrigger")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
     unsafe impl UNLocationNotificationTrigger {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
     }
 );
 
+#[cfg(not(any(target_os = "macos", target_os = "tvos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "UserNotifications_UNLocationNotificationTrigger")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos")))]
     unsafe impl UNLocationNotificationTrigger {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

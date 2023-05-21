@@ -50,6 +50,7 @@ extern_protocol!(
         NSObjectProtocol
     {
         #[cfg(feature = "AuthenticationServices_ASAuthorizationController")]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other presentationAnchorForAuthorizationController:)]
         unsafe fn presentationAnchorForAuthorizationController(
             &self,

@@ -12,6 +12,7 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     pub struct PHProject;
 
+    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     #[cfg(feature = "PhotoKit_PHProject")]
     unsafe impl ClassType for PHProject {
         #[inherits(PHCollection, PHObject, NSObject)]
@@ -31,6 +32,7 @@ unsafe impl NSObjectProtocol for PHProject {}
 #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 extern_methods!(
     #[cfg(feature = "PhotoKit_PHProject")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     unsafe impl PHProject {
         #[cfg(feature = "Foundation_NSData")]
         #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
@@ -43,9 +45,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "PhotoKit_PHProject")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     unsafe impl PHProject {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

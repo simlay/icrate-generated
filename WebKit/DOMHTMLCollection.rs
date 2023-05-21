@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLCollection;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLCollection")]
     unsafe impl ClassType for DOMHTMLCollection {
         #[inherits(WebScriptObject, NSObject)]

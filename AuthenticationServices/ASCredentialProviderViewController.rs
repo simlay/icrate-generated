@@ -27,6 +27,7 @@ unsafe impl NSUserInterfaceItemIdentification for ASCredentialProviderViewContro
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASCredentialProviderViewController")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASCredentialProviderViewController {
         #[cfg(feature = "AuthenticationServices_ASCredentialProviderExtensionContext")]
         #[method_id(@__retain_semantics Other extensionContext)]
@@ -61,10 +62,11 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSViewController`
     #[cfg(feature = "AuthenticationServices_ASCredentialProviderViewController")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASCredentialProviderViewController {
         #[cfg(feature = "Foundation_NSBundle")]
         #[cfg(not(any(target_os = "ios")))]
@@ -85,10 +87,11 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSResponder`
     #[cfg(feature = "AuthenticationServices_ASCredentialProviderViewController")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASCredentialProviderViewController {
         #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init init)]
@@ -96,9 +99,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "AuthenticationServices_ASCredentialProviderViewController")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASCredentialProviderViewController {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

@@ -8,6 +8,7 @@ use crate::Foundation::*;
 extern_protocol!(
     pub unsafe trait ASWebAuthenticationSessionWebBrowserSessionHandling {
         #[cfg(feature = "AuthenticationServices_ASWebAuthenticationSessionRequest")]
+        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[method(beginHandlingWebAuthenticationSessionRequest:)]
         unsafe fn beginHandlingWebAuthenticationSessionRequest(
             &self,
@@ -15,6 +16,7 @@ extern_protocol!(
         );
 
         #[cfg(feature = "AuthenticationServices_ASWebAuthenticationSessionRequest")]
+        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[method(cancelWebAuthenticationSessionRequest:)]
         unsafe fn cancelWebAuthenticationSessionRequest(
             &self,

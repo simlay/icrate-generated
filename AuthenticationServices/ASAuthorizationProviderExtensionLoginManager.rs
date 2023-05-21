@@ -23,6 +23,7 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub struct ASAuthorizationProviderExtensionLoginManager;
 
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionLoginManager")]
     unsafe impl ClassType for ASAuthorizationProviderExtensionLoginManager {
         type Super = NSObject;
@@ -37,6 +38,7 @@ unsafe impl NSObjectProtocol for ASAuthorizationProviderExtensionLoginManager {}
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionLoginManager")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAuthorizationProviderExtensionLoginManager {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

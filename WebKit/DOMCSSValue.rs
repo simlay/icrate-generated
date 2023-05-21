@@ -25,6 +25,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMCSSValue;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMCSSValue")]
     unsafe impl ClassType for DOMCSSValue {
         #[inherits(WebScriptObject, NSObject)]

@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMCounter;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMCounter")]
     unsafe impl ClassType for DOMCounter {
         #[inherits(WebScriptObject, NSObject)]

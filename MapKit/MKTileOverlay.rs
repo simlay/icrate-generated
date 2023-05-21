@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKTileOverlay;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKTileOverlay")]
     unsafe impl ClassType for MKTileOverlay {
         type Super = NSObject;
@@ -35,6 +36,7 @@ unsafe impl NSObjectProtocol for MKTileOverlay {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKTileOverlay")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKTileOverlay {
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Init initWithURLTemplate:)]
@@ -79,9 +81,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MapKit_MKTileOverlay")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKTileOverlay {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

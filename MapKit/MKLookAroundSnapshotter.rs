@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct MKLookAroundSnapshotter;
 
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKLookAroundSnapshotter")]
     unsafe impl ClassType for MKLookAroundSnapshotter {
         type Super = NSObject;
@@ -27,6 +28,7 @@ unsafe impl NSObjectProtocol for MKLookAroundSnapshotter {}
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKLookAroundSnapshotter")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl MKLookAroundSnapshotter {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

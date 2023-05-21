@@ -15,6 +15,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos")))]
     pub struct CLHeading;
 
+    #[cfg(not(any(target_os = "tvos")))]
     #[cfg(feature = "CoreLocation_CLHeading")]
     unsafe impl ClassType for CLHeading {
         type Super = NSObject;
@@ -41,6 +42,7 @@ unsafe impl NSSecureCoding for CLHeading {}
 #[cfg(not(any(target_os = "tvos")))]
 extern_methods!(
     #[cfg(feature = "CoreLocation_CLHeading")]
+    #[cfg(not(any(target_os = "tvos")))]
     unsafe impl CLHeading {
         #[method(magneticHeading)]
         pub unsafe fn magneticHeading(&self) -> CLLocationDirection;
@@ -66,9 +68,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "tvos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "CoreLocation_CLHeading")]
+    #[cfg(not(any(target_os = "tvos")))]
     unsafe impl CLHeading {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

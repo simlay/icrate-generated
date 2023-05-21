@@ -9,6 +9,7 @@ extern_class!(
     #[deprecated = "Use NSXPCConnection instead"]
     pub struct NSPortNameServer;
 
+    #[deprecated = "Use NSXPCConnection instead"]
     #[cfg(feature = "Foundation_NSPortNameServer")]
     unsafe impl ClassType for NSPortNameServer {
         type Super = NSObject;
@@ -65,6 +66,7 @@ extern_class!(
     #[deprecated = "Use NSXPCConnection instead"]
     pub struct NSMachBootstrapServer;
 
+    #[deprecated = "Use NSXPCConnection instead"]
     #[cfg(feature = "Foundation_NSMachBootstrapServer")]
     unsafe impl ClassType for NSMachBootstrapServer {
         #[inherits(NSObject)]
@@ -122,6 +124,7 @@ extern_class!(
     #[deprecated = "Use NSXPCConnection instead"]
     pub struct NSMessagePortNameServer;
 
+    #[deprecated = "Use NSXPCConnection instead"]
     #[cfg(feature = "Foundation_NSMessagePortNameServer")]
     unsafe impl ClassType for NSMessagePortNameServer {
         #[inherits(NSObject)]
@@ -171,6 +174,7 @@ extern_class!(
     #[deprecated = "Use NSXPCConnection instead"]
     pub struct NSSocketPortNameServer;
 
+    #[deprecated = "Use NSXPCConnection instead"]
     #[cfg(feature = "Foundation_NSSocketPortNameServer")]
     unsafe impl ClassType for NSSocketPortNameServer {
         #[inherits(NSObject)]

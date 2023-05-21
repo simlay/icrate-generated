@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKDirectionsResponse;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKDirectionsResponse")]
     unsafe impl ClassType for MKDirectionsResponse {
         type Super = NSObject;
@@ -27,6 +28,7 @@ unsafe impl NSObjectProtocol for MKDirectionsResponse {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKDirectionsResponse")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKDirectionsResponse {
         #[cfg(feature = "MapKit_MKMapItem")]
         #[method_id(@__retain_semantics Other source)]
@@ -42,9 +44,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MapKit_MKDirectionsResponse")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKDirectionsResponse {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
@@ -60,6 +64,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKRoute;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKRoute")]
     unsafe impl ClassType for MKRoute {
         type Super = NSObject;
@@ -74,6 +79,7 @@ unsafe impl NSObjectProtocol for MKRoute {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKRoute")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKRoute {
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other name)]
@@ -110,9 +116,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MapKit_MKRoute")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKRoute {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
@@ -128,6 +136,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKRouteStep;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKRouteStep")]
     unsafe impl ClassType for MKRouteStep {
         type Super = NSObject;
@@ -142,6 +151,7 @@ unsafe impl NSObjectProtocol for MKRouteStep {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKRouteStep")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKRouteStep {
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other instructions)]
@@ -163,9 +173,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MapKit_MKRouteStep")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKRouteStep {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
@@ -181,6 +193,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKETAResponse;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKETAResponse")]
     unsafe impl ClassType for MKETAResponse {
         type Super = NSObject;
@@ -195,6 +208,7 @@ unsafe impl NSObjectProtocol for MKETAResponse {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKETAResponse")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKETAResponse {
         #[cfg(feature = "MapKit_MKMapItem")]
         #[method_id(@__retain_semantics Other source)]
@@ -223,9 +237,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MapKit_MKETAResponse")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKETAResponse {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

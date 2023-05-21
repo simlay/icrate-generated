@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     pub struct MPAdTimeRange;
 
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPAdTimeRange")]
     unsafe impl ClassType for MPAdTimeRange {
         type Super = NSObject;
@@ -29,6 +30,7 @@ unsafe impl NSObjectProtocol for MPAdTimeRange {}
 #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MediaPlayer_MPAdTimeRange")]
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     unsafe impl MPAdTimeRange {
         #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method_id(@__retain_semantics New new)]
@@ -46,6 +48,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     pub struct MPNowPlayingSession;
 
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPNowPlayingSession")]
     unsafe impl ClassType for MPNowPlayingSession {
         type Super = NSObject;
@@ -60,6 +63,7 @@ unsafe impl NSObjectProtocol for MPNowPlayingSession {}
 #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MediaPlayer_MPNowPlayingSession")]
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     unsafe impl MPNowPlayingSession {
         #[cfg(all(feature = "AVFoundation_AVPlayer", feature = "Foundation_NSArray"))]
         #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
@@ -148,6 +152,7 @@ extern_protocol!(
     pub unsafe trait MPNowPlayingSessionDelegate: NSObjectProtocol {
         #[cfg(feature = "MediaPlayer_MPNowPlayingSession")]
         #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[optional]
         #[method(nowPlayingSessionDidChangeActive:)]
         unsafe fn nowPlayingSessionDidChangeActive(
@@ -156,6 +161,7 @@ extern_protocol!(
         );
 
         #[cfg(feature = "MediaPlayer_MPNowPlayingSession")]
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[optional]
         #[method(nowPlayingSessionDidChangeCanBecomeActive:)]

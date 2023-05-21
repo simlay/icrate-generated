@@ -26,6 +26,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct MKLookAroundViewController;
 
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKLookAroundViewController")]
     unsafe impl ClassType for MKLookAroundViewController {
         #[inherits(NSResponder, NSObject)]
@@ -61,6 +62,7 @@ unsafe impl NSUserInterfaceItemIdentification for MKLookAroundViewController {}
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKLookAroundViewController")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl MKLookAroundViewController {
         #[cfg(feature = "MapKit_MKLookAroundScene")]
         #[method_id(@__retain_semantics Init initWithScene:)]
@@ -134,10 +136,11 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSResponder`
     #[cfg(feature = "MapKit_MKLookAroundViewController")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl MKLookAroundViewController {
         #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init init)]
@@ -145,9 +148,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MapKit_MKLookAroundViewController")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl MKLookAroundViewController {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
@@ -158,6 +163,7 @@ extern_methods!(
 extern_protocol!(
     pub unsafe trait MKLookAroundViewControllerDelegate: NSObjectProtocol {
         #[cfg(feature = "MapKit_MKLookAroundViewController")]
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method(lookAroundViewControllerWillUpdateScene:)]
         unsafe fn lookAroundViewControllerWillUpdateScene(
@@ -166,6 +172,7 @@ extern_protocol!(
         );
 
         #[cfg(feature = "MapKit_MKLookAroundViewController")]
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method(lookAroundViewControllerDidUpdateScene:)]
         unsafe fn lookAroundViewControllerDidUpdateScene(
@@ -174,6 +181,7 @@ extern_protocol!(
         );
 
         #[cfg(feature = "MapKit_MKLookAroundViewController")]
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method(lookAroundViewControllerWillPresentFullScreen:)]
         unsafe fn lookAroundViewControllerWillPresentFullScreen(
@@ -182,6 +190,7 @@ extern_protocol!(
         );
 
         #[cfg(feature = "MapKit_MKLookAroundViewController")]
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method(lookAroundViewControllerDidPresentFullScreen:)]
         unsafe fn lookAroundViewControllerDidPresentFullScreen(
@@ -190,6 +199,7 @@ extern_protocol!(
         );
 
         #[cfg(feature = "MapKit_MKLookAroundViewController")]
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method(lookAroundViewControllerWillDismissFullScreen:)]
         unsafe fn lookAroundViewControllerWillDismissFullScreen(
@@ -198,6 +208,7 @@ extern_protocol!(
         );
 
         #[cfg(feature = "MapKit_MKLookAroundViewController")]
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method(lookAroundViewControllerDidDismissFullScreen:)]
         unsafe fn lookAroundViewControllerDidDismissFullScreen(

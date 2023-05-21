@@ -125,6 +125,7 @@ extern_class!(
     #[deprecated]
     pub struct NSInputServer;
 
+    #[deprecated]
     #[cfg(feature = "AppKit_NSInputServer")]
     unsafe impl ClassType for NSInputServer {
         type Super = NSObject;

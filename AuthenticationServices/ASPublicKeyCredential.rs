@@ -8,10 +8,12 @@ use crate::Foundation::*;
 extern_protocol!(
     pub unsafe trait ASPublicKeyCredential: ASAuthorizationCredential {
         #[cfg(feature = "Foundation_NSData")]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other rawClientDataJSON)]
         unsafe fn rawClientDataJSON(&self) -> Id<NSData>;
 
         #[cfg(feature = "Foundation_NSData")]
+        #[cfg(not(any(target_os = "watchos")))]
         #[method_id(@__retain_semantics Other credentialID)]
         unsafe fn credentialID(&self) -> Id<NSData>;
     }

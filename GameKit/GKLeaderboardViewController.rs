@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated = "Use GKGameCenterViewController instead"]
     pub struct GKLeaderboardViewController;
 
+    #[deprecated = "Use GKGameCenterViewController instead"]
     #[cfg(feature = "GameKit_GKLeaderboardViewController")]
     unsafe impl ClassType for GKLeaderboardViewController {
         #[inherits(NSViewController, NSResponder, NSObject)]
@@ -42,7 +43,6 @@ extern_methods!(
     unsafe impl GKLeaderboardViewController {}
 );
 
-#[cfg(not(any(target_os = "ios")))]
 extern_methods!(
     /// Methods declared on superclass `NSViewController`
     #[cfg(feature = "GameKit_GKLeaderboardViewController")]
@@ -66,7 +66,6 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
 extern_methods!(
     /// Methods declared on superclass `NSResponder`
     #[cfg(feature = "GameKit_GKLeaderboardViewController")]

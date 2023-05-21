@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct NSMovie;
 
+    #[deprecated]
     #[cfg(feature = "AppKit_NSMovie")]
     unsafe impl ClassType for NSMovie {
         type Super = NSObject;

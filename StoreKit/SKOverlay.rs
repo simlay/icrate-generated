@@ -9,6 +9,7 @@ use crate::StoreKit::*;
 extern_protocol!(
     pub unsafe trait SKOverlayDelegate: NSObjectProtocol {
         #[cfg(all(feature = "Foundation_NSError", feature = "StoreKit_SKOverlay"))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method(storeOverlay:didFailToLoadWithError:)]
         unsafe fn storeOverlay_didFailToLoadWithError(&self, overlay: &SKOverlay, error: &NSError);
@@ -17,6 +18,7 @@ extern_protocol!(
             feature = "StoreKit_SKOverlay",
             feature = "StoreKit_SKOverlayTransitionContext"
         ))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method(storeOverlay:willStartPresentation:)]
         unsafe fn storeOverlay_willStartPresentation(
@@ -29,6 +31,7 @@ extern_protocol!(
             feature = "StoreKit_SKOverlay",
             feature = "StoreKit_SKOverlayTransitionContext"
         ))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method(storeOverlay:didFinishPresentation:)]
         unsafe fn storeOverlay_didFinishPresentation(
@@ -41,6 +44,7 @@ extern_protocol!(
             feature = "StoreKit_SKOverlay",
             feature = "StoreKit_SKOverlayTransitionContext"
         ))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method(storeOverlay:willStartDismissal:)]
         unsafe fn storeOverlay_willStartDismissal(
@@ -53,6 +57,7 @@ extern_protocol!(
             feature = "StoreKit_SKOverlay",
             feature = "StoreKit_SKOverlayTransitionContext"
         ))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method(storeOverlay:didFinishDismissal:)]
         unsafe fn storeOverlay_didFinishDismissal(
@@ -71,6 +76,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct SKOverlay;
 
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "StoreKit_SKOverlay")]
     unsafe impl ClassType for SKOverlay {
         type Super = NSObject;
@@ -85,6 +91,7 @@ unsafe impl NSObjectProtocol for SKOverlay {}
 #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "StoreKit_SKOverlay")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl SKOverlay {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

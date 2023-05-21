@@ -57,6 +57,7 @@ extern_protocol!(
             feature = "Foundation_NSString",
             feature = "GameKit_GKVoiceChatService"
         ))]
+        #[cfg(not(any(target_os = "macos")))]
         #[method(voiceChatService:sendData:toParticipantID:)]
         unsafe fn voiceChatService_sendData_toParticipantID(
             &self,
@@ -66,6 +67,7 @@ extern_protocol!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "macos")))]
         #[method_id(@__retain_semantics Other participantID)]
         unsafe fn participantID(&self) -> Id<NSString>;
 
@@ -74,6 +76,7 @@ extern_protocol!(
             feature = "Foundation_NSString",
             feature = "GameKit_GKVoiceChatService"
         ))]
+        #[cfg(not(any(target_os = "macos")))]
         #[optional]
         #[method(voiceChatService:sendRealTimeData:toParticipantID:)]
         unsafe fn voiceChatService_sendRealTimeData_toParticipantID(
@@ -87,6 +90,7 @@ extern_protocol!(
             feature = "Foundation_NSString",
             feature = "GameKit_GKVoiceChatService"
         ))]
+        #[cfg(not(any(target_os = "macos")))]
         #[optional]
         #[method(voiceChatService:didStartWithParticipantID:)]
         unsafe fn voiceChatService_didStartWithParticipantID(
@@ -100,6 +104,7 @@ extern_protocol!(
             feature = "Foundation_NSString",
             feature = "GameKit_GKVoiceChatService"
         ))]
+        #[cfg(not(any(target_os = "macos")))]
         #[optional]
         #[method(voiceChatService:didNotStartWithParticipantID:error:)]
         unsafe fn voiceChatService_didNotStartWithParticipantID_error(
@@ -114,6 +119,7 @@ extern_protocol!(
             feature = "Foundation_NSString",
             feature = "GameKit_GKVoiceChatService"
         ))]
+        #[cfg(not(any(target_os = "macos")))]
         #[optional]
         #[method(voiceChatService:didStopWithParticipantID:error:)]
         unsafe fn voiceChatService_didStopWithParticipantID_error(
@@ -127,6 +133,7 @@ extern_protocol!(
             feature = "Foundation_NSString",
             feature = "GameKit_GKVoiceChatService"
         ))]
+        #[cfg(not(any(target_os = "macos")))]
         #[optional]
         #[method(voiceChatService:didReceiveInvitationFromParticipantID:callID:)]
         unsafe fn voiceChatService_didReceiveInvitationFromParticipantID_callID(

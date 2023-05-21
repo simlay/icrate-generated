@@ -12,6 +12,8 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct MPPlayableContentManagerContext;
 
+    #[deprecated = "Use CarPlay framework"]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPPlayableContentManagerContext")]
     unsafe impl ClassType for MPPlayableContentManagerContext {
         type Super = NSObject;
@@ -26,6 +28,7 @@ unsafe impl NSObjectProtocol for MPPlayableContentManagerContext {}
 #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MediaPlayer_MPPlayableContentManagerContext")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl MPPlayableContentManagerContext {
         #[method(enforcedContentItemsCount)]
         pub unsafe fn enforcedContentItemsCount(&self) -> NSInteger;
@@ -45,9 +48,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MediaPlayer_MPPlayableContentManagerContext")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl MPPlayableContentManagerContext {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

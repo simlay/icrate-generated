@@ -15,6 +15,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos")))]
     pub struct UNNotificationSound;
 
+    #[cfg(not(any(target_os = "tvos")))]
     #[cfg(feature = "UserNotifications_UNNotificationSound")]
     unsafe impl ClassType for UNNotificationSound {
         type Super = NSObject;
@@ -41,6 +42,7 @@ unsafe impl NSSecureCoding for UNNotificationSound {}
 #[cfg(not(any(target_os = "tvos")))]
 extern_methods!(
     #[cfg(feature = "UserNotifications_UNNotificationSound")]
+    #[cfg(not(any(target_os = "tvos")))]
     unsafe impl UNNotificationSound {
         #[method_id(@__retain_semantics Other defaultSound)]
         pub unsafe fn defaultSound() -> Id<UNNotificationSound>;
@@ -81,9 +83,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "tvos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "UserNotifications_UNNotificationSound")]
+    #[cfg(not(any(target_os = "tvos")))]
     unsafe impl UNNotificationSound {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

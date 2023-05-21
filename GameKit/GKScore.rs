@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated = "Replaced by GKLeaderboardScore"]
     pub struct GKScore;
 
+    #[deprecated = "Replaced by GKLeaderboardScore"]
     #[cfg(feature = "GameKit_GKScore")]
     unsafe impl ClassType for GKScore {
         type Super = NSObject;

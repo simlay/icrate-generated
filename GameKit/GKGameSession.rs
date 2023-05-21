@@ -28,6 +28,8 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct GKGameSession;
 
+    #[deprecated = "For real-time matches, use GKMatchmakerViewController. For turn-based matches, use GKTurnBasedMatchmakerViewController."]
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "GameKit_GKGameSession")]
     unsafe impl ClassType for GKGameSession {
         type Super = NSObject;
@@ -42,6 +44,7 @@ unsafe impl NSObjectProtocol for GKGameSession {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "GameKit_GKGameSession")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl GKGameSession {
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other identifier)]
@@ -186,9 +189,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "GameKit_GKGameSession")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl GKGameSession {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

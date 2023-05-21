@@ -20,6 +20,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKGeoJSONDecoder;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKGeoJSONDecoder")]
     unsafe impl ClassType for MKGeoJSONDecoder {
         type Super = NSObject;
@@ -34,6 +35,7 @@ unsafe impl NSObjectProtocol for MKGeoJSONDecoder {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKGeoJSONDecoder")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKGeoJSONDecoder {
         #[cfg(all(
             feature = "Foundation_NSArray",
@@ -48,9 +50,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MapKit_MKGeoJSONDecoder")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKGeoJSONDecoder {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
@@ -66,6 +70,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKGeoJSONFeature;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKGeoJSONFeature")]
     unsafe impl ClassType for MKGeoJSONFeature {
         type Super = NSObject;
@@ -84,6 +89,7 @@ unsafe impl NSObjectProtocol for MKGeoJSONFeature {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKGeoJSONFeature")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKGeoJSONFeature {
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other identifier)]
@@ -99,9 +105,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MapKit_MKGeoJSONFeature")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKGeoJSONFeature {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
@@ -115,6 +123,7 @@ extern_methods!(
 extern_methods!(
     /// MKGeoJSONSerialization
     #[cfg(feature = "MapKit_MKPointAnnotation")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKPointAnnotation {}
 );
 
@@ -126,6 +135,7 @@ unsafe impl MKGeoJSONObject for MKPointAnnotation {}
 extern_methods!(
     /// MKGeoJSONSerialization
     #[cfg(feature = "MapKit_MKMultiPoint")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKMultiPoint {}
 );
 
@@ -137,6 +147,7 @@ unsafe impl MKGeoJSONObject for MKMultiPoint {}
 extern_methods!(
     /// MKGeoJSONSerialization
     #[cfg(feature = "MapKit_MKMultiPolyline")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKMultiPolyline {}
 );
 
@@ -148,6 +159,7 @@ unsafe impl MKGeoJSONObject for MKMultiPolyline {}
 extern_methods!(
     /// MKGeoJSONSerialization
     #[cfg(feature = "MapKit_MKMultiPolygon")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKMultiPolygon {}
 );
 
@@ -159,6 +171,7 @@ unsafe impl MKGeoJSONObject for MKMultiPolygon {}
 extern_methods!(
     /// MKGeoJSONSerialization
     #[cfg(feature = "MapKit_MKPolyline")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKPolyline {}
 );
 
@@ -170,6 +183,7 @@ unsafe impl MKGeoJSONObject for MKPolyline {}
 extern_methods!(
     /// MKGeoJSONSerialization
     #[cfg(feature = "MapKit_MKPolygon")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKPolygon {}
 );
 

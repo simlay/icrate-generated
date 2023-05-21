@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct CNSaveRequest;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "Contacts_CNSaveRequest")]
     unsafe impl ClassType for CNSaveRequest {
         type Super = NSObject;
@@ -24,6 +25,7 @@ unsafe impl NSObjectProtocol for CNSaveRequest {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "Contacts_CNSaveRequest")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl CNSaveRequest {
         #[cfg(all(feature = "Contacts_CNMutableContact", feature = "Foundation_NSString"))]
         #[method(addContact:toContainerWithIdentifier:)]
@@ -91,9 +93,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "Contacts_CNSaveRequest")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl CNSaveRequest {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

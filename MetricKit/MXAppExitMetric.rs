@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct MXForegroundExitData;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "MetricKit_MXForegroundExitData")]
     unsafe impl ClassType for MXForegroundExitData {
         type Super = NSObject;
@@ -32,6 +33,7 @@ unsafe impl NSSecureCoding for MXForegroundExitData {}
 #[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "MetricKit_MXForegroundExitData")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXForegroundExitData {
         #[method(cumulativeNormalAppExitCount)]
         pub unsafe fn cumulativeNormalAppExitCount(&self) -> NSUInteger;
@@ -53,9 +55,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MetricKit_MXForegroundExitData")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXForegroundExitData {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
@@ -71,6 +75,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct MXBackgroundExitData;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "MetricKit_MXBackgroundExitData")]
     unsafe impl ClassType for MXBackgroundExitData {
         type Super = NSObject;
@@ -93,6 +98,7 @@ unsafe impl NSSecureCoding for MXBackgroundExitData {}
 #[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "MetricKit_MXBackgroundExitData")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXBackgroundExitData {
         #[method(cumulativeNormalAppExitCount)]
         pub unsafe fn cumulativeNormalAppExitCount(&self) -> NSUInteger;
@@ -126,9 +132,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MetricKit_MXBackgroundExitData")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXBackgroundExitData {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
@@ -144,6 +152,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct MXAppExitMetric;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "MetricKit_MXAppExitMetric")]
     unsafe impl ClassType for MXAppExitMetric {
         #[inherits(NSObject)]
@@ -167,6 +176,7 @@ unsafe impl NSSecureCoding for MXAppExitMetric {}
 #[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "MetricKit_MXAppExitMetric")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXAppExitMetric {
         #[cfg(feature = "MetricKit_MXForegroundExitData")]
         #[method_id(@__retain_semantics Other foregroundExitData)]
@@ -178,9 +188,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MetricKit_MXAppExitMetric")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXAppExitMetric {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

@@ -12,6 +12,7 @@ extern_class!(
     #[cfg(not(any(target_os = "ios")))]
     pub struct HKLiveWorkoutDataSource;
 
+    #[cfg(not(any(target_os = "ios")))]
     #[cfg(feature = "HealthKit_HKLiveWorkoutDataSource")]
     unsafe impl ClassType for HKLiveWorkoutDataSource {
         type Super = NSObject;
@@ -26,6 +27,7 @@ unsafe impl NSObjectProtocol for HKLiveWorkoutDataSource {}
 #[cfg(not(any(target_os = "ios")))]
 extern_methods!(
     #[cfg(feature = "HealthKit_HKLiveWorkoutDataSource")]
+    #[cfg(not(any(target_os = "ios")))]
     unsafe impl HKLiveWorkoutDataSource {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
@@ -62,9 +64,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "ios")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "HealthKit_HKLiveWorkoutDataSource")]
+    #[cfg(not(any(target_os = "ios")))]
     unsafe impl HKLiveWorkoutDataSource {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

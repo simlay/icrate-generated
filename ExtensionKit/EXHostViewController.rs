@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub struct EXHostViewController;
 
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "ExtensionKit_EXHostViewController")]
     unsafe impl ClassType for EXHostViewController {
         #[inherits(NSResponder, NSObject)]
@@ -42,6 +43,7 @@ unsafe impl NSUserInterfaceItemIdentification for EXHostViewController {}
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "ExtensionKit_EXHostViewController")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl EXHostViewController {
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(
@@ -69,10 +71,11 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSViewController`
     #[cfg(feature = "ExtensionKit_EXHostViewController")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl EXHostViewController {
         #[cfg(feature = "Foundation_NSBundle")]
         #[cfg(not(any(target_os = "ios")))]
@@ -93,10 +96,11 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSResponder`
     #[cfg(feature = "ExtensionKit_EXHostViewController")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl EXHostViewController {
         #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init init)]
@@ -104,9 +108,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "ExtensionKit_EXHostViewController")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl EXHostViewController {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
@@ -117,6 +123,7 @@ extern_methods!(
 extern_protocol!(
     pub unsafe trait EXHostViewControllerDelegate: NSObjectProtocol {
         #[cfg(feature = "ExtensionKit_EXHostViewController")]
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method(hostViewControllerDidActivate:)]
         unsafe fn hostViewControllerDidActivate(&self, view_controller: &EXHostViewController);
@@ -125,6 +132,7 @@ extern_protocol!(
             feature = "ExtensionKit_EXHostViewController",
             feature = "Foundation_NSError"
         ))]
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method(hostViewControllerWillDeactivate:error:)]
         unsafe fn hostViewControllerWillDeactivate_error(

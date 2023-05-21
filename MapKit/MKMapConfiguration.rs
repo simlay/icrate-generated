@@ -21,6 +21,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKMapConfiguration;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKMapConfiguration")]
     unsafe impl ClassType for MKMapConfiguration {
         type Super = NSObject;
@@ -47,6 +48,7 @@ unsafe impl NSSecureCoding for MKMapConfiguration {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKMapConfiguration")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKMapConfiguration {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     pub struct GCRacingWheelInputState;
 
+    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     #[cfg(feature = "GameController_GCRacingWheelInputState")]
     unsafe impl ClassType for GCRacingWheelInputState {
         type Super = NSObject;
@@ -29,6 +30,7 @@ unsafe impl NSObjectProtocol for GCRacingWheelInputState {}
 #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 extern_methods!(
     #[cfg(feature = "GameController_GCRacingWheelInputState")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     unsafe impl GCRacingWheelInputState {
         #[cfg(feature = "GameController_GCSteeringWheelElement")]
         #[method_id(@__retain_semantics Other wheel)]
@@ -49,9 +51,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "GameController_GCRacingWheelInputState")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     unsafe impl GCRacingWheelInputState {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
@@ -67,6 +71,7 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     pub struct GCRacingWheelInput;
 
+    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     #[cfg(feature = "GameController_GCRacingWheelInput")]
     unsafe impl ClassType for GCRacingWheelInput {
         #[inherits(NSObject)]
@@ -90,6 +95,7 @@ unsafe impl NSObjectProtocol for GCRacingWheelInput {}
 #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 extern_methods!(
     #[cfg(feature = "GameController_GCRacingWheelInput")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     unsafe impl GCRacingWheelInput {
         #[method_id(@__retain_semantics Other capture)]
         pub unsafe fn capture(&self) -> Id<GCRacingWheelInputState>;
@@ -99,9 +105,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "GameController_GCRacingWheelInput")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     unsafe impl GCRacingWheelInput {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

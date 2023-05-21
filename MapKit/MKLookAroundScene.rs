@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct MKLookAroundScene;
 
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKLookAroundScene")]
     unsafe impl ClassType for MKLookAroundScene {
         type Super = NSObject;
@@ -31,6 +32,7 @@ unsafe impl NSObjectProtocol for MKLookAroundScene {}
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKLookAroundScene")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl MKLookAroundScene {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

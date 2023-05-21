@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     pub struct MPMusicPlayerQueueDescriptor;
 
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPMusicPlayerQueueDescriptor")]
     unsafe impl ClassType for MPMusicPlayerQueueDescriptor {
         type Super = NSObject;
@@ -25,6 +26,7 @@ unsafe impl NSObjectProtocol for MPMusicPlayerQueueDescriptor {}
 #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MediaPlayer_MPMusicPlayerQueueDescriptor")]
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     unsafe impl MPMusicPlayerQueueDescriptor {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
@@ -40,6 +42,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct MPMusicPlayerMediaItemQueueDescriptor;
 
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPMusicPlayerMediaItemQueueDescriptor")]
     unsafe impl ClassType for MPMusicPlayerMediaItemQueueDescriptor {
         #[inherits(NSObject)]
@@ -55,6 +58,7 @@ unsafe impl NSObjectProtocol for MPMusicPlayerMediaItemQueueDescriptor {}
 #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MediaPlayer_MPMusicPlayerMediaItemQueueDescriptor")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl MPMusicPlayerMediaItemQueueDescriptor {
         #[cfg(feature = "MediaPlayer_MPMediaQuery")]
         #[method_id(@__retain_semantics Init initWithQuery:)]
@@ -100,10 +104,11 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `MPMusicPlayerQueueDescriptor`
     #[cfg(feature = "MediaPlayer_MPMusicPlayerMediaItemQueueDescriptor")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl MPMusicPlayerMediaItemQueueDescriptor {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
@@ -119,6 +124,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     pub struct MPMusicPlayerStoreQueueDescriptor;
 
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPMusicPlayerStoreQueueDescriptor")]
     unsafe impl ClassType for MPMusicPlayerStoreQueueDescriptor {
         #[inherits(NSObject)]
@@ -134,6 +140,7 @@ unsafe impl NSObjectProtocol for MPMusicPlayerStoreQueueDescriptor {}
 #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MediaPlayer_MPMusicPlayerStoreQueueDescriptor")]
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     unsafe impl MPMusicPlayerStoreQueueDescriptor {
         #[cfg(all(feature = "Foundation_NSArray", feature = "Foundation_NSString"))]
         #[method_id(@__retain_semantics Init initWithStoreIDs:)]
@@ -180,6 +187,7 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `MPMusicPlayerQueueDescriptor`
     #[cfg(feature = "MediaPlayer_MPMusicPlayerStoreQueueDescriptor")]
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     unsafe impl MPMusicPlayerStoreQueueDescriptor {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
@@ -195,6 +203,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     pub struct MPMusicPlayerPlayParameters;
 
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPMusicPlayerPlayParameters")]
     unsafe impl ClassType for MPMusicPlayerPlayParameters {
         type Super = NSObject;
@@ -209,6 +218,7 @@ unsafe impl NSObjectProtocol for MPMusicPlayerPlayParameters {}
 #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MediaPlayer_MPMusicPlayerPlayParameters")]
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     unsafe impl MPMusicPlayerPlayParameters {
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
         #[method_id(@__retain_semantics Init initWithDictionary:)]
@@ -223,9 +233,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MediaPlayer_MPMusicPlayerPlayParameters")]
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     unsafe impl MPMusicPlayerPlayParameters {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
@@ -241,6 +253,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     pub struct MPMusicPlayerPlayParametersQueueDescriptor;
 
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPMusicPlayerPlayParametersQueueDescriptor")]
     unsafe impl ClassType for MPMusicPlayerPlayParametersQueueDescriptor {
         #[inherits(NSObject)]
@@ -256,6 +269,7 @@ unsafe impl NSObjectProtocol for MPMusicPlayerPlayParametersQueueDescriptor {}
 #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MediaPlayer_MPMusicPlayerPlayParametersQueueDescriptor")]
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     unsafe impl MPMusicPlayerPlayParametersQueueDescriptor {
         #[cfg(all(
             feature = "Foundation_NSArray",
@@ -317,6 +331,7 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `MPMusicPlayerQueueDescriptor`
     #[cfg(feature = "MediaPlayer_MPMusicPlayerPlayParametersQueueDescriptor")]
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     unsafe impl MPMusicPlayerPlayParametersQueueDescriptor {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

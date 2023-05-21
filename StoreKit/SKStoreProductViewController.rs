@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos")))]
     pub struct SKStoreProductViewController;
 
+    #[cfg(not(any(target_os = "tvos")))]
     #[cfg(feature = "StoreKit_SKStoreProductViewController")]
     unsafe impl ClassType for SKStoreProductViewController {
         #[inherits(NSResponder, NSObject)]
@@ -42,6 +43,7 @@ unsafe impl NSUserInterfaceItemIdentification for SKStoreProductViewController {
 #[cfg(not(any(target_os = "tvos")))]
 extern_methods!(
     #[cfg(feature = "StoreKit_SKStoreProductViewController")]
+    #[cfg(not(any(target_os = "tvos")))]
     unsafe impl SKStoreProductViewController {
         #[cfg(not(any(target_os = "tvos")))]
         #[method_id(@__retain_semantics Other delegate)]
@@ -86,10 +88,11 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
+#[cfg(not(any(target_os = "tvos")))]
 extern_methods!(
     /// Methods declared on superclass `NSViewController`
     #[cfg(feature = "StoreKit_SKStoreProductViewController")]
+    #[cfg(not(any(target_os = "tvos")))]
     unsafe impl SKStoreProductViewController {
         #[cfg(feature = "Foundation_NSBundle")]
         #[cfg(not(any(target_os = "ios")))]
@@ -110,10 +113,11 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
+#[cfg(not(any(target_os = "tvos")))]
 extern_methods!(
     /// Methods declared on superclass `NSResponder`
     #[cfg(feature = "StoreKit_SKStoreProductViewController")]
+    #[cfg(not(any(target_os = "tvos")))]
     unsafe impl SKStoreProductViewController {
         #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init init)]
@@ -121,9 +125,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "tvos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "StoreKit_SKStoreProductViewController")]
+    #[cfg(not(any(target_os = "tvos")))]
     unsafe impl SKStoreProductViewController {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

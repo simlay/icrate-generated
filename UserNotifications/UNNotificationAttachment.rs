@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos")))]
     pub struct UNNotificationAttachment;
 
+    #[cfg(not(any(target_os = "tvos")))]
     #[cfg(feature = "UserNotifications_UNNotificationAttachment")]
     unsafe impl ClassType for UNNotificationAttachment {
         type Super = NSObject;
@@ -37,6 +38,7 @@ unsafe impl NSSecureCoding for UNNotificationAttachment {}
 #[cfg(not(any(target_os = "tvos")))]
 extern_methods!(
     #[cfg(feature = "UserNotifications_UNNotificationAttachment")]
+    #[cfg(not(any(target_os = "tvos")))]
     unsafe impl UNNotificationAttachment {
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other identifier)]
@@ -68,9 +70,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "tvos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "UserNotifications_UNNotificationAttachment")]
+    #[cfg(not(any(target_os = "tvos")))]
     unsafe impl UNNotificationAttachment {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

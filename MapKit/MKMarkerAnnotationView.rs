@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKMarkerAnnotationView;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKMarkerAnnotationView")]
     unsafe impl ClassType for MKMarkerAnnotationView {
         #[inherits(NSView, NSResponder, NSObject)]
@@ -56,6 +57,7 @@ unsafe impl NSUserInterfaceItemIdentification for MKMarkerAnnotationView {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKMarkerAnnotationView")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKMarkerAnnotationView {
         #[method(titleVisibility)]
         pub unsafe fn titleVisibility(&self) -> MKFeatureVisibility;
@@ -117,9 +119,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `MKAnnotationView`
     #[cfg(feature = "MapKit_MKMarkerAnnotationView")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKMarkerAnnotationView {
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Init initWithAnnotation:reuseIdentifier:)]
@@ -138,10 +142,11 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSView`
     #[cfg(feature = "MapKit_MKMarkerAnnotationView")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKMarkerAnnotationView {
         #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithFrame:)]
@@ -149,10 +154,11 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSResponder`
     #[cfg(feature = "MapKit_MKMarkerAnnotationView")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKMarkerAnnotationView {
         #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init init)]
@@ -160,9 +166,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MapKit_MKMarkerAnnotationView")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKMarkerAnnotationView {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

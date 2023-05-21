@@ -12,6 +12,7 @@ extern_protocol!(
             feature = "IdentityLookup_ILMessageFilterQueryRequest",
             feature = "IdentityLookup_ILMessageFilterQueryResponse"
         ))]
+        #[cfg(not(any(target_os = "macos")))]
         #[method(handleQueryRequest:context:completion:)]
         unsafe fn handleQueryRequest_context_completion(
             &self,

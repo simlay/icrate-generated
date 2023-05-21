@@ -26,6 +26,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct MPMediaLibrary;
 
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPMediaLibrary")]
     unsafe impl ClassType for MPMediaLibrary {
         type Super = NSObject;
@@ -48,6 +49,7 @@ unsafe impl NSSecureCoding for MPMediaLibrary {}
 #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MediaPlayer_MPMediaLibrary")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl MPMediaLibrary {
         #[method_id(@__retain_semantics Other defaultMediaLibrary)]
         pub unsafe fn defaultMediaLibrary() -> Id<MPMediaLibrary>;
@@ -99,9 +101,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MediaPlayer_MPMediaLibrary")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl MPMediaLibrary {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

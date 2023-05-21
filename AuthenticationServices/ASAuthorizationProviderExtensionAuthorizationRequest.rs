@@ -29,6 +29,7 @@ extern_protocol!(
         #[cfg(
             feature = "AuthenticationServices_ASAuthorizationProviderExtensionAuthorizationRequest"
         )]
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(beginAuthorizationWithRequest:)]
         unsafe fn beginAuthorizationWithRequest(
             &self,
@@ -38,6 +39,7 @@ extern_protocol!(
         #[cfg(
             feature = "AuthenticationServices_ASAuthorizationProviderExtensionAuthorizationRequest"
         )]
+        #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method(cancelAuthorizationWithRequest:)]
         unsafe fn cancelAuthorizationWithRequest(
@@ -55,6 +57,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct ASAuthorizationProviderExtensionAuthorizationRequest;
 
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionAuthorizationRequest")]
     unsafe impl ClassType for ASAuthorizationProviderExtensionAuthorizationRequest {
         type Super = NSObject;
@@ -69,6 +72,7 @@ unsafe impl NSObjectProtocol for ASAuthorizationProviderExtensionAuthorizationRe
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionAuthorizationRequest")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAuthorizationProviderExtensionAuthorizationRequest {
         #[method(doNotHandle)]
         pub unsafe fn doNotHandle(&self);
@@ -178,9 +182,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionAuthorizationRequest")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAuthorizationProviderExtensionAuthorizationRequest {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

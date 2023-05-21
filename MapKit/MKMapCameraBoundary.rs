@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKMapCameraBoundary;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKMapCameraBoundary")]
     unsafe impl ClassType for MKMapCameraBoundary {
         type Super = NSObject;
@@ -39,6 +40,7 @@ unsafe impl NSSecureCoding for MKMapCameraBoundary {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKMapCameraBoundary")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKMapCameraBoundary {
         #[method_id(@__retain_semantics Init initWithMapRect:)]
         pub unsafe fn initWithMapRect(
@@ -67,9 +69,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MapKit_MKMapCameraBoundary")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKMapCameraBoundary {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

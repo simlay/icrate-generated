@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMCSSPageRule;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMCSSPageRule")]
     unsafe impl ClassType for DOMCSSPageRule {
         #[inherits(DOMObject, WebScriptObject, NSObject)]

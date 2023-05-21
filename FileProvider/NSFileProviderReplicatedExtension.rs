@@ -288,6 +288,7 @@ extern_protocol!(
 extern_protocol!(
     pub unsafe trait NSFileProviderUserInteractionSuppressing: NSObjectProtocol {
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "ios")))]
         #[method(setInteractionSuppressed:forIdentifier:)]
         unsafe fn setInteractionSuppressed_forIdentifier(
             &self,
@@ -296,6 +297,7 @@ extern_protocol!(
         );
 
         #[cfg(feature = "Foundation_NSString")]
+        #[cfg(not(any(target_os = "ios")))]
         #[method(isInteractionSuppressedForIdentifier:)]
         unsafe fn isInteractionSuppressedForIdentifier(
             &self,
@@ -330,6 +332,7 @@ extern_protocol!(
             feature = "Foundation_NSProgress",
             feature = "Foundation_NSURL"
         ))]
+        #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Other fetchPartialContentsForItemWithIdentifier:version:request:minimalRange:aligningTo:options:completionHandler:)]
         unsafe fn fetchPartialContentsForItemWithIdentifier_version_request_minimalRange_aligningTo_options_completionHandler(
             &self,

@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct CLBeaconRegion;
 
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "CoreLocation_CLBeaconRegion")]
     unsafe impl ClassType for CLBeaconRegion {
         #[inherits(NSObject)]
@@ -38,6 +39,7 @@ unsafe impl NSSecureCoding for CLBeaconRegion {}
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "CoreLocation_CLBeaconRegion")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl CLBeaconRegion {
         #[cfg(all(feature = "Foundation_NSString", feature = "Foundation_NSUUID"))]
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
@@ -153,9 +155,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `CLRegion`
     #[cfg(feature = "CoreLocation_CLBeaconRegion")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl CLBeaconRegion {
         #[cfg(feature = "Foundation_NSString")]
         #[deprecated = "Please see CLCircularRegion"]
@@ -170,9 +174,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "CoreLocation_CLBeaconRegion")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl CLBeaconRegion {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
@@ -188,6 +194,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct CLBeacon;
 
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "CoreLocation_CLBeacon")]
     unsafe impl ClassType for CLBeacon {
         type Super = NSObject;
@@ -214,6 +221,7 @@ unsafe impl NSSecureCoding for CLBeacon {}
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "CoreLocation_CLBeacon")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl CLBeacon {
         #[cfg(feature = "Foundation_NSDate")]
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
@@ -249,9 +257,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "CoreLocation_CLBeacon")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl CLBeacon {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

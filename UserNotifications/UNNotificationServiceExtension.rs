@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos")))]
     pub struct UNNotificationServiceExtension;
 
+    #[cfg(not(any(target_os = "tvos")))]
     #[cfg(feature = "UserNotifications_UNNotificationServiceExtension")]
     unsafe impl ClassType for UNNotificationServiceExtension {
         type Super = NSObject;
@@ -25,6 +26,7 @@ unsafe impl NSObjectProtocol for UNNotificationServiceExtension {}
 #[cfg(not(any(target_os = "tvos")))]
 extern_methods!(
     #[cfg(feature = "UserNotifications_UNNotificationServiceExtension")]
+    #[cfg(not(any(target_os = "tvos")))]
     unsafe impl UNNotificationServiceExtension {
         #[cfg(all(
             feature = "UserNotifications_UNNotificationContent",
@@ -42,9 +44,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "tvos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "UserNotifications_UNNotificationServiceExtension")]
+    #[cfg(not(any(target_os = "tvos")))]
     unsafe impl UNNotificationServiceExtension {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct MXAppResponsivenessMetric;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "MetricKit_MXAppResponsivenessMetric")]
     unsafe impl ClassType for MXAppResponsivenessMetric {
         #[inherits(NSObject)]
@@ -33,6 +34,7 @@ unsafe impl NSSecureCoding for MXAppResponsivenessMetric {}
 #[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "MetricKit_MXAppResponsivenessMetric")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXAppResponsivenessMetric {
         #[cfg(all(
             feature = "Foundation_NSUnitDuration",
@@ -43,9 +45,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MetricKit_MXAppResponsivenessMetric")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXAppResponsivenessMetric {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

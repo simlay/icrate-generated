@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct WebBackForwardList;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_WebBackForwardList")]
     unsafe impl ClassType for WebBackForwardList {
         type Super = NSObject;

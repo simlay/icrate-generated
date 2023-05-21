@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     pub struct MPMusicPlayerControllerQueue;
 
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPMusicPlayerControllerQueue")]
     unsafe impl ClassType for MPMusicPlayerControllerQueue {
         type Super = NSObject;
@@ -25,6 +26,7 @@ unsafe impl NSObjectProtocol for MPMusicPlayerControllerQueue {}
 #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MediaPlayer_MPMusicPlayerControllerQueue")]
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     unsafe impl MPMusicPlayerControllerQueue {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
@@ -44,6 +46,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     pub struct MPMusicPlayerControllerMutableQueue;
 
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPMusicPlayerControllerMutableQueue")]
     unsafe impl ClassType for MPMusicPlayerControllerMutableQueue {
         #[inherits(NSObject)]
@@ -59,6 +62,7 @@ unsafe impl NSObjectProtocol for MPMusicPlayerControllerMutableQueue {}
 #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MediaPlayer_MPMusicPlayerControllerMutableQueue")]
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     unsafe impl MPMusicPlayerControllerMutableQueue {
         #[cfg(all(
             feature = "MediaPlayer_MPMediaItem",
@@ -81,6 +85,7 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `MPMusicPlayerControllerQueue`
     #[cfg(feature = "MediaPlayer_MPMusicPlayerControllerMutableQueue")]
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     unsafe impl MPMusicPlayerControllerMutableQueue {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
@@ -96,6 +101,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     pub struct MPMusicPlayerApplicationController;
 
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPMusicPlayerApplicationController")]
     unsafe impl ClassType for MPMusicPlayerApplicationController {
         #[inherits(NSObject)]
@@ -115,6 +121,7 @@ unsafe impl NSObjectProtocol for MPMusicPlayerApplicationController {}
 #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MediaPlayer_MPMusicPlayerApplicationController")]
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     unsafe impl MPMusicPlayerApplicationController {
         #[cfg(all(
             feature = "Foundation_NSError",
@@ -134,6 +141,7 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `MPMusicPlayerController`
     #[cfg(feature = "MediaPlayer_MPMusicPlayerApplicationController")]
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     unsafe impl MPMusicPlayerApplicationController {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

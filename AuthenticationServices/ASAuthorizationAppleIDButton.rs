@@ -71,6 +71,7 @@ unsafe impl NSUserInterfaceItemIdentification for ASAuthorizationAppleIDButton {
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASAuthorizationAppleIDButton")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl ASAuthorizationAppleIDButton {
         #[method_id(@__retain_semantics Other buttonWithType:style:)]
         pub unsafe fn buttonWithType_style(
@@ -95,10 +96,11 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSControl`
     #[cfg(feature = "AuthenticationServices_ASAuthorizationAppleIDButton")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl ASAuthorizationAppleIDButton {
         #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithFrame:)]
@@ -114,10 +116,11 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSResponder`
     #[cfg(feature = "AuthenticationServices_ASAuthorizationAppleIDButton")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl ASAuthorizationAppleIDButton {
         #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init init)]
@@ -125,9 +128,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "AuthenticationServices_ASAuthorizationAppleIDButton")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl ASAuthorizationAppleIDButton {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

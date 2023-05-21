@@ -30,6 +30,7 @@ unsafe impl NSUserInterfaceItemIdentification
 #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationViewController")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAccountAuthenticationModificationViewController {
         #[cfg(
             feature = "AuthenticationServices_ASAccountAuthenticationModificationExtensionContext"
@@ -100,10 +101,11 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSViewController`
     #[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationViewController")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAccountAuthenticationModificationViewController {
         #[cfg(feature = "Foundation_NSBundle")]
         #[cfg(not(any(target_os = "ios")))]
@@ -124,10 +126,11 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSResponder`
     #[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationViewController")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAccountAuthenticationModificationViewController {
         #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init init)]
@@ -135,9 +138,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "AuthenticationServices_ASAccountAuthenticationModificationViewController")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAccountAuthenticationModificationViewController {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

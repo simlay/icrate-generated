@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct MXSignpostIntervalData;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "MetricKit_MXSignpostIntervalData")]
     unsafe impl ClassType for MXSignpostIntervalData {
         type Super = NSObject;
@@ -32,6 +33,7 @@ unsafe impl NSSecureCoding for MXSignpostIntervalData {}
 #[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "MetricKit_MXSignpostIntervalData")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXSignpostIntervalData {
         #[cfg(all(
             feature = "Foundation_NSUnitDuration",
@@ -70,9 +72,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MetricKit_MXSignpostIntervalData")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXSignpostIntervalData {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
@@ -88,6 +92,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct MXSignpostMetric;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "MetricKit_MXSignpostMetric")]
     unsafe impl ClassType for MXSignpostMetric {
         #[inherits(NSObject)]
@@ -111,6 +116,7 @@ unsafe impl NSSecureCoding for MXSignpostMetric {}
 #[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "MetricKit_MXSignpostMetric")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXSignpostMetric {
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other signpostName)]
@@ -129,9 +135,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MetricKit_MXSignpostMetric")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXSignpostMetric {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

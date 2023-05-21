@@ -22,6 +22,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct SKOverlayConfiguration;
 
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "StoreKit_SKOverlayConfiguration")]
     unsafe impl ClassType for SKOverlayConfiguration {
         type Super = NSObject;
@@ -36,6 +37,7 @@ unsafe impl NSObjectProtocol for SKOverlayConfiguration {}
 #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "StoreKit_SKOverlayConfiguration")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl SKOverlayConfiguration {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
@@ -51,6 +53,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct SKOverlayAppConfiguration;
 
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "StoreKit_SKOverlayAppConfiguration")]
     unsafe impl ClassType for SKOverlayAppConfiguration {
         #[inherits(NSObject)]
@@ -66,6 +69,7 @@ unsafe impl NSObjectProtocol for SKOverlayAppConfiguration {}
 #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "StoreKit_SKOverlayAppConfiguration")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl SKOverlayAppConfiguration {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
@@ -161,6 +165,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     pub struct SKOverlayAppClipConfiguration;
 
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "StoreKit_SKOverlayAppClipConfiguration")]
     unsafe impl ClassType for SKOverlayAppClipConfiguration {
         #[inherits(NSObject)]
@@ -176,6 +181,7 @@ unsafe impl NSObjectProtocol for SKOverlayAppClipConfiguration {}
 #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "StoreKit_SKOverlayAppClipConfiguration")]
+    #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
     unsafe impl SKOverlayAppClipConfiguration {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct ASPasswordCredentialIdentity;
 
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "AuthenticationServices_ASPasswordCredentialIdentity")]
     unsafe impl ClassType for ASPasswordCredentialIdentity {
         type Super = NSObject;
@@ -36,6 +37,7 @@ unsafe impl NSSecureCoding for ASPasswordCredentialIdentity {}
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASPasswordCredentialIdentity")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASPasswordCredentialIdentity {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
@@ -83,9 +85,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "AuthenticationServices_ASPasswordCredentialIdentity")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASPasswordCredentialIdentity {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

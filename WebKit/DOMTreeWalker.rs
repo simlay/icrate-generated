@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMTreeWalker;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMTreeWalker")]
     unsafe impl ClassType for DOMTreeWalker {
         #[inherits(WebScriptObject, NSObject)]

@@ -13,6 +13,7 @@ extern_protocol!(
             feature = "Foundation_NSIndexPath",
             feature = "MediaPlayer_MPPlayableContentManager"
         ))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[deprecated = "Use CarPlay framework"]
         #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[optional]
@@ -28,6 +29,7 @@ extern_protocol!(
             feature = "Foundation_NSError",
             feature = "MediaPlayer_MPPlayableContentManager"
         ))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[deprecated = "Use Intents framework for initiating playback queues."]
         #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[optional]
@@ -43,6 +45,7 @@ extern_protocol!(
             feature = "Foundation_NSError",
             feature = "MediaPlayer_MPPlayableContentManager"
         ))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[deprecated = "Use Intents framework for initiating playback queues."]
         #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[optional]
@@ -58,6 +61,7 @@ extern_protocol!(
             feature = "MediaPlayer_MPPlayableContentManager",
             feature = "MediaPlayer_MPPlayableContentManagerContext"
         ))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[deprecated = "Use CarPlay framework"]
         #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[optional]

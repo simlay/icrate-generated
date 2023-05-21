@@ -8,39 +8,51 @@ use crate::MediaPlayer::*;
 #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 extern_protocol!(
     pub unsafe trait MPMediaPlayback {
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(prepareToPlay)]
         unsafe fn prepareToPlay(&self);
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(isPreparedToPlay)]
         unsafe fn isPreparedToPlay(&self) -> bool;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(play)]
         unsafe fn play(&self);
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(pause)]
         unsafe fn pause(&self);
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(stop)]
         unsafe fn stop(&self);
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(currentPlaybackTime)]
         unsafe fn currentPlaybackTime(&self) -> NSTimeInterval;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(setCurrentPlaybackTime:)]
         unsafe fn setCurrentPlaybackTime(&self, current_playback_time: NSTimeInterval);
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(currentPlaybackRate)]
         unsafe fn currentPlaybackRate(&self) -> c_float;
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(setCurrentPlaybackRate:)]
         unsafe fn setCurrentPlaybackRate(&self, current_playback_rate: c_float);
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(beginSeekingForward)]
         unsafe fn beginSeekingForward(&self);
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(beginSeekingBackward)]
         unsafe fn beginSeekingBackward(&self);
 
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(endSeeking)]
         unsafe fn endSeeking(&self);
     }

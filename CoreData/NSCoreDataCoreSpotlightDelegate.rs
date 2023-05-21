@@ -15,6 +15,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct NSCoreDataCoreSpotlightDelegate;
 
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "CoreData_NSCoreDataCoreSpotlightDelegate")]
     unsafe impl ClassType for NSCoreDataCoreSpotlightDelegate {
         type Super = NSObject;
@@ -29,6 +30,7 @@ unsafe impl NSObjectProtocol for NSCoreDataCoreSpotlightDelegate {}
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "CoreData_NSCoreDataCoreSpotlightDelegate")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSCoreDataCoreSpotlightDelegate {
         #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
         #[method(isIndexingEnabled)]
@@ -87,9 +89,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "CoreData_NSCoreDataCoreSpotlightDelegate")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSCoreDataCoreSpotlightDelegate {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

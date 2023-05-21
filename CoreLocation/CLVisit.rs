@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct CLVisit;
 
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "CoreLocation_CLVisit")]
     unsafe impl ClassType for CLVisit {
         type Super = NSObject;
@@ -37,6 +38,7 @@ unsafe impl NSSecureCoding for CLVisit {}
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "CoreLocation_CLVisit")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl CLVisit {
         #[cfg(feature = "Foundation_NSDate")]
         #[method_id(@__retain_semantics Other arrivalDate)]
@@ -54,9 +56,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "CoreLocation_CLVisit")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl CLVisit {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

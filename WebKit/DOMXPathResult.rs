@@ -37,6 +37,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMXPathResult;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMXPathResult")]
     unsafe impl ClassType for DOMXPathResult {
         #[inherits(WebScriptObject, NSObject)]

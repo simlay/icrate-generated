@@ -28,6 +28,7 @@ extern_class!(
     #[cfg(not(any(target_os = "ios")))]
     pub struct HKWorkoutSession;
 
+    #[cfg(not(any(target_os = "ios")))]
     #[cfg(feature = "HealthKit_HKWorkoutSession")]
     unsafe impl ClassType for HKWorkoutSession {
         type Super = NSObject;
@@ -50,6 +51,7 @@ unsafe impl NSSecureCoding for HKWorkoutSession {}
 #[cfg(not(any(target_os = "ios")))]
 extern_methods!(
     #[cfg(feature = "HealthKit_HKWorkoutSession")]
+    #[cfg(not(any(target_os = "ios")))]
     unsafe impl HKWorkoutSession {
         #[deprecated]
         #[method(activityType)]
@@ -165,9 +167,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "ios")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "HealthKit_HKWorkoutSession")]
+    #[cfg(not(any(target_os = "ios")))]
     unsafe impl HKWorkoutSession {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
@@ -178,6 +182,7 @@ extern_methods!(
 extern_protocol!(
     pub unsafe trait HKWorkoutSessionDelegate: NSObjectProtocol {
         #[cfg(all(feature = "Foundation_NSDate", feature = "HealthKit_HKWorkoutSession"))]
+        #[cfg(not(any(target_os = "ios")))]
         #[method(workoutSession:didChangeToState:fromState:date:)]
         unsafe fn workoutSession_didChangeToState_fromState_date(
             &self,
@@ -188,6 +193,7 @@ extern_protocol!(
         );
 
         #[cfg(all(feature = "Foundation_NSError", feature = "HealthKit_HKWorkoutSession"))]
+        #[cfg(not(any(target_os = "ios")))]
         #[method(workoutSession:didFailWithError:)]
         unsafe fn workoutSession_didFailWithError(
             &self,
@@ -199,6 +205,7 @@ extern_protocol!(
             feature = "HealthKit_HKWorkoutEvent",
             feature = "HealthKit_HKWorkoutSession"
         ))]
+        #[cfg(not(any(target_os = "ios")))]
         #[optional]
         #[method(workoutSession:didGenerateEvent:)]
         unsafe fn workoutSession_didGenerateEvent(
@@ -212,6 +219,7 @@ extern_protocol!(
             feature = "HealthKit_HKWorkoutConfiguration",
             feature = "HealthKit_HKWorkoutSession"
         ))]
+        #[cfg(not(any(target_os = "ios")))]
         #[optional]
         #[method(workoutSession:didBeginActivityWithConfiguration:date:)]
         unsafe fn workoutSession_didBeginActivityWithConfiguration_date(
@@ -226,6 +234,7 @@ extern_protocol!(
             feature = "HealthKit_HKWorkoutConfiguration",
             feature = "HealthKit_HKWorkoutSession"
         ))]
+        #[cfg(not(any(target_os = "ios")))]
         #[optional]
         #[method(workoutSession:didEndActivityWithConfiguration:date:)]
         unsafe fn workoutSession_didEndActivityWithConfiguration_date(

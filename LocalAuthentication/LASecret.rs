@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct LASecret;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "LocalAuthentication_LASecret")]
     unsafe impl ClassType for LASecret {
         type Super = NSObject;
@@ -24,6 +25,7 @@ unsafe impl NSObjectProtocol for LASecret {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "LocalAuthentication_LASecret")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl LASecret {
         #[cfg(all(feature = "Foundation_NSData", feature = "Foundation_NSError"))]
         #[method(loadDataWithCompletion:)]

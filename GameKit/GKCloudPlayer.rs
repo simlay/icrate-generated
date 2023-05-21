@@ -12,6 +12,8 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct GKCloudPlayer;
 
+    #[deprecated = "GKGameSession is deprecated. Use GKPlayer for both real-time and turn-based matchmaking APIs."]
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "GameKit_GKCloudPlayer")]
     unsafe impl ClassType for GKCloudPlayer {
         #[inherits(NSObject)]
@@ -27,6 +29,7 @@ unsafe impl NSObjectProtocol for GKCloudPlayer {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "GameKit_GKCloudPlayer")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl GKCloudPlayer {
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSString"))]
         #[method(getCurrentSignedInPlayerForContainer:completionHandler:)]
@@ -37,9 +40,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "GameKit_GKCloudPlayer")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl GKCloudPlayer {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

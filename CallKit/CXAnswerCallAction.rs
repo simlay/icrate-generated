@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct CXAnswerCallAction;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "CallKit_CXAnswerCallAction")]
     unsafe impl ClassType for CXAnswerCallAction {
         #[inherits(CXAction, NSObject)]
@@ -37,6 +38,7 @@ unsafe impl NSSecureCoding for CXAnswerCallAction {}
 #[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "CallKit_CXAnswerCallAction")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXAnswerCallAction {
         #[cfg(feature = "Foundation_NSDate")]
         #[method(fulfillWithDateConnected:)]
@@ -48,6 +50,7 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `CXCallAction`
     #[cfg(feature = "CallKit_CXAnswerCallAction")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXAnswerCallAction {
         #[cfg(feature = "Foundation_NSUUID")]
         #[method_id(@__retain_semantics Init initWithCallUUID:)]
@@ -68,9 +71,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "CallKit_CXAnswerCallAction")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXAnswerCallAction {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

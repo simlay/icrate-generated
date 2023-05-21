@@ -8,6 +8,7 @@ use crate::Foundation::*;
 extern_protocol!(
     pub unsafe trait CXCallObserverDelegate: NSObjectProtocol {
         #[cfg(all(feature = "CallKit_CXCall", feature = "CallKit_CXCallObserver"))]
+        #[cfg(not(any(target_os = "macos")))]
         #[method(callObserver:callChanged:)]
         unsafe fn callObserver_callChanged(&self, call_observer: &CXCallObserver, call: &CXCall);
     }
@@ -21,6 +22,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct CXCallObserver;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "CallKit_CXCallObserver")]
     unsafe impl ClassType for CXCallObserver {
         type Super = NSObject;
@@ -35,6 +37,7 @@ unsafe impl NSObjectProtocol for CXCallObserver {}
 #[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "CallKit_CXCallObserver")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXCallObserver {
         #[cfg(all(feature = "CallKit_CXCall", feature = "Foundation_NSArray"))]
         #[method_id(@__retain_semantics Other calls)]
@@ -42,9 +45,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "CallKit_CXCallObserver")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXCallObserver {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

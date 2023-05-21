@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct ILNetworkResponse;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "IdentityLookup_ILNetworkResponse")]
     unsafe impl ClassType for ILNetworkResponse {
         type Super = NSObject;
@@ -32,6 +33,7 @@ unsafe impl NSSecureCoding for ILNetworkResponse {}
 #[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "IdentityLookup_ILNetworkResponse")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl ILNetworkResponse {
         #[cfg(feature = "Foundation_NSHTTPURLResponse")]
         #[method_id(@__retain_semantics Other urlResponse)]
@@ -46,9 +48,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "IdentityLookup_ILNetworkResponse")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl ILNetworkResponse {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

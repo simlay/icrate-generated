@@ -39,6 +39,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKLocalSearchCompleter;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKLocalSearchCompleter")]
     unsafe impl ClassType for MKLocalSearchCompleter {
         type Super = NSObject;
@@ -53,6 +54,7 @@ unsafe impl NSObjectProtocol for MKLocalSearchCompleter {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKLocalSearchCompleter")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKLocalSearchCompleter {
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other queryFragment)]
@@ -125,9 +127,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MapKit_MKLocalSearchCompleter")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKLocalSearchCompleter {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
@@ -141,6 +145,7 @@ extern_methods!(
 extern_protocol!(
     pub unsafe trait MKLocalSearchCompleterDelegate: NSObjectProtocol {
         #[cfg(feature = "MapKit_MKLocalSearchCompleter")]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(completerDidUpdateResults:)]
         unsafe fn completerDidUpdateResults(&self, completer: &MKLocalSearchCompleter);
@@ -149,6 +154,7 @@ extern_protocol!(
             feature = "Foundation_NSError",
             feature = "MapKit_MKLocalSearchCompleter"
         ))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(completer:didFailWithError:)]
         unsafe fn completer_didFailWithError(
@@ -167,6 +173,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKLocalSearchCompletion;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKLocalSearchCompletion")]
     unsafe impl ClassType for MKLocalSearchCompletion {
         type Super = NSObject;
@@ -181,6 +188,7 @@ unsafe impl NSObjectProtocol for MKLocalSearchCompletion {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKLocalSearchCompletion")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKLocalSearchCompletion {
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other title)]
@@ -200,9 +208,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MapKit_MKLocalSearchCompletion")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKLocalSearchCompletion {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

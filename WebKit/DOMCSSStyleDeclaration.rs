@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMCSSStyleDeclaration;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMCSSStyleDeclaration")]
     unsafe impl ClassType for DOMCSSStyleDeclaration {
         #[inherits(WebScriptObject, NSObject)]

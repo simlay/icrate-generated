@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLMarqueeElement;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLMarqueeElement")]
     unsafe impl ClassType for DOMHTMLMarqueeElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]

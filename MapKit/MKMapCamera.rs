@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKMapCamera;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKMapCamera")]
     unsafe impl ClassType for MKMapCamera {
         type Super = NSObject;
@@ -39,6 +40,7 @@ unsafe impl NSSecureCoding for MKMapCamera {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKMapCamera")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKMapCamera {
         #[method(centerCoordinate)]
         pub unsafe fn centerCoordinate(&self) -> CLLocationCoordinate2D;
@@ -108,9 +110,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MapKit_MKMapCamera")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKMapCamera {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

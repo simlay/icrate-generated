@@ -39,6 +39,7 @@ extern_class!(
     #[deprecated = "No longer supported; please adopt WKWebView."]
     pub struct WebView;
 
+    #[deprecated = "No longer supported; please adopt WKWebView."]
     #[cfg(feature = "WebKit_WebView")]
     unsafe impl ClassType for WebView {
         #[inherits(NSResponder, NSObject)]
@@ -389,7 +390,6 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
 extern_methods!(
     /// Methods declared on superclass `NSView`
     #[cfg(feature = "WebKit_WebView")]
@@ -408,7 +408,6 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
 extern_methods!(
     /// Methods declared on superclass `NSResponder`
     #[cfg(feature = "WebKit_WebView")]

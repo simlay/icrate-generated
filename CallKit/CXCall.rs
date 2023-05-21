@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct CXCall;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "CallKit_CXCall")]
     unsafe impl ClassType for CXCall {
         type Super = NSObject;
@@ -24,6 +25,7 @@ unsafe impl NSObjectProtocol for CXCall {}
 #[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "CallKit_CXCall")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXCall {
         #[cfg(feature = "Foundation_NSUUID")]
         #[method_id(@__retain_semantics Other UUID)]
@@ -49,9 +51,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "CallKit_CXCall")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXCall {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

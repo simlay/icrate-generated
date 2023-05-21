@@ -23,6 +23,7 @@ extern_class!(
     #[deprecated]
     pub struct WebHistory;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_WebHistory")]
     unsafe impl ClassType for WebHistory {
         type Super = NSObject;

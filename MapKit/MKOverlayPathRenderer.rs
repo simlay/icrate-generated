@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKOverlayPathRenderer;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKOverlayPathRenderer")]
     unsafe impl ClassType for MKOverlayPathRenderer {
         #[inherits(NSObject)]
@@ -28,6 +29,7 @@ unsafe impl NSObjectProtocol for MKOverlayPathRenderer {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKOverlayPathRenderer")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKOverlayPathRenderer {
         #[cfg(feature = "AppKit_NSColor")]
         #[method_id(@__retain_semantics Other fillColor)]
@@ -91,6 +93,7 @@ extern_methods!(
 extern_methods!(
     /// Methods declared on superclass `MKOverlayRenderer`
     #[cfg(feature = "MapKit_MKOverlayPathRenderer")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKOverlayPathRenderer {
         #[method_id(@__retain_semantics Init initWithOverlay:)]
         pub unsafe fn initWithOverlay(
@@ -100,9 +103,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MapKit_MKOverlayPathRenderer")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKOverlayPathRenderer {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

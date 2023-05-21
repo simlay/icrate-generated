@@ -169,6 +169,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct GKInvite;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "GameKit_GKInvite")]
     unsafe impl ClassType for GKInvite {
         type Super = NSObject;
@@ -183,6 +184,7 @@ unsafe impl NSObjectProtocol for GKInvite {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "GameKit_GKInvite")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl GKInvite {
         #[cfg(feature = "GameKit_GKPlayer")]
         #[method_id(@__retain_semantics Other sender)]
@@ -204,9 +206,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "GameKit_GKInvite")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl GKInvite {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
@@ -258,6 +262,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct GKMatchmaker;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "GameKit_GKMatchmaker")]
     unsafe impl ClassType for GKMatchmaker {
         type Super = NSObject;
@@ -272,6 +277,7 @@ unsafe impl NSObjectProtocol for GKMatchmaker {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "GameKit_GKMatchmaker")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl GKMatchmaker {
         #[method_id(@__retain_semantics Other sharedMatchmaker)]
         pub unsafe fn sharedMatchmaker() -> Id<GKMatchmaker>;
@@ -364,9 +370,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "GameKit_GKMatchmaker")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl GKMatchmaker {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
@@ -380,6 +388,7 @@ extern_methods!(
 extern_methods!(
     /// GKDeprecated
     #[cfg(feature = "GameKit_GKMatchmaker")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl GKMatchmaker {
         #[cfg(all(feature = "Foundation_NSArray", feature = "GameKit_GKInvite"))]
         #[deprecated = "Use registerListener on GKLocalPlayer to register an object that implements the GKInviteEventListenerProtocol instead"]
@@ -400,6 +409,7 @@ extern_methods!(
 extern_methods!(
     /// Obsoleted
     #[cfg(feature = "GameKit_GKMatchmaker")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl GKMatchmaker {
         #[cfg(feature = "Foundation_NSString")]
         #[deprecated = "This is never invoked and its implementation does nothing, Use startBrowsingForNearbyPlayersWithHandler: instead"]

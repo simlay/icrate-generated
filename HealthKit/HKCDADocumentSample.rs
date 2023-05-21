@@ -12,6 +12,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct HKCDADocumentSample;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "HealthKit_HKCDADocumentSample")]
     unsafe impl ClassType for HKCDADocumentSample {
         #[inherits(HKSample, HKObject, NSObject)]
@@ -35,6 +36,7 @@ unsafe impl NSSecureCoding for HKCDADocumentSample {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "HealthKit_HKCDADocumentSample")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl HKCDADocumentSample {
         #[cfg(feature = "HealthKit_HKCDADocument")]
         #[method_id(@__retain_semantics Other document)]
@@ -58,18 +60,22 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `HKObject`
     #[cfg(feature = "HealthKit_HKCDADocumentSample")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl HKCDADocumentSample {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "HealthKit_HKCDADocumentSample")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl HKCDADocumentSample {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
@@ -82,6 +88,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct HKCDADocument;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "HealthKit_HKCDADocument")]
     unsafe impl ClassType for HKCDADocument {
         type Super = NSObject;
@@ -96,6 +103,7 @@ unsafe impl NSObjectProtocol for HKCDADocument {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "HealthKit_HKCDADocument")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl HKCDADocument {
         #[cfg(feature = "Foundation_NSData")]
         #[method_id(@__retain_semantics Other documentData)]
@@ -119,9 +127,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "HealthKit_HKCDADocument")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl HKCDADocument {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

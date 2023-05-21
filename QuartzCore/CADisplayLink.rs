@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct CADisplayLink;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "CoreAnimation_CADisplayLink")]
     unsafe impl ClassType for CADisplayLink {
         type Super = NSObject;
@@ -24,6 +25,7 @@ unsafe impl NSObjectProtocol for CADisplayLink {}
 #[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "CoreAnimation_CADisplayLink")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CADisplayLink {
         #[method_id(@__retain_semantics Other displayLinkWithTarget:selector:)]
         pub unsafe fn displayLinkWithTarget_selector(
@@ -84,9 +86,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "CoreAnimation_CADisplayLink")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CADisplayLink {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

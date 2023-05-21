@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub struct ASAuthorizationProviderExtensionKerberosMapping;
 
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionKerberosMapping")]
     unsafe impl ClassType for ASAuthorizationProviderExtensionKerberosMapping {
         type Super = NSObject;
@@ -24,6 +25,7 @@ unsafe impl NSObjectProtocol for ASAuthorizationProviderExtensionKerberosMapping
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionKerberosMapping")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAuthorizationProviderExtensionKerberosMapping {
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Other ticketKeyPath)]
@@ -86,9 +88,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionKerberosMapping")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAuthorizationProviderExtensionKerberosMapping {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
@@ -104,6 +108,7 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub struct ASAuthorizationProviderExtensionLoginConfiguration;
 
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionLoginConfiguration")]
     unsafe impl ClassType for ASAuthorizationProviderExtensionLoginConfiguration {
         type Super = NSObject;
@@ -118,6 +123,7 @@ unsafe impl NSObjectProtocol for ASAuthorizationProviderExtensionLoginConfigurat
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionLoginConfiguration")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAuthorizationProviderExtensionLoginConfiguration {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

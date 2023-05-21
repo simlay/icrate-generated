@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub struct MKZoomControl;
 
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKZoomControl")]
     unsafe impl ClassType for MKZoomControl {
         #[inherits(NSResponder, NSObject)]
@@ -56,6 +57,7 @@ unsafe impl NSUserInterfaceItemIdentification for MKZoomControl {}
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKZoomControl")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl MKZoomControl {
         #[cfg(feature = "MapKit_MKMapView")]
         #[method_id(@__retain_semantics Other zoomControlWithMapView:)]
@@ -71,10 +73,11 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSView`
     #[cfg(feature = "MapKit_MKZoomControl")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl MKZoomControl {
         #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithFrame:)]
@@ -90,10 +93,11 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSResponder`
     #[cfg(feature = "MapKit_MKZoomControl")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl MKZoomControl {
         #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init init)]
@@ -101,9 +105,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MapKit_MKZoomControl")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl MKZoomControl {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

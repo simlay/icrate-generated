@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     pub struct GCGearShifterElement;
 
+    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     #[cfg(feature = "GameController_GCGearShifterElement")]
     unsafe impl ClassType for GCGearShifterElement {
         type Super = NSObject;
@@ -29,6 +30,7 @@ unsafe impl NSObjectProtocol for GCGearShifterElement {}
 #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 extern_methods!(
     #[cfg(feature = "GameController_GCGearShifterElement")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     unsafe impl GCGearShifterElement {
         #[method_id(@__retain_semantics Other patternInput)]
         pub unsafe fn patternInput(&self) -> Option<Id<ProtocolObject<dyn GCSwitchPositionInput>>>;
@@ -38,9 +40,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "GameController_GCGearShifterElement")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     unsafe impl GCGearShifterElement {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

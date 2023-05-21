@@ -12,6 +12,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct ASAuthorizationSecurityKeyPublicKeyCredentialRegistrationRequest;
 
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(
         feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialRegistrationRequest"
     )]
@@ -60,6 +61,7 @@ extern_methods!(
     #[cfg(
         feature = "AuthenticationServices_ASAuthorizationSecurityKeyPublicKeyCredentialRegistrationRequest"
     )]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAuthorizationSecurityKeyPublicKeyCredentialRegistrationRequest {
         #[cfg(all(
             feature = "AuthenticationServices_ASAuthorizationPublicKeyCredentialParameters",

@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos")))]
     pub struct LPMetadataProvider;
 
+    #[cfg(not(any(target_os = "tvos")))]
     #[cfg(feature = "LinkPresentation_LPMetadataProvider")]
     unsafe impl ClassType for LPMetadataProvider {
         type Super = NSObject;
@@ -25,6 +26,7 @@ unsafe impl NSObjectProtocol for LPMetadataProvider {}
 #[cfg(not(any(target_os = "tvos")))]
 extern_methods!(
     #[cfg(feature = "LinkPresentation_LPMetadataProvider")]
+    #[cfg(not(any(target_os = "tvos")))]
     unsafe impl LPMetadataProvider {
         #[cfg(all(
             feature = "Foundation_NSError",
@@ -67,9 +69,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "tvos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "LinkPresentation_LPMetadataProvider")]
+    #[cfg(not(any(target_os = "tvos")))]
     unsafe impl LPMetadataProvider {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

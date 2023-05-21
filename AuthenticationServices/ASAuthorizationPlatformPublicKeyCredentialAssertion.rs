@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct ASAuthorizationPlatformPublicKeyCredentialAssertion;
 
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "AuthenticationServices_ASAuthorizationPlatformPublicKeyCredentialAssertion")]
     unsafe impl ClassType for ASAuthorizationPlatformPublicKeyCredentialAssertion {
         type Super = NSObject;
@@ -51,6 +52,7 @@ unsafe impl NSSecureCoding for ASAuthorizationPlatformPublicKeyCredentialAsserti
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASAuthorizationPlatformPublicKeyCredentialAssertion")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAuthorizationPlatformPublicKeyCredentialAssertion {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

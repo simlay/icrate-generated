@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct MXDiskIOMetric;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "MetricKit_MXDiskIOMetric")]
     unsafe impl ClassType for MXDiskIOMetric {
         #[inherits(NSObject)]
@@ -33,6 +34,7 @@ unsafe impl NSSecureCoding for MXDiskIOMetric {}
 #[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "MetricKit_MXDiskIOMetric")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXDiskIOMetric {
         #[cfg(all(
             feature = "Foundation_NSMeasurement",
@@ -44,9 +46,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MetricKit_MXDiskIOMetric")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXDiskIOMetric {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

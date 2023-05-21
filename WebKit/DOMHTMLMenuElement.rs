@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMHTMLMenuElement;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMHTMLMenuElement")]
     unsafe impl ClassType for DOMHTMLMenuElement {
         #[inherits(DOMElement, DOMNode, DOMObject, WebScriptObject, NSObject)]

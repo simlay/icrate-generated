@@ -45,6 +45,7 @@ extern_protocol!(
         NSObjectProtocol
     {
         #[cfg(feature = "AuthenticationServices_ASAuthorizationProviderExtensionLoginManager")]
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(beginDeviceRegistrationUsingLoginManager:options:completion:)]
         unsafe fn beginDeviceRegistrationUsingLoginManager_options_completion(
             &self,
@@ -57,6 +58,7 @@ extern_protocol!(
             feature = "AuthenticationServices_ASAuthorizationProviderExtensionLoginManager",
             feature = "Foundation_NSString"
         ))]
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[method(beginUserRegistrationUsingLoginManager:userName:authenticationMethod:options:completion:)]
         unsafe fn beginUserRegistrationUsingLoginManager_userName_authenticationMethod_options_completion(
             &self,
@@ -67,6 +69,7 @@ extern_protocol!(
             completion: &Block<(ASAuthorizationProviderExtensionRegistrationResult,), ()>,
         );
 
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method(registrationDidComplete)]
         unsafe fn registrationDidComplete(&self);

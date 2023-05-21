@@ -9,11 +9,13 @@ use crate::GameKit::*;
 extern_protocol!(
     pub unsafe trait GKChallengeEventHandlerDelegate: NSObjectProtocol {
         #[cfg(feature = "GameKit_GKChallenge")]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(localPlayerDidSelectChallenge:)]
         unsafe fn localPlayerDidSelectChallenge(&self, challenge: Option<&GKChallenge>);
 
         #[cfg(feature = "GameKit_GKChallenge")]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(shouldShowBannerForLocallyReceivedChallenge:)]
         unsafe fn shouldShowBannerForLocallyReceivedChallenge(
@@ -22,11 +24,13 @@ extern_protocol!(
         ) -> bool;
 
         #[cfg(feature = "GameKit_GKChallenge")]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(localPlayerDidReceiveChallenge:)]
         unsafe fn localPlayerDidReceiveChallenge(&self, challenge: Option<&GKChallenge>);
 
         #[cfg(feature = "GameKit_GKChallenge")]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(shouldShowBannerForLocallyCompletedChallenge:)]
         unsafe fn shouldShowBannerForLocallyCompletedChallenge(
@@ -35,11 +39,13 @@ extern_protocol!(
         ) -> bool;
 
         #[cfg(feature = "GameKit_GKChallenge")]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(localPlayerDidCompleteChallenge:)]
         unsafe fn localPlayerDidCompleteChallenge(&self, challenge: Option<&GKChallenge>);
 
         #[cfg(feature = "GameKit_GKChallenge")]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(shouldShowBannerForRemotelyCompletedChallenge:)]
         unsafe fn shouldShowBannerForRemotelyCompletedChallenge(
@@ -48,6 +54,7 @@ extern_protocol!(
         ) -> bool;
 
         #[cfg(feature = "GameKit_GKChallenge")]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(remotePlayerDidCompleteChallenge:)]
         unsafe fn remotePlayerDidCompleteChallenge(&self, challenge: Option<&GKChallenge>);
@@ -62,6 +69,7 @@ extern_class!(
     #[deprecated = "You should instead implement the GKChallengeListener protocol and register a listener with GKLocalPlayer."]
     pub struct GKChallengeEventHandler;
 
+    #[deprecated = "You should instead implement the GKChallengeListener protocol and register a listener with GKLocalPlayer."]
     #[cfg(feature = "GameKit_GKChallengeEventHandler")]
     unsafe impl ClassType for GKChallengeEventHandler {
         type Super = NSObject;

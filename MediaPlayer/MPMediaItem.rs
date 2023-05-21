@@ -108,6 +108,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     pub struct MPMediaItem;
 
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     #[cfg(feature = "MediaPlayer_MPMediaItem")]
     unsafe impl ClassType for MPMediaItem {
         #[inherits(NSObject)]
@@ -131,6 +132,7 @@ unsafe impl NSSecureCoding for MPMediaItem {}
 #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MediaPlayer_MPMediaItem")]
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     unsafe impl MPMediaItem {
         #[method(persistentID)]
         pub unsafe fn persistentID(&self) -> MPMediaEntityPersistentID;
@@ -267,9 +269,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MediaPlayer_MPMediaItem")]
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     unsafe impl MPMediaItem {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

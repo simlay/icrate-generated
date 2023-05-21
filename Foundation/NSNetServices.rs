@@ -40,6 +40,8 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct NSNetService;
 
+    #[deprecated = "Use nw_connection_t or nw_listener_t in Network framework instead"]
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "Foundation_NSNetService")]
     unsafe impl ClassType for NSNetService {
         type Super = NSObject;
@@ -54,6 +56,7 @@ unsafe impl NSObjectProtocol for NSNetService {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "Foundation_NSNetService")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl NSNetService {
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Init initWithDomain:type:name:port:)]
@@ -180,9 +183,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "Foundation_NSNetService")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl NSNetService {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
@@ -199,6 +204,8 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct NSNetServiceBrowser;
 
+    #[deprecated = "Use nw_browser_t in Network framework instead"]
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "Foundation_NSNetServiceBrowser")]
     unsafe impl ClassType for NSNetServiceBrowser {
         type Super = NSObject;
@@ -213,6 +220,7 @@ unsafe impl NSObjectProtocol for NSNetServiceBrowser {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "Foundation_NSNetServiceBrowser")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl NSNetServiceBrowser {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
@@ -269,9 +277,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "Foundation_NSNetServiceBrowser")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl NSNetServiceBrowser {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;
@@ -282,11 +292,13 @@ extern_methods!(
 extern_protocol!(
     pub unsafe trait NSNetServiceDelegate: NSObjectProtocol {
         #[cfg(feature = "Foundation_NSNetService")]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(netServiceWillPublish:)]
         unsafe fn netServiceWillPublish(&self, sender: &NSNetService);
 
         #[cfg(feature = "Foundation_NSNetService")]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(netServiceDidPublish:)]
         unsafe fn netServiceDidPublish(&self, sender: &NSNetService);
@@ -297,6 +309,7 @@ extern_protocol!(
             feature = "Foundation_NSNumber",
             feature = "Foundation_NSString"
         ))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(netService:didNotPublish:)]
         unsafe fn netService_didNotPublish(
@@ -306,11 +319,13 @@ extern_protocol!(
         );
 
         #[cfg(feature = "Foundation_NSNetService")]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(netServiceWillResolve:)]
         unsafe fn netServiceWillResolve(&self, sender: &NSNetService);
 
         #[cfg(feature = "Foundation_NSNetService")]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(netServiceDidResolveAddress:)]
         unsafe fn netServiceDidResolveAddress(&self, sender: &NSNetService);
@@ -321,6 +336,7 @@ extern_protocol!(
             feature = "Foundation_NSNumber",
             feature = "Foundation_NSString"
         ))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(netService:didNotResolve:)]
         unsafe fn netService_didNotResolve(
@@ -330,11 +346,13 @@ extern_protocol!(
         );
 
         #[cfg(feature = "Foundation_NSNetService")]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(netServiceDidStop:)]
         unsafe fn netServiceDidStop(&self, sender: &NSNetService);
 
         #[cfg(all(feature = "Foundation_NSData", feature = "Foundation_NSNetService"))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(netService:didUpdateTXTRecordData:)]
         unsafe fn netService_didUpdateTXTRecordData(&self, sender: &NSNetService, data: &NSData);
@@ -344,6 +362,7 @@ extern_protocol!(
             feature = "Foundation_NSNetService",
             feature = "Foundation_NSOutputStream"
         ))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(netService:didAcceptConnectionWithInputStream:outputStream:)]
         unsafe fn netService_didAcceptConnectionWithInputStream_outputStream(
@@ -361,11 +380,13 @@ extern_protocol!(
 extern_protocol!(
     pub unsafe trait NSNetServiceBrowserDelegate: NSObjectProtocol {
         #[cfg(feature = "Foundation_NSNetServiceBrowser")]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(netServiceBrowserWillSearch:)]
         unsafe fn netServiceBrowserWillSearch(&self, browser: &NSNetServiceBrowser);
 
         #[cfg(feature = "Foundation_NSNetServiceBrowser")]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(netServiceBrowserDidStopSearch:)]
         unsafe fn netServiceBrowserDidStopSearch(&self, browser: &NSNetServiceBrowser);
@@ -376,6 +397,7 @@ extern_protocol!(
             feature = "Foundation_NSNumber",
             feature = "Foundation_NSString"
         ))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(netServiceBrowser:didNotSearch:)]
         unsafe fn netServiceBrowser_didNotSearch(
@@ -388,6 +410,7 @@ extern_protocol!(
             feature = "Foundation_NSNetServiceBrowser",
             feature = "Foundation_NSString"
         ))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(netServiceBrowser:didFindDomain:moreComing:)]
         unsafe fn netServiceBrowser_didFindDomain_moreComing(
@@ -401,6 +424,7 @@ extern_protocol!(
             feature = "Foundation_NSNetService",
             feature = "Foundation_NSNetServiceBrowser"
         ))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(netServiceBrowser:didFindService:moreComing:)]
         unsafe fn netServiceBrowser_didFindService_moreComing(
@@ -414,6 +438,7 @@ extern_protocol!(
             feature = "Foundation_NSNetServiceBrowser",
             feature = "Foundation_NSString"
         ))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(netServiceBrowser:didRemoveDomain:moreComing:)]
         unsafe fn netServiceBrowser_didRemoveDomain_moreComing(
@@ -427,6 +452,7 @@ extern_protocol!(
             feature = "Foundation_NSNetService",
             feature = "Foundation_NSNetServiceBrowser"
         ))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(netServiceBrowser:didRemoveService:moreComing:)]
         unsafe fn netServiceBrowser_didRemoveService_moreComing(

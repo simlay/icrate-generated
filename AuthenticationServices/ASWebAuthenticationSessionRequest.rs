@@ -11,6 +11,7 @@ extern_protocol!(
             feature = "AuthenticationServices_ASWebAuthenticationSessionRequest",
             feature = "Foundation_NSURL"
         ))]
+        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[optional]
         #[method(authenticationSessionRequest:didCompleteWithCallbackURL:)]
         unsafe fn authenticationSessionRequest_didCompleteWithCallbackURL(
@@ -23,6 +24,7 @@ extern_protocol!(
             feature = "AuthenticationServices_ASWebAuthenticationSessionRequest",
             feature = "Foundation_NSError"
         ))]
+        #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
         #[optional]
         #[method(authenticationSessionRequest:didCancelWithError:)]
         unsafe fn authenticationSessionRequest_didCancelWithError(
@@ -41,6 +43,7 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     pub struct ASWebAuthenticationSessionRequest;
 
+    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     #[cfg(feature = "AuthenticationServices_ASWebAuthenticationSessionRequest")]
     unsafe impl ClassType for ASWebAuthenticationSessionRequest {
         type Super = NSObject;
@@ -67,6 +70,7 @@ unsafe impl NSSecureCoding for ASWebAuthenticationSessionRequest {}
 #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASWebAuthenticationSessionRequest")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos")))]
     unsafe impl ASWebAuthenticationSessionRequest {
         #[cfg(feature = "Foundation_NSUUID")]
         #[method_id(@__retain_semantics Other UUID)]

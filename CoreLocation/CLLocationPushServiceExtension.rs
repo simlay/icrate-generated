@@ -9,6 +9,7 @@ use crate::Foundation::*;
 extern_protocol!(
     pub unsafe trait CLLocationPushServiceExtension: NSObjectProtocol {
         #[cfg(all(feature = "Foundation_NSDictionary", feature = "Foundation_NSString"))]
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[method(didReceiveLocationPushPayload:completion:)]
         unsafe fn didReceiveLocationPushPayload_completion(
             &self,
@@ -16,6 +17,7 @@ extern_protocol!(
             completion: &Block<(), ()>,
         );
 
+        #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method(serviceExtensionWillTerminate)]
         unsafe fn serviceExtensionWillTerminate(&self);

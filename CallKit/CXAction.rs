@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct CXAction;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "CallKit_CXAction")]
     unsafe impl ClassType for CXAction {
         type Super = NSObject;
@@ -36,6 +37,7 @@ unsafe impl NSSecureCoding for CXAction {}
 #[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "CallKit_CXAction")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXAction {
         #[cfg(feature = "Foundation_NSUUID")]
         #[method_id(@__retain_semantics Other UUID)]
@@ -66,9 +68,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "CallKit_CXAction")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXAction {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

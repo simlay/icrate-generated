@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct MXAppLaunchDiagnostic;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "MetricKit_MXAppLaunchDiagnostic")]
     unsafe impl ClassType for MXAppLaunchDiagnostic {
         #[inherits(NSObject)]
@@ -33,6 +34,7 @@ unsafe impl NSSecureCoding for MXAppLaunchDiagnostic {}
 #[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "MetricKit_MXAppLaunchDiagnostic")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXAppLaunchDiagnostic {
         #[cfg(feature = "MetricKit_MXCallStackTree")]
         #[method_id(@__retain_semantics Other callStackTree)]
@@ -47,9 +49,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MetricKit_MXAppLaunchDiagnostic")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl MXAppLaunchDiagnostic {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

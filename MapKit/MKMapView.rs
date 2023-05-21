@@ -444,7 +444,6 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
 extern_methods!(
     /// Methods declared on superclass `NSView`
     #[cfg(feature = "MapKit_MKMapView")]
@@ -463,7 +462,6 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
 extern_methods!(
     /// Methods declared on superclass `NSResponder`
     #[cfg(feature = "MapKit_MKMapView")]
@@ -594,41 +592,49 @@ extern_methods!(
 extern_protocol!(
     pub unsafe trait MKMapViewDelegate: NSObjectProtocol {
         #[cfg(feature = "MapKit_MKMapView")]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(mapView:regionWillChangeAnimated:)]
         unsafe fn mapView_regionWillChangeAnimated(&self, map_view: &MKMapView, animated: bool);
 
         #[cfg(feature = "MapKit_MKMapView")]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(mapView:regionDidChangeAnimated:)]
         unsafe fn mapView_regionDidChangeAnimated(&self, map_view: &MKMapView, animated: bool);
 
         #[cfg(feature = "MapKit_MKMapView")]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(mapViewDidChangeVisibleRegion:)]
         unsafe fn mapViewDidChangeVisibleRegion(&self, map_view: &MKMapView);
 
         #[cfg(feature = "MapKit_MKMapView")]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(mapViewWillStartLoadingMap:)]
         unsafe fn mapViewWillStartLoadingMap(&self, map_view: &MKMapView);
 
         #[cfg(feature = "MapKit_MKMapView")]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(mapViewDidFinishLoadingMap:)]
         unsafe fn mapViewDidFinishLoadingMap(&self, map_view: &MKMapView);
 
         #[cfg(all(feature = "Foundation_NSError", feature = "MapKit_MKMapView"))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(mapViewDidFailLoadingMap:withError:)]
         unsafe fn mapViewDidFailLoadingMap_withError(&self, map_view: &MKMapView, error: &NSError);
 
         #[cfg(feature = "MapKit_MKMapView")]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(mapViewWillStartRenderingMap:)]
         unsafe fn mapViewWillStartRenderingMap(&self, map_view: &MKMapView);
 
         #[cfg(feature = "MapKit_MKMapView")]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(mapViewDidFinishRenderingMap:fullyRendered:)]
         unsafe fn mapViewDidFinishRenderingMap_fullyRendered(
@@ -638,6 +644,7 @@ extern_protocol!(
         );
 
         #[cfg(all(feature = "MapKit_MKAnnotationView", feature = "MapKit_MKMapView"))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method_id(@__retain_semantics Other mapView:viewForAnnotation:)]
         unsafe fn mapView_viewForAnnotation(
@@ -651,6 +658,7 @@ extern_protocol!(
             feature = "MapKit_MKAnnotationView",
             feature = "MapKit_MKMapView"
         ))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(mapView:didAddAnnotationViews:)]
         unsafe fn mapView_didAddAnnotationViews(
@@ -660,6 +668,7 @@ extern_protocol!(
         );
 
         #[cfg(all(feature = "MapKit_MKAnnotationView", feature = "MapKit_MKMapView"))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(mapView:didSelectAnnotationView:)]
         unsafe fn mapView_didSelectAnnotationView(
@@ -669,6 +678,7 @@ extern_protocol!(
         );
 
         #[cfg(all(feature = "MapKit_MKAnnotationView", feature = "MapKit_MKMapView"))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(mapView:didDeselectAnnotationView:)]
         unsafe fn mapView_didDeselectAnnotationView(
@@ -678,6 +688,7 @@ extern_protocol!(
         );
 
         #[cfg(feature = "MapKit_MKMapView")]
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method(mapView:didSelectAnnotation:)]
@@ -688,6 +699,7 @@ extern_protocol!(
         );
 
         #[cfg(feature = "MapKit_MKMapView")]
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(not(any(target_os = "macos", target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method(mapView:didDeselectAnnotation:)]
@@ -698,16 +710,19 @@ extern_protocol!(
         );
 
         #[cfg(feature = "MapKit_MKMapView")]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(mapViewWillStartLocatingUser:)]
         unsafe fn mapViewWillStartLocatingUser(&self, map_view: &MKMapView);
 
         #[cfg(feature = "MapKit_MKMapView")]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(mapViewDidStopLocatingUser:)]
         unsafe fn mapViewDidStopLocatingUser(&self, map_view: &MKMapView);
 
         #[cfg(all(feature = "MapKit_MKMapView", feature = "MapKit_MKUserLocation"))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(mapView:didUpdateUserLocation:)]
         unsafe fn mapView_didUpdateUserLocation(
@@ -717,6 +732,7 @@ extern_protocol!(
         );
 
         #[cfg(all(feature = "Foundation_NSError", feature = "MapKit_MKMapView"))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(mapView:didFailToLocateUserWithError:)]
         unsafe fn mapView_didFailToLocateUserWithError(
@@ -726,6 +742,7 @@ extern_protocol!(
         );
 
         #[cfg(all(feature = "MapKit_MKAnnotationView", feature = "MapKit_MKMapView"))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(not(any(target_os = "tvos")))]
         #[optional]
         #[method(mapView:annotationView:didChangeDragState:fromOldState:)]
@@ -739,6 +756,7 @@ extern_protocol!(
 
         #[cfg(feature = "MapKit_MKMapView")]
         #[cfg(not(any(target_os = "watchos")))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(mapView:didChangeUserTrackingMode:animated:)]
         unsafe fn mapView_didChangeUserTrackingMode_animated(
@@ -749,6 +767,7 @@ extern_protocol!(
         );
 
         #[cfg(all(feature = "MapKit_MKMapView", feature = "MapKit_MKOverlayRenderer"))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method_id(@__retain_semantics Other mapView:rendererForOverlay:)]
         unsafe fn mapView_rendererForOverlay(
@@ -762,6 +781,7 @@ extern_protocol!(
             feature = "MapKit_MKMapView",
             feature = "MapKit_MKOverlayRenderer"
         ))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method(mapView:didAddOverlayRenderers:)]
         unsafe fn mapView_didAddOverlayRenderers(
@@ -775,6 +795,7 @@ extern_protocol!(
             feature = "MapKit_MKClusterAnnotation",
             feature = "MapKit_MKMapView"
         ))]
+        #[cfg(not(any(target_os = "watchos")))]
         #[cfg(not(any(target_os = "watchos")))]
         #[optional]
         #[method_id(@__retain_semantics Other mapView:clusterAnnotationForMemberAnnotations:)]

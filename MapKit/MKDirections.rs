@@ -17,6 +17,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKDirections;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKDirections")]
     unsafe impl ClassType for MKDirections {
         type Super = NSObject;
@@ -31,6 +32,7 @@ unsafe impl NSObjectProtocol for MKDirections {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKDirections")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKDirections {
         #[cfg(feature = "MapKit_MKDirectionsRequest")]
         #[method_id(@__retain_semantics Init initWithRequest:)]
@@ -56,9 +58,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MapKit_MKDirections")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKDirections {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

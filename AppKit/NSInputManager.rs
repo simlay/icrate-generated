@@ -70,6 +70,7 @@ extern_class!(
     #[deprecated = "Use NSTextInputContext instead"]
     pub struct NSInputManager;
 
+    #[deprecated = "Use NSTextInputContext instead"]
     #[cfg(feature = "AppKit_NSInputManager")]
     unsafe impl ClassType for NSInputManager {
         type Super = NSObject;

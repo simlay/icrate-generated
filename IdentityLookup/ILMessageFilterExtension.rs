@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct ILMessageFilterExtension;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "IdentityLookup_ILMessageFilterExtension")]
     unsafe impl ClassType for ILMessageFilterExtension {
         type Super = NSObject;
@@ -24,12 +25,15 @@ unsafe impl NSObjectProtocol for ILMessageFilterExtension {}
 #[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "IdentityLookup_ILMessageFilterExtension")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl ILMessageFilterExtension {}
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "IdentityLookup_ILMessageFilterExtension")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl ILMessageFilterExtension {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

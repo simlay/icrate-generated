@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct MKLookAroundSnapshot;
 
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKLookAroundSnapshot")]
     unsafe impl ClassType for MKLookAroundSnapshot {
         type Super = NSObject;
@@ -27,6 +28,7 @@ unsafe impl NSObjectProtocol for MKLookAroundSnapshot {}
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKLookAroundSnapshot")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl MKLookAroundSnapshot {
         #[cfg(feature = "AppKit_NSImage")]
         #[method_id(@__retain_semantics Other image)]
@@ -34,9 +36,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MapKit_MKLookAroundSnapshot")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl MKLookAroundSnapshot {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

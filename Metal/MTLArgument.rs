@@ -451,6 +451,7 @@ extern_class!(
     #[deprecated]
     pub struct MTLArgument;
 
+    #[deprecated]
     #[cfg(feature = "Metal_MTLArgument")]
     unsafe impl ClassType for MTLArgument {
         type Super = NSObject;

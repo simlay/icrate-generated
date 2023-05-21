@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct ILMessageFilterQueryResponse;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "IdentityLookup_ILMessageFilterQueryResponse")]
     unsafe impl ClassType for ILMessageFilterQueryResponse {
         type Super = NSObject;
@@ -32,6 +33,7 @@ unsafe impl NSSecureCoding for ILMessageFilterQueryResponse {}
 #[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "IdentityLookup_ILMessageFilterQueryResponse")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl ILMessageFilterQueryResponse {
         #[method(action)]
         pub unsafe fn action(&self) -> ILMessageFilterAction;
@@ -49,9 +51,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "IdentityLookup_ILMessageFilterQueryResponse")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl ILMessageFilterQueryResponse {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

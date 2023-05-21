@@ -12,6 +12,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct ASAuthorizationPlatformPublicKeyCredentialRegistration;
 
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(
         feature = "AuthenticationServices_ASAuthorizationPlatformPublicKeyCredentialRegistration"
     )]
@@ -57,6 +58,7 @@ extern_methods!(
     #[cfg(
         feature = "AuthenticationServices_ASAuthorizationPlatformPublicKeyCredentialRegistration"
     )]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASAuthorizationPlatformPublicKeyCredentialRegistration {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

@@ -33,6 +33,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMRange;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMRange")]
     unsafe impl ClassType for DOMRange {
         #[inherits(WebScriptObject, NSObject)]

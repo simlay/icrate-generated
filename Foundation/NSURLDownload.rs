@@ -9,6 +9,7 @@ extern_class!(
     #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     pub struct NSURLDownload;
 
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "Foundation_NSURLDownload")]
     unsafe impl ClassType for NSURLDownload {
         type Super = NSObject;
@@ -23,6 +24,7 @@ unsafe impl NSObjectProtocol for NSURLDownload {}
 #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "Foundation_NSURLDownload")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSURLDownload {
         #[cfg(feature = "Foundation_NSString")]
         #[method(canResumeDownloadDecodedWithEncodingMIMEType:)]
@@ -70,9 +72,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "Foundation_NSURLDownload")]
+    #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
     unsafe impl NSURLDownload {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
@@ -86,6 +90,7 @@ extern_methods!(
 extern_protocol!(
     pub unsafe trait NSURLDownloadDelegate: NSObjectProtocol {
         #[cfg(feature = "Foundation_NSURLDownload")]
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method(downloadDidBegin:)]
         unsafe fn downloadDidBegin(&self, download: &NSURLDownload);
@@ -95,6 +100,7 @@ extern_protocol!(
             feature = "Foundation_NSURLRequest",
             feature = "Foundation_NSURLResponse"
         ))]
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method_id(@__retain_semantics Other download:willSendRequest:redirectResponse:)]
         unsafe fn download_willSendRequest_redirectResponse(
@@ -108,6 +114,7 @@ extern_protocol!(
             feature = "Foundation_NSURLDownload",
             feature = "Foundation_NSURLProtectionSpace"
         ))]
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method(download:canAuthenticateAgainstProtectionSpace:)]
         unsafe fn download_canAuthenticateAgainstProtectionSpace(
@@ -120,6 +127,7 @@ extern_protocol!(
             feature = "Foundation_NSURLAuthenticationChallenge",
             feature = "Foundation_NSURLDownload"
         ))]
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method(download:didReceiveAuthenticationChallenge:)]
         unsafe fn download_didReceiveAuthenticationChallenge(
@@ -132,6 +140,7 @@ extern_protocol!(
             feature = "Foundation_NSURLAuthenticationChallenge",
             feature = "Foundation_NSURLDownload"
         ))]
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method(download:didCancelAuthenticationChallenge:)]
         unsafe fn download_didCancelAuthenticationChallenge(
@@ -141,6 +150,7 @@ extern_protocol!(
         );
 
         #[cfg(feature = "Foundation_NSURLDownload")]
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method(downloadShouldUseCredentialStorage:)]
         unsafe fn downloadShouldUseCredentialStorage(&self, download: &NSURLDownload) -> bool;
@@ -149,6 +159,7 @@ extern_protocol!(
             feature = "Foundation_NSURLDownload",
             feature = "Foundation_NSURLResponse"
         ))]
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method(download:didReceiveResponse:)]
         unsafe fn download_didReceiveResponse(
@@ -161,6 +172,7 @@ extern_protocol!(
             feature = "Foundation_NSURLDownload",
             feature = "Foundation_NSURLResponse"
         ))]
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method(download:willResumeWithResponse:fromByte:)]
         unsafe fn download_willResumeWithResponse_fromByte(
@@ -171,6 +183,7 @@ extern_protocol!(
         );
 
         #[cfg(feature = "Foundation_NSURLDownload")]
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method(download:didReceiveDataOfLength:)]
         unsafe fn download_didReceiveDataOfLength(
@@ -180,6 +193,7 @@ extern_protocol!(
         );
 
         #[cfg(all(feature = "Foundation_NSString", feature = "Foundation_NSURLDownload"))]
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method(download:shouldDecodeSourceDataOfMIMEType:)]
         unsafe fn download_shouldDecodeSourceDataOfMIMEType(
@@ -189,6 +203,7 @@ extern_protocol!(
         ) -> bool;
 
         #[cfg(all(feature = "Foundation_NSString", feature = "Foundation_NSURLDownload"))]
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method(download:decideDestinationWithSuggestedFilename:)]
         unsafe fn download_decideDestinationWithSuggestedFilename(
@@ -198,16 +213,19 @@ extern_protocol!(
         );
 
         #[cfg(all(feature = "Foundation_NSString", feature = "Foundation_NSURLDownload"))]
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method(download:didCreateDestination:)]
         unsafe fn download_didCreateDestination(&self, download: &NSURLDownload, path: &NSString);
 
         #[cfg(feature = "Foundation_NSURLDownload")]
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method(downloadDidFinish:)]
         unsafe fn downloadDidFinish(&self, download: &NSURLDownload);
 
         #[cfg(all(feature = "Foundation_NSError", feature = "Foundation_NSURLDownload"))]
+        #[cfg(not(any(target_os = "ios", target_os = "tvos", target_os = "watchos")))]
         #[optional]
         #[method(download:didFailWithError:)]
         unsafe fn download_didFailWithError(&self, download: &NSURLDownload, error: &NSError);

@@ -39,6 +39,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct CKAllowedSharingOptions;
 
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "CloudKit_CKAllowedSharingOptions")]
     unsafe impl ClassType for CKAllowedSharingOptions {
         type Super = NSObject;
@@ -65,6 +66,7 @@ unsafe impl NSSecureCoding for CKAllowedSharingOptions {}
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "CloudKit_CKAllowedSharingOptions")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl CKAllowedSharingOptions {
         #[method_id(@__retain_semantics Init initWithAllowedParticipantPermissionOptions:allowedParticipantAccessOptions:)]
         pub unsafe fn initWithAllowedParticipantPermissionOptions_allowedParticipantAccessOptions(
@@ -98,9 +100,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "CloudKit_CKAllowedSharingOptions")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl CKAllowedSharingOptions {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

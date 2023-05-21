@@ -11,6 +11,7 @@ extern_class!(
     #[deprecated]
     pub struct DOMAbstractView;
 
+    #[deprecated]
     #[cfg(feature = "WebKit_DOMAbstractView")]
     unsafe impl ClassType for DOMAbstractView {
         #[inherits(WebScriptObject, NSObject)]

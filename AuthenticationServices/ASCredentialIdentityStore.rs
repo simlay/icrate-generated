@@ -26,6 +26,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     pub struct ASCredentialIdentityStore;
 
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     #[cfg(feature = "AuthenticationServices_ASCredentialIdentityStore")]
     unsafe impl ClassType for ASCredentialIdentityStore {
         type Super = NSObject;
@@ -40,6 +41,7 @@ unsafe impl NSObjectProtocol for ASCredentialIdentityStore {}
 #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "AuthenticationServices_ASCredentialIdentityStore")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASCredentialIdentityStore {
         #[method_id(@__retain_semantics Other sharedStore)]
         pub unsafe fn sharedStore() -> Id<ASCredentialIdentityStore>;
@@ -99,9 +101,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "AuthenticationServices_ASCredentialIdentityStore")]
+    #[cfg(not(any(target_os = "tvos", target_os = "watchos")))]
     unsafe impl ASCredentialIdentityStore {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

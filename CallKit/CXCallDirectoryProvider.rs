@@ -10,6 +10,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     pub struct CXCallDirectoryProvider;
 
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     #[cfg(feature = "CallKit_CXCallDirectoryProvider")]
     unsafe impl ClassType for CXCallDirectoryProvider {
         type Super = NSObject;
@@ -28,6 +29,7 @@ unsafe impl NSObjectProtocol for CXCallDirectoryProvider {}
 #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "CallKit_CXCallDirectoryProvider")]
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     unsafe impl CXCallDirectoryProvider {
         #[cfg(feature = "CallKit_CXCallDirectoryExtensionContext")]
         #[method(beginRequestWithExtensionContext:)]
@@ -38,9 +40,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "CallKit_CXCallDirectoryProvider")]
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     unsafe impl CXCallDirectoryProvider {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

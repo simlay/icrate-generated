@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKUserLocationView;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKUserLocationView")]
     unsafe impl ClassType for MKUserLocationView {
         #[inherits(NSView, NSResponder, NSObject)]
@@ -56,12 +57,15 @@ unsafe impl NSUserInterfaceItemIdentification for MKUserLocationView {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKUserLocationView")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKUserLocationView {}
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `MKAnnotationView`
     #[cfg(feature = "MapKit_MKUserLocationView")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKUserLocationView {
         #[cfg(feature = "Foundation_NSString")]
         #[method_id(@__retain_semantics Init initWithAnnotation:reuseIdentifier:)]
@@ -80,10 +84,11 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSView`
     #[cfg(feature = "MapKit_MKUserLocationView")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKUserLocationView {
         #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init initWithFrame:)]
@@ -91,10 +96,11 @@ extern_methods!(
     }
 );
 
-#[cfg(not(any(target_os = "ios")))]
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSResponder`
     #[cfg(feature = "MapKit_MKUserLocationView")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKUserLocationView {
         #[cfg(not(any(target_os = "ios")))]
         #[method_id(@__retain_semantics Init init)]
@@ -102,9 +108,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MapKit_MKUserLocationView")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKUserLocationView {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

@@ -25,15 +25,18 @@ ns_enum!(
 extern_protocol!(
     pub unsafe trait CXProviderDelegate: NSObjectProtocol {
         #[cfg(feature = "CallKit_CXProvider")]
+        #[cfg(not(any(target_os = "macos")))]
         #[method(providerDidReset:)]
         unsafe fn providerDidReset(&self, provider: &CXProvider);
 
         #[cfg(feature = "CallKit_CXProvider")]
+        #[cfg(not(any(target_os = "macos")))]
         #[optional]
         #[method(providerDidBegin:)]
         unsafe fn providerDidBegin(&self, provider: &CXProvider);
 
         #[cfg(all(feature = "CallKit_CXProvider", feature = "CallKit_CXTransaction"))]
+        #[cfg(not(any(target_os = "macos")))]
         #[optional]
         #[method(provider:executeTransaction:)]
         unsafe fn provider_executeTransaction(
@@ -43,6 +46,7 @@ extern_protocol!(
         ) -> bool;
 
         #[cfg(all(feature = "CallKit_CXProvider", feature = "CallKit_CXStartCallAction"))]
+        #[cfg(not(any(target_os = "macos")))]
         #[optional]
         #[method(provider:performStartCallAction:)]
         unsafe fn provider_performStartCallAction(
@@ -52,6 +56,7 @@ extern_protocol!(
         );
 
         #[cfg(all(feature = "CallKit_CXAnswerCallAction", feature = "CallKit_CXProvider"))]
+        #[cfg(not(any(target_os = "macos")))]
         #[optional]
         #[method(provider:performAnswerCallAction:)]
         unsafe fn provider_performAnswerCallAction(
@@ -61,6 +66,7 @@ extern_protocol!(
         );
 
         #[cfg(all(feature = "CallKit_CXEndCallAction", feature = "CallKit_CXProvider"))]
+        #[cfg(not(any(target_os = "macos")))]
         #[optional]
         #[method(provider:performEndCallAction:)]
         unsafe fn provider_performEndCallAction(
@@ -73,6 +79,7 @@ extern_protocol!(
             feature = "CallKit_CXProvider",
             feature = "CallKit_CXSetHeldCallAction"
         ))]
+        #[cfg(not(any(target_os = "macos")))]
         #[optional]
         #[method(provider:performSetHeldCallAction:)]
         unsafe fn provider_performSetHeldCallAction(
@@ -85,6 +92,7 @@ extern_protocol!(
             feature = "CallKit_CXProvider",
             feature = "CallKit_CXSetMutedCallAction"
         ))]
+        #[cfg(not(any(target_os = "macos")))]
         #[optional]
         #[method(provider:performSetMutedCallAction:)]
         unsafe fn provider_performSetMutedCallAction(
@@ -97,6 +105,7 @@ extern_protocol!(
             feature = "CallKit_CXProvider",
             feature = "CallKit_CXSetGroupCallAction"
         ))]
+        #[cfg(not(any(target_os = "macos")))]
         #[optional]
         #[method(provider:performSetGroupCallAction:)]
         unsafe fn provider_performSetGroupCallAction(
@@ -109,6 +118,7 @@ extern_protocol!(
             feature = "CallKit_CXPlayDTMFCallAction",
             feature = "CallKit_CXProvider"
         ))]
+        #[cfg(not(any(target_os = "macos")))]
         #[optional]
         #[method(provider:performPlayDTMFCallAction:)]
         unsafe fn provider_performPlayDTMFCallAction(
@@ -118,6 +128,7 @@ extern_protocol!(
         );
 
         #[cfg(all(feature = "CallKit_CXAction", feature = "CallKit_CXProvider"))]
+        #[cfg(not(any(target_os = "macos")))]
         #[optional]
         #[method(provider:timedOutPerformingAction:)]
         unsafe fn provider_timedOutPerformingAction(
@@ -127,6 +138,7 @@ extern_protocol!(
         );
 
         #[cfg(all(feature = "AVFAudio_AVAudioSession", feature = "CallKit_CXProvider"))]
+        #[cfg(not(any(target_os = "macos")))]
         #[optional]
         #[method(provider:didActivateAudioSession:)]
         unsafe fn provider_didActivateAudioSession(
@@ -136,6 +148,7 @@ extern_protocol!(
         );
 
         #[cfg(all(feature = "AVFAudio_AVAudioSession", feature = "CallKit_CXProvider"))]
+        #[cfg(not(any(target_os = "macos")))]
         #[optional]
         #[method(provider:didDeactivateAudioSession:)]
         unsafe fn provider_didDeactivateAudioSession(
@@ -154,6 +167,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos")))]
     pub struct CXProvider;
 
+    #[cfg(not(any(target_os = "macos")))]
     #[cfg(feature = "CallKit_CXProvider")]
     unsafe impl ClassType for CXProvider {
         type Super = NSObject;
@@ -168,6 +182,7 @@ unsafe impl NSObjectProtocol for CXProvider {}
 #[cfg(not(any(target_os = "macos")))]
 extern_methods!(
     #[cfg(feature = "CallKit_CXProvider")]
+    #[cfg(not(any(target_os = "macos")))]
     unsafe impl CXProvider {
         #[cfg(feature = "CallKit_CXProviderConfiguration")]
         #[method_id(@__retain_semantics Init initWithConfiguration:)]

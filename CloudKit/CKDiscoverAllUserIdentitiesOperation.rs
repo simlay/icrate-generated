@@ -11,6 +11,7 @@ extern_class!(
     #[cfg(not(any(target_os = "tvos")))]
     pub struct CKDiscoverAllUserIdentitiesOperation;
 
+    #[cfg(not(any(target_os = "tvos")))]
     #[cfg(feature = "CloudKit_CKDiscoverAllUserIdentitiesOperation")]
     unsafe impl ClassType for CKDiscoverAllUserIdentitiesOperation {
         #[inherits(NSOperation, NSObject)]
@@ -26,6 +27,7 @@ unsafe impl NSObjectProtocol for CKDiscoverAllUserIdentitiesOperation {}
 #[cfg(not(any(target_os = "tvos")))]
 extern_methods!(
     #[cfg(feature = "CloudKit_CKDiscoverAllUserIdentitiesOperation")]
+    #[cfg(not(any(target_os = "tvos")))]
     unsafe impl CKDiscoverAllUserIdentitiesOperation {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
@@ -58,9 +60,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "tvos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "CloudKit_CKDiscoverAllUserIdentitiesOperation")]
+    #[cfg(not(any(target_os = "tvos")))]
     unsafe impl CKDiscoverAllUserIdentitiesOperation {
         #[method_id(@__retain_semantics New new)]
         pub unsafe fn new() -> Id<Self>;

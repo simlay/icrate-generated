@@ -11,6 +11,7 @@ extern_protocol!(
             feature = "CallKit_CXCallDirectoryExtensionContext",
             feature = "Foundation_NSError"
         ))]
+        #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
         #[method(requestFailedForExtensionContext:withError:)]
         unsafe fn requestFailedForExtensionContext_withError(
             &self,
@@ -28,6 +29,7 @@ extern_class!(
     #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     pub struct CXCallDirectoryExtensionContext;
 
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     #[cfg(feature = "CallKit_CXCallDirectoryExtensionContext")]
     unsafe impl ClassType for CXCallDirectoryExtensionContext {
         #[inherits(NSObject)]
@@ -43,6 +45,7 @@ unsafe impl NSObjectProtocol for CXCallDirectoryExtensionContext {}
 #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "CallKit_CXCallDirectoryExtensionContext")]
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     unsafe impl CXCallDirectoryExtensionContext {
         #[method_id(@__retain_semantics Other delegate)]
         pub unsafe fn delegate(
@@ -111,9 +114,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "macos", target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "CallKit_CXCallDirectoryExtensionContext")]
+    #[cfg(not(any(target_os = "macos", target_os = "watchos")))]
     unsafe impl CXCallDirectoryExtensionContext {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;

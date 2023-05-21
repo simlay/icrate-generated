@@ -13,6 +13,7 @@ extern_class!(
     #[cfg(not(any(target_os = "watchos")))]
     pub struct MKPointOfInterestFilter;
 
+    #[cfg(not(any(target_os = "watchos")))]
     #[cfg(feature = "MapKit_MKPointOfInterestFilter")]
     unsafe impl ClassType for MKPointOfInterestFilter {
         type Super = NSObject;
@@ -39,6 +40,7 @@ unsafe impl NSSecureCoding for MKPointOfInterestFilter {}
 #[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     #[cfg(feature = "MapKit_MKPointOfInterestFilter")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKPointOfInterestFilter {
         #[method_id(@__retain_semantics Other filterIncludingAllCategories)]
         pub unsafe fn filterIncludingAllCategories() -> Id<MKPointOfInterestFilter>;
@@ -68,9 +70,11 @@ extern_methods!(
     }
 );
 
+#[cfg(not(any(target_os = "watchos")))]
 extern_methods!(
     /// Methods declared on superclass `NSObject`
     #[cfg(feature = "MapKit_MKPointOfInterestFilter")]
+    #[cfg(not(any(target_os = "watchos")))]
     unsafe impl MKPointOfInterestFilter {
         #[method_id(@__retain_semantics Init init)]
         pub unsafe fn init(this: Option<Allocated<Self>>) -> Id<Self>;
